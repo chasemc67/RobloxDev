@@ -11,12 +11,20 @@ Ship complete, playable games that are **published on Roblox**. Prioritize a wor
 ## Machine and tools (Mac Mini, `chases-Mac-mini.local`)
 - **Roblox Studio** at `/Applications/RobloxStudio.app`. Its MCP server (`StudioMCP`) is the main way to work in a place. See the `roblox-studio-mcp` skill.
 - **Blender 5.2** at `/Applications/Blender.app/Contents/MacOS/Blender`, for meshes and textures. See `blender-asset-pipeline`.
-- **Codex** (`codex`, including `codex exec` for runs nobody is watching) and **Cursor** (`cursor`, `cursor-agent`). Both already have the `Roblox_Studio` MCP configured.
-- **Grok Bot** reaches the Mac Mini over remote shell. It drives Studio through `codex exec` (see `roblox-studio-mcp`) and Blender through headless scripts.
+- **Claude Code** (`claude`, at `~/.local/bin/claude`), signed in with Chase's Claude Max subscription. It's the **preferred way to run Opus 5.5** (`claude -p --model opus`, which resolves to `claude-opus-5-5`). Claude Desktop is installed too.
+- **Codex** (`codex`, GPT-6 Astra, including `codex exec` for runs nobody is watching) and **Cursor** (`cursor`, `cursor-agent`). All three CLIs have the `Roblox_Studio` MCP configured.
+- **Grok Bot** reaches the Mac Mini over remote shell. It drives Studio headless through `claude -p` (preferred), `codex exec`, or `cursor-agent` as the fallback (see `roblox-studio-mcp`), and Blender through headless scripts. Codex computer use (`cua_repl`) handles UI clicks.
+
+### Headless agent command (preferred)
+```bash
+cd /tmp && perl -e 'alarm 1800; exec @ARGV' \
+  claude -p --model opus --dangerously-skip-permissions "<task>" </dev/null
+```
+Run from `~/src/RobloxDev` when it should edit repo files. GNU `timeout` isn't installed, which is why this uses perl `alarm`. Never set `ANTHROPIC_API_KEY`: the run must use the subscription.
 
 ## Order of preference for doing things in Studio
 1. **Roblox Studio MCP**: use it for scripts, instances, terrain and lighting via Luau, inserting assets, playtesting, reading console output and screenshots.
-2. **Computer use** (Codex computer use, Cursor, or Grok Bot's desktop) **only** for things the MCP can't do: Studio UI clicks (File > Save/Publish, Game Settings dialogs, plugin or MCP toggles), the 3D Importer dialog, and the create.roblox.com dashboard.
+2. **Computer use** (Codex computer use via `codex exec` + `cua_repl`, Cursor, or Grok Bot's desktop) **only** for things the MCP can't do: Studio UI clicks (File > Save/Publish, Game Settings dialogs, plugin or MCP toggles), the 3D Importer dialog, and the create.roblox.com dashboard.
 3. Keep work reproducible: save Luau snippets or asset generator scripts in this repo when they're worth reusing.
 
 ## Where things live
@@ -25,7 +33,7 @@ Ship complete, playable games that are **published on Roblox**. Prioritize a wor
 - Update `games/<game>/status.md` at the end of each work session: what changed, what's next, known bugs, place and universe IDs.
 
 ## Models and delegation
-- Use the strongest available model (e.g. Opus 5.5 or GPT-6 Astra) for hard 3D and spatial work: level layout, CFrame and rotation math, physics, camera, procedural geometry, debugging odd behavior.
+- Use the strongest available model for hard 3D and spatial work. Prefer **Opus 5.5 via Claude Code** (`claude -p --model opus`). GPT-6 Astra via Codex is the alternative, and cursor-agent is the fallback. This covers: level layout, CFrame and rotation math, physics, camera, procedural geometry, debugging odd behavior.
 - Hand routine work to cheaper or faster subagents: UI text, simple scripts, renaming, notes, asset searches, repetitive edits.
 - Check spatial results visually (MCP `screen_capture`, or a playtest plus a screenshot). Don't trust coordinates alone.
 

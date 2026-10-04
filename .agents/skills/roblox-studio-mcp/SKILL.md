@@ -1,6 +1,6 @@
 ---
 name: roblox-studio-mcp
-description: How to reach and use Roblox Studio's built-in MCP server (StudioMCP) on Chase's Mac Mini to read and change scripts and instances, run Luau, playtest, and capture the screen in an open Studio place. Covers the launch command, verification, the tool list, running it through codex exec from a remote agent, and troubleshooting. Use whenever you need to act inside Roblox Studio.
+description: How to reach and use Roblox Studio's built-in MCP server (StudioMCP) on Chase's Mac Mini to read and change scripts and instances, run Luau, playtest, and capture the screen in an open Studio place. Covers the launch command, verification, the tool list, running it headless from a remote agent (Claude Code + Opus 5.5 preferred, then codex exec, then cursor-agent), and troubleshooting. Use whenever you need to act inside Roblox Studio.
 ---
 
 # Roblox Studio MCP
@@ -12,6 +12,7 @@ Roblox Studio ships its own MCP server: `/Applications/RobloxStudio.app/Contents
 - Several StudioMCP processes can run at once (e.g. Cursor's plus a `codex exec` one). Extra ones act as proxies to the first.
 
 ## Where it's configured
+- Claude Code, user scope in `~/.claude.json` (added with `claude mcp add --scope user Roblox_Studio -- /Applications/RobloxStudio.app/Contents/MacOS/StudioMCP`). Check it with `claude mcp list` or `claude mcp get Roblox_Studio`.
 - Codex, `~/.codex/config.toml`:
   ```toml
   [mcp_servers.Roblox_Studio]
@@ -29,20 +30,41 @@ Roblox Studio ships its own MCP server: `/Applications/RobloxStudio.app/Contents
 
 ## Verify it's connected
 ```bash
+claude mcp list                     # Roblox_Studio: ... ✔ Connected
 codex mcp list                      # Roblox_Studio ... enabled
 lsof -nP -iTCP:13469                # RobloxStudio ... ESTABLISHED to StudioMCP
 ```
 Then call `list_roblox_studios`. It should return each open place with an `id`, for example `Place1 — ac40af23-...`. **Most tools need that `studio_id`.** Call `list_roblox_studios` first, and again whenever a call says the studio may have closed.
 
 ## From a remote agent (e.g. Grok Bot over SSH or remote shell)
-Run Codex non-interactively on the Mac Mini. It starts StudioMCP itself:
+Run an agent CLI non-interactively on the Mac Mini. Each one starts its own StudioMCP. GNU `timeout` isn't installed, so wrap runs in `perl -e 'alarm N; exec @ARGV'`.
+
+### 1. Preferred: Claude Code + Opus 5.5
+Runs on Chase's Claude Max subscription (`claude auth status` shows `"authMethod": "claude.ai"`, `"subscriptionType": "max"`). Don't use an API key.
+```bash
+cd /tmp && perl -e 'alarm 1800; exec @ARGV' \
+  claude -p --model opus --dangerously-skip-permissions \
+  "Use the Roblox_Studio MCP. Call list_roblox_studios, then <task>. Report what you changed." </dev/null
+```
+- `--model opus` resolves to **`claude-opus-5-5`**. You can also pin `--model claude-opus-5-5`. Add `--output-format json` to get `result` plus `modelUsage`, which shows the model id.
+- `--dangerously-skip-permissions` is required headless, or MCP tool calls stop at a permission prompt. Studio may still show its own confirmation for third-party MCP calls (see Requirements).
+- User skills in `~/.claude/skills` (symlink to `~/.agents/skills`) are loaded. Run from `~/src/RobloxDev` instead of `/tmp` to also pick up this repo's `CLAUDE.md`.
+- Optional: `ENABLE_CLAUDEAI_MCP_SERVERS=false` hides the claude.ai web connectors (Gmail, Drive, and so on), which otherwise show up and nag about auth.
+- Tested 2026-10-03: `list_roblox_studios` round trip took about 7 to 15 s.
+
+### 2. Codex (GPT-6 Astra)
+Still used for Studio MCP work, and it's **the tool for computer-use clicks** (`cua_repl`: Studio dialogs, browser logins, dashboards).
 ```bash
 cd /tmp && codex exec --skip-git-repo-check --sandbox read-only \
   "Use the Roblox_Studio MCP. Call list_roblox_studios, then <task>. Report what you changed." </dev/null
 ```
 - This was tested and works (about 40 s round trip). The `--sandbox` flag only limits Codex's local shell. MCP calls still change the Studio place, so state clearly in the prompt whether changes are allowed.
-- Give one focused task per run. Ask for a short report (what changed, errors, console output).
-- `cursor-agent -p "<prompt>"` (Cursor CLI, same MCP config) should work as an alternative, but it has not been tested yet.
+- For computer use, use `--dangerously-bypass-approvals-and-sandbox` and say in the prompt which windows it may touch.
+
+### 3. Fallback: cursor-agent
+`cursor-agent -p "<prompt>"` (Cursor CLI, same MCP config). Use it only when the others are unavailable, because Cursor's third-party model quota runs low. Not tested yet.
+
+For all three: give one focused task per run, say whether changes are allowed (`list_roblox_studios` is read-only), and ask for a short report (what changed, errors, console output). If another job is editing a place, don't touch that studio.
 
 ## Tools (28)
 - **Discover and inspect**: `list_roblox_studios`, `get_studio_state`, `search_game_tree`, `inspect_instance`, `script_search`, `script_grep`, `script_read`, `get_console_output`, `screen_capture`
