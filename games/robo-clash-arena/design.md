@@ -20,7 +20,7 @@ Robot select -> mode select (Matchmaking vs human | Battle a Bot) -> "READY... F
 - Bomb: arcing lob toward opponent with splash damage + knockback, cooldown.
 - Pod: homing/seeking orb or stationary mine, cooldown, limited lifetime.
 - Movement: run, ground dash (quick burst, short cooldown), jump + double jump OR air dash (per robot legs).
-- Knockback on hits; an "endurance" meter: after enough damage/hits in a short window the robot is knocked DOWN (flies back, lies down ~1.2s, can't act, takes no damage), then gets up with REBIRTH invincibility (~3s flashing, can't be damaged). While DOWN: gun unavailable, damage taken greatly reduced (~10-20%), short exploitable window.
+- Knockback on hits; an "endurance" meter: after enough damage/hits in a short window the robot is knocked DOWN (flies back, lies down ~1.2s, can't act, takes greatly reduced damage), then gets up with REBIRTH invincibility (~3s flashing, can't be damaged). While DOWN: gun unavailable, damage taken greatly reduced (~10-20%), short exploitable window.
 - Body dash attack: each body has a dash/charge attack (dashing into the rival deals light damage + knockback).
 - Firing/reloading briefly limits mobility (e.g. slowed while firing the gun, short stall on bomb throw).
 - Arena hazards: walls, pillars, and 1-2 pits (falling in = ~100 dmg and respawn at a safe point with brief invincibility).
@@ -62,3 +62,17 @@ Free-for-all (4 players), part customization (mix guns/bombs/pods/legs), more ar
 
 ## Art/feel
 Bright toy-robot / holosseum style: dark arena floor with neon grid lines, glowing team colors, punchy hit sparks, screen shake on heavy hits, clear readable UI with big fonts.
+
+## Gameplay-video analysis (3 battle clips of Custom Robo Arena): AUTHORITATIVE where it differs from above
+- **Camera**: ~45 deg angle tracking BOTH robots; pans and zooms dynamically (zoom in when close, pull back when far).
+- **Arena**: floating square or octagonal platform ~4-5x a max dash distance wide, static walls that block movement and shots. Variants have conveyors, ice, hazard pillars emitting expanding damaging pulses. V1: one good arena with walls (+ pillars/pit); a hazard is optional.
+- **Movement**: moderate jog pace. Jump = quick leap, ~1.5-2.5s airtime. Ground dash fast and snappy with a motion trail. Air dash repositions horizontally and extends airtime. Legs set number of jumps and air dashes.
+- **Gun**: auto-aim lock-on. A pink/red reticle snaps onto the enemy; shots track toward the target, ~0.5-1.5s to cross the arena (projectiles, not hitscan). Examples: 3-round straight burst; 4 rounds that accelerate.
+- **Bomb**: high slow arc that clears walls, reaches ~1/2 to 3/4 of the arena. Large spherical blast lingers ~1s. Usable every 2-3s.
+- **Pod**: slow deployable (slower than walking) that homes aggressively. Some sit on the ground, some hover. Lasts 4-6s or until contact, then explodes.
+- **Hits**: flinch + slight knockback, floating "HIT" text, red damage numbers (e.g. "DAMAGE 278").
+- **Down**: 3 pink DOWN pips per robot that hits deplete. At 0 pips, or from a big hit, robot falls flat with "DOWN" text for ~1.5-2s. Then "REBIRTH" with white/transparent flashing and 2-3s invincibility. (Pips refill after rebirth.)
+- **HUD**: P1 bottom-left, P2 bottom-right: thick HP bar, numeric HP (1000), down pips. Floating tag over each robot: P1/P2 (or name), HP, down pips. No explicit cooldown rings (a subtle ammo/cooldown hint is fine). Minimap optional.
+- **Start**: robots drop in as cubes/capsules, then READY, 3-2-1, LAUNCH! over ~3-4s.
+- **End**: time freezes at 0 HP, a big "KO" slams in, winner does a victory pose. "PERFECT" if winner took no damage. Then results.
+- **Pacing**: VERY fast. Standard matches ~45-60s, hits land every 3-5s. Tune damage for ~1 minute fights; 3 min timer cap. Robots differ by role: nimble all-rounder, bulky short-range grappler, long-range sniper.
