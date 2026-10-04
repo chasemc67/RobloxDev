@@ -45,11 +45,14 @@
   - Bug bash: one bot match each as Bolt, Crusher and Lancer reached KO and Results. Rematch (clicked within 30 s) and Back to Select both work, with 0 game warnings or errors on client and server.
 
 - 19:35 PT: Opus phase 2 polish done (logs/opus-phase2.log): tighter camera (32-105 studs), floor emblem no longer covers the HUD, fast REBIRTH blink (0.1 s, 2.6 s), phone layout checked in Studio's iPhone simulator, gamepad selection defaults/watchdog, lit lobby statues, HOW TO PLAY panel, friend hint in the queue panel, bug bash with all 3 robots clean.
-- 19:45 PT: Saved and PUBLISHED to Roblox from Studio (version 19). The live place is current. Audience is still Private (owner/editors only).
+- ~19:10 PT: Saved and PUBLISHED to Roblox from Studio (version 19). The live place is current. Audience is still Private (owner/editors only).
 - Account eligibility (read-only check): age check 21+ done, government ID done, 2FA (email) done, publishing reach = "All ages", no Premium/Plus. Setting Audience = Public is FREE now (reaches age-checked 16+ users and Trusted Friends; "Maturity: Mild, Ages 16+"). The 1,000 Robux refundable fee / 50k expedited review is only to reach under-16 Kids/Select accounts before the 250-HEP evaluation. Not paid.
 
+- 19:20 PT: Audience set to **PUBLIC** (Configure > Audience > Public > Save, via Codex; free, no fees paid or enrolled). Dashboard reload shows Public; Audience reach "Current reach" = "Ages 16+ and trusted friends". Signed-out check: games API returns name "Robo Clash Arena" (not Title Unavailable), creator MetavrseBuilder, server size 50. Page: https://www.roblox.com/games/99842799688877 (Maturity: Mild, Ages 16+, Play button). Screenshot: logs/public.jpg (local, gitignored). Thumbnail/icon still the Roblox default.
+
 ## TODO
-- Set Audience to Public (free; Configure > Audience on the dashboard) once Chase OKs it, or Limited > Friends for friends only.
+- Add an icon (512x512) and thumbnails (16:9) on the dashboard.
+- Under-16 reach (Kids/Select) unlocks after 250 highly engaged 16+ players in 60 days, or with Plus/Premium for 2 months, or the refundable 1,000 Robux fee (not paid).
 - Test real 2-human matchmaking on a live server. Two actual Studio local clients passed pairing, damage synchronization, and disconnect handling on 2026-10-03.
 - Test on a real phone and a real gamepad.
 - Later: FFA (3–4 players; the match code is already N-participant), part customization, more arenas.
@@ -62,6 +65,6 @@
 - Rematch closes 30 s after Results (`RematchTimeout`). After that only Back to Select is shown.
 
 ## IDs
-- Place ID: 99842799688877 (published 2026-10-03 as a new experience under Chase's account, still PRIVATE)
+- Place ID: 99842799688877 (published 2026-10-03 under Chase's account @MetavrseBuilder; PUBLIC since 19:20 PT, reach: Ages 16+ and trusted friends)
 - Universe ID: 10769245121
-- URL (once public): https://www.roblox.com/games/99842799688877
+- URL: https://www.roblox.com/games/99842799688877
