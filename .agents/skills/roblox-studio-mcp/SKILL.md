@@ -57,6 +57,19 @@ cd /tmp && codex exec --skip-git-repo-check --sandbox read-only \
 - After changes: `start_stop_play` → `get_console_output` → `screen_capture` → stop play → fix.
 - Saving and publishing happen in Studio (File > Save / Publish to Roblox). Use computer use if no tool covers it. See `roblox-publishing`.
 
+## Playtest gotchas (learned on robo-clash-arena)
+- `execute_luau` needs `datamodel_type` (`Edit` / `Server` / `Client`) and `studio_id`. `screen_capture` needs a `capture_id`.
+- `get_console_output` can be huge. To read only problems, run this in both `Server` and `Client`: `LogService:GetLogHistory()` filtered to `MessageWarning` / `MessageError`.
+- `user_mouse_input` clicks are reliable only with `instance_path` (for example `LocalPlayer.PlayerGui.MyUI.Root.Btn_PLAY`). Raw x/y clicks often miss. Give buttons and their containers stable names, and hide the CoreGui chat window or it can steal clicks.
+- Virtual gamepad keys (`ButtonA` and so on) arrive as keyboard input, and there is no virtual touch. Test touch layout by forcing the touch UI with a temporary flag, then remove the flag.
+- `screen_capture` lags about 2 s behind the game, so short announcer text is easy to miss. Check timing-critical states numerically from `Client` (attributes, `LocalTransparencyModifier`, `Highlight` values) instead.
+- BillboardGuis didn't render in captures. Screen-space frames positioned with `Camera:WorldToViewportPoint` work and look the same.
+- For temporary test hooks, use a `BindableFunction` created only when `RunService:IsStudio()` (call it from `Server` `execute_luau`). Delete it before shipping.
+
+## Audio
+- `search_asset` with `assetType=Audio, scope=creator_store, priceFilter=free` returns a lot of ripped game audio, and `verifiedCreatorsOnly` barely filters. Prefer the licensed library uploads: **ProSoundEffects** (descriptions end "Courtesy of Pro Sound Effects", ids around 9.1e9), **APMOfficial** music, and **Roblox** UI sounds.
+- Before using an id, confirm it loads: create `Sound`s, call `ContentProvider:PreloadAsync(list, cb)`, and check that `AssetFetchStatus.Success` and `TimeLength > 0`. Built-in `rbxasset://sounds/` only has a few files (an explosion, jump/land, oof).
+
 ## Troubleshooting
 - **`list_roblox_studios` is empty**: Studio isn't open, no place is loaded, or MCP is off in Studio. Open the place, check the Assistant MCP setting, and check `lsof -nP -iTCP:13469`.
 - **Tool call hangs**: Studio is probably showing a confirmation prompt. Approve it in Studio (computer use) or ask Chase to.
