@@ -70,6 +70,12 @@ cd /tmp && codex exec --skip-git-repo-check --sandbox read-only \
 - `screen_capture` lags about 2 s behind the game, so short announcer text is easy to miss. Check timing-critical states numerically from `Client` (attributes, `LocalTransparencyModifier`, `Highlight` values) instead.
 - BillboardGuis didn't render in captures. Screen-space frames positioned with `Camera:WorldToViewportPoint` work and look the same.
 - For temporary test hooks, use a `BindableFunction` created only when `RunService:IsStudio()` (call it from `Server` `execute_luau`). Delete it before shipping.
+- `screen_capture` only returns the image to the agent and can't save a file. It also hides CoreGui (Roblox top-bar buttons, player-list popups), so check real top-left overlap separately. To save PNGs:
+  - Find the Studio window id with pyobjc: `uv run --with pyobjc-framework-Quartz`, then `CGWindowListCopyWindowInfo`, owner "Roblox".
+  - Capture it with `screencapture -x -o -l<id> win.png`.
+  - Crop the game viewport with Pillow. Find the viewport edges from the 2 px blue border in play mode. Its size is `Camera.ViewportSize`, in 1x pixels on a 1080p display.
+- Raw x/y in `user_mouse_input` are in GUI space, which excludes the 58 px top bar. Clicks that land on CoreGui are rejected ("hits CoreGUI"). To clear CoreGui popups before window captures, call `StarterGui:SetCoreGuiEnabled(PlayerList/Chat, false)` from `Client`.
+- In Edit, the Studio camera re-aims at `camera.Focus`. To frame a shot off-center, move the look-at point and set both `CFrame` and `Focus` to it; offsetting `CFrame` alone gets cancelled.
 
 ## Audio
 - `search_asset` with `assetType=Audio, scope=creator_store, priceFilter=free` returns a lot of ripped game audio, and `verifiedCreatorsOnly` barely filters. Prefer the licensed library uploads: **ProSoundEffects** (descriptions end "Courtesy of Pro Sound Effects", ids around 9.1e9), **APMOfficial** music, and **Roblox** UI sounds.
