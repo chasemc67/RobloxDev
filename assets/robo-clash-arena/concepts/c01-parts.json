@@ -1,0 +1,28 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Modeling reference sheet. Isolate the individual parts of the EXACT cyan-and-white scout robot in the reference, each part shown alone on a plain light-grey background, each part from TWO angles (a 3/4 view and a side view) at a large readable scale. Parts, and only these: the twin-barrel blaster (white and cyan, two black muzzles, cyan rim lights), the boxy sticky-mine launcher (white and cyan, three round mine barrels, one loose disc mine), one spherical drone pod (white ball, cyan eye, small fins, short mounting arm), the helmet (white with cyan stripe and ear fins, black visor), and one roller-skate foot (white shell, two wheels, cyan axle). Arrange in a loose grid with lots of space. Match the reference colors and shapes exactly. No text, no labels, no arrows, no full-body character.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/gameart/round1/characters/C01-robot-scout.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 747,
+    "inputTokenDetails": {
+      "noCacheTokens": 747,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1520,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 400
+    },
+    "totalTokens": 2267
+  },
+  "cost": 0.140694,
+  "warnings": [],
+  "seconds": 31.5,
+  "files": [
+    "/workspace/gameart/robo-clash-arena/concepts/c01-parts.png"
+  ]
+}

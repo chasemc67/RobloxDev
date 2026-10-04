@@ -1,0 +1,28 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Parts callout sheet, plain light-grey background, no text. Five parts of the hover robot in the reference, each drawn twice, large and fully opaque. The blaster is a straight forearm CANNON with no pistol grip and no handle: a white and teal cylinder, a yellow band, and a glowing cyan muzzle, shown from the side and from the front. The fan is a round duct with teal blades and a yellow hub, shown from the front and from the side so the blades are still visible. The bomb pod is an open round clamshell holding exactly six yellow spheres with teal spots, shown open from above and from the side. One small white drone sphere with a yellow stripe and one cyan eye, two angles. One hover foot, white with a teal cuff, one yellow stripe and one cyan thruster ring, two angles. Nothing else.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/gameart/round1/characters/C05-robot-aerial.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 733,
+    "inputTokenDetails": {
+      "noCacheTokens": 733,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1448,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 328
+    },
+    "totalTokens": 2181
+  },
+  "cost": 0.139802,
+  "warnings": [],
+  "seconds": 34,
+  "files": [
+    "/workspace/gameart/robo-clash-arena/concepts/c05-parts.png"
+  ]
+}

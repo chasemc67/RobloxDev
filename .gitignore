@@ -6,3 +6,8 @@ __pycache__/
 .env
 *.local.*
 games/*/logs/
+# full-res concept PNGs (4-5 MB each) stay local; web/*.jpg copies are committed
+assets/robo-clash-arena/concepts/*-parts.png
+assets/robo-clash-arena/concepts/*-turnaround.png
+assets/robo-clash-arena/concepts/s04-hero.png
+assets/robo-clash-arena/concepts/s04-topdown.png

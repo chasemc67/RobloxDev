@@ -1,0 +1,28 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Modeling reference sheet. Isolate the parts of the EXACT fox-mask spirit fighter in the reference, each part alone on a plain light-grey background, each from TWO angles at a large readable scale. Parts, and only these: the kitsune mask (white, tall ears, red flame markings, black eye slits), the paper-lantern cannon (white panels, red flame prints, gold bands, dark muzzle, red tassel), the paper-talisman box launcher (white and red, gold corner caps, folded paper charms with a red diamond), one flame lantern pod (black and gold sphere, blue flame, red tassel), and the spirit-flame tail (pale blue curling fire). Match the reference exactly. No text, no labels, no full-body character.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/gameart/round1/characters/R05-yokai-spirit.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 718,
+    "inputTokenDetails": {
+      "noCacheTokens": 718,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1415,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 295
+    },
+    "totalTokens": 2133
+  },
+  "cost": 0.139376,
+  "warnings": [],
+  "seconds": 33.5,
+  "files": [
+    "/workspace/gameart/robo-clash-arena/concepts/r05-parts.png"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "3D modeling turnaround sheet of the EXACT robot in the reference image, same design, same colors, same parts, nothing added or removed. Show exactly THREE full-body views in a horizontal row on a plain flat light-grey background: LEFT is a straight-on FRONT view, MIDDLE is a straight-on RIGHT SIDE view, RIGHT is a straight-on BACK view. Orthographic: no perspective, no foreshortening, camera perfectly level. Neutral A-pose, standing still, both feet on the ground, arms held slightly out from the body so the weapons are readable, head facing forward in the front view. All three views the same height, feet aligned on one shared ground line, equal spacing. Flat even studio lighting, only a soft contact shadow, no rim light, no glow bloom. Design to preserve exactly: big rounded helmet with a white center stripe and cyan side panels and two small cyan ear fins; black faceplate with one horizontal glowing cyan visor slit; white torso with cyan chest and shoulder armor; black ball joints; RIGHT arm ends in a chunky white-and-cyan twin-barrel blaster with two black muzzles; LEFT forearm is a white-and-cyan boxy sticky-mine launcher with three round cyan-rimmed mine barrels; TWO small spherical drone pods with a single cyan eye and little fins, mounted on short arms rising from the back; reverse-joint legs, white thighs, cyan knees, white roller-skate feet with two wheels and a cyan glowing axle. No text, no labels, no arrows, no ground grid, no extra characters.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/gameart/round1/characters/C01-robot-scout.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 883,
+    "inputTokenDetails": {
+      "noCacheTokens": 883,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1457,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 337
+    },
+    "totalTokens": 2340
+  },
+  "cost": 0.14021,
+  "warnings": [],
+  "seconds": 43.2,
+  "files": [
+    "/workspace/gameart/robo-clash-arena/concepts/c01-turnaround.png"
+  ]
+}

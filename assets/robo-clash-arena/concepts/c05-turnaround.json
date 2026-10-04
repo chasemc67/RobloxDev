@@ -1,0 +1,28 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Engineering orthographic turnaround, three views of the white-teal-yellow hover robot from the reference, plain light-grey background, same scale, aligned. VIEW 1 FRONT: face-on, symmetrical. VIEW 2 must be a TRUE PROFILE drawn like a side-view blueprint: the head is seen from the side so it reads as one outline, the two cyan eyes merge into a single thin shape at the front edge of the head, the chest is a single silhouette, we see the nose of the blaster pointing right and the bomb pod behind the body. Do not draw a three-quarter view and do not show both eyes. VIEW 3 BACK: the back of the head, no face, the blaster on the robot's right (viewer's right) and the bomb pod on the viewer's left. Keep the two shoulder fans, three eye drones, antenna, yellow stripes and cyan foot thrusters. No text.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/gameart/round1/characters/C05-robot-aerial.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 751,
+    "inputTokenDetails": {
+      "noCacheTokens": 751,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1436,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 316
+    },
+    "totalTokens": 2187
+  },
+  "cost": 0.139694,
+  "warnings": [],
+  "seconds": 34.5,
+  "files": [
+    "/workspace/gameart/robo-clash-arena/concepts/c05-turnaround.png"
+  ]
+}

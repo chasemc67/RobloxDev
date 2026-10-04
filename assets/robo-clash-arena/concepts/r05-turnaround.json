@@ -1,0 +1,29 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Orthographic character turnaround for 3D modeling of the EXACT fox-mask spirit in the first reference. The second reference shows its separate parts; use those exact shapes. Plain flat light-grey background. Exactly three figures, same scale, aligned. LEFT: pure FRONT view. MIDDLE: pure RIGHT-SIDE PROFILE facing screen-right, only one side of the mask visible. RIGHT: pure BACK view, back of the head and ears, no face. Neutral A-pose, floating, no legs. CRITICAL: the fighter's RIGHT hand holds one LARGE paper-lantern cannon (long, white with red flame prints, gold bands, dark round muzzle, red tassel), and the LEFT hand holds a smaller white-and-red box launcher with folded paper charms. Three round black-and-gold lanterns with blue flames sit on the back and shoulders. White kitsune mask with tall ears and red flame markings, white scarf with red borders and gold diamonds, black-and-red robe, gold bell, and a big pale-blue spirit-flame tail instead of legs. Do not replace the cannon with a second small lantern. No text, no labels, no extra floating flames.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/gameart/round1/characters/R05-yokai-spirit.png",
+    "/workspace/gameart/robo-clash-arena/concepts/r05-parts.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 1362,
+    "inputTokenDetails": {
+      "noCacheTokens": 1362,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1404,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 284
+    },
+    "totalTokens": 2766
+  },
+  "cost": 0.140532,
+  "warnings": [],
+  "seconds": 37.5,
+  "files": [
+    "/workspace/gameart/robo-clash-arena/concepts/r05-turnaround.png"
+  ]
+}
