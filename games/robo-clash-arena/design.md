@@ -12,7 +12,7 @@ Robot select -> mode select (Matchmaking vs human | Battle a Bot) -> "READY... F
 1. Title ("ROBO CLASH ARENA", Press Start / tap). 2. Robot select (3+ robots, stats bars, loadout names, 3D or viewport preview). 3. Mode select: Matchmaking (queue, pairs 2 humans) or Battle a Bot. 4. Battle (HUD: both HP bars, timer, cooldown indicators, down/rebirth state). 5. Results (WIN/LOSE/DRAW, damage dealt, Rematch, Back to Select).
 
 ## Battle mechanics (Custom Robo style)
-- Small enclosed 3D arena (~110x110 studs), walls + 4-6 obstacles (blocks/pillars/ramps), holo look.
+- Small enclosed 3D arena (~110x110 studs), walls + 4-6 obstacles (pillars/blocks/ramp) + 1-2 pits, holo look (Holosseum).
 - Camera: high angle (~50-60 deg pitch), follows the midpoint of both robots and zooms to frame both; player-relative movement is camera-relative.
 - HP 1000 each. No healing.
 - Lock-on: guns/bombs/pods auto-aim toward the opponent (horizontal aim at rival; bombs target rival's position).
@@ -20,9 +20,16 @@ Robot select -> mode select (Matchmaking vs human | Battle a Bot) -> "READY... F
 - Bomb: arcing lob toward opponent with splash damage + knockback, cooldown.
 - Pod: homing/seeking orb or stationary mine, cooldown, limited lifetime.
 - Movement: run, ground dash (quick burst, short cooldown), jump + double jump OR air dash (per robot legs).
-- Knockback on hits; an "endurance" meter: after enough damage/hits in a short window the robot is knocked DOWN (flies back, lies down ~1.2s, can't act, takes no damage), then gets up with REBIRTH invincibility (~1.5s flashing, can't be damaged).
-- Match ends at 0 HP (KO) or timer (120s) -> higher HP% wins; equal = draw.
+- Knockback on hits; an "endurance" meter: after enough damage/hits in a short window the robot is knocked DOWN (flies back, lies down ~1.2s, can't act, takes no damage), then gets up with REBIRTH invincibility (~3s flashing, can't be damaged). While DOWN: gun unavailable, damage taken greatly reduced (~10-20%), short exploitable window.
+- Body dash attack: each body has a dash/charge attack (dashing into the rival deals light damage + knockback).
+- Firing/reloading briefly limits mobility (e.g. slowed while firing the gun, short stall on bomb throw).
+- Arena hazards: walls, pillars, and 1-2 pits (falling in = ~100 dmg and respawn at a safe point with brief invincibility).
+- Opening: robots drop into the arena (optional V1: as cubes that transform) during READY.
+- Match ends at 0 HP (KO) or timer (180s, ~3 min like the original) -> higher HP% wins; equal = draw.
 - "READY..." (1.5s) "FIGHT!" intro with controls locked until FIGHT.
+
+## Loadout model
+Each robot = body (HP stats, dash attack) + gun (right hand, rapid/direct) + bomb (left hand, slower arcing splash, stronger) + pod (delayed/tracking/trap) + legs (speed, jump, air-dash). Keep these as separate data entries in Config so part customization is easy later.
 
 ## Robots (V1)
 | Robot | Style | Gun | Bomb | Pod | Legs |

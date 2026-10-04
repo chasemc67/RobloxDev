@@ -1,0 +1,38 @@
+You are the lead game developer building V1 of **Robo Clash Arena**, a Roblox game modeled on the Nintendo DS game *Custom Robo Arena* (battle mode only), for Chase. You are running headless on Chase's Mac Mini in ~/src/RobloxDev with the Roblox_Studio MCP (Roblox Studio is open with the place loaded). Work autonomously for as long as needed; nobody will answer questions.
+
+## First
+1. Read AGENTS.md and every `.agents/skills/*/SKILL.md` (esp. roblox-studio-mcp, roblox-dev-workflow, new-roblox-game, blender-asset-pipeline). Follow them.
+2. Read `games/robo-clash-arena/design.md` (the spec) and `games/robo-clash-arena/status.md`.
+3. Also read `games/robo-clash-arena/mechanics-notes.md` if it exists (gameplay-video analysis of Custom Robo Arena). Re-check it at every milestone; it may appear or update while you work. Incorporate it where it differs from design.md.
+4. Call `list_roblox_studios` to get the studio_id (call again if a call says the studio closed). Game CODE lives in Studio (no Rojo). Inspect the current place first (it may be nearly empty).
+
+## Build (all in Studio via MCP: execute_luau to create instances/scripts, multi_edit for script edits)
+Implement the full V1 described in design.md. Requirements:
+- **Flow**: Title -> Robot Select (>=3 robots with clearly different weapons/capabilities, stats, loadout names) -> Mode Select (Matchmaking vs human | Battle a Bot | Back) -> 1v1 battle with READY/FIGHT intro -> Results (WIN/LOSE/DRAW, Rematch, Back to Select). Structure match code for N participants so free-for-all can be added later.
+- **Battle mechanics like Custom Robo Arena**: small enclosed 3D arena with obstacles; camera from a high angle framing both robots (midpoint follow + zoom to fit); HP 1000; per-robot main gun (Bolt rapid blaster bursts, Crusher 5-way spread, Lancer charge laser), bomb (arcing lob w/ splash), pod (homing seeker / stationary mine / drifting orbs); jump + double jump or air dash (per robot legs); ground dash; cooldowns/reload; knockback; endurance -> knockdown DOWN state (invulnerable while down) -> get up with REBIRTH invincibility flashing; lock-on / auto-aim toward opponent; match ends at 0 HP or 180s timer (higher HP% wins); DOWN state = gun unavailable + greatly reduced damage taken; REBIRTH ~3s invincibility; body dash attack; firing briefly limits mobility; arena has walls, pillars and pits.
+- **AI bot**: decent, not perfect: strafes, dashes, jumps, keeps preferred range by weapon, fires gun/bomb/pod with some reaction delay and inaccuracy, sometimes dodges incoming projectiles. Runs on the server.
+- **Multiplayer**: single place, multiple private arenas inside one server (clone arena template to offset positions per match). Server-side matchmaking queue pairs two humans in the server (Chase + a friend who joins him). Server-authoritative projectiles, hits, HP, states; clients send intents via RemoteEvents (validate rate/cooldowns server-side). Player robot characters: Humanoid-based custom character models (one per robot, built from parts/meshes with distinct silhouettes & colors) so client movement is responsive. Handle players leaving mid-match (opponent wins, returns to results). Set Players.CharacterAutoLoads appropriately; lobby state should not leave stray characters lying around.
+- **Input**: excellent gamepad support (ContextActionService; left stick move; RT gun, LT/X bomb, RB/Y pod, A jump, B/LB dash; menus navigable with GuiService.SelectedObject + D-pad/stick, A to confirm, B to go back), touchscreen (on-screen thumbstick + big GUN/BOMB/POD/JUMP/DASH buttons, only shown on touch devices, UI scales on phones with UIScale/scale sizes and safe area), keyboard+mouse (WASD, Space jump, Shift dash, LMB/J gun, RMB/K bomb, E/L pod). Disable default Roblox jump button/thumbstick conflicts in battle as needed.
+- **Feel/quality**: responsive controls, readable big UI (consistent style, team colors), muzzle flashes, hit sparks, explosion effects, damage numbers, screen shake on heavy hits, sounds (use Roblox free/official sound assets via search_asset/insert_asset; verify they load; avoid free models containing scripts unless you inspect and strip them), distinct robot looks (build from Parts/Unions or generate_procedural_model / Blender headless scripts in assets/robo-clash-arena/ if it's worth it). Neon holo arena look with lighting/atmosphere.
+
+## Organization (in Studio)
+- ReplicatedStorage/RoboClash: Config (robot defs: stats, gun/bomb/pod params), Remotes folder, shared modules.
+- ServerScriptService/RoboClash: MatchService, MatchmakingService, CombatService (projectiles/hits), BotAI, RobotSpawner.
+- StarterPlayer/StarterPlayerScripts: client controller (input, camera, HUD, effects), UI in StarterGui or built from code.
+- ServerStorage: arena template, robot models.
+
+## Playtest and iterate (mandatory, repeat many times)
+- After each milestone: `start_stop_play` (play), drive the game with `user_keyboard_input` / `user_mouse_input` / `character_navigation`, `get_console_output` (fix EVERY error/warning from your scripts), `screen_capture` (check visuals, camera framing, UI readability), stop play, fix.
+- Test: full flow via UI; Battle a Bot to KO (you can temporarily use a debug flag/command to speed up, but remove it after); knockdown + rebirth; each robot's gun/bomb/pod; timer end; rematch; back to select. For matchmaking, verify queue/pairing logic (e.g. simulate with a second fake participant in a test harness, or Studio multi-client test if available via MCP) and document how it was verified.
+- Touch UI: verify layout at a phone resolution if you can (e.g. force touch UI via a debug attribute and screen_capture), then disable the debug override.
+- Milestones in order: (1) arena + one robot moving + camera; (2) combat core (gun/bomb/pod, HP, knockback, down/rebirth) vs a dummy; (3) bot AI + match flow + UI screens; (4) all 3 robots; (5) matchmaking 1v1; (6) gamepad + touch; (7) polish (effects, sounds, shake, UI); (8) bug bash.
+- You may spawn cheaper subagents for routine work (UI text, sound searches), but you own correctness.
+
+## Repo notes (on disk in ~/src/RobloxDev)
+- Keep `games/robo-clash-arena/status.md` updated at each milestone (Now / TODO / Known bugs / IDs; keep the IDs section as is), so progress survives interruptions. Also write `games/robo-clash-arena/architecture.md` (scripts, remotes, data flow, how to add FFA).
+- Save any reusable Luau snippets or Blender scripts under `assets/robo-clash-arena/` or `games/robo-clash-arena/`.
+- `git add` + `git commit` + `git push` notes/assets at each milestone (short messages). Never commit secrets.
+
+## Don'ts
+- Don't publish, don't change the experience's privacy, don't spend money or Robux. Don't open create.roblox.com. (Publishing is handled separately.)
+- Don't stop at a partial build. When everything works, end with a concise report: what's implemented, how you tested, known issues.
