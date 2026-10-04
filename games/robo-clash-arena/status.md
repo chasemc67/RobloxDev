@@ -25,6 +25,8 @@
 - Game scripts are authored in `~/src/rca-work/src` (outside this repo) and pushed into Studio with `~/src/rca-work/push.sh`. See `architecture.md`. The arena and robot builders live in `assets/robo-clash-arena/`.
 - All temporary debug hooks used for testing (Studio-only server hook, fake matchmaking participant, bot idle flag, ForceTouch override) have been removed.
 
+- 18:40 PT: Opus phase 1 run finished (log: logs/opus-phase1.log, ~73 min, model `claude-opus-5-5-high`). Studio saved to Roblox via Codex at ~18:10 PT. Next (orchestrator): 2-client Studio test (logs/codex-multiclient1.log), Save+Publish, dashboard config + make PUBLIC (prompts/dashboard-config.md).
+
 ## TODO
 - Publish public (handled separately).
 - Test real 2-human matchmaking on a live server; the agent could only use a fake participant.
