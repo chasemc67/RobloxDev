@@ -44,8 +44,12 @@
   - Results content is centered.
   - Bug bash: one bot match each as Bolt, Crusher and Lancer reached KO and Results. Rematch (clicked within 30 s) and Back to Select both work, with 0 game warnings or errors on client and server.
 
+- 19:35 PT: Opus phase 2 polish done (logs/opus-phase2.log): tighter camera (32-105 studs), floor emblem no longer covers the HUD, fast REBIRTH blink (0.1 s, 2.6 s), phone layout checked in Studio's iPhone simulator, gamepad selection defaults/watchdog, lit lobby statues, HOW TO PLAY panel, friend hint in the queue panel, bug bash with all 3 robots clean.
+- 19:45 PT: Saved and PUBLISHED to Roblox from Studio (version 19). The live place is current. Audience is still Private (owner/editors only).
+- Account eligibility (read-only check): age check 21+ done, government ID done, 2FA (email) done, publishing reach = "All ages", no Premium/Plus. Setting Audience = Public is FREE now (reaches age-checked 16+ users and Trusted Friends; "Maturity: Mild, Ages 16+"). The 1,000 Robux refundable fee / 50k expedited review is only to reach under-16 Kids/Select accounts before the 250-HEP evaluation. Not paid.
+
 ## TODO
-- Publish public (handled separately).
+- Set Audience to Public (free; Configure > Audience on the dashboard) once Chase OKs it, or Limited > Friends for friends only.
 - Test real 2-human matchmaking on a live server. Two actual Studio local clients passed pairing, damage synchronization, and disconnect handling on 2026-10-03.
 - Test on a real phone and a real gamepad.
 - Later: FFA (3–4 players; the match code is already N-participant), part customization, more arenas.
