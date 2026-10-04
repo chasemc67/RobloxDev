@@ -31,7 +31,16 @@ Robot select -> mode select (Matchmaking vs human | Battle a Bot) -> "READY... F
 ## Loadout model
 Each robot = body (HP stats, dash attack) + gun (right hand, rapid/direct) + bomb (left hand, slower arcing splash, stronger) + pod (delayed/tracking/trap) + legs (speed, jump, air-dash). Keep these as separate data entries in Config so part customization is easy later.
 
-## Robots (V1)
+## Robots (phase 3 roster, live in Studio)
+Concept picks C01, R05 and C05 (turnarounds, parts sheets and hex palettes in `assets/robo-clash-arena/concepts/`). Exact numbers live in Studio `Config.luau`.
+
+| Robot | Style | Gun | Bomb | Pod | Legs | Dash attack |
+|---|---|---|---|---|---|---|
+| **Scout** (white/cyan, skater) | all-rounder | Twin Blaster: rapid homing 4-round bursts alternating between the twin barrels | Arc Bomb: lingering splash blast | Sticky Mine: sticks to walls, floor or the rival, then pops | Sprint Legs: fast run + double jump | Jet Tackle |
+| **Kitsune** (red robe, fox mask, no legs) | long-range sniper | Spirit Cannon (lantern): tap = homing fireball, hold = big fireball | Foxfire Bomb: three spirit-flame lobs | Paper Charms: three seeking ofuda | Spirit Step: two blink air dashes | Fox Strike |
+| **Aero** (round, twin ducted fans) | close-range bruiser | Gale Scatter: 5-way spread | Cluster Bomb: splits into 4 bomblets | Hover Drone: slow, relentless homing drone | Hover Fans: hold jump to hover | Turbine Ram |
+
+### Original V1 roster (archived; replaced in phase 3)
 | Robot | Style | Gun | Bomb | Pod | Legs |
 |---|---|---|---|---|---|
 | **Bolt** (blue, sleek) | all-rounder | Rapid Blaster: fast bullets, 3-round bursts, ~25 dmg each, clip+reload | Standard Bomb: medium arc, 90 dmg splash | Seeker Pod: slow homing orb, 80 dmg, 5s life | balanced speed, double jump |
@@ -84,3 +93,8 @@ Style the game to LOOK like Custom Robo for now, with original assets only (no r
 - **UI**: punchy arcade UI with big angled/skewed READY / LAUNCH! / KO / DOWN / REBIRTH text, thick HP bars in the bottom corners (P1 left, P2 right), pink down pips.
 - **SFX**: snappy sci-fi sounds.
 - Chase may swap assets later. Don't make other asset changes beyond applying this look.
+
+## Phase 3 re-theme (2026-10-03, supersedes the Holosseum look)
+- Robots: Blender-built chunky toy meshes (Scout C01, Kitsune R05, Aero C05), each under 20k tris with separately named parts, rigged onto the unchanged hitbox controllers.
+- Arena: S04 Homework Desk playset on a wooden desk: green cutting mat with white guide lines, a knee-high toy-brick fence, brick "buildings" as pillars (blue on -X, red on +X), eraser covers, crates, a sticky-note stack and a blue block in the corners, a star emblem in the center, and hazard-striped pits. Same 110x110 collision layout, cover and pits as V1. Desk props (lamp, pencil, notebook, books) stay off the camera side.
+- Lobby: warm desk/bedroom (wood desk, mat, corkboard, books, lamp) with lit robot statues on book pedestals.

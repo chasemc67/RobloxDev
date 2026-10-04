@@ -1,22 +1,42 @@
 # Robo Clash Arena: status
 
 ## Now
+- **20:50 PT: Phase 3 re-theme DONE in Studio and saved to Roblox (Codex, logs/codex-save4.log). NOT published yet.** The live v19 still has the old Bolt/Crusher/Lancer holo look until the orchestrator publishes.
+  - Roster: SCOUT (C01, all-rounder), KITSUNE (R05, sniper), AERO (C05, bruiser) replace Bolt/Crusher/Lancer, with the same balance slots. Loadouts are in design.md. The old robots are archived in design.md (V1 table) and are no longer built.
+  - Blender meshes (`assets/robo-clash-arena/blender/`, FBX + previews in `export/`), matched to the concepts/ turnarounds, parts sheets and hex palettes:
+    - Scout: 11,980 tris, 13 parts.
+    - Kitsune: 13,038 tris, 10 parts.
+    - Aero: 11,602 tris, 15 parts.
+    - Desk props: 12,548 tris, 15 parts.
+    - Built robot templates have 21 / 19 / 25 parts. Hitboxes are unchanged per role.
+  - Arena: S04 Homework Desk playset with the same 110x110 collision layout, cover and pits (hazard-striped). Arena template: 378 parts (86 MeshParts). Lobby: 175 parts, warm desk/bedroom.
+  - Textures uploaded and in use: desk wood `rbxassetid://78503721249412`, paper-grid mat `rbxassetid://94217611860656`. The plastic texture is unused because it's red-only. Bricks use SmoothPlastic in palette colors.
+  - Playtest 20:20-20:45 PT, with a bot match as each robot:
+    - Cube drop-in, READY/LAUNCH, firing, DOWN, KO, Results, Rematch (clicked within 30 s) and Back to Select all work.
+    - 0 game warnings or errors on client and server.
+    - Client 60 FPS (Studio cap), worst frame 18 ms. Server heartbeat 60 Hz, physics 60.
+    - Phone (iPhone 17 Pro sim, 750x361): touch HUD fits with no overlaps.
+  - Fixes from the playtest:
+    - The "CHOOSE YOUR ROBOT" title sat under the Roblox top-left buttons. It's now moved right, with a dark outline on it and on the SELECT MODE titles.
+    - The Twin Blaster blurb is corrected.
+    - The Studio-only test hook is removed.
+  - Screens (local, gitignored): logs/screens/rt-scout.png, rt-kitsune.png, rt-aero.png, rt-arena.png, rt-select.png, rt-battle.png.
 - 2026-10-03: V1 is feature-complete, playtested, published (v19) and PUBLIC at https://www.roblox.com/games/99842799688877 (reach: Ages 16+ and trusted friends).
 - Flow:
-  - Title -> Robot Select (BOLT all-rounder, CRUSHER bruiser, LANCER sniper, with lobby statues and a loadout/stat panel) -> Mode Select (Matchmaking / Battle a Bot / Back).
+  - Title -> Robot Select (SCOUT all-rounder, KITSUNE sniper, AERO bruiser, with lobby statues and a loadout/stat panel) -> Mode Select (Matchmaking / Battle a Bot / Back).
   - Match: cube drop-in, then READY 3-2-1 LAUNCH!, then the 1v1. It ends with K.O. / TIME UP / DRAW / OPPONENT LEFT, plus PERFECT on a no-damage KO.
   - Results: stats, Rematch, Back to Select.
 - Combat (server-authoritative):
-  - Guns: 3-round homing burst, 5-way spread, charge laser.
-  - Arcing bombs with about 1 s blasts.
-  - Pods: seeker, mine, twin orbs.
+  - Guns: Twin Blaster (alternating-barrel homing bursts), Gale Scatter (5-way spread), Spirit Cannon (tap fireball, hold big fireball).
+  - Bombs: Arc Bomb (lingering blast), Cluster Bomb (4 bomblets), Foxfire Bomb (3 lobs).
+  - Pods: Sticky Mine (sticks to surfaces or the rival), Hover Drone (homing), Paper Charms (3 seekers).
   - Endurance -> DOWN (3 pink pips) -> REBIRTH invulnerability flash.
   - Body dash attacks, pits, knockback.
   - 180 s timer; on time-out the higher HP% wins.
   - Global `DamageScale` 0.7, so a bot fight lasts about 45–60 s.
 - Server bot AI: keeps its preferred range, strafes, avoids pits and walls, dodges, and fires with a reaction delay and aim error.
 - Matchmaking: an in-server FIFO queue pairs two humans, and each match gets a private arena slot. Mid-match leaves give the remaining player the win ("OPPONENT LEFT"). A match with no humans left is torn down.
-- Look (art direction): holo arena in a dark blue void with bloom, chunky toy robots with glowing visors, and an auto-zoom camera at about 47° with camera-side wall fade.
+- Look (phase 3): chunky toy robots on a Homework Desk playset (wood desk, green cutting mat, toy-brick fence and buildings, warm lighting), with an auto-zoom camera at about 47°, camera-side fence fade, and see-through occluders. The phase 1-2 holo-arena look is retired.
   - HUD: thick HP bars in the bottom corners, pink DOWN pips, a pink reticle, HIT plus red DAMAGE numbers, and floating P1/P2 tags.
   - Big tilted announcer text on a pink-edged slash band: READY / LAUNCH! / K.O.! / DOWN / REBIRTH.
 - Sound: snappy sci-fi SFX plus an industrial electronic music loop, all free Creator Store audio (mostly Pro Sound Effects, APM, and Roblox). All ids are verified to load.
@@ -65,6 +85,9 @@
 - Lock-on always targets the nearest rival. That is fine for 1v1; FFA will need target cycling.
 - In the Studio device simulator, virtual mouse clicks sometimes stop reaching the GUI. Phone menus were checked by layout plus `Menu:FireServer` instead.
 - Rematch closes 30 s after Results (`RematchTimeout`). After that only Back to Select is shown.
+- Arena scale vs S04: the concept reads as about 10-12 robot-widths across. The playable area stays at 110 studs (about 30-45 robot-widths) so pacing, cover and pits match V1. The playset props are scaled to suit the arena, not the robots. The S04 ruler bridge is omitted.
+- The bot is aggressive against an idle player: it KO'd an idle robot in about 40 s. That's fine for real play but worth watching.
+- Rendering at a distance: small robots read best at the camera's mid zoom. At max zoom (105 studs) Scout's thin limbs get small.
 
 ## IDs
 - Place ID: 99842799688877 (published 2026-10-03 under Chase's account @MetavrseBuilder; PUBLIC since 19:20 PT, reach: Ages 16+ and trusted friends)

@@ -16,9 +16,11 @@ ServerScriptService/RoboClash
   MatchmakingService  FIFO in-server queue; pairs two humans into a PvP match
   CombatService     server-authoritative weapons, damage, endurance -> DOWN -> REBIRTH, pits, dash attacks, FX events
   BotAI             CPU opponent (range keeping, strafing, dodges, reaction delay + aim error)
-  RobotSpawner      builds a robot model (RobotBuilder parts) + Humanoid for a participant
-ServerStorage/RoboClash/ArenaTemplate   holo arena (Geometry = collidable, Decor = neon, Spawns)
-ServerStorage/RoboClashTools            editor-only modules: Sync (applies pushes), Rebuild/WorldBuilder/RobotBuilder (regenerate arena, lighting, lobby, statues)
+  RobotSpawner      clones a robot template from ServerStorage/RoboClash/Robots, reads its fixed hitbox attributes, sets up the Humanoid
+ServerStorage/RoboClash/Robots          built robot templates (Scout, Kitsune, Aero): invisible hitbox root + Motor6D pivots + welded visual MeshParts
+ServerStorage/RoboClash/ArenaTemplate   Homework Desk arena (Geometry = collidable, Decor = visuals, Spawns)
+ServerStorage/RoboClashAssets/Meshes    imported Blender meshes: Scout, Kitsune, Aero, DeskProps
+ServerStorage/RoboClashTools            editor-only modules: Sync (applies pushes), Rebuild/WorldBuilder/RobotBuilder/RobotRigs (regenerate robots, arena, lighting, lobby, statues)
 StarterPlayerScripts
   ClientMain.client  creates ScreenGuis (BG / World overlay / HUD / UI, each with a 1280x720 UIScale root, or 1100x600 on screens under 560 px tall such as phones), routes Match remote events
   RoboClashClient/
@@ -30,6 +32,15 @@ StarterPlayerScripts
     Touch      dynamic stick (left) + GUN with POD/JUMP/DASH/BOMB on an arc (right); calls Battle.DoAction like keys do
     Sound, State, Style
 ```
+
+## Art pipeline (robots and desk props)
+1. `assets/robo-clash-arena/blender/make_<robot>.py` (shared helpers in `rca_common.py`) builds each model headless, authored in Roblox coordinates (1 stud = 1 unit, forward -Z). Each model is written to `export/<robot>.fbx`, with a `_preview.png` and a `_rig.json` (joints + attachments). `make_props.py` does the same for the desk props.
+2. `blender/gen_rigs.py` turns the `_rig.json` files into `RobotRigs.luau`.
+3. The FBX files are imported through Studio's 3D Importer (driven by Codex, `games/robo-clash-arena/codex_import.sh`) and moved to `ServerStorage/RoboClashAssets/Meshes/<Id>`.
+4. In Edit, `Rebuild('robots')` runs `RobotBuilder.BuildAll`. Visuals are Massless, CanCollide/CanQuery/CanTouch off, CollisionFidelity Box. The hitbox root size, HipHeight and `HitRadius/CapDown/CapUp` attributes are fixed per robot, so the meshes never change balance.
+5. `RobotAnim` drives the joints: idle/run/recoil/throw/DOWN/REBIRTH/victory, plus extra joints tagged `Anim` = spin (Aero fans), wobble (Kitsune tail), and glow pulses (visors, flames). Config `GlowTint` recolors Neon glow meshes per limb.
+
+`Rebuild('arena' | 'lobby' | 'lighting')` regenerates the world from `WorldBuilder.luau`. Delete `workspace._ArenaPreview` if you made one, because it sits where match arena slot 0 goes.
 
 ## Data flow
 1. **Menu.** Client `Menu:FireServer(action)` with action `Select`, `Queue`, `CancelQueue`, `Bot`, `Rematch`, or `Back`. The server owns session status and replies on the `Match` remote (`Queue`, `Start`, `Rematch`, `Results`).
