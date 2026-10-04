@@ -1,7 +1,7 @@
 # Robo Clash Arena: status
 
 ## Now
-- 2026-10-03: V1 is feature-complete in Studio (place 99842799688877) and playtested end to end. It is not yet public: Codex saves it with File > Save to Roblox, and publishing is handled separately.
+- 2026-10-03: V1 is feature-complete, playtested, published (v19) and PUBLIC at https://www.roblox.com/games/99842799688877 (reach: Ages 16+ and trusted friends).
 - Flow:
   - Title -> Robot Select (BOLT all-rounder, CRUSHER bruiser, LANCER sniper, with lobby statues and a loadout/stat panel) -> Mode Select (Matchmaking / Battle a Bot / Back).
   - Match: cube drop-in, then READY 3-2-1 LAUNCH!, then the 1v1. It ends with K.O. / TIME UP / DRAW / OPPONENT LEFT, plus PERFECT on a no-damage KO.
