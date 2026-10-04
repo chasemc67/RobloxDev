@@ -15,3 +15,11 @@
 - https://gamefaqs.gamespot.com/ds/930297-custom-robo-arena/faqs/55916 (downed damage reduction and combo window)
 - https://www.pocketgamer.com/custom-robo-arena/review/ (3-minute best-of-three format and Holosseum presentation)
 - https://customrobo.fandom.com/wiki/Field_Advantage and https://customrobo.fandom.com/wiki/Magma_Ruins (arena hazards/field effects)
+
+## ART DIRECTION from Chase (2026-10-03, authoritative; added while you were working, apply it)
+Style the game to LOOK like Custom Robo for now, with original assets only (no ripped Nintendo assets/logos/names):
+- **Robots**: chunky, toy-like, colorful mech robots with bold primary-color armor (big shoulders/helmets, clear silhouettes, contrasting trim, glowing visor/eyes).
+- **Arena (Holosseum)**: bright glowing holographic arena floating in a dark or blue digital void; grid floor, neon edges, clean geometric walls/pillars; dark/blue skybox, bloom.
+- **UI**: punchy arcade UI with big angled/skewed READY / LAUNCH! / KO / DOWN / REBIRTH text, thick HP bars in the bottom corners (P1 left, P2 right), pink down pips.
+- **SFX**: snappy sci-fi sounds.
+- Chase may swap assets later. Don't make other asset changes beyond applying this look.

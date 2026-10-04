@@ -60,7 +60,7 @@ Later: cross-server matchmaking via MemoryStoreService + TeleportService:Reserve
 ## Later
 Free-for-all (4 players), part customization (mix guns/bombs/pods/legs), more arenas, ranked, cross-server matchmaking, cosmetics.
 
-## Art/feel
+## Art/feel (superseded by ART DIRECTION below)
 Bright toy-robot / holosseum style: dark arena floor with neon grid lines, glowing team colors, punchy hit sparks, screen shake on heavy hits, clear readable UI with big fonts.
 
 ## Gameplay-video analysis (3 battle clips of Custom Robo Arena): AUTHORITATIVE where it differs from above
@@ -76,3 +76,11 @@ Bright toy-robot / holosseum style: dark arena floor with neon grid lines, glowi
 - **Start**: robots drop in as cubes/capsules, then READY, 3-2-1, LAUNCH! over ~3-4s.
 - **End**: time freezes at 0 HP, a big "KO" slams in, winner does a victory pose. "PERFECT" if winner took no damage. Then results.
 - **Pacing**: VERY fast. Standard matches ~45-60s, hits land every 3-5s. Tune damage for ~1 minute fights; 3 min timer cap. Robots differ by role: nimble all-rounder, bulky short-range grappler, long-range sniper.
+
+## ART DIRECTION from Chase (2026-10-03, authoritative; added while you were working, apply it)
+Style the game to LOOK like Custom Robo for now, with original assets only (no ripped Nintendo assets/logos/names):
+- **Robots**: chunky, toy-like, colorful mech robots with bold primary-color armor (big shoulders/helmets, clear silhouettes, contrasting trim, glowing visor/eyes).
+- **Arena (Holosseum)**: bright glowing holographic arena floating in a dark or blue digital void; grid floor, neon edges, clean geometric walls/pillars; dark/blue skybox, bloom.
+- **UI**: punchy arcade UI with big angled/skewed READY / LAUNCH! / KO / DOWN / REBIRTH text, thick HP bars in the bottom corners (P1 left, P2 right), pink down pips.
+- **SFX**: snappy sci-fi sounds.
+- Chase may swap assets later. Don't make other asset changes beyond applying this look.
