@@ -20,14 +20,14 @@ ServerScriptService/RoboClash
 ServerStorage/RoboClash/ArenaTemplate   holo arena (Geometry = collidable, Decor = neon, Spawns)
 ServerStorage/RoboClashTools            editor-only modules: Sync (applies pushes), Rebuild/WorldBuilder/RobotBuilder (regenerate arena, lighting, lobby, statues)
 StarterPlayerScripts
-  ClientMain.client  creates ScreenGuis (BG / World overlay / HUD / UI, each with a 1280x720 UIScale root), routes Match remote events
+  ClientMain.client  creates ScreenGuis (BG / World overlay / HUD / UI, each with a 1280x720 UIScale root, or 1100x600 on screens under 560 px tall such as phones), routes Match remote events
   RoboClashClient/
-    UI         Title, Robot Select (lobby statues), Mode Select, Queue overlay, Results; gamepad SelectedObject + B back
-    Battle     input (CAS: KB+M, gamepad, touch) -> local Mover + Intent remotes, lock-on, auto-zoom camera, cube intro, KO camera, wall fades
-    HUD        P panels (local bottom-left, rivals bottom-right; top corners on touch), timer, chips, tags, reticle, HIT/DAMAGE, announcer
+    UI         Title, Robot Select (lobby statues), Mode Select (+ per-input HOW TO PLAY panel), Queue overlay, Results; gamepad SelectedObject + B back + re-select when cleared
+    Battle     input (CAS: KB+M, gamepad, touch) -> local Mover + Intent remotes, lock-on, auto-zoom camera (fit feet..head per robot, dist 32..105, larger margins on touch), cube intro, KO camera, wall fades, center-emblem fade under the HUD
+    HUD        P panels (local bottom-left, rivals bottom-right; on touch: top corners at 0.78 scale, below the Roblox top bar), timer, chips, tags, reticle, HIT/DAMAGE, announcer
     FX         client visuals for server events (projectiles, blasts, sparks, dash trails, shake, flashes) + sound cues
     RobotAnim  procedural Motor6D animation (run, recoil, throw, flinch, DOWN, victory) + REBIRTH flashing
-    Touch      dynamic stick + action buttons; calls Battle.DoAction like keys do
+    Touch      dynamic stick (left) + GUN with POD/JUMP/DASH/BOMB on an arc (right); calls Battle.DoAction like keys do
     Sound, State, Style
 ```
 

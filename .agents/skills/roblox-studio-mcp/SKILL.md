@@ -61,7 +61,12 @@ cd /tmp && codex exec --skip-git-repo-check --sandbox read-only \
 - `execute_luau` needs `datamodel_type` (`Edit` / `Server` / `Client`) and `studio_id`. `screen_capture` needs a `capture_id`.
 - `get_console_output` can be huge. To read only problems, run this in both `Server` and `Client`: `LogService:GetLogHistory()` filtered to `MessageWarning` / `MessageError`.
 - `user_mouse_input` clicks are reliable only with `instance_path` (for example `LocalPlayer.PlayerGui.MyUI.Root.Btn_PLAY`). Raw x/y clicks often miss. Give buttons and their containers stable names, and hide the CoreGui chat window or it can steal clicks.
+- `user_mouse_input` actions are `moveTo` (with `instance_path`) followed by `mouseButtonClick` with `mouse_button="left"`. There is no `click` action.
 - Virtual gamepad keys (`ButtonA` and so on) arrive as keyboard input, and there is no virtual touch. Test touch layout by forcing the touch UI with a temporary flag, then remove the flag.
+- Phone layout test: from `Edit`, call `game:GetService("StudioDeviceSimulatorService"):SetDeviceAsync("iphone_17_pro")`, then start play. The playtest gets `TouchEnabled = true`, a 750x361 viewport and a 58 px Roblox top bar. Call `StopSimulationAsync()` when done.
+  - `GuiService.TopbarInset` is in screen space, but `AbsolutePosition` is relative to the inset origin. The screen-space top is `AbsolutePosition.Y + GuiService:GetGuiInset().Y`.
+  - In the simulator, virtual clicks can stop landing on GUI buttons. Drive menus by firing the game's remotes from `Client` instead.
+- `camera.Focus` isn't updated for a Scriptable camera. Measure camera distance from `camera.CFrame` (height above the floor divided by `-LookVector.Y`).
 - `screen_capture` lags about 2 s behind the game, so short announcer text is easy to miss. Check timing-critical states numerically from `Client` (attributes, `LocalTransparencyModifier`, `Highlight` values) instead.
 - BillboardGuis didn't render in captures. Screen-space frames positioned with `Camera:WorldToViewportPoint` work and look the same.
 - For temporary test hooks, use a `BindableFunction` created only when `RunService:IsStudio()` (call it from `Server` `execute_luau`). Delete it before shipping.

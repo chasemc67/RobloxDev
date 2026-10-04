@@ -30,7 +30,19 @@
 - 18:50 PT: Studio 2-client test (Server + 2 clients) PASSED: Matchmaking paired Player1/BOLT vs Player2/CRUSHER, HP synced both views, OPPONENT LEFT -> YOU WIN, no script errors (logs/screens/mc-*.png).
 - 19:00 PT: Dashboard configured (Codex): name, description, genre Action > Battlegrounds & Fighting, devices Computer/Phone/Tablet/Console, maturity questionnaire = Mild (Violence, repeated/mild). Still PRIVATE.
 - Going public (docs, Oct 2026): Public 16+ / Trusted Friends needs an account >=2 days old in good standing + age check (facial estimation or ID) + questionnaire; it's FREE. All ages (Kids/Select) also needs ID verification + 2FA + (Plus/Premium for 2 months OR refundable 1,000 Robux fee OR 50,000 Robux expedited review). Limited > Friends audience = owner's friends only, same 16+ tier requirements. Private = Edit-permission users only (owner can play). NO fees paid.
-- Opus phase 2 polish run in progress (logs/opus-phase2.log, prompts/phase2-polish.md).
+- Opus phase 2 polish run done (logs/opus-phase2.log, prompts/phase2-polish.md). Scripts are pushed into Studio but NOT saved, so the orchestrator needs to Save to Roblox. Changes:
+  - Camera: a tighter zoom-to-fit (distance 32–105, down from 40–115). The fit follows each robot's real height, so jumps stay in frame, and touch uses larger bottom and side margins for the controls. Measured: robots off-screen in 0–1 of 400 samples. Robot visuals and hitboxes are unchanged.
+  - Cyan ring over the P1 HUD: this was the arena's neon CenterRing floor emblem seen up close. The template's CenterRing transparency is now 0.75, and the client fades the ring and disc when they fall in the bottom HUD band.
+  - REBIRTH flash: a 0.1 s blink between a white highlight and a see-through ghost for the whole 2.6 s invulnerability window. Measured at about 0.093 s per phase.
+  - Phone layout, checked on the iPhone 17 Pro simulator (750x361):
+    - A compact 1100x600 design canvas is used when the screen is under 560 px tall.
+    - Touch HP panels are scaled to 0.78 at the top corners and pushed below the Roblox top bar where it covers them.
+    - GUN plus an arc of POD/JUMP/DASH/BOMB on the right, the stick on the left, and no default TouchGui.
+  - Gamepad: Select defaults to the current robot and Results to Back when Rematch is gone. NextSelection now links the robot list to the bottom row. The menu re-selects a default when Roblox clears SelectedObject, and a default is selected when the gamepad becomes the active input.
+  - Lobby: `World.LightStatues` adds key and rim spotlights, a fill light, and a neon halo disc behind each statue.
+  - Mode Select has a HOW TO PLAY panel for the active input (keyboard, gamepad or touch). The matchmaking search panel adds: "Playing with a friend? Join their server, then both pick Matchmaking."
+  - Results content is centered.
+  - Bug bash: one bot match each as Bolt, Crusher and Lancer reached KO and Results. Rematch (clicked within 30 s) and Back to Select both work, with 0 game warnings or errors on client and server.
 
 ## TODO
 - Publish public (handled separately).
@@ -42,7 +54,8 @@
 - 2026-10-03 local two-client verification: Player1/BOLT vs Player2/CRUSHER paired; both HUDs agreed on Player2 HP 329 after 671 damage/38 hits. W/A/D, jump, dash, gun, bomb, and pod inputs exercised for approximately 20 seconds. Client-side disconnect produced OPPONENT LEFT then YOU WIN/results. Cube drop/countdown was not captured, so its exact sequence remains unverified in this run. Studio MCP input/capture was used because cua_repl bound only the original Studio process; disconnect used LocalPlayer:Kick after virtual Escape was rejected and start_stop_play did not disconnect the client. No place scripts or instances edited. End Session closed all three test processes; original place verified in Edit mode. Screens: logs/screens/mc-*.png. No game-script warnings/errors in LogService; Studio automation emitted a CoreGUI mouse-input error (see logs/mc-verification.md). Visual notes: strong bloom on Player2 versus Player1, tiny control captions, overlapping DOWN/DAMAGE/HP labels, and a brief stale queue player count.
 - The Studio MCP's virtual gamepad presses arrive as keyboard input, and its virtual touch isn't supported. Because of that, gamepad and touch input were checked through code paths and layout screenshots only. Touch buttons call the same `Battle.DoAction` as keys.
 - Lock-on always targets the nearest rival. That is fine for 1v1; FFA will need target cycling.
-- The REBIRTH flash blinks fairly slowly (about 0.5 s on/off).
+- In the Studio device simulator, virtual mouse clicks sometimes stop reaching the GUI. Phone menus were checked by layout plus `Menu:FireServer` instead.
+- Rematch closes 30 s after Results (`RematchTimeout`). After that only Back to Select is shown.
 
 ## IDs
 - Place ID: 99842799688877 (published 2026-10-03 as a new experience under Chase's account, still PRIVATE)

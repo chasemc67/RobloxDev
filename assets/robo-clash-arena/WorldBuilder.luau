@@ -167,7 +167,7 @@ function World.BuildArena(Config)
 	-- Center emblem
 	local ring = part(decor, "CenterRing", Vector3.new(0.1, 16, 16), CFrame.new(0, 0.04, 0) * CFrame.Angles(0, 0, math.rad(90)), TRIM, Enum.Material.Neon, DECOR)
 	ring.Shape = Enum.PartType.Cylinder
-	ring.Transparency = 0.6
+	ring.Transparency = 0.75
 	local inner = part(decor, "CenterDisc", Vector3.new(0.12, 14.6, 14.6), CFrame.new(0, 0.05, 0) * CFrame.Angles(0, 0, math.rad(90)), FLOOR, Enum.Material.SmoothPlastic, DECOR)
 	inner.Shape = Enum.PartType.Cylinder
 
@@ -247,7 +247,58 @@ function World.BuildLobby(Config, robotFolder)
 	l.Brightness = 2
 	l.Color = Color3.fromRGB(180, 210, 255)
 	l.Parent = holder
+	World.LightStatues(lobby, Config)
 	return lobby
+end
+
+-- Showcase lighting for the select screen: a key spotlight from the camera side, a neon rim
+-- light behind each statue and a holo halo backdrop so silhouettes read against the void.
+-- Safe to re-run: replaces the previous StatueLights folder.
+function World.LightStatues(lobby, Config)
+	local old = lobby:FindFirstChild("StatueLights")
+	if old then
+		old:Destroy()
+	end
+	local folder = Instance.new("Folder")
+	folder.Name = "StatueLights"
+	folder.Parent = lobby
+	local HIDDEN = { Transparency = 1, CanCollide = false, CanQuery = false, CanTouch = false, CastShadow = false }
+	for i, def in ipairs(Config.Robots) do
+		local x = (i - 2) * 14
+		local keyPos = Vector3.new(x, 15, 11)
+		local key = part(folder, "Key" .. def.Id, Vector3.new(1, 1, 1), CFrame.lookAt(keyPos, Vector3.new(x, 5, 0)), TRIM, nil, HIDDEN)
+		local spot = Instance.new("SpotLight")
+		spot.Face = Enum.NormalId.Front
+		spot.Angle = 50
+		spot.Range = 24
+		spot.Brightness = 3.5
+		spot.Color = Color3.fromRGB(225, 235, 255)
+		spot.Shadows = false
+		spot.Parent = key
+		local rimPos = Vector3.new(x, 9, -4.5)
+		local rim = part(folder, "Rim" .. def.Id, Vector3.new(1, 1, 1), CFrame.lookAt(rimPos, Vector3.new(x, 6, 2)), def.Neon, nil, HIDDEN)
+		local rl = Instance.new("SpotLight")
+		rl.Face = Enum.NormalId.Front
+		rl.Angle = 80
+		rl.Range = 14
+		rl.Brightness = 5
+		rl.Color = def.Neon
+		rl.Shadows = false
+		rl.Parent = rim
+		local fill = Instance.new("PointLight")
+		fill.Range = 10
+		fill.Brightness = 1.5
+		fill.Color = def.Neon
+		fill.Parent = rim
+		-- Halo: neon hoop with a dark-glass face, standing behind the statue.
+		local haloCF = CFrame.new(x, 7.2, -6.5) * CFrame.Angles(0, math.rad(90), 0)
+		local hoop = part(folder, "Halo" .. def.Id, Vector3.new(0.2, 13, 13), haloCF, def.Neon, Enum.Material.Neon, DECOR)
+		hoop.Shape = Enum.PartType.Cylinder
+		hoop.Transparency = 0.15
+		local face = part(folder, "HaloFace" .. def.Id, Vector3.new(0.25, 12.2, 12.2), haloCF, Color3.fromRGB(22, 30, 70), Enum.Material.SmoothPlastic, DECOR)
+		face.Shape = Enum.PartType.Cylinder
+		face.Reflectance = 0.15
+	end
 end
 
 function World.SetupLighting()
