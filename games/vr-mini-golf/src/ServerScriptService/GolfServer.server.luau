@@ -69,6 +69,9 @@ local function placeBall(player, st, pos, reason)
 	local ball = st.ball
 	st.resetting = false
 	st.lastPos = pos
+	-- the owning client may still send a stale position or two from before the move (e.g. a rewind while the
+	-- ball was rolling): don't judge out-of-bounds until those have flushed
+	st.placedAt = os.clock()
 	ball.Anchored = true
 	ball.AssemblyLinearVelocity = Vector3.zero
 	ball.AssemblyAngularVelocity = Vector3.zero
@@ -280,7 +283,7 @@ RunService.Heartbeat:Connect(function()
 		-- sunk once the whole ball has dropped below the rim
 		if flat < cup:GetAttribute("Radius") and pos.Y < cup.Position.Y - Config.BallRadius then
 			finishHole(player, st, false)
-		elseif pos.Y < hole:GetAttribute("KillY") or not inBounds(hole, pos) then
+		elseif os.clock() - (st.placedAt or 0) > 0.75 and (pos.Y < hole:GetAttribute("KillY") or not inBounds(hole, pos)) then
 			outOfBounds(player, st)
 		end
 	end

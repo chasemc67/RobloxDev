@@ -1,9 +1,15 @@
 -- CourseBuilder: procedurally builds the mini golf course into workspace.Course.
 -- Run from the command bar:  require(game.ServerStorage.CourseBuilder).Build()
+-- Re-apply tags, collision groups and wall physics (from Config) to the existing course without rebuilding it:
+--   require(game.ServerStorage.CourseBuilder).ApplyPhysics()
+-- (the command bar caches required modules; pass a fresh Config to pick up edits:
+--   ApplyPhysics(nil, require(game.ReplicatedStorage.Golf.Config:Clone())) )
 local CourseBuilder = {}
 
 local GeometryService = game:GetService("GeometryService")
 local CollectionService = game:GetService("CollectionService")
+local PhysicsService = game:GetService("PhysicsService")
+local Config = require(game:GetService("ReplicatedStorage"):WaitForChild("Golf"):WaitForChild("Config"))
 
 -- life size at 1 stud = 0.3 m
 local SURFACE_THICK = 1
@@ -13,9 +19,18 @@ local CUP_DEPTH = 0.35 -- 10.5 cm deep
 local CUP_PLATE = 1.6
 
 local FELT_PHYS = PhysicalProperties.new(1, 0.35, 0, 1, 100)
--- walls: bouncy and nearly frictionless against the ball (high weights dominate the ball's own values)
-local WALL_PHYS = PhysicalProperties.new(1, 0.02, 0.8, 100, 100)
-local BUMPER_PHYS = PhysicalProperties.new(1, 0.02, 0.92, 100, 100)
+-- walls: the high weights make these values win over the ball's own (Config.Wall*/BumperElasticity)
+local function wallPhys(cfg, elasticity)
+	return PhysicalProperties.new(1, cfg.WallFriction, elasticity, 100, 100)
+end
+local WALL_PHYS = wallPhys(Config, Config.WallElasticity)
+
+-- Playable felt (the ball's plane). VR uses only these for the putter head and the player's floor.
+local SURFACE_TAG = "GolfSurface"
+local SURFACE_NAMES = { Felt = true, CupPlate = true, Ramp = true }
+-- Walls, rails, bumpers and obstacles: collide with the ball, but players walk/stand through them.
+local OBSTACLE_GROUP = "GolfWall"
+local OBSTACLE_NAMES = { Wall = true, Bumper = true, House = true, Roof = true, Blade = true }
 
 local WALL_COLOR = Color3.fromRGB(240, 236, 222)
 local BASE_COLOR = Color3.fromRGB(150, 112, 78)
@@ -257,7 +272,7 @@ function Hole:post(x, z, surfaceY, radius)
 		Vector3.new(height, radius * 2, radius * 2),
 		BUMPER_COLOR,
 		Enum.Material.SmoothPlastic,
-		BUMPER_PHYS,
+		wallPhys(Config, Config.BumperElasticity),
 		"Part"
 	)
 	p.Shape = Enum.PartType.Cylinder
@@ -381,6 +396,43 @@ local function tree(parent, x, z, scale)
 			Material = Enum.Material.Grass,
 		}, m)
 	end
+end
+
+local function setGroupCollides(a, b, collides)
+	if PhysicsService:IsCollisionGroupRegistered(a) and PhysicsService:IsCollisionGroupRegistered(b) then
+		PhysicsService:CollisionGroupSetCollidable(a, b, collides)
+	end
+end
+
+-- Tags the playable surfaces, puts obstacles in their own collision group and applies the wall physics.
+function CourseBuilder.ApplyPhysics(course, cfg)
+	course = course or workspace:FindFirstChild("Course")
+	cfg = cfg or Config
+	local wall, bumper = wallPhys(cfg, cfg.WallElasticity), wallPhys(cfg, cfg.BumperElasticity)
+	for _, g in { OBSTACLE_GROUP, "GolfBall", "GolfPlayer", "GolfClub" } do
+		if not PhysicsService:IsCollisionGroupRegistered(g) then
+			PhysicsService:RegisterCollisionGroup(g)
+		end
+	end
+	setGroupCollides(OBSTACLE_GROUP, "GolfBall", true)
+	setGroupCollides(OBSTACLE_GROUP, "GolfPlayer", false)
+	setGroupCollides(OBSTACLE_GROUP, "GolfClub", false)
+	setGroupCollides(OBSTACLE_GROUP, OBSTACLE_GROUP, true)
+	local counts = { surface = 0, obstacle = 0 }
+	for _, d in course:GetDescendants() do
+		if not d:IsA("BasePart") then
+			continue
+		end
+		if SURFACE_NAMES[d.Name] then
+			CollectionService:AddTag(d, SURFACE_TAG)
+			counts.surface += 1
+		elseif OBSTACLE_NAMES[d.Name] then
+			d.CollisionGroup = OBSTACLE_GROUP
+			d.CustomPhysicalProperties = d.Name == "Bumper" and bumper or wall
+			counts.obstacle += 1
+		end
+	end
+	return counts
 end
 
 local HOLES = {
@@ -543,6 +595,7 @@ function CourseBuilder.Build()
 		tree(decor, t[1], t[2], t[3])
 	end
 
+	CourseBuilder.ApplyPhysics(course)
 	return course
 end
 

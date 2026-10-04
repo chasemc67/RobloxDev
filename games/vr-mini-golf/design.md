@@ -52,15 +52,26 @@ Roblox VR draws 1 stud as 0.3 m, so everything is life size:
 | A | Re-fit the club (point it straight down, then press A) |
 | X | Swap hands |
 
-- The putter shaft follows the controller's pointing direction (`VRClubAngle` tilts it).
+- The putter shaft comes out of the controller's tip (`VRClubTipOffset`, 6 cm in front of the hand origin) along its pointing direction (`VRClubAngle` tilts it). The axis is an assumption until checked on a Quest: see `playtesting.md`.
 - Club length fits itself to your height, and the head stretches up to 15 cm to stay on the ground.
-- The putter head slides along the ground. Face speed and angle at contact set the ball's velocity, with haptics on hit.
+- **Hole plane (Walkabout-style):** near the ball, the putter head and your floor sit on the plane of the felt the ball is on (parts tagged `GolfSurface`, ramp slopes included). Walls, rails and posts are never ground. The club ghosts through them, and you can't stand on them (collision group `GolfWall` doesn't collide with players).
+- The putter head slides along that plane. Face speed and angle at contact set the ball's velocity, with haptics on hit. The ball is only moved by that hit logic, never by club physics.
 - The putter turns see-through while the ball is rolling.
 - A wrist panel shows the hole, par and strokes. Messages and the scorecard are world-space panels.
 
+## Ball physics (tuned to Walkabout, see `walkabout-reference.md`)
+- **Gravity:** `workspace.Gravity` is 32.7 studs/s² (9.81 m/s²).
+- **Fast felt:** deceleration = `RollDecel` 0.5 + `RollDrag` 0.25·v (studs/s²), i.e. 0.15 m/s² + 0.25/s·v. Putts roll a long way and stop softly.
+  - `EngineRollLoss` 0.2 compensates for Roblox's own contact losses.
+  - A 2 m/s putt rolls about 4.5 m.
+- **Walls/bumpers:** `WallElasticity` 0.63 (measures ~0.6 normal restitution), `BumperElasticity` 0.65, low `WallFriction` 0.05.
+  - After a hit, the ball keeps half its old spin (`SpinKeep` 0.5) and skids at `SlideFriction` 0.3·g until it rolls again.
+  - In practice: about 0.6× speed straight off a wall, and about ⅓–0.4× after 0.3 s.
+  - Physics properties live in `Config`. `CourseBuilder.ApplyPhysics()` applies them to the course.
+- **Cup:** a ball over the cup slower than `CupCaptureSpeed` (1.6 m/s) drops in. Faster ones skim across or lip out.
+
 ## Tuning
 All tuning values are in `ReplicatedStorage.Golf.Config` (see `src/ReplicatedStorage/Golf/Config.luau`):
-- `RollDecel` 3.6 sets felt friction. A ~2 m/s stroke rolls about 4.7 m.
 - `VRHitMultiplier` 1.7
 - `TouchMaxSpeed` 26
 - `VRMoveSpeed` 6.5
@@ -68,6 +79,7 @@ All tuning values are in `ReplicatedStorage.Golf.Config` (see `src/ReplicatedSto
 ## Test hooks (Studio only)
 - Workspace attribute `DebugStartHole` starts the round on a later hole.
 - Workspace attribute `SimulateVR` = true fakes head and hand tracking, so the VR swing code can be tested without a headset.
+- Workspace attribute `GolfTestMode` = true turns on the scripted playtest harness. See `playtesting.md`.
 
 ## Not done yet
 - No real-headset test yet. VR was only checked in simulation.

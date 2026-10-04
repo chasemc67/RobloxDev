@@ -41,6 +41,15 @@ local function vec(v: Vector3)
 	return { round(v.X, 4), round(v.Y, 4), round(v.Z, 4) }
 end
 
+-- Ideal flat rollout for Config's rolling model dv/dt = -(RollDecel + RollDrag * v): distance (studs), time (s).
+local function idealRollout(v0: number)
+	local a, k = Config.RollDecel, Config.RollDrag or 0
+	if k < 1e-6 then
+		return v0 * v0 / (2 * a), v0 / a
+	end
+	return (v0 - (a / k) * math.log(1 + k * v0 / a)) / k, math.log(1 + k * v0 / a) / k
+end
+
 ------------------------------------------------------------------------ run state + logging
 local lines = {} -- encoded JSONL for the current run
 local results = {} -- [scenario] = result table
@@ -153,6 +162,15 @@ local function finishContact(c, vOut: Vector3)
 		info.tangentialRetention = round(outT / inT)
 	end
 	info.speedRetention = round(vout.Magnitude / math.max(vin.Magnitude, 1e-3))
+	info.tContact = round(now(), 4)
+	-- Walkabout reference: ~0.6 right after a head-on hit, ~1/3 of the incoming speed 0.3 s later (skid)
+	local b = Ball.ball
+	task.delay(0.3, function()
+		if b then
+			info.speedAfter300ms = round(flat(b.AssemblyLinearVelocity).Magnitude)
+			info.retentionAfter300ms = round(info.speedAfter300ms / math.max(vin.Magnitude, 1e-3))
+		end
+	end)
 	event("contact", info)
 	if shot then
 		table.insert(shot.contacts, info)
@@ -317,6 +335,7 @@ end
 
 ------------------------------------------------------------------------ simulated VR hand driving
 local poseFn = nil -- function(t) -> world CFrame for the club hand, or nil
+local lastPoseClock = 0 -- os.clock() the current hand pose was computed for
 local PARKED = CFrame.new(0.4, 6.5, -0.3) * CFrame.Angles(math.rad(90), 0, 0) -- club pointing straight up
 
 local function parkHand()
@@ -330,7 +349,8 @@ local function driveHand()
 	if not (poseFn and VR and VR.test) then
 		return
 	end
-	local cf = poseFn(os.clock())
+	lastPoseClock = os.clock()
+	local cf = poseFn(lastPoseClock)
 	if cf then
 		debugFolder.RightHand.Value = VR.test.toLocal(cf)
 	end
@@ -359,14 +379,17 @@ end
 scenario({
 	name = "rollout",
 	desc = "Straight putts at 2/4/6 m/s on the flat test lane: rollout distance and time",
-	seconds = 16,
+	seconds = 30,
 	run = function()
 		local shots = {}
 		for _, speed in { 2, 4, 6 } do
 			place(0, -40, -6, S)
-			local d = mps(speed) ^ 2 / (2 * Config.RollDecel)
+			local d, t = idealRollout(mps(speed))
 			setFrame(Vector3.new(-40, S, -6 + d / 2), math.max(8, d + 4), Vector3.new(1, 0, 0))
-			table.insert(shots, shoot(speed .. "mps", Vector3.new(0, 0, 1), speed))
+			local r = shoot(speed .. "mps", Vector3.new(0, 0, 1), speed, { timeout = t + 6 })
+			r.idealM = round(d * STUD)
+			r.idealT = round(t)
+			table.insert(shots, r)
 		end
 		return { shots = shots }
 	end,
@@ -414,8 +437,8 @@ scenario({
 
 scenario({
 	name = "windmill",
-	desc = "Hole 4: putt through the windmill tunnel, timed to two blade phases",
-	seconds = 16,
+	desc = "Hole 4: putt through the windmill tunnel at 4 m/s, timed to two blade phases",
+	seconds = 20,
 	run = function()
 		local shots = {}
 		local mill = hole(4):FindFirstChild("Windmill")
@@ -433,7 +456,7 @@ scenario({
 				end
 				task.wait()
 			end
-			table.insert(shots, shoot("mill-phase" .. phase, Vector3.new(0, 0, 1), 5.1, { cup = hole(4).Cup, timeout = 14 }))
+			table.insert(shots, shoot("mill-phase" .. phase, Vector3.new(0, 0, 1), 4, { cup = hole(4).Cup, timeout = 14 }))
 		end
 		return { shots = shots }
 	end,
@@ -441,13 +464,13 @@ scenario({
 
 scenario({
 	name = "hill",
-	desc = "Hole 3 The Hill: 5 m/s climbs to the green, 3 m/s rolls back",
-	seconds = 15,
+	desc = "Hole 3 The Hill: 5 m/s climbs to the green, 2 m/s rolls back",
+	seconds = 22,
 	run = function()
 		local shots = {}
 		local dir = Vector3.new(77 - 75, 0, 25 - 0)
 		setFrame(Vector3.new(75, 1.6, 12), 22, Vector3.new(1, 0, 0))
-		for _, def in { { "hill-strong-5mps", 5 }, { "hill-weak-3mps", 3 } } do
+		for _, def in { { "hill-strong-5mps", 5 }, { "hill-weak-2mps", 2 } } do
 			place(3, 75, 0, HILL_LOW)
 			local r = shoot(def[1], dir, def[2], { cup = hole(3).Cup, timeout = 14 })
 			r.madeGreen = r.maxY > HILL_HIGH + R - 0.05
@@ -471,7 +494,16 @@ scenario({
 			place(1, 0, 25, S)
 			local r = shoot("cup-" .. speed .. "mps", Vector3.new(0, 0, 1), speed, { cup = cup, timeout = 6 })
 			r.holed = r.outcome == "cup"
-			r.holedFirstPass = r.holed and #r.contacts == 0
+			r.cupPos = vec(cup.Position)
+			-- first pass: holed without touching anything away from the cup (the drop itself bumps the cup's
+			-- rim/liner, which the contact detector also logs, so contacts inside the cup don't count)
+			local away = 0
+			for _, c in r.contacts do
+				if flat(Vector3.new(c.pos[1], c.pos[2], c.pos[3]) - cup.Position).Magnitude > cup:GetAttribute("Radius") + 2 * R then
+					away += 1
+				end
+			end
+			r.holedFirstPass = r.holed and away == 0
 			table.insert(shots, r)
 		end
 		return { shots = shots }
@@ -515,6 +547,9 @@ local function measureLedge(label, holeN, ballX, ballZ, surfaceY, clubX, clubZ, 
 		res.charFeetY = round(feet, 4)
 		res.charDelta = round(feet - plane, 4)
 	end
+	local wall = hole(holeN).Geometry:FindFirstChild("Wall")
+	res.wallGroup = wall and wall.CollisionGroup
+	res.playerCollidesWithWall = wall and game:GetService("PhysicsService"):CollisionGroupsAreCollidable(wall.CollisionGroup, "GolfPlayer")
 	res.ok = math.abs(res.rigDelta) < 0.05 and math.abs(res.headDelta) < 0.05 and (res.charDelta == nil or math.abs(res.charDelta) < 0.1)
 	event("ledge", res)
 	parkHand()
@@ -566,9 +601,14 @@ local function sweep(label, from: Vector3, to: Vector3, seconds: number)
 	end
 	local maxErr, maxLift = 0, 0
 	local head = headPart()
+	-- the 0.4 s lead-in moves the club from its parked pose to the start of the sweep; measure after that
+	while os.clock() < t0 do
+		RunService.PostSimulation:Wait()
+	end
 	while os.clock() < t0 + seconds + 0.2 do
 		RunService.PostSimulation:Wait()
-		local f = math.clamp((os.clock() - t0) / seconds, 0, 1)
+		-- compare with the hand pose this frame's putter was built from (not "now": Studio may run at 20 fps)
+		local f = math.clamp((lastPoseClock - t0) / seconds, 0, 1)
 		local want = a:Lerp(b, f)
 		maxErr = math.max(maxErr, flat(head.Position - want).Magnitude)
 		maxLift = math.max(maxLift, head.Position.Y - y)
@@ -678,6 +718,10 @@ local function runScenario(name, cam)
 		config = {
 			BallRadius = Config.BallRadius,
 			RollDecel = Config.RollDecel,
+			RollDrag = Config.RollDrag,
+			SpinKeep = Config.SpinKeep,
+			SlideFriction = Config.SlideFriction,
+			CupCaptureSpeed = Config.CupCaptureSpeed,
 			StopSpeed = Config.StopSpeed,
 			VRHitMultiplier = Config.VRHitMultiplier,
 			VRClubAngle = Config.VRClubAngle,

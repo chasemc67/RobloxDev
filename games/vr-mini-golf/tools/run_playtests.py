@@ -271,6 +271,19 @@ def first_contact(shot, prefix=None):
     return None
 
 
+def holed_first_pass(s):
+    """Holed without touching anything away from the cup. Recomputed from the logged contacts so older runs
+    (whose Lua metric counted the ball's own drop against the rim as a contact) score the same way."""
+    if s.get("outcome") != "cup":
+        return False
+    cx, _, cz = s.get("cupPos") or [0, 1, 27]  # hole 1 cup
+    for c in s.get("contacts", []):
+        x, _, z = c["pos"]
+        if ((x - cx) ** 2 + (z - cz) ** 2) ** 0.5 > 0.21 + 2 * 0.08:
+            return False
+    return True
+
+
 def summary_md(results, problems, clips, out_dir, args):
     L = ["# VR Mini Golf playtest summary", "",
          "- Run: %s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -281,10 +294,13 @@ def summary_md(results, problems, clips, out_dir, args):
     if r:
         r = first(r)
         L += ["## Rollout (flat felt test lane)", "",
-              "| Speed | Distance | Time to stop | Time to rest | Ideal v²/2a |", "|---|---|---|---|---|"]
+              "| Speed | Distance | Time to stop | Time to rest | Ideal distance / time (rolling model) |", "|---|---|---|---|---|"]
         for s in r.get("shots", []):
-            ideal = (s["v0"] ** 2) / (2 * 3.6) * STUD
-            L.append("| %s m/s | %s m | %s s | %s s | %.2f m |" % (s["speedMps"], f(s["distM"]), f(s.get("tStop")), f(s["tEnd"]), ideal))
+            if s.get("idealM") is not None:
+                ideal = "%.2f m / %.2f s" % (s["idealM"], s["idealT"])
+            else:  # runs before RollDrag existed: constant RollDecel 3.6
+                ideal = "%.2f m (v²/2a)" % ((s["v0"] ** 2) / (2 * 3.6) * STUD)
+            L.append("| %s m/s | %s m | %s s | %s s | %s |" % (s["speedMps"], f(s["distM"]), f(s.get("tStop")), f(s["tEnd"]), ideal))
         L.append("")
     for key, title in (("bank", "45° bank wall (Hole 2 Dogleg)"), ("walls", "Walls and bumper posts")):
         r = results.get(key)
@@ -292,16 +308,16 @@ def summary_md(results, problems, clips, out_dir, args):
             continue
         r = first(r)
         L += ["## " + title, "",
-              "| Shot | Part | Speed in | Speed out | Angle in | Angle out | Normal restitution | Tangential retention | Speed kept |",
-              "|---|---|---|---|---|---|---|---|---|"]
+              "| Shot | Part | Speed in | Speed out | Angle in | Angle out | Normal restitution | Tangential retention | Speed kept | Kept after 0.3 s |",
+              "|---|---|---|---|---|---|---|---|---|---|"]
         for s in r.get("shots", []):
             c = first_contact(s)
             if not c:
                 L.append("| %s | (no contact) | | | | | | | |" % s["label"])
                 continue
-            L.append("| %s | %s | %.2f m/s | %.2f m/s | %s° | %s° | %s | %s | %s |" % (
+            L.append("| %s | %s | %.2f m/s | %.2f m/s | %s° | %s° | %s | %s | %s | %s |" % (
                 s["label"], c["part"], c["speedIn"] * STUD, c["speedOut"] * STUD, c["angleIn"], c["angleOut"],
-                f(c.get("restitution")), f(c.get("tangentialRetention")), f(c.get("speedRetention"))))
+                f(c.get("restitution")), f(c.get("tangentialRetention")), f(c.get("speedRetention")), f(c.get("retentionAfter300ms"))))
         L.append("")
     r = results.get("windmill")
     if r:
@@ -325,7 +341,7 @@ def summary_md(results, problems, clips, out_dir, args):
         r = first(r)
         L += ["## Cup drop (Hole 1, from 60 cm)", "", "| Putt speed | Speed at rim | Outcome | Holed on first pass |", "|---|---|---|---|"]
         for s in r.get("shots", []):
-            L.append("| %s m/s | %s m/s | %s | %s |" % (s["speedMps"], f(s.get("rimSpeedMps")), s["outcome"], f(s.get("holedFirstPass"))))
+            L.append("| %s m/s | %s m/s | %s | %s |" % (s["speedMps"], f(s.get("rimSpeedMps")), s["outcome"], f(holed_first_pass(s))))
         L.append("")
     r = results.get("ledge")
     if r:
@@ -335,10 +351,12 @@ def summary_md(results, problems, clips, out_dir, args):
             L += ["Skipped/error: %s" % (r.get("skipped") or r.get("error")), ""]
         else:
             L += ["Heights are relative to the plane the ball rests on (studs; 1 stud = 30 cm).", "",
-                  "| Case | Ball plane Y | VR rig floor Δ | Character feet Δ | Putter head bottom Δ | Pass |", "|---|---|---|---|---|---|"]
+                  "| Case | Ball plane Y | VR rig floor Δ | Character feet Δ | Putter head bottom Δ | Wall group (player collides) | Pass |",
+                  "|---|---|---|---|---|---|---|"]
             for c in r.get("cases", []):
-                L.append("| %s | %s | %s | %s | %s | %s |" % (c["label"], f(c["ballPlaneY"], 3), f(c["rigDelta"], 3),
-                                                           f(c.get("charDelta"), 3), f(c["headDelta"], 3), f(c["ok"])))
+                L.append("| %s | %s | %s | %s | %s | %s (%s) | %s |" % (c["label"], f(c["ballPlaneY"], 3), f(c["rigDelta"], 3),
+                                                           f(c.get("charDelta"), 3), f(c["headDelta"], 3), c.get("wallGroup", "-"),
+                                                           f(c.get("playerCollidesWithWall")), f(c["ok"])))
             L.append("")
     r = results.get("ghost")
     if r:
@@ -385,10 +403,12 @@ def key_metrics(results):
                 if c.get("tangentialRetention") is not None:
                     out["%s tangential retention" % s["label"]] = c.get("tangentialRetention")
                 out["%s speed kept" % s["label"]] = c.get("speedRetention")
+                out["%s speed kept after 0.3 s" % s["label"]] = c.get("retentionAfter300ms")
                 if key == "bank":
                     out["%s angle out (deg)" % s["label"]] = c.get("angleOut")
     for s in g("cup").get("shots", []):
-        out["cup %s m/s" % s["speedMps"]] = s["outcome"] + ("" if s.get("holedFirstPass") or s["outcome"] != "cup" else " (after rebound)")
+        out["cup %s m/s putt" % s["speedMps"]] = "%s%s, rim %s m/s" % (
+            s["outcome"], "" if holed_first_pass(s) or s["outcome"] != "cup" else " (after rebound)", f(s.get("rimSpeedMps")))
     for s in g("hill").get("shots", []):
         out["%s" % s["label"]] = "%s, green=%s, rolled back=%s" % (s["outcome"], f(s.get("madeGreen")), f(s.get("rolledBack")))
     for s in g("windmill").get("shots", []):

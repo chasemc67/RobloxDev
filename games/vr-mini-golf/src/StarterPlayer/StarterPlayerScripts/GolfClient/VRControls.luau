@@ -1,8 +1,12 @@
 -- VRControls: Walkabout-style VR putting at real-world scale (1 stud = 0.3 m, HeadScale 1).
 --   * Room-scale: the camera is a floor-level playspace origin; your real head/hands are tracked on top of it.
---   * The putter shaft extends out of the FRONT of the club-hand controller (point the controller at the
---     ground like the top of a putter grip). Length auto-fits your height and stretches a few cm to reach
---     the ground. The head slides along the floor instead of passing through it.
+--   * The putter shaft comes out of the TIP of the club-hand controller (Config.VRClubTipOffset in front of the
+--     hand origin) along its pointing axis (hand LookVector, pitched by Config.VRClubAngle), so you hold the
+--     controller like the top of a putter grip. Length auto-fits your height and stretches a few cm to reach
+--     the ground.
+--   * Hole plane: near the ball, the putter head and your floor sit on the plane of the felt the ball is on
+--     (parts tagged GolfSurface, slopes included). Walls, rails and posts are never ground: the club ghosts
+--     through them and you can't stand on them. The ball is only moved by the swing-hit logic below.
 --   * The putter face velocity at contact becomes the ball velocity.
 --
 -- Controls (modelled on Walkabout Mini Golf):
@@ -24,6 +28,7 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local VRService = game:GetService("VRService")
 local HapticService = game:GetService("HapticService")
+local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Config"))
@@ -35,7 +40,7 @@ local VR = {}
 
 -- real-ish blade putter: 3.3 cm thick, 3.3 cm tall, 12.6 cm toe-to-heel
 local HEAD_SIZE = Vector3.new(0.11, 0.11, 0.42) -- X = face thickness, Y = height, Z = toe-to-heel
-local TIP_OFFSET = 0
+local TIP_OFFSET = Config.VRClubTipOffset or 0
 local HIT_COOLDOWN = 0.6
 local REACH_EXTRA = 0.5 -- the shaft may stretch this much (15 cm) to keep the head on the ground
 local TELEPORT_SPEED = 22 -- ~6.5 m max reach
@@ -124,13 +129,54 @@ function VR.start(Ball, HUD, simulate)
 	clubRay.FilterType = Enum.RaycastFilterType.Exclude
 	clubRay.FilterDescendantsInstances = { camera }
 
+	-- Playable felt (CourseBuilder tags it GolfSurface). Only these define the ball's plane.
+	local surfaceRay = RaycastParams.new()
+	surfaceRay.FilterType = Enum.RaycastFilterType.Include
+	local function refreshSurfaces()
+		surfaceRay.FilterDescendantsInstances = CollectionService:GetTagged("GolfSurface")
+	end
+	refreshSurfaces()
+	CollectionService:GetInstanceAddedSignal("GolfSurface"):Connect(refreshSurfaces)
+	CollectionService:GetInstanceRemovedSignal("GolfSurface"):Connect(refreshSurfaces)
+	local function surfaceHit(pos: Vector3, fromAbove: number)
+		return workspace:Raycast(pos + Vector3.new(0, fromAbove, 0), Vector3.new(0, -(fromAbove + 30), 0), surfaceRay)
+	end
+
+	-- The plane of the felt under the ball (point + normal). Kept while the ball is in the air or in the cup.
+	local planePoint: Vector3? = nil
+	local planeNormal = Vector3.yAxis
+	local function updateBallPlane(ballPos: Vector3?)
+		if not ballPos and (not Ball.ball or Ball.ball.Anchored) then
+			return -- sunk / being placed: keep the last plane (don't drop into the cup)
+		end
+		local p = ballPos or Ball.ball.Position
+		local hit = workspace:Raycast(p + Vector3.new(0, 0.05, 0), Vector3.new(0, -(R + 0.4), 0), surfaceRay)
+		if hit and hit.Normal.Y > 0.7 then
+			planePoint, planeNormal = hit.Position, hit.Normal
+		elseif ballPos or not planePoint then
+			planePoint, planeNormal = p - Vector3.new(0, R, 0), Vector3.yAxis
+		end
+	end
+	-- Height of the ball's plane at `pos`'s XZ, or nil when `pos` is out of VRPlaneRange of the ball.
+	local function ballPlaneY(pos: Vector3): number?
+		if not planePoint or flat(pos - planePoint).Magnitude > Config.VRPlaneRange then
+			return nil
+		end
+		local n = planeNormal
+		return planePoint.Y - (n.X * (pos.X - planePoint.X) + n.Z * (pos.Z - planePoint.Z)) / n.Y
+	end
+	-- Ground for the putter head: the ball's plane near the ball, otherwise the felt underneath (never walls).
 	local function groundY(pos: Vector3, fromAbove: number)
-		local hit = workspace:Raycast(pos + Vector3.new(0, fromAbove, 0), Vector3.new(0, -(fromAbove + 30), 0), clubRay)
+		local y = ballPlaneY(pos)
+		if y then
+			return y
+		end
+		local hit = surfaceHit(pos, fromAbove)
 		return hit and hit.Position.Y
 	end
 
-	-- The player's floor only follows walkable surfaces (felt, ramps, grass) - stepping over a
-	-- wall shouldn't bump your view up and down.
+	-- Away from the ball the player's floor follows walkable surfaces (felt, ramps, grass) - stepping
+	-- over a wall shouldn't bump your view up and down.
 	local floorRay = RaycastParams.new()
 	floorRay.FilterType = Enum.RaycastFilterType.Include
 	local walkable = {}
@@ -146,6 +192,10 @@ function VR.start(Ball, HUD, simulate)
 		walkableSet[p] = true
 	end
 	local function floorY(pos: Vector3, fromAbove: number)
+		-- near the ball: stand on the ball's plane (flat, at the ball's contact height), whatever is underfoot
+		if ballPlaneY(pos) then
+			return planePoint.Y
+		end
 		local hit = workspace:Raycast(pos + Vector3.new(0, fromAbove, 0), Vector3.new(0, -(fromAbove + 30), 0), floorRay)
 		return hit and hit.Position.Y
 	end
@@ -170,7 +220,7 @@ function VR.start(Ball, HUD, simulate)
 		p.Parent = parent or putter
 		return p
 	end
-	local grip = piece("Grip", Vector3.new(0.1, 0.1, 0.75), Color3.fromRGB(30, 30, 30), Enum.Material.Rubber)
+	local grip = piece("Grip", Vector3.new(0.07, 0.07, 0.3), Color3.fromRGB(30, 30, 30), Enum.Material.Rubber)
 	local shaft = piece("Shaft", Vector3.new(0.035, 0.035, 2), Color3.fromRGB(205, 205, 210))
 	local head = piece("Head", HEAD_SIZE, Color3.fromRGB(70, 75, 85))
 	head.CastShadow = true
@@ -256,7 +306,8 @@ function VR.start(Ball, HUD, simulate)
 			facing = Vector3.new(toTarget.Z, 0, -toTarget.X)
 		end
 		local stand = bp - facing * Config.VRStanceDistance
-		placeHead(stand, facing, bp.Y - R)
+		updateBallPlane(bp)
+		placeHead(stand, facing, planePoint and planePoint.Y or bp.Y - R)
 		if not clubFitted then
 			autoFitClub()
 		end
@@ -278,8 +329,9 @@ function VR.start(Ball, HUD, simulate)
 		local right = toe:Cross(back)
 		local desired = CFrame.fromMatrix(Vector3.zero, right, toe, back)
 		clubOffset = handCF.Rotation:Inverse() * desired
-		local floor = groundY(handCF.Position, 0.5) or origin.Y
-		clubLength = math.clamp(handCF.Position.Y - floor - HEAD_SIZE.Y / 2, 1.2, 4)
+		local tipPos = (handCF * CFrame.new(0, 0, -TIP_OFFSET)).Position
+		local floor = groundY(tipPos, 0.5) or origin.Y
+		clubLength = math.clamp(tipPos.Y - floor - HEAD_SIZE.Y / 2, 1.2, 4)
 		clubFitted = true
 		teleportedThisFrame = true -- the head jumps; don't treat that as a swing
 		haptic(0.4, 0.15)
@@ -467,10 +519,28 @@ function VR.start(Ball, HUD, simulate)
 			return
 		end
 		hideLocalCharacter(char)
+		-- hold the body exactly where we put it each frame: cancel gravity locally (the character stands on
+		-- the ball's plane even where there's no felt under it, e.g. outside a wall)
+		local hover = hrp:FindFirstChild("GolfVRHover")
+		if not hover then
+			local att = Instance.new("Attachment")
+			att.Name = "GolfVRHoverAttachment"
+			att.Parent = hrp
+			hover = Instance.new("VectorForce")
+			hover.Name = "GolfVRHover"
+			hover.RelativeTo = Enum.ActuatorRelativeTo.World
+			hover.ApplyAtCenterOfMass = true
+			hover.Attachment0 = att
+			hover.Parent = hrp
+		end
+		hover.Force = Vector3.new(0, hrp.AssemblyMass * workspace.Gravity, 0)
+		-- and stop the Humanoid's hip spring pulling it down to whatever is under it (a lower floor past a wall)
+		hum.PlatformStand = true
 		local y = origin.Y + hum.HipHeight + hrp.Size.Y / 2
 		local pos = Vector3.new(headWorld.X, y, headWorld.Z)
 		char:PivotTo(CFrame.new(pos) * yawOnly(headWorld))
 		hrp.AssemblyLinearVelocity = Vector3.zero
+		hrp.AssemblyAngularVelocity = Vector3.zero
 	end
 
 	------------------------------------------------------------ putter + hit detection
@@ -503,7 +573,8 @@ function VR.start(Ball, HUD, simulate)
 	end
 
 	local function updatePutter(handCF: CFrame)
-		local clubCF = handCF * clubOffset
+		-- shaft starts at the controller tip (TIP_OFFSET along the pointing axis), then VRClubAngle / fit pitch
+		local clubCF = handCF * CFrame.new(0, 0, -TIP_OFFSET) * clubOffset
 		local gripPos = clubCF.Position
 		local shaftDir = clubCF.LookVector
 		local headPos = gripPos + shaftDir * clubLength
@@ -532,14 +603,14 @@ function VR.start(Ball, HUD, simulate)
 		faceN = faceN.Magnitude > 1e-3 and faceN.Unit or Vector3.xAxis
 		local headCF = CFrame.fromMatrix(headPos, faceN, Vector3.yAxis)
 
-		-- visuals: grip starts at the controller and runs along the pointing direction
-		grip.CFrame = CFrame.lookAt(gripPos + shaftDir * 0.3, gripPos + shaftDir * 1)
+		-- visuals: a short ferrule at the controller tip, then the shaft down to the hosel
+		grip.CFrame = CFrame.lookAt(gripPos + shaftDir * (grip.Size.Z / 2), gripPos + shaftDir * grip.Size.Z)
 		local toeDir = headCF.LookVector
 		if toeDir:Dot(flat(clubCF.UpVector)) < 0 then
 			toeDir = -toeDir
 		end
 		local hosel = headPos + Vector3.new(0, half.Y * 0.5, 0) - toeDir * (half.Z * 0.75)
-		local shaftStart = gripPos + shaftDir * 0.65
+		local shaftStart = gripPos + shaftDir * (grip.Size.Z * 0.8)
 		local len = (hosel - shaftStart).Magnitude
 		if len > 0.05 then
 			shaft.Size = Vector3.new(0.035, 0.035, len)
@@ -617,6 +688,7 @@ function VR.start(Ball, HUD, simulate)
 	------------------------------------------------------------ frame update
 	RunService:BindToRenderStep("GolfVR", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		camera.HeadScale = 1 -- life size: 1 stud = 0.3 m, regardless of avatar size
+		updateBallPlane()
 		handleActionStick()
 
 		-- smooth locomotion relative to where you're looking
@@ -685,6 +757,7 @@ function VR.start(Ball, HUD, simulate)
 		getOrigin = function()
 			return origin
 		end,
+		ballPlaneY = ballPlaneY,
 		placeHead = placeHead,
 		-- Club-hand world CFrame that puts the putter head centre at `headPos` with the shaft straight down
 		-- and the face pointing along `faceDir` (flat).

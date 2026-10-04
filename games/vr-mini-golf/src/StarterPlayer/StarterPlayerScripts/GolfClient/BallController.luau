@@ -22,6 +22,9 @@ Ball.Stroked = Instance.new("BindableEvent") -- (velocity, source)
 
 local slowTime = 0
 local rollTime = 0
+-- skid after an obstacle hit: the (flat) velocity the ball's spin would roll at, or nil while rolling cleanly
+local rollVel: Vector3? = nil
+local lastVel: Vector3? = nil -- flat velocity we left the ball with last step
 local placeToken = 0
 local readyRing: BasePart
 
@@ -103,6 +106,8 @@ function Ball.hit(velocity: Vector3, source: string?)
 	b.AssemblyAngularVelocity = Vector3.yAxis:Cross(Vector3.new(velocity.X, 0, velocity.Z)) / R
 	slowTime = 0
 	rollTime = 0
+	rollVel = nil
+	lastVel = nil
 	Ball.setState("moving")
 	Remotes.Stroke:FireServer(startPos)
 	hitSound.PlaybackSpeed = 0.8 + math.clamp(velocity.Magnitude / 40, 0, 0.6)
@@ -135,7 +140,13 @@ local function settleOnGround(b)
 	end
 end
 
+local function flat(v: Vector3)
+	return Vector3.new(v.X, 0, v.Z)
+end
+
 local function rest(b)
+	rollVel = nil
+	lastVel = nil
 	b.AssemblyLinearVelocity = Vector3.zero
 	b.AssemblyAngularVelocity = Vector3.zero
 	settleOnGround(b)
@@ -173,19 +184,58 @@ local function step(dt)
 	end
 
 	rollTime += dt
+	-- cup capture: a slow ball over the hole drops in (fast ones skim across or lip out on the far rim)
+	local hole = Ball.getHole()
+	local cup = hole and hole:FindFirstChild("Cup")
+	local cupR = cup and cup:GetAttribute("Radius")
+	if cupR then
+		local off = b.Position - cup.Position
+		local flatOff = Vector3.new(off.X, 0, off.Z)
+		if flatOff.Magnitude < cupR - R * 0.5 and off.Y < R + 0.05 and flat(v).Magnitude < Config.CupCaptureSpeed then
+			b.AssemblyLinearVelocity = Vector3.new(-flatOff.X * 8, math.min(v.Y, -4), -flatOff.Z * 8)
+			b.AssemblyAngularVelocity = Vector3.zero
+			slowTime = 0
+			lastVel = nil
+			return
+		end
+	end
 	if ground then
-		if speed > 0 then
-			local newSpeed = math.max(0, speed - Config.RollDecel * dt)
+		local hv = flat(v)
+		-- obstacle contact (the engine bounced the ball off a wall/post/blade since last step): the bounce
+		-- itself comes from the wall's Elasticity; the ball's spin carries over, so it now skids
+		if lastVel and (hv - lastVel).Magnitude > math.max(0.6, 0.2 * lastVel.Magnitude) then
+			rollVel = (rollVel or lastVel) * Config.SpinKeep + hv * (1 - Config.SpinKeep)
+		end
+		local newVel = v
+		local slip = rollVel and hv - rollVel
+		if slip and slip.Magnitude > 0.05 then
+			-- sliding friction on the ball; the same friction spins the ball up toward rolling (solid sphere:
+			-- spin's rolling speed changes 2.5x as fast as the ball's), so the slip closes at 3.5 mu g
+			local mug = Config.SlideFriction * workspace.Gravity
+			local dir = slip.Unit
+			if slip.Magnitude <= 3.5 * mug * dt then
+				newVel = v - slip * (1 / 3.5)
+				rollVel = nil
+			else
+				newVel = v - dir * mug * dt
+				rollVel += dir * 2.5 * mug * dt
+			end
+		elseif speed > 0 then
+			rollVel = nil
+			local decel = math.max(0, Config.RollDecel - Config.EngineRollLoss) + Config.RollDrag * speed
+			local newSpeed = math.max(0, speed - decel * dt)
 			if newSpeed > Config.MaxBallSpeed then
 				newSpeed = Config.MaxBallSpeed
 			end
-			local newVel = v * (newSpeed / speed)
-			b.AssemblyLinearVelocity = newVel
-			-- keep the ball in pure roll: no leftover spin fighting the floor after banks/bumps
-			local n = ground.Normal
-			local along = newVel - n * newVel:Dot(n)
-			b.AssemblyAngularVelocity = n:Cross(along) / R
+			newVel = v * (newSpeed / speed)
 		end
+		b.AssemblyLinearVelocity = newVel
+		lastVel = flat(newVel)
+		-- the engine always sees pure roll (the skid lives in rollVel above): otherwise the felt's own friction
+		-- would brake the same slip a second time
+		local n = ground.Normal
+		local along = newVel - n * newVel:Dot(n)
+		b.AssemblyAngularVelocity = n:Cross(along) / R
 		if speed < Config.StopSpeed and slopeAccel < Config.RollDecel then
 			slowTime += dt
 			if slowTime >= Config.RestTime then
@@ -196,6 +246,7 @@ local function step(dt)
 		end
 	else
 		slowTime = 0
+		lastVel = nil
 	end
 	if rollTime > Config.MaxRollTime then
 		rest(b)

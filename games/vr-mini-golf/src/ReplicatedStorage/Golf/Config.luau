@@ -4,12 +4,32 @@ return {
 	BallRadius = 0.08, -- 4.8 cm ball (a real golf ball is 4.3 cm)
 	CupDepth = 0.35, -- 10.5 cm deep cup (radius lives on each hole's Cup part)
 
-	-- Ball rolling (applied on the owning client on top of Roblox physics)
-	RollDecel = 3.6, -- studs/s^2 of rolling resistance on felt (~1.1 m/s^2: slow mini-golf carpet)
+	-- Ball rolling (applied on the owning client on top of Roblox physics). Tuned to the Walkabout Mini Golf
+	-- footage in games/vr-mini-golf/walkabout-reference.md: deceleration = RollDecel + RollDrag * speed
+	-- (0.15 m/s^2 + 0.25/s * v), i.e. very fast felt with a soft stop. workspace.Gravity is 32.7 (9.81 m/s^2).
+	RollDecel = 0.5, -- studs/s^2 constant rolling resistance (0.15 m/s^2)
+	RollDrag = 0.25, -- 1/s speed-proportional term
+	-- Roblox's own contact already slows a rolling ball by about this much (studs/s^2, measured with the
+	-- rollout scenario), so the script applies RollDecel minus this.
+	EngineRollLoss = 0.2,
 	StopSpeed = 0.2, -- below this speed (and on a gentle slope) the ball is considered stopped
-	RestTime = 0.3, -- seconds below StopSpeed before the ball is "at rest"
+	RestTime = 0.5, -- seconds below StopSpeed before the ball is "at rest"
 	MaxBallSpeed = 42,
 	MaxRollTime = 25, -- safety: force the ball to rest after this many seconds
+	-- Cup capture: a ball over the cup slower than this (studs/s) drops in instead of skimming across.
+	-- 1.6 m/s is about the fastest a centred putt can be and still drop in real golf.
+	CupCaptureSpeed = 1.6 / 0.3,
+
+	-- Walls, bumpers and obstacles (CourseBuilder sets these as CustomPhysicalProperties; their weights beat
+	-- the ball's, so these values decide every bounce). Measured result: see games/vr-mini-golf/status.md.
+	WallElasticity = 0.63, -- measures ~0.6 normal restitution (Walkabout: 0.55-0.65)
+	WallFriction = 0.05, -- low: the ball keeps its spin through the hit...
+	BumperElasticity = 0.65, -- the round red posts
+	-- ...then skids: after an obstacle hit the ball's spin still matches SpinKeep of its old rolling velocity,
+	-- and sliding friction (SlideFriction * gravity) brakes the slip until it rolls again (Walkabout's
+	-- "loses traction, then kicks slightly in the direction of its old spin").
+	SpinKeep = 0.5,
+	SlideFriction = 0.3,
 
 	-- Touch / mouse controls
 	TouchMaxSpeed = 26, -- ball speed at 100% power
@@ -23,12 +43,14 @@ return {
 	VRSnapTurnDegrees = 30,
 	VRStanceDistance = 1.5, -- warp-to-ball puts your head this far from the ball (45 cm)
 	-- Club mount. Assumes the hand UserCFrame LookVector is the controller's pointing axis (the axis Roblox's
-	-- own VR laser pointer uses). The shaft starts VRClubTipOffset studs in front of the hand origin, at the
-	-- tip of the controller, and runs along LookVector pitched by VRClubAngle (degrees, + tilts toward the
-	-- controller's top). See games/vr-mini-golf/playtesting.md.
+	-- own VR laser pointer uses) and that its origin is roughly the middle of the controller. The shaft starts
+	-- VRClubTipOffset studs in front of the hand origin, at the tip of the controller, and runs along LookVector
+	-- pitched by VRClubAngle (degrees, + tilts toward the controller's top). Unverified on a real Quest: see
+	-- games/vr-mini-golf/playtesting.md.
 	VRClubAngle = 0,
 	VRClubTipOffset = 0.2, -- 6 cm
 	VRPlaneRange = 12, -- within this many studs of the ball, the putter head and your floor use the ball's plane
+	-- (felt parts tagged GolfSurface); further away they follow the GolfSurface under them. Walls never count.
 	VRGripToPutt = false, -- Walkabout's optional mode: putter is only solid while you hold grip
 
 	-- Rules
