@@ -1,7 +1,7 @@
 # Robo Clash Arena: status
 
 ## Now
-- **20:50 PT: Phase 3 re-theme DONE in Studio and saved to Roblox (Codex, logs/codex-save4.log). NOT published yet.** The live v19 still has the old Bolt/Crusher/Lancer holo look until the orchestrator publishes.
+- **~20:55 PT: Phase 3 re-theme PUBLISHED as version 33** (Codex, logs/codex-publish3.log). The live game is now Scout/Kitsune/Aero on the Homework Desk arena; still PUBLIC (Ages 16+ and trusted friends). Opus logs: logs/opus-phase3.log + logs/opus-phase3b.log (resumed with Game Art Bot's turnarounds/palettes, concepts/ORCHESTRATOR-NOTES.md).
   - Roster: SCOUT (C01, all-rounder), KITSUNE (R05, sniper), AERO (C05, bruiser) replace Bolt/Crusher/Lancer, with the same balance slots. Loadouts are in design.md. The old robots are archived in design.md (V1 table) and are no longer built.
   - Blender meshes (`assets/robo-clash-arena/blender/`, FBX + previews in `export/`), matched to the concepts/ turnarounds, parts sheets and hex palettes:
     - Scout: 11,980 tris, 13 parts.
@@ -21,7 +21,7 @@
     - The Twin Blaster blurb is corrected.
     - The Studio-only test hook is removed.
   - Screens (local, gitignored): logs/screens/rt-scout.png, rt-kitsune.png, rt-aero.png, rt-arena.png, rt-select.png, rt-battle.png.
-- 2026-10-03: V1 is feature-complete, playtested, published (v19) and PUBLIC at https://www.roblox.com/games/99842799688877 (reach: Ages 16+ and trusted friends).
+- 2026-10-03: V1 is feature-complete, playtested, published and PUBLIC at https://www.roblox.com/games/99842799688877 (reach: Ages 16+ and trusted friends).
 - Flow:
   - Title -> Robot Select (SCOUT all-rounder, KITSUNE sniper, AERO bruiser, with lobby statues and a loadout/stat panel) -> Mode Select (Matchmaking / Battle a Bot / Back).
   - Match: cube drop-in, then READY 3-2-1 LAUNCH!, then the 1v1. It ends with K.O. / TIME UP / DRAW / OPPONENT LEFT, plus PERFECT on a no-damage KO.
