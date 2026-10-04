@@ -1,0 +1,226 @@
+{
+ "name": "Scout",
+ "joints": [
+  {
+   "name": "RootJoint",
+   "part": "Torso",
+   "parent": "HumanoidRootPart",
+   "pivot": [
+    0,
+    4.6,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  },
+  {
+   "name": "Neck",
+   "part": "Head",
+   "parent": "Torso",
+   "pivot": [
+    0,
+    6.25,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  },
+  {
+   "name": "RShoulder",
+   "part": "GunArm",
+   "parent": "Torso",
+   "pivot": [
+    1.55,
+    5.85,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  },
+  {
+   "name": "LShoulder",
+   "part": "BombArm",
+   "parent": "Torso",
+   "pivot": [
+    -1.55,
+    5.85,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  },
+  {
+   "name": "RHip",
+   "part": "LegR",
+   "parent": "Torso",
+   "pivot": [
+    0.7,
+    3.75,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  },
+  {
+   "name": "LHip",
+   "part": "LegL",
+   "parent": "Torso",
+   "pivot": [
+    -0.7,
+    3.75,
+    0
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  },
+  {
+   "name": "PodJoint",
+   "part": "Pod",
+   "parent": "Torso",
+   "pivot": [
+    0,
+    5.4,
+    0.95
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "anim": null
+  }
+ ],
+ "attachments": {
+  "GunTip": {
+   "part": "GunArm",
+   "pos": [
+    1.65,
+    4.65,
+    -3.0
+   ]
+  },
+  "GunTip2": {
+   "part": "BombArm",
+   "pos": [
+    -1.65,
+    4.65,
+    -3.0
+   ]
+  },
+  "BombTip": {
+   "part": "BombArm",
+   "pos": [
+    -1.65,
+    5.15,
+    -1.2
+   ]
+  },
+  "PodTip": {
+   "part": "Pod",
+   "pos": [
+    0,
+    6.1,
+    1.5
+   ]
+  }
+ },
+ "parts": {
+  "Torso": {
+   "limb": "Torso",
+   "glow": false
+  },
+  "TorsoGlow": {
+   "limb": "Torso",
+   "glow": true
+  },
+  "Head": {
+   "limb": "Head",
+   "glow": false
+  },
+  "HeadGlow": {
+   "limb": "Head",
+   "glow": true
+  },
+  "GunArm": {
+   "limb": "GunArm",
+   "glow": false
+  },
+  "BombArm": {
+   "limb": "BombArm",
+   "glow": false
+  },
+  "GunArmGlow": {
+   "limb": "GunArm",
+   "glow": true
+  },
+  "BombArmGlow": {
+   "limb": "BombArm",
+   "glow": true
+  },
+  "LegR": {
+   "limb": "LegR",
+   "glow": false
+  },
+  "LegL": {
+   "limb": "LegL",
+   "glow": false
+  },
+  "LegRGlow": {
+   "limb": "LegR",
+   "glow": true
+  },
+  "LegLGlow": {
+   "limb": "LegL",
+   "glow": true
+  },
+  "Pod": {
+   "limb": "Pod",
+   "glow": false
+  },
+  "PodGlow": {
+   "limb": "Pod",
+   "glow": true
+  }
+ },
+ "tris": 11476,
+ "part_tris": {
+  "Torso": 1408,
+  "TorsoGlow": 168,
+  "Head": 1848,
+  "HeadGlow": 108,
+  "GunArm": 1896,
+  "BombArm": 1896,
+  "GunArmGlow": 240,
+  "BombArmGlow": 240,
+  "LegR": 1232,
+  "LegL": 1232,
+  "LegRGlow": 116,
+  "LegLGlow": 116,
+  "Pod": 776,
+  "PodGlow": 200
+ }
+}
