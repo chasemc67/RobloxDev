@@ -26,7 +26,7 @@
   - 0 errors and 0 warnings (server and client).
   - Course, ball and HUD all load ("Hole 1 - Warm Up", "Par 2 | Strokes 0", Reset Ball, Scorecard).
 
-## 2026-10-03 ~23:00 PT: VR playtest fixes (Studio Team Create draft, NOT published)
+## 2026-10-03 ~23:00 PT: VR playtest fixes (published as v9, ~23:03 PT; audience still Limited: Friends + Playtesters)
 Measured with the new harness (`playtesting.md`). Baseline: `playtests/2026-10-03/baseline/`. After: `playtests/2026-10-03/after/` (+ `.mov` clips, kept local). Full table: `playtests/2026-10-03/compare.md`. Physics tuned to `walkabout-reference.md`.
 
 1. **Club origin/axis:**
@@ -62,10 +62,19 @@ Measured with the new harness (`playtesting.md`). Baseline: `playtests/2026-10-0
 - Normal solo playtest (smoke): 0 errors and 0 warnings on server and client, hole 1 HUD visible.
 - Not changed: phone/touch controls. They share `Ball.hit`, so the faster felt affects them too; `TouchMaxSpeed` 26 may now feel strong.
 
+### Check against `walkabout-reference.md`
+- Gravity 32.7 studs/s² (Earth at 0.3 m/stud; Roblox's default 196.2 would be 6× Earth): matches.
+- Roll deceleration 0.5 + 0.25·v studs/s² (0.15 m/s² + 0.25/s·v): matches the fit. Fast putts (2–6 m/s) roll 5.8–9.4 s, which is what the fit gives. Walkabout's 2–3.5 s putts are slower ones (~0.5–1 m/s).
+- Walls: measured normal restitution 0.59–0.63 vs ~0.6; spin kept and skid after the hit (`SlideFriction` 0.3 × 32.7 ≈ 9.8 studs/s²): matches.
+- Cup capture below 1.6 m/s; 1.3 and 1.6 m/s putts hole cleanly (reference: clean at ~0.47 m/s): consistent.
+- Putter: head held on the ball's plane, shaft length varies, ghosts through all geometry, `VRGripToPutt` makes it see-through (0.65) and unable to hit until grip is held: matches (mode is off by default).
+- **Gap:** felt bounce. Felt is Elasticity 0 (weight 100), so drops off ledges land dead. Reference: ~0.6 with drops under ~1.5 studs/s zeroed. Not changed in v9.
+
 ## TODO
+- [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
 - [ ] Headset check: club comes out of the controller tip along the pointing axis (`VRClubTipOffset`, `VRClubAngle`); rig height snapping comfort; hit strength with the new fast felt (`VRHitMultiplier`).
 - [ ] Re-tune `TouchMaxSpeed` / `TouchPowerCurve` for the faster felt.
-- [ ] Publish the Team Create draft (orchestrator).
+- [x] Publish the Team Create draft: v9, ~23:03 PT (File > Publish to Roblox). Audience Limited (Friends + Playtesters); Maturity questionnaire done (Minimal).
 - [ ] Real VR headset test (Quest via Roblox app). Check the club angle and friction, then press A to fit the club.
 - [ ] Mobile/2D controls pass.
 - [ ] Before going public: icon and thumbnails, Maturity & Compliance questionnaire, then set Audience to Public (see `.agents/skills/roblox-publishing`).
