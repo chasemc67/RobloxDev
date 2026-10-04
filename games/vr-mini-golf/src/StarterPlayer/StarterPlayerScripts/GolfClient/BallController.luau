@@ -1,5 +1,6 @@
 -- BallController: owns the local player's ball on the client.
--- Applies rolling resistance, decides when the ball is at rest, and exposes Ball.hit().
+-- Applies rolling resistance, decides when the ball is at rest, and exposes Ball.hit(), the one function
+-- every shot goes through (VR putter contact, phone/mouse pull-back, and the Studio test harness).
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -17,7 +18,7 @@ Ball.state = "waiting" -- waiting | ready | moving | locked
 Ball.holeIndex = 1
 Ball.StateChanged = Instance.new("BindableEvent")
 Ball.Placed = Instance.new("BindableEvent") -- (pos, reason)
-Ball.Stroked = Instance.new("BindableEvent") -- (velocity)
+Ball.Stroked = Instance.new("BindableEvent") -- (velocity, source)
 
 local slowTime = 0
 local rollTime = 0
@@ -42,6 +43,9 @@ function Ball.setState(s)
 end
 
 function Ball.getHole()
+	if Ball.holeIndex == 0 then
+		return workspace:FindFirstChild("GolfTestLane") -- Studio test harness only
+	end
 	return workspace.Course:FindFirstChild("Hole" .. Ball.holeIndex)
 end
 
@@ -71,7 +75,19 @@ function Ball.canHit()
 	return Ball.state == "ready" and Ball.ball ~= nil and not Ball.ball.Anchored
 end
 
-function Ball.hit(velocity: Vector3)
+-- Ball velocity from a putter contact: face normal `n` (flat, unit) and putter head velocity `clubVel`.
+function Ball.clubImpulse(n: Vector3, clubVel: Vector3): Vector3?
+	local u = clubVel:Dot(n)
+	if u < Config.VRMinHitSpeed then
+		return nil
+	end
+	local t = clubVel - n * u
+	local tangential = Vector3.new(t.X, 0, t.Z)
+	return n * u * Config.VRHitMultiplier + tangential * Config.VRTangentialTransfer
+end
+
+-- source: "vr" | "touch" | "test"
+function Ball.hit(velocity: Vector3, source: string?)
 	if not Ball.canHit() then
 		return false
 	end
@@ -92,7 +108,7 @@ function Ball.hit(velocity: Vector3)
 	hitSound.PlaybackSpeed = 0.8 + math.clamp(velocity.Magnitude / 40, 0, 0.6)
 	hitSound.Volume = 0.3 + math.clamp(velocity.Magnitude / 30, 0, 0.7)
 	hitSound:Play()
-	Ball.Stroked:Fire(velocity)
+	Ball.Stroked:Fire(velocity, source or "unknown")
 	return true
 end
 

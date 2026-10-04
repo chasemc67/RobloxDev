@@ -204,7 +204,7 @@ function Touch.start(Ball, HUD)
 		cancelAim()
 		if dir and power >= 0.03 and Ball.canHit() then
 			local speed = Config.TouchMaxSpeed * power ^ Config.TouchPowerCurve
-			Ball.hit(dir * math.max(speed, 0.8))
+			Ball.hit(dir * math.max(speed, 0.8), "touch")
 		end
 	end
 

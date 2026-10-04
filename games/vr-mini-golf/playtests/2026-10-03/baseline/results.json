@@ -1,0 +1,2070 @@
+{
+ "rollout": {
+  "default": {
+   "seconds": 12.72,
+   "shots": [
+    {
+     "v0": 6.667,
+     "speedMps": 2,
+     "label": "2mps",
+     "contacts": [],
+     "tEnd": 2.049,
+     "maxAlong": 5.634,
+     "distM": 1.69,
+     "maxY": 1.08,
+     "outcome": "rest",
+     "start": [
+      -40,
+      1.0711,
+      -6
+     ],
+     "tStop": 1.684,
+     "distStuds": 5.634,
+     "finish": [
+      -40,
+      1.0792,
+      -0.3659
+     ]
+    },
+    {
+     "v0": 13.333,
+     "speedMps": 4,
+     "label": "4mps",
+     "contacts": [],
+     "tEnd": 3.75,
+     "maxAlong": 22.531,
+     "distM": 6.759,
+     "maxY": 1.08,
+     "outcome": "rest",
+     "start": [
+      -40,
+      1.0711,
+      -6
+     ],
+     "tStop": 3.382,
+     "distStuds": 22.531,
+     "finish": [
+      -40,
+      1.0792,
+      16.531
+     ]
+    },
+    {
+     "v0": 20,
+     "speedMps": 6,
+     "label": "6mps",
+     "contacts": [],
+     "tEnd": 5.451,
+     "maxAlong": 50.793,
+     "distM": 15.238,
+     "maxY": 1.08,
+     "outcome": "rest",
+     "start": [
+      -40,
+      1.0792,
+      -6
+     ],
+     "tStop": 5.085,
+     "distStuds": 50.793,
+     "finish": [
+      -40,
+      1.0792,
+      44.793
+     ]
+    }
+   ],
+   "scenario": "rollout",
+   "cam": ""
+  }
+ },
+ "bank": {
+  "default": {
+   "seconds": 9.06,
+   "shots": [
+    {
+     "v0": 13.333,
+     "speedMps": 4,
+     "label": "bank-4mps",
+     "contacts": [
+      {
+       "angleOut": 51,
+       "angleIn": 45,
+       "vOut": [
+        5.7623,
+        -0.0001,
+        0.6085
+       ],
+       "vnOut": 3.644,
+       "speedOut": 5.794,
+       "speedIn": 6.794,
+       "normal": [
+        0.7071,
+        0,
+        -0.7071
+       ],
+       "type": "event",
+       "speedRetention": 0.853,
+       "t": 2.2497,
+       "vtOut": -4.505,
+       "part": "Hole2/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.938,
+       "shot": "bank-4mps",
+       "vIn": [
+        0,
+        -0.0001,
+        6.7939
+       ],
+       "vnIn": -4.804,
+       "restitution": 0.759,
+       "vtIn": -4.804,
+       "pos": [
+        30.0492,
+        1.0798,
+        19.2007
+       ]
+      }
+     ],
+     "tEnd": 3.567,
+     "maxAlong": 17.682,
+     "distM": 5.481,
+     "maxY": 1.083,
+     "outcome": "rest",
+     "start": [
+      30,
+      1.0791,
+      2
+     ],
+     "tStop": 3.185,
+     "distStuds": 18.271,
+     "finish": [
+      34.5982,
+      1.0682,
+      19.6824
+     ]
+    },
+    {
+     "v0": 20,
+     "speedMps": 6,
+     "label": "bank-6mps",
+     "contacts": [
+      {
+       "angleOut": 50.7,
+       "angleIn": 45,
+       "vOut": [
+        14.0388,
+        -0.0001,
+        1.394
+       ],
+       "vnOut": 8.942,
+       "speedOut": 14.108,
+       "speedIn": 16.139,
+       "normal": [
+        0.7071,
+        0,
+        -0.7071
+       ],
+       "type": "event",
+       "speedRetention": 0.874,
+       "t": 5.5656,
+       "vtOut": -10.912,
+       "part": "Hole2/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.956,
+       "shot": "bank-6mps",
+       "vIn": [
+        0,
+        -0.0001,
+        16.1385
+       ],
+       "vnIn": -11.411,
+       "restitution": 0.784,
+       "vtIn": -11.412,
+       "pos": [
+        30.1183,
+        1.0809,
+        19.1923
+       ]
+      },
+      {
+       "angleOut": 63.8,
+       "angleIn": 56.6,
+       "vOut": [
+        3.8976,
+        -0.0001,
+        8.4811
+       ],
+       "vnOut": 4.127,
+       "speedOut": 9.334,
+       "speedIn": 9.953,
+       "normal": [
+        -0.6304,
+        0,
+        0.7763
+       ],
+       "type": "event",
+       "speedRetention": 0.938,
+       "t": 6.6816,
+       "vtOut": 8.372,
+       "part": "Hole2/Bumper",
+       "event": "contact",
+       "tangentialRetention": 1.008,
+       "shot": "bank-6mps",
+       "vIn": [
+        9.9045,
+        -0.0001,
+        0.9835
+       ],
+       "vnIn": -5.48,
+       "restitution": 0.753,
+       "vtIn": 8.309,
+       "pos": [
+        43.6389,
+        1.0799,
+        20.6035
+       ]
+      },
+      {
+       "angleOut": 30.7,
+       "angleIn": 23.7,
+       "vOut": [
+        3.0608,
+        -0.0001,
+        -5.367
+       ],
+       "vnOut": 5.311,
+       "speedOut": 6.178,
+       "speedIn": 7.867,
+       "normal": [
+        -0.0179,
+        0,
+        -0.9998
+       ],
+       "type": "event",
+       "speedRetention": 0.785,
+       "t": 7.1145,
+       "vtOut": -3.156,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "bank-6mps",
+       "vIn": [
+        3.2849,
+        -0.0001,
+        7.1479
+       ],
+       "vnIn": -7.206,
+       "restitution": 0.737,
+       "vtIn": -3.156,
+       "pos": [
+        45.2373,
+        1.0794,
+        23.8242
+       ]
+      }
+     ],
+     "tEnd": 4.498,
+     "maxAlong": 21.94,
+     "distM": 7.451,
+     "maxY": 1.081,
+     "outcome": "rest",
+     "start": [
+      30,
+      1.0791,
+      2
+     ],
+     "tStop": 4.132,
+     "distStuds": 24.836,
+     "finish": [
+      47.8147,
+      1.0792,
+      19.305
+     ]
+    }
+   ],
+   "scenario": "bank",
+   "cam": ""
+  }
+ },
+ "walls": {
+  "default": {
+   "seconds": 15.03,
+   "shots": [
+    {
+     "v0": 10,
+     "speedMps": 3,
+     "label": "wall-straight-3mps",
+     "contacts": [
+      {
+       "angleOut": 0,
+       "angleIn": 0,
+       "vOut": [
+        0,
+        -0.0001,
+        -4.6239
+       ],
+       "vnOut": 4.624,
+       "speedOut": 4.624,
+       "speedIn": 6.261,
+       "normal": [
+        0,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.738,
+       "t": 1.5011,
+       "vtOut": 0,
+       "part": "?",
+       "event": "contact",
+       "shot": "wall-straight-3mps",
+       "vIn": [
+        0,
+        -0.0001,
+        6.2615
+       ],
+       "vnIn": -6.261,
+       "restitution": 0.738,
+       "vtIn": 0,
+       "pos": [
+        -2.5,
+        1.0793,
+        31.8251
+       ]
+      }
+     ],
+     "tEnd": 2.581,
+     "maxAlong": 7.926,
+     "distM": 1.462,
+     "maxY": 1.08,
+     "outcome": "rest",
+     "start": [
+      -2.5,
+      1.0791,
+      24
+     ],
+     "tStop": 2.199,
+     "distStuds": 4.872,
+     "finish": [
+      -2.5,
+      1.0792,
+      28.872
+     ]
+    },
+    {
+     "v0": 20,
+     "speedMps": 6,
+     "label": "wall-straight-6mps",
+     "contacts": [
+      {
+       "angleOut": 0,
+       "angleIn": 0,
+       "vOut": [
+        0,
+        -0.0008,
+        -14.3333
+       ],
+       "vnOut": 14.333,
+       "speedOut": 14.333,
+       "speedIn": 18.303,
+       "normal": [
+        0,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.783,
+       "t": 4,
+       "vtOut": 0,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "shot": "wall-straight-6mps",
+       "vIn": [
+        0,
+        -0.0001,
+        18.3031
+       ],
+       "vnIn": -18.303,
+       "restitution": 0.783,
+       "vtIn": 0,
+       "pos": [
+        -2.5,
+        1.0858,
+        31.7639
+       ]
+      },
+      {
+       "angleOut": 44.6,
+       "angleIn": 38.7,
+       "vOut": [
+        -6.9979,
+        -0.0006,
+        0.8243
+       ],
+       "vnOut": 5.015,
+       "speedOut": 7.046,
+       "speedIn": 8.417,
+       "normal": [
+        -0.6247,
+        0,
+        0.7809
+       ],
+       "type": "event",
+       "speedRetention": 0.837,
+       "t": 5.5667,
+       "vtOut": -4.95,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.941,
+       "shot": "wall-straight-6mps",
+       "vIn": [
+        0,
+        -0.0001,
+        -8.4167
+       ],
+       "vnIn": -6.573,
+       "restitution": 0.763,
+       "vtIn": -5.258,
+       "pos": [
+        -2.5893,
+        1.0797,
+        13.8063
+       ]
+      },
+      {
+       "angleOut": 8.5,
+       "angleIn": 6.4,
+       "vOut": [
+        4.7659,
+        -0.0001,
+        0.6904
+       ],
+       "vnOut": 4.762,
+       "speedOut": 4.816,
+       "speedIn": 6.401,
+       "normal": [
+        1,
+        0,
+        -0.0053
+       ],
+       "type": "event",
+       "speedRetention": 0.752,
+       "t": 5.7826,
+       "vtOut": -0.715,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "wall-straight-6mps",
+       "vIn": [
+        -6.3571,
+        -0.0001,
+        0.7488
+       ],
+       "vnIn": -6.361,
+       "restitution": 0.749,
+       "vtIn": -0.715,
+       "pos": [
+        -3.848,
+        1.0794,
+        13.9761
+       ]
+      },
+      {
+       "angleOut": 66.4,
+       "angleIn": 59.6,
+       "vOut": [
+        1.2622,
+        -0.0001,
+        2.3979
+       ],
+       "vnOut": 1.084,
+       "speedOut": 2.71,
+       "speedIn": 3.136,
+       "normal": [
+        -0.6247,
+        0,
+        0.7809
+       ],
+       "type": "event",
+       "speedRetention": 0.864,
+       "t": 6.2658,
+       "vtOut": 2.484,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.918,
+       "shot": "wall-straight-6mps",
+       "vIn": [
+        3.1033,
+        -0.0001,
+        0.4495
+       ],
+       "vnIn": -1.587,
+       "restitution": 0.683,
+       "vtIn": 2.704,
+       "pos": [
+        -1.9358,
+        1.0794,
+        14.2827
+       ]
+      }
+     ],
+     "tEnd": 3.083,
+     "maxAlong": 7.885,
+     "distM": 2.714,
+     "maxY": 1.086,
+     "outcome": "timeout",
+     "start": [
+      -2.5,
+      1.0792,
+      24
+     ],
+     "distStuds": 9.048,
+     "finish": [
+      -1.5573,
+      1.0794,
+      15.0017
+     ]
+    },
+    {
+     "v0": 16.667,
+     "speedMps": 5,
+     "label": "wall-45deg-5mps",
+     "contacts": [
+      {
+       "angleOut": 50.6,
+       "angleIn": 45,
+       "vOut": [
+        -8.6885,
+        -0.0001,
+        10.5787
+       ],
+       "vnOut": 8.689,
+       "speedOut": 13.689,
+       "speedIn": 15.647,
+       "normal": [
+        -1,
+        0,
+        0
+       ],
+       "type": "event",
+       "speedRetention": 0.875,
+       "t": 7.3836,
+       "vtOut": 10.579,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.956,
+       "shot": "wall-45deg-5mps",
+       "vIn": [
+        11.064,
+        -0.0001,
+        11.064
+       ],
+       "vnIn": -11.064,
+       "restitution": 0.785,
+       "vtIn": 11.064,
+       "pos": [
+        3.8644,
+        1.0806,
+        25.0324
+       ]
+      },
+      {
+       "angleOut": 44.9,
+       "angleIn": 39.4,
+       "vOut": [
+        -6.6697,
+        -0.0001,
+        -6.693
+       ],
+       "vnOut": 6.693,
+       "speedOut": 9.449,
+       "speedIn": 11.104,
+       "normal": [
+        0,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.851,
+       "t": 8.1001,
+       "vtOut": 6.67,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.946,
+       "shot": "wall-45deg-5mps",
+       "vIn": [
+        -7.0473,
+        -0.0001,
+        8.5805
+       ],
+       "vnIn": -8.58,
+       "restitution": 0.78,
+       "vtIn": 7.047,
+       "pos": [
+        -1.8672,
+        1.0802,
+        31.8861
+       ]
+      },
+      {
+       "angleOut": 50.7,
+       "angleIn": 45.1,
+       "vOut": [
+        4.5731,
+        -0.0001,
+        -5.592
+       ],
+       "vnOut": 4.573,
+       "speedOut": 7.224,
+       "speedIn": 8.353,
+       "normal": [
+        1,
+        0,
+        0
+       ],
+       "type": "event",
+       "speedRetention": 0.865,
+       "t": 8.4321,
+       "vtOut": 5.592,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.945,
+       "shot": "wall-45deg-5mps",
+       "vIn": [
+        -5.896,
+        -0.0001,
+        -5.9166
+       ],
+       "vnIn": -5.896,
+       "restitution": 0.776,
+       "vtIn": 5.917,
+       "pos": [
+        -3.9166,
+        1.0799,
+        29.7864
+       ]
+      }
+     ],
+     "tEnd": 3.082,
+     "maxAlong": 5.029,
+     "distM": 0.682,
+     "maxY": 1.081,
+     "outcome": "timeout",
+     "start": [
+      1,
+      1.0791,
+      22
+     ],
+     "distStuds": 2.275,
+     "finish": [
+      0.6174,
+      1.0796,
+      24.2422
+     ]
+    },
+    {
+     "v0": 20,
+     "speedMps": 6,
+     "label": "post-straight-6mps",
+     "contacts": [
+      {
+       "angleOut": 0,
+       "angleIn": 0,
+       "vOut": [
+        -17.4247,
+        -0.0009,
+        0
+       ],
+       "vnOut": 17.425,
+       "speedOut": 17.425,
+       "speedIn": 19.316,
+       "normal": [
+        -1,
+        0,
+        0
+       ],
+       "type": "event",
+       "speedRetention": 0.902,
+       "t": 10.8673,
+       "vtOut": 0,
+       "part": "Hole2/Bumper",
+       "event": "contact",
+       "shot": "post-straight-6mps",
+       "vIn": [
+        19.3155,
+        -0.0001,
+        0
+       ],
+       "vnIn": -19.316,
+       "restitution": 0.902,
+       "vtIn": 0,
+       "pos": [
+        43.0451,
+        1.0881,
+        20
+       ]
+      }
+     ],
+     "tEnd": 0.835,
+     "maxAlong": 3.271,
+     "distM": 0,
+     "maxY": 1.104,
+     "outcome": "oob",
+     "start": [
+      40,
+      1.0791,
+      20
+     ],
+     "distStuds": 0,
+     "finish": [
+      40,
+      1.0512,
+      20
+     ]
+    },
+    {
+     "v0": 16.667,
+     "speedMps": 5,
+     "label": "post-45deg-5mps",
+     "contacts": [
+      {
+       "angleOut": 53.5,
+       "angleIn": 45.6,
+       "vOut": [
+        2.3325,
+        -0.0006,
+        14.5415
+       ],
+       "vnOut": 8.756,
+       "speedOut": 14.727,
+       "speedIn": 15.797,
+       "normal": [
+        -0.6997,
+        0,
+        0.7144
+       ],
+       "type": "event",
+       "speedRetention": 0.932,
+       "t": 12.2166,
+       "vtOut": 11.842,
+       "part": "Hole2/Bumper",
+       "event": "contact",
+       "tangentialRetention": 1.049,
+       "shot": "post-45deg-5mps",
+       "vIn": [
+        15.7968,
+        -0.0001,
+        0
+       ],
+       "vnIn": -11.054,
+       "restitution": 0.792,
+       "vtIn": 11.285,
+       "pos": [
+        43.5944,
+        1.0795,
+        20.6758
+       ]
+      },
+      {
+       "angleOut": 10.9,
+       "angleIn": 9.1,
+       "vOut": [
+        2.0858,
+        -0.0001,
+        -10.8191
+       ],
+       "vnOut": 10.819,
+       "speedOut": 11.018,
+       "speedIn": 14,
+       "normal": [
+        0,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.787,
+       "t": 12.4485,
+       "vtOut": -2.086,
+       "part": "Hole2/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.941,
+       "shot": "post-45deg-5mps",
+       "vIn": [
+        2.2174,
+        -0.0001,
+        13.8237
+       ],
+       "vnIn": -13.824,
+       "restitution": 0.783,
+       "vtIn": -2.217,
+       "pos": [
+        44.1342,
+        1.0828,
+        23.8399
+       ]
+      },
+      {
+       "angleOut": 13.5,
+       "angleIn": 10.5,
+       "vOut": [
+        1.4035,
+        -0.0006,
+        6.048
+       ],
+       "vnOut": 6.037,
+       "speedOut": 6.209,
+       "speedIn": 7.986,
+       "normal": [
+        -0.0078,
+        0,
+        1
+       ],
+       "type": "event",
+       "speedRetention": 0.777,
+       "t": 13.2841,
+       "vtOut": 1.451,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "post-45deg-5mps",
+       "vIn": [
+        1.5119,
+        -0.0001,
+        -7.8421
+       ],
+       "vnIn": -7.854,
+       "restitution": 0.769,
+       "vtIn": 1.451,
+       "pos": [
+        45.6555,
+        1.0791,
+        16.1764
+       ]
+      }
+     ],
+     "tEnd": 3.084,
+     "maxAlong": 6.857,
+     "distM": 2.074,
+     "maxY": 1.083,
+     "outcome": "timeout",
+     "start": [
+      40,
+      1.0791,
+      20.4808
+     ],
+     "tStop": 2.933,
+     "distStuds": 6.913,
+     "finish": [
+      46.8572,
+      1.0794,
+      21.3547
+     ]
+    }
+   ],
+   "scenario": "walls",
+   "cam": ""
+  }
+ },
+ "windmill": {
+  "default": {
+   "seconds": 11.38,
+   "shots": [
+    {
+     "v0": 17,
+     "speedMps": 5.1,
+     "label": "mill-phase0",
+     "contacts": [
+      {
+       "angleOut": 43.3,
+       "angleIn": 88.2,
+       "vOut": [
+        -12.5748,
+        -0.0001,
+        11.1103
+       ],
+       "vnOut": 12.214,
+       "speedOut": 16.78,
+       "speedIn": 11.512,
+       "normal": [
+        -0.9995,
+        0,
+        -0.0319
+       ],
+       "type": "event",
+       "speedRetention": 1.458,
+       "t": 2.632,
+       "vtOut": 11.506,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "mill-phase0",
+       "vIn": [
+        0,
+        -0.0001,
+        11.5118
+       ],
+       "vnIn": -0.367,
+       "restitution": 33.246,
+       "vtIn": 11.506,
+       "pos": [
+        114.7559,
+        1.0796,
+        19.0608
+       ]
+      },
+      {
+       "angleOut": 47.1,
+       "angleIn": 41.5,
+       "vOut": [
+        9.7666,
+        -0.0001,
+        10.494
+       ],
+       "vnOut": 9.766,
+       "speedOut": 14.336,
+       "speedIn": 16.646,
+       "normal": [
+        1,
+        0,
+        0
+       ],
+       "type": "event",
+       "speedRetention": 0.861,
+       "t": 2.7146,
+       "vtOut": -10.494,
+       "part": "Hole4/House",
+       "event": "contact",
+       "tangentialRetention": 0.952,
+       "shot": "mill-phase0",
+       "vIn": [
+        -12.4743,
+        -0.0001,
+        11.0214
+       ],
+       "vnIn": -12.474,
+       "restitution": 0.783,
+       "vtIn": -11.021,
+       "pos": [
+        113.9001,
+        1.0812,
+        19.98
+       ]
+      },
+      {
+       "angleOut": 52.6,
+       "angleIn": 47.1,
+       "vOut": [
+        -7.222,
+        -0.0001,
+        9.4571
+       ],
+       "vnOut": 7.222,
+       "speedOut": 11.899,
+       "speedIn": 13.542,
+       "normal": [
+        -1,
+        0,
+        0
+       ],
+       "type": "event",
+       "speedRetention": 0.879,
+       "t": 2.965,
+       "vtOut": 9.457,
+       "part": "Hole4/House",
+       "event": "contact",
+       "tangentialRetention": 0.954,
+       "shot": "mill-phase0",
+       "vIn": [
+        9.226,
+        -0.0001,
+        9.9131
+       ],
+       "vnIn": -9.226,
+       "restitution": 0.783,
+       "vtIn": 9.913,
+       "pos": [
+        116.1318,
+        1.08,
+        22.5289
+       ]
+      },
+      {
+       "angleOut": 58.8,
+       "angleIn": 52.6,
+       "vOut": [
+        3.7972,
+        -0.0001,
+        6.2632
+       ],
+       "vnOut": 3.797,
+       "speedOut": 7.324,
+       "speedIn": 8.28,
+       "normal": [
+        1,
+        0,
+        0
+       ],
+       "type": "event",
+       "speedRetention": 0.885,
+       "t": 3.9493,
+       "vtOut": -6.263,
+       "part": "Hole4/Wall",
+       "event": "contact",
+       "tangentialRetention": 0.952,
+       "shot": "mill-phase0",
+       "vIn": [
+        -5.025,
+        -0.0001,
+        6.5812
+       ],
+       "vnIn": -5.025,
+       "restitution": 0.756,
+       "vtIn": -6.581,
+       "pos": [
+        110.1225,
+        1.0798,
+        30.543
+       ]
+      }
+     ],
+     "tEnd": 5.016,
+     "maxAlong": 37.822,
+     "distM": 11.351,
+     "maxY": 1.081,
+     "outcome": "rest",
+     "start": [
+      115,
+      1.079,
+      -1
+     ],
+     "tStop": 4.649,
+     "distStuds": 37.837,
+     "finish": [
+      113.929,
+      1.0792,
+      36.8218
+     ]
+    },
+    {
+     "v0": 17,
+     "speedMps": 5.1,
+     "label": "mill-phase45",
+     "contacts": [],
+     "tEnd": 4.7,
+     "maxAlong": 37.209,
+     "distM": 11.163,
+     "maxY": 1.08,
+     "outcome": "rest",
+     "start": [
+      115,
+      1.0792,
+      -1
+     ],
+     "tStop": 4.35,
+     "distStuds": 37.209,
+     "finish": [
+      115,
+      1.0792,
+      36.2089
+     ]
+    }
+   ],
+   "scenario": "windmill",
+   "cam": ""
+  }
+ },
+ "hill": {
+  "default": {
+   "seconds": 14.03,
+   "shots": [
+    {
+     "v0": 16.667,
+     "madeGreen": true,
+     "speedMps": 5,
+     "label": "hill-strong-5mps",
+     "rolledBack": false,
+     "contacts": [
+      {
+       "angleOut": 30.8,
+       "angleIn": 22.3,
+       "vOut": [
+        -0.1517,
+        0.4609,
+        3.1222
+       ],
+       "vnOut": -2.684,
+       "speedOut": 3.126,
+       "speedIn": 4.214,
+       "normal": [
+        -0.4701,
+        0,
+        -0.8826
+       ],
+       "type": "event",
+       "speedRetention": 0.742,
+       "t": 3.0316,
+       "vtOut": 1.602,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "hill-strong-5mps",
+       "vIn": [
+        0.4185,
+        -0.0001,
+        4.1927
+       ],
+       "vnIn": -3.897,
+       "restitution": 0.689,
+       "vtIn": 1.602,
+       "pos": [
+        77.2432,
+        2.2885,
+        24.6826
+       ]
+      },
+      {
+       "angleOut": 31.1,
+       "angleIn": 24.5,
+       "vOut": [
+        0.1897,
+        -0.6989,
+        2.1005
+       ],
+       "vnOut": -1.806,
+       "speedOut": 2.109,
+       "speedIn": 2.624,
+       "normal": [
+        0.4373,
+        0,
+        -0.8993
+       ],
+       "type": "event",
+       "speedRetention": 0.804,
+       "t": 3.198,
+       "vtOut": -1.089,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "hill-strong-5mps",
+       "vIn": [
+        -0.0644,
+        0.148,
+        2.6229
+       ],
+       "vnIn": -2.387,
+       "restitution": 0.757,
+       "vtIn": -1.089,
+       "pos": [
+        77.2256,
+        2.2931,
+        25.1698
+       ]
+      }
+     ],
+     "endedOnGreen": true,
+     "maxAlong": 25.859,
+     "maxY": 2.323,
+     "tEnd": 3.566,
+     "distStuds": 25.862,
+     "distM": 7.758,
+     "start": [
+      75,
+      1.0791,
+      0
+     ],
+     "outcome": "rest",
+     "tStop": 3.199,
+     "finish": [
+      77.3038,
+      2.2791,
+      25.7588
+     ]
+    },
+    {
+     "v0": 10,
+     "madeGreen": false,
+     "speedMps": 3,
+     "label": "hill-weak-3mps",
+     "rolledBack": true,
+     "contacts": [],
+     "endedOnGreen": false,
+     "maxAlong": 9.495,
+     "maxY": 1.599,
+     "tEnd": 9.501,
+     "distStuds": 5.994,
+     "distM": 1.798,
+     "start": [
+      75,
+      1.0791,
+      0
+     ],
+     "outcome": "rest",
+     "tStop": 1.634,
+     "finish": [
+      75.8569,
+      1.0792,
+      5.9327
+     ]
+    }
+   ],
+   "scenario": "hill",
+   "cam": ""
+  }
+ },
+ "cup": {
+  "default": {
+   "seconds": 14,
+   "shots": [
+    {
+     "v0": 4.333,
+     "speedMps": 1.3,
+     "label": "cup-1.3mps",
+     "contacts": [
+      {
+       "angleOut": 38.8,
+       "angleIn": 25.3,
+       "vOut": [
+        0.3464,
+        -0.4246,
+        1.4443
+       ],
+       "vnOut": -1.158,
+       "speedOut": 1.485,
+       "speedIn": 2.178,
+       "normal": [
+        0.427,
+        0,
+        -0.9043
+       ],
+       "type": "event",
+       "speedRetention": 0.682,
+       "t": 1.0822,
+       "vtOut": -0.93,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-1.3mps",
+       "vIn": [
+        0,
+        -0.0006,
+        2.1779
+       ],
+       "vnIn": -1.969,
+       "restitution": 0.588,
+       "vtIn": -0.93,
+       "pos": [
+        0.0041,
+        1.0899,
+        26.7701
+       ]
+      },
+      {
+       "angleOut": 89.2,
+       "angleIn": 16.7,
+       "vOut": [
+        -0.7568,
+        -0.0001,
+        0.3702
+       ],
+       "vnOut": -0.012,
+       "speedOut": 0.842,
+       "speedIn": 1.667,
+       "normal": [
+        -0.4262,
+        0,
+        -0.9046
+       ],
+       "type": "event",
+       "speedRetention": 0.505,
+       "t": 1.2647,
+       "vtOut": 0.842,
+       "part": "Hole1/CupPlate",
+       "event": "contact",
+       "tangentialRetention": 1.754,
+       "shot": "cup-1.3mps",
+       "vIn": [
+        0.246,
+        -3.9639,
+        1.6492
+       ],
+       "vnIn": -1.597,
+       "restitution": 0.008,
+       "vtIn": 0.48,
+       "pos": [
+        0.0475,
+        0.7676,
+        27.0527
+       ]
+      },
+      {
+       "angleOut": 73.2,
+       "angleIn": 37.9,
+       "vOut": [
+        -0.3283,
+        -0.0001,
+        -0.0533
+       ],
+       "vnOut": -0.096,
+       "speedOut": 0.333,
+       "speedIn": 0.842,
+       "normal": [
+        0.4391,
+        0,
+        -0.8984
+       ],
+       "type": "event",
+       "speedRetention": 0.395,
+       "t": 1.3152,
+       "vtOut": 0.318,
+       "part": "Hole1/CupPlate",
+       "event": "contact",
+       "tangentialRetention": 0.615,
+       "shot": "cup-1.3mps",
+       "vIn": [
+        -0.7568,
+        -0.0001,
+        0.3702
+       ],
+       "vnIn": -0.665,
+       "restitution": 0.145,
+       "vtIn": 0.517,
+       "pos": [
+        0.0105,
+        0.7536,
+        27.0695
+       ]
+      }
+     ],
+     "maxAlong": 2.07,
+     "maxY": 1.096,
+     "outcome": "cup",
+     "rimSpeedMps": 0.446,
+     "rimTime": 0.565,
+     "holed": true,
+     "holedFirstPass": false,
+     "tEnd": 1.014,
+     "distStuds": 2,
+     "rimSpeed": 1.485,
+     "start": [
+      0,
+      1.0791,
+      25
+     ],
+     "distM": 0.6,
+     "tStop": 0.865,
+     "finish": [
+      0,
+      0.73,
+      27
+     ]
+    },
+    {
+     "v0": 5.333,
+     "speedMps": 1.6,
+     "label": "cup-1.6mps",
+     "contacts": [
+      {
+       "angleOut": 35.8,
+       "angleIn": 26.1,
+       "vOut": [
+        0.4835,
+        -0.0907,
+        2.8477
+       ],
+       "vnOut": -2.344,
+       "speedOut": 2.888,
+       "speedIn": 3.833,
+       "normal": [
+        0.4404,
+        0,
+        -0.8978
+       ],
+       "type": "event",
+       "speedRetention": 0.754,
+       "t": 2.4162,
+       "vtOut": -1.688,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-1.6mps",
+       "vIn": [
+        0,
+        -0.0001,
+        3.8331
+       ],
+       "vnIn": -3.441,
+       "restitution": 0.681,
+       "vtIn": -1.688,
+       "pos": [
+        0.0095,
+        1.1042,
+        26.8081
+       ]
+      },
+      {
+       "angleOut": 75.3,
+       "angleIn": 16.1,
+       "vOut": [
+        -0.6301,
+        0.1454,
+        0.5374
+       ],
+       "vnOut": -0.211,
+       "speedOut": 0.828,
+       "speedIn": 2.888,
+       "normal": [
+        -0.4342,
+        0,
+        -0.9008
+       ],
+       "type": "event",
+       "speedRetention": 0.287,
+       "t": 2.5315,
+       "vtOut": 0.801,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-1.6mps",
+       "vIn": [
+        0.4835,
+        -2.424,
+        2.8477
+       ],
+       "vnIn": -2.775,
+       "restitution": 0.076,
+       "vtIn": 0.801,
+       "pos": [
+        0.0489,
+        1.0456,
+        27.1028
+       ]
+      },
+      {
+       "angleOut": 88.4,
+       "angleIn": 33.7,
+       "vOut": [
+        0.6458,
+        0.0141,
+        -0.6796
+       ],
+       "vnOut": -0.026,
+       "speedOut": 0.938,
+       "speedIn": 1.406,
+       "normal": [
+        0.7057,
+        0,
+        0.7085
+       ],
+       "type": "event",
+       "speedRetention": 0.667,
+       "t": 2.7812,
+       "vtOut": 0.937,
+       "part": "Hole1/CupPlate",
+       "event": "contact",
+       "tangentialRetention": 1.203,
+       "shot": "cup-1.6mps",
+       "vIn": [
+        -0.2737,
+        -2.5123,
+        -1.3789
+       ],
+       "vnIn": -1.17,
+       "restitution": 0.022,
+       "vtIn": 0.779,
+       "pos": [
+        -0.0568,
+        0.8517,
+        26.9823
+       ]
+      },
+      {
+       "angleOut": 56.3,
+       "angleIn": 26.7,
+       "vOut": [
+        0.4755,
+        -0.0001,
+        -0.144
+       ],
+       "vnOut": -0.276,
+       "speedOut": 0.497,
+       "speedIn": 0.938,
+       "normal": [
+        -0.2902,
+        0,
+        0.957
+       ],
+       "type": "event",
+       "speedRetention": 0.53,
+       "t": 2.8314,
+       "vtOut": 0.413,
+       "part": "Hole1/CupPlate",
+       "event": "contact",
+       "tangentialRetention": 0.982,
+       "shot": "cup-1.6mps",
+       "vIn": [
+        0.6458,
+        0.0141,
+        -0.6796
+       ],
+       "vnIn": -0.838,
+       "restitution": 0.329,
+       "vtIn": 0.421,
+       "pos": [
+        -0.0316,
+        0.7547,
+        26.9482
+       ]
+      }
+     ],
+     "maxAlong": 2.133,
+     "maxY": 1.118,
+     "outcome": "cup",
+     "rimSpeedMps": 0.866,
+     "rimTime": 0.399,
+     "holed": true,
+     "holedFirstPass": false,
+     "tEnd": 1.016,
+     "distStuds": 2,
+     "rimSpeed": 2.888,
+     "start": [
+      0,
+      1.0791,
+      25
+     ],
+     "distM": 0.6,
+     "tStop": 0.915,
+     "finish": [
+      0,
+      0.73,
+      27
+     ]
+    },
+    {
+     "v0": 6.667,
+     "speedMps": 2,
+     "label": "cup-2mps",
+     "contacts": [
+      {
+       "angleOut": 28.4,
+       "angleIn": 25.8,
+       "vOut": [
+        0.2354,
+        0.1966,
+        5.0784
+       ],
+       "vnOut": -4.471,
+       "speedOut": 5.084,
+       "speedIn": 5.566,
+       "normal": [
+        0.4347,
+        0,
+        -0.9006
+       ],
+       "type": "event",
+       "speedRetention": 0.913,
+       "t": 3.7977,
+       "vtOut": -2.419,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-2mps",
+       "vIn": [
+        0,
+        -0.0001,
+        5.5661
+       ],
+       "vnIn": -5.013,
+       "restitution": 0.892,
+       "vtIn": -2.419,
+       "pos": [
+        0.0027,
+        1.0948,
+        26.8346
+       ]
+      }
+     ],
+     "maxAlong": 5.398,
+     "maxY": 1.118,
+     "outcome": "rest",
+     "rimSpeedMps": 1.525,
+     "rimTime": 0.299,
+     "holed": false,
+     "holedFirstPass": false,
+     "tEnd": 2,
+     "distStuds": 5.4,
+     "rimSpeed": 5.084,
+     "start": [
+      0,
+      1.0791,
+      25
+     ],
+     "distM": 1.62,
+     "tStop": 1.633,
+     "finish": [
+      0.1709,
+      1.0792,
+      30.3977
+     ]
+    },
+    {
+     "v0": 8.333,
+     "speedMps": 2.5,
+     "label": "cup-2.5mps",
+     "contacts": [
+      {
+       "angleOut": 0.1,
+       "angleIn": 0.1,
+       "vOut": [
+        -0.0035,
+        1.079,
+        5.4527
+       ],
+       "vnOut": -5.453,
+       "speedOut": 5.453,
+       "speedIn": 7.429,
+       "normal": [
+        -0.0018,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.734,
+       "t": 6.2478,
+       "vtOut": 0.013,
+       "part": "?",
+       "event": "contact",
+       "shot": "cup-2.5mps",
+       "vIn": [
+        0,
+        -1.3126,
+        7.4294
+       ],
+       "vnIn": -7.429,
+       "restitution": 0.734,
+       "vtIn": 0.013,
+       "pos": [
+        -0.0006,
+        1.0882,
+        27.2079
+       ]
+      }
+     ],
+     "maxAlong": 6.118,
+     "maxY": 1.155,
+     "outcome": "rest",
+     "rimSpeedMps": 2.229,
+     "rimTime": 0.234,
+     "holed": false,
+     "holedFirstPass": false,
+     "tEnd": 2.034,
+     "distStuds": 6.118,
+     "rimSpeed": 7.429,
+     "start": [
+      0,
+      1.0792,
+      25
+     ],
+     "distM": 1.835,
+     "tStop": 1.683,
+     "finish": [
+      -0.0031,
+      1.0792,
+      31.1183
+     ]
+    },
+    {
+     "v0": 10,
+     "speedMps": 3,
+     "label": "cup-3mps",
+     "contacts": [
+      {
+       "angleOut": 35.7,
+       "angleIn": 26.7,
+       "vOut": [
+        1.1122,
+        2.1167,
+        7.0729
+       ],
+       "vnOut": -5.816,
+       "speedOut": 7.16,
+       "speedIn": 9.28,
+       "normal": [
+        0.45,
+        0,
+        -0.893
+       ],
+       "type": "event",
+       "speedRetention": 0.772,
+       "t": 8.6804,
+       "vtOut": -4.176,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-3mps",
+       "vIn": [
+        0,
+        -0.0001,
+        9.28
+       ],
+       "vnIn": -8.287,
+       "restitution": 0.702,
+       "vtIn": -4.176,
+       "pos": [
+        0.0185,
+        1.1382,
+        26.8797
+       ]
+      },
+      {
+       "angleOut": 11.4,
+       "angleIn": 8.3,
+       "vOut": [
+        0.6258,
+        -0.0001,
+        -3.2454
+       ],
+       "vnOut": 3.24,
+       "speedOut": 3.305,
+       "speedIn": 4.526,
+       "normal": [
+        -0.0083,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.73,
+       "t": 9.5305,
+       "vtOut": -0.653,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-3mps",
+       "vIn": [
+        0.6898,
+        -0.0001,
+        4.4729
+       ],
+       "vnIn": -4.479,
+       "restitution": 0.723,
+       "vtIn": -0.653,
+       "pos": [
+        0.8243,
+        1.0796,
+        31.8802
+       ]
+      }
+     ],
+     "maxAlong": 6.938,
+     "maxY": 1.278,
+     "outcome": "rest",
+     "rimSpeedMps": 2.148,
+     "rimTime": 0.2,
+     "holed": false,
+     "holedFirstPass": false,
+     "tEnd": 2.3,
+     "distStuds": 5.451,
+     "rimSpeed": 7.16,
+     "start": [
+      0,
+      1.0791,
+      25
+     ],
+     "distM": 1.635,
+     "tStop": 1.933,
+     "finish": [
+      1.1225,
+      1.0792,
+      30.3341
+     ]
+    },
+    {
+     "v0": 13.333,
+     "speedMps": 4,
+     "label": "cup-4mps",
+     "contacts": [
+      {
+       "angleOut": 0.7,
+       "angleIn": 0.6,
+       "vOut": [
+        -0.0951,
+        -0.0001,
+        -7.8843
+       ],
+       "vnOut": 7.884,
+       "speedOut": 7.885,
+       "speedIn": 10.146,
+       "normal": [
+        0,
+        0,
+        -1
+       ],
+       "type": "event",
+       "speedRetention": 0.777,
+       "t": 11.8644,
+       "vtOut": 0.095,
+       "part": "Hole1/Wall",
+       "event": "contact",
+       "shot": "cup-4mps",
+       "vIn": [
+        -0.102,
+        -0.0001,
+        10.1451
+       ],
+       "vnIn": -10.145,
+       "restitution": 0.777,
+       "vtIn": 0.102,
+       "pos": [
+        -0.049,
+        1.0816,
+        31.8685
+       ]
+      },
+      {
+       "angleOut": 37,
+       "angleIn": 27.9,
+       "vOut": [
+        0.6088,
+        0.7335,
+        -4.1127
+       ],
+       "vnOut": -3.322,
+       "speedOut": 4.157,
+       "speedIn": 5.351,
+       "normal": [
+        0.4779,
+        0,
+        0.8784
+       ],
+       "type": "event",
+       "speedRetention": 0.777,
+       "t": 12.5636,
+       "vtOut": 2.5,
+       "part": "?",
+       "event": "contact",
+       "tangentialRetention": 1,
+       "shot": "cup-4mps",
+       "vIn": [
+        -0.0645,
+        -0.0001,
+        -5.3503
+       ],
+       "vnIn": -4.731,
+       "restitution": 0.702,
+       "vtIn": 2.5,
+       "pos": [
+        -0.1005,
+        1.092,
+        27.1825
+       ]
+      }
+     ],
+     "maxAlong": 6.869,
+     "maxY": 1.208,
+     "outcome": "rest",
+     "rimSpeedMps": 3.839,
+     "rimTime": 0.133,
+     "holed": false,
+     "holedFirstPass": false,
+     "tEnd": 2.768,
+     "distStuds": 0.443,
+     "rimSpeed": 12.797,
+     "start": [
+      0,
+      1.0791,
+      25
+     ],
+     "distM": 0.133,
+     "tStop": 2.417,
+     "finish": [
+      0.2829,
+      1.0791,
+      24.6595
+     ]
+    }
+   ],
+   "scenario": "cup",
+   "cam": ""
+  }
+ },
+ "ledge": {
+  "default": {
+   "ok": false,
+   "seconds": 4.53,
+   "scenario": "ledge",
+   "cam": "",
+   "cases": [
+    {
+     "ballMoved": 0,
+     "charFeetY": 0.4673,
+     "rigFloorY": 0.0041,
+     "label": "h1-ball-at-wall",
+     "charDelta": -0.5318,
+     "headTarget": [
+      4.35,
+      1.034,
+      8
+     ],
+     "t": 1.5138,
+     "event": "ledge",
+     "type": "event",
+     "headPos": [
+      4.35,
+      1.565,
+      8
+     ],
+     "ballPlaneY": 0.999,
+     "rigDelta": -0.9949,
+     "ok": false,
+     "headBottomY": 1.51,
+     "headDelta": 0.511
+    },
+    {
+     "ballMoved": 0,
+     "charFeetY": 0.6594,
+     "rigFloorY": 0.0043,
+     "label": "h1-stance-on-wall",
+     "charDelta": -0.3397,
+     "headTarget": [
+      4.3,
+      1.034,
+      8.2
+     ],
+     "t": 3.0322,
+     "event": "ledge",
+     "type": "event",
+     "headPos": [
+      4.3,
+      1.565,
+      8.2
+     ],
+     "ballPlaneY": 0.999,
+     "rigDelta": -0.9947,
+     "ok": false,
+     "headBottomY": 1.51,
+     "headDelta": 0.511
+    },
+    {
+     "ballMoved": 0,
+     "charFeetY": 1.7635,
+     "rigFloorY": 0,
+     "label": "h3-green-edge",
+     "charDelta": -0.4356,
+     "headTarget": [
+      68.6,
+      2.234,
+      22.3
+     ],
+     "t": 4.5305,
+     "event": "ledge",
+     "type": "event",
+     "headPos": [
+      68.6,
+      2.765,
+      22.3
+     ],
+     "ballPlaneY": 2.199,
+     "rigDelta": -2.199,
+     "ok": false,
+     "headBottomY": 2.71,
+     "headDelta": 0.511
+    }
+   ]
+  }
+ },
+ "ghost": {
+  "default": {
+   "post": {
+    "ballMoved": 0,
+    "type": "event",
+    "label": "through-post",
+    "t": 4.4316,
+    "event": "sweep",
+    "clubParts": {
+     "Sight": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Head": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Shaft": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Grip": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     }
+    },
+    "clubPartsGhost": true,
+    "maxFollowError": 4.0162,
+    "maxLift": 8.9772,
+    "ok": false,
+    "hits": 0
+   },
+   "swing": {
+    "ok": true,
+    "type": "event",
+    "source": "vr",
+    "expectedSpeed": 6.8,
+    "t": 7.8475,
+    "event": "swing",
+    "distM": 1.84,
+    "ballSpeed": 6.799,
+    "hit": true,
+    "outcome": "rest"
+   },
+   "scenario": "ghost",
+   "cam": "",
+   "wall": {
+    "ballMoved": 0,
+    "type": "event",
+    "label": "through-wall",
+    "t": 2.1144,
+    "event": "sweep",
+    "clubParts": {
+     "Sight": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Head": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Shaft": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Grip": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     }
+    },
+    "clubPartsGhost": true,
+    "maxFollowError": 2.7785,
+    "maxLift": 8.9839,
+    "ok": false,
+    "hits": 0
+   },
+   "seconds": 7.85,
+   "ok": false
+  }
+ }
+}

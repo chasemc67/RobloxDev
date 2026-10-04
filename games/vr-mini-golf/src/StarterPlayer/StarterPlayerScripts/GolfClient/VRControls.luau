@@ -35,6 +35,7 @@ local VR = {}
 
 -- real-ish blade putter: 3.3 cm thick, 3.3 cm tall, 12.6 cm toe-to-heel
 local HEAD_SIZE = Vector3.new(0.11, 0.11, 0.42) -- X = face thickness, Y = height, Z = toe-to-heel
+local TIP_OFFSET = 0
 local HIT_COOLDOWN = 0.6
 local REACH_EXTRA = 0.5 -- the shaft may stretch this much (15 cm) to keep the head on the ground
 local TELEPORT_SPEED = 22 -- ~6.5 m max reach
@@ -600,15 +601,10 @@ function VR.start(Ball, HUD, simulate)
 						break
 					end
 					n = n.Unit
-					local v = headVelocity()
-					local u = v:Dot(n)
-					if u >= Config.VRMinHitSpeed then
-						local tangential = flat(v - n * u)
-						local ballVel = n * u * Config.VRHitMultiplier + tangential * Config.VRTangentialTransfer
-						if Ball.hit(ballVel) then
-							cooldownUntil = now + HIT_COOLDOWN
-							haptic(math.clamp(0.25 + ballVel.Magnitude / 20, 0.25, 1), 0.08)
-						end
+					local ballVel = Ball.clubImpulse(n, headVelocity())
+					if ballVel and Ball.hit(ballVel, "vr") then
+						cooldownUntil = now + HIT_COOLDOWN
+						haptic(math.clamp(0.25 + ballVel.Magnitude / 20, 0.25, 1), 0.08)
 					end
 					break
 				end
@@ -681,6 +677,29 @@ function VR.start(Ball, HUD, simulate)
 			headVel = headVelocity(),
 		}
 	end
+
+	-- Hooks for the Studio test harness (GolfClient.GolfTest, SimulateVR only).
+	VR.test = {
+		putter = putter,
+		headSize = HEAD_SIZE,
+		getOrigin = function()
+			return origin
+		end,
+		placeHead = placeHead,
+		-- Club-hand world CFrame that puts the putter head centre at `headPos` with the shaft straight down
+		-- and the face pointing along `faceDir` (flat).
+		handCFrameFor = function(headPos: Vector3, faceDir: Vector3)
+			local right = flat(faceDir).Unit
+			local back = Vector3.yAxis
+			local clubRot = CFrame.fromMatrix(Vector3.zero, right, back:Cross(right), back)
+			local handRot = clubRot * clubOffset.Rotation:Inverse()
+			local tip = handRot:VectorToWorldSpace(Vector3.new(0, 0, -TIP_OFFSET))
+			return CFrame.new(headPos - tip - clubRot.LookVector * clubLength) * handRot
+		end,
+		toLocal = function(worldCF: CFrame)
+			return (origin * CFrame.new(0, -floorOffsetY, 0)):Inverse() * worldCF
+		end,
+	}
 end
 
 return VR

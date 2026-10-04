@@ -38,6 +38,11 @@ local colorIndex = 0
 
 local states = {} -- [Player] = state
 
+-- st.testHole is only set by the Studio test harness (GolfServer.GolfTestServer).
+local function holeOf(st)
+	return st.testHole or holes[st.hole]
+end
+
 local function teePosition(hole)
 	local tee = hole:FindFirstChild("Tee")
 	local surfaceY = tee.Position.Y - tee.Size.Y / 2
@@ -72,7 +77,7 @@ local function placeBall(player, st, pos, reason)
 	if player.Parent then
 		ball:SetNetworkOwner(player)
 	end
-	Remotes.BallPlaced:FireClient(player, pos, reason, st.hole)
+	Remotes.BallPlaced:FireClient(player, pos, reason, st.testHole and 0 or st.hole)
 end
 
 local function startHole(player, st, index)
@@ -86,7 +91,7 @@ end
 
 local function finishHole(player, st, maxed)
 	st.sunk = true
-	local hole = holes[st.hole]
+	local hole = holeOf(st)
 	local strokes = st.strokes[st.hole]
 	if maxed then
 		strokes = Config.MaxStrokes
@@ -211,7 +216,7 @@ Remotes.Stroke.OnServerEvent:Connect(function(player, startPos)
 		return
 	end
 	st.lastStroke = now
-	if typeof(startPos) ~= "Vector3" or (startPos - st.ball.Position).Magnitude > 4 or not inBounds(holes[st.hole], startPos) then
+	if typeof(startPos) ~= "Vector3" or (startPos - st.ball.Position).Magnitude > 4 or not inBounds(holeOf(st), startPos) then
 		startPos = st.ball.Position
 	end
 	st.lastPos = startPos
@@ -252,13 +257,23 @@ Remotes.PlayAgain.OnServerEvent:Connect(function(player)
 	startHole(player, st, 1)
 end)
 
+-- Studio-only playtest harness: off unless workspace.GolfTestMode is set before pressing Play.
+if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
+	require(script:WaitForChild("GolfTestServer")).init({
+		states = states,
+		holes = holes,
+		publish = publish,
+		placeBall = placeBall,
+	})
+end
+
 -- Watch every ball for sinking / leaving the course.
 RunService.Heartbeat:Connect(function()
 	for player, st in states do
 		if not st.started or st.sunk or st.resetting or st.finished or st.ball.Anchored then
 			continue
 		end
-		local hole = holes[st.hole]
+		local hole = holeOf(st)
 		local pos = st.ball.Position
 		local cup = hole:FindFirstChild("Cup")
 		local flat = Vector3.new(pos.X - cup.Position.X, 0, pos.Z - cup.Position.Z).Magnitude

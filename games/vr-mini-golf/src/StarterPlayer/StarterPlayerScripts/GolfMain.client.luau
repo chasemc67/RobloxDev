@@ -1,5 +1,6 @@
 -- GolfMain: client entry point. Picks VR or touch/mouse controls.
 local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local VRService = game:GetService("VRService")
 local GuiService = game:GetService("GuiService")
@@ -61,10 +62,17 @@ Ball.init()
 HUD.init(isVR or simulateVR, Ball)
 Spinners.start()
 
+local VR
 if isVR or simulateVR then
-	require(modules.VRControls).start(Ball, HUD, simulateVR)
+	VR = require(modules.VRControls)
+	VR.start(Ball, HUD, simulateVR)
 else
 	require(modules.TouchControls).start(Ball, HUD)
+end
+
+-- Studio-only playtest harness (see games/vr-mini-golf/playtesting.md)
+if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
+	require(modules.GolfTest).start(Ball, HUD, VR, simulateVR)
 end
 
 Remotes.Ready:FireServer()

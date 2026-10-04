@@ -22,7 +22,13 @@ return {
 	VRMoveSpeed = 6.5, -- thumbstick walk speed, studs/s (~2 m/s)
 	VRSnapTurnDegrees = 30,
 	VRStanceDistance = 1.5, -- warp-to-ball puts your head this far from the ball (45 cm)
-	VRClubAngle = 0, -- degrees to tilt the shaft away from the controller's pointing direction
+	-- Club mount. Assumes the hand UserCFrame LookVector is the controller's pointing axis (the axis Roblox's
+	-- own VR laser pointer uses). The shaft starts VRClubTipOffset studs in front of the hand origin, at the
+	-- tip of the controller, and runs along LookVector pitched by VRClubAngle (degrees, + tilts toward the
+	-- controller's top). See games/vr-mini-golf/playtesting.md.
+	VRClubAngle = 0,
+	VRClubTipOffset = 0.2, -- 6 cm
+	VRPlaneRange = 12, -- within this many studs of the ball, the putter head and your floor use the ball's plane
 	VRGripToPutt = false, -- Walkabout's optional mode: putter is only solid while you hold grip
 
 	-- Rules
