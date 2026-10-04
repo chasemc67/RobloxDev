@@ -7,7 +7,7 @@
    "parent": "HumanoidRootPart",
    "pivot": [
     0,
-    5.4,
+    5.0,
     0
    ],
    "rot": [
@@ -23,7 +23,7 @@
    "parent": "Torso",
    "pivot": [
     0,
-    6.95,
+    6.5,
     0
    ],
    "rot": [
@@ -38,8 +38,8 @@
    "part": "GunArm",
    "parent": "Torso",
    "pivot": [
-    1.3,
-    6.55,
+    1.25,
+    6.05,
     0
    ],
    "rot": [
@@ -54,8 +54,8 @@
    "part": "BombArm",
    "parent": "Torso",
    "pivot": [
-    -1.3,
-    6.55,
+    -1.25,
+    6.05,
     0
    ],
    "rot": [
@@ -70,9 +70,9 @@
    "part": "LegR",
    "parent": "Torso",
    "pivot": [
-    0.5,
-    4.4,
-    0
+    0.38,
+    3.4,
+    0.1
    ],
    "rot": [
     0,
@@ -86,9 +86,9 @@
    "part": "LegL",
    "parent": "Torso",
    "pivot": [
-    -0.5,
-    4.4,
-    0
+    -0.38,
+    3.4,
+    0.1
    ],
    "rot": [
     0,
@@ -103,8 +103,8 @@
    "parent": "Torso",
    "pivot": [
     0,
-    6.2,
-    0.75
+    6.3,
+    0.5
    ],
    "rot": [
     0,
@@ -119,7 +119,7 @@
    "parent": "Torso",
    "pivot": [
     0,
-    4.3,
+    3.3,
     0.6
    ],
    "rot": [
@@ -128,47 +128,31 @@
     0
    ],
    "anim": "wobble"
-  },
-  {
-   "name": "WispJoint",
-   "part": "Wisps",
-   "parent": "Torso",
-   "pivot": [
-    0,
-    7.2,
-    0.2
-   ],
-   "rot": [
-    0,
-    0,
-    0
-   ],
-   "anim": "orbit"
   }
  ],
  "attachments": {
   "GunTip": {
    "part": "GunArm",
    "pos": [
-    1.8,
-    5.25,
-    -3.45
+    1.85,
+    4.75,
+    -3.7
    ]
   },
   "BombTip": {
    "part": "BombArm",
    "pos": [
-    -1.75,
-    5.3,
-    -1.2
+    -1.85,
+    4.75,
+    -1.7
    ]
   },
   "PodTip": {
-   "part": "Pod",
+   "part": "BombArm",
    "pos": [
-    0,
-    7.2,
-    1.05
+    -1.85,
+    4.75,
+    -1.8
    ]
   }
  },
@@ -193,18 +177,6 @@
    "limb": "GunArm",
    "glow": true
   },
-  "BombArmGlow": {
-   "limb": "BombArm",
-   "glow": true
-  },
-  "LegR": {
-   "limb": "LegR",
-   "glow": false
-  },
-  "LegL": {
-   "limb": "LegL",
-   "glow": false
-  },
   "LegRGlow": {
    "limb": "LegR",
    "glow": true
@@ -213,33 +185,30 @@
    "limb": "LegL",
    "glow": true
   },
-  "Pod": {
-   "limb": "Pod",
-   "glow": false
-  },
   "TailsGlow": {
    "limb": "Tails",
    "glow": true
   },
-  "WispsGlow": {
-   "limb": "Wisps",
+  "Pod": {
+   "limb": "Pod",
+   "glow": false
+  },
+  "PodGlow": {
+   "limb": "Pod",
    "glow": true
   }
  },
- "tris": 10120,
+ "tris": 13038,
  "part_tris": {
-  "Torso": 1688,
-  "Head": 2142,
-  "GunArm": 1634,
-  "BombArm": 1532,
-  "GunArmGlow": 232,
-  "BombArmGlow": 120,
-  "LegR": 324,
-  "LegL": 324,
-  "LegRGlow": 60,
-  "LegLGlow": 60,
-  "Pod": 972,
-  "TailsGlow": 780,
-  "WispsGlow": 252
+  "Torso": 2360,
+  "Head": 2432,
+  "GunArm": 2640,
+  "BombArm": 2232,
+  "GunArmGlow": 200,
+  "LegRGlow": 200,
+  "LegLGlow": 200,
+  "TailsGlow": 176,
+  "Pod": 2388,
+  "PodGlow": 210
  }
 }

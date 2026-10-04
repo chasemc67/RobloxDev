@@ -115,7 +115,12 @@ function Builder.Build(def, rig)
 		v.CanQuery = false
 		v.CanTouch = false
 		v.CollisionFidelity = Enum.CollisionFidelity.Box
-		v.Color = Color3.new(1, 1, 1)
+		-- Neon blooms pale vertex colours to white; GlowTint (Color3 or {Default=, <Limb>=}) keeps them saturated.
+		local tint = info.Glow and def.GlowTint or nil
+		if typeof(tint) == "table" then
+			tint = tint[info.Limb] or tint.Default
+		end
+		v.Color = tint or Color3.new(1, 1, 1)
 		v.Material = info.Glow and Enum.Material.Neon or Enum.Material.SmoothPlastic
 		v.CastShadow = not info.Glow
 		v.Transparency = 0

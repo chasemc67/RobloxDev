@@ -200,8 +200,9 @@ class Builder:
             bm = bmesh.new()
             vs = [bm.verts.new(p) for p in points]
             res = bmesh.ops.convex_hull(bm, input=vs)
-            bmesh.ops.delete(bm, geom=[g for g in res.get("geom_interior", []) + res.get("geom_unused", [])
-                                       if isinstance(g, bmesh.types.BMVert)], context='VERTS')
+            drop = {g for g in res.get("geom_interior", []) + res.get("geom_unused", [])
+                    if isinstance(g, bmesh.types.BMVert)}
+            bmesh.ops.delete(bm, geom=list(drop), context='VERTS')
             bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
             if bevel > 0:
                 self._bevel(bm, bevel, 2)

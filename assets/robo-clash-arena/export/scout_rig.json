@@ -7,7 +7,7 @@
    "parent": "HumanoidRootPart",
    "pivot": [
     0,
-    4.6,
+    4.3,
     0
    ],
    "rot": [
@@ -23,7 +23,7 @@
    "parent": "Torso",
    "pivot": [
     0,
-    6.25,
+    5.75,
     0
    ],
    "rot": [
@@ -38,8 +38,8 @@
    "part": "GunArm",
    "parent": "Torso",
    "pivot": [
-    1.55,
-    5.85,
+    1.35,
+    5.3,
     0
    ],
    "rot": [
@@ -54,8 +54,8 @@
    "part": "BombArm",
    "parent": "Torso",
    "pivot": [
-    -1.55,
-    5.85,
+    -1.35,
+    5.3,
     0
    ],
    "rot": [
@@ -70,8 +70,8 @@
    "part": "LegR",
    "parent": "Torso",
    "pivot": [
-    0.7,
-    3.75,
+    0.62,
+    3.85,
     0
    ],
    "rot": [
@@ -86,8 +86,8 @@
    "part": "LegL",
    "parent": "Torso",
    "pivot": [
-    -0.7,
-    3.75,
+    -0.62,
+    3.85,
     0
    ],
    "rot": [
@@ -103,8 +103,8 @@
    "parent": "Torso",
    "pivot": [
     0,
-    5.4,
-    0.95
+    5.5,
+    0.8
    ],
    "rot": [
     0,
@@ -118,33 +118,33 @@
   "GunTip": {
    "part": "GunArm",
    "pos": [
-    1.65,
-    4.65,
-    -3.0
+    2.0,
+    4.4,
+    -2.75
    ]
   },
   "GunTip2": {
-   "part": "BombArm",
+   "part": "GunArm",
    "pos": [
-    -1.65,
-    4.65,
-    -3.0
+    2.0,
+    3.9000000000000004,
+    -2.75
    ]
   },
   "BombTip": {
    "part": "BombArm",
    "pos": [
-    -1.65,
-    5.15,
-    -1.2
+    -2.0,
+    4.2,
+    -1.75
    ]
   },
   "PodTip": {
-   "part": "Pod",
+   "part": "BombArm",
    "pos": [
-    0,
-    6.1,
-    1.5
+    -2.0,
+    4.2,
+    -1.85
    ]
   }
  },
@@ -152,10 +152,6 @@
   "Torso": {
    "limb": "Torso",
    "glow": false
-  },
-  "TorsoGlow": {
-   "limb": "Torso",
-   "glow": true
   },
   "Head": {
    "limb": "Head",
@@ -206,21 +202,20 @@
    "glow": true
   }
  },
- "tris": 11476,
+ "tris": 11980,
  "part_tris": {
-  "Torso": 1408,
-  "TorsoGlow": 168,
-  "Head": 1848,
-  "HeadGlow": 108,
-  "GunArm": 1896,
-  "BombArm": 1896,
-  "GunArmGlow": 240,
-  "BombArmGlow": 240,
-  "LegR": 1232,
-  "LegL": 1232,
-  "LegRGlow": 116,
-  "LegLGlow": 116,
-  "Pod": 776,
-  "PodGlow": 200
+  "Torso": 1400,
+  "Head": 2220,
+  "HeadGlow": 40,
+  "GunArm": 1340,
+  "BombArm": 1372,
+  "GunArmGlow": 280,
+  "BombArmGlow": 320,
+  "LegR": 1638,
+  "LegL": 1638,
+  "LegRGlow": 72,
+  "LegLGlow": 72,
+  "Pod": 1500,
+  "PodGlow": 88
  }
 }
