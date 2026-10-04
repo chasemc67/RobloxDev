@@ -50,6 +50,8 @@
 
 - 19:20 PT: Audience set to **PUBLIC** (Configure > Audience > Public > Save, via Codex; free, no fees paid or enrolled). Dashboard reload shows Public; Audience reach "Current reach" = "Ages 16+ and trusted friends". Signed-out check: games API returns name "Robo Clash Arena" (not Title Unavailable), creator MetavrseBuilder, server size 50. Page: https://www.roblox.com/games/99842799688877 (Maturity: Mild, Ages 16+, Play button). Screenshot: logs/public.jpg (local, gitignored). Thumbnail/icon still the Roblox default.
 
+- 19:45 PT: Phase 3 started: re-theme to Chase's picked concept art (Scout C01, Kitsune R05, Aero C05 replace Bolt/Crusher/Lancer; S04 Homework Desk arena). Blender models + 3D Importer via Codex. Prompt: prompts/phase3-retheme.md, log: logs/opus-phase3.log. Concepts: assets/robo-clash-arena/concepts/.
+
 ## TODO
 - Add an icon (512x512) and thumbnails (16:9) on the dashboard.
 - Under-16 reach (Kids/Select) unlocks after 250 highly engaged 16+ players in 60 days, or with Plus/Premium for 2 months, or the refundable 1,000 Robux fee (not paid).
