@@ -1,0 +1,10 @@
+READ-ONLY investigation using the cua_repl computer-use MCP in the signed-in Chrome browser on this Mac. Do NOT click any Pay, Enroll, Subscribe, Verify, Save or Submit buttons. Do NOT change any setting. Don't interact with Chrome's own "Verify it's you" profile badge. Don't touch the Roblox Studio window (another agent is using it). Only navigate, scroll, open dropdowns to read their options (then press Escape), and take screenshots. Save screenshots as PNGs in ~/src/RobloxDev/games/robo-clash-arena/logs/screens/aud-*.png if possible.
+
+Pages to read fully (scroll to the bottom of each):
+1. https://create.roblox.com/dashboard/creations/experiences/10769245121/audience-reach : copy every section's text verbatim (requirements checklist, statuses like "Not submitted", fee amounts, which audience each requirement is for).
+2. The experience's Settings/Audience page (try https://create.roblox.com/dashboard/creations/experiences/10769245121/configure and look for "Audience", or the left nav Audience > Access/Settings). Open the Audience dropdown/radio list and report ALL options exactly (e.g. Private, Limited > Playtesters / Friends, Public 16+, Public all ages) and whether any are greyed out/locked and why (tooltips). Don't save.
+3. Collaborators / Access / Permissions page for the experience (left nav, e.g. "Collaborators" or "Access"): report what kinds of access can be granted (Edit, Playtest) and whether it needs a username.
+4. https://www.roblox.com/my/account#!/info and its "Eligibility" or "Publishing permissions" tab (or https://www.roblox.com/my/account#!/eligibility if it exists): report age-check/ID verification status, 2FA status, Premium/Plus status, and which publishing tiers are unlocked. Don't start any verification.
+5. Robux balance shown in the top bar of roblox.com (just read the number).
+6. Open https://www.roblox.com/games/99842799688877 and report what it shows for the owner (Play button? "Private" label?).
+Report all findings verbatim and concisely at the end.
