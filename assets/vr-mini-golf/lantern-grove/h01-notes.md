@@ -18,21 +18,25 @@ Gentle ramp + 45-degree deflector bank onto an offset green.
 Brute-force search from the tee found ace lines (43 grid shots). The most robust: aim **244.3°** (atan2(dz,dx): direction (-0.43, -0.90) in x/z, i.e. 25.7° left of straight -Z), speed **19.8 studs/s** (100% power). The red dashed line on the layout PNG traces it.
 
 ## Challenge
-Teaches the course's two basics: pace up a ramp, and reading a bank. The cup sits in the shadow of the lane corner, so you can't see a straight line to it from the tee. The safe play is a two-putt off the deflector.
+Teaches the course's two basics: pace up a ramp, and reading a bank. The cup sits in the shadow of the lane corner, so there is no straight putt to it from the tee, but its 7.5-stud flag is visible over the rails. The safe play is a two-putt off the deflector.
 
 ## Moving parts / teleports (exact specs, also in holes.json)
 - none
 
-## Playtest stats (final, p4, 2000 plays per skill)
+## Flag and sightline
+Flag: 7.5-stud pole (0.15 diameter) standing in the cup, [2.0, 1.2, 0.05] #e03c31 banner at the top [-9.5, 8.0, -26.5]; visual only, no collision. Line of sight from the tee eye (5.5 studs above the tee) to the flag top: **visible** (min clearance over rails/felt/props +3.80 studs).
+
+## Playtest stats (final, r5b, 2000 plays per skill)
 | Skill | Avg strokes | HIO | Capped (8) | Strokes 1..8 |
 |---|---|---|---|---|
 | good | 2.02 | 0.7% | 0.0% | [14, 1935, 51, 0, 0, 0, 0, 0] |
 | average | 2.45 | 0.0% | 0.0% | [0, 1160, 784, 56, 0, 0, 0, 0] |
 
 ## Props for 3D Model Bot (decoration only, sizes in studs)
-Lantern torii gate 9x7x1.2 (P1); 2 paper lanterns L (P1); welcome sign post 2x3x0.4 (P2); red maple 10x16x10 (P2); mossy boulder 4x3x4 (P2); deflector plank cladding along the `deflector` wall 10x1x0.5 (P1); leaf piles (P3).
+Lantern torii gate 9x7x1.2 (P1); 2 paper lanterns L (P1); welcome sign post 2x3x0.4 (P2); red maple 10x16x10 (P2); mossy boulder 4x3x4 (P2); deflector plank cladding along the `deflector` wall 10x1x0.5 (P1); leaf piles (P3); flag 7.5 (P1).
 
 Decoration anchors (position in hole-local studs):
+- `cup_flag` at [-9.5, 0.5, -26.5] size [2.0, 7.5, 0.15]: Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision
 - `lantern_gate` at [0, 0.25, -21] (LANDMARK) size [9, 7, 1.2]: Torii-style timber arch over the ramp, 2 paper lanterns hanging inside
 - `mossy_boulder` at [-8, 0.5, -21] size [4, 3, 4]: Big mossy boulder outside the green's front-left rail
 - `welcome_sign` at [-6, 0, 1] size [2, 3, 0.4]: Carved 'Lantern Grove - Hole 1' sign post

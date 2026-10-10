@@ -26,6 +26,19 @@ local SKIP_PROPS = {
 	water_surface = true,
 }
 
+-- Treeline cards: the 3D Importer flattens their PNG alpha, so the alpha-cut texture (models/textures/card_*.png,
+-- uploaded 2026-10-10 with the Studio MCP upload_image) goes on as a SurfaceAppearance with AlphaMode Transparency.
+local CARD_TEXTURES = {
+	treeline_card_red = "rbxassetid://79137228052052",
+	treeline_card_gold = "rbxassetid://119241826373121",
+}
+
+-- hero meshes that stand in for part-built CourseBuilder visuals (hidden, not deleted: a rebuild recreates them)
+local REPLACES = {
+	["^cup_flag_h"] = { "Flag", "FlagPole" },
+	["^h5_respawn_stone$"] = { "RespawnStone" },
+}
+
 local function data()
 	return require(ServerStorage.CourseData.PropPlacements:Clone())
 end
@@ -98,7 +111,8 @@ function PropsBuilder.PrepareLibrary(sources)
 		-- find the prop's root anywhere in the imported bundles
 		local root
 		for _, src in sources do
-			root = src:FindFirstChild(name, true)
+			-- a bundle holds many props; a single-prop FBX import is a Model named after the prop itself
+			root = src.Name == name and src or src:FindFirstChild(name, true)
 			if root then
 				break
 			end
@@ -130,17 +144,37 @@ function PropsBuilder.PrepareLibrary(sources)
 		model.Name = name
 		for _, p in parts do
 			p.Parent = model
-			if p:IsA("MeshPart") then
+			local key = meshKey(p.Name)
+			-- flat manifest colours everywhere, except the treeline cards: their alpha-cut texture IS the shape
+			local card = string.find(key, "__Card") ~= nil
+			if p:IsA("MeshPart") and not card then
 				for _, sa in p:GetChildren() do
 					if sa:IsA("SurfaceAppearance") then
 						sa:Destroy()
 					end
 				end
 				p.TextureID = ""
+			elseif card then
+				for _, sa in p:GetChildren() do
+					if sa:IsA("SurfaceAppearance") then
+						sa:Destroy()
+					end
+				end
+				if p:IsA("MeshPart") and CARD_TEXTURES[name] then
+					p.TextureID = ""
+					local sa = Instance.new("SurfaceAppearance")
+					sa.ColorMap = CARD_TEXTURES[name]
+					sa.AlphaMode = Enum.AlphaMode.Transparency
+					sa.Parent = p
+				end
+				report.cards = (report.cards or 0) + 1
 			end
-			local key = meshKey(p.Name)
 			local spec = d.parts[key] or d.parts[(string.gsub(key, "_[%a]+$", ""))]
-			if spec then
+			if spec and card then
+				-- textured: keep the texture's own colours (Color tints a MeshPart texture)
+				p.Color = Color3.new(1, 1, 1)
+				p.CastShadow = false
+			elseif spec then
 				p.Color = Color3.fromHex(spec.color)
 				p.Material = Enum.Material[spec.material] or Enum.Material.SmoothPlastic
 				p.Transparency = spec.transparency or 0
@@ -154,15 +188,57 @@ function PropsBuilder.PrepareLibrary(sources)
 		local cf, size = model:GetBoundingBox()
 		local want = Vector3.new(table.unpack(info.bbox))
 		local k = size.Y / math.max(want.Y, 1e-3)
-		if math.abs(k - 1) > 0.05 then
+		-- (flat props, e.g. decals 0.01 thick, come in at Studio's minimum part thickness: no height check)
+		if want.Y > 0.3 and math.abs(k - 1) > 0.05 then
 			-- importer unit mismatch (FBX header says metres): undo it
 			model:ScaleTo(1 / k)
 			cf, size = model:GetBoundingBox()
 			table.insert(report.scale, string.format("%s x%.3f", name, k))
 		end
-		local origin = cf.Position - Vector3.new(table.unpack(info.center))
-		model.WorldPivot = CFrame.new(origin)
-		model:PivotTo(CFrame.new())
+		-- single-file imports (no library grid): fit the importer's turn about Y + the origin from the per-mesh centres
+		-- (the 3D Importer turns these 180 degrees too); bundles: origin from the whole-prop bbox centre
+		local fitted = false
+		if not root:FindFirstAncestorWhichIsA("Model") or not d.library[(root:FindFirstAncestorWhichIsA("Model") :: Model).Name] then
+			local best, bestYaw, bestT = math.huge, 0, Vector3.zero
+			for _, yaw in { 0, 90, 180, 270 } do
+				local rot = CFrame.Angles(0, math.rad(yaw), 0)
+				local sum, n = Vector3.zero, 0
+				for _, p in parts do
+					local ps = d.parts[meshKey(p.Name)]
+					if ps and ps.center then
+						sum += p.Position - rot * Vector3.new(table.unpack(ps.center))
+						n += 1
+					end
+				end
+				if n >= 2 then
+					local t = sum / n
+					local err = 0
+					for _, p in parts do
+						local ps = d.parts[meshKey(p.Name)]
+						if ps and ps.center then
+							err += (p.Position - (t + rot * Vector3.new(table.unpack(ps.center)))).Magnitude
+						end
+					end
+					if err / n < best then
+						best, bestYaw, bestT = err / n, yaw, t
+					end
+				end
+			end
+			if best < 0.05 then
+				local toLocal = (CFrame.new(bestT) * CFrame.Angles(0, math.rad(bestYaw), 0)):Inverse()
+				for _, p in parts do
+					p.CFrame = toLocal * p.CFrame
+				end
+				model.WorldPivot = CFrame.new()
+				report.turned[name] = bestYaw
+				fitted = true
+			end
+		end
+		if not fitted then
+			local origin = cf.Position - Vector3.new(table.unpack(info.center))
+			model.WorldPivot = CFrame.new(origin)
+			model:PivotTo(CFrame.new())
+		end
 		model:SetAttribute("Tris", info.tris)
 		model:SetAttribute("Kind", info.kind)
 		model.Parent = lib
@@ -374,7 +450,7 @@ function PropsBuilder.Place(course)
 				skip("missing:" .. pl.prop)
 				continue
 			end
-			local motion = info and info.motion
+			local motion = pl.motion or (info and info.motion)
 			if motion then
 				-- ride on the physics mover (phase-locked to the spec on the server): weld, massless, no collision
 				local mover
@@ -410,6 +486,23 @@ function PropsBuilder.Place(course)
 				rep.moving += 1
 			else
 				m.Parent = folder
+				-- a mesh that replaces a part-built stand-in (CourseBuilder's flag, the H5 respawn stone)
+				for pat, standIns in REPLACES do
+					if string.find(pl.prop, pat) then
+						for _, sn in standIns do
+							for _, x in h:GetDescendants() do
+								if x.Name == sn and x:IsA("BasePart") then
+									x.Transparency = 1
+									for _, g in x:GetChildren() do
+										if g:IsA("SurfaceGui") then
+											g.Enabled = false
+										end
+									end
+								end
+							end
+						end
+					end
+				end
 				if string.find(pl.prop, "lantern") or string.find(pl.prop, "torii") or string.find(pl.prop, "mushroom") or string.find(pl.prop, "ring") then
 					addGlow(m, 10, 1)
 				end
@@ -471,9 +564,13 @@ function PropsBuilder.Place(course)
 				end
 				y = hit.Position.Y - 0.15
 			end
-			-- keep tree canopies off the hole's own felt (they hide the green from the tee and in the overview)
+			-- keep tree canopies off the hole's own felt (they hide the green from the tee and in the overview), and
+			-- everything else off it too (the dressing was fitted to the pre-v2 holes: H8's upper level moved 9 studs)
 			if it.role == "tree" and overFelt(h, wp, r * 0.85) then
 				skip("canopy")
+				continue
+			elseif it.role ~= "tree" and overFelt(h, wp, math.min(r, 1.5) + 0.3) then
+				skip("felt")
 				continue
 			end
 			local cf = CFrame.new(wp.X, y, wp.Z) * (cfH - cfH.Position) * CFrame.Angles(0, math.rad(it.yaw or 0), 0)
@@ -502,7 +599,8 @@ function PropsBuilder.Place(course)
 	end
 
 	-- the old H9 hollow tree mesh stands in the NW forest as a sister tree (world layout)
-	if ko and lib:FindFirstChild("hollow_tree") then
+	local worldLib = ServerStorage:FindFirstChild("LanternGroveWorld")
+	if ko and lib:FindFirstChild("hollow_tree") and not (worldLib and worldLib:FindFirstChild("sister_tree_nw")) then
 		local bg = workspace:FindFirstChild("World") and workspace.World:FindFirstChild("Backdrop")
 		if bg then
 			local old = bg:FindFirstChild("sister_tree_nw_mesh")

@@ -16,6 +16,7 @@ return {
 	RestTime = 0.5, -- seconds below StopSpeed before the ball is "at rest"
 	MaxBallSpeed = 42,
 	MaxRollTime = 25, -- safety: force the ball to rest after this many seconds
+	StrokeTimeout = 20, -- safety net: a stroke still moving after this many seconds resets to its last rest point
 	PinNudgeTime = 1.5, -- a slow ball held against a moving part this long is hopped clear (Playtest Bot: 1.5 s)
 	-- Holes with moving parts or teleports get an AutoResetStill attribute (CourseBuilder; default below, or the
 	-- spec's per-hole `auto_reset_still`, false = off): a ball stuck that long goes back to the stroke start for free.

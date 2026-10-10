@@ -8,15 +8,16 @@
   "yaw": "Degrees about +Y, right-handed (Roblox CFrame.Angles(0, math.rad(yaw), 0)). Local->world: x' = lx*cos(yaw) + lz*sin(yaw); z' = -lx*sin(yaw) + lz*cos(yaw). Positive yaw = counter-clockwise in the map view.",
   "felt": "Playable surface pieces. {id, zone, center:[x,y,z] = TOP-surface centre, size:[sx,sz] footprint in local x/z, yaw, slope:null|{axis:'x'|'z', rise}}. rise = surface height at the +axis end minus the -axis end (local axes); the surface is a single plane so heights at the ends are center.y +- rise/2. Collision part = a box whose top face is that plane (thickness free, suggest 0.4; build sloped pieces as a box rotated by atan(rise/len) about the local axis perpendicular to `axis`, then shifted so the top-surface centre matches). Optional flags: overlay=true (banked plane laid on top of base felt; its low edge is flush with the base), kind='bank'|'bridge'|'tunnel', tunnel=true (felt runs inside a decorative enclosure; physics unchanged), solid=false + thickness (bridge deck: a ball on a lower level can roll underneath). Pieces join when edges meet/overlap at equal height (tolerance 0.05).",
   "walls": "Invisible collision blocks. {id, center:[x,y,z] = box centre, size:[sx,sy,sz] local box size, yaw, kind?}. kind='bumper' (static obstacle blocks: hub, stump, posts) uses bumper restitution 0.65; everything else is a wall (0.63). Authored rails have local Z along the run and local X = thickness 0.5; height is 1.0 above the highest felt they border (boxes along ramps are simply taller; visual rails can follow the slope). Rails sit OUTSIDE the felt edge (inner face on the edge). Blocks named hub/stump/rock are static obstacles.",
-  "hazards": "Out-of-bounds volumes below felt level: {id, type:'water'|'pit', center:[x,y,z] (water/pit surface), size:[sx,sz], yaw, reset:'previous_position', penalty:1}. A ball that leaves the felt over a hazard is returned to where its stroke started and +1 stroke is added. Any ball leaving all felt elsewhere is treated the same (and flagged as an escape bug).",
+  "hazards": "Out-of-bounds volumes below felt level: {id, type:'water'|'pit', center:[x,y,z] (water/pit surface), size:[sx,sz], yaw, reset:'previous_position'|'respawn', respawn?:[x,y,z], penalty:1}. A ball that leaves the felt over a hazard gets +1 stroke and is returned to where its stroke started (reset='previous_position'), or, if reset='respawn', placed at rest on the `respawn` point (a felt point, e.g. a bridge entry). Any ball leaving all felt elsewhere goes back to its stroke start (and is flagged as an escape bug).",
   "drops": "Intentional level changes: {id, from, to, edge, height}. The upper piece's edge is open (no rail) and the lower felt starts directly below/beyond it; the ball falls and keeps ~80% of horizontal speed. Lower felt may extend under the upper piece (the upper piece then acts as a cliff face for the lower level).",
-  "moving_parts": "Separate parts. {id, type:'rotate'|'slide', pivot:[x,y,z], axis:[ax,ay,az] unit vector, speed (deg/s for rotate, studs/s for slide, sign = direction, right-hand rule about axis), range:null (continuous) | [min,max] (ping-pong between angles in deg or offsets in studs), phase (angle/offset at t=0), blockers:[{center:[dx,dy,dz] relative to pivot at angle/offset 0, size:[sx,sy,sz], yaw, roll?}]} (roll = extra initial rotation in deg about the part axis, applied to the blocker's centre and orientation, e.g. wheel paddles at 0/120/240). At time t a blocker is pivot + Rot(axis, angle(t)) * center (rotate) or pivot + center + axis*offset(t) (slide).",
+  "moving_parts": "Separate parts. type 'swing' = pendulum: {id, type:'swing', pivot:[x,y,z] (hinge point above the felt), axis (unit vector, horizontal; swing plane is perpendicular to it), amplitude_deg, period_s, phase (deg of the swing cycle at t=0), blockers (relative to the pivot with the pendulum hanging straight down)}: angle(t) = amplitude_deg*sin(360*t/period_s + phase), right-hand rule about axis; `speed` = peak angular speed at the bottom (info), range = [-amp, amp]. Other types: {id, type:'rotate'|'slide', pivot:[x,y,z], axis:[ax,ay,az] unit vector, speed (deg/s for rotate, studs/s for slide, sign = direction, right-hand rule about axis), range:null (continuous) | [min,max] (ping-pong between angles in deg or offsets in studs), phase (angle/offset at t=0), blockers:[{center:[dx,dy,dz] relative to pivot at angle/offset 0, size:[sx,sy,sz], yaw, roll?}]} (roll = extra initial rotation in deg about the part axis, applied to the blocker's centre and orientation, e.g. wheel paddles at 0/120/240). At time t a blocker is pivot + Rot(axis, angle(t)) * center (rotate) or pivot + center + axis*offset(t) (slide).",
   "teleports": "{id, entry:{center:[x,y,z], radius}, exit:{center:[x,y,z], dir:[dx,dz]}, speed_factor, min_speed, max_speed}. A ball whose centre enters the entry radius (same level) reappears at exit moving along dir with speed = clamp(speed_in*speed_factor, min_speed, max_speed).",
-  "cup": "{position:[x,y,z] (on felt), radius}. Gameplay cup radius 0.5 stud (real cup 4.25 in = 0.36 stud diameter; enlarged ~2.8x for VR readability). Ball is holed when its centre is within radius and speed < 5.33 studs/s (1.6 m/s).",
+  "cup": "{position:[x,y,z] (on felt), radius, flag}. Gameplay cup radius 0.5 stud (real cup 4.25 in = 0.36 stud diameter; enlarged ~2.8x for VR readability). Ball is holed when its centre is within radius and speed < 5.33 studs/s (1.6 m/s). flag = {pole_height (studs above the cup felt), pole_diameter, banner_size [w,h,t], banner_color, top:[x,y,z] (pole top, the point the tee line-of-sight check aims at), collision:false}: visual only, the ball passes through it.",
   "ball": "radius 0.08 stud (~real 42.7 mm ball at 0.3 m/stud). Full physics constants in the top-level 'physics' block (= tools/sim.py).",
   "tee": "{position:[x,y,z], aim_hint:[dx,dz]}",
-  "ai_waypoints": "{skill|'all': [{id, pos:[x,y,z], from:[zones], carry, power_scale}]} used by the sim golfer: from its current zone it aims at the furthest allowed target with line of sight (cup first, then waypoints last->first) and hits for distance + carry. cup_from (list of zones or null=all) limits when it goes straight for the cup.",
-  "decoration_anchors": "{name, position:[x,y,z], notes, landmark?, approx_size?} - visual only, no collision.",
+  "ai_waypoints": "{skill|'all': [{id, pos:[x,y,z], from:[zones], carry, power_scale}]} used by the sim golfer: from its current zone it aims at the furthest allowed target with line of sight (cup first, then waypoints last->first) and hits for distance + carry. cup_from (list of zones or null=all, or {skill: list|null}) limits when it goes straight for the cup.",
+  "decoration_anchors": "{name, position:[x,y,z] (base centre), notes, landmark?, approx_size?, occluders?, facing?} - visual only, no collision. occluders = [{center:[x,y,z] box centre, size:[sx,sy,sz], yaw}]: the solid parts of the prop, used only by the tee->flag line-of-sight check (tools/sim.py flag_los).",
+  "line_of_sight": "Checked from the tee eye point (tee + 5.5 studs up) to the flag top against rails/blocks, felt and the ground under it, prop occluders, and moving blockers (reported as % of their cycle).",
   "felt_widths": "Lanes 7-8 studs (2.1-2.4 m), greens 12-18 studs (3.6-5.4 m); rails 1 stud high (0.3 m), 0.5 thick (0.15 m)."
  },
  "physics": {
@@ -69,7 +70,23 @@
      0.5,
      -26.5
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      -9.5,
+      8.0,
+      -26.5
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -245,6 +262,20 @@
    "cup_from": null,
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      -9.5,
+      0.5,
+      -26.5
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "lantern_gate",
      "position": [
       0,
@@ -257,6 +288,47 @@
       9,
       7,
       1.2
+     ],
+     "occluders": [
+      {
+       "center": [
+        -4.25,
+        3.75,
+        -21
+       ],
+       "size": [
+        0.6,
+        7,
+        0.6
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        4.25,
+        3.75,
+        -21
+       ],
+       "size": [
+        0.6,
+        7,
+        0.6
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        0,
+        6.75,
+        -21
+       ],
+       "size": [
+        9,
+        1.0,
+        1.2
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -271,6 +343,21 @@
       4,
       3,
       4
+     ],
+     "occluders": [
+      {
+       "center": [
+        -8,
+        2.0,
+        -21
+       ],
+       "size": [
+        4,
+        3,
+        4
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -299,6 +386,34 @@
       10,
       16,
       10
+     ],
+     "occluders": [
+      {
+       "center": [
+        8,
+        3,
+        -15
+       ],
+       "size": [
+        1.5,
+        6,
+        1.5
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        8,
+        11,
+        -15
+       ],
+       "size": [
+        10,
+        10,
+        10
+       ],
+       "yaw": 0.0
+      }
      ]
     }
    ],
@@ -335,7 +450,23 @@
      -1.5,
      -35
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      2.5,
+      6.0,
+      -35
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -608,18 +739,47 @@
    "cup_from": null,
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      2.5,
+      -1.5,
+      -35
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "giant_acorn",
      "position": [
       0,
       0.0,
       -19.5
      ],
-     "notes": "Giant acorn (cap + nut) sitting on the stump between the chutes",
+     "notes": "Giant acorn (cap + nut) sitting on the stump between the chutes (size incl. the 1.2 stump)",
      "landmark": true,
      "approx_size": [
       3,
       4,
       3
+     ],
+     "occluders": [
+      {
+       "center": [
+        0,
+        2.6,
+        -19.5
+       ],
+       "size": [
+        3,
+        2.8,
+        3
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -657,11 +817,133 @@
       0,
       -19.5
      ],
-     "notes": "Lantern posts at both chute edges",
+     "notes": "Lantern posts at both chute edges (x -4.5 and +4.5, on the rail line)",
      "approx_size": [
       0.5,
       3,
       0.5
+     ],
+     "occluders": [
+      {
+       "center": [
+        -4.5,
+        1.5,
+        -19.5
+       ],
+       "size": [
+        0.5,
+        3,
+        0.5
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        4.5,
+        1.5,
+        -19.5
+       ],
+       "size": [
+        0.5,
+        3,
+        0.5
+       ],
+       "yaw": 0.0
+      }
+     ]
+    },
+    {
+     "name": "chute_sign_left",
+     "position": [
+      -5.2,
+      0,
+      -16.5
+     ],
+     "notes": "Carved arrow sign on a post outside the left rail, arrow board angled to point through the LEFT chute; text 'Bold Line' + small rabbit icon (warns of the rabbit hole)",
+     "approx_size": [
+      1.8,
+      3.2,
+      0.25
+     ],
+     "occluders": [
+      {
+       "center": [
+        -5.2,
+        1.6,
+        -16.5
+       ],
+       "size": [
+        0.25,
+        3.2,
+        0.25
+       ],
+       "yaw": 0.0
+      }
+     ],
+     "facing": [
+      0.35,
+      -1.0
+     ]
+    },
+    {
+     "name": "chute_sign_right",
+     "position": [
+      5.2,
+      0,
+      -16.5
+     ],
+     "notes": "Carved arrow sign on a post outside the right rail, arrow board angled to point through the RIGHT chute; text 'Safe Line'",
+     "approx_size": [
+      1.8,
+      3.2,
+      0.25
+     ],
+     "occluders": [
+      {
+       "center": [
+        5.2,
+        1.6,
+        -16.5
+       ],
+       "size": [
+        0.25,
+        3.2,
+        0.25
+       ],
+       "yaw": 0.0
+      }
+     ],
+     "facing": [
+      -0.35,
+      -1.0
+     ]
+    },
+    {
+     "name": "chute_arrow_left",
+     "position": [
+      -2.75,
+      0.0,
+      -17.0
+     ],
+     "notes": "Glowing leaf-arrow decal flush on the felt (0.01 thick), pointing -Z into the left chute",
+     "approx_size": [
+      1.4,
+      0.01,
+      2.0
+     ]
+    },
+    {
+     "name": "chute_arrow_right",
+     "position": [
+      2.75,
+      0.0,
+      -17.0
+     ],
+     "notes": "Glowing leaf-arrow decal flush on the felt (0.01 thick), pointing -Z into the right chute",
+     "approx_size": [
+      1.4,
+      0.01,
+      2.0
      ]
     }
    ],
@@ -698,7 +980,23 @@
      0.0,
      -30.5
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      15.5,
+      7.5,
+      -30.5
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -1114,6 +1412,20 @@
    "cup_from": null,
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      15.5,
+      0.0,
+      -30.5
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "stem_house",
      "position": [
       8.5,
@@ -1126,6 +1438,34 @@
       10,
       12,
       10
+     ],
+     "occluders": [
+      {
+       "center": [
+        8.5,
+        4.0,
+        -12
+       ],
+       "size": [
+        5,
+        2,
+        8
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        8.5,
+        8.5,
+        -12
+       ],
+       "size": [
+        10,
+        7,
+        10
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -1154,6 +1494,21 @@
       7,
       9,
       7
+     ],
+     "occluders": [
+      {
+       "center": [
+        26,
+        4.5,
+        -14
+       ],
+       "size": [
+        7,
+        9,
+        7
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -1168,6 +1523,21 @@
       2,
       1.8,
       2
+     ],
+     "occluders": [
+      {
+       "center": [
+        17.0,
+        0.9,
+        -28.8
+       ],
+       "size": [
+        2,
+        1.8,
+        2
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -1194,7 +1564,7 @@
    "par": 3,
    "zone": "Mushroom Village",
    "landmark": "Spinning puffball carousel",
-   "gimmick": "Rotating 2-arm spinner bar in a plaza, then ramp up to a raised green",
+   "gimmick": "Rotating 2-arm spinner bar in a plaza (time it for a birdie, or take a side gap for a safe par), then ramp up to a raised green",
    "world_offset": [
     52,
     1,
@@ -1218,7 +1588,23 @@
      0.6,
      -42.0
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      2.5,
+      8.1,
+      -42.0
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -1245,7 +1631,7 @@
       -21.0
      ],
      "size": [
-      14,
+      14.0,
       14
      ],
      "yaw": 0.0,
@@ -1542,19 +1928,19 @@
       1,
       0
      ],
-     "speed": 36.0,
+     "speed": 30.0,
      "speed_units": "deg/s",
      "range": null,
      "phase": 0.0,
      "blockers": [
       {
        "center": [
-        2.6,
+        1.85,
         0.5,
         0.0
        ],
        "size": [
-        3.8,
+        2.3,
         1.0,
         0.7
        ],
@@ -1562,19 +1948,19 @@
       },
       {
        "center": [
-        -2.6,
+        -1.85,
         0.5,
         -0.0
        ],
        "size": [
-        3.8,
+        2.3,
         1.0,
         0.7
        ],
        "yaw": 180.0
       }
      ],
-     "visual": "2 puffball-stalk arms (one long bar) on a toadstool hub"
+     "visual": "2 padded puffball-stalk arms (one 6-stud bar) on a toadstool hub; arms are soft bumpers (restitution 0.65)"
     }
    ],
    "teleports": [],
@@ -1594,10 +1980,59 @@
       "carry": 11.0,
       "power_scale": 1.0
      }
+    ],
+    "good": [
+     {
+      "id": "ramp",
+      "pos": [
+       1.8,
+       0.3,
+       -32.0
+      ],
+      "from": [
+       "plaza"
+      ],
+      "carry": 11.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "side_gap",
+      "pos": [
+       4.3,
+       0.0,
+       -25.0
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 0.0,
+      "power_scale": 1.0
+     }
     ]
    },
-   "cup_from": null,
+   "cup_from": {
+    "good": [
+     "plaza",
+     "ramp",
+     "green"
+    ],
+    "average": null
+   },
    "decoration_anchors": [
+    {
+     "name": "cup_flag",
+     "position": [
+      2.5,
+      0.6,
+      -42.0
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
     {
      "name": "puffball_carousel",
      "position": [
@@ -1605,12 +2040,12 @@
       0,
       -21
      ],
-     "notes": "Toadstool hub with a 2-arm puffball bar (moving mesh, pivot at hub centre)",
+     "notes": "Toadstool hub with a 2-arm padded puffball bar (moving mesh, pivot at hub centre)",
      "landmark": true,
      "approx_size": [
-      9,
+      6.0,
       4,
-      9
+      6.0
      ]
     },
     {
@@ -1625,6 +2060,21 @@
       8,
       10,
       8
+     ],
+     "occluders": [
+      {
+       "center": [
+        -12,
+        5,
+        -21
+       ],
+       "size": [
+        8,
+        10,
+        8
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -1639,6 +2089,21 @@
       7,
       9,
       7
+     ],
+     "occluders": [
+      {
+       "center": [
+        12,
+        4.5,
+        -24
+       ],
+       "size": [
+        7,
+        9,
+        7
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -1654,6 +2119,20 @@
       3.5,
       0.5
      ]
+    },
+    {
+     "name": "side_gap_lanterns",
+     "position": [
+      7.25,
+      0,
+      -17
+     ],
+     "notes": "Pair of small lantern posts on the plaza rails marking the east and west side gaps (x = +-7.25, on the rail tops)",
+     "approx_size": [
+      0.4,
+      2.5,
+      0.4
+     ]
     }
    ],
    "notes": ""
@@ -1665,7 +2144,7 @@
    "par": 3,
    "zone": "Stream Crossing",
    "landmark": "Arched root bridge over the stream",
-   "gimmick": "Split path: narrow rail-less root bridge straight from the tee (risk) vs covered plank bridge (safe), water hazard",
+   "gimmick": "Split path: narrow rail-less root bridge straight from the tee (risk) vs covered plank bridge (safe); a fall respawns at the bridge entry",
    "world_offset": [
     96,
     -1,
@@ -1689,7 +2168,23 @@
      0.0,
      -37.0
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      1.5,
+      7.5,
+      -37.0
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -1989,8 +2484,13 @@
       13
      ],
      "yaw": 0.0,
-     "reset": "previous_position",
-     "penalty": 1
+     "reset": "respawn",
+     "penalty": 1,
+     "respawn": [
+      0.0,
+      0.0,
+      -13.5
+     ]
     }
    ],
    "drops": [],
@@ -2048,6 +2548,20 @@
    ],
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      1.5,
+      0.0,
+      -37.0
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "root_bridge",
      "position": [
       0,
@@ -2074,6 +2588,21 @@
       7,
       6,
       14
+     ],
+     "occluders": [
+      {
+       "center": [
+        -10.5,
+        4.5,
+        -21.5
+       ],
+       "size": [
+        7,
+        3,
+        14
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -2102,6 +2631,20 @@
       6,
       8,
       3
+     ]
+    },
+    {
+     "name": "bridge_respawn_stone",
+     "position": [
+      0,
+      0,
+      -13.5
+     ],
+     "notes": "Glowing mossy marker stone set flush in the felt at the root-bridge entry: where a ball that falls in the stream reappears",
+     "approx_size": [
+      0.8,
+      0.02,
+      0.8
      ]
     }
    ],
@@ -2138,7 +2681,23 @@
      0.25,
      -22.5
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      16.5,
+      7.75,
+      -22.5
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -2538,6 +3097,20 @@
    "cup_from": null,
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      16.5,
+      0.25,
+      -22.5
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "water_mill",
      "position": [
       7.5,
@@ -2550,6 +3123,21 @@
       9,
       10,
       8
+     ],
+     "occluders": [
+      {
+       "center": [
+        7.5,
+        5,
+        0
+       ],
+       "size": [
+        9,
+        10,
+        8
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -2626,9 +3214,25 @@
     "position": [
      -2.5,
      -2.4,
-     -31.0
+     -36.5
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      -2.5,
+      5.1,
+      -36.5
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -2783,28 +3387,28 @@
     {
      "id": "rail7",
      "center": [
-      -3.5,
+      -3.25,
       -1.55,
       -27.25
      ],
      "size": [
       0.5,
       2.7,
-      14.0
+      14.5
      ],
      "yaw": 90.0
     },
     {
      "id": "rail8",
      "center": [
-      8.75,
+      8.5,
       -1.55,
       -27.25
      ],
      "size": [
       0.5,
       2.7,
-      3.5
+      4.0
      ],
      "yaw": 90.0
     },
@@ -2910,7 +3514,7 @@
      "id": "d2",
      "from": "t2",
      "to": "t3",
-     "edge": "t2 north edge z=-27, gap x[3.5,7] (lands on the sloped east half of t3)",
+     "edge": "t2 north edge z=-27, gap x[4,6.5] (lands on the sloped east half of t3)",
      "height": 1.0,
      "note": ""
     }
@@ -2932,8 +3536,8 @@
      "speed": 5.0,
      "speed_units": "studs/s",
      "range": [
-      -6.0,
-      6.0
+      -7.0,
+      7.0
      ],
      "phase": 0.0,
      "blockers": [
@@ -2951,7 +3555,8 @@
        "yaw": 0.0
       }
      ],
-     "visual": "Floating log on a hidden rail"
+     "visual": "Floating log on a hidden rail; log ends stop 0.5 studs short of each rail line (x=+-10): travel +-7",
+     "end_clearance": 0.5
     }
    ],
    "teleports": [],
@@ -2976,6 +3581,20 @@
    "cup_from": null,
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      -2.5,
+      -2.4,
+      -36.5
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "cascade",
      "position": [
       -16,
@@ -2997,7 +3616,7 @@
       -1.2,
       -20.5
      ],
-     "notes": "Floating log (moving mesh) on a hidden rail across the middle tier",
+     "notes": "Floating log (moving mesh) on a hidden rail across the middle tier; stops 0.5 short of each rail",
      "approx_size": [
       5,
       0.8,
@@ -3021,7 +3640,7 @@
     {
      "name": "step_lanterns",
      "position": [
-      4.5,
+      5.0,
       -1.2,
       -27
      ],
@@ -3030,6 +3649,34 @@
       0.5,
       3,
       0.5
+     ],
+     "occluders": [
+      {
+       "center": [
+        3.75,
+        0.3,
+        -27.5
+       ],
+       "size": [
+        0.5,
+        3,
+        0.5
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        6.75,
+        0.3,
+        -27.5
+       ],
+       "size": [
+        0.5,
+        3,
+        0.5
+       ],
+       "yaw": 0.0
+      }
      ]
     }
    ],
@@ -3042,7 +3689,7 @@
    "par": 4,
    "zone": "Hollow Tree Roots",
    "landmark": "Firefly ring in a giant root knot",
-   "gimmick": "Teleport ring shortcut in a dead-end alcove vs long route (banked corners, long ramp)",
+   "gimmick": "Teleport ring shortcut in a dead-end alcove (back-wall bank feeds misses out) vs long route (banked corners, climb)",
    "world_offset": [
     190,
     0,
@@ -3062,11 +3709,27 @@
    },
    "cup": {
     "position": [
-     8.0,
+     4.0,
      1.5,
-     -43.5
+     -37.0
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      4.0,
+      9.0,
+      -37.0
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -3100,31 +3763,16 @@
      "slope": null
     },
     {
-     "id": "c1",
-     "zone": "climb",
-     "center": [
-      -16.5,
-      0.0,
-      -19.5
-     ],
-     "size": [
-      7,
-      9
-     ],
-     "yaw": 0.0,
-     "slope": null
-    },
-    {
      "id": "c2",
      "zone": "climb",
      "center": [
       -16.5,
       0.75,
-      -31.0
+      -22.0
      ],
      "size": [
       7,
-      14
+      14.0
      ],
      "yaw": 0.0,
      "slope": {
@@ -3138,11 +3786,11 @@
      "center": [
       -16.5,
       1.5,
-      -45.0
+      -36.0
      ],
      "size": [
       7,
-      14
+      14.0
      ],
      "yaw": 0.0,
      "slope": null
@@ -3153,11 +3801,11 @@
      "center": [
       -9.5,
       1.5,
-      -48.5
+      -39.5
      ],
      "size": [
       7,
-      7
+      7.0
      ],
      "yaw": 0.0,
      "slope": null
@@ -3168,11 +3816,11 @@
      "center": [
       2.0,
       1.5,
-      -49.0
+      -40.0
      ],
      "size": [
       16,
-      16
+      16.0
      ],
      "yaw": 0.0,
      "slope": null
@@ -3203,7 +3851,7 @@
      "center": [
       -17.1743,
       2.1,
-      -49.1743
+      -40.1743
      ],
      "size": [
       1.2,
@@ -3213,6 +3861,26 @@
      "slope": {
       "axis": "x",
       "rise": 1.2
+     },
+     "overlay": true,
+     "kind": "bank"
+    },
+    {
+     "id": "alcove_bank",
+     "zone": "junction",
+     "center": [
+      8.35,
+      0.25,
+      -11.5
+     ],
+     "size": [
+      1.3,
+      7.0
+     ],
+     "yaw": 180.0,
+     "slope": {
+      "axis": "x",
+      "rise": -0.5
      },
      "overlay": true,
      "kind": "bank"
@@ -3238,7 +3906,7 @@
      "center": [
       -17.7753,
       2.35,
-      -49.7753
+      -40.7753
      ],
      "size": [
       0.5,
@@ -3280,12 +3948,12 @@
      "center": [
       -20.25,
       1.7,
-      -30.0
+      -25.5
      ],
      "size": [
       0.5,
       4.4,
-      45.0
+      36.0
      ],
      "yaw": 180.0
     },
@@ -3294,7 +3962,7 @@
      "center": [
       -13.25,
       1.7,
-      -52.25
+      -43.25
      ],
      "size": [
       0.5,
@@ -3308,7 +3976,7 @@
      "center": [
       -6.25,
       1.7,
-      -54.75
+      -45.75
      ],
      "size": [
       0.5,
@@ -3322,7 +3990,7 @@
      "center": [
       2.0,
       1.7,
-      -57.25
+      -48.25
      ],
      "size": [
       0.5,
@@ -3336,7 +4004,7 @@
      "center": [
       10.25,
       1.7,
-      -49.0
+      -40.0
      ],
      "size": [
       0.5,
@@ -3350,7 +4018,7 @@
      "center": [
       2.0,
       1.7,
-      -40.75
+      -31.75
      ],
      "size": [
       0.5,
@@ -3364,7 +4032,7 @@
      "center": [
       -6.25,
       1.7,
-      -42.75
+      -33.75
      ],
      "size": [
       0.5,
@@ -3378,7 +4046,7 @@
      "center": [
       -9.5,
       1.7,
-      -44.75
+      -35.75
      ],
      "size": [
       0.5,
@@ -3392,12 +4060,12 @@
      "center": [
       -12.75,
       1.7,
-      -30.0
+      -25.5
      ],
      "size": [
       0.5,
       4.4,
-      30.0
+      21.0
      ],
      "yaw": 0.0
     },
@@ -3491,8 +4159,8 @@
      "speed": 2.0,
      "speed_units": "studs/s",
      "range": [
-      -2.5,
-      2.5
+      -3.5,
+      3.5
      ],
      "phase": 0.0,
      "blockers": [
@@ -3522,20 +4190,20 @@
        0.0,
        -11.5
       ],
-      "radius": 0.35
+      "radius": 0.55
      },
      "exit": {
       "center": [
-       -4.0,
+       9.0,
        1.5,
-       -56.0
+       -47.0
       ],
       "dir": [
-       0.6925,
-       0.7214
+       -0.4472,
+       0.8944
       ]
      },
-     "speed_factor": 1.2,
+     "speed_factor": 0.7,
      "min_speed": 4.0,
      "max_speed": 8.5,
      "visual": "Glowing firefly ring in a root knot (entry) -> ring of fireflies on the green (exit)"
@@ -3594,15 +4262,15 @@
       "from": [
        "junction"
       ],
-      "carry": 18.0,
+      "carry": 6.0,
       "power_scale": 1.0
      },
      {
-      "id": "climb",
+      "id": "top",
       "pos": [
        -16.5,
-       0.0,
-       -30.0
+       1.5,
+       -37.0
       ],
       "from": [
        "junction",
@@ -3612,24 +4280,11 @@
       "power_scale": 1.1
      },
      {
-      "id": "top",
-      "pos": [
-       -16.0,
-       1.5,
-       -48.0
-      ],
-      "from": [
-       "climb"
-      ],
-      "carry": 6.0,
-      "power_scale": 1.1
-     },
-     {
       "id": "conn",
       "pos": [
        -9.5,
        1.5,
-       -48.5
+       -39.5
       ],
       "from": [
        "top"
@@ -3645,13 +4300,27 @@
    ],
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      4.0,
+      1.5,
+      -37.0
+     ],
+     "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      7.5,
+      0.15
+     ]
+    },
+    {
      "name": "root_knot_ring",
      "position": [
       8.5,
       0,
       -11.5
      ],
-     "notes": "Root knot arch with a glowing firefly ring (teleport entry)",
+     "notes": "Root knot arch with a glowing firefly ring (teleport entry); the ring's glow disc is 1.1 studs across",
      "landmark": true,
      "approx_size": [
       3,
@@ -3660,11 +4329,25 @@
      ]
     },
     {
+     "name": "alcove_bank_cladding",
+     "position": [
+      8.35,
+      0,
+      -11.5
+     ],
+     "notes": "Root-bark cladding on the alcove back-wall bank (banked plane x 7.7..9, rising east), 7 long",
+     "approx_size": [
+      1.2999999999999998,
+      0.6,
+      7
+     ]
+    },
+    {
      "name": "exit_ring",
      "position": [
-      -4.0,
+      9.0,
       1.5,
-      -56.0
+      -47.0
      ],
      "notes": "Matching firefly ring on the upper green (teleport exit)",
      "approx_size": [
@@ -3711,7 +4394,7 @@
    "par": 4,
    "zone": "Inside the Hollow Tree",
    "landmark": "The giant hollow tree's lantern-lit heart",
-   "gimmick": "Ramp + banked corner, rising root gate in a trunk tunnel, deflector, rotating lantern bar over the heart well, drop to a sloped heart green",
+   "gimmick": "Ramp + banked corner, rising root gate, rolling dip through the trunk tunnel, deflector, swinging lantern pendulum at the heart well, drop to a sloped heart green",
    "world_offset": [
     214,
     2,
@@ -3731,11 +4414,27 @@
    },
    "cup": {
     "position": [
-     22.0,
+     26.0,
      -0.8,
-     -50.0
+     -52.0
     ],
-    "radius": 0.5
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 8.0,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      26.0,
+      7.2,
+      -52.0
+     ],
+     "collision": false
+    }
    },
    "felt": [
     {
@@ -3802,19 +4501,42 @@
      "slope": null
     },
     {
-     "id": "tunnel",
+     "id": "tunnel_in",
      "zone": "corridor",
      "center": [
-      11.0,
-      1.0,
+      9.5,
+      0.8,
       -25.5
      ],
      "size": [
-      6,
+      3.0,
       7
      ],
      "yaw": 0.0,
-     "slope": null,
+     "slope": {
+      "axis": "x",
+      "rise": -0.4
+     },
+     "tunnel": true,
+     "kind": "tunnel"
+    },
+    {
+     "id": "tunnel_out",
+     "zone": "corridor",
+     "center": [
+      12.5,
+      0.8,
+      -25.5
+     ],
+     "size": [
+      3.0,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "x",
+      "rise": 0.4
+     },
      "tunnel": true,
      "kind": "tunnel"
     },
@@ -4125,21 +4847,6 @@
       20.799
      ],
      "yaw": 135.0
-    },
-    {
-     "id": "lantern_post",
-     "center": [
-      25.0,
-      2.0,
-      -36.5
-     ],
-     "size": [
-      0.8,
-      3.0,
-      0.8
-     ],
-     "yaw": 0.0,
-     "kind": "bumper"
     }
    ],
    "hazards": [],
@@ -4167,11 +4874,11 @@
       1,
       0
      ],
-     "speed": 0.6,
+     "speed": 0.9,
      "speed_units": "studs/s",
      "range": [
       0.0,
-      1.2
+      1.8
      ],
      "phase": 0.0,
      "blockers": [
@@ -4189,41 +4896,46 @@
        "yaw": 0.0
       }
      ],
-     "visual": "Root portcullis rising/falling in the tunnel mouth (open ~62% of the cycle)"
+     "visual": "Root portcullis rising/falling 0..1.8 in the tunnel mouth (open ~70% of its 4 s cycle)"
     },
     {
-     "id": "lantern_bar",
-     "type": "rotate",
+     "id": "lantern_pendulum",
+     "type": "swing",
      "pivot": [
-      25.0,
-      1.0,
-      -36.5
+      22.0,
+      8.96,
+      -38.5
      ],
      "axis": [
       0,
-      1,
-      0
+      0,
+      1
      ],
-     "speed": 40.0,
-     "speed_units": "deg/s",
-     "range": null,
+     "amplitude_deg": 35.0,
+     "period_s": 4.0,
      "phase": 0.0,
+     "speed": 54.9779,
+     "speed_units": "deg/s (peak, at the bottom of the swing)",
+     "range": [
+      -35.0,
+      35.0
+     ],
      "blockers": [
       {
        "center": [
         0,
-        0.5,
+        -7.0,
         0
        ],
        "size": [
-        6.0,
-        1.0,
-        0.6
+        1.6,
+        1.8,
+        1.0
        ],
        "yaw": 0.0
       }
      ],
-     "visual": "Rotating bar on the lantern post guarding the heart well, lanterns at both ends"
+     "visual": "Great lantern on a 7-stud chain from a root beam, swinging east-west across the heart-well mouth (1.5 studs before the drop edge); the bob (1.6x1.8x1 box) skims the felt at the bottom of its swing and lifts clear of the ball near the ends"
     }
    ],
    "teleports": [
@@ -4244,14 +4956,14 @@
        -52.0
       ],
       "dir": [
-       0.9615,
-       0.2747
+       1.0,
+       0.0
       ]
      },
      "speed_factor": 1.0,
      "min_speed": 4.0,
      "max_speed": 10.0,
-     "visual": "Secret: a glowing knot-hole low in the corridor's south-west corner drops you onto the heart green"
+     "visual": "Secret: a glowing knot-hole in the corridor floor at (6.5, 1.0, -23.0), 0.5 stud past (east of) the root gate and 1 stud in from the corridor's south rail (z=-22); exit knot in the heart green's north-west corner (15, -52)"
     }
    ],
    "ai_waypoints": {
@@ -4303,6 +5015,20 @@
    ],
    "decoration_anchors": [
     {
+     "name": "cup_flag",
+     "position": [
+      26.0,
+      -0.8,
+      -52.0
+     ],
+     "notes": "Flag: 8.0-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+     "approx_size": [
+      2.0,
+      8.0,
+      0.15
+     ]
+    },
+    {
      "name": "hollow_tree",
      "position": [
       22,
@@ -4324,11 +5050,26 @@
       1.0,
       -25.5
      ],
-     "notes": "Arched tunnel through a root buttress",
+     "notes": "Arched tunnel through a root buttress (opening 7 wide x 3 high above the corridor level, solid above y 4 up to y 6); the felt inside dips 0.4 (rolling dip)",
      "approx_size": [
       7,
       5,
       8
+     ],
+     "occluders": [
+      {
+       "center": [
+        11,
+        5.0,
+        -25.5
+       ],
+       "size": [
+        6,
+        2,
+        8
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -4338,7 +5079,7 @@
       4,
       -47
      ],
-     "notes": "Dozens of hanging lanterns inside the heart",
+     "notes": "Dozens of hanging lanterns inside the heart (hung above y 5; clear of the flag sightline)",
      "approx_size": [
       16,
       6,
@@ -4352,7 +5093,7 @@
       1.0,
       -23.0
      ],
-     "notes": "Secret glowing knot-hole in the corridor floor just past the root gate (teleport entry); exit is a knot in the heart's south-west corner",
+     "notes": "Secret glowing knot-hole in the corridor floor at (6.5, 1.0, -23.0): 0.5 stud past (east of) the root gate at x=6 and 1 stud in from the corridor's south rail (z=-22). Teleport entry r 0.3; the exit knot is in the heart green's north-west corner (15, -0.8, -52)",
      "approx_size": [
       1.2,
       1.2,
@@ -4360,17 +5101,59 @@
      ]
     },
     {
+     "name": "lantern_knot_exit",
+     "position": [
+      15.0,
+      -0.8,
+      -52.0
+     ],
+     "notes": "Matching small glowing knot on the heart green's north-west corner (teleport exit)",
+     "approx_size": [
+      1.0,
+      0.3,
+      1.0
+     ]
+    },
+    {
      "name": "well_rim",
      "position": [
-      22,
+      22.0,
       1.0,
       -40
      ],
      "notes": "Carved root rim along the heart-well drop edge",
      "approx_size": [
-      8,
+      8.0,
       0.6,
       1
+     ]
+    },
+    {
+     "name": "pendulum_beam",
+     "position": [
+      22.0,
+      8.96,
+      -38.5
+     ],
+     "notes": "Root beam spanning the chamber high above the heart-well mouth (x 14..30), hinge of the lantern pendulum at its middle",
+     "approx_size": [
+      16,
+      1.2,
+      1.2
+     ]
+    },
+    {
+     "name": "dip_cladding",
+     "position": [
+      11.0,
+      0.6,
+      -25.5
+     ],
+     "notes": "Root-and-moss trim on the tunnel rails following the rolling dip (felt dips 0.4 studs: down x 8..11, back up 11..14)",
+     "approx_size": [
+      6.0,
+      0.4,
+      7
      ]
     },
     {

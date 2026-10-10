@@ -514,6 +514,9 @@ local function moverValue(m, t)
 	local sp = m:GetAttribute("Speed")
 	local phase = m:GetAttribute("Phase") or 0
 	local per = m:GetAttribute("Period")
+	if m:GetAttribute("Type") == "swing" then
+		return m:GetAttribute("Amplitude") * math.sin(2 * math.pi * (t % per) / per + math.rad(phase))
+	end
 	if not m:GetAttribute("HasRange") then
 		return phase + sp * (t % per)
 	end
@@ -552,7 +555,7 @@ local function moverLag(m)
 		return 0
 	end
 	local now = workspace:GetServerTimeNow()
-	local rot = m:GetAttribute("Type") == "rotate"
+	local rot = m:GetAttribute("Type") ~= "slide"
 	for L = 0, 0.6, 0.005 do
 		local e = moverValue(m, now - L) - obs
 		if rot then
@@ -1080,7 +1083,7 @@ end
 local function fuzz(n, count, seed)
 	local rng = Random.new(seed or n * 7919)
 	local sp = spec(n)
-	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, resets = 0, holed = 0, list = {} }
+	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, resets = 0, timeouts = 0, holed = 0, list = {} }
 	for i = 1, count do
 		local start
 		if i % 3 == 1 then
@@ -1114,6 +1117,8 @@ local function fuzz(n, count, seed)
 			for _, f in r.flags or {} do
 				if f.kind == "unstuck" then
 					res.nudges += 1
+				elseif f.kind == "autoreset" and f.reason == "timeout" then
+					res.timeouts += 1 -- Config.StrokeTimeout safety net
 				elseif f.kind == "autoreset" then
 					res.resets += 1
 				elseif f.kind == "offsurface" or f.kind == "forcedrest" then
@@ -1430,6 +1435,11 @@ scenario({
 		setFrame(W(n, 5, 0, -11.5), 10, Vector3.new(0, 0, -1))
 		local cases = {}
 		for _, c in { { 4.75, -8.1 }, { 4.75, -14.9 }, { 4.5, -8.2 }, { 5.0, -14.8 }, { 4.75, -9.0 }, { 3.9, -8.1 } } do
+			-- place each ball while the door is at the far end of its travel, so the window sees it sweep toward
+			-- the ball (spec range: the door is at RangeMin at 3/4 of its cycle and at RangeMax at 1/4, phase 0)
+			local per = door:GetAttribute("Period")
+			local toward = c[2] > -11.5 and 0.75 or 0.25 -- ball on the +offset side: start from RangeMin
+			waitPhase(n, (toward * per + (door:GetAttribute("Phase") or 0) / math.abs(door:GetAttribute("Speed"))) % per, per)
 			local ok = pcall(placeL, n, c[1], c[2], 0.5)
 			if ok then
 				local start = Ball.ball.Position

@@ -24,16 +24,20 @@ Timing a vertical obstacle: the paddles block the flume about 19% of the time, a
 ## Moving parts / teleports (exact specs, also in holes.json)
 - **millwheel** (rotate): pivot [7.5, 3.6, -8.5], axis [0, 0, 1], speed 30.0 deg/s, continuous, phase 0.0, cycle 12.0 s. Blockers (relative to pivot at angle/offset 0): box [0.6, 1.4, 7.6] at [0, -2.9, 0]; box [0.6, 1.4, 7.6] at [0, -2.9, 0] roll 180. Visual: Water-mill wheel, radius 3.6, 2 opposed paddle boards spanning the flume; felt has a 0.8-wide slot under it
 
-## Playtest stats (final, p4, 2000 plays per skill)
+## Flag and sightline
+Flag: 7.5-stud pole (0.15 diameter) standing in the cup, [2.0, 1.2, 0.05] #e03c31 banner at the top [16.5, 7.75, -22.5]; visual only, no collision. Line of sight from the tee eye (5.5 studs above the tee) to the flag top: **visible** (min clearance over rails/felt/props +4.98 studs). Moving parts crossing the sightline: millwheel 44% of its cycle.
+
+## Playtest stats (final, r5b, 2000 plays per skill)
 | Skill | Avg strokes | HIO | Capped (8) | Strokes 1..8 |
 |---|---|---|---|---|
-| good | 3.18 | 8.0% | 0.9% | [160, 349, 909, 352, 112, 55, 29, 34] |
-| average | 3.63 | 0.0% | 0.0% | [0, 129, 809, 812, 193, 35, 15, 7] |
+| good | 3.15 | 8.0% | 0.9% | [160, 399, 860, 355, 109, 55, 28, 34] |
+| average | 3.62 | 0.0% | 0.0% | [0, 129, 810, 821, 188, 35, 11, 6] |
 
 ## Props for 3D Model Bot (decoration only, sizes in studs)
 Mill wheel (moving, axle centre, axis +Z, 30°/s) 1x7.2x8 (P1); mill house 9x10x8 (P1); timber deflector boards x2 cladding 10x1x0.5 (P1); mill race water + banks (P1); waterfall beside the green 6x12x4 (P1); flour sacks & crates (P3).
 
 Decoration anchors (position in hole-local studs):
+- `cup_flag` at [16.5, 0.25, -22.5] size [2.0, 7.5, 0.15]: Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision
 - `water_mill` at [7.5, 0, 0] (LANDMARK) size [9, 10, 8]: Timber mill house on the south side; wheel axle enters it
 - `mill_wheel` at [7.5, 3.6, -8.5] size [1, 7.2, 8]: Wheel mesh (moving part) radius 3.6, axle along Z
 - `waterfall` at [24, 0.25, -24] size [6, 12, 4]: Waterfall cascading down rocks east of the green

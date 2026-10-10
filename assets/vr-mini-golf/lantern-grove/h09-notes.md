@@ -1,48 +1,55 @@
 # Hole 9: Heart of the Grove (Par 4)
 
-Zone: **Inside the Hollow Tree**. Gimmick: **Ramp + banked corner, rising root gate in a trunk tunnel, deflector, rotating lantern bar over the heart well, drop to a sloped heart green**.
+Zone: **Inside the Hollow Tree**. Gimmick: **Ramp + banked corner, rising root gate, rolling dip through the trunk tunnel, deflector, swinging lantern pendulum at the heart well, drop to a sloped heart green**.
 Layout: `h09-layout.png`. Geometry: `holes.json` -> holes[8]. World offset [214, 2, -70], yaw 0.0.
-Tee [0, 0, 0], cup [22.0, -0.8, -50.0] (radius 0.5). Units: studs (1 stud = 0.3 m).
+Tee [0, 0, 0], cup [26.0, -0.8, -52.0] (radius 0.5). Units: studs (1 stud = 0.3 m).
 
 ## Landmark
-The **heart of the giant hollow tree**: you putt up a ramp, round a banked corner and through a **root portcullis** into a tunnel in the trunk. Inside, a lantern-lit chamber ends at the **heart well**, where a slowly turning lantern bar guards the drop to the heart green below. Dozens of lanterns hang in the hollow above.
+The **heart of the giant hollow tree**: you putt up a ramp, round a banked corner and through a **root portcullis** into a tunnel in the trunk, where the felt **dips and rises** (the course's only rolling dip). Inside, a lantern-lit chamber ends at the **heart well**, where a **great lantern swings on a chain** across the mouth of the drop to the heart green below. Dozens of lanterns hang in the hollow above.
 
 ## Gimmick
-Ramp + banked corner, rising root gate in a trunk tunnel, deflector, rotating lantern bar over the heart well, drop to a sloped heart green.
+Ramp + banked corner, rising root gate, rolling dip through the trunk tunnel, deflector, swinging lantern pendulum at the heart well, drop to a sloped heart green.
 
 ## Intended shots
-1. A strong putt up the 1-stud ramp rides the banked corner east and, if the root gate is up, runs through the tunnel into the chamber.
-2. The root deflector turns the ball north. Time the lantern bar and drop 1.5 studs into the heart.
-3. The heart green slopes gently toward the cup. Putt out.
-**Secret:** a tiny glowing **Lantern Knot** in the corridor floor just past the gate teleports the ball to the heart green's south-west corner, rolling toward the cup. It is the hole's ace route.
+1. A strong putt up the 1-stud ramp rides the banked corner east and, if the root gate is up, rolls through the tunnel's dip into the chamber.
+2. The root deflector turns the ball north. Time the swinging lantern, or play to the edge of the 8-stud well mouth, and drop 1.5 studs into the heart.
+3. The heart green slopes gently away from the drop; the cup sits in its north-east part (26, -0.8, -52). Putt out.
+**Secret:** a tiny glowing **Lantern Knot** in the corridor floor at (6.5, 1.0, -23.0), half a stud past the root gate and one stud in from the corridor's south rail, teleports the ball to the heart green's north-west corner and rolls it east along the back of the green toward the cup. It is the hole's ace route.
 
 ## Hole-in-one line
-Brute-force search from the tee found ace lines (459 grid shots). The most robust: aim **292.0°** (atan2(dz,dx): direction (0.37, -0.93) in x/z, i.e. 22.0° right of straight -Z), speed **18.3 studs/s** (93% power), start phase t=1.5s of the moving parts. The red dashed line on the layout PNG traces it.
+Brute-force search from the tee found ace lines (55 grid shots). The most robust: aim **293.0°** (atan2(dz,dx): direction (0.39, -0.92) in x/z, i.e. 23.0° right of straight -Z), speed **19.4 studs/s** (98% power), start phase t=0.0s of the moving parts. The red dashed line on the layout PNG traces it.
 
 ## Challenge
-Finale combining everything: ramp pace, a bank, a vertical gate (open ~62% of its 4 s cycle), a deflector, a rotating bar and a drop. The secret knot rewards players who explore.
+Finale combining everything: ramp pace, a bank, a vertical gate (open ~70% of its 4 s cycle), a rolling dip (a weak shot settles in the tunnel), a deflector, a swinging lantern and a drop. The lantern skims the felt only near the bottom of its swing (within ±16°, the middle ~5.6 studs of the mouth) and lifts clear of the ball at the ends. The secret knot rewards players who explore.
 
 ## Moving parts / teleports (exact specs, also in holes.json)
-- **root_gate** (slide): pivot [6, 1.0, -25.5], axis [0, 1, 0], speed 0.6 studs/s, ping-pong 0.0..1.2 studs, phase 0.0, cycle 4.0 s. Blockers (relative to pivot at angle/offset 0): box [0.8, 1.4, 7.4] at [0, 0.4, 0]. Visual: Root portcullis rising/falling in the tunnel mouth (open ~62% of the cycle)
-- **lantern_bar** (rotate): pivot [25.0, 1.0, -36.5], axis [0, 1, 0], speed 40.0 deg/s, continuous, phase 0.0, cycle 9.0 s. Blockers (relative to pivot at angle/offset 0): box [6.0, 1.0, 0.6] at [0, 0.5, 0]. Visual: Rotating bar on the lantern post guarding the heart well, lanterns at both ends
-- **teleport lantern_knot**: entry [6.5, 1.0, -23.0] r 0.3 -> exit [15.0, -0.8, -52.0] dir [0.9615, 0.2747], exit speed = clamp(in x 1.0, 4.0, 10.0) studs/s
+- **root_gate** (slide): pivot [6, 1.0, -25.5], axis [0, 1, 0], speed 0.9 studs/s, ping-pong 0.0..1.8 studs, phase 0.0, cycle 4.0 s. Blockers (relative to pivot at angle/offset 0): box [0.8, 1.4, 7.4] at [0, 0.4, 0]. Visual: Root portcullis rising/falling 0..1.8 in the tunnel mouth (open ~70% of its 4 s cycle)
+- **lantern_pendulum** (swing = pendulum): pivot (hinge) [22.0, 8.96, -38.5], axis [0, 0, 1] (swings in the plane perpendicular to it), angle(t) = 35.0° x sin(360°·t/4.0 s + 0.0°), peak angular speed 55°/s at the bottom. Blocker: bob box [1.6, 1.8, 1.0] centred [0, -7.0, 0] from the pivot when hanging straight down. Visual: Great lantern on a 7-stud chain from a root beam, swinging east-west across the heart-well mouth (1.5 studs before the drop edge); the bob (1.6x1.8x1 box) skims the felt at the bottom of its swing and lifts clear of the ball near the ends
+- **teleport lantern_knot**: entry [6.5, 1.0, -23.0] r 0.3 -> exit [15.0, -0.8, -52.0] dir [1.0, 0.0], exit speed = clamp(in x 1.0, 4.0, 10.0) studs/s
 
-## Playtest stats (final, p4, 2000 plays per skill)
+## Flag and sightline
+Flag: 8.0-stud pole (0.15 diameter) standing in the cup, [2.0, 1.2, 0.05] #e03c31 banner at the top [26.0, 7.2, -52.0]; visual only, no collision. Line of sight from the tee eye (5.5 studs above the tee) to the flag top: **visible** (min clearance over rails/felt/props +0.20 studs).
+
+## Playtest stats (final, r5b, 2000 plays per skill)
 | Skill | Avg strokes | HIO | Capped (8) | Strokes 1..8 |
 |---|---|---|---|---|
-| good | 3.50 | 3.2% | 0.9% | [64, 533, 516, 432, 263, 109, 45, 38] |
-| average | 4.02 | 1.4% | 1.6% | [28, 273, 552, 489, 336, 167, 76, 79] |
+| good | 3.74 | 3.0% | 0.1% | [60, 54, 734, 808, 228, 84, 24, 8] |
+| average | 4.12 | 0.2% | 0.4% | [5, 35, 637, 680, 434, 121, 60, 28] |
 
 ## Props for 3D Model Bot (decoration only, sizes in studs)
-Giant hollow tree trunk with chamber and heart 34x60x34 (P1); root portcullis gate (moving, slides along Y) 0.8x1.4x7.4 (P1); lantern bar + post (moving, axis +Y, 40°/s) 6x1x0.6 (P1); trunk tunnel arch 7x5x8 (P2); root deflector cladding 15x1x0.5 (P1); heart-well root rim 8x0.6x1 (P2); Lantern Knot 1.2x1.2x0.6 (P2); hanging lanterns cluster 16x6x12 (P1); glowing mushrooms (P2).
+Giant hollow tree trunk with chamber and heart 34x60x34 (P1); root portcullis gate (moving, slides along Y 0..1.8 at 0.9 studs/s) 0.8x1.4x7.4 (P1, **rebuild travel**); **great lantern pendulum** (moving, NEW: hinge at (22, 8.96, -38.5), axis +Z, ±35°, period 4 s; chain 7 long; lantern bob 1.6x1.8x1.0 whose bottom hangs 0.06 above the felt at rest) (P1); root beam over the chamber 16x1.2x1.2 (P1, new); trunk tunnel arch 7x5x8 with root-and-moss trim following the 0.4 dip (P2); root deflector cladding 15x1x0.5 (P1); heart-well root rim 8x0.6x1 (P2); Lantern Knot 1.2x1.2x0.6 + exit knot 1.0x0.3x1.0 (P2); hanging lanterns cluster 16x6x12 (P1); glowing mushrooms (P2); flag 8 (P1). The old lantern bar + lantern post are removed.
 
 Decoration anchors (position in hole-local studs):
+- `cup_flag` at [26.0, -0.8, -52.0] size [2.0, 8.0, 0.15]: Flag: 8.0-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision
 - `hollow_tree` at [22, -0.5, -36] (LANDMARK) size [34, 60, 34]: Giant hollow tree: trunk ~34 across, chamber is inside it, opening above the heart
-- `trunk_tunnel` at [11, 1.0, -25.5] size [7, 5, 8]: Arched tunnel through a root buttress
-- `heart_lanterns` at [23, 4, -47] size [16, 6, 12]: Dozens of hanging lanterns inside the heart
-- `lantern_knot` at [6.5, 1.0, -23.0] size [1.2, 1.2, 0.6]: Secret glowing knot-hole in the corridor floor just past the root gate (teleport entry); exit is a knot in the heart's south-west corner
-- `well_rim` at [22, 1.0, -40] size [8, 0.6, 1]: Carved root rim along the heart-well drop edge
+- `trunk_tunnel` at [11, 1.0, -25.5] size [7, 5, 8]: Arched tunnel through a root buttress (opening 7 wide x 3 high above the corridor level, solid above y 4 up to y 6); the felt inside dips 0.4 (rolling dip)
+- `heart_lanterns` at [23, 4, -47] size [16, 6, 12]: Dozens of hanging lanterns inside the heart (hung above y 5; clear of the flag sightline)
+- `lantern_knot` at [6.5, 1.0, -23.0] size [1.2, 1.2, 0.6]: Secret glowing knot-hole in the corridor floor at (6.5, 1.0, -23.0): 0.5 stud past (east of) the root gate at x=6 and 1 stud in from the corridor's south rail (z=-22). Teleport entry r 0.3; the exit knot is in the heart green's north-west corner (15, -0.8, -52)
+- `lantern_knot_exit` at [15.0, -0.8, -52.0] size [1.0, 0.3, 1.0]: Matching small glowing knot on the heart green's north-west corner (teleport exit)
+- `well_rim` at [22.0, 1.0, -40] size [8.0, 0.6, 1]: Carved root rim along the heart-well drop edge
+- `pendulum_beam` at [22.0, 8.96, -38.5] size [16, 1.2, 1.2]: Root beam spanning the chamber high above the heart-well mouth (x 14..30), hinge of the lantern pendulum at its middle
+- `dip_cladding` at [11.0, 0.6, -25.5] size [6.0, 0.4, 7]: Root-and-moss trim on the tunnel rails following the rolling dip (felt dips 0.4 studs: down x 8..11, back up 11..14)
 - `glow_mushrooms` at [30, -0.5, -52] size [3, 2, 3]: Bioluminescent mushrooms ring
 
 ## Concept prompt
-First-person VR view at eye height from a mini golf tee at the base of a colossal hollow golden tree. A green felt lane climbs a ramp to a banked stone corner, then turns into an arched tunnel in the trunk, where a portcullis of twisted roots rises and falls. Through the opening, a warm glow: inside the hollow tree hundreds of paper lanterns hang above a lantern-lit chamber and a slowly turning lantern bar over a round heart green with a red flag. Fireflies, glowing mushrooms, golden autumn canopy, magical evening light, grand finale feel, cozy fairy-forest storybook style.
+First-person VR view at eye height from a mini golf tee at the base of a colossal hollow golden tree. A green felt lane climbs a ramp to a banked stone corner, then turns into an arched tunnel in the trunk where the felt dips and rises, behind a portcullis of twisted roots that rises and falls. Through the opening, a warm glow: inside the hollow tree hundreds of paper lanterns hang above a lantern-lit chamber, and a great brass-and-paper lantern swings slowly on a long chain across the mouth of a round sunken heart green with a tall red flag. Fireflies, glowing mushrooms, golden autumn canopy, magical evening light, grand finale feel, cozy fairy-forest storybook style.

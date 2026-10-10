@@ -42,6 +42,7 @@ local parkTime = 0 -- seconds with the ball practically motionless (< 0.05 studs
 local teleportCooldown = 0
 local stuckTime = 0 -- seconds the ball has made no progress (see checkAutoReset)
 local stuckAnchor: Vector3? = nil
+local strokeTime = 0 -- seconds the ball has been moving since it was hit or last came to rest (see Config.StrokeTimeout)
 
 local rayParams = RaycastParams.new()
 rayParams.CollisionGroup = "GolfBall"
@@ -125,6 +126,7 @@ function Ball.hit(velocity: Vector3, source: string?)
 	pinTime = 0
 	seamHops = 0
 	parkTime = 0
+	strokeTime = 0
 	rollVel = nil
 	lastVel = nil
 	Ball.setState("moving")
@@ -164,6 +166,7 @@ local function flat(v: Vector3)
 end
 
 local function rest(b)
+	strokeTime = 0
 	rollVel = nil
 	lastVel = nil
 	b.AssemblyLinearVelocity = Vector3.zero
@@ -440,6 +443,83 @@ local function pushFromDescending(b: BasePart)
 	return false
 end
 
+-- A sliding part's END closing on a ball (the H8 root door, which slides through the alcove rails into pockets):
+-- against a wall, push the ball sideways off the end face (along the part's thin axis) before it pinches; on open
+-- felt, bump it ahead like a real end-on hit.
+local function pushFromSliding(b: BasePart)
+	local pos = b.Position
+	for _, blk in cacheBlockers do
+		local mv = flat(blk:GetVelocityAtPosition(pos))
+		if mv.Magnitude < 0.05 then
+			continue
+		end
+		local dir = mv.Unit
+		local h = blk.Size / 2
+		local lp = blk.CFrame:PointToObjectSpace(pos)
+		local ld = blk.CFrame:VectorToObjectSpace(dir)
+		-- moving along its long horizontal axis only (end-on); the thin axis is the other one
+		local alongZ = h.Z >= h.X
+		local a = alongZ and ld.Z or ld.X
+		if math.abs(a) < 0.9 then
+			continue
+		end
+		local alongP, alongH = alongZ and lp.Z or lp.X, alongZ and h.Z or h.X
+		local crossP, crossH = alongZ and lp.X or lp.Z, alongZ and h.X or h.Z
+		local ahead = alongP * (a > 0 and 1 or -1) - alongH -- gap from the end face to the ball centre
+		if math.abs(crossP) < crossH + R and math.abs(lp.Y) < h.Y + R and ahead > -R and ahead < R + 0.35 then
+			-- a wall close ahead (within 1.5 studs): sideways, so the ball is never driven into it and pinched
+			local hit = workspace:Raycast(pos, dir * 1.5, rayParams)
+			local v = b.AssemblyLinearVelocity
+			if not (hit and table.find(cacheObstacles, hit.Instance)) then
+				-- open felt ahead: the end face bumps a ball it catches up with (a resting client-owned ball does
+				-- not always get the contact from the server-driven part, which then slides through it)
+				if ahead < R + 0.06 and flat(v):Dot(dir) < mv.Magnitude then
+					local nv = flat(v) - dir * flat(v):Dot(dir) + dir * mv.Magnitude * 1.6
+					b.AssemblyLinearVelocity = Vector3.new(nv.X, v.Y, nv.Z)
+					b.AssemblyAngularVelocity = Vector3.yAxis:Cross(nv) / R
+					rollVel, lastVel = nil, nil
+					return true
+				end
+			else
+				local axis = flat(alongZ and blk.CFrame.RightVector or blk.CFrame.LookVector)
+				if axis.Magnitude < 1e-3 then
+					continue
+				end
+				local side = (alongZ and 1 or -1) * crossP
+				local pdir = axis.Unit * (side >= 0 and 1 or -1)
+				if flat(v):Dot(pdir) < 2.5 then
+					local nv = pdir * 3 + dir * math.min(flat(v):Dot(dir), mv.Magnitude)
+					b.AssemblyLinearVelocity = Vector3.new(nv.X, v.Y, nv.Z)
+					b.AssemblyAngularVelocity = Vector3.yAxis:Cross(Vector3.new(nv.X, 0, nv.Z)) / R
+					rollVel, lastVel = nil, nil
+				end
+				return true
+			end
+		end
+	end
+	return false
+end
+
+-- Valley: the bottom of a dip between two sloped felt pieces (H9's rolling tunnel dip). On either plane the slope
+-- beats rolling resistance, so the ball would rock in the crease forever; returns the crease point (ball centre) if
+-- the felt within `reach` downhill slopes back toward the ball.
+local function valleyPoint(pos: Vector3, down: Vector3, reach: number): Vector3?
+	local prev
+	for t = 0.02, reach, 0.02 do
+		local c = pos + down * t
+		local hit = workspace:Raycast(c + Vector3.new(0, 0.3, 0), Vector3.new(0, -0.8, 0), rayParams)
+		if not hit or not CollectionService:HasTag(hit.Instance, "GolfSurface") then
+			return nil
+		end
+		if flat(hit.Normal):Dot(down) < -0.01 then
+			local p0 = prev or hit.Position
+			return (p0 + hit.Position) / 2 + Vector3.new(0, R + 0.005, 0)
+		end
+		prev = hit.Position
+	end
+	return nil
+end
+
 -- Auto-reset (holes with an AutoResetStill attribute, i.e. holes with moving parts or teleports): a moving ball
 -- that makes no progress, or a resting ball still held by a moving part, for that many seconds goes back to the
 -- stroke start for free.
@@ -483,7 +563,7 @@ local function step(dt)
 		-- is hopped clear, like a pinned rolling ball
 		local hole = Ball.getHole()
 		refreshCache(hole)
-		if pushFromDescending(b) then
+		if pushFromDescending(b) or pushFromSliding(b) then
 			slowTime, rollTime, stillTime, pinTime = 0, 0, 0, 0
 			stuckTime, stuckAnchor = 0, nil
 			Ball.setState("moving")
@@ -515,12 +595,25 @@ local function step(dt)
 	end
 
 	rollTime += dt
+	strokeTime += dt
+	-- safety net on every hole: a stroke that is still going after StrokeTimeout s (a ball circling a bank, ridden
+	-- around by a mover, ...) goes back to its last rest point (the stroke start) for free
+	if strokeTime > Config.StrokeTimeout then
+		strokeTime = 0
+		stuckTime, stuckAnchor = 0, nil
+		Ball.AutoReset:Fire(b.Position, "timeout")
+		Ball.setState("locked")
+		Remotes.RequestReset:FireServer()
+		return
+	end
 	local hole = Ball.getHole()
 	refreshCache(hole)
 	if checkTeleports(b) then
 		return
 	end
-	pushFromDescending(b)
+	if not pushFromDescending(b) then
+		pushFromSliding(b)
+	end
 	if checkPinned(b, dt, ground) then
 		return
 	end
@@ -614,6 +707,14 @@ local function step(dt)
 			-- next felt piece at the foot of a slope. Hop it over the lip, downhill, a few times before giving up.
 			-- (parked = practically motionless: a ball turning round at the top of its climb is not hopped)
 			local downhill = flat(ground.Normal)
+			if slopeAccel >= Config.RollDecel and downhill.Magnitude > 1e-3 then
+				local vp = valleyPoint(b.Position, downhill.Unit, 0.15)
+				if vp then
+					b.CFrame = CFrame.new(vp)
+					rest(b)
+					return
+				end
+			end
 			if slopeAccel >= Config.RollDecel and parkTime >= 0.3 and seamHops < 3 and downhill.Magnitude > 1e-3 then
 				seamHops += 1
 				stillTime = 0
@@ -695,6 +796,7 @@ function Ball.init()
 	Remotes.BallPlaced.OnClientEvent:Connect(function(pos, reason, holeIndex)
 		Ball.holeIndex = holeIndex
 		Ball.setState("locked")
+		strokeTime = 0
 		placeToken += 1
 		local token = placeToken
 		Ball.Placed:Fire(pos, reason)

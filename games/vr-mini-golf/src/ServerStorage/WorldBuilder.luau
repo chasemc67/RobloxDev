@@ -764,6 +764,10 @@ function WorldBuilder.BuildScenery(layout)
 	stats.backdrop = #buildBackdrop(layout, world):GetDescendants()
 	stats.lanterns = #buildLanterns(layout, world):GetChildren()
 	buildPlaza(layout, world)
+	-- imported world meshes replace their part-built stand-ins (no-op until ServerStorage.LanternGroveWorld exists)
+	if ServerStorage:FindFirstChild("LanternGroveWorld") then
+		stats.pieces = WorldBuilder.PlaceWorldPieces(layout)
+	end
 	local lights = 0
 	for _, d in workspace:GetDescendants() do
 		if d:IsA("Light") then
@@ -772,6 +776,261 @@ function WorldBuilder.BuildScenery(layout)
 	end
 	stats.lightsInWorkspace = lights
 	stats.parts = #world:GetDescendants()
+	return game:GetService("HttpService"):JSONEncode(stats)
+end
+
+------------------------------------------------------------------------------------------------ world pieces (meshes)
+-- 3D Model Bot's world-scale meshes (models/world: hollow tree shell + crown, sister trees, falls curtains, cliff kits,
+-- tree line, far hills, mountains, sky lanterns, ...). Data: ServerStorage.CourseData.WorldPieces
+-- (tools/world_pieces_to_lua.py). Library: ServerStorage.LanternGroveWorld.<piece id> (Model, pivot = piece origin).
+local WORLD_LIB = "LanternGroveWorld"
+local FAR_KINDS = { mountain = true, far_hill = true, sky = true, tree_line = true }
+
+local function worldPieces()
+	local m = ServerStorage.CourseData:FindFirstChild("WorldPieces")
+	return m and require(m:Clone())
+end
+
+local function meshKey(name)
+	return (string.gsub(name, "%.%d+$", ""))
+end
+
+-- Moves the 3D-Importer models (one per FBX file, named after the file) into ServerStorage.LanternGroveWorld, one
+-- Model per piece. Each file's origin and the importer's turn about Y are recovered from where its MeshParts landed
+-- vs. the manifest's per-mesh bbox centres (relative to the piece origin), so import position/orientation don't matter.
+function WorldBuilder.PrepareWorldLibrary()
+	local d = worldPieces()
+	assert(d, "no CourseData.WorldPieces")
+	local lib = ServerStorage:FindFirstChild(WORLD_LIB) or new("Folder", { Name = WORLD_LIB }, ServerStorage)
+	local report = { pieces = 0, files = 0, parts = 0, missingFiles = {}, unknownMeshes = 0, turned = {}, fitErr = {} }
+	for id, pc in d.pieces do
+		local model
+		for fname, fspec in pc.files do
+			local src = workspace:FindFirstChild(fname) or ServerStorage:FindFirstChild(fname)
+			if not src then
+				if not (lib:FindFirstChild(id) and lib[id]:GetAttribute("File_" .. fname)) then
+					table.insert(report.missingFiles, fname)
+				end
+				continue
+			end
+			local parts = {}
+			for _, x in (src:IsA("BasePart") and { src } or src:GetDescendants()) do
+				if x:IsA("BasePart") then
+					table.insert(parts, x)
+				end
+			end
+			-- best yaw (0/90/180/270) + translation mapping manifest centres onto the imported positions
+			local best, bestYaw, bestT = math.huge, 0, Vector3.zero
+			for _, yaw in { 0, 90, 180, 270 } do
+				local rot = CFrame.Angles(0, math.rad(yaw), 0)
+				local sum, n = Vector3.zero, 0
+				for _, p in parts do
+					local ms = fspec.meshes[meshKey(p.Name)]
+					if ms then
+						sum += p.Position - rot * Vector3.new(table.unpack(ms.center))
+						n += 1
+					end
+				end
+				if n > 0 then
+					local t = sum / n
+					local err = 0
+					for _, p in parts do
+						local ms = fspec.meshes[meshKey(p.Name)]
+						if ms then
+							err += (p.Position - (t + rot * Vector3.new(table.unpack(ms.center)))).Magnitude
+						end
+					end
+					err /= n
+					if err < best then
+						best, bestYaw, bestT = err, yaw, t
+					end
+				end
+			end
+			report.turned[fname] = bestYaw
+			report.fitErr[fname] = math.floor(best * 100 + 0.5) / 100
+			if not model then
+				model = lib:FindFirstChild(id)
+				if model then
+					model:Destroy()
+				end
+				model = new("Model", { Name = id })
+				model:SetAttribute("Kind", pc.kind)
+				model:SetAttribute("Tris", pc.tris)
+			end
+			-- bring the file's parts into the piece frame (origin at 0, yaw 0)
+			local toLocal = (CFrame.new(bestT) * CFrame.Angles(0, math.rad(bestYaw), 0)):Inverse()
+			for _, p in parts do
+				p.CFrame = toLocal * p.CFrame
+				p.Parent = model
+				for _, sa in p:GetChildren() do
+					if sa:IsA("SurfaceAppearance") then
+						sa:Destroy()
+					end
+				end
+				if p:IsA("MeshPart") then
+					p.TextureID = ""
+				end
+				local ms = fspec.meshes[meshKey(p.Name)]
+				if ms then
+					p.Color = Color3.fromHex(ms.color)
+					p.Material = Enum.Material[ms.material] or M.SmoothPlastic
+					p.Transparency = ms.transparency or 0
+				else
+					report.unknownMeshes += 1
+				end
+				p.Anchored = true
+				p.CanCollide = false
+				p.CanTouch = false
+				p.CanQuery = false
+				p.Massless = true
+				p.CastShadow = not FAR_KINDS[pc.kind] and p.Material ~= M.Neon and p.Transparency < 0.1
+				pcall(function()
+					p.CollisionFidelity = Enum.CollisionFidelity.Box
+					if FAR_KINDS[pc.kind] then
+						p.RenderFidelity = Enum.RenderFidelity.Performance
+					end
+				end)
+				report.parts += 1
+			end
+			model:SetAttribute("File_" .. fname, true)
+			src:Destroy()
+			report.files += 1
+		end
+		if model then
+			model.WorldPivot = CFrame.new()
+			model.Parent = lib
+			report.pieces += 1
+		end
+	end
+	return game:GetService("HttpService"):JSONEncode(report)
+end
+
+local function scaled(src: Model, s)
+	local m = src:Clone()
+	if s and not (s[1] == 1 and s[2] == 1 and s[3] == 1) then
+		if math.abs(s[1] - s[2]) < 1e-3 and math.abs(s[2] - s[3]) < 1e-3 then
+			m:ScaleTo(s[1])
+		else
+			-- per-axis in the piece frame (pivot at 0): parts' sizes and offsets
+			for _, p in m:GetDescendants() do
+				if p:IsA("BasePart") then
+					local rot = p.CFrame - p.Position
+					local function f(a)
+						return math.abs(a.X) * s[1] + math.abs(a.Y) * s[2] + math.abs(a.Z) * s[3]
+					end
+					p.Size *= Vector3.new(f(rot.RightVector), f(rot.UpVector), f(-rot.LookVector))
+					p.CFrame = CFrame.new(p.Position * Vector3.new(s[1], s[2], s[3])) * rot
+				end
+			end
+		end
+	end
+	return m
+end
+
+-- Places every world piece that is in the library into workspace.World.Pieces and retires the part-built stand-ins
+-- it replaces (World.HollowTree, World.Backdrop.<world_json_id>). Pieces not imported yet keep their stand-in.
+function WorldBuilder.PlaceWorldPieces(layout)
+	layout = layout or layoutModule()
+	local d = worldPieces()
+	local lib = ServerStorage:FindFirstChild(WORLD_LIB)
+	local world = workspace:FindFirstChild("World")
+	if not (d and lib and world) then
+		return "no world pieces library"
+	end
+	local old = world:FindFirstChild("Pieces")
+	if old then
+		old:Destroy()
+	end
+	local f = new("Folder", { Name = "Pieces" })
+	local backdrop = world:FindFirstChild("Backdrop")
+	local stats = { placed = 0, missing = {}, retired = 0, lights = 0, tris = 0 }
+	for id, pc in d.pieces do
+		local src = lib:FindFirstChild(id)
+		if not src then
+			table.insert(stats.missing, id)
+			continue
+		end
+		for k, inst in pc.instances do
+			local m = scaled(src, inst.scale)
+			m.Name = id .. (#pc.instances > 1 and ("_" .. k) or "")
+			m:PivotTo(CFrame.new(table.unpack(inst.pos)) * CFrame.Angles(0, math.rad(inst.yaw or 0), 0))
+			m.Parent = f
+			stats.placed += 1
+			stats.tris += pc.tris
+			-- retire the stand-in for this world.json id
+			local wid = inst.wid
+			if wid and backdrop then
+				for _, x in { backdrop:FindFirstChild(wid), backdrop.TreeLine and backdrop.TreeLine:FindFirstChild(wid) } do
+					if x then
+						x:Destroy()
+						stats.retired += 1
+					end
+				end
+				if wid == "sister_tree_nw" then
+					local mesh = backdrop:FindFirstChild("sister_tree_nw_mesh")
+					if mesh then
+						mesh:Destroy()
+					end
+				end
+			end
+		end
+	end
+	-- the hero tree replaces the part-built trunk + crown; keep the oculus spotlight, add the light shaft + interior lights
+	local t = layout.hollow_tree
+	local tree = world:FindFirstChild("HollowTree")
+	if tree and lib:FindFirstChild("hollow_tree_world_shell") then
+		for _, x in tree:GetChildren() do
+			if x.Name ~= "Oculus" then
+				x:Destroy()
+			end
+		end
+		tree:SetAttribute("StandIn", false)
+		local c = Vector3.new(t.center[1], t.base_y, t.center[3])
+		local top = Vector3.new(c.X, t.oculus.y, c.Z)
+		-- light shaft: a soft, slowly drifting beam from the oculus down onto the heart (camera-facing ribbon)
+		local holder = vis("OculusShaft", CFrame.new(top), Vector3.new(0.2, 0.2, 0.2), P.amber, M.SmoothPlastic, tree)
+		holder.Transparency = 1
+		local a0 = new("Attachment", {}, holder)
+		local a1 = new("Attachment", {}, holder)
+		a1.WorldPosition = Vector3.new(c.X, c.Y + 2, c.Z)
+		new("Beam", {
+			Attachment0 = a0,
+			Attachment1 = a1,
+			Width0 = t.oculus.radius * 1.6,
+			Width1 = t.oculus.radius * 2.2,
+			Color = ColorSequence.new(hex("FFE2A8")),
+			Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(0.7, 0.8), NumberSequenceKeypoint.new(1, 1) }),
+			LightEmission = 1,
+			LightInfluence = 0,
+			FaceCamera = true,
+			Texture = FOAM_TEX,
+			TextureMode = Enum.TextureMode.Stretch,
+			TextureSpeed = 0.05,
+			Segments = 6,
+		}, holder)
+		-- Heartwood Door lanterns
+		local doorA = math.rad(t.doorway.angle_deg)
+		local dd = Vector3.new(math.cos(doorA), 0, math.sin(doorA))
+		local dp = c + dd * (t.trunk_outer_radius + 0.5)
+		local dcf = CFrame.lookAt(dp, dp + dd)
+		for _, sgn in { -1, 1 } do
+			local l = vis("DoorLight", dcf * CFrame.new(sgn * (t.doorway.width / 2 + 1), 10, -2), Vector3.new(0.4, 0.4, 0.4), P.amber, M.SmoothPlastic, tree)
+			l.Transparency = 1
+			glow(l, 16, 1.4)
+			stats.lights += 1
+		end
+		for _, L in d.h9InteriorLights or {} do
+			local l = vis("InteriorLight", CFrame.new(table.unpack(L.pos)), Vector3.new(0.4, 0.4, 0.4), P.amber, M.SmoothPlastic, tree)
+			l.Transparency = 1
+			if L.kind == "wall_mushroom_clump" then
+				new("PointLight", { Color = hex("7FE3D0"), Range = 9, Brightness = 0.8, Shadows = false }, l)
+			else
+				new("PointLight", { Color = P.amber, Range = 12, Brightness = 1.2, Shadows = false }, l)
+			end
+			stats.lights += 1
+		end
+	end
+	f.Parent = world
 	return game:GetService("HttpService"):JSONEncode(stats)
 end
 

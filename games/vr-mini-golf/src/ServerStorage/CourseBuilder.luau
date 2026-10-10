@@ -330,12 +330,22 @@ function Hole:buildCupPiece(pc, cupLocal)
 	marker.Transparency = 1
 	marker:SetAttribute("Radius", radius)
 
-	-- flag on a pole standing in the cup
-	local poleH = 5
+	-- flag on a pole standing in the cup (spec cup.flag: pole_height above the cup felt, banner at the top, turned to
+	-- face the tee; visual only, like every vis() part: no collision, the ball passes through)
+	local fs = self.def.cup.flag or {}
+	local poleH = (fs.pole_height or 5) + CUP_DEPTH
+	local poleD = fs.pole_diameter or 0.06
+	local bs = fs.banner_size or { 1.4, 0.9, 0.03 }
 	local poleBase = cupWorld.Y - CUP_DEPTH
 	vis("FlagPole", CFrame.new(cupWorld.X, poleBase + poleH / 2, cupWorld.Z) * CFrame.Angles(0, 0, math.rad(90)),
-		Vector3.new(poleH, 0.06, 0.06), Color3.fromRGB(245, 245, 245), M.SmoothPlastic, self.model, Enum.PartType.Cylinder)
-	local flag = vis("Flag", CFrame.new(cupWorld.X + 0.72, poleBase + poleH - 0.5, cupWorld.Z), Vector3.new(1.4, 0.9, 0.03), P.amber, M.SmoothPlastic, self.model)
+		Vector3.new(poleH, poleD, poleD), Color3.fromRGB(245, 245, 245), M.SmoothPlastic, self.model, Enum.PartType.Cylinder)
+	local teeW = self.cf:PointToWorldSpace(v3(self.def.tee.position))
+	local toTee = Vector3.new(teeW.X - cupWorld.X, 0, teeW.Z - cupWorld.Z)
+	toTee = toTee.Magnitude > 0.1 and toTee.Unit or Vector3.zAxis
+	-- banner face toward the tee, flying out to the side of the pole
+	local face = CFrame.lookAt(Vector3.zero, -toTee)
+	local flagCF = CFrame.new(cupWorld.X, poleBase + poleH - bs[2] / 2 - 0.05, cupWorld.Z) * face * CFrame.new(bs[1] / 2 + poleD / 2, 0, 0)
+	local flag = vis("Flag", flagCF, Vector3.new(bs[1], bs[2], bs[3]), fs.banner_color and Color3.fromHex(fs.banner_color) or P.amber, M.SmoothPlastic, self.model)
 	for _, face in { Enum.NormalId.Front, Enum.NormalId.Back } do
 		local gui = new("SurfaceGui", { Face = face, CanvasSize = Vector2.new(140, 90), LightInfluence = 0 }, flag)
 		new("TextLabel", {
@@ -344,7 +354,7 @@ function Hole:buildCupPiece(pc, cupLocal)
 			Text = tostring(self.def.number),
 			TextScaled = true,
 			Font = Enum.Font.FredokaOne,
-			TextColor3 = P.bark,
+			TextColor3 = fs.banner_color and Color3.new(1, 1, 1) or P.bark,
 		}, gui)
 	end
 end
@@ -519,6 +529,9 @@ end
 CourseBuilder.moverValue = moverValue
 
 local function moverPeriod(m)
+	if m.type == "swing" then
+		return m.period_s
+	end
 	if m.range then
 		return 2 * (m.range[2] - m.range[1]) / math.abs(m.speed)
 	end
@@ -539,15 +552,16 @@ local MOVER_STYLE = {
 	root_door = { P.bark, M.Wood },
 	root_gate = { P.bark, M.Wood },
 	lantern_bar = { P.oak, M.Wood },
+	lantern_pendulum = { P.paper, M.SmoothPlastic },
 }
 
 -- Clearance gap: a sliding blocker must stop SLIDE_CLEARANCE short of any rail/bumper ahead of it (0.5 studs, ~3 ball
--- diameters, per Playtest Bot; a spec mover may set its own `clearance`), so a ball can never be squeezed between the
+-- diameters, per Playtest Bot; a spec mover may set its own `clearance` / `end_clearance`), so a ball can never be squeezed between the
 -- two (the spec's H8 root door slid 0.6 studs into the alcove rails and crushed balls parked against them). Walls the blocker already overlaps at offset 0 are ignored (e.g. the
 -- H9 root gate's ends sit inside the corridor rails and slide vertically along them).
 local SLIDE_CLEARANCE = 0.5
 function Hole:clampSlideRange(m, blockers, axis)
-	local clearance = m.clearance or SLIDE_CLEARANCE
+	local clearance = m.clearance or m.end_clearance or SLIDE_CLEARANCE
 	local walls = {}
 	for _, d in self.geo:GetChildren() do
 		if d:IsA("BasePart") and (d.Name == "Wall" or d.Name == "Bumper") then
@@ -580,16 +594,49 @@ function Hole:clampSlideRange(m, blockers, axis)
 		end
 		return false
 	end
+	-- Pocket: a wall the blocker passes right THROUGH by the spec end of its travel (its leading face ends beyond
+	-- the wall's far face, e.g. H8's root door sliding into pockets in the knot walls) cannot pinch the ball against
+	-- it, so the travel is not clamped there (movers don't collide with walls; BallController.pushFromSliding moves a
+	-- ball out of the way of a blocker end closing on a wall).
+	local function lead(off, sign)
+		local best = -math.huge
+		for _, bb in blockers do
+			for _, p in pts(bb.cf + axis * off, bb.size) do
+				best = math.max(best, p:Dot(axis) * sign)
+			end
+		end
+		return best
+	end
+	local function farFace(w, sign)
+		local best = -math.huge
+		for _, p in pts(w.CFrame, w.Size) do
+			best = math.max(best, p:Dot(axis) * sign)
+		end
+		return best
+	end
 	local lo, hi = m.range[1], m.range[2]
 	local out = { lo, hi }
 	for idx, sign in { [1] = -1, [2] = 1 } do
+		local target = sign > 0 and hi or lo
 		local ahead = {}
 		for _, w in walls do
 			if not hits(0, sign, w) then
-				table.insert(ahead, w)
+				local crossed = false
+				if lead(target, sign) > farFace(w, sign) + 0.05 then
+					for o = 0, math.abs(target), 0.05 do
+						if hits(sign * o, sign, w) then
+							crossed = true
+							break
+						end
+					end
+				end
+				if crossed then
+					print(string.format("CourseBuilder: hole %d %s slides through %s into a pocket (offset %g)", self.def.number, m.id, w:GetAttribute("WallId") or w.Name, target))
+				else
+					table.insert(ahead, w)
+				end
 			end
 		end
-		local target = sign > 0 and hi or lo
 		local o = 0
 		while (sign > 0 and o < target) or (sign < 0 and o > target) do
 			local nxt = o + sign * 0.02
@@ -645,7 +692,7 @@ function Hole:buildMover(m)
 		if math.abs(r[1] - m.range[1]) > 1e-3 or math.abs(r[2] - m.range[2]) > 1e-3 then
 			model:SetAttribute("SpecRange", Vector2.new(m.range[1], m.range[2]))
 			print(string.format("CourseBuilder: hole %d %s range [%g, %g] -> [%g, %g] (clearance %.2f to the rails)",
-				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], m.clearance or SLIDE_CLEARANCE))
+				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], m.clearance or m.end_clearance or SLIDE_CLEARANCE))
 			m = table.clone(m)
 			m.range = r
 		end
@@ -653,7 +700,7 @@ function Hole:buildMover(m)
 	local a0 = new("Attachment", { Name = "A0" }, base)
 	local a1 = new("Attachment", { Name = "A1" }, root)
 	local constraint
-	if m.type == "rotate" then
+	if m.type == "rotate" or m.type == "swing" then
 		constraint = new("HingeConstraint", {
 			Name = "Drive",
 			Attachment0 = a0,
@@ -716,6 +763,9 @@ function Hole:buildMover(m)
 	model:SetAttribute("RangeMin", m.range and m.range[1] or 0)
 	model:SetAttribute("RangeMax", m.range and m.range[2] or 0)
 	model:SetAttribute("Period", moverPeriod(m))
+	if m.type == "swing" then
+		model:SetAttribute("Amplitude", m.amplitude_deg)
+	end
 	model:SetAttribute("PivotWorld", pivot)
 	model:SetAttribute("AxisWorld", axis)
 	model:SetAttribute("Visual", m.visual)
@@ -733,8 +783,11 @@ function Hole:moverExtras(m, model, root, pivotLocal, axisLocal)
 		return p
 	end
 	if m.id == "spinner" then
-		for _, s in { -1, 1 } do
-			ride("Puffball", CFrame.new(s * 4.1, 0.85, 0), Vector3.one * 1.2, P.cream, M.SmoothPlastic, Enum.PartType.Ball)
+		-- a puffball near the outer end of each arm (spec blockers; the arms are 2.3 long since spec v2)
+		for _, b in m.blockers do
+			local c = v3(b.center)
+			local reach = math.abs(c.X) + b.size[1] / 2 - 0.4
+			ride("Puffball", CFrame.new(math.sign(c.X) * reach, 0.85, 0), Vector3.one * 1.2, P.cream, M.SmoothPlastic, Enum.PartType.Ball)
 		end
 		ride("HubCap", CFrame.new(0, 2.3, 0) * CFrame.Angles(0, 0, math.rad(90)), Vector3.new(0.5, 2.4, 2.4), P.toadstool, M.SmoothPlastic, Enum.PartType.Cylinder)
 	elseif m.id == "millwheel" then
@@ -748,6 +801,22 @@ function Hole:moverExtras(m, model, root, pivotLocal, axisLocal)
 				ride("Spoke", CFrame.new(0, 0, zz) * CFrame.Angles(0, 0, k * math.pi / 4), Vector3.new(0.2, 6.8, 0.2), P.oak, M.Wood)
 			end
 		end
+	elseif m.type == "swing" then
+		-- pendulum: a chain from the hinge down to the blocker (the lantern body), glowing
+		local b = m.blockers[1]
+		local top = v3(b.center) + Vector3.new(0, b.size[2] / 2, 0)
+		local len = top.Magnitude
+		if len > 0.1 then
+			-- cylinder axis is local X: turn it to point from the hinge to the lantern top
+			ride("Chain", CFrame.lookAt(top / 2, top) * CFrame.Angles(0, math.rad(90), 0), Vector3.new(len, 0.12, 0.12), P.bark, M.Metal, Enum.PartType.Cylinder)
+		end
+		-- the root beam it hangs from (static, across the swing plane: spec anchor pendulum_beam, 16 long; hidden with
+		-- the rest of the part visuals once the h9_lantern_pendulum mesh rides the mover, h9_pendulum_root_beam replaces it)
+		local across = axisLocal:Cross(Vector3.yAxis)
+		vis("HingeBeam", self.cf * CFrame.lookAt(pivotLocal, pivotLocal + across) * CFrame.new(0, 0.6, 0), Vector3.new(1.2, 1.2, 16), P.bark, M.Wood, model)
+		local glow = ride("LanternGlow", CFrame.new(v3(b.center)), v3(b.size) * 0.7, P.amber, M.Neon)
+		glow.Transparency = 0.2
+		new("PointLight", { Color = P.amber, Range = 12, Brightness = 1.2, Shadows = false }, glow)
 	elseif m.id == "lantern_bar" then
 		for _, s in { -1, 1 } do
 			local l = ride("Lantern", CFrame.new(s * 2.9, 0.1, 0), Vector3.new(0.6, 0.8, 0.6), P.paper, M.SmoothPlastic)
@@ -766,6 +835,15 @@ function Hole:buildHazard(hz)
 	volume:SetAttribute("HazardId", hz.id)
 	volume:SetAttribute("HazardType", hz.type)
 	volume:SetAttribute("Penalty", hz.penalty or 1)
+	if hz.reset == "respawn" and hz.respawn then
+		-- a miss is placed at rest on this felt point (e.g. H5's bridge entry) instead of the stroke start
+		volume:SetAttribute("RespawnWorld", self.cf:PointToWorldSpace(v3(hz.respawn)) + Vector3.new(0, Config.BallRadius + 0.03, 0))
+		-- glowing mossy marker flush on the felt where the ball comes back (spec anchor bridge_respawn_stone)
+		local rs = vis("RespawnStone", self.cf * CFrame.new(v3(hz.respawn) + Vector3.new(0, 0.006, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+			Vector3.new(0.01, 0.8, 0.8), P.firefly, M.Neon, self.hazards, Enum.PartType.Cylinder)
+		rs.Transparency = 0.35
+		rs.CastShadow = false
+	end
 	-- water surface (world y): Terrain water is buoyant, so the server calls a ball that reaches it a hazard
 	volume:SetAttribute("SurfaceY", (cf * CFrame.new(0, 0, 0)).Y)
 	local depth = c.Y - self.lawnTopLocal

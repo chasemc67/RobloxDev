@@ -1,6 +1,6 @@
 -- Movers: drives the course's moving parts on the server (spinner bar, mill wheel, sliding log, root door,
--- root gate, lantern bar). Each one is an unanchored assembly built by CourseBuilder: a MoverRoot with the
--- colliding Blocker parts welded to it, held by a HingeConstraint (rotate) or PrismaticConstraint (slide) to an
+-- root gate, lantern pendulum). Each one is an unanchored assembly built by CourseBuilder: a MoverRoot with the
+-- colliding Blocker parts welded to it, held by a HingeConstraint (rotate, swing) or PrismaticConstraint (slide) to an
 -- anchored MoverBase at the spec pivot, with a Motor actuator. Every physics step the motor velocity is set to
 -- the spec rate plus a small correction toward the spec position at server time t (workspace:GetServerTimeNow()),
 -- so the parts are phase-locked to the spec (pivot, axis, speed, range, phase) and every client sees the same
@@ -18,6 +18,13 @@ local MAX_CORRECTION = 2 -- x the spec rate (rad/s or studs/s) at most
 function Movers.value(model, t)
 	local sp = model:GetAttribute("Speed")
 	local phase = model:GetAttribute("Phase") or 0
+	if model:GetAttribute("Type") == "swing" then
+		-- pendulum: angle = amp * sin(360 t / period + phase), phase in degrees of the cycle
+		local amp, period = model:GetAttribute("Amplitude"), model:GetAttribute("Period")
+		local w = 2 * math.pi / period
+		local a = w * (t % period) + math.rad(phase)
+		return amp * math.sin(a), amp * w * math.cos(a)
+	end
 	if not model:GetAttribute("HasRange") then
 		local period = model:GetAttribute("Period")
 		-- reduce t first: GetServerTimeNow() is ~1.7e9, and deg/s * that loses precision

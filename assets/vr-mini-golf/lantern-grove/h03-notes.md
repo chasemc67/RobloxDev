@@ -24,7 +24,10 @@ Pace through two banks. Too soft and the ball stalls in the tunnel. Too hard and
 ## Moving parts / teleports (exact specs, also in holes.json)
 - none
 
-## Playtest stats (final, p4, 2000 plays per skill)
+## Flag and sightline
+Flag: 7.5-stud pole (0.15 diameter) standing in the cup, [2.0, 1.2, 0.05] #e03c31 banner at the top [15.5, 7.5, -30.5]; visual only, no collision. Line of sight from the tee eye (5.5 studs above the tee) to the flag top: **blocked by prop:stem_house** (min clearance over rails/felt/props -6.04 studs).
+
+## Playtest stats (final, r5b, 2000 plays per skill)
 | Skill | Avg strokes | HIO | Capped (8) | Strokes 1..8 |
 |---|---|---|---|---|
 | good | 2.79 | 2.6% | 0.4% | [52, 890, 733, 184, 72, 39, 18, 12] |
@@ -34,6 +37,7 @@ Pace through two banks. Too soft and the ball stalls in the tunnel. Too hard and
 Mushroom house large with stem tunnel 10x12x10 (P1); mushroom house medium 7x9x7 (P1); toadstool stool cladding for `toadstool_stool` 2x1.8x2 (P1); bank cladding (rounded stone banks on bank1/bank2, 1.2-stud plane, 9 long) (P1); small toadstool cluster 3x2.5x3 (P2); lantern string 12x1x0.3 (P2).
 
 Decoration anchors (position in hole-local studs):
+- `cup_flag` at [15.5, 0.0, -30.5] size [2.0, 7.5, 0.15]: Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision
 - `stem_house` at [8.5, 0, -12] (LANDMARK) size [10, 12, 10]: Red-cap mushroom house; felt tunnel runs through its stem (5 long, 3 high opening)
 - `small_toadstools` at [-6, 0, -6] size [3, 2.5, 3]: Cluster of 3 small toadstools
 - `house_2` at [26, 0, -14] size [7, 9, 7]: Second mushroom house with round window

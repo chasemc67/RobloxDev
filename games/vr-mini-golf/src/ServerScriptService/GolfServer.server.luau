@@ -152,9 +152,11 @@ local function outOfBounds(player, st)
 	st.ball:SetAttribute("LastOOB", (hz and ("hazard:" .. hz:GetAttribute("HazardId")) or "escape") .. "#" .. st.oobCount)
 	local text = kind == "water" and "Splash!  Water hazard  +" or (kind == "pit" and "Down the rabbit hole!  +" or "Out of bounds!  +")
 	Remotes.Notice:FireClient(player, text .. Config.PenaltyStrokes, "bad", kind)
+	-- spec hazard reset = 'respawn': back at a set felt point (H5: the root-bridge entry), else the stroke start
+	local respawn = hz and hz:GetAttribute("RespawnWorld")
 	task.delay(1, function()
 		if states[player] == st and st.resetting and not st.sunk then
-			placeBall(player, st, st.lastPos, "oob")
+			placeBall(player, st, respawn or st.lastPos, "oob")
 		end
 	end)
 end

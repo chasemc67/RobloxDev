@@ -22,11 +22,41 @@ sys.path.insert(0, HERE)
 from holes_to_lua import GAME_DIR, REPO, to_lua  # noqa: E402
 
 MODELS = os.path.join(REPO, "assets", "vr-mini-golf", "lantern-grove", "models")
+OVERRIDES = os.path.join(HERE, "props_overrides.json")  # spec changes newer than the manifest (see its note)
 DEFAULT_OUT = os.path.join(GAME_DIR, "src", "ServerStorage", "CourseData", "PropPlacements.luau")
 
 
 def r3(v):
     return [round(float(x), 3) for x in v]
+
+
+def apply_overrides(placements):
+    """Patch hero placements from tools/props_overrides.json; returns what was applied (also kept in the module)."""
+    if not os.path.exists(OVERRIDES):
+        return []
+    ov = json.load(open(OVERRIDES))
+    applied = []
+    for o in ov.get("placements", []):
+        prop, hole, pos = o["match"]
+        hit = [e for e in placements if e["prop"] == prop and e["hole"] == hole
+               and max(abs(a - b) for a, b in zip(e["pos"], pos)) < 0.05]
+        if not hit:
+            print("override did not match (manifest updated?):", o["match"])
+            continue
+        for e in hit:
+            if o.get("remove"):
+                placements.remove(e)
+            else:
+                e.update({k: (r3(v) if isinstance(v, list) and k == "pos" else v) for k, v in o["set"].items()})
+        applied.append(o.get("why", prop))
+    for a in ov.get("add", []):
+        e = {k: a[k] for k in ("prop", "hole", "pos", "yaw") if k in a}
+        for k in ("scale", "motion"):
+            if k in a:
+                e[k] = a[k]
+        placements.append(e)
+        applied.append(a.get("why", a["prop"]))
+    return applied
 
 
 def convert():
@@ -47,6 +77,9 @@ def convert():
         for part in p["parts"]:
             out["parts"][part["mesh"]] = {"color": part["color"], "material": part["roblox_material"],
                                           "transparency": part.get("transparency", 0)}
+            if "bbox_center_from_origin" in part:
+                # per-mesh centre relative to the prop origin: PrepareLibrary fits single-file imports with it
+                out["parts"][part["mesh"]]["center"] = r3(part["bbox_center_from_origin"])
         for pl in p["placements"]:
             e = {"prop": p["name"], "hole": int(pl["hole"][1:]), "pos": r3(pl["pos"]), "yaw": pl.get("yaw", 0)}
             if "scale" in pl:
@@ -54,11 +87,13 @@ def convert():
             if "scale_z_to" in pl:
                 e["scale_z_to"] = pl["scale_z_to"]
             out["placements"].append(e)
+    applied = apply_overrides(out["placements"])
     for hk, h in man["dressing"]["holes"].items():
         n = int(hk[1:])
         out["dressing"][str(n)] = [{"prop": i["prop"], "pos": r3(i["pos"]), "yaw": round(i.get("yaw", 0), 1),
                                     "scale": round(i.get("scale", 1), 3), "role": i.get("role")} for i in h["instances"]]
         out["lights"][str(n)] = [r3(l if isinstance(l, list) else l.get("pos")) for l in h.get("lights", [])]
+    out["overrides"] = applied
     src = to_lua(out)
     for n in range(1, 10):
         src = src.replace('["%d"] = ' % n, "[%d] = " % n)

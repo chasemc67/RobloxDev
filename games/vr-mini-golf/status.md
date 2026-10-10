@@ -118,6 +118,11 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
 - Published by Codex computer use (File > Publish to Roblox): "Place published. Friends and playtesters can now play this place in Roblox." Version History: v43, 2026-10-10 1:52 PM. Audience unchanged.
 - Re-import after a new holes.json: `python3 tools/holes_to_lua.py --push --build` (course + props + terrain carve).
 
+## 2026-10-10 16:50 PT: Lantern Grove stage c, spec v2 + props pass 6 + world pieces (saved, not published)
+- Spec v2 imported and regenerated (H4 short padded spinner, H5 respawn at the bridge entry, H7 log +-7, H8 shorter route + alcove bank + pockets + new exit ring, H9 lantern pendulum + tunnel dip, flags everywhere). Stroke timeout 20 s.
+- 3D Model Bot pass-6 props and all world pieces (hollow tree shell + crown, sister trees, falls, cliffs, tree line, hills, mountains) imported and placed. Final sweep 180 shots: 0 escapes/stuck/resets/timeouts, 0 console errors. See `logs/stages/progress.md` and `playtests/lantern-v1/stage-c/README.md`.
+- Re-import after a new manifest: `python3 tools/props_to_lua.py --push`, import any new FBX (3D Importer), `PropsBuilder.PrepareLibrary({<imported models>})`, then `holes_to_lua.py --build`. World pieces: `tools/world_pieces_to_lua.py --push`, import, `WorldBuilder.PrepareWorldLibrary()`, `WorldBuilder.BuildScenery()`.
+
 ## TODO
 - [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
 - [ ] Headset check:
