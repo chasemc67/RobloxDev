@@ -2042,6 +2042,9 @@ local function api(cmd, a, b)
 		if atm then
 			atm.Density, atm.Haze = 0.12, 0.4
 		end
+		if atm and b == 0 then
+			atm.Density, atm.Haze = 0, 0 -- the world overview is shot from ~1000 studs up
+		end
 		local box
 		-- world layout: CourseBuilder stores the terrain extent; the overview frames the whole world, not just the holes
 		local wmin, wmax = workspace.Course:GetAttribute("WorldMin"), workspace.Course:GetAttribute("WorldMax")
@@ -2069,6 +2072,7 @@ local function api(cmd, a, b)
 			local aspect = vp.X / math.max(vp.Y, 1)
 			-- (the runner crops the CoreGui strip off the top of the capture: leave room for it)
 			local size = math.max(box[2].Z, box[2].X / aspect) * (b == 0 and 1.22 or 1.18)
+			workspace:SetAttribute("GolfTestTopFOV", (b == 0 and world) and 85 or nil)
 			setFrame(c, size, Vector3.new(0, 0, -1))
 			workspace:SetAttribute("GolfTestCamera", "topdown")
 		elseif a == "hole" then
@@ -2078,7 +2082,12 @@ local function api(cmd, a, b)
 			-- (directions are in the hole's local frame: +Z = behind the tee)
 			local d = holeCF(b):VectorToWorldSpace((VIEW[b] or Vector3.new(0.15, 0, 1)).Unit)
 			workspace:SetAttribute("GolfTestFocus", c)
-			workspace:SetAttribute("GolfTestCamPos", c + d * s2 * 0.8 + Vector3.new(0, s2 * 0.62, 0))
+			-- (world layout: H9 is inside the hollow tree, so the camera has to stay inside the trunk)
+			local back, up = 0.8, 0.62
+			if world and b == 9 then
+				back, up = 0.3, 0.5
+			end
+			workspace:SetAttribute("GolfTestCamPos", c + d * s2 * back + Vector3.new(0, s2 * up, 0))
 			workspace:SetAttribute("GolfTestCamUp", Vector3.yAxis)
 			workspace:SetAttribute("GolfTestFOV", 50)
 			workspace:SetAttribute("GolfTestCamera", "look")
@@ -2149,14 +2158,18 @@ local function updateCamera(dt)
 		camera.FieldOfView = workspace:GetAttribute("GolfTestFOV") or 40
 		local up = workspace:GetAttribute("GolfTestCamUp") or Vector3.yAxis
 		camera.CFrame = CFrame.lookAt(workspace:GetAttribute("GolfTestCamPos") or focus + Vector3.new(0, 0, 8), focus, up)
+		camera.Focus = CFrame.new(focus)
 	elseif mode == "fixed" then
 		camera.FieldOfView = 50
 		local pos = focus - view * size * 0.75 + Vector3.new(0, size * 0.6, 0)
 		camera.CFrame = CFrame.lookAt(pos, focus)
 	elseif mode == "topdown" then
-		camera.FieldOfView = 50
-		local h = (size / 2) / math.tan(math.rad(25)) * 1.1
+		-- (the world overview uses a wide lens: the play client stops drawing parts/terrain ~1000 studs out)
+		local fov = workspace:GetAttribute("GolfTestTopFOV") or 50
+		camera.FieldOfView = fov
+		local h = (size / 2) / math.tan(math.rad(fov / 2)) * 1.1
 		camera.CFrame = CFrame.lookAt(focus + Vector3.new(0, h, 0), focus, view)
+		camera.Focus = CFrame.new(focus) -- render detail/lighting around the framed spot, not ~1000 studs up
 	elseif mode == "follow" and b then
 		camera.FieldOfView = 60
 		local v = flat(b.AssemblyLinearVelocity)

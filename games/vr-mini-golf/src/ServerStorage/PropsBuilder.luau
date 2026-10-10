@@ -64,7 +64,36 @@ function PropsBuilder.PrepareLibrary(sources)
 			end
 		end
 	end
-	local report = { props = 0, parts = 0, missing = {}, scale = {}, unknownMeshes = 0 }
+	local report = { props = 0, parts = 0, missing = {}, scale = {}, unknownMeshes = 0, turned = {} }
+	-- The importer may turn the whole bundle about Y (Studio's "Front" vs the FBX's -Z forward: the 2026-10-10 import
+	-- came in rotated 180 degrees). Detect it from one prop's grid cell and undo it about the bundle's origin.
+	for _, src in sources do
+		local offsets = d.library[src.Name]
+		if not offsets then
+			continue
+		end
+		for name, off in offsets do
+			local m = src:FindFirstChild(name, true)
+			local info = d.props[name]
+			if m and info then
+				local cf = m:GetBoundingBox()
+				local want = Vector3.new(off[1], 0, off[3]) + Vector3.new(table.unpack(info.center))
+				local best, bestYaw = math.huge, 0
+				for _, yaw in { 0, 90, 180, 270 } do
+					local got = CFrame.Angles(0, math.rad(yaw), 0) * cf.Position
+					local e = (Vector3.new(got.X, 0, got.Z) - Vector3.new(want.X, 0, want.Z)).Magnitude
+					if e < best then
+						best, bestYaw = e, yaw
+					end
+				end
+				if bestYaw ~= 0 then
+					src:PivotTo(CFrame.Angles(0, math.rad(bestYaw), 0) * src:GetPivot())
+				end
+				report.turned[src.Name] = bestYaw
+				break
+			end
+		end
+	end
 	for name, info in d.props do
 		-- find the prop's root anywhere in the imported bundles
 		local root
@@ -235,6 +264,21 @@ local function worldKeepouts(course)
 		treeOut = t.trunk_outer_radius,
 		spawn = Vector3.new(layout.spawn.pos[1], 0, layout.spawn.pos[3]),
 	}
+end
+
+-- is any felt piece of `hole` within r (flat distance) of p?
+local function overFelt(hole, p: Vector3, r)
+	for _, f in hole.Geometry:GetChildren() do
+		if f:IsA("BasePart") and (f.Name == "Felt" or f.Name == "CupPlate") then
+			local lp = f.CFrame:PointToObjectSpace(Vector3.new(p.X, f.Position.Y, p.Z))
+			local dx = math.max(math.abs(lp.X) - f.Size.X / 2, 0)
+			local dz = math.max(math.abs(lp.Z) - f.Size.Z / 2, 0)
+			if dx * dx + dz * dz < r * r then
+				return true
+			end
+		end
+	end
+	return false
 end
 
 local groundParams = RaycastParams.new()
@@ -426,6 +470,11 @@ function PropsBuilder.Place(course)
 					continue
 				end
 				y = hit.Position.Y - 0.15
+			end
+			-- keep tree canopies off the hole's own felt (they hide the green from the tee and in the overview)
+			if it.role == "tree" and overFelt(h, wp, r * 0.85) then
+				skip("canopy")
+				continue
 			end
 			local cf = CFrame.new(wp.X, y, wp.Z) * (cfH - cfH.Position) * CFrame.Angles(0, math.rad(it.yaw or 0), 0)
 			local m = instance(lib, it.prop, cf, sc)

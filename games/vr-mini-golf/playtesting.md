@@ -132,19 +132,36 @@ Options (JSON in workspace attribute `GolfTestOpts`, set with `--opts`): `parts`
 Studio must be open on place 87725688219952 (VR Mini Golf), in Edit mode, with the Studio MCP enabled. Then, from the repo:
 ```bash
 cd ~/src/RobloxDev/games/vr-mini-golf
-# 1. all 9 hole suites + the H7 log pin hunt + the H8 door test + the mover check (~75 min), HIO seeded by the engine sim:
+# 1. all 9 hole suites (~75 min), HIO seeded by the engine sim; then the H7 log pin hunt, H8 door test, mover check:
 python3 tools/run_playtests.py holes --engine-sim --opts '{"fuzz":12,"sweep":6,"hioTries":24}' --out playtests/<date>-lantern
+python3 tools/run_playtests.py run h7pin h8door movers --no-vr --out playtests/<date>-lantern/movers
 # 2. one or a few holes, a subset of parts (fast):
 python3 tools/run_playtests.py holes 7 --opts '{"parts":"routes,sweep","sweep":8}' --out /tmp/h7
-# 3. progression + VR checks (SimulateVR on):
-python3 tools/run_playtests.py run progress ledge ghost clubviz --out playtests/<date>-lantern/vr
-# 4. screenshots: overview.png, holeNN.png (3/4 view, HUD on), topdown_hNN.png, follow_hNN_a/b.png (ace-line chase cam):
+# 3. progression (fade to black + next tee + VR warp) and VR checks (SimulateVR on):
+python3 tools/run_playtests.py run progress ledge ghost --out playtests/<date>-lantern/vr
+# 4. screenshots: holeNN.png (3/4 view, HUD on), topdown_hNN.png, follow_hNN_a/b.png (ace-line chase cam, ball height):
 python3 tools/run_playtests.py shots --out playtests/<date>-lantern/shots
-# 5. normal play check (test mode off), desktop then phone emulation:
+#    world stills from Edit mode (the play client doesn't draw terrain/parts from ~1000 studs up):
+python3 tools/run_playtests.py overview --out playtests/<date>-lantern/shots     # overview.png + overview_aerial.png
+# 5. normal play check (test mode off), desktop then phone emulation: errors/warnings, HUD, ball on the tee, perf counts:
 python3 tools/run_playtests.py smoke
 python3 tools/run_playtests.py smoke --device iphone_17_pro
 ```
-Read `<out>/summary.md` (per-hole table: lines, ace, banks, sweep, fuzz, escapes/stuck/nudges) and **look at the PNGs**. Anything in the "Escapes / stuck / nudges" column or the `hN issues` lines is a bug to fix (positions are world coordinates; hole frames are in each `HoleN` model's `HoleOrigin` attribute). After a spec update: `python3 tools/holes_to_lua.py --push --build`, then re-run.
+Read `<out>/summary.md` (per-hole table: lines, ace, banks, sweep, fuzz, escapes/stuck/nudges) and **look at the PNGs**. Anything in the "Escapes / stuck / nudges" column or the `hN issues` lines is a bug to fix (positions are world coordinates; each `HoleN` model's `HoleOrigin`/`HoleYaw` attributes give its frame, and every scenario works in those hole-local frames, so it doesn't matter where a hole sits in the world).
+
+### Rebuilding the world (after a spec, world map or prop update)
+All steps run against Studio in Edit mode and are idempotent:
+```bash
+python3 tools/holes_to_lua.py --push            # holes.json -> CourseData.LanternGrove
+python3 tools/world_to_lua.py --push --build    # world.json -> CourseData.WorldLayout, rebuild workspace.Course in the world
+python3 tools/world_terrain.py                  # terrain-4stud.json -> Terrain, carve every felt piece, clearance check (expect 0 intrusions)
+python3 tools/props_to_lua.py --push            # models/manifest.json -> CourseData.PropPlacements
+# in Studio (command bar / MCP execute_luau, Edit):
+#   require(game.ServerStorage.WorldBuilder:Clone()).BuildScenery()   -- workspace.World: walkways, water, tree, backdrop, lanterns
+#   require(game.ServerStorage.PropsBuilder:Clone()).Place()          -- HoleN/Decor/Props + mover visuals
+```
+- Moving a hole: edit its `placement` (origin, yaw) in world.json and rerun the last four steps. Hole geometry, harness, tees, cups, teleports, movers and the VR next-tee warp all follow the hole frame. Set `enabled = false` in `CourseData.WorldLayout` to get the flat greybox back.
+- New props from 3D Model Bot: `blender -b --factory-startup -P models/library/make_library.py -- <models> <models>/library`, import `lg_lib_a/b.fbx` with File > Import 3D (unit Stud; `tools/codex_ui.sh codex-import logs/prompts/import_props.md`), then `PropsBuilder.PrepareLibrary()` (detects and undoes the importer's 180-degree turn, applies the manifest materials, makes every part decoration-only) and `Place()`.
 
 ## VR club: grip axis (needs a headset to confirm)
 

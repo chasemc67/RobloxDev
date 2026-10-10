@@ -663,6 +663,19 @@ local h1 = workspace.Course:FindFirstChild('Hole1')
 local out = {touch = UIS.TouchEnabled, viewport = tostring(workspace.CurrentCamera.ViewportSize), ball = ball ~= nil,
   hole = me:GetAttribute('Hole'), strokes = me:GetAttribute('Strokes'), camType = tostring(workspace.CurrentCamera.CameraType)}
 if ball and h1 then out.ballToTee = math.floor((ball.Position - h1.Tee.Position).Magnitude * 100) / 100; out.anchored = ball.Anchored end
+-- perf: frames over 5 s at the hole 1 tee view (Mac GPU, so only a relative number), and what the client holds
+local frames = 0
+local conn = game:GetService('RunService').RenderStepped:Connect(function() frames += 1 end)
+task.wait(5)
+conn:Disconnect()
+out.fps = frames / 5
+local parts, meshes, lights = 0, 0, 0
+for _, d in workspace:GetDescendants() do
+  if d:IsA('BasePart') then parts += 1 end
+  if d:IsA('MeshPart') then meshes += 1 end
+  if d:IsA('Light') then lights += 1 end
+end
+out.parts, out.meshParts, out.lights = parts, meshes, lights
 return game:GetService('HttpService'):JSONEncode(out)""" % args.shots, "Client", timeout=180)
         hud = st.luau("""local pg = game:GetService('Players').LocalPlayer:FindFirstChild('PlayerGui')
 local gui = pg and pg:FindFirstChild('GolfHUD')
@@ -858,6 +871,36 @@ def cmd_shots(args):
     print(json.dumps({"written": [os.path.relpath(p, GAME_DIR) for p in written], "problems": problems}, indent=1))
 
 
+def cmd_overview(args):
+    """World overview stills from Edit mode (the play client stops drawing terrain/parts from ~1000 studs up):
+    overview.png (top-down over the world map's terrain extent) and overview_aerial.png (world.json vista 4 view).
+    Haze is switched off for the shot and restored."""
+    import base64
+    st = Studio()
+    st.stop_play()
+    out_dir = args.out or os.path.join(GAME_DIR, "playtests", "lantern-v1")
+    os.makedirs(out_dir, exist_ok=True)
+    saved = st.luau("local a = game.Lighting:FindFirstChildOfClass('Atmosphere') local d = a and a.Density or -1 "
+                    "if a then a.Density = 0 end return tostring(d)", "Edit")
+    views = [("overview.png", [40, 900, 1], [40, 0, 0]), ("overview_aerial.png", [230, 300, 340], [10, 20, -20])]
+    try:
+        for name, cam, look in views:
+            r = st.m.req("tools/call", {"name": "screen_capture", "arguments": {
+                "studio_id": st.id, "capture_id": name, "camera_position": cam, "look_at_position": look}})
+            img = [c for c in r["result"]["content"] if c.get("type") == "image"][0]
+            tmp = os.path.join(out_dir, name + ".jpg")
+            with open(tmp, "wb") as fh:
+                fh.write(base64.b64decode(img["data"]))
+            subprocess.run(["uv", "run", "-q", "--with", "pillow", "python", "-c",
+                            "import sys; from PIL import Image; Image.open(sys.argv[1]).save(sys.argv[2])", tmp,
+                            os.path.join(out_dir, name)], check=True, timeout=120)
+            os.remove(tmp)
+            log("shot", name)
+    finally:
+        if float(saved) >= 0:
+            st.luau("game.Lighting:FindFirstChildOfClass('Atmosphere').Density = %s return 'ok'" % saved, "Edit")
+
+
 def cmd_list(args):
     # read from the src/ mirror of GolfClient.GolfTest so this works without a playtest running
     names = []
@@ -879,6 +922,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("list")
+    ov = sub.add_parser("overview")
+    ov.add_argument("--out")
     r = sub.add_parser("run")
     r.add_argument("scenarios", nargs="*")
     r.add_argument("--cams", default="")
@@ -918,7 +963,7 @@ def main():
     c.add_argument("after")
     args = ap.parse_args()
     {"list": cmd_list, "run": cmd_run, "holes": cmd_holes, "shots": cmd_shots, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
-     "clubviz": cmd_clubviz}[args.cmd](args)
+     "clubviz": cmd_clubviz, "overview": cmd_overview}[args.cmd](args)
 
 
 if __name__ == "__main__":

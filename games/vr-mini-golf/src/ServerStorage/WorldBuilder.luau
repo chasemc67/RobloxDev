@@ -132,16 +132,19 @@ function WorldBuilder.WriteTerrainRows(meta, j0, n, hs, ws, ms)
 			end
 			for y = 1, NY do
 				local ybot = Y0 + (y - 1) * cell
-				local occ = math.clamp((h - ybot) / cell, 0, 1)
+				-- smooth terrain puts the surface at about (voxel centre + occupancy * cell), so a column's surface
+				-- lands at h when occupancy = (h - centre) / cell (measured: bottom-based occupancy sat 2 studs high)
+				local centre = ybot + cell / 2
+				local occ = math.clamp((h - centre) / cell, 0, 1)
 				local mat, o = M.Air, 0
 				if occ > 0 then
 					mat, o = (h - ybot) <= 2 * cell and surf or M.Rock, occ
 					if wet and occ < 0.5 then
 						-- the voxel holding the bed surface: water reads better than a half-empty mud cell
-						mat, o = M.Water, 1
+						mat, o = M.Water, math.clamp((w - centre) / cell, occ, 1)
 					end
-				elseif wet and ybot < w then
-					mat, o = M.Water, math.clamp((w - ybot) / cell, 0, 1)
+				elseif wet and centre < w then
+					mat, o = M.Water, math.clamp((w - centre) / cell, 0, 1)
 				end
 				mats[i][y][j], occs[i][y][j] = mat, o
 			end
@@ -167,7 +170,17 @@ function WorldBuilder.CarveHoles(course)
 			if p:IsA("BasePart") and (p.Name == "Felt" or p.Name == "CupPlate") then
 				local t = p.Size.Y
 				Terrain:FillBlock(p.CFrame * CFrame.new(0, 3.25, 0), Vector3.new(p.Size.X + 1.2, t + 6.5, p.Size.Z + 1.2), M.Air)
+				-- wider, from just under the felt top: neighbouring (higher) pads bleed in at the 4-stud voxel scale
+				Terrain:FillBlock(p.CFrame * CFrame.new(0, t / 2 - 0.1 + 3.5, 0), Vector3.new(p.Size.X + 4, 7, p.Size.Z + 4), M.Air)
 				n += 1
+			end
+		end
+		-- FillBlock(Air) only partly empties voxels that straddle the felt top, and smoothing lets a neighbouring higher
+		-- pad bleed over a lower piece (H2 ledge base, H7 slope foot). Cap every voxel near each piece directly so the
+		-- terrain surface (about centre + occupancy * 4) stays 0.1 under the piece's lowest top, 2 studs around it.
+		for _, p in geo:GetChildren() do
+			if p:IsA("BasePart") and (p.Name == "Felt" or p.Name == "CupPlate") then
+				WorldBuilder.CapUnder(p, 2, 0.1)
 			end
 		end
 		local hz = hole:FindFirstChild("Hazards")
@@ -183,6 +196,55 @@ function WorldBuilder.CarveHoles(course)
 		end
 	end
 	return n
+end
+
+function WorldBuilder.CapUnder(p: BasePart, margin, clearance)
+	local cell = 4
+	-- lowest point of the top face (sloped pieces: the low end)
+	local top = math.huge
+	for _, sx in { -1, 1 } do
+		for _, sz in { -1, 1 } do
+			top = math.min(top, p.CFrame:PointToWorldSpace(Vector3.new(sx * p.Size.X / 2, p.Size.Y / 2, sz * p.Size.Z / 2)).Y)
+		end
+	end
+	local flat = CFrame.new(p.Position) * CFrame.Angles(0, select(2, p.CFrame:ToEulerAnglesYXZ()), 0)
+	local r = math.sqrt((p.Size.X / 2 + margin) ^ 2 + (p.Size.Z / 2 + margin) ^ 2)
+	local function snap(v, up)
+		return (up and math.ceil(v / cell) or math.floor(v / cell)) * cell
+	end
+	local lo = Vector3.new(snap(p.Position.X - r), snap(top - 12), snap(p.Position.Z - r))
+	local hi = Vector3.new(snap(p.Position.X + r, true), snap(top + 12, true), snap(p.Position.Z + r, true))
+	local region = Region3.new(lo, hi)
+	local mats, occs = Terrain:ReadVoxels(region, cell)
+	local size = mats.Size
+	local changed = false
+	for i = 1, size.X do
+		for k = 1, size.Z do
+			local cx, cz = lo.X + (i - 0.5) * cell, lo.Z + (k - 0.5) * cell
+			local lp = flat:PointToObjectSpace(Vector3.new(cx, p.Position.Y, cz))
+			if math.abs(lp.X) <= p.Size.X / 2 + margin and math.abs(lp.Z) <= p.Size.Z / 2 + margin then
+				for j = 1, size.Y do
+					local cy = lo.Y + (j - 0.5) * cell
+					local cap = math.clamp((top - clearance - cy) / cell, 0, 1)
+					-- no grass blades (Terrain decoration) poking up through the felt
+					if mats[i][j][k] == Enum.Material.Grass then
+						mats[i][j][k] = Enum.Material.LeafyGrass
+						changed = true
+					end
+					if occs[i][j][k] > cap then
+						occs[i][j][k] = cap
+						if cap <= 0 then
+							mats[i][j][k] = Enum.Material.Air
+						end
+						changed = true
+					end
+				end
+			end
+		end
+	end
+	if changed then
+		Terrain:WriteVoxels(region, cell, mats, occs)
+	end
 end
 
 -- Terrain intrusion check: casts down onto every felt piece on a 0.5-stud grid; a Terrain hit above the felt top
@@ -331,7 +393,8 @@ local function beam(parent, a: Vector3, b: Vector3, width, color, transparency, 
 	local holder = vis(name or "BeamHolder", CFrame.new(a), Vector3.new(0.2, 0.2, 0.2), color, M.SmoothPlastic, parent)
 	holder.Transparency = 1
 	local a0 = new("Attachment", { Position = Vector3.zero }, holder)
-	local a1 = new("Attachment", { WorldPosition = b }, holder)
+	local a1 = new("Attachment", {}, holder)
+	a1.WorldPosition = b -- (only once parented: WorldPosition set before that is taken as a local offset)
 	return new("Beam", {
 		Attachment0 = a0,
 		Attachment1 = a1,
@@ -354,36 +417,34 @@ local function buildWater(layout, folder)
 	local f = new("Folder", { Name = "Water" }, folder)
 	-- waterfalls: two crossing curtains (so they read from any side) + mist at the foot
 	for _, wf in layout.waterfalls do
+		if string.find(wf.name, "decor") then
+			continue -- drawn by a prop on the hole (H6's waterfall_small)
+		end
 		local m = new("Model", { Name = wf.name }, f)
 		local top, bot = Vector3.new(table.unpack(wf.top)), Vector3.new(table.unpack(wf.bottom))
-		local b1 = beam(m, top, bot, wf.width, P.foam, 0.15, 3.5, "Curtain")
-		b1.Width1 = wf.width * 1.15
-		local b2 = beam(m, top + Vector3.new(0, 0, 0.3), bot + Vector3.new(0, 0, 0.3), wf.width * 0.8, P.water, 0.35, 2.6, "Curtain2")
-		b2.Width1 = wf.width
-		-- face the curtains across the fall (attachments' right vector decides the beam plane when FaceCamera is off)
-		local fall = (bot - top)
-		local across = Vector3.new(-fall.Z, 0, fall.X)
-		if across.Magnitude < 1e-3 then
-			across = Vector3.xAxis
-		end
-		for _, bm in { b1, b2 } do
-			for _, at in { bm.Attachment0, bm.Attachment1 } do
-				at.WorldCFrame = CFrame.fromMatrix(at.WorldPosition, fall.Unit, across.Unit)
-			end
-		end
+		-- camera-facing ribbons: a blue body and a foam layer streaming down
+		local b1 = beam(m, top, bot, wf.width * 0.9, hex("7FC4E8"), 0.2, 4, "Curtain")
+		b1.Width1 = wf.width
+		b1.FaceCamera = true
+		b1.LightEmission = 0.1
+		local b2 = beam(m, top, bot, wf.width * 0.7, P.foam, 0.35, 6, "Foam")
+		b2.Width1 = wf.width * 0.85
+		b2.FaceCamera = true
+		b2.LightEmission = 0.25
 		local mist = vis("Mist", CFrame.new(bot + Vector3.new(0, 0.5, 0)), Vector3.new(wf.width, 0.5, 2), P.foam, M.SmoothPlastic, m)
 		mist.Transparency = 1
 		new("ParticleEmitter", {
 			Texture = FOAM_TEX,
 			Color = ColorSequence.new(P.foam),
 			LightEmission = 0.2,
-			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, wf.width * 0.25), NumberSequenceKeypoint.new(1, wf.width * 0.6) }),
-			Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1) }),
-			Lifetime = NumberRange.new(1.5, 2.5),
-			Rate = math.clamp(wf.drop * 0.6, 4, 16),
-			Speed = NumberRange.new(1, 3),
-			SpreadAngle = Vector2.new(60, 60),
-			Acceleration = Vector3.new(0, 0.8, 0),
+			-- subtle: the falls sit right beside H5 and H7, so the mist must not drift over the greens
+			Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, wf.width * 0.12), NumberSequenceKeypoint.new(1, wf.width * 0.3) }),
+			Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.75), NumberSequenceKeypoint.new(1, 1) }),
+			Lifetime = NumberRange.new(0.8, 1.4),
+			Rate = math.clamp(wf.drop * 0.4, 3, 10),
+			Speed = NumberRange.new(0.5, 1.5),
+			SpreadAngle = Vector2.new(35, 35),
+			Acceleration = Vector3.new(0, 0.4, 0),
 		}, mist)
 	end
 	-- stream flow: foam streaks drifting downstream just above the Terrain water surface
@@ -395,7 +456,8 @@ local function buildWater(layout, folder)
 		end
 		local a = Vector3.new(p0.x, p0.level + 0.08, p0.z)
 		local b = Vector3.new(p1.x, p1.level + 0.08, p1.z)
-		local bm = beam(f, a, b, math.min(p0.width, p1.width) * 0.55, P.foam, 0.72, 2.2 + (p0.level - p1.level), "Flow")
+		local bm = beam(f, a, b, math.min(p0.width, p1.width) * 0.5, P.foam, 0.82, 2.2 + (p0.level - p1.level), "Flow")
+		bm.LightEmission = 0.1
 		local dir = (b - a).Unit
 		for _, at in { bm.Attachment0, bm.Attachment1 } do
 			-- lie flat on the water
@@ -569,8 +631,9 @@ local function buildBackdrop(layout, folder)
 			m.Name = pc.id
 		elseif pc.kind == "far_forest_hill" then
 			local cf = CFrame.new(pos) * CFrame.Angles(0, math.rad(pc.yaw_deg or 0), 0)
-			local hill = ellipsoid(pc.id, cf, Vector3.new(size.X, size.Y * 2, size.Z), hex("8A6A34"), M.Grass, f)
-			hill.Color = (idx % 3 == 0) and hex("9C6A2E") or ((idx % 3 == 1) and hex("7E7A36") or hex("A8572C"))
+			-- muted, darker than the near forest: the atmosphere lightens them into distant autumn hills
+			local hill = ellipsoid(pc.id, cf, Vector3.new(size.X, size.Y * 2, size.Z), hex("5E5A2C"), M.Grass, f)
+			hill.Color = (idx % 3 == 0) and hex("6A5228") or ((idx % 3 == 1) and hex("525A2A") or hex("704428"))
 		elseif pc.kind == "distant_mountain" then
 			local m = mountain(f, pos, size, pc.yaw_deg, (idx % 2 == 0) and hex("7C7FA8") or hex("8E8AB4"))
 			m.Name = pc.id
