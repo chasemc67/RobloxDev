@@ -10,6 +10,9 @@
 --   Invoke("status")               -> JSON {running, name, cam, elapsed, lines, error}
 --   Invoke("log", fromLine, chars) -> "<nextLine>\n<jsonl lines>"
 --   Invoke("result", name)         -> JSON result of the last run of that scenario
+--   Invoke("clubpose", legacy, view) -> JSON club geometry: holds the club hand in a putting grip next to the ball
+--                                      (Config.VRClubLegacyAim = legacy) with the club debug overlay on and the
+--                                      camera on "side" | "front" | "top" of the stance (for screenshots)
 -- Compact event lines are also printed with the prefix "GOLFTEST|".
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -341,7 +344,9 @@ local PARKED = CFrame.new(0.4, 6.5, -0.3) * CFrame.Angles(math.rad(90), 0, 0) --
 local function parkHand()
 	poseFn = nil
 	if debugFolder then
-		debugFolder.RightHand.Value = PARKED
+		-- PARKED is the club's rotation; turn it into the hand rotation for the current club mount
+		local _, clubOffset = VR.test.getClubMount()
+		debugFolder.RightHand.Value = PARKED * clubOffset.Rotation:Inverse()
 	end
 end
 
@@ -697,6 +702,229 @@ scenario({
 	end,
 })
 
+------------------------------------------------------------------------ club debug overlay (GolfTestClubDebug)
+-- A part-built Quest Touch proxy at the simulated club-hand CFrame, plus axis gizmos (X red, Y green, Z blue;
+-- thick = hand, thin = club mount at the shaft start), the aim ray (-Z, yellow) and a marker for the head.
+-- The proxy is the PHYSICAL controller (handle along Config.VRClubGripPitch), whatever mount the code uses, so
+-- with VRClubLegacyAim the screenshots show where the old club came out relative to the real handle.
+local clubDebug = nil
+local function dbgPart(name, size, color, material, shape)
+	local p = Instance.new("Part")
+	p.Name = name
+	p.Size = size
+	p.Color = color
+	p.Material = material or Enum.Material.SmoothPlastic
+	if shape then
+		p.Shape = shape
+	end
+	p.Anchored, p.CanCollide, p.CanQuery, p.CanTouch, p.CastShadow = true, false, false, false, false
+	p.Parent = clubDebug
+	return p
+end
+local function physicalGripDir()
+	-- handle bottom direction in hand space: -Y raked VRClubGripPitch toward +Z
+	return CFrame.Angles(math.rad(-90 - (Config.VRClubGripPitch or 35)), 0, 0).LookVector
+end
+local function buildClubDebug()
+	clubDebug = Instance.new("Folder")
+	clubDebug.Name = "GolfTestClubDebug"
+	local dark, grey = Color3.fromRGB(35, 35, 40), Color3.fromRGB(200, 200, 205)
+	dbgPart("Handle", Vector3.new(0.3, 0.12, 0.12), dark, nil, Enum.PartType.Cylinder)
+	dbgPart("Top", Vector3.new(0.17, 0.035, 0.2), dark)
+	dbgPart("Stick", Vector3.new(0.03, 0.05, 0.05), grey, nil, Enum.PartType.Cylinder)
+	dbgPart("Ring", Vector3.new(0.03, 0.34, 0.34), grey, nil, Enum.PartType.Cylinder).Transparency = 0.25
+	dbgPart("Trigger", Vector3.new(0.05, 0.09, 0.04), Color3.fromRGB(230, 80, 60))
+	dbgPart("ButtCap", Vector3.new(0.025, 0.13, 0.13), Color3.fromRGB(255, 170, 0), Enum.Material.Neon, Enum.PartType.Cylinder)
+	for _, set in { { "Hand", 0.03, 0.65 }, { "Club", 0.016, 0.45 } } do
+		for _, ax in { { "X", Color3.fromRGB(255, 40, 40) }, { "Y", Color3.fromRGB(40, 230, 40) }, { "Z", Color3.fromRGB(50, 90, 255) } } do
+			dbgPart(set[1] .. ax[1], Vector3.new(set[2], set[2], set[3]), ax[2], Enum.Material.Neon)
+		end
+	end
+	dbgPart("AimRay", Vector3.new(0.012, 0.012, 1.4), Color3.fromRGB(255, 230, 40), Enum.Material.Neon).Transparency = 0.2
+	dbgPart("PlayerHead", Vector3.new(0.7, 0.85, 0.75), Color3.fromRGB(240, 200, 170), nil, Enum.PartType.Ball).Transparency = 0.35
+	dbgPart("Nose", Vector3.new(0.08, 0.08, 0.25), Color3.fromRGB(240, 200, 170)).Transparency = 0.35
+	clubDebug.Parent = workspace
+end
+local function segment(part, a: Vector3, b: Vector3)
+	part.Size = Vector3.new(part.Size.X, part.Size.Y, math.max((b - a).Magnitude, 0.01))
+	part.CFrame = CFrame.lookAt((a + b) / 2, b)
+end
+local function updateClubDebug()
+	local on = workspace:GetAttribute("GolfTestClubDebug") == true and VR and VR.test
+	if not on then
+		if clubDebug then
+			clubDebug:Destroy()
+			clubDebug = nil
+		end
+		return
+	end
+	if not clubDebug then
+		buildClubDebug()
+	end
+	local hand = VR.getState().hand
+	local g = hand:VectorToWorldSpace(physicalGripDir())
+	local butt = hand.Position + g * (Config.VRClubButtOffset or 0.25)
+	local top = hand.Position - g * 0.05
+	local cyl = CFrame.Angles(0, math.rad(90), 0) -- cylinder axis (X) along a lookAt's LookVector
+	clubDebug.Handle.Size = Vector3.new((butt - top).Magnitude, 0.12, 0.12)
+	clubDebug.Handle.CFrame = CFrame.lookAt((butt + top) / 2, butt) * cyl
+	clubDebug.ButtCap.CFrame = CFrame.lookAt(butt, butt + g) * cyl
+	clubDebug.Top.CFrame = hand * CFrame.new(0, 0.03, -0.03)
+	clubDebug.Stick.CFrame = hand * CFrame.new(0, 0.06, 0.0) * CFrame.Angles(0, 0, math.rad(90))
+	-- tracking ring: a halo over the top front of the controller
+	clubDebug.Ring.CFrame = hand * CFrame.new(0, 0.1, -0.12) * CFrame.Angles(math.rad(-45), 0, 0) * CFrame.Angles(0, 0, math.rad(90))
+	clubDebug.Trigger.CFrame = hand * CFrame.new(0, -0.03, -0.1) * CFrame.Angles(math.rad(-(Config.VRClubGripPitch or 35)), 0, 0)
+	local _, _, clubCF = VR.test.getClubMount()
+	for _, set in { { "Hand", hand }, { "Club", clubCF } } do
+		local cf, len = set[2], clubDebug[set[1] .. "X"].Size.Z
+		segment(clubDebug[set[1] .. "X"], cf.Position, cf.Position + cf.RightVector * len)
+		segment(clubDebug[set[1] .. "Y"], cf.Position, cf.Position + cf.UpVector * len)
+		segment(clubDebug[set[1] .. "Z"], cf.Position, cf.Position - cf.LookVector * len) -- +Z
+	end
+	segment(clubDebug.AimRay, hand.Position, hand.Position + hand.LookVector * 1.4)
+	local headCF = VR.test.getOrigin() * debugFolder.Head.Value
+	clubDebug.PlayerHead.CFrame = headCF
+	clubDebug.Nose.CFrame = headCF * CFrame.new(0, 0, -0.42)
+end
+
+-- Holds the simulated club hand in a typical putting grip next to a ball on hole 1 and measures the club.
+-- Hand ~3 ft (3.05 studs) above the floor, ~0.9 studs in front of the eyes, handle (grip axis) aimed at the spot
+-- behind the ball where the putter head should sit; controller X = the golfer's right, so the aim ray points
+-- forward-up away from the body (a relaxed pistol-style hold).
+local HAND_HEIGHT = 0.9144 / STUD
+local function deg(a: Vector3, b: Vector3)
+	return math.deg(math.acos(math.clamp(a.Unit:Dot(b.Unit), -1, 1)))
+end
+local function clubPose(legacy: boolean, view: string?)
+	Config.VRClubLegacyAim = legacy == true
+	VR.test.resetClubMount()
+	if not GolfTest.vizBall then
+		place(1, 0, 10, S)
+		VR.warpToBall(Ball.ball.Position)
+		GolfTest.vizBall = Ball.ball.Position
+		task.wait(0.3)
+	end
+	-- park the off hand (and its wrist HUD) out of the shots
+	debugFolder.LeftHand.Value = CFrame.new(-0.6, 3, 2)
+	local ballPos = GolfTest.vizBall
+	local half = VR.test.headSize / 2
+	local plane = ballPos.Y - R
+	local headCF = VR.test.getOrigin() * debugFolder.Head.Value
+	local F = flat(headCF.LookVector).Unit -- golfer facing: toward the ball
+	local Rt = F:Cross(Vector3.yAxis) -- golfer's right
+	-- warpToBall faces you so the target is on your lead (left) side: the putter face points along -Rt
+	local headTarget = ballPos - (-Rt) * (R + half.X + 0.06)
+	headTarget = Vector3.new(headTarget.X, plane + half.Y + 0.01, headTarget.Z)
+	local floorY = VR.test.getOrigin().Y
+	local handPos = Vector3.new(headCF.X, floorY + HAND_HEIGHT, headCF.Z) + F * (flat(headTarget - headCF.Position):Dot(F) - 0.6)
+	handPos = Vector3.new(handPos.X, handPos.Y, handPos.Z) + Rt:Dot(headTarget - handPos) * Rt
+	-- the physical handle points at the head target: build the hand from the physical grip axis (not the code's
+	-- mount, which differs in legacy mode)
+	local gripDir = (headTarget - handPos).Unit
+	local back = -gripDir
+	local right = (Rt - back * Rt:Dot(back)).Unit
+	local handleRot = CFrame.fromMatrix(Vector3.zero, right, back:Cross(right), back)
+	local physicalRot = CFrame.Angles(math.rad(-90 - (Config.VRClubGripPitch or 35)), 0, 0)
+	local handCF = CFrame.new(handPos) * handleRot * physicalRot:Inverse()
+	poseFn = function()
+		return handCF
+	end
+	workspace:SetAttribute("GolfTestClubDebug", true)
+	if view then
+		-- full views frame the whole stance (player head to ball, same for both mounts); "*_close" views centre
+		-- on the controller. FOV 40.
+		local close = string.find(view, "_close") ~= nil
+		local center = close and handPos + gripDir * 0.3 or (headCF.Position + ballPos) / 2
+		local dist = close and 2.6 or 11
+		local camPos, up = nil, Vector3.yAxis
+		local base = string.gsub(view, "_close", "")
+		if base == "side" then
+			-- down the line: from the target side, looking back along the target line (stance in profile)
+			camPos = center - Rt * dist + Vector3.new(0, dist * 0.08, 0)
+		elseif base == "front" then
+			-- face-on: from beyond the ball looking back at the golfer, slightly raised to clear the course wall
+			camPos = center + F * dist + Vector3.new(0, dist * 0.15, 0)
+		elseif base == "top" then
+			camPos, up = center + Vector3.new(0, dist, 0), F
+		end
+		workspace:SetAttribute("GolfTestFocus", center)
+		workspace:SetAttribute("GolfTestCamPos", camPos)
+		workspace:SetAttribute("GolfTestCamUp", up)
+		workspace:SetAttribute("GolfTestCamera", "look")
+	end
+	task.wait(0.6)
+	local head = headPart()
+	local _, _, clubCF = VR.test.getClubMount()
+	local handNow = VR.getState().hand
+	local handleWorld = handNow:VectorToWorldSpace(physicalRot.LookVector)
+	local buttWorld = handNow.Position + handleWorld * (Config.VRClubButtOffset or 0.25)
+	local shaftVis = VR.test.putter.Shaft.CFrame.LookVector
+	local res = {
+		legacy = legacy == true,
+		view = view,
+		handHeightM = round((handNow.Position.Y - floorY) * STUD),
+		handleLeanDeg = round(deg(handleWorld, -Vector3.yAxis), 1),
+		shaftVsHandleDeg = round(deg(clubCF.LookVector, handleWorld), 1),
+		shaftVisualVsHandleDeg = round(deg(shaftVis, handleWorld), 1),
+		shaftStartGap = round((clubCF.Position - buttWorld).Magnitude, 3),
+		shaftLeanDeg = round(deg(clubCF.LookVector, -Vector3.yAxis), 1),
+		aimRayElevationDeg = round(math.deg(math.asin(math.clamp(handNow.LookVector.Y, -1, 1))), 1),
+		aimRayForward = round(handNow.LookVector:Dot(F), 3),
+		headBottomAbovePlane = round(head.Position.Y - half.Y - plane, 3),
+		headToTarget = round((head.Position - headTarget).Magnitude, 3),
+		headToBallFlat = round(flat(head.Position - ballPos).Magnitude, 3),
+		clubLength = round(VR.test.clubLength(), 3),
+		headPos = vec(head.Position),
+		handPos = vec(handNow.Position),
+	}
+	event("clubpose", res)
+	return res
+end
+
+scenario({
+	name = "clubviz",
+	desc = "VR club mount: putting-grip hand pose, shaft along the handle out of its bottom (vs legacy aim-ray mount)",
+	vr = true,
+	seconds = 6,
+	run = function()
+		local skip = vrRequired()
+		if skip then
+			return skip
+		end
+		GolfTest.vizBall = nil
+		local out = { legacy = clubPose(true, "side"), grip = clubPose(false, "side") }
+		-- A-button re-fit from the grip pose: the shaft should go straight down from the handle bottom, with the
+		-- head on the ball's plane
+		local lengthBefore = VR.test.clubLength()
+		debugFolder.Button:Fire(Enum.KeyCode.ButtonA, false)
+		debugFolder.Button:Fire(Enum.KeyCode.ButtonA, true)
+		task.wait(0.4)
+		local butt, _, clubCF = VR.test.getClubMount()
+		local hand = VR.getState().hand
+		local head = headPart()
+		out.fit = {
+			shaftLeanDeg = round(deg(clubCF.LookVector, -Vector3.yAxis), 2),
+			shaftStartGap = round((clubCF.Position - hand:PointToWorldSpace(butt)).Magnitude, 4),
+			headBottomAbovePlane = round(head.Position.Y - VR.test.headSize.Y / 2 - (GolfTest.vizBall.Y - R), 3),
+			clubLength = round(VR.test.clubLength(), 3),
+			clubLengthBefore = round(lengthBefore, 3),
+		}
+		out.fit.ok = out.fit.shaftLeanDeg < 1 and out.fit.shaftStartGap < 0.01 and math.abs(out.fit.headBottomAbovePlane - 0.01) < 0.05
+		event("fit", out.fit)
+		Config.VRClubLegacyAim = false
+		VR.test.resetClubMount()
+		workspace:SetAttribute("GolfTestClubDebug", false)
+		workspace:SetAttribute("GolfTestCamera", "")
+		GolfTest.vizBall = nil
+		local g = out.grip
+		-- shaft continues the handle (< 2 deg), starts at its bottom (< 1 cm), head on the ball's plane (3 mm
+		-- clearance, < 1.5 cm error) right behind the ball (within ~3 cm of the intended spot)
+		out.ok = g.shaftVsHandleDeg < 2 and g.shaftStartGap < 0.03 and math.abs(g.headBottomAbovePlane - 0.01) < 0.05
+			and g.headToTarget < 0.1 and out.fit.ok
+		return out
+	end,
+})
+
 local byName = {}
 for _, s in SCENARIOS do
 	byName[s.name] = s
@@ -724,6 +952,11 @@ local function runScenario(name, cam)
 			CupCaptureSpeed = Config.CupCaptureSpeed,
 			StopSpeed = Config.StopSpeed,
 			VRHitMultiplier = Config.VRHitMultiplier,
+			VRClubLegacyAim = Config.VRClubLegacyAim,
+			VRClubGripPitch = Config.VRClubGripPitch,
+			VRClubGripYaw = Config.VRClubGripYaw,
+			VRClubGripRoll = Config.VRClubGripRoll,
+			VRClubButtOffset = Config.VRClubButtOffset,
 			VRClubAngle = Config.VRClubAngle,
 			VRClubTipOffset = Config.VRClubTipOffset,
 			Gravity = workspace.Gravity,
@@ -796,6 +1029,12 @@ local function api(cmd, a, b)
 		return tostring(i) .. "\n" .. table.concat(out, "\n")
 	elseif cmd == "result" then
 		return HttpService:JSONEncode(results[a] or {})
+	elseif cmd == "clubpose" then
+		if not (simVR and VR and VR.test) then
+			return "error: needs SimulateVR"
+		end
+		local ok, res = pcall(clubPose, a == true, b)
+		return ok and HttpService:JSONEncode(res) or ("error: " .. tostring(res))
 	elseif cmd == "camera" then
 		workspace:SetAttribute("GolfTestCamera", a or "")
 		return "ok"
@@ -823,7 +1062,12 @@ local function updateCamera(dt)
 	if typeof(focus) ~= "Vector3" then
 		focus = b and b.Position or Vector3.zero
 	end
-	if mode == "fixed" then
+	if mode == "look" then
+		-- explicit camera: GolfTestCamPos looking at GolfTestFocus (screenshots)
+		camera.FieldOfView = workspace:GetAttribute("GolfTestFOV") or 40
+		local up = workspace:GetAttribute("GolfTestCamUp") or Vector3.yAxis
+		camera.CFrame = CFrame.lookAt(workspace:GetAttribute("GolfTestCamPos") or focus + Vector3.new(0, 0, 8), focus, up)
+	elseif mode == "fixed" then
 		camera.FieldOfView = 50
 		local pos = focus - view * size * 0.75 + Vector3.new(0, size * 0.6, 0)
 		camera.CFrame = CFrame.lookAt(pos, focus)
@@ -901,6 +1145,7 @@ function GolfTest.start(ballController, _hud, vrModule, simulate)
 	RunService.PostSimulation:Connect(onPostSimulation)
 	RunService:BindToRenderStep("GolfTestHand", Enum.RenderPriority.Camera.Value - 50, driveHand)
 	RunService:BindToRenderStep("GolfTestCamera", Enum.RenderPriority.Camera.Value + 10, updateCamera)
+	RunService:BindToRenderStep("GolfTestClubDebug", Enum.RenderPriority.Camera.Value + 11, updateClubDebug)
 	parkHand()
 
 	local fn = Instance.new("BindableFunction")

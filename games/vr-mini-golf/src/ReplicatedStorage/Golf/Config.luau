@@ -42,13 +42,23 @@ return {
 	VRMoveSpeed = 6.5, -- thumbstick walk speed, studs/s (~2 m/s)
 	VRSnapTurnDegrees = 30,
 	VRStanceDistance = 1.5, -- warp-to-ball puts your head this far from the ball (45 cm)
-	-- Club mount. Assumes the hand UserCFrame LookVector is the controller's pointing axis (the axis Roblox's
-	-- own VR laser pointer uses) and that its origin is roughly the middle of the controller. The shaft starts
-	-- VRClubTipOffset studs in front of the hand origin, at the tip of the controller, and runs along LookVector
-	-- pitched by VRClubAngle (degrees, + tilts toward the controller's top). Unverified on a real Quest: see
-	-- games/vr-mini-golf/playtesting.md.
-	VRClubAngle = 0,
-	VRClubTipOffset = 0.2, -- 6 cm
+	-- Club mount: the shaft runs PARALLEL to the controller handle and comes out of its bottom end, as if the
+	-- controller were the top of a putter grip. Hand UserCFrame axes on Quest Touch (aim pose): -Z = aim/laser ray,
+	-- +Y = top of the controller (face buttons), +X = controller right. The handle runs down from the top along -Y,
+	-- raked back toward +Z (the bottom of the grip sits down and back toward your wrist, like a pistol grip).
+	-- Shaft direction in hand space = CFrame.Angles(rad(-90 - VRClubGripPitch), 0, 0) * yaw * roll applied to -Z,
+	-- i.e. -Y tilted VRClubGripPitch degrees toward +Z. Starts VRClubButtOffset studs along that axis from the hand
+	-- origin (the bottom of the handle). Pitch is about hand X, so it is the same for both hands; yaw/roll are
+	-- mirrored for the left hand. Unverified on a real Quest: see games/vr-mini-golf/playtesting.md.
+	VRClubGripPitch = 35, -- degrees, + rakes the handle bottom back toward the wrist (+Z)
+	VRClubGripYaw = 0, -- degrees, + swings the shaft toward the controller's right (+X); mirrored for the left hand
+	VRClubGripRoll = 0, -- degrees about the shaft (turns the putter face); mirrored for the left hand
+	VRClubButtOffset = 0.25, -- 7.5 cm from the hand origin to the bottom of the handle
+	-- Legacy mount (v9, before 2026-10-09): the shaft came out of the controller TIP along the aim ray (LookVector),
+	-- which ends up ~perpendicular to the handle on a real Quest. Kept only for before/after comparisons.
+	VRClubLegacyAim = false,
+	VRClubAngle = 0, -- legacy only: degrees of pitch from the aim ray (+ toward the controller's top)
+	VRClubTipOffset = 0.2, -- legacy only: 6 cm in front of the hand origin
 	VRPlaneRange = 12, -- within this many studs of the ball, the putter head and your floor use the ball's plane
 	-- (felt parts tagged GolfSurface); further away they follow the GolfSurface under them. Walls never count.
 	VRGripToPutt = false, -- Walkabout's optional mode: putter is only solid while you hold grip

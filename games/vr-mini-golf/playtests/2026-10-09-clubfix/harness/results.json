@@ -1,0 +1,266 @@
+{
+ "clubviz": {
+  "default": {
+   "ok": true,
+   "fit": {
+    "ok": true,
+    "type": "event",
+    "headBottomAbovePlane": 0.011,
+    "shaftStartGap": 0,
+    "event": "fit",
+    "shaftLeanDeg": 0,
+    "t": 2.4338,
+    "clubLength": 2.748,
+    "clubLengthBefore": 2.538
+   },
+   "scenario": "clubviz",
+   "cam": "",
+   "legacy": {
+    "view": "side",
+    "headBottomAbovePlane": 4.976,
+    "handHeightM": 0.914,
+    "shaftStartGap": 0.4,
+    "shaftVisualVsHandleDeg": 122.8,
+    "headToTarget": 5.13,
+    "handleLeanDeg": 11.4,
+    "legacy": true,
+    "clubLength": 2.538,
+    "aimRayElevationDeg": 46.4,
+    "t": 1.4161,
+    "event": "clubpose",
+    "shaftVsHandleDeg": 125,
+    "aimRayForward": 0.69,
+    "handPos": [
+     0.6,
+     4.048,
+     9.805
+    ],
+    "type": "event",
+    "headToBallFlat": 1.304,
+    "headPos": [
+     -1.2892,
+     6.0298,
+     9.805
+    ],
+    "shaftLeanDeg": 136.4
+   },
+   "seconds": 2.43,
+   "grip": {
+    "view": "side",
+    "headBottomAbovePlane": 0.011,
+    "handHeightM": 0.914,
+    "shaftStartGap": 0,
+    "shaftVisualVsHandleDeg": 3.4,
+    "headToTarget": 0.001,
+    "handleLeanDeg": 11.4,
+    "legacy": false,
+    "clubLength": 2.538,
+    "aimRayElevationDeg": 46.4,
+    "t": 2.0171,
+    "event": "clubpose",
+    "shaftVsHandleDeg": 0,
+    "aimRayForward": 0.69,
+    "handPos": [
+     0.6,
+     4.048,
+     9.805
+    ],
+    "type": "event",
+    "headToBallFlat": 0.195,
+    "headPos": [
+     0.0002,
+     1.065,
+     9.805
+    ],
+    "shaftLeanDeg": 11.4
+   }
+  }
+ },
+ "ledge": {
+  "default": {
+   "ok": true,
+   "seconds": 4.53,
+   "scenario": "ledge",
+   "cam": "",
+   "cases": [
+    {
+     "charFeetY": 1,
+     "label": "h1-ball-at-wall",
+     "playerCollidesWithWall": false,
+     "ok": true,
+     "type": "event",
+     "rigFloorY": 1,
+     "charDelta": 0.0008,
+     "headDelta": 0.0108,
+     "t": 1.5151,
+     "ballMoved": 0,
+     "headTarget": [
+      4.35,
+      1.0342,
+      8
+     ],
+     "headPos": [
+      4.35,
+      1.065,
+      8
+     ],
+     "ballPlaneY": 0.9992,
+     "wallGroup": "GolfWall",
+     "event": "ledge",
+     "headBottomY": 1.01,
+     "rigDelta": 0.0008
+    },
+    {
+     "charFeetY": 1,
+     "label": "h1-stance-on-wall",
+     "playerCollidesWithWall": false,
+     "ok": true,
+     "type": "event",
+     "rigFloorY": 1,
+     "charDelta": 0.0008,
+     "headDelta": 0.0108,
+     "t": 3.0147,
+     "ballMoved": 0,
+     "headTarget": [
+      4.3,
+      1.0342,
+      8.2
+     ],
+     "headPos": [
+      4.3,
+      1.065,
+      8.2
+     ],
+     "ballPlaneY": 0.9992,
+     "wallGroup": "GolfWall",
+     "event": "ledge",
+     "headBottomY": 1.01,
+     "rigDelta": 0.0008
+    },
+    {
+     "charFeetY": 2.2,
+     "label": "h3-green-edge",
+     "playerCollidesWithWall": false,
+     "ok": true,
+     "type": "event",
+     "rigFloorY": 2.2,
+     "charDelta": 0.0008,
+     "headDelta": 0.0108,
+     "t": 4.5303,
+     "ballMoved": 0,
+     "headTarget": [
+      68.6,
+      2.2342,
+      22.3
+     ],
+     "headPos": [
+      68.6,
+      2.265,
+      22.3
+     ],
+     "ballPlaneY": 2.1992,
+     "wallGroup": "GolfWall",
+     "event": "ledge",
+     "headBottomY": 2.21,
+     "rigDelta": 0.0008
+    }
+   ]
+  }
+ },
+ "ghost": {
+  "default": {
+   "post": {
+    "ballMoved": 0,
+    "type": "event",
+    "label": "through-post",
+    "t": 4.4158,
+    "event": "sweep",
+    "clubParts": {
+     "Sight": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Head": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Shaft": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Grip": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     }
+    },
+    "clubPartsGhost": true,
+    "maxFollowError": 0,
+    "maxLift": 0.0008,
+    "ok": true,
+    "hits": 0
+   },
+   "swing": {
+    "ok": true,
+    "type": "event",
+    "source": "vr",
+    "expectedSpeed": 6.8,
+    "t": 11.999,
+    "event": "swing",
+    "distM": 4.696,
+    "ballSpeed": 6.796,
+    "hit": true,
+    "outcome": "rest"
+   },
+   "scenario": "ghost",
+   "cam": "",
+   "wall": {
+    "ballMoved": 0,
+    "type": "event",
+    "label": "through-wall",
+    "t": 2.0997,
+    "event": "sweep",
+    "clubParts": {
+     "Sight": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Head": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Shaft": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     },
+     "Grip": {
+      "canQuery": false,
+      "anchored": true,
+      "canTouch": false,
+      "canCollide": false
+     }
+    },
+    "clubPartsGhost": true,
+    "maxFollowError": 0,
+    "maxLift": 0.0082,
+    "ok": true,
+    "hits": 0
+   },
+   "seconds": 12,
+   "ok": true
+  }
+ }
+}

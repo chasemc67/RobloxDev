@@ -7,6 +7,7 @@
   python3 run_playtests.py export                 mirror every Studio script into games/vr-mini-golf/src/
   python3 run_playtests.py push FILE [FILE ...]   copy local src/ files into Studio (Edit) - dev convenience
   python3 run_playtests.py compare BEFORE_DIR AFTER_DIR   before/after table of the key numbers
+  python3 run_playtests.py clubviz [--out DIR]    VR club mount screenshots (legacy vs grip; side/front/top)
 
 Only ever talks to the Studio whose name contains PLACE_ID.
 """
@@ -124,6 +125,16 @@ def set_edit_attrs(st, attrs):
     return st.luau("\n".join(lines), "Edit")
 
 
+TEST_ATTRS = ["GolfTestCamera", "GolfTestFocus", "GolfTestFrameSize", "GolfTestViewDir", "GolfTestCamPos", "GolfTestCamUp",
+              "GolfTestFOV", "GolfTestClubDebug"]
+
+
+def clear_test_attrs(st):
+    attrs = {"GolfTestMode": False, "SimulateVR": False}
+    attrs.update({k: None for k in TEST_ATTRS})
+    set_edit_attrs(st, attrs)
+
+
 # ----------------------------------------------------------------------------------------- window / recording
 def window(cmd):
     try:
@@ -236,14 +247,92 @@ def cmd_run(args):
         problems = {"server": st.problems("Server"), "client": st.problems("Client")}
     finally:
         st.stop_play()
-        set_edit_attrs(st, {"GolfTestMode": False, "SimulateVR": False, "GolfTestCamera": None,
-                            "GolfTestFocus": None, "GolfTestFrameSize": None, "GolfTestViewDir": None})
+        clear_test_attrs(st)
     with open(os.path.join(out_dir, "results.json"), "w") as f:
         json.dump(results, f, indent=1)
     md = summary_md(results, problems, clips, out_dir, args)
     with open(os.path.join(out_dir, "summary.md"), "w") as f:
         f.write(md)
     print(md)
+
+
+# ----------------------------------------------------------------------------------------- club screenshots
+def capture_window(win_id, path):
+    subprocess.run(["screencapture", "-x", "-o", "-l%d" % win_id, path], check=True, timeout=30)
+
+
+def crop_viewport(path):
+    """Crop a Studio window capture to the 3D viewport (the largest block of rows/cols that isn't Studio chrome).
+    Uses Pillow through uv; leaves the file alone if that fails."""
+    code = r"""
+import sys
+from PIL import Image
+p = sys.argv[1]
+im = Image.open(p).convert("RGB")
+w, h = im.size
+px = im.load()
+# play-mode viewport border: a 2 px blue frame (~(51,95,255)) around the game view
+def blue(c):
+    return c[2] > 235 and c[0] < 90 and 70 < c[1] < 125
+# the border is the only long straight run of that colour: rows/cols where it covers > 40% of the window
+rows = [y for y in range(h) if sum(blue(px[x, y]) for x in range(0, w, 4)) > 0.4 * w / 4]
+cols = [x for x in range(w) if sum(blue(px[x, y]) for y in range(0, h, 4)) > 0.4 * h / 4]
+if rows and cols:
+    x0, x1, y0, y1 = min(cols), max(cols), min(rows), max(rows)
+    if x1 - x0 > w * 0.3 and y1 - y0 > h * 0.3:
+        # also drop the Roblox top-bar buttons strip (CoreGui, ~58 pt; captures are Retina 2x)
+        im.crop((x0 + 4, y0 + 4 + 2 * 58, x1 - 3, y1 - 3)).save(p)
+        print("cropped", x0, y0, x1, y1)
+        sys.exit(0)
+print("no border; kept full window")
+"""
+    try:
+        r = subprocess.run(["uv", "run", "-q", "--with", "pillow", "python", "-c", code, path],
+                           capture_output=True, text=True, timeout=120)
+        log("crop", os.path.basename(path), (r.stdout or r.stderr).strip()[-200:])
+    except Exception as e:  # noqa: BLE001
+        log("crop failed:", e)
+
+
+def cmd_clubviz(args):
+    st = Studio()
+    st.stop_play()
+    out_dir = args.out or os.path.join(GAME_DIR, "playtests", datetime.date.today().isoformat() + "-clubfix")
+    os.makedirs(out_dir, exist_ok=True)
+    set_edit_attrs(st, {"GolfTestMode": True, "SimulateVR": True, "GolfTestCamera": ""})
+    metrics = {}
+    try:
+        st.start_play()
+        wait_api(st)
+        st.luau("game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.All, false) return 'ok'", "Client")
+        w = window("front")
+        if not w or "error" in w:
+            raise SystemExit("Studio window not found: %s" % w)
+        for tag, legacy in (("before", True), ("after", False)):
+            for view in args.views.split(","):
+                r = st.api("clubpose", legacy, view, timeout=90)
+                if not r.startswith("{"):
+                    raise RuntimeError("clubpose %s %s: %s" % (tag, view, r[:300]))
+                metrics["%s_%s" % (tag, view)] = json.loads(r)
+                time.sleep(args.settle)  # the Studio viewport lags the game a little
+                path = os.path.join(out_dir, "%s%s_%s.png" % (args.prefix, tag, view))
+                capture_window(w["id"], path)
+                if not args.no_crop:
+                    crop_viewport(path)
+                log(tag, view, os.path.relpath(path, GAME_DIR))
+        metrics["problems"] = {"server": st.problems("Server"), "client": st.problems("Client")}
+    finally:
+        st.stop_play()
+        clear_test_attrs(st)
+    with open(os.path.join(out_dir, args.prefix + "clubpose.json"), "w") as fh:
+        json.dump(metrics, fh, indent=1)
+    keys = ["handHeightM", "handleLeanDeg", "shaftVsHandleDeg", "shaftVisualVsHandleDeg", "shaftStartGap", "shaftLeanDeg",
+            "aimRayElevationDeg", "headBottomAbovePlane", "headToTarget", "headToBallFlat", "clubLength"]
+    print("| metric | before | after |\n|---|---|---|")
+    b, a = metrics.get("before_side", {}), metrics.get("after_side", {})
+    for k in keys:
+        print("| %s | %s | %s |" % (k, b.get(k), a.get(k)))
+    print("problems:", json.dumps(metrics.get("problems")))
 
 
 # ----------------------------------------------------------------------------------------- summary
@@ -358,6 +447,23 @@ def summary_md(results, problems, clips, out_dir, args):
                                                            f(c.get("charDelta"), 3), f(c["headDelta"], 3), c.get("wallGroup", "-"),
                                                            f(c.get("playerCollidesWithWall")), f(c["ok"])))
             L.append("")
+    r = results.get("clubviz")
+    if r:
+        r = first(r)
+        L += ["## VR club mount (SimulateVR, putting-grip hand pose)", ""]
+        if r.get("skipped") or r.get("error"):
+            L += ["Skipped/error: %s" % (r.get("skipped") or r.get("error")), ""]
+        else:
+            L += ["| Mount | Shaft vs handle | Shaft start gap (studs) | Shaft lean | Head bottom above plane | Head to target | Aim ray elevation |",
+                  "|---|---|---|---|---|---|---|"]
+            for k in ("legacy", "grip"):
+                c = r.get(k) or {}
+                L.append("| %s | %s° | %s | %s° | %s | %s | %s° |" % (k, c.get("shaftVsHandleDeg"), f(c.get("shaftStartGap"), 3), c.get("shaftLeanDeg"),
+                                                                    f(c.get("headBottomAbovePlane"), 3), f(c.get("headToTarget"), 3), c.get("aimRayElevationDeg")))
+            ft = r.get("fit") or {}
+            L += ["", "A-button re-fit from that pose: shaft lean %s°, shaft start gap %s, head bottom above plane %s, length %s -> %s studs (pass %s)" % (
+                ft.get("shaftLeanDeg"), f(ft.get("shaftStartGap"), 3), f(ft.get("headBottomAbovePlane"), 3), f(ft.get("clubLengthBefore"), 3),
+                f(ft.get("clubLength"), 3), f(ft.get("ok"))), "", "Pass (grip mount + re-fit): %s" % f(r.get("ok")), ""]
     r = results.get("ghost")
     if r:
         r = first(r)
@@ -417,6 +523,10 @@ def key_metrics(results):
         out["ledge %s head Δ (studs)" % c["label"]] = c["headDelta"]
         out["ledge %s rig floor Δ (studs)" % c["label"]] = c["rigDelta"]
         out["ledge %s character Δ (studs)" % c["label"]] = c.get("charDelta")
+    cv = g("clubviz")
+    if cv.get("grip"):
+        out["clubviz grip: shaft vs handle (deg) / head above plane / pass"] = "%s / %s / %s" % (
+            cv["grip"]["shaftVsHandleDeg"], f(cv["grip"]["headBottomAbovePlane"], 3), f(cv.get("ok")))
     gh = g("ghost")
     for k in ("wall", "post"):
         if gh.get(k):
@@ -568,13 +678,20 @@ def main():
     s = sub.add_parser("smoke")
     s.add_argument("--wait", type=float, default=10)
     sub.add_parser("export")
+    cv = sub.add_parser("clubviz")
+    cv.add_argument("--out")
+    cv.add_argument("--views", default="side,front,top,side_close,front_close")
+    cv.add_argument("--prefix", default="")
+    cv.add_argument("--settle", type=float, default=3.0)
+    cv.add_argument("--no-crop", action="store_true")
     p = sub.add_parser("push")
     p.add_argument("files", nargs="+")
     c = sub.add_parser("compare")
     c.add_argument("before")
     c.add_argument("after")
     args = ap.parse_args()
-    {"list": cmd_list, "run": cmd_run, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare}[args.cmd](args)
+    {"list": cmd_list, "run": cmd_run, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
+     "clubviz": cmd_clubviz}[args.cmd](args)
 
 
 if __name__ == "__main__":

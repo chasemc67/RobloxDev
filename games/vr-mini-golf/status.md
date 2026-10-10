@@ -70,9 +70,47 @@ Measured with the new harness (`playtesting.md`). Baseline: `playtests/2026-10-0
 - Putter: head held on the ball's plane, shaft length varies, ghosts through all geometry, `VRGripToPutt` makes it see-through (0.65) and unable to hit until grip is held: matches (mode is off by default).
 - **Gap:** felt bounce. Felt is Elasticity 0 (weight 100), so drops off ledges land dead. Reference: ~0.6 with drops under ~1.5 studs/s zeroed. Not changed in v9.
 
+## 2026-10-09 ~20:00 PT: VR club runs parallel to the controller handle (not published)
+Chase reported that on a real Quest the club came out roughly perpendicular to the controller handle.
+
+**Root cause:** the shaft ran along the hand CFrame LookVector (-Z), which is the **aim ray**. On Quest Touch the handle is ~125° from that ray: it runs along -Y, raked back toward +Z.
+
+**Fix (`VRControls.defaultClubMount`):**
+- **Shaft direction:** hand-space `Angles(rad(-90 - VRClubGripPitch), 0, 0) * yaw * roll` applied to LookVector. The -90° turns the aim ray down the handle; the pitch rakes it toward +Z.
+- **Start point:** the bottom of the handle, `VRClubButtOffset` along that axis.
+- **New Config values:** `VRClubGripPitch` 35, `VRClubGripYaw` 0, `VRClubGripRoll` 0, `VRClubButtOffset` 0.25 studs (7.5 cm).
+- **Left hand:** pitch is about hand X, so it is the same for both hands. Yaw and roll are mirrored.
+- **Legacy mount:** `VRClubLegacyAim = true` restores the old tip/aim-ray mount (`VRClubAngle`, `VRClubTipOffset`, now legacy-only).
+- **A-button refit:** keeps the butt point and re-aims the shaft from it.
+- Plane snap, ghosting and the hit math are unchanged.
+
+**Measured in a putting-grip pose** (hand 0.91 m up, handle aimed at the ball):
+
+| | Before | After |
+|---|---|---|
+| Shaft vs handle | 125° | 0° |
+| Shaft start vs handle bottom | 0.40 studs away | 0 |
+| Head bottom above the ball's plane | 4.98 studs (floating) | 0.011 (3 mm) |
+| Head to the spot behind the ball | 5.13 studs | 0.001 |
+
+- A-button refit: shaft vertical from the handle bottom, head on the plane.
+- ledge, ghost and the VR swing (6.80 studs/s, as expected) all pass. Smoke: 0 errors.
+- Screenshots (side/front/top/close-ups, before/after) and iteration notes: `playtests/2026-10-09-clubfix/` (`NOTES.md`).
+- **Harness additions:**
+  - The `clubviz` scenario.
+  - `GolfTestAPI` `clubpose`.
+  - The `GolfTestClubDebug` overlay (a proxy Quest controller plus axis gizmos).
+  - The `look` camera.
+  - `run_playtests.py clubviz` (window screenshots).
+- The changes are in the Team Create draft. **Not published** (Chase publishes).
+
 ## TODO
 - [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
-- [ ] Headset check: club comes out of the controller tip along the pointing axis (`VRClubTipOffset`, `VRClubAngle`); rig height snapping comfort; hit strength with the new fast felt (`VRHitMultiplier`).
+- [ ] Headset check:
+  - Shaft continues the handle line out of its bottom (`VRClubGripPitch`/`Yaw`/`Roll`, `VRClubButtOffset`; check both hands; see `playtests/2026-10-09-clubfix/NOTES.md`).
+  - Rig height snapping comfort.
+  - Hit strength with the new fast felt (`VRHitMultiplier`).
+- [ ] Publish the 2026-10-09 club-mount fix (Chase).
 - [ ] Re-tune `TouchMaxSpeed` / `TouchPowerCurve` for the faster felt.
 - [x] Publish the Team Create draft: v9, ~23:03 PT (File > Publish to Roblox). Audience Limited (Friends + Playtesters); Maturity questionnaire done (Minimal).
 - [ ] Real VR headset test (Quest via Roblox app). Check the club angle and friction, then press A to fit the club.

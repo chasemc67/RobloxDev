@@ -1,9 +1,8 @@
 -- VRControls: Walkabout-style VR putting at real-world scale (1 stud = 0.3 m, HeadScale 1).
 --   * Room-scale: the camera is a floor-level playspace origin; your real head/hands are tracked on top of it.
---   * The putter shaft comes out of the TIP of the club-hand controller (Config.VRClubTipOffset in front of the
---     hand origin) along its pointing axis (hand LookVector, pitched by Config.VRClubAngle), so you hold the
---     controller like the top of a putter grip. Length auto-fits your height and stretches a few cm to reach
---     the ground.
+--   * The putter shaft runs parallel to the club-hand controller's handle and comes out of its bottom end
+--     (Config.VRClubGripPitch/Yaw/Roll, VRClubButtOffset), so you hold the controller like the top of a putter
+--     grip. Length auto-fits your height and stretches a few cm to reach the ground.
 --   * Hole plane: near the ball, the putter head and your floor sit on the plane of the felt the ball is on
 --     (parts tagged GolfSurface, slopes included). Walls, rails and posts are never ground: the club ghosts
 --     through them and you can't stand on them. The ball is only moved by the swing-hit logic below.
@@ -16,7 +15,7 @@
 --   Right stick back ........... rewind ball to where your last shot started
 --   Left stick ................. walk
 --   Grip (club hand) ........... hold to make the putter solid (only when Config.VRGripToPutt = true)
---   B / Y ...................... scorecard     A ... re-fit club (point it straight down first)
+--   B / Y ...................... scorecard     A ... re-fit club (hold the club straight down first)
 --   X .......................... swap hands
 --
 -- For testing without a headset set workspace attribute "SimulateVR" = true before playing. Poses are then read
@@ -40,7 +39,6 @@ local VR = {}
 
 -- real-ish blade putter: 3.3 cm thick, 3.3 cm tall, 12.6 cm toe-to-heel
 local HEAD_SIZE = Vector3.new(0.11, 0.11, 0.42) -- X = face thickness, Y = height, Z = toe-to-heel
-local TIP_OFFSET = Config.VRClubTipOffset or 0
 local HIT_COOLDOWN = 0.6
 local REACH_EXTRA = 0.5 -- the shaft may stretch this much (15 cm) to keep the head on the ground
 local TELEPORT_SPEED = 22 -- ~6.5 m max reach
@@ -58,9 +56,21 @@ local function yawOnly(cf: CFrame)
 	return CFrame.lookAt(Vector3.zero, look.Unit)
 end
 
--- Shaft along the controller's pointing direction, face normal = controller right, toe = controller up.
-local function defaultClubOffset()
-	return CFrame.Angles(math.rad(Config.VRClubAngle or 0), 0, 0)
+-- Default club mount for `hand`, in hand space: the butt point (where the shaft starts) and the club rotation
+-- (LookVector = shaft direction, RightVector = putter face normal, UpVector ~ toe side).
+-- Grip mount: the shaft continues the handle out of its bottom. Starting from the hand frame, a -90 deg pitch
+-- turns LookVector from -Z (aim ray) to -Y (down the handle); a further -VRClubGripPitch rakes it toward +Z.
+-- Rotations about X are unchanged by the left/right mirror (hand YZ plane); yaw and roll flip sign.
+-- Legacy mount (VRClubLegacyAim): from the controller tip along the aim ray, pitched by VRClubAngle.
+local function defaultClubMount(hand: Enum.UserCFrame): (Vector3, CFrame)
+	if Config.VRClubLegacyAim then
+		return Vector3.new(0, 0, -(Config.VRClubTipOffset or 0)), CFrame.Angles(math.rad(Config.VRClubAngle or 0), 0, 0)
+	end
+	local mirror = hand == Enum.UserCFrame.LeftHand and -1 or 1
+	local rot = CFrame.Angles(math.rad(-90 - (Config.VRClubGripPitch or 35)), 0, 0)
+		* CFrame.Angles(0, math.rad((Config.VRClubGripYaw or 0) * mirror), 0)
+		* CFrame.Angles(0, 0, math.rad((Config.VRClubGripRoll or 0) * mirror))
+	return rot.LookVector * (Config.VRClubButtOffset or 0.25), rot
 end
 
 function VR.start(Ball, HUD, simulate)
@@ -239,10 +249,10 @@ function VR.start(Ball, HUD, simulate)
 	local arcTarget = piece("Target", Vector3.new(0.04, 1.6, 1.6), Color3.fromRGB(120, 220, 255), Enum.Material.Neon, Enum.PartType.Cylinder, arcFolder)
 	arcTarget.Transparency = 1
 
-	local clubOffset = defaultClubOffset()
+	local dominant = Enum.UserCFrame.RightHand
+	local clubButt, clubOffset = defaultClubMount(dominant) -- hand-space shaft start and club rotation
 	local clubLength = 2.6 -- replaced by the height-based fit below
 	local clubFitted = false
-	local dominant = Enum.UserCFrame.RightHand
 
 	------------------------------------------------------------ helpers
 	local function motorFor(hand)
@@ -313,7 +323,8 @@ function VR.start(Ball, HUD, simulate)
 		end
 	end
 
-	-- Manual re-fit: point the club straight down at the floor and press A.
+	-- Manual re-fit: hold the club straight down at the floor and press A. Keeps the butt point (bottom of the
+	-- handle) and re-aims the shaft from it.
 	local function fitClub()
 		local handCF = worldPose(dominant)
 		local headPos = worldPose(Enum.UserCFrame.Head).Position
@@ -329,7 +340,7 @@ function VR.start(Ball, HUD, simulate)
 		local right = toe:Cross(back)
 		local desired = CFrame.fromMatrix(Vector3.zero, right, toe, back)
 		clubOffset = handCF.Rotation:Inverse() * desired
-		local tipPos = (handCF * CFrame.new(0, 0, -TIP_OFFSET)).Position
+		local tipPos = handCF:PointToWorldSpace(clubButt)
 		local floor = groundY(tipPos, 0.5) or origin.Y
 		clubLength = math.clamp(tipPos.Y - floor - HEAD_SIZE.Y / 2, 1.2, 4)
 		clubFitted = true
@@ -340,7 +351,7 @@ function VR.start(Ball, HUD, simulate)
 
 	local function switchHands()
 		dominant = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
-		clubOffset = defaultClubOffset()
+		clubButt, clubOffset = defaultClubMount(dominant)
 		teleportedThisFrame = true
 		HUD.message(dominant == Enum.UserCFrame.RightHand and "Right-handed" or "Left-handed", Color3.new(1, 1, 1), 1.5)
 	end
@@ -572,12 +583,14 @@ function VR.start(Ball, HUD, simulate)
 		return (newest.p - oldest.p) / dt
 	end
 
+	local lastClubCF = CFrame.new()
 	local function updatePutter(handCF: CFrame)
-		-- shaft starts at the controller tip (TIP_OFFSET along the pointing axis), then VRClubAngle / fit pitch
-		local clubCF = handCF * CFrame.new(0, 0, -TIP_OFFSET) * clubOffset
+		-- shaft starts at the bottom of the handle (clubButt) and runs along the grip axis (or the A-button fit)
+		local clubCF = handCF * CFrame.new(clubButt) * clubOffset
 		local gripPos = clubCF.Position
 		local shaftDir = clubCF.LookVector
 		local headPos = gripPos + shaftDir * clubLength
+		lastClubCF = clubCF
 
 		local floor = groundY(headPos, 1.5)
 		if floor then
@@ -603,7 +616,7 @@ function VR.start(Ball, HUD, simulate)
 		faceN = faceN.Magnitude > 1e-3 and faceN.Unit or Vector3.xAxis
 		local headCF = CFrame.fromMatrix(headPos, faceN, Vector3.yAxis)
 
-		-- visuals: a short ferrule at the controller tip, then the shaft down to the hosel
+		-- visuals: a short ferrule at the bottom of the handle, then the shaft down to the hosel
 		grip.CFrame = CFrame.lookAt(gripPos + shaftDir * (grip.Size.Z / 2), gripPos + shaftDir * grip.Size.Z)
 		local toeDir = headCF.LookVector
 		if toeDir:Dot(flat(clubCF.UpVector)) < 0 then
@@ -734,7 +747,7 @@ function VR.start(Ball, HUD, simulate)
 		if not prompted then
 			prompted = true
 			task.delay(2.4, function()
-				HUD.message("Point your controller at the ground like a putter grip.  Trigger: warp to ball", Color3.fromRGB(180, 230, 255), 6)
+				HUD.message("Hold your controller like a putter grip, handle down.  Trigger: warp to ball", Color3.fromRGB(180, 230, 255), 6)
 			end)
 		end
 	end)
@@ -766,8 +779,27 @@ function VR.start(Ball, HUD, simulate)
 			local back = Vector3.yAxis
 			local clubRot = CFrame.fromMatrix(Vector3.zero, right, back:Cross(right), back)
 			local handRot = clubRot * clubOffset.Rotation:Inverse()
-			local tip = handRot:VectorToWorldSpace(Vector3.new(0, 0, -TIP_OFFSET))
-			return CFrame.new(headPos - tip - clubRot.LookVector * clubLength) * handRot
+			local butt = handRot:VectorToWorldSpace(clubButt)
+			return CFrame.new(headPos - butt - clubRot.LookVector * clubLength) * handRot
+		end,
+		-- Club-hand world CFrame at `handPos` whose club shaft points along `shaftDir`, face normal ~ `faceDir`.
+		handCFrameAlong = function(handPos: Vector3, shaftDir: Vector3, faceDir: Vector3)
+			local back = -shaftDir.Unit
+			local right = (faceDir - back * faceDir:Dot(back)).Unit
+			local clubRot = CFrame.fromMatrix(Vector3.zero, right, back:Cross(right), back)
+			return CFrame.new(handPos) * (clubRot * clubOffset.Rotation:Inverse())
+		end,
+		-- Club rotation that the club-hand pose maps to (hand space), the hand-space butt point, last club CFrame.
+		getClubMount = function()
+			return clubButt, clubOffset, lastClubCF
+		end,
+		-- Re-reads the default mount from Config (e.g. after toggling Config.VRClubLegacyAim) and unfits the club.
+		resetClubMount = function()
+			clubButt, clubOffset = defaultClubMount(dominant)
+			teleportedThisFrame = true
+		end,
+		clubLength = function()
+			return clubLength
 		end,
 		toLocal = function(worldCF: CFrame)
 			return (origin * CFrame.new(0, -floorOffsetY, 0)):Inverse() * worldCF

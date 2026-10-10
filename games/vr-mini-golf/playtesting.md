@@ -14,6 +14,8 @@ The harness is **off in normal play**. It only starts when both are true at the 
 | `SimulateVR` (bool) | Fakes head and hand tracking from the CFrameValues in `ReplicatedStorage.VRDebug`, so `VRControls` runs without a headset. The `ledge` and `ghost` scenarios need this |
 | `GolfTestCamera` | `""` (normal), `"fixed"` (3/4 view of the scenario area), `"topdown"`, or `"follow"` (chase cam behind the ball) |
 | `GolfTestFocus` / `GolfTestFrameSize` / `GolfTestViewDir` | Framing for the cameras. Each scenario sets these itself |
+| `GolfTestClubDebug` (bool) | Draws the club debug overlay: a part-built Quest Touch proxy at the club hand plus axis gizmos (see below) |
+| `GolfTestCamPos` / `GolfTestCamUp` / `GolfTestFOV` | Framing for the `"look"` camera (from `GolfTestCamPos` at `GolfTestFocus`) |
 | `DebugStartHole` | (Not test mode) Start the round on a later hole |
 
 The runner sets and clears all of these for you.
@@ -34,7 +36,13 @@ python3 tools/run_playtests.py compare playtests/2026-10-03/baseline playtests/2
 python3 tools/run_playtests.py smoke     # normal solo playtest: errors/warnings + HUD texts, test mode off
 python3 tools/run_playtests.py push src/<path>.luau ...    # copy edited src/ files into Studio (Edit)
 python3 tools/run_playtests.py export    # mirror every Studio script into src/ (run before committing)
+python3 tools/run_playtests.py clubviz --out playtests/<date>-clubfix   # VR club mount screenshots, before/after
 ```
+
+- `clubviz` captures the Studio window (`screencapture -l<window id>`) for each view and crops it to the game viewport (the 2 px blue play border, minus the CoreGui strip).
+  - Mounts: legacy aim ray, then the grip mount.
+  - Views: `side`, `front`, `top`, `side_close`, `front_close`.
+  - It writes `before_<view>.png`, `after_<view>.png` and `clubpose.json`.
 
 - `run` does the following:
   1. Stops play and sets `GolfTestMode` + `SimulateVR` (unless `--no-vr`).
@@ -73,6 +81,7 @@ require(game.ServerStorage.CourseBuilder:Clone()).ApplyPhysics(nil, require(game
 | `hill` | Hole 3: 5 m/s makes the green, 2 m/s rolls back down |
 | `cup` | Hole 1 from 60 cm at 1.3–4 m/s: holed or not, speed at the rim, holed on the first pass. Contacts inside the cup (the ball dropping against the rim/liner) don't count against "first pass" |
 | `ledge` | (SimulateVR) Ball against a wall or rail. The (fake) club is held over the ledge and the player stance is on or over the wall. Logs ball-plane Y vs VR rig floor, character feet and putter head bottom. Pass = all within 0.05 studs (character 0.1) |
+| `clubviz` | (SimulateVR) Holds the club hand in a putting grip next to a ball (hand 0.91 m up, handle aimed at the ball), with the legacy mount and then the grip mount. Pass: the shaft is within 2° of the handle axis, starts at the handle bottom, and puts the head on the ball's plane right behind the ball. Then presses A (refit): shaft vertical from the handle bottom, head on the plane |
 | `ghost` | (SimulateVR) Sweeps the putter head through a wall and a bumper post at ball-plane height. Checks it follows the hand exactly (no pushback, no climbing), the club parts can't collide/touch, and the ball doesn't move. Then makes a real simulated VR swing through the ball (face speed 1.2 m/s → ball speed = face speed × `VRHitMultiplier`) |
 
 **Adding a scenario:** add a `scenario({ name, desc, seconds, vr?, run = function() ... end })` block in `src/StarterPlayer/StarterPlayerScripts/GolfClient/GolfTest.luau`. `seconds` is the recording length.
@@ -86,25 +95,43 @@ These helpers are available:
 
 Return a table. Then add a section to `summary_md()` and `key_metrics()` in the runner if you want it in the summary and compare.
 
-## VR club: axis assumption (needs a headset to confirm)
+## VR club: grip axis (needs a headset to confirm)
 
-`VRService:GetUserCFrame(Enum.UserCFrame.RightHand/LeftHand)` is used like this:
-- **LookVector is the controller's pointing axis.** On Quest/OpenXR that's the direction the ray/laser comes out of the front of the controller. Roblox's own VR laser pointer uses the same axis.
-- **The CFrame's origin is roughly in the middle of the controller.**
-- I couldn't find documentation or DevForum posts that pin down whether Roblox reports the OpenXR *grip* pose or *aim* pose, so this is an assumption.
+How `VRService:GetUserCFrame(Enum.UserCFrame.RightHand/LeftHand)` is read, for Quest Touch (Roblox reports the OpenXR **aim** pose, as far as we can tell):
+- **-Z (LookVector)** is the aim/laser ray out of the front of the controller.
+- **+Y** is the top of the controller (face buttons).
+- **+X** is the controller's right.
+- **The handle** runs from the top down along -Y, raked back toward +Z (pistol-grip style: the bottom of the grip sits down and back toward the wrist). It is ~90° + rake from the aim ray.
 
-Based on that assumption, `VRControls.updatePutter` builds the club like this:
+Up to v9 the shaft ran along -Z, so on a real Quest it came out ~perpendicular to the handle (fixed 2026-10-09, see `playtests/2026-10-09-clubfix/NOTES.md`). Now `VRControls.defaultClubMount` builds the club like this:
 ```
-clubCF  = handCF * CFrame.new(0, 0, -Config.VRClubTipOffset) * clubOffset
-clubOffset = CFrame.Angles(rad(Config.VRClubAngle), 0, 0)   -- or the A-button fit
-shaft   = from clubCF.Position along clubCF.LookVector, length auto-fit from eye height
+gripRot  = Angles(rad(-90 - VRClubGripPitch), 0, 0) * Angles(0, rad(±VRClubGripYaw), 0) * Angles(0, 0, rad(±VRClubGripRoll))
+clubButt = gripRot.LookVector * VRClubButtOffset      -- bottom of the handle, hand space
+clubCF   = handCF * CFrame.new(clubButt) * clubOffset -- clubOffset = gripRot, or the A-button fit
+shaft    = from clubCF.Position along clubCF.LookVector, length auto-fit from eye height (+ up to 15 cm stretch)
 ```
-So the shaft starts `VRClubTipOffset` (0.2 studs = 6 cm) in front of the hand origin, at the controller tip. It runs along the pointing axis, tilted by `VRClubAngle` degrees (positive = toward the controller's top).
+- **Defaults:** pitch 35°, yaw 0, roll 0, butt 0.25 studs (7.5 cm).
+- **Left hand:** pitch is a rotation about hand X, which the left/right mirror (across the hand YZ plane) leaves alone, so it is the same for both hands. Yaw and roll are negated for the left hand.
+- **Legacy mount:** `VRClubLegacyAim = true` brings back the old tip/aim-ray mount (`VRClubTipOffset`, `VRClubAngle`).
 
-**What Chase should check on the Quest:**
-1. Does the shaft come out of the front tip of the controller? If it starts inside the controller or in front of it, adjust `VRClubTipOffset`.
-2. Does the shaft continue along the controller's pointing direction? If it's tilted up or down relative to the controller, adjust `VRClubAngle`. Roblox could be reporting the grip pose, which is tilted ~30–40° from the pointing ray on Quest Touch controllers; then `VRClubAngle` ≈ ±35 fixes it.
-3. A (point the club straight down and press A) still re-fits the angle and length per player.
+**What Chase should check on the Quest (both hands; X swaps hands):**
+1. Does the shaft continue the line of the handle?
+   - Tilted toward the front or back of the controller: adjust `VRClubGripPitch` (+ rakes the shaft back toward your wrist).
+   - Tilted sideways: adjust `VRClubGripYaw`.
+2. Does it start at the bottom of the handle? Adjust `VRClubButtOffset`.
+3. Is the putter face square when the controller is held naturally? Adjust `VRClubGripRoll`.
+4. If the shaft points along the controller's front/back instead (Roblox reporting the OpenXR grip pose, where the handle bottom is +Z): `VRClubGripPitch` ≈ 90.
+5. A (hold the club straight down, press A) still refits the angle and length per player, from the bottom of the handle.
+
+**Visual check without a headset:** `run_playtests.py clubviz`, or `GolfTestAPI` `clubpose` (legacy, view). The overlay shows:
+- **The controller proxy:**
+  - Handle: the dark cylinder along the physical grip axis.
+  - Orange ring: the handle bottom.
+  - Grey disk: the tracking ring.
+  - Red block: the trigger.
+- **Gizmos** (X red, Y green, Z blue): thick = hand, thin = club mount at the shaft start.
+- **Yellow:** the aim ray.
+- **Skin sphere:** the player's head.
 
 ## Plane snap and ghosting (how it works now)
 
@@ -134,7 +161,7 @@ On top of that, the VR character's Humanoid is `PlatformStand`, with a local ant
 
 ## What needs a real headset
 
-- Club origin/axis (above), `VRClubAngle`, `VRClubTipOffset`.
+- Club grip axis (above): `VRClubGripPitch`/`Yaw`/`Roll`, `VRClubButtOffset`.
 - How the swing feels and `VRHitMultiplier` with real tracking noise and haptics.
 - Comfort of the rig height snapping to the ball's plane when you walk across a wall or up The Hill (it eases at 10/s).
 - Real Quest floor calibration (`UserCFrame.Floor`). SimulateVR always uses floor 0.
