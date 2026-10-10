@@ -1,0 +1,4189 @@
+{
+ "course": "Lantern Grove",
+ "schema": {
+  "version": "1.0",
+  "units": "studs (1 stud = 0.28 m). Speeds studs/s, angles degrees, angular speed deg/s.",
+  "axes": "Right-handed, +Y up. Each hole has its own local frame: tee near the origin, play generally toward -Z. Map/top-down view used in all docs and renders: +X to the right, -Z up ('north'). Facing -Z (Roblox LookVector default) the player's right is +X.",
+  "world_placement": "world = R_y(world_yaw) * local + world_offset. world_offset [x,y,z] studs, world_yaw degrees.",
+  "yaw": "Degrees about +Y, right-handed (Roblox CFrame.Angles(0, math.rad(yaw), 0)). Local->world: x' = lx*cos(yaw) + lz*sin(yaw); z' = -lx*sin(yaw) + lz*cos(yaw). Positive yaw = counter-clockwise in the map view.",
+  "felt": "Playable surface pieces. {id, zone, center:[x,y,z] = TOP-surface centre, size:[sx,sz] footprint in local x/z, yaw, slope:null|{axis:'x'|'z', rise}}. rise = surface height at the +axis end minus the -axis end (local axes); the surface is a single plane so heights at the ends are center.y +- rise/2. Collision part = a box whose top face is that plane (thickness free, suggest 0.4; build sloped pieces as a box rotated by atan(rise/len) about the local axis perpendicular to `axis`, then shifted so the top-surface centre matches). Optional flags: overlay=true (banked plane laid on top of base felt; its low edge is flush with the base), kind='bank'|'bridge'|'tunnel', tunnel=true (felt runs inside a decorative enclosure; physics unchanged), solid=false + thickness (bridge deck: a ball on a lower level can roll underneath). Pieces join when edges meet/overlap at equal height (tolerance 0.05).",
+  "walls": "Invisible collision blocks. {id, center:[x,y,z] = box centre, size:[sx,sy,sz] local box size, yaw}. Authored rails have local Z along the run and local X = thickness 0.5; height is 1.0 above the highest felt they border (boxes along ramps are simply taller; visual rails can follow the slope). Rails sit OUTSIDE the felt edge (inner face on the edge). Blocks named hub/stump/rock are static obstacles.",
+  "hazards": "Out-of-bounds volumes below felt level: {id, type:'water'|'pit', center:[x,y,z] (water/pit surface), size:[sx,sz], yaw, reset:'previous_position', penalty:1}. A ball that leaves the felt over a hazard is returned to where its stroke started and +1 stroke is added. Any ball leaving all felt elsewhere is treated the same (and flagged as an escape bug).",
+  "drops": "Intentional level changes: {id, from, to, edge, height}. The upper piece's edge is open (no rail) and the lower felt starts directly below/beyond it; the ball falls and keeps ~80% of horizontal speed. Lower felt may extend under the upper piece (the upper piece then acts as a cliff face for the lower level).",
+  "moving_parts": "Separate parts. {id, type:'rotate'|'slide', pivot:[x,y,z], axis:[ax,ay,az] unit vector, speed (deg/s for rotate, studs/s for slide, sign = direction, right-hand rule about axis), range:null (continuous) | [min,max] (ping-pong between angles in deg or offsets in studs), phase (angle/offset at t=0), blockers:[{center:[dx,dy,dz] relative to pivot at angle/offset 0, size:[sx,sy,sz], yaw}]}. At time t a blocker is pivot + Rot(axis, angle(t)) * center (rotate) or pivot + center + axis*offset(t) (slide).",
+  "teleports": "{id, entry:{center:[x,y,z], radius}, exit:{center:[x,y,z], dir:[dx,dz]}, speed_factor, min_speed, max_speed}. A ball whose centre enters the entry radius (same level) reappears at exit moving along dir with speed = clamp(speed_in*speed_factor, min_speed, max_speed).",
+  "cup": "{position:[x,y,z] (on felt), radius}. Gameplay cup radius 0.5 stud (real cup 4.25 in = 0.38 stud diameter; enlarged ~2.6x for VR readability). Ball is holed when its centre is within radius and speed < 3.0 studs/s (0.84 m/s).",
+  "ball": "radius 0.08 stud (real 42.7 mm ball). Physics in tools/sim.py: g=35 studs/s^2 (real 9.81 m/s^2 at 0.28 m/stud; set Workspace.Gravity=35 for this course), rolling decel 1.2 studs/s^2 + 0.06*v drag, max putt speed 16 studs/s (~71 studs roll on flat felt), wall restitution 0.75, slope accel g*sin(theta).",
+  "tee": "{position:[x,y,z], aim_hint:[dx,dz]}",
+  "ai_waypoints": "{skill|'all': [{id, pos:[x,y,z], from:[zones], carry, power_scale}]} used by the sim golfer: from its current zone it aims at the furthest allowed target with line of sight (cup first, then waypoints last->first) and hits for distance + carry. cup_from (list of zones or null=all) limits when it goes straight for the cup.",
+  "decoration_anchors": "{name, position:[x,y,z], notes, landmark?, approx_size?} - visual only, no collision.",
+  "felt_widths": "Lanes 7-8 studs (2.0-2.2 m), greens 12-16 studs; rails 1 stud high (0.28 m), 0.5 thick (0.14 m)."
+ },
+ "physics_reference": {
+  "g": 35.0,
+  "roll_decel": 1.2,
+  "drag": 0.06,
+  "v_max": 16.0,
+  "restitution": 0.75,
+  "ball_radius": 0.08,
+  "cup_radius": 0.5,
+  "cup_capture_speed": 3.0
+ },
+ "total_par": 27,
+ "holes": [
+  {
+   "number": 1,
+   "id": "h01",
+   "name": "Lantern Gate",
+   "par": 2,
+   "zone": "Sunny Forest Edge",
+   "landmark": "Lantern torii gate over the ramp",
+   "gimmick": "Gentle ramp + 45-degree deflector bank onto an offset green",
+   "world_offset": [
+    0,
+    0,
+    0
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     -7.5,
+     0.5,
+     -33.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "tee",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -8.0
+     ],
+     "size": [
+      7.0,
+      20
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "ramp",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.25,
+      -21.0
+     ],
+     "size": [
+      7.0,
+      6
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": -0.5
+     }
+    },
+    {
+     "id": "green",
+     "zone": "green",
+     "center": [
+      -3.75,
+      0.5,
+      -30.0
+     ],
+     "size": [
+      14.5,
+      12
+     ],
+     "yaw": 0.0,
+     "slope": null
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      -3.75,
+      0.5,
+      -10.75
+     ],
+     "size": [
+      0.5,
+      2.0,
+      26.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      -7.5,
+      0.75,
+      -23.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      -11.25,
+      0.75,
+      -30.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      -3.75,
+      0.75,
+      -36.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      3.75,
+      0.5,
+      -17.0
+     ],
+     "size": [
+      0.5,
+      2.0,
+      39.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "deflector",
+     "center": [
+      0.0,
+      0.75,
+      -32.5
+     ],
+     "size": [
+      0.5,
+      1.5,
+      11.3137
+     ],
+     "yaw": -135.0
+    }
+   ],
+   "hazards": [],
+   "drops": [],
+   "moving_parts": [],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "deflect",
+      "pos": [
+       0.0,
+       0.5,
+       -32.0
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 8.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": null,
+   "decoration_anchors": [
+    {
+     "name": "lantern_gate",
+     "position": [
+      0,
+      0.25,
+      -21
+     ],
+     "notes": "Torii-style timber arch over the ramp, 2 paper lanterns hanging inside",
+     "landmark": true,
+     "approx_size": [
+      9,
+      7,
+      1.2
+     ]
+    },
+    {
+     "name": "mossy_boulder",
+     "position": [
+      -8,
+      0.5,
+      -21
+     ],
+     "notes": "Big mossy boulder outside the green's front-left rail",
+     "approx_size": [
+      4,
+      3,
+      4
+     ]
+    },
+    {
+     "name": "welcome_sign",
+     "position": [
+      -6,
+      0,
+      1
+     ],
+     "notes": "Carved 'Lantern Grove - Hole 1' sign post",
+     "approx_size": [
+      2,
+      3,
+      0.4
+     ]
+    },
+    {
+     "name": "maple_tree",
+     "position": [
+      8,
+      0,
+      -15
+     ],
+     "notes": "Red maple outside right rail",
+     "approx_size": [
+      10,
+      16,
+      10
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 2,
+   "id": "h02",
+   "name": "Acorn Ledge",
+   "par": 2,
+   "zone": "Sunny Forest Edge",
+   "landmark": "Giant acorn on a stump splitting the ledge",
+   "gimmick": "Drop between levels through one of two chutes either side of a stump",
+   "world_offset": [
+    34,
+    0,
+    4
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     0.0,
+     -1.5,
+     -26.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -7.0
+     ],
+     "size": [
+      8,
+      18
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "lower",
+     "zone": "lower",
+     "center": [
+      0.0,
+      -1.5,
+      -23.0
+     ],
+     "size": [
+      16,
+      14
+     ],
+     "yaw": 0.0,
+     "slope": null
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      4.25,
+      -0.5,
+      -7.0
+     ],
+     "size": [
+      0.5,
+      3.0,
+      19.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      0.0,
+      -0.5,
+      2.25
+     ],
+     "size": [
+      0.5,
+      3.0,
+      9.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      -4.25,
+      -0.5,
+      -7.0
+     ],
+     "size": [
+      0.5,
+      3.0,
+      19.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "stump",
+     "center": [
+      0,
+      -0.4,
+      -15.5
+     ],
+     "size": [
+      3.0,
+      3.2,
+      1.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      -6.0,
+      -1.25,
+      -15.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      5.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      -8.25,
+      -1.25,
+      -23.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      0.0,
+      -1.25,
+      -30.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      17.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      8.25,
+      -1.25,
+      -23.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      6.0,
+      -1.25,
+      -15.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      5.0
+     ],
+     "yaw": -90.0
+    }
+   ],
+   "hazards": [],
+   "drops": [
+    {
+     "id": "d1",
+     "from": "lane",
+     "to": "lower",
+     "edge": "lane north edge z=-16, chutes x[-4,-1.5] & x[1.5,4]",
+     "height": 1.5,
+     "note": ""
+    }
+   ],
+   "moving_parts": [],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "chute",
+      "pos": [
+       -2.75,
+       0.0,
+       -16.0
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 4.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": null,
+   "decoration_anchors": [
+    {
+     "name": "giant_acorn",
+     "position": [
+      0,
+      0.0,
+      -16.5
+     ],
+     "notes": "Giant acorn (cap + nut) sitting on the stump between the chutes",
+     "landmark": true,
+     "approx_size": [
+      3,
+      4,
+      3
+     ]
+    },
+    {
+     "name": "leaf_pile_L",
+     "position": [
+      -6,
+      -1.5,
+      -18
+     ],
+     "notes": "Pile of orange leaves at lower-left",
+     "approx_size": [
+      2,
+      0.6,
+      2
+     ]
+    },
+    {
+     "name": "squirrel_hut",
+     "position": [
+      11,
+      -1.5,
+      -24
+     ],
+     "notes": "Tiny squirrel hut on a post outside the right rail",
+     "approx_size": [
+      3,
+      5,
+      3
+     ]
+    },
+    {
+     "name": "ledge_lanterns",
+     "position": [
+      -4.5,
+      0,
+      -15.5
+     ],
+     "notes": "Lantern posts at both chute edges",
+     "approx_size": [
+      0.5,
+      3,
+      0.5
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 3,
+   "id": "h03",
+   "name": "Toadstool Row",
+   "par": 3,
+   "zone": "Mushroom Village",
+   "landmark": "Mushroom house with a tunnel through its stem",
+   "gimmick": "S-bend with two banked plane corners and a stem tunnel",
+   "world_offset": [
+    4,
+    1,
+    -66
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     20.0,
+     0.0,
+     -38.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -9.75
+     ],
+     "size": [
+      7.0,
+      23.5
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "cross1",
+     "zone": "cross",
+     "center": [
+      5.25,
+      0.0,
+      -18.0
+     ],
+     "size": [
+      3.5,
+      7.0
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "tunnel",
+     "zone": "cross",
+     "center": [
+      10.0,
+      0.0,
+      -18.0
+     ],
+     "size": [
+      6,
+      7.0
+     ],
+     "yaw": 0.0,
+     "slope": null,
+     "tunnel": true,
+     "kind": "tunnel"
+    },
+    {
+     "id": "cross2",
+     "zone": "cross",
+     "center": [
+      14.75,
+      0.0,
+      -18.0
+     ],
+     "size": [
+      3.5,
+      7.0
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "leg",
+     "zone": "leg",
+     "center": [
+      20.0,
+      0.0,
+      -22.25
+     ],
+     "size": [
+      7.0,
+      15.5
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "green",
+     "zone": "green",
+     "center": [
+      20.0,
+      0.0,
+      -36.0
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "bank1",
+     "zone": "lane",
+     "center": [
+      -2.4142,
+      0.5,
+      -20.4142
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": 135.0,
+     "slope": {
+      "axis": "x",
+      "rise": 1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    },
+    {
+     "id": "bank2",
+     "zone": "cross",
+     "center": [
+      22.4142,
+      0.5,
+      -15.5858
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": 135.0,
+     "slope": {
+      "axis": "x",
+      "rise": -1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      -3.75,
+      0.75,
+      -9.75
+     ],
+     "size": [
+      0.5,
+      2.5,
+      24.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      6.25,
+      0.75,
+      -21.75
+     ],
+     "size": [
+      0.5,
+      2.5,
+      20.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      16.25,
+      0.25,
+      -25.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      15.0,
+      0.25,
+      -29.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      13.75,
+      0.25,
+      -36.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      20.0,
+      0.25,
+      -42.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      26.25,
+      0.25,
+      -36.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      25.0,
+      0.25,
+      -29.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      23.75,
+      0.75,
+      -22.0
+     ],
+     "size": [
+      0.5,
+      2.5,
+      16.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      13.75,
+      0.75,
+      -14.25
+     ],
+     "size": [
+      0.5,
+      2.5,
+      20.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      3.75,
+      0.25,
+      -6.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      17.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": -90.0
+    }
+   ],
+   "hazards": [],
+   "drops": [],
+   "moving_parts": [],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "corner1",
+      "pos": [
+       0.0,
+       0.0,
+       -18.0
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 14.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "corner2",
+      "pos": [
+       20.0,
+       0.0,
+       -18.0
+      ],
+      "from": [
+       "cross"
+      ],
+      "carry": 12.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": null,
+   "decoration_anchors": [
+    {
+     "name": "stem_house",
+     "position": [
+      10,
+      0,
+      -18
+     ],
+     "notes": "Red-cap mushroom house; felt tunnel runs through its stem (6 long, 3 high opening)",
+     "landmark": true,
+     "approx_size": [
+      10,
+      12,
+      10
+     ]
+    },
+    {
+     "name": "small_toadstools",
+     "position": [
+      -6,
+      0,
+      -10
+     ],
+     "notes": "Cluster of 3 small toadstools",
+     "approx_size": [
+      3,
+      2.5,
+      3
+     ]
+    },
+    {
+     "name": "house_2",
+     "position": [
+      29,
+      0,
+      -22
+     ],
+     "notes": "Second mushroom house with round window",
+     "approx_size": [
+      7,
+      9,
+      7
+     ]
+    },
+    {
+     "name": "lantern_string",
+     "position": [
+      20,
+      4,
+      -30
+     ],
+     "notes": "Lantern string across green entrance",
+     "approx_size": [
+      12,
+      1,
+      0.3
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 4,
+   "id": "h04",
+   "name": "Spore Spinner",
+   "par": 3,
+   "zone": "Mushroom Village",
+   "landmark": "Spinning puffball carousel",
+   "gimmick": "Rotating 3-arm spinner in a plaza, then ramp up to a raised green",
+   "world_offset": [
+    52,
+    1,
+    -60
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     2.5,
+     1.0,
+     -42.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -6.0
+     ],
+     "size": [
+      8,
+      16
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "plaza",
+     "zone": "plaza",
+     "center": [
+      0.0,
+      0.0,
+      -21.0
+     ],
+     "size": [
+      14,
+      14
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "ramp",
+     "zone": "ramp",
+     "center": [
+      0.0,
+      0.5,
+      -32.0
+     ],
+     "size": [
+      8,
+      8
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": -1.0
+     }
+    },
+    {
+     "id": "green",
+     "zone": "green",
+     "center": [
+      0.0,
+      1.0,
+      -41.0
+     ],
+     "size": [
+      12,
+      10
+     ],
+     "yaw": 0.0,
+     "slope": null
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      -4.25,
+      0.25,
+      -5.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      16.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      -5.75,
+      0.25,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      -7.25,
+      0.25,
+      -21.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      -5.75,
+      0.25,
+      -28.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      -4.25,
+      0.75,
+      -32.0
+     ],
+     "size": [
+      0.5,
+      2.5,
+      8.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      -5.25,
+      1.25,
+      -35.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      2.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      -6.25,
+      1.25,
+      -41.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      11.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      0.0,
+      1.25,
+      -46.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      6.25,
+      1.25,
+      -41.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      11.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      5.25,
+      1.25,
+      -35.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      2.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      4.25,
+      0.75,
+      -32.0
+     ],
+     "size": [
+      0.5,
+      2.5,
+      8.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      5.75,
+      0.25,
+      -28.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail13",
+     "center": [
+      7.25,
+      0.25,
+      -21.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail14",
+     "center": [
+      5.75,
+      0.25,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail15",
+     "center": [
+      4.25,
+      0.25,
+      -5.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      16.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail16",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      9.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "hub",
+     "center": [
+      0,
+      0.75,
+      -21
+     ],
+     "size": [
+      1.4,
+      2.5,
+      1.4
+     ],
+     "yaw": 0.0
+    }
+   ],
+   "hazards": [],
+   "drops": [],
+   "moving_parts": [
+    {
+     "id": "spinner",
+     "type": "rotate",
+     "pivot": [
+      0,
+      0,
+      -21
+     ],
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "speed": 90.0,
+     "speed_units": "deg/s",
+     "range": null,
+     "phase": 0.0,
+     "blockers": [
+      {
+       "center": [
+        2.85,
+        0.5,
+        0.0
+       ],
+       "size": [
+        4.3,
+        1.0,
+        0.7
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        -1.425,
+        0.5,
+        -2.4682
+       ],
+       "size": [
+        4.3,
+        1.0,
+        0.7
+       ],
+       "yaw": 120.0
+      },
+      {
+       "center": [
+        -1.425,
+        0.5,
+        2.4682
+       ],
+       "size": [
+        4.3,
+        1.0,
+        0.7
+       ],
+       "yaw": 240.0
+      }
+     ],
+     "visual": "3 puffball-stalk arms on a toadstool hub"
+    }
+   ],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "ramp",
+      "pos": [
+       1.8,
+       0.5,
+       -32.0
+      ],
+      "from": [
+       "lane",
+       "plaza"
+      ],
+      "carry": 11.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": null,
+   "decoration_anchors": [
+    {
+     "name": "puffball_carousel",
+     "position": [
+      0,
+      0,
+      -21
+     ],
+     "notes": "Toadstool hub with 3 puffball arms (moving mesh, pivot at hub centre)",
+     "landmark": true,
+     "approx_size": [
+      10,
+      4,
+      10
+     ]
+    },
+    {
+     "name": "mushroom_house_L",
+     "position": [
+      -12,
+      0,
+      -21
+     ],
+     "notes": "Mushroom house beside plaza",
+     "approx_size": [
+      8,
+      10,
+      8
+     ]
+    },
+    {
+     "name": "mushroom_house_R",
+     "position": [
+      12,
+      0,
+      -24
+     ],
+     "notes": "Mushroom house beside plaza",
+     "approx_size": [
+      7,
+      9,
+      7
+     ]
+    },
+    {
+     "name": "green_lanterns",
+     "position": [
+      -7,
+      1,
+      -41
+     ],
+     "notes": "Lantern posts flanking raised green",
+     "approx_size": [
+      0.5,
+      3.5,
+      0.5
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 5,
+   "id": "h05",
+   "name": "Rootbridge Crossing",
+   "par": 3,
+   "zone": "Stream Crossing",
+   "landmark": "Arched root bridge over the stream",
+   "gimmick": "Split path: narrow rail-less root bridge (risk) vs covered plank bridge (safe), water hazard",
+   "world_offset": [
+    96,
+    -1,
+    -10
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     4.0,
+     0.0,
+     -36.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -3.0
+     ],
+     "size": [
+      7.0,
+      10
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "shore",
+     "zone": "shore",
+     "center": [
+      -3.0,
+      0.0,
+      -11.5
+     ],
+     "size": [
+      20,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "root1",
+     "zone": "root",
+     "center": [
+      0.0,
+      0.2,
+      -18.0
+     ],
+     "size": [
+      2.5,
+      6
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": -0.4
+     },
+     "kind": "bridge"
+    },
+    {
+     "id": "root2",
+     "zone": "root",
+     "center": [
+      0.0,
+      0.2,
+      -24.0
+     ],
+     "size": [
+      2.5,
+      6
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": 0.4
+     },
+     "kind": "bridge"
+    },
+    {
+     "id": "covered",
+     "zone": "covered",
+     "center": [
+      -9.5,
+      0.0,
+      -21.0
+     ],
+     "size": [
+      5,
+      12
+     ],
+     "yaw": 0.0,
+     "slope": null,
+     "kind": "bridge"
+    },
+    {
+     "id": "north",
+     "zone": "north",
+     "center": [
+      -3.0,
+      0.0,
+      -34.0
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "yaw": 0.0,
+     "slope": null
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      -4.125,
+      0.25,
+      -15.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      5.75
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      4.375,
+      0.25,
+      -15.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      6.25
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      7.25,
+      0.25,
+      -11.5
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      5.5,
+      0.25,
+      -7.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      4.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      3.75,
+      0.25,
+      -2.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      10.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      -3.75,
+      0.25,
+      -2.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      10.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      -8.5,
+      0.25,
+      -7.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      10.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      -13.25,
+      0.25,
+      -11.5
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      -12.75,
+      0.25,
+      -15.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      1.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      -12.25,
+      0.25,
+      -21.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      -6.75,
+      0.25,
+      -21.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      13.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail13",
+     "center": [
+      -12.75,
+      0.25,
+      -26.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      1.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail14",
+     "center": [
+      -13.25,
+      0.25,
+      -34.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail15",
+     "center": [
+      -3.0,
+      0.25,
+      -41.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      21.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail16",
+     "center": [
+      7.25,
+      0.25,
+      -34.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail17",
+     "center": [
+      4.375,
+      0.25,
+      -26.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      6.25
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail18",
+     "center": [
+      -4.125,
+      0.25,
+      -26.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      5.75
+     ],
+     "yaw": -90.0
+    }
+   ],
+   "hazards": [
+    {
+     "id": "stream",
+     "type": "water",
+     "center": [
+      -3.0,
+      -1.0,
+      -21.0
+     ],
+     "size": [
+      24,
+      12
+     ],
+     "yaw": 0.0,
+     "reset": "previous_position",
+     "penalty": 1
+    }
+   ],
+   "drops": [],
+   "moving_parts": [],
+   "teleports": [],
+   "ai_waypoints": {
+    "good": [
+     {
+      "id": "root_far",
+      "pos": [
+       0.0,
+       0.0,
+       -28.0
+      ],
+      "from": [
+       "lane",
+       "shore",
+       "root"
+      ],
+      "carry": 3.0,
+      "power_scale": 1.0
+     }
+    ],
+    "average": [
+     {
+      "id": "shore_left",
+      "pos": [
+       -9.5,
+       0.0,
+       -11.5
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 0.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "covered_in",
+      "pos": [
+       -9.5,
+       0.0,
+       -16.0
+      ],
+      "from": [
+       "shore"
+      ],
+      "carry": 12.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "covered_out",
+      "pos": [
+       -9.5,
+       0.0,
+       -29.0
+      ],
+      "from": [
+       "covered",
+       "root"
+      ],
+      "carry": 2.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": [
+    "north"
+   ],
+   "decoration_anchors": [
+    {
+     "name": "root_bridge",
+     "position": [
+      0,
+      0.2,
+      -21
+     ],
+     "notes": "Gnarled arched root bridge (no rails), felt on top",
+     "landmark": true,
+     "approx_size": [
+      4,
+      3,
+      13
+     ]
+    },
+    {
+     "name": "covered_bridge",
+     "position": [
+      -9.5,
+      0,
+      -21
+     ],
+     "notes": "Plank covered bridge with shingle roof and lanterns",
+     "approx_size": [
+      7,
+      6,
+      13
+     ]
+    },
+    {
+     "name": "stream_rocks",
+     "position": [
+      5,
+      -1,
+      -21
+     ],
+     "notes": "Mossy stepping stones in the stream",
+     "approx_size": [
+      2,
+      1,
+      2
+     ]
+    },
+    {
+     "name": "waterfall_bg",
+     "position": [
+      12,
+      -1,
+      -21
+     ],
+     "notes": "Small waterfall feeding the stream (upstream, right side)",
+     "approx_size": [
+      6,
+      8,
+      3
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 6,
+   "id": "h06",
+   "name": "Mill Wheel Run",
+   "par": 3,
+   "zone": "Stream Crossing",
+   "landmark": "Water mill with a turning paddle wheel",
+   "gimmick": "Paddle wheel (horizontal axis) dips across the channel; banked corners; mill-race water hazard; ramp to green",
+   "world_offset": [
+    84,
+    -2,
+    -70
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     16.0,
+     1.2,
+     -37.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -9.5
+     ],
+     "size": [
+      7.0,
+      23
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "channel",
+     "zone": "channel",
+     "center": [
+      13.75,
+      0.0,
+      -17.5
+     ],
+     "size": [
+      20.5,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "ramp",
+     "zone": "ramp",
+     "center": [
+      20.5,
+      0.6,
+      -25.0
+     ],
+     "size": [
+      7,
+      8
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": -1.2
+     }
+    },
+    {
+     "id": "green",
+     "zone": "green",
+     "center": [
+      20.0,
+      1.2,
+      -35.0
+     ],
+     "size": [
+      14,
+      12
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "bank1",
+     "zone": "lane",
+     "center": [
+      -2.4142,
+      0.5,
+      -19.9142
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": 135.0,
+     "slope": {
+      "axis": "x",
+      "rise": 1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    },
+    {
+     "id": "bank2",
+     "zone": "channel",
+     "center": [
+      22.9142,
+      0.5,
+      -15.0858
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": 135.0,
+     "slope": {
+      "axis": "x",
+      "rise": -1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      5.75,
+      0.25,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      4.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      3.75,
+      0.25,
+      -5.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      16.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      -3.75,
+      0.75,
+      -9.5
+     ],
+     "size": [
+      0.5,
+      2.5,
+      24.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      6.5,
+      0.75,
+      -21.25
+     ],
+     "size": [
+      0.5,
+      2.5,
+      21.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      16.75,
+      0.85,
+      -25.0
+     ],
+     "size": [
+      0.5,
+      2.7,
+      8.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      14.75,
+      0.85,
+      -28.75
+     ],
+     "size": [
+      0.5,
+      2.7,
+      4.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      12.75,
+      0.85,
+      -35.0
+     ],
+     "size": [
+      0.5,
+      2.7,
+      13.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      20.0,
+      0.85,
+      -41.25
+     ],
+     "size": [
+      0.5,
+      2.7,
+      15.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      27.25,
+      0.85,
+      -35.0
+     ],
+     "size": [
+      0.5,
+      2.7,
+      13.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      25.75,
+      0.85,
+      -28.75
+     ],
+     "size": [
+      0.5,
+      2.7,
+      3.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      24.25,
+      0.85,
+      -21.25
+     ],
+     "size": [
+      0.5,
+      2.7,
+      15.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail13",
+     "center": [
+      17.75,
+      0.75,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      2.5,
+      13.5
+     ],
+     "yaw": -90.0
+    }
+   ],
+   "hazards": [
+    {
+     "id": "millrace",
+     "type": "water",
+     "center": [
+      9.5,
+      -0.8,
+      -12.0
+     ],
+     "size": [
+      7,
+      4
+     ],
+     "yaw": 0.0,
+     "reset": "previous_position",
+     "penalty": 1
+    }
+   ],
+   "drops": [],
+   "moving_parts": [
+    {
+     "id": "millwheel",
+     "type": "rotate",
+     "pivot": [
+      14,
+      3.4,
+      -17.5
+     ],
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "speed": 36.0,
+     "speed_units": "deg/s",
+     "range": null,
+     "phase": 0.0,
+     "blockers": [
+      {
+       "center": [
+        0,
+        -2.9,
+        0
+       ],
+       "size": [
+        0.6,
+        1.4,
+        7.6
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        2.9,
+        0,
+        0
+       ],
+       "size": [
+        1.4,
+        0.6,
+        7.6
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        0,
+        2.9,
+        0
+       ],
+       "size": [
+        0.6,
+        1.4,
+        7.6
+       ],
+       "yaw": 0.0
+      },
+      {
+       "center": [
+        -2.9,
+        0,
+        0
+       ],
+       "size": [
+        1.4,
+        0.6,
+        7.6
+       ],
+       "yaw": 0.0
+      }
+     ],
+     "visual": "Water-mill wheel, radius 3.6, 4 paddle boards spanning the channel; felt has a 0.8-wide slot under it"
+    }
+   ],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "corner1",
+      "pos": [
+       0.0,
+       0.0,
+       -18.5
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 16.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "corner2",
+      "pos": [
+       21.0,
+       0.0,
+       -17.5
+      ],
+      "from": [
+       "channel"
+      ],
+      "carry": 10.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": null,
+   "decoration_anchors": [
+    {
+     "name": "water_mill",
+     "position": [
+      14,
+      0,
+      -10
+     ],
+     "notes": "Timber mill house on the south side; wheel axle enters it",
+     "landmark": true,
+     "approx_size": [
+      9,
+      10,
+      8
+     ]
+    },
+    {
+     "name": "mill_wheel",
+     "position": [
+      14,
+      3.4,
+      -17.5
+     ],
+     "notes": "Wheel mesh (moving part) radius 3.6, axle along Z",
+     "approx_size": [
+      1,
+      7.2,
+      8
+     ]
+    },
+    {
+     "name": "waterfall",
+     "position": [
+      30,
+      1.2,
+      -36
+     ],
+     "notes": "Waterfall cascading down rocks east of the green",
+     "approx_size": [
+      6,
+      12,
+      4
+     ]
+    },
+    {
+     "name": "sacks",
+     "position": [
+      -6,
+      0,
+      -12
+     ],
+     "notes": "Flour sacks & crates",
+     "approx_size": [
+      2,
+      1.5,
+      2
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 7,
+   "id": "h07",
+   "name": "Cascade Steps",
+   "par": 3,
+   "zone": "Waterfall Terraces",
+   "landmark": "Three-tier waterfall beside stepped greens",
+   "gimmick": "Two drops down terraces, sliding log on the middle tier, waterfall-pool hazard",
+   "world_offset": [
+    144,
+    -3,
+    -40
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     2.0,
+     -2.4,
+     -35.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "t1",
+     "zone": "t1",
+     "center": [
+      0.0,
+      0.0,
+      -6.0
+     ],
+     "size": [
+      8,
+      16
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "t2",
+     "zone": "t2",
+     "center": [
+      0.0,
+      -1.2,
+      -20.5
+     ],
+     "size": [
+      20,
+      13
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "t3",
+     "zone": "t3",
+     "center": [
+      1.0,
+      -2.4,
+      -33.5
+     ],
+     "size": [
+      18,
+      13
+     ],
+     "yaw": 0.0,
+     "slope": null
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      4.25,
+      -0.35,
+      -6.0
+     ],
+     "size": [
+      0.5,
+      2.7,
+      17.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      0.0,
+      -0.35,
+      2.25
+     ],
+     "size": [
+      0.5,
+      2.7,
+      9.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      -4.25,
+      -0.35,
+      -6.0
+     ],
+     "size": [
+      0.5,
+      2.7,
+      17.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      -7.0,
+      -0.95,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      7.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      -10.25,
+      -0.95,
+      -15.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      4.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      -10.25,
+      -1.55,
+      -25.75
+     ],
+     "size": [
+      0.5,
+      2.7,
+      3.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      -3.75,
+      -1.55,
+      -27.25
+     ],
+     "size": [
+      0.5,
+      2.7,
+      13.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      8.75,
+      -1.55,
+      -27.25
+     ],
+     "size": [
+      0.5,
+      2.7,
+      3.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      10.25,
+      -1.55,
+      -20.5
+     ],
+     "size": [
+      0.5,
+      2.7,
+      14.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      7.0,
+      -1.55,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      2.7,
+      7.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      -8.25,
+      -2.15,
+      -33.5
+     ],
+     "size": [
+      0.5,
+      1.5,
+      14.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      1.0,
+      -2.15,
+      -40.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      19.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail13",
+     "center": [
+      10.25,
+      -2.15,
+      -33.5
+     ],
+     "size": [
+      0.5,
+      1.5,
+      14.0
+     ],
+     "yaw": 0.0
+    }
+   ],
+   "hazards": [
+    {
+     "id": "pool",
+     "type": "water",
+     "center": [
+      -12.0,
+      -3.0,
+      -21.0
+     ],
+     "size": [
+      4,
+      10
+     ],
+     "yaw": 0.0,
+     "reset": "previous_position",
+     "penalty": 1
+    }
+   ],
+   "drops": [
+    {
+     "id": "d1",
+     "from": "t1",
+     "to": "t2",
+     "edge": "t1 north edge z=-14, full width",
+     "height": 1.2,
+     "note": ""
+    },
+    {
+     "id": "d2",
+     "from": "t2",
+     "to": "t3",
+     "edge": "t2 north edge z=-27, gap x[3,7]",
+     "height": 1.2,
+     "note": ""
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "log",
+     "type": "slide",
+     "pivot": [
+      0,
+      -1.2,
+      -20.5
+     ],
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "speed": 4.0,
+     "speed_units": "studs/s",
+     "range": [
+      -6.0,
+      6.0
+     ],
+     "phase": 0.0,
+     "blockers": [
+      {
+       "center": [
+        0,
+        0.4,
+        0
+       ],
+       "size": [
+        5.0,
+        0.8,
+        0.8
+       ],
+       "yaw": 0.0
+      }
+     ],
+     "visual": "Floating log on a hidden rail"
+    }
+   ],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "gap",
+      "pos": [
+       5.0,
+       -1.2,
+       -27.0
+      ],
+      "from": [
+       "t1",
+       "t2"
+      ],
+      "carry": 5.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": null,
+   "decoration_anchors": [
+    {
+     "name": "cascade",
+     "position": [
+      -16,
+      -3,
+      -18
+     ],
+     "notes": "Three-step waterfall dropping into the pool on the left",
+     "landmark": true,
+     "approx_size": [
+      8,
+      14,
+      10
+     ]
+    },
+    {
+     "name": "log_rail",
+     "position": [
+      0,
+      -1.2,
+      -20.5
+     ],
+     "notes": "Floating log (moving mesh) on a hidden rail across the middle tier",
+     "approx_size": [
+      5,
+      0.8,
+      0.8
+     ]
+    },
+    {
+     "name": "ferns",
+     "position": [
+      12,
+      -2.4,
+      -34
+     ],
+     "notes": "Fern clumps and red leaves",
+     "approx_size": [
+      3,
+      2,
+      3
+     ]
+    },
+    {
+     "name": "step_lanterns",
+     "position": [
+      4.5,
+      -1.2,
+      -27
+     ],
+     "notes": "Lanterns flanking the lower gap",
+     "approx_size": [
+      0.5,
+      3,
+      0.5
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 8,
+   "id": "h08",
+   "name": "Firefly Hollow",
+   "par": 4,
+   "zone": "Hollow Tree Roots",
+   "landmark": "Firefly ring in a giant root knot",
+   "gimmick": "Teleport ring shortcut in a dead-end alcove vs long route (pit, banked corners, ramp)",
+   "world_offset": [
+    190,
+    0,
+    -10
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     5.0,
+     1.5,
+     -51.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -8.0
+     ],
+     "size": [
+      7.0,
+      20
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "junction",
+     "zone": "junction",
+     "center": [
+      -5.0,
+      0.0,
+      -21.5
+     ],
+     "size": [
+      30,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "c1a",
+     "zone": "climb",
+     "center": [
+      -16.5,
+      0.0,
+      -26.5
+     ],
+     "size": [
+      7,
+      3
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "c1b",
+     "zone": "climb",
+     "center": [
+      -19.0,
+      0.0,
+      -29.0
+     ],
+     "size": [
+      2,
+      2
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "c1c",
+     "zone": "climb",
+     "center": [
+      -14.5,
+      0.0,
+      -29.0
+     ],
+     "size": [
+      3,
+      2
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "c1d",
+     "zone": "climb",
+     "center": [
+      -16.5,
+      0.0,
+      -31.5
+     ],
+     "size": [
+      7,
+      3
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "c2",
+     "zone": "climb",
+     "center": [
+      -16.5,
+      0.75,
+      -38.0
+     ],
+     "size": [
+      7,
+      10
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": -1.5
+     }
+    },
+    {
+     "id": "c3",
+     "zone": "top",
+     "center": [
+      -16.5,
+      1.5,
+      -49.0
+     ],
+     "size": [
+      7,
+      12
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "conn",
+     "zone": "top",
+     "center": [
+      -9.5,
+      1.5,
+      -51.5
+     ],
+     "size": [
+      7,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "green",
+     "zone": "green",
+     "center": [
+      2.0,
+      1.5,
+      -52.0
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "bank1",
+     "zone": "junction",
+     "center": [
+      -18.9142,
+      0.5,
+      -19.0858
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": -135.0,
+     "slope": {
+      "axis": "x",
+      "rise": 1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    },
+    {
+     "id": "bank2",
+     "zone": "top",
+     "center": [
+      -18.9142,
+      2.0,
+      -53.9142
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": 135.0,
+     "slope": {
+      "axis": "x",
+      "rise": 1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      -3.75,
+      0.25,
+      -7.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      20.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      -12.0,
+      0.75,
+      -17.75
+     ],
+     "size": [
+      0.5,
+      2.5,
+      17.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      -20.25,
+      1.5,
+      -36.5
+     ],
+     "size": [
+      0.5,
+      4.0,
+      38.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      -13.25,
+      1.5,
+      -55.25
+     ],
+     "size": [
+      0.5,
+      4.0,
+      14.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      -6.25,
+      1.0,
+      -57.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      5.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      2.0,
+      1.0,
+      -60.25
+     ],
+     "size": [
+      0.5,
+      3.0,
+      17.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      10.25,
+      1.0,
+      -52.0
+     ],
+     "size": [
+      0.5,
+      3.0,
+      17.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      2.0,
+      1.0,
+      -43.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      17.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      -6.25,
+      1.0,
+      -45.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      4.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      -9.5,
+      1.0,
+      -47.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      7.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      -12.75,
+      1.0,
+      -36.5
+     ],
+     "size": [
+      0.5,
+      3.0,
+      23.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      -1.25,
+      0.25,
+      -25.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      23.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail13",
+     "center": [
+      10.25,
+      0.25,
+      -21.5
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail14",
+     "center": [
+      7.0,
+      0.25,
+      -17.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      7.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail15",
+     "center": [
+      3.75,
+      0.25,
+      -7.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      20.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail16",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": -90.0
+    }
+   ],
+   "hazards": [
+    {
+     "id": "root_pit",
+     "type": "pit",
+     "center": [
+      -17.0,
+      -1.0,
+      -29.0
+     ],
+     "size": [
+      2,
+      2
+     ],
+     "yaw": 0.0,
+     "reset": "previous_position",
+     "penalty": 1
+    }
+   ],
+   "drops": [],
+   "moving_parts": [],
+   "teleports": [
+    {
+     "id": "ring",
+     "entry": {
+      "center": [
+       8.0,
+       0.0,
+       -21.5
+      ],
+      "radius": 0.9
+     },
+     "exit": {
+      "center": [
+       -3.0,
+       1.5,
+       -57.0
+      ],
+      "dir": [
+       1.0,
+       0.0
+      ]
+     },
+     "speed_factor": 0.8,
+     "min_speed": 2.5,
+     "max_speed": 7.0,
+     "visual": "Glowing firefly ring in a root knot (entry) -> ring of fireflies on the green (exit)"
+    }
+   ],
+   "ai_waypoints": {
+    "good": [
+     {
+      "id": "junction_mid",
+      "pos": [
+       2.0,
+       0.0,
+       -21.5
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 0.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "ring",
+      "pos": [
+       8.0,
+       0.0,
+       -21.5
+      ],
+      "from": [
+       "junction"
+      ],
+      "carry": 2.0,
+      "power_scale": 1.0
+     }
+    ],
+    "average": [
+     {
+      "id": "corner",
+      "pos": [
+       -12.0,
+       0.0,
+       -21.5
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 10.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "climb",
+      "pos": [
+       -14.5,
+       0.0,
+       -36.0
+      ],
+      "from": [
+       "junction",
+       "climb"
+      ],
+      "carry": 14.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "top",
+      "pos": [
+       -12.0,
+       1.5,
+       -51.5
+      ],
+      "from": [
+       "climb",
+       "top"
+      ],
+      "carry": 8.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": [
+    "green",
+    "top"
+   ],
+   "decoration_anchors": [
+    {
+     "name": "root_knot_ring",
+     "position": [
+      9.5,
+      0,
+      -21.5
+     ],
+     "notes": "Root knot arch with a glowing firefly ring (teleport entry)",
+     "landmark": true,
+     "approx_size": [
+      3,
+      4,
+      4
+     ]
+    },
+    {
+     "name": "exit_ring",
+     "position": [
+      -3.0,
+      1.5,
+      -57.0
+     ],
+     "notes": "Matching firefly ring on the upper green (teleport exit)",
+     "approx_size": [
+      2.5,
+      3,
+      1
+     ]
+    },
+    {
+     "name": "hollow_tree_base",
+     "position": [
+      20,
+      0,
+      -40
+     ],
+     "notes": "Base of the giant hollow tree, roots arching over the course",
+     "approx_size": [
+      30,
+      40,
+      30
+     ]
+    },
+    {
+     "name": "pit_roots",
+     "position": [
+      -17,
+      0,
+      -29
+     ],
+     "notes": "Root hole rim around the pit",
+     "approx_size": [
+      3,
+      0.6,
+      3
+     ]
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "number": 9,
+   "id": "h09",
+   "name": "Heart of the Grove",
+   "par": 4,
+   "zone": "Inside the Hollow Tree",
+   "landmark": "The giant hollow tree's lantern-lit heart",
+   "gimmick": "Long ramp + bank, rising root gate in a trunk tunnel, deflector, drop into the heart, rotating lantern bar",
+   "world_offset": [
+    214,
+    2,
+    -70
+   ],
+   "world_yaw": 0.0,
+   "tee": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "aim_hint": [
+     0,
+     -1
+    ]
+   },
+   "cup": {
+    "position": [
+     23.0,
+     0.0,
+     -50.0
+    ],
+    "radius": 0.5
+   },
+   "felt": [
+    {
+     "id": "lane",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.0,
+      -6.0
+     ],
+     "size": [
+      7.0,
+      16
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "ramp",
+     "zone": "lane",
+     "center": [
+      0.0,
+      0.75,
+      -20.0
+     ],
+     "size": [
+      7.0,
+      12
+     ],
+     "yaw": 0.0,
+     "slope": {
+      "axis": "z",
+      "rise": -1.5
+     }
+    },
+    {
+     "id": "landing",
+     "zone": "landing",
+     "center": [
+      0.0,
+      1.5,
+      -29.5
+     ],
+     "size": [
+      7.0,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "corr1",
+     "zone": "corridor",
+     "center": [
+      5.75,
+      1.5,
+      -29.5
+     ],
+     "size": [
+      4.5,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "tunnel",
+     "zone": "corridor",
+     "center": [
+      11.0,
+      1.5,
+      -29.5
+     ],
+     "size": [
+      6,
+      7
+     ],
+     "yaw": 0.0,
+     "slope": null,
+     "tunnel": true,
+     "kind": "tunnel"
+    },
+    {
+     "id": "chamber",
+     "zone": "chamber",
+     "center": [
+      22.0,
+      1.5,
+      -30.0
+     ],
+     "size": [
+      16,
+      20
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "heart",
+     "zone": "heart",
+     "center": [
+      23.0,
+      0.0,
+      -47.0
+     ],
+     "size": [
+      18,
+      14
+     ],
+     "yaw": 0.0,
+     "slope": null
+    },
+    {
+     "id": "bank1",
+     "zone": "landing",
+     "center": [
+      -2.4142,
+      2.0,
+      -31.9142
+     ],
+     "size": [
+      4.0,
+      9.0711
+     ],
+     "yaw": 135.0,
+     "slope": {
+      "axis": "x",
+      "rise": 1.0
+     },
+     "overlay": true,
+     "kind": "bank"
+    }
+   ],
+   "walls": [
+    {
+     "id": "rail1",
+     "center": [
+      15.75,
+      1.0,
+      -40.25
+     ],
+     "size": [
+      0.5,
+      3.0,
+      4.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail2",
+     "center": [
+      13.75,
+      1.0,
+      -36.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      7.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail3",
+     "center": [
+      5.0,
+      1.5,
+      -33.25
+     ],
+     "size": [
+      0.5,
+      4.0,
+      18.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail4",
+     "center": [
+      -3.75,
+      1.5,
+      -15.5
+     ],
+     "size": [
+      0.5,
+      4.0,
+      36.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail5",
+     "center": [
+      0.0,
+      0.25,
+      2.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      8.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail6",
+     "center": [
+      3.75,
+      1.0,
+      -11.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      28.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail7",
+     "center": [
+      8.75,
+      1.0,
+      -25.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      10.5
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail8",
+     "center": [
+      13.75,
+      1.0,
+      -22.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      6.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      22.0,
+      1.0,
+      -19.75
+     ],
+     "size": [
+      0.5,
+      3.0,
+      17.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail10",
+     "center": [
+      30.25,
+      1.0,
+      -30.0
+     ],
+     "size": [
+      0.5,
+      3.0,
+      21.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail11",
+     "center": [
+      28.25,
+      1.0,
+      -40.25
+     ],
+     "size": [
+      0.5,
+      3.0,
+      4.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "rail12",
+     "center": [
+      13.75,
+      0.25,
+      -47.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail13",
+     "center": [
+      23.0,
+      0.25,
+      -54.25
+     ],
+     "size": [
+      0.5,
+      1.5,
+      19.0
+     ],
+     "yaw": 90.0
+    },
+    {
+     "id": "rail14",
+     "center": [
+      32.25,
+      0.25,
+      -47.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "id": "rail15",
+     "center": [
+      31.0,
+      0.25,
+      -39.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      3.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "id": "root_deflector",
+     "center": [
+      21.0,
+      1.75,
+      -29.0
+     ],
+     "size": [
+      0.5,
+      1.5,
+      15.1421
+     ],
+     "yaw": 135.0
+    }
+   ],
+   "hazards": [],
+   "drops": [
+    {
+     "id": "d1",
+     "from": "chamber",
+     "to": "heart",
+     "edge": "chamber north edge z=-40, x[18,26]",
+     "height": 1.5,
+     "note": ""
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "root_gate",
+     "type": "slide",
+     "pivot": [
+      6,
+      1.5,
+      -29.5
+     ],
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "speed": 0.6,
+     "speed_units": "studs/s",
+     "range": [
+      0.0,
+      1.2
+     ],
+     "phase": 0.0,
+     "blockers": [
+      {
+       "center": [
+        0,
+        0.3,
+        0
+       ],
+       "size": [
+        0.8,
+        1.4,
+        7.4
+       ],
+       "yaw": 0.0
+      }
+     ],
+     "visual": "Root portcullis rising/falling in the tunnel mouth"
+    },
+    {
+     "id": "lantern_bar",
+     "type": "rotate",
+     "pivot": [
+      23,
+      0,
+      -45.5
+     ],
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "speed": 60.0,
+     "speed_units": "deg/s",
+     "range": null,
+     "phase": 0.0,
+     "blockers": [
+      {
+       "center": [
+        0,
+        0.5,
+        0
+       ],
+       "size": [
+        7.0,
+        1.0,
+        0.6
+       ],
+       "yaw": 0.0
+      }
+     ],
+     "visual": "Rotating bar with hanging lanterns at both ends"
+    }
+   ],
+   "teleports": [],
+   "ai_waypoints": {
+    "all": [
+     {
+      "id": "bank",
+      "pos": [
+       0.0,
+       1.5,
+       -30.0
+      ],
+      "from": [
+       "lane"
+      ],
+      "carry": 14.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "deflect",
+      "pos": [
+       21.0,
+       1.5,
+       -29.5
+      ],
+      "from": [
+       "landing",
+       "corridor"
+      ],
+      "carry": 8.0,
+      "power_scale": 1.0
+     },
+     {
+      "id": "drop",
+      "pos": [
+       21.5,
+       1.5,
+       -40.0
+      ],
+      "from": [
+       "chamber"
+      ],
+      "carry": 5.0,
+      "power_scale": 1.0
+     }
+    ]
+   },
+   "cup_from": [
+    "heart"
+   ],
+   "decoration_anchors": [
+    {
+     "name": "hollow_tree",
+     "position": [
+      22,
+      0,
+      -37
+     ],
+     "notes": "Giant hollow tree: trunk ~30 across, chamber is inside it, opening above the heart",
+     "landmark": true,
+     "approx_size": [
+      34,
+      60,
+      34
+     ]
+    },
+    {
+     "name": "trunk_tunnel",
+     "position": [
+      11,
+      1.5,
+      -29.5
+     ],
+     "notes": "Arched tunnel through a root buttress",
+     "approx_size": [
+      7,
+      5,
+      8
+     ]
+    },
+    {
+     "name": "heart_lanterns",
+     "position": [
+      23,
+      4,
+      -47
+     ],
+     "notes": "Dozens of hanging lanterns inside the heart",
+     "approx_size": [
+      16,
+      6,
+      12
+     ]
+    },
+    {
+     "name": "glow_mushrooms",
+     "position": [
+      30,
+      0,
+      -52
+     ],
+     "notes": "Bioluminescent mushrooms ring",
+     "approx_size": [
+      3,
+      2,
+      3
+     ]
+    }
+   ],
+   "notes": ""
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+numba=True  max putt on flat = 60.0 studs (18.0 m) at 19.78 studs/s (5.9 m/s)
+H1 Lantern Gate: good 1.97 [63, 1931, 6, 0, 0, 0, 0, 0] hio 0.032 | avg 2.14 [147, 1441, 395, 16, 1, 0, 0, 0] hio 0.073 | HIO-search 189/34560 {'aim_deg': 278.0, 'speed': 17.187557446808512, 'phase': 0.0} | [] (11s)
+H2 Acorn Ledge: good 2.02 [0, 1952, 48, 0, 0, 0, 0, 0] hio 0.000 | avg 2.44 [0, 1177, 777, 45, 1, 0, 0, 0] hio 0.000 | HIO-search 366/34560 {'aim_deg': 255.49999999999997, 'speed': 17.557906382978725, 'phase': 0.0} | [] (3s)
+H3 Toadstool Row: good 3.00 [0, 44, 1909, 47, 0, 0, 0, 0] hio 0.000 | avg 3.23 [0, 139, 1323, 491, 41, 4, 2, 0] hio 0.000 | HIO-search refine 0/10920 None | ['WARN:no-HIO-line'] (5s)
+H4 Spore Spinner: good 3.76 [22, 265, 748, 491, 244, 120, 51, 59] hio 0.011 | avg 4.09 [15, 285, 561, 476, 281, 176, 98, 108] hio 0.007 | HIO-search 98/276480 {'aim_deg': 272.5, 'speed': 19.78, 'phase': 6.0} | [] (22s)
+H5 Rootbridge Crossing: good 3.16 [0, 0, 1735, 217, 38, 9, 1, 0] hio 0.000 | avg 3.78 [0, 0, 671, 1116, 200, 13, 0, 0] hio 0.000 | HIO-search 7/34560 {'aim_deg': 278.0, 'speed': 14.965463829787236, 'phase': 0.0} | [] (4s)
+H6 Mill Wheel Run: good 4.70 [0, 0, 343, 722, 456, 248, 125, 106] hio 0.000 | avg 4.53 [0, 38, 488, 628, 403, 227, 102, 114] hio 0.000 | HIO-search refine 0/10920 None | ['WARN:no-HIO-line'] (24s)
+H7 Cascade Steps: good 2.91 [0, 547, 1186, 191, 55, 16, 3, 2] hio 0.000 | avg 3.07 [0, 421, 1147, 335, 74, 17, 6, 0] hio 0.000 | HIO-search 59/276480 {'aim_deg': 233.49999999999997, 'speed': 19.039302127659578, 'phase': 10.5} | ['WARN:timeouts'] (13s)
+H8 Firefly Hollow: good 3.13 [0, 0, 1733, 267, 0, 0, 0, 0] hio 0.000 | avg 4.95 [0, 0, 0, 621, 1066, 195, 22, 96] hio 0.000 | HIO-search 20/34560 {'aim_deg': 211.0, 'speed': 19.40965106382979, 'phase': 0.0} | [] (6s)
+H9 Heart of the Grove: good 3.37 [38, 676, 499, 366, 243, 108, 38, 32] hio 0.019 | avg 3.73 [187, 291, 472, 442, 328, 150, 69, 61] hio 0.093 | HIO-search 1087/276480 {'aim_deg': 252.0, 'speed': 17.557906382978725, 'phase': 1.5} | [] (25s)
+
+| # | Hole | Par | Good avg | Good HIO | Good capped | Avg avg | Avg HIO | Avg capped | Avg hazards/play | HIO search hits | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 1.97 | 3.1% | 0.0% | 2.14 | 7.3% | 0.0% | 0.00 | 189/34560 | ok |
+| 2 | Acorn Ledge | 2 | 2.02 | 0.0% | 0.0% | 2.44 | 0.0% | 0.0% | 0.00 | 366/34560 | ok |
+| 3 | Toadstool Row | 3 | 3.00 | 0.0% | 0.0% | 3.23 | 0.0% | 0.0% | 0.00 | refine 0/10920 | WARN:no-HIO-line |
+| 4 | Spore Spinner | 3 | 3.76 | 1.1% | 1.4% | 4.09 | 0.8% | 2.5% | 0.00 | 98/276480 | ok |
+| 5 | Rootbridge Crossing | 3 | 3.16 | 0.0% | 0.0% | 3.78 | 0.0% | 0.0% | 0.00 | 7/34560 | ok |
+| 6 | Mill Wheel Run | 3 | 4.70 | 0.0% | 2.6% | 4.53 | 0.0% | 2.8% | 0.01 | refine 0/10920 | WARN:no-HIO-line |
+| 7 | Cascade Steps | 3 | 2.91 | 0.0% | 0.1% | 3.07 | 0.0% | 0.0% | 0.01 | 59/276480 | WARN:timeouts |
+| 8 | Firefly Hollow | 4 | 3.13 | 0.0% | 0.0% | 4.95 | 0.0% | 4.2% | 0.00 | 20/34560 | ok |
+| 9 | Heart of the Grove | 4 | 3.37 | 1.9% | 0.9% | 3.73 | 9.3% | 0.8% | 0.00 | 1087/276480 | ok |
