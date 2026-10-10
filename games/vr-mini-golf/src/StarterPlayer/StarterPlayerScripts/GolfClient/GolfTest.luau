@@ -785,6 +785,7 @@ local VARIANTS = { { 0, 1 }, { 0, 0.9 }, { 0, 1.12 }, { -3, 1 }, { 3, 1 }, { -6,
 local function playIntended(n, skill, opts)
 	opts = opts or {}
 	local tries = math.clamp(opts.tries or 5, 1, #VARIANTS)
+	local period = #moversOf(n) > 0 and hole(n):GetAttribute("MoverPeriod") or nil
 	local sp = spec(n)
 	local t = sp.tee.position
 	placeL(n, t[1], t[3], t[2])
@@ -805,10 +806,13 @@ local function playIntended(n, skill, opts)
 			if k > 1 then
 				place(n, start.X, start.Z, startY)
 			end
+			-- holes with moving parts: a competent player waits for the gap, so the tries also step through the
+			-- mover cycle (try k at (k-1)/tries of the period)
+			local phase = period and waitPhase(n, (k - 1) / tries * period, period)
 			local va = VARIANTS[k]
 			local dir = CFrame.Angles(0, math.rad(va[1]), 0):VectorToWorldSpace(flat(target - start).Unit)
 			local r = shootS(string.format("h%d-int-%s-s%d-%d", n, skill, strokes + 1, k), dir, math.min(v * va[2], VMAX), { cup = hole(n).Cup, timeout = 22 })
-			r.contacts, r.variant, r.targetId = nil, k, tid
+			r.contacts, r.variant, r.targetId, r.phase = nil, k, tid, phase
 			local score
 			if r.outcome == "cup" then
 				score = 1e9
@@ -2066,7 +2070,7 @@ local function runScenario(name, cam)
 	run.running = false
 end
 
-local function api(cmd, a, b)
+local function api(cmd, a, b, c)
 	if cmd == "list" then
 		local out = {}
 		for _, s in SCENARIOS do
@@ -2223,6 +2227,22 @@ local function api(cmd, a, b)
 			placeL(a, x, z, 3)
 		end)
 		return ok and "ok" or ("error: " .. tostring(err))
+	elseif cmd == "hitat" then
+		-- ("hitat", n, "x,y,z", "vx,vz") debug probe: put the ball at world (x, y, z) on hole n, hit it at
+		-- (vx, 0, vz) studs/s, and return a 0.25 s trace until it rests (max 20 s)
+		local wx, wy, wz = string.match(b, "([%-%d%.]+),([%-%d%.]+),([%-%d%.]+)")
+		local vx, vz = string.match(c, "([%-%d%.]+),([%-%d%.]+)")
+		place(a, tonumber(wx), tonumber(wz), tonumber(wy))
+		task.wait(0.3)
+		Ball.hit(Vector3.new(tonumber(vx), 0, tonumber(vz)), "test")
+		local trace, t0 = {}, os.clock()
+		repeat
+			task.wait(0.25)
+			local p, v = Ball.ball.Position, Ball.ball.AssemblyLinearVelocity
+			table.insert(trace, string.format("%.2f %s p=%.3f,%.3f,%.3f v=%.3f,%.3f,%.3f", os.clock() - t0, Ball.state,
+				p.X, p.Y, p.Z, v.X, v.Y, v.Z))
+		until Ball.state ~= "moving" or os.clock() - t0 > 20
+		return table.concat(trace, "\n")
 	end
 	return "error: unknown command " .. tostring(cmd)
 end

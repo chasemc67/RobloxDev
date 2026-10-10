@@ -1,0 +1,4212 @@
+{
+ "h6": {
+  "default": {
+   "intended": [
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 14.799,
+       "speedMps": 4.43963284275278,
+       "label": "h6-int-good-s1-2",
+       "piece": "channel",
+       "maxAlong": 12.012,
+       "distM": 6.362,
+       "outcome": "rest",
+       "variant": 2,
+       "speed": 14.799,
+       "phase": 2.405,
+       "targetId": "board1",
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 21.206,
+       "maxY": 30.08,
+       "start": [
+        45,
+        30.0718,
+        -70
+       ],
+       "tEnd": 6.633,
+       "tStop": 5.767,
+       "finish": [
+        27.5032,
+        30.0719,
+        -58.0183
+       ]
+      },
+      {
+       "v0": 8.889,
+       "speedMps": 2.666650623816378,
+       "label": "h6-int-good-s2-1",
+       "piece": "green",
+       "maxAlong": 10.566,
+       "distM": 3.17,
+       "outcome": "cup",
+       "variant": 1,
+       "speed": 8.889,
+       "phase": 0.007,
+       "targetId": "cup",
+       "zone": "green",
+       "rimTime": 1.615,
+       "flags": [],
+       "rimSpeedMps": 0.976,
+       "distStuds": 10.566,
+       "rimSpeed": 3.253,
+       "start": [
+        27.5032,
+        30.0793,
+        -58.0185
+       ],
+       "maxY": 30.359,
+       "tEnd": 1.932,
+       "finish": [
+        28.5,
+        29.98,
+        -47.5
+       ]
+      }
+     ],
+     "tries": 5,
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 8.889,
+       "speedMps": 2.666777854349675,
+       "label": "h6-int-average-s1-1",
+       "piece": "channel",
+       "maxAlong": 11.921,
+       "distM": 5.021,
+       "outcome": "rest",
+       "variant": 1,
+       "speed": 8.889,
+       "phase": 0.003,
+       "targetId": "board1",
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 16.735,
+       "maxY": 30.08,
+       "start": [
+        45,
+        30.0792,
+        -70
+       ],
+       "tEnd": 9.967,
+       "tStop": 5.901,
+       "finish": [
+        33.2514,
+        30.0793,
+        -58.082
+       ]
+      },
+      {
+       "v0": 9.238,
+       "speedMps": 2.771327012799003,
+       "label": "h6-int-average-s2-1",
+       "piece": "green",
+       "maxAlong": 11.657,
+       "distM": 3.48,
+       "outcome": "cup",
+       "variant": 1,
+       "speed": 9.238,
+       "phase": 12,
+       "targetId": "cup",
+       "zone": "green",
+       "rimTime": 1.666,
+       "flags": [],
+       "rimSpeedMps": 1.021,
+       "distStuds": 11.6,
+       "rimSpeed": 3.404,
+       "start": [
+        33.2514,
+        30.0793,
+        -58.082
+       ],
+       "maxY": 30.417,
+       "tEnd": 2.1,
+       "finish": [
+        28.5,
+        29.98,
+        -47.5
+       ]
+      }
+     ],
+     "tries": 5,
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "hole": 6,
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h6-bank-board1",
+     "piece": "channel",
+     "maxAlong": 9.932,
+     "distM": 5.61,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "board1",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 58.3,
+      "tangentialRetention": 0.93,
+      "restitution": 0.575,
+      "part": "Hole6/Wall:board1",
+      "speedOut": 7.807,
+      "speedIn": 10.099,
+      "angleIn": 45
+     },
+     "flags": [],
+     "zone": "channel",
+     "distStuds": 18.7,
+     "maxY": 30.085,
+     "start": [
+      45,
+      30.0793,
+      -68
+     ],
+     "tEnd": 7.099,
+     "tStop": 6.532,
+     "finish": [
+      28.3803,
+      30.0719,
+      -59.4288
+     ]
+    },
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h6-bank-board2",
+     "piece": "green",
+     "maxAlong": 8.132,
+     "distM": 4.3,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "board2",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 53.8,
+      "tangentialRetention": 0.93,
+      "restitution": 0.577,
+      "part": "Hole6/Wall:board2",
+      "speedOut": 7.715,
+      "speedIn": 10.355,
+      "angleIn": 40.2
+     },
+     "flags": [],
+     "zone": "green",
+     "distStuds": 14.333,
+     "maxY": 30.331,
+     "start": [
+      36,
+      30.0718,
+      -61.5
+     ],
+     "tEnd": 5.365,
+     "tStop": 4.799,
+     "finish": [
+      27.3736,
+      30.3293,
+      -50.0534
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 16.443,
+       "speedMps": 4.932925380836423,
+       "label": "h6-good-s1",
+       "piece": "channel",
+       "maxAlong": 11.918,
+       "distM": 4.118,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 16.443,
+       "targetId": "board1",
+       "target": [
+        45,
+        30.08,
+        -62
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 13.726,
+       "maxY": 30.08,
+       "start": [
+        45,
+        30.0718,
+        -70
+       ],
+       "tEnd": 4.032,
+       "tStop": 3.466,
+       "finish": [
+        36.3879,
+        30.0719,
+        -59.3118
+       ]
+      },
+      {
+       "v0": 9.798,
+       "speedMps": 2.9392547984014072,
+       "label": "h6-good-s2",
+       "piece": "channel",
+       "maxAlong": 7.432,
+       "distM": 2.36,
+       "fromZone": "channel",
+       "outcome": "rest",
+       "speed": 9.798,
+       "targetId": "board2",
+       "target": [
+        30,
+        30.08,
+        -61
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 7.867,
+       "maxY": 30.185,
+       "start": [
+        36.3879,
+        30.0719,
+        -59.3118
+       ],
+       "tEnd": 8.999,
+       "tStop": 3.315,
+       "finish": [
+        28.5434,
+        30.0719,
+        -58.7163
+       ]
+      },
+      {
+       "v0": 9.181,
+       "speedMps": 2.754259268855492,
+       "label": "h6-good-s3",
+       "piece": "green",
+       "maxAlong": 11.216,
+       "distM": 3.365,
+       "fromZone": "channel",
+       "outcome": "cup",
+       "speed": 9.181,
+       "targetId": "cup",
+       "target": [
+        28.5,
+        30.25,
+        -47.5
+       ],
+       "zone": "green",
+       "rimTime": 1.682,
+       "flags": [],
+       "rimSpeedMps": 0.985,
+       "distStuds": 11.216,
+       "rimSpeed": 3.284,
+       "start": [
+        28.5434,
+        30.0719,
+        -58.7163
+       ],
+       "maxY": 30.367,
+       "tEnd": 1.998,
+       "finish": [
+        28.5,
+        29.98,
+        -47.5
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 8.889,
+       "speedMps": 2.666777854349675,
+       "label": "h6-average-s1",
+       "piece": "channel",
+       "maxAlong": 11.5,
+       "distM": 4.084,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 8.889,
+       "targetId": "board1",
+       "target": [
+        45,
+        30.08,
+        -62
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 13.614,
+       "maxY": 30.08,
+       "start": [
+        45,
+        30.0718,
+        -70
+       ],
+       "tEnd": 5.933,
+       "tStop": 5.382,
+       "finish": [
+        37.7135,
+        30.0719,
+        -58.5004
+       ]
+      },
+      {
+       "v0": 10.383,
+       "speedMps": 3.1148641601441796,
+       "label": "h6-average-s2",
+       "piece": "channel",
+       "maxAlong": 8.626,
+       "distM": 2.563,
+       "fromZone": "channel",
+       "outcome": "rest",
+       "speed": 10.383,
+       "targetId": "board2",
+       "target": [
+        30,
+        30.08,
+        -61
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 8.542,
+       "maxY": 30.17,
+       "start": [
+        37.7135,
+        30.0719,
+        -58.5004
+       ],
+       "tEnd": 8.747,
+       "tStop": 3.349,
+       "finish": [
+        29.1728,
+        30.0719,
+        -58.6431
+       ]
+      },
+      {
+       "v0": 9.163,
+       "speedMps": 2.748924305084501,
+       "label": "h6-average-s3",
+       "piece": "green",
+       "maxAlong": 11.163,
+       "distM": 3.349,
+       "fromZone": "channel",
+       "outcome": "cup",
+       "speed": 9.163,
+       "targetId": "cup",
+       "target": [
+        28.5,
+        30.25,
+        -47.5
+       ],
+       "zone": "green",
+       "rimTime": 1.65,
+       "flags": [],
+       "rimSpeedMps": 1.367,
+       "distStuds": 11.163,
+       "rimSpeed": 4.557,
+       "start": [
+        29.1728,
+        30.0719,
+        -58.6431
+       ],
+       "maxY": 30.33,
+       "tEnd": 1.966,
+       "finish": [
+        28.5,
+        29.98,
+        -47.5
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "hio": {
+    "line": {
+     "aim_deg": 278,
+     "speed": 19.8,
+     "phase": 0,
+     "from": "h06-notes.md"
+    },
+    "bestSpeed": 19.78,
+    "bestAim": 283,
+    "bestMiss": 11.19,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-1",
+      "piece": "channel",
+      "maxAlong": 19.207,
+      "distM": 6.223,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.07,
+       11.47
+      ],
+      "phase": 0.002,
+      "missStuds": 11.52,
+      "tStop": 4.634,
+      "aimDeg": 278,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.744,
+      "maxY": 30.282,
+      "start": [
+       45,
+       30.0786,
+       -70
+      ],
+      "tEnd": 11.851,
+      "stage": "spec",
+      "finish": [
+       27.4333,
+       30.0787,
+       -58.9669
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-2",
+      "piece": "channel",
+      "maxAlong": 19.242,
+      "distM": 6.253,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.14,
+       11.39
+      ],
+      "phase": 11.998,
+      "missStuds": 11.45,
+      "tStop": 4.718,
+      "aimDeg": 279,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.845,
+      "maxY": 30.273,
+      "start": [
+       45,
+       30.0786,
+       -70
+      ],
+      "tEnd": 11.651,
+      "stage": "scan",
+      "finish": [
+       27.3616,
+       30.0787,
+       -58.8919
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-3",
+      "piece": "channel",
+      "maxAlong": 18.738,
+      "distM": 6.25,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.13,
+       11.4
+      ],
+      "phase": 0.002,
+      "missStuds": 11.46,
+      "tStop": 4.533,
+      "aimDeg": 277,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.835,
+      "maxY": 30.274,
+      "start": [
+       45,
+       30.0787,
+       -70
+      ],
+      "tEnd": 11.667,
+      "stage": "scan",
+      "finish": [
+       27.369,
+       30.0787,
+       -58.8993
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-4",
+      "piece": "channel",
+      "maxAlong": 19.812,
+      "distM": 6.161,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.92,
+       11.62
+      ],
+      "phase": 11.999,
+      "missStuds": 11.65,
+      "tStop": 4.783,
+      "aimDeg": 280,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.536,
+      "maxY": 30.287,
+      "start": [
+       45,
+       30.0786,
+       -70
+      ],
+      "tEnd": 11.85,
+      "stage": "scan",
+      "finish": [
+       27.5839,
+       30.0793,
+       -59.1175
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-5",
+      "piece": "channel",
+      "maxAlong": 18.846,
+      "distM": 6.16,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.91,
+       11.62
+      ],
+      "phase": 11.998,
+      "missStuds": 11.66,
+      "tStop": 4.519,
+      "aimDeg": 276,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.533,
+      "maxY": 30.29,
+      "start": [
+       45,
+       30.0792,
+       -70
+      ],
+      "tEnd": 11.851,
+      "stage": "scan",
+      "finish": [
+       27.5867,
+       30.0792,
+       -59.1204
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-6",
+      "piece": "channel",
+      "maxAlong": 20.375,
+      "distM": 6.153,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.9,
+       11.64
+      ],
+      "phase": 11.997,
+      "missStuds": 11.67,
+      "tStop": 4.768,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.509,
+      "maxY": 30.301,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.968,
+      "stage": "scan",
+      "finish": [
+       27.6038,
+       30.0793,
+       -59.1374
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-7",
+      "piece": "channel",
+      "maxAlong": 18.303,
+      "distM": 6.166,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.93,
+       11.61
+      ],
+      "phase": 11.997,
+      "missStuds": 11.64,
+      "tStop": 4.516,
+      "aimDeg": 275,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.552,
+      "maxY": 30.279,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.65,
+      "stage": "scan",
+      "finish": [
+       27.573,
+       30.0793,
+       -59.1064
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-8",
+      "piece": "channel",
+      "maxAlong": 20.956,
+      "distM": 6.281,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.21,
+       11.33
+      ],
+      "phase": 11.997,
+      "missStuds": 11.39,
+      "tStop": 4.584,
+      "aimDeg": 282,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.938,
+      "maxY": 30.313,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.615,
+      "stage": "scan",
+      "finish": [
+       27.2926,
+       30.0719,
+       -58.8259
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-9",
+      "piece": "channel",
+      "maxAlong": 18.231,
+      "distM": 6.191,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.99,
+       11.54
+      ],
+      "phase": 0.009,
+      "missStuds": 11.59,
+      "tStop": 4.535,
+      "aimDeg": 274,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.637,
+      "maxY": 30.288,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.934,
+      "stage": "scan",
+      "finish": [
+       27.5111,
+       30.0793,
+       -59.0445
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-10",
+      "piece": "channel",
+      "maxAlong": 20.136,
+      "distM": 6.372,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.42,
+       11.1
+      ],
+      "phase": 0.007,
+      "missStuds": 11.19,
+      "tStop": 4.751,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 21.239,
+      "maxY": 30.268,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 12.167,
+      "stage": "scan",
+      "finish": [
+       27.0799,
+       30.0719,
+       -58.5996
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-11",
+      "piece": "channel",
+      "maxAlong": 16.926,
+      "distM": 6.368,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.42,
+       11.12
+      ],
+      "phase": 0.006,
+      "missStuds": 11.21,
+      "tStop": 4.534,
+      "aimDeg": 273,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 21.227,
+      "maxY": 30.245,
+      "start": [
+       45,
+       30.0718,
+       -70
+      ],
+      "tEnd": 11.65,
+      "stage": "scan",
+      "finish": [
+       27.0834,
+       30.0719,
+       -58.6168
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-12",
+      "piece": "channel",
+      "maxAlong": 20.532,
+      "distM": 6.313,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.28,
+       11.25
+      ],
+      "phase": 0.006,
+      "missStuds": 11.32,
+      "tStop": 4.567,
+      "aimDeg": 284,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 21.044,
+      "maxY": 30.274,
+      "start": [
+       45,
+       30.0718,
+       -70
+      ],
+      "tEnd": 12.034,
+      "stage": "scan",
+      "finish": [
+       27.216,
+       30.0793,
+       -58.7496
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-13",
+      "piece": "channel",
+      "maxAlong": 16.989,
+      "distM": 6.202,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.01,
+       11.52
+      ],
+      "phase": 0.009,
+      "missStuds": 11.56,
+      "tStop": 4.598,
+      "aimDeg": 272,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.672,
+      "maxY": 30.261,
+      "start": [
+       45,
+       30.0718,
+       -70
+      ],
+      "tEnd": 11.65,
+      "stage": "scan",
+      "finish": [
+       27.4854,
+       30.0793,
+       -59.0186
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-14",
+      "piece": "channel",
+      "maxAlong": 21.698,
+      "distM": 6.201,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.01,
+       11.52
+      ],
+      "phase": 0.004,
+      "missStuds": 11.56,
+      "tStop": 4.685,
+      "aimDeg": 285,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.671,
+      "maxY": 30.315,
+      "start": [
+       45,
+       30.0792,
+       -70
+      ],
+      "tEnd": 12.484,
+      "stage": "scan",
+      "finish": [
+       27.4867,
+       30.0793,
+       -59.0202
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-15",
+      "piece": "channel",
+      "maxAlong": 16.685,
+      "distM": 6.197,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1,
+       11.53
+      ],
+      "phase": 0.006,
+      "missStuds": 11.57,
+      "tStop": 4.601,
+      "aimDeg": 271,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.657,
+      "maxY": 30.261,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.617,
+      "stage": "scan",
+      "finish": [
+       27.4965,
+       30.069,
+       -59.03
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-16",
+      "maxAlong": 12.384,
+      "distM": 2.765,
+      "outcome": "hazard",
+      "speed": 19.78,
+      "oob": "hazard:millrace#1",
+      "miss": [
+       -8.15,
+       18.59
+      ],
+      "phase": 0.002,
+      "missStuds": 20.3,
+      "tStop": 2.084,
+      "aimDeg": 286,
+      "flags": [],
+      "distStuds": 9.218,
+      "maxY": 30.102,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 2.234,
+      "stage": "scan",
+      "finish": [
+       36.6505,
+       29.1648,
+       -66.0931
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-17",
+      "piece": "channel",
+      "maxAlong": 16.492,
+      "distM": 6.192,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.99,
+       11.54
+      ],
+      "phase": 0.003,
+      "missStuds": 11.59,
+      "tStop": 4.582,
+      "aimDeg": 270,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.639,
+      "maxY": 30.266,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.732,
+      "stage": "scan",
+      "finish": [
+       27.5095,
+       30.0793,
+       -59.0428
+      ]
+     },
+     {
+      "v0": 17.406,
+      "speedMps": 5.22192,
+      "label": "h6-hio-18",
+      "piece": "channel",
+      "maxAlong": 16.924,
+      "distM": 6.146,
+      "outcome": "rest",
+      "speed": 17.406,
+      "miss": [
+       0.88,
+       11.65
+      ],
+      "phase": 0.004,
+      "missStuds": 11.69,
+      "tStop": 4.784,
+      "aimDeg": 278,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.486,
+      "maxY": 30.19,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 10.168,
+      "stage": "scan",
+      "finish": [
+       27.622,
+       30.0793,
+       -59.1522
+      ]
+     },
+     {
+      "v0": 17.406,
+      "speedMps": 5.22192,
+      "label": "h6-hio-19",
+      "piece": "channel",
+      "maxAlong": 17.137,
+      "distM": 6.162,
+      "outcome": "rest",
+      "speed": 17.406,
+      "miss": [
+       0.92,
+       11.61
+      ],
+      "phase": 0.004,
+      "missStuds": 11.65,
+      "tStop": 4.684,
+      "aimDeg": 279,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.54,
+      "maxY": 30.187,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 10.066,
+      "stage": "scan",
+      "finish": [
+       27.5827,
+       30.0793,
+       -59.113
+      ]
+     },
+     {
+      "v0": 17.406,
+      "speedMps": 5.22192,
+      "label": "h6-hio-20",
+      "piece": "channel",
+      "maxAlong": 16.505,
+      "distM": 6.299,
+      "outcome": "rest",
+      "speed": 17.406,
+      "miss": [
+       1.25,
+       11.28
+      ],
+      "phase": 12,
+      "missStuds": 11.35,
+      "tStop": 4.7,
+      "aimDeg": 277,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.995,
+      "maxY": 30.181,
+      "start": [
+       45,
+       30.0787,
+       -70
+      ],
+      "tEnd": 9.715,
+      "stage": "scan",
+      "finish": [
+       27.2527,
+       30.0787,
+       -58.7829
+      ]
+     },
+     {
+      "v0": 17.406,
+      "speedMps": 5.22192,
+      "label": "h6-hio-21",
+      "piece": "channel",
+      "maxAlong": 17.005,
+      "distM": 6.118,
+      "outcome": "rest",
+      "speed": 17.406,
+      "miss": [
+       0.69,
+       11.54
+      ],
+      "phase": 0.004,
+      "missStuds": 11.56,
+      "tStop": 4.598,
+      "aimDeg": 280,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.392,
+      "maxY": 30.172,
+      "start": [
+       45,
+       30.0787,
+       -70
+      ],
+      "tEnd": 9.967,
+      "stage": "scan",
+      "finish": [
+       27.8058,
+       30.0787,
+       -59.0369
+      ]
+     },
+     {
+      "v0": 17.406,
+      "speedMps": 5.22192,
+      "label": "h6-hio-22",
+      "piece": "channel",
+      "maxAlong": 16.158,
+      "distM": 6.266,
+      "outcome": "rest",
+      "speed": 17.406,
+      "miss": [
+       1.17,
+       11.36
+      ],
+      "phase": 0.002,
+      "missStuds": 11.42,
+      "tStop": 4.685,
+      "aimDeg": 276,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.886,
+      "maxY": 30.178,
+      "start": [
+       45,
+       30.0786,
+       -70
+      ],
+      "tEnd": 9.833,
+      "stage": "scan",
+      "finish": [
+       27.3314,
+       30.0787,
+       -58.8617
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-23",
+      "piece": "channel",
+      "maxAlong": 20.974,
+      "distM": 6.258,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.15,
+       11.38
+      ],
+      "phase": 0.003,
+      "missStuds": 11.44,
+      "tStop": 4.583,
+      "aimDeg": 283.4,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.861,
+      "maxY": 30.299,
+      "start": [
+       45,
+       30.0787,
+       -70
+      ],
+      "tEnd": 12.151,
+      "stage": "refine",
+      "finish": [
+       27.3501,
+       30.0787,
+       -58.8804
+      ]
+     },
+     {
+      "v0": 19.38,
+      "speedMps": 5.814000000000001,
+      "label": "h6-hio-24",
+      "piece": "channel",
+      "maxAlong": 20.526,
+      "distM": 6.184,
+      "outcome": "rest",
+      "speed": 19.38,
+      "miss": [
+       0.97,
+       11.56
+      ],
+      "phase": 0.001,
+      "missStuds": 11.6,
+      "tStop": 4.583,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.615,
+      "maxY": 30.284,
+      "start": [
+       45,
+       30.0786,
+       -70
+      ],
+      "tEnd": 11.918,
+      "stage": "refine",
+      "finish": [
+       27.5271,
+       30.0793,
+       -59.0605
+      ]
+     },
+     {
+      "v0": 17.78,
+      "speedMps": 5.3340000000000005,
+      "label": "h6-hio-25",
+      "piece": "channel",
+      "maxAlong": 18.12,
+      "distM": 6.04,
+      "outcome": "rest",
+      "speed": 17.78,
+      "miss": [
+       0.62,
+       11.91
+      ],
+      "phase": 11.997,
+      "missStuds": 11.92,
+      "tStop": 4.667,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.134,
+      "maxY": 30.21,
+      "start": [
+       45,
+       30.0787,
+       -70
+      ],
+      "tEnd": 10.55,
+      "stage": "refine",
+      "finish": [
+       27.8773,
+       30.0793,
+       -59.4076
+      ]
+     },
+     {
+      "v0": 18.78,
+      "speedMps": 5.634,
+      "label": "h6-hio-26",
+      "piece": "channel",
+      "maxAlong": 19.511,
+      "distM": 6.145,
+      "outcome": "rest",
+      "speed": 18.78,
+      "miss": [
+       0.88,
+       11.66
+      ],
+      "phase": 11.998,
+      "missStuds": 11.69,
+      "tStop": 4.733,
+      "aimDeg": 282,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.482,
+      "maxY": 30.254,
+      "start": [
+       45,
+       30.0792,
+       -70
+      ],
+      "tEnd": 11.249,
+      "stage": "refine",
+      "finish": [
+       27.6235,
+       30.0793,
+       -59.1569
+      ]
+     },
+     {
+      "v0": 19.28,
+      "speedMps": 5.784,
+      "label": "h6-hio-27",
+      "piece": "channel",
+      "maxAlong": 20.305,
+      "distM": 6.144,
+      "outcome": "rest",
+      "speed": 19.28,
+      "miss": [
+       0.87,
+       11.66
+      ],
+      "phase": 11.995,
+      "missStuds": 11.69,
+      "tStop": 11.25,
+      "aimDeg": 282.5,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.478,
+      "maxY": 30.281,
+      "start": [
+       45,
+       30.0792,
+       -70
+      ],
+      "tEnd": 11.818,
+      "stage": "refine",
+      "finish": [
+       27.626,
+       30.0793,
+       -59.1597
+      ]
+     },
+     {
+      "v0": 19.53,
+      "speedMps": 5.859,
+      "label": "h6-hio-28",
+      "piece": "channel",
+      "maxAlong": 20.853,
+      "distM": 6.166,
+      "outcome": "rest",
+      "speed": 19.53,
+      "miss": [
+       0.93,
+       11.61
+      ],
+      "phase": 11.998,
+      "missStuds": 11.64,
+      "tStop": 4.549,
+      "aimDeg": 282.75,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.553,
+      "maxY": 30.301,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 11.982,
+      "stage": "refine",
+      "finish": [
+       27.5717,
+       30.0793,
+       -59.1052
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-29",
+      "piece": "channel",
+      "maxAlong": 21.144,
+      "distM": 6.152,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.89,
+       11.64
+      ],
+      "phase": 0.01,
+      "missStuds": 11.67,
+      "tStop": 4.551,
+      "aimDeg": 282.88,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.506,
+      "maxY": 30.312,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 12.25,
+      "stage": "refine",
+      "finish": [
+       27.6063,
+       30.0793,
+       -59.1401
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-30",
+      "piece": "channel",
+      "maxAlong": 21.171,
+      "distM": 6.189,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.98,
+       11.55
+      ],
+      "phase": 0.011,
+      "missStuds": 11.59,
+      "tStop": 4.65,
+      "aimDeg": 282.94,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.629,
+      "maxY": 30.313,
+      "start": [
+       45,
+       30.0793,
+       -70
+      ],
+      "tEnd": 12.332,
+      "stage": "refine",
+      "finish": [
+       27.5172,
+       30.0719,
+       -59.0506
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "seconds": 1003.54,
+   "cam": "",
+   "nudges": 0,
+   "issues": [],
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "name": "Mill Wheel Run",
+   "scenario": "h6",
+   "sweep": [
+    {
+     "mover": "millwheel",
+     "period": 12,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        27.1044,
+        30.0719,
+        -58.6375
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 2,
+       "blocked": false,
+       "finish": [
+        27.2132,
+        30.0719,
+        -58.3294
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        27.5055,
+        30.0793,
+        -59.0388
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 6,
+       "blocked": false,
+       "finish": [
+        27.5133,
+        30.0793,
+        -59.0467
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 8,
+       "blocked": false,
+       "finish": [
+        27.5203,
+        30.0793,
+        -59.0536
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 10,
+       "blocked": false,
+       "finish": [
+        27.6034,
+        30.0793,
+        -59.137
+       ]
+      }
+     ]
+    }
+   ],
+   "stuck": 0,
+   "clientLag": 0.162
+  }
+ },
+ "h7": {
+  "default": {
+   "intended": [
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 13.464,
+       "speedMps": 4.039149300549034,
+       "label": "h7-int-good-s1-3",
+       "piece": "t2",
+       "maxAlong": 25.638,
+       "distM": 7.692,
+       "outcome": "rest",
+       "variant": 3,
+       "speed": 13.464,
+       "phase": 1.926,
+       "targetId": "gap",
+       "flags": [],
+       "zone": "t2",
+       "distStuds": 25.639,
+       "maxY": 26.08,
+       "start": [
+        40,
+        26.0718,
+        -28
+       ],
+       "tEnd": 6.417,
+       "tStop": 5.851,
+       "finish": [
+        35.1717,
+        24.8719,
+        -2.8202
+       ]
+      },
+      {
+       "v0": 4.335,
+       "speedMps": 1.3005872365010147,
+       "label": "h7-int-good-s2-3",
+       "piece": "t3",
+       "maxAlong": 5.559,
+       "distM": 2.503,
+       "outcome": "rest",
+       "variant": 3,
+       "speed": 4.335,
+       "phase": 1.925,
+       "targetId": "gap",
+       "flags": [],
+       "zone": "t3",
+       "distStuds": 8.342,
+       "maxY": 24.879,
+       "start": [
+        35.1717,
+        24.8793,
+        -2.8202
+       ],
+       "tEnd": 8.151,
+       "tStop": 7.584,
+       "finish": [
+        40.4599,
+        23.6793,
+        3.632
+       ]
+      },
+      {
+       "v0": 2.328,
+       "speedMps": 0.6983178693290029,
+       "label": "h7-int-good-s3-1",
+       "piece": "t3",
+       "maxAlong": 2.136,
+       "distM": 0.641,
+       "outcome": "cup",
+       "variant": 1,
+       "speed": 2.328,
+       "phase": 0.005,
+       "targetId": "cup",
+       "zone": "t3",
+       "rimTime": 0.899,
+       "flags": [],
+       "rimSpeedMps": 0.363,
+       "distStuds": 2.136,
+       "rimSpeed": 1.211,
+       "start": [
+        40.4599,
+        23.6793,
+        3.632
+       ],
+       "maxY": 23.681,
+       "tEnd": 1.3,
+       "finish": [
+        42.5,
+        23.33,
+        3
+       ]
+      }
+     ],
+     "tries": 5,
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 12.021,
+       "speedMps": 3.6063833040616373,
+       "label": "h7-int-average-s1-1",
+       "piece": "t3",
+       "maxAlong": 32.953,
+       "distM": 10.12,
+       "outcome": "rest",
+       "variant": 1,
+       "speed": 12.021,
+       "phase": 0.007,
+       "targetId": "gap",
+       "flags": [],
+       "zone": "t3",
+       "distStuds": 33.735,
+       "maxY": 26.08,
+       "start": [
+        40,
+        26.0717,
+        -28
+       ],
+       "tEnd": 11.35,
+       "tStop": 10.798,
+       "finish": [
+        40.9487,
+        23.6793,
+        5.7217
+       ]
+      },
+      {
+       "v0": 2.773,
+       "speedMps": 0.8318155036949975,
+       "label": "h7-int-average-s2-1",
+       "piece": "t3",
+       "maxAlong": 3.133,
+       "distM": 0.94,
+       "outcome": "cup",
+       "variant": 1,
+       "speed": 2.773,
+       "phase": 0.004,
+       "targetId": "cup",
+       "zone": "t3",
+       "rimTime": 1.283,
+       "flags": [],
+       "rimSpeedMps": 0.404,
+       "distStuds": 3.133,
+       "rimSpeed": 1.346,
+       "start": [
+        40.9487,
+        23.6792,
+        5.7217
+       ],
+       "maxY": 23.68,
+       "tEnd": 1.649,
+       "finish": [
+        42.5,
+        23.33,
+        3
+       ]
+      }
+     ],
+     "tries": 5,
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "hole": 7,
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 8,
+     "speedMps": 2.4,
+     "label": "h7-bank-t2-rail-45",
+     "piece": "t2",
+     "maxAlong": 10.504,
+     "distM": 3.24,
+     "outcome": "rest",
+     "speed": 8,
+     "bank": "t2-rail-45",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 64.1,
+      "tangentialRetention": 1,
+      "restitution": 0.447,
+      "part": "?",
+      "speedOut": 3.955,
+      "speedIn": 5.253,
+      "angleIn": 42.6
+     },
+     "flags": [],
+     "zone": "t2",
+     "distStuds": 10.801,
+     "maxY": 24.88,
+     "start": [
+      36,
+      24.8792,
+      -12
+     ],
+     "tEnd": 5.316,
+     "tStop": 4.75,
+     "finish": [
+      32.7132,
+      24.8793,
+      -1.7112
+     ]
+    },
+    {
+     "v0": 7,
+     "speedMps": 2.1,
+     "label": "h7-bank-t3-rail",
+     "piece": "t3",
+     "maxAlong": 4.313,
+     "distM": 1.04,
+     "outcome": "rest",
+     "speed": 7,
+     "bank": "t3-rail",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 37.7,
+      "tangentialRetention": 0.916,
+      "restitution": 0.557,
+      "part": "Hole7/Wall:rail11",
+      "speedOut": 3.54,
+      "speedIn": 5.555,
+      "angleIn": 25.2
+     },
+     "flags": [],
+     "zone": "t3",
+     "distStuds": 3.466,
+     "maxY": 23.681,
+     "start": [
+      44,
+      23.6792,
+      8
+     ],
+     "tEnd": 4.399,
+     "tStop": 3.85,
+     "finish": [
+      44.6466,
+      23.6793,
+      11.4054
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 12.021,
+       "speedMps": 3.6063833040616373,
+       "label": "h7-good-s1",
+       "piece": "t2",
+       "maxAlong": 20.393,
+       "distM": 4.96,
+       "fromZone": "t1",
+       "outcome": "rest",
+       "speed": 12.021,
+       "targetId": "gap",
+       "target": [
+        34.75,
+        24.88,
+        -1
+       ],
+       "flags": [],
+       "zone": "t2",
+       "distStuds": 16.532,
+       "maxY": 26.08,
+       "start": [
+        40,
+        26.0792,
+        -28
+       ],
+       "tEnd": 6.498,
+       "tStop": 5.931,
+       "finish": [
+        34.4999,
+        24.8793,
+        -12.4095
+       ]
+      },
+      {
+       "v0": 7.143,
+       "speedMps": 2.1428044258036607,
+       "label": "h7-good-s2",
+       "piece": "t3",
+       "maxAlong": 18.028,
+       "distM": 5.741,
+       "fromZone": "t2",
+       "outcome": "rest",
+       "speed": 7.143,
+       "targetId": "gap",
+       "target": [
+        34.75,
+        24.88,
+        -1
+       ],
+       "flags": [],
+       "zone": "t3",
+       "distStuds": 19.135,
+       "maxY": 24.88,
+       "start": [
+        34.4999,
+        24.8793,
+        -12.4095
+       ],
+       "tEnd": 9.015,
+       "tStop": 8.447,
+       "finish": [
+        41.3078,
+        23.6793,
+        5.4735
+       ]
+      },
+      {
+       "v0": 2.604,
+       "speedMps": 0.7812034192438659,
+       "label": "h7-good-s3",
+       "piece": "t3",
+       "maxAlong": 2.746,
+       "distM": 0.824,
+       "fromZone": "t3",
+       "outcome": "cup",
+       "speed": 2.604,
+       "targetId": "cup",
+       "target": [
+        42.5,
+        23.6,
+        3
+       ],
+       "zone": "t3",
+       "rimTime": 1.065,
+       "flags": [],
+       "rimSpeedMps": 0.451,
+       "distStuds": 2.746,
+       "rimSpeed": 1.502,
+       "start": [
+        41.3078,
+        23.6793,
+        5.4735
+       ],
+       "maxY": 23.68,
+       "tEnd": 1.399,
+       "finish": [
+        42.5,
+        23.33,
+        3
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 12.021,
+       "speedMps": 3.6063833040616373,
+       "label": "h7-average-s1",
+       "piece": "t2",
+       "maxAlong": 28.146,
+       "distM": 7.735,
+       "fromZone": "t1",
+       "outcome": "rest",
+       "speed": 12.021,
+       "targetId": "gap",
+       "target": [
+        34.75,
+        24.88,
+        -1
+       ],
+       "flags": [],
+       "zone": "t2",
+       "distStuds": 25.783,
+       "maxY": 26.08,
+       "start": [
+        40,
+        26.0793,
+        -28
+       ],
+       "tEnd": 7.496,
+       "tStop": 6.914,
+       "finish": [
+        33.5697,
+        24.8793,
+        -3.0322
+       ]
+      },
+      {
+       "v0": 4.052,
+       "speedMps": 1.2156048676433784,
+       "label": "h7-average-s2",
+       "piece": "t3",
+       "maxAlong": 6.215,
+       "distM": 2.095,
+       "fromZone": "t2",
+       "outcome": "rest",
+       "speed": 4.052,
+       "targetId": "gap",
+       "target": [
+        34.75,
+        24.88,
+        -1
+       ],
+       "flags": [],
+       "zone": "t3",
+       "distStuds": 6.984,
+       "maxY": 24.879,
+       "start": [
+        33.5697,
+        24.8793,
+        -3.0322
+       ],
+       "tEnd": 6.666,
+       "tStop": 6.098,
+       "finish": [
+        39.4468,
+        23.6793,
+        0.7414
+       ]
+      },
+      {
+       "v0": 3.053,
+       "speedMps": 0.9159593295089508,
+       "label": "h7-average-s3",
+       "piece": "t3",
+       "maxAlong": 3.798,
+       "distM": 1.139,
+       "fromZone": "t3",
+       "outcome": "cup",
+       "speed": 3.053,
+       "targetId": "cup",
+       "target": [
+        42.5,
+        23.6,
+        3
+       ],
+       "zone": "t3",
+       "rimTime": 1.549,
+       "flags": [],
+       "rimSpeedMps": 0.365,
+       "distStuds": 3.798,
+       "rimSpeed": 1.216,
+       "start": [
+        39.4468,
+        23.6793,
+        0.7414
+       ],
+       "maxY": 23.68,
+       "tEnd": 1.867,
+       "finish": [
+        42.5,
+        23.33,
+        3
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "hio": {
+    "line": {
+     "aim_deg": 283,
+     "speed": 13.5,
+     "phase": 0,
+     "from": "h07-notes.md"
+    },
+    "bestSpeed": 11.94,
+    "bestAim": 280.94,
+    "bestMiss": 2.38,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-1",
+      "piece": "t3",
+      "maxAlong": 38.289,
+      "distM": 11.898,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       1.05,
+       -8.63
+      ],
+      "phase": 0.004,
+      "missStuds": 8.7,
+      "tStop": 11.032,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 39.658,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0792,
+       -28
+      ],
+      "tEnd": 11.599,
+      "stage": "spec",
+      "finish": [
+       41.4523,
+       23.6793,
+       11.6319
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-2",
+      "piece": "t3",
+      "maxAlong": 39.364,
+      "distM": 11.984,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       1.02,
+       -8.92
+      ],
+      "phase": 0.002,
+      "missStuds": 8.98,
+      "tStop": 11.334,
+      "aimDeg": 284,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 39.945,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 11.899,
+      "stage": "scan",
+      "finish": [
+       41.4752,
+       23.6793,
+       11.918
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-3",
+      "piece": "t2",
+      "maxAlong": 20.444,
+      "distM": 4.95,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       8.68,
+       15.7
+      ],
+      "phase": 0.005,
+      "missStuds": 17.94,
+      "tStop": 5.651,
+      "aimDeg": 282,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.5,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0786,
+       -28
+      ],
+      "tEnd": 6.217,
+      "stage": "scan",
+      "finish": [
+       33.8242,
+       24.8787,
+       -12.6995
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-4",
+      "piece": "t2",
+      "maxAlong": 27.842,
+      "distM": 7.822,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       10.98,
+       6.34
+      ],
+      "phase": 0.006,
+      "missStuds": 12.68,
+      "tStop": 6.164,
+      "aimDeg": 285,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 26.074,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0786,
+       -28
+      ],
+      "tEnd": 6.733,
+      "stage": "scan",
+      "finish": [
+       31.5194,
+       24.8787,
+       -3.344
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-5",
+      "piece": "t2",
+      "maxAlong": 20.391,
+      "distM": 4.584,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       8.43,
+       16.92
+      ],
+      "phase": 0.004,
+      "missStuds": 18.9,
+      "tStop": 6.016,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.28,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0786,
+       -28
+      ],
+      "tEnd": 6.55,
+      "stage": "scan",
+      "finish": [
+       34.0681,
+       24.8787,
+       -13.918
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-6",
+      "piece": "t2",
+      "maxAlong": 20.113,
+      "distM": 4.493,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       3.75,
+       16.07
+      ],
+      "phase": 0.003,
+      "missStuds": 16.51,
+      "tStop": 5.716,
+      "aimDeg": 286,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.978,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0786,
+       -28
+      ],
+      "tEnd": 6.283,
+      "stage": "scan",
+      "finish": [
+       38.7517,
+       24.8787,
+       -13.0741
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-7",
+      "piece": "t2",
+      "maxAlong": 20.326,
+      "distM": 4.636,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       7.54,
+       16.39
+      ],
+      "phase": 4.797,
+      "missStuds": 18.04,
+      "tStop": 5.716,
+      "aimDeg": 280,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.455,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0786,
+       -28
+      ],
+      "tEnd": 6.283,
+      "stage": "scan",
+      "finish": [
+       34.9634,
+       24.8787,
+       -13.3891
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-8",
+      "piece": "t2",
+      "maxAlong": 20.056,
+      "distM": 4.823,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       4.07,
+       15
+      ],
+      "phase": 4.799,
+      "missStuds": 15.54,
+      "tStop": 5.467,
+      "aimDeg": 287,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.076,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0786,
+       -28
+      ],
+      "tEnd": 6.033,
+      "stage": "scan",
+      "finish": [
+       38.4277,
+       24.8787,
+       -12.001
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-9",
+      "piece": "t2",
+      "maxAlong": 20.297,
+      "distM": 4.563,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       7.12,
+       16.51
+      ],
+      "phase": 4.799,
+      "missStuds": 17.98,
+      "tStop": 5.782,
+      "aimDeg": 279,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.211,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0787,
+       -28
+      ],
+      "tEnd": 6.366,
+      "stage": "scan",
+      "finish": [
+       35.3809,
+       24.8793,
+       -13.5071
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-10",
+      "piece": "t2",
+      "maxAlong": 19.961,
+      "distM": 4.377,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       3.46,
+       16.44
+      ],
+      "phase": 0.002,
+      "missStuds": 16.8,
+      "tStop": 5.931,
+      "aimDeg": 288,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.589,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0787,
+       -28
+      ],
+      "tEnd": 6.498,
+      "stage": "scan",
+      "finish": [
+       39.0438,
+       24.8793,
+       -13.4421
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-11",
+      "piece": "t2",
+      "maxAlong": 20.205,
+      "distM": 4.626,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       6.74,
+       16.18
+      ],
+      "phase": 4.796,
+      "missStuds": 17.52,
+      "tStop": 4.985,
+      "aimDeg": 278,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.419,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0787,
+       -28
+      ],
+      "tEnd": 5.55,
+      "stage": "scan",
+      "finish": [
+       35.7607,
+       24.8793,
+       -13.1753
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-12",
+      "piece": "t2",
+      "maxAlong": 19.801,
+      "distM": 4.224,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       2.53,
+       16.92
+      ],
+      "phase": 4.797,
+      "missStuds": 17.11,
+      "tStop": 5.681,
+      "aimDeg": 289,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.08,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0792,
+       -28
+      ],
+      "tEnd": 6.249,
+      "stage": "scan",
+      "finish": [
+       39.972,
+       24.8793,
+       -13.9204
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-13",
+      "piece": "t2",
+      "maxAlong": 20.169,
+      "distM": 5.202,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       5.39,
+       13.9
+      ],
+      "phase": 0.001,
+      "missStuds": 14.91,
+      "tStop": 5.047,
+      "aimDeg": 277,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 17.341,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0787,
+       -28
+      ],
+      "tEnd": 5.616,
+      "stage": "scan",
+      "finish": [
+       37.1144,
+       24.8793,
+       -10.9003
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-14",
+      "piece": "t2",
+      "maxAlong": 19.69,
+      "distM": 4.281,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       2.42,
+       16.73
+      ],
+      "phase": 4.798,
+      "missStuds": 16.9,
+      "tStop": 6.283,
+      "aimDeg": 290,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.27,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0787,
+       -28
+      ],
+      "tEnd": 6.85,
+      "stage": "scan",
+      "finish": [
+       40.0776,
+       24.8793,
+       -13.7305
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-15",
+      "piece": "t2",
+      "maxAlong": 20.118,
+      "distM": 4.319,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       5.51,
+       16.92
+      ],
+      "phase": 4.799,
+      "missStuds": 17.79,
+      "tStop": 4.716,
+      "aimDeg": 276,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.398,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 5.283,
+      "stage": "scan",
+      "finish": [
+       36.9907,
+       24.8793,
+       -13.9202
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-16",
+      "piece": "t2",
+      "maxAlong": 19.566,
+      "distM": 4.447,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       2.46,
+       16.18
+      ],
+      "phase": 4.797,
+      "missStuds": 16.36,
+      "tStop": 5.933,
+      "aimDeg": 291,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.823,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 6.5,
+      "stage": "scan",
+      "finish": [
+       40.0366,
+       24.8793,
+       -13.177
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-17",
+      "piece": "t2",
+      "maxAlong": 20.067,
+      "distM": 4.284,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       4.89,
+       16.92
+      ],
+      "phase": 4.799,
+      "missStuds": 17.61,
+      "tStop": 4.649,
+      "aimDeg": 275,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.28,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 5.201,
+      "stage": "scan",
+      "finish": [
+       37.6146,
+       24.8793,
+       -13.921
+      ]
+     },
+     {
+      "v0": 11.88,
+      "speedMps": 3.564,
+      "label": "h7-hio-18",
+      "piece": "t3",
+      "maxAlong": 33.939,
+      "distM": 10.469,
+      "outcome": "rest",
+      "speed": 11.88,
+      "miss": [
+       1.22,
+       -3.87
+      ],
+      "phase": 4.798,
+      "missStuds": 4.06,
+      "tStop": 11.299,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 34.896,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 11.866,
+      "stage": "scan",
+      "finish": [
+       41.2772,
+       23.6793,
+       6.8728
+      ]
+     },
+     {
+      "v0": 11.88,
+      "speedMps": 3.564,
+      "label": "h7-hio-19",
+      "piece": "t3",
+      "maxAlong": 34.152,
+      "distM": 10.536,
+      "outcome": "rest",
+      "speed": 11.88,
+      "miss": [
+       1.09,
+       -4.09
+      ],
+      "phase": 4.797,
+      "missStuds": 4.23,
+      "tStop": 11.851,
+      "aimDeg": 284,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 35.121,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0792,
+       -28
+      ],
+      "tEnd": 12.419,
+      "stage": "scan",
+      "finish": [
+       41.4136,
+       23.6793,
+       7.0928
+      ]
+     },
+     {
+      "v0": 11.88,
+      "speedMps": 3.564,
+      "label": "h7-hio-20",
+      "piece": "t3",
+      "maxAlong": 29.78,
+      "distM": 8.868,
+      "outcome": "rest",
+      "speed": 11.88,
+      "miss": [
+       2.84,
+       1.44
+      ],
+      "phase": 4.797,
+      "missStuds": 3.19,
+      "tStop": 11.314,
+      "aimDeg": 282,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 29.559,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 11.882,
+      "stage": "scan",
+      "finish": [
+       39.6577,
+       23.6793,
+       1.5568
+      ]
+     },
+     {
+      "v0": 11.88,
+      "speedMps": 3.564,
+      "label": "h7-hio-21",
+      "piece": "t2",
+      "maxAlong": 27.865,
+      "distM": 8.102,
+      "outcome": "rest",
+      "speed": 11.88,
+      "miss": [
+       10.4,
+       5.17
+      ],
+      "phase": 4.795,
+      "missStuds": 11.61,
+      "tStop": 6.232,
+      "aimDeg": 285,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 27.006,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 6.816,
+      "stage": "scan",
+      "finish": [
+       32.1033,
+       24.8793,
+       -2.1744
+      ]
+     },
+     {
+      "v0": 11.88,
+      "speedMps": 3.564,
+      "label": "h7-hio-22",
+      "piece": "t3",
+      "maxAlong": 32.189,
+      "distM": 9.859,
+      "outcome": "rest",
+      "speed": 11.88,
+      "miss": [
+       1.71,
+       -1.85
+      ],
+      "phase": 4.796,
+      "missStuds": 2.52,
+      "tStop": 10.615,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 32.864,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0718,
+       -28
+      ],
+      "tEnd": 11.181,
+      "stage": "scan",
+      "finish": [
+       40.791,
+       23.6719,
+       4.8544
+      ]
+     },
+     {
+      "v0": 11.88,
+      "speedMps": 3.564,
+      "label": "h7-hio-23",
+      "piece": "t3",
+      "maxAlong": 29.161,
+      "distM": 8.664,
+      "outcome": "rest",
+      "speed": 11.88,
+      "miss": [
+       2.88,
+       2.12
+      ],
+      "phase": 4.796,
+      "missStuds": 3.58,
+      "tStop": 12.132,
+      "aimDeg": 281.4,
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         38.9828,
+         23.7058,
+         0.8789
+        ],
+        "hole": 7,
+        "t": 474.3617,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h7-hio-23",
+        "from": [
+         38.9828,
+         23.7058,
+         0.8789
+        ],
+        "kind": "unstuck",
+        "label": "h7-hio-23"
+       }
+      ],
+      "zone": "t3",
+      "distStuds": 28.881,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 14.217,
+      "stage": "refine",
+      "finish": [
+       39.6176,
+       23.6719,
+       0.8789
+      ]
+     },
+     {
+      "v0": 12.28,
+      "speedMps": 3.684,
+      "label": "h7-hio-24",
+      "piece": "t2",
+      "maxAlong": 24.667,
+      "distM": 7.4,
+      "outcome": "rest",
+      "speed": 12.28,
+      "miss": [
+       7.15,
+       6.77
+      ],
+      "phase": 4.797,
+      "missStuds": 9.85,
+      "tStop": 5.932,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 24.667,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0717,
+       -28
+      ],
+      "tEnd": 6.483,
+      "stage": "refine",
+      "finish": [
+       35.352,
+       24.8719,
+       -3.775
+      ]
+     },
+     {
+      "v0": 11.568,
+      "speedMps": 3.470374541229151,
+      "label": "h7-hio-25",
+      "piece": "t3",
+      "maxAlong": 28.438,
+      "distM": 8.379,
+      "outcome": "timeout",
+      "speed": 11.568,
+      "miss": [
+       3.04,
+       3.07
+      ],
+      "phase": 0.008,
+      "missStuds": 4.32,
+      "tStop": 20.949,
+      "aimDeg": 281.86,
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         38.9501,
+         23.6917,
+         -0.0736
+        ],
+        "hole": 7,
+        "t": 511.9756,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h7-hio-25",
+        "from": [
+         38.9501,
+         23.6917,
+         -0.0736
+        ],
+        "kind": "unstuck",
+        "label": "h7-hio-25"
+       }
+      ],
+      "zone": "t3",
+      "distStuds": 27.932,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0718,
+       -28
+      ],
+      "tEnd": 22.067,
+      "stage": "refine",
+      "finish": [
+       39.462,
+       23.6793,
+       -0.0736
+      ]
+     },
+     {
+      "v0": 11.568,
+      "speedMps": 3.470374541229151,
+      "label": "h7-hio-26",
+      "piece": "t3_slope",
+      "maxAlong": 28.501,
+      "distM": 8.392,
+      "outcome": "timeout",
+      "speed": 11.568,
+      "miss": [
+       3.55,
+       3.05
+      ],
+      "phase": 4.795,
+      "missStuds": 4.67,
+      "tStop": 21.965,
+      "aimDeg": 281.86,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 27.974,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0717,
+       -28
+      ],
+      "tEnd": 22.081,
+      "stage": "refine",
+      "finish": [
+       38.9538,
+       23.6633,
+       -0.0452
+      ]
+     },
+     {
+      "v0": 11.568,
+      "speedMps": 3.470374541229151,
+      "label": "h7-hio-27",
+      "piece": "t3",
+      "maxAlong": 32.362,
+      "distM": 9.917,
+      "outcome": "rest",
+      "speed": 11.568,
+      "miss": [
+       1.66,
+       -2.05
+      ],
+      "phase": 0.01,
+      "missStuds": 2.63,
+      "tStop": 11.1,
+      "aimDeg": 281.5,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 33.056,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0717,
+       -28
+      ],
+      "tEnd": 11.666,
+      "stage": "refine",
+      "finish": [
+       40.8427,
+       23.6793,
+       5.0456
+      ]
+     },
+     {
+      "v0": 12.13,
+      "speedMps": 3.6390000000000002,
+      "label": "h7-hio-28",
+      "piece": "t3",
+      "maxAlong": 33.486,
+      "distM": 10.293,
+      "outcome": "rest",
+      "speed": 12.13,
+      "miss": [
+       1.4,
+       -3.29
+      ],
+      "phase": 0.01,
+      "missStuds": 3.58,
+      "tStop": 10.815,
+      "aimDeg": 280.75,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 34.311,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 11.382,
+      "stage": "refine",
+      "finish": [
+       41.103,
+       23.6793,
+       6.2934
+      ]
+     },
+     {
+      "v0": 11.755,
+      "speedMps": 3.5265,
+      "label": "h7-hio-29",
+      "piece": "t3",
+      "maxAlong": 33.136,
+      "distM": 10.187,
+      "outcome": "rest",
+      "speed": 11.755,
+      "miss": [
+       1.46,
+       -2.94
+      ],
+      "phase": 0.008,
+      "missStuds": 3.28,
+      "tStop": 10.951,
+      "aimDeg": 281.13,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 33.956,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 11.519,
+      "stage": "refine",
+      "finish": [
+       41.0374,
+       23.6793,
+       5.9401
+      ]
+     },
+     {
+      "v0": 11.943,
+      "speedMps": 3.5827500000000003,
+      "label": "h7-hio-30",
+      "piece": "t3",
+      "maxAlong": 32.075,
+      "distM": 9.823,
+      "outcome": "rest",
+      "speed": 11.943,
+      "miss": [
+       1.63,
+       -1.73
+      ],
+      "phase": 0.009,
+      "missStuds": 2.38,
+      "tStop": 10.933,
+      "aimDeg": 280.94,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 32.744,
+      "maxY": 26.08,
+      "start": [
+       40,
+       26.0793,
+       -28
+      ],
+      "tEnd": 11.485,
+      "stage": "refine",
+      "finish": [
+       40.8727,
+       23.6793,
+       4.7326
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "seconds": 772.33,
+   "cam": "",
+   "nudges": 3,
+   "issues": [
+    {
+     "type": "event",
+     "to": [
+      38.9933,
+      23.7095,
+      0.6545
+     ],
+     "hole": 7,
+     "t": 106.6091,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h7-int-good-s2-2",
+     "from": [
+      38.9933,
+      23.7095,
+      0.6545
+     ],
+     "kind": "unstuck",
+     "label": "h7-int-good-s2-2"
+    },
+    {
+     "type": "event",
+     "to": [
+      38.9828,
+      23.7058,
+      0.8789
+     ],
+     "hole": 7,
+     "t": 474.3617,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h7-hio-23",
+     "from": [
+      38.9828,
+      23.7058,
+      0.8789
+     ],
+     "kind": "unstuck",
+     "label": "h7-hio-23"
+    },
+    {
+     "type": "event",
+     "to": [
+      38.9501,
+      23.6917,
+      -0.0736
+     ],
+     "hole": 7,
+     "t": 511.9756,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h7-hio-25",
+     "from": [
+      38.9501,
+      23.6917,
+      -0.0736
+     ],
+     "kind": "unstuck",
+     "label": "h7-hio-25"
+    },
+    {
+     "pos": [
+      39.462,
+      23.6793,
+      -0.0736
+     ],
+     "kind": "stuck-timeout",
+     "hole": 7,
+     "label": "h7-hio-25"
+    },
+    {
+     "pos": [
+      38.9538,
+      23.6633,
+      -0.0452
+     ],
+     "kind": "stuck-timeout",
+     "hole": 7,
+     "label": "h7-hio-26"
+    }
+   ],
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 2,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "name": "Cascade Steps",
+   "scenario": "h7",
+   "sweep": [
+    {
+     "mover": "log",
+     "period": 4.8,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        41.4286,
+        23.6793,
+        11.918
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 0.8,
+       "blocked": false,
+       "finish": [
+        41.3486,
+        23.6793,
+        10.9601
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 1.6,
+       "blocked": false,
+       "finish": [
+        41.5713,
+        23.6793,
+        11.9201
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 2.4,
+       "blocked": false,
+       "finish": [
+        41.3881,
+        23.6793,
+        10.6983
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 3.2,
+       "blocked": false,
+       "finish": [
+        32.282,
+        24.8787,
+        -12.7879
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        31.4387,
+        24.8787,
+        -13.918
+       ]
+      }
+     ]
+    }
+   ],
+   "stuck": 2,
+   "clientLag": 0.224
+  }
+ },
+ "h7pin": {
+  "default": {
+   "seconds": 275.19,
+   "scenario": "h7pin",
+   "pinCases": 5,
+   "maxPinnedS": 0.5,
+   "issues": [
+    {
+     "type": "event",
+     "to": [
+      39.9998,
+      24.89,
+      -8.5
+     ],
+     "hole": 7,
+     "t": 137.291,
+     "event": "flag",
+     "reason": "pinned",
+     "from": [
+      39.9998,
+      24.7948,
+      -7.5
+     ],
+     "kind": "unstuck"
+    },
+    {
+     "type": "event",
+     "to": [
+      40,
+      24.89,
+      -8.62
+     ],
+     "hole": 7,
+     "t": 144.0925,
+     "event": "flag",
+     "reason": "pinned",
+     "from": [
+      40,
+      24.8714,
+      -8.02
+     ],
+     "kind": "unstuck"
+    },
+    {
+     "type": "event",
+     "to": [
+      40,
+      24.89,
+      -6.3789
+     ],
+     "hole": 7,
+     "t": 148.9087,
+     "event": "flag",
+     "reason": "pinned",
+     "from": [
+      40,
+      24.8715,
+      -6.9789
+     ],
+     "kind": "unstuck"
+    },
+    {
+     "type": "event",
+     "to": [
+      35,
+      24.89,
+      -8.62
+     ],
+     "hole": 7,
+     "t": 161.8919,
+     "event": "flag",
+     "reason": "pinned",
+     "from": [
+      35,
+      24.8789,
+      -8.02
+     ],
+     "kind": "unstuck"
+    },
+    {
+     "type": "event",
+     "to": [
+      35,
+      24.89,
+      -6.379
+     ],
+     "hole": 7,
+     "t": 166.6736,
+     "event": "flag",
+     "reason": "pinned",
+     "from": [
+      35,
+      24.8714,
+      -6.979
+     ],
+     "kind": "unstuck"
+    }
+   ],
+   "cases": [
+    {
+     "state": "ready",
+     "start": [
+      8.4,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=8.40 z=-20.50",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31.5999,
+      24.879,
+      -7.5
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      8.4,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=8.40 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31.6,
+      24.879,
+      -8.0208
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      8.4,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=8.40 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31.6,
+      24.879,
+      -6.9796
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      8.6,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=8.60 z=-20.50",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31.3997,
+      24.879,
+      -7.5008
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      8.6,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=8.60 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31.4,
+      24.879,
+      -8.02
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      8.6,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=8.60 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31.4,
+      24.879,
+      -6.9796
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      9,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=9.00 z=-20.50",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      30.9996,
+      24.879,
+      -7.5005
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      9,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=9.00 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31,
+      24.879,
+      -8.0208
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      9,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=9.00 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      31,
+      24.879,
+      -6.9796
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      9.85,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=9.85 z=-20.50",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      30.1497,
+      24.8792,
+      -7.5002
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      9.85,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=9.85 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      30.15,
+      24.8792,
+      -8.0209
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      9.85,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=9.85 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      30.15,
+      24.8792,
+      -6.9796
+     ]
+    },
+    {
+     "state": "moving",
+     "start": [
+      -8.4,
+      -20.5
+     ],
+     "label": "parked x=-8.40 z=-20.50",
+     "touchedLog": true,
+     "maxPinnedS": 0.03,
+     "nudges": [],
+     "finish": [
+      52.9382,
+      22.182,
+      -7.5
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -8.4,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=-8.40 z=-19.98",
+     "touchedLog": true,
+     "maxPinnedS": 0.03,
+     "nudges": [],
+     "finish": [
+      48.4,
+      24.879,
+      -8.02
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -8.4,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=-8.40 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      48.4,
+      24.8716,
+      -6.9783
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -8.6,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=-8.60 z=-20.50",
+     "touchedLog": true,
+     "maxPinnedS": 0.02,
+     "nudges": [],
+     "finish": [
+      48.6011,
+      24.8716,
+      -7.5028
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -8.6,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=-8.60 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      48.6,
+      24.8789,
+      -8.0208
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -8.6,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=-8.60 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      48.6,
+      24.8787,
+      -6.9783
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -9,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=-9.00 z=-20.50",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      49,
+      24.8715,
+      -7.5
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -9,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=-9.00 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      49,
+      24.8714,
+      -8.0232
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -9,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=-9.00 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      49,
+      24.8714,
+      -6.9785
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -9.85,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=-9.85 z=-20.50",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      49.8516,
+      24.8717,
+      -7.501
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -9.85,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=-9.85 z=-19.98",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      49.85,
+      24.8717,
+      -8.0232
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -9.85,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=-9.85 z=-21.02",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      49.85,
+      24.8717,
+      -6.9783
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=0.00 z=-20.50",
+     "touchedLog": true,
+     "maxPinnedS": 0.25,
+     "nudges": [
+      {
+       "type": "event",
+       "to": [
+        39.9998,
+        24.89,
+        -8.5
+       ],
+       "hole": 7,
+       "t": 137.291,
+       "event": "flag",
+       "reason": "pinned",
+       "from": [
+        39.9998,
+        24.7948,
+        -7.5
+       ],
+       "kind": "unstuck"
+      }
+     ],
+     "finish": [
+      39.9998,
+      24.8703,
+      -8.5
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=0.00 z=-19.98",
+     "touchedLog": true,
+     "maxPinnedS": 0.5,
+     "nudges": [
+      {
+       "type": "event",
+       "to": [
+        40,
+        24.89,
+        -8.62
+       ],
+       "hole": 7,
+       "t": 144.0925,
+       "event": "flag",
+       "reason": "pinned",
+       "from": [
+        40,
+        24.8714,
+        -8.02
+       ],
+       "kind": "unstuck"
+      }
+     ],
+     "finish": [
+      40,
+      24.8626,
+      -8.62
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=0.00 z=-21.02",
+     "touchedLog": true,
+     "maxPinnedS": 0.5,
+     "nudges": [
+      {
+       "type": "event",
+       "to": [
+        40,
+        24.89,
+        -6.3789
+       ],
+       "hole": 7,
+       "t": 148.9087,
+       "event": "flag",
+       "reason": "pinned",
+       "from": [
+        40,
+        24.8715,
+        -6.9789
+       ],
+       "kind": "unstuck"
+      }
+     ],
+     "finish": [
+      40,
+      24.8627,
+      -6.3789
+     ]
+    },
+    {
+     "state": "moving",
+     "start": [
+      5,
+      -20.5
+     ],
+     "zone": "t2",
+     "label": "parked x=5.00 z=-20.50",
+     "touchedLog": true,
+     "maxPinnedS": 0.02,
+     "nudges": [],
+     "finish": [
+      33.6661,
+      24.8788,
+      -7.5
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      5,
+      -19.98
+     ],
+     "zone": "t2",
+     "label": "parked x=5.00 z=-19.98",
+     "touchedLog": true,
+     "maxPinnedS": 0.5,
+     "nudges": [
+      {
+       "type": "event",
+       "to": [
+        35,
+        24.89,
+        -8.62
+       ],
+       "hole": 7,
+       "t": 161.8919,
+       "event": "flag",
+       "reason": "pinned",
+       "from": [
+        35,
+        24.8789,
+        -8.02
+       ],
+       "kind": "unstuck"
+      }
+     ],
+     "finish": [
+      35,
+      24.8626,
+      -8.62
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      5,
+      -21.02
+     ],
+     "zone": "t2",
+     "label": "parked x=5.00 z=-21.02",
+     "touchedLog": true,
+     "maxPinnedS": 0.5,
+     "nudges": [
+      {
+       "type": "event",
+       "to": [
+        35,
+        24.89,
+        -6.379
+       ],
+       "hole": 7,
+       "t": 166.6736,
+       "event": "flag",
+       "reason": "pinned",
+       "from": [
+        35,
+        24.8714,
+        -6.979
+       ],
+       "kind": "unstuck"
+      }
+     ],
+     "finish": [
+      35,
+      24.8626,
+      -6.379
+     ]
+    },
+    {
+     "state": "moving",
+     "start": [
+      7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=7.5 phase=0.0",
+     "touchedLog": true,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      33.9933,
+      24.8789,
+      -6.0827
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=-7.5 phase=0.0",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      47.5,
+      24.879,
+      -6.3999
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=0.0 phase=0.0",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      39.9998,
+      24.8791,
+      -6.3125
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=7.5 phase=1.2",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      32.4998,
+      24.8791,
+      -6.968
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=-7.5 phase=1.2",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      47.5,
+      24.8792,
+      -6.3626
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=0.0 phase=1.2",
+     "touchedLog": true,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      40.0493,
+      24.8787,
+      -8.3583
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=7.5 phase=2.4",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      32.5,
+      24.8792,
+      -6.3626
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=-7.5 phase=2.4",
+     "touchedLog": true,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      47.5,
+      24.8791,
+      -9.5
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=0.0 phase=2.4",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      40,
+      24.8792,
+      -6.3626
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=7.5 phase=3.6",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      32.5,
+      24.8792,
+      -6.3626
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      -7.5,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=-7.5 phase=3.6",
+     "touchedLog": false,
+     "maxPinnedS": 0,
+     "nudges": [],
+     "finish": [
+      47.5,
+      24.8791,
+      -6.3451
+     ]
+    },
+    {
+     "state": "ready",
+     "start": [
+      0,
+      -18.5
+     ],
+     "zone": "t2",
+     "label": "putt x=0.0 phase=3.6",
+     "touchedLog": true,
+     "maxPinnedS": 0.08,
+     "nudges": [],
+     "finish": [
+      39.9538,
+      24.8786,
+      -8.2732
+     ]
+    }
+   ],
+   "cam": ""
+  }
+ }
+}

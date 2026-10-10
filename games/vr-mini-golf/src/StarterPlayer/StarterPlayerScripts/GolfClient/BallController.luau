@@ -35,6 +35,7 @@ local readyRing: BasePart
 local stillTime = 0 -- seconds below StopSpeed whatever the slope (a ball wedged on a bank)
 local pinTime = 0 -- seconds pinned against / riding on a moving part
 local seamHops = 0 -- seam hops used this stroke (see step)
+local parkTime = 0 -- seconds with the ball practically motionless (< 0.05 studs/s) on a slope
 local teleportCooldown = 0
 
 local rayParams = RaycastParams.new()
@@ -118,6 +119,7 @@ function Ball.hit(velocity: Vector3, source: string?)
 	stillTime = 0
 	pinTime = 0
 	seamHops = 0
+	parkTime = 0
 	rollVel = nil
 	lastVel = nil
 	Ball.setState("moving")
@@ -191,6 +193,34 @@ local function holeParts(hole, filter)
 		end
 	end
 	return out
+end
+
+-- Rail rub: a slow ball that reaches a static rail just as it tops out on a slope stays sunk ~0.002 studs into
+-- the rail. The solver's push-out times the rail friction then holds it to a crawl down the slope instead of
+-- rolling back. Sit it just clear of any rail it overlaps and drop the velocity into the rail.
+local function unsinkFromRails(b: BasePart, obstacles)
+	local pos = b.Position
+	for _, part in obstacles do
+		local lp = part.CFrame:PointToObjectSpace(pos)
+		local h = part.Size / 2
+		local d = lp - Vector3.new(math.clamp(lp.X, -h.X, h.X), math.clamp(lp.Y, -h.Y, h.Y), math.clamp(lp.Z, -h.Z, h.Z))
+		local dist = d.Magnitude
+		if dist > 1e-4 and dist < R - 0.0005 then
+			local n = part.CFrame:VectorToWorldSpace(d / dist)
+			n = Vector3.new(n.X, 0, n.Z)
+			if n.Magnitude > 0.5 then
+				n = n.Unit
+				b.CFrame += n * (R - dist + 0.002)
+				local v = b.AssemblyLinearVelocity
+				local vn = v:Dot(n)
+				if vn < 0 then
+					b.AssemblyLinearVelocity = v - n * vn
+				end
+				return true
+			end
+		end
+	end
+	return false
 end
 
 -- per-hole caches: moving blockers, collision obstacles, teleports
@@ -386,6 +416,25 @@ local function step(dt)
 		end
 	end
 	if ground then
+		-- felt sink: contact slop can leave a slow ball ~0.01 studs sunk into the felt. The engine then rolls it on
+		-- a smaller radius than the spin set below assumes, and the felt's friction brakes it every frame (a ball
+		-- crawling down a slope at constant speed). Sit it back on the felt plane. Slow balls only, and never at the
+		-- cup, where riding down over the lip is real.
+		local sink = R - (b.Position - ground.Position):Dot(ground.Normal)
+		local nearCup = cupR and flat(b.Position - cup.Position).Magnitude < cupR + R + 0.1
+		if sink > 0.003 and ground.Normal.Y > 0.9 and speed < 2 and not nearCup then
+			b.CFrame += ground.Normal * sink
+			local vn = v:Dot(ground.Normal)
+			if vn < 0 then
+				v -= ground.Normal * vn
+				b.AssemblyLinearVelocity = v
+				speed = v.Magnitude
+			end
+		end
+		if speed < 1.5 and unsinkFromRails(b, cacheObstacles) then
+			v = b.AssemblyLinearVelocity
+			speed = v.Magnitude
+		end
 		local hv = flat(v)
 		-- obstacle contact (the engine bounced the ball off a wall/post/blade since last step): the bounce
 		-- itself comes from the wall's Elasticity; the ball's spin carries over, so it now skids
@@ -434,12 +483,15 @@ local function step(dt)
 		-- wedged (e.g. in the corner of a steep bank and its backing rail): not moving, but the slope says it should
 		if speed < Config.StopSpeed then
 			stillTime += dt
+			parkTime = speed < 0.05 and parkTime + dt or 0
 			-- seam lip: a slow ball sunk ~0.01 studs into the felt (contact slop) parks against the edge of the
 			-- next felt piece at the foot of a slope. Hop it over the lip, downhill, a few times before giving up.
+			-- (parked = practically motionless: a ball turning round at the top of its climb is not hopped)
 			local downhill = flat(ground.Normal)
-			if slopeAccel >= Config.RollDecel and stillTime >= 0.3 and seamHops < 3 and downhill.Magnitude > 1e-3 then
+			if slopeAccel >= Config.RollDecel and parkTime >= 0.3 and seamHops < 3 and downhill.Magnitude > 1e-3 then
 				seamHops += 1
 				stillTime = 0
+				parkTime = 0
 				b.CFrame = b.CFrame + Vector3.new(0, 0.03, 0)
 				b.AssemblyLinearVelocity = downhill.Unit * 0.8
 				b.AssemblyAngularVelocity = Vector3.zero
@@ -455,6 +507,7 @@ local function step(dt)
 			end
 		else
 			stillTime = 0
+			parkTime = 0
 		end
 	else
 		slowTime = 0
