@@ -70,7 +70,7 @@ Measured with the new harness (`playtesting.md`). Baseline: `playtests/2026-10-0
 - Putter: head held on the ball's plane, shaft length varies, ghosts through all geometry, `VRGripToPutt` makes it see-through (0.65) and unable to hit until grip is held: matches (mode is off by default).
 - **Gap:** felt bounce. Felt is Elasticity 0 (weight 100), so drops off ledges land dead. Reference: ~0.6 with drops under ~1.5 studs/s zeroed. Not changed in v9.
 
-## 2026-10-09 ~20:00 PT: VR club runs parallel to the controller handle (not published)
+## 2026-10-09 ~20:00 PT: VR club runs parallel to the controller handle (published as v12, 20:14 PT; audience still Limited: Friends + Playtesters)
 Chase reported that on a real Quest the club came out roughly perpendicular to the controller handle.
 
 **Root cause:** the shaft ran along the hand CFrame LookVector (-Z), which is the **aim ray**. On Quest Touch the handle is ~125° from that ray: it runs along -Y, raked back toward +Z.
@@ -102,7 +102,7 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
   - The `GolfTestClubDebug` overlay (a proxy Quest controller plus axis gizmos).
   - The `look` camera.
   - `run_playtests.py clubviz` (window screenshots).
-- The changes are in the Team Create draft. **Not published** (Chase publishes).
+- Published 2026-10-09 20:14:30 PT as v12 (File > Publish to Roblox; Studio output "Place published. Friends and playtesters can now play"). Audience and settings unchanged.
 
 ## TODO
 - [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
@@ -110,7 +110,7 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
   - Shaft continues the handle line out of its bottom (`VRClubGripPitch`/`Yaw`/`Roll`, `VRClubButtOffset`; check both hands; see `playtests/2026-10-09-clubfix/NOTES.md`).
   - Rig height snapping comfort.
   - Hit strength with the new fast felt (`VRHitMultiplier`).
-- [ ] Publish the 2026-10-09 club-mount fix (Chase).
+- [x] Publish the 2026-10-09 club-mount fix: v12, 20:14 PT 2026-10-09 (File > Publish to Roblox). Audience unchanged (Friends + Playtesters).
 - [ ] Re-tune `TouchMaxSpeed` / `TouchPowerCurve` for the faster felt.
 - [x] Publish the Team Create draft: v9, ~23:03 PT (File > Publish to Roblox). Audience Limited (Friends + Playtesters); Maturity questionnaire done (Minimal).
 - [ ] Real VR headset test (Quest via Roblox app). Check the club angle and friction, then press A to fit the club.
