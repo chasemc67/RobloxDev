@@ -111,6 +111,7 @@ Each `hN` suite runs on hole N, in this order (`GolfTestOpts.parts` picks a subs
 | Part | What it does | Pass / flag |
 |---|---|---|
 | `routes` | Two full plays from the tee with the spec's `ai_waypoints`: `good` = the aggressive/risk line from `hNN-notes.md` (H2 left chute, H5 root bridge, H8 firefly ring), `average` = the safe line (H2 right chute, H5 covered bridge, H8 long route) | Strokes vs par, holed, every stroke's target, outcome and finishing zone |
+| `intended` | The intended line as a competent player plays it: each stroke fires the `routes` shot plus up to 4 small variants (aim ±3/6°, speed 0.9/1.12×) from the same spot and keeps the real in-engine result that holes out or gets furthest along. On holes with moving parts, try k also waits for mover phase (k−1)/tries of the hole's `MoverPeriod` (a real player waits for the gap) | Strokes vs par (good / safe): must be par or better |
 | `hio` | The notes' ace line (aim, speed, mover phase), then candidate lines from `tools/engine_sim.py` (if `--engine-sim`), a ±8° scan at 100% / 88% power, and a Newton/Broyden refinement on the miss vector. Stops at the first ace | `ace`, best miss (studs) |
 | `banks` | Two rail/bank shots per hole (e.g. H1 deflector, H3 both banked corners, H6 both boards, H9 bank + root deflector) | First contact: part, normal restitution, angles in/out |
 | `sweep` | For each moving part: the ace line (or first intended shot) at N evenly spaced phases of that part's cycle | Blocked or clear, finishing zone, flags |
@@ -120,10 +121,10 @@ Each `hN` suite runs on hole N, in this order (`GolfTestOpts.parts` picks a subs
 - **escape**: the server's out-of-bounds (below the hole's `KillY` or outside its `Bounds`) while the ball was **not** over a hazard footprint (`Hazards/Hazard`). The server writes it to the ball's `LastOOB` attribute (`escape` or `hazard:<id>`); water and the rabbit hole count as hazards.
 - **fell**: the client saw the ball more than 3 studs below the hole's lowest felt (`FeltMinY`).
 - **stuck**: a shot that never finished (timeout), a rest that isn't on felt (`Ball.OffSurface`, also gives a free reset to the stroke start), a "wedged" rest (below `StopSpeed` for 2 s on a slope) or the 25 s `MaxRollTime` cap (`Ball.ForcedRest`).
-- **unstuck**: the pin/unstick nudge fired (`Ball.Unstuck`: touching a moving part at ~0 speed, or riding on one, for > 0.5 s, moving or at rest). It hops the ball to the nearest clear felt spot sideways of the part's motion.
+- **unstuck**: a seam hop (`reason` `seam`: a ball parked, under 0.05 studs/s for 0.3 s, on a slope that should roll it, gets a 0.8 studs/s hop downhill, at most 3 per stroke) or the pin/unstick nudge fired (`Ball.Unstuck`: touching a moving part at ~0 speed, or riding on one, for > 0.5 s, moving or at rest). It hops the ball to the nearest clear felt spot sideways of the part's motion.
 - Teleports (`Ball.Teleported`) are logged as flags but aren't issues.
 
-Options (JSON in workspace attribute `GolfTestOpts`, set with `--opts`): `parts` (default `"routes,hio,banks,sweep,fuzz"`), `fuzz` (shots, default 12), `sweep` (phases per moving part, default 6), `hioTries` (default 30), `seed`, `hioLines` (`{"<hole>": [[aim, speed, phase], ...]}`, filled by `--engine-sim`).
+Options (JSON in workspace attribute `GolfTestOpts`, set with `--opts`): `parts` (default `"routes,intended,hio,banks,sweep,fuzz"`), `tries` (intended variants per stroke, default 5), `fuzz` (shots, default 12), `sweep` (phases per moving part, default 6), `hioTries` (default 30), `seed`, `hioLines` (`{"<hole>": [[aim, speed, phase], ...]}`, filled by `--engine-sim`).
 
 **Engine-calibrated sim** (`tools/engine_sim.py`): a patched copy of the designer's `tools/sim.py` with the game's measured rail response (normal restitution 0.60, tangential 0.93, then BallController's post-impact skid, net `v = v_out + 0.5·(v_in − v_out)/3.5`). It brute-forces aim × speed (× phase) from each tee in ~25 s for all 9 holes and prints candidate ace lines; only an in-engine ace counts.
 
@@ -148,6 +149,14 @@ python3 tools/run_playtests.py smoke
 python3 tools/run_playtests.py smoke --device iphone_17_pro
 ```
 Read `<out>/summary.md` (per-hole table: lines, ace, banks, sweep, fuzz, escapes/stuck/nudges) and **look at the PNGs**. Anything in the "Escapes / stuck / nudges" column or the `hN issues` lines is a bug to fix (positions are world coordinates; each `HoleN` model's `HoleOrigin`/`HoleYaw` attributes give its frame, and every scenario works in those hole-local frames, so it doesn't matter where a hole sits in the world).
+
+**Debug probe** (play session started with `GolfTestMode`, no scenario running): `GolfTestAPI:Invoke("hitat", hole, "x,y,z", "vx,vz")` puts the ball on hole `hole` at world (x, y = felt top, z), hits it at (vx, 0, vz) studs/s, and returns a 0.25 s position/velocity trace until it rests. From Python: `st.api("hitat", 7, "35.0,23.78,-0.06", "1.0,0")`. Use it to reproduce a single stuck/crawl case found by a suite.
+
+**Ball contact fixes (2026-10-10, BallController.step)** for balls that crawled or parked on slopes in the world layout (H6 by the west rail, H7 t3):
+- *Felt sink*: contact slop could leave a slow ball ~0.01 studs sunk into the felt. The engine then rolled it on a smaller radius than the script's forced spin, so the felt friction braked it every frame: a constant-speed crawl down a 2.5° slope. A ball under 2 studs/s that is more than 0.003 studs into the felt plane (not at the cup) is sat back on it, and its into-felt velocity is dropped.
+- *Rail sink*: a slow ball (under 1.5 studs/s) overlapping a static Wall/Bumper is moved just clear of it, and its velocity into the rail is dropped.
+- The seam hop now only fires for a **parked** ball (under 0.05 studs/s for 0.3 s), not for a ball turning round at the top of its climb.
+- Core physics unchanged (`compare` before/after: rollout, walls, bumpers, banks, hill, cup outcomes).
 
 ### Rebuilding the world (after a spec, world map or prop update)
 All steps run against Studio in Edit mode and are idempotent:
