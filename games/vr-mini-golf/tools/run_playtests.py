@@ -517,22 +517,28 @@ def hole_summary_md(results):
         def rt(k):
             x = routes.get(k)
             return "-" if not x else "%s%s" % (x["strokes"], "" if x["holed"] else " (not holed)")
+        intended = {x["skill"]: x for x in r.get("intended", [])}
+        def it(k):
+            x = intended.get(k)
+            return "-" if not x else "%s%s" % (x["strokes"], "" if x["holed"] else " (not holed)")
         hio = r.get("hio") or {}
         sw = r.get("sweep") or []
         swtxt = "; ".join("%s %d/%d clear" % (m["mover"], sum(1 for row in m["rows"] if not row["blocked"]), len(m["rows"])) for m in sw) or "-"
         fz = r.get("fuzz") or {}
-        rows.append("| %d %s | %s | %s | %s | %s | %s | %s | %s/%s/%s/%s | %d / %d / %d |" % (
-            n, r.get("name", ""), r.get("par"), rt("good"), rt("average"),
+        rows.append("| %d %s | %s | %s / %s | %s | %s | %s | %s | %s | %s/%s/%s/%s | %d / %d / %d |" % (
+            n, r.get("name", ""), r.get("par"), it("good"), it("average"), rt("good"), rt("average"),
             ("yes (aim %.1f°, %.1f studs/s)" % (hio.get("aceAim"), hio.get("aceSpeed"))) if hio.get("ace") else ("no (%d tries)" % len(hio.get("attempts", [])) if hio.get("attempts") else "-"),
             ", ".join("%s: %s" % (b["bank"], f((b.get("firstContact") or {}).get("restitution"))) for b in r.get("banks", [])) or "-",
             swtxt, fz.get("shots", "-"), fz.get("hazards", "-"), fz.get("escapes", "-"), fz.get("stuck", "-"),
             r.get("escapes", 0), r.get("stuck", 0), r.get("nudges", 0)))
     if rows:
         L += ["## Lantern Grove per-hole suites", "",
-              "Routes = strokes to hole out with the spec's AI waypoints (good = aggressive/risk line, average = safe line). "
+              "Intended = the waypoint line played best-of-K per stroke (aim ±3/6°, speed ±10-25% from the same spot; every "
+              "counted stroke is a real in-engine shot), good / safe. "
+              "Routes = strokes to hole out with the spec's AI waypoints, one shot per stroke (good = aggressive/risk line, average = safe line). "
               "Banks = normal restitution of the first rail contact. Fuzz = shots / hazards / escapes / stuck.", "",
-              "| Hole | Par | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |",
-              "|---|---|---|---|---|---|---|---|---|"] + rows + [""]
+              "| Hole | Par | Intended (good / safe) | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |",
+              "|---|---|---|---|---|---|---|---|---|---|"] + rows + [""]
         for n in range(1, 10):
             r = results.get("h%d" % n)
             if not r:

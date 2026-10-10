@@ -34,6 +34,7 @@ local placeToken = 0
 local readyRing: BasePart
 local stillTime = 0 -- seconds below StopSpeed whatever the slope (a ball wedged on a bank)
 local pinTime = 0 -- seconds pinned against / riding on a moving part
+local seamHops = 0 -- seam hops used this stroke (see step)
 local teleportCooldown = 0
 
 local rayParams = RaycastParams.new()
@@ -116,6 +117,7 @@ function Ball.hit(velocity: Vector3, source: string?)
 	rollTime = 0
 	stillTime = 0
 	pinTime = 0
+	seamHops = 0
 	rollVel = nil
 	lastVel = nil
 	Ball.setState("moving")
@@ -432,6 +434,19 @@ local function step(dt)
 		-- wedged (e.g. in the corner of a steep bank and its backing rail): not moving, but the slope says it should
 		if speed < Config.StopSpeed then
 			stillTime += dt
+			-- seam lip: a slow ball sunk ~0.01 studs into the felt (contact slop) parks against the edge of the
+			-- next felt piece at the foot of a slope. Hop it over the lip, downhill, a few times before giving up.
+			local downhill = flat(ground.Normal)
+			if slopeAccel >= Config.RollDecel and stillTime >= 0.3 and seamHops < 3 and downhill.Magnitude > 1e-3 then
+				seamHops += 1
+				stillTime = 0
+				b.CFrame = b.CFrame + Vector3.new(0, 0.03, 0)
+				b.AssemblyLinearVelocity = downhill.Unit * 0.8
+				b.AssemblyAngularVelocity = Vector3.zero
+				rollVel, lastVel = nil, nil
+				Ball.Unstuck:Fire("seam", b.Position, b.Position)
+				return
+			end
 			if stillTime >= 2 then
 				stillTime = 0
 				Ball.ForcedRest:Fire(b.Position, "wedged")

@@ -750,6 +750,97 @@ local function playHole(n, skill, opts)
 	return { skill = skill, strokes = strokes, holed = holed, par = sp.par, shots = shots }
 end
 
+-- How far along the hole a resting ball is: cup in play and in sight beats any waypoint; otherwise the furthest
+-- waypoint (list order, same lists as chooseTarget) reachable from its zone. Ties break on distance to the cup.
+local function progressOf(n, skill, pos)
+	local sp = spec(n)
+	local cupL = sp.cup.position
+	local cupW = W(n, cupL[1], cupL[2], cupL[3])
+	local zone = zoneOf(pos)
+	local d = flat(cupW - pos).Magnitude
+	if zone == nil then
+		return -1e6
+	end
+	if (sp.cup_from == nil or inList(sp.cup_from, zone)) and los(n, pos, cupW + Vector3.new(0, R, 0)) then
+		return 10000 - d
+	end
+	local wps = {}
+	for _, key in { skill, "all" } do
+		for _, w in (sp.ai_waypoints or {})[key] or {} do
+			table.insert(wps, w)
+		end
+	end
+	for i = #wps, 1, -1 do
+		if inList(wps[i].from, zone) then
+			return i * 100 - d * 0.1
+		end
+	end
+	return -d * 0.1
+end
+
+-- The intended line played by a competent player: each stroke takes the playHole shot (waypoint or cup) plus small
+-- aim/speed variants from the same spot (opts.tries, default 5), and keeps the real in-engine outcome that holes out
+-- or gets furthest along the hole. Every counted stroke is a shot that actually happened in the engine.
+local VARIANTS = { { 0, 1 }, { 0, 0.9 }, { 0, 1.12 }, { -3, 1 }, { 3, 1 }, { -6, 1 }, { 6, 1 }, { 0, 0.8 }, { 0, 1.25 } }
+local function playIntended(n, skill, opts)
+	opts = opts or {}
+	local tries = math.clamp(opts.tries or 5, 1, #VARIANTS)
+	local sp = spec(n)
+	local t = sp.tee.position
+	placeL(n, t[1], t[3], t[2])
+	local strokes, shots, holed = 0, {}, false
+	while strokes < Config.MaxStrokes do
+		local start = Ball.ball.Position
+		local startY = start.Y - R
+		local zone = zoneOf(start) or "?"
+		local target, carry, pscale, tid = chooseTarget(n, skill, zone, start)
+		local d = flat(target - start).Magnitude
+		local v = speedFor(d + carry) * pscale
+		local climb = target.Y - start.Y
+		if climb > 0.05 then
+			v += math.sqrt(2 * workspace.Gravity * climb)
+		end
+		local best, bestScore, bestPos
+		for k = 1, tries do
+			if k > 1 then
+				place(n, start.X, start.Z, startY)
+			end
+			local va = VARIANTS[k]
+			local dir = CFrame.Angles(0, math.rad(va[1]), 0):VectorToWorldSpace(flat(target - start).Unit)
+			local r = shootS(string.format("h%d-int-%s-s%d-%d", n, skill, strokes + 1, k), dir, math.min(v * va[2], VMAX), { cup = hole(n).Cup, timeout = 22 })
+			r.contacts, r.variant, r.targetId = nil, k, tid
+			local score
+			if r.outcome == "cup" then
+				score = 1e9
+			elseif r.outcome == "rest" then
+				score = progressOf(n, skill, Ball.ball.Position)
+			else
+				score = -1e7
+			end
+			if not best or score > bestScore then
+				best, bestScore, bestPos = r, score, Ball.ball.Position
+			end
+			if r.outcome == "cup" then
+				break
+			end
+		end
+		strokes += 1
+		table.insert(shots, best)
+		if best.outcome == "cup" then
+			holed = true
+			break
+		elseif best.outcome == "rest" then
+			if best.variant ~= tries and (Ball.ball.Position - bestPos).Magnitude > 0.05 then
+				place(n, bestPos.X, bestPos.Z, bestPos.Y - R - 0.03)
+			end
+		else
+			strokes += Config.PenaltyStrokes
+			place(n, start.X, start.Z, startY)
+		end
+	end
+	return { skill = skill, strokes = strokes, holed = holed, par = sp.par, tries = tries, shots = shots }
+end
+
 ------------------------------------------------------------------------ per-hole scenario parts
 local function opts()
 	local raw = workspace:GetAttribute("GolfTestOpts")
@@ -1037,7 +1128,7 @@ local function holeScenario(n)
 		table.clear(issues)
 		lagCache[n] = nil
 		local o = opts()
-		local parts = o.parts or "routes,hio,banks,sweep,fuzz"
+		local parts = o.parts or "routes,intended,hio,banks,sweep,fuzz"
 		local out = { hole = n, name = hole(n):GetAttribute("HoleName"), par = hole(n):GetAttribute("Par") }
 		frameHole(n)
 		if #moversOf(n) > 0 then
@@ -1045,6 +1136,9 @@ local function holeScenario(n)
 		end
 		if string.find(parts, "routes") then
 			out.routes = { playHole(n, "good"), playHole(n, "average") }
+		end
+		if string.find(parts, "intended") then
+			out.intended = { playIntended(n, "good", o), playIntended(n, "average", o) }
 		end
 		if string.find(parts, "hio") then
 			out.hio = hioAttempt(n, o.hioTries)
