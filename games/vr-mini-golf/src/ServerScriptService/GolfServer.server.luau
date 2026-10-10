@@ -123,11 +123,35 @@ local function finishHole(player, st, maxed)
 	end)
 end
 
+-- The hazard (water / pit) footprint the ball dropped into, if any (CourseBuilder: Hazards/Hazard parts).
+local function hazardAt(hole, pos)
+	local folder = hole:FindFirstChild("Hazards")
+	if not folder then
+		return nil
+	end
+	for _, h in folder:GetChildren() do
+		if h.Name == "Hazard" then
+			local lp = h.CFrame:PointToObjectSpace(pos)
+			if math.abs(lp.X) <= h.Size.X / 2 + 0.3 and math.abs(lp.Z) <= h.Size.Z / 2 + 0.3 then
+				return h
+			end
+		end
+	end
+	return nil
+end
+
 local function outOfBounds(player, st)
 	st.resetting = true
 	st.strokes[st.hole] += Config.PenaltyStrokes
 	publish(player, st)
-	Remotes.Notice:FireClient(player, "Out of bounds!  +" .. Config.PenaltyStrokes, "bad")
+	-- the ball's last airborne position tells a hazard (water, rabbit hole) from a ball that escaped the course
+	local hz = hazardAt(holeOf(st), st.ball.Position)
+	local kind = hz and hz:GetAttribute("HazardType") or "escape"
+	-- (a running count makes every value new, so it replicates even when the same hazard is hit twice in a row)
+	st.oobCount = (st.oobCount or 0) + 1
+	st.ball:SetAttribute("LastOOB", (hz and ("hazard:" .. hz:GetAttribute("HazardId")) or "escape") .. "#" .. st.oobCount)
+	local text = kind == "water" and "Splash!  Water hazard  +" or (kind == "pit" and "Down the rabbit hole!  +" or "Out of bounds!  +")
+	Remotes.Notice:FireClient(player, text .. Config.PenaltyStrokes, "bad", kind)
 	task.delay(1, function()
 		if states[player] == st and st.resetting and not st.sunk then
 			placeBall(player, st, st.lastPos, "oob")
@@ -260,6 +284,10 @@ Remotes.PlayAgain.OnServerEvent:Connect(function(player)
 	startHole(player, st, 1)
 end)
 
+-- Moving parts (spinner, mill wheel, log, door, gate, lantern bar): server physics, phase-locked to server time.
+local Movers = require(script:WaitForChild("Movers"))
+Movers.start()
+
 -- Studio-only playtest harness: off unless workspace.GolfTestMode is set before pressing Play.
 if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 	require(script:WaitForChild("GolfTestServer")).init({
@@ -267,6 +295,7 @@ if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 		holes = holes,
 		publish = publish,
 		placeBall = placeBall,
+		movers = Movers,
 	})
 end
 
@@ -283,8 +312,16 @@ RunService.Heartbeat:Connect(function()
 		-- sunk once the whole ball has dropped below the rim
 		if flat < cup:GetAttribute("Radius") and pos.Y < cup.Position.Y - Config.BallRadius then
 			finishHole(player, st, false)
-		elseif os.clock() - (st.placedAt or 0) > 0.75 and (pos.Y < hole:GetAttribute("KillY") or not inBounds(hole, pos)) then
-			outOfBounds(player, st)
+		elseif os.clock() - (st.placedAt or 0) > 0.75 then
+			if pos.Y < hole:GetAttribute("KillY") or not inBounds(hole, pos) then
+				outOfBounds(player, st)
+			else
+				-- water hazards are Terrain water in the world layout: the ball floats, so judge it at the surface
+				local hz = hazardAt(hole, pos)
+				if hz and hz:GetAttribute("HazardType") == "water" and pos.Y < (hz:GetAttribute("SurfaceY") or -math.huge) + Config.BallRadius then
+					outOfBounds(player, st)
+				end
+			end
 		end
 	end
 end)

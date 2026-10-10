@@ -119,7 +119,13 @@ local function partLabel(p: Instance?)
 	while anc and anc ~= workspace and anc:GetAttribute("HoleNumber") == nil do
 		anc = anc.Parent
 	end
-	return ((anc and anc ~= workspace) and anc.Name .. "/" or "") .. p.Name
+	local name = p.Name
+	if p:GetAttribute("WallId") then
+		name ..= ":" .. p:GetAttribute("WallId")
+	elseif p.Name == "Blocker" and p.Parent then
+		name ..= ":" .. tostring(p.Parent:GetAttribute("MoverId"))
+	end
+	return ((anc and anc ~= workspace) and anc.Name .. "/" or "") .. name
 end
 
 -- contact detection state
@@ -194,6 +200,14 @@ local function onPostSimulation(dt)
 	if t - lastSample >= SAMPLE_DT - 1e-3 then
 		lastSample = t
 		record({ type = "sample", p = vec(p), v = vec(v), s = Ball.state })
+	end
+	if shot and not shot.fellFlagged then
+		local h = Ball.getHole()
+		local minY = h and h:GetAttribute("FeltMinY")
+		if minY and p.Y < minY - 3 then
+			shot.fellFlagged = true
+			event("fell", { pos = vec(p) })
+		end
 	end
 	if shot then
 		local speed = v.Magnitude
@@ -328,14 +342,6 @@ local function shoot(label: string, dir: Vector3, speedMps: number, opts)
 	return out
 end
 
-local function hole(n)
-	return workspace.Course:FindFirstChild("Hole" .. n)
-end
-
-local function ballPlaneY()
-	return Ball.ball.Position.Y - R
-end
-
 ------------------------------------------------------------------------ simulated VR hand driving
 local poseFn = nil -- function(t) -> world CFrame for the club hand, or nil
 local lastPoseClock = 0 -- os.clock() the current hand pose was computed for
@@ -372,14 +378,713 @@ local function vrRequired()
 	return nil
 end
 
+------------------------------------------------------------------------ course helpers (Lantern Grove)
+-- Spec coordinates are per-hole local (studs, Y up, play toward -Z). CourseBuilder stores each hole's frame
+-- origin/yaw as attributes, so helpers can take spec coordinates straight from holes.json / hNN-notes.md.
+local G = Config.BallRadius
+local VMAX = 19.78 -- spec max putt (studs/s): a full putt rolls 60 studs on flat felt
+local CollectionService = game:GetService("CollectionService")
+
+local function hole(n)
+	return workspace.Course:FindFirstChild("Hole" .. n)
+end
+
+local function holeCF(n)
+	local h = hole(n)
+	return CFrame.new(h:GetAttribute("HoleOrigin")) * CFrame.Angles(0, math.rad(h:GetAttribute("HoleYaw") or 0), 0)
+end
+
+local function W(n, x, y, z)
+	return holeCF(n):PointToWorldSpace(Vector3.new(x, y or 0, z))
+end
+
+local function WD(n, dx, dz)
+	return holeCF(n):VectorToWorldSpace(Vector3.new(dx, 0, dz))
+end
+
+local function toLocal(n, p: Vector3)
+	return holeCF(n):PointToObjectSpace(p)
+end
+
+local feltParams = RaycastParams.new()
+feltParams.FilterType = Enum.RaycastFilterType.Include
+local function refreshFelt()
+	feltParams.FilterDescendantsInstances = CollectionService:GetTagged("GolfSurface")
+end
+
+-- Felt under a world point (searching down from `fromY`, default 3 studs above it): hit or nil.
+local function feltHit(p: Vector3, fromY: number?)
+	local top = fromY or (p.Y + 3)
+	return workspace:Raycast(Vector3.new(p.X, top, p.Z), Vector3.new(0, -(top - p.Y) - 6, 0), feltParams)
+end
+
+local function zoneOf(p: Vector3)
+	local hit = workspace:Raycast(p + Vector3.new(0, 0.05, 0), Vector3.new(0, -(R + 0.6), 0), feltParams)
+	return hit and hit.Instance:GetAttribute("Zone"), hit and hit.Instance:GetAttribute("PieceId")
+end
+
+local function ballPlaneY()
+	return Ball.ball.Position.Y - R
+end
+
+-- Places the ball at spec-local (x, z) on hole n, on the felt (the highest piece at or below spec height y + 0.5).
+local function placeL(n, x, z, y)
+	local wp = W(n, x, y or 0, z)
+	local hit = feltHit(wp, wp.Y + 0.6)
+	if not hit then
+		error(string.format("no felt under hole %d (%.2f, %.2f)", n, x, z))
+	end
+	place(n, hit.Position.X, hit.Position.Z, hit.Position.Y)
+	return hit.Position
+end
+
+-- Flat-felt rolling model inverse: launch speed (studs/s) that rolls `d` studs.
+local function speedFor(d: number)
+	local lo, hi = 0, 60
+	for _ = 1, 40 do
+		local mid = (lo + hi) / 2
+		if idealRollout(mid) < d then
+			lo = mid
+		else
+			hi = mid
+		end
+	end
+	return (lo + hi) / 2
+end
+
+-- aim = atan2(dz, dx) in degrees, in the hole's local frame (hNN-notes.md convention)
+local function aimDir(n, deg)
+	local a = math.rad(deg)
+	return WD(n, math.cos(a), math.sin(a))
+end
+
+local function obstaclesOf(n)
+	local out = {}
+	for _, d in hole(n).Geometry:GetChildren() do
+		if d:IsA("BasePart") and d.CanCollide and (d.Name == "Wall" or d.Name == "Bumper") then
+			table.insert(out, d)
+		end
+	end
+	return out
+end
+
+-- Line of sight for a rolling ball from a to b (world): follows the felt, blocked by walls/bumpers and steps up.
+local losParams = RaycastParams.new()
+losParams.FilterType = Enum.RaycastFilterType.Include
+local function los(n, a: Vector3, b: Vector3)
+	losParams.FilterDescendantsInstances = obstaclesOf(n)
+	local d = flat(b - a).Magnitude
+	local steps = math.max(1, math.ceil(d / 0.4))
+	local prev = a
+	local prevH = a.Y - R
+	for i = 1, steps do
+		local p = a:Lerp(b, i / steps)
+		local hit = feltHit(Vector3.new(p.X, prevH, p.Z), prevH + 0.6)
+		if not hit then
+			return false
+		end
+		local h = hit.Position.Y
+		if h > prevH + 0.25 then
+			return false
+		end
+		local from = Vector3.new(prev.X, prevH + R + 0.03, prev.Z)
+		local to = Vector3.new(p.X, h + R + 0.03, p.Z)
+		if (to - from).Magnitude > 1e-3 and workspace:Spherecast(from, R * 0.9, to - from, losParams) then
+			return false
+		end
+		prev, prevH = Vector3.new(p.X, h + R, p.Z), h
+	end
+	return true
+end
+
+------------------------------------------------------------------------ moving parts: phase + client lag
+local function moversOf(n)
+	local out = {}
+	local f = hole(n):FindFirstChild("Movers")
+	for _, m in f and f:GetChildren() or {} do
+		if CollectionService:HasTag(m, "GolfMover") then
+			table.insert(out, m)
+		end
+	end
+	return out
+end
+
+-- spec value of a mover at server time t (same as GolfServer.Movers.value)
+local function moverValue(m, t)
+	local sp = m:GetAttribute("Speed")
+	local phase = m:GetAttribute("Phase") or 0
+	local per = m:GetAttribute("Period")
+	if not m:GetAttribute("HasRange") then
+		return phase + sp * (t % per)
+	end
+	local a, b = m:GetAttribute("RangeMin"), m:GetAttribute("RangeMax")
+	local span = b - a
+	local u = (phase - a) + math.abs(sp) * (t % per)
+	u = u - 2 * span * math.floor(u / (2 * span))
+	return u < span and a + u or b - (u - span)
+end
+
+-- the value this client currently SEES (replicated physics), from the first blocker's pose
+local function moverObserved(m)
+	local blk = m:FindFirstChild("Blocker")
+	local rest = blk and blk:GetAttribute("RestCFrame")
+	if not rest then
+		return nil
+	end
+	local axis = m:GetAttribute("AxisWorld")
+	if m:GetAttribute("Type") == "slide" then
+		return (blk.Position - rest.Position):Dot(axis)
+	end
+	-- rotation of the blocker's frame about the axis, relative to its rest frame
+	local rel = blk.CFrame.Rotation * rest.Rotation:Inverse()
+	local ax, ang = rel:ToAxisAngle()
+	if ax:Dot(axis) < 0 then
+		ang = -ang
+	end
+	return math.deg(ang)
+end
+
+-- How far (s) behind server time this client sees the mover: the lag L minimising |value(now - L) - observed|.
+local function moverLag(m)
+	local best, bestErr = 0, math.huge
+	local obs = moverObserved(m)
+	if not obs then
+		return 0
+	end
+	local now = workspace:GetServerTimeNow()
+	local rot = m:GetAttribute("Type") == "rotate"
+	for L = 0, 0.6, 0.005 do
+		local e = moverValue(m, now - L) - obs
+		if rot then
+			e = (e + 180) % 360 - 180
+		end
+		if math.abs(e) < bestErr then
+			best, bestErr = L, math.abs(e)
+		end
+	end
+	return best, bestErr
+end
+
+local lagCache = {}
+local function holeLag(n)
+	if lagCache[n] then
+		return lagCache[n]
+	end
+	local ms = moversOf(n)
+	if #ms == 0 then
+		return 0
+	end
+	local sum, k = 0, 0
+	for _ = 1, 5 do
+		for _, m in ms do
+			sum += moverLag(m)
+			k += 1
+		end
+		task.wait(0.05)
+	end
+	lagCache[n] = sum / k
+	return lagCache[n]
+end
+
+-- Wait until the hole's moving parts (as this client sees them) are at spec time `phase` (mod `period`).
+local function waitPhase(n, phase, period)
+	local ms = moversOf(n)
+	if #ms == 0 or not phase then
+		return nil
+	end
+	period = period or hole(n):GetAttribute("MoverPeriod")
+	local lag = holeLag(n)
+	local t0 = os.clock()
+	while os.clock() - t0 < period + 1 do
+		local seen = (workspace:GetServerTimeNow() - lag) % period
+		local d = (seen - phase) % period
+		if d < 0.02 or d > period - 0.005 then
+			break
+		end
+		RunService.Heartbeat:Wait()
+	end
+	return round((workspace:GetServerTimeNow() - lag) % period, 3)
+end
+
+------------------------------------------------------------------------ issue detection (escape / stuck)
+-- Every scripted shot also records: teleports, unstick nudges, off-felt rests, forced rests and (via the
+-- server's LastOOB attribute) whether an out-of-bounds was a designed hazard or an escape.
+local shotFlags = nil -- per-shot list of flags, set by shoot()
+local issues = {} -- per-scenario list of {kind, hole, label, pos, detail}
+
+local function flag(kind, data)
+	data = data or {}
+	data.kind = kind
+	data.label = shotLabel
+	data.hole = Ball.holeIndex
+	if shotFlags then
+		table.insert(shotFlags, data)
+	end
+	if kind ~= "teleport" and kind ~= "hazard" then
+		table.insert(issues, data)
+	end
+	event("flag", data)
+end
+
+-- shoot() in studs/s along a world direction, plus phase timing and flag collection
+local function shootS(label: string, dir: Vector3, studsPerSec: number, opts)
+	opts = opts or {}
+	shotFlags = {}
+	local before = Ball.ball:GetAttribute("LastOOB")
+	Ball.ball:SetAttribute("LastOOB", nil)
+	local r = shoot(label, dir, studsPerSec * STUD, opts)
+	r.speed = round(studsPerSec)
+	r.flags = shotFlags
+	shotFlags = nil
+	local last = Ball.ball:GetAttribute("LastOOB")
+	if r.outcome == "oob" then
+		r.outcome = (last and string.sub(last, 1, 7) == "hazard:") and "hazard" or "escape"
+		r.oob = last or "unknown"
+		if r.outcome == "escape" then
+			table.insert(issues, { kind = "escape", label = label, hole = Ball.holeIndex, pos = r.finish, detail = last })
+			event("flag", { kind = "escape", label = label, pos = r.finish })
+		end
+	elseif r.outcome == "timeout" then
+		table.insert(issues, { kind = "stuck-timeout", label = label, hole = Ball.holeIndex, pos = r.finish })
+		event("flag", { kind = "stuck-timeout", label = label, pos = r.finish })
+	end
+	local _ = before
+	local z, piece = zoneOf(Ball.ball.Position)
+	r.zone, r.piece = z, piece
+	-- after an OOB the server re-places the ball at the stroke start after 1 s: wait for it
+	if r.outcome == "hazard" or r.outcome == "escape" then
+		local t0 = os.clock()
+		while (Ball.state ~= "ready") and os.clock() - t0 < 5 do
+			task.wait()
+		end
+		task.wait(0.2)
+	end
+	return r
+end
+
+------------------------------------------------------------------------ AI golfer (intended lines)
+local specCache = {}
+local function spec(n)
+	if not specCache[n] then
+		local s = testRemote:InvokeServer("spec", { hole = n })
+		specCache[n] = HttpService:JSONDecode(s)
+	end
+	return specCache[n]
+end
+
+local function inList(list, v)
+	for _, x in list or {} do
+		if x == v then
+			return true
+		end
+	end
+	return false
+end
+
+-- Pick the target like the designer's sim golfer: the cup when allowed from this zone and in sight, else the
+-- furthest waypoint (last -> first) for this skill whose `from` includes the current zone and is in sight.
+local function chooseTarget(n, skill, zone, pos)
+	local sp = spec(n)
+	local cupL = sp.cup.position
+	local cupW = W(n, cupL[1], cupL[2], cupL[3])
+	local cupOk = sp.cup_from == nil or inList(sp.cup_from, zone)
+	if cupOk and los(n, pos, cupW + Vector3.new(0, R, 0)) then
+		return cupW, 1.0, 1, "cup"
+	end
+	local wps = {}
+	for _, key in { skill, "all" } do
+		for _, w in (sp.ai_waypoints or {})[key] or {} do
+			table.insert(wps, w)
+		end
+	end
+	for i = #wps, 1, -1 do
+		local w = wps[i]
+		if inList(w.from, zone) then
+			local p = W(n, w.pos[1], w.pos[2], w.pos[3])
+			local hit = feltHit(p, p.Y + 0.6)
+			local tp = hit and hit.Position + Vector3.new(0, R, 0) or p
+			if los(n, pos, tp) or i == 1 then
+				return tp, w.carry or 0, w.power_scale or 1, w.id
+			end
+		end
+	end
+	return cupW, 1.0, 1, cupOk and "cup-blind" or "cup-fallback"
+end
+
+-- Plays the hole from the tee with the intended (spec waypoint) line for `skill` ("good" = aggressive/risk line,
+-- "average" = safe line). Returns strokes, holed, per-stroke log.
+local function playHole(n, skill, opts)
+	opts = opts or {}
+	local sp = spec(n)
+	local t = sp.tee.position
+	placeL(n, t[1], t[3], t[2])
+	local strokes, shots = 0, {}
+	local holed = false
+	while strokes < (opts.cap or Config.MaxStrokes) do
+		local pos = Ball.ball.Position
+		local zone = zoneOf(pos) or "?"
+		local target, carry, pscale, tid = chooseTarget(n, skill, zone, pos)
+		local d = flat(target - pos).Magnitude
+		local v = speedFor(d + carry) * pscale
+		local climb = target.Y - pos.Y
+		if climb > 0.05 then
+			v += math.sqrt(2 * workspace.Gravity * climb)
+		end
+		v = math.min(v, VMAX)
+		local phase
+		if opts.phases and opts.phases[strokes + 1] then
+			phase = waitPhase(n, opts.phases[strokes + 1])
+		end
+		local r = shootS(string.format("h%d-%s-s%d", n, skill, strokes + 1), target - pos, v, { cup = hole(n).Cup, timeout = 22 })
+		strokes += 1
+		r.fromZone, r.target, r.targetId, r.phase = zone, vec(target), tid, phase
+		r.contacts = nil
+		table.insert(shots, r)
+		if r.outcome == "hazard" or r.outcome == "escape" then
+			strokes += Config.PenaltyStrokes
+		elseif r.outcome == "cup" then
+			holed = true
+			break
+		end
+	end
+	return { skill = skill, strokes = strokes, holed = holed, par = sp.par, shots = shots }
+end
+
+------------------------------------------------------------------------ per-hole scenario parts
+local function opts()
+	local raw = workspace:GetAttribute("GolfTestOpts")
+	local ok, o = pcall(HttpService.JSONDecode, HttpService, raw or "{}")
+	return ok and o or {}
+end
+
+local function frameHole(n)
+	local b = hole(n).Bounds
+	local size = math.max(b.Size.X, b.Size.Z)
+	setFrame(Vector3.new(b.Position.X, hole(n):GetAttribute("FeltMaxY"), b.Position.Z), size * 0.9, Vector3.new(0, 0, -1))
+end
+
+-- Hole-in-one attempt: the designer's ace line from hNN-notes.md (aim, speed, mover phase) first. If it misses
+-- (the in-engine bounces/skid differ a little from the designer's sim), search like a golfer would:
+--   1. a coarse aim scan around the spec line (+-1, +-2 ... +-8 deg, nearest first) at the spec speed and 88% of it;
+--   2. Newton/Broyden refinement from the closest finish (miss vector in the hole frame vs aim and speed), with a
+--      trust region that halves after a worse shot.
+-- Stops at the first ace or after `tries` shots.
+local function hioAttempt(n, tries)
+	local sp = spec(n)
+	local line = sp.hio
+	if not line then
+		return { skipped = "no HIO line in the notes" }
+	end
+	tries = tries or 30
+	local t = sp.tee.position
+	local cupL = Vector3.new(sp.cup.position[1], 0, sp.cup.position[3])
+	local attempts = {}
+	local ace
+	local best
+	local function try(aim, v, stage)
+		v = math.clamp(v, 4, VMAX)
+		placeL(n, t[1], t[3], t[2])
+		local phase = line.phase and waitPhase(n, line.phase) or nil
+		local r = shootS(string.format("h%d-hio-%d", n, #attempts + 1), aimDir(n, aim), v, { cup = hole(n).Cup, timeout = 22 })
+		local fl = toLocal(n, Vector3.new(r.finish[1], r.finish[2], r.finish[3]))
+		local miss = Vector2.new(fl.X - cupL.X, fl.Z - cupL.Z)
+		r.aimDeg, r.phase, r.contacts, r.stage = round(aim, 2), phase, nil, stage
+		r.missStuds = round(miss.Magnitude, 2)
+		r.miss = { round(miss.X, 2), round(miss.Y, 2) }
+		table.insert(attempts, r)
+		local valid = r.outcome == "rest" or r.outcome == "cup"
+		if r.outcome == "cup" then
+			ace = r
+		end
+		if valid and (not best or miss.Magnitude < best.m.Magnitude) then
+			best = { a = aim, v = v, m = miss }
+		end
+		return miss, valid
+	end
+	local function done()
+		return ace ~= nil or #attempts >= tries
+	end
+	local a0, v0 = line.aim_deg, math.min(line.speed, VMAX)
+	try(a0, v0, "spec")
+	-- 0. candidate lines from tools/engine_sim.py (engine-calibrated sim), if the runner passed any
+	local cands = (opts().hioLines or {})[tostring(n)] or {}
+	for _, c in cands do
+		if done() then
+			break
+		end
+		if c[3] and line.phase ~= nil then
+			line = table.clone(line)
+			line.phase = c[3]
+		end
+		try(c[1], c[2], "engine-sim")
+		if best and best.m.Magnitude < 2 then
+			break
+		end
+	end
+	-- 1. coarse scan
+	local scan = {}
+	for k = 1, 8 do
+		table.insert(scan, { a0 + k, v0 })
+		table.insert(scan, { a0 - k, v0 })
+	end
+	for k = 0, 8 do
+		table.insert(scan, { a0 + k, v0 * 0.88 })
+		if k > 0 then
+			table.insert(scan, { a0 - k, v0 * 0.88 })
+		end
+	end
+	local scanBudget = math.max(0, tries - 8 - #attempts)
+	for i, c in scan do
+		if done() or i > scanBudget or (best and best.m.Magnitude < 2) then
+			break
+		end
+		try(c[1], c[2], "scan")
+		-- once something lands within 2 studs, go refine it
+		if best and best.m.Magnitude < 2 then
+			break
+		end
+	end
+	-- 2. refine from the best finish
+	if not done() and best then
+		local da, dv = 0.4, best.v >= VMAX - 0.05 and -0.4 or 0.4
+		local base = best
+		local ma = try(base.a + da, base.v, "refine")
+		local mv = (not done()) and try(base.a, base.v + dv, "refine") or base.m
+		local J = { (ma - base.m) / da, (mv - base.m) / dv }
+		local rA, rV = 2, 2
+		while not done() do
+			local j1, j2 = J[1], J[2]
+			local det = j1.X * j2.Y - j2.X * j1.Y
+			local stepA, stepV
+			if math.abs(det) < 1e-4 then
+				stepA, stepV = (#attempts % 2 == 0) and rA / 2 or -rA / 2, 0
+			else
+				stepA = (-best.m.X * j2.Y + best.m.Y * j2.X) / det
+				stepV = (-j1.X * best.m.Y + j1.Y * best.m.X) / det
+			end
+			stepA, stepV = math.clamp(stepA, -rA, rA), math.clamp(stepV, -rV, rV)
+			local from = best
+			local na, nv = from.a + stepA, math.clamp(from.v + stepV, 4, VMAX)
+			local m, valid = try(na, nv, "refine")
+			if valid then
+				local s1, s2 = na - from.a, nv - from.v
+				local Js = j1 * s1 + j2 * s2
+				local ss = s1 * s1 + s2 * s2
+				if ss > 1e-6 then
+					local corr = ((m - from.m) - Js) / ss
+					J = { j1 + corr * s1, j2 + corr * s2 }
+				end
+			end
+			if not valid or m.Magnitude >= from.m.Magnitude then
+				rA, rV = math.max(rA / 2, 0.05), math.max(rV / 2, 0.05)
+			end
+		end
+	end
+	return {
+		line = line,
+		attempts = attempts,
+		ace = ace ~= nil,
+		aceAim = ace and ace.aimDeg,
+		aceSpeed = ace and ace.speed,
+		bestMiss = best and round(best.m.Magnitude, 2),
+		bestAim = best and round(best.a, 2),
+		bestSpeed = best and round(best.v, 2),
+	}
+end
+
+-- Bank / rail shots (spec-local start, aim point, speed): logs the first contacts (restitution, angles).
+local BANKS = {
+	[1] = { { "deflector-45", { 0, -26.5 }, { 0, -33 }, 10 }, { "lane-rail-30", { -2, -6 }, { 3.5, -15 }, 9 } },
+	[2] = { { "stump-headon", { 0, -14 }, { 0, -19 }, 8 }, { "lane-rail-40", { 2, -4 }, { -4, -11 }, 9 } },
+	[3] = { { "bank1-ride", { 0, -3 }, { -1, -11.5 }, 15 }, { "bank2-ride", { 6, -12 }, { 18, -12 }, 12 } },
+	[4] = { { "plaza-rail-45", { 0, -15 }, { -7, -22 }, 9 }, { "ramp-rail", { 3, -28.5 }, { 5, -33 }, 9 } },
+	[5] = { { "shore-rail-45", { -6, -4 }, { -15, -13 }, 10 }, { "covered-rail", { -10.5, -16 }, { -7.75, -21 }, 8 } },
+	[6] = { { "board1", { 0, -2 }, { 0, -8.5 }, 12 }, { "board2", { 9, -8.5 }, { 15, -8 }, 12 } },
+	[7] = { { "t2-rail-45", { 4, -16 }, { 10, -22 }, 8 }, { "t3-rail", { -4, -36 }, { -8.25, -38 }, 7 } },
+	[8] = { { "bank1-ride", { -8, -11.5 }, { -17, -11.5 }, 12 }, { "bank2-ride", { -16.5, -42 }, { -16.5, -49 }, 10 } },
+	[9] = { { "bank1-ride", { 0, -18 }, { -1, -25 }, 12 }, { "root-deflector", { 15, -25.5 }, { 22, -26.5 }, 10 } },
+}
+
+local function bankShots(n)
+	local out = {}
+	for _, b in BANKS[n] or {} do
+		local p = placeL(n, b[2][1], b[2][2], 3)
+		local tgt = W(n, b[3][1], 0, b[3][2])
+		local r = shootS(string.format("h%d-bank-%s", n, b[1]), tgt - p, b[4], { timeout = 14 })
+		local c = r.contacts and r.contacts[1]
+		r.bank = b[1]
+		r.firstContact = c and {
+			part = c.part,
+			restitution = c.restitution,
+			tangentialRetention = c.tangentialRetention,
+			angleIn = c.angleIn,
+			angleOut = c.angleOut,
+			speedIn = c.speedIn,
+			speedOut = c.speedOut,
+		}
+		r.nContacts = r.contacts and #r.contacts or 0
+		r.contacts = nil
+		table.insert(out, r)
+	end
+	return out
+end
+
+-- Moving-part timing sweep: the intended first shot (tee -> first waypoint) at N evenly spaced phases of each
+-- mover's own cycle. Records whether the ball touched a blocker and where it ended up.
+local function timingSweep(n, count)
+	local ms = moversOf(n)
+	if #ms == 0 then
+		return nil
+	end
+	local sp = spec(n)
+	local t = sp.tee.position
+	local out = {}
+	for _, m in ms do
+		local per = m:GetAttribute("Period")
+		local rows = {}
+		for k = 0, count - 1 do
+			local ph = per * k / count
+			local tee = placeL(n, t[1], t[3], t[2])
+			local pos = Ball.ball.Position
+			local line = sp.hio
+			local dir, v
+			if line then
+				dir, v = aimDir(n, line.aim_deg), line.speed
+			else
+				local target = chooseTarget(n, "good", zoneOf(pos) or "?", pos)
+				dir, v = target - pos, VMAX * 0.8
+			end
+			-- wait for this mover's phase (as seen on this client)
+			local lag = holeLag(n)
+			local t0 = os.clock()
+			while os.clock() - t0 < per + 1 do
+				local seen = (workspace:GetServerTimeNow() - lag) % per
+				local d = (seen - ph) % per
+				if d < 0.02 or d > per - 0.005 then
+					break
+				end
+				RunService.Heartbeat:Wait()
+			end
+			local r = shootS(string.format("h%d-sweep-%s-%d", n, m:GetAttribute("MoverId"), k), dir, v, { cup = hole(n).Cup, timeout = 22 })
+			local blocked = false
+			for _, c in r.contacts or {} do
+				if string.find(c.part or "", "Blocker") then
+					blocked = true
+				end
+			end
+			table.insert(rows, { phase = round(ph, 2), outcome = r.outcome, zone = r.zone, blocked = blocked, finish = r.finish, flags = r.flags })
+			local _ = tee
+		end
+		table.insert(out, { mover = m:GetAttribute("MoverId"), period = per, rows = rows })
+	end
+	return out
+end
+
+-- Fuzz: random shots (any direction, 20-100% power) from the tee and from random spots on the felt.
+-- Counts escapes (OOB outside any hazard), stuck balls (timeouts, off-felt rests, forced rests) and nudges.
+local function fuzz(n, count, seed)
+	local rng = Random.new(seed or n * 7919)
+	local sp = spec(n)
+	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, holed = 0, list = {} }
+	for i = 1, count do
+		local start
+		if i % 3 == 1 then
+			local t = sp.tee.position
+			start = { t[1], t[3], t[2] }
+		else
+			local f = sp.felt[rng:NextInteger(1, #sp.felt)]
+			if f.overlay then
+				f = sp.felt[1]
+			end
+			local hx, hz = f.size[1] / 2 - 0.4, f.size[2] / 2 - 0.4
+			local lx, lz = rng:NextNumber(-hx, hx), rng:NextNumber(-hz, hz)
+			local yaw = math.rad(f.yaw or 0)
+			start = { f.center[1] + lx * math.cos(yaw) + lz * math.sin(yaw), f.center[3] - lx * math.sin(yaw) + lz * math.cos(yaw), f.center[2] }
+		end
+		local ok = pcall(placeL, n, start[1], start[2], start[3] + 0.3)
+		if ok then
+			local ang = rng:NextNumber(0, 360)
+			local v = rng:NextNumber(0.2, 1.0) * VMAX
+			local r = shootS(string.format("h%d-fuzz-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26 })
+			res.shots += 1
+			if r.outcome == "hazard" then
+				res.hazards += 1
+			elseif r.outcome == "escape" then
+				res.escapes += 1
+			elseif r.outcome == "timeout" then
+				res.stuck += 1
+			elseif r.outcome == "cup" then
+				res.holed += 1
+			end
+			for _, f in r.flags or {} do
+				if f.kind == "unstuck" then
+					res.nudges += 1
+				elseif f.kind == "offsurface" or f.kind == "forcedrest" then
+					res.stuck += 1
+				end
+			end
+			if r.outcome == "escape" or r.outcome == "timeout" or #(r.flags or {}) > 0 then
+				table.insert(res.list, { label = r.label, start = start, aim = round(ang, 1), speed = round(v), outcome = r.outcome, finish = r.finish, flags = r.flags })
+			end
+		end
+	end
+	return res
+end
+
+local function holeScenario(n)
+	return function()
+		refreshFelt()
+		table.clear(issues)
+		lagCache[n] = nil
+		local o = opts()
+		local parts = o.parts or "routes,hio,banks,sweep,fuzz"
+		local out = { hole = n, name = hole(n):GetAttribute("HoleName"), par = hole(n):GetAttribute("Par") }
+		frameHole(n)
+		if #moversOf(n) > 0 then
+			out.clientLag = round(holeLag(n), 3)
+		end
+		if string.find(parts, "routes") then
+			out.routes = { playHole(n, "good"), playHole(n, "average") }
+		end
+		if string.find(parts, "hio") then
+			out.hio = hioAttempt(n, o.hioTries)
+		end
+		if string.find(parts, "banks") then
+			out.banks = bankShots(n)
+		end
+		if string.find(parts, "sweep") then
+			out.sweep = timingSweep(n, o.sweep or 6)
+		end
+		if string.find(parts, "fuzz") then
+			out.fuzz = fuzz(n, o.fuzz or 12, o.seed)
+		end
+		out.issues = table.clone(issues)
+		out.escapes, out.stuck = 0, 0
+		for _, it in issues do
+			if it.kind == "escape" then
+				out.escapes += 1
+			elseif it.kind ~= "unstuck" then
+				out.stuck += 1
+			end
+		end
+		out.nudges = 0
+		for _, it in issues do
+			if it.kind == "unstuck" then
+				out.nudges += 1
+			end
+		end
+		return out
+	end
+end
+
 ------------------------------------------------------------------------ scenarios
-local S = 1 -- felt surface height on holes 1, 2, 4 and the test lane
-local HILL_LOW, HILL_HIGH = 1, 2.2
 local SCENARIOS = {}
 
 local function scenario(def)
 	table.insert(SCENARIOS, def)
 end
+
+local S = 1 -- test lane felt height
 
 scenario({
 	name = "rollout",
@@ -402,14 +1107,15 @@ scenario({
 
 scenario({
 	name = "bank",
-	desc = "Hole 2 Dogleg 45-degree bank wall at 4 and 6 m/s: speed and angle in/out",
+	desc = "Hole 1 Lantern Gate 45-degree timber deflector at 4 and 6 m/s: speed and angle in/out",
 	seconds = 13,
 	run = function()
+		refreshFelt()
 		local shots = {}
-		setFrame(Vector3.new(31, S, 15), 14, Vector3.new(1, 0, 1))
+		setFrame(W(1, -1, 0.5, -31), 12, Vector3.new(1, 0, 0))
 		for _, speed in { 4, 6 } do
-			place(2, 30, 2, S)
-			table.insert(shots, shoot("bank-" .. speed .. "mps", Vector3.new(0, 0, 1), speed, { timeout = 6 }))
+			placeL(1, 0, -27, 1)
+			table.insert(shots, shoot("bank-" .. speed .. "mps", WD(1, 0, -1), speed, { timeout = 6 }))
 		end
 		return { shots = shots }
 	end,
@@ -417,70 +1123,46 @@ scenario({
 
 scenario({
 	name = "walls",
-	desc = "Restitution: straight wall head-on (3 and 6 m/s) and at 45 degrees, bumper post head-on and at 45 degrees",
+	desc = "Restitution: rail head-on (3 and 6 m/s) and at 45 degrees, bumper block head-on and at 45 degrees",
 	seconds = 15,
 	run = function()
+		refreshFelt()
 		local shots = {}
-		-- hole 1 end wall (inner face z = 32), head-on
-		setFrame(Vector3.new(-1, S, 27), 10, Vector3.new(1, 0, 0))
+		-- hole 1 green's north rail (inner face z = -36), head-on
+		setFrame(W(1, -6, 0.5, -34), 8, Vector3.new(1, 0, 0))
 		for _, speed in { 3, 6 } do
-			place(1, -2.5, 24, S)
-			table.insert(shots, shoot("wall-straight-" .. speed .. "mps", Vector3.new(0, 0, 1), speed, { timeout = 3 }))
+			placeL(1, -6, -32.5, 1)
+			table.insert(shots, shoot("wall-straight-" .. speed .. "mps", WD(1, 0, -1), speed, { timeout = 3 }))
 		end
-		-- hole 1 right wall (inner face x = 4) at 45 degrees
-		place(1, 1, 22, S)
-		table.insert(shots, shoot("wall-45deg-5mps", Vector3.new(1, 0, 1), 5, { timeout = 3 }))
-		-- hole 2 bumper post (44, 20), r 0.6: head-on, then offset so the contact normal is 45 degrees
-		setFrame(Vector3.new(42, S, 20), 8, Vector3.new(0, 0, 1))
-		place(2, 40, 20, S)
-		table.insert(shots, shoot("post-straight-6mps", Vector3.new(1, 0, 0), 6, { timeout = 3 }))
-		place(2, 40, 20 + (0.6 + R) * math.sin(math.rad(45)), S)
-		table.insert(shots, shoot("post-45deg-5mps", Vector3.new(1, 0, 0), 5, { timeout = 3 }))
-		return { shots = shots }
-	end,
-})
-
-scenario({
-	name = "windmill",
-	desc = "Hole 4: putt through the windmill tunnel at 4 m/s, timed to two blade phases",
-	seconds = 20,
-	run = function()
-		local shots = {}
-		local mill = hole(4):FindFirstChild("Windmill")
-		local omega = (mill:GetAttribute("RPS") or 0.25) * math.pi * 2
-		setFrame(Vector3.new(115, S, 20), 26, Vector3.new(1, 0, 0))
-		for _, phase in { 0, 45 } do
-			place(4, 115, -1, S)
-			-- wait for a fixed blade phase (4 blades -> the pattern repeats every 90 degrees)
-			local period = (math.pi / 2) / omega
-			local t0 = os.clock()
-			while os.clock() - t0 < period + 0.1 do
-				local a = math.deg((workspace:GetServerTimeNow() * omega) % (math.pi / 2))
-				if math.abs(a - phase) < 2 then
-					break
-				end
-				task.wait()
-			end
-			table.insert(shots, shoot("mill-phase" .. phase, Vector3.new(0, 0, 1), 4, { cup = hole(4).Cup, timeout = 14 }))
-		end
+		-- hole 1 lane's east rail (inner face x = 3.5) at 45 degrees
+		placeL(1, 1, -8, 1)
+		table.insert(shots, shoot("wall-45deg-5mps", WD(1, 1, -1), 5, { timeout = 3 }))
+		-- hole 3 toadstool stool bumper (17, -28.8), 1.6 square: head-on, then 45 degrees onto its face
+		setFrame(W(3, 17, 0, -27), 8, Vector3.new(0, 0, 1))
+		placeL(3, 17, -25, 1)
+		table.insert(shots, shoot("bumper-straight-6mps", WD(3, 0, -1), 6, { timeout = 3 }))
+		placeL(3, 14.6, -25, 1)
+		table.insert(shots, shoot("bumper-45deg-5mps", WD(3, 1, -1), 5, { timeout = 3 }))
 		return { shots = shots }
 	end,
 })
 
 scenario({
 	name = "hill",
-	desc = "Hole 3 The Hill: 5 m/s climbs to the green, 2 m/s rolls back",
+	desc = "Hole 9 ramp (1 stud rise): 5 m/s climbs to the landing, 2 m/s rolls back",
 	seconds = 22,
 	run = function()
+		refreshFelt()
 		local shots = {}
-		local dir = Vector3.new(77 - 75, 0, 25 - 0)
-		setFrame(Vector3.new(75, 1.6, 12), 22, Vector3.new(1, 0, 0))
+		local low = W(9, 0, 0, -2).Y
+		local high = W(9, 0, 1, -25).Y
+		setFrame(W(9, 0, 0.5, -14), 24, Vector3.new(1, 0, 0))
 		for _, def in { { "hill-strong-5mps", 5 }, { "hill-weak-2mps", 2 } } do
-			place(3, 75, 0, HILL_LOW)
-			local r = shoot(def[1], dir, def[2], { cup = hole(3).Cup, timeout = 14 })
-			r.madeGreen = r.maxY > HILL_HIGH + R - 0.05
-			r.endedOnGreen = r.finish[2] > HILL_HIGH + R - 0.05
-			r.rolledBack = r.finish[3] < 6
+			placeL(9, 0, -2, 1)
+			local r = shoot(def[1], WD(9, 0, -1), def[2], { cup = hole(9).Cup, timeout = 14 })
+			r.madeGreen = r.maxY > high + R - 0.05
+			r.endedOnGreen = r.finish[2] > high + R - 0.05
+			r.rolledBack = r.finish[2] < low + R + 0.05
 			table.insert(shots, r)
 		end
 		return { shots = shots }
@@ -489,19 +1171,19 @@ scenario({
 
 scenario({
 	name = "cup",
-	desc = "Hole 1 cup from 60 cm at 1.3 to 4 m/s: holed or lip-out, speed at the rim",
+	desc = "Hole 1 cup (r 0.5) from 60 cm at 1.3 to 4 m/s: holed or lip-out, speed at the rim",
 	seconds = 16,
 	run = function()
+		refreshFelt()
 		local shots = {}
 		local cup = hole(1).Cup
-		setFrame(Vector3.new(0, S, 27), 6, Vector3.new(1, 0, 0))
+		setFrame(cup.Position, 6, Vector3.new(1, 0, 0))
 		for _, speed in { 1.3, 1.6, 2.0, 2.5, 3.0, 4.0 } do
-			place(1, 0, 25, S)
-			local r = shoot("cup-" .. speed .. "mps", Vector3.new(0, 0, 1), speed, { cup = cup, timeout = 6 })
+			placeL(1, -9.5, -26.5 + 2, 1)
+			local r = shoot("cup-" .. speed .. "mps", WD(1, 0, -1), speed, { cup = cup, timeout = 6 })
 			r.holed = r.outcome == "cup"
 			r.cupPos = vec(cup.Position)
-			-- first pass: holed without touching anything away from the cup (the drop itself bumps the cup's
-			-- rim/liner, which the contact detector also logs, so contacts inside the cup don't count)
+			r.cupRadius = cup:GetAttribute("Radius")
 			local away = 0
 			for _, c in r.contacts do
 				if flat(Vector3.new(c.pos[1], c.pos[2], c.pos[3]) - cup.Position).Magnitude > cup:GetAttribute("Radius") + 2 * R then
@@ -515,6 +1197,291 @@ scenario({
 	end,
 })
 
+scenario({
+	name = "movers",
+	desc = "Moving parts vs spec: server constraint value and blocker pose error, network owner, client lag",
+	seconds = 8,
+	run = function()
+		refreshFelt()
+		local srv = HttpService:JSONDecode(testRemote:InvokeServer("movers", {}))
+		local lags = {}
+		for n = 1, 9 do
+			for _, m in moversOf(n) do
+				local lag, err = moverLag(m)
+				table.insert(lags, { hole = n, id = m:GetAttribute("MoverId"), lag = round(lag, 3), residual = round(err, 3) })
+			end
+		end
+		local ok = #srv.movers == 6
+		for _, m in srv.movers do
+			ok = ok and math.abs(m.err) < (m.type == "rotate" and 2 or 0.1) and m.blockerPosErr < 0.1 and m.networkOwnerServer and not m.anchored
+		end
+		return { server = srv.movers, client = lags, ok = ok }
+	end,
+})
+
+for n = 1, 9 do
+	scenario({
+		name = "h" .. n,
+		desc = "Hole " .. n .. ": intended lines (good/average), HIO line + sweep, rail banks, mover timing sweep, fuzz (escape/stuck)",
+		seconds = 600,
+		run = holeScenario(n),
+	})
+end
+
+-- Hole 7: can the sliding log pin the ball? Balls parked in / beside the log's path near both ends of its
+-- travel (next to the side rails and the pool gap) and slow putts into its path; each one records whether the
+-- ball ended up stuck against the log (contact + ~0 speed for > 0.5 s), what the unstick nudge did, and where.
+scenario({
+	name = "h7pin",
+	desc = "Hole 7 sliding log: try to pin the ball against a rail (parked balls, slow putts, end-of-travel), unstick nudge",
+	seconds = 240,
+	run = function()
+		refreshFelt()
+		table.clear(issues)
+		local n = 7
+		local log = moversOf(n)[1]
+		setFrame(W(n, 0, -1.2, -20.5), 24, Vector3.new(0, 0, -1))
+		local cases = {}
+		local blk = log:FindFirstChild("Blocker")
+		local function watch(label, seconds)
+			-- watch the ball for `seconds`: min speed while touching the log, max continuous pinned time, nudges
+			local t0 = os.clock()
+			local pinned, maxPinned, touched = 0, 0, false
+			local nudges0 = #issues
+			local lastT = os.clock()
+			while os.clock() - t0 < seconds do
+				RunService.Heartbeat:Wait()
+				local now2 = os.clock()
+				local dt = now2 - lastT
+				lastT = now2
+				local p = Ball.ball.Position
+				local lp = blk.CFrame:PointToObjectSpace(p)
+				local h = blk.Size / 2
+				local c = Vector3.new(math.clamp(lp.X, -h.X, h.X), math.clamp(lp.Y, -h.Y, h.Y), math.clamp(lp.Z, -h.Z, h.Z))
+				local touching = (lp - c).Magnitude < R + 0.05
+				touched = touched or touching
+				local v = flat(Ball.ball.AssemblyLinearVelocity).Magnitude
+				if touching and v < 0.5 then
+					pinned += dt
+					maxPinned = math.max(maxPinned, pinned)
+				else
+					pinned = 0
+				end
+			end
+			local nudged = {}
+			for i = nudges0 + 1, #issues do
+				table.insert(nudged, issues[i])
+			end
+			return { label = label, touchedLog = touched, maxPinnedS = round(maxPinned, 2), nudges = nudged, finish = vec(Ball.ball.Position), zone = zoneOf(Ball.ball.Position), state = Ball.state }
+		end
+		-- 1) parked balls in the log's path at the ends of its travel (log end reaches x = +-8.5; rails at +-10)
+		for _, x in { 8.4, 8.6, 9.0, 9.85, -8.4, -8.6, -9.0, -9.85, 0, 5 } do
+			for _, z in { -20.5, -19.98, -21.02 } do
+				local ok = pcall(placeL, n, x, z, -0.5)
+				if ok then
+					shotFlags = {}
+					local r = watch(string.format("parked x=%.2f z=%.2f", x, z), 5.2)
+					shotFlags = nil
+					r.start = { x, z }
+					table.insert(cases, r)
+				end
+			end
+		end
+		-- 2) slow putts into the log's path from the middle tier, at 4 phases
+		for _, ph in { 0, 1.2, 2.4, 3.6 } do
+			for _, x in { 7.5, -7.5, 0 } do
+				placeL(n, x, -18.5, -0.5)
+				waitPhase(n, ph, log:GetAttribute("Period"))
+				shotFlags = {}
+				Ball.hit(WD(n, 0, -1) * 2.2, "test")
+				local r = watch(string.format("putt x=%.1f phase=%.1f", x, ph), 5)
+				shotFlags = nil
+				r.start = { x, -18.5 }
+				table.insert(cases, r)
+				local t0 = os.clock()
+				while Ball.state ~= "ready" and os.clock() - t0 < 6 do
+					task.wait()
+				end
+			end
+		end
+		local pins, maxPinned = 0, 0
+		for _, c in cases do
+			maxPinned = math.max(maxPinned, c.maxPinnedS)
+			if c.maxPinnedS > 0.5 or #c.nudges > 0 then
+				pins += 1
+			end
+		end
+		return { cases = cases, pinCases = pins, maxPinnedS = maxPinned, issues = table.clone(issues) }
+	end,
+})
+
+-- Hole 8 root door (slides +-2.5 along z across the alcove mouth; its ends reach into the alcove rails):
+-- balls parked against the rails at the door's ends of travel. Does the door crush/launch/pin them?
+scenario({
+	name = "h8door",
+	desc = "Hole 8 sliding root door: balls parked against the alcove rails at the door's end of travel",
+	seconds = 120,
+	run = function()
+		refreshFelt()
+		table.clear(issues)
+		local n = 8
+		local door = moversOf(n)[1]
+		local blk = door:FindFirstChild("Blocker")
+		setFrame(W(n, 5, 0, -11.5), 10, Vector3.new(0, 0, -1))
+		local cases = {}
+		for _, c in { { 4.75, -8.1 }, { 4.75, -14.9 }, { 4.5, -8.2 }, { 5.0, -14.8 }, { 4.75, -9.0 }, { 3.9, -8.1 } } do
+			local ok = pcall(placeL, n, c[1], c[2], 0.5)
+			if ok then
+				local start = Ball.ball.Position
+				local t0 = os.clock()
+				local maxSpeed, maxY, pinned, maxPinned, lastT = 0, start.Y, 0, 0, os.clock()
+				shotFlags = {}
+				while os.clock() - t0 < 5.5 do
+					RunService.Heartbeat:Wait()
+					local dt = os.clock() - lastT
+					lastT = os.clock()
+					local v = Ball.ball.AssemblyLinearVelocity
+					maxSpeed = math.max(maxSpeed, v.Magnitude)
+					maxY = math.max(maxY, Ball.ball.Position.Y)
+					local lp = blk.CFrame:PointToObjectSpace(Ball.ball.Position)
+					local h = blk.Size / 2
+					local cl = Vector3.new(math.clamp(lp.X, -h.X, h.X), math.clamp(lp.Y, -h.Y, h.Y), math.clamp(lp.Z, -h.Z, h.Z))
+					if (lp - cl).Magnitude < R + 0.05 and flat(v).Magnitude < 0.5 then
+						pinned += dt
+						maxPinned = math.max(maxPinned, pinned)
+					else
+						pinned = 0
+					end
+				end
+				local fl = shotFlags
+				shotFlags = nil
+				table.insert(cases, {
+					start = c,
+					maxSpeed = round(maxSpeed),
+					maxRise = round(maxY - start.Y),
+					maxPinnedS = round(maxPinned, 2),
+					finish = vec(Ball.ball.Position),
+					zone = zoneOf(Ball.ball.Position),
+					state = Ball.state,
+					flags = fl,
+				})
+				local t1 = os.clock()
+				while Ball.state ~= "ready" and os.clock() - t1 < 6 do
+					task.wait()
+				end
+			end
+		end
+		return { cases = cases, issues = table.clone(issues), range = { door:GetAttribute("RangeMin"), door:GetAttribute("RangeMax") } }
+	end,
+})
+
+-- Hole-to-hole progression: sink every hole in turn (a gentle putt from 1.5 studs) and check that the server moves
+-- the ball to the next tee, the VR rig warps beside it (SimulateVR), the HUD shows the new hole, and after hole 9
+-- the final 9-hole scorecard opens.
+scenario({
+	name = "progress",
+	desc = "Hole-to-hole progression 1 -> 9: sink, next tee, VR warp to the tee, HUD, final 9-hole scorecard",
+	seconds = 120,
+	run = function()
+		refreshFelt()
+		local rows = {}
+		local gui = player.PlayerGui -- screen HUD (GolfHUD) or the VR wrist/card panels
+		local completed = false
+		local conn = Remotes.CourseComplete.OnClientEvent:Connect(function()
+			completed = true
+		end)
+		local n = 1
+		local sp
+		-- a spot 1.5 studs from the cup on the cup's own felt level with a clear line to it (any of 8 directions)
+		local wallRay = RaycastParams.new()
+		wallRay.FilterType = Enum.RaycastFilterType.Exclude
+		wallRay.FilterDescendantsInstances = { workspace:FindFirstChild("Balls") }
+		local function nearCup(k)
+			local c = spec(k).cup.position
+			local cupW = hole(k).Cup.Position
+			for i = 0, 7 do
+				local a = math.rad(90 + i * 45)
+				local x, z = c[1] + math.cos(a) * 1.5, c[3] + math.sin(a) * 1.5
+				local w = W(k, x, c[2], z)
+				local hit = feltHit(w)
+				if hit and math.abs(hit.Position.Y - cupW.Y) < 0.05 then
+					local from = w + Vector3.new(0, G + 0.02, 0)
+					local to = cupW + Vector3.new(0, G + 0.02, 0)
+					local block = workspace:Raycast(from, to - from, wallRay)
+					if not block or block.Instance.Name == "CupPlate" then
+						return x, z
+					end
+				end
+			end
+			return c[1], c[3] + 1.5
+		end
+		sp = spec(1)
+		local x0, z0 = nearCup(1)
+		placeL(1, x0, z0, sp.cup.position[2])
+		while n <= 9 do
+			sp = spec(n)
+			local cupW = hole(n).Cup.Position
+			if n > 1 then
+				-- the server already put us on this hole's tee: walk the ball up to its cup
+				local x, z = nearCup(n)
+				placeL(n, x, z, sp.cup.position[2])
+			end
+			local placedBefore = placedCount
+			local r = shootS("progress-h" .. n, cupW - Ball.ball.Position, speedFor(1.5 + 0.6), { cup = hole(n).Cup, timeout = 8 })
+			local row = { hole = n, sunk = r.outcome == "cup" }
+			if n < 9 then
+				-- wait for the server's next-hole placement (HoleTransitionTime)
+				local t0 = os.clock()
+				while (placedCount == placedBefore or Ball.holeIndex ~= n + 1 or Ball.state ~= "ready") and os.clock() - t0 < Config.HoleTransitionTime + 6 do
+					task.wait()
+				end
+				task.wait(0.3)
+				local tee = hole(n + 1).Tee.Position
+				row.nextHole = Ball.holeIndex
+				row.ballToTee = round(flat(Ball.ball.Position - tee).Magnitude, 3)
+				if VR and VR.test then
+					row.vrRigToBall = round(flat(VR.test.getOrigin().Position - Ball.ball.Position).Magnitude, 2)
+					row.vrRigFloorDelta = round(VR.test.getOrigin().Y - (Ball.ball.Position.Y - R), 3)
+				end
+				local title = ""
+				for _, d in gui and gui:GetDescendants() or {} do
+					if d:IsA("TextLabel") and string.find(d.Text, "^Hole %d") then
+						title = d.Text
+					end
+				end
+				row.hudTitle = title
+				row.ok = row.sunk and row.nextHole == n + 1 and row.ballToTee < 0.3 and (row.vrRigToBall == nil or row.vrRigToBall < 3)
+			else
+				local t0 = os.clock()
+				while not completed and os.clock() - t0 < Config.HoleTransitionTime + 6 do
+					task.wait()
+				end
+				task.wait(0.5)
+				local card = gui and gui:FindFirstChild("Scorecard", true)
+				row.courseComplete = completed
+				row.scorecard = card ~= nil
+				local cells = {}
+				for _, d in card and card:GetDescendants() or {} do
+					if d:IsA("TextLabel") then
+						table.insert(cells, d.Text)
+					end
+				end
+				row.scorecardCells = cells
+				row.ok = row.sunk and completed and card ~= nil and table.find(cells, "27") ~= nil and table.find(cells, "9") ~= nil
+			end
+			table.insert(rows, row)
+			n += 1
+		end
+		conn:Disconnect()
+		local ok = true
+		for _, r in rows do
+			ok = ok and r.ok
+		end
+		return { rows = rows, ok = ok }
+	end,
+})
+
+------------------------------------------------------------------------ VR plane snap / ghosting (SimulateVR)
 -- Measures, relative to the plane the ball rests on: the VR rig floor, the character's feet, and the putter
 -- head bottom with the (simulated) club held over the neighbouring ledge.
 local function measureLedge(label, holeN, ballX, ballZ, surfaceY, clubX, clubZ, teleportHead)
@@ -561,6 +1528,12 @@ local function measureLedge(label, holeN, ballX, ballZ, surfaceY, clubX, clubZ, 
 	return res
 end
 
+local function surfaceAt(n, x, z, y)
+	local p = W(n, x, y or 0, z)
+	local hit = feltHit(p, p.Y + 0.6)
+	return hit.Position
+end
+
 scenario({
 	name = "ledge",
 	desc = "VR plane snap: ball beside a rail/ledge; putter head, VR rig floor and character must stay on the ball's plane",
@@ -571,15 +1544,22 @@ scenario({
 		if skip then
 			return skip
 		end
+		refreshFelt()
 		local cases = {}
-		setFrame(Vector3.new(4, S, 8), 6, Vector3.new(0, 0, 1))
-		-- ball touching hole 1's right wall (inner face x = 4); the warp stance lands outside the wall
-		table.insert(cases, measureLedge("h1-ball-at-wall", 1, 4 - R - 0.01, 8, S, 4.35, 8))
-		-- ball 1 stud from the wall: the warp stance lands on top of the wall
-		table.insert(cases, measureLedge("h1-stance-on-wall", 1, 3, 8, S, 4.3, 8.2))
-		-- The Hill's raised green, ball at the left wall (inner face x = 69), head teleported over the wall
-		setFrame(Vector3.new(69, HILL_HIGH, 22), 6, Vector3.new(0, 0, 1))
-		table.insert(cases, measureLedge("h3-green-edge", 3, 69 + R + 0.01, 22, HILL_HIGH, 68.6, 22.3, Vector3.new(68.5, HILL_HIGH, 22)))
+		-- hole 1 lane, ball touching the east rail (inner face x = 3.5): the warp stance lands outside the rail
+		local s1 = surfaceAt(1, 3.5 - R - 0.01, -8)
+		local c1 = W(1, 3.85, 0, -8)
+		setFrame(s1, 6, Vector3.new(0, 0, 1))
+		table.insert(cases, measureLedge("h1-ball-at-rail", 1, s1.X, s1.Z, s1.Y, c1.X, c1.Z))
+		-- ball 1 stud from the rail: the warp stance lands on top of the rail
+		local s2 = surfaceAt(1, 2.5, -8)
+		local c2 = W(1, 3.8, 0, -7.8)
+		table.insert(cases, measureLedge("h1-stance-on-rail", 1, s2.X, s2.Z, s2.Y, c2.X, c2.Z))
+		-- hole 4's raised green (0.6 up), ball at its west rail (inner face x = -6), head teleported over the rail
+		local s3 = surfaceAt(4, -6 + R + 0.01, -41, 0.6)
+		local c3 = W(4, -6.4, 0, -40.7)
+		setFrame(s3, 6, Vector3.new(0, 0, 1))
+		table.insert(cases, measureLedge("h4-green-edge", 4, s3.X, s3.Z, s3.Y, c3.X, c3.Z, Vector3.new(W(4, -6.5, 0, -41).X, s3.Y, W(4, -6.5, 0, -41).Z)))
 		local ok = true
 		for _, c in cases do
 			ok = ok and c.ok
@@ -645,7 +1625,7 @@ end
 
 scenario({
 	name = "ghost",
-	desc = "VR club ghosting: sweep the putter head through a wall and a bumper post, then a real VR swing hit",
+	desc = "VR club ghosting: sweep the putter head through a rail and a bumper block, then a real VR swing hit",
 	vr = true,
 	seconds = 15,
 	run = function()
@@ -653,30 +1633,32 @@ scenario({
 		if skip then
 			return skip
 		end
+		refreshFelt()
 		local out = {}
-		-- through hole 1's right wall (x 4..5) with the ball well away
-		setFrame(Vector3.new(4, S, 18), 8, Vector3.new(0, 0, 1))
-		place(1, 0, 18, S)
-		out.wall = sweep("through-wall", Vector3.new(2.6, 0, 20), Vector3.new(6.2, 0, 20), 1.0)
-		-- through hole 2's first bumper post (44, 20)
-		setFrame(Vector3.new(43, S, 20), 8, Vector3.new(0, 0, 1))
-		place(2, 39, 20, S)
-		out.post = sweep("through-post", Vector3.new(42.4, 0, 20.1), Vector3.new(45.6, 0, 20.1), 1.0)
-		-- a real swing through the ball: putter face speed 4 studs/s (1.2 m/s) along +Z
-		setFrame(Vector3.new(0, S, 9), 8, Vector3.new(1, 0, 0))
-		place(1, 0, 6, S)
+		-- through hole 1's east lane rail (x 3.5..4.0) with the ball well away
+		placeL(1, 0, -12, 1)
+		setFrame(W(1, 3.75, 0, -12), 8, Vector3.new(0, 0, 1))
+		out.wall = sweep("through-rail", W(1, 2.6, 0, -10), W(1, 6.2, 0, -10), 1.0)
+		-- through hole 3's toadstool stool bumper (17, -28.8), 1.6 square
+		placeL(3, 13.5, -28.8, 1)
+		setFrame(W(3, 17, 0, -28.8), 8, Vector3.new(0, 0, 1))
+		out.post = sweep("through-bumper", W(3, 15.4, 0, -28.7), W(3, 18.6, 0, -28.7), 1.0)
+		-- a real swing through the ball: putter face speed 4 studs/s (1.2 m/s) along the hole's -Z
+		local bp = placeL(1, 0, -6, 1)
+		setFrame(W(1, 0, 0, -9), 8, Vector3.new(1, 0, 0))
+		local fwd = WD(1, 0, -1)
 		local half = VR.test.headSize / 2
 		local y = ballPlaneY() + half.Y + 0.01
 		local clubSpeed = 4
-		local a = Vector3.new(0, y, 6 - R - half.X - 0.5)
+		local a = Vector3.new(bp.X, y, bp.Z) - fwd * (R + half.X + 0.5)
 		local t0 = os.clock() + 0.5
 		local strokesBefore = GolfTest.hitCount
 		outcome = nil
-		shot = { label = "vr-swing", start = Ball.ball.Position, dir = Vector3.new(0, 0, 1), t0 = now(), contacts = {}, maxY = 0, maxAlong = 0 }
+		shot = { label = "vr-swing", start = Ball.ball.Position, dir = fwd, t0 = now(), contacts = {}, maxY = 0, maxAlong = 0 }
 		shotLabel = "vr-swing"
 		poseFn = function(t)
 			local d = math.max(0, t - t0) * clubSpeed
-			return VR.test.handCFrameFor(a + Vector3.new(0, 0, math.min(d, 1.4)), Vector3.new(0, 0, 1))
+			return VR.test.handCFrameFor(a + fwd * math.min(d, 1.4), fwd)
 		end
 		local tWait = os.clock()
 		while GolfTest.hitCount == strokesBefore and os.clock() - tWait < 3 do
@@ -693,7 +1675,7 @@ scenario({
 			ballSpeed = GolfTest.lastHitVelocity and round(GolfTest.lastHitVelocity.Magnitude),
 			expectedSpeed = round(expected),
 			outcome = res,
-			distM = round(flat(Ball.ball.Position - Vector3.new(0, 0, 6)).Magnitude * STUD),
+			distM = round(flat(Ball.ball.Position - bp).Magnitude * STUD),
 		}
 		out.swing.ok = out.swing.hit and out.swing.source == "vr" and math.abs((out.swing.ballSpeed or 0) - expected) < 0.25 * expected
 		event("swing", out.swing)
@@ -799,7 +1781,8 @@ local function clubPose(legacy: boolean, view: string?)
 	Config.VRClubLegacyAim = legacy == true
 	VR.test.resetClubMount()
 	if not GolfTest.vizBall then
-		place(1, 0, 10, S)
+		refreshFelt()
+		placeL(1, 0, -4, 1)
 		VR.warpToBall(Ball.ball.Position)
 		GolfTest.vizBall = Ball.ball.Position
 		task.wait(0.3)
@@ -1038,6 +2021,105 @@ local function api(cmd, a, b)
 	elseif cmd == "camera" then
 		workspace:SetAttribute("GolfTestCamera", a or "")
 		return "ok"
+	elseif cmd == "frame" then
+		-- screenshot framing: ("topdown", n) north-up plan of hole n (0 = whole course), ("hole", n) 3/4 view from
+		-- behind the tee, ("ball") chase cam on the ball, ("clear") back to normal. Haze is thinned for shots.
+		local atm = game:GetService("Lighting"):FindFirstChildOfClass("Atmosphere")
+		if a == "clear" then
+			workspace:SetAttribute("GolfTestCamera", "")
+			if atm and GolfTest.savedHaze then
+				atm.Density, atm.Haze = GolfTest.savedHaze[1], GolfTest.savedHaze[2]
+			end
+			return "ok"
+		end
+		if a == "ball" then
+			workspace:SetAttribute("GolfTestCamera", "follow")
+			return "ok"
+		end
+		if atm and not GolfTest.savedHaze then
+			GolfTest.savedHaze = { atm.Density, atm.Haze }
+		end
+		if atm then
+			atm.Density, atm.Haze = 0.12, 0.4
+		end
+		local box
+		-- world layout: CourseBuilder stores the terrain extent; the overview frames the whole world, not just the holes
+		local wmin, wmax = workspace.Course:GetAttribute("WorldMin"), workspace.Course:GetAttribute("WorldMax")
+		local world = wmin ~= nil and wmax ~= nil
+		if b == 0 and world then
+			box = { (wmin + wmax) / 2, wmax - wmin }
+		elseif b == 0 then
+			local lo, hi = Vector3.one * math.huge, -Vector3.one * math.huge
+			for _, h in workspace.Course:GetChildren() do
+				local bd = h:FindFirstChild("Bounds")
+				if bd then
+					lo = lo:Min(bd.Position - bd.Size / 2)
+					hi = hi:Max(bd.Position + bd.Size / 2)
+				end
+			end
+			box = { (lo + hi) / 2, hi - lo }
+		else
+			local bd = hole(b).Bounds
+			box = { bd.Position, bd.Size }
+		end
+		local c = Vector3.new(box[1].X, b == 0 and (world and 30 or 8) or hole(b):GetAttribute("FeltMaxY"), box[1].Z)
+		if a == "topdown" then
+			-- frame size is the larger of the extents, corrected for the viewport aspect
+			local vp = workspace.CurrentCamera.ViewportSize
+			local aspect = vp.X / math.max(vp.Y, 1)
+			-- (the runner crops the CoreGui strip off the top of the capture: leave room for it)
+			local size = math.max(box[2].Z, box[2].X / aspect) * (b == 0 and 1.22 or 1.18)
+			setFrame(c, size, Vector3.new(0, 0, -1))
+			workspace:SetAttribute("GolfTestCamera", "topdown")
+		elseif a == "hole" then
+			local s2 = math.max(box[2].X, box[2].Z)
+			-- from behind the tee (south), except where a landmark sits between the camera and the hole
+			local VIEW = { [6] = Vector3.new(0.85, 0, -0.35), [9] = Vector3.new(-0.55, 0, 0.75) }
+			-- (directions are in the hole's local frame: +Z = behind the tee)
+			local d = holeCF(b):VectorToWorldSpace((VIEW[b] or Vector3.new(0.15, 0, 1)).Unit)
+			workspace:SetAttribute("GolfTestFocus", c)
+			workspace:SetAttribute("GolfTestCamPos", c + d * s2 * 0.8 + Vector3.new(0, s2 * 0.62, 0))
+			workspace:SetAttribute("GolfTestCamUp", Vector3.yAxis)
+			workspace:SetAttribute("GolfTestFOV", 50)
+			workspace:SetAttribute("GolfTestCamera", "look")
+		elseif a == "ball" then
+			workspace:SetAttribute("GolfTestCamera", "follow")
+		end
+		return "ok"
+	elseif cmd == "putt" then
+		-- ("putt", n, "hio"|skill): from where the ball is, fire the HIO line or the intended next shot (async)
+		local n = a
+		task.spawn(function()
+			local sp = spec(n)
+			local pos = Ball.ball.Position
+			if b == "hio" and sp.hio then
+				if sp.hio.phase then
+					waitPhase(n, sp.hio.phase)
+				end
+				Ball.hit(aimDir(n, sp.hio.aim_deg) * sp.hio.speed, "test")
+			else
+				local target, carry, pscale = chooseTarget(n, b or "good", zoneOf(pos) or "?", pos)
+				local v = speedFor(flat(target - pos).Magnitude + carry) * pscale
+				if target.Y - pos.Y > 0.05 then
+					v += math.sqrt(2 * workspace.Gravity * (target.Y - pos.Y))
+				end
+				Ball.hit(flat(target - pos).Unit * math.min(v, VMAX), "test")
+			end
+		end)
+		return "ok"
+	elseif cmd == "place" then
+		-- ("place", n, "x,z") put the ball at spec-local (x, z) on hole n (default: the tee)
+		refreshFelt()
+		local ok, err = pcall(function()
+			local sp = spec(a)
+			local x, z = sp.tee.position[1], sp.tee.position[3]
+			if b and b ~= "" then
+				local xs, zs = string.match(b, "([%-%d%.]+),([%-%d%.]+)")
+				x, z = tonumber(xs), tonumber(zs)
+			end
+			placeL(a, x, z, 3)
+		end)
+		return ok and "ok" or ("error: " .. tostring(err))
 	end
 	return "error: unknown command " .. tostring(cmd)
 end
@@ -1133,12 +2215,34 @@ function GolfTest.start(ballController, _hud, vrModule, simulate)
 			end
 		end
 	end)
-	Remotes.Notice.OnClientEvent:Connect(function(text)
-		if string.find(text, "Out of bounds") and shot and not outcome then
+	Remotes.Notice.OnClientEvent:Connect(function(text, _, oobKind)
+		if oobKind and shot and not outcome then
 			outcome = "oob"
 			if run.running then
 				event("oob", { pos = vec(Ball.ball.Position) })
 			end
+		end
+	end)
+
+	-- escape/stuck detection hooks (see flag())
+	Ball.Teleported.Event:Connect(function(id, vin, vout)
+		if run.running then
+			flag("teleport", { id = id, speedIn = round(vin), speedOut = round(vout), pos = vec(Ball.ball.Position) })
+		end
+	end)
+	Ball.Unstuck.Event:Connect(function(reason, from, to)
+		if run.running then
+			flag("unstuck", { reason = reason, from = vec(from), to = vec(to) })
+		end
+	end)
+	Ball.OffSurface.Event:Connect(function(pos, partName)
+		if run.running then
+			flag("offsurface", { pos = vec(pos), part = partName })
+		end
+	end)
+	Ball.ForcedRest.Event:Connect(function(pos, reason)
+		if run.running then
+			flag("forcedrest", { pos = vec(pos), reason = reason })
 		end
 	end)
 

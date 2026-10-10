@@ -3,6 +3,9 @@
 
   python3 run_playtests.py list
   python3 run_playtests.py run [scenario ...] [--cams fixed,topdown,follow] [--record] [--out DIR] [--no-vr]
+                                [--opts '{"fuzz":12,"sweep":6,"hioTries":9,"parts":"routes,hio,banks,sweep,fuzz"}']
+  python3 run_playtests.py holes [N ...] [--opts ...] [--out DIR]   per-hole suites h1..h9 + h7pin, h8door, movers
+  python3 run_playtests.py shots [--out DIR] [--holes 1,2,..]       overview.png, holeNN.png, topdown/follow per hole
   python3 run_playtests.py smoke                  normal (non-test) solo playtest: errors/warnings + HUD check
   python3 run_playtests.py export                 mirror every Studio script into games/vr-mini-golf/src/
   python3 run_playtests.py push FILE [FILE ...]   copy local src/ files into Studio (Edit) - dev convenience
@@ -126,7 +129,7 @@ def set_edit_attrs(st, attrs):
 
 
 TEST_ATTRS = ["GolfTestCamera", "GolfTestFocus", "GolfTestFrameSize", "GolfTestViewDir", "GolfTestCamPos", "GolfTestCamUp",
-              "GolfTestFOV", "GolfTestClubDebug"]
+              "GolfTestFOV", "GolfTestClubDebug", "GolfTestOpts"]
 
 
 def clear_test_attrs(st):
@@ -195,7 +198,7 @@ def run_one(st, name, cam, out_dir, record, seconds, rect):
         raise RuntimeError("start %s: %s" % (name, r))
     t0 = time.time()
     status = {}
-    while time.time() - t0 < 180:
+    while time.time() - t0 < seconds + 180:
         time.sleep(1)
         s = st.api("status")
         if s.startswith("{"):
@@ -218,7 +221,11 @@ def cmd_run(args):
     st.stop_play()
     out_dir = args.out or os.path.join(GAME_DIR, "playtests", datetime.date.today().isoformat())
     os.makedirs(out_dir, exist_ok=True)
-    set_edit_attrs(st, {"GolfTestMode": True, "SimulateVR": not args.no_vr, "GolfTestCamera": ""})
+    attrs = {"GolfTestMode": True, "SimulateVR": not args.no_vr, "GolfTestCamera": ""}
+    if getattr(args, "opts", None):
+        json.loads(args.opts)  # validate
+        attrs["GolfTestOpts"] = args.opts
+    set_edit_attrs(st, attrs)
     results, clips = {}, []
     try:
         st.start_play()
@@ -368,7 +375,7 @@ def holed_first_pass(s):
     cx, _, cz = s.get("cupPos") or [0, 1, 27]  # hole 1 cup
     for c in s.get("contacts", []):
         x, _, z = c["pos"]
-        if ((x - cx) ** 2 + (z - cz) ** 2) ** 0.5 > 0.21 + 2 * 0.08:
+        if ((x - cx) ** 2 + (z - cz) ** 2) ** 0.5 > s.get("cupRadius", 0.21) + 2 * 0.08:
             return False
     return True
 
@@ -391,7 +398,7 @@ def summary_md(results, problems, clips, out_dir, args):
                 ideal = "%.2f m (v²/2a)" % ((s["v0"] ** 2) / (2 * 3.6) * STUD)
             L.append("| %s m/s | %s m | %s s | %s s | %s |" % (s["speedMps"], f(s["distM"]), f(s.get("tStop")), f(s["tEnd"]), ideal))
         L.append("")
-    for key, title in (("bank", "45° bank wall (Hole 2 Dogleg)"), ("walls", "Walls and bumper posts")):
+    for key, title in (("bank", "45° timber deflector (Hole 1 Lantern Gate)"), ("walls", "Rails and bumper blocks")):
         r = results.get(key)
         if not r:
             continue
@@ -419,7 +426,7 @@ def summary_md(results, problems, clips, out_dir, args):
     r = results.get("hill")
     if r:
         r = first(r)
-        L += ["## The Hill (Hole 3)", "", "| Shot | Outcome | Reached green | Ended on green | Rolled back | Max height | Final position |",
+        L += ["## Ramp (Hole 9, 1 stud rise)", "", "| Shot | Outcome | Reached green | Ended on green | Rolled back | Max height | Final position |",
               "|---|---|---|---|---|---|---|"]
         for s in r.get("shots", []):
             L.append("| %s | %s | %s | %s | %s | %s | %s |" % (s["label"], s["outcome"], f(s.get("madeGreen")), f(s.get("endedOnGreen")),
@@ -428,7 +435,7 @@ def summary_md(results, problems, clips, out_dir, args):
     r = results.get("cup")
     if r:
         r = first(r)
-        L += ["## Cup drop (Hole 1, from 60 cm)", "", "| Putt speed | Speed at rim | Outcome | Holed on first pass |", "|---|---|---|---|"]
+        L += ["## Cup drop (Hole 1, cup radius 0.5 stud, from 60 cm)", "", "| Putt speed | Speed at rim | Outcome | Holed on first pass |", "|---|---|---|---|"]
         for s in r.get("shots", []):
             L.append("| %s m/s | %s m/s | %s | %s |" % (s["speedMps"], f(s.get("rimSpeedMps")), s["outcome"], f(holed_first_pass(s))))
         L.append("")
@@ -479,6 +486,7 @@ def summary_md(results, problems, clips, out_dir, args):
             sw = r.get("swing") or {}
             L += ["", "VR swing through the ball (putter face 1.2 m/s): hit=%s source=%s ball speed %s studs/s (expected %s), outcome %s, %s m. Pass: %s" % (
                 f(sw.get("hit")), sw.get("source"), f(sw.get("ballSpeed")), f(sw.get("expectedSpeed")), sw.get("outcome"), f(sw.get("distM")), f(sw.get("ok"))), ""]
+    L += hole_summary_md(results)
     errs = [k for k, v in results.items() for c, rr in v.items() if rr.get("error")]
     if errs:
         L += ["## Scenario errors", ""] + ["- %s: %s" % (k, first(results[k]).get("error", "")[:500]) for k in errs] + [""]
@@ -491,6 +499,90 @@ def summary_md(results, problems, clips, out_dir, args):
     if any_res:
         L += ["", "Raw logs: `<scenario>[-<cam>].jsonl` and `results.json` in this folder."]
     return "\n".join(L) + "\n"
+
+
+def hole_summary_md(results):
+    """Per-hole tables for the Lantern Grove suites (h1..h9), the H7 log-pin hunt, the H8 door test and movers."""
+    L = []
+    rows = []
+    for n in range(1, 10):
+        r = results.get("h%d" % n)
+        if not r:
+            continue
+        r = first(r)
+        if r.get("error"):
+            rows.append("| %d | | ERROR: %s |||||||" % (n, r["error"][:120]))
+            continue
+        routes = {x["skill"]: x for x in r.get("routes", [])}
+        def rt(k):
+            x = routes.get(k)
+            return "-" if not x else "%s%s" % (x["strokes"], "" if x["holed"] else " (not holed)")
+        hio = r.get("hio") or {}
+        sw = r.get("sweep") or []
+        swtxt = "; ".join("%s %d/%d clear" % (m["mover"], sum(1 for row in m["rows"] if not row["blocked"]), len(m["rows"])) for m in sw) or "-"
+        fz = r.get("fuzz") or {}
+        rows.append("| %d %s | %s | %s | %s | %s | %s | %s | %s/%s/%s/%s | %d / %d / %d |" % (
+            n, r.get("name", ""), r.get("par"), rt("good"), rt("average"),
+            ("yes (aim %.1f°, %.1f studs/s)" % (hio.get("aceAim"), hio.get("aceSpeed"))) if hio.get("ace") else ("no (%d tries)" % len(hio.get("attempts", [])) if hio.get("attempts") else "-"),
+            ", ".join("%s: %s" % (b["bank"], f((b.get("firstContact") or {}).get("restitution"))) for b in r.get("banks", [])) or "-",
+            swtxt, fz.get("shots", "-"), fz.get("hazards", "-"), fz.get("escapes", "-"), fz.get("stuck", "-"),
+            r.get("escapes", 0), r.get("stuck", 0), r.get("nudges", 0)))
+    if rows:
+        L += ["## Lantern Grove per-hole suites", "",
+              "Routes = strokes to hole out with the spec's AI waypoints (good = aggressive/risk line, average = safe line). "
+              "Banks = normal restitution of the first rail contact. Fuzz = shots / hazards / escapes / stuck.", "",
+              "| Hole | Par | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |",
+              "|---|---|---|---|---|---|---|---|---|"] + rows + [""]
+        for n in range(1, 10):
+            r = results.get("h%d" % n)
+            if not r:
+                continue
+            r = first(r)
+            iss = r.get("issues") or []
+            if iss:
+                L.append("- h%d issues: %s" % (n, "; ".join("%s %s at %s" % (i.get("kind"), i.get("label"), i.get("pos") or i.get("to") or i.get("from")) for i in iss[:12])))
+        L.append("")
+    r = results.get("progress")
+    if r:
+        r = first(r)
+        L += ["## Hole-to-hole progression", "", "| Hole | Sunk | Next hole | Ball to next tee | VR rig to ball | HUD | Pass |", "|---|---|---|---|---|---|---|"]
+        for row in r.get("rows", []):
+            if row["hole"] < 9:
+                L.append("| %d | %s | %s | %s | %s | %s | %s |" % (row["hole"], f(row["sunk"]), row.get("nextHole"), row.get("ballToTee"),
+                                                             row.get("vrRigToBall"), row.get("hudTitle", "").split("\n")[0], f(row.get("ok"))))
+            else:
+                L.append("| 9 | %s | course complete: %s | | | final scorecard: %s | %s |" % (f(row["sunk"]), f(row.get("courseComplete")),
+                                                                                       f(row.get("scorecard")), f(row.get("ok"))))
+        L += ["", "Pass: %s" % f(r.get("ok")), ""]
+    r = results.get("h7pin")
+    if r:
+        r = first(r)
+        L += ["## Hole 7 sliding log pin hunt", "", "Cases: %d, pinned > 0.5 s or nudged: %s, longest pinned contact: %s s" % (
+            len(r.get("cases", [])), r.get("pinCases"), r.get("maxPinnedS")), ""]
+        L += ["| Case | Touched log | Max pinned (s) | Nudges | Finish zone |", "|---|---|---|---|---|"]
+        for c in r.get("cases", []):
+            L.append("| %s | %s | %s | %d | %s |" % (c["label"], f(c["touchedLog"]), c["maxPinnedS"], len(c.get("nudges", [])), c.get("zone")))
+        L.append("")
+    r = results.get("h8door")
+    if r:
+        r = first(r)
+        L += ["## Hole 8 root door vs balls at the alcove rails", "", "Door range: %s" % r.get("range"), "",
+              "| Start | Max speed | Max rise | Max pinned (s) | Flags | Finish zone |", "|---|---|---|---|---|---|"]
+        for c in r.get("cases", []):
+            L.append("| %s | %s | %s | %s | %s | %s |" % (c["start"], c["maxSpeed"], c["maxRise"], c["maxPinnedS"],
+                                                     ", ".join(x.get("kind", "") for x in c.get("flags") or []) or "-", c.get("zone")))
+        L.append("")
+    r = results.get("movers")
+    if r:
+        r = first(r)
+        L += ["## Moving parts vs spec", "", "| Mover | Hole | Value error | Blocker pose error (studs) | Server owned | Client lag (s) |", "|---|---|---|---|---|---|"]
+        lag = {(c["hole"], c["id"]): c for c in r.get("client", [])}
+        for m in r.get("server", []):
+            n = int(str(m.get("hole", "Hole0")).replace("Hole", "") or 0)
+            c = lag.get((n, m["id"]), {})
+            L.append("| %s | %s | %.3f | %.3f | %s | %s |" % (m["id"], m.get("hole"), m["err"], m["blockerPosErr"], f(m["networkOwnerServer"]), c.get("lag")))
+        L += ["", "Pass: %s" % f(r.get("ok")), ""]
+    return L
 
 
 # ----------------------------------------------------------------------------------------- compare
@@ -549,12 +641,29 @@ def cmd_compare(args):
 
 # ----------------------------------------------------------------------------------------- smoke
 def cmd_smoke(args):
+    """Normal solo playtest (test mode off): loads, then plays real putts on hole 1 through the regular client code
+    (BallController.hit, the function the touch/mouse and VR controls call), and collects errors/warnings and the HUD.
+    --device iphone_17_pro runs it under Studio's device emulator (TouchEnabled, phone viewport)."""
     st = Studio()
     st.stop_play()
     set_edit_attrs(st, {"GolfTestMode": False, "SimulateVR": False})
+    if args.device:
+        log("device", st.luau("game:GetService('StudioDeviceSimulatorService'):SetDeviceAsync(%s) return 'ok'" % json.dumps(args.device), "Edit"))
     try:
         st.start_play()
         time.sleep(args.wait)
+        # (a require() from the MCP command context gets its own copy of BallController, so this checks the real
+        # ball instance; scripted putts through Ball.hit are covered by the test-mode harness)
+        play = st.luau("""local Players = game:GetService('Players')
+local UIS = game:GetService('UserInputService')
+task.wait(%d)
+local me = Players.LocalPlayer
+local ball = workspace:FindFirstChild('Balls') and workspace.Balls:FindFirstChild(tostring(me.UserId))
+local h1 = workspace.Course:FindFirstChild('Hole1')
+local out = {touch = UIS.TouchEnabled, viewport = tostring(workspace.CurrentCamera.ViewportSize), ball = ball ~= nil,
+  hole = me:GetAttribute('Hole'), strokes = me:GetAttribute('Strokes'), camType = tostring(workspace.CurrentCamera.CameraType)}
+if ball and h1 then out.ballToTee = math.floor((ball.Position - h1.Tee.Position).Magnitude * 100) / 100; out.anchored = ball.Anchored end
+return game:GetService('HttpService'):JSONEncode(out)""" % args.shots, "Client", timeout=180)
         hud = st.luau("""local pg = game:GetService('Players').LocalPlayer:FindFirstChild('PlayerGui')
 local gui = pg and pg:FindFirstChild('GolfHUD')
 local texts = {}
@@ -565,7 +674,13 @@ return game:GetService('HttpService'):JSONEncode({hud = gui ~= nil, texts = text
         problems = {"server": st.problems("Server"), "client": st.problems("Client")}
     finally:
         st.stop_play()
-    print(json.dumps({"hud": json.loads(hud), "problems": problems}, indent=1))
+        if args.device:
+            st.luau("pcall(function() game:GetService('StudioDeviceSimulatorService'):StopSimulationAsync() end) return 'ok'", "Edit")
+    try:
+        play = json.loads(play)
+    except ValueError:
+        pass
+    print(json.dumps({"device": args.device or "desktop", "play": play, "hud": json.loads(hud), "problems": problems}, indent=1))
 
 
 # ----------------------------------------------------------------------------------------- export / push
@@ -619,8 +734,8 @@ return string.sub(inst.Source, %d, %d)""" % (json.dumps(it["path"]), off, off + 
             os.rmdir(root)
 
 
-def cmd_push(args):
-    st = Studio()
+def cmd_push(args, st=None):
+    st = st or Studio()
     if st.mode()[0] != "Edit":
         raise SystemExit("stop play first")
     for file in args.files:
@@ -638,7 +753,11 @@ def cmd_push(args):
         src = open(path).read()
         code = """local path = %s
 local parent = game:GetService(path[1])
-for i = 2, #path do parent = parent:FindFirstChild(path[i]) or error('missing ' .. path[i]) end
+for i = 2, #path do
+  local nxt = parent:FindFirstChild(path[i])
+  if not nxt then nxt = Instance.new('Folder'); nxt.Name = path[i]; nxt.Parent = parent end
+  parent = nxt
+end
 local s = parent:FindFirstChild(%s)
 if s and s.ClassName ~= %s then error('class mismatch: ' .. s.ClassName) end
 local created = false
@@ -650,6 +769,95 @@ return (created and 'created ' or 'updated ') .. s:GetFullName() .. ' ' .. #s.So
         log(st.luau(code, "Edit"))
 
 
+def engine_sim_lines(holes):
+    """Candidate ace lines from tools/engine_sim.py (engine-calibrated copy of the designer's sim)."""
+    cmd = ["uv", "run", "-q", "--with", "numpy", "--with", "numba", "python", os.path.join(HERE, "engine_sim.py"),
+           "--top", "4", "--holes"] + [str(h) for h in holes]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)
+    for line in r.stderr.splitlines():
+        if line.startswith("hole "):
+            log("engine-sim", line[:200])
+    try:
+        return json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError):
+        log("engine-sim failed:", r.stderr[-500:])
+        return {}
+
+
+def cmd_holes(args):
+    names = ["h%d" % int(n) for n in (args.holes or range(1, 10))]
+    if args.engine_sim:
+        o = json.loads(args.opts or "{}")
+        o["hioLines"] = engine_sim_lines([int(n) for n in (args.holes or range(1, 10))])
+        args.opts = json.dumps(o)
+    if not args.holes:
+        names += ["h7pin", "h8door", "movers"]
+    ns = argparse.Namespace(scenarios=names, cams="", record=False, out=args.out, rect=None, no_vr=True, opts=args.opts)
+    cmd_run(ns)
+
+
+def cmd_shots(args):
+    """Screenshots for review: overview (whole course, top-down), and per hole: holeNN.png (3/4 view from behind the
+    tee, HUD on), topdown_hNN.png and follow_hNN_a/b.png (chase cam during the intended first shot)."""
+    st = Studio()
+    st.stop_play()
+    out_dir = args.out or os.path.join(GAME_DIR, "playtests", "lantern-v1")
+    os.makedirs(out_dir, exist_ok=True)
+    set_edit_attrs(st, {"GolfTestMode": True, "SimulateVR": False, "GolfTestCamera": ""})
+    holes = [int(h) for h in args.holes.split(",")] if args.holes else list(range(1, 10))
+    written = []
+    def hud(on):
+        st.luau("local g = game.Players.LocalPlayer.PlayerGui:FindFirstChild('GolfHUD') if g then g.Enabled = %s end "
+                "local a = game.Players.LocalPlayer.PlayerGui:FindFirstChild('GolfAim') if a then a.Enabled = %s end return 'ok'" % (
+                    "true" if on else "false", "true" if on else "false"), "Client")
+    def snap(name):
+        time.sleep(args.settle)
+        path = os.path.join(out_dir, name)
+        capture_window(w["id"], path)
+        crop_viewport(path)
+        written.append(path)
+        log("shot", os.path.relpath(path, GAME_DIR))
+    try:
+        st.start_play()
+        wait_api(st)
+        st.luau("local SG = game:GetService('StarterGui') SG:SetCoreGuiEnabled(Enum.CoreGuiType.All, false) return 'ok'", "Client")
+        w = window("front")
+        if not w or "error" in w:
+            raise SystemExit("Studio window not found: %s" % w)
+        if not args.no_overview:
+            hud(False)
+            st.api("frame", "topdown", 0)
+            snap("overview.png")
+        for n in holes:
+            r = st.api("place", n, "")
+            if r != "ok":
+                log("place", n, r)
+            hud(False)
+            st.api("frame", "topdown", n)
+            snap("topdown_h%02d.png" % n)
+            hud(True)
+            st.api("frame", "hole", n)
+            snap("hole%02d.png" % n)
+            if not args.no_follow:
+                hud(False)
+                st.api("frame", "ball")
+                time.sleep(1.0)
+                st.api("putt", n, args.putt)
+                time.sleep(args.follow_delay)
+                capture_window(w["id"], os.path.join(out_dir, "follow_h%02d_a.png" % n))
+                crop_viewport(os.path.join(out_dir, "follow_h%02d_a.png" % n))
+                time.sleep(1.6)
+                capture_window(w["id"], os.path.join(out_dir, "follow_h%02d_b.png" % n))
+                crop_viewport(os.path.join(out_dir, "follow_h%02d_b.png" % n))
+                written += [os.path.join(out_dir, "follow_h%02d_%s.png" % (n, k)) for k in "ab"]
+        st.api("frame", "clear")
+        problems = {"server": st.problems("Server"), "client": st.problems("Client")}
+    finally:
+        st.stop_play()
+        clear_test_attrs(st)
+    print(json.dumps({"written": [os.path.relpath(p, GAME_DIR) for p in written], "problems": problems}, indent=1))
+
+
 def cmd_list(args):
     # read from the src/ mirror of GolfClient.GolfTest so this works without a playtest running
     names = []
@@ -658,8 +866,11 @@ def cmd_list(args):
         d = re.match(r'\s*desc = "(.*)",', line)
         if m:
             names.append([m.group(1), ""])
-        elif d and names:
+        elif d and names and '" ..' not in d.group(1):
             names[-1][1] = d.group(1)
+        elif re.match(r'\s*name = "h" \.\. n,', line):
+            names += [["h%d" % n, "hole %d suite: intended lines, HIO line + search, rail banks, mover timing sweep, fuzz" % n]
+                      for n in range(1, 10)]
     for n, d in names:
         print("%-10s %s" % (n, d))
 
@@ -675,8 +886,24 @@ def main():
     r.add_argument("--out")
     r.add_argument("--rect", help="x,y,w,h screen rect to record instead of the Studio window")
     r.add_argument("--no-vr", action="store_true", help="don't set SimulateVR (ledge/ghost are skipped)")
+    r.add_argument("--opts", help="JSON options for the per-hole suites (workspace.GolfTestOpts)")
+    hs = sub.add_parser("holes")
+    hs.add_argument("holes", nargs="*")
+    hs.add_argument("--opts")
+    hs.add_argument("--out")
+    hs.add_argument("--engine-sim", action="store_true", help="seed the HIO search with tools/engine_sim.py lines")
+    sh = sub.add_parser("shots")
+    sh.add_argument("--out")
+    sh.add_argument("--holes")
+    sh.add_argument("--settle", type=float, default=2.5)
+    sh.add_argument("--follow-delay", type=float, default=1.0)
+    sh.add_argument("--putt", default="hio")
+    sh.add_argument("--no-follow", action="store_true")
+    sh.add_argument("--no-overview", action="store_true")
     s = sub.add_parser("smoke")
     s.add_argument("--wait", type=float, default=10)
+    s.add_argument("--device", help="Studio device emulation, e.g. iphone_17_pro")
+    s.add_argument("--shots", type=int, default=15, help="seconds of normal play before checking")
     sub.add_parser("export")
     cv = sub.add_parser("clubviz")
     cv.add_argument("--out")
@@ -690,7 +917,7 @@ def main():
     c.add_argument("before")
     c.add_argument("after")
     args = ap.parse_args()
-    {"list": cmd_list, "run": cmd_run, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
+    {"list": cmd_list, "run": cmd_run, "holes": cmd_holes, "shots": cmd_shots, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
      "clubviz": cmd_clubviz}[args.cmd](args)
 
 

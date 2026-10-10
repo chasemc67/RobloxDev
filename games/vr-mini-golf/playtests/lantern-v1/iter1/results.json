@@ -1,0 +1,9176 @@
+{
+ "h1": {
+  "default": {
+   "seconds": 312.37,
+   "scenario": "h1",
+   "hole": 1,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 10,
+     "speedMps": 3,
+     "label": "h1-bank-deflector-45",
+     "piece": "green",
+     "maxAlong": 9.421,
+     "distM": 4.248,
+     "outcome": "rest",
+     "speed": 10,
+     "bank": "deflector-45",
+     "nContacts": 3,
+     "firstContact": {
+      "angleOut": 61.1,
+      "tangentialRetention": 1,
+      "restitution": 0.506,
+      "part": "?",
+      "speedOut": 6.434,
+      "speedIn": 8.331,
+      "angleIn": 42.6
+     },
+     "flags": [],
+     "zone": "green",
+     "distStuds": 14.161,
+     "maxY": 8.58,
+     "start": [
+      0,
+      8.5787,
+      -26.5
+     ],
+     "tEnd": 5.099,
+     "tStop": 4.532,
+     "finish": [
+      -10.5728,
+      8.5787,
+      -35.9212
+     ]
+    },
+    {
+     "v0": 9,
+     "speedMps": 2.6999999999999997,
+     "label": "h1-bank-lane-rail-30",
+     "piece": "tee",
+     "maxAlong": 14.059,
+     "distM": 2.825,
+     "outcome": "rest",
+     "speed": 9,
+     "bank": "lane-rail-30",
+     "nContacts": 1,
+     "firstContact": {
+      "angleOut": 72.3,
+      "tangentialRetention": 0.951,
+      "restitution": 0.496,
+      "part": "Hole1/Wall:rail5",
+      "speedOut": 4.824,
+      "speedIn": 5.662,
+      "angleIn": 58.6
+     },
+     "flags": [],
+     "zone": "lane",
+     "distStuds": 9.417,
+     "maxY": 8.256,
+     "start": [
+      -2,
+      8.0786,
+      -6
+     ],
+     "tEnd": 8.716,
+     "tStop": 8.147,
+     "finish": [
+      1.275,
+      8.0787,
+      -14.829
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h1-good-s1",
+       "piece": "green",
+       "maxAlong": 35.765,
+       "distM": 11.077,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 19.78,
+       "targetId": "deflect",
+       "target": [
+        0,
+        8.58,
+        -32
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 36.924,
+       "maxY": 8.599,
+       "start": [
+        0,
+        8.0718,
+        0
+       ],
+       "tEnd": 7.13,
+       "tStop": 6.565,
+       "finish": [
+        -9.1766,
+        8.5719,
+        -35.7653
+       ]
+      },
+      {
+       "v0": 5.102,
+       "speedMps": 1.5306760114353892,
+       "label": "h1-good-s2",
+       "piece": "green",
+       "maxAlong": 8.728,
+       "distM": 2.619,
+       "fromZone": "green",
+       "outcome": "rest",
+       "speed": 5.102,
+       "targetId": "cup",
+       "target": [
+        -9.5,
+        8.5,
+        -26.5
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 8.728,
+       "maxY": 8.58,
+       "start": [
+        -9.1766,
+        8.5719,
+        -35.7653
+       ],
+       "tEnd": 4.383,
+       "tStop": 3.816,
+       "finish": [
+        -9.4828,
+        8.5719,
+        -27.0422
+       ]
+      },
+      {
+       "v0": 1.511,
+       "speedMps": 0.453392388305474,
+       "label": "h1-good-s3",
+       "piece": "green",
+       "maxAlong": 0.543,
+       "distM": 0.163,
+       "fromZone": "green",
+       "outcome": "cup",
+       "speed": 1.511,
+       "targetId": "cup",
+       "target": [
+        -9.5,
+        8.5,
+        -26.5
+       ],
+       "zone": "green",
+       "rimTime": 0.051,
+       "flags": [],
+       "rimSpeedMps": 0.221,
+       "distStuds": 0.543,
+       "rimSpeed": 0.735,
+       "start": [
+        -9.4828,
+        8.5719,
+        -27.0422
+       ],
+       "maxY": 8.591,
+       "tEnd": 0.4,
+       "finish": [
+        -9.5,
+        8.23,
+        -26.5
+       ]
+      }
+     ],
+     "par": 2,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h1-average-s1",
+       "piece": "green",
+       "maxAlong": 35.92,
+       "distM": 11.166,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 19.78,
+       "targetId": "deflect",
+       "target": [
+        0,
+        8.58,
+        -32
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 37.222,
+       "maxY": 8.599,
+       "start": [
+        0,
+        8.0718,
+        0
+       ],
+       "tEnd": 7.782,
+       "tStop": 7.231,
+       "finish": [
+        -9.7566,
+        8.5719,
+        -35.92
+       ]
+      },
+      {
+       "v0": 5.155,
+       "speedMps": 1.546589094878982,
+       "label": "h1-average-s2",
+       "piece": "green",
+       "maxAlong": 8.882,
+       "distM": 2.665,
+       "fromZone": "green",
+       "outcome": "rest",
+       "speed": 5.155,
+       "targetId": "cup",
+       "target": [
+        -9.5,
+        8.5,
+        -26.5
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 8.882,
+       "maxY": 8.58,
+       "start": [
+        -9.7566,
+        8.5719,
+        -35.92
+       ],
+       "tEnd": 4.431,
+       "tStop": 3.865,
+       "finish": [
+        -9.5138,
+        8.5793,
+        -27.0415
+       ]
+      },
+      {
+       "v0": 1.511,
+       "speedMps": 0.4532567847136306,
+       "label": "h1-average-s3",
+       "piece": "green",
+       "maxAlong": 0.542,
+       "distM": 0.163,
+       "fromZone": "green",
+       "outcome": "cup",
+       "speed": 1.511,
+       "targetId": "cup",
+       "target": [
+        -9.5,
+        8.5,
+        -26.5
+       ],
+       "zone": "green",
+       "rimTime": 0.034,
+       "flags": [],
+       "rimSpeedMps": 0.353,
+       "distStuds": 0.542,
+       "rimSpeed": 1.178,
+       "start": [
+        -9.5138,
+        8.5793,
+        -27.0415
+       ],
+       "maxY": 8.598,
+       "tEnd": 0.417,
+       "finish": [
+        -9.5,
+        8.23,
+        -26.5
+       ]
+      }
+     ],
+     "par": 2,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "name": "Lantern Gate",
+   "cam": "",
+   "hio": {
+    "line": {
+     "aim_deg": 244.3,
+     "speed": 19.8,
+     "from": "h01-notes.md"
+    },
+    "bestSpeed": 19.78,
+    "bestAim": 238.3,
+    "bestMiss": 4.92,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-1",
+      "piece": "green",
+      "maxAlong": 30.586,
+      "distM": 9.628,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       5,
+       -5.28
+      ],
+      "missStuds": 7.27,
+      "tStop": 6.8,
+      "aimDeg": 244.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 32.094,
+      "maxY": 8.586,
+      "start": [
+       0,
+       8.0718,
+       0
+      ],
+      "tEnd": 7.35,
+      "stage": "spec",
+      "finish": [
+       -4.5037,
+       8.5719,
+       -31.7761
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-2",
+      "piece": "green",
+      "maxAlong": 30.78,
+      "distM": 9.674,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       5.37,
+       -5.48
+      ],
+      "missStuds": 7.68,
+      "tStop": 6.583,
+      "aimDeg": 245.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 32.247,
+      "maxY": 8.585,
+      "start": [
+       0,
+       8.0718,
+       0
+      ],
+      "tEnd": 7.149,
+      "stage": "scan",
+      "finish": [
+       -4.1276,
+       8.5793,
+       -31.9817
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-3",
+      "piece": "green",
+      "maxAlong": 32.509,
+      "distM": 9.974,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.11,
+       -5.67
+      ],
+      "missStuds": 5.78,
+      "tStop": 7.415,
+      "aimDeg": 243.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 33.246,
+      "maxY": 8.588,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 7.983,
+      "stage": "scan",
+      "finish": [
+       -8.3877,
+       8.5793,
+       -32.171
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-4",
+      "piece": "green",
+      "maxAlong": 34.154,
+      "distM": 10.352,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.27,
+       -6.75
+      ],
+      "missStuds": 6.76,
+      "tStop": 7.517,
+      "aimDeg": 246.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 34.506,
+      "maxY": 8.59,
+      "start": [
+       0,
+       8.0718,
+       0
+      ],
+      "tEnd": 8.083,
+      "stage": "scan",
+      "finish": [
+       -9.2255,
+       8.5793,
+       -33.2502
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-5",
+      "piece": "green",
+      "maxAlong": 31.336,
+      "distM": 9.731,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.35,
+       -5.14
+      ],
+      "missStuds": 5.65,
+      "tStop": 7.199,
+      "aimDeg": 242.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 32.436,
+      "maxY": 8.592,
+      "start": [
+       0,
+       8.0718,
+       0
+      ],
+      "tEnd": 7.765,
+      "stage": "scan",
+      "finish": [
+       -7.1489,
+       8.5793,
+       -31.6385
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-6",
+      "piece": "green",
+      "maxAlong": 35.198,
+      "distM": 10.62,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -0.59,
+       -7.43
+      ],
+      "missStuds": 7.46,
+      "tStop": 7.649,
+      "aimDeg": 247.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 35.401,
+      "maxY": 8.589,
+      "start": [
+       0,
+       8.0718,
+       0
+      ],
+      "tEnd": 8.2,
+      "stage": "scan",
+      "finish": [
+       -10.093,
+       8.5793,
+       -33.9319
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-7",
+      "piece": "green",
+      "maxAlong": 31.118,
+      "distM": 9.677,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2,
+       -4.87
+      ],
+      "missStuds": 5.27,
+      "tStop": 7.332,
+      "aimDeg": 241.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 32.256,
+      "maxY": 8.588,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 7.898,
+      "stage": "scan",
+      "finish": [
+       -7.4957,
+       8.5793,
+       -31.3728
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-8",
+      "piece": "green",
+      "maxAlong": 35.552,
+      "distM": 10.702,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -0.9,
+       -7.62
+      ],
+      "missStuds": 7.68,
+      "tStop": 7.566,
+      "aimDeg": 248.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 35.675,
+      "maxY": 8.591,
+      "start": [
+       0,
+       8.0793,
+       0
+      ],
+      "tEnd": 8.132,
+      "stage": "scan",
+      "finish": [
+       -10.4017,
+       8.5793,
+       -34.1247
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-9",
+      "piece": "green",
+      "maxAlong": 30.274,
+      "distM": 9.51,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.67,
+       -4.46
+      ],
+      "missStuds": 5.19,
+      "tStop": 7.201,
+      "aimDeg": 240.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 31.701,
+      "maxY": 8.588,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 7.768,
+      "stage": "scan",
+      "finish": [
+       -6.8308,
+       8.5793,
+       -30.9564
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-10",
+      "piece": "green",
+      "maxAlong": 36.401,
+      "distM": 10.938,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -1.42,
+       -8.29
+      ],
+      "missStuds": 8.41,
+      "tStop": 6.965,
+      "aimDeg": 249.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 36.461,
+      "maxY": 8.591,
+      "start": [
+       0,
+       8.0793,
+       0
+      ],
+      "tEnd": 7.531,
+      "stage": "scan",
+      "finish": [
+       -10.9206,
+       8.569,
+       -34.7868
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-11",
+      "piece": "green",
+      "maxAlong": 29.383,
+      "distM": 9.342,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.36,
+       -4.03
+      ],
+      "missStuds": 5.25,
+      "tStop": 7.083,
+      "aimDeg": 239.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 31.14,
+      "maxY": 8.587,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 7.65,
+      "stage": "scan",
+      "finish": [
+       -6.1361,
+       8.5793,
+       -30.5291
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-12",
+      "piece": "green",
+      "maxAlong": 36.542,
+      "distM": 10.972,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -1.42,
+       -8.4
+      ],
+      "missStuds": 8.52,
+      "tStop": 7.449,
+      "aimDeg": 250.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 36.572,
+      "maxY": 8.6,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 8.015,
+      "stage": "scan",
+      "finish": [
+       -10.9204,
+       8.5793,
+       -34.9038
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-13",
+      "piece": "green",
+      "maxAlong": 28.958,
+      "distM": 9.246,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.26,
+       -3.68
+      ],
+      "missStuds": 4.92,
+      "tStop": 7.3,
+      "aimDeg": 238.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.822,
+      "maxY": 8.586,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 7.883,
+      "stage": "scan",
+      "finish": [
+       -6.2377,
+       8.5793,
+       -30.1838
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-14",
+      "piece": "green",
+      "maxAlong": 36.806,
+      "distM": 11.045,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -1.42,
+       -8.66
+      ],
+      "missStuds": 8.78,
+      "tStop": 6.398,
+      "aimDeg": 251.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 36.818,
+      "maxY": 8.592,
+      "start": [
+       0,
+       8.0793,
+       0
+      ],
+      "tEnd": 6.964,
+      "stage": "scan",
+      "finish": [
+       -10.9214,
+       8.5793,
+       -35.1607
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-15",
+      "piece": "green",
+      "maxAlong": 27.876,
+      "distM": 9.056,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       4.19,
+       -3.21
+      ],
+      "missStuds": 5.28,
+      "tStop": 7.05,
+      "aimDeg": 237.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.186,
+      "maxY": 8.586,
+      "start": [
+       0,
+       8.0793,
+       0
+      ],
+      "tEnd": 7.616,
+      "stage": "scan",
+      "finish": [
+       -5.3144,
+       8.5793,
+       -29.7149
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-16",
+      "piece": "green",
+      "maxAlong": 37.188,
+      "distM": 11.158,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -1.19,
+       -9.12
+      ],
+      "missStuds": 9.2,
+      "tStop": 6.582,
+      "aimDeg": 252.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 37.194,
+      "maxY": 8.593,
+      "start": [
+       0,
+       8.0793,
+       0
+      ],
+      "tEnd": 7.148,
+      "stage": "scan",
+      "finish": [
+       -10.6911,
+       8.5793,
+       -35.6244
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-17",
+      "piece": "green",
+      "maxAlong": 29.027,
+      "distM": 9.267,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.44,
+       -3.79
+      ],
+      "missStuds": 5.12,
+      "tStop": 7.033,
+      "aimDeg": 238.7,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.889,
+      "maxY": 8.588,
+      "start": [
+       0,
+       8.0792,
+       0
+      ],
+      "tEnd": 7.598,
+      "stage": "refine",
+      "finish": [
+       -6.0554,
+       8.5787,
+       -30.2899
+      ]
+     },
+     {
+      "v0": 19.38,
+      "speedMps": 5.814000000000001,
+      "label": "h1-hio-18",
+      "piece": "green",
+      "maxAlong": 28.167,
+      "distM": 9.125,
+      "outcome": "rest",
+      "speed": 19.38,
+      "miss": [
+       4.47,
+       -3.5
+      ],
+      "missStuds": 5.67,
+      "tStop": 6.899,
+      "aimDeg": 238.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.416,
+      "maxY": 8.587,
+      "start": [
+       0,
+       8.0787,
+       0
+      ],
+      "tEnd": 7.464,
+      "stage": "refine",
+      "finish": [
+       -5.0347,
+       8.5787,
+       -29.9963
+      ]
+     },
+     {
+      "v0": 18.976,
+      "speedMps": 5.692674539030027,
+      "label": "h1-hio-19",
+      "piece": "green",
+      "maxAlong": 31.271,
+      "distM": 10.253,
+      "outcome": "rest",
+      "speed": 18.976,
+      "miss": [
+       3.62,
+       -7.17
+      ],
+      "missStuds": 8.03,
+      "tStop": 7.714,
+      "aimDeg": 236.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 34.177,
+      "maxY": 8.596,
+      "start": [
+       0,
+       8.0786,
+       0
+      ],
+      "tEnd": 8.281,
+      "stage": "refine",
+      "finish": [
+       -5.8775,
+       8.5787,
+       -33.6678
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-20",
+      "piece": "green",
+      "maxAlong": 29.564,
+      "distM": 9.368,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.05,
+       -4.05
+      ],
+      "missStuds": 5.07,
+      "tStop": 7.081,
+      "aimDeg": 239.3,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 31.227,
+      "maxY": 8.586,
+      "start": [
+       0,
+       8.0787,
+       0
+      ],
+      "tEnd": 7.632,
+      "stage": "refine",
+      "finish": [
+       -6.4482,
+       8.5787,
+       -30.5542
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-21",
+      "piece": "green",
+      "maxAlong": 28.13,
+      "distM": 9.105,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       4.15,
+       -3.38
+      ],
+      "missStuds": 5.35,
+      "tStop": 6.931,
+      "aimDeg": 237.8,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.351,
+      "maxY": 8.587,
+      "start": [
+       0,
+       8.0787,
+       0
+      ],
+      "tEnd": 7.497,
+      "stage": "refine",
+      "finish": [
+       -5.3459,
+       8.5787,
+       -29.8761
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-22",
+      "piece": "green",
+      "maxAlong": 28.439,
+      "distM": 9.159,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.87,
+       -3.51
+      ],
+      "missStuds": 5.23,
+      "tStop": 6.968,
+      "aimDeg": 238.05,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.531,
+      "maxY": 8.585,
+      "start": [
+       0,
+       8.0786,
+       0
+      ],
+      "tEnd": 7.534,
+      "stage": "refine",
+      "finish": [
+       -5.6261,
+       8.5787,
+       -30.0077
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-23",
+      "piece": "green",
+      "maxAlong": 28.223,
+      "distM": 9.136,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       4.34,
+       -3.51
+      ],
+      "missStuds": 5.58,
+      "tStop": 6.883,
+      "aimDeg": 238.18,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.453,
+      "maxY": 8.589,
+      "start": [
+       0,
+       8.0786,
+       0
+      ],
+      "tEnd": 7.449,
+      "stage": "refine",
+      "finish": [
+       -5.1643,
+       8.5787,
+       -30.012
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h1-hio-24",
+      "piece": "green",
+      "maxAlong": 28.6,
+      "distM": 9.187,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.75,
+       -3.58
+      ],
+      "missStuds": 5.19,
+      "tStop": 6.999,
+      "aimDeg": 238.24,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 30.625,
+      "maxY": 8.586,
+      "start": [
+       0,
+       8.0786,
+       0
+      ],
+      "tEnd": 7.564,
+      "stage": "refine",
+      "finish": [
+       -5.7453,
+       8.5787,
+       -30.081
+      ]
+     }
+    ]
+   },
+   "par": 2,
+   "stuck": 0,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   }
+  }
+ },
+ "h2": {
+  "default": {
+   "seconds": 114.66,
+   "scenario": "h2",
+   "hole": 2,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 8,
+     "speedMps": 2.4,
+     "label": "h2-bank-stump-headon",
+     "piece": "lane",
+     "maxAlong": 4.925,
+     "distM": 0.089,
+     "outcome": "rest",
+     "speed": 8,
+     "bank": "stump-headon",
+     "nContacts": 1,
+     "firstContact": {
+      "angleOut": 0,
+      "restitution": 0.597,
+      "part": "?",
+      "speedOut": 3.84,
+      "speedIn": 6.428,
+      "angleIn": 0
+     },
+     "flags": [],
+     "zone": "lane",
+     "distStuds": 0.296,
+     "maxY": 8.083,
+     "start": [
+      34,
+      8.0792,
+      -10
+     ],
+     "tEnd": 4.648,
+     "tStop": 4.065,
+     "finish": [
+      34,
+      8.0793,
+      -10.296
+     ]
+    },
+    {
+     "v0": 9,
+     "speedMps": 2.6999999999999997,
+     "label": "h2-bank-lane-rail-40",
+     "piece": "lane",
+     "maxAlong": 13.377,
+     "distM": 4.461,
+     "outcome": "rest",
+     "speed": 9,
+     "bank": "lane-rail-40",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 64.4,
+      "tangentialRetention": 0.938,
+      "restitution": 0.523,
+      "part": "Hole2/Wall:rail3",
+      "speedOut": 4.856,
+      "speedIn": 6.151,
+      "angleIn": 49.4
+     },
+     "flags": [],
+     "zone": "lane",
+     "distStuds": 14.87,
+     "maxY": 8.08,
+     "start": [
+      36,
+      8.0792,
+      0
+     ],
+     "tEnd": 5.515,
+     "tStop": 4.948,
+     "finish": [
+      33.1559,
+      8.0793,
+      -14.5949
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 9.857,
+       "speedMps": 2.9569508649665295,
+       "label": "h2-good-s1",
+       "piece": "lower_a",
+       "maxAlong": 25.879,
+       "distM": 7.764,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 9.857,
+       "targetId": "chute_left",
+       "target": [
+        31.25,
+        8.08,
+        -16
+       ],
+       "flags": [],
+       "zone": "lower",
+       "distStuds": 25.879,
+       "maxY": 8.08,
+       "start": [
+        34,
+        8.0792,
+        4
+       ],
+       "tEnd": 7.48,
+       "tStop": 6.914,
+       "finish": [
+        30.4748,
+        6.5793,
+        -21.6374
+       ]
+      },
+      {
+       "v0": 5.74,
+       "speedMps": 1.7219776843276122,
+       "label": "h2-good-s2",
+       "piece": "lower_d",
+       "maxAlong": 11.134,
+       "distM": 3.34,
+       "fromZone": "lower",
+       "outcome": "cup",
+       "speed": 5.74,
+       "targetId": "cup",
+       "target": [
+        36.5,
+        6.5,
+        -31
+       ],
+       "zone": "lower",
+       "rimTime": 2.951,
+       "flags": [],
+       "rimSpeedMps": 0.531,
+       "distStuds": 11.134,
+       "rimSpeed": 1.771,
+       "start": [
+        30.4748,
+        6.5793,
+        -21.6374
+       ],
+       "maxY": 6.581,
+       "tEnd": 3.283,
+       "finish": [
+        36.5,
+        6.23,
+        -31
+       ]
+      }
+     ],
+     "par": 2,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 9.857,
+       "speedMps": 2.9569508649665295,
+       "label": "h2-average-s1",
+       "piece": "lower_a",
+       "maxAlong": 25.888,
+       "distM": 7.766,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 9.857,
+       "targetId": "chute_right",
+       "target": [
+        36.75,
+        8.08,
+        -16
+       ],
+       "flags": [],
+       "zone": "lower",
+       "distStuds": 25.888,
+       "maxY": 8.08,
+       "start": [
+        34,
+        8.0792,
+        4
+       ],
+       "tEnd": 7.481,
+       "tStop": 6.915,
+       "finish": [
+        37.5265,
+        6.5793,
+        -21.6462
+       ]
+      },
+      {
+       "v0": 5.151,
+       "speedMps": 1.545170387372309,
+       "label": "h2-average-s2",
+       "piece": "lower_d",
+       "maxAlong": 9.41,
+       "distM": 2.823,
+       "fromZone": "lower",
+       "outcome": "cup",
+       "speed": 5.151,
+       "targetId": "cup",
+       "target": [
+        36.5,
+        6.5,
+        -31
+       ],
+       "zone": "lower",
+       "rimTime": 2.716,
+       "flags": [],
+       "rimSpeedMps": 0.351,
+       "distStuds": 9.41,
+       "rimSpeed": 1.17,
+       "start": [
+        37.5265,
+        6.5793,
+        -21.6462
+       ],
+       "maxY": 6.59,
+       "tEnd": 3.067,
+       "finish": [
+        36.5,
+        6.23,
+        -31
+       ]
+      }
+     ],
+     "par": 2,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "name": "Acorn Ledge",
+   "cam": "",
+   "hio": {
+    "aceAim": 281.75,
+    "line": {
+     "aim_deg": 252,
+     "speed": 18.7,
+     "from": "h02-notes.md"
+    },
+    "bestSpeed": 14.62,
+    "bestAim": 281.75,
+    "bestMiss": 0,
+    "ace": true,
+    "aceSpeed": 14.62,
+    "attempts": [
+     {
+      "v0": 18.7,
+      "speedMps": 5.609999999999999,
+      "label": "h2-hio-1",
+      "piece": "lower_d",
+      "maxAlong": 36.208,
+      "distM": 9.541,
+      "outcome": "rest",
+      "speed": 18.7,
+      "miss": [
+       -1.16,
+       3.22
+      ],
+      "missStuds": 3.43,
+      "tStop": 7.034,
+      "aimDeg": 252,
+      "flags": [],
+      "zone": "lower",
+      "distStuds": 31.804,
+      "maxY": 8.08,
+      "start": [
+       34,
+       8.0792,
+       4
+      ],
+      "tEnd": 7.601,
+      "stage": "spec",
+      "finish": [
+       35.3442,
+       6.5793,
+       -27.7754
+      ]
+     },
+     {
+      "v0": 14.62,
+      "speedMps": 4.385999999999999,
+      "label": "h2-hio-2",
+      "piece": "lower_d",
+      "maxAlong": 34.776,
+      "distM": 10.527,
+      "outcome": "cup",
+      "speed": 14.62,
+      "miss": [
+       0,
+       0
+      ],
+      "missStuds": 0,
+      "tEnd": 4.383,
+      "rimTime": 4.049,
+      "zone": "lower",
+      "aimDeg": 281.75,
+      "flags": [],
+      "rimSpeedMps": 1.085,
+      "distStuds": 35.089,
+      "rimSpeed": 3.616,
+      "start": [
+       34,
+       8.0792,
+       4
+      ],
+      "maxY": 8.08,
+      "stage": "engine-sim",
+      "finish": [
+       36.5,
+       6.23,
+       -31
+      ]
+     }
+    ]
+   },
+   "par": 2,
+   "stuck": 0,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   }
+  }
+ },
+ "h3": {
+  "default": {
+   "seconds": 318.71,
+   "scenario": "h3",
+   "hole": 3,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 15,
+     "speedMps": 4.5,
+     "label": "h3-bank-bank1-ride",
+     "piece": "leg",
+     "maxAlong": 11.559,
+     "distM": 7.147,
+     "outcome": "rest",
+     "speed": 15,
+     "bank": "bank1-ride",
+     "nContacts": 6,
+     "firstContact": {
+      "angleOut": 54.3,
+      "tangentialRetention": 0.901,
+      "restitution": 0.511,
+      "part": "Hole3/Felt",
+      "speedOut": 8.662,
+      "speedIn": 12.602,
+      "angleIn": 38.3
+     },
+     "flags": [],
+     "zone": "leg",
+     "distStuds": 23.824,
+     "maxY": 10.327,
+     "start": [
+      4,
+      9.0793,
+      -69
+     ],
+     "tEnd": 7.387,
+     "tStop": 6.833,
+     "finish": [
+      24.5868,
+      9.0793,
+      -80.9902
+     ]
+    },
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h3-bank-bank2-ride",
+     "piece": "green",
+     "maxAlong": 14.922,
+     "distM": 5.963,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "bank2-ride",
+     "nContacts": 3,
+     "firstContact": {
+      "angleOut": 62.1,
+      "tangentialRetention": 0.916,
+      "restitution": 0.485,
+      "part": "Hole3/Felt",
+      "speedOut": 6.206,
+      "speedIn": 8.464,
+      "angleIn": 45
+     },
+     "flags": [],
+     "zone": "green",
+     "distStuds": 19.878,
+     "maxY": 9.613,
+     "start": [
+      10,
+      9.0793,
+      -78
+     ],
+     "tEnd": 7.453,
+     "tStop": 6.899,
+     "finish": [
+      23.9755,
+      9.0793,
+      -92.1352
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 5,
+     "shots": [
+      {
+       "v0": 10.561,
+       "speedMps": 3.168210150518462,
+       "label": "h3-good-s1",
+       "piece": "tunnel",
+       "maxAlong": 12.647,
+       "distM": 4.54,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 10.561,
+       "targetId": "corner1",
+       "target": [
+        3,
+        9.08,
+        -77.5
+       ],
+       "flags": [],
+       "zone": "cross",
+       "distStuds": 15.134,
+       "maxY": 9.437,
+       "start": [
+        4,
+        9.0718,
+        -66
+       ],
+       "tEnd": 6.381,
+       "tStop": 5.815,
+       "finish": [
+        11.216,
+        9.0719,
+        -79.3028
+       ]
+      },
+      {
+       "v0": 9.153,
+       "speedMps": 2.745796450447415,
+       "label": "h3-good-s2",
+       "piece": "leg",
+       "maxAlong": 11.547,
+       "distM": 3.728,
+       "fromZone": "cross",
+       "outcome": "rest",
+       "speed": 9.153,
+       "targetId": "corner2",
+       "target": [
+        22,
+        9.08,
+        -78
+       ],
+       "flags": [],
+       "zone": "leg",
+       "distStuds": 12.426,
+       "maxY": 9.336,
+       "start": [
+        11.216,
+        9.0719,
+        -79.3028
+       ],
+       "tEnd": 5.951,
+       "tStop": 5.385,
+       "finish": [
+        22.8219,
+        9.0793,
+        -83.7413
+       ]
+      },
+      {
+       "v0": 4.251,
+       "speedMps": 1.2752461816753566,
+       "label": "h3-good-s3",
+       "piece": "green",
+       "maxAlong": 7.109,
+       "distM": 2.133,
+       "fromZone": "leg",
+       "outcome": "rest",
+       "speed": 4.251,
+       "targetId": "green_in",
+       "target": [
+        21.5,
+        9.08,
+        -90.5
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 7.109,
+       "maxY": 9.081,
+       "start": [
+        22.8219,
+        9.0793,
+        -83.7413
+       ],
+       "tEnd": 4.515,
+       "tStop": 3.949,
+       "finish": [
+        21.4462,
+        9.0719,
+        -90.7159
+       ]
+      },
+      {
+       "v0": 3.959,
+       "speedMps": 1.1877926278730229,
+       "label": "h3-good-s4",
+       "piece": "green",
+       "maxAlong": 3.399,
+       "distM": 0.855,
+       "fromZone": "green",
+       "outcome": "rest",
+       "speed": 3.959,
+       "targetId": "cup-blind",
+       "target": [
+        19.5,
+        9,
+        -96.5
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 2.849,
+       "maxY": 9.079,
+       "start": [
+        21.4462,
+        9.0719,
+        -90.7159
+       ],
+       "tEnd": 3.584,
+       "tStop": 3.016,
+       "finish": [
+        19.5394,
+        9.0793,
+        -92.8324
+       ]
+      },
+      {
+       "v0": 2.999,
+       "speedMps": 0.8997646105826789,
+       "label": "h3-good-s5",
+       "piece": "green",
+       "maxAlong": 3.668,
+       "distM": 1.1,
+       "fromZone": "green",
+       "outcome": "cup",
+       "speed": 2.999,
+       "targetId": "cup",
+       "target": [
+        19.5,
+        9,
+        -96.5
+       ],
+       "zone": "green",
+       "rimTime": 1.5,
+       "flags": [],
+       "rimSpeedMps": 0.374,
+       "distStuds": 3.668,
+       "rimSpeed": 1.245,
+       "start": [
+        19.5394,
+        9.0793,
+        -92.8324
+       ],
+       "maxY": 9.089,
+       "tEnd": 1.848,
+       "finish": [
+        19.5,
+        8.73,
+        -96.5
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 5,
+     "shots": [
+      {
+       "v0": 9.963,
+       "speedMps": 2.988969070537678,
+       "label": "h3-average-s1",
+       "piece": "tunnel",
+       "maxAlong": 12.608,
+       "distM": 4.597,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 9.963,
+       "targetId": "corner1",
+       "target": [
+        3,
+        9.08,
+        -77.5
+       ],
+       "flags": [],
+       "zone": "cross",
+       "distStuds": 15.325,
+       "maxY": 9.43,
+       "start": [
+        4,
+        9.0792,
+        -66
+       ],
+       "tEnd": 6.881,
+       "tStop": 6.299,
+       "finish": [
+        11.8185,
+        9.0793,
+        -79.1805
+       ]
+      },
+      {
+       "v0": 8.966,
+       "speedMps": 2.6897025676471458,
+       "label": "h3-average-s2",
+       "piece": "leg",
+       "maxAlong": 10.991,
+       "distM": 3.753,
+       "fromZone": "cross",
+       "outcome": "rest",
+       "speed": 8.966,
+       "targetId": "corner2",
+       "target": [
+        22,
+        9.08,
+        -78
+       ],
+       "flags": [],
+       "zone": "leg",
+       "distStuds": 12.511,
+       "maxY": 9.344,
+       "start": [
+        11.8185,
+        9.0793,
+        -79.1805
+       ],
+       "tEnd": 6.2,
+       "tStop": 5.649,
+       "finish": [
+        22.9819,
+        9.0793,
+        -84.8288
+       ]
+      },
+      {
+       "v0": 3.868,
+       "speedMps": 1.1604665443801423,
+       "label": "h3-average-s3",
+       "piece": "green",
+       "maxAlong": 6.78,
+       "distM": 2.034,
+       "fromZone": "leg",
+       "outcome": "rest",
+       "speed": 3.868,
+       "targetId": "green_in",
+       "target": [
+        21.5,
+        9.08,
+        -90.5
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 6.78,
+       "maxY": 9.08,
+       "start": [
+        22.9819,
+        9.0793,
+        -84.8288
+       ],
+       "tEnd": 4.715,
+       "tStop": 4.15,
+       "finish": [
+        21.2587,
+        9.0793,
+        -91.3864
+       ]
+      },
+      {
+       "v0": 3.695,
+       "speedMps": 1.1083918034682938,
+       "label": "h3-average-s4",
+       "piece": "green",
+       "maxAlong": 2.684,
+       "distM": 0.672,
+       "fromZone": "green",
+       "outcome": "rest",
+       "speed": 3.695,
+       "targetId": "cup-blind",
+       "target": [
+        19.5,
+        9,
+        -96.5
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 2.24,
+       "maxY": 9.079,
+       "start": [
+        21.2587,
+        9.0793,
+        -91.3864
+       ],
+       "tEnd": 3.383,
+       "tStop": 2.833,
+       "finish": [
+        19.534,
+        9.0719,
+        -92.8161
+       ]
+      },
+      {
+       "v0": 3.006,
+       "speedMps": 0.9017922259308762,
+       "label": "h3-average-s5",
+       "piece": "green",
+       "maxAlong": 3.684,
+       "distM": 1.105,
+       "fromZone": "green",
+       "outcome": "cup",
+       "speed": 3.006,
+       "targetId": "cup",
+       "target": [
+        19.5,
+        9,
+        -96.5
+       ],
+       "zone": "green",
+       "rimTime": 1.598,
+       "flags": [],
+       "rimSpeedMps": 0.311,
+       "distStuds": 3.684,
+       "rimSpeed": 1.036,
+       "start": [
+        19.534,
+        9.0719,
+        -92.8161
+       ],
+       "maxY": 9.083,
+       "tEnd": 1.983,
+       "finish": [
+        19.5,
+        8.73,
+        -96.5
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "name": "Toadstool Row",
+   "cam": "",
+   "hio": {
+    "line": {
+     "aim_deg": 243.5,
+     "speed": 19.8,
+     "from": "h03-notes.md"
+    },
+    "bestSpeed": 19.78,
+    "bestAim": 248.9,
+    "bestMiss": 12.69,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-1",
+      "piece": "leg",
+      "maxAlong": 12.863,
+      "distM": 7.177,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.65,
+       14.91
+      ],
+      "missStuds": 15.15,
+      "tStop": 6.849,
+      "aimDeg": 243.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 23.922,
+      "maxY": 10.118,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.416,
+      "stage": "spec",
+      "finish": [
+       22.1468,
+       9.0793,
+       -81.5872
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-2",
+      "piece": "leg",
+      "maxAlong": 12.31,
+      "distM": 7.592,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       4.59,
+       15.11
+      ],
+      "missStuds": 15.79,
+      "tStop": 6.483,
+      "aimDeg": 244.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 25.308,
+      "maxY": 9.866,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.032,
+      "stage": "scan",
+      "finish": [
+       24.0881,
+       9.0793,
+       -81.3934
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-3",
+      "piece": "leg",
+      "maxAlong": 12.62,
+      "distM": 7.426,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3,
+       14.05
+      ],
+      "missStuds": 14.37,
+      "tStop": 7.383,
+      "aimDeg": 242.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.753,
+      "maxY": 10.048,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.95,
+      "stage": "scan",
+      "finish": [
+       22.4972,
+       9.0793,
+       -82.4488
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-4",
+      "piece": "leg",
+      "maxAlong": 13.064,
+      "distM": 7.561,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.32,
+       13.73
+      ],
+      "missStuds": 14.13,
+      "tStop": 7.082,
+      "aimDeg": 245.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 25.205,
+      "maxY": 10.124,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.65,
+      "stage": "scan",
+      "finish": [
+       22.818,
+       9.0793,
+       -82.7677
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-5",
+      "piece": "leg",
+      "maxAlong": 12.493,
+      "distM": 7.358,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.71,
+       14.07
+      ],
+      "missStuds": 14.33,
+      "tStop": 7.117,
+      "aimDeg": 241.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.525,
+      "maxY": 10.017,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.682,
+      "stage": "scan",
+      "finish": [
+       22.2082,
+       9.0793,
+       -82.4302
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-6",
+      "piece": "leg",
+      "maxAlong": 13.326,
+      "distM": 7.326,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.79,
+       14.32
+      ],
+      "missStuds": 14.59,
+      "tStop": 6.966,
+      "aimDeg": 246.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.419,
+      "maxY": 10.198,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.533,
+      "stage": "scan",
+      "finish": [
+       22.2889,
+       9.0793,
+       -82.1807
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-7",
+      "piece": "leg",
+      "maxAlong": 12.251,
+      "distM": 7.319,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.87,
+       14.45
+      ],
+      "missStuds": 14.73,
+      "tStop": 6.916,
+      "aimDeg": 240.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.398,
+      "maxY": 9.952,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.482,
+      "stage": "scan",
+      "finish": [
+       22.3718,
+       9.0793,
+       -82.0544
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-8",
+      "piece": "leg",
+      "maxAlong": 13.381,
+      "distM": 7.495,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.28,
+       14.02
+      ],
+      "missStuds": 14.4,
+      "tStop": 7.116,
+      "aimDeg": 247.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.984,
+      "maxY": 10.19,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.683,
+      "stage": "scan",
+      "finish": [
+       22.776,
+       9.0793,
+       -82.4822
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-9",
+      "piece": "leg",
+      "maxAlong": 12.01,
+      "distM": 7.307,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.15,
+       14.84
+      ],
+      "missStuds": 15.17,
+      "tStop": 6.766,
+      "aimDeg": 239.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.357,
+      "maxY": 9.864,
+      "start": [
+       4,
+       9.0793,
+       -66
+      ],
+      "tEnd": 7.333,
+      "stage": "scan",
+      "finish": [
+       22.6515,
+       9.0793,
+       -81.6649
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-10",
+      "piece": "leg",
+      "maxAlong": 13.528,
+      "distM": 7.58,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.19,
+       13.5
+      ],
+      "missStuds": 13.88,
+      "tStop": 7.05,
+      "aimDeg": 248.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 25.265,
+      "maxY": 10.184,
+      "start": [
+       4,
+       9.0793,
+       -66
+      ],
+      "tEnd": 7.633,
+      "stage": "scan",
+      "finish": [
+       22.6937,
+       9.0793,
+       -82.9963
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-11",
+      "piece": "leg",
+      "maxAlong": 11.904,
+      "distM": 6.944,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.47,
+       15.91
+      ],
+      "missStuds": 16.1,
+      "tStop": 6.866,
+      "aimDeg": 238.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 23.148,
+      "maxY": 9.868,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.432,
+      "stage": "scan",
+      "finish": [
+       21.9691,
+       9.0793,
+       -80.5922
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-12",
+      "piece": "cross2",
+      "maxAlong": 12.693,
+      "distM": 5.245,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -4.25,
+       17.12
+      ],
+      "missStuds": 17.64,
+      "tStop": 6.499,
+      "aimDeg": 249.5,
+      "flags": [],
+      "zone": "cross",
+      "distStuds": 17.484,
+      "maxY": 10.688,
+      "start": [
+       4,
+       9.0792,
+       -66
+      ],
+      "tEnd": 7.066,
+      "stage": "scan",
+      "finish": [
+       15.2541,
+       9.0793,
+       -79.3808
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-13",
+      "piece": "leg",
+      "maxAlong": 11.068,
+      "distM": 6.496,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.14,
+       15.52
+      ],
+      "missStuds": 15.53,
+      "tStop": 6.399,
+      "aimDeg": 237.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 21.654,
+      "maxY": 9.521,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 6.967,
+      "stage": "scan",
+      "finish": [
+       19.6403,
+       9.0787,
+       -80.9754
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-14",
+      "piece": "tunnel",
+      "maxAlong": 11.229,
+      "distM": 4.455,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -8.85,
+       17.22
+      ],
+      "missStuds": 19.36,
+      "tStop": 5.099,
+      "aimDeg": 250.5,
+      "flags": [],
+      "zone": "cross",
+      "distStuds": 14.849,
+      "maxY": 10.97,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 5.666,
+      "stage": "scan",
+      "finish": [
+       10.6505,
+       9.0787,
+       -79.2763
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-15",
+      "piece": "leg",
+      "maxAlong": 11.501,
+      "distM": 7.153,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.75,
+       15.16
+      ],
+      "missStuds": 15.41,
+      "tStop": 6.682,
+      "aimDeg": 236.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 23.843,
+      "maxY": 9.766,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.249,
+      "stage": "scan",
+      "finish": [
+       22.2519,
+       9.0787,
+       -81.3419
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-16",
+      "piece": "cross2",
+      "maxAlong": 11.438,
+      "distM": 6.096,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -1.51,
+       15.76
+      ],
+      "missStuds": 15.83,
+      "tStop": 6.616,
+      "aimDeg": 251.5,
+      "flags": [],
+      "zone": "cross",
+      "distStuds": 20.321,
+      "maxY": 11.019,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.182,
+      "stage": "scan",
+      "finish": [
+       17.9862,
+       9.0787,
+       -80.7426
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-17",
+      "piece": "leg",
+      "maxAlong": 13.544,
+      "distM": 7.983,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.74,
+       12.12
+      ],
+      "missStuds": 12.69,
+      "tStop": 7.482,
+      "aimDeg": 248.9,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 26.61,
+      "maxY": 10.236,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 8.049,
+      "stage": "refine",
+      "finish": [
+       23.2433,
+       9.0787,
+       -84.3791
+      ]
+     },
+     {
+      "v0": 19.38,
+      "speedMps": 5.814000000000001,
+      "label": "h3-hio-18",
+      "piece": "leg",
+      "maxAlong": 13.275,
+      "distM": 7.225,
+      "outcome": "rest",
+      "speed": 19.38,
+      "miss": [
+       4.08,
+       16.48
+      ],
+      "missStuds": 16.98,
+      "tStop": 6.566,
+      "aimDeg": 248.5,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 24.084,
+      "maxY": 10.154,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.118,
+      "stage": "refine",
+      "finish": [
+       23.5844,
+       9.0787,
+       -80.0182
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-19",
+      "piece": "leg",
+      "maxAlong": 13.555,
+      "distM": 7.518,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.24,
+       13.86
+      ],
+      "missStuds": 14.24,
+      "tStop": 6.933,
+      "aimDeg": 248.85,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 25.061,
+      "maxY": 10.175,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.484,
+      "stage": "refine",
+      "finish": [
+       22.741,
+       9.0787,
+       -82.6384
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-20",
+      "piece": "leg",
+      "maxAlong": 13.543,
+      "distM": 7.957,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.74,
+       12.24
+      ],
+      "missStuds": 12.8,
+      "tStop": 7.399,
+      "aimDeg": 248.89,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 26.523,
+      "maxY": 10.236,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.951,
+      "stage": "refine",
+      "finish": [
+       23.2394,
+       9.0787,
+       -84.2566
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-21",
+      "piece": "leg",
+      "maxAlong": 13.562,
+      "distM": 7.624,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.33,
+       13.44
+      ],
+      "missStuds": 13.84,
+      "tStop": 7.099,
+      "aimDeg": 248.88,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 25.414,
+      "maxY": 10.176,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 7.652,
+      "stage": "refine",
+      "finish": [
+       22.8339,
+       9.0787,
+       -83.0639
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-22",
+      "piece": "leg",
+      "maxAlong": 13.584,
+      "distM": 6.389,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.96,
+       18.31
+      ],
+      "missStuds": 18.42,
+      "tStop": 6.283,
+      "aimDeg": 248.9,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 21.295,
+      "maxY": 10.194,
+      "start": [
+       4,
+       9.0787,
+       -66
+      ],
+      "tEnd": 6.851,
+      "stage": "refine",
+      "finish": [
+       21.4617,
+       9.0793,
+       -78.1889
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-23",
+      "piece": "leg",
+      "maxAlong": 13.571,
+      "distM": 7.806,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       3.4,
+       12.62
+      ],
+      "missStuds": 13.07,
+      "tStop": 7.149,
+      "aimDeg": 248.9,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 26.021,
+      "maxY": 10.237,
+      "start": [
+       4,
+       9.0793,
+       -66
+      ],
+      "tEnd": 7.702,
+      "stage": "refine",
+      "finish": [
+       22.9029,
+       9.0793,
+       -83.8819
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h3-hio-24",
+      "piece": "leg",
+      "maxAlong": 13.613,
+      "distM": 7.187,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       2.87,
+       15.13
+      ],
+      "missStuds": 15.4,
+      "tStop": 6.618,
+      "aimDeg": 248.9,
+      "flags": [],
+      "zone": "leg",
+      "distStuds": 23.955,
+      "maxY": 10.195,
+      "start": [
+       4,
+       9.0791,
+       -66
+      ],
+      "tEnd": 7.186,
+      "stage": "refine",
+      "finish": [
+       22.3746,
+       9.0793,
+       -81.3701
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "stuck": 0,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 1
+   }
+  }
+ },
+ "h4": {
+  "default": {
+   "cam": "",
+   "seconds": 196.14,
+   "scenario": "h4",
+   "hole": 4,
+   "sweep": [
+    {
+     "mover": "spinner",
+     "period": 10,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "plaza",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        54.872,
+        9.0793,
+        -85.4836
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 1.67,
+       "blocked": false,
+       "finish": [
+        54.3949,
+        9.0793,
+        -65.0227
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 3.33,
+       "blocked": false,
+       "finish": [
+        48.5405,
+        9.0793,
+        -72.2663
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "plaza",
+       "phase": 5,
+       "blocked": false,
+       "finish": [
+        54.6056,
+        9.0793,
+        -85.1199
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 6.67,
+       "blocked": false,
+       "finish": [
+        54.2471,
+        9.0793,
+        -65.2701
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 8.33,
+       "blocked": false,
+       "finish": [
+        48.0759,
+        9.0793,
+        -73.0138
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 9,
+     "speedMps": 2.6999999999999997,
+     "label": "h4-bank-plaza-rail-45",
+     "piece": "lane",
+     "maxAlong": 3.798,
+     "distM": 2.896,
+     "outcome": "rest",
+     "speed": 9,
+     "bank": "plaza-rail-45",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 0.1,
+      "restitution": 1.136,
+      "part": "?",
+      "speedOut": 8.91,
+      "speedIn": 7.843,
+      "angleIn": 0.1
+     },
+     "flags": [],
+     "zone": "lane",
+     "distStuds": 9.652,
+     "maxY": 9.09,
+     "start": [
+      52,
+      9.0792,
+      -75
+     ],
+     "tEnd": 6.502,
+     "tStop": 5.949,
+     "finish": [
+      53.6637,
+      9.0793,
+      -65.4922
+     ]
+    },
+    {
+     "v0": 9,
+     "speedMps": 2.6999999999999997,
+     "zone": "green",
+     "piece": "green",
+     "maxAlong": 12.223,
+     "distM": 4.082,
+     "outcome": "cup",
+     "speed": 9,
+     "bank": "ramp-rail",
+     "nContacts": 4,
+     "flags": [],
+     "firstContact": {
+      "angleOut": 1.2,
+      "restitution": 19.6,
+      "part": "?",
+      "speedOut": 8.722,
+      "speedIn": 0.484,
+      "angleIn": 23.1
+     },
+     "distStuds": 13.607,
+     "label": "h4-bank-ramp-rail",
+     "start": [
+      55,
+      9.1093,
+      -88.4018
+     ],
+     "maxY": 9.682,
+     "tEnd": 4.57,
+     "finish": [
+      54.5,
+      9.33,
+      -102
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 1,
+     "shots": [
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h4-good-s1",
+       "piece": "green",
+       "maxAlong": 42.26,
+       "distM": 12.622,
+       "fromZone": "lane",
+       "outcome": "cup",
+       "speed": 19.78,
+       "targetId": "cup",
+       "target": [
+        54.5,
+        9.6,
+        -102
+       ],
+       "zone": "green",
+       "rimTime": 3.283,
+       "flags": [],
+       "rimSpeedMps": 1.369,
+       "distStuds": 42.074,
+       "rimSpeed": 4.563,
+       "start": [
+        52,
+        9.0792,
+        -60
+       ],
+       "maxY": 9.802,
+       "tEnd": 3.735,
+       "finish": [
+        54.5,
+        9.33,
+        -102
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h4-average-s1",
+       "piece": "plaza",
+       "maxAlong": 28.321,
+       "distM": 8.097,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 19.78,
+       "targetId": "cup",
+       "target": [
+        54.5,
+        9.6,
+        -102
+       ],
+       "flags": [],
+       "zone": "plaza",
+       "distStuds": 26.99,
+       "maxY": 9.107,
+       "start": [
+        52,
+        9.0792,
+        -60
+       ],
+       "tEnd": 11.002,
+       "tStop": 10.449,
+       "finish": [
+        51.6987,
+        9.0793,
+        -86.9886
+       ]
+      },
+      {
+       "v0": 12.933,
+       "speedMps": 3.879917440697611,
+       "label": "h4-average-s2",
+       "piece": "green",
+       "maxAlong": 19.293,
+       "maxY": 9.847,
+       "fromZone": "plaza",
+       "outcome": "rest",
+       "speed": 12.933,
+       "target": [
+        54.5,
+        9.6,
+        -102
+       ],
+       "targetId": "cup",
+       "zone": "green",
+       "rimSpeedMps": 1.691,
+       "rimTime": 1.513,
+       "flags": [],
+       "tEnd": 5.883,
+       "distStuds": 16.707,
+       "rimSpeed": 5.638,
+       "start": [
+        51.6987,
+        9.0793,
+        -86.9886
+       ],
+       "distM": 5.012,
+       "tStop": 5.33,
+       "finish": [
+        56.3774,
+        9.6793,
+        -103.0269
+       ]
+      },
+      {
+       "v0": 2.33,
+       "speedMps": 0.6988989838437192,
+       "label": "h4-average-s3",
+       "piece": "green",
+       "maxAlong": 2.14,
+       "distM": 0.642,
+       "fromZone": "green",
+       "outcome": "cup",
+       "speed": 2.33,
+       "targetId": "cup",
+       "target": [
+        54.5,
+        9.6,
+        -102
+       ],
+       "zone": "green",
+       "rimTime": 0.846,
+       "flags": [],
+       "rimSpeedMps": 0.455,
+       "distStuds": 2.14,
+       "rimSpeed": 1.518,
+       "start": [
+        56.3774,
+        9.6793,
+        -103.0269
+       ],
+       "maxY": 9.68,
+       "tEnd": 1.183,
+       "finish": [
+        54.5,
+        9.33,
+        -102
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "nudges": 0,
+   "name": "Spore Spinner",
+   "stuck": 0,
+   "hio": {
+    "aceAim": 273.25,
+    "line": {
+     "aim_deg": 272.5,
+     "speed": 17.9,
+     "phase": 1.5,
+     "from": "h04-notes.md"
+    },
+    "bestSpeed": 19.31,
+    "bestAim": 273.25,
+    "bestMiss": 0,
+    "ace": true,
+    "aceSpeed": 19.31,
+    "attempts": [
+     {
+      "v0": 17.9,
+      "speedMps": 5.369999999999999,
+      "label": "h4-hio-1",
+      "piece": "green",
+      "maxAlong": 43.878,
+      "distM": 13.163,
+      "outcome": "rest",
+      "speed": 17.9,
+      "miss": [
+       -0.75,
+       -1.84
+      ],
+      "phase": 1.508,
+      "missStuds": 1.99,
+      "tStop": 6.317,
+      "aimDeg": 272.5,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 43.878,
+      "maxY": 9.701,
+      "start": [
+       52,
+       9.0792,
+       -60
+      ],
+      "tEnd": 6.87,
+      "stage": "spec",
+      "finish": [
+       53.7487,
+       9.6793,
+       -103.8432
+      ]
+     },
+     {
+      "v0": 19.31,
+      "speedMps": 5.792999999999999,
+      "label": "h4-hio-2",
+      "piece": "green",
+      "maxAlong": 42.423,
+      "distM": 12.622,
+      "outcome": "cup",
+      "speed": 19.31,
+      "miss": [
+       0,
+       0
+      ],
+      "missStuds": 0,
+      "tEnd": 3.818,
+      "phase": 1.509,
+      "rimTime": 3.467,
+      "zone": "green",
+      "aimDeg": 273.25,
+      "flags": [],
+      "rimSpeedMps": 1.654,
+      "distStuds": 42.074,
+      "rimSpeed": 5.513,
+      "start": [
+       52,
+       9.0792,
+       -60
+      ],
+      "maxY": 9.684,
+      "stage": "engine-sim",
+      "finish": [
+       54.5,
+       9.33,
+       -102
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "clientLag": 0.17
+  }
+ },
+ "h5": {
+  "default": {
+   "seconds": 217.75,
+   "scenario": "h5",
+   "hole": 5,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 10,
+     "speedMps": 3,
+     "label": "h5-bank-shore-rail-45",
+     "piece": "shore",
+     "maxAlong": 13.397,
+     "distM": 3.192,
+     "outcome": "rest",
+     "speed": 10,
+     "bank": "shore-rail-45",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 62.1,
+      "tangentialRetention": 1,
+      "restitution": 0.488,
+      "part": "?",
+      "speedOut": 4.659,
+      "speedIn": 6.081,
+      "angleIn": 42.6
+     },
+     "flags": [],
+     "zone": "shore",
+     "distStuds": 10.639,
+     "maxY": 7.08,
+     "start": [
+      90,
+      7.0792,
+      -14
+     ],
+     "tEnd": 5.469,
+     "tStop": 4.916,
+     "finish": [
+      84.0293,
+      7.0793,
+      -22.806
+     ]
+    },
+    {
+     "v0": 8,
+     "speedMps": 2.4,
+     "label": "h5-bank-covered-rail",
+     "piece": "north",
+     "maxAlong": 14.597,
+     "distM": 5.066,
+     "outcome": "rest",
+     "speed": 8,
+     "bank": "covered-rail",
+     "nContacts": 1,
+     "firstContact": {
+      "angleOut": 73.4,
+      "tangentialRetention": 0.955,
+      "restitution": 0.518,
+      "part": "Hole5/Wall:rail8",
+      "speedOut": 5.638,
+      "speedIn": 6.456,
+      "angleIn": 61.2
+     },
+     "flags": [],
+     "zone": "north",
+     "distStuds": 16.888,
+     "maxY": 7.08,
+     "start": [
+      85.5,
+      7.0793,
+      -26
+     ],
+     "tEnd": 6.682,
+     "tStop": 6.116,
+     "finish": [
+      85.0921,
+      7.0793,
+      -42.8833
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 12.165,
+       "speedMps": 3.649588694564045,
+       "label": "h5-good-s1",
+       "piece": "north",
+       "maxAlong": 34.502,
+       "distM": 10.351,
+       "fromZone": "shore",
+       "outcome": "rest",
+       "speed": 12.165,
+       "targetId": "root_far",
+       "target": [
+        96,
+        7.08,
+        -39
+       ],
+       "flags": [],
+       "zone": "north",
+       "distStuds": 34.502,
+       "maxY": 7.482,
+       "start": [
+        96,
+        7.0792,
+        -10
+       ],
+       "tEnd": 8.771,
+       "tStop": 8.217,
+       "finish": [
+        96,
+        7.0793,
+        -44.5018
+       ]
+      },
+      {
+       "v0": 2.678,
+       "speedMps": 0.8033684684278342,
+       "label": "h5-good-s2",
+       "piece": "north",
+       "maxAlong": 2.914,
+       "distM": 0.874,
+       "fromZone": "north",
+       "outcome": "cup",
+       "speed": 2.678,
+       "targetId": "cup",
+       "target": [
+        97.5,
+        7,
+        -47
+       ],
+       "zone": "north",
+       "rimTime": 1.129,
+       "flags": [],
+       "rimSpeedMps": 0.464,
+       "distStuds": 2.914,
+       "rimSpeed": 1.546,
+       "start": [
+        96,
+        7.0793,
+        -44.5018
+       ],
+       "maxY": 7.08,
+       "tEnd": 1.482,
+       "finish": [
+        97.5,
+        6.73,
+        -47
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 6.305,
+       "speedMps": 1.8914013661024,
+       "label": "h5-average-s1",
+       "piece": "shore",
+       "maxAlong": 14.339,
+       "distM": 4.302,
+       "fromZone": "shore",
+       "outcome": "rest",
+       "speed": 6.305,
+       "targetId": "covered_line",
+       "target": [
+        85.5,
+        7.08,
+        -19
+       ],
+       "flags": [],
+       "zone": "shore",
+       "distStuds": 14.339,
+       "maxY": 7.08,
+       "start": [
+        96,
+        7.0793,
+        -10
+       ],
+       "tEnd": 6.219,
+       "tStop": 5.666,
+       "finish": [
+        85.1129,
+        7.0793,
+        -19.3318
+       ]
+      },
+      {
+       "v0": 9.095,
+       "speedMps": 2.7283862746071463,
+       "label": "h5-average-s2",
+       "piece": "north",
+       "maxAlong": 23.814,
+       "distM": 7.144,
+       "fromZone": "shore",
+       "outcome": "rest",
+       "speed": 9.095,
+       "targetId": "covered_out",
+       "target": [
+        85.5,
+        7.08,
+        -39
+       ],
+       "flags": [],
+       "zone": "north",
+       "distStuds": 23.814,
+       "maxY": 7.08,
+       "start": [
+        85.1129,
+        7.0793,
+        -19.3318
+       ],
+       "tEnd": 7.649,
+       "tStop": 7.097,
+       "finish": [
+        85.5818,
+        7.0793,
+        -43.1414
+       ]
+      },
+      {
+       "v0": 6.205,
+       "speedMps": 1.8615039479036568,
+       "label": "h5-average-s3",
+       "piece": "north",
+       "maxAlong": 12.527,
+       "distM": 3.758,
+       "fromZone": "north",
+       "outcome": "cup",
+       "speed": 6.205,
+       "targetId": "cup",
+       "target": [
+        97.5,
+        7,
+        -47
+       ],
+       "zone": "north",
+       "rimTime": 3.295,
+       "flags": [],
+       "rimSpeedMps": 0.346,
+       "distStuds": 12.527,
+       "rimSpeed": 1.153,
+       "start": [
+        85.5818,
+        7.0793,
+        -43.1414
+       ],
+       "maxY": 7.086,
+       "tEnd": 3.65,
+       "finish": [
+        97.5,
+        6.73,
+        -47
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "name": "Rootbridge Crossing",
+   "cam": "",
+   "hio": {
+    "aceAim": 271.29,
+    "line": {
+     "aim_deg": 271.5,
+     "speed": 17.6,
+     "from": "h05-notes.md"
+    },
+    "bestSpeed": 19.6,
+    "bestAim": 271.29,
+    "bestMiss": 0,
+    "ace": true,
+    "aceSpeed": 19.596,
+    "attempts": [
+     {
+      "v0": 17.6,
+      "speedMps": 5.28,
+      "label": "h5-hio-1",
+      "piece": "north",
+      "maxAlong": 41.929,
+      "distM": 12.149,
+      "outcome": "rest",
+      "speed": 17.6,
+      "miss": [
+       -0.96,
+       -3.49
+      ],
+      "missStuds": 3.62,
+      "tStop": 6.038,
+      "aimDeg": 271.5,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 40.498,
+      "maxY": 7.486,
+      "start": [
+       96,
+       7.0792,
+       -10
+      ],
+      "tEnd": 6.621,
+      "stage": "spec",
+      "finish": [
+       96.5355,
+       7.0787,
+       -50.494
+      ]
+     },
+     {
+      "v0": 19.55,
+      "speedMps": 5.865,
+      "label": "h5-hio-2",
+      "piece": "north",
+      "maxAlong": 41.976,
+      "distM": 11.31,
+      "outcome": "rest",
+      "speed": 19.55,
+      "miss": [
+       -0.32,
+       -0.68
+      ],
+      "missStuds": 0.75,
+      "tStop": 6.165,
+      "aimDeg": 271.25,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 37.701,
+      "maxY": 7.488,
+      "start": [
+       96,
+       7.0787,
+       -10
+      ],
+      "tEnd": 6.733,
+      "stage": "engine-sim",
+      "finish": [
+       97.1818,
+       7.0787,
+       -47.6823
+      ]
+     },
+     {
+      "v0": 19.55,
+      "speedMps": 5.865,
+      "label": "h5-hio-3",
+      "piece": "north",
+      "maxAlong": 41.944,
+      "maxY": 7.487,
+      "outcome": "rest",
+      "speed": 19.55,
+      "miss": [
+       -0.29,
+       -2.46
+      ],
+      "missStuds": 2.48,
+      "tStop": 6.199,
+      "rimTime": 2.749,
+      "zone": "north",
+      "rimSpeedMps": 2.523,
+      "aimDeg": 271.65,
+      "flags": [],
+      "tEnd": 6.766,
+      "distStuds": 39.482,
+      "rimSpeed": 8.411,
+      "start": [
+       96,
+       7.0787,
+       -10
+      ],
+      "distM": 11.845,
+      "stage": "refine",
+      "finish": [
+       97.2117,
+       7.0787,
+       -49.4634
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h5-hio-4",
+      "piece": "north",
+      "maxAlong": 41.961,
+      "distM": 11.864,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -1.07,
+       -2.54
+      ],
+      "missStuds": 2.76,
+      "tStop": 6.083,
+      "aimDeg": 271.25,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 39.546,
+      "maxY": 7.488,
+      "start": [
+       96,
+       7.0786,
+       -10
+      ],
+      "tEnd": 6.649,
+      "stage": "refine",
+      "finish": [
+       96.4348,
+       7.0787,
+       -49.5433
+      ]
+     },
+     {
+      "v0": 19.381,
+      "speedMps": 5.814169618603935,
+      "label": "h5-hio-5",
+      "piece": "north",
+      "maxAlong": 41.948,
+      "distM": 11.583,
+      "outcome": "rest",
+      "speed": 19.381,
+      "miss": [
+       0.29,
+       -1.57
+      ],
+      "missStuds": 1.59,
+      "tStop": 6.466,
+      "aimDeg": 271.27,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 38.609,
+      "maxY": 7.49,
+      "start": [
+       96,
+       7.0786,
+       -10
+      ],
+      "tEnd": 7.033,
+      "stage": "refine",
+      "finish": [
+       97.7892,
+       7.0787,
+       -48.5672
+      ]
+     },
+     {
+      "v0": 19.442,
+      "speedMps": 5.832738337347138,
+      "label": "h5-hio-6",
+      "piece": "north",
+      "maxAlong": 41.907,
+      "distM": 11.518,
+      "outcome": "rest",
+      "speed": 19.442,
+      "miss": [
+       -0.95,
+       -1.39
+      ],
+      "missStuds": 1.68,
+      "tStop": 6.566,
+      "aimDeg": 271.05,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 38.393,
+      "maxY": 7.49,
+      "start": [
+       96,
+       7.0787,
+       -10
+      ],
+      "tEnd": 7.133,
+      "stage": "refine",
+      "finish": [
+       96.5507,
+       7.0787,
+       -48.389
+      ]
+     },
+     {
+      "v0": 19.65,
+      "speedMps": 5.895002480674249,
+      "label": "h5-hio-7",
+      "piece": "north",
+      "maxAlong": 41.956,
+      "distM": 11.611,
+      "outcome": "rest",
+      "speed": 19.65,
+      "miss": [
+       -1.5,
+       -1.7
+      ],
+      "missStuds": 2.27,
+      "tStop": 6.582,
+      "aimDeg": 271.37,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 38.704,
+      "maxY": 7.495,
+      "start": [
+       96,
+       7.0786,
+       -10
+      ],
+      "tEnd": 7.132,
+      "stage": "refine",
+      "finish": [
+       95.9974,
+       7.0787,
+       -48.7039
+      ]
+     },
+     {
+      "v0": 19.543,
+      "speedMps": 5.863023242396678,
+      "label": "h5-hio-8",
+      "piece": "north",
+      "maxAlong": 41.94,
+      "distM": 11.387,
+      "outcome": "rest",
+      "speed": 19.543,
+      "miss": [
+       0.24,
+       -0.92
+      ],
+      "missStuds": 0.95,
+      "tStop": 6.516,
+      "aimDeg": 271.17,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 37.957,
+      "maxY": 7.486,
+      "start": [
+       96,
+       7.0787,
+       -10
+      ],
+      "tEnd": 7.083,
+      "stage": "refine",
+      "finish": [
+       97.7436,
+       7.0787,
+       -47.9171
+      ]
+     },
+     {
+      "v0": 19.425,
+      "speedMps": 5.8275,
+      "label": "h5-hio-9",
+      "piece": "north",
+      "maxAlong": 41.919,
+      "distM": 11.743,
+      "outcome": "rest",
+      "speed": 19.425,
+      "miss": [
+       -1.18,
+       -2.14
+      ],
+      "missStuds": 2.45,
+      "tStop": 6.516,
+      "aimDeg": 271.38,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 39.144,
+      "maxY": 7.486,
+      "start": [
+       96,
+       7.0787,
+       -10
+      ],
+      "tEnd": 7.068,
+      "stage": "refine",
+      "finish": [
+       96.3172,
+       7.0787,
+       -49.1423
+      ]
+     },
+     {
+      "v0": 19.612,
+      "speedMps": 5.883499482391357,
+      "label": "h5-hio-10",
+      "piece": "north",
+      "maxAlong": 41.965,
+      "distM": 11.295,
+      "outcome": "rest",
+      "speed": 19.612,
+      "miss": [
+       0.1,
+       -0.61
+      ],
+      "missStuds": 0.62,
+      "tStop": 6.699,
+      "aimDeg": 271.2,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 37.648,
+      "maxY": 7.493,
+      "start": [
+       96,
+       7.0786,
+       -10
+      ],
+      "tEnd": 7.25,
+      "stage": "refine",
+      "finish": [
+       97.5974,
+       7.0787,
+       -47.6145
+      ]
+     },
+     {
+      "v0": 19.674,
+      "speedMps": 5.9022494823913565,
+      "label": "h5-hio-11",
+      "piece": "north",
+      "maxAlong": 41.919,
+      "distM": 11.84,
+      "outcome": "rest",
+      "speed": 19.674,
+      "miss": [
+       -2.09,
+       -2.46
+      ],
+      "missStuds": 3.23,
+      "tStop": 6.2,
+      "aimDeg": 271.14,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 39.467,
+      "maxY": 7.497,
+      "start": [
+       96,
+       7.0786,
+       -10
+      ],
+      "tEnd": 6.752,
+      "stage": "refine",
+      "finish": [
+       95.4122,
+       7.0787,
+       -49.4631
+      ]
+     },
+     {
+      "v0": 19.641,
+      "speedMps": 5.892362343658793,
+      "label": "h5-hio-12",
+      "piece": "north",
+      "maxAlong": 41.917,
+      "distM": 11.242,
+      "outcome": "rest",
+      "speed": 19.641,
+      "miss": [
+       -0.24,
+       -0.45
+      ],
+      "missStuds": 0.51,
+      "tStop": 6.549,
+      "aimDeg": 271.25,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 37.473,
+      "maxY": 7.495,
+      "start": [
+       96,
+       7.0786,
+       -10
+      ],
+      "tEnd": 7.218,
+      "stage": "refine",
+      "finish": [
+       97.2634,
+       7.0793,
+       -47.4518
+      ]
+     },
+     {
+      "v0": 19.646,
+      "speedMps": 5.893813313939608,
+      "label": "h5-hio-13",
+      "piece": "north",
+      "maxAlong": 41.924,
+      "distM": 11.376,
+      "outcome": "rest",
+      "speed": 19.646,
+      "miss": [
+       -1.55,
+       -0.92
+      ],
+      "missStuds": 1.81,
+      "tStop": 6.816,
+      "aimDeg": 271.29,
+      "flags": [],
+      "zone": "north",
+      "distStuds": 37.92,
+      "maxY": 7.488,
+      "start": [
+       96,
+       7.0787,
+       -10
+      ],
+      "tEnd": 7.369,
+      "stage": "refine",
+      "finish": [
+       95.946,
+       7.0793,
+       -47.9204
+      ]
+     },
+     {
+      "v0": 19.596,
+      "speedMps": 5.878750476107673,
+      "label": "h5-hio-14",
+      "piece": "north",
+      "maxAlong": 41.913,
+      "distM": 11.109,
+      "outcome": "cup",
+      "speed": 19.596,
+      "miss": [
+       0,
+       0
+      ],
+      "missStuds": 0,
+      "tEnd": 5.819,
+      "rimTime": 5.4,
+      "zone": "north",
+      "aimDeg": 271.29,
+      "flags": [],
+      "rimSpeedMps": 0.175,
+      "distStuds": 37.03,
+      "rimSpeed": 0.582,
+      "start": [
+       96,
+       7.0793,
+       -10
+      ],
+      "maxY": 7.49,
+      "stage": "refine",
+      "finish": [
+       97.5,
+       6.73,
+       -47
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "stuck": 0,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 1,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   }
+  }
+ },
+ "h6": {
+  "default": {
+   "cam": "",
+   "seconds": 705.67,
+   "scenario": "h6",
+   "hole": 6,
+   "sweep": [
+    {
+     "mover": "millwheel",
+     "period": 12,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        99.7618,
+        6.0793,
+        -80.3001
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 2,
+       "blocked": false,
+       "finish": [
+        101.383,
+        6.0793,
+        -80.8474
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        101.2969,
+        6.0793,
+        -80.7634
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 6,
+       "blocked": false,
+       "finish": [
+        101.3392,
+        6.0793,
+        -80.7964
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 8,
+       "blocked": false,
+       "finish": [
+        101.398,
+        6.0793,
+        -80.8605
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "channel",
+       "phase": 10,
+       "blocked": false,
+       "finish": [
+        101.3222,
+        6.0793,
+        -80.7885
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "label": "h6-hio-20",
+     "kind": "escape",
+     "hole": 6,
+     "pos": [
+      92.8267,
+      4.5838,
+      -73.0409
+     ]
+    }
+   ],
+   "escapes": 1,
+   "banks": [
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h6-bank-board1",
+     "piece": "channel",
+     "maxAlong": 9.915,
+     "distM": 5.856,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "board1",
+     "nContacts": 3,
+     "firstContact": {
+      "angleOut": 58,
+      "tangentialRetention": 0.932,
+      "restitution": 0.583,
+      "part": "Hole6/Wall:board1",
+      "speedOut": 7.851,
+      "speedIn": 10.101,
+      "angleIn": 45
+     },
+     "flags": [],
+     "zone": "channel",
+     "distStuds": 19.52,
+     "maxY": 6.081,
+     "start": [
+      84,
+      6.0793,
+      -72
+     ],
+     "tEnd": 6.718,
+     "tStop": 6.167,
+     "finish": [
+      101.3939,
+      6.0793,
+      -80.8602
+     ]
+    },
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h6-bank-board2",
+     "piece": "green",
+     "maxAlong": 8.142,
+     "distM": 4.633,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "board2",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 53.4,
+      "tangentialRetention": 0.927,
+      "restitution": 0.582,
+      "part": "Hole6/Wall:board2",
+      "speedOut": 7.727,
+      "speedIn": 10.363,
+      "angleIn": 40.2
+     },
+     "flags": [],
+     "zone": "green",
+     "distStuds": 15.443,
+     "maxY": 6.33,
+     "start": [
+      93,
+      6.0793,
+      -78.5
+     ],
+     "tEnd": 6.136,
+     "tStop": 5.583,
+     "finish": [
+      101.2983,
+      6.3293,
+      -91.5243
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 16.443,
+       "speedMps": 4.932925380836423,
+       "label": "h6-good-s1",
+       "piece": "channel",
+       "maxAlong": 13.672,
+       "distM": 6.271,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 16.443,
+       "targetId": "board1",
+       "target": [
+        84,
+        6.08,
+        -78
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 20.904,
+       "maxY": 6.149,
+       "start": [
+        84,
+        6.0792,
+        -70
+       ],
+       "tEnd": 9.152,
+       "tStop": 4.616,
+       "finish": [
+        101.6837,
+        6.0793,
+        -81.1476
+       ]
+      },
+      {
+       "v0": 9.176,
+       "speedMps": 2.7526593381597673,
+       "label": "h6-good-s2",
+       "piece": "green",
+       "maxAlong": 11.414,
+       "distM": 3.424,
+       "fromZone": "channel",
+       "outcome": "cup",
+       "speed": 9.176,
+       "targetId": "cup",
+       "target": [
+        100.5,
+        6.25,
+        -92.5
+       ],
+       "zone": "green",
+       "rimTime": 1.563,
+       "flags": [],
+       "rimSpeedMps": 1.119,
+       "distStuds": 11.414,
+       "rimSpeed": 3.73,
+       "start": [
+        101.6837,
+        6.0793,
+        -81.1476
+       ],
+       "maxY": 6.375,
+       "tEnd": 1.883,
+       "finish": [
+        100.5,
+        5.98,
+        -92.5
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 8.889,
+       "speedMps": 2.666777854349675,
+       "label": "h6-average-s1",
+       "piece": "channel",
+       "maxAlong": 11.92,
+       "distM": 4.441,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 8.889,
+       "targetId": "board1",
+       "target": [
+        84,
+        6.08,
+        -78
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 14.803,
+       "maxY": 6.08,
+       "start": [
+        84,
+        6.0792,
+        -70
+       ],
+       "tEnd": 6.319,
+       "tStop": 5.767,
+       "finish": [
+        92.7774,
+        6.0793,
+        -81.92
+       ]
+      },
+      {
+       "v0": 9.902,
+       "speedMps": 2.970575793693797,
+       "label": "h6-average-s2",
+       "piece": "channel",
+       "maxAlong": 7.29,
+       "distM": 1.822,
+       "fromZone": "channel",
+       "outcome": "rest",
+       "speed": 9.902,
+       "targetId": "board2",
+       "target": [
+        99,
+        6.08,
+        -79
+       ],
+       "flags": [],
+       "zone": "channel",
+       "distStuds": 6.073,
+       "maxY": 6.159,
+       "start": [
+        92.7774,
+        6.0793,
+        -81.92
+       ],
+       "tEnd": 8.267,
+       "tStop": 3.048,
+       "finish": [
+        98.7498,
+        6.0793,
+        -80.8195
+       ]
+      },
+      {
+       "v0": 9.308,
+       "speedMps": 2.7925194685911743,
+       "label": "h6-average-s3",
+       "piece": "green",
+       "maxAlong": 11.811,
+       "maxY": 6.419,
+       "fromZone": "channel",
+       "outcome": "cup",
+       "speed": 9.308,
+       "target": [
+        100.5,
+        6.25,
+        -92.5
+       ],
+       "targetId": "cup",
+       "zone": "green",
+       "rimSpeedMps": 1.087,
+       "rimTime": 1.597,
+       "flags": [],
+       "tEnd": 2.016,
+       "distStuds": 11.811,
+       "rimSpeed": 3.624,
+       "start": [
+        98.7498,
+        6.0793,
+        -80.8195
+       ],
+       "distM": 3.543,
+       "tStop": 1.828,
+       "finish": [
+        100.5,
+        5.98,
+        -92.5
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "nudges": 0,
+   "name": "Mill Wheel Run",
+   "stuck": 0,
+   "hio": {
+    "line": {
+     "aim_deg": 278,
+     "speed": 19.8,
+     "phase": 0,
+     "from": "h06-notes.md"
+    },
+    "bestSpeed": 19.78,
+    "bestAim": 285,
+    "bestMiss": 3.04,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-1",
+      "piece": "channel",
+      "maxAlong": 19.294,
+      "distM": 6.169,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.94,
+       11.61
+      ],
+      "phase": 11.997,
+      "missStuds": 11.65,
+      "tStop": 4.668,
+      "aimDeg": 278,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.562,
+      "maxY": 6.286,
+      "start": [
+       84,
+       6.0792,
+       -70
+      ],
+      "tEnd": 11.738,
+      "stage": "spec",
+      "finish": [
+       101.4405,
+       6.0793,
+       -80.8925
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-2",
+      "piece": "channel",
+      "maxAlong": 19.824,
+      "distM": 6.143,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.87,
+       11.66
+      ],
+      "phase": 0,
+      "missStuds": 11.69,
+      "tStop": 4.632,
+      "aimDeg": 279,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.477,
+      "maxY": 6.297,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 11.986,
+      "stage": "scan",
+      "finish": [
+       101.373,
+       6.0793,
+       -80.8385
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-3",
+      "piece": "channel",
+      "maxAlong": 19.201,
+      "distM": 6.151,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.89,
+       11.64
+      ],
+      "phase": 0.001,
+      "missStuds": 11.68,
+      "tStop": 4.533,
+      "aimDeg": 277,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.505,
+      "maxY": 6.294,
+      "start": [
+       84,
+       6.0787,
+       -70
+      ],
+      "tEnd": 11.869,
+      "stage": "scan",
+      "finish": [
+       101.394,
+       6.0793,
+       -80.8582
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-4",
+      "piece": "channel",
+      "maxAlong": 20.144,
+      "distM": 6.15,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.89,
+       11.65
+      ],
+      "phase": 11.998,
+      "missStuds": 11.68,
+      "tStop": 11.431,
+      "aimDeg": 280,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.499,
+      "maxY": 6.301,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 11.986,
+      "stage": "scan",
+      "finish": [
+       101.3903,
+       6.0793,
+       -80.853
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-5",
+      "piece": "channel",
+      "maxAlong": 18.711,
+      "distM": 6.15,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.89,
+       11.64
+      ],
+      "phase": 12,
+      "missStuds": 11.68,
+      "tStop": 4.501,
+      "aimDeg": 276,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.499,
+      "maxY": 6.285,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 11.719,
+      "stage": "scan",
+      "finish": [
+       101.3891,
+       6.0793,
+       -80.8557
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-6",
+      "piece": "channel",
+      "maxAlong": 20.363,
+      "distM": 6.11,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.79,
+       11.74
+      ],
+      "phase": 11.995,
+      "missStuds": 11.77,
+      "tStop": 11.451,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.368,
+      "maxY": 6.3,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.005,
+      "stage": "scan",
+      "finish": [
+       101.2947,
+       6.0793,
+       -80.7583
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-7",
+      "piece": "channel",
+      "maxAlong": 18.474,
+      "distM": 6.177,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.95,
+       11.58
+      ],
+      "phase": 11.996,
+      "missStuds": 11.62,
+      "tStop": 4.517,
+      "aimDeg": 275,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.589,
+      "maxY": 6.287,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 11.621,
+      "stage": "scan",
+      "finish": [
+       101.4546,
+       6.0793,
+       -80.9194
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-8",
+      "piece": "channel",
+      "maxAlong": 20.876,
+      "distM": 6.145,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.88,
+       11.66
+      ],
+      "phase": 12,
+      "missStuds": 11.69,
+      "tStop": 4.549,
+      "aimDeg": 282,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.484,
+      "maxY": 6.31,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.135,
+      "stage": "scan",
+      "finish": [
+       101.3792,
+       6.0793,
+       -80.8426
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-9",
+      "piece": "channel",
+      "maxAlong": 18.149,
+      "distM": 6.156,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.9,
+       11.63
+      ],
+      "phase": 12,
+      "missStuds": 11.66,
+      "tStop": 4.5,
+      "aimDeg": 274,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.52,
+      "maxY": 6.285,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 11.702,
+      "stage": "scan",
+      "finish": [
+       101.4042,
+       6.0793,
+       -80.871
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-10",
+      "piece": "channel",
+      "maxAlong": 20.841,
+      "distM": 6.27,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.18,
+       11.36
+      ],
+      "phase": 0.001,
+      "missStuds": 11.42,
+      "tStop": 4.586,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.899,
+      "maxY": 6.298,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.02,
+      "stage": "scan",
+      "finish": [
+       101.6801,
+       6.0787,
+       -81.1431
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-11",
+      "piece": "channel",
+      "maxAlong": 16.98,
+      "distM": 6.295,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.24,
+       11.29
+      ],
+      "phase": 0.002,
+      "missStuds": 11.36,
+      "tStop": 4.5,
+      "aimDeg": 273,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.983,
+      "maxY": 6.248,
+      "start": [
+       84,
+       6.0786,
+       -70
+      ],
+      "tEnd": 10.917,
+      "stage": "scan",
+      "finish": [
+       101.7396,
+       6.0787,
+       -81.2062
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-12",
+      "piece": "channel",
+      "maxAlong": 21.218,
+      "distM": 6.27,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       1.18,
+       11.36
+      ],
+      "phase": 0.002,
+      "missStuds": 11.42,
+      "tStop": 4.599,
+      "aimDeg": 284,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.901,
+      "maxY": 6.304,
+      "start": [
+       84,
+       6.0786,
+       -70
+      ],
+      "tEnd": 12.101,
+      "stage": "scan",
+      "finish": [
+       101.6827,
+       6.0787,
+       -81.1437
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-13",
+      "piece": "channel",
+      "maxAlong": 17.115,
+      "distM": 6.164,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.92,
+       11.61
+      ],
+      "phase": 12,
+      "missStuds": 11.65,
+      "tStop": 4.55,
+      "aimDeg": 272,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.546,
+      "maxY": 6.267,
+      "start": [
+       84,
+       6.0786,
+       -70
+      ],
+      "tEnd": 11.468,
+      "stage": "scan",
+      "finish": [
+       101.4232,
+       6.0793,
+       -80.8893
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-14",
+      "piece": "green",
+      "maxAlong": 23.337,
+      "distM": 7.815,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.72,
+       2.96
+      ],
+      "phase": 0.001,
+      "missStuds": 3.04,
+      "tStop": 6.115,
+      "aimDeg": 285,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 26.051,
+      "maxY": 6.33,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 6.669,
+      "stage": "scan",
+      "finish": [
+       101.2242,
+       6.3293,
+       -89.5448
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-15",
+      "piece": "channel",
+      "maxAlong": 17.223,
+      "distM": 6.01,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.55,
+       11.98
+      ],
+      "phase": 11.997,
+      "missStuds": 12,
+      "tStop": 4.567,
+      "aimDeg": 271,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.033,
+      "maxY": 6.284,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 11.769,
+      "stage": "scan",
+      "finish": [
+       101.0507,
+       6.0793,
+       -80.5165
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-16",
+      "maxAlong": 12.362,
+      "distM": 2.841,
+      "outcome": "hazard",
+      "speed": 19.78,
+      "oob": "hazard:millrace",
+      "phase": 11.997,
+      "miss": [
+       -7.43,
+       19.76
+      ],
+      "aimDeg": 286,
+      "flags": [],
+      "missStuds": 21.11,
+      "distStuds": 9.471,
+      "tEnd": 2.153,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "maxY": 6.101,
+      "stage": "scan",
+      "finish": [
+       93.0665,
+       4.5837,
+       -72.7381
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-17",
+      "piece": "green",
+      "maxAlong": 23.173,
+      "distM": 7.775,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.85,
+       3.24
+      ],
+      "phase": 11.998,
+      "missStuds": 3.35,
+      "tStop": 5.982,
+      "aimDeg": 285.4,
+      "flags": [],
+      "zone": "green",
+      "distStuds": 25.918,
+      "maxY": 6.33,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 6.536,
+      "stage": "refine",
+      "finish": [
+       101.3459,
+       6.3293,
+       -89.2578
+      ]
+     },
+     {
+      "v0": 19.38,
+      "speedMps": 5.814000000000001,
+      "label": "h6-hio-18",
+      "piece": "channel",
+      "maxAlong": 21.728,
+      "distM": 6.124,
+      "outcome": "rest",
+      "speed": 19.38,
+      "miss": [
+       0.83,
+       11.71
+      ],
+      "phase": 11.996,
+      "missStuds": 11.74,
+      "tStop": 4.584,
+      "aimDeg": 285,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.412,
+      "maxY": 6.317,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.354,
+      "stage": "refine",
+      "finish": [
+       101.3269,
+       6.0793,
+       -80.7908
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-19",
+      "piece": "channel",
+      "maxAlong": 21.069,
+      "distM": 6.145,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.88,
+       11.66
+      ],
+      "phase": 0.001,
+      "missStuds": 11.69,
+      "tStop": 4.567,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.483,
+      "maxY": 6.308,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.119,
+      "stage": "refine",
+      "finish": [
+       101.3771,
+       6.0793,
+       -80.8436
+      ]
+     },
+     {
+      "v0": 18.78,
+      "speedMps": 5.634,
+      "label": "h6-hio-20",
+      "maxAlong": 12.408,
+      "distM": 2.801,
+      "outcome": "escape",
+      "speed": 18.78,
+      "oob": "unknown",
+      "phase": 0.001,
+      "miss": [
+       -7.67,
+       19.46
+      ],
+      "aimDeg": 286,
+      "flags": [],
+      "missStuds": 20.92,
+      "distStuds": 9.336,
+      "tEnd": 2.349,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "maxY": 6.097,
+      "stage": "refine",
+      "finish": [
+       92.8267,
+       4.5838,
+       -73.0409
+      ]
+     },
+     {
+      "v0": 19.28,
+      "speedMps": 5.784,
+      "label": "h6-hio-21",
+      "piece": "channel",
+      "maxAlong": 21.673,
+      "distM": 6.146,
+      "outcome": "rest",
+      "speed": 19.28,
+      "miss": [
+       0.88,
+       11.65
+      ],
+      "phase": 11.998,
+      "missStuds": 11.69,
+      "tStop": 4.566,
+      "aimDeg": 285.5,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.488,
+      "maxY": 6.309,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.102,
+      "stage": "refine",
+      "finish": [
+       101.3816,
+       6.0793,
+       -80.8462
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-22",
+      "piece": "channel",
+      "maxAlong": 21.834,
+      "distM": 6.118,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.81,
+       11.72
+      ],
+      "phase": 0.012,
+      "missStuds": 11.75,
+      "tStop": 4.584,
+      "aimDeg": 284.75,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.392,
+      "maxY": 6.324,
+      "start": [
+       84,
+       6.0792,
+       -70
+      ],
+      "tEnd": 12.386,
+      "stage": "refine",
+      "finish": [
+       101.3115,
+       6.0793,
+       -80.7778
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-23",
+      "piece": "channel",
+      "maxAlong": 21.878,
+      "distM": 6.079,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.72,
+       11.82
+      ],
+      "phase": 11.996,
+      "missStuds": 11.84,
+      "tStop": 4.6,
+      "aimDeg": 284.88,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.263,
+      "maxY": 6.326,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.369,
+      "stage": "refine",
+      "finish": [
+       101.2193,
+       6.0793,
+       -80.682
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h6-hio-24",
+      "piece": "channel",
+      "maxAlong": 21.92,
+      "distM": 6.104,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.78,
+       11.76
+      ],
+      "phase": 11.999,
+      "missStuds": 11.78,
+      "tStop": 4.599,
+      "aimDeg": 284.94,
+      "flags": [],
+      "zone": "channel",
+      "distStuds": 20.345,
+      "maxY": 6.326,
+      "start": [
+       84,
+       6.0793,
+       -70
+      ],
+      "tEnd": 12.503,
+      "stage": "refine",
+      "finish": [
+       101.2788,
+       6.0793,
+       -80.7408
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "clientLag": 0.165
+  }
+ },
+ "h7": {
+  "default": {
+   "cam": "",
+   "seconds": 488.75,
+   "scenario": "h7",
+   "hole": 7,
+   "sweep": [
+    {
+     "mover": "log",
+     "period": 4.8,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        151.1251,
+        3.8793,
+        -54.3569
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 0.8,
+       "blocked": false,
+       "finish": [
+        142.1313,
+        2.6793,
+        -78.9532
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 1.6,
+       "blocked": false,
+       "finish": [
+        142.3036,
+        2.6793,
+        -79.9219
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 2.4,
+       "blocked": false,
+       "finish": [
+        142.8424,
+        2.6787,
+        -79.4132
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 3.2,
+       "blocked": false,
+       "finish": [
+        143.1287,
+        2.6787,
+        -78.3203
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        152.0236,
+        3.8787,
+        -54.8222
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 8,
+     "speedMps": 2.4,
+     "label": "h7-bank-t2-rail-45",
+     "piece": "t2",
+     "maxAlong": 10.405,
+     "distM": 3.231,
+     "outcome": "rest",
+     "speed": 8,
+     "bank": "t2-rail-45",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 60.2,
+      "tangentialRetention": 0.936,
+      "restitution": 0.536,
+      "part": "Hole7/Wall:rail9",
+      "speedOut": 4.041,
+      "speedIn": 5.301,
+      "angleIn": 45
+     },
+     "flags": [],
+     "zone": "t2",
+     "distStuds": 10.771,
+     "maxY": 3.88,
+     "start": [
+      148,
+      3.8793,
+      -56
+     ],
+     "tEnd": 5.17,
+     "tStop": 4.616,
+     "finish": [
+      151.1153,
+      3.8793,
+      -66.3101
+     ]
+    },
+    {
+     "v0": 7,
+     "speedMps": 2.1,
+     "label": "h7-bank-t3-rail",
+     "piece": "t3",
+     "maxAlong": 4.323,
+     "distM": 1.064,
+     "outcome": "rest",
+     "speed": 7,
+     "bank": "t3-rail",
+     "nContacts": 2,
+     "firstContact": {
+      "angleOut": 37.6,
+      "tangentialRetention": 0.912,
+      "restitution": 0.557,
+      "part": "Hole7/Wall:rail11",
+      "speedOut": 3.544,
+      "speedIn": 5.573,
+      "angleIn": 25.2
+     },
+     "flags": [],
+     "zone": "t3",
+     "distStuds": 3.547,
+     "maxY": 2.681,
+     "start": [
+      140,
+      2.6793,
+      -76
+     ],
+     "tEnd": 4.253,
+     "tStop": 3.699,
+     "finish": [
+      139.3224,
+      2.6793,
+      -79.4812
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 2,
+     "shots": [
+      {
+       "v0": 12.021,
+       "speedMps": 3.6063834709138973,
+       "label": "h7-good-s1",
+       "piece": "t3",
+       "maxAlong": 33.111,
+       "distM": 10.148,
+       "fromZone": "t1",
+       "outcome": "rest",
+       "speed": 12.021,
+       "targetId": "gap",
+       "target": [
+        149.25,
+        3.88,
+        -67
+       ],
+       "flags": [],
+       "zone": "t3",
+       "distStuds": 33.828,
+       "maxY": 5.08,
+       "start": [
+        144,
+        5.0786,
+        -40
+       ],
+       "tEnd": 10.934,
+       "tStop": 10.382,
+       "finish": [
+        143.2964,
+        2.6787,
+        -73.8208
+       ]
+      },
+      {
+       "v0": 2.863,
+       "speedMps": 0.8589467927404257,
+       "label": "h7-good-s2",
+       "piece": "t3",
+       "maxAlong": 3.344,
+       "distM": 1.003,
+       "fromZone": "t3",
+       "outcome": "cup",
+       "speed": 2.863,
+       "targetId": "cup",
+       "target": [
+        141.5,
+        2.6,
+        -71
+       ],
+       "zone": "t3",
+       "rimTime": 1.448,
+       "flags": [],
+       "rimSpeedMps": 0.326,
+       "distStuds": 3.344,
+       "rimSpeed": 1.087,
+       "start": [
+        143.2964,
+        2.6787,
+        -73.8208
+       ],
+       "maxY": 2.68,
+       "tEnd": 1.8,
+       "finish": [
+        141.5,
+        2.33,
+        -71
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 5,
+     "shots": [
+      {
+       "v0": 12.021,
+       "speedMps": 3.6063834709138973,
+       "label": "h7-average-s1",
+       "piece": "t2",
+       "maxAlong": 20.397,
+       "distM": 5.064,
+       "fromZone": "t1",
+       "outcome": "rest",
+       "speed": 12.021,
+       "targetId": "gap",
+       "target": [
+        149.25,
+        3.88,
+        -67
+       ],
+       "flags": [],
+       "zone": "t2",
+       "distStuds": 16.88,
+       "maxY": 5.08,
+       "start": [
+        144,
+        5.0786,
+        -40
+       ],
+       "tEnd": 6.601,
+       "tStop": 6.048,
+       "finish": [
+        150.5834,
+        3.8793,
+        -55.5436
+       ]
+      },
+      {
+       "v0": 7.182,
+       "speedMps": 2.154459835862326,
+       "label": "h7-average-s2",
+       "piece": "t2",
+       "maxAlong": 4.492,
+       "distM": 0.374,
+       "fromZone": "t2",
+       "outcome": "rest",
+       "speed": 7.182,
+       "targetId": "gap",
+       "target": [
+        149.25,
+        3.88,
+        -67
+       ],
+       "flags": [],
+       "zone": "t2",
+       "distStuds": 1.245,
+       "maxY": 3.881,
+       "start": [
+        150.5834,
+        3.8793,
+        -55.5436
+       ],
+       "tEnd": 4.633,
+       "tStop": 4.08,
+       "finish": [
+        149.423,
+        3.8793,
+        -55.9953
+       ]
+      },
+      {
+       "v0": 7.012,
+       "speedMps": 2.1037308468794436,
+       "label": "h7-average-s3",
+       "piece": "t2",
+       "maxAlong": 4.031,
+       "distM": 0.155,
+       "fromZone": "t2",
+       "outcome": "rest",
+       "speed": 7.012,
+       "targetId": "gap",
+       "target": [
+        149.25,
+        3.88,
+        -67
+       ],
+       "flags": [],
+       "zone": "t2",
+       "distStuds": 0.518,
+       "maxY": 3.88,
+       "start": [
+        149.423,
+        3.8793,
+        -55.9953
+       ],
+       "tEnd": 4.181,
+       "tStop": 3.629,
+       "finish": [
+        149.669,
+        3.8793,
+        -56.4509
+       ]
+      },
+      {
+       "v0": 6.868,
+       "speedMps": 2.0603857527248692,
+       "label": "h7-average-s4",
+       "piece": "t3",
+       "maxAlong": 17.273,
+       "distM": 5.517,
+       "fromZone": "t2",
+       "outcome": "rest",
+       "speed": 6.868,
+       "targetId": "gap",
+       "target": [
+        149.25,
+        3.88,
+        -67
+       ],
+       "flags": [],
+       "zone": "t3",
+       "distStuds": 18.392,
+       "maxY": 3.88,
+       "start": [
+        149.669,
+        3.8793,
+        -56.4509
+       ],
+       "tEnd": 8.801,
+       "tStop": 8.248,
+       "finish": [
+        142.6729,
+        2.6787,
+        -73.4599
+       ]
+      },
+      {
+       "v0": 2.595,
+       "speedMps": 0.7784727369298707,
+       "label": "h7-average-s5",
+       "piece": "t3",
+       "maxAlong": 2.725,
+       "distM": 0.818,
+       "fromZone": "t3",
+       "outcome": "cup",
+       "speed": 2.595,
+       "targetId": "cup",
+       "target": [
+        141.5,
+        2.6,
+        -71
+       ],
+       "zone": "t3",
+       "rimTime": 1.062,
+       "flags": [],
+       "rimSpeedMps": 0.463,
+       "distStuds": 2.725,
+       "rimSpeed": 1.542,
+       "start": [
+        142.6729,
+        2.6787,
+        -73.4599
+       ],
+       "maxY": 2.68,
+       "tEnd": 1.382,
+       "finish": [
+        141.5,
+        2.33,
+        -71
+       ]
+      }
+     ],
+     "par": 3,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "nudges": 0,
+   "name": "Cascade Steps",
+   "stuck": 0,
+   "hio": {
+    "line": {
+     "aim_deg": 283,
+     "speed": 13.5,
+     "phase": 0,
+     "from": "h07-notes.md"
+    },
+    "bestSpeed": 11.29,
+    "bestAim": 282.25,
+    "bestMiss": 1.87,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-1",
+      "piece": "t2",
+      "maxAlong": 20.539,
+      "distM": 4.762,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       9.83,
+       16.92
+      ],
+      "phase": 0.003,
+      "missStuds": 19.57,
+      "tStop": 5.25,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.874,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 5.803,
+      "stage": "spec",
+      "finish": [
+       151.3306,
+       3.8793,
+       -54.0796
+      ]
+     },
+     {
+      "v0": 17.43,
+      "speedMps": 5.229,
+      "label": "h7-hio-2",
+      "piece": "t2",
+      "maxAlong": 11.099,
+      "distM": 5.089,
+      "outcome": "rest",
+      "speed": 17.43,
+      "miss": [
+       11.94,
+       16.91
+      ],
+      "phase": 0.003,
+      "missStuds": 20.7,
+      "tStop": 6.75,
+      "aimDeg": 223.5,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.963,
+      "maxY": 5.084,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 7.303,
+      "stage": "engine-sim",
+      "finish": [
+       153.4445,
+       3.8793,
+       -54.0902
+      ]
+     },
+     {
+      "v0": 12.04,
+      "speedMps": 3.6119999999999997,
+      "label": "h7-hio-3",
+      "piece": "t3",
+      "maxAlong": 32.825,
+      "distM": 10.073,
+      "outcome": "rest",
+      "speed": 12.04,
+      "miss": [
+       1.31,
+       -2.56
+      ],
+      "phase": 4.8,
+      "missStuds": 2.87,
+      "tStop": 11.4,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 33.578,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 11.952,
+      "stage": "engine-sim",
+      "finish": [
+       142.8095,
+       2.6793,
+       -73.5572
+      ]
+     },
+     {
+      "v0": 16.96,
+      "speedMps": 5.088,
+      "label": "h7-hio-4",
+      "piece": "t2",
+      "maxAlong": 12.186,
+      "distM": 4.977,
+      "outcome": "rest",
+      "speed": 16.96,
+      "miss": [
+       10.14,
+       16.28
+      ],
+      "phase": 0.003,
+      "missStuds": 19.18,
+      "tStop": 6.334,
+      "aimDeg": 225.5,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.59,
+      "maxY": 5.084,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.887,
+      "stage": "engine-sim",
+      "finish": [
+       151.6436,
+       3.8793,
+       -54.7242
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-5",
+      "piece": "t2",
+      "maxAlong": 20.614,
+      "distM": 4.88,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       10.66,
+       16.93
+      ],
+      "phase": 0,
+      "missStuds": 20,
+      "tStop": 5.316,
+      "aimDeg": 284,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.267,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 5.87,
+      "stage": "scan",
+      "finish": [
+       152.1574,
+       3.8793,
+       -54.0737
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-6",
+      "piece": "t2",
+      "maxAlong": 20.465,
+      "distM": 4.681,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       9.23,
+       16.92
+      ],
+      "phase": 0.003,
+      "missStuds": 19.28,
+      "tStop": 5.033,
+      "aimDeg": 282,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.605,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 5.586,
+      "stage": "scan",
+      "finish": [
+       150.733,
+       3.8793,
+       -54.0776
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-7",
+      "piece": "t2",
+      "maxAlong": 27.869,
+      "distM": 7.687,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       11.51,
+       7.01
+      ],
+      "phase": 4.798,
+      "missStuds": 13.48,
+      "tStop": 6.017,
+      "aimDeg": 285,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 25.623,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.571,
+      "stage": "scan",
+      "finish": [
+       153.0134,
+       3.8793,
+       -63.9857
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-8",
+      "piece": "t2",
+      "maxAlong": 20.361,
+      "distM": 4.596,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       8.54,
+       16.92
+      ],
+      "phase": 4.8,
+      "missStuds": 18.95,
+      "tStop": 5.667,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.319,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.22,
+      "stage": "scan",
+      "finish": [
+       150.0361,
+       3.8793,
+       -54.0793
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-9",
+      "piece": "t2",
+      "maxAlong": 20.142,
+      "distM": 4.325,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       3.55,
+       16.62
+      ],
+      "phase": 0.001,
+      "missStuds": 17,
+      "tStop": 5.866,
+      "aimDeg": 286,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.417,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.419,
+      "stage": "scan",
+      "finish": [
+       145.053,
+       3.8793,
+       -54.3784
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-10",
+      "piece": "t2",
+      "maxAlong": 20.302,
+      "distM": 4.531,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       7.97,
+       16.92
+      ],
+      "phase": 4.799,
+      "missStuds": 18.7,
+      "tStop": 4.884,
+      "aimDeg": 280,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.104,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 5.437,
+      "stage": "scan",
+      "finish": [
+       149.4711,
+       3.8793,
+       -54.0785
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-11",
+      "piece": "t2",
+      "maxAlong": 20.03,
+      "distM": 4.466,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       3.49,
+       16.15
+      ],
+      "phase": 0.001,
+      "missStuds": 16.52,
+      "tStop": 5.751,
+      "aimDeg": 287,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.885,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.304,
+      "stage": "scan",
+      "finish": [
+       144.9869,
+       3.8793,
+       -54.8526
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-12",
+      "piece": "t2",
+      "maxAlong": 20.327,
+      "distM": 4.98,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       6.58,
+       14.91
+      ],
+      "phase": 0.002,
+      "missStuds": 16.3,
+      "tStop": 5.349,
+      "aimDeg": 279,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.599,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 5.902,
+      "stage": "scan",
+      "finish": [
+       148.0807,
+       3.8793,
+       -56.0893
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-13",
+      "piece": "t2",
+      "maxAlong": 19.976,
+      "distM": 4.866,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       3.94,
+       14.84
+      ],
+      "phase": 0,
+      "missStuds": 15.36,
+      "tStop": 5.351,
+      "aimDeg": 288,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 16.221,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 5.904,
+      "stage": "scan",
+      "finish": [
+       145.4428,
+       3.8793,
+       -56.1566
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-14",
+      "piece": "t2",
+      "maxAlong": 20.196,
+      "distM": 4.68,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       6.31,
+       15.87
+      ],
+      "phase": 0.002,
+      "missStuds": 17.08,
+      "tStop": 5.5,
+      "aimDeg": 278,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.6,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.051,
+      "stage": "scan",
+      "finish": [
+       147.8107,
+       3.8793,
+       -55.1276
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-15",
+      "piece": "t2",
+      "maxAlong": 19.802,
+      "distM": 4.225,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       2.87,
+       16.92
+      ],
+      "phase": 0.001,
+      "missStuds": 17.16,
+      "tStop": 5.969,
+      "aimDeg": 289,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 14.085,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 6.539,
+      "stage": "scan",
+      "finish": [
+       144.3709,
+       3.8793,
+       -54.0798
+      ]
+     },
+     {
+      "v0": 13.5,
+      "speedMps": 4.05,
+      "label": "h7-hio-16",
+      "piece": "t2",
+      "maxAlong": 20.165,
+      "distM": 4.651,
+      "outcome": "rest",
+      "speed": 13.5,
+      "miss": [
+       5.86,
+       15.86
+      ],
+      "phase": 0.001,
+      "missStuds": 16.91,
+      "tStop": 5.566,
+      "aimDeg": 277,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.504,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 6.119,
+      "stage": "scan",
+      "finish": [
+       147.3598,
+       3.8793,
+       -55.1358
+      ]
+     },
+     {
+      "v0": 12.04,
+      "speedMps": 3.6119999999999997,
+      "label": "h7-hio-17",
+      "piece": "t3",
+      "maxAlong": 33.105,
+      "distM": 10.175,
+      "outcome": "rest",
+      "speed": 12.04,
+      "miss": [
+       1.29,
+       -2.9
+      ],
+      "phase": 0,
+      "missStuds": 3.17,
+      "tStop": 11.45,
+      "aimDeg": 283.4,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 33.917,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 12.003,
+      "stage": "refine",
+      "finish": [
+       142.7904,
+       2.6793,
+       -73.8951
+      ]
+     },
+     {
+      "v0": 12.44,
+      "speedMps": 3.7319999999999998,
+      "label": "h7-hio-18",
+      "piece": "t3",
+      "maxAlong": 34.595,
+      "distM": 10.693,
+      "outcome": "rest",
+      "speed": 12.44,
+      "miss": [
+       1.18,
+       -4.62
+      ],
+      "phase": 4.798,
+      "missStuds": 4.77,
+      "tStop": 11.133,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 35.645,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 11.686,
+      "stage": "refine",
+      "finish": [
+       142.6794,
+       2.6793,
+       -75.6203
+      ]
+     },
+     {
+      "v0": 14.04,
+      "speedMps": 4.212,
+      "label": "h7-hio-19",
+      "piece": "t2",
+      "maxAlong": 20.421,
+      "distM": 4.597,
+      "outcome": "rest",
+      "speed": 14.04,
+      "miss": [
+       8.55,
+       16.92
+      ],
+      "phase": 0.003,
+      "missStuds": 18.96,
+      "tStop": 4.917,
+      "aimDeg": 281,
+      "flags": [],
+      "zone": "t2",
+      "distStuds": 15.324,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 5.47,
+      "stage": "refine",
+      "finish": [
+       150.0494,
+       3.8793,
+       -54.0795
+      ]
+     },
+     {
+      "v0": 11.04,
+      "speedMps": 3.312,
+      "label": "h7-hio-20",
+      "piece": "t3",
+      "maxAlong": 29.272,
+      "distM": 8.744,
+      "outcome": "rest",
+      "speed": 11.04,
+      "miss": [
+       2.73,
+       1.85
+      ],
+      "phase": 0,
+      "missStuds": 3.3,
+      "tStop": 12.15,
+      "aimDeg": 282.27,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 29.148,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 12.704,
+      "stage": "refine",
+      "finish": [
+       144.2347,
+       2.6793,
+       -69.1469
+      ]
+     },
+     {
+      "v0": 11.54,
+      "speedMps": 3.4619999999999997,
+      "label": "h7-hio-21",
+      "piece": "t3",
+      "maxAlong": 32.597,
+      "distM": 10.008,
+      "outcome": "rest",
+      "speed": 11.54,
+      "miss": [
+       1.45,
+       -2.34
+      ],
+      "phase": 0.003,
+      "missStuds": 2.75,
+      "tStop": 11.183,
+      "aimDeg": 282.5,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 33.359,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 11.736,
+      "stage": "refine",
+      "finish": [
+       142.9487,
+       2.6793,
+       -73.3423
+      ]
+     },
+     {
+      "v0": 12.04,
+      "speedMps": 3.6119999999999997,
+      "label": "h7-hio-22",
+      "piece": "t3",
+      "maxAlong": 33.431,
+      "distM": 10.287,
+      "outcome": "rest",
+      "speed": 12.04,
+      "miss": [
+       1.19,
+       -3.27
+      ],
+      "phase": 0.001,
+      "missStuds": 3.47,
+      "tStop": 11.35,
+      "aimDeg": 283,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 34.292,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0793,
+       -40
+      ],
+      "tEnd": 11.903,
+      "stage": "refine",
+      "finish": [
+       142.6855,
+       2.6793,
+       -74.2664
+      ]
+     },
+     {
+      "v0": 11.29,
+      "speedMps": 3.3869999999999996,
+      "label": "h7-hio-23",
+      "piece": "t3",
+      "maxAlong": 30.669,
+      "distM": 9.291,
+      "outcome": "rest",
+      "speed": 11.29,
+      "miss": [
+       1.87,
+       0.04
+      ],
+      "phase": 4.8,
+      "missStuds": 1.87,
+      "tStop": 11.6,
+      "aimDeg": 282.25,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 30.971,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 12.153,
+      "stage": "refine",
+      "finish": [
+       143.3691,
+       2.6793,
+       -70.9649
+      ]
+     },
+     {
+      "v0": 11.04,
+      "speedMps": 3.312,
+      "label": "h7-hio-24",
+      "piece": "t3",
+      "maxAlong": 29.251,
+      "distM": 8.738,
+      "outcome": "rest",
+      "speed": 11.04,
+      "miss": [
+       2.65,
+       1.87
+      ],
+      "phase": 4.8,
+      "missStuds": 3.24,
+      "tStop": 12.249,
+      "aimDeg": 282.24,
+      "flags": [],
+      "zone": "t3",
+      "distStuds": 29.127,
+      "maxY": 5.08,
+      "start": [
+       144,
+       5.0792,
+       -40
+      ],
+      "tEnd": 12.803,
+      "stage": "refine",
+      "finish": [
+       144.1455,
+       2.6793,
+       -69.1263
+      ]
+     }
+    ]
+   },
+   "par": 3,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 1,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "clientLag": 0.164
+  }
+ },
+ "h8": {
+  "default": {
+   "cam": "",
+   "seconds": 378.55,
+   "scenario": "h8",
+   "hole": 8,
+   "sweep": [
+    {
+     "mover": "root_door",
+     "period": 3.34,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        192.1215,
+        8.0793,
+        -16.1738
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 0.56,
+       "blocked": false,
+       "finish": [
+        192.0217,
+        8.0793,
+        -15.9288
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 1.11,
+       "blocked": false,
+       "finish": [
+        192.1569,
+        8.0787,
+        -16.4871
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 1.67,
+       "blocked": false,
+       "finish": [
+        192.2045,
+        8.0787,
+        -16.1195
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "junction",
+       "phase": 2.23,
+       "blocked": false,
+       "finish": [
+        198.9315,
+        8.0787,
+        -23.2712
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 2.78,
+       "blocked": false,
+       "finish": [
+        192.2889,
+        8.0787,
+        -16.5133
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h8-bank-bank1-ride",
+     "piece": "c1",
+     "maxAlong": 11.926,
+     "distM": 4.877,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "bank1-ride",
+     "nContacts": 3,
+     "firstContact": {
+      "angleOut": 61,
+      "tangentialRetention": 0.89,
+      "restitution": 0.494,
+      "part": "Hole8/Felt",
+      "speedOut": 6.767,
+      "speedIn": 9.398,
+      "angleIn": 45
+     },
+     "flags": [],
+     "zone": "climb",
+     "distStuds": 16.256,
+     "maxY": 8.727,
+     "start": [
+      182,
+      8.0793,
+      -21.5
+     ],
+     "tEnd": 7.919,
+     "tStop": 4.683,
+     "finish": [
+      170.0737,
+      8.0793,
+      -32.5459
+     ]
+    },
+    {
+     "v0": 10,
+     "speedMps": 3,
+     "label": "h8-bank-bank2-ride",
+     "piece": "green",
+     "maxAlong": 9.921,
+     "distM": 4.705,
+     "outcome": "rest",
+     "speed": 10,
+     "bank": "bank2-ride",
+     "nContacts": 1,
+     "firstContact": {
+      "angleOut": 62,
+      "tangentialRetention": 0.867,
+      "restitution": 0.462,
+      "part": "Hole8/Felt",
+      "speedOut": 5.519,
+      "speedIn": 7.942,
+      "angleIn": 45
+     },
+     "flags": [],
+     "zone": "green",
+     "distStuds": 15.683,
+     "maxY": 10.009,
+     "start": [
+      173.5,
+      9.5793,
+      -52
+     ],
+     "tEnd": 6.754,
+     "tStop": 6.184,
+     "finish": [
+      185.7877,
+      9.5793,
+      -61.7458
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 5,
+     "shots": [
+      {
+       "v0": 11.19,
+       "speedMps": 3.35700770418498,
+       "label": "h8-good-s1",
+       "piece": "junction",
+       "maxAlong": 15.253,
+       "distM": 3.451,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 11.19,
+       "targetId": "ring_bank",
+       "target": [
+        195.69,
+        8.08,
+        -24.6
+       ],
+       "flags": [],
+       "zone": "junction",
+       "distStuds": 11.503,
+       "maxY": 8.082,
+       "start": [
+        190,
+        8.0792,
+        -10
+       ],
+       "tEnd": 5.485,
+       "tStop": 4.933,
+       "finish": [
+        192.5793,
+        8.0793,
+        -21.2096
+       ]
+      },
+      {
+       "v0": 7.782,
+       "speedMps": 2.3347305556553692,
+       "label": "h8-good-s2",
+       "piece": "junction",
+       "maxAlong": 1.69,
+       "distM": 1.166,
+       "fromZone": "junction",
+       "outcome": "rest",
+       "speed": 7.782,
+       "targetId": "ring",
+       "target": [
+        197,
+        8.08,
+        -21.5
+       ],
+       "flags": [],
+       "zone": "junction",
+       "distStuds": 3.888,
+       "maxY": 8.084,
+       "start": [
+        192.5793,
+        8.0793,
+        -21.2096
+       ],
+       "tEnd": 4.534,
+       "tStop": 3.98,
+       "finish": [
+        188.8836,
+        8.0793,
+        -22.4174
+       ]
+      },
+      {
+       "v0": 8.941,
+       "speedMps": 2.682216140287892,
+       "label": "h8-good-s3",
+       "piece": "junction",
+       "maxAlong": 5.481,
+       "distM": 0.705,
+       "fromZone": "junction",
+       "outcome": "rest",
+       "speed": 8.941,
+       "targetId": "ring",
+       "target": [
+        197,
+        8.08,
+        -21.5
+       ],
+       "flags": [],
+       "zone": "junction",
+       "distStuds": 2.35,
+       "maxY": 8.084,
+       "start": [
+        188.8836,
+        8.0793,
+        -22.4174
+       ],
+       "tEnd": 5.016,
+       "tStop": 4.463,
+       "finish": [
+        188.8537,
+        8.0793,
+        -20.0681
+       ]
+      },
+      {
+       "v0": 8.972,
+       "speedMps": 2.691673382881163,
+       "label": "h8-good-s4",
+       "piece": "junction",
+       "maxAlong": 5.579,
+       "distM": 1.049,
+       "fromZone": "junction",
+       "outcome": "rest",
+       "speed": 8.972,
+       "targetId": "ring",
+       "target": [
+        197,
+        8.08,
+        -21.5
+       ],
+       "flags": [],
+       "zone": "junction",
+       "distStuds": 3.495,
+       "maxY": 8.084,
+       "start": [
+        188.8537,
+        8.0793,
+        -20.0681
+       ],
+       "tEnd": 5.114,
+       "tStop": 4.562,
+       "finish": [
+        188.8086,
+        8.0793,
+        -23.5629
+       ]
+      },
+      {
+       "v0": 9.026,
+       "speedMps": 2.7078006818383074,
+       "label": "h8-good-s5",
+       "piece": "green",
+       "maxAlong": 8.105,
+       "distM": 9.395,
+       "fromZone": "junction",
+       "outcome": "cup",
+       "speed": 9.026,
+       "targetId": "ring",
+       "target": [
+        197,
+        8.08,
+        -21.5
+       ],
+       "zone": "green",
+       "rimTime": 4.949,
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-good-s5",
+         "id": "ring",
+         "t": 22.0324,
+         "event": "flag",
+         "shot": "h8-good-s5",
+         "speedOut": 7.794,
+         "speedIn": 6.495,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          186,
+          9.59,
+          -66
+         ]
+        }
+       ],
+       "rimSpeedMps": 0.347,
+       "distStuds": 31.316,
+       "rimSpeed": 1.155,
+       "start": [
+        188.8086,
+        8.0793,
+        -23.5629
+       ],
+       "maxY": 9.584,
+       "tEnd": 5.301,
+       "finish": [
+        198,
+        9.23,
+        -53.5
+       ]
+      }
+     ],
+     "par": 4,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 4,
+     "shots": [
+      {
+       "v0": 5.782,
+       "speedMps": 1.7344970304557137,
+       "label": "h8-average-s1",
+       "piece": "junction",
+       "maxAlong": 12.613,
+       "distM": 3.784,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 5.782,
+       "targetId": "lane_top",
+       "target": [
+        187.5,
+        8.08,
+        -22
+       ],
+       "flags": [],
+       "zone": "junction",
+       "distStuds": 12.613,
+       "maxY": 8.08,
+       "start": [
+        190,
+        8.0792,
+        -10
+       ],
+       "tEnd": 5.935,
+       "tStop": 5.383,
+       "finish": [
+        187.4225,
+        8.0793,
+        -22.3469
+       ]
+      },
+      {
+       "v0": 11.713,
+       "speedMps": 3.5137904784814964,
+       "label": "h8-average-s2",
+       "piece": "c1",
+       "maxAlong": 16.246,
+       "distM": 5.904,
+       "fromZone": "junction",
+       "outcome": "rest",
+       "speed": 11.713,
+       "targetId": "corner",
+       "target": [
+        174,
+        8.08,
+        -21.5
+       ],
+       "flags": [],
+       "zone": "climb",
+       "distStuds": 19.68,
+       "maxY": 8.508,
+       "start": [
+        187.4225,
+        8.0793,
+        -22.3469
+       ],
+       "tEnd": 7.133,
+       "tStop": 6.581,
+       "finish": [
+        170.5089,
+        8.0793,
+        -32.4087
+       ]
+      },
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h8-average-s3",
+       "piece": "green",
+       "maxAlong": 29.982,
+       "distM": 9.119,
+       "fromZone": "climb",
+       "outcome": "rest",
+       "speed": 19.78,
+       "targetId": "top",
+       "target": [
+        174,
+        9.58,
+        -58
+       ],
+       "flags": [],
+       "zone": "green",
+       "distStuds": 30.396,
+       "maxY": 9.998,
+       "start": [
+        170.5089,
+        8.0793,
+        -32.4087
+       ],
+       "tEnd": 7.833,
+       "tStop": 7.28,
+       "finish": [
+        186.5418,
+        9.5793,
+        -58.2325
+       ]
+      },
+      {
+       "v0": 6.162,
+       "speedMps": 1.8485837024354623,
+       "label": "h8-average-s4",
+       "piece": "green",
+       "maxAlong": 12.397,
+       "distM": 3.719,
+       "fromZone": "green",
+       "outcome": "cup",
+       "speed": 6.162,
+       "targetId": "cup",
+       "target": [
+        198,
+        9.5,
+        -53.5
+       ],
+       "zone": "green",
+       "rimTime": 3.412,
+       "flags": [],
+       "rimSpeedMps": 0.35,
+       "distStuds": 12.397,
+       "rimSpeed": 1.166,
+       "start": [
+        186.5418,
+        9.5793,
+        -58.2325
+       ],
+       "maxY": 9.582,
+       "tEnd": 3.732,
+       "finish": [
+        198,
+        9.23,
+        -53.5
+       ]
+      }
+     ],
+     "par": 4,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "nudges": 0,
+   "name": "Firefly Hollow",
+   "stuck": 0,
+   "hio": {
+    "line": {
+     "aim_deg": 225.5,
+     "speed": 19.4,
+     "phase": 0,
+     "from": "h08-notes.md"
+    },
+    "bestSpeed": 19.4,
+    "bestAim": 219.5,
+    "bestMiss": 30.84,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-1",
+      "piece": "lane",
+      "maxAlong": 9.417,
+      "distM": 1.957,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -5.88,
+       37.33
+      ],
+      "phase": 0.004,
+      "missStuds": 37.79,
+      "tStop": 6.034,
+      "aimDeg": 225.5,
+      "flags": [],
+      "zone": "lane",
+      "distStuds": 6.522,
+      "maxY": 8.087,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.603,
+      "stage": "spec",
+      "finish": [
+       192.1189,
+       8.0793,
+       -16.1683
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-2",
+      "piece": "junction",
+      "maxAlong": 8.358,
+      "distM": 3.184,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -1.45,
+       35.15
+      ],
+      "phase": 0.002,
+      "missStuds": 35.18,
+      "tStop": 5.317,
+      "aimDeg": 226.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 10.613,
+      "maxY": 8.08,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 5.869,
+      "stage": "scan",
+      "finish": [
+       196.5542,
+       8.0793,
+       -18.3478
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-3",
+      "piece": "lane",
+      "maxAlong": 9.065,
+      "distM": 2.098,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -5.81,
+       36.86
+      ],
+      "phase": 0.005,
+      "missStuds": 37.32,
+      "tStop": 5.967,
+      "aimDeg": 224.5,
+      "flags": [],
+      "zone": "lane",
+      "distStuds": 6.992,
+      "maxY": 8.086,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.521,
+      "stage": "scan",
+      "finish": [
+       192.1929,
+       8.0793,
+       -16.639
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-4",
+      "piece": "junction",
+      "maxAlong": 8.669,
+      "distM": 3.191,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -1.48,
+       35.09
+      ],
+      "phase": 0.002,
+      "missStuds": 35.12,
+      "tStop": 5.217,
+      "aimDeg": 227.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 10.637,
+      "maxY": 8.085,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 5.771,
+      "stage": "scan",
+      "finish": [
+       196.5159,
+       8.0793,
+       -18.4077
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-5",
+      "piece": "lane",
+      "maxAlong": 8.68,
+      "distM": 2.272,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -5.67,
+       36.29
+      ],
+      "phase": 0.001,
+      "missStuds": 36.73,
+      "tStop": 5.833,
+      "aimDeg": 223.5,
+      "flags": [],
+      "zone": "lane",
+      "distStuds": 7.573,
+      "maxY": 8.086,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.389,
+      "stage": "scan",
+      "finish": [
+       192.3321,
+       8.0793,
+       -17.2052
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-6",
+      "piece": "junction",
+      "maxAlong": 10.444,
+      "distM": 3.819,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       0.92,
+       34.42
+      ],
+      "phase": 0.001,
+      "missStuds": 34.43,
+      "tStop": 5.385,
+      "aimDeg": 228.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 12.73,
+      "maxY": 8.089,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 5.938,
+      "stage": "scan",
+      "finish": [
+       198.9208,
+       8.0793,
+       -19.0817
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-7",
+      "piece": "lane",
+      "maxAlong": 8.23,
+      "distM": 2.204,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -6.23,
+       36.37
+      ],
+      "phase": 0.006,
+      "missStuds": 36.9,
+      "tStop": 5.848,
+      "aimDeg": 222.5,
+      "flags": [],
+      "zone": "lane",
+      "distStuds": 7.345,
+      "maxY": 8.084,
+      "start": [
+       190,
+       8.0791,
+       -10
+      ],
+      "tEnd": 6.402,
+      "stage": "scan",
+      "finish": [
+       191.7708,
+       8.0793,
+       -17.1288
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-8",
+      "piece": "junction",
+      "maxAlong": 10.856,
+      "distM": 4.089,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -0.35,
+       32.22
+      ],
+      "phase": 0.003,
+      "missStuds": 32.22,
+      "tStop": 5.918,
+      "aimDeg": 229.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 13.631,
+      "maxY": 8.083,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 6.485,
+      "stage": "scan",
+      "finish": [
+       197.6519,
+       8.0793,
+       -21.281
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-9",
+      "piece": "junction",
+      "maxAlong": 10.145,
+      "distM": 4.06,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -9.66,
+       30.07
+      ],
+      "phase": 3.338,
+      "missStuds": 31.58,
+      "tStop": 5.566,
+      "aimDeg": 221.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 13.535,
+      "maxY": 8.088,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 6.119,
+      "stage": "scan",
+      "finish": [
+       188.3379,
+       8.0793,
+       -23.4323
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-10",
+      "piece": "junction",
+      "maxAlong": 11.09,
+      "distM": 3.765,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       0.38,
+       34.16
+      ],
+      "phase": 0.004,
+      "missStuds": 34.16,
+      "tStop": 5.766,
+      "aimDeg": 230.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 12.549,
+      "maxY": 8.09,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.32,
+      "stage": "scan",
+      "finish": [
+       198.377,
+       8.0793,
+       -19.3434
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-11",
+      "piece": "junction",
+      "maxAlong": 7.418,
+      "distM": 4.475,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       0.17,
+       31.02
+      ],
+      "phase": 0.01,
+      "missStuds": 31.02,
+      "tStop": 5.184,
+      "aimDeg": 220.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 14.916,
+      "maxY": 8.089,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 5.737,
+      "stage": "scan",
+      "finish": [
+       198.1685,
+       8.0793,
+       -22.4809
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-12",
+      "piece": "junction",
+      "maxAlong": 11.431,
+      "distM": 3.764,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       0.13,
+       33.95
+      ],
+      "phase": 0.003,
+      "missStuds": 33.95,
+      "tStop": 5.783,
+      "aimDeg": 231.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 12.545,
+      "maxY": 8.09,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.336,
+      "stage": "scan",
+      "finish": [
+       198.1324,
+       8.0793,
+       -19.5524
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-13",
+      "piece": "junction",
+      "maxAlong": 6.954,
+      "distM": 4.536,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       0.27,
+       30.84
+      ],
+      "phase": 3.339,
+      "missStuds": 30.84,
+      "tStop": 5.05,
+      "aimDeg": 219.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 15.121,
+      "maxY": 8.09,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 5.603,
+      "stage": "scan",
+      "finish": [
+       198.2662,
+       8.0793,
+       -22.6611
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-14",
+      "piece": "junction",
+      "maxAlong": 11.686,
+      "distM": 3.697,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -0.29,
+       33.88
+      ],
+      "phase": 3.34,
+      "missStuds": 33.88,
+      "tStop": 5.733,
+      "aimDeg": 232.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 12.325,
+      "maxY": 8.09,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 6.285,
+      "stage": "scan",
+      "finish": [
+       197.7054,
+       8.0793,
+       -19.6191
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-15",
+      "piece": "junction",
+      "maxAlong": 6.445,
+      "distM": 3.442,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -0.08,
+       35.2
+      ],
+      "phase": 3.339,
+      "missStuds": 35.2,
+      "tStop": 5.682,
+      "aimDeg": 218.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 11.474,
+      "maxY": 8.087,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 6.236,
+      "stage": "scan",
+      "finish": [
+       197.9204,
+       8.0793,
+       -18.3024
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-16",
+      "piece": "junction",
+      "maxAlong": 11.965,
+      "distM": 3.675,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       -0.59,
+       33.74
+      ],
+      "phase": 3.336,
+      "missStuds": 33.75,
+      "tStop": 5.733,
+      "aimDeg": 233.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 12.25,
+      "maxY": 8.087,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.288,
+      "stage": "scan",
+      "finish": [
+       197.4086,
+       8.0793,
+       -19.7556
+      ]
+     },
+     {
+      "v0": 19.4,
+      "speedMps": 5.819999999999999,
+      "label": "h8-hio-17",
+      "piece": "junction",
+      "maxAlong": 7.092,
+      "distM": 4.467,
+      "outcome": "rest",
+      "speed": 19.4,
+      "miss": [
+       0.08,
+       30.99
+      ],
+      "phase": 0.005,
+      "missStuds": 30.99,
+      "tStop": 5.2,
+      "aimDeg": 219.9,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 14.889,
+      "maxY": 8.086,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 5.755,
+      "stage": "refine",
+      "finish": [
+       198.0774,
+       8.0793,
+       -22.5077
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h8-hio-18",
+      "piece": "junction",
+      "maxAlong": 6.91,
+      "distM": 4.475,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -0.1,
+       30.85
+      ],
+      "phase": 0.008,
+      "missStuds": 30.85,
+      "tStop": 5.15,
+      "aimDeg": 219.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 14.915,
+      "maxY": 8.09,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 5.702,
+      "stage": "refine",
+      "finish": [
+       197.9024,
+       8.0793,
+       -22.6495
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h8-hio-19",
+      "piece": "junction",
+      "maxAlong": 5.937,
+      "distM": 3.345,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -0.43,
+       35.31
+      ],
+      "phase": 3.336,
+      "missStuds": 35.31,
+      "tStop": 5.781,
+      "aimDeg": 217.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 11.151,
+      "maxY": 8.089,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 6.336,
+      "stage": "refine",
+      "finish": [
+       197.5657,
+       8.0793,
+       -18.1915
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h8-hio-20",
+      "piece": "junction",
+      "maxAlong": 7.38,
+      "distM": 4.427,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       0.07,
+       31.15
+      ],
+      "phase": 0.01,
+      "missStuds": 31.15,
+      "tStop": 5.2,
+      "aimDeg": 220.5,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 14.756,
+      "maxY": 8.089,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 5.754,
+      "stage": "refine",
+      "finish": [
+       198.0718,
+       8.0793,
+       -22.352
+      ]
+     },
+     {
+      "v0": 18.9,
+      "speedMps": 5.669999999999999,
+      "label": "h8-hio-21",
+      "piece": "junction",
+      "maxAlong": 6.745,
+      "distM": 4.518,
+      "outcome": "rest",
+      "speed": 18.9,
+      "miss": [
+       0.27,
+       30.91
+      ],
+      "phase": 3.336,
+      "missStuds": 30.91,
+      "tStop": 5.133,
+      "aimDeg": 219,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 15.06,
+      "maxY": 8.09,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 5.686,
+      "stage": "refine",
+      "finish": [
+       198.2694,
+       8.0793,
+       -22.5868
+      ]
+     },
+     {
+      "v0": 19.65,
+      "speedMps": 5.895,
+      "label": "h8-hio-22",
+      "piece": "junction",
+      "maxAlong": 7.055,
+      "distM": 4.478,
+      "outcome": "rest",
+      "speed": 19.65,
+      "miss": [
+       0.1,
+       30.96
+      ],
+      "phase": 0.002,
+      "missStuds": 30.96,
+      "tStop": 5.15,
+      "aimDeg": 219.75,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 14.927,
+      "maxY": 8.087,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 5.704,
+      "stage": "refine",
+      "finish": [
+       198.0982,
+       8.0793,
+       -22.5392
+      ]
+     },
+     {
+      "v0": 19.525,
+      "speedMps": 5.857499999999999,
+      "label": "h8-hio-23",
+      "piece": "junction",
+      "maxAlong": 6.967,
+      "distM": 4.503,
+      "outcome": "rest",
+      "speed": 19.525,
+      "miss": [
+       0.08,
+       30.85
+      ],
+      "phase": 0.005,
+      "missStuds": 30.85,
+      "tStop": 5.117,
+      "aimDeg": 219.63,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 15.011,
+      "maxY": 8.089,
+      "start": [
+       190,
+       8.0792,
+       -10
+      ],
+      "tEnd": 5.669,
+      "stage": "refine",
+      "finish": [
+       198.0807,
+       8.0793,
+       -22.6499
+      ]
+     },
+     {
+      "v0": 19.338,
+      "speedMps": 5.80125,
+      "label": "h8-hio-24",
+      "piece": "junction",
+      "maxAlong": 6.948,
+      "distM": 4.527,
+      "outcome": "rest",
+      "speed": 19.338,
+      "miss": [
+       0.26,
+       30.87
+      ],
+      "phase": 0.006,
+      "missStuds": 30.87,
+      "tStop": 5.067,
+      "aimDeg": 219.56,
+      "flags": [],
+      "zone": "junction",
+      "distStuds": 15.09,
+      "maxY": 8.087,
+      "start": [
+       190,
+       8.0793,
+       -10
+      ],
+      "tEnd": 5.62,
+      "stage": "refine",
+      "finish": [
+       198.2628,
+       8.0793,
+       -22.6265
+      ]
+     }
+    ]
+   },
+   "par": 4,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "clientLag": 0.162
+  }
+ },
+ "h9": {
+  "default": {
+   "cam": "",
+   "seconds": 1129.74,
+   "scenario": "h9",
+   "hole": 9,
+   "sweep": [
+    {
+     "mover": "root_gate",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        217.9121,
+        11.0793,
+        -97.2965
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 0.67,
+       "blocked": false,
+       "finish": [
+        217.9261,
+        11.0793,
+        -97.332
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        225.424,
+        11.0793,
+        -97.0315
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2,
+       "blocked": false,
+       "finish": [
+        225.9897,
+        11.0793,
+        -96.0299
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        224.2314,
+        11.0793,
+        -97.0065
+       ]
+      },
+      {
+       "flags": [
+        {
+         "type": "event",
+         "to": [
+          220.6531,
+          11.09,
+          -97.2872
+         ],
+         "hole": 9,
+         "t": 964.9451,
+         "event": "flag",
+         "reason": "pinned",
+         "shot": "h9-sweep-root_gate-5",
+         "from": [
+          220.0534,
+          10.9312,
+          -97.305
+         ],
+         "kind": "unstuck",
+         "label": "h9-sweep-root_gate-5"
+        }
+       ],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 3.33,
+       "blocked": false,
+       "finish": [
+        220.6531,
+        11.0793,
+        -97.2872
+       ]
+      }
+     ]
+    },
+    {
+     "mover": "lantern_bar",
+     "period": 9,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        223.8772,
+        11.0793,
+        -96.7928
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 1.5,
+       "blocked": false,
+       "finish": [
+        213.7359,
+        10.0719,
+        -75.2926
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 3,
+       "blocked": false,
+       "finish": [
+        213.7364,
+        10.0719,
+        -75.2971
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 4.5,
+       "blocked": false,
+       "finish": [
+        213.7296,
+        10.0719,
+        -75.1632
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "landing",
+       "phase": 6,
+       "blocked": false,
+       "finish": [
+        214.9685,
+        11.0793,
+        -95.7157
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 7.5,
+       "blocked": false,
+       "finish": [
+        218.3658,
+        11.0793,
+        -96.3855
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "type": "event",
+     "to": [
+      217.099,
+      11.0893,
+      -91.994
+     ],
+     "hole": 9,
+     "t": 208.8496,
+     "event": "flag",
+     "reason": "pinned",
+     "shot": "h9-hio-5",
+     "from": [
+      220.0978,
+      11.0055,
+      -92.0798
+     ],
+     "kind": "unstuck",
+     "label": "h9-hio-5"
+    },
+    {
+     "type": "event",
+     "to": [
+      220.6531,
+      11.09,
+      -97.2872
+     ],
+     "hole": 9,
+     "t": 964.9451,
+     "event": "flag",
+     "reason": "pinned",
+     "shot": "h9-sweep-root_gate-5",
+     "from": [
+      220.0534,
+      10.9312,
+      -97.305
+     ],
+     "kind": "unstuck",
+     "label": "h9-sweep-root_gate-5"
+    }
+   ],
+   "escapes": 0,
+   "banks": [
+    {
+     "v0": 12,
+     "speedMps": 3.5999999999999996,
+     "label": "h9-bank-bank1-ride",
+     "piece": "corr1",
+     "maxAlong": 8.977,
+     "distM": 2.869,
+     "outcome": "rest",
+     "speed": 12,
+     "bank": "bank1-ride",
+     "nContacts": 3,
+     "firstContact": {
+      "angleOut": 0.4,
+      "restitution": 18.238,
+      "part": "?",
+      "speedOut": 11.591,
+      "speedIn": 0.642,
+      "angleIn": 7.9
+     },
+     "flags": [],
+     "zone": "corridor",
+     "distStuds": 9.564,
+     "maxY": 11.822,
+     "start": [
+      214,
+      10.6659,
+      -87.8667
+     ],
+     "tEnd": 5.199,
+     "tStop": 4.615,
+     "finish": [
+      217.5136,
+      11.0793,
+      -96.7618
+     ]
+    },
+    {
+     "v0": 10,
+     "speedMps": 3,
+     "label": "h9-bank-root-deflector",
+     "piece": "chamber",
+     "maxAlong": 15.64,
+     "distM": 5.89,
+     "outcome": "rest",
+     "speed": 10,
+     "bank": "root-deflector",
+     "nContacts": 1,
+     "firstContact": {
+      "angleOut": 66.2,
+      "tangentialRetention": 0.944,
+      "restitution": 0.554,
+      "part": "Hole9/Wall:root_deflector",
+      "speedOut": 6.519,
+      "speedIn": 7.9,
+      "angleIn": 53.1
+     },
+     "flags": [],
+     "zone": "chamber",
+     "distStuds": 19.634,
+     "maxY": 11.08,
+     "start": [
+      229,
+      11.0792,
+      -95.5
+     ],
+     "tEnd": 6.833,
+     "tStop": 6.282,
+     "finish": [
+      242.8046,
+      11.0793,
+      -109.4623
+     ]
+    }
+   ],
+   "routes": [
+    {
+     "strokes": 3,
+     "shots": [
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h9-good-s1",
+       "piece": "chamber",
+       "maxAlong": 28.456,
+       "distM": 10.18,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 19.78,
+       "targetId": "bank",
+       "target": [
+        213,
+        11.08,
+        -95
+       ],
+       "flags": [],
+       "zone": "chamber",
+       "distStuds": 33.932,
+       "maxY": 11.983,
+       "start": [
+        214,
+        10.0792,
+        -70
+       ],
+       "tEnd": 8.819,
+       "tStop": 8.266,
+       "finish": [
+        231.8795,
+        11.0793,
+        -98.8394
+       ]
+      },
+      {
+       "v0": 6.601,
+       "speedMps": 1.9802013327434906,
+       "label": "h9-good-s2",
+       "piece": "heart",
+       "maxAlong": 19.239,
+       "distM": 5.792,
+       "fromZone": "chamber",
+       "outcome": "rest",
+       "speed": 6.601,
+       "targetId": "drop",
+       "target": [
+        235.5,
+        11.08,
+        -110
+       ],
+       "flags": [],
+       "zone": "heart",
+       "distStuds": 19.305,
+       "maxY": 11.08,
+       "start": [
+        231.8795,
+        11.0793,
+        -98.8394
+       ],
+       "tEnd": 8.65,
+       "tStop": 8.096,
+       "finish": [
+        236.2917,
+        9.2793,
+        -117.6339
+       ]
+      },
+      {
+       "v0": 2.442,
+       "speedMps": 0.7325508750900553,
+       "label": "h9-good-s3",
+       "piece": "heart",
+       "maxAlong": 2.384,
+       "distM": 0.715,
+       "fromZone": "heart",
+       "outcome": "cup",
+       "speed": 2.442,
+       "targetId": "cup",
+       "target": [
+        236,
+        9.2,
+        -120
+       ],
+       "zone": "heart",
+       "rimTime": 0.998,
+       "flags": [],
+       "rimSpeedMps": 0.231,
+       "distStuds": 2.384,
+       "rimSpeed": 0.77,
+       "start": [
+        236.2917,
+        9.2793,
+        -117.6339
+       ],
+       "maxY": 9.289,
+       "tEnd": 1.382,
+       "finish": [
+        236,
+        8.93,
+        -120
+       ]
+      }
+     ],
+     "par": 4,
+     "skill": "good",
+     "holed": true
+    },
+    {
+     "strokes": 5,
+     "shots": [
+      {
+       "v0": 19.78,
+       "speedMps": 5.934,
+       "label": "h9-average-s1",
+       "piece": "tunnel",
+       "maxAlong": 26.995,
+       "distM": 8.831,
+       "fromZone": "lane",
+       "outcome": "rest",
+       "speed": 19.78,
+       "targetId": "bank",
+       "target": [
+        213,
+        11.08,
+        -95
+       ],
+       "flags": [],
+       "zone": "corridor",
+       "distStuds": 29.437,
+       "maxY": 11.537,
+       "start": [
+        214,
+        10.0792,
+        -70
+       ],
+       "tEnd": 7.636,
+       "tStop": 7.083,
+       "finish": [
+        224.6514,
+        11.0793,
+        -97.4423
+       ]
+      },
+      {
+       "v0": 9.935,
+       "speedMps": 2.9804295227086186,
+       "label": "h9-average-s2",
+       "piece": "chamber",
+       "maxAlong": 12.154,
+       "distM": 4.584,
+       "fromZone": "corridor",
+       "outcome": "rest",
+       "speed": 9.935,
+       "targetId": "deflect",
+       "target": [
+        235,
+        11.08,
+        -96
+       ],
+       "flags": [],
+       "zone": "chamber",
+       "distStuds": 15.278,
+       "maxY": 11.08,
+       "start": [
+        224.6514,
+        11.0793,
+        -97.4423
+       ],
+       "tEnd": 6.599,
+       "tStop": 6.046,
+       "finish": [
+        237.9671,
+        11.0793,
+        -104.9338
+       ]
+      },
+      {
+       "v0": 4.523,
+       "speedMps": 1.3569544246956866,
+       "label": "h9-average-s3",
+       "piece": "chamber",
+       "maxAlong": 1.252,
+       "distM": 1.813,
+       "fromZone": "chamber",
+       "outcome": "rest",
+       "speed": 4.523,
+       "targetId": "drop",
+       "target": [
+        235.5,
+        11.08,
+        -110
+       ],
+       "flags": [],
+       "zone": "chamber",
+       "distStuds": 6.044,
+       "maxY": 11.081,
+       "start": [
+        237.9671,
+        11.0793,
+        -104.9338
+       ],
+       "tEnd": 5.017,
+       "tStop": 4.463,
+       "finish": [
+        234.519,
+        11.0793,
+        -99.9697
+       ]
+      },
+      {
+       "v0": 6.056,
+       "speedMps": 1.8168271770819047,
+       "label": "h9-average-s4",
+       "piece": "heart",
+       "maxAlong": 19.546,
+       "distM": 5.865,
+       "fromZone": "chamber",
+       "outcome": "rest",
+       "speed": 6.056,
+       "targetId": "drop",
+       "target": [
+        235.5,
+        11.08,
+        -110
+       ],
+       "flags": [],
+       "zone": "heart",
+       "distStuds": 19.552,
+       "maxY": 11.08,
+       "start": [
+        234.519,
+        11.0793,
+        -99.9697
+       ],
+       "tEnd": 8.249,
+       "tStop": 7.695,
+       "finish": [
+        235.9518,
+        9.2793,
+        -119.4688
+       ]
+      },
+      {
+       "v0": 1.506,
+       "speedMps": 0.4518006761072684,
+       "label": "h9-average-s5",
+       "piece": "heart",
+       "maxAlong": 0.533,
+       "distM": 0.16,
+       "fromZone": "heart",
+       "outcome": "cup",
+       "speed": 1.506,
+       "targetId": "cup",
+       "target": [
+        236,
+        9.2,
+        -120
+       ],
+       "zone": "heart",
+       "rimTime": 0.03,
+       "flags": [],
+       "rimSpeedMps": 0.444,
+       "distStuds": 0.533,
+       "rimSpeed": 1.479,
+       "start": [
+        235.9518,
+        9.2793,
+        -119.4688
+       ],
+       "maxY": 9.279,
+       "tEnd": 0.365,
+       "finish": [
+        236,
+        8.93,
+        -120
+       ]
+      }
+     ],
+     "par": 4,
+     "skill": "average",
+     "holed": true
+    }
+   ],
+   "nudges": 2,
+   "name": "Heart of the Grove",
+   "stuck": 0,
+   "hio": {
+    "line": {
+     "aim_deg": 292,
+     "speed": 18.3,
+     "phase": 1.5,
+     "from": "h09-notes.md"
+    },
+    "bestSpeed": 18.7,
+    "bestAim": 288,
+    "bestMiss": 23.03,
+    "ace": false,
+    "attempts": [
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-1",
+      "piece": "tunnel",
+      "maxAlong": 29.135,
+      "distM": 8.74,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -11.05,
+       23
+      ],
+      "phase": 1.504,
+      "missStuds": 25.52,
+      "tStop": 7.467,
+      "aimDeg": 292,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.135,
+      "maxY": 11.665,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.021,
+      "stage": "spec",
+      "finish": [
+       224.9512,
+       11.0793,
+       -96.9983
+      ]
+     },
+     {
+      "v0": 18.84,
+      "speedMps": 5.652,
+      "label": "h9-hio-2",
+      "piece": "tunnel",
+      "maxAlong": 27.253,
+      "distM": 8.22,
+      "outcome": "rest",
+      "speed": 18.84,
+      "miss": [
+       -12.38,
+       24.35
+      ],
+      "phase": 1.504,
+      "missStuds": 27.31,
+      "tStop": 7.248,
+      "aimDeg": 296.5,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 27.4,
+      "maxY": 11.688,
+      "start": [
+       214,
+       10.0786,
+       -70
+      ],
+      "tEnd": 7.802,
+      "stage": "engine-sim",
+      "finish": [
+       223.6248,
+       11.0793,
+       -95.6534
+      ]
+     },
+     {
+      "v0": 17.67,
+      "speedMps": 5.301,
+      "label": "h9-hio-3",
+      "piece": "tunnel",
+      "maxAlong": 25.066,
+      "distM": 8.159,
+      "outcome": "rest",
+      "speed": 17.67,
+      "miss": [
+       -11.1,
+       25.08
+      ],
+      "phase": 1.506,
+      "missStuds": 27.43,
+      "tStop": 7.467,
+      "aimDeg": 263,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 27.196,
+      "maxY": 11.797,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.02,
+      "stage": "engine-sim",
+      "finish": [
+       224.8956,
+       11.0793,
+       -94.9184
+      ]
+     },
+     {
+      "v0": 16.26,
+      "speedMps": 4.878,
+      "label": "h9-hio-4",
+      "piece": "corr1",
+      "maxAlong": 24.94,
+      "distM": 7.945,
+      "outcome": "rest",
+      "speed": 16.26,
+      "miss": [
+       -14.24,
+       24.68
+      ],
+      "phase": 1.507,
+      "missStuds": 28.49,
+      "tStop": 7.217,
+      "aimDeg": 264.75,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 26.483,
+      "maxY": 11.479,
+      "start": [
+       214,
+       10.0791,
+       -70
+      ],
+      "tEnd": 7.77,
+      "stage": "engine-sim",
+      "finish": [
+       221.7616,
+       11.0793,
+       -95.3205
+      ]
+     },
+     {
+      "v0": 19.08,
+      "speedMps": 5.723999999999999,
+      "label": "h9-hio-5",
+      "piece": "lane",
+      "maxAlong": 28.892,
+      "distM": 1.346,
+      "outcome": "rest",
+      "speed": 19.08,
+      "miss": [
+       -18.9,
+       46.76
+      ],
+      "phase": 1.504,
+      "missStuds": 50.43,
+      "tStop": 5.75,
+      "aimDeg": 281,
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         217.099,
+         11.0893,
+         -91.994
+        ],
+        "hole": 9,
+        "t": 208.8496,
+        "event": "flag",
+        "reason": "pinned",
+        "shot": "h9-hio-5",
+        "from": [
+         220.0978,
+         11.0055,
+         -92.0798
+        ],
+        "kind": "unstuck",
+        "label": "h9-hio-5"
+       }
+      ],
+      "zone": "lane",
+      "distStuds": 4.486,
+      "maxY": 11.523,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 15.17,
+      "stage": "engine-sim",
+      "finish": [
+       217.099,
+       10.0793,
+       -73.2436
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-6",
+      "piece": "tunnel",
+      "maxAlong": 28.485,
+      "distM": 8.55,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -11.73,
+       23.42
+      ],
+      "phase": 1.501,
+      "missStuds": 26.19,
+      "tStop": 7.45,
+      "aimDeg": 293,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 28.5,
+      "maxY": 11.639,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.005,
+      "stage": "scan",
+      "finish": [
+       224.272,
+       11.0793,
+       -96.5843
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-7",
+      "piece": "tunnel",
+      "maxAlong": 29.647,
+      "distM": 8.897,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -10.67,
+       22.59
+      ],
+      "phase": 1.507,
+      "missStuds": 24.99,
+      "tStop": 7.6,
+      "aimDeg": 291,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.656,
+      "maxY": 11.621,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 8.155,
+      "stage": "scan",
+      "finish": [
+       225.3269,
+       11.0793,
+       -97.408
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-8",
+      "piece": "tunnel",
+      "maxAlong": 27.177,
+      "distM": 8.202,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -13.68,
+       23.96
+      ],
+      "phase": 1.506,
+      "missStuds": 27.59,
+      "tStop": 6.987,
+      "aimDeg": 294,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 27.341,
+      "maxY": 11.559,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 7.554,
+      "stage": "scan",
+      "finish": [
+       222.3226,
+       11.0793,
+       -96.0433
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-9",
+      "piece": "tunnel",
+      "maxAlong": 29.442,
+      "distM": 8.833,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -11.82,
+       22.37
+      ],
+      "phase": 1.509,
+      "missStuds": 25.3,
+      "tStop": 7.349,
+      "aimDeg": 290,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.443,
+      "maxY": 11.553,
+      "start": [
+       214,
+       10.0787,
+       -70
+      ],
+      "tEnd": 7.901,
+      "stage": "scan",
+      "finish": [
+       224.1823,
+       11.0787,
+       -97.6259
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-10",
+      "piece": "tunnel",
+      "maxAlong": 26.963,
+      "distM": 8.159,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -13.83,
+       24.06
+      ],
+      "phase": 1.504,
+      "missStuds": 27.75,
+      "tStop": 6.833,
+      "aimDeg": 295,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 27.198,
+      "maxY": 11.59,
+      "start": [
+       214,
+       10.0786,
+       -70
+      ],
+      "tEnd": 7.386,
+      "stage": "scan",
+      "finish": [
+       222.1667,
+       11.0787,
+       -95.9425
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-11",
+      "piece": "tunnel",
+      "maxAlong": 29.685,
+      "distM": 8.94,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -9.86,
+       22.78
+      ],
+      "phase": 1.509,
+      "missStuds": 24.83,
+      "tStop": 7.516,
+      "aimDeg": 289,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.8,
+      "maxY": 11.622,
+      "start": [
+       214,
+       10.0787,
+       -70
+      ],
+      "tEnd": 8.071,
+      "stage": "scan",
+      "finish": [
+       226.1354,
+       11.0793,
+       -97.2171
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-12",
+      "piece": "tunnel",
+      "maxAlong": 26.517,
+      "distM": 7.97,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -11.86,
+       25.44
+      ],
+      "phase": 1.504,
+      "missStuds": 28.07,
+      "tStop": 7.715,
+      "aimDeg": 296,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 26.568,
+      "maxY": 11.637,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.271,
+      "stage": "scan",
+      "finish": [
+       224.1427,
+       11.0793,
+       -94.5556
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-13",
+      "piece": "tunnel",
+      "maxAlong": 30.887,
+      "distM": 9.303,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -9.83,
+       21.48
+      ],
+      "phase": 1.508,
+      "missStuds": 23.62,
+      "tStop": 7.533,
+      "aimDeg": 288,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 31.01,
+      "maxY": 11.61,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.087,
+      "stage": "scan",
+      "finish": [
+       226.1727,
+       11.0793,
+       -98.5211
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-14",
+      "piece": "tunnel",
+      "maxAlong": 25.835,
+      "distM": 7.804,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -12.99,
+       25.6
+      ],
+      "phase": 1.508,
+      "missStuds": 28.7,
+      "tStop": 7.317,
+      "aimDeg": 297,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 26.014,
+      "maxY": 11.66,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 7.869,
+      "stage": "scan",
+      "finish": [
+       223.009,
+       11.0793,
+       -94.4047
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-15",
+      "piece": "tunnel",
+      "maxAlong": 28.456,
+      "distM": 8.642,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -9.4,
+       24.1
+      ],
+      "phase": 1.509,
+      "missStuds": 25.86,
+      "tStop": 7.817,
+      "aimDeg": 287,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 28.806,
+      "maxY": 11.651,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.369,
+      "stage": "scan",
+      "finish": [
+       226.5998,
+       11.0793,
+       -95.9044
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-16",
+      "piece": "corr1",
+      "maxAlong": 25.567,
+      "distM": 7.821,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -14.49,
+       25.04
+      ],
+      "phase": 1.508,
+      "missStuds": 28.93,
+      "tStop": 6.749,
+      "aimDeg": 298,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 26.069,
+      "maxY": 11.62,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 7.303,
+      "stage": "scan",
+      "finish": [
+       221.5063,
+       11.0793,
+       -94.9648
+      ]
+     },
+     {
+      "v0": 18.3,
+      "speedMps": 5.49,
+      "label": "h9-hio-17",
+      "piece": "tunnel",
+      "maxAlong": 30.532,
+      "distM": 9.197,
+      "outcome": "rest",
+      "speed": 18.3,
+      "miss": [
+       -9.74,
+       21.9
+      ],
+      "phase": 1.509,
+      "missStuds": 23.97,
+      "tStop": 7.733,
+      "aimDeg": 288.4,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 30.656,
+      "maxY": 11.641,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.287,
+      "stage": "refine",
+      "finish": [
+       226.2565,
+       11.0793,
+       -98.0995
+      ]
+     },
+     {
+      "v0": 18.7,
+      "speedMps": 5.609999999999999,
+      "label": "h9-hio-18",
+      "piece": "tunnel",
+      "maxAlong": 31.37,
+      "distM": 9.484,
+      "outcome": "rest",
+      "speed": 18.7,
+      "miss": [
+       -8.58,
+       21.38
+      ],
+      "phase": 1.505,
+      "missStuds": 23.03,
+      "tStop": 7.651,
+      "aimDeg": 288,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 31.613,
+      "maxY": 11.708,
+      "start": [
+       214,
+       10.0792,
+       -70
+      ],
+      "tEnd": 8.203,
+      "stage": "refine",
+      "finish": [
+       227.4173,
+       11.0793,
+       -98.6247
+      ]
+     },
+     {
+      "v0": 19.78,
+      "speedMps": 5.934,
+      "label": "h9-hio-19",
+      "piece": "corr1",
+      "maxAlong": 28.418,
+      "distM": 7.634,
+      "outcome": "rest",
+      "speed": 19.78,
+      "miss": [
+       -15.32,
+       25.45
+      ],
+      "phase": 1.509,
+      "missStuds": 29.7,
+      "tStop": 6.05,
+      "aimDeg": 286,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 25.445,
+      "maxY": 11.708,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 6.604,
+      "stage": "refine",
+      "finish": [
+       220.677,
+       11.0793,
+       -94.5534
+      ]
+     },
+     {
+      "v0": 17.7,
+      "speedMps": 5.31,
+      "label": "h9-hio-20",
+      "piece": "tunnel",
+      "maxAlong": 29.247,
+      "distM": 8.777,
+      "outcome": "rest",
+      "speed": 17.7,
+      "miss": [
+       -13.17,
+       22.11
+      ],
+      "phase": 1.511,
+      "missStuds": 25.73,
+      "tStop": 6.836,
+      "aimDeg": 289,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.256,
+      "maxY": 11.456,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 7.404,
+      "stage": "refine",
+      "finish": [
+       222.8268,
+       11.0787,
+       -97.893
+      ]
+     },
+     {
+      "v0": 19.2,
+      "speedMps": 5.76,
+      "label": "h9-hio-21",
+      "piece": "tunnel",
+      "maxAlong": 28.298,
+      "distM": 8.463,
+      "outcome": "rest",
+      "speed": 19.2,
+      "miss": [
+       -10.34,
+       24.31
+      ],
+      "phase": 1.511,
+      "missStuds": 26.42,
+      "tStop": 7.465,
+      "aimDeg": 287.5,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 28.211,
+      "maxY": 11.737,
+      "start": [
+       214,
+       10.0786,
+       -70
+      ],
+      "tEnd": 8.032,
+      "stage": "refine",
+      "finish": [
+       225.6647,
+       11.0787,
+       -95.6865
+      ]
+     },
+     {
+      "v0": 18.45,
+      "speedMps": 5.534999999999999,
+      "label": "h9-hio-22",
+      "piece": "tunnel",
+      "maxAlong": 30.647,
+      "distM": 9.211,
+      "outcome": "rest",
+      "speed": 18.45,
+      "miss": [
+       -10.65,
+       21.47
+      ],
+      "phase": 1.511,
+      "missStuds": 23.97,
+      "tStop": 7.182,
+      "aimDeg": 288.25,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 30.703,
+      "maxY": 11.613,
+      "start": [
+       214,
+       10.0787,
+       -70
+      ],
+      "tEnd": 7.749,
+      "stage": "refine",
+      "finish": [
+       225.3456,
+       11.0793,
+       -98.5294
+      ]
+     },
+     {
+      "v0": 18.825,
+      "speedMps": 5.6475,
+      "label": "h9-hio-23",
+      "piece": "corr1",
+      "maxAlong": 29.138,
+      "distM": 8.8,
+      "outcome": "rest",
+      "speed": 18.825,
+      "miss": [
+       -16.52,
+       21.18
+      ],
+      "phase": 1.508,
+      "missStuds": 26.86,
+      "tStop": 3.332,
+      "aimDeg": 288.13,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.332,
+      "maxY": 11.731,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 3.899,
+      "stage": "refine",
+      "finish": [
+       219.4836,
+       11.0793,
+       -98.815
+      ]
+     },
+     {
+      "v0": 18.763,
+      "speedMps": 5.628749999999999,
+      "label": "h9-hio-24",
+      "piece": "tunnel",
+      "maxAlong": 28.769,
+      "distM": 8.71,
+      "outcome": "rest",
+      "speed": 18.763,
+      "miss": [
+       -9.43,
+       23.83
+      ],
+      "phase": 1.507,
+      "missStuds": 25.63,
+      "tStop": 7.516,
+      "aimDeg": 287.94,
+      "flags": [],
+      "zone": "corridor",
+      "distStuds": 29.032,
+      "maxY": 11.702,
+      "start": [
+       214,
+       10.0793,
+       -70
+      ],
+      "tEnd": 8.067,
+      "stage": "refine",
+      "finish": [
+       226.5694,
+       11.0793,
+       -96.1698
+      ]
+     }
+    ]
+   },
+   "par": 4,
+   "fuzz": {
+    "list": [],
+    "nudges": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 12,
+    "escapes": 0,
+    "holed": 0
+   },
+   "clientLag": 0.17
+  }
+ }
+}

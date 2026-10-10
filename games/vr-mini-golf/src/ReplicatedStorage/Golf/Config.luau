@@ -32,7 +32,7 @@ return {
 	SlideFriction = 0.3,
 
 	-- Touch / mouse controls
-	TouchMaxSpeed = 26, -- ball speed at 100% power
+	TouchMaxSpeed = 19.8, -- ball speed at 100% power: the Lantern Grove spec max putt (19.78 studs/s rolls 60 studs)
 	TouchPowerCurve = 1.3,
 
 	-- VR putter

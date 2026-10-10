@@ -13,7 +13,6 @@ local Remotes = ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Remotes")
 
 local Ball = require(modules.BallController)
 local HUD = require(modules.HUD)
-local Spinners = require(modules.Spinners)
 
 workspace:WaitForChild("Course")
 
@@ -60,7 +59,6 @@ local simulateVR = not isVR and workspace:GetAttribute("SimulateVR") == true
 
 Ball.init()
 HUD.init(isVR or simulateVR, Ball)
-Spinners.start()
 
 local VR
 if isVR or simulateVR then

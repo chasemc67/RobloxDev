@@ -1,0 +1,1907 @@
+{
+ "note": "Bundle the Lantern Grove prop FBXs into a few 'library' FBXs for one-shot import into Roblox Studio.\n\n  B=/Applications/Blender.app/Contents/MacOS/Blender\n  $B -b --factory-startup -P make_library.py -- <models dir> <out dir>\n\nEach prop keeps its own root (named <prop>) with one child mesh per material (<prop>__<Material>), exactly as in\nfbx/<prop>.fbx, but the root is moved to a grid cell so the props don't overlap. library.json records every prop's\ngrid offset in Roblox studs (x, 0, z), so in Studio: model:PivotTo(model:GetPivot() - offset) restores the origin\n(or set WorldPivot = CFrame.new(offset) on the imported model). Same export settings as models/_src (studs, -Z fwd, Y up).\n",
+ "bundles": {
+  "lg_lib_a": {
+   "file": "lg_lib_a.fbx",
+   "props": {
+    "rail_straight_4": {
+     "offset": [
+      0.28,
+      0,
+      2.0
+     ],
+     "roots": [
+      "rail_straight_4"
+     ],
+     "meshes": [
+      "rail_straight_4__Limestone",
+      "rail_straight_4__Oak"
+     ],
+     "bbox": [
+      0.56,
+      1.0,
+      4.0
+     ]
+    },
+    "rail_straight_2": {
+     "offset": [
+      4.84,
+      0,
+      1.0
+     ],
+     "roots": [
+      "rail_straight_2"
+     ],
+     "meshes": [
+      "rail_straight_2__Limestone",
+      "rail_straight_2__Oak"
+     ],
+     "bbox": [
+      0.56,
+      1.0,
+      2.0
+     ]
+    },
+    "rail_corner_45": {
+     "offset": [
+      9.713,
+      0,
+      0.953
+     ],
+     "roots": [
+      "rail_corner_45"
+     ],
+     "meshes": [
+      "rail_corner_45__Limestone",
+      "rail_corner_45__Oak"
+     ],
+     "bbox": [
+      1.185,
+      1.0,
+      1.905
+     ]
+    },
+    "rail_corner_90": {
+     "offset": [
+      14.945,
+      0,
+      0.64
+     ],
+     "roots": [
+      "rail_corner_90"
+     ],
+     "meshes": [
+      "rail_corner_90__Limestone",
+      "rail_corner_90__Oak"
+     ],
+     "bbox": [
+      1.28,
+      1.0,
+      1.28
+     ]
+    },
+    "rail_end_post": {
+     "offset": [
+      19.945,
+      0,
+      0.36
+     ],
+     "roots": [
+      "rail_end_post"
+     ],
+     "meshes": [
+      "rail_end_post__Limestone",
+      "rail_end_post__Oak"
+     ],
+     "bbox": [
+      0.72,
+      1.16,
+      0.72
+     ]
+    },
+    "timber_deflector_board": {
+     "offset": [
+      24.565,
+      0,
+      5.0
+     ],
+     "roots": [
+      "timber_deflector_board"
+     ],
+     "meshes": [
+      "timber_deflector_board__Iron",
+      "timber_deflector_board__Oak",
+      "timber_deflector_board__RootBark"
+     ],
+     "bbox": [
+      0.52,
+      1.0,
+      10.0
+     ]
+    },
+    "bank_backing_stone": {
+     "offset": [
+      29.115,
+      0,
+      6.095
+     ],
+     "roots": [
+      "bank_backing_stone"
+     ],
+     "meshes": [
+      "bank_backing_stone__Limestone",
+      "bank_backing_stone__Moss",
+      "bank_backing_stone__Oak"
+     ],
+     "bbox": [
+      0.58,
+      2.185,
+      12.19
+     ]
+    },
+    "drop_face_stone": {
+     "offset": [
+      35.405,
+      0,
+      0.2
+     ],
+     "roots": [
+      "drop_face_stone"
+     ],
+     "meshes": [
+      "drop_face_stone__Limestone",
+      "drop_face_stone__Moss",
+      "drop_face_stone__Slate"
+     ],
+     "bbox": [
+      4.0,
+      0.98,
+      0.4
+     ]
+    },
+    "water_surface": {
+     "offset": [
+      43.405,
+      0,
+      2.0
+     ],
+     "roots": [
+      "water_surface"
+     ],
+     "meshes": [
+      "water_surface__Foam",
+      "water_surface__Water"
+     ],
+     "bbox": [
+      4.0,
+      0.054,
+      4.0
+     ]
+    },
+    "stream_bank_rocks": {
+     "offset": [
+      50.244,
+      0,
+      2.252
+     ],
+     "roots": [
+      "stream_bank_rocks"
+     ],
+     "meshes": [
+      "stream_bank_rocks__Limestone",
+      "stream_bank_rocks__Moss",
+      "stream_bank_rocks__Slate"
+     ],
+     "bbox": [
+      1.678,
+      1.242,
+      4.504
+     ]
+    },
+    "h4_carousel_bar": {
+     "offset": [
+      59.583,
+      0,
+      1.6
+     ],
+     "roots": [
+      "h4_carousel_bar"
+     ],
+     "meshes": [
+      "h4_carousel_bar__Cream",
+      "h4_carousel_bar__Foam",
+      "h4_carousel_bar__ToadRed"
+     ],
+     "bbox": [
+      9.0,
+      3.743,
+      3.2
+     ]
+    },
+    "toadstool_hub_static": {
+     "offset": [
+      68.843,
+      0,
+      0.741
+     ],
+     "roots": [
+      "toadstool_hub_static"
+     ],
+     "meshes": [
+      "toadstool_hub_static__Cream",
+      "toadstool_hub_static__Moss"
+     ],
+     "bbox": [
+      1.52,
+      2.025,
+      1.482
+     ]
+    },
+    "h6_mill_wheel": {
+     "offset": [
+      77.203,
+      0,
+      6.1
+     ],
+     "roots": [
+      "h6_mill_wheel"
+     ],
+     "meshes": [
+      "h6_mill_wheel__Iron",
+      "h6_mill_wheel__Oak",
+      "h6_mill_wheel__RootBark"
+     ],
+     "bbox": [
+      7.2,
+      7.2,
+      12.2
+     ]
+    },
+    "h6_wheel_trestle": {
+     "offset": [
+      86.053,
+      0,
+      0.32
+     ],
+     "roots": [
+      "h6_wheel_trestle"
+     ],
+     "meshes": [
+      "h6_wheel_trestle__Iron",
+      "h6_wheel_trestle__Oak",
+      "h6_wheel_trestle__RootBark",
+      "h6_wheel_trestle__Slate"
+     ],
+     "bbox": [
+      2.5,
+      3.984,
+      0.64
+     ]
+    },
+    "h7_floating_log": {
+     "offset": [
+      93.848,
+      0,
+      0.422
+     ],
+     "roots": [
+      "h7_floating_log"
+     ],
+     "meshes": [
+      "h7_floating_log__Cream",
+      "h7_floating_log__Moss",
+      "h7_floating_log__Oak",
+      "h7_floating_log__Pumpkin",
+      "h7_floating_log__RootBark"
+     ],
+     "bbox": [
+      5.09,
+      0.798,
+      0.845
+     ]
+    },
+    "h9_root_portcullis": {
+     "offset": [
+      100.758,
+      0,
+      3.752
+     ],
+     "roots": [
+      "h9_root_portcullis"
+     ],
+     "meshes": [
+      "h9_root_portcullis__Gold",
+      "h9_root_portcullis__MapleRed",
+      "h9_root_portcullis__Moss",
+      "h9_root_portcullis__Pumpkin",
+      "h9_root_portcullis__RootBark"
+     ],
+     "bbox": [
+      0.73,
+      1.388,
+      7.503
+     ]
+    },
+    "h9_lantern_bar": {
+     "offset": [
+      108.157,
+      0,
+      0.55
+     ],
+     "roots": [
+      "h9_lantern_bar"
+     ],
+     "meshes": [
+      "h9_lantern_bar__Glow",
+      "h9_lantern_bar__Iron",
+      "h9_lantern_bar__Oak",
+      "h9_lantern_bar__Paper",
+      "h9_lantern_bar__RootBark",
+      "h9_lantern_bar__ToadRed"
+     ],
+     "bbox": [
+      6.068,
+      3.135,
+      1.1
+     ]
+    },
+    "h9_lantern_post_static": {
+     "offset": [
+      115.666,
+      0,
+      0.495
+     ],
+     "roots": [
+      "h9_lantern_post_static"
+     ],
+     "meshes": [
+      "h9_lantern_post_static__Iron",
+      "h9_lantern_post_static__Moss",
+      "h9_lantern_post_static__Oak"
+     ],
+     "bbox": [
+      0.95,
+      2.5,
+      0.991
+     ]
+    },
+    "h8_root_door": {
+     "offset": [
+      0.396,
+      0,
+      17.827
+     ],
+     "roots": [
+      "h8_root_door"
+     ],
+     "meshes": [
+      "h8_root_door__Iron",
+      "h8_root_door__Moss",
+      "h8_root_door__Oak",
+      "h8_root_door__RootBark"
+     ],
+     "bbox": [
+      0.792,
+      1.034,
+      3.254
+     ]
+    },
+    "lantern_torii_gate": {
+     "offset": [
+      9.542,
+      0,
+      16.774
+     ],
+     "roots": [
+      "lantern_torii_gate"
+     ],
+     "meshes": [
+      "lantern_torii_gate__Glow",
+      "lantern_torii_gate__Iron",
+      "lantern_torii_gate__Lacquer",
+      "lantern_torii_gate__Oak",
+      "lantern_torii_gate__Paper",
+      "lantern_torii_gate__RootBark",
+      "lantern_torii_gate__Slate",
+      "lantern_torii_gate__ToadRed"
+     ],
+     "bbox": [
+      9.5,
+      7.29,
+      1.149
+     ]
+    },
+    "mushroom_house_medium": {
+     "offset": [
+      21.892,
+      0,
+      19.9
+     ],
+     "roots": [
+      "mushroom_house_medium"
+     ],
+     "meshes": [
+      "mushroom_house_medium__Cream",
+      "mushroom_house_medium__Glow",
+      "mushroom_house_medium__Iron",
+      "mushroom_house_medium__Moss",
+      "mushroom_house_medium__Oak",
+      "mushroom_house_medium__Paper",
+      "mushroom_house_medium__RootBark",
+      "mushroom_house_medium__Shingle",
+      "mushroom_house_medium__Slate",
+      "mushroom_house_medium__ToadRed"
+     ],
+     "bbox": [
+      7.2,
+      9.098,
+      7.4
+     ]
+    },
+    "mushroom_house_large_tunnel": {
+     "offset": [
+      34.592,
+      0,
+      21.489
+     ],
+     "roots": [
+      "mushroom_house_large_tunnel"
+     ],
+     "meshes": [
+      "mushroom_house_large_tunnel__Cream",
+      "mushroom_house_large_tunnel__Glow",
+      "mushroom_house_large_tunnel__Iron",
+      "mushroom_house_large_tunnel__Oak",
+      "mushroom_house_large_tunnel__Paper",
+      "mushroom_house_large_tunnel__RootBark",
+      "mushroom_house_large_tunnel__Slate",
+      "mushroom_house_large_tunnel__ToadRed"
+     ],
+     "bbox": [
+      10.2,
+      12.183,
+      10.578
+     ]
+    },
+    "water_mill_house": {
+     "offset": [
+      48.56,
+      0,
+      20.784
+     ],
+     "roots": [
+      "water_mill_house"
+     ],
+     "meshes": [
+      "water_mill_house__Cream",
+      "water_mill_house__Glow",
+      "water_mill_house__Iron",
+      "water_mill_house__Limestone",
+      "water_mill_house__Oak",
+      "water_mill_house__Paper",
+      "water_mill_house__RootBark",
+      "water_mill_house__Slate",
+      "water_mill_house__Thatch",
+      "water_mill_house__ToadRed"
+     ],
+     "bbox": [
+      9.737,
+      10.1,
+      9.167
+     ]
+    },
+    "root_bridge_arched": {
+     "offset": [
+      59.102,
+      0,
+      23.538
+     ],
+     "roots": [
+      "root_bridge_arched"
+     ],
+     "meshes": [
+      "root_bridge_arched__Moss",
+      "root_bridge_arched__RootBark"
+     ],
+     "bbox": [
+      3.346,
+      3.39,
+      14.676
+     ]
+    },
+    "covered_bridge": {
+     "offset": [
+      68.632,
+      0,
+      23.5
+     ],
+     "roots": [
+      "covered_bridge"
+     ],
+     "meshes": [
+      "covered_bridge__Glow",
+      "covered_bridge__Iron",
+      "covered_bridge__Oak",
+      "covered_bridge__Paper",
+      "covered_bridge__RootBark",
+      "covered_bridge__Shingle",
+      "covered_bridge__Slate",
+      "covered_bridge__ToadRed"
+     ],
+     "bbox": [
+      7.714,
+      6.5,
+      14.6
+     ]
+    },
+    "waterfall_cascade_3step": {
+     "offset": [
+      80.859,
+      0,
+      21.465
+     ],
+     "roots": [
+      "waterfall_cascade_3step"
+     ],
+     "meshes": [
+      "waterfall_cascade_3step__Foam",
+      "waterfall_cascade_3step__Gold",
+      "waterfall_cascade_3step__Limestone",
+      "waterfall_cascade_3step__MapleRed",
+      "waterfall_cascade_3step__Moss",
+      "waterfall_cascade_3step__Pumpkin",
+      "waterfall_cascade_3step__Slate",
+      "waterfall_cascade_3step__Water"
+     ],
+     "bbox": [
+      8.74,
+      13.945,
+      10.531
+     ]
+    },
+    "waterfall_small": {
+     "offset": [
+      92.65,
+      0,
+      18.462
+     ],
+     "roots": [
+      "waterfall_small"
+     ],
+     "meshes": [
+      "waterfall_small__Foam",
+      "waterfall_small__Limestone",
+      "waterfall_small__MapleRed",
+      "waterfall_small__Moss",
+      "waterfall_small__Pumpkin",
+      "waterfall_small__Slate",
+      "waterfall_small__Water"
+     ],
+     "bbox": [
+      6.841,
+      12.312,
+      4.523
+     ]
+    },
+    "firefly_ring_entry": {
+     "offset": [
+      102.079,
+      0,
+      18.579
+     ],
+     "roots": [
+      "firefly_ring_entry"
+     ],
+     "meshes": [
+      "firefly_ring_entry__Cream",
+      "firefly_ring_entry__Firefly",
+      "firefly_ring_entry__Moss",
+      "firefly_ring_entry__RootBark",
+      "firefly_ring_entry__ShroomGlow"
+     ],
+     "bbox": [
+      4.018,
+      4.078,
+      4.758
+     ]
+    },
+    "firefly_ring_exit": {
+     "offset": [
+      109.421,
+      0,
+      16.654
+     ],
+     "roots": [
+      "firefly_ring_exit"
+     ],
+     "meshes": [
+      "firefly_ring_exit__Firefly",
+      "firefly_ring_exit__Gold",
+      "firefly_ring_exit__MapleRed"
+     ],
+     "bbox": [
+      2.667,
+      2.908,
+      0.909
+     ]
+    },
+    "giant_acorn": {
+     "offset": [
+      116.4,
+      0,
+      17.855
+     ],
+     "roots": [
+      "giant_acorn"
+     ],
+     "meshes": [
+      "giant_acorn__Cream",
+      "giant_acorn__Oak",
+      "giant_acorn__RootBark",
+      "giant_acorn__Shingle"
+     ],
+     "bbox": [
+      3.29,
+      4.052,
+      3.31
+     ]
+    },
+    "stump_cladding": {
+     "offset": [
+      1.62,
+      0,
+      35.459
+     ],
+     "roots": [
+      "stump_cladding"
+     ],
+     "meshes": [
+      "stump_cladding__Moss",
+      "stump_cladding__Oak",
+      "stump_cladding__RootBark"
+     ],
+     "bbox": [
+      3.24,
+      3.3,
+      1.166
+     ]
+    },
+    "hollow_tree": {
+     "offset": [
+      31.597,
+      0,
+      64.389
+     ],
+     "roots": [
+      "hollow_tree"
+     ],
+     "meshes": [
+      "hollow_tree__Glow",
+      "hollow_tree__Gold",
+      "hollow_tree__MapleRed",
+      "hollow_tree__Oak",
+      "hollow_tree__Pumpkin",
+      "hollow_tree__RootBark",
+      "hollow_tree__RootBark_trunk"
+     ],
+     "bbox": [
+      48.714,
+      57.435,
+      59.026
+     ]
+    },
+    "root_arch_large": {
+     "offset": [
+      68.671,
+      0,
+      36.307
+     ],
+     "roots": [
+      "root_arch_large"
+     ],
+     "meshes": [
+      "root_arch_large__Cream",
+      "root_arch_large__Glow",
+      "root_arch_large__Iron",
+      "root_arch_large__Moss",
+      "root_arch_large__Paper",
+      "root_arch_large__RootBark",
+      "root_arch_large__ShroomGlow",
+      "root_arch_large__ToadRed"
+     ],
+     "bbox": [
+      17.433,
+      10.146,
+      2.862
+     ]
+    },
+    "heart_lantern_cluster": {
+     "offset": [
+      89.389,
+      0,
+      40.146
+     ],
+     "roots": [
+      "heart_lantern_cluster"
+     ],
+     "meshes": [
+      "heart_lantern_cluster__Glow",
+      "heart_lantern_cluster__Iron",
+      "heart_lantern_cluster__Paper",
+      "heart_lantern_cluster__RootBark"
+     ],
+     "bbox": [
+      16.004,
+      6.067,
+      10.541
+     ]
+    },
+    "toadstool_stool": {
+     "offset": [
+      102.391,
+      0,
+      35.879
+     ],
+     "roots": [
+      "toadstool_stool"
+     ],
+     "meshes": [
+      "toadstool_stool__Cream",
+      "toadstool_stool__Moss",
+      "toadstool_stool__ToadRed"
+     ],
+     "bbox": [
+      2.0,
+      1.865,
+      2.006
+     ]
+    },
+    "trunk_tunnel_arch": {
+     "offset": [
+      111.006,
+      0,
+      39.453
+     ],
+     "roots": [
+      "trunk_tunnel_arch"
+     ],
+     "meshes": [
+      "trunk_tunnel_arch__Glow",
+      "trunk_tunnel_arch__Iron",
+      "trunk_tunnel_arch__Moss",
+      "trunk_tunnel_arch__Paper",
+      "trunk_tunnel_arch__RootBark",
+      "trunk_tunnel_arch__ToadRed"
+     ],
+     "bbox": [
+      7.23,
+      5.105,
+      9.153
+     ]
+    },
+    "lantern_knot": {
+     "offset": [
+      119.206,
+      0,
+      35.476
+     ],
+     "roots": [
+      "lantern_knot"
+     ],
+     "meshes": [
+      "lantern_knot__Glow",
+      "lantern_knot__Oak",
+      "lantern_knot__RootBark"
+     ],
+     "bbox": [
+      1.17,
+      0.624,
+      1.2
+     ]
+    },
+    "heart_well_rim": {
+     "offset": [
+      4.0,
+      0,
+      98.471
+     ],
+     "roots": [
+      "heart_well_rim"
+     ],
+     "meshes": [
+      "heart_well_rim__Glow",
+      "heart_well_rim__Paper",
+      "heart_well_rim__RootBark",
+      "heart_well_rim__ToadRed"
+     ],
+     "bbox": [
+      8.0,
+      0.647,
+      1.137
+     ]
+    },
+    "rabbit_hole_rim": {
+     "offset": [
+      13.533,
+      0,
+      99.371
+     ],
+     "roots": [
+      "rabbit_hole_rim"
+     ],
+     "meshes": [
+      "rabbit_hole_rim__Ink",
+      "rabbit_hole_rim__Moss",
+      "rabbit_hole_rim__RootBark"
+     ],
+     "bbox": [
+      3.065,
+      0.466,
+      2.937
+     ]
+    }
+   },
+   "triangles": 63774,
+   "meshes": 173
+  },
+  "lg_lib_b": {
+   "file": "lg_lib_b.fbx",
+   "props": {
+    "lantern_small": {
+     "offset": [
+      0.285,
+      0,
+      0.272
+     ],
+     "roots": [
+      "lantern_small"
+     ],
+     "meshes": [
+      "lantern_small__Glow",
+      "lantern_small__Iron",
+      "lantern_small__Paper",
+      "lantern_small__RootBark",
+      "lantern_small__ToadRed"
+     ],
+     "bbox": [
+      0.571,
+      0.854,
+      0.543
+     ]
+    },
+    "lantern_medium": {
+     "offset": [
+      4.997,
+      0,
+      0.405
+     ],
+     "roots": [
+      "lantern_medium"
+     ],
+     "meshes": [
+      "lantern_medium__Glow",
+      "lantern_medium__Iron",
+      "lantern_medium__Paper",
+      "lantern_medium__RootBark",
+      "lantern_medium__ToadRed"
+     ],
+     "bbox": [
+      0.852,
+      1.276,
+      0.81
+     ]
+    },
+    "lantern_large": {
+     "offset": [
+      10.133,
+      0,
+      0.675
+     ],
+     "roots": [
+      "lantern_large"
+     ],
+     "meshes": [
+      "lantern_large__Glow",
+      "lantern_large__Iron",
+      "lantern_large__Paper",
+      "lantern_large__RootBark",
+      "lantern_large__ToadRed"
+     ],
+     "bbox": [
+      1.42,
+      2.121,
+      1.35
+     ]
+    },
+    "lantern_post": {
+     "offset": [
+      15.511,
+      0,
+      0.281
+     ],
+     "roots": [
+      "lantern_post"
+     ],
+     "meshes": [
+      "lantern_post__Glow",
+      "lantern_post__Iron",
+      "lantern_post__Oak",
+      "lantern_post__Paper",
+      "lantern_post__RootBark",
+      "lantern_post__Shingle",
+      "lantern_post__Slate",
+      "lantern_post__ToadRed"
+     ],
+     "bbox": [
+      1.336,
+      3.58,
+      0.562
+     ]
+    },
+    "tee_sign_h01": {
+     "offset": [
+      20.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h01"
+     ],
+     "meshes": [
+      "tee_sign_h01__Cream",
+      "tee_sign_h01__Glow",
+      "tee_sign_h01__Iron",
+      "tee_sign_h01__Oak",
+      "tee_sign_h01__Paper",
+      "tee_sign_h01__RootBark",
+      "tee_sign_h01__Slate",
+      "tee_sign_h01__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h02": {
+     "offset": [
+      25.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h02"
+     ],
+     "meshes": [
+      "tee_sign_h02__Cream",
+      "tee_sign_h02__Glow",
+      "tee_sign_h02__Iron",
+      "tee_sign_h02__Oak",
+      "tee_sign_h02__Paper",
+      "tee_sign_h02__RootBark",
+      "tee_sign_h02__Slate",
+      "tee_sign_h02__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h03": {
+     "offset": [
+      30.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h03"
+     ],
+     "meshes": [
+      "tee_sign_h03__Cream",
+      "tee_sign_h03__Glow",
+      "tee_sign_h03__Iron",
+      "tee_sign_h03__Oak",
+      "tee_sign_h03__Paper",
+      "tee_sign_h03__RootBark",
+      "tee_sign_h03__Slate",
+      "tee_sign_h03__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h04": {
+     "offset": [
+      35.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h04"
+     ],
+     "meshes": [
+      "tee_sign_h04__Cream",
+      "tee_sign_h04__Glow",
+      "tee_sign_h04__Iron",
+      "tee_sign_h04__Oak",
+      "tee_sign_h04__Paper",
+      "tee_sign_h04__RootBark",
+      "tee_sign_h04__Slate",
+      "tee_sign_h04__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h05": {
+     "offset": [
+      40.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h05"
+     ],
+     "meshes": [
+      "tee_sign_h05__Cream",
+      "tee_sign_h05__Glow",
+      "tee_sign_h05__Iron",
+      "tee_sign_h05__Oak",
+      "tee_sign_h05__Paper",
+      "tee_sign_h05__RootBark",
+      "tee_sign_h05__Slate",
+      "tee_sign_h05__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h06": {
+     "offset": [
+      45.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h06"
+     ],
+     "meshes": [
+      "tee_sign_h06__Cream",
+      "tee_sign_h06__Glow",
+      "tee_sign_h06__Iron",
+      "tee_sign_h06__Oak",
+      "tee_sign_h06__Paper",
+      "tee_sign_h06__RootBark",
+      "tee_sign_h06__Slate",
+      "tee_sign_h06__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h07": {
+     "offset": [
+      50.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h07"
+     ],
+     "meshes": [
+      "tee_sign_h07__Cream",
+      "tee_sign_h07__Glow",
+      "tee_sign_h07__Iron",
+      "tee_sign_h07__Oak",
+      "tee_sign_h07__Paper",
+      "tee_sign_h07__RootBark",
+      "tee_sign_h07__Slate",
+      "tee_sign_h07__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h08": {
+     "offset": [
+      55.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h08"
+     ],
+     "meshes": [
+      "tee_sign_h08__Cream",
+      "tee_sign_h08__Glow",
+      "tee_sign_h08__Iron",
+      "tee_sign_h08__Oak",
+      "tee_sign_h08__Paper",
+      "tee_sign_h08__RootBark",
+      "tee_sign_h08__Slate",
+      "tee_sign_h08__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "tee_sign_h09": {
+     "offset": [
+      60.679,
+      0,
+      0.207
+     ],
+     "roots": [
+      "tee_sign_h09"
+     ],
+     "meshes": [
+      "tee_sign_h09__Cream",
+      "tee_sign_h09__Glow",
+      "tee_sign_h09__Iron",
+      "tee_sign_h09__Oak",
+      "tee_sign_h09__Paper",
+      "tee_sign_h09__RootBark",
+      "tee_sign_h09__Slate",
+      "tee_sign_h09__ToadRed"
+     ],
+     "bbox": [
+      1.0,
+      3.02,
+      0.414
+     ]
+    },
+    "lantern_string": {
+     "offset": [
+      71.254,
+      0,
+      0.202
+     ],
+     "roots": [
+      "lantern_string"
+     ],
+     "meshes": [
+      "lantern_string__Glow",
+      "lantern_string__Iron",
+      "lantern_string__Paper",
+      "lantern_string__RootBark",
+      "lantern_string__ToadRed"
+     ],
+     "bbox": [
+      12.15,
+      1.148,
+      0.403
+     ]
+    },
+    "red_maple_tree": {
+     "offset": [
+      86.53,
+      0,
+      4.949
+     ],
+     "roots": [
+      "red_maple_tree"
+     ],
+     "meshes": [
+      "red_maple_tree__MapleRed",
+      "red_maple_tree__Pumpkin",
+      "red_maple_tree__RootBark"
+     ],
+     "bbox": [
+      10.401,
+      15.732,
+      9.898
+     ]
+    },
+    "golden_birch_tree": {
+     "offset": [
+      99.702,
+      0,
+      3.631
+     ],
+     "roots": [
+      "golden_birch_tree"
+     ],
+     "meshes": [
+      "golden_birch_tree__BirchBark",
+      "golden_birch_tree__Gold",
+      "golden_birch_tree__Ink",
+      "golden_birch_tree__Pumpkin"
+     ],
+     "bbox": [
+      7.943,
+      13.526,
+      7.261
+     ]
+    },
+    "mossy_boulder": {
+     "offset": [
+      109.844,
+      0,
+      1.746
+     ],
+     "roots": [
+      "mossy_boulder"
+     ],
+     "meshes": [
+      "mossy_boulder__Moss",
+      "mossy_boulder__Slate"
+     ],
+     "bbox": [
+      4.343,
+      3.085,
+      3.493
+     ]
+    },
+    "toadstool_cluster": {
+     "offset": [
+      117.556,
+      0,
+      1.139
+     ],
+     "roots": [
+      "toadstool_cluster"
+     ],
+     "meshes": [
+      "toadstool_cluster__Cream",
+      "toadstool_cluster__Moss",
+      "toadstool_cluster__ToadRed"
+     ],
+     "bbox": [
+      3.081,
+      2.587,
+      2.279
+     ]
+    },
+    "glowing_mushrooms": {
+     "offset": [
+      1.224,
+      0,
+      14.937
+     ],
+     "roots": [
+      "glowing_mushrooms"
+     ],
+     "meshes": [
+      "glowing_mushrooms__Cream",
+      "glowing_mushrooms__Firefly",
+      "glowing_mushrooms__Moss",
+      "glowing_mushrooms__ShroomGlow"
+     ],
+     "bbox": [
+      2.448,
+      1.851,
+      2.078
+     ]
+    },
+    "welcome_sign": {
+     "offset": [
+      7.585,
+      0,
+      14.226
+     ],
+     "roots": [
+      "welcome_sign"
+     ],
+     "meshes": [
+      "welcome_sign__Cream",
+      "welcome_sign__Glow",
+      "welcome_sign__Iron",
+      "welcome_sign__Moss",
+      "welcome_sign__Oak",
+      "welcome_sign__Paper",
+      "welcome_sign__RootBark",
+      "welcome_sign__Shingle",
+      "welcome_sign__ToadRed"
+     ],
+     "bbox": [
+      2.274,
+      3.124,
+      0.657
+     ]
+    },
+    "fern_clump": {
+     "offset": [
+      13.932,
+      0,
+      15.302
+     ],
+     "roots": [
+      "fern_clump"
+     ],
+     "meshes": [
+      "fern_clump__Moss"
+     ],
+     "bbox": [
+      2.419,
+      1.731,
+      2.808
+     ]
+    },
+    "red_leaf_bush": {
+     "offset": [
+      20.676,
+      0,
+      15.088
+     ],
+     "roots": [
+      "red_leaf_bush"
+     ],
+     "meshes": [
+      "red_leaf_bush__MapleRed",
+      "red_leaf_bush__Pumpkin"
+     ],
+     "bbox": [
+      3.069,
+      1.65,
+      2.38
+     ]
+    },
+    "leaf_pile": {
+     "offset": [
+      27.279,
+      0,
+      14.821
+     ],
+     "roots": [
+      "leaf_pile"
+     ],
+     "meshes": [
+      "leaf_pile__Gold",
+      "leaf_pile__MapleRed",
+      "leaf_pile__Pumpkin"
+     ],
+     "bbox": [
+      2.137,
+      0.654,
+      1.846
+     ]
+    },
+    "flour_sacks_crates": {
+     "offset": [
+      33.287,
+      0,
+      14.809
+     ],
+     "roots": [
+      "flour_sacks_crates"
+     ],
+     "meshes": [
+      "flour_sacks_crates__Cream",
+      "flour_sacks_crates__Oak",
+      "flour_sacks_crates__RootBark"
+     ],
+     "bbox": [
+      1.88,
+      1.66,
+      1.822
+     ]
+    },
+    "squirrel_hut": {
+     "offset": [
+      39.567,
+      0,
+      15.248
+     ],
+     "roots": [
+      "squirrel_hut"
+     ],
+     "meshes": [
+      "squirrel_hut__Glow",
+      "squirrel_hut__Oak",
+      "squirrel_hut__Paper",
+      "squirrel_hut__RootBark",
+      "squirrel_hut__ToadRed"
+     ],
+     "bbox": [
+      2.68,
+      5.073,
+      2.7
+     ]
+    },
+    "stepping_stones": {
+     "offset": [
+      45.746,
+      0,
+      15.059
+     ],
+     "roots": [
+      "stepping_stones"
+     ],
+     "meshes": [
+      "stepping_stones__Moss",
+      "stepping_stones__Slate"
+     ],
+     "bbox": [
+      1.677,
+      0.885,
+      2.322
+     ]
+    },
+    "maple_tree_round": {
+     "offset": [
+      56.773,
+      0,
+      19.669
+     ],
+     "roots": [
+      "maple_tree_round"
+     ],
+     "meshes": [
+      "maple_tree_round__MapleRed",
+      "maple_tree_round__Pumpkin",
+      "maple_tree_round__RootBark"
+     ],
+     "bbox": [
+      12.377,
+      14.463,
+      11.542
+     ]
+    },
+    "maple_tree_tall": {
+     "offset": [
+      71.626,
+      0,
+      18.514
+     ],
+     "roots": [
+      "maple_tree_tall"
+     ],
+     "meshes": [
+      "maple_tree_tall__MapleRed",
+      "maple_tree_tall__Pumpkin",
+      "maple_tree_tall__RootBark"
+     ],
+     "bbox": [
+      9.329,
+      18.262,
+      9.231
+     ]
+    },
+    "oak_tree_orange": {
+     "offset": [
+      87.485,
+      0,
+      21.2
+     ],
+     "roots": [
+      "oak_tree_orange"
+     ],
+     "meshes": [
+      "oak_tree_orange__Gold",
+      "oak_tree_orange__MapleRed",
+      "oak_tree_orange__Pumpkin",
+      "oak_tree_orange__RootBark"
+     ],
+     "bbox": [
+      14.389,
+      12.662,
+      14.604
+     ]
+    },
+    "maple_tree_lanterns": {
+     "offset": [
+      104.744,
+      0,
+      18.941
+     ],
+     "roots": [
+      "maple_tree_lanterns"
+     ],
+     "meshes": [
+      "maple_tree_lanterns__Glow",
+      "maple_tree_lanterns__Iron",
+      "maple_tree_lanterns__MapleRed",
+      "maple_tree_lanterns__Paper",
+      "maple_tree_lanterns__PaperOrange",
+      "maple_tree_lanterns__Pumpkin",
+      "maple_tree_lanterns__RootBark",
+      "maple_tree_lanterns__ToadRed"
+     ],
+     "bbox": [
+      12.13,
+      15.343,
+      10.086
+     ]
+    },
+    "maple_tree_overhang": {
+     "offset": [
+      6.896,
+      0,
+      36.905
+     ],
+     "roots": [
+      "maple_tree_overhang"
+     ],
+     "meshes": [
+      "maple_tree_overhang__Glow",
+      "maple_tree_overhang__Iron",
+      "maple_tree_overhang__MapleRed",
+      "maple_tree_overhang__Paper",
+      "maple_tree_overhang__PaperOrange",
+      "maple_tree_overhang__Pumpkin",
+      "maple_tree_overhang__RootBark",
+      "maple_tree_overhang__ToadRed"
+     ],
+     "bbox": [
+      13.791,
+      16.02,
+      8.806
+     ]
+    },
+    "maple_sapling": {
+     "offset": [
+      20.492,
+      0,
+      34.769
+     ],
+     "roots": [
+      "maple_sapling"
+     ],
+     "meshes": [
+      "maple_sapling__Gold",
+      "maple_sapling__MapleRed",
+      "maple_sapling__Pumpkin",
+      "maple_sapling__RootBark"
+     ],
+     "bbox": [
+      5.401,
+      7.497,
+      4.534
+     ]
+    },
+    "toadstool_tall": {
+     "offset": [
+      28.682,
+      0,
+      33.848
+     ],
+     "roots": [
+      "toadstool_tall"
+     ],
+     "meshes": [
+      "toadstool_tall__Cream",
+      "toadstool_tall__Moss",
+      "toadstool_tall__ToadRed"
+     ],
+     "bbox": [
+      2.98,
+      3.683,
+      2.693
+     ]
+    },
+    "toadstool_orange_cluster": {
+     "offset": [
+      35.722,
+      0,
+      33.769
+     ],
+     "roots": [
+      "toadstool_orange_cluster"
+     ],
+     "meshes": [
+      "toadstool_orange_cluster__CapOrange",
+      "toadstool_orange_cluster__Cream",
+      "toadstool_orange_cluster__Moss"
+     ],
+     "bbox": [
+      3.1,
+      2.263,
+      2.535
+     ]
+    },
+    "toadstool_trio_small": {
+     "offset": [
+      41.923,
+      0,
+      32.914
+     ],
+     "roots": [
+      "toadstool_trio_small"
+     ],
+     "meshes": [
+      "toadstool_trio_small__Cream",
+      "toadstool_trio_small__ToadRed"
+     ],
+     "bbox": [
+      1.303,
+      1.024,
+      0.824
+     ]
+    },
+    "orange_leaf_bush": {
+     "offset": [
+      48.341,
+      0,
+      34.028
+     ],
+     "roots": [
+      "orange_leaf_bush"
+     ],
+     "meshes": [
+      "orange_leaf_bush__Gold",
+      "orange_leaf_bush__Pumpkin"
+     ],
+     "bbox": [
+      3.532,
+      1.963,
+      3.053
+     ]
+    },
+    "gold_leaf_bush": {
+     "offset": [
+      55.581,
+      0,
+      33.725
+     ],
+     "roots": [
+      "gold_leaf_bush"
+     ],
+     "meshes": [
+      "gold_leaf_bush__Gold",
+      "gold_leaf_bush__Pumpkin"
+     ],
+     "bbox": [
+      2.948,
+      1.538,
+      2.447
+     ]
+    },
+    "red_bush_tall": {
+     "offset": [
+      62.553,
+      0,
+      33.59
+     ],
+     "roots": [
+      "red_bush_tall"
+     ],
+     "meshes": [
+      "red_bush_tall__MapleRed",
+      "red_bush_tall__Pumpkin",
+      "red_bush_tall__RootBark"
+     ],
+     "bbox": [
+      2.996,
+      3.313,
+      2.176
+     ]
+    },
+    "grass_tuft": {
+     "offset": [
+      68.694,
+      0,
+      33.329
+     ],
+     "roots": [
+      "grass_tuft"
+     ],
+     "meshes": [
+      "grass_tuft__Gold",
+      "grass_tuft__Moss"
+     ],
+     "bbox": [
+      1.285,
+      1.606,
+      1.655
+     ]
+    },
+    "fern_clump_large": {
+     "offset": [
+      75.132,
+      0,
+      34.212
+     ],
+     "roots": [
+      "fern_clump_large"
+     ],
+     "meshes": [
+      "fern_clump_large__Moss"
+     ],
+     "bbox": [
+      3.593,
+      2.185,
+      3.421
+     ]
+    },
+    "leaf_pile_wide": {
+     "offset": [
+      82.54,
+      0,
+      33.721
+     ],
+     "roots": [
+      "leaf_pile_wide"
+     ],
+     "meshes": [
+      "leaf_pile_wide__Gold",
+      "leaf_pile_wide__MapleRed",
+      "leaf_pile_wide__Pumpkin"
+     ],
+     "bbox": [
+      3.221,
+      0.644,
+      2.439
+     ]
+    },
+    "leaf_scatter": {
+     "offset": [
+      90.113,
+      0,
+      34.509
+     ],
+     "roots": [
+      "leaf_scatter"
+     ],
+     "meshes": [
+      "leaf_scatter__Gold",
+      "leaf_scatter__MapleRed",
+      "leaf_scatter__Pumpkin"
+     ],
+     "bbox": [
+      3.925,
+      0.103,
+      4.015
+     ]
+    },
+    "rock_outcrop": {
+     "offset": [
+      100.315,
+      0,
+      34.746
+     ],
+     "roots": [
+      "rock_outcrop"
+     ],
+     "meshes": [
+      "rock_outcrop__Moss",
+      "rock_outcrop__Slate"
+     ],
+     "bbox": [
+      8.479,
+      4.854,
+      4.488
+     ]
+    },
+    "lantern_span_12": {
+     "offset": [
+      6.3,
+      0,
+      45.608
+     ],
+     "roots": [
+      "lantern_span_12"
+     ],
+     "meshes": [
+      "lantern_span_12__Glow",
+      "lantern_span_12__Iron",
+      "lantern_span_12__Oak",
+      "lantern_span_12__Paper",
+      "lantern_span_12__PaperOrange",
+      "lantern_span_12__RootBark",
+      "lantern_span_12__Shingle",
+      "lantern_span_12__Slate"
+     ],
+     "bbox": [
+      12.6,
+      10.3,
+      0.6
+     ]
+    },
+    "lantern_span_16": {
+     "offset": [
+      24.9,
+      0,
+      45.608
+     ],
+     "roots": [
+      "lantern_span_16"
+     ],
+     "meshes": [
+      "lantern_span_16__Glow",
+      "lantern_span_16__Iron",
+      "lantern_span_16__Oak",
+      "lantern_span_16__Paper",
+      "lantern_span_16__PaperOrange",
+      "lantern_span_16__RootBark",
+      "lantern_span_16__Shingle",
+      "lantern_span_16__Slate"
+     ],
+     "bbox": [
+      16.6,
+      10.3,
+      0.6
+     ]
+    },
+    "lantern_span_20": {
+     "offset": [
+      47.5,
+      0,
+      45.608
+     ],
+     "roots": [
+      "lantern_span_20"
+     ],
+     "meshes": [
+      "lantern_span_20__Glow",
+      "lantern_span_20__Iron",
+      "lantern_span_20__Oak",
+      "lantern_span_20__Paper",
+      "lantern_span_20__PaperOrange",
+      "lantern_span_20__RootBark",
+      "lantern_span_20__Shingle",
+      "lantern_span_20__Slate"
+     ],
+     "bbox": [
+      20.6,
+      10.3,
+      0.6
+     ]
+    },
+    "lantern_string_poles": {
+     "offset": [
+      67.1,
+      0,
+      45.608
+     ],
+     "roots": [
+      "lantern_string_poles"
+     ],
+     "meshes": [
+      "lantern_string_poles__Glow",
+      "lantern_string_poles__Iron",
+      "lantern_string_poles__Oak",
+      "lantern_string_poles__Paper",
+      "lantern_string_poles__PaperOrange",
+      "lantern_string_poles__RootBark",
+      "lantern_string_poles__Shingle",
+      "lantern_string_poles__Slate"
+     ],
+     "bbox": [
+      10.6,
+      6.3,
+      0.6
+     ]
+    },
+    "lantern_hook_pair": {
+     "offset": [
+      77.978,
+      0,
+      45.667
+     ],
+     "roots": [
+      "lantern_hook_pair"
+     ],
+     "meshes": [
+      "lantern_hook_pair__Glow",
+      "lantern_hook_pair__Iron",
+      "lantern_hook_pair__Paper",
+      "lantern_hook_pair__PaperOrange",
+      "lantern_hook_pair__RootBark",
+      "lantern_hook_pair__Slate",
+      "lantern_hook_pair__ToadRed"
+     ],
+     "bbox": [
+      3.155,
+      4.573,
+      0.718
+     ]
+    }
+   },
+   "triangles": 47492,
+   "meshes": 236
+  }
+ }
+}

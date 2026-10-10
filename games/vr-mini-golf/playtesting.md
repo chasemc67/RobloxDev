@@ -75,11 +75,15 @@ require(game.ServerStorage.CourseBuilder:Clone()).ApplyPhysics(nil, require(game
 | Name | What it measures |
 |---|---|
 | `rollout` | 2/4/6 m/s straight putts on the flat test lane: distance and time vs the rolling model (`RollDecel + RollDrag·v`) |
-| `bank` | Hole 2's 45° bank wall at 4 and 6 m/s: speed and angle in/out |
-| `walls` | Hole 1's end wall head-on (3 and 6 m/s), hole 1's side wall at 45°, hole 2's bumper post head-on and with a 45° contact normal. Normal restitution, tangential retention, speed kept right after the hit and 0.3 s later (skid) |
-| `windmill` | Hole 4 at 4 m/s, timed to two blade phases |
-| `hill` | Hole 3: 5 m/s makes the green, 2 m/s rolls back down |
-| `cup` | Hole 1 from 60 cm at 1.3–4 m/s: holed or not, speed at the rim, holed on the first pass. Contacts inside the cup (the ball dropping against the rim/liner) don't count against "first pass" |
+| `bank` | Hole 1 Lantern Gate's 45° timber deflector at 4 and 6 m/s: speed and angle in/out |
+| `walls` | Hole 1's green rail head-on (3 and 6 m/s), hole 1's lane rail at 45°, hole 3's toadstool stool bumper head-on and at 45°. Normal restitution, tangential retention, speed kept right after the hit and 0.3 s later (skid) |
+| `hill` | Hole 9's 1-stud ramp: 5 m/s makes the landing, 2 m/s rolls back down |
+| `cup` | Hole 1 (cup radius 0.5 stud) from 60 cm at 1.3–4 m/s: holed or not, speed at the rim, holed on the first pass. Contacts inside the cup (the ball dropping against the rim/liner) don't count against "first pass" |
+| `movers` | Every moving part: server constraint value vs the spec at server time, each blocker's pose vs the spec formula, server network ownership, and how far behind the client sees it (replication lag) |
+| `h1` … `h9` | The per-hole suites (Lantern Grove), see below |
+| `h7pin` | Hole 7's sliding log: 30 balls parked in / beside the log's path at both ends of its travel and 12 slow putts into it at 4 phases. Logs contact time at ~0 speed and the unstick nudges |
+| `h8door` | Hole 8's sliding root door: balls parked against the alcove rails at the door's ends of travel (the crush case) |
+| `progress` | (best with SimulateVR) Sinks holes 1 → 9 in turn: the server moves the ball to the next tee, the VR rig warps beside it, the HUD title changes, and the final 9-hole scorecard (par 27) opens |
 | `ledge` | (SimulateVR) Ball against a wall or rail. The (fake) club is held over the ledge and the player stance is on or over the wall. Logs ball-plane Y vs VR rig floor, character feet and putter head bottom. Pass = all within 0.05 studs (character 0.1) |
 | `clubviz` | (SimulateVR) Holds the club hand in a putting grip next to a ball (hand 0.91 m up, handle aimed at the ball), with the legacy mount and then the grip mount. Pass: the shaft is within 2° of the handle axis, starts at the handle bottom, and puts the head on the ball's plane right behind the ball. Then presses A (refit): shaft vertical from the handle bottom, head on the plane |
 | `ghost` | (SimulateVR) Sweeps the putter head through a wall and a bumper post at ball-plane height. Checks it follows the hand exactly (no pushback, no climbing), the club parts can't collide/touch, and the ball doesn't move. Then makes a real simulated VR swing through the ball (face speed 1.2 m/s → ball speed = face speed × `VRHitMultiplier`) |
@@ -87,13 +91,60 @@ require(game.ServerStorage.CourseBuilder:Clone()).ApplyPhysics(nil, require(game
 **Adding a scenario:** add a `scenario({ name, desc, seconds, vr?, run = function() ... end })` block in `src/StarterPlayer/StarterPlayerScripts/GolfClient/GolfTest.luau`. `seconds` is the recording length.
 
 These helpers are available:
-- `place(hole, x, z, surfaceY)`: hole 0 is the test lane.
+- `place(hole, x, z, surfaceY)`: world coordinates; hole 0 is the test lane.
+- `placeL(hole, x, z, y?)`: spec-local coordinates (straight from `holes.json` / `hNN-notes.md`), on the felt under that point.
+- `W(hole, x, y, z)` / `WD(hole, dx, dz)` / `aimDir(hole, deg)`: spec-local point / direction / notes-style aim angle (atan2(dz, dx)) to world.
+- `shootS(label, dir, studsPerSec, opts)`: `shoot` in studs/s that also classifies out-of-bounds as `hazard` (water / rabbit hole) or `escape`, collects flags, and waits for the re-placement after an OOB.
+- `waitPhase(hole, t)`: waits until the hole's moving parts, as this client sees them, are at spec time `t` (mod the hole's `MoverPeriod`).
+- `playHole(hole, skill)`: plays the hole from the tee like the designer's sim golfer (cup if allowed and in sight, else the furthest `ai_waypoints` target), with the flat-felt speed model plus √(2gΔh) for climbs.
 - `shoot(label, dir, speedMps, {cup=, timeout=})`: returns distance, times, contacts, rim speed and outcome.
 - `setFrame(focus, size, viewDir)`
 - `measureLedge(...)`, `sweep(...)`
 - `poseFn`: drives the simulated club hand.
 
 Return a table. Then add a section to `summary_md()` and `key_metrics()` in the runner if you want it in the summary and compare.
+
+## Lantern Grove per-hole scenarios (`h1` … `h9`)
+
+Each `hN` suite runs on hole N, in this order (`GolfTestOpts.parts` picks a subset):
+
+| Part | What it does | Pass / flag |
+|---|---|---|
+| `routes` | Two full plays from the tee with the spec's `ai_waypoints`: `good` = the aggressive/risk line from `hNN-notes.md` (H2 left chute, H5 root bridge, H8 firefly ring), `average` = the safe line (H2 right chute, H5 covered bridge, H8 long route) | Strokes vs par, holed, every stroke's target, outcome and finishing zone |
+| `hio` | The notes' ace line (aim, speed, mover phase), then candidate lines from `tools/engine_sim.py` (if `--engine-sim`), a ±8° scan at 100% / 88% power, and a Newton/Broyden refinement on the miss vector. Stops at the first ace | `ace`, best miss (studs) |
+| `banks` | Two rail/bank shots per hole (e.g. H1 deflector, H3 both banked corners, H6 both boards, H9 bank + root deflector) | First contact: part, normal restitution, angles in/out |
+| `sweep` | For each moving part: the ace line (or first intended shot) at N evenly spaced phases of that part's cycle | Blocked or clear, finishing zone, flags |
+| `fuzz` | Random shots (any direction, 20–100% power) from the tee and from random spots on the felt | Hazards, **escapes**, **stuck**, nudges |
+
+**Automatic stuck / escape detection** (every scripted shot, all scenarios):
+- **escape**: the server's out-of-bounds (below the hole's `KillY` or outside its `Bounds`) while the ball was **not** over a hazard footprint (`Hazards/Hazard`). The server writes it to the ball's `LastOOB` attribute (`escape` or `hazard:<id>`); water and the rabbit hole count as hazards.
+- **fell**: the client saw the ball more than 3 studs below the hole's lowest felt (`FeltMinY`).
+- **stuck**: a shot that never finished (timeout), a rest that isn't on felt (`Ball.OffSurface`, also gives a free reset to the stroke start), a "wedged" rest (below `StopSpeed` for 2 s on a slope) or the 25 s `MaxRollTime` cap (`Ball.ForcedRest`).
+- **unstuck**: the pin/unstick nudge fired (`Ball.Unstuck`: touching a moving part at ~0 speed, or riding on one, for > 0.5 s, moving or at rest). It hops the ball to the nearest clear felt spot sideways of the part's motion.
+- Teleports (`Ball.Teleported`) are logged as flags but aren't issues.
+
+Options (JSON in workspace attribute `GolfTestOpts`, set with `--opts`): `parts` (default `"routes,hio,banks,sweep,fuzz"`), `fuzz` (shots, default 12), `sweep` (phases per moving part, default 6), `hioTries` (default 30), `seed`, `hioLines` (`{"<hole>": [[aim, speed, phase], ...]}`, filled by `--engine-sim`).
+
+**Engine-calibrated sim** (`tools/engine_sim.py`): a patched copy of the designer's `tools/sim.py` with the game's measured rail response (normal restitution 0.60, tangential 0.93, then BallController's post-impact skid, net `v = v_out + 0.5·(v_in − v_out)/3.5`). It brute-forces aim × speed (× phase) from each tee in ~25 s for all 9 holes and prints candidate ace lines; only an in-engine ace counts.
+
+### Playtest Bot: how to run the per-hole scenarios
+
+Studio must be open on place 87725688219952 (VR Mini Golf), in Edit mode, with the Studio MCP enabled. Then, from the repo:
+```bash
+cd ~/src/RobloxDev/games/vr-mini-golf
+# 1. all 9 hole suites + the H7 log pin hunt + the H8 door test + the mover check (~75 min), HIO seeded by the engine sim:
+python3 tools/run_playtests.py holes --engine-sim --opts '{"fuzz":12,"sweep":6,"hioTries":24}' --out playtests/<date>-lantern
+# 2. one or a few holes, a subset of parts (fast):
+python3 tools/run_playtests.py holes 7 --opts '{"parts":"routes,sweep","sweep":8}' --out /tmp/h7
+# 3. progression + VR checks (SimulateVR on):
+python3 tools/run_playtests.py run progress ledge ghost clubviz --out playtests/<date>-lantern/vr
+# 4. screenshots: overview.png, holeNN.png (3/4 view, HUD on), topdown_hNN.png, follow_hNN_a/b.png (ace-line chase cam):
+python3 tools/run_playtests.py shots --out playtests/<date>-lantern/shots
+# 5. normal play check (test mode off), desktop then phone emulation:
+python3 tools/run_playtests.py smoke
+python3 tools/run_playtests.py smoke --device iphone_17_pro
+```
+Read `<out>/summary.md` (per-hole table: lines, ace, banks, sweep, fuzz, escapes/stuck/nudges) and **look at the PNGs**. Anything in the "Escapes / stuck / nudges" column or the `hN issues` lines is a bug to fix (positions are world coordinates; hole frames are in each `HoleN` model's `HoleOrigin` attribute). After a spec update: `python3 tools/holes_to_lua.py --push --build`, then re-run.
 
 ## VR club: grip axis (needs a headset to confirm)
 

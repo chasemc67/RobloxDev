@@ -104,6 +104,14 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
   - `run_playtests.py clubviz` (window screenshots).
 - Published 2026-10-09 20:14:30 PT as v12 (File > Publish to Roblox; Studio output "Place published. Friends and playtesters can now play"). Audience and settings unchanged.
 
+## 2026-10-10 00:02 PT: Lantern Grove round 1, flat greybox (published as v23)
+- 9 holes from `assets/vr-mini-golf/lantern-grove/holes.json` (par 27), built by `ServerStorage.CourseBuilder` from the generated `CourseData.LanternGrove` (`tools/holes_to_lua.py`). Holes still sit on the flat greybox plane (holes.json `world_offset`).
+- Per-hole suites (`playtests/lantern-v1/iter1/summary.md`): every hole holed on both AI routes; 0 real escapes, 0 stuck. The one H6 "escape" was a harness artifact (fixed: `LastOOB` now carries a running count so a repeat hazard replicates). H9: 2 unstick nudges at the root gate (the designed safety). Aces found in-engine on H2, H4, H5.
+- H7 log pin: fixed with the slide-range clearance + unstick nudge (`playtests/lantern-v1/before-fix` vs `after-fix`). H8 root door clamped to [-1.68, 1.66].
+- Screenshot iterations: 1 (run 2, `iter1-shots/`), 2 (`hole01..09.png`, `round1-greybox/`). Fix from iteration 2: H6 north rail (rail5) visual notch at x 5..10 for the mill wheel.
+- Progression check fixed (near-cup spot on the cup's felt level). Desktop and iPhone smoke: 0 errors, 0 warnings.
+- Published by Codex computer use (File > Publish to Roblox): "Place published. Friends and playtesters can now play this place in Roblox." Version History: v23, 2026-10-10 12:02 AM. Audience unchanged.
+
 ## TODO
 - [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
 - [ ] Headset check:

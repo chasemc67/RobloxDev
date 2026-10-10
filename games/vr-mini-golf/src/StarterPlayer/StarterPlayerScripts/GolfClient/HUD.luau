@@ -6,6 +6,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
+local Config = require(Golf:WaitForChild("Config"))
 
 local player = Players.LocalPlayer
 
@@ -435,11 +436,57 @@ function HUD.init(isVR, ballController)
 
 	player:GetAttributeChangedSignal("Strokes"):Connect(HUD.refresh)
 	player:GetAttributeChangedSignal("Hole"):Connect(HUD.refresh)
+
+	-- Hole-to-hole travel (Walkabout style): after holing out, fade to black just before the server moves the ball
+	-- to the next tee, and fade back in once you've been put there (VR: warped beside the ball; desktop/phone: the
+	-- camera cuts to it). A camera ColorCorrection tint, so it also covers the headset view (ScreenGuis don't).
+	local fade = new("ColorCorrectionEffect", { Name = "GolfFade", TintColor = Color3.new(1, 1, 1) }, workspace.CurrentCamera)
+	local fadeToken = 0
+	local function setFade(black, seconds)
+		fadeToken += 1
+		HUD.faded = black
+		TweenService:Create(fade, TweenInfo.new(seconds, Enum.EasingStyle.Sine), {
+			TintColor = black and Color3.new(0, 0, 0) or Color3.new(1, 1, 1),
+			Brightness = black and -0.5 or 0,
+		}):Play()
+		return fadeToken
+	end
+	HUD.setFade = setFade
+	local FADE_OUT = 0.45
+	Remotes.HoleComplete.OnClientEvent:Connect(function(who, holeNum)
+		if who ~= player or holeNum >= #holeList() then
+			return
+		end
+		task.delay(math.max(0, Config.HoleTransitionTime - FADE_OUT - 0.05), function()
+			local token = setFade(true, FADE_OUT)
+			-- never leave the screen black if the placement doesn't come
+			task.delay(FADE_OUT + 3, function()
+				if fadeToken == token and HUD.faded then
+					setFade(false, 0.5)
+				end
+			end)
+		end)
+	end)
+
 	Ball.Placed.Event:Connect(function(_, reason)
 		HUD.refresh()
+		if HUD.faded then
+			task.delay(0.15, function()
+				setFade(false, 0.6)
+			end)
+		end
 		if reason == "hole" then
 			local hole = Ball.getHole()
 			HUD.message(string.format("Hole %d  -  Par %d", hole:GetAttribute("HoleNumber"), hole:GetAttribute("Par")), Color3.fromRGB(255, 230, 120), 2.2)
+		end
+	end)
+
+	-- teleport rings (H8 firefly ring, H9 secret Lantern Knot)
+	Ball.Teleported.Event:Connect(function(id)
+		if id == "lantern_knot" then
+			HUD.message("Secret!  The Lantern Knot", Color3.fromHex("FFB347"), 2)
+		else
+			HUD.toast("Whoosh!  Firefly ring")
 		end
 	end)
 

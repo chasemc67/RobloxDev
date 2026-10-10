@@ -190,12 +190,14 @@ function VR.start(Ball, HUD, simulate)
 	local floorRay = RaycastParams.new()
 	floorRay.FilterType = Enum.RaycastFilterType.Include
 	local walkable = {}
-	local WALKABLE_NAMES = { Felt = true, CupPlate = true, Ramp = true, Base = true, Baseplate = true, SpawnLocation = true }
+	-- (world layout: the Terrain and the walkway/stair/plaza parts, which WorldBuilder tags GolfWalkable)
+	local WALKABLE_NAMES = { Felt = true, CupPlate = true, Ramp = true, Base = true, Lawn = true, Baseplate = true, SpawnLocation = true }
 	for _, d in workspace:GetDescendants() do
-		if d:IsA("BasePart") and WALKABLE_NAMES[d.Name] then
+		if d:IsA("BasePart") and (WALKABLE_NAMES[d.Name] or CollectionService:HasTag(d, "GolfWalkable")) then
 			table.insert(walkable, d)
 		end
 	end
+	table.insert(walkable, workspace.Terrain)
 	floorRay.FilterDescendantsInstances = walkable
 	local walkableSet = {}
 	for _, p in walkable do
