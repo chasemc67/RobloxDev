@@ -5,6 +5,8 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
@@ -24,6 +26,7 @@ Ball.Teleported = Instance.new("BindableEvent") -- (teleportId, speedIn, speedOu
 Ball.Unstuck = Instance.new("BindableEvent") -- (reason, fromPos, toPos): pinned by / riding a moving part
 Ball.OffSurface = Instance.new("BindableEvent") -- (pos, partName): came to rest somewhere that isn't felt
 Ball.ForcedRest = Instance.new("BindableEvent") -- (pos, reason): "maxtime" | "wedged"
+Ball.AutoReset = Instance.new("BindableEvent") -- (pos, reason): stuck for the hole's AutoResetStill seconds -> free reset
 
 local slowTime = 0
 local rollTime = 0
@@ -37,6 +40,8 @@ local pinTime = 0 -- seconds pinned against / riding on a moving part
 local seamHops = 0 -- seam hops used this stroke (see step)
 local parkTime = 0 -- seconds with the ball practically motionless (< 0.05 studs/s) on a slope
 local teleportCooldown = 0
+local stuckTime = 0 -- seconds the ball has made no progress (see checkAutoReset)
+local stuckAnchor: Vector3? = nil
 
 local rayParams = RaycastParams.new()
 rayParams.CollisionGroup = "GolfBall"
@@ -251,6 +256,49 @@ local function refreshCache(hole)
 	end
 end
 
+-- ~0.3 s exit effect for teleports: a chime, a burst of fireflies and a flash at the exit (local only, no collision).
+local function teleportFx(pos: Vector3, color: Color3)
+	local p = Instance.new("Part")
+	p.Name = "TeleportFx"
+	p.Anchored = true
+	p.CanCollide = false
+	p.CanQuery = false
+	p.CanTouch = false
+	p.CastShadow = false
+	p.Shape = Enum.PartType.Ball
+	p.Material = Enum.Material.Neon
+	p.Color = color
+	p.Transparency = 0.3
+	p.Size = Vector3.one * 0.3
+	p.CFrame = CFrame.new(pos)
+	local light = Instance.new("PointLight")
+	light.Color = color
+	light.Range = 10
+	light.Brightness = 6
+	light.Parent = p
+	local fx = Instance.new("ParticleEmitter")
+	fx.Color = ColorSequence.new(color)
+	fx.LightEmission = 1
+	fx.Size = NumberSequence.new(0.1, 0)
+	fx.Lifetime = NumberRange.new(0.3, 0.6)
+	fx.Speed = NumberRange.new(2, 5)
+	fx.SpreadAngle = Vector2.new(180, 180)
+	fx.Drag = 3
+	fx.Rate = 0
+	fx.Parent = p
+	local snd = Instance.new("Sound")
+	snd.SoundId = "rbxasset://sounds/electronicpingshort.wav"
+	snd.Volume = 0.6
+	snd.PlaybackSpeed = 1.4
+	snd.Parent = p
+	p.Parent = workspace.CurrentCamera
+	fx:Emit(30)
+	snd:Play()
+	TweenService:Create(p, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = Vector3.one * 1.6, Transparency = 1 }):Play()
+	TweenService:Create(light, TweenInfo.new(0.3), { Brightness = 0 }):Play()
+	Debris:AddItem(p, 1)
+end
+
 -- Teleport rings: a ball whose centre enters the entry radius (same level) reappears at the exit, moving along
 -- the exit direction at clamp(speed * SpeedFactor, MinSpeed, MaxSpeed) (spec `teleports`).
 local function checkTeleports(b: BasePart)
@@ -271,6 +319,8 @@ local function checkTeleports(b: BasePart)
 			teleportCooldown = os.clock() + 0.5
 			rollVel, lastVel = nil, nil
 			slowTime, stillTime, pinTime = 0, 0, 0
+			stuckTime, stuckAnchor = 0, nil
+			task.spawn(teleportFx, b.Position, m:GetAttribute("FxColor") or Color3.fromRGB(255, 226, 140))
 			Ball.Teleported:Fire(m:GetAttribute("TeleportId"), speedIn, speedOut)
 			return true
 		end
@@ -308,7 +358,8 @@ local function freeSpotNear(pos: Vector3, away: Vector3)
 	return nil
 end
 
--- Pinned against a rail by a moving part (or riding on top of one) for > 0.5 s: hop the ball out sideways.
+-- Pinned against a rail by a moving part for > Config.PinNudgeTime (or riding on top of one for > 0.5 s): hop the
+-- ball out sideways.
 local function checkPinned(b: BasePart, dt: number, ground)
 	if #cacheBlockers == 0 then
 		pinTime = 0
@@ -335,7 +386,7 @@ local function checkPinned(b: BasePart, dt: number, ground)
 		pinTime = 0
 		return false
 	end
-	if pinTime < 0.5 then
+	if pinTime < (riding and 0.5 or Config.PinNudgeTime) then
 		return false
 	end
 	pinTime = 0
@@ -358,6 +409,66 @@ local function checkPinned(b: BasePart, dt: number, ground)
 	return true
 end
 
+-- A moving part coming DOWN onto the ball (the H9 root gate closing): push the ball out from under it along the
+-- part's thin axis before it lands, so it is moved aside instead of pinned.
+local function pushFromDescending(b: BasePart)
+	local pos = b.Position
+	for _, blk in cacheBlockers do
+		local vy = blk:GetVelocityAtPosition(pos).Y
+		if vy < -0.05 then
+			local lp = blk.CFrame:PointToObjectSpace(pos)
+			local h = blk.Size / 2
+			local below = -h.Y - lp.Y -- gap from the part's bottom face down to the ball centre
+			if math.abs(lp.X) < h.X + R and math.abs(lp.Z) < h.Z + R and below > -R and below < R + 0.35 then
+				local axis = h.X <= h.Z and blk.CFrame.RightVector or blk.CFrame.LookVector
+				local side = h.X <= h.Z and lp.X or -lp.Z
+				axis = flat(axis)
+				if axis.Magnitude < 1e-3 then
+					continue
+				end
+				local dir = axis.Unit * (side >= 0 and 1 or -1)
+				local v = b.AssemblyLinearVelocity
+				if flat(v):Dot(dir) < 2 then
+					b.AssemblyLinearVelocity = Vector3.new(0, v.Y, 0) + dir * 2.5
+					b.AssemblyAngularVelocity = Vector3.yAxis:Cross(dir * 2.5) / R
+					rollVel, lastVel = nil, nil
+				end
+				return true
+			end
+		end
+	end
+	return false
+end
+
+-- Auto-reset (holes with an AutoResetStill attribute, i.e. holes with moving parts or teleports): a moving ball
+-- that makes no progress, or a resting ball still held by a moving part, for that many seconds goes back to the
+-- stroke start for free.
+local function checkAutoReset(b: BasePart, dt: number, hole, cup, cupR)
+	local limit = hole and hole:GetAttribute("AutoResetStill")
+	if not limit then
+		stuckTime, stuckAnchor = 0, nil
+		return false
+	end
+	local pos = b.Position
+	if Ball.state == "ready" then
+		stuckTime = pinTime > 0 and stuckTime + dt or 0
+	elseif cupR and flat(pos - cup.Position).Magnitude < cupR + 0.3 then
+		stuckTime, stuckAnchor = 0, nil
+	elseif not stuckAnchor or (pos - stuckAnchor).Magnitude > 0.3 then
+		stuckTime, stuckAnchor = 0, pos
+	else
+		stuckTime += dt
+	end
+	if stuckTime < limit then
+		return false
+	end
+	stuckTime, stuckAnchor = 0, nil
+	Ball.AutoReset:Fire(pos, Ball.state == "ready" and "held" or "still")
+	Ball.setState("locked")
+	Remotes.RequestReset:FireServer()
+	return true
+end
+
 local function step(dt)
 	local b = Ball.ball
 	if not b or b.Anchored or not Ball.isOwner() then
@@ -370,8 +481,15 @@ local function step(dt)
 	if Ball.state == "ready" then
 		-- a resting ball that a moving part keeps touching (rubbing past it, or about to squeeze it) for > 0.5 s
 		-- is hopped clear, like a pinned rolling ball
-		refreshCache(Ball.getHole())
-		if checkPinned(b, dt, ground) then
+		local hole = Ball.getHole()
+		refreshCache(hole)
+		if pushFromDescending(b) then
+			slowTime, rollTime, stillTime, pinTime = 0, 0, 0, 0
+			stuckTime, stuckAnchor = 0, nil
+			Ball.setState("moving")
+			return
+		end
+		if checkPinned(b, dt, ground) or checkAutoReset(b, dt, hole) then
 			return
 		end
 		-- static friction: hold the ball still on gentle slopes; let it go if something pushes it
@@ -387,6 +505,7 @@ local function step(dt)
 			rollTime = 0
 			stillTime = 0
 			pinTime = 0
+			stuckTime, stuckAnchor = 0, nil
 			Ball.setState("moving")
 		end
 		return
@@ -398,12 +517,19 @@ local function step(dt)
 	rollTime += dt
 	local hole = Ball.getHole()
 	refreshCache(hole)
-	if checkTeleports(b) or checkPinned(b, dt, ground) then
+	if checkTeleports(b) then
+		return
+	end
+	pushFromDescending(b)
+	if checkPinned(b, dt, ground) then
 		return
 	end
 	-- cup capture: a slow ball over the hole drops in (fast ones skim across or lip out on the far rim)
 	local cup = hole and hole:FindFirstChild("Cup")
 	local cupR = cup and cup:GetAttribute("Radius")
+	if checkAutoReset(b, dt, hole, cup, cupR) then
+		return
+	end
 	if cupR then
 		local off = b.Position - cup.Position
 		local flatOff = Vector3.new(off.X, 0, off.Z)
@@ -499,7 +625,8 @@ local function step(dt)
 				Ball.Unstuck:Fire("seam", b.Position, b.Position)
 				return
 			end
-			if stillTime >= 2 then
+			-- (holes with AutoResetStill reset a stuck ball to the stroke start instead, see checkAutoReset)
+			if stillTime >= 2 and not (hole and hole:GetAttribute("AutoResetStill")) then
 				stillTime = 0
 				Ball.ForcedRest:Fire(b.Position, "wedged")
 				rest(b)
@@ -587,6 +714,7 @@ function Ball.init()
 		b.AssemblyAngularVelocity = Vector3.zero
 		settleOnGround(b)
 		slowTime = 0
+		stuckTime, stuckAnchor = 0, nil
 		Ball.setState("ready")
 	end)
 

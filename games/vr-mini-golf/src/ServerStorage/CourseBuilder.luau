@@ -541,12 +541,13 @@ local MOVER_STYLE = {
 	lantern_bar = { P.oak, M.Wood },
 }
 
--- Clearance gap: a sliding blocker must stop SLIDE_CLEARANCE short of any rail/bumper ahead of it (more than a ball
--- diameter), so a ball can never be squeezed between the two (the spec's H8 root door slid 0.6 studs into the alcove
--- rails and crushed balls parked against them). Walls the blocker already overlaps at offset 0 are ignored (e.g. the
+-- Clearance gap: a sliding blocker must stop SLIDE_CLEARANCE short of any rail/bumper ahead of it (0.5 studs, ~3 ball
+-- diameters, per Playtest Bot; a spec mover may set its own `clearance`), so a ball can never be squeezed between the
+-- two (the spec's H8 root door slid 0.6 studs into the alcove rails and crushed balls parked against them). Walls the blocker already overlaps at offset 0 are ignored (e.g. the
 -- H9 root gate's ends sit inside the corridor rails and slide vertically along them).
-local SLIDE_CLEARANCE = 0.22
+local SLIDE_CLEARANCE = 0.5
 function Hole:clampSlideRange(m, blockers, axis)
+	local clearance = m.clearance or SLIDE_CLEARANCE
 	local walls = {}
 	for _, d in self.geo:GetChildren() do
 		if d:IsA("BasePart") and (d.Name == "Wall" or d.Name == "Bumper") then
@@ -569,7 +570,7 @@ function Hole:clampSlideRange(m, blockers, axis)
 	end
 	local function hits(off, sign, wall)
 		for _, b in blockers do
-			for _, p in pts(b.cf + axis * (off + sign * SLIDE_CLEARANCE), b.size) do
+			for _, p in pts(b.cf + axis * (off + sign * clearance), b.size) do
 				local lp = wall.CFrame:PointToObjectSpace(p)
 				local h = wall.Size / 2
 				if math.abs(lp.X) < h.X and math.abs(lp.Y) < h.Y and math.abs(lp.Z) < h.Z then
@@ -644,7 +645,7 @@ function Hole:buildMover(m)
 		if math.abs(r[1] - m.range[1]) > 1e-3 or math.abs(r[2] - m.range[2]) > 1e-3 then
 			model:SetAttribute("SpecRange", Vector2.new(m.range[1], m.range[2]))
 			print(string.format("CourseBuilder: hole %d %s range [%g, %g] -> [%g, %g] (clearance %.2f to the rails)",
-				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], SLIDE_CLEARANCE))
+				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], m.clearance or SLIDE_CLEARANCE))
 			m = table.clone(m)
 			m.range = r
 		end
@@ -810,6 +811,15 @@ function Hole:buildTeleport(tp)
 	marker:SetAttribute("MaxSpeed", tp.max_speed or 8)
 	local secret = tp.entry.radius < 0.32
 	local col = secret and P.amber or P.firefly
+	marker:SetAttribute("FxColor", col) -- BallController's exit flash
+	if secret then
+		-- the knot-hole itself (H9 Lantern Knot): a dark hollow ringed by bark, flush with the felt, never colliding
+		local knot = new("Model", { Name = "Knot" }, self.teleports)
+		local hollow = vis("Hollow", CFrame.new(entryW + Vector3.new(0, 0.004, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+			Vector3.new(0.008, tp.entry.radius * 2 + 0.1, tp.entry.radius * 2 + 0.1), Color3.fromRGB(28, 18, 10), M.SmoothPlastic, knot, Enum.PartType.Cylinder)
+		hollow.CastShadow = false
+		ring(knot, CFrame.new(entryW + Vector3.new(0, 0.03, 0)), tp.entry.radius + 0.16, 0.12, P.bark, 14)
+	end
 	-- entry: glowing ring flat on the felt, exactly the trigger radius
 	local entryRing = new("Model", { Name = "EntryRing" }, self.teleports)
 	ring(entryRing, CFrame.new(entryW + Vector3.new(0, 0.012, 0)), tp.entry.radius + 0.03, 0.04, col, 16)
@@ -1200,6 +1210,15 @@ local function buildHole(course, def, layout)
 	model:SetAttribute("Zone", def.zone)
 	model:SetAttribute("Gimmick", def.gimmick)
 	model:SetAttribute("SpecId", def.id)
+	-- auto-reset a stuck ball (BallController.checkAutoReset): spec `auto_reset_still` (seconds, or false), else on
+	-- for every hole with moving parts or teleports
+	local autoReset = def.auto_reset_still
+	if autoReset == nil and (#(def.moving_parts or {}) > 0 or #(def.teleports or {}) > 0) then
+		autoReset = Config.AutoResetStill
+	end
+	if autoReset then
+		model:SetAttribute("AutoResetStill", autoReset)
+	end
 	local self = setmetatable({
 		def = def,
 		model = model,

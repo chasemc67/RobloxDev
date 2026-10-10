@@ -3,7 +3,8 @@
 
   python3 tools/holes_to_lua.py                 # write src/ServerStorage/CourseData/LanternGrove.luau
   python3 tools/holes_to_lua.py --push          # ...and copy it into Studio (Edit mode)
-  python3 tools/holes_to_lua.py --push --build  # ...and rebuild workspace.Course from it (one-step re-import)
+  python3 tools/holes_to_lua.py --push --build  # ...and rebuild workspace.Course from it, re-place the props and
+                                                # re-carve the Terrain around the holes (one-step re-import)
 
 The spec lives in assets/vr-mini-golf/lantern-grove/holes.json (Game Art Bot). The module is a plain Lua table with
 the same structure (JSON arrays -> 1-based Lua arrays, null -> nil), plus a `source` block with the file's sha1.
@@ -124,6 +125,15 @@ def main():
             r = st.luau("local CB = require(game.ServerStorage.CourseBuilder:Clone())\n"
                         "return CB.Build(require(game.ServerStorage.CourseData.LanternGrove:Clone()))", "Edit", timeout=600)
             print("build:", r)
+            # one regenerate step: re-dress the rebuilt holes and re-carve the world Terrain around them
+            r = st.luau("local PB = game.ServerStorage:FindFirstChild('PropsBuilder') "
+                        "if not PB or not game.ServerStorage:FindFirstChild('LanternGroveProps') then return 'no props library' end "
+                        "return require(PB:Clone()).Place()", "Edit", timeout=900)
+            print("props:", r)
+            r = st.luau("local WB = game.ServerStorage:FindFirstChild('WorldBuilder') "
+                        "if not WB or not workspace.Course:GetAttribute('WorldLayout') then return 'flat layout: no terrain' end "
+                        "local W = require(WB:Clone()) return W.CarveHoles() .. ' | ' .. W.CheckClearance()", "Edit", timeout=600)
+            print("terrain:", r)
 
 
 if __name__ == "__main__":

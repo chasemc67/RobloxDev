@@ -1080,7 +1080,7 @@ end
 local function fuzz(n, count, seed)
 	local rng = Random.new(seed or n * 7919)
 	local sp = spec(n)
-	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, holed = 0, list = {} }
+	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, resets = 0, holed = 0, list = {} }
 	for i = 1, count do
 		local start
 		if i % 3 == 1 then
@@ -1114,6 +1114,8 @@ local function fuzz(n, count, seed)
 			for _, f in r.flags or {} do
 				if f.kind == "unstuck" then
 					res.nudges += 1
+				elseif f.kind == "autoreset" then
+					res.resets += 1
 				elseif f.kind == "offsurface" or f.kind == "forcedrest" then
 					res.stuck += 1
 				end
@@ -1161,7 +1163,7 @@ local function holeScenario(n)
 		for _, it in issues do
 			if it.kind == "escape" then
 				out.escapes += 1
-			elseif it.kind ~= "unstuck" then
+			elseif it.kind ~= "unstuck" and it.kind ~= "autoreset" then
 				out.stuck += 1
 			end
 		end
@@ -1470,6 +1472,112 @@ scenario({
 			end
 		end
 		return { cases = cases, issues = table.clone(issues), range = { door:GetAttribute("RangeMin"), door:GetAttribute("RangeMax") } }
+	end,
+})
+
+-- Teleports + H9 gate (stage b): shots into the H8 firefly ring and the H9 Lantern Knot at entry speeds 4..12
+-- (where does the exit ball end up: cup / rest / escape?), and balls parked under the H9 root gate (pushed aside or
+-- pinned?).
+scenario({
+	name = "tpcheck",
+	desc = "H8 ring + H9 Lantern Knot teleports at 4..12 studs/s, balls under the H9 root gate",
+	seconds = 240,
+	run = function()
+		refreshFelt()
+		table.clear(issues)
+		local tps = {}
+		for _, c in { { 8, 8.5, -11.5, 0 }, { 9, 8.5, -23.0, 1.0 } } do
+			local n = c[1]
+			for _, v in { 4, 6, 8, 10, 12 } do
+				local ok = pcall(placeL, n, c[2], c[3], c[4] + 0.5)
+				if ok then
+					local r = shootS(string.format("h%d-tp-%d", n, v), aimDir(n, 180), v, { cup = hole(n).Cup, timeout = 22 })
+					local fl = r.flags or {}
+					local tp
+					for _, f in fl do
+						if f.kind == "teleport" then
+							tp = f
+						end
+					end
+					table.insert(tps, { hole = n, speed = v, outcome = r.outcome, finish = r.finish, zone = zoneOf(Ball.ball.Position), teleported = tp ~= nil, speedOut = tp and tp.speedOut, flags = fl })
+				end
+			end
+		end
+		local gate = {}
+		local n = 9
+		for _, c in { { 6.0, -25.5 }, { 6.0, -23.5 }, { 6.0, -27.5 }, { 6.3, -25.5 }, { 5.7, -24.0 } } do
+			local ok = pcall(placeL, n, c[1], c[2], 1.5)
+			if ok then
+				local start = Ball.ball.Position
+				local t0, lastT = os.clock(), os.clock()
+				local maxY, under, maxUnder = start.Y, 0, 0
+				shotFlags = {}
+				local blk
+				for _, m in moversOf(n) do
+					if m:GetAttribute("MoverId") == "root_gate" then
+						blk = m:FindFirstChild("Blocker")
+					end
+				end
+				local trace, nextT = {}, 0
+				while os.clock() - t0 < 6 do
+					RunService.Heartbeat:Wait()
+					local dt = os.clock() - lastT
+					lastT = os.clock()
+					maxY = math.max(maxY, Ball.ball.Position.Y)
+					if os.clock() - t0 >= nextT then
+						nextT += 0.5
+						local bl = holeCF(n):PointToObjectSpace(Ball.ball.Position)
+						table.insert(trace, string.format("%.1f %s (%.2f,%.2f,%.2f) v%.2f gate%.2f", os.clock() - t0, Ball.state, bl.X, bl.Y, bl.Z,
+							Ball.ball.AssemblyLinearVelocity.Magnitude, holeCF(n):PointToObjectSpace(blk.Position).Y))
+					end
+					local lp = blk.CFrame:PointToObjectSpace(Ball.ball.Position)
+					local h = blk.Size / 2
+					local cl = Vector3.new(math.clamp(lp.X, -h.X, h.X), math.clamp(lp.Y, -h.Y, h.Y), math.clamp(lp.Z, -h.Z, h.Z))
+					if (lp - cl).Magnitude < R + 0.05 and flat(Ball.ball.AssemblyLinearVelocity).Magnitude < 0.5 then
+						under += dt
+						maxUnder = math.max(maxUnder, under)
+					else
+						under = 0
+					end
+				end
+				local fl = shotFlags
+				shotFlags = nil
+				table.insert(gate, { start = c, maxRise = round(maxY - start.Y), maxPinnedS = round(maxUnder, 2), finish = vec(Ball.ball.Position), zone = zoneOf(Ball.ball.Position), state = Ball.state, flags = fl, trace = trace })
+				local t1 = os.clock()
+				while Ball.state ~= "ready" and os.clock() - t1 < 6 do
+					task.wait()
+				end
+			end
+		end
+		-- auto-reset: hold a moving ball wedged in place on H4 (AutoResetStill 3 s) and on H1 (none); expect one free
+		-- reset back to the stroke start on H4 only
+		local resets = {}
+		for _, n2 in { 4, 1 } do
+			local sp2 = spec(n2).tee.position
+			pcall(placeL, n2, sp2[1], sp2[3], sp2[2] + 0.3)
+			local start = Ball.ball.Position
+			local got
+			local conn = Ball.AutoReset.Event:Connect(function(pos, reason)
+				got = reason
+			end)
+			Ball.hit(aimDir(n2, 90) * 0.3, "test")
+			local hold = Ball.ball.Position + aimDir(n2, 90) * 0.5
+			local t0 = os.clock()
+			while os.clock() - t0 < 4.5 and not got do
+				RunService.PreSimulation:Wait()
+				if Ball.state == "moving" then
+					Ball.ball.CFrame = CFrame.new(hold)
+					Ball.ball.AssemblyLinearVelocity = aimDir(n2, 90) * 0.3
+				end
+			end
+			conn:Disconnect()
+			local t1 = os.clock()
+			while Ball.state ~= "ready" and os.clock() - t1 < 6 do
+				task.wait()
+			end
+			table.insert(resets, { hole = n2, autoReset = got, after = round(os.clock() - t0, 2), backAtStart = (Ball.ball.Position - start).Magnitude < 0.3, state = Ball.state })
+		end
+		return { teleports = tps, gate = gate, resets = resets, issues = table.clone(issues) }
 	end,
 })
 
@@ -2370,6 +2478,11 @@ function GolfTest.start(ballController, _hud, vrModule, simulate)
 	Ball.ForcedRest.Event:Connect(function(pos, reason)
 		if run.running then
 			flag("forcedrest", { pos = vec(pos), reason = reason })
+		end
+	end)
+	Ball.AutoReset.Event:Connect(function(pos, reason)
+		if run.running then
+			flag("autoreset", { pos = vec(pos), reason = reason })
 		end
 	end)
 

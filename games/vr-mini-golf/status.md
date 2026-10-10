@@ -112,6 +112,12 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
 - Progression check fixed (near-cup spot on the cup's felt level). Desktop and iPhone smoke: 0 errors, 0 warnings.
 - Published by Codex computer use (File > Publish to Roblox): "Place published. Friends and playtesters can now play this place in Roblox." Version History: v23, 2026-10-10 12:02 AM. Audience unchanged.
 
+## 2026-10-10 13:52 PT: Lantern Grove round 1 with world + team fixes (published as v43)
+- World terrain, water, paths and the hollow tree around the 9 holes; Playtest Bot fixes: 0.5-stud mover clearance, 1.5 s pin nudge, H9 Lantern Knot visual, teleport exit FX, H9 gate pushes balls aside, 3 s auto-reset on H4/H6/H7/H8/H9. Cup capture 5.33 studs/s (verified).
+- Random-shot sweep (20/hole): 0 escapes, 0 stuck, 0 console errors (`playtests/lantern-v1/sweep-b/`). Shots: `playtests/lantern-v1/overview.png`, `hole01..09.png`.
+- Published by Codex computer use (File > Publish to Roblox): "Place published. Friends and playtesters can now play this place in Roblox." Version History: v43, 2026-10-10 1:52 PM. Audience unchanged.
+- Re-import after a new holes.json: `python3 tools/holes_to_lua.py --push --build` (course + props + terrain carve).
+
 ## TODO
 - [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
 - [ ] Headset check:

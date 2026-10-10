@@ -16,6 +16,10 @@ return {
 	RestTime = 0.5, -- seconds below StopSpeed before the ball is "at rest"
 	MaxBallSpeed = 42,
 	MaxRollTime = 25, -- safety: force the ball to rest after this many seconds
+	PinNudgeTime = 1.5, -- a slow ball held against a moving part this long is hopped clear (Playtest Bot: 1.5 s)
+	-- Holes with moving parts or teleports get an AutoResetStill attribute (CourseBuilder; default below, or the
+	-- spec's per-hole `auto_reset_still`, false = off): a ball stuck that long goes back to the stroke start for free.
+	AutoResetStill = 3,
 	-- Cup capture: a ball over the cup slower than this (studs/s) drops in instead of skimming across.
 	-- 1.6 m/s is about the fastest a centred putt can be and still drop in real golf.
 	CupCaptureSpeed = 1.6 / 0.3,
