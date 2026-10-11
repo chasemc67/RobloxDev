@@ -41,6 +41,9 @@ python3 tools/run_playtests.py clubviz [--out playtests/club-flip]   # VR club m
 
 - `tools/camprobe.py` replays Playtest Bot's round-3 wall spots (`playtests/round3/camprobe.json`) through the golf camera: 12 orbit yaws per spot, `CameraOcclusion.passThrough` + `occluders` (the parts the client fades). A pose is bad if an opaque, unfaded part hides the ball or covers > 40% of the ±12°×±9° view around it. Writes `summary.md` + `camprobe_after.json` (default `playtests/stage-m/camprobe`).
 - `tools/menu_shots.py [--device iphone_17_pro | --vr]` captures the front end (title, courses, settings, how to play, results, then the golf HUD) through FrontEnd's Studio-only `GolfMenuDebug` hook. `--vr` uses SimulateVR (the world-space panel; level the simulated head first if you want it in frame).
+  - `--vr --pointer`: the VR laser pointer walk-through. Through VRControls' Studio-only `GolfPointerDebug` hook it aims the simulated controller at each button (wrist MENU, Settings, Back, How to play, a tab, Back with the left hand, Play, Play course, wrist SCORES, the scorecard's Close, the results page's Back to menu and Play again), checks the hovered button, pulls that hand's trigger and checks the page that opens (and that the beam is hidden once the menu closes). Writes `pointer_walk.json` + one shot per step.
+  - `--vr --wrist`: the wrist card down / fading in / up / with the pointer on MENU / fading out, plus a zoomed (FOV 25) still. Writes `wrist.json`.
+- `tools/xray_shots.py` (stage p): puts the ball inside or behind the H3 mushroom tunnel, H6 mill wheel, H9 trunk tunnel, the hollow tree (H8 shell, H9 inside), an H1 rail and an open control spot, finds a viewpoint whose sight line really hits that obstacle, and checks the ball (and, in SimulateVR, the putter head) outline is on exactly when the sight line is blocked. VR (simulated head + putter) and flat (`look` camera). Writes `xray.json` + `<spot>_<vr|flat>.png`; `--spots a,b` reruns some.
 - Workspace `SkipMenu = true` starts a normal playtest without the title screen (GolfTestMode skips it too). Workspace `PBInStudio = true` lets PersonalBest use the real DataStore from Studio (off by default: this place has Studio API access disabled, which logs an engine ERROR).
 - `clubviz` grabs the play viewport with the Studio MCP `screen_capture` (stage runs have no macOS screen-recording permission).
   - Mounts: legacy aim ray, then the grip mount.
@@ -181,6 +184,15 @@ change)`. The putt itself is no longer logged as a contact.
   pinch to zoom.
 - **VR**: hold the controller like a putter grip, handle down; swing through the ball. Trigger warps you to your
   ball, A refits the club, B/Y scorecard, right stick: turn, up = teleport arc, back = rewind.
+  - **Menus** (stage p): a laser pointer from either controller (amber beam + dot, buttons glow on hover), trigger
+    = click. The club hand points by default; the other hand takes over when it points at the menu or pulls its
+    trigger. The beam only shows while a menu or the scorecard is up, or while it's on a wrist-card button.
+  - **Wrist card**: turn the non-club wrist up toward your face (back of the wrist to the eyes within 35°, in
+    view): hole and name, par, stroke, total vs par, personal best (vs par), plus MENU and SCORES buttons for the
+    pointer. It fades in and out (~0.25 s) and isn't built on phone/desktop.
+  - **See-through**: the camera fade (stage m/n) runs from the VR head to the ball (within 40 studs), and the ball
+    and putter head get an always-on-top outline whenever something hides them (`GolfClient.XRay`, phone and
+    desktop too, ball only).
 - **Between holes**: holing out shows the score, fades to black and puts you on the next tee (VR: you're warped
   beside the ball; desktop/phone: the camera cuts to it). Desktop/phone don't need a "go to ball": the camera
   always follows your ball and your avatar stands beside it, hidden from your own view.

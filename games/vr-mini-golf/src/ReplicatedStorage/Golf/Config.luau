@@ -96,7 +96,23 @@ return {
 		CardLanternGrove = "rbxassetid://90933106008541", -- 1024 square
 		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in
 		CardAurora = "rbxassetid://82146694601580", -- grey, "coming soon" tag baked in
+		-- VR pointer + wrist card (stage p, store/ui/wrist, tools/stage_p_assets.json)
+		PointerDot = "rbxassetid://124186475881466", -- 64x64
+		HoverGlow = "rbxassetid://89859858365518", -- 128x128 9-slice, SliceCenter 40,40,88,88
+		WristCard = "rbxassetid://73442368184232", -- 1024x640 parchment + brass, no text
+		IconHole = "rbxassetid://89045323420740",
+		IconPar = "rbxassetid://100554682607003",
+		IconStroke = "rbxassetid://80712879947831",
+		IconTotal = "rbxassetid://131506164236528",
+		IconBest = "rbxassetid://101092439594881",
 	},
+	-- VR wrist card: shows while the off-hand's back of the wrist faces your eyes within WristShowDeg (hides past
+	-- WristHideDeg) and the card is within WristViewDeg of where you're looking.
+	WristShowDeg = 35,
+	WristHideDeg = 45,
+	WristViewDeg = 40,
+	-- VR see-through: the occluder fade runs from the head to your ball while it's within this many studs
+	VRFadeRange = 40,
 	-- Courses on the picker. Only playable ones have a personal best (player attribute "Best_<id>").
 	Courses = {
 		{ id = "lantern_grove", name = "Lantern Grove", image = "CardLanternGrove", playable = true },

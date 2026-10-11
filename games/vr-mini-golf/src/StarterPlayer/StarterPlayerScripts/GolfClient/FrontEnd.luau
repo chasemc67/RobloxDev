@@ -1,10 +1,12 @@
 -- FrontEnd: title screen, course picker, settings, how to play and the end-of-round results.
 --   * The round is already set up behind it (the server starts hole 1 on Remotes.Ready); the menu is an overlay.
 --   * Built once per page into a fixed 900x520 design frame, mounted in a ScreenGui (phone/desktop, scaled to the
---     safe area) or a SurfaceGui on a floating panel in front of your head (VR, laser-pointer clickable).
+--     safe area) or a SurfaceGui on a floating panel in front of your head (VR: GolfClient.VRPointer's laser from
+--     either controller, trigger = click).
 --   * Not shown at startup when workspace GolfTestMode or SkipMenu is true (Studio harness / smoke runs).
 --   * While open, Ball.menuOpen is true: TouchControls ignores pointer input, and in VR the putter can't hit.
---   * Reopen: HUD "Menu" button (phone/desktop), click the left thumbstick (VR).
+--   * Reopen: HUD "Menu" button (phone/desktop), the MENU button on the VR wrist card (turn your other wrist up and
+--     point at it). Clicking the left thumbstick still toggles it in VR, but nothing asks you to.
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -14,6 +16,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
 local Config = require(Golf:WaitForChild("Config"))
+local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
 
 local player = Players.LocalPlayer
 
@@ -120,12 +123,12 @@ local function button(text, props, parent, onClick, style)
 	stroke(b, style == "primary" and C.cream or C.amber, 2, style == "primary" and 0.6 or 0.25)
 	new("UIPadding", { PaddingTop = UDim.new(0, 8), PaddingBottom = UDim.new(0, 8), PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }, b)
 	new("UITextSizeConstraint", { MaxTextSize = maxTextSize(30) }, b)
-	b.Activated:Connect(function()
+	b.Activated:Connect(VRPointer.bind(b, function()
 		if clickSound then
 			clickSound:Play()
 		end
 		onClick()
-	end)
+	end))
 	return b
 end
 
@@ -281,7 +284,7 @@ local function buildTitle()
 		show("howto")
 	end)
 
-	local foot = isVR and "Click the left thumbstick to open this menu.  Explore mode is phone / desktop only."
+	local foot = isVR and "Point with either controller, pull the trigger to click.  Menu later: turn your other wrist up."
 		or "The Menu button (top right) brings you back here."
 	label({ Text = foot, Font = BODY, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -14), Size = UDim2.fromOffset(760, 26), TextColor3 = C.cream, TextStrokeTransparency = 0.3, TextStrokeColor3 = C.navy, MaxTextSize = 20 }, content)
 end
@@ -343,7 +346,7 @@ local function buildCourses()
 				toast(course.name .. " is coming soon!")
 			end
 		end
-		img.Activated:Connect(onClick)
+		img.Activated:Connect(VRPointer.bind(img, onClick))
 	end
 end
 
@@ -443,7 +446,7 @@ local HOWTO = {
 			.. "Left stick: walk\n"
 			.. "A: re-fit the club (hold it straight down first)\n"
 			.. "X: swap hands    B / Y: scorecard\n"
-			.. "Click the left stick: this menu",
+			.. "Menus: point, pull the trigger.  Wrist up: score + MENU",
 	},
 	{
 		"Phone",
@@ -692,6 +695,7 @@ local function mountVR(playerGui)
 		Enabled = false,
 	}, playerGui)
 	buildRoot(vrGui)
+	VRPointer.register(vrPart, vrGui, { modal = true, scale = VR_SCALE })
 	vrBg = new("ImageLabel", { Name = "Background", BackgroundColor3 = C.navy, BorderSizePixel = 0, Image = Config.UI.TitleBackground, ScaleType = Enum.ScaleType.Crop, Size = UDim2.fromScale(1, 1), ZIndex = 0 }, root)
 	corner(vrBg, 24)
 	local wash = new("Frame", { BackgroundColor3 = C.navy, BackgroundTransparency = 0.5, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, vrBg)
@@ -787,7 +791,8 @@ function FrontEnd.start(opts)
 				placeVRPanel(false)
 			end
 		end)
-		-- left thumbstick click (unused by VRControls) opens / closes the menu
+		-- left thumbstick click (unused by VRControls) still opens / closes the menu (the wrist card's MENU button is
+		-- the way in now; this is just a shortcut)
 		UserInputService.InputBegan:Connect(function(input)
 			if input.KeyCode ~= Enum.KeyCode.ButtonL3 then
 				return

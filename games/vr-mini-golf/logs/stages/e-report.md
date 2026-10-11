@@ -393,3 +393,77 @@ Studio is in Edit mode, one window, with GolfTestMode false.
 | H9 block rate, 24 shots, same opts as stage n (`blockShots 24`) | **7/24 = 29.2% blocked (stage n: 7/24), 12 touched (stage n: 11)**, all at rest, 0 traps, 0 console warnings/errors. `playtests/stage-o/blockrate/` |
 | Random sweep, H9, 20 shots (seed 115) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 nudges, 0 console warnings/errors. `playtests/stage-o/sweep/` |
 | Smoke desktop / iPhone 17 Pro | PASS / PASS (stroke → Explore → back, 0 errors) |
+
+# Stage p report (2026-10-11, 16:10 PT): Chase's VR feedback (laser pointer menus, wrist card, VR see-through, ball/club X-ray) + H9 Round 10. **Published v145**
+
+**Version:** File > Save to Roblox 23:09:34Z, then File > Publish to Roblox 23:09:44Z. Both are in the Studio log. Codex read **v145** (Oct 11, 4:09 PM) in Version History (`logs/codex-publish-p.log`). Audience is unchanged (Friends and Playtesters), and no Robux was spent. Studio is left in Edit mode, one window, workspace `SimulateVR=false, GolfTestMode=false`, test attributes cleared. `src/` matches Studio (the export diff shows only this stage's edits). Physics and layout weren't touched, except the H9 swing amplitude in item 5.
+
+1. **VR menus: laser pointer** (new `GolfClient.VRPointer`).
+   - Every VR panel registers with the pointer: the front-end menu (title, courses, settings, how to play, results), the VR scorecard (it now has a pointer-sized Close button) and the wrist card's buttons. Explore isn't offered in VR, as before.
+   - The ray comes from the controller aim pose (hand UserCFrame LookVector) and is intersected with each panel's Front face. The hit becomes a canvas pixel, and the smallest bound button under it is hovered.
+   - Visuals: an additive amber beam (#FFB040, LightEmission 1, tip transparency 0.3) with a #FFE4A0 core, the `pointer_dot.png` dot on the panel, the `menu_hover_glow.png` 9-slice (SliceCenter 40,40,88,88) 20 design px past the hovered button, and a light haptic tick on hover.
+   - Trigger on either hand = click. The club hand points by default. The other hand takes over when it points at the menu while the active hand points nowhere, or when it pulls its trigger.
+   - While a menu or the scorecard is up, the trigger never warps you to the ball. During play the beam is hidden; it only shows on a wrist-card button.
+   - Roblox's own VR laser pointer is switched off (`SetCore VRLaserPointerMode`), and every button click is debounced, so nothing double-fires.
+   - Menu hint: the thumbstick-click hint is gone from the title footer, the how-to VR tab and the old wrist text. The new hint reads "Point with either controller, pull the trigger to click. Menu later: turn your other wrist up." Clicking L3 still toggles the menu as a silent shortcut.
+   - Bug found and fixed on the way: the handler table was weak-keyed, and Roblox dropped the Instance proxies, so nothing was clickable. It's now strong-keyed and cleared on `Destroying`.
+   - **Check** (`tools/menu_shots.py --vr --pointer`, SimulateVR, through the new Studio-only `GolfPointerDebug` hook): **PASS, 14/14 clicks**. Each step aims, checks the hover, triggers and checks the page:
+     - wrist MENU → title → Settings → Back → How to play → Phone tab → Back (left hand) → Play → Back → Play → Play course (menu closes, beam hidden)
+     - wrist SCORES → scorecard → Close
+     - results → Back to menu
+     - results → Play again (left hand)
+   - Results are in `playtests/stage-p/vr-pointer/` (`pointer_walk.json` + one shot per step).
+2. **Wrist scoreboard** (HUD).
+   - VR only (not built on phone/desktop). It uses Game Art Bot's `wrist_card_bg.png` with the spec text zones: header "HOLE n" 76 px #4A240E + hole name right-aligned #9C5218, and PAR / STROKE / TOTAL / BEST with 96 px icons, 38 px labels and 78 px numbers, FredokaOne.
+   - TOTAL is score vs par over the holes finished so far. BEST is the course personal best vs par ("-" if none yet).
+   - Two pointer buttons sit under the card: MENU and SCORES.
+   - Size 0.68 × 0.52 studs (20 × 15 cm). It sits over the back of the off-hand wrist, faces the eyes and stays upright to the head.
+   - It shows while the back of the wrist faces the eyes within 35° (hides past 45°) and the card is within 40° of the view (50° to stay up), within 1.2 m. It's hidden while a menu or the final card is up.
+   - The fade is a CanvasGroup at ~0.25 s.
+   - **No bracer FBX** in models/fbx (no "bracer"/"wrist" file), so it's a plain panel.
+   - **Check** (`menu_shots.py --vr --wrist`): **PASS**: down (alpha 0) → fading in → up (alpha 1, all fields filled) → pointer on MENU → fading out → down. Shots, including a zoomed FOV-25 still, are in `playtests/stage-p/wrist/` and `vr-pointer/`.
+3. **See-through in VR.**
+   - VRControls now runs the stage m/n `CameraOcclusion.fade` from the VR head (camera CFrame × head UserCFrame) to the ball at 30 Hz, while the ball is within `Config.VRFadeRange` (40 studs). It clears the fade when the ball is further away.
+   - The fade is the same as phone/desktop: LocalTransparencyModifier 0.7, thick sweep, cone rays, near-head glow hide.
+   - The VR X-ray shots below log 3-9 faded course parts per pose.
+4. **Always-visible ball and club head** (new `GolfClient.XRay`).
+   - A Highlight with DepthMode AlwaysOnTop, #FFB040 fill at 0.72 and a #FFF2D6 outline at 0.1. It fades in only while a ray from the eye (VR head, or the phone/desktop camera) to the target is blocked. The ray uses the GolfCamera group, so it sees rails, walls, movers, decor and Terrain; faded parts still count.
+   - Targets: your ball (VR and flat) and the VR putter head. Phone/desktop have no club.
+   - It is off in Explore, and the check runs at 20 Hz in the last render step.
+   - **Check** (`tools/xray_shots.py`): the ball sits inside or behind each obstacle, and the tool finds a viewpoint whose sight line really hits it. **PASS, 14/14**: on every spot the outline state matched the sight line at that moment, in VR (ball + club) and flat (ball).
+
+     | Spot | First thing in the way |
+     |---|---|
+     | H3 mushroom tunnel | the tunnel house |
+     | H6 mill wheel | the turning wheel |
+     | H9 trunk tunnel | the arch |
+     | H8 hollow tree | the world tree shell |
+     | H9 inside the tree | an H9 rail cap. From the H9 green no ring viewpoint within 20 studs reaches the shell, so this is the "inside the tree" case |
+     | H1 rail | the timber deflector board |
+     | Open control spot | nothing: both outlines off |
+
+   - Shots: `playtests/stage-p/xray/`.
+5. **H9 Round 10.**
+   - The holes.json swing is ±11° (4 s, phase 0, hinge unchanged), and the 1.0×0.4×1.6 yaw-0 foot is at −7.759 below the hinge. It was re-imported with the one regenerate step (`holes_to_lua.py --push --build`; terrain intrusions 0).
+   - The built mover reads Amplitude 11, range ±11, Period 4, colliders Blocker 1.6×1.8×1.6 at −7.000 and foot 1.0×0.4×1.6 at −7.759.
+   - **48 intended-line shots (`blockrate`, 7.75 studs/s): 19/48 blocked = 39.6%**, 32 touched, all 48 came to rest, 0 flags, **0 traps**, 0 console warnings/errors. That is inside the 19-23/48 target (stage o ±13°: 7/24 = 29%). Results: `playtests/stage-p/blockrate/`.
+6. **Wrist art:**
+   - No bracer FBX, so a plain panel.
+   - Game Art Bot's store/ui/wrist PNGs are used: card, 5 icons, pointer dot, hover glow. They were uploaded via MCP upload_image, and the ids are in `tools/stage_p_assets.json` and `Config.UI`.
+7. **Plinth:** `h9_lantern_pendulum.fbx` is dated 12:45, older than this stage and already imported in stage o, so there was nothing to re-import.
+
+**Tests.**
+
+| Test | Result |
+|---|---|
+| Camprobe, all 9 holes | **0 / 5,796 bad poses** (`playtests/stage-p/camprobe/`) |
+| Random sweep, 90 shots (10 per hole, seed 116) | **0 escapes, 0 stuck, 0 auto-resets, 0 timeouts, 0 nudges**, 0 console warnings/errors; 4 water hazards (H5 ×3, H6 ×1, designed penalties). `playtests/stage-p/sweep-a`, `sweep-b` |
+| Smoke desktop / iPhone 17 Pro | PASS / PASS (stroke → Explore → back), problems empty on both (`playtests/stage-p/smoke/`) |
+| VR sim smoke | `menu_shots --vr`: every page opens, how-to text fits (49.6 px), panel jump 0, 0 errors. `run progress` (SimulateVR, sinks H1→H9): Pass, 0 warnings/errors |
+| VR pointer walk / wrist / X-ray | PASS / PASS / PASS (above) |
+
+**Needs a headset (Chase):**
+- Whether the "back of the wrist" side is the comfortable one. It's −X on the left controller's aim pose, +X on the right.
+- The 35° threshold and card size.
+- Beam brightness.
+- That trigger clicks feel right with either hand.

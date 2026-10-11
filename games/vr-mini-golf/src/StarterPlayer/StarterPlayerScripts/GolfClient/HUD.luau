@@ -9,6 +9,7 @@ local ContentProvider = game:GetService("ContentProvider")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
 local Config = require(Golf:WaitForChild("Config"))
+local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
 
 local player = Players.LocalPlayer
 
@@ -24,7 +25,8 @@ local FrontEnd -- GolfClient.FrontEnd (title / menus / results), see HUD.attachF
 local aimGui
 local closeTeleportMenu
 local infoTitle, infoSub, powerFrame, powerFill, powerLabel, pullLine, pullDot, messageLabel, toastLabel, scorecard, hint
-local vrMessagePart, vrMessageBB, vrMessageLabel, vrWrist, vrWristLabel, vrCardPart, vrCardGui
+local vrMessagePart, vrMessageBB, vrMessageLabel, vrCardPart, vrCardGui
+local wrist -- VR wrist card: { part, gui, group, alpha, shown, labels... } (see buildWrist)
 local cardParent -- where the scorecard is built: the ScreenGui, or a world-space panel in VR
 local lastHeadCF = CFrame.new()
 local finalCardOpen = false
@@ -68,7 +70,7 @@ local function button(text, props, parent, onClick)
 	b.AutoButtonColor = true
 	corner(b, 10)
 	new("UIPadding", { PaddingTop = UDim.new(0, 6), PaddingBottom = UDim.new(0, 6), PaddingLeft = UDim.new(0, 8), PaddingRight = UDim.new(0, 8) }, b)
-	b.Activated:Connect(onClick)
+	b.Activated:Connect(VRPointer.bind(b, onClick))
 	return b
 end
 
@@ -82,6 +84,13 @@ local function holeList()
 		end
 	end
 	return list
+end
+
+local function relText(d)
+	if d == 0 then
+		return "E"
+	end
+	return (d > 0 and "+" or "") .. tostring(d)
 end
 
 local function scoresOf(p)
@@ -194,11 +203,14 @@ local function buildScorecard(final)
 			Size = UDim2.new(0, HUD.isVR and 300 or 200, 0, 46),
 			ZIndex = 12,
 		}, scorecard, HUD.playAgain)
-	elseif not HUD.isVR then
+	else
+		-- (VR: a bigger target for the laser pointer; B / Y closes it too)
+		local s = HUD.isVR and 56 or 36
 		button("X", {
+			Name = "Close",
 			AnchorPoint = Vector2.new(1, 0),
 			Position = UDim2.new(1, -8, 0, 8),
-			Size = UDim2.new(0, 36, 0, 36),
+			Size = UDim2.new(0, s, 0, s),
 			BackgroundColor3 = Color3.fromRGB(150, 50, 50),
 			ZIndex = 12,
 		}, scorecard, closeScorecard)
@@ -249,8 +261,25 @@ function HUD.refresh()
 			infoSub.Text = "Exploring  -  your ball waits on hole " .. n
 		end
 	end
-	if vrWristLabel then
-		vrWristLabel.Text = title .. "\n" .. sub .. "\nTrigger: go to ball   B/Y: scores\nStick: turn, up teleport, back rewind\nClick left stick: menu"
+	if wrist then
+		local par = hole:GetAttribute("Par") or 0
+		wrist.hole.Text = "HOLE " .. tostring(n)
+		wrist.name.Text = hole:GetAttribute("HoleName") or ""
+		wrist.par.Text = tostring(par)
+		wrist.stroke.Text = tostring(player:GetAttribute("Strokes") or 0)
+		-- total vs par over the holes finished so far; personal best for the course vs its par
+		local scores, d, parSum = scoresOf(player), 0, 0
+		for i, h in holeList() do
+			local hp = h:GetAttribute("Par") or 0
+			parSum += hp
+			local sc = scores[i]
+			if type(sc) == "number" and sc > 0 then
+				d += sc - hp
+			end
+		end
+		wrist.total.Text = relText(d)
+		local best = player:GetAttribute("Best_" .. Config.CurrentCourse)
+		wrist.best.Text = best and relText(best - parSum) or "-"
 	end
 	if scorecard and scorecard.Parent then
 		buildScorecard(finalCardOpen)
@@ -319,11 +348,54 @@ function HUD.getHeadCF()
 	return lastHeadCF
 end
 
-function HUD.placeVRWrist(handCF: CFrame, headPos: Vector3)
-	if vrWrist then
-		local pos = (handCF * CFrame.new(0, 0.3, 0.15)).Position
-		vrWrist.CFrame = CFrame.lookAt(pos, headPos)
+-- Wrist card (Walkabout style): sits over the back of the off-hand's wrist and fades in while that side faces your
+-- eyes (Config.WristShowDeg, hides past WristHideDeg) and the card is in view (WristViewDeg, within WRIST_RANGE).
+-- On the aim pose of a Quest controller held normally, the back of the hand is -X on the left hand and +X on the
+-- right, and the wrist is behind (+Z) and below (-Y) the controller origin.
+local WRIST_OFFSET = Vector3.new(0, -0.12, 0.33) -- controller origin -> wrist (3.6 cm down, 10 cm back)
+local WRIST_LIFT = 0.1 -- card 3 cm off the wrist
+local WRIST_RANGE = 4 -- studs from the eyes (1.2 m)
+local WRIST_FADE = 10 -- 1/s (about a quarter second either way)
+function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean)
+	if not wrist then
+		return
 	end
+	local now = os.clock()
+	local dt = math.min(now - (wrist.t or now), 0.1)
+	wrist.t = now
+	local back = handCF.RightVector * (leftHand and -1 or 1)
+	local pos = handCF:PointToWorldSpace(WRIST_OFFSET) + back * WRIST_LIFT
+	local toEye = headCF.Position - pos
+	local dist = toEye.Magnitude
+	local shown = false
+	if dist > 1e-3 and dist < WRIST_RANGE then
+		local facing = back:Dot(toEye / dist)
+		local inView = headCF.LookVector:Dot(-toEye / dist)
+		local faceDeg = wrist.shown and Config.WristHideDeg or Config.WristShowDeg
+		local viewDeg = Config.WristViewDeg + (wrist.shown and 10 or 0)
+		shown = facing >= math.cos(math.rad(faceDeg)) and inView >= math.cos(math.rad(viewDeg))
+	end
+	shown = shown and not (Ball and Ball.menuOpen) and not finalCardOpen
+	wrist.shown = shown
+	local target = shown and 1 or 0
+	wrist.alpha += (target - wrist.alpha) * math.min(1, dt * WRIST_FADE)
+	if math.abs(target - wrist.alpha) < 0.01 then
+		wrist.alpha = target
+	end
+	wrist.group.GroupTransparency = 1 - wrist.alpha
+	wrist.gui.Enabled = wrist.alpha > 0
+	if wrist.alpha > 0 then
+		-- face the eyes, upright to the head, so it reads at any wrist roll
+		wrist.part.CFrame = CFrame.lookAt(pos, headCF.Position, headCF.UpVector)
+	end
+end
+
+-- Studio harness: the wrist card's state.
+function HUD.wristState()
+	if not wrist then
+		return nil
+	end
+	return { shown = wrist.shown == true, alpha = wrist.alpha, hole = wrist.hole.Text, name = wrist.name.Text, par = wrist.par.Text, stroke = wrist.stroke.Text, total = wrist.total.Text, best = wrist.best.Text }
 end
 
 ---------------------------------------------------------------------------- power meter (touch)
@@ -730,12 +802,70 @@ local function buildVR()
 	vrCardGui.Enabled = false
 	cardParent = vrCardGui
 
-	local wb
-	vrWrist, wb = vrPanel("VRWrist", Vector3.new(0.95, 0.62, 0.05), Vector2.new(380, 248))
-	local bg = new("Frame", { Size = UDim2.fromScale(1, 1), BackgroundColor3 = Color3.fromRGB(20, 30, 25), BackgroundTransparency = 0.25 }, wb)
-	corner(bg, 10)
-	vrWristLabel = label({ Size = UDim2.new(1, -8, 1, -6), Position = UDim2.fromOffset(4, 3), TextScaled = true, Text = "" }, bg)
+	VRPointer.register(vrCardPart, vrCardGui, { modal = true })
+
+	-- wrist card: Game Art Bot's 1024x640 parchment card (store/ui/wrist, text zones from the art spec) plus a row of
+	-- two pointer buttons under it; 20 x 15 cm. Faded as a CanvasGroup.
+	local CW, CH = 1024, 784
+	local part, gui = vrPanel("VRWrist", Vector3.new(0.68, 0.68 * CH / CW, 0.02), Vector2.new(CW, CH))
+	gui.Enabled = false
+	local group = new("CanvasGroup", { Name = "Card", BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), GroupTransparency = 1 }, gui)
+	new("ImageLabel", { Name = "Background", BackgroundTransparency = 1, Image = Config.UI.WristCard, Size = UDim2.fromOffset(1024, 640) }, group)
+	local BROWN, RUST = Color3.fromHex("4A240E"), Color3.fromHex("9C5218")
+	local function text(name, x, y, w, h, size, color, align)
+		return label({ Name = name, Text = "", Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w, h), TextSize = size, TextColor3 = color, TextXAlignment = align or Enum.TextXAlignment.Left }, group)
+	end
+	local function icon(name, x, y)
+		new("ImageLabel", { Name = name, BackgroundTransparency = 1, Image = Config.UI[name], Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(96, 96) }, group)
+	end
+	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false }
+	-- header zone 80,72 - 944,196: icon, "HOLE n" (76 px), the hole name right-aligned
+	icon("IconHole", 110, 86)
+	wrist.hole = text("Hole", 240, 72, 300, 124, 76, BROWN)
+	wrist.name = text("HoleName", 540, 72, 376, 124, 44, RUST, Enum.TextXAlignment.Right)
+	wrist.name.TextScaled = true
+	new("UITextSizeConstraint", { MaxTextSize = 44 }, wrist.name)
+	new("UIPadding", { PaddingTop = UDim.new(0, 36), PaddingBottom = UDim.new(0, 36) }, wrist.name)
+	-- zones 418 x 170: icon at +30,+37, label centred at +52 (38 px), number centred at +118 (78 px)
+	for _, z in { { "par", "PAR", "IconPar", 80, 222 }, { "stroke", "STROKE", "IconStroke", 526, 222 }, { "total", "TOTAL", "IconTotal", 80, 414 }, { "best", "BEST", "IconBest", 526, 414 } } do
+		local x, y = z[4], z[5]
+		icon(z[3], x + 30, y + 37)
+		text(z[2], x + 160, y + 27, 240, 50, 38, RUST).Text = z[2]
+		wrist[z[1]] = text(z[1], x + 160, y + 73, 240, 90, 78, BROWN)
+	end
+	-- buttons under the card (the laser pointer from the other hand clicks them)
+	local function pill(name, text_, x, onClick)
+		local b = new("TextButton", {
+			Name = name,
+			Text = text_,
+			Font = FONT,
+			TextSize = 60,
+			TextColor3 = BROWN,
+			BackgroundColor3 = Color3.fromHex("FFB347"),
+			AutoButtonColor = false,
+			Position = UDim2.fromOffset(x, 664),
+			Size = UDim2.fromOffset(392, 112),
+		}, group)
+		corner(b, 56)
+		new("UIStroke", { Color = Color3.fromHex("7A4E1E"), Thickness = 6, ApplyStrokeMode = Enum.ApplyStrokeMode.Border }, b)
+		b.Activated:Connect(VRPointer.bind(b, onClick))
+	end
+	pill("WristMenu", "MENU", 100, function()
+		if FrontEnd then
+			FrontEnd.open("title")
+		end
+	end)
+	pill("WristScores", "SCORES", 532, function()
+		HUD.toggleScorecard()
+	end)
+	VRPointer.register(part, gui, {
+		modal = false,
+		enabled = function()
+			return wrist.alpha > 0.6
+		end,
+	})
 end
+
 
 local function scoreName(strokes, par)
 	if strokes == 1 then
@@ -789,6 +919,9 @@ function HUD.init(isVR, ballController)
 
 	player:GetAttributeChangedSignal("Strokes"):Connect(HUD.refresh)
 	player:GetAttributeChangedSignal("Hole"):Connect(HUD.refresh)
+	-- (the VR wrist card shows the round total and the personal best)
+	player:GetAttributeChangedSignal("Scores"):Connect(HUD.refresh)
+	player:GetAttributeChangedSignal("Best_" .. Config.CurrentCourse):Connect(HUD.refresh)
 
 	-- Hole-to-hole travel (Walkabout style): after holing out, fade to black just before the server moves the ball
 	-- to the next tee, and fade back in once you've been put there (VR: warped beside the ball; desktop/phone: the

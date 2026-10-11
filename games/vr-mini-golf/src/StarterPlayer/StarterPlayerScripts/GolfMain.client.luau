@@ -79,6 +79,13 @@ else
 	HUD.attachExplore(Explore)
 end
 
+-- ball (and VR putter head) outline through whatever blocks them
+local XRay = require(modules.XRay)
+local camera = workspace.CurrentCamera
+XRay.start(Ball, VR and VR.getEye or function()
+	return camera.CFrame.Position
+end, VR and VR.putterHead or nil)
+
 -- title screen / menus / results (an overlay: the round is already set up behind it; skipped when
 -- workspace GolfTestMode or SkipMenu is true)
 local FrontEnd = require(modules.FrontEnd)

@@ -10,7 +10,7 @@
 --   * The putter face velocity at contact becomes the ball velocity.
 --
 -- Controls (modelled on Walkabout Mini Golf):
---   Trigger (either hand) ...... warp to your ball
+--   Trigger (either hand) ...... warp to your ball; on a menu / wrist button: click (GolfClient.VRPointer)
 --   Right stick left/right ..... snap turn
 --   Right stick forward ........ aim teleport arc, release to teleport
 --   Right stick back ........... rewind ball to where your last shot started
@@ -18,6 +18,7 @@
 --   Grip (club hand) ........... hold to make the putter solid (only when Config.VRGripToPutt = true)
 --   B / Y ...................... scorecard     A ... re-fit club (hold the club straight down first)
 --   X .......................... swap hands
+--   Off-hand wrist up ........... wrist card: hole, par, stroke, total, best + MENU / SCORES buttons (HUD)
 --
 -- For testing without a headset set workspace attribute "SimulateVR" = true before playing. Poses are then read
 -- from CFrameValues in ReplicatedStorage.VRDebug (Head/LeftHand/RightHand, relative to the floor origin),
@@ -32,6 +33,8 @@ local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Config"))
+local CameraOcclusion = require(ReplicatedStorage:WaitForChild("Golf"):WaitForChild("CameraOcclusion"))
+local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
 
 local player = Players.LocalPlayer
 local R = Config.BallRadius
@@ -384,8 +387,14 @@ function VR.start(Ball, HUD, simulate)
 	local gripHeld = { [Enum.UserCFrame.RightHand] = false, [Enum.UserCFrame.LeftHand] = false }
 
 	local function onButtonDown(keyCode)
+		-- trigger: the laser pointer's click first (menus, scorecard, wrist card buttons)
+		if keyCode == Enum.KeyCode.ButtonR2 or keyCode == Enum.KeyCode.ButtonL2 then
+			if VRPointer.press(keyCode == Enum.KeyCode.ButtonR2 and Enum.UserCFrame.RightHand or Enum.UserCFrame.LeftHand) then
+				return
+			end
+		end
 		if Ball.menuOpen and keyCode ~= Enum.KeyCode.ButtonL3 then
-			return -- the front-end menu is up: the trigger is the laser pointer's click (GolfClient.FrontEnd)
+			return -- the front-end menu is up (GolfClient.FrontEnd)
 		end
 		if keyCode == Enum.KeyCode.ButtonR2 or keyCode == Enum.KeyCode.ButtonL2 then
 			warpToBall(nil)
@@ -719,6 +728,28 @@ function VR.start(Ball, HUD, simulate)
 		prevHeadCF = headCF
 	end
 
+	------------------------------------------------------------ see-through (stage m/n occluder fade, from the head)
+	-- The same fade the phone/desktop camera does (CameraOcclusion.fade: LocalTransparencyModifier 0.7, thick sweep,
+	-- near-lens glow hide), from the VR head (camera CFrame * head UserCFrame) to the ball, at ~30 Hz.
+	local lastHeadWorld = CFrame.new()
+	local fadeAt, fading = 0, false
+	local function updateSeeThrough(eye: Vector3)
+		local now = os.clock()
+		if now - fadeAt < 1 / 30 then
+			return
+		end
+		fadeAt = now
+		local b = Ball.ball
+		local focus = b and b.Position + Vector3.new(0, 0.25, 0)
+		if focus and (focus - eye).Magnitude <= Config.VRFadeRange then
+			CameraOcclusion.fade(eye, focus, { player.Character })
+			fading = true
+		elseif fading then
+			CameraOcclusion.clearFade()
+			fading = false
+		end
+	end
+
 	------------------------------------------------------------ frame update
 	RunService:BindToRenderStep("GolfVR", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		camera.HeadScale = 1 -- life size: 1 stud = 0.3 m, regardless of avatar size
@@ -756,9 +787,15 @@ function VR.start(Ball, HUD, simulate)
 		teleportedThisFrame = false
 
 		local offHand = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
-		HUD.placeVRWrist(worldPose(offHand), headWorld.Position)
+		HUD.placeVRWrist(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand)
 		HUD.placeVRMessage(headWorld)
+		VRPointer.update({
+			[Enum.UserCFrame.RightHand] = worldPose(Enum.UserCFrame.RightHand),
+			[Enum.UserCFrame.LeftHand] = worldPose(Enum.UserCFrame.LeftHand),
+		}, dominant)
+		lastHeadWorld = headWorld
 		updateCharacter(headWorld)
+		updateSeeThrough(headWorld.Position)
 	end)
 
 	-- new hole / reset: put the player next to the ball
@@ -774,6 +811,96 @@ function VR.start(Ball, HUD, simulate)
 	end)
 
 	VR.warpToBall = warpToBall
+	VR.putterHead = head
+	-- the viewpoint for XRay (the VR head; the camera CFrame is the floor origin on a real headset)
+	VR.getEye = function()
+		return lastHeadWorld.Position
+	end
+	VRPointer.start(simulate)
+
+	-- Studio + SimulateVR only: drive the laser pointer and the wrist card (tools/menu_shots.py --vr, --wrist).
+	--   Invoke("targets") -> clickable buttons on the open panels with their world points
+	--   Invoke("aim", { hand = "RightHand", point = {x, y, z} }) -> puts that hand below/beside the head aiming at it
+	--   Invoke("trigger", "RightHand") -> trigger down + up on that hand
+	--   Invoke("wrist", true / false) -> off hand in a watch pose (back of the wrist to the eyes) / lowered
+	--   Invoke("state") -> pointer + wrist card state
+	if simulate and RunService:IsStudio() then
+		local hook = Instance.new("BindableFunction")
+		hook.Name = "GolfPointerDebug"
+		local function setHand(which: Enum.UserCFrame, worldCF: CFrame)
+			local v = debugFolder:FindFirstChild(which.Name)
+			if v then
+				v.Value = (origin * CFrame.new(0, -floorOffsetY, 0)):Inverse() * worldCF
+			end
+		end
+		hook.OnInvoke = function(cmd, arg)
+			local headW = worldPose(Enum.UserCFrame.Head)
+			if cmd == "targets" then
+				local out = {}
+				for _, t in VRPointer.targets() do
+					table.insert(out, { panel = t.panel, name = t.name, text = t.text, world = { t.world.X, t.world.Y, t.world.Z } })
+				end
+				return out
+			elseif cmd == "aim" then
+				local hand = Enum.UserCFrame[arg.hand or "RightHand"]
+				local side = hand == Enum.UserCFrame.RightHand and 1 or -1
+				local from = headW.Position + headW.RightVector * (0.6 * side) - Vector3.new(0, 1.1, 0) + headW.LookVector * 0.8
+				local p = Vector3.new(arg.point[1], arg.point[2], arg.point[3])
+				setHand(hand, CFrame.lookAt(from, p))
+				-- in a menu the idle hand hangs down by your side, pointing at the floor (not when it's the wrist-up hand)
+				if VRPointer.modalOpen() then
+					local other = hand == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
+					local rest = headW.Position - headW.RightVector * (0.6 * side) - Vector3.new(0, 2.6, 0)
+					setHand(other, CFrame.lookAt(rest, rest + Vector3.new(0, -1, 0) + flat(headW.LookVector) * 0.3))
+				end
+				return { hand = hand.Name }
+			elseif cmd == "trigger" then
+				local key = arg == "LeftHand" and Enum.KeyCode.ButtonL2 or Enum.KeyCode.ButtonR2
+				onButtonDown(key)
+				onButtonUp(key)
+				return VRPointer.state()
+			elseif cmd == "wrist" then
+				local off = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
+				local left = off == Enum.UserCFrame.LeftHand
+				local side = left and -1 or 1
+				local flatLook = flat(headW.LookVector)
+				flatLook = flatLook.Magnitude > 1e-3 and flatLook.Unit or Vector3.new(0, 0, -1)
+				local flatRight = flatLook:Cross(Vector3.yAxis)
+				if arg then
+					-- forearm across the body, wrist ~42 cm in front and 16 cm below the eyes, back of the wrist up at them
+					local wristPos = headW.Position + flatLook * 1.4 - Vector3.new(0, 0.55, 0) + flatRight * (0.15 * side)
+					local back = (headW.Position - wristPos).Unit
+					local right = back * (left and -1 or 1) -- left hand: back of the hand is -X
+					local look = flatRight * -side -- aim ray across the body, toward the midline
+					look = (look - right * look:Dot(right)).Unit
+					local up = right:Cross(look)
+					local rot = CFrame.fromMatrix(Vector3.zero, right, up)
+					-- the controller origin sits WRIST_OFFSET-ish ahead of the wrist along its own axes
+					local handPos = wristPos - rot:VectorToWorldSpace(Vector3.new(0, -0.12, 0.33))
+					setHand(off, CFrame.new(handPos) * rot)
+				else
+					setHand(off, CFrame.lookAt(headW.Position + flatRight * (0.6 * side) - Vector3.new(0, 2.6, 0), headW.Position + flatRight * (0.6 * side) - Vector3.new(0, 2.6, 0) + flatLook))
+				end
+				return { hand = off.Name }
+			elseif cmd == "pose" then
+				-- { head = {x, y, z}, look = {x, y, z}, club = {x, y, z}?, face = {x, y, z}? } in world space
+				local function v3(t)
+					return Vector3.new(t[1], t[2], t[3])
+				end
+				if arg.head then
+					setHand(Enum.UserCFrame.Head, CFrame.lookAt(v3(arg.head), v3(arg.look)))
+				end
+				if arg.club then
+					setHand(dominant, VR.test.handCFrameFor(v3(arg.club), v3(arg.face or { 1, 0, 0 })))
+				end
+				return { origin = { origin.X, origin.Y, origin.Z } }
+			elseif cmd == "state" then
+				return { pointer = VRPointer.state(), wrist = HUD.wristState() }
+			end
+			return nil
+		end
+		hook.Parent = player:WaitForChild("PlayerScripts")
+	end
 	VR.getState = function()
 		return {
 			origin = origin,

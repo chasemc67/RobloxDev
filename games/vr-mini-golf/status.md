@@ -191,3 +191,9 @@ Saved and reopened the exact Lantern Grove description in Studio Basic Info. Ico
 ## 2026-10-11 Stage m: published v116
 - Front end (title, course picker, settings, how to play, results), personal best (DataStore), crowd reactions on hole-out, pass-through + see-through camera, slope felt texture, H9 Round 8 pendulum, all lanterns/glow props lit, H8/H9 cream rail trim.
 - Saved + published by Codex computer use 2026-10-11 10:50 PT: "Published new changes in "VR Mini Golf" to Roblox." Version History v116. Audience unchanged. Details: logs/stages/e-report.md (Stage m).
+
+## Stage p (2026-10-11, 16:10 PT): VR laser-pointer menus, wrist scoreboard, VR see-through + ball/club X-ray, H9 Round 10. **Published v145**
+- **Menus in VR:** point with either controller, pull the trigger to click (beam + dot + hover glow). The thumbstick-click hint is gone. Turn your other wrist up for the score card with MENU / SCORES buttons.
+- **See-through:** the camera fade now runs from the VR head too. The ball (and the VR putter head) get an always-on-top outline when something hides them.
+- **H9:** pendulum ±11°, block rate 19/48 (39.6%), 0 traps.
+- **Tests:** camprobe 0 bad, 90-shot sweep clean, smoke desktop/phone/VR sim PASS. Report: `logs/stages/e-report.md` (Stage p).
