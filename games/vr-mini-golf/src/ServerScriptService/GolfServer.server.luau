@@ -397,6 +397,14 @@ do
 	end
 end
 
+-- Camera occlusion (round 2): visible decor blocks the follow cameras' casts and nothing else
+-- (ReplicatedStorage.Golf.CameraOcclusion).
+do
+	local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
+	CameraOcclusion.setupGroups()
+	CameraOcclusion.tagDecor({ course, workspace:FindFirstChild("World") })
+end
+
 -- Moving parts (spinner, mill wheel, log, door, gate, lantern bar): server physics, phase-locked to server time.
 local Movers = require(script:WaitForChild("Movers"))
 Movers.start()

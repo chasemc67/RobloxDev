@@ -18,9 +18,11 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
+local CollectionService = game:GetService("CollectionService")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
+local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
 local Remotes = Golf:WaitForChild("Remotes")
 
 local player = Players.LocalPlayer
@@ -105,31 +107,49 @@ local debugFolder
 local outcome = nil -- "rest" | "cup" | "oob"
 local placedCount = 0
 
+-- (GolfBall group: the cast sees exactly what the ball collides with, movers included)
 local contactParams = RaycastParams.new()
 contactParams.FilterType = Enum.RaycastFilterType.Exclude
+contactParams.CollisionGroup = "GolfBall"
+local contactOverlap = OverlapParams.new()
+contactOverlap.FilterType = Enum.RaycastFilterType.Exclude
+contactOverlap.CollisionGroup = "GolfBall"
 
 local surfaceParams = RaycastParams.new()
 surfaceParams.FilterType = Enum.RaycastFilterType.Exclude
 
+-- Full instance path of a contact part (+ WallId / MoverId), e.g. Workspace.Course.Hole8.Geometry.Wall:w12.
 local function partLabel(p: Instance?)
 	if not p then
-		return "?"
+		return "(no part: landing or slope change)"
 	end
-	local anc = p.Parent
-	while anc and anc ~= workspace and anc:GetAttribute("HoleNumber") == nil do
-		anc = anc.Parent
-	end
-	local name = p.Name
+	local name = p:GetFullName()
 	if p:GetAttribute("WallId") then
 		name ..= ":" .. p:GetAttribute("WallId")
 	elseif p.Name == "Blocker" and p.Parent then
 		name ..= ":" .. tostring(p.Parent:GetAttribute("MoverId"))
 	end
-	return ((anc and anc ~= workspace) and anc.Name .. "/" or "") .. name
+	return name
+end
+
+-- When the sweep misses (the ball already bounced away), the nearest non-felt part the ball collides with.
+local function nearestContactPart(pos: Vector3, exclude)
+	contactOverlap.FilterDescendantsInstances = exclude
+	local best, bestD = nil, math.huge
+	for _, q in workspace:GetPartBoundsInRadius(pos, R * 4, contactOverlap) do
+		if q.CanCollide and not CollectionService:HasTag(q, "GolfSurface") then
+			local d = (q:GetClosestPointOnSurface(pos) - pos).Magnitude
+			if d < bestD then
+				best, bestD = q, d
+			end
+		end
+	end
+	return best
 end
 
 -- contact detection state
 local prevVel, prevPos = nil, nil
+local lastStrokeT = -1 -- the putt itself is a velocity jump too: not a contact
 local pending = nil
 local lastSample = -1
 
@@ -150,7 +170,7 @@ local function finishContact(c, vOut: Vector3)
 	local inN, outN = vin:Dot(n), vout:Dot(n)
 	local inT, outT = vin:Dot(tan), vout:Dot(tan)
 	local info = {
-		part = partLabel(c.hit and c.hit.Instance),
+		part = partLabel(c.part),
 		normal = vec(n),
 		vIn = vec(c.vIn),
 		vOut = vec(vOut),
@@ -231,13 +251,13 @@ local function onPostSimulation(dt)
 			finishContact(pending, v)
 			pending = nil
 		end
-	elseif prevVel and Ball.state == "moving" and not b.Anchored then
+	elseif prevVel and Ball.state == "moving" and not b.Anchored and os.clock() - lastStrokeT > 0.15 then
 		local a, c = flat(prevVel), flat(v)
 		local dv = (c - a).Magnitude
 		if a.Magnitude > 0.3 and dv > math.max(0.4, Config.RollDecel * dt + 0.08 * a.Magnitude) then
 			contactParams.FilterDescendantsInstances = { workspace:FindFirstChild("Balls"), player.Character, workspace.CurrentCamera }
 			local hit = workspace:Spherecast(prevPos, R * 0.95, a.Unit * (a.Magnitude * dt * 1.5 + 0.25), contactParams)
-			pending = { frames = 0, vIn = prevVel, pos = p, hit = hit }
+			pending = { frames = 0, vIn = prevVel, pos = p, hit = hit, part = hit and hit.Instance or nearestContactPart(p, contactParams.FilterDescendantsInstances) }
 		end
 	end
 	prevVel, prevPos = v, p
@@ -383,7 +403,6 @@ end
 -- origin/yaw as attributes, so helpers can take spec coordinates straight from holes.json / hNN-notes.md.
 local G = Config.BallRadius
 local VMAX = 19.78 -- spec max putt (studs/s): a full putt rolls 60 studs on flat felt
-local CollectionService = game:GetService("CollectionService")
 
 local function hole(n)
 	return workspace.Course:FindFirstChild("Hole" .. n)
@@ -2413,7 +2432,9 @@ local function updateCamera(dt)
 		end
 		local want = b.Position - followDir * 4 + Vector3.new(0, 2.2, 0)
 		followPos = followPos and followPos:Lerp(want, 1 - math.exp(-dt * 6)) or want
-		camera.CFrame = CFrame.lookAt(followPos, b.Position + followDir * 1.5)
+		-- (same occlusion as the putting camera: stay in front of beams/foliage between the ball and the camera)
+		local camPos = CameraOcclusion.resolve(b.Position, followPos, { player.Character })
+		camera.CFrame = CFrame.lookAt(camPos, b.Position + followDir * 1.5)
 	end
 end
 
@@ -2431,6 +2452,7 @@ function GolfTest.start(ballController, _hud, vrModule, simulate)
 	end
 
 	Ball.Stroked.Event:Connect(function(velocity, source)
+		lastStrokeT = os.clock()
 		GolfTest.hitCount += 1
 		GolfTest.lastHitSource = source
 		GolfTest.lastHitVelocity = velocity

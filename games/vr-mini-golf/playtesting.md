@@ -157,9 +157,16 @@ python3 tools/run_playtests.py smoke --device iphone_17_pro
 python3 tools/ui_shots.py --out playtests/<date>/ui                          # HUD + Explore screenshots, desktop
 python3 tools/ui_shots.py --device iphone_17_pro --out playtests/<date>/ui   # same on the phone emulator
 ```
-`smoke` prints `play.explore`: Explore on (ball parked/anchored, free camera, walk speed 16), every teleport
-destination landing on ground, fly climb, a fall below the world respawning on a walkway, the teleport menu
-(14 buttons), and Back to golf (ball moved 0, unanchored, strokes unchanged). `problems` must be empty.
+`smoke` first takes one real stroke on hole 1 (a short putt through `BallController.hit`), then prints
+`play.explore`: Explore on (ball parked/anchored, free camera, walk speed 16), every teleport destination landing on
+ground, fly climb, a fall below the world respawning on a walkway, the teleport menu (14 buttons), and Back to golf.
+It asserts `strokeRoundTrip`: strokes 1 before and after, ball within 0.1 stud of where it rested, unanchored. It
+prints PASS/FAIL and exits 1 on failure. `problems` must be empty.
+
+Contact events in the scenario logs carry the part's full path (`GetFullName`, plus `:WallId` / `:MoverId`). The
+cast uses the ball's collision group (movers included), falling back to the nearest part the ball collides with. A
+velocity jump with no part nearby (landing off a drop, slope change) is logged as `(no part: landing or slope
+change)`. The putt itself is no longer logged as a contact.
 
 ## How to play (desktop, phone, VR)
 

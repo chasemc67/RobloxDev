@@ -1,0 +1,928 @@
+{
+ "h7": {
+  "fixed": {
+   "seconds": 35.67,
+   "scenario": "h7",
+   "hole": 7,
+   "sweep": [
+    {
+     "mover": "log",
+     "period": 5.5920000000000005,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        32.9868,
+        24.8793,
+        -9.0843
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 1.86,
+       "blocked": false,
+       "finish": [
+        33.7977,
+        24.8793,
+        -9.9059
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 3.73,
+       "blocked": false,
+       "finish": [
+        34.34,
+        24.8793,
+        -12.5652
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Cascade Steps",
+   "cam": "fixed",
+   "stuck": 0,
+   "par": 3,
+   "nudges": 0,
+   "clientLag": 0.181
+  },
+  "topdown": {
+   "seconds": 31.78,
+   "scenario": "h7",
+   "hole": 7,
+   "sweep": [
+    {
+     "mover": "log",
+     "period": 5.5920000000000005,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        32.9626,
+        24.8793,
+        -9.111
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 1.86,
+       "blocked": false,
+       "finish": [
+        33.1263,
+        24.8793,
+        -6.442
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 3.73,
+       "blocked": false,
+       "finish": [
+        36.9533,
+        24.8793,
+        -11.9293
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Cascade Steps",
+   "cam": "topdown",
+   "stuck": 0,
+   "par": 3,
+   "nudges": 0,
+   "clientLag": 0.166
+  },
+  "follow": {
+   "seconds": 34.21,
+   "scenario": "h7",
+   "hole": 7,
+   "sweep": [
+    {
+     "mover": "log",
+     "period": 5.5920000000000005,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        32.961,
+        24.8793,
+        -9.1069
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t2",
+       "phase": 1.86,
+       "blocked": false,
+       "finish": [
+        32.9412,
+        24.8793,
+        -6.2931
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "t3",
+       "phase": 3.73,
+       "blocked": false,
+       "finish": [
+        41.4532,
+        23.6719,
+        10.0947
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Cascade Steps",
+   "cam": "follow",
+   "stuck": 0,
+   "par": 3,
+   "nudges": 0,
+   "clientLag": 0.262
+  }
+ },
+ "h8": {
+  "fixed": {
+   "seconds": 28.6,
+   "scenario": "h8",
+   "hole": 8,
+   "sweep": [
+    {
+     "mover": "root_door",
+     "period": 7,
+     "rows": [
+      {
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-sweep-root_door-0",
+         "id": "ring",
+         "t": 4.8651,
+         "event": "flag",
+         "shot": "h8-sweep-root_door-0",
+         "speedOut": 4,
+         "speedIn": 5.61,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          -19,
+          37.59,
+          23
+         ]
+        }
+       ],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -15.668,
+        37.5793,
+        16.336
+       ]
+      },
+      {
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-sweep-root_door-1",
+         "id": "ring",
+         "t": 14.1991,
+         "event": "flag",
+         "shot": "h8-sweep-root_door-1",
+         "speedOut": 4,
+         "speedIn": 5.712,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          -19,
+          37.59,
+          23
+         ]
+        }
+       ],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 2.33,
+       "blocked": false,
+       "finish": [
+        -15.7105,
+        37.5719,
+        16.4214
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 4.67,
+       "blocked": false,
+       "finish": [
+        -10.6806,
+        36.0719,
+        -20.4721
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Firefly Hollow",
+   "cam": "fixed",
+   "stuck": 0,
+   "par": 4,
+   "nudges": 0,
+   "clientLag": 0.166
+  },
+  "topdown": {
+   "seconds": 27.18,
+   "scenario": "h8",
+   "hole": 8,
+   "sweep": [
+    {
+     "mover": "root_door",
+     "period": 7,
+     "rows": [
+      {
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-sweep-root_door-0",
+         "id": "ring",
+         "t": 3.518,
+         "event": "flag",
+         "shot": "h8-sweep-root_door-0",
+         "speedOut": 4,
+         "speedIn": 5.545,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          -19,
+          37.59,
+          23
+         ]
+        }
+       ],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -16.1671,
+        37.5719,
+        17.3342
+       ]
+      },
+      {
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-sweep-root_door-1",
+         "id": "ring",
+         "t": 12.8499,
+         "event": "flag",
+         "shot": "h8-sweep-root_door-1",
+         "speedOut": 4,
+         "speedIn": 5.542,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          -19,
+          37.59,
+          23
+         ]
+        }
+       ],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 2.33,
+       "blocked": false,
+       "finish": [
+        -16.1671,
+        37.5719,
+        17.3342
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 4.67,
+       "blocked": false,
+       "finish": [
+        -10.6995,
+        36.0719,
+        -20.4127
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Firefly Hollow",
+   "cam": "topdown",
+   "stuck": 0,
+   "par": 4,
+   "nudges": 0,
+   "clientLag": 0.21
+  },
+  "follow": {
+   "seconds": 26.9,
+   "scenario": "h8",
+   "hole": 8,
+   "sweep": [
+    {
+     "mover": "root_door",
+     "period": 7,
+     "rows": [
+      {
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-sweep-root_door-0",
+         "id": "ring",
+         "t": 3.0164,
+         "event": "flag",
+         "shot": "h8-sweep-root_door-0",
+         "speedOut": 4,
+         "speedIn": 5.545,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          -19,
+          37.59,
+          23
+         ]
+        }
+       ],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -16.1671,
+        37.5719,
+        17.3342
+       ]
+      },
+      {
+       "flags": [
+        {
+         "type": "event",
+         "label": "h8-sweep-root_door-1",
+         "id": "ring",
+         "t": 12.3493,
+         "event": "flag",
+         "shot": "h8-sweep-root_door-1",
+         "speedOut": 4,
+         "speedIn": 5.542,
+         "kind": "teleport",
+         "hole": 8,
+         "pos": [
+          -19,
+          37.59,
+          23
+         ]
+        }
+       ],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 2.33,
+       "blocked": false,
+       "finish": [
+        -16.1,
+        37.5793,
+        17.2
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "lane",
+       "phase": 4.67,
+       "blocked": false,
+       "finish": [
+        -10.7199,
+        36.0793,
+        -20.8216
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Firefly Hollow",
+   "cam": "follow",
+   "stuck": 0,
+   "par": 4,
+   "nudges": 0,
+   "clientLag": 0.165
+  }
+ },
+ "h9": {
+  "fixed": {
+   "seconds": 74.01,
+   "scenario": "h9",
+   "hole": 9,
+   "sweep": [
+    {
+     "mover": "lantern_pendulum",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "landing",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -80.5354,
+        41.0719,
+        17.4441
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        -76.5255,
+        40.68,
+        8.3369
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        -76.4917,
+        40.6809,
+        8.3611
+       ]
+      }
+     ]
+    },
+    {
+     "mover": "root_gate",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "landing",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -80.0281,
+        41.0793,
+        18.9164
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        -75.5927,
+        40.6808,
+        8.8277
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        -76.5303,
+        40.6809,
+        8.3407
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Heart of the Grove",
+   "cam": "fixed",
+   "stuck": 0,
+   "par": 4,
+   "nudges": 0,
+   "clientLag": 0.156
+  },
+  "topdown": {
+   "seconds": 69.28,
+   "scenario": "h9",
+   "hole": 9,
+   "sweep": [
+    {
+     "mover": "lantern_pendulum",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "landing",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -80.4408,
+        41.0793,
+        18.6585
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        -76.5588,
+        40.6809,
+        8.3258
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        -76.4699,
+        40.6809,
+        8.3732
+       ]
+      }
+     ]
+    },
+    {
+     "mover": "root_gate",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -79.4547,
+        41.0719,
+        12.9365
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        -76.5495,
+        40.679,
+        8.3301
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        -76.4805,
+        40.6799,
+        8.3582
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Heart of the Grove",
+   "cam": "topdown",
+   "stuck": 0,
+   "par": 4,
+   "nudges": 0,
+   "clientLag": 0.167
+  },
+  "follow": {
+   "seconds": 67.75,
+   "scenario": "h9",
+   "hole": 9,
+   "sweep": [
+    {
+     "mover": "lantern_pendulum",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -79.4617,
+        41.0787,
+        12.9316
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        -76.4758,
+        40.6793,
+        8.3619
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        -76.4879,
+        40.6797,
+        8.3531
+       ]
+      }
+     ]
+    },
+    {
+     "mover": "root_gate",
+     "period": 4,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "landing",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        -80.9156,
+        41.0787,
+        17.3106
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 1.33,
+       "blocked": false,
+       "finish": [
+        -76.4606,
+        40.6805,
+        8.374
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "corridor",
+       "phase": 2.67,
+       "blocked": false,
+       "finish": [
+        -76.4834,
+        40.6805,
+        8.362
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Heart of the Grove",
+   "cam": "follow",
+   "stuck": 0,
+   "par": 4,
+   "nudges": 0,
+   "clientLag": 0.16
+  }
+ },
+ "h4": {
+  "fixed": {
+   "seconds": 51.72,
+   "scenario": "h4",
+   "hole": 4,
+   "sweep": [
+    {
+     "mover": "spinner",
+     "period": 12,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        186.0735,
+        48.6793,
+        -57.1347
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "plaza",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        180.2169,
+        48.0793,
+        -28.608
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 8,
+       "blocked": false,
+       "finish": [
+        186.1028,
+        48.6793,
+        -56.8662
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Spore Spinner",
+   "cam": "fixed",
+   "stuck": 0,
+   "par": 3,
+   "nudges": 0,
+   "clientLag": 0.165
+  },
+  "topdown": {
+   "seconds": 46.92,
+   "scenario": "h4",
+   "hole": 4,
+   "sweep": [
+    {
+     "mover": "spinner",
+     "period": 12,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        186.1358,
+        48.6793,
+        -56.7439
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "plaza",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        179.9331,
+        48.0793,
+        -28.713
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 8,
+       "blocked": false,
+       "finish": [
+        186.1228,
+        48.6793,
+        -56.8125
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Spore Spinner",
+   "cam": "topdown",
+   "stuck": 0,
+   "par": 3,
+   "nudges": 0,
+   "clientLag": 0.164
+  },
+  "follow": {
+   "seconds": 47.48,
+   "scenario": "h4",
+   "hole": 4,
+   "sweep": [
+    {
+     "mover": "spinner",
+     "period": 12,
+     "rows": [
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 0,
+       "blocked": false,
+       "finish": [
+        186.083,
+        48.6793,
+        -57.0448
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "plaza",
+       "phase": 4,
+       "blocked": false,
+       "finish": [
+        180.3516,
+        48.0793,
+        -28.6939
+       ]
+      },
+      {
+       "flags": [],
+       "outcome": "rest",
+       "zone": "green",
+       "phase": 8,
+       "blocked": false,
+       "finish": [
+        186.0853,
+        48.6793,
+        -56.9946
+       ]
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "escapes": 0,
+   "name": "Spore Spinner",
+   "cam": "follow",
+   "stuck": 0,
+   "par": 3,
+   "nudges": 0,
+   "clientLag": 0.165
+  }
+ }
+}

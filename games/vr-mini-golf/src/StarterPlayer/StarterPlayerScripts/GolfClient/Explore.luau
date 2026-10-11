@@ -15,6 +15,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
+local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
 
 local player = Players.LocalPlayer
 
@@ -29,6 +30,7 @@ local REAL_GRAVITY = 196.2 -- the course runs at 32.7 (life-size ball); walking 
 -- downward force tops the character up to Roblox's usual gravity while exploring
 local FALL_Y = -4 -- below the lowest terrain (y 0): respawn on a walkway
 local CEILING_Y = 320
+local CAM_PITCH, CAM_DIST = 20, 12.5 -- camera after a teleport: degrees down, and the Roblox camera's default zoom
 
 local Ball, HUD, controls
 local data = { views = {}, paths = {} }
@@ -64,7 +66,7 @@ local function groundAt(x, z, fromY)
 	local char = player.Character
 	groundRay.FilterDescendantsInstances = { char, workspace:FindFirstChild("Balls"), workspace.CurrentCamera }
 	local hit = workspace:Raycast(Vector3.new(x, fromY or 400, z), Vector3.new(0, -(fromY or 400) - 50, 0), groundRay)
-	return hit and hit.Position or Vector3.new(x, 40, z)
+	return hit and hit.Position or Vector3.new(x, 40, z), hit and hit.Material
 end
 
 local function forces(hrp)
@@ -169,13 +171,75 @@ local function placeCharacter(pos: Vector3, look: Vector3?)
 	char:PivotTo(CFrame.lookAt(p, p + dir.Unit))
 	hrp.AssemblyLinearVelocity = Vector3.zero
 	lastSafe = p
-	-- camera behind the character, looking where it faces (or up at the subject for the scenic views)
+	-- camera behind the character, looking where it faces, 20 degrees down (never pitched up at a high subject like
+	-- the falls: the follow camera would then sit down in the tall Terrain grass). The Roblox camera keeps this
+	-- rotation and its own zoom; it's set again over the next frames because a long teleport can otherwise leave it at
+	-- the old angle (swinging it into the H9 trunk wall).
 	local cam = workspace.CurrentCamera
 	if cam.CameraType == Enum.CameraType.Custom then
-		local target = look or (p + dir.Unit * 10)
-		-- (high enough to clear the meadow's tall Terrain grass blades)
-		cam.CFrame = CFrame.lookAt(p - dir.Unit * 9 + Vector3.new(0, 6.5, 0), target)
+		local lookDir = (dir.Unit * math.cos(math.rad(CAM_PITCH)) - Vector3.new(0, math.sin(math.rad(CAM_PITCH)), 0)).Unit
+		local function aimCamera()
+			if Explore.active and cam.CameraType == Enum.CameraType.Custom then
+				local head = hrp.Position + Vector3.new(0, 1.5, 0)
+				local camPos = CameraOcclusion.resolve(head, head - lookDir * CAM_DIST, { char })
+				cam.CFrame = CFrame.lookAt(camPos, camPos + lookDir)
+			end
+		end
+		aimCamera()
+		task.delay(0.1, aimCamera)
+		task.delay(0.4, aimCamera)
 	end
+end
+
+-- Stand spot near `base` (ground point) facing `look` with open ground: the camera behind the character and the
+-- view ahead free of trunks, tree walls and decor, and not in the tall Terrain grass if avoidable. Tries `base`, then
+-- rings 4 and 6 studs out (Playtest Bot round 2: Grand Falls grass, Lantern Mere trunk, H9 tree wall).
+local function openSpot(base: Vector3, look: Vector3?, fromY: number?)
+	local char = player.Character
+	local best, bestScore = base, math.huge
+	local candidates = { base }
+	for _, r in { 4, 6 } do
+		for a = 0, 315, 45 do
+			table.insert(candidates, base + Vector3.new(r * math.cos(math.rad(a)), 0, r * math.sin(math.rad(a))))
+		end
+	end
+	for i, c in candidates do
+		local g, mat = groundAt(c.X, c.Z, fromY)
+		if mat == Enum.Material.Water or math.abs(g.Y - base.Y) > 3 then
+			continue
+		end
+		local dir = look and Vector3.new(look.X - g.X, 0, look.Z - g.Z) or Vector3.new(0, 0, -1)
+		dir = dir.Magnitude > 0.1 and dir.Unit or Vector3.new(0, 0, -1)
+		local head = g + Vector3.new(0, 4.5, 0)
+		local score = (i - 1) * 0.01
+		-- room for the follow camera (placeCharacter's angle): a wall close behind pulls it into the avatar's head
+		-- (also 15 degrees either side: the Roblox camera doesn't always land exactly on the set angle)
+		local free = CAM_DIST
+		for _, yaw in { 0, 15, -15 } do
+			local d = CFrame.Angles(0, math.rad(yaw), 0):VectorToWorldSpace(dir)
+			local lookDir = d * math.cos(math.rad(CAM_PITCH)) - Vector3.new(0, math.sin(math.rad(CAM_PITCH)), 0)
+			local back = CameraOcclusion.cast(head, head - lookDir * CAM_DIST, { char })
+			if back then
+				free = math.min(free, back.Distance)
+			end
+		end
+		if free < CAM_DIST then
+			score += 4 + 6 * (1 - free / CAM_DIST)
+		end
+		if CameraOcclusion.cast(head, head + dir * 14, { char }) then
+			score += 5 -- view blocked right ahead
+		end
+		if CameraOcclusion.cast(head, g + Vector3.new(0, 1, 0), { char }) then
+			score += 5 -- standing inside a decor mesh
+		end
+		if mat == Enum.Material.Grass then
+			score += 1 -- tall grass blades around the camera
+		end
+		if score < bestScore then
+			best, bestScore = g, score
+		end
+	end
+	return best
 end
 
 -- Teleport destinations: hole tees (standing a few studs behind the tee, looking down the hole) + scenic views.
@@ -220,14 +284,16 @@ function Explore.teleport(dest)
 		local spot = tee.Position - d * 4
 		local g = groundAt(spot.X, spot.Z, tee.Position.Y + 30)
 		-- inside the hollow tree (H9) a high ray hits the canopy/roof: start just above the tee instead
+		local fromY = nil
 		if g.Y > tee.Position.Y + 6 then
-			g = groundAt(spot.X, spot.Z, tee.Position.Y + 4)
+			fromY = tee.Position.Y + 4
+			g = groundAt(spot.X, spot.Z, fromY)
 		end
-		placeCharacter(g, aimPos)
+		placeCharacter(openSpot(g, aimPos, fromY or tee.Position.Y + 30), aimPos)
 	else
 		local g = groundAt(dest.xz[1], dest.xz[2])
 		local look = dest.look and Vector3.new(dest.look[1], dest.look[2], dest.look[3])
-		placeCharacter(g, look)
+		placeCharacter(openSpot(g, look), look)
 	end
 	HUD.toast(dest.title)
 end
@@ -319,7 +385,8 @@ function Explore.setActive(on)
 		if hum then
 			cam.CameraSubject = hum
 		end
-		HUD.message("Explore!  No ball, no score.  Back to golf any time", Color3.fromRGB(150, 220, 255), 2.5)
+		-- (a top-centre toast that fades after 3 s: the big centre message covered the phone info panel and buttons)
+		HUD.toast("Explore!  No ball, no score")
 	else
 		Explore.setFly(false)
 		sprint = false
@@ -407,6 +474,11 @@ function Explore.start(ballController, hud, controlModule)
 						break
 					end
 				end
+			elseif cmd == "putt" then
+				-- one real stroke through BallController.hit (smoke: stroke -> Explore -> back keeps strokes/ball)
+				return { hit = Ball.hit(arg, "smoke"), state = Ball.state }
+			elseif cmd == "ballState" then
+				return { state = Ball.state }
 			elseif cmd == "menu" then
 				HUD.toggleTeleportMenu()
 			elseif cmd == "scorecard" then
@@ -426,6 +498,21 @@ function Explore.start(ballController, hud, controlModule)
 		end
 		hook.Parent = player:WaitForChild("PlayerScripts")
 	end
+
+	-- Camera occlusion for the Roblox follow camera: its own popper can't see the decor (non-colliding, camera-only
+	-- collision group), so after it runs, pull the camera in front of trunks, tree walls and beams.
+	RunService:BindToRenderStep("ExploreCameraOcclusion", Enum.RenderPriority.Camera.Value + 2, function()
+		local cam = workspace.CurrentCamera
+		if not Explore.active or cam.CameraType ~= Enum.CameraType.Custom then
+			return
+		end
+		local char = player.Character
+		local focus = cam.Focus.Position
+		local pos = CameraOcclusion.resolve(focus, cam.CFrame.Position, { char })
+		if (pos - cam.CFrame.Position).Magnitude > 1e-3 then
+			cam.CFrame = CFrame.lookAt(pos, focus)
+		end
+	end)
 
 	local checkT = 0
 	RunService.Heartbeat:Connect(function(dt)

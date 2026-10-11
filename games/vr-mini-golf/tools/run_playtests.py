@@ -362,7 +362,7 @@ def f(v, nd=2):
 
 def first_contact(shot, prefix=None):
     for c in shot.get("contacts", []):
-        if prefix is None or c.get("part", "").split("/")[-1].startswith(prefix):
+        if prefix is None or re.split(r"[/.]", c.get("part", ""))[-1].startswith(prefix):
             return c
     return None
 
@@ -688,7 +688,19 @@ out.parts, out.meshParts, out.lights = parts, meshes, lights
 local hook = me.PlayerScripts:FindFirstChild('GolfExploreDebug')
 if hook and ball then
   local ex = {}
+  -- one real stroke first (a short putt toward the aim point), so Back to golf must restore strokes = 1 and the
+  -- mid-hole ball spot, not just the tee
+  local aim = (h1:FindFirstChild('AimTarget') or h1.Cup).Position - ball.Position
+  aim = Vector3.new(aim.X, 0, aim.Z).Unit
+  local tw = os.clock()
+  while hook:Invoke('ballState').state ~= 'ready' and os.clock() - tw < 10 do task.wait(0.2) end
+  ex.putt = hook:Invoke('putt', aim * 5)
+  tw = os.clock()
+  task.wait(0.5)
+  while hook:Invoke('ballState').state ~= 'ready' and os.clock() - tw < 20 do task.wait(0.2) end
+  task.wait(1)
   local p0, s0 = ball.Position, me:GetAttribute('Strokes')
+  ex.afterPutt = {strokes = s0, ballFromTee = math.floor((ball.Position - h1.Tee.Position).Magnitude * 100) / 100, state = hook:Invoke('ballState').state}
   hook:Invoke('on')
   task.wait(1.5)
   local st = hook:Invoke('state')
@@ -725,8 +737,11 @@ if hook and ball then
   hook:Invoke('menu')
   hook:Invoke('off')
   task.wait(3)
-  ex.back = {ballMoved = math.floor((ball.Position - p0).Magnitude * 100) / 100, anchored = ball.Anchored, strokes = me:GetAttribute('Strokes'), strokes0 = s0,
+  ex.back = {ballMoved = math.floor((ball.Position - p0).Magnitude * 1000) / 1000, anchored = ball.Anchored, strokes = me:GetAttribute('Strokes'), strokes0 = s0,
     cam = tostring(workspace.CurrentCamera.CameraType), attr = me:GetAttribute('Exploring')}
+  -- assertion: 1 stroke taken, Explore round trip, still 1 stroke and the ball within 0.1 stud of where it rested
+  ex.strokeRoundTrip = {ok = s0 == 1 and ex.back.strokes == 1 and ex.back.ballMoved <= 0.1 and not ball.Anchored,
+    strokesBefore = s0, strokesAfter = ex.back.strokes, ballMoved = ex.back.ballMoved}
   out.explore = ex
 end
 return game:GetService('HttpService'):JSONEncode(out)""" % args.shots, "Client", timeout=300)
@@ -746,7 +761,12 @@ return game:GetService('HttpService'):JSONEncode({hud = gui ~= nil, texts = text
         play = json.loads(play)
     except ValueError:
         pass
+    rt = play.get("explore", {}).get("strokeRoundTrip") if isinstance(play, dict) else None
     print(json.dumps({"device": args.device or "desktop", "play": play, "hud": json.loads(hud), "problems": problems}, indent=1))
+    if not rt or not rt.get("ok"):
+        log("FAIL stroke -> Explore -> back:", json.dumps(rt))
+        sys.exit(1)
+    log("PASS stroke -> Explore -> back: strokes %s -> %s, ball moved %.3f" % (rt["strokesBefore"], rt["strokesAfter"], rt["ballMoved"]))
 
 
 # ----------------------------------------------------------------------------------------- export / push

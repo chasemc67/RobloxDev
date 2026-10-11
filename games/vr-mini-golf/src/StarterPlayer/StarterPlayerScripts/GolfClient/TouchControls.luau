@@ -7,6 +7,7 @@ local UserInputService = game:GetService("UserInputService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Config"))
+local CameraOcclusion = require(ReplicatedStorage.Golf:WaitForChild("CameraOcclusion"))
 
 local player = Players.LocalPlayer
 local R = Config.BallRadius
@@ -36,10 +37,6 @@ function Touch.start(Ball, HUD)
 
 	local yaw, pitch, dist = math.pi, math.rad(30), 6
 	local focus: Vector3? = nil
-
-	local camRay = RaycastParams.new()
-	camRay.CollisionGroup = "GolfClub" -- ignores balls and players
-	camRay.FilterType = Enum.RaycastFilterType.Exclude
 
 	---------------------------------------------------------------- aim visuals
 	local aimFolder = Instance.new("Folder")
@@ -393,11 +390,8 @@ function Touch.start(Ball, HUD)
 		focus = focus:Lerp(target, 1 - math.exp(-dt * 7))
 		local rot = CFrame.fromEulerAnglesYXZ(-pitch, yaw, 0)
 		local desired = focus - rot.LookVector * dist
-		camRay.FilterDescendantsInstances = { player.Character, camera }
-		local hit = workspace:Raycast(focus, desired - focus, camRay)
-		if hit then
-			desired = hit.Position + hit.Normal * 0.4
-		end
+		-- pull in front of rails, terrain and decor (beams, foliage) between the ball and the camera
+		desired = CameraOcclusion.resolve(focus, desired, { player.Character })
 		camera.CFrame = CFrame.lookAt(desired, focus)
 		if mode == "aim" then
 			updateAim()

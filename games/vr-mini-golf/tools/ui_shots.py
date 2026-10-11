@@ -21,10 +21,13 @@ from run_playtests import Studio, set_edit_attrs, log, GAME_DIR  # noqa: E402
 STEPS = [
     ("golf", None),
     ("golf_scorecard", ["scorecard"]),
-    ("explore", ["scorecard", "on", "wait:1.5", "teleport:Hollow Tree"]),
+    ("explore_toast", ["scorecard", "on", "wait:1.2"]),
+    ("explore", ["wait:3", "teleport:Hollow Tree"]),
     ("explore_menu", ["menu"]),
     ("explore_fly", ["menu", "fly:true", "vertical:1", "wait:1", "vertical:0"]),
     ("explore_falls", ["fly:false", "teleport:Grand Falls"]),
+    ("explore_mere", ["teleport:Lantern Mere"]),
+    ("explore_h9", ["teleport:H9"]),
     ("explore_h5", ["teleport:H5"]),
     ("back_to_golf", ["off", "wait:2.5"]),
 ]
