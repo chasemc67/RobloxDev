@@ -654,18 +654,30 @@ function PropsBuilder.Place(course)
 			local m = Instance.new("Model")
 			m.Name = "Light_" .. l.id
 			if l.kind == "rail_lantern" then
-				local mesh = lib:FindFirstChild(l.prop or "") and instance(lib, l.prop, CFrame.new(wp), 1)
+				-- l.base / l.yaw: the post's foot (hole-local) and yaw (local +X points at the rail), l.pos: the glow core
+				local baseW = l.base and cfH:PointToWorldSpace(Vector3.new(table.unpack(l.base))) or wp - Vector3.new(0, 1.5, 0)
+				local rot = (cfH - cfH.Position) * CFrame.Angles(0, math.rad(l.yaw or 0), 0)
+				local hit = workspace:Raycast(baseW + Vector3.new(0, 3, 0), Vector3.new(0, -8, 0), groundParams)
+				local footY = hit and hit.Position.Y - 0.1 or baseW.Y
+				local mesh = lib:FindFirstChild(l.prop or "") and instance(lib, l.prop, CFrame.new(baseW.X, footY, baseW.Z) * rot, 1)
 				if mesh then
 					mesh.Parent = m
 				else
-					local stake = Instance.new("Part")
-					stake.Name = "Stake"
-					stake.Size = Vector3.new(0.14, 1.2, 0.14)
-					stake.CFrame = CFrame.new(wp + Vector3.new(0, 0.6, 0))
-					stake.Color = Color3.fromHex("8A5A33")
-					stake.Material = Enum.Material.WoodPlanks
-					stake.Parent = m
-					local lan = instance(lib, "lantern_small", CFrame.new(wp + Vector3.new(0, 1.2, 0)), 1)
+					-- stand-in until rail_lantern_stake / rail_lantern_crook are imported: lantern_small with its glow on
+					-- the light point, on a stake (1.9 tall) or hanging from a crook post (6.5 tall, arm out to the lantern)
+					local crook = l.prop == "rail_lantern_crook"
+					local s = crook and 1.25 or 1
+					local function post(name, a, b, thick)
+						local p = Instance.new("Part")
+						p.Name = name
+						p.Size = Vector3.new(thick, thick, (b - a).Magnitude)
+						p.CFrame = CFrame.lookAt((a + b) / 2, b)
+						p.Color = Color3.fromHex("8A5A33")
+						p.Material = Enum.Material.Wood
+						p.Parent = m
+					end
+					local lan = instance(lib, "lantern_small", CFrame.new(wp - Vector3.new(0, 0.36 * s, 0)) * rot, s)
+					local lanTop = wp.Y + 0.4 * s
 					if lan then
 						lan.Parent = m
 					else
@@ -673,10 +685,19 @@ function PropsBuilder.Place(course)
 						core.Name = "Glow"
 						core.Shape = Enum.PartType.Ball
 						core.Size = Vector3.new(0.35, 0.35, 0.35)
-						core.CFrame = CFrame.new(wp + Vector3.new(0, 1.45, 0))
+						core.CFrame = CFrame.new(wp)
 						core.Color = Color3.fromRGB(table.unpack(l.color3))
 						core.Material = Enum.Material.Neon
 						core.Parent = m
+					end
+					if crook then
+						local foot = Vector3.new(baseW.X, footY, baseW.Z)
+						local topY = math.max(footY + 6.5, lanTop + 0.3)
+						post("Post", foot, Vector3.new(foot.X, topY, foot.Z), 0.22)
+						post("Arm", Vector3.new(foot.X, topY - 0.1, foot.Z), Vector3.new(wp.X, topY - 0.1, wp.Z), 0.14)
+						post("Hanger", Vector3.new(wp.X, topY - 0.1, wp.Z), Vector3.new(wp.X, lanTop, wp.Z), 0.05)
+					else
+						post("Stake", Vector3.new(wp.X, footY, wp.Z), Vector3.new(wp.X, wp.Y - 0.36 * s + 0.02, wp.Z), 0.14)
 					end
 				end
 			else

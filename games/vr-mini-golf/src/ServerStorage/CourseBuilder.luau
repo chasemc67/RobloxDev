@@ -388,8 +388,10 @@ end
 -- Gaps cut into a visual rail (hole-local x or z range along the rail), where a decoration mesh passes through it:
 -- the H6 mill wheel's rims and paddles cross the north rail (rail5) at x 5..10 (models/README.md). Collision walls
 -- are untouched.
+-- H8: the root door's open end slides 2.05 past rail16 into the south door pocket (models pass 8: x 4.2..5.3).
 local RAIL_NOTCHES = {
 	[6] = { rail5 = { axis = "x", from = 5, to = 10 } },
+	[8] = { rail16 = { axis = "x", from = 4.2, to = 5.3 } },
 }
 local function wallStyle(w)
 	local id = w.id
@@ -486,7 +488,10 @@ function Hole:buildWall(w)
 			local probe = notch.axis == "x" and Vector3.new(v, c.Y, c.Z) or Vector3.new(c.X, c.Y, v)
 			return cf:PointToObjectSpace(probe).Z
 		end
-		local n0, n1 = sAt(notch.from), sAt(notch.to)
+		-- horizontal distance along the rail -> distance along the tilted rail kit, measured low on the body (where
+		-- the crossing mesh passes; the cut faces are square to the tilted rail)
+		local h0 = cf:PointToObjectSpace((tilt * CFrame.new(0, -capT - bodyH * 0.8, 0)).Position).Z
+		local n0, n1 = (sAt(notch.from) - h0) / math.cos(ang), (sAt(notch.to) - h0) / math.cos(ang)
 		n0, n1 = math.min(n0, n1), math.max(n0, n1)
 		pieces = {}
 		if n0 > -len / 2 + 0.05 then

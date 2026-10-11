@@ -51,7 +51,7 @@ def apply_overrides(placements):
         applied.append(o.get("why", prop))
     for a in ov.get("add", []):
         e = {k: a[k] for k in ("prop", "hole", "pos", "yaw") if k in a}
-        for k in ("scale", "motion", "light", "chain_top"):
+        for k in ("scale", "motion", "light", "chain_top", "light_id"):
             if k in a:
                 e[k] = a[k]
         placements.append(e)
@@ -93,11 +93,36 @@ def convert():
         out["dressing"][str(n)] = [{"prop": i["prop"], "pos": r3(i["pos"]), "yaw": round(i.get("yaw", 0), 1),
                                     "scale": round(i.get("scale", 1), 3), "role": i.get("role")} for i in h["instances"]]
         out["lights"][str(n)] = [r3(l if isinstance(l, list) else l.get("pos")) for l in h.get("lights", [])]
-    # pass-8 PointLights (manifest lights[]). H9's hanging lanterns are superseded by holes.json's amber_lantern
-    # anchors (props_overrides.json adds them with their own light), so only the rail/glow lights come from here.
-    out["pointLights"] = [{"id": l["id"], "hole": int(l["hole"][1:]), "kind": l["kind"], "pos": r3(l["pos"]),
-                           "color3": l["color3"], "range": l["range"], "brightness": l["brightness"], "prop": l.get("prop")}
-                          for l in man.get("lights", []) if l["kind"] != "hanging_lantern"]
+    # pass-8 PointLights (manifest lights[]). The 3 H9 hanging lanterns carry their light on the lantern's own Neon
+    # part (props_overrides.json adds with light_id take range/brightness/colour from here), so only the rail/glow
+    # lights become stand-alone lights. Rail lights also get their post's base + yaw (dressing instance with the same
+    # light_id) so PropsBuilder can stand a post on the ground until the rail_lantern_* meshes are imported.
+    base = {}
+    for hk, h in man["dressing"]["holes"].items():
+        for i in h["instances"]:
+            if i.get("light_id"):
+                base[i["light_id"]] = {"base": r3(i["pos"]), "yaw": round(i.get("yaw", 0), 1), "prop": i["prop"]}
+    by_id = {l["id"]: l for l in man.get("lights", [])}
+    for e in out["placements"]:
+        lid = e.pop("light_id", None)
+        if lid:
+            l = by_id[lid]
+            e["light"] = {"range": l["range"], "brightness": l["brightness"], "color3": l["color3"], "id": lid}
+    out["pointLights"] = []
+    for l in man.get("lights", []):
+        if l["kind"] == "hanging_lantern":
+            continue
+        e = {"id": l["id"], "hole": int(l["hole"][1:]), "kind": l["kind"], "pos": r3(l["pos"]),
+             "color3": l["color3"], "range": l["range"], "brightness": l["brightness"], "prop": l.get("prop")}
+        e.update(base.get(l["id"], {}))
+        out["pointLights"].append(e)
+    # the H8 firefly-swarm glow spots (dressing.holes.H8.spot_lights kind firefly_glow; pass 8: Brightness 3.5, Range 14)
+    for hk, h in man["dressing"]["holes"].items():
+        for l in h.get("spot_lights", []):
+            if l.get("kind") == "firefly_glow":
+                out["pointLights"].append({"id": l["id"], "hole": int(hk[1:]), "kind": l["kind"], "pos": r3(l["pos"]),
+                                           "color3": [int(l["color"][i:i + 2], 16) for i in (1, 3, 5)],
+                                           "range": l["range"], "brightness": l["brightness"]})
     out["overrides"] = applied
     src = to_lua(out)
     for n in range(1, 10):

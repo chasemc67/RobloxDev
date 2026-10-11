@@ -1,5 +1,5 @@
 {
-  "note": "Spec changes newer than 3D Model Bot's manifest go here (tools/props_to_lua.py applies them on top of models/manifest.json). match = [prop, hole, old pos] (within 0.05 studs); set = fields to replace; remove = drop the placement; add = extra placements of library props (optional light = {range, brightness, color3} for its Neon part, chain_top = hole-local y of a hanging chain). Stage g (2026-10-10, holes.json Round 7): the H7 log / H8 door / H9 pendulum meshes are stretched to the new blocker sizes until 3D Model Bot re-exports them; the H9 heart lantern cluster + string are replaced by the 3 amber_lantern anchors.",
+  "note": "Spec changes newer than 3D Model Bot's manifest go here (tools/props_to_lua.py applies them on top of models/manifest.json). match = [prop, hole, old pos] (within 0.05 studs); set = fields to replace; remove = drop the placement; add = extra placements of library props (optional light = {range, brightness, color3} for its Neon part, chain_top = hole-local y of a hanging chain). Stage g (2026-10-10, holes.json Round 7): the H7 log / H8 door / H9 pendulum meshes are stretched to the new blocker sizes until 3D Model Bot re-exports them; the H9 heart lantern cluster + string are replaced by the 3 amber_lantern anchors. Stage h (pass 8): the FBX importer is unavailable (Codex limit), so the H9 hanging lanterns use the library lantern_large at 0.85 (the same lantern mesh as lantern_large_hanging, chain_top stands in for its cord) and take their light from manifest lights[] via light_id.",
   "placements": [
     {
       "match": [
@@ -66,19 +66,6 @@
     },
     {
       "match": [
-        "heart_lantern_cluster",
-        9,
-        [
-          23,
-          7.5,
-          -47
-        ]
-      ],
-      "remove": true,
-      "why": "H9 heart lantern cluster -> 3 amber lanterns (Round 7)"
-    },
-    {
-      "match": [
         "lantern_string",
         9,
         [
@@ -93,82 +80,46 @@
   ],
   "add": [
     {
-      "prop": "lantern_medium",
+      "prop": "lantern_large",
       "hole": 9,
       "pos": [
         18.5,
-        7.2,
+        7.29,
         -47.5
       ],
       "yaw": 0,
-      "scale": [
-        1.408,
-        1.411,
-        1.481
-      ],
-      "light": {
-        "range": 16,
-        "brightness": 2.5,
-        "color3": [
-          255,
-          169,
-          87
-        ]
-      },
+      "scale": 0.85,
       "chain_top": 16,
-      "why": "H9 amber_lantern_1 (holes.json Round 7)"
+      "why": "H9 amber_lantern_1 (pass 8: lantern_large_hanging = lantern_large x0.85, bottom 7.2; light from manifest lights[])",
+      "light_id": "H9_hanging_lantern_1"
     },
     {
-      "prop": "lantern_medium",
+      "prop": "lantern_large",
       "hole": 9,
       "pos": [
         28.5,
-        7.2,
+        7.29,
         -46.5
       ],
       "yaw": 0,
-      "scale": [
-        1.408,
-        1.411,
-        1.481
-      ],
-      "light": {
-        "range": 16,
-        "brightness": 2.5,
-        "color3": [
-          255,
-          169,
-          87
-        ]
-      },
+      "scale": 0.85,
       "chain_top": 16,
-      "why": "H9 amber_lantern_2 (holes.json Round 7)"
+      "why": "H9 amber_lantern_2 (pass 8: lantern_large_hanging = lantern_large x0.85, bottom 7.2; light from manifest lights[])",
+      "light_id": "H9_hanging_lantern_2"
     },
     {
-      "prop": "lantern_medium",
+      "prop": "lantern_large",
       "hole": 9,
       "pos": [
         20.0,
-        7.2,
+        7.29,
         -51.5
       ],
       "yaw": 0,
-      "scale": [
-        1.408,
-        1.411,
-        1.481
-      ],
-      "light": {
-        "range": 16,
-        "brightness": 2.5,
-        "color3": [
-          255,
-          169,
-          87
-        ]
-      },
+      "scale": 0.85,
       "chain_top": 16,
-      "why": "H9 amber_lantern_3 (holes.json Round 7)"
+      "why": "H9 amber_lantern_3 (pass 8: lantern_large_hanging = lantern_large x0.85, bottom 7.2; light from manifest lights[])",
+      "light_id": "H9_hanging_lantern_3"
     }
   ]
 }

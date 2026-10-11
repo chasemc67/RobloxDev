@@ -1,0 +1,64 @@
+{
+ "h8": {
+  "default": {
+   "seconds": 125.71,
+   "scenario": "h8",
+   "hole": 8,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "list": [
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h8-fuzz-14",
+        "id": "ring",
+        "t": 84.5602,
+        "event": "flag",
+        "shot": "h8-fuzz-14",
+        "speedOut": 4,
+        "speedIn": 1.706,
+        "kind": "teleport",
+        "hole": 8,
+        "pos": [
+         -19,
+         37.59,
+         23
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h8-fuzz-14",
+      "start": [
+       6.475751693896411,
+       -14.123459486736461,
+       0
+      ],
+      "finish": [
+       -15.6872,
+       37.5793,
+       16.3744
+      ],
+      "speed": 19.632,
+      "aim": 99.7
+     }
+    ]
+   },
+   "name": "Firefly Hollow",
+   "stuck": 0,
+   "par": 4,
+   "cam": "",
+   "clientLag": 0.18
+  }
+ }
+}
