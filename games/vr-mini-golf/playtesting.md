@@ -39,6 +39,9 @@ python3 tools/run_playtests.py export    # mirror every Studio script into src/ 
 python3 tools/run_playtests.py clubviz [--out playtests/club-flip]   # VR club mount screenshots: VRClubFlip off/on, both hands (--legacy: aim-ray mount)
 ```
 
+- `tools/camprobe.py` replays Playtest Bot's round-3 wall spots (`playtests/round3/camprobe.json`) through the golf camera: 12 orbit yaws per spot, `CameraOcclusion.passThrough` + `occluders` (the parts the client fades). A pose is bad if an opaque, unfaded part hides the ball or covers > 40% of the ±12°×±9° view around it. Writes `summary.md` + `camprobe_after.json` (default `playtests/stage-m/camprobe`).
+- `tools/menu_shots.py [--device iphone_17_pro | --vr]` captures the front end (title, courses, settings, how to play, results, then the golf HUD) through FrontEnd's Studio-only `GolfMenuDebug` hook. `--vr` uses SimulateVR (the world-space panel; level the simulated head first if you want it in frame).
+- Workspace `SkipMenu = true` starts a normal playtest without the title screen (GolfTestMode skips it too). Workspace `PBInStudio = true` lets PersonalBest use the real DataStore from Studio (off by default: this place has Studio API access disabled, which logs an engine ERROR).
 - `clubviz` grabs the play viewport with the Studio MCP `screen_capture` (stage runs have no macOS screen-recording permission).
   - Mounts: legacy aim ray, then the grip mount.
   - Views: `side`, `front`, `top`, `side_close`, `front_close`.

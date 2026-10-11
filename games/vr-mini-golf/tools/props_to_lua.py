@@ -123,6 +123,12 @@ def convert():
                 out["pointLights"].append({"id": l["id"], "hole": int(hk[1:]), "kind": l["kind"], "pos": r3(l["pos"]),
                                            "color3": [int(l["color"][i:i + 2], 16) for i in (1, 3, 5)],
                                            "range": l["range"], "brightness": l["brightness"]})
+    # pass-5 per-hole rail skins (manifest hole_skins): CourseBuilder colours plain rails with them and tags each rail
+    # piece with its rail-kit prop name (H8/H9: the cream *_trim kit)
+    out["skins"] = {}
+    for hk, sk in man.get("hole_skins", {}).get("holes", {}).items():
+        out["skins"][str(int(hk[1:]))] = {k: sk[k] for k in ("rail_straight_4", "rail_straight_2", "rail_end_post", "rail_block_color",
+                                                             "rail_block_roblox_material", "rail_cap_color", "rail_cap_roblox_material") if k in sk}
     out["overrides"] = applied
     src = to_lua(out)
     for n in range(1, 10):

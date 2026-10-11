@@ -245,3 +245,66 @@ Studio is in Edit mode, one window, with GolfTestMode false.
 ## Game page
 - Blocked at Creator Dashboard: Chrome is signed in as **MetavrsePlumber**, not MetavrseBuilder, and displays an **Updated Agreements** modal effective November 1, 2026. Asked Chase to switch accounts and handle the agreement. Did not accept terms or edit the Plumber experience.
 - Icon, eight ordered thumbnails, and description remain pending. Access/privacy settings untouched.
+
+---
+
+# Stage m report (2026-10-11, 10:50 PT): Chase feedback + H9 Round 8 + Playtest round 3 fixes. **Published v116**
+
+**Version:** File > Save to Roblox 17:49:52Z, then File > Publish to Roblox 17:50:06Z. Both are in the Studio log. Codex read **v116** in Version History (`logs/codex-publish-m.log`). Audience is unchanged (Friends and Playtesters), and no Robux was spent. Studio is left in Edit mode, one window, and `src/` matches Studio (export diff empty).
+
+1. **Camera: pass-through and see-through.**
+   - The putting/orbit camera (TouchControls) and the test follow camera now use `CameraOcclusion.passThrough`. Walls, rails, props and movers never push the camera; only Terrain still pulls it in, since Terrain can't be faded.
+   - `CameraOcclusion.fade` sets LocalTransparencyModifier 0.7 on everything between the camera and the ball, and restores it when the view clears. That covers rails, caps, felt banks, movers and the camera-queryable decor. Decor models with 80 parts or fewer fade as a whole.
+   - What gets faded: the sight line, four rays 0.3 off it, a 12-ray cone within ±10°×±8° (felt skipped, so the green in front of the ball stays), and any part the camera sits inside. It's cleared when entering Explore.
+   - Explore's walking camera keeps the old `resolve` (out of scope).
+   - Cost: 0.03–0.3 ms per frame.
+2. **Slope felt.** CourseBuilder `SLOPE_FELT` checks each felt part's top normal. Any tilt over 2° gets Game Art Bot's chevron felt (`slope_felt_A` turned into a neutral mask, `art/slope/`), tinted with that hole's felt colour, chevron tips (+V) pointing downhill.
+   - On a Top-face Texture, +U = part −X and +V = part −Z (measured with a UV test image), so the mask is uploaded in 4 rotations.
+   - 18 sloped pieces are textured and no flat felt is. There was no SurfaceAppearance set from 3D Model Bot.
+3. **Hole-in audio.** The cup sound is gone. Each hole-out plays a cup plunk (PSE 9117183624), then a reaction 0.25 s later:
+
+   | Score | Sound |
+   |---|---|
+   | Hole-in-one / eagle | Big cheer 125361506894319 + applause 7367718809 |
+   | Birdie | Cheer 105154404054447 |
+   | Par | Polite applause 72098222084567 |
+   | Bogey | Light claps (PSE) 9114762131 |
+   | Worse / max strokes | "Aww" 77211275419736 |
+
+   - Long sounds fade from 4 s. All of them are free Creator Store audio and public (GetProductInfo).
+   - All load and play in a Play client (IsLoaded, TimeLength > 0, TimePosition advancing). **Nobody has listened to them yet.**
+   - All sounds go through the SoundService.SFX group.
+4. **Front end** (`GolfClient/FrontEnd`).
+   - **Screens:** title (L1 logo on title_bg) with Play / Explore / Settings / How to play. Course picker: Lantern Grove card with par 27 and best; Sugarloaf Canyon and Aurora Archipelago cards marked "Coming soon". Settings: music and SFX volume, camera sensitivity 0.5–2x, VR club hand. How to play: VR / phone / desktop. Results: per-hole scorecard vs par, total ±, personal best, "New best!", Play again / Back to menu.
+   - **How it fits the round:** the menu overlays a round that's already set up, so the harness and smoke are unchanged. GolfTestMode or workspace `SkipMenu` skips it. Golf input is blocked while it's open (including VR buttons).
+   - **Reopening:** a HUD Menu button, or clicking the left thumbstick in VR.
+   - **VR panel:** a world-space SurfaceGui 4 studs ahead at eye height that lazily re-centres when it's more than 70° out of view. `AlwaysOnTop` had to be false or it doesn't draw.
+   - **Shots:** desktop, phone (iPhone 17 Pro emulator) and SimulateVR in `playtests/stage-m/ui/`, via `tools/menu_shots.py`.
+   - **Music:** the game has no music yet, so the Music slider has nothing to control.
+5. **Personal best** (`GolfServer/PersonalBest`). DataStore `VRMiniGolf_PB_v1`, key `u_<UserId>`: `{best = {lantern_grove = total}, settings}`.
+   - Every call is in pcall with 4 tries and backoff. UpdateAsync keeps the lower total, and settings saves are batched, then flushed on leave/BindToClose.
+   - Only full 9-hole rounds from hole 1 count (no harness, no DebugStartHole).
+   - The best shows on the course card and the results screen.
+   - **Not exercised against a live DataStore.** This place has Studio API access off, so in Studio it stays in memory. Set workspace `PBInStudio` to try the real store.
+6. **H9 Round 8.** Rebuilt from holes.json in one regenerate step.
+   - Hinge is at world (−81.833, 48.996, −5.967), 0.8 west of the old one. Swing is ±13°, 4 s.
+   - New invisible foot collider (0.8x0.4x1.6, yaw 30, GolfMover group) welded to the bob, 7.741 below the hinge. The lantern mesh now follows the spec hinge (PropsBuilder: swing props are placed at the mover pivot). The root beam stays at x 22.
+   - **Block rate** (20 BLOCK_LINES shots, (18.5, −25) at 281.2°, 7.75 studs/s): **5/20 = 25% blocked, 9/20 touched**. That's up from 2/20 = 10%; the fixed sim expected 7/20. Movers vs spec PASS. Raw data: `playtests/stage-m/blockrate/`.
+7. **Lights.** The per-hole dressing-light cap (6) left props unlit. Every lantern/glow/firefly prop is now always lit: amber #FFB347, teal #7FE3D0 for glow shrooms/roots, firefly green #D8FF6A, range 8.
+   - Lit counts: crooks 39/39, stakes 6/6, hook pairs 16/16, firefly_cluster_low 5/5, firefly_swarm 2/2, glow_shroom_patch 9/9, glow_root_arch 2/2.
+   - New check `PropsBuilder.UnlitProps` runs on every build (in the report as `unlit`, and it warns): **0 unlit**. There are 233 PointLights in total.
+8. **H8 decor names.**
+   - The part-built tee signs (number + name + par) are grouped as Models named `tee_sign_h01..09`. The number-only mesh is still skipped on purpose.
+   - The three trims are the manifest's H8/H9 rail-kit *skin* (no placements). props_to_lua now exports `hole_skins`, and CourseBuilder colours H8/H9 plain rails cream (block #DDD3BE, cap #F6EBD0 Limestone). Each rail piece is tagged with attribute `ManifestProp` = `rail_straight_4_trim` / `rail_straight_2_trim`.
+   - The trim FBXs aren't imported, and there are no end-post parts.
+   - `toadstool_cluster` is placed only on H3 in the manifest. It's present there; nothing is needed on H8.
+9. **Camera probe** (`tools/camprobe.py`). It replays round 3's 483 listed wall spots × 12 yaws through the real camera code. **0 of 5,796 poses bad** (ball hidden, or more than 40% of the view around the ball covered by an unfaded opaque part), across all 9 holes including the H9 trunk tunnel, H3 mushroom tunnel, H5 bridge, H6 mill wheel and movers. The camera never moved. Before the cone rays, H9 had 18 bad spots (tunnel arch beside the ball).
+10. **Club flip:** no change.
+
+**Tests.**
+
+| Test | Result |
+|---|---|
+| Random sweep, 10 shots × 9 holes (seed 113) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 console warnings/errors. 4 expected water drops (H5 1, H6 2, H7 1). `playtests/stage-m/sweep/` |
+| `progress` (full 9-hole round to the results screen) | PASS |
+| Smoke, desktop and phone | PASS: stroke → Explore → back, 0 errors. `playtests/stage-m/smoke/` |

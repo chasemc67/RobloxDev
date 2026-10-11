@@ -3,6 +3,8 @@ local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local SoundService = game:GetService("SoundService")
+local ContentProvider = game:GetService("ContentProvider")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
@@ -18,6 +20,8 @@ local gui: ScreenGui
 local uiScale: UIScale
 local info, golfButtons, exploreBar, flyButtons, teleportMenu, sprintButton, flyButton
 local Explore -- GolfClient.Explore (phone/desktop only), see HUD.attachExplore
+local FrontEnd -- GolfClient.FrontEnd (title / menus / results), see HUD.attachFrontEnd
+local aimGui
 local closeTeleportMenu
 local infoTitle, infoSub, powerFrame, powerFill, powerLabel, pullLine, pullDot, messageLabel, toastLabel, scorecard, hint
 local vrMessagePart, vrMessageBB, vrMessageLabel, vrWrist, vrWristLabel, vrCardPart, vrCardGui
@@ -202,15 +206,23 @@ local function buildScorecard(final)
 end
 
 function HUD.playAgain()
+	if FrontEnd and FrontEnd.isResultsOpen() then
+		FrontEnd.playAgain()
+		return
+	end
 	Remotes.PlayAgain:FireServer()
 	closeScorecard()
 end
 
+-- (the end-of-round results screen counts as the final card: VR B/Y = Play again)
 function HUD.isFinalCardOpen()
-	return finalCardOpen
+	return finalCardOpen or (FrontEnd ~= nil and FrontEnd.isResultsOpen())
 end
 
 function HUD.toggleScorecard()
+	if FrontEnd and FrontEnd.isOpen() then
+		return
+	end
 	if scorecard then
 		closeScorecard()
 	else
@@ -238,7 +250,7 @@ function HUD.refresh()
 		end
 	end
 	if vrWristLabel then
-		vrWristLabel.Text = title .. "\n" .. sub .. "\nTrigger: go to ball   B/Y: scores\nStick: turn, up teleport, back rewind"
+		vrWristLabel.Text = title .. "\n" .. sub .. "\nTrigger: go to ball   B/Y: scores\nStick: turn, up teleport, back rewind\nClick left stick: menu"
 	end
 	if scorecard and scorecard.Parent then
 		buildScorecard(finalCardOpen)
@@ -302,6 +314,11 @@ function HUD.placeVRMessage(headCF: CFrame)
 	end
 end
 
+-- Last head pose from VRControls (the front end places its VR panel from it).
+function HUD.getHeadCF()
+	return lastHeadCF
+end
+
 function HUD.placeVRWrist(handCF: CFrame, headPos: Vector3)
 	if vrWrist then
 		local pos = (handCF * CFrame.new(0, 0.3, 0.15)).Position
@@ -345,7 +362,7 @@ local function buildScreen()
 	infoSub = label({ Size = UDim2.new(1, -20, 0, 22), Position = UDim2.new(0, 10, 0, 36), TextScaled = true, TextXAlignment = Enum.TextXAlignment.Left, TextColor3 = Color3.fromRGB(190, 230, 200) }, info)
 
 	-- (the Roblox player list is hidden by GolfMain, so the top-right corner is ours; the scorecard lists everyone)
-	local btns = new("Frame", { Name = "GolfButtons", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 120, 0, 156) }, gui)
+	local btns = new("Frame", { Name = "GolfButtons", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 120, 0, 208) }, gui)
 	golfButtons = btns
 	new("UIListLayout", { Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right, SortOrder = Enum.SortOrder.LayoutOrder }, btns)
 	button("Reset Ball", { Name = "ResetBall", LayoutOrder = 1, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(60, 90, 150) }, btns, function()
@@ -353,10 +370,16 @@ local function buildScreen()
 			Ball.requestReset()
 		end
 	end)
-	button("Scorecard", { Name = "Scorecard", LayoutOrder = 2, Size = UDim2.new(1, 0, 0, 44) }, btns, HUD.toggleScorecard)
+	-- (named ScorecardButton so the harness' FindFirstChild("Scorecard", true) only finds the card itself)
+	button("Scorecard", { Name = "ScorecardButton", LayoutOrder = 2, Size = UDim2.new(1, 0, 0, 44) }, btns, HUD.toggleScorecard)
 	button("Explore", { Name = "Explore", LayoutOrder = 3, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(210, 120, 40) }, btns, function()
 		if Explore then
 			Explore.setActive(true)
+		end
+	end)
+	button("Menu", { Name = "Menu", LayoutOrder = 4, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(28, 40, 64) }, btns, function()
+		if FrontEnd then
+			FrontEnd.open("title")
 		end
 	end)
 
@@ -408,7 +431,7 @@ local function buildScreen()
 	powerLabel = label({ Size = UDim2.fromScale(1, 1), TextScaled = true, Text = "", ZIndex = 3, TextStrokeTransparency = 0.5 }, track)
 
 	-- the pull line is drawn in raw screen pixels, so it lives in its own unscaled ScreenGui
-	local aimGui = new("ScreenGui", { Name = "GolfAim", ResetOnSpawn = false }, gui.Parent)
+	aimGui = new("ScreenGui", { Name = "GolfAim", ResetOnSpawn = false }, gui.Parent)
 	pullLine = new("Frame", { AnchorPoint = Vector2.new(0.5, 0.5), BackgroundColor3 = Color3.new(1, 1, 1), BackgroundTransparency = 0.3, BorderSizePixel = 0, Visible = false }, aimGui)
 	pullDot = new("Frame", { AnchorPoint = Vector2.new(0.5, 0.5), Size = UDim2.fromOffset(18, 18), BackgroundColor3 = Color3.new(1, 1, 1), BackgroundTransparency = 0.2, Visible = false }, aimGui)
 	corner(pullDot, 9)
@@ -564,6 +587,125 @@ local function onExploreChanged(active)
 	HUD.refresh()
 end
 
+function HUD.attachFrontEnd(frontEnd)
+	FrontEnd = frontEnd
+end
+
+-- While the front-end menu is up: hide the screen HUD (phone/desktop) and any open scorecard. The VR wrist and
+-- message panels stay.
+function HUD.setMenuHidden(hidden)
+	if hidden then
+		closeScorecard()
+		closeTeleportMenu()
+		HUD.hidePower()
+	end
+	if not HUD.isVR and gui then
+		gui.Enabled = not hidden
+		if aimGui then
+			aimGui.Enabled = not hidden
+		end
+	end
+end
+
+---------------------------------------------------------------------------- audio
+-- SoundService.SFX / SoundService.Music (created if missing); the Settings volumes set their Volume.
+function HUD.soundGroup(name)
+	local g = SoundService:FindFirstChild(name)
+	if not (g and g:IsA("SoundGroup")) then
+		g = new("SoundGroup", { Name = name, Volume = 1 }, SoundService)
+	end
+	return g
+end
+
+local sfxSounds = {} -- [Config.Sounds key] = Sound
+local sfxTokens = {}
+local sfxTweens = {}
+-- Plays a pooled SFX; sounds longer than Config.ReactionFadeAfter fade out from then on.
+function HUD.playSfx(key, volume, speed)
+	local s = sfxSounds[key]
+	if not s then
+		return
+	end
+	sfxTokens[key] = (sfxTokens[key] or 0) + 1
+	local token = sfxTokens[key]
+	if sfxTweens[key] then
+		sfxTweens[key]:Cancel()
+		sfxTweens[key] = nil
+	end
+	s.Volume = volume or 0.5
+	s.PlaybackSpeed = speed or 1
+	s.TimePosition = 0
+	s:Play()
+	local fadeAfter = Config.ReactionFadeAfter or 4
+	if s.TimeLength == 0 or s.TimeLength / s.PlaybackSpeed > fadeAfter + 0.5 then
+		task.delay(fadeAfter, function()
+			if sfxTokens[key] ~= token or not s.IsPlaying then
+				return
+			end
+			local tw = TweenService:Create(s, TweenInfo.new(1.2, Enum.EasingStyle.Sine), { Volume = 0 })
+			sfxTweens[key] = tw
+			tw.Completed:Connect(function(state)
+				if state == Enum.PlaybackState.Completed and sfxTokens[key] == token then
+					s:Stop()
+				end
+			end)
+			tw:Play()
+		end)
+	end
+end
+
+-- Hole-out for the local player: a soft cup plunk, then a crowd reaction by strokes vs par.
+local function holeOutAudio(strokes, par, maxed)
+	local d = strokes - (par or strokes)
+	local plays
+	if maxed or d >= 2 then
+		plays = { { "Aww", 0.6 } }
+	elseif strokes == 1 or d <= -2 then
+		plays = { { "CheerBig", 0.7 }, { "Applause", 0.45 } }
+	elseif d == -1 then
+		plays = { { "Birdie", 0.65 } }
+	elseif d == 0 then
+		plays = { { "Par", 0.55 } }
+	else
+		plays = { { "Bogey", 0.6 } }
+	end
+	if not maxed then
+		HUD.playSfx("CupPlunk", 0.5, 0.9)
+	end
+	task.delay(maxed and 0 or (Config.ReactionDelay or 0.25), function()
+		for _, p in plays do
+			HUD.playSfx(p[1], p[2])
+		end
+	end)
+end
+
+local function setupAudio()
+	local sfxGroup = HUD.soundGroup("SFX")
+	HUD.soundGroup("Music")
+	local list = {}
+	for key, id in Config.Sounds or {} do
+		local s = new("Sound", { Name = "Sfx_" .. key, SoundId = id, Volume = 0.5, SoundGroup = sfxGroup }, script)
+		sfxSounds[key] = s
+		table.insert(list, s)
+	end
+	task.spawn(function()
+		pcall(function()
+			ContentProvider:PreloadAsync(list)
+		end)
+	end)
+	-- route the other client sounds (BallController's putt click, the teleport ring ping) through SFX too
+	local function route(d)
+		if d:IsA("Sound") and d.SoundGroup == nil then
+			d.SoundGroup = sfxGroup
+		end
+	end
+	for _, d in script.Parent:GetDescendants() do
+		route(d)
+	end
+	script.Parent.DescendantAdded:Connect(route)
+	workspace.CurrentCamera.DescendantAdded:Connect(route)
+end
+
 function HUD.attachExplore(explore)
 	Explore = explore
 	Explore.Changed.Event:Connect(onExploreChanged)
@@ -701,13 +843,11 @@ function HUD.init(isVR, ballController)
 		end
 	end)
 
-	local cupSound = new("Sound", { SoundId = "rbxasset://sounds/electronicpingshort.wav", Volume = 0.8 }, script)
+	setupAudio()
 	Remotes.HoleComplete.OnClientEvent:Connect(function(who, holeNum, strokes, par, maxed)
 		local name, color = scoreName(strokes, par)
 		if who == player then
-			if not maxed then
-				cupSound:Play()
-			end
+			holeOutAudio(strokes, par, maxed)
 			HUD.message(maxed and ("Max strokes  -  " .. strokes) or name, color, 3)
 		else
 			HUD.toast(string.format("%s: %s on hole %d", who.DisplayName, maxed and tostring(strokes) or name, holeNum))
@@ -717,8 +857,13 @@ function HUD.init(isVR, ballController)
 	Remotes.Notice.OnClientEvent:Connect(function(text, kind)
 		HUD.message(text, kind == "bad" and Color3.fromRGB(255, 120, 100) or Color3.new(1, 1, 1), 2)
 	end)
-	Remotes.CourseComplete.OnClientEvent:Connect(function()
-		buildScorecard(true)
+	-- (scores, result): result = { course, total, par, best, previousBest, newBest, counted } from GolfServer
+	Remotes.CourseComplete.OnClientEvent:Connect(function(scores, result)
+		if FrontEnd then
+			FrontEnd.showResults(scores, result)
+		else
+			buildScorecard(true)
+		end
 	end)
 	for _, p in Players:GetPlayers() do
 		p:GetAttributeChangedSignal("Scores"):Connect(function()

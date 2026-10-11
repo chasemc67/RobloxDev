@@ -79,6 +79,12 @@ else
 	HUD.attachExplore(Explore)
 end
 
+-- title screen / menus / results (an overlay: the round is already set up behind it; skipped when
+-- workspace GolfTestMode or SkipMenu is true)
+local FrontEnd = require(modules.FrontEnd)
+HUD.attachFrontEnd(FrontEnd)
+FrontEnd.start({ HUD = HUD, Ball = Ball, VR = VR, Explore = not VR and Explore or nil, isVR = isVR or simulateVR })
+
 -- Studio-only playtest harness (see games/vr-mini-golf/playtesting.md)
 if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 	require(modules.GolfTest).start(Ball, HUD, VR, simulateVR)

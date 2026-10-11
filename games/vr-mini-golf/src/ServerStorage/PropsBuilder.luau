@@ -15,7 +15,6 @@ local HttpService = game:GetService("HttpService")
 local Terrain = workspace.Terrain
 
 local LIB_NAME = "LanternGroveProps"
-local MAX_DRESSING_LIGHTS = 6 -- per hole, on top of the hero lanterns (phone performance)
 local SKIP_PROPS = {
 	-- the hole's tee sign (part-built, shows number + name + par) stays; the mesh sign only shows the number
 	tee_sign_h01 = true, tee_sign_h02 = true, tee_sign_h03 = true, tee_sign_h04 = true, tee_sign_h05 = true,
@@ -302,11 +301,11 @@ local function instance(lib, name, cf, scale, scaleZTo, bbox)
 	return m
 end
 
-local function addGlow(model, range, brightness)
+local function addGlow(model, range, brightness, color)
 	for _, p in model:GetDescendants() do
 		if p:IsA("BasePart") and p.Material == Enum.Material.Neon and not p:FindFirstChildOfClass("PointLight") then
 			local l = Instance.new("PointLight")
-			l.Color = Color3.fromHex("FFB347")
+			l.Color = color or Color3.fromHex("FFB347")
 			l.Range = range or 8
 			l.Brightness = brightness or 0.9
 			l.Shadows = false
@@ -315,6 +314,72 @@ local function addGlow(model, range, brightness)
 		end
 	end
 	return false
+end
+
+-- Light-bearing props (Playtest Bot round 3: 11 crooks, a stake, 3 hook pairs and the H8 glow props were unlit):
+-- every placed prop whose name matches one of these always gets a PointLight (no per-hole cap), coloured per
+-- manifest notes: amber paper lanterns, teal shrooms/roots, firefly green. PropsBuilder.UnlitProps checks it.
+local LIGHT_PROPS = {
+	{ pat = "firefly", color = Color3.fromHex("D8FF6A"), range = 8, brightness = 0.6 },
+	{ pat = "glow", color = Color3.fromHex("7FE3D0"), range = 8, brightness = 0.7 }, -- glow_shroom_patch, glow_root_arch, glowing_mushrooms
+	{ pat = "lantern", color = Color3.fromHex("FFB347"), range = 8, brightness = 0.9 },
+}
+local function lightSpecFor(prop: string)
+	for _, l in LIGHT_PROPS do
+		if string.find(prop, l.pat, 1, true) then
+			return l
+		end
+	end
+	return nil
+end
+
+-- PointLight for a light-bearing prop: on its first Neon part, else on an invisible point at its centre.
+local function ensureLight(model, spec)
+	if model:FindFirstChildWhichIsA("PointLight", true) then
+		return false
+	end
+	if addGlow(model, spec.range, spec.brightness, spec.color) then
+		return true
+	end
+	local cf, size = model:GetBoundingBox()
+	local pt = Instance.new("Part")
+	pt.Name = "GlowPoint"
+	pt.Size = Vector3.new(0.2, 0.2, 0.2)
+	pt.CFrame = CFrame.new(cf.Position + Vector3.new(0, size.Y * 0.25, 0))
+	pt.Transparency = 1
+	pt.Anchored = true
+	pt.CanCollide = false
+	pt.CanQuery = false
+	pt.CanTouch = false
+	pt.Parent = model
+	local l = Instance.new("PointLight")
+	l.Color, l.Range, l.Brightness, l.Shadows = spec.color, spec.range, spec.brightness, false
+	l.Parent = pt
+	return true
+end
+
+local function visible(m)
+	for _, p in m:GetDescendants() do
+		if p:IsA("BasePart") and p.Transparency < 1 then
+			return true
+		end
+	end
+	return false
+end
+
+-- The visible light-bearing props under `root` (models named after a LIGHT_PROPS prop) with no PointLight: { full
+-- names }. (CourseBuilder's part-built decor anchors that a mesh replaced are invisible and don't count.)
+function PropsBuilder.UnlitProps(root)
+	local out = {}
+	for _, m in root:GetDescendants() do
+		if m:IsA("Model") and lightSpecFor(m.Name) and not m:FindFirstChildWhichIsA("PointLight", true) and visible(m) then
+			-- (mover meshes are renamed PropVisual; the Light_<id> wrappers hold their prop model)
+			if not (m.Parent and m.Parent:IsA("Model") and string.sub(m.Parent.Name, 1, 6) == "Light_" and m.Parent:FindFirstChildWhichIsA("PointLight", true)) then
+				table.insert(out, m:GetFullName())
+			end
+		end
+	end
+	return out
 end
 
 -- PointLight with the given {range, brightness, color3} on the model's first Neon part (or existing PointLight)
@@ -487,6 +552,11 @@ function PropsBuilder.Place(course)
 					continue
 				end
 				m.Name = "PropVisual"
+				-- a pendulum mesh hangs from the spec hinge (holes.json pivot), not the manifest's copy of it (Round 8 moved it)
+				local hinge = mover:GetAttribute("PivotWorld")
+				if motion.type == "swing" and hinge then
+					m:PivotTo(CFrame.new(hinge) * cf.Rotation)
+				end
 				local root = mover:FindFirstChild("MoverRoot")
 				for _, p in m:GetDescendants() do
 					if p:IsA("BasePart") then
@@ -528,6 +598,8 @@ function PropsBuilder.Place(course)
 				if pl.light then
 					-- props_overrides.json lantern with its own light (H9 amber lanterns over the green)
 					setLight(m, pl.light)
+				elseif lightSpecFor(pl.prop) then
+					ensureLight(m, lightSpecFor(pl.prop))
 				elseif string.find(pl.prop, "lantern") or string.find(pl.prop, "torii") or string.find(pl.prop, "mushroom") or string.find(pl.prop, "ring") then
 					addGlow(m, 10, 1)
 				end
@@ -630,8 +702,8 @@ function PropsBuilder.Place(course)
 					end
 				end
 			end
-			if lights < MAX_DRESSING_LIGHTS and (string.find(it.prop, "lantern") or string.find(it.prop, "glowing")) then
-				if addGlow(m, 8, 0.8) then
+			if lightSpecFor(it.prop) then
+				if ensureLight(m, lightSpecFor(it.prop)) then
 					lights += 1
 				end
 			end
@@ -754,6 +826,11 @@ function PropsBuilder.Place(course)
 	end
 	report.totalDecorParts = parts
 	report.totalDecorTris = tris
+	-- every lantern / glow prop must carry a light
+	report.unlit = PropsBuilder.UnlitProps(course)
+	if #report.unlit > 0 then
+		warn("PropsBuilder: " .. #report.unlit .. " lantern/glow props without a PointLight, e.g. " .. report.unlit[1])
+	end
 	return HttpService:JSONEncode(report)
 end
 

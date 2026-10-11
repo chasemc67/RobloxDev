@@ -237,7 +237,8 @@ function Touch.start(Ball, HUD)
 	end
 
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		if gameProcessed or Ball.exploring() then
+		-- (Ball.menuOpen: the front-end menu is up, GolfClient.FrontEnd)
+		if gameProcessed or Ball.exploring() or Ball.menuOpen then
 			return
 		end
 		local pos = Vector2.new(input.Position.X, input.Position.Y)
@@ -276,12 +277,13 @@ function Touch.start(Ball, HUD)
 	end)
 
 	local function orbitBy(delta: Vector2)
-		yaw -= delta.X * 0.008
-		pitch = math.clamp(pitch + delta.Y * 0.006, MIN_PITCH, MAX_PITCH)
+		local sens = player:GetAttribute("CameraSensitivity") or 1 -- Settings menu, 0.5x..2x
+		yaw -= delta.X * 0.008 * sens
+		pitch = math.clamp(pitch + delta.Y * 0.006 * sens, MIN_PITCH, MAX_PITCH)
 	end
 
 	UserInputService.InputChanged:Connect(function(input)
-		if Ball.exploring() then
+		if Ball.exploring() or Ball.menuOpen then
 			return
 		end
 		local pos = Vector2.new(input.Position.X, input.Position.Y)
@@ -380,6 +382,7 @@ function Touch.start(Ball, HUD)
 	RunService:BindToRenderStep("GolfCamera", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		local b = Ball.ball
 		if not b or Ball.exploring() then
+			CameraOcclusion.clearFade()
 			return
 		end
 		hideOwnCharacter()
@@ -390,9 +393,10 @@ function Touch.start(Ball, HUD)
 		focus = focus:Lerp(target, 1 - math.exp(-dt * 7))
 		local rot = CFrame.fromEulerAnglesYXZ(-pitch, yaw, 0)
 		local desired = focus - rot.LookVector * dist
-		-- pull in front of rails, terrain and decor (beams, foliage) between the ball and the camera
-		desired = CameraOcclusion.resolve(focus, desired, { player.Character })
+		-- pass through rails, walls, props and movers (only Terrain pulls the camera in); what's in between fades
+		desired = CameraOcclusion.passThrough(focus, desired)
 		camera.CFrame = CFrame.lookAt(desired, focus)
+		CameraOcclusion.fade(desired, focus, { player.Character })
 		if mode == "aim" then
 			updateAim()
 		end

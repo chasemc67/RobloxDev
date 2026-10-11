@@ -211,6 +211,46 @@ function Hole:feltColor(pc)
 	return P.felt
 end
 
+-- Sloped felt reads as sloped (Chase, stage m; like Walkabout): any felt top tilted more than MIN_DEG gets Game Art
+-- Bot's chevron felt (lantern-grove/textures/slope_felt_A.png as a neutral mask, art/slope/), tinted with the piece's
+-- felt colour, chevron tips (+V) pointing downhill. A Top-face Texture maps +U to part -X and +V to part -Z, and
+-- can't be turned, so the mask is uploaded in four rotations keyed by the part-local downhill axis.
+local SLOPE_FELT = {
+	MIN_DEG = 2,
+	STUDS_PER_TILE = 4, -- 4 chevrons across a tile: one per stud
+	textures = {
+		["-Z"] = "rbxassetid://93672705345921", -- slope_mask_r0
+		["+X"] = "rbxassetid://78003072927889", -- slope_mask_r90
+		["+Z"] = "rbxassetid://120294739676349", -- slope_mask_r180
+		["-X"] = "rbxassetid://84410090237143", -- slope_mask_r270
+	},
+}
+
+function Hole:slopeFelt(p: BasePart, color: Color3)
+	local n = p.CFrame.UpVector
+	local tilt = math.deg(math.acos(math.clamp(n.Y, -1, 1)))
+	if tilt <= SLOPE_FELT.MIN_DEG then
+		return
+	end
+	-- downhill along the surface, in part space
+	local down = p.CFrame:VectorToObjectSpace(Vector3.new(0, -1, 0) + n * n.Y)
+	local key
+	if math.abs(down.X) > math.abs(down.Z) then
+		key = down.X > 0 and "+X" or "-X"
+	else
+		key = down.Z > 0 and "+Z" or "-Z"
+	end
+	new("Texture", {
+		Name = "SlopeFelt",
+		Face = Enum.NormalId.Top,
+		Texture = SLOPE_FELT.textures[key],
+		Color3 = color,
+		StudsPerTileU = SLOPE_FELT.STUDS_PER_TILE,
+		StudsPerTileV = SLOPE_FELT.STUDS_PER_TILE,
+	}, p)
+	p:SetAttribute("SlopeDeg", math.floor(tilt * 10 + 0.5) / 10)
+end
+
 function Hole:feltPart(name, cf, size, color, pc)
 	local p = new("Part", {
 		Name = name,
@@ -226,6 +266,7 @@ function Hole:feltPart(name, cf, size, color, pc)
 	p:SetAttribute("PieceId", pc.def.id)
 	p:SetAttribute("Zone", pc.def.zone)
 	CollectionService:AddTag(p, SURFACE_TAG)
+	self:slopeFelt(p, color)
 	return p
 end
 
@@ -393,6 +434,20 @@ local RAIL_NOTCHES = {
 	[6] = { rail5 = { axis = "x", from = 5, to = 10 } },
 	[8] = { rail16 = { axis = "x", from = 4.2, to = 5.3 } },
 }
+-- per-hole rail skins (3D Model Bot manifest hole_skins, via tools/props_to_lua.py into CourseData.PropPlacements)
+local RAIL_SKINS = {}
+do
+	-- (by path, cloned: the build step requires a clone of this module, and the command bar caches modules)
+	local ok, pp = pcall(function()
+		return require(game:GetService("ServerStorage").CourseData.PropPlacements:Clone())
+	end)
+	if ok and type(pp) == "table" and pp.skins then
+		for k, v in pp.skins do
+			RAIL_SKINS[tonumber(k)] = v
+		end
+	end
+end
+
 local function wallStyle(w)
 	local id = w.id
 	if w.kind == "bumper" then
@@ -502,12 +557,26 @@ function Hole:buildWall(w)
 		end
 	end
 	local capped = not string.find(w.id, "deflector") and not string.find(w.id, "board")
+	-- the hole's rail-kit skin (manifest hole_skins: H8/H9 cream trim) on plain limestone rails
+	local skin = RAIL_SKINS[self.def.number]
+	local plain = color == P.limestone and material == M.Limestone
+	local capColor, capMat = P.oak, M.Wood
+	if skin and plain then
+		color = skin.rail_block_color and Color3.fromHex(skin.rail_block_color) or color
+		material = skin.rail_block_roblox_material and Enum.Material[skin.rail_block_roblox_material] or material
+		capColor = skin.rail_cap_color and Color3.fromHex(skin.rail_cap_color) or capColor
+		capMat = skin.rail_cap_roblox_material and Enum.Material[skin.rail_cap_roblox_material] or capMat
+	end
 	for _, pc in pieces do
 		local mid, l = (pc[1] + pc[2]) / 2, pc[2] - pc[1]
 		local body = vis("Rail_" .. w.id, self.cf * tilt * CFrame.new(0, -capT - bodyH / 2, mid), Vector3.new(thick, bodyH, l), color, material, self.rails)
 		body:SetAttribute("WallId", w.id)
+		if skin and plain then
+			-- which rail-kit piece this stands in for (Playtest Bot checks props by manifest name)
+			body:SetAttribute("ManifestProp", l >= 3 and skin.rail_straight_4 or skin.rail_straight_2)
+		end
 		if capped then
-			vis("RailCap_" .. w.id, self.cf * tilt * CFrame.new(0, -capT / 2, mid), Vector3.new(thick + 0.08, capT, l + 0.04), P.oak, M.Wood, self.rails)
+			vis("RailCap_" .. w.id, self.cf * tilt * CFrame.new(0, -capT / 2, mid), Vector3.new(thick + 0.08, capT, l + 0.04), capColor, capMat, self.rails)
 		end
 	end
 end
@@ -749,10 +818,13 @@ function Hole:buildMover(m)
 		blk:SetAttribute("RestCFrame", cf) -- pose at angle/offset 0 (harness checks the live pose against the spec)
 		CollectionService:AddTag(blk, MOVER_PART_TAG)
 		new("WeldConstraint", { Part0 = root, Part1 = blk }, blk)
-		local vp = vis("BlockerVisual", cf, size, style[1], style[2], model)
-		vp.Anchored = false
-		vp.Massless = true
-		new("WeldConstraint", { Part0 = blk, Part1 = vp }, vp)
+		-- a pendulum's extra blockers (Round 8 H9 foot under the lantern) are invisible colliders
+		if not (m.type == "swing" and i > 1) then
+			local vp = vis("BlockerVisual", cf, size, style[1], style[2], model)
+			vp.Anchored = false
+			vp.Massless = true
+			new("WeldConstraint", { Part0 = blk, Part1 = vp }, vp)
+		end
 	end
 	self:moverExtras(m, model, root, pivotLocal, axisLocal)
 
@@ -1221,7 +1293,9 @@ function Hole:buildTee()
 	local toTee = Vector3.new(tw.X - sp.X, 0, tw.Z - sp.Z)
 	local face = toTee.Magnitude > 0.1 and toTee.Unit or self.cf:VectorToWorldSpace(Vector3.new(0, 0, 1))
 	local post = CFrame.lookAt(sp, sp + face)
-	local signParent = self.model
+	-- grouped under the manifest's tee-sign name (tee_sign_hNN; the part-built sign also shows name + par, so it
+	-- stands in for the number-only mesh, which PropsBuilder skips)
+	local signParent = new("Model", { Name = string.format("tee_sign_h%02d", self.def.number) }, self.model)
 	vis("SignPost", post * CFrame.new(0, 2.3, 0), Vector3.new(0.35, 4.6, 0.35), P.oak, M.Wood, signParent)
 	local board = vis("Sign", post * CFrame.new(0, 4.6, 0), Vector3.new(4.2, 2.4, 0.25), P.bark, M.WoodPlanks, signParent)
 	local gui = new("SurfaceGui", { Face = Enum.NormalId.Front, CanvasSize = Vector2.new(420, 240), LightInfluence = 0 }, board)

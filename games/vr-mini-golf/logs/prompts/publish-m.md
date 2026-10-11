@@ -1,0 +1,6 @@
+Use the cua_repl computer-use MCP on this Mac (plus the Roblox_Studio MCP if helpful). Roblox Studio has the place "VR Mini Golf" (place 87725688219952, universe 10769274294, owner MetavrseBuilder) open, and no other agent is using it now. Don't edit any scripts or instances. Steps:
+1) Screenshot; confirm Edit mode (not playtesting; if a playtest is running, stop it with the Stop button). Keep only one Studio window. If the Device emulator is active, leave it alone.
+2) File > Save to Roblox (Cmd+S); confirm any dialog.
+3) File > Publish to Roblox to update the EXISTING experience (overwrite the existing place, never create a new experience). Don't change audience/privacy/permissions (it stays Friends and Playtesters). If any payment, fee, agreement or verification prompt appears, cancel it and report it verbatim. Spend no Robux.
+4) Confirm Studio's success message (Output window text) and report the published VERSION number: open File > Version History (or the place's version history in Game Settings / Asset Manager) and read the newest version number and its timestamp. Close that dialog afterwards and leave Studio in Edit mode.
+Report concisely: success message verbatim, version number, timestamp.

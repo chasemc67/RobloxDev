@@ -1,4 +1,8 @@
--- CameraOcclusion: keeps a follow camera in front of whatever sits between it and the ball (round 2, H8 beams).
+-- CameraOcclusion: what the cameras do about geometry between them and their subject.
+--   * Golf cameras (putting/orbit, test follow): pass through everything (stage m, Chase's feedback) and fade what
+--     sits between the camera and the ball: passThrough() + fade(). Only Terrain still pushes the camera in, since
+--     it can't be made see-through.
+--   * Explore's walking camera: resolve() pulls it in front of decor the Roblox popper can't see (round 2).
 -- Decor never collides and is built with CanQuery off, so ordinary casts can't see it. GolfServer puts the visible
 -- decor in collision group GolfDecor with CanQuery on; that group only "collides" with GolfCamera, the group these
 -- casts use, so balls, players, the club and every other raycast still ignore the decor.
@@ -133,6 +137,171 @@ function CameraOcclusion.resolve(focus: Vector3, desired: Vector3, ignore: { Ins
 		end
 	end
 	return focus + bestDir * math.clamp(bestFree - 0.05, 0, dist)
+end
+
+-------------------------------------------------------------------------- golf cameras: pass-through + see-through
+CameraOcclusion.FADE = 0.7 -- LocalTransparencyModifier for parts between the camera and the ball
+local FADE_MODEL_MAX = 80 -- a hit on a decor model with at most this many parts fades the whole model
+local FADE_INSIDE_R = 0.45 -- parts within this of the camera (it sits inside them) fade too
+
+local terrainParams = RaycastParams.new()
+terrainParams.FilterType = Enum.RaycastFilterType.Include
+terrainParams.IgnoreWater = true
+
+local fadeRay = RaycastParams.new()
+fadeRay.FilterType = Enum.RaycastFilterType.Exclude
+fadeRay.CollisionGroup = CameraOcclusion.CAMERA_GROUP
+fadeRay.IgnoreWater = true
+local fadeOverlap = OverlapParams.new()
+fadeOverlap.FilterType = Enum.RaycastFilterType.Exclude
+fadeOverlap.CollisionGroup = CameraOcclusion.CAMERA_GROUP
+
+-- Camera position for a golf camera that wants `desired` looking at `focus`: `desired` itself (walls, rails,
+-- props and movers never push it), except that Terrain in between pulls it in (lifting it toward a top-down
+-- view when that leaves it closer than MIN_DIST).
+function CameraOcclusion.passThrough(focus: Vector3, desired: Vector3): Vector3
+	local offset = desired - focus
+	local dist = offset.Magnitude
+	if dist < 1e-3 then
+		return desired
+	end
+	terrainParams.FilterDescendantsInstances = { workspace.Terrain }
+	local hit = workspace:Spherecast(focus, RADIUS, offset, terrainParams)
+	if not hit then
+		return desired
+	end
+	local dir = offset.Unit
+	local bestDir, bestFree = dir, hit.Distance
+	if bestFree < MIN_DIST then
+		for _, t in { 0.35, 0.65, 0.9 } do
+			local d = dir:Lerp(Vector3.yAxis, t).Unit
+			local h = workspace:Spherecast(focus, RADIUS, d * dist, terrainParams)
+			local free = h and h.Distance or dist
+			if free > bestFree then
+				bestDir, bestFree = d, free
+			end
+			if free >= MIN_DIST then
+				break
+			end
+		end
+	end
+	return focus + bestDir * math.clamp(bestFree - 0.05, 0, dist)
+end
+
+local modelParts = setmetatable({}, { __mode = "k" }) -- [Model] = its parts, or false when too big to fade whole
+
+local function fadeGroup(p: BasePart, into)
+	into[p] = true
+	local m = p:FindFirstAncestorWhichIsA("Model")
+	if not m or m:GetAttribute("HoleNumber") or m.Parent == workspace then
+		return
+	end
+	local parts = modelParts[m]
+	if parts == nil then
+		parts = {}
+		for _, d in m:GetDescendants() do
+			if d:IsA("BasePart") then
+				table.insert(parts, d)
+				if #parts > FADE_MODEL_MAX then
+					parts = false
+					break
+				end
+			end
+		end
+		modelParts[m] = parts
+	end
+	for _, d in parts or {} do
+		into[d] = true
+	end
+end
+
+-- off-centre sight lines (degrees right, up) that also fade: the ball's surroundings, a rail or tunnel wall just
+-- beside it (camprobe: the H9 trunk tunnel arch)
+local CONE = { { 5, 0 }, { -5, 0 }, { 10, 0 }, { -10, 0 }, { 0, 4 }, { 0, -4 }, { 0, 8 }, { 0, -8 }, { 5, 4 }, { -5, 4 }, { 5, -4 }, { -5, -4 } }
+
+-- The parts a golf camera at `camPos` sees in front of `focus`: everything on the sight line (centre plus four rays
+-- 0.3 off it, so a rail edge at the frame centre goes too), on the CONE lines around it (felt excepted, so the green
+-- in front of the ball stays) and whatever the camera sits inside. Rails, walls, felt banks, movers and the
+-- camera-queryable decor (tagDecor) count; the ball, `ignore` and Terrain don't. Mostly see-through parts are skipped.
+-- Returns a set { [BasePart] = true }.
+function CameraOcclusion.occluders(camPos: Vector3, focus: Vector3, ignore: { Instance }?)
+	local filter = { workspace.CurrentCamera, workspace.Terrain }
+	local balls = workspace:FindFirstChild("Balls")
+	if balls then
+		table.insert(filter, balls)
+	end
+	for _, i in ignore or {} do
+		table.insert(filter, i)
+	end
+	local found = {}
+	local toFocus = focus - camPos
+	local len = toFocus.Magnitude
+	if len < 0.05 then
+		return found
+	end
+	local look = CFrame.lookAt(camPos, focus)
+	local fwd, right, up = look.LookVector, look.RightVector, look.UpVector
+	local hits = {}
+	-- stop just short of the focus (0.25 over the ball) so the felt under the ball doesn't count
+	local reach = math.max(len - 0.1, 0.05)
+	local function sweep(from: Vector3, dir: Vector3, skipFelt: boolean)
+		local f = table.clone(filter)
+		for _ = 1, 16 do
+			fadeRay.FilterDescendantsInstances = f
+			local hit = workspace:Raycast(from, dir, fadeRay)
+			if not hit then
+				break
+			end
+			local p = hit.Instance
+			table.insert(f, p)
+			if p:IsA("BasePart") and p.Transparency < 0.95 and not (skipFelt and CollectionService:HasTag(p, "GolfSurface")) then
+				hits[p] = true
+			end
+		end
+	end
+	for _, off in { Vector3.zero, up * 0.3, -up * 0.3, right * 0.3, -right * 0.3 } do
+		sweep(camPos + off, fwd * reach, false)
+	end
+	for _, a in CONE do
+		sweep(camPos, (look * CFrame.Angles(math.rad(a[2]), math.rad(-a[1]), 0)).LookVector * reach, true)
+	end
+	fadeOverlap.FilterDescendantsInstances = filter
+	for _, p in workspace:GetPartBoundsInRadius(camPos, FADE_INSIDE_R, fadeOverlap) do
+		if p.Transparency < 0.95 then
+			hits[p] = true
+		end
+	end
+	for p in hits do
+		fadeGroup(p, found)
+	end
+	return found
+end
+
+local faded: { [BasePart]: boolean } = {}
+
+-- Fade (client-side LocalTransparencyModifier) what's between the camera and the ball; restore what's clear again.
+function CameraOcclusion.fade(camPos: Vector3, focus: Vector3, ignore: { Instance }?)
+	local now = CameraOcclusion.occluders(camPos, focus, ignore)
+	for p in faded do
+		if not now[p] then
+			p.LocalTransparencyModifier = 0
+			faded[p] = nil
+		end
+	end
+	for p in now do
+		if not faded[p] then
+			p.LocalTransparencyModifier = math.max(p.LocalTransparencyModifier, CameraOcclusion.FADE)
+			faded[p] = true
+		end
+	end
+end
+
+-- Restore everything fade() changed (leaving the golf camera, e.g. into Explore).
+function CameraOcclusion.clearFade()
+	for p in faded do
+		p.LocalTransparencyModifier = 0
+	end
+	table.clear(faded)
 end
 
 return CameraOcclusion

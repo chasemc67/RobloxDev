@@ -4951,7 +4951,7 @@
      "id": "lantern_pendulum",
      "type": "swing",
      "pivot": [
-      22.0,
+      21.2,
       8.996,
       -38.5
      ],
@@ -4960,14 +4960,14 @@
       0,
       1
      ],
-     "amplitude_deg": 30.0,
-     "period_s": 5.0,
+     "amplitude_deg": 13.0,
+     "period_s": 4.0,
      "phase": 0.0,
-     "speed": 37.6991,
+     "speed": 20.4204,
      "speed_units": "deg/s (peak, at the bottom of the swing)",
      "range": [
-      -30.0,
-      30.0
+      -13.0,
+      13.0
      ],
      "blockers": [
       {
@@ -4982,9 +4982,22 @@
         1.6
        ],
        "yaw": 30.0
+      },
+      {
+       "center": [
+        0,
+        -7.741,
+        0
+       ],
+       "size": [
+        0.8,
+        0.4,
+        1.6
+       ],
+       "yaw": 30.0
       }
      ],
-     "visual": "Great lantern on a 7-stud chain from a root beam, swinging east-west across the heart-well mouth (1.5 studs before the drop edge); the bob (1.6x1.8x1.6 box turned 30 deg about the vertical, 2.19 across the swing) skims the felt at the bottom of its swing and lifts clear of the ball near the ends"
+     "visual": "Great lantern on a 7-stud chain from a root beam, swinging east-west across the heart-well mouth (1.5 studs before the drop edge); the bob (1.6x1.8x1.6 box turned 30 deg about the vertical, 2.19 across the swing) skims the felt at the bottom of its swing and swings clear of the shot line (x 21.2) near the ends; blocker 2 = invisible collider foot 0.8x0.4x1.6 (same yaw) under the lantern body, inside its footprint, bottom 0.055 above the felt at rest (body bottom 0.096): the visual lantern mesh is unchanged"
     }
    ],
    "teleports": [
@@ -5257,7 +5270,7 @@
       8.996,
       -38.5
      ],
-     "notes": "Root beam spanning the chamber high above the heart-well mouth (x 14..30), hinge of the lantern pendulum at its middle",
+     "notes": "Root beam spanning the chamber high above the heart-well mouth (x 14..30), hinge of the lantern pendulum on it at x 21.2",
      "approx_size": [
       16,
       1.2,

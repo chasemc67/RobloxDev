@@ -9,6 +9,22 @@ local HttpService = game:GetService("HttpService")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
 local Remotes = Golf:WaitForChild("Remotes")
+local PersonalBest = require(script:WaitForChild("PersonalBest"))
+
+-- Remotes added with the front end (created here; clients WaitForChild them)
+local function remote(name)
+	local r = Remotes:FindFirstChild(name)
+	if not r then
+		r = Instance.new("RemoteEvent")
+		r.Name = name
+		r.Parent = Remotes
+	end
+	return r
+end
+local SaveSettings = remote("SaveSettings") -- client -> server: settings table (PersonalBest.setSettings)
+
+-- Studio harness rounds never count toward a personal best
+local TEST_MODE = RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true
 
 local course = workspace:WaitForChild("Course")
 local holes = {}
@@ -100,8 +116,36 @@ local function startHole(player, st, index)
 	placeBall(player, st, teePosition(holes[index]), "hole")
 end
 
+-- Course complete: totals, and the personal best (only full 9-hole rounds started on hole 1 outside the test
+-- harness count). Sent to the client as the 2nd CourseComplete argument.
+local function roundResult(player, st)
+	local courseId = Config.CurrentCourse
+	local total, parTotal, complete = 0, 0, true
+	for i, h in holes do
+		parTotal += h:GetAttribute("Par") or 0
+		local s = st.strokes[i]
+		if type(s) == "number" and s > 0 then
+			total += s
+		else
+			complete = false
+		end
+	end
+	local counted = st.roundValid == true and complete and not TEST_MODE
+	local result = { course = courseId, total = total, par = parTotal, counted = counted, newBest = false }
+	if counted then
+		result.best, result.newBest, result.previousBest = PersonalBest.recordRound(player, courseId, total)
+	else
+		result.best = PersonalBest.get(player, courseId)
+		result.previousBest = result.best
+	end
+	return result
+end
+
 local function finishHole(player, st, maxed)
 	st.sunk = true
+	if st.testHole then
+		st.roundValid = false
+	end
 	local hole = holeOf(st)
 	local strokes = st.strokes[st.hole]
 	if maxed then
@@ -126,7 +170,7 @@ local function finishHole(player, st, maxed)
 			startHole(player, st, st.hole + 1)
 		else
 			st.finished = true
-			Remotes.CourseComplete:FireClient(player, st.strokes)
+			Remotes.CourseComplete:FireClient(player, st.strokes, roundResult(player, st))
 		end
 	end)
 end
@@ -213,6 +257,7 @@ local function onPlayerAdded(player)
 	if player.Character then
 		setupCharacter(player.Character)
 	end
+	PersonalBest.load(player)
 end
 
 Players.PlayerAdded:Connect(onPlayerAdded)
@@ -226,6 +271,17 @@ Players.PlayerRemoving:Connect(function(player)
 	if st and st.ball then
 		st.ball:Destroy()
 	end
+	PersonalBest.unload(player)
+end)
+
+game:BindToClose(function()
+	PersonalBest.flushAll()
+end)
+
+SaveSettings.OnServerEvent:Connect(function(player, settings)
+	if type(settings) == "table" then
+		PersonalBest.setSettings(player, settings)
+	end
 end)
 
 Remotes.Ready.OnServerEvent:Connect(function(player)
@@ -237,6 +293,7 @@ Remotes.Ready.OnServerEvent:Connect(function(player)
 		st.started = true
 		-- Studio testing aid: set workspace attribute DebugStartHole to begin on a later hole
 		local first = math.clamp(workspace:GetAttribute("DebugStartHole") or 1, 1, #holes)
+		st.roundValid = first == 1
 		startHole(player, st, first)
 	elseif not st.sunk then
 		placeBall(player, st, st.lastPos, "hole")
@@ -285,12 +342,20 @@ Remotes.RequestReset.OnServerEvent:Connect(function(player)
 	placeBall(player, st, st.lastPos, "reset")
 end)
 
-Remotes.PlayAgain.OnServerEvent:Connect(function(player)
+-- Play again after the round, or (restart == true, from the front-end course picker) restart mid-round.
+Remotes.PlayAgain.OnServerEvent:Connect(function(player, restart)
 	local st = states[player]
-	if not st or not st.finished then
+	if not st or not st.started or not (st.finished or restart == true) then
 		return
 	end
+	local now = os.clock()
+	if now - (st.lastPlayAgain or 0) < 1 then
+		return
+	end
+	st.lastPlayAgain = now
+	st.transitionToken = nil -- cancel a pending "next hole"
 	st.strokes = {}
+	st.roundValid = true
 	startHole(player, st, 1)
 end)
 

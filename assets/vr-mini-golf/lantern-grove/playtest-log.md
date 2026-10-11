@@ -421,3 +421,162 @@ World: `world/tools/validate.py` iteration 9 **CLEAN** (no felt, wall, tee or cu
 - H8 gate without a ring change (dwell 1.5/2.5, 1.5/3.0, 1.5/3.0 at 4.2 travel): good 2.74–2.88 (TRIVIAL, < par−1). Ring 0.4: good 3.11, but it undoes most of Round 5's ring enlargement.
 - H8 door range −4..0 (closing from the north): 58% blocked.
 - H9 wider square-on bobs (2.0–2.4 wide, ±25–40°): fuzz soft-locks along the swing plane (0–154 per 100k, very sensitive to amplitude/period). Bob turned 45°: deflector retro-bounce at 4 s (23 per 100k).
+
+## Round 8: H9 pendulum measured in Studio (v105, stage-h report §4 + §7) (2026-10-11)
+
+**Input.** RobloxDevBot confirmed the Round 7 pendulum in Studio: a single 1.6 x 1.8 x 1.6 collider at yaw 30, swinging ±30° with a 5.0 s
+period, hinge hole-local (22, 8.996, -38.5), centre 7.000 from the hinge, bob bottom 0.096 above the felt at the bottom of the swing.
+They fired the chamber line from (18.5, 1.0, -25.0), aim dir (0.194, -0.981) = 281.19°, at 7.75 studs/s, with hits at 20 phases
+0, 0.25 .. 4.75 s. **Engine: blocked 2/20 = 10%, touched 5/20** (3 deflections still crossed). The Round 7 sim had said 37.5%.
+
+Snapshots: `tools/out/holes-r8-start.json` (= Round 7), `holes-r8-final.json`, `sim-r8-final.json` (= `sim-latest.json`); timing checks
+`timing-r8-before.json` (Round 7 geometry, fixed sim) and `timing-r8-final.json`; Studio-line runs `studio-h9-r7-legacy.json`
+(Round 7 geometry, old contact model), `studio-h9-r8-before.json` (fixed sim) and `studio-h9-r8-after.json`.
+
+### 1. Reproducing the Studio test: `python3 tools/timing_check.py --studio-h9 [--speeds ...] [--legacy]`
+
+**Phase convention.** In the sim, phase = sim time of the hit t0, and the bob angle is amplitude·sin(2π·t0/period + phase). holes.json
+phase is 0, so t0 = 0 is the bob at the bottom moving east (+x). I assumed GolfTest uses the same convention: it hits at server time
+offset t0 into the mover's cycle. The touch windows support this. The engine saw touches at phases 4.75–0.25 and 2.25–2.5. The sim
+(old model) touches at 4.75–0.25 and 1.75–2.25. In both cases the bob is near the bottom when the ball gets there.
+
+| | Arrives at z = -38.5 | x there | Speed there |
+|---|---|---|---|
+| Engine | 2.5–2.9 s after the hit | 21.18 | 2.7–3.2 studs/s |
+| Sim (no pendulum, same start/aim/speed) | **2.71 s** | **21.17** | **2.94 studs/s** |
+
+So friction (0.5 + 0.25v), speed, arrival time and line all match. They are not the gap.
+
+**Why the sim said 37.5% and the engine said 10%:**
+1. **Different metric (about half the gap).** Round 7's 37.5% was blocked **+ deflected** (9/24 = 5 blocked + 4 deflected). The engine's
+   "blocked" means the ball never crossed. Blocked-only, the old sim gave 5/24 = 21% on its line and **4/20 = 20%** on the Studio line
+   (touched 6/20).
+2. **Contact height (the real physics bug).** The sim is 3D (sphere vs oriented box), so it already knew the bob rises as it swings and that
+   the ball can pass under a raised bob. But `sphere_box` treated **every** contact whose normal was ≥ 0.3 horizontal as a full
+   horizontal bounce off a wall, including contacts on the **top half of the ball**. At rest the bob bottom is 0.096 above the felt,
+   just above the ball centre (0.08) and below its top (0.16). A face contact 0.016–0.08 above the centre has a nearly horizontal
+   normal, so the sim bounced the ball fully off it. In-engine the bob pushes the ball down into the felt and it squeezes under ("most
+   touches glance off and roll under"). Along the shot line (x ≈ hinge − 0.82) the bob's bottom face gets below ball-centre height only
+   at its corners. The lowest any point of the swinging bob reaches there is 0.063 (corner circle r 7.975), and only for an instant.
+3. Phase and speed at the swing line match (above), so neither contributes.
+
+**Fix (sim.py, all holes).** New rule for **swing** blockers only: a pendulum blocker collides only if its **lowest point over the ball's
+footprint** (vertical lines through the ball centre, 8 rim points at r = 0.08 and the box's horizontally closest point) is **≤ the
+ball's centre height** (+ `swing_pass_tol` = 0). Otherwise the ball rolls under. This is `box_bottom_under()` plus a check in
+`sim_shot()`. Rotating and sliding blockers are unchanged, so H1–H8 give identical numbers. New `test_physics.py` test 13: a bob at
+rest with its bottom 0.10 above the felt lets the ball roll under; at 0.06 it stops it. **13/13 tests pass.**
+
+Studio conditions, Round 7 geometry (20 phases):
+
+| Speed (studs/s) | Old sim: blocked / touched | **Fixed sim: blocked / touched** | Engine |
+|---|---|---|---|
+| 6.5 | 7 / 18 | 2 / 7 | - |
+| 7.0 | 6 / 10 | 1 / 2 | - |
+| **7.75 (Studio line)** | 4 / 6 (20% / 30%) | **1 / 4 (5% / 20%)** | **2 / 5 (10% / 25%)** |
+| 8.5 | 3 / 5 | 0 / 0 | - |
+| 9.0 | 2 / 5 | 0 / 0 | - |
+
+The fixed sim is now within one shot of the engine on both counts.
+
+### 2. H9 pendulum change
+
+Under the fixed sim the Round 7 pendulum blocks almost nothing: intended line 0/24 blocked, 3/24 deflected; Studio line 0–10% across
+6.5–9 studs/s. Why the simple fixes don't work:
+- **Lowering the bob alone** (bottom 0.02 at the bottom of the swing): the flat-bottomed, 2.19-wide yawed box's lowest corner dips
+  (1.093)² / (2·7.9) = **0.075** mid-swing, so it would cut **0.055 into the felt**. 0.096 is already the floor.
+- **A longer chain** (9–12) lowers the dip to 0.06/0.046, but even with the bob below ball-centre height at rest, 14/20 Studio shots still
+  pass. The bob only covers the line for a short slice of a ±30° swing (|θ| ≲ 8°).
+- **A longer period** doesn't raise the fraction of time spent over the line.
+- **Moving the hinge onto the line** alone: mean 19%.
+
+Sweeps: `tools/sweep_r8.py` (Studio line at 6.5/7/7.75/8.5/9 studs/s, intended line, felt clearance, optionally fuzz and full plays).
+Highlights (blocked %, Studio line, 20 phases, 6.5/7/7.75/8.5/9):
+
+| Variant | Blocked | Mean | Notes |
+|---|---|---|---|
+| Round 7 | 10/5/5/0/0 | 4% | good 3.54 / avg 3.95 (fixed sim) |
+| hinge x 21.2 | 35/20/15/15/10 | 19% | |
+| hinge 21.2, ±15°, 5 s, chain 9 | 55/30/20/30/25 | 32% | |
+| hinge 21.2 + foot 0.8x0.4x1.6, ±15°, 5 s | 50/35/35/30/25 | 35% | |
+| hinge 21.2 + foot, ±12°, 4 s | 65/45/35/40/30 | 43% | good 3.78, 1 trap in 400 dense shots |
+| hinge 21.2 + foot, ±15°, 4 s | 60/45/30/35/30 | 40% | good 3.70 / avg 4.08 |
+| **hinge 21.2 + foot, ±13°, 4 s (chosen)** | **60/40/35/35/35** | **41%** | 0 traps; dense 80 phases: 66/45/40/34/32 |
+
+**Final parameters (old → new):**
+
+| Parameter | Round 7 | Round 8 |
+|---|---|---|
+| Hinge x (hole-local) | 22.0 | **21.2** (right over the in-engine crossing x 21.18). y 8.996 and z -38.5 unchanged |
+| Amplitude | ±30° | **±13°** |
+| Period | 5.0 s | **4.0 s** (peak 38 → 20 deg/s; a 7.9-stud pendulum's natural period is 3.1 s, so 4 s still looks natural) |
+| Colliders | lantern body 1.6x1.8x1.6, yaw 30, centre 7.0 below the hinge | body unchanged **+ foot 0.8 x 0.4 x 1.6, yaw 30, centre 7.741 below the hinge** |
+| Bottom above felt at rest | 0.096 (body) | body 0.096, **foot 0.055** (below the ball centre). Min gap over the swing 0.020 (validator floor) |
+| Root beam | centred x 22 | unchanged (x 14..30); the hinge sits on it at x 21.2 |
+
+The foot sits inside the lantern's footprint and only **0.041 below its visible bottom**, so it can be an invisible collider.
+**No new mesh from 3D Model Bot:** the visual lantern stays as it is. RobloxDevBot adds a Transparency 1, CanCollide (GolfMover group)
+part welded to the bob, moves the hinge 0.8 west, and changes the swing to ±13° / 4 s.
+
+Bob sweep is now x 18.4..24.0, y 1.02..3.30, z -39.6..-37.4. The amber lanterns are ≥ 8.5 studs from it (was 7.6). The well mouth is
+x 18–26, so a play to the east edge (x 24–26) still dodges the lantern. The felt, walls, cup and tee didn't move, so
+`world/tools/validate.py` wasn't rerun.
+
+### 3. Timing check (24 phases, `tools/timing_check.py`, fuzz 100k)
+
+Before (Round 7 geometry, fixed sim):
+
+| Hole | Obstacle | Line | Period | Blocked | Deflected | Blocked+deflected | Passed | Traps | Bot timings | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H7 | log | intended | 9.357 s | 11/24 | 0/24 | **45.8%** | 54.2% | 0 | blocked, passed, passed | 0/100000 |
+| H8 | root_door | intended | 6.667 s | 12/24 | 0/24 | **50%** | 50% | 0 | blocked, passed, passed | 0/100000 |
+| H9 | lantern_pendulum | intended | 5 s | **0/24** | 3/24 | **12.5%** | 87.5% | 0 | passed, passed, passed | 0/100000 |
+
+After (final):
+
+| Hole | Obstacle | Line | Period | Blocked | Deflected | Blocked+deflected | Passed | Traps | Bot timings | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H7 | log | intended | 9.357 s | 11/24 | 0/24 | **45.8%** | 54.2% | 0 | blocked, passed, passed | 0/100000 |
+| H7 | log | ace | 9.357 s | 7/24 | 2/24 | **37.5%** | 62.5% | 0 | passed, blocked, passed | - |
+| H8 | root_door | intended | 6.667 s | 12/24 | 0/24 | **50%** | 50% | 0 | blocked, passed, passed | 0/100000 |
+| H8 | root_door | ace | 6.667 s | 7/24 | 0/24 | **29.2%** | 70.8% | 0 | blocked, passed, passed | - |
+| H9 | lantern_pendulum | intended | 4 s | **10/24** | 2/24 | **50%** | 50% | 0 | passed, blocked, passed | 0/100000 |
+| H9 | lantern_pendulum | ace | 4 s | 0/24 | 0/24 | **0%** | 100% | 0 | passed, passed, passed | - |
+
+H9 Studio line after (`studio-h9-r8-after.json`; the 20 phases 0..4.75 s now span 1.19 cycles of 4 s):
+
+| Speed | Arrive z=-38.5 (s) | Speed there | Blocked | Deflected (crossed) | Touched | Passed | Traps |
+|---|---|---|---|---|---|---|---|
+| 6.5 | 4.28 | 0.91 | **12/20 = 60%** | 8 | 20 | 0 | 0 |
+| 7.0 | 3.38 | 1.86 | **8/20 = 40%** | 7 | 15 | 5 | 0 |
+| **7.75** | 2.71 | 2.94 | **7/20 = 35%** (was 1/20 fixed sim, 2/20 engine) | 1 | 8 | 12 | 0 |
+| 8.5 | 2.30 | 3.89 | **7/20 = 35%** | 3 | 10 | 10 | 0 |
+| 9.0 | 2.10 | 4.48 | **7/20 = 35%** | 3 | 10 | 10 | 0 |
+
+6.5 studs/s is a nearly dead ball at the line (0.9 studs/s), so it is easy to stop. At 7–9 studs/s the block rate is 35–40%.
+
+### 4. Final stats (2000 plays per skill, same seeds)
+
+H1–H8 are identical to Round 7 (same geometry; the new rule only affects swing blockers).
+
+| # | Hole | Par | Good avg | Avg avg | Skill gap | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 9 | Heart of the Grove, Round 7 (old sim) | 4 | 3.64 | 4.07 | 0.43 | 3.0% | 0.2% | 0.1% | 0.2% | ok |
+| 9 | Round 7 geometry, fixed sim | 4 | 3.54 | 3.95 | 0.40 | 3.0% | 0.2% | 0.1% | 0.1% | ok |
+| 9 | **Round 8** | 4 | **3.74** | **4.13** | **0.39** | 3.0% | 0.2% | 0.1% | 0.2% | ok |
+| | **Course total** | 27 | 25.30 → **25.40** | 31.99 → **32.05** | | | | | | |
+
+Targets all met: skill gap ≥ 0.39 on every hole (smallest H9 0.39, then H1 0.43), average ≤ par + 0.81 everywhere, caps ≤ 0.9%, good HIO 0.7–8.5%,
+average 0–1.3%, an ace line on every hole (H9 55 grid hits; it goes through the Lantern Knot and never meets the pendulum).
+Validator 0 errors, fuzz 0 escapes, 0 timeouts.
+
+H9 against the Round 7 design numbers: +0.10 good, +0.06 average. That is roughly the difficulty Round 7 thought it had, because Round 7
+was tuned against a sim that over-counted blocks. The obstacle is now real in-engine, and the hole isn't harder than intended.
+
+### What RobloxDevBot must rebuild (H9 only)
+
+- **Hinge** to hole-local **(21.2, 8.996, -38.5)** (0.8 west). The root beam stays centred at x 22.
+- **Swing ±13°, period 4.0 s**, angle(t) = 13°·sin(360°·t/4), phase 0.
+- **Add the foot collider:** 0.8 x 0.4 x 1.6 box, yaw 30 (same as the body), centre 7.741 below the hinge when hanging straight down.
+  Its bottom is 0.055 above the felt (world: felt + 0.055). Set Transparency 1, CanCollide true, group GolfMover, and weld it to the bob.
+  The lantern body collider and mesh are unchanged.
+- **Retest** with GolfTest `BLOCK_LINES` (same line and 20 phases). Expect about 6–8/20 blocked at 7.75 studs/s; the fixed sim says 7/20.

@@ -75,4 +75,42 @@ return {
 	MaxStrokes = 8,
 	PenaltyStrokes = 1,
 	HoleTransitionTime = 3.5,
+
+	-- Audio (all public, verified 2026-10-11). SFX play through SoundService.SFX, music through SoundService.Music.
+	Sounds = {
+		CupPlunk = "rbxassetid://9117183624", -- ProSoundEffects "Pacifier 1" comic plop, 0.47 s
+		CheerBig = "rbxassetid://125361506894319", -- big crowd cheer, 7.1 s (hole-in-one / eagle or better)
+		Applause = "rbxassetid://7367718809", -- applause, 6.7 s (layered under CheerBig)
+		Birdie = "rbxassetid://105154404054447", -- small crowd cheering + clapping, 3.7 s
+		Par = "rbxassetid://72098222084567", -- polite applause, 4.0 s
+		Bogey = "rbxassetid://9114762131", -- ProSoundEffects slow hand claps, 2.9 s
+		Aww = "rbxassetid://77211275419736", -- small "aww", 1.7 s (double bogey or worse, max strokes)
+	},
+	ReactionDelay = 0.25, -- seconds from the cup plunk to the crowd reaction
+	ReactionFadeAfter = 4, -- long reactions fade out after this many seconds (before the next hole)
+
+	-- Front-end art (uploaded 2026-10-11, assets/vr-mini-golf/store/ui)
+	UI = {
+		Logo = "rbxassetid://73526573447336", -- 2048x768 transparent
+		TitleBackground = "rbxassetid://98974963375930", -- 1920x1080
+		CardLanternGrove = "rbxassetid://90933106008541", -- 1024 square
+		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in
+		CardAurora = "rbxassetid://82146694601580", -- grey, "coming soon" tag baked in
+	},
+	-- Courses on the picker. Only playable ones have a personal best (player attribute "Best_<id>").
+	Courses = {
+		{ id = "lantern_grove", name = "Lantern Grove", image = "CardLanternGrove", playable = true },
+		{ id = "sugarloaf_canyon", name = "Sugarloaf Canyon", image = "CardSugarloaf", playable = false },
+		{ id = "aurora_archipelago", name = "Aurora Archipelago", image = "CardAurora", playable = false },
+	},
+	CurrentCourse = "lantern_grove",
+
+	-- Player settings (saved with the personal best record). Volumes are 0..1, CameraSensitivity a multiplier.
+	DefaultSettings = {
+		MusicVolume = 0.6,
+		SFXVolume = 0.8,
+		Handedness = "Right", -- "Right" | "Left" (VR club hand)
+		CameraSensitivity = 1,
+	},
+	CameraSensitivityRange = { 0.5, 2 },
 }

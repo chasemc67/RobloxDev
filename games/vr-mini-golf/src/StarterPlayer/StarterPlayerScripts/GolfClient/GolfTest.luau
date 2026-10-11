@@ -2556,9 +2556,10 @@ local function updateCamera(dt)
 		end
 		local want = b.Position - followDir * 4 + Vector3.new(0, 2.2, 0)
 		followPos = followPos and followPos:Lerp(want, 1 - math.exp(-dt * 6)) or want
-		-- (same occlusion as the putting camera: stay in front of beams/foliage between the ball and the camera)
-		local camPos = CameraOcclusion.resolve(b.Position, followPos, { player.Character })
+		-- (same as the putting camera: pass through geometry, fade what's between the camera and the ball)
+		local camPos = CameraOcclusion.passThrough(b.Position, followPos)
 		camera.CFrame = CFrame.lookAt(camPos, b.Position + followDir * 1.5)
+		CameraOcclusion.fade(camPos, b.Position, { player.Character })
 	end
 end
 

@@ -364,6 +364,15 @@ function VR.start(Ball, HUD, simulate)
 		teleportedThisFrame = true
 		HUD.message(dominant == Enum.UserCFrame.RightHand and "Right-handed" or "Left-handed", Color3.new(1, 1, 1), 1.5)
 	end
+	-- Settings menu handedness (GolfClient.FrontEnd): same as pressing X when it differs
+	VR.setLeftHanded = function(left: boolean)
+		if (dominant == Enum.UserCFrame.LeftHand) ~= left then
+			switchHands()
+		end
+	end
+	VR.isLeftHanded = function()
+		return dominant == Enum.UserCFrame.LeftHand
+	end
 
 	------------------------------------------------------------ input
 	local moveStick = Vector2.zero
@@ -375,6 +384,9 @@ function VR.start(Ball, HUD, simulate)
 	local gripHeld = { [Enum.UserCFrame.RightHand] = false, [Enum.UserCFrame.LeftHand] = false }
 
 	local function onButtonDown(keyCode)
+		if Ball.menuOpen and keyCode ~= Enum.KeyCode.ButtonL3 then
+			return -- the front-end menu is up: the trigger is the laser pointer's click (GolfClient.FrontEnd)
+		end
 		if keyCode == Enum.KeyCode.ButtonR2 or keyCode == Enum.KeyCode.ButtonL2 then
 			warpToBall(nil)
 		elseif keyCode == Enum.KeyCode.ButtonR1 then

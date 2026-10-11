@@ -183,3 +183,11 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
 - H7–H9: 20 random shots each, no escapes/stuck/resets/timeouts/nudges, no console errors/warnings. Desktop stroke → Explore → back smoke PASS.
 - Creator Dashboard updates blocked: Chrome is MetavrsePlumber and presents Updated Agreements; Chase needs to handle the agreement and switch to MetavrseBuilder. Icon, eight thumbnails, description pending. Access/privacy unchanged.
 - Full details: Stage j in `logs/stages/e-report.md`. One Studio window, Edit mode, test flags off.
+
+
+### Stage k — 2026-10-11
+Saved and reopened the exact Lantern Grove description in Studio Basic Info. Icon and thumbnail updates blocked: current Studio redirects image management to Creator Hub, while task requires Studio only. No browser used; name/access/privacy/maturity unchanged. Public API reports content restricted, so description cannot be publicly verified. See ../../logs/stages/e-report.md for Stage k report.
+
+## 2026-10-11 Stage m: published v116
+- Front end (title, course picker, settings, how to play, results), personal best (DataStore), crowd reactions on hole-out, pass-through + see-through camera, slope felt texture, H9 Round 8 pendulum, all lanterns/glow props lit, H8/H9 cream rail trim.
+- Saved + published by Codex computer use 2026-10-11 10:50 PT: "Published new changes in "VR Mini Golf" to Roblox." Version History v116. Audience unchanged. Details: logs/stages/e-report.md (Stage m).
