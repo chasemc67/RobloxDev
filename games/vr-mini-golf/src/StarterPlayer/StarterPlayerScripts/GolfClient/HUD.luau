@@ -15,6 +15,10 @@ HUD.isVR = false
 
 local FONT = Enum.Font.FredokaOne
 local gui: ScreenGui
+local uiScale: UIScale
+local info, golfButtons, exploreBar, flyButtons, teleportMenu, sprintButton, flyButton
+local Explore -- GolfClient.Explore (phone/desktop only), see HUD.attachExplore
+local closeTeleportMenu
 local infoTitle, infoSub, powerFrame, powerFill, powerLabel, pullLine, pullDot, messageLabel, toastLabel, scorecard, hint
 local vrMessagePart, vrMessageBB, vrMessageLabel, vrWrist, vrWristLabel, vrCardPart, vrCardGui
 local cardParent -- where the scorecard is built: the ScreenGui, or a world-space panel in VR
@@ -110,26 +114,44 @@ local function buildScorecard(final)
 	local holes = holeList()
 	local cols = #holes + 2
 	local rows = #Players:GetPlayers() + 2
+	-- compact on narrow / short screens (Playtest Bot round 1): fit the card to the screen, shorter rows, and scroll
+	-- the player rows when there are many
+	local vp = workspace.CurrentCamera.ViewportSize
+	local scale = (not HUD.isVR and uiScale) and uiScale.Scale or 1
+	local maxW = HUD.isVR and 620 or math.min(620, vp.X / scale - 24)
+	local maxH = HUD.isVR and 520 or math.min(520, vp.Y / scale - 70)
+	local compact = maxW < 560 or maxH < 420
+	local rowH = compact and 30 or 40
+	local footer = final and 60 or 0
+	local gridH = math.min(rows * rowH, maxH - 60 - footer)
 	scorecard = panel({
 		Name = "Scorecard",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.fromScale(0.5, 0.5),
-		Size = UDim2.new(0, math.min(620, 140 + cols * 64), 0, 90 + rows * 40 + (final and 60 or 0)),
+		Size = UDim2.new(0, math.min(maxW, 140 + cols * 64), 0, (compact and 44 or 56) + gridH + footer),
 		BackgroundTransparency = 0.08,
 		ZIndex = 10,
 	}, cardParent)
-	new("UISizeConstraint", { MaxSize = Vector2.new(620, 520) }, scorecard)
 	new("UIScale", { Scale = 1 }, scorecard)
-	label({ Text = final and "Course Complete!" or "Scorecard", Size = UDim2.new(1, 0, 0, 44), TextScaled = true, ZIndex = 11, TextColor3 = Color3.fromRGB(255, 230, 120) }, scorecard)
-	local grid = new("Frame", { BackgroundTransparency = 1, Position = UDim2.new(0, 14, 0, 50), Size = UDim2.new(1, -28, 0, rows * 40), ZIndex = 11 }, scorecard)
+	label({ Text = final and "Course Complete!" or "Scorecard", Size = UDim2.new(1, 0, 0, compact and 32 or 44), TextScaled = true, ZIndex = 11, TextColor3 = Color3.fromRGB(255, 230, 120) }, scorecard)
+	local grid = new("ScrollingFrame", {
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0,
+		Position = UDim2.new(0, 14, 0, compact and 38 or 50),
+		Size = UDim2.new(1, -28, 0, gridH),
+		CanvasSize = UDim2.new(0, 0, 0, rows * rowH),
+		ScrollBarThickness = rows * rowH > gridH and 6 or 0,
+		ScrollingDirection = Enum.ScrollingDirection.Y,
+		ZIndex = 11,
+	}, scorecard)
 	local colW = 1 / (cols + 1)
 	local function cell(r, c, text, color, wide)
 		label({
 			Text = text,
 			TextScaled = true,
 			TextColor3 = color or Color3.new(1, 1, 1),
-			Position = UDim2.new(c == 0 and 0 or colW * (c + 1), 0, 0, (r - 1) * 40),
-			Size = UDim2.new(wide and colW * 2 or colW, -4, 0, 34),
+			Position = UDim2.new(c == 0 and 0 or colW * (c + 1), 0, 0, (r - 1) * rowH),
+			Size = UDim2.new(wide and colW * 2 or colW, -4, 0, rowH - 6),
 			TextXAlignment = c == 0 and Enum.TextXAlignment.Left or Enum.TextXAlignment.Center,
 			ZIndex = 12,
 		}, grid)
@@ -211,6 +233,9 @@ function HUD.refresh()
 	if infoTitle then
 		infoTitle.Text = title
 		infoSub.Text = sub
+		if Explore and Explore.active then
+			infoSub.Text = "Exploring  -  your ball waits on hole " .. n
+		end
 	end
 	if vrWristLabel then
 		vrWristLabel.Text = title .. "\n" .. sub .. "\nTrigger: go to ball   B/Y: scores\nStick: turn, up teleport, back rewind"
@@ -315,18 +340,65 @@ end
 
 ---------------------------------------------------------------------------- build
 local function buildScreen()
-	local info = panel({ Name = "Info", Position = UDim2.new(0, 12, 0, 12), Size = UDim2.new(0, 290, 0, 64) }, gui)
+	info = panel({ Name = "Info", Position = UDim2.new(0, 12, 0, 12), Size = UDim2.new(0, 290, 0, 64) }, gui)
 	infoTitle = label({ Size = UDim2.new(1, -20, 0, 30), Position = UDim2.new(0, 10, 0, 4), TextScaled = true, TextXAlignment = Enum.TextXAlignment.Left }, info)
 	infoSub = label({ Size = UDim2.new(1, -20, 0, 22), Position = UDim2.new(0, 10, 0, 36), TextScaled = true, TextXAlignment = Enum.TextXAlignment.Left, TextColor3 = Color3.fromRGB(190, 230, 200) }, info)
 
-	local btns = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 120, 0, 104) }, gui)
-	new("UIListLayout", { Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right }, btns)
-	button("Reset Ball", { Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(60, 90, 150) }, btns, function()
+	-- (the Roblox player list is hidden by GolfMain, so the top-right corner is ours; the scorecard lists everyone)
+	local btns = new("Frame", { Name = "GolfButtons", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 120, 0, 156) }, gui)
+	golfButtons = btns
+	new("UIListLayout", { Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right, SortOrder = Enum.SortOrder.LayoutOrder }, btns)
+	button("Reset Ball", { Name = "ResetBall", LayoutOrder = 1, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(60, 90, 150) }, btns, function()
 		if Ball then
 			Ball.requestReset()
 		end
 	end)
-	button("Scorecard", { Size = UDim2.new(1, 0, 0, 44) }, btns, HUD.toggleScorecard)
+	button("Scorecard", { Name = "Scorecard", LayoutOrder = 2, Size = UDim2.new(1, 0, 0, 44) }, btns, HUD.toggleScorecard)
+	button("Explore", { Name = "Explore", LayoutOrder = 3, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(210, 120, 40) }, btns, function()
+		if Explore then
+			Explore.setActive(true)
+		end
+	end)
+
+	-- Explore mode bar (replaces the golf buttons while exploring)
+	exploreBar = new("Frame", { Name = "ExploreBar", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 150, 0, 260), Visible = false }, gui)
+	new("UIListLayout", { Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right, SortOrder = Enum.SortOrder.LayoutOrder }, exploreBar)
+	button("Back to golf", { Name = "BackToGolf", LayoutOrder = 1, Size = UDim2.new(1, 0, 0, 50), BackgroundColor3 = Color3.fromRGB(40, 140, 80) }, exploreBar, function()
+		closeTeleportMenu()
+		if Explore then
+			Explore.setActive(false)
+		end
+	end)
+	button("Teleport", { Name = "Teleport", LayoutOrder = 2, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(110, 80, 170) }, exploreBar, function()
+		HUD.toggleTeleportMenu()
+	end)
+	sprintButton = button("Sprint: off", { Name = "Sprint", LayoutOrder = 3, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(60, 90, 150) }, exploreBar, function()
+		if Explore then
+			Explore.setSprint(not Explore.isSprinting())
+		end
+	end)
+	flyButton = button("Fly: off", { Name = "Fly", LayoutOrder = 4, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(60, 90, 150) }, exploreBar, function()
+		if Explore then
+			Explore.setFly(not Explore.isFlying())
+		end
+	end)
+	-- hold to climb / sink while flying (keyboard: Space/E and Q/Ctrl). Bottom right, left of the touch jump button.
+	flyButtons = new("Frame", { Name = "FlyButtons", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 1), Position = UDim2.new(1, -250, 1, -52), Size = UDim2.new(0, 184, 0, 84), Visible = false }, gui)
+	new("UIListLayout", { Padding = UDim.new(0, 12), FillDirection = Enum.FillDirection.Horizontal, SortOrder = Enum.SortOrder.LayoutOrder }, flyButtons)
+	local holdUp, holdDown = false, false
+	for i, spec in { { "Down", false }, { "Up", true } } do
+		local b = button(spec[1], { Name = spec[1], LayoutOrder = i, Size = UDim2.new(0, 84, 0, 84), BackgroundColor3 = Color3.fromRGB(80, 120, 170), BackgroundTransparency = 0.25 }, flyButtons, function() end)
+		b.MouseButton1Down:Connect(function()
+			if spec[2] then holdUp = true else holdDown = true end
+			if Explore then Explore.setFlyVertical(holdUp, holdDown) end
+		end)
+		local function release()
+			if spec[2] then holdUp = false else holdDown = false end
+			if Explore then Explore.setFlyVertical(holdUp, holdDown) end
+		end
+		b.MouseButton1Up:Connect(release)
+		b.MouseLeave:Connect(release)
+	end
 
 	powerFrame = panel({ Name = "Power", AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -70), Size = UDim2.new(0, 300, 0, 34), Visible = false }, gui)
 	local track = new("Frame", { Position = UDim2.new(0, 8, 0, 8), Size = UDim2.new(1, -16, 1, -16), BackgroundColor3 = Color3.fromRGB(0, 0, 0), BackgroundTransparency = 0.5 }, powerFrame)
@@ -360,13 +432,142 @@ local function buildScreen()
 		Position = UDim2.new(0.5, 0, 1, -16),
 		Size = UDim2.new(0.9, 0, 0, 22),
 		TextScaled = true,
-		Text = game:GetService("UserInputService").TouchEnabled
-				and "Pull back from the ball to putt  -  drag elsewhere to look around  -  pinch to zoom"
-			or "Drag back from the ball to putt  -  drag elsewhere to look around  -  scroll to zoom  -  R to reset",
+		TextWrapped = true,
+		Text = "",
 		TextColor3 = Color3.fromRGB(235, 245, 235),
 		TextStrokeTransparency = 0.5,
 	}, gui)
 	new("UITextSizeConstraint", { MaxTextSize = 20 }, hint)
+end
+
+local TOUCH = game:GetService("UserInputService").TouchEnabled
+local HINTS = {
+	golf = TOUCH and "Pull back from the ball to putt  -  drag elsewhere to look around  -  pinch to zoom"
+		or "Drag back from the ball to putt  -  drag elsewhere to look around  -  scroll to zoom  -  R to reset",
+	explore = TOUCH and "Thumbstick to walk  -  jump button  -  Sprint / Fly buttons  -  Teleport to any hole or view"
+		or "WASD walk  -  Space jump  -  hold Shift sprint  -  F fly (Space/E up, Q down)  -  T teleport",
+}
+
+-- Bottom help line: wraps onto two lines on narrow screens (phones, small windows) instead of shrinking to nothing.
+local function layoutHint()
+	if not hint then
+		return
+	end
+	local vp = workspace.CurrentCamera.ViewportSize
+	local w = vp.X / (uiScale and uiScale.Scale or 1)
+	hint.Text = (Explore and Explore.active) and HINTS.explore or HINTS.golf
+	local narrow = w < 1000
+	hint.Size = UDim2.new(narrow and 0.62 or 0.9, 0, 0, narrow and 40 or 22)
+	-- on phones, keep it clear of the touch thumbstick (left) and jump button (right) while exploring
+	hint.Position = UDim2.new(0.5, 0, 1, narrow and -8 or -16)
+end
+
+-- Roblox chat sits in the top-left corner; slide the hole/par/strokes panel below it while it's open. On desktop,
+-- always (new-message notices pop up there even with the window closed); on phones only while it's open.
+local TextChatService = game:GetService("TextChatService")
+local function chatBottom()
+	local cfg = TextChatService:FindFirstChildOfClass("ChatWindowConfiguration")
+	if not cfg or not cfg.Enabled then
+		return nil
+	end
+	local ok, open = pcall(function()
+		return game:GetService("StarterGui"):GetCore("ChatActive")
+	end)
+	if ok and open == false and TOUCH then
+		return nil
+	end
+	local ok2, pos, size = pcall(function()
+		return cfg.AbsolutePosition, cfg.AbsoluteSize
+	end)
+	if not ok2 or not size or size.Y < 1 then
+		return nil
+	end
+	return pos.Y + size.Y, pos.X + size.X
+end
+
+local function layoutInfo()
+	if not info or not gui then
+		return
+	end
+	local scale = uiScale and uiScale.Scale or 1
+	local y = 12
+	local bottom, right = chatBottom()
+	if bottom and right and right > gui.AbsolutePosition.X + 12 then
+		-- (chat rects are in screen pixels; the HUD is scaled and starts under the top bar)
+		y = math.max(12, (bottom - gui.AbsolutePosition.Y) / scale + 8)
+	end
+	info.Position = UDim2.new(0, 12, 0, y)
+end
+
+closeTeleportMenu = function()
+	if teleportMenu then
+		teleportMenu:Destroy()
+		teleportMenu = nil
+	end
+end
+
+-- Explore teleport menu: H1..H9 tee views + scenic viewpoints.
+function HUD.toggleTeleportMenu()
+	if teleportMenu then
+		closeTeleportMenu()
+		return
+	end
+	if not (Explore and Explore.active and gui) then
+		return
+	end
+	local dests = Explore.destinations()
+	local holesList, views = {}, {}
+	for _, d in dests do
+		table.insert(d.kind == "hole" and holesList or views, d)
+	end
+	local vp = workspace.CurrentCamera.ViewportSize
+	local scale = uiScale and uiScale.Scale or 1
+	local w = math.min(560, vp.X / scale - 40)
+	local h = math.min(420, vp.Y / scale - 40)
+	teleportMenu = panel({ Name = "TeleportMenu", AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5), Size = UDim2.new(0, w, 0, h), BackgroundTransparency = 0.08, ZIndex = 20 }, gui)
+	label({ Text = "Teleport", Size = UDim2.new(1, -60, 0, 36), Position = UDim2.new(0, 14, 0, 6), TextScaled = true, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 21, TextColor3 = Color3.fromRGB(255, 230, 120) }, teleportMenu)
+	button("X", { AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -8, 0, 8), Size = UDim2.new(0, 36, 0, 36), BackgroundColor3 = Color3.fromRGB(150, 50, 50), ZIndex = 22 }, teleportMenu, closeTeleportMenu)
+	local body = new("ScrollingFrame", { BackgroundTransparency = 1, BorderSizePixel = 0, Position = UDim2.new(0, 12, 0, 50), Size = UDim2.new(1, -24, 1, -60), ScrollBarThickness = 6, AutomaticCanvasSize = Enum.AutomaticSize.Y, CanvasSize = UDim2.new(), ZIndex = 21 }, teleportMenu)
+	new("UIListLayout", { Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder }, body)
+	local function section(title, list, perRow, color, order)
+		label({ Text = title, Size = UDim2.new(1, 0, 0, 24), TextScaled = true, TextXAlignment = Enum.TextXAlignment.Left, TextColor3 = Color3.fromRGB(180, 220, 190), ZIndex = 21, LayoutOrder = order }, body)
+		local grid = new("Frame", { BackgroundTransparency = 1, Size = UDim2.new(1, -8, 0, 0), AutomaticSize = Enum.AutomaticSize.Y, ZIndex = 21, LayoutOrder = order + 1 }, body)
+		new("UIGridLayout", { CellPadding = UDim2.fromOffset(8, 8), CellSize = UDim2.new(1 / perRow, -8, 0, 44), SortOrder = Enum.SortOrder.LayoutOrder }, grid)
+		for i, d in list do
+			local b = button(d.name, { Name = d.name, BackgroundColor3 = color, ZIndex = 22, LayoutOrder = i }, grid, function()
+				closeTeleportMenu()
+				Explore.teleport(d)
+			end)
+			b.Size = UDim2.new(0, 0, 0, 44)
+		end
+	end
+	section("Holes (tee view)", holesList, w < 400 and 3 or 5, Color3.fromRGB(40, 140, 80), 1)
+	section("Scenic views", views, w < 400 and 2 or 3, Color3.fromRGB(110, 80, 170), 3)
+end
+
+-- Explore mode on/off: swap the golf buttons for the explore bar and update the help text.
+local function onExploreChanged(active)
+	if golfButtons then
+		golfButtons.Visible = not active
+		exploreBar.Visible = active
+		flyButtons.Visible = active and Explore.isFlying()
+		sprintButton.Text = Explore.isSprinting() and "Sprint: ON" or "Sprint: off"
+		sprintButton.BackgroundColor3 = Explore.isSprinting() and Color3.fromRGB(210, 120, 40) or Color3.fromRGB(60, 90, 150)
+		flyButton.Text = Explore.isFlying() and "Fly: ON" or "Fly: off"
+		flyButton.BackgroundColor3 = Explore.isFlying() and Color3.fromRGB(210, 120, 40) or Color3.fromRGB(60, 90, 150)
+	end
+	if not active then
+		closeTeleportMenu()
+		HUD.hidePower()
+	end
+	layoutHint()
+	HUD.refresh()
+end
+
+function HUD.attachExplore(explore)
+	Explore = explore
+	Explore.Changed.Event:Connect(onExploreChanged)
+	onExploreChanged(Explore.active)
 end
 
 local function buildVR()
@@ -420,18 +621,28 @@ function HUD.init(isVR, ballController)
 	Ball = ballController
 	gui = new("ScreenGui", { Name = "GolfHUD", ResetOnSpawn = false, ZIndexBehavior = Enum.ZIndexBehavior.Sibling }, player:WaitForChild("PlayerGui"))
 	-- shrink the HUD on small (phone) screens
-	local uiScale = new("UIScale", {}, gui)
+	uiScale = new("UIScale", {}, gui)
 	local function rescale()
 		local vp = workspace.CurrentCamera.ViewportSize
 		uiScale.Scale = math.clamp(math.min(vp.X, vp.Y) / 620, 0.6, 1.15)
+		layoutHint()
+		layoutInfo()
 	end
-	rescale()
-	workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(rescale)
 	cardParent = gui
 	if isVR then
 		buildVR()
 	else
 		buildScreen()
+	end
+	rescale()
+	workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(rescale)
+	if not isVR then
+		task.spawn(function()
+			while gui.Parent do
+				layoutInfo()
+				task.wait(0.5)
+			end
+		end)
 	end
 
 	player:GetAttributeChangedSignal("Strokes"):Connect(HUD.refresh)

@@ -128,6 +128,59 @@ Options (JSON in workspace attribute `GolfTestOpts`, set with `--opts`): `parts`
 
 **Engine-calibrated sim** (`tools/engine_sim.py`): a patched copy of the designer's `tools/sim.py` with the game's measured rail response (normal restitution 0.60, tangential 0.93, then BallController's post-impact skid, net `v = v_out + 0.5·(v_in − v_out)/3.5`). It brute-forces aim × speed (× phase) from each tee in ~25 s for all 9 holes and prints candidate ace lines; only an in-engine ace counts.
 
+### Playtest Bot: random-shot sweep per hole (the current test scope)
+
+Since the 2026-10-10 scope cut, the automated check per hole is a **quick random-shot sweep only** (no par checks,
+no intended lines, no hole-in-one searches; Playtest Bot and Game Art Bot own fun and difficulty). Studio open on
+place 87725688219952 in Edit mode, Studio MCP on, then:
+```bash
+cd ~/src/RobloxDev/games/vr-mini-golf
+# 20 random shots per hole (any direction, 20-100% power, 1 in 3 from the tee, the rest from random felt spots).
+# Modest batches keep the Mac responsive (~10 min per batch):
+python3 tools/run_playtests.py holes 1 2 3 4 5 --opts '{"parts":"fuzz","fuzz":20}' --out playtests/<date>/sweep
+python3 tools/run_playtests.py holes 6 7 8 9   --opts '{"parts":"fuzz","fuzz":20}' --out playtests/<date>/sweep-b
+# one hole again with the same shots (seeded):
+python3 tools/run_playtests.py holes 7 --opts '{"parts":"fuzz","fuzz":20,"seed":7}' --out /tmp/h7
+```
+Read `<out>/summary.md`. Per hole, flag only:
+1. **Stuck**: the ball stopped moving for more than 3 s away from the cup. Holes with moving parts or teleports
+   (H4, H6, H7, H8, H9) auto-reset such a ball to the stroke start after 3 s; those are counted separately as
+   **auto-resets** (not bugs, but report the count). A stroke still moving after 20 s resets too (**timeouts**).
+2. **Escapes**: the ball left the course (below it or outside the hole's bounds). Water/rabbit-hole hazards are
+   designed penalties and are listed separately.
+3. **Console errors/warnings** (server and client), in the summary's Console section.
+
+Then the normal-play checks, desktop and phone emulation (also run the Explore round trip below):
+```bash
+python3 tools/run_playtests.py smoke
+python3 tools/run_playtests.py smoke --device iphone_17_pro
+python3 tools/ui_shots.py --out playtests/<date>/ui                          # HUD + Explore screenshots, desktop
+python3 tools/ui_shots.py --device iphone_17_pro --out playtests/<date>/ui   # same on the phone emulator
+```
+`smoke` prints `play.explore`: Explore on (ball parked/anchored, free camera, walk speed 16), every teleport
+destination landing on ground, fly climb, a fall below the world respawning on a walkway, the teleport menu
+(14 buttons), and Back to golf (ball moved 0, unanchored, strokes unchanged). `problems` must be empty.
+
+## How to play (desktop, phone, VR)
+
+- **Desktop**: drag back from the ball and release to putt (distance = power, the dotted line shows the aim).
+  Drag anywhere else (or right-drag) to orbit the camera, scroll to zoom, R or **Reset Ball** to replay from
+  the last spot. **Scorecard** shows every player (the Roblox player list is hidden during play).
+- **Phone/tablet**: same, with your finger: pull back from the ball to putt, drag elsewhere to look around,
+  pinch to zoom.
+- **VR**: hold the controller like a putter grip, handle down; swing through the ball. Trigger warps you to your
+  ball, A refits the club, B/Y scorecard, right stick: turn, up = teleport arc, back = rewind.
+- **Between holes**: holing out shows the score, fades to black and puts you on the next tee (VR: you're warped
+  beside the ball; desktop/phone: the camera cuts to it). Desktop/phone don't need a "go to ball": the camera
+  always follows your ball and your avatar stands beside it, hidden from your own view.
+- **Explore** (desktop/phone; not in VR): the orange **Explore** button. No ball and no score; your ball waits where
+  it was (or at the stroke start if it was still rolling). Walk with WASD / the touch thumbstick, jump with
+  Space / the jump button, **Sprint** (hold Shift, or the button), **Fly** (F or the button; Space/E up, Q/Ctrl
+  down, or the on-screen Up/Down). **Teleport** (T) has H1-H9 tee views plus Welcome Plaza, Grand Falls, Hollow
+  Tree, Lantern Mere and Lookout Rock. Falling under the world puts you back on the nearest walkway; invisible
+  walls at the terrain edge stop you leaving. **Back to golf** returns you to your hole and ball. Explore is
+  per player: other players' rounds are untouched.
+
 ### Playtest Bot: how to run the per-hole scenarios
 
 Studio must be open on place 87725688219952 (VR Mini Golf), in Edit mode, with the Studio MCP enabled. Then, from the repo:

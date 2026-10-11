@@ -183,6 +183,7 @@ function WorldBuilder.CarveHoles(course)
 				WorldBuilder.CapUnder(p, 2, 0.1)
 			end
 		end
+		WorldBuilder.ClearGrassNearRails(hole)
 		local hz = hole:FindFirstChild("Hazards")
 		for _, h in hz and hz:GetChildren() or {} do
 			if h.Name == "Hazard" and h:GetAttribute("HazardType") == "water" then
@@ -196,6 +197,27 @@ function WorldBuilder.CarveHoles(course)
 		end
 	end
 	return n
+end
+
+-- Terrain Grass grows tall decoration blades that poke through the rails (Playtest Bot round 1, H1). Swap Grass for
+-- LeafyGrass (no blades) in every voxel within `strip` studs of a rail, plus half a voxel for the blade spread.
+function WorldBuilder.ClearGrassNearRails(hole, strip)
+	strip = strip or 1
+	local rails = hole:FindFirstChild("Rails")
+	local pad = strip + 2
+	for _, r in rails and rails:GetChildren() or {} do
+		if r:IsA("BasePart") then
+			local cf, half = r.CFrame, r.Size / 2
+			local ext = Vector3.new(
+				math.abs(cf.RightVector.X) * half.X + math.abs(cf.UpVector.X) * half.Y + math.abs(cf.LookVector.X) * half.Z,
+				math.abs(cf.RightVector.Y) * half.X + math.abs(cf.UpVector.Y) * half.Y + math.abs(cf.LookVector.Y) * half.Z,
+				math.abs(cf.RightVector.Z) * half.X + math.abs(cf.UpVector.Z) * half.Y + math.abs(cf.LookVector.Z) * half.Z
+			)
+			local grow = Vector3.new(pad, 4, pad)
+			local region = Region3.new(cf.Position - ext - grow, cf.Position + ext + grow):ExpandToGrid(4)
+			Terrain:ReplaceMaterial(region, 4, M.Grass, M.LeafyGrass)
+		end
+	end
 end
 
 function WorldBuilder.CapUnder(p: BasePart, margin, clearance)

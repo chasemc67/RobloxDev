@@ -29,7 +29,7 @@ function Touch.start(Ball, HUD)
 	local camera = workspace.CurrentCamera
 	camera.CameraType = Enum.CameraType.Scriptable
 	camera:GetPropertyChangedSignal("CameraType"):Connect(function()
-		if camera.CameraType ~= Enum.CameraType.Scriptable then
+		if camera.CameraType ~= Enum.CameraType.Scriptable and not Ball.exploring() then
 			camera.CameraType = Enum.CameraType.Scriptable
 		end
 	end)
@@ -97,11 +97,30 @@ function Touch.start(Ball, HUD)
 		local p = Vector3.new(spot.X, y, spot.Z)
 		char:PivotTo(CFrame.lookAt(p, p + right))
 		hrp.AssemblyLinearVelocity = Vector3.zero
-		-- keep our own avatar from blocking the view of the ball (others still see it normally)
-		for _, d in char:GetDescendants() do
+	end
+
+	-- Our own avatar is fully hidden in the putting camera (Playtest Bot round 1: a see-through avatar blocked the
+	-- tee view); others still see it normally. Every frame, because Roblox's camera scripts reset the modifier.
+	local ownParts = {}
+	local function trackCharacter(char)
+		table.clear(ownParts)
+		local function add(d)
 			if d:IsA("BasePart") or d:IsA("Decal") then
-				d.LocalTransparencyModifier = 0.75
+				table.insert(ownParts, d)
 			end
+		end
+		for _, d in char:GetDescendants() do
+			add(d)
+		end
+		char.DescendantAdded:Connect(add)
+	end
+	if player.Character then
+		trackCharacter(player.Character)
+	end
+	player.CharacterAdded:Connect(trackCharacter)
+	local function hideOwnCharacter()
+		for _, d in ownParts do
+			d.LocalTransparencyModifier = 1
 		end
 	end
 
@@ -221,7 +240,7 @@ function Touch.start(Ball, HUD)
 	end
 
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		if gameProcessed then
+		if gameProcessed or Ball.exploring() then
 			return
 		end
 		local pos = Vector2.new(input.Position.X, input.Position.Y)
@@ -265,6 +284,9 @@ function Touch.start(Ball, HUD)
 	end
 
 	UserInputService.InputChanged:Connect(function(input)
+		if Ball.exploring() then
+			return
+		end
 		local pos = Vector2.new(input.Position.X, input.Position.Y)
 		if input.UserInputType == Enum.UserInputType.Touch then
 			if touches[input] == nil then
@@ -297,6 +319,12 @@ function Touch.start(Ball, HUD)
 	end)
 
 	UserInputService.InputEnded:Connect(function(input)
+		if Ball.exploring() then
+			touches[input] = nil
+			mode = nil
+			mouseDown = false
+			return
+		end
 		if input.UserInputType == Enum.UserInputType.Touch then
 			if mode == "aim" and input == aimInput then
 				releaseAim()
@@ -325,7 +353,7 @@ function Touch.start(Ball, HUD)
 		if state ~= "ready" and mode == "aim" then
 			cancelAim()
 		end
-		if state == "ready" and Ball.ball then
+		if state == "ready" and Ball.ball and not Ball.exploring() then
 			local toTarget = flat(Ball.getAimPoint() - Ball.ball.Position)
 			standBesideBall(toTarget.Magnitude > 0.1 and toTarget or flat(camera.CFrame.LookVector))
 		end
@@ -334,6 +362,11 @@ function Touch.start(Ball, HUD)
 	-- new hole / reset: point the camera at the target
 	Ball.Placed.Event:Connect(function(pos, reason)
 		focus = pos
+		if reason == "resume" then
+			cancelAim()
+			mode = nil
+			table.clear(touches)
+		end
 		if reason == "hole" then
 			local hole = Ball.getHole()
 			local aim = hole:FindFirstChild("AimTarget") or hole.Cup
@@ -349,9 +382,10 @@ function Touch.start(Ball, HUD)
 	---------------------------------------------------------------- camera
 	RunService:BindToRenderStep("GolfCamera", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		local b = Ball.ball
-		if not b then
+		if not b or Ball.exploring() then
 			return
 		end
+		hideOwnCharacter()
 		local target = b.Position + Vector3.new(0, 0.25, 0)
 		if not focus then
 			focus = target

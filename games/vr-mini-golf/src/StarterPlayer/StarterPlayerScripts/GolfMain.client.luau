@@ -20,7 +20,11 @@ workspace:WaitForChild("Course")
 -- PlayerModule is present, disable its controls too. Also hide the touch thumbstick/jump button.
 local playerModule = player:WaitForChild("PlayerScripts"):FindFirstChild("PlayerModule")
 local controls = playerModule and require(playerModule):GetControls()
+local Explore = require(modules.Explore)
 local function freezeCharacter(char)
+	if Explore.active then
+		return -- Explore.applyCharacter sets it up for walking
+	end
 	if controls then
 		controls:Disable()
 	end
@@ -41,6 +45,10 @@ pcall(function()
 end)
 pcall(function()
 	StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+end)
+-- the Roblox player list covered the Reset Ball button (Playtest Bot round 1); the scorecard lists every player
+pcall(function()
+	StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 end)
 
 -- VR can take a moment to report as enabled at startup
@@ -66,6 +74,9 @@ if isVR or simulateVR then
 	VR.start(Ball, HUD, simulateVR)
 else
 	require(modules.TouchControls).start(Ball, HUD)
+	-- free-roam Explore mode (phone/desktop): HUD Explore button
+	Explore.start(Ball, HUD, controls)
+	HUD.attachExplore(Explore)
 end
 
 -- Studio-only playtest harness (see games/vr-mini-golf/playtesting.md)

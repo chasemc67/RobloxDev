@@ -123,6 +123,34 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
 - 3D Model Bot pass-6 props and all world pieces (hollow tree shell + crown, sister trees, falls, cliffs, tree line, hills, mountains) imported and placed. Final sweep 180 shots: 0 escapes/stuck/resets/timeouts, 0 console errors. See `logs/stages/progress.md` and `playtests/lantern-v1/stage-c/README.md`.
 - Re-import after a new manifest: `python3 tools/props_to_lua.py --push`, import any new FBX (3D Importer), `PropsBuilder.PrepareLibrary({<imported models>})`, then `holes_to_lua.py --build`. World pieces: `tools/world_pieces_to_lua.py --push`, import, `WorldBuilder.PrepareWorldLibrary()`, `WorldBuilder.BuildScenery()`.
 
+## 2026-10-10 17:11 PT: Lantern Grove stage d, movement + Explore + round-1 UI fixes (published as v79)
+- **Movement**:
+  - Hole-out -> score -> fade to black -> next tee, measured on desktop.
+  - VR trigger warps you to your ball; `progress` passes on all 9 holes in simulated VR.
+  - Desktop/phone: the camera follows the ball.
+- **Explore mode** (Chase), `GolfClient/Explore.luau` + `GolfServer` `SetExplore`:
+  - HUD Explore button: no ball (the server parks it), no score.
+  - Walk/jump/sprint/fly, with normal-feeling gravity for the character only.
+  - Teleport menu: H1-H9 tee views + Welcome Plaza, Grand Falls, Hollow Tree, Lantern Mere, Lookout Rock.
+  - A fall respawns you on the nearest walkway. Invisible players-only walls (`workspace.ExploreBounds`) at the
+    terrain edge.
+  - Back to golf restores the ball and strokes. Per player.
+- **Round-1 (v43) fixes**:
+  - Roblox player list hidden (it covered Reset Ball).
+  - Own avatar fully hidden in the putting camera.
+  - Info panel below the chat area.
+  - Help line wraps on narrow screens; compact, scrolling scorecard.
+  - Terrain grass cleared 1 stud (+ half a voxel) along every rail (`WorldBuilder.ClearGrassNearRails`, part of the
+    carve).
+- **Checks**:
+  - Sweep: 180 random shots, 0 escapes / stuck / auto-resets / timeouts / console errors.
+  - Smoke desktop + iPhone 17 Pro emulation: 0 errors/warnings, Explore round trip clean.
+  - Per-hole shots reviewed.
+  - Everything is in `playtests/lantern-v1/REPORT.md`.
+- **Published** by Codex computer use (Save, then File > Publish to Roblox): "Published new changes in "VR Mini Golf"
+  to Roblox." v79, 5:11 PM. Audience unchanged (Friends and Playtesters).
+  - Lighting.Technology couldn't be read or set (hidden in this Studio's Properties panel); see the report.
+
 ## TODO
 - [ ] Felt bounce: ~0.6 elasticity for landings faster than ~1.5 studs/s (e.g. in BallController on landing), then re-run `ledge`/`hill`.
 - [ ] Headset check:
@@ -133,7 +161,8 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
 - [ ] Re-tune `TouchMaxSpeed` / `TouchPowerCurve` for the faster felt.
 - [x] Publish the Team Create draft: v9, ~23:03 PT (File > Publish to Roblox). Audience Limited (Friends + Playtesters); Maturity questionnaire done (Minimal).
 - [ ] Real VR headset test (Quest via Roblox app). Check the club angle and friction, then press A to fit the club.
-- [ ] Mobile/2D controls pass.
+- [ ] Mobile/2D controls pass (stage d: HUD/Explore checked on the iPhone emulator; touch putting strength still untuned).
+- [ ] Verify Lighting.Technology = Future (not visible in Studio's Properties panel on this Mac).
 - [ ] Before going public: icon and thumbnails, Maturity & Compliance questionnaire, then set Audience to Public (see `.agents/skills/roblox-publishing`).
 - [ ] Optionally archive the Plumber copy (10769263747) to avoid two "VR Mini Golf" listings.
 

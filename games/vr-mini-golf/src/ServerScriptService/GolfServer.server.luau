@@ -69,6 +69,14 @@ local function placeBall(player, st, pos, reason)
 	local ball = st.ball
 	st.resetting = false
 	st.lastPos = pos
+	if st.exploring then
+		-- Explore mode: park the ball where play will resume ("Back to golf" places it for real)
+		st.resumePos = pos
+		ball.Anchored = true
+		ball.CFrame = CFrame.new(pos)
+		Remotes.BallPlaced:FireClient(player, pos, reason, st.testHole and 0 or st.hole)
+		return
+	end
 	-- the owning client may still send a stale position or two from before the move (e.g. a rewind while the
 	-- ball was rolling): don't judge out-of-bounds until those have flushed
 	st.placedAt = os.clock()
@@ -237,7 +245,7 @@ end)
 
 Remotes.Stroke.OnServerEvent:Connect(function(player, startPos)
 	local st = states[player]
-	if not st or not st.started or st.sunk or st.resetting or st.finished then
+	if not st or not st.started or st.sunk or st.resetting or st.finished or st.exploring then
 		return
 	end
 	local now = os.clock()
@@ -255,7 +263,7 @@ end)
 
 Remotes.BallRest.OnServerEvent:Connect(function(player)
 	local st = states[player]
-	if not st or st.sunk or st.resetting or st.finished then
+	if not st or st.sunk or st.resetting or st.finished or st.exploring then
 		return
 	end
 	if (st.strokes[st.hole] or 0) >= Config.MaxStrokes then
@@ -266,7 +274,7 @@ end)
 
 Remotes.RequestReset.OnServerEvent:Connect(function(player)
 	local st = states[player]
-	if not st or st.sunk or st.resetting or st.finished then
+	if not st or st.sunk or st.resetting or st.finished or st.exploring then
 		return
 	end
 	local now = os.clock()
@@ -286,6 +294,109 @@ Remotes.PlayAgain.OnServerEvent:Connect(function(player)
 	startHole(player, st, 1)
 end)
 
+-- Explore mode (per player): walk/fly around the world with no ball and no scoring. The ball is parked (anchored)
+-- at its resting spot, or the stroke start if it was still rolling; "Back to golf" puts it back there. A hole
+-- transition or out-of-bounds reset that lands meanwhile just moves the parked spot (placeBall).
+local SetExplore = Remotes:FindFirstChild("SetExplore") or Instance.new("RemoteEvent")
+SetExplore.Name = "SetExplore"
+SetExplore.Parent = Remotes
+SetExplore.OnServerEvent:Connect(function(player, on)
+	local st = states[player]
+	if not st or not st.started or typeof(on) ~= "boolean" or st.exploring == on then
+		return
+	end
+	if on then
+		local ball = st.ball
+		local pos = st.lastPos
+		if not st.sunk and not st.resetting and not ball.Anchored and ball.AssemblyLinearVelocity.Magnitude < Config.StopSpeed * 2 and inBounds(holeOf(st), ball.Position) then
+			pos = ball.Position
+		end
+		st.exploring = true
+		st.resumePos = pos
+		ball.Anchored = true
+		ball.AssemblyLinearVelocity = Vector3.zero
+		player:SetAttribute("Exploring", true)
+	else
+		st.exploring = false
+		player:SetAttribute("Exploring", false)
+		if not st.sunk and not st.finished then
+			placeBall(player, st, st.resumePos or st.lastPos, "resume")
+		end
+	end
+end)
+
+-- Explore data for the clients (ServerStorage isn't replicated): scenic viewpoints, walkway points for the fall
+-- respawn, and the world bounds. Invisible walls just inside the terrain edge stop players (only) leaving the world.
+do
+	local ok, layout = pcall(function()
+		return require(game:GetService("ServerStorage"):WaitForChild("CourseData"):WaitForChild("WorldLayout"))
+	end)
+	if ok and layout and layout.enabled then
+		local data = { views = {}, paths = {}, bounds = layout.bounds }
+		local poi = {}
+		for _, p in layout.pois or {} do
+			poi[p.id] = p.pos
+		end
+		local function view(name, pos, look)
+			if pos then
+				table.insert(data.views, { name = name, pos = { pos[1], pos[3] }, look = look })
+			end
+		end
+		-- stand spots picked from Edit-mode captures (2026-10-10): each has a clear look at its subject
+		view("Welcome Plaza", layout.spawn and layout.spawn.pos, layout.spawn and layout.spawn.look_at)
+		view("Grand Falls", { 96, 0, -150 }, { 113, 56, -203 })
+		view("Hollow Tree", { -36, 0, 60 }, { -70, 70, 6 })
+		view("Lantern Mere", poi.mere_view, { 14, 10, 146 })
+		view("Lookout Rock", poi.lookout_rock, { 113, 56, -203 })
+		for _, path in layout.paths or {} do
+			for _, seg in path.segments do
+				local a = Vector3.new(seg.start[1], seg.start[2], seg.start[3])
+				local b = Vector3.new(seg["end"][1], seg["end"][2], seg["end"][3])
+				local n = math.max(1, math.ceil((b - a).Magnitude / 4))
+				for i = 0, n do
+					local q = a:Lerp(b, i / n)
+					table.insert(data.paths, { math.floor(q.X * 10) / 10, math.floor(q.Y * 10) / 10, math.floor(q.Z * 10) / 10 })
+				end
+			end
+		end
+		local value = Golf:FindFirstChild("ExploreData") or Instance.new("StringValue")
+		value.Name = "ExploreData"
+		value.Value = HttpService:JSONEncode(data)
+		value.Parent = Golf
+
+		local PhysicsService = game:GetService("PhysicsService")
+		if not PhysicsService:IsCollisionGroupRegistered("ExploreBounds") then
+			PhysicsService:RegisterCollisionGroup("ExploreBounds")
+		end
+		for _, g in PhysicsService:GetRegisteredCollisionGroups() do
+			PhysicsService:CollisionGroupSetCollidable("ExploreBounds", g.name, g.name == "GolfPlayer")
+		end
+		local folder = Instance.new("Folder")
+		folder.Name = "ExploreBounds"
+		local b = layout.bounds
+		local x0, x1, z0, z1 = b.x[1] + 12, b.x[2] - 12, b.z[1] + 12, b.z[2] - 12
+		local cx, cz, h = (x0 + x1) / 2, (z0 + z1) / 2, 600
+		for _, w in {
+			{ Vector3.new(x0 - 2, 200, cz), Vector3.new(4, h, z1 - z0 + 8) },
+			{ Vector3.new(x1 + 2, 200, cz), Vector3.new(4, h, z1 - z0 + 8) },
+			{ Vector3.new(cx, 200, z0 - 2), Vector3.new(x1 - x0 + 8, h, 4) },
+			{ Vector3.new(cx, 200, z1 + 2), Vector3.new(x1 - x0 + 8, h, 4) },
+		} do
+			local part = Instance.new("Part")
+			part.Name = "Wall"
+			part.Anchored = true
+			part.Transparency = 1
+			part.CanQuery = false
+			part.CanTouch = false
+			part.CastShadow = false
+			part.CollisionGroup = "ExploreBounds"
+			part.Position, part.Size = w[1], w[2]
+			part.Parent = folder
+		end
+		folder.Parent = workspace
+	end
+end
+
 -- Moving parts (spinner, mill wheel, log, door, gate, lantern bar): server physics, phase-locked to server time.
 local Movers = require(script:WaitForChild("Movers"))
 Movers.start()
@@ -304,7 +415,7 @@ end
 -- Watch every ball for sinking / leaving the course.
 RunService.Heartbeat:Connect(function()
 	for player, st in states do
-		if not st.started or st.sunk or st.resetting or st.finished or st.ball.Anchored then
+		if not st.started or st.sunk or st.resetting or st.finished or st.exploring or st.ball.Anchored then
 			continue
 		end
 		local hole = holeOf(st)

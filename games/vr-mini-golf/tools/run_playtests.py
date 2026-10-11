@@ -682,7 +682,54 @@ for _, d in workspace:GetDescendants() do
   if d:IsA('Light') then lights += 1 end
 end
 out.parts, out.meshParts, out.lights = parts, meshes, lights
-return game:GetService('HttpService'):JSONEncode(out)""" % args.shots, "Client", timeout=180)
+-- Explore mode round trip through the real module (GolfClient.Explore's Studio-only GolfExploreDebug hook):
+-- on, every teleport destination, fly up, a fall below the world, back to golf. The ball must come back where it
+-- was, unanchored, with the stroke count unchanged.
+local hook = me.PlayerScripts:FindFirstChild('GolfExploreDebug')
+if hook and ball then
+  local ex = {}
+  local p0, s0 = ball.Position, me:GetAttribute('Strokes')
+  hook:Invoke('on')
+  task.wait(1.5)
+  local st = hook:Invoke('state')
+  ex.on = {active = st.active, cam = st.camType, walk = st.walkSpeed, ballAnchored = ball.Anchored, attr = me:GetAttribute('Exploring')}
+  ex.dests = {}
+  local names = {}
+  for n = 1, 9 do table.insert(names, 'H' .. n) end
+  for _, n in {'Welcome Plaza', 'Grand Falls', 'Hollow Tree', 'Lantern Mere', 'Lookout Rock'} do table.insert(names, n) end
+  for _, n in names do
+    hook:Invoke('teleport', n)
+    task.wait(1.2)
+    local s = hook:Invoke('state')
+    ex.dests[n] = s.floor ~= 'Enum.Material.Air' and 'ground' or ('air@' .. math.floor(s.pos[2]))
+  end
+  hook:Invoke('teleport', 'H1')
+  task.wait(1)
+  local y0 = hook:Invoke('state').pos[2]
+  hook:Invoke('fly', true)
+  hook:Invoke('vertical', 1)
+  task.wait(1)
+  hook:Invoke('vertical', 0)
+  ex.flyClimb = math.floor(hook:Invoke('state').pos[2] - y0)
+  hook:Invoke('fly', false)
+  task.wait(2)
+  me.Character:PivotTo(CFrame.new(150, -20, 60))
+  task.wait(1.5)
+  local s = hook:Invoke('state')
+  ex.fallRespawnY = math.floor(s.pos[2])
+  hook:Invoke('menu')
+  task.wait(0.3)
+  local menu = me.PlayerGui.GolfHUD:FindFirstChild('TeleportMenu', true)
+  ex.menuButtons = 0
+  if menu then for _, d in menu:GetDescendants() do if d:IsA('TextButton') and d.Text ~= 'X' then ex.menuButtons += 1 end end end
+  hook:Invoke('menu')
+  hook:Invoke('off')
+  task.wait(3)
+  ex.back = {ballMoved = math.floor((ball.Position - p0).Magnitude * 100) / 100, anchored = ball.Anchored, strokes = me:GetAttribute('Strokes'), strokes0 = s0,
+    cam = tostring(workspace.CurrentCamera.CameraType), attr = me:GetAttribute('Exploring')}
+  out.explore = ex
+end
+return game:GetService('HttpService'):JSONEncode(out)""" % args.shots, "Client", timeout=300)
         hud = st.luau("""local pg = game:GetService('Players').LocalPlayer:FindFirstChild('PlayerGui')
 local gui = pg and pg:FindFirstChild('GolfHUD')
 local texts = {}
@@ -829,20 +876,27 @@ def cmd_shots(args):
         st.luau("local g = game.Players.LocalPlayer.PlayerGui:FindFirstChild('GolfHUD') if g then g.Enabled = %s end "
                 "local a = game.Players.LocalPlayer.PlayerGui:FindFirstChild('GolfAim') if a then a.Enabled = %s end return 'ok'" % (
                     "true" if on else "false", "true" if on else "false"), "Client")
+    def grab(path):
+        # Studio MCP screen_capture (the game view, no macOS screen-recording permission needed)
+        import base64
+        r = st.m.req("tools/call", {"name": "screen_capture", "arguments": {"studio_id": st.id, "capture_id": os.path.basename(path)}})
+        img = [c for c in r["result"]["content"] if c.get("type") == "image"][0]
+        with open(path + ".jpg", "wb") as fh:
+            fh.write(base64.b64decode(img["data"]))
+        subprocess.run(["uv", "run", "-q", "--with", "pillow", "python", "-c",
+                        "import sys; from PIL import Image; Image.open(sys.argv[1]).save(sys.argv[2])", path + ".jpg", path],
+                       check=True, timeout=120)
+        os.remove(path + ".jpg")
     def snap(name):
         time.sleep(args.settle)
         path = os.path.join(out_dir, name)
-        capture_window(w["id"], path)
-        crop_viewport(path)
+        grab(path)
         written.append(path)
         log("shot", os.path.relpath(path, GAME_DIR))
     try:
         st.start_play()
         wait_api(st)
         st.luau("local SG = game:GetService('StarterGui') SG:SetCoreGuiEnabled(Enum.CoreGuiType.All, false) return 'ok'", "Client")
-        w = window("front")
-        if not w or "error" in w:
-            raise SystemExit("Studio window not found: %s" % w)
         if not args.no_overview:
             hud(False)
             st.api("frame", "topdown", 0)
@@ -863,11 +917,9 @@ def cmd_shots(args):
                 time.sleep(1.0)
                 st.api("putt", n, args.putt)
                 time.sleep(args.follow_delay)
-                capture_window(w["id"], os.path.join(out_dir, "follow_h%02d_a.png" % n))
-                crop_viewport(os.path.join(out_dir, "follow_h%02d_a.png" % n))
+                grab(os.path.join(out_dir, "follow_h%02d_a.png" % n))
                 time.sleep(1.6)
-                capture_window(w["id"], os.path.join(out_dir, "follow_h%02d_b.png" % n))
-                crop_viewport(os.path.join(out_dir, "follow_h%02d_b.png" % n))
+                grab(os.path.join(out_dir, "follow_h%02d_b.png" % n))
                 written += [os.path.join(out_dir, "follow_h%02d_%s.png" % (n, k)) for k in "ab"]
         st.api("frame", "clear")
         problems = {"server": st.problems("Server"), "client": st.problems("Client")}

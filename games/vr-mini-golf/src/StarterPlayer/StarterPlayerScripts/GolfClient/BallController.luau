@@ -86,6 +86,11 @@ function Ball.getAimPoint(fromPos: Vector3?)
 	return aim.Position
 end
 
+-- Explore mode (GolfClient.Explore): the server parks the ball and the golf controls stand down.
+function Ball.exploring()
+	return Ball.exploreActive == true
+end
+
 function Ball.isOwner()
 	return Ball.ball ~= nil and Ball.ball.ReceiveAge == 0
 end
