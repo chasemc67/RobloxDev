@@ -18,7 +18,7 @@
 --   Grip (club hand) ........... hold to make the putter solid (only when Config.VRGripToPutt = true)
 --   B / Y ...................... scorecard     A ... re-fit club (hold the club straight down first)
 --   X .......................... swap hands
---   Off-hand wrist up ........... wrist card: hole, par, stroke, total, best + MENU / SCORES buttons (HUD)
+--   Look at the off-hand wrist .. bracer + wrist card: hole, par, stroke, total, best + MENU / SCORES buttons (HUD)
 --
 -- For testing without a headset set workspace attribute "SimulateVR" = true before playing. Poses are then read
 -- from CFrameValues in ReplicatedStorage.VRDebug (Head/LeftHand/RightHand, relative to the floor origin),
@@ -787,7 +787,11 @@ function VR.start(Ball, HUD, simulate)
 		teleportedThisFrame = false
 
 		local offHand = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
-		HUD.placeVRWrist(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand)
+		-- the wrist stays down mid-swing (putter head speed) and in a putting stance (head low beside a hittable ball)
+		local b = Ball.ball
+		local toBall = b and (headCF.Position - b.Position)
+		local stance = toBall ~= nil and Ball.canHit() and Vector3.new(toBall.X, 0, toBall.Z).Magnitude < Config.WristStanceRange and math.abs(toBall.Y) < 0.8
+		HUD.placeVRWrist(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand, { clubSpeed = headVelocity().Magnitude, stance = stance })
 		HUD.placeVRMessage(headWorld)
 		VRPointer.update({
 			[Enum.UserCFrame.RightHand] = worldPose(Enum.UserCFrame.RightHand),
@@ -824,6 +828,7 @@ function VR.start(Ball, HUD, simulate)
 	--   Invoke("trigger", "RightHand") -> trigger down + up on that hand
 	--   Invoke("wrist", true / false) -> off hand in a watch pose (back of the wrist to the eyes) / lowered
 	--   Invoke("state") -> pointer + wrist card state
+	--   Invoke("wristSim", { scenario = "watch" | "glance" | "swings" | "stance" | "head", seed = n }) -> wrist events
 	if simulate and RunService:IsStudio() then
 		local hook = Instance.new("BindableFunction")
 		hook.Name = "GolfPointerDebug"
@@ -833,6 +838,226 @@ function VR.start(Ball, HUD, simulate)
 				v.Value = (origin * CFrame.new(0, -floorOffsetY, 0)):Inverse() * worldCF
 			end
 		end
+		-- off hand in a watch pose: forearm across the body, wrist ~42 cm in front and 16 cm below the eyes, back of the
+		-- wrist up at them (yawDeg turns the wrist spot about the head, tiltDeg tips the back of the wrist off the eyes)
+		local function watchPose(headW: CFrame, left: boolean, yawDeg: number?, tiltDeg: number?)
+			local side = left and -1 or 1
+			local flatLook = flat(headW.LookVector)
+			flatLook = flatLook.Magnitude > 1e-3 and flatLook.Unit or Vector3.new(0, 0, -1)
+			flatLook = CFrame.fromAxisAngle(Vector3.yAxis, math.rad(yawDeg or 0)):VectorToWorldSpace(flatLook)
+			local flatRight = flatLook:Cross(Vector3.yAxis)
+			local wristPos = headW.Position + flatLook * 1.4 - Vector3.new(0, 0.55, 0) + flatRight * (0.15 * side)
+			local back = (headW.Position - wristPos).Unit
+			if tiltDeg and tiltDeg ~= 0 then
+				back = CFrame.fromAxisAngle(flatRight, math.rad(tiltDeg)):VectorToWorldSpace(back)
+			end
+			local right = back * (left and -1 or 1) -- left hand: back of the hand is -X
+			local look = flatRight * -side -- aim ray across the body, toward the midline
+			look = (look - right * look:Dot(right)).Unit
+			local up = right:Cross(look)
+			local rot = CFrame.fromMatrix(Vector3.zero, right, up)
+			-- the controller origin sits WRIST_OFFSET-ish ahead of the wrist along its own axes
+			local handPos = wristPos - rot:VectorToWorldSpace(Vector3.new(0, -0.12, 0.33))
+			return CFrame.new(handPos) * rot
+		end
+
+		-- Scripted VR-sim motion for the wrist trigger (tools/wrist_sim.py): drives head + both hands frame by frame
+		-- and returns the wrist show/hide events, plus how many frames met the look test while a gate held it down.
+		--   "watch"  3x deliberate look at the wrist (1.2 s) then lower it: expect 3 shows / 3 hides
+		--   "glance" 6x the wrist flicks through the watch pose for 0.15 s: expect 0 shows
+		--   "swings" 10 practice swings away from the ball, off hand on the grip / then IN the watch pose: expect 0
+		--   "stance" 8 address waggles behind a hittable ball (slow), off hand on the grip / in the watch pose: expect 0
+		--   "head"   25 s of looking around, walking, pointing, hands by your sides / near-watch poses: expect 0
+		local function wristSim(name: string, seed: number?)
+			local rng = Random.new(seed or 7)
+			local off = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
+			local left = off == Enum.UserCFrame.LeftHand
+			local side = left and -1 or 1
+			local h0 = worldPose(Enum.UserCFrame.Head)
+			local baseLook = flat(h0.LookVector)
+			baseLook = baseLook.Magnitude > 1e-3 and baseLook.Unit or Vector3.new(0, 0, -1)
+			local baseRight = baseLook:Cross(Vector3.yAxis)
+			local b = Ball.ball
+			local ballPos = b and b.Position or (h0.Position + baseLook * 4 - Vector3.new(0, 5.2, 0))
+			local groundY = ballPos.Y
+			local eye = Vector3.new(h0.X, groundY + 5.4, h0.Z)
+			-- away from the ball for the non-stance scenarios
+			local away = Vector3.new(eye.X - ballPos.X, 0, eye.Z - ballPos.Z)
+			if away.Magnitude < 4 then
+				eye += (away.Magnitude > 1e-3 and away.Unit or -baseLook) * (4 - away.Magnitude)
+			end
+			local function headLook(pos: Vector3, yaw: number, pitch: number)
+				local d = CFrame.fromAxisAngle(Vector3.yAxis, math.rad(yaw)):VectorToWorldSpace(baseLook)
+				d = d * math.cos(math.rad(pitch)) + Vector3.yAxis * math.sin(math.rad(pitch))
+				local cf = CFrame.lookAt(pos, pos + d)
+				setHand(Enum.UserCFrame.Head, cf)
+				return cf
+			end
+			local function headAt(pos: Vector3, target: Vector3)
+				local cf = CFrame.lookAt(pos, target)
+				setHand(Enum.UserCFrame.Head, cf)
+				return cf
+			end
+			local function hang(headW: CFrame, h: Enum.UserCFrame, swingDeg: number?)
+				local sd = h == Enum.UserCFrame.RightHand and 1 or -1
+				local fl = flat(headW.LookVector)
+				fl = fl.Magnitude > 1e-3 and fl.Unit or baseLook
+				local fr = fl:Cross(Vector3.yAxis)
+				local rest = headW.Position + fr * (0.6 * sd) - Vector3.new(0, 2.6, 0)
+				local dir = CFrame.fromAxisAngle(fr, math.rad(swingDeg or 0)):VectorToWorldSpace(fl)
+				return CFrame.lookAt(rest, rest + dir)
+			end
+			local function clubAtSide(headW: CFrame)
+				local fl = flat(headW.LookVector)
+				fl = fl.Magnitude > 1e-3 and fl.Unit or baseLook
+				local p = Vector3.new(headW.X, groundY + 0.3, headW.Z) + fl:Cross(Vector3.yAxis) * (1.0 * (left and 1 or -1)) + fl * 0.3
+				setHand(dominant, VR.test.handCFrameFor(p, fl))
+			end
+			local function grip(): CFrame
+				return worldPose(dominant) * CFrame.new(0, -0.1, 0.3)
+			end
+			local t0 = os.clock()
+			local frames, condFrames, gated = 0, 0, {}
+			local function frame()
+				RunService.RenderStepped:Wait()
+				frames += 1
+				local st = HUD.wristState()
+				if st and st.faceDeg and st.faceDeg <= Config.WristShowDeg and st.gazeDeg <= Config.WristGazeDeg then
+					condFrames += 1
+					local why = st.blocked or "none"
+					gated[why] = (gated[why] or 0) + 1
+				end
+			end
+			local function run(seconds: number, step: (t: number) -> ())
+				local s0 = os.clock()
+				while true do
+					local t = os.clock() - s0
+					if t > seconds then
+						break
+					end
+					step(t)
+					frame()
+				end
+			end
+			local function lower(seconds)
+				run(seconds, function()
+					local hw = headLook(eye, 0, -10)
+					clubAtSide(hw)
+					setHand(off, hang(hw, off))
+				end)
+			end
+			local latency = {}
+			lower(0.8)
+			if name == "watch" then
+				for i = 1, 3 do
+					local tShow = os.clock()
+					run(1.2, function()
+						local hw = headLook(eye, 0, -18)
+						clubAtSide(hw)
+						setHand(off, watchPose(hw, left))
+					end)
+					for _, e in HUD.wristEvents(tShow) do
+						if e.event == "show" then
+							table.insert(latency, math.floor((e.t - tShow) * 1000))
+							break
+						end
+					end
+					lower(1.2)
+				end
+			elseif name == "glance" then
+				for i = 1, 6 do
+					run(0.15, function()
+						local hw = headLook(eye, 0, -18)
+						clubAtSide(hw)
+						setHand(off, watchPose(hw, left))
+					end)
+					lower(0.7)
+				end
+			elseif name == "swings" then
+				-- practice swings 2+ studs from the ball: target line along baseRight, putter head through a spot in front of
+				-- the feet; head looking at that spot. Peak head speed 3.5..9 studs/s.
+				local spot = Vector3.new(eye.X, groundY + 0.3, eye.Z) + baseLook * 1.3
+				for i = 1, 10 do
+					local amp = rng:NextNumber(0.9, 1.8)
+					local period = rng:NextNumber(0.9, 1.6)
+					local watch = i > 5
+					run(period, function(t)
+						-- off hand on the grip looking at the swing, or (worst case) looking right at the raised wrist
+						local hw = watch and headLook(eye, 0, -20) or headAt(eye + Vector3.new(0, -0.3, 0), spot)
+						local p = spot + baseRight * (amp * math.sin(2 * math.pi * t / period))
+						setHand(dominant, VR.test.handCFrameFor(p, baseRight))
+						setHand(off, watch and watchPose(hw, left) or grip())
+					end)
+				end
+				lower(0.5)
+			elseif name == "stance" then
+				-- standing beside the ball, putter head waggling 0.6..1.4 studs behind it (never reaching it), slow
+				local stand = Vector3.new(ballPos.X, groundY + 5.1, ballPos.Z) - baseLook * 1.6
+				for i = 1, 8 do
+					local period = rng:NextNumber(1.6, 2.6)
+					local watch = i % 2 == 0
+					run(period, function(t)
+						local hw = headAt(stand, ballPos)
+						local back = 0.6 + 0.8 * (1 - math.cos(2 * math.pi * t / period)) / 2
+						local p = Vector3.new(ballPos.X, groundY + 0.3, ballPos.Z) - baseRight * back
+						setHand(dominant, VR.test.handCFrameFor(p, baseRight))
+						-- in the watch pose the head looks at the wrist (worst case)
+						if watch then
+							setHand(off, watchPose(headLook(stand, 0, -20), left))
+						else
+							setHand(off, grip())
+						end
+					end)
+				end
+				lower(0.5)
+			elseif name == "head" then
+				-- 25 s: smooth random yaw/pitch targets (+-80 deg, -60..+25), walking bob + arm swing, now and then
+				-- pointing the off hand forward, or holding it near the watch pose while looking 35-60 deg away
+				local yaw, pitch = 0, -10
+				local seg = 0
+				while seg < 25 do
+					local dur = rng:NextNumber(0.8, 2.0)
+					local y1, p1 = rng:NextNumber(-80, 80), rng:NextNumber(-60, 25)
+					local y0, p0 = yaw, pitch
+					local mode = rng:NextInteger(1, 4)
+					local awayYaw = (rng:NextNumber() < 0.5 and -1 or 1) * rng:NextNumber(35, 60)
+					local walk = rng:NextNumber() < 0.5
+					run(dur, function(t)
+						local k = (1 - math.cos(math.pi * math.min(t / dur, 1))) / 2
+						yaw, pitch = y0 + (y1 - y0) * k, p0 + (p1 - p0) * k
+						local bob = walk and Vector3.new(0, 0.06 * math.sin(t * 11), 0) + baseLook * (t * 1.2) or Vector3.zero
+						local hw = headLook(eye + bob, yaw, pitch)
+						clubAtSide(hw)
+						if mode == 1 then
+							setHand(off, hang(hw, off, walk and 25 * math.sin(t * 5.5) or 0))
+						elseif mode == 2 then
+							local from = hw.Position + hw.RightVector * (0.5 * side) - Vector3.new(0, 1.1, 0) + flat(hw.LookVector) * 0.8
+							setHand(off, CFrame.lookAt(from, from + hw.LookVector * 10 + Vector3.new(0, 1, 0)))
+						elseif mode == 3 then
+							-- wrist in the watch pose for a spot 35-60 deg away from where you look
+							setHand(off, watchPose(hw, left, awayYaw))
+						else
+							-- wrist up toward the eyes, back of it tipped 40-70 deg off them (looking at the palm side)
+							setHand(off, watchPose(hw, left, 0, (rng:NextNumber() < 0.5 and -1 or 1) * 55))
+						end
+					end)
+					seg += dur
+				end
+				lower(0.5)
+			end
+			lower(0.6)
+			local ev = HUD.wristEvents(t0)
+			local shows, hides = 0, 0
+			for _, e in ev do
+				if e.event == "show" then
+					shows += 1
+				else
+					hides += 1
+				end
+			end
+			return { scenario = name, seconds = os.clock() - t0, frames = frames, lookFrames = condFrames, lookFramesBy = gated, shows = shows, hides = hides, latencyMs = latency, events = ev }
+		end
+
 		hook.OnInvoke = function(cmd, arg)
 			local headW = worldPose(Enum.UserCFrame.Head)
 			if cmd == "targets" then
@@ -867,17 +1092,7 @@ function VR.start(Ball, HUD, simulate)
 				flatLook = flatLook.Magnitude > 1e-3 and flatLook.Unit or Vector3.new(0, 0, -1)
 				local flatRight = flatLook:Cross(Vector3.yAxis)
 				if arg then
-					-- forearm across the body, wrist ~42 cm in front and 16 cm below the eyes, back of the wrist up at them
-					local wristPos = headW.Position + flatLook * 1.4 - Vector3.new(0, 0.55, 0) + flatRight * (0.15 * side)
-					local back = (headW.Position - wristPos).Unit
-					local right = back * (left and -1 or 1) -- left hand: back of the hand is -X
-					local look = flatRight * -side -- aim ray across the body, toward the midline
-					look = (look - right * look:Dot(right)).Unit
-					local up = right:Cross(look)
-					local rot = CFrame.fromMatrix(Vector3.zero, right, up)
-					-- the controller origin sits WRIST_OFFSET-ish ahead of the wrist along its own axes
-					local handPos = wristPos - rot:VectorToWorldSpace(Vector3.new(0, -0.12, 0.33))
-					setHand(off, CFrame.new(handPos) * rot)
+					setHand(off, watchPose(headW, left))
 				else
 					setHand(off, CFrame.lookAt(headW.Position + flatRight * (0.6 * side) - Vector3.new(0, 2.6, 0), headW.Position + flatRight * (0.6 * side) - Vector3.new(0, 2.6, 0) + flatLook))
 				end
@@ -896,6 +1111,9 @@ function VR.start(Ball, HUD, simulate)
 				return { origin = { origin.X, origin.Y, origin.Z } }
 			elseif cmd == "state" then
 				return { pointer = VRPointer.state(), wrist = HUD.wristState() }
+			elseif cmd == "wristSim" then
+				HUD.wristEvents(nil, true) -- print show/hide events to the output from now on
+				return wristSim(arg.scenario, arg.seed)
 			end
 			return nil
 		end

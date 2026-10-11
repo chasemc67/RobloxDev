@@ -92,8 +92,8 @@ return {
 	-- Front-end art (uploaded 2026-10-11, assets/vr-mini-golf/store/ui)
 	UI = {
 		Logo = "rbxassetid://73526573447336", -- 2048x768 transparent
-		TitleBackground = "rbxassetid://98974963375930", -- 1920x1080
-		CardLanternGrove = "rbxassetid://90933106008541", -- 1024 square
+		TitleBackground = "rbxassetid://75624699940778", -- title_bg_v2.png 1920x1080 (stage q)
+		CardLanternGrove = "rbxassetid://100112215630907", -- card_lanterngrove_v2.png 1024 square (stage q)
 		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in
 		CardAurora = "rbxassetid://82146694601580", -- grey, "coming soon" tag baked in
 		-- VR pointer + wrist card (stage p, store/ui/wrist, tools/stage_p_assets.json)
@@ -106,11 +106,20 @@ return {
 		IconTotal = "rbxassetid://131506164236528",
 		IconBest = "rbxassetid://101092439594881",
 	},
-	-- VR wrist card: shows while the off-hand's back of the wrist faces your eyes within WristShowDeg (hides past
-	-- WristHideDeg) and the card is within WristViewDeg of where you're looking.
-	WristShowDeg = 35,
+	-- VR wrist (bracer + card on its face): hidden in normal play; it shows only while you actively look at the
+	-- off-hand wrist (Walkabout style). Show: the back of the wrist faces your eyes within WristShowDeg AND the wrist
+	-- is within WristGazeDeg of your gaze centre, held for WristShowHold s. Hide: once out past WristHideDeg /
+	-- WristGazeHideDeg for WristHideHold s. Never while the putter head moves faster than WristMaxClubSpeed (and
+	-- WristSwingQuiet s after), or in a putting stance (putter head within WristStanceRange of a hittable ball).
+	WristShowDeg = 32,
 	WristHideDeg = 45,
-	WristViewDeg = 40,
+	WristGazeDeg = 25,
+	WristGazeHideDeg = 35,
+	WristShowHold = 0.25,
+	WristHideHold = 0.4,
+	WristMaxClubSpeed = 3, -- studs/s (0.9 m/s); a putt stroke is faster
+	WristSwingQuiet = 0.5,
+	WristStanceRange = 1.5, -- studs, flat, with the putter head low (within 0.8 of the ball)
 	-- VR see-through: the occluder fade runs from the head to your ball while it's within this many studs
 	VRFadeRange = 40,
 	-- Courses on the picker. Only playable ones have a personal best (player attribute "Best_<id>").

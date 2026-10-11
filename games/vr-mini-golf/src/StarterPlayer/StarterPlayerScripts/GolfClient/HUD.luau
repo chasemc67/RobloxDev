@@ -348,46 +348,134 @@ function HUD.getHeadCF()
 	return lastHeadCF
 end
 
--- Wrist card (Walkabout style): sits over the back of the off-hand's wrist and fades in while that side faces your
--- eyes (Config.WristShowDeg, hides past WristHideDeg) and the card is in view (WristViewDeg, within WRIST_RANGE).
+-- Wrist (Walkabout style): 3D Model Bot's bracer (ReplicatedStorage.Golf.WristBracer) on the off-hand wrist with the
+-- card on its WristFace, both hidden in normal play. They show only while you actively look at the wrist: the back
+-- of the wrist faces your eyes (Config.WristShowDeg) AND it's near your gaze centre (WristGazeDeg), held
+-- WristShowHold s; they hide WristHideHold s after either goes out (WristHideDeg / WristGazeHideDeg). Never mid-swing
+-- or in a putting stance (VRControls passes the putter head speed and the stance flag).
 -- On the aim pose of a Quest controller held normally, the back of the hand is -X on the left hand and +X on the
 -- right, and the wrist is behind (+Z) and below (-Y) the controller origin.
-local WRIST_OFFSET = Vector3.new(0, -0.12, 0.33) -- controller origin -> wrist (3.6 cm down, 10 cm back)
-local WRIST_LIFT = 0.1 -- card 3 cm off the wrist
+local WRIST_OFFSET = Vector3.new(0, -0.12, 0.33) -- controller origin -> wrist centre (3.6 cm down, 10 cm back)
+local FACE_LIFT = 0.256 -- bracer pivot -> the WristFace quad (y 0.238, 0.32 x 0.20, normal +Y), lifted over the brass rim (0.252)
 local WRIST_RANGE = 4 -- studs from the eyes (1.2 m)
-local WRIST_FADE = 10 -- 1/s (about a quarter second either way)
-function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean)
+local WRIST_FADE = 12 -- 1/s
+local WRIST_LOG_MAX = 200
+local function wristLog(kind, why)
+	local e = { t = os.clock(), event = kind, why = why }
+	table.insert(wrist.events, e)
+	if #wrist.events > WRIST_LOG_MAX then
+		table.remove(wrist.events, 1)
+	end
+	if wrist.logPrint then
+		print(string.format("[wrist] %s (%s)", kind, why))
+	end
+end
+
+-- opts: { clubSpeed = studs/s, stance = boolean }
+function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opts)
 	if not wrist then
 		return
 	end
+	opts = opts or {}
 	local now = os.clock()
 	local dt = math.min(now - (wrist.t or now), 0.1)
 	wrist.t = now
 	local back = handCF.RightVector * (leftHand and -1 or 1)
-	local pos = handCF:PointToWorldSpace(WRIST_OFFSET) + back * WRIST_LIFT
-	local toEye = headCF.Position - pos
+	local fingers = handCF.LookVector
+	local pivot = handCF:PointToWorldSpace(WRIST_OFFSET)
+	-- bracer frame: +Y = back of the wrist, +X = toward the fingers, pivot at the wrist centre
+	local bracerCF = CFrame.fromMatrix(pivot, fingers, back)
+	local facePos = pivot + back * FACE_LIFT
+	local toEye = headCF.Position - facePos
 	local dist = toEye.Magnitude
-	local shown = false
-	if dist > 1e-3 and dist < WRIST_RANGE then
-		local facing = back:Dot(toEye / dist)
-		local inView = headCF.LookVector:Dot(-toEye / dist)
-		local faceDeg = wrist.shown and Config.WristHideDeg or Config.WristShowDeg
-		local viewDeg = Config.WristViewDeg + (wrist.shown and 10 or 0)
-		shown = facing >= math.cos(math.rad(faceDeg)) and inView >= math.cos(math.rad(viewDeg))
+	local faceDeg, gazeDeg = 180, 180
+	if dist > 1e-3 then
+		faceDeg = math.deg(math.acos(math.clamp(back:Dot(toEye / dist), -1, 1)))
+		gazeDeg = math.deg(math.acos(math.clamp(headCF.LookVector:Dot(-toEye / dist), -1, 1)))
 	end
-	shown = shown and not (Ball and Ball.menuOpen) and not finalCardOpen
-	wrist.shown = shown
-	local target = shown and 1 or 0
+	wrist.faceDeg, wrist.gazeDeg = faceDeg, gazeDeg
+	if (opts.clubSpeed or 0) > Config.WristMaxClubSpeed then
+		wrist.swingAt = now
+	end
+	local blocked = (Ball and Ball.menuOpen and "menu") or (finalCardOpen and "final card") or (opts.stance and "stance")
+		or (wrist.swingAt and now - wrist.swingAt < Config.WristSwingQuiet and "swing") or nil
+	local near = dist < WRIST_RANGE
+	wrist.blocked = blocked
+	if blocked then
+		wrist.inSince, wrist.outSince = nil, nil
+		if wrist.shown then
+			wrist.shown = false
+			wristLog("hide", blocked)
+		end
+	elseif not wrist.shown then
+		wrist.outSince = nil
+		if near and faceDeg <= Config.WristShowDeg and gazeDeg <= Config.WristGazeDeg then
+			wrist.inSince = wrist.inSince or now
+			if now - wrist.inSince >= Config.WristShowHold then
+				wrist.shown = true
+				wristLog("show", string.format("face %.0f deg, gaze %.0f deg", faceDeg, gazeDeg))
+			end
+		else
+			wrist.inSince = nil
+		end
+	else
+		wrist.inSince = nil
+		if near and faceDeg <= Config.WristHideDeg and gazeDeg <= Config.WristGazeHideDeg then
+			wrist.outSince = nil
+		else
+			wrist.outSince = wrist.outSince or now
+			if now - wrist.outSince >= Config.WristHideHold then
+				wrist.shown = false
+				wristLog("hide", string.format("face %.0f deg, gaze %.0f deg", faceDeg, gazeDeg))
+			end
+		end
+	end
+	local target = wrist.shown and 1 or 0
 	wrist.alpha += (target - wrist.alpha) * math.min(1, dt * WRIST_FADE)
 	if math.abs(target - wrist.alpha) < 0.01 then
 		wrist.alpha = target
 	end
 	wrist.group.GroupTransparency = 1 - wrist.alpha
 	wrist.gui.Enabled = wrist.alpha > 0
-	if wrist.alpha > 0 then
-		-- face the eyes, upright to the head, so it reads at any wrist roll
-		wrist.part.CFrame = CFrame.lookAt(pos, headCF.Position, headCF.UpVector)
+	local visible = wrist.alpha > 0
+	if visible or wrist.bracerVisible then
+		for _, b in wrist.bracer do
+			b.part.Transparency = visible and 1 - wrist.alpha * (1 - b.base) or 1
+		end
+		wrist.bracerVisible = visible
 	end
+	if visible then
+		if #wrist.bracer > 0 then
+			local parts, cfs = {}, {}
+			for _, b in wrist.bracer do
+				table.insert(parts, b.part)
+				table.insert(cfs, bracerCF * b.offset)
+			end
+			workspace:BulkMoveTo(parts, cfs, Enum.BulkMoveMode.FireCFrameChanged)
+		end
+		-- card on the face: text reads toward the fingers on the left wrist (away from them on the right), so it's
+		-- upright with the forearm across the body; the pointer strip hangs off the face's near edge
+		local read = leftHand and fingers or -fingers
+		local up = back:Cross(read)
+		wrist.part.CFrame = CFrame.fromMatrix(facePos - up * wrist.stripShift, -read, up)
+	end
+end
+
+-- Studio harness: the wrist show/hide log ({t, event, why}) since `since` (os.clock), and console printing.
+function HUD.wristEvents(since: number?, printing: boolean?)
+	if not wrist then
+		return {}
+	end
+	if printing ~= nil then
+		wrist.logPrint = printing
+	end
+	local out = {}
+	for _, e in wrist.events do
+		if not since or e.t >= since then
+			table.insert(out, e)
+		end
+	end
+	return out
 end
 
 -- Studio harness: the wrist card's state.
@@ -395,7 +483,7 @@ function HUD.wristState()
 	if not wrist then
 		return nil
 	end
-	return { shown = wrist.shown == true, alpha = wrist.alpha, hole = wrist.hole.Text, name = wrist.name.Text, par = wrist.par.Text, stroke = wrist.stroke.Text, total = wrist.total.Text, best = wrist.best.Text }
+	return { shown = wrist.shown == true, alpha = wrist.alpha, faceDeg = wrist.faceDeg, gazeDeg = wrist.gazeDeg, blocked = wrist.blocked, bracer = #wrist.bracer, hole = wrist.hole.Text, name = wrist.name.Text, par = wrist.par.Text, stroke = wrist.stroke.Text, total = wrist.total.Text, best = wrist.best.Text }
 end
 
 ---------------------------------------------------------------------------- power meter (touch)
@@ -804,11 +892,28 @@ local function buildVR()
 
 	VRPointer.register(vrCardPart, vrCardGui, { modal = true })
 
-	-- wrist card: Game Art Bot's 1024x640 parchment card (store/ui/wrist, text zones from the art spec) plus a row of
-	-- two pointer buttons under it; 20 x 15 cm. Faded as a CanvasGroup.
+	-- wrist card: Game Art Bot's 1024x640 parchment card (store/ui/wrist, text zones from the art spec) exactly over
+	-- the bracer's 0.32 x 0.20 WristFace (16:10), plus a strip of two pointer buttons off its near edge. The panel's
+	-- Front face lies on the WristFace (VRPointer hits Front faces). Faded as a CanvasGroup.
 	local CW, CH = 1024, 784
-	local part, gui = vrPanel("VRWrist", Vector3.new(0.68, 0.68 * CH / CW, 0.02), Vector2.new(CW, CH))
+	local FACE_W = 0.32
+	local part, gui = vrPanel("VRWrist", Vector3.new(FACE_W, FACE_W * CH / CW, 0.002), Vector2.new(CW, CH))
 	gui.Enabled = false
+	-- the bracer: a client copy in the camera, every part non-colliding, non-queryable, massless; moved as one
+	local bracer = {}
+	local src = Golf:FindFirstChild("WristBracer")
+	if src then
+		local model = src:Clone()
+		local pivot = model:GetPivot()
+		for _, d in model:GetDescendants() do
+			if d:IsA("BasePart") then
+				d.Anchored, d.CanCollide, d.CanQuery, d.CanTouch, d.Massless, d.CastShadow = true, false, false, false, true, false
+				table.insert(bracer, { part = d, offset = pivot:ToObjectSpace(d.CFrame), base = d.Transparency })
+				d.Transparency = 1
+			end
+		end
+		model.Parent = workspace.CurrentCamera
+	end
 	local group = new("CanvasGroup", { Name = "Card", BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), GroupTransparency = 1 }, gui)
 	new("ImageLabel", { Name = "Background", BackgroundTransparency = 1, Image = Config.UI.WristCard, Size = UDim2.fromOffset(1024, 640) }, group)
 	local BROWN, RUST = Color3.fromHex("4A240E"), Color3.fromHex("9C5218")
@@ -818,7 +923,7 @@ local function buildVR()
 	local function icon(name, x, y)
 		new("ImageLabel", { Name = name, BackgroundTransparency = 1, Image = Config.UI[name], Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(96, 96) }, group)
 	end
-	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false }
+	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false, bracer = bracer, events = {}, stripShift = (CH - 640) / 2 / CW * FACE_W }
 	-- header zone 80,72 - 944,196: icon, "HOLE n" (76 px), the hole name right-aligned
 	icon("IconHole", 110, 86)
 	wrist.hole = text("Hole", 240, 72, 300, 124, 76, BROWN)

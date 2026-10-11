@@ -250,8 +250,9 @@ local function buildTitle()
 		Image = Config.UI.Logo,
 		ScaleType = Enum.ScaleType.Fit,
 		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0, 0),
-		Size = UDim2.fromOffset(640, 240),
+		-- title_preview_v2: L1 ~900 px wide, 40 px from the top of a 1920x1080 screen
+		Position = UDim2.new(0.5, 0, 40 / 1080, 0),
+		Size = UDim2.new(900 / 1920, 0, 900 / 1920 * W / H * 768 / 2048, 0),
 	}, content)
 
 	local row1 = new("Frame", { Name = "Main", BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 250), Size = UDim2.fromOffset(640, 76) }, content)
@@ -284,7 +285,7 @@ local function buildTitle()
 		show("howto")
 	end)
 
-	local foot = isVR and "Point with either controller, pull the trigger to click.  Menu later: turn your other wrist up."
+	local foot = isVR and "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist."
 		or "The Menu button (top right) brings you back here."
 	label({ Text = foot, Font = BODY, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -14), Size = UDim2.fromOffset(760, 26), TextColor3 = C.cream, TextStrokeTransparency = 0.3, TextStrokeColor3 = C.navy, MaxTextSize = 20 }, content)
 end
@@ -446,7 +447,7 @@ local HOWTO = {
 			.. "Left stick: walk\n"
 			.. "A: re-fit the club (hold it straight down first)\n"
 			.. "X: swap hands    B / Y: scorecard\n"
-			.. "Menus: point, pull the trigger.  Wrist up: score + MENU",
+			.. "Menus: point, trigger.  Look at wrist: score + MENU",
 	},
 	{
 		"Phone",

@@ -467,3 +467,69 @@ Studio is in Edit mode, one window, with GolfTestMode false.
 - The 35° threshold and card size.
 - Beam brightness.
 - That trigger clicks feel right with either hand.
+
+# Stage q report (2026-10-11, 16:55 PT): VR art polish (front end v2, bracer, pendulum re-import, look-at-wrist trigger). **Published v153**
+
+**Version:** File > Save to Roblox 23:50:31Z, then File > Publish to Roblox 23:50:41Z. Both are in the Studio log. Codex read **v153** (Oct 11, 4:50 PM) in Version History (`logs/codex-publish-q.log`). Audience is unchanged (Friends and Playtesters), and no Robux was spent. Studio is left in Edit mode, one window, workspace `SimulateVR=false, GolfTestMode=false`, device emulator off. `src/` matches Studio (the export diff shows only this stage's edits). Physics and layout weren't touched.
+
+Stage p had already done item 8: wrist card art and text zones, pointer dot/beam, hover glow 9-slice. This stage did what it missed.
+
+1. **Front end art v2 (item 9).**
+   - `title_bg_v2.png` and `card_lanterngrove_v2.png` were uploaded via MCP (`tools/stage_q_assets.json`) and are now `Config.UI.TitleBackground` / `CardLanternGrove`.
+   - The L1 logo is now sized as a fraction of the page: 900/1920 wide, 40/1080 from the top, matching `title_preview_v2.png`. The same layout applies on the desktop screen and the VR panel.
+   - Shots: `playtests/stage-q/ui/` (desktop + VR title, courses, settings, how-to, results).
+2. **Meshes (item 10).** Codex used the 3D Importer (preset "LG Stud Scene Anchored", one file per import, no warnings; `logs/codex-import-q.log`):
+   - `h9_lantern_pendulum.fbx` (15:31): 5 MeshParts, 1,820 polys. Iron is now 1.0×8.069×1.6 (1.0×0.4×1.6 plinth).
+     - Re-imported with `props_to_lua.py --push` (fbx_refresh), `PrepareLibrary`, then `holes_to_lua.py --push --build` (0 terrain intrusions).
+     - Felt is at y 1.000 under the bob (5 raycasts). The plinth bottom is 7.959 below the hinge, and its lowest point over ±11° is y 1.0213, so **clearance is 0.021**.
+     - The plinth and foot are both 1.0 wide now, so the stage-o slivers are gone.
+     - **PointLight:** both pendulum lights (LanternGlow and the Glow mesh light) were already at hole-local **x 21.20**, on the swinging bob. Nothing sat at x 22.0, so nothing moved.
+   - `vr_wrist_bracer.fbx`: 5 MeshParts, 978 tris. It's stored as `ReplicatedStorage.Golf.WristBracer`.
+     - The importer's 180° turn is undone: Glow is back at +X, toward the fingers.
+     - Colours come from the FBX materials: brass #C89639 Metal, leather #895530 / #5B3922, glow #FFB346 Neon, face #2D261F.
+     - The VR client clones it onto the off-hand wrist each frame (BulkMoveTo): pivot at the wrist centre, +Y = back of the wrist, +X = fingers. All parts are CanCollide/CanQuery/CanTouch off and Massless.
+   - **Card on the bracer face:** the panel's Front face lies on the 0.32×0.20 WristFace (16:10, 1024×640 card zones), lifted to y 0.256 to clear the brass rim. It reads upright with the forearm across the body.
+   - The MENU/SCORES pointer strip hangs off the face's near edge (canvas 1024×784).
+3. **Look-at-wrist trigger (item 11).** The bracer and card are both hidden in normal play. All thresholds are Config values:
+
+   | Config | Value | Meaning |
+   |---|---|---|
+   | `WristShowDeg` | 32° | the back of the wrist must face the eyes within this to show |
+   | `WristGazeDeg` | 25° | the wrist must be within this of the gaze centre to show |
+   | `WristShowHold` | 0.25 s | both must hold this long before it shows |
+   | `WristHideDeg` / `WristGazeHideDeg` | 45° / 35° | the hide thresholds |
+   | `WristHideHold` | 0.4 s | how long out past the hide thresholds before it hides |
+   | `WristMaxClubSpeed` | 3 studs/s | putter head speed above which it never shows |
+   | `WristSwingQuiet` | 0.5 s | how long after a fast club move it still stays hidden |
+   | `WristStanceRange` | 1.5 studs | putter head within this (flat) and within 0.8 vertical of a hittable ball counts as a putting stance; it never shows then |
+
+   - Hidden while a menu or the final card is up, as before. Show/hide events are logged (`HUD.wristEvents`, printed in the VR sim).
+   - **Check:** new `tools/wrist_sim.py` drives scripted SimulateVR motion through the `GolfPointerDebug` `wristSim` hook. **PASS on seeds 7, 8, 9: 0 false shows.** Results: `playtests/stage-q/wrist-sim/wrist_sim.json`.
+
+     | Scenario | Shows | What the gates did |
+     |---|---|---|
+     | watch: 3 deliberate looks, 1.2 s each | 3 / 3, hide 3 / 3 | show latency 264–283 ms |
+     | glance: 6 flicks through the watch pose, 0.15 s each | 0 | the hold filters them |
+     | swings: 10 practice swings, peak 3.5–9 studs/s | 0 | 5 with the off hand on the grip, 5 with the head looking right at the raised wrist; 379–401 frames met the look test and were held by the swing gate |
+     | stance: 8 slow address waggles behind a hittable ball | 0 | half of them peeking at the wrist; 449–553 frames held by the stance gate |
+     | head: 25 s of normal motion | 0 | looking around ±80°/−60..+25°, walking bob + arm swing, pointing, wrist up but 35–60° off gaze, wrist up but tipped 55° |
+
+   - Hint text now says "look at your other wrist" (title footer and how-to VR tab; the how-to text still fits, 49.6 px).
+4. **Screenshots** (`playtests/stage-q/wrist-sim/`): `wrist_up.png`, `wrist_up_zoom_fov22.png` (bracer + card), `wrist_pointer_menu.png`, `wrist_pointer_menu_zoom_fov30.png` (beam, dot and hover glow on MENU).
+
+**Tests.**
+
+| Test | Result |
+|---|---|
+| H9 block rate, 48 shots (same opts as stage p) | **18/48 = 37.5% blocked** (stage p 19/48), 31 touched, all 48 at rest, 0 flags/traps, 0 console warnings/errors. `playtests/stage-q/blockrate/` |
+| Random sweep, H9, 20 shots (seed 117) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 nudges, 2 holed, 0 console warnings/errors. `playtests/stage-q/sweep/` |
+| VR pointer walk (`menu_shots --vr --pointer`) | PASS 14/14 (incl. wrist MENU / SCORES) |
+| VR menu (`menu_shots --vr`) | every page opens, panel jump 0, how-to fits, 0 errors |
+| VR sim `run progress` (H1→H9) | Pass, 0 warnings/errors |
+| Smoke desktop / iPhone 17 Pro | PASS / PASS (stroke → Explore → back), problems empty |
+
+**Needs a headset (Chase):**
+- The 32°/25° thresholds and the 0.25 s / 0.4 s holds.
+- Whether 9.6×6 cm on the wrist face reads well. The old floating card was 20×15 cm.
+- The MENU/SCORES strip is small to point at (each button about 4×1.3 cm).
+- The stance gate means the card won't show while the putter rests near the ball. Lift the club to check it.
