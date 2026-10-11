@@ -1,0 +1,89 @@
+[runner] studio VR Mini Golf (placeId: 87725688219952) ee2e1446-53b6-4363-937f-9e22188c182f
+[runner] mode Edit
+[runner] device ok
+[runner] mode Edit
+{
+ "device": "iphone_17_pro",
+ "play": {
+  "lights": 234,
+  "touch": true,
+  "hole": 1,
+  "camType": "Enum.CameraType.Scriptable",
+  "fps": 60,
+  "anchored": false,
+  "ball": true,
+  "ballToTee": 0.06,
+  "meshParts": 2586,
+  "viewport": "750, 381",
+  "strokes": 0,
+  "explore": {
+   "putt": {
+    "state": "moving",
+    "hit": true
+   },
+   "dests": {
+    "H7": "ground",
+    "H6": "ground",
+    "H5": "ground",
+    "H4": "ground",
+    "H2": "ground",
+    "H3": "ground",
+    "H1": "ground",
+    "Lookout Rock": "ground",
+    "Lantern Mere": "ground",
+    "Hollow Tree": "ground",
+    "H8": "ground",
+    "H9": "ground",
+    "Welcome Plaza": "ground",
+    "Grand Falls": "ground"
+   },
+   "on": {
+    "attr": true,
+    "active": true,
+    "ballAnchored": true,
+    "cam": "Enum.CameraType.Custom",
+    "walk": 16
+   },
+   "flyClimb": 20,
+   "afterPutt": {
+    "state": "ready",
+    "strokes": 1,
+    "ballFromTee": 10.44
+   },
+   "fallRespawnY": 26,
+   "strokeRoundTrip": {
+    "ok": true,
+    "ballMoved": 0,
+    "strokesBefore": 1,
+    "strokesAfter": 1
+   },
+   "menuButtons": 14,
+   "back": {
+    "ballMoved": 0,
+    "strokes": 1,
+    "cam": "Enum.CameraType.Scriptable",
+    "anchored": false,
+    "attr": false,
+    "strokes0": 1
+   }
+  },
+  "parts": 3789
+ },
+ "hud": {
+  "testApi": false,
+  "hud": true,
+  "testLane": false,
+  "texts": [
+   "Hole 1  -  Lantern Gate",
+   "Par 2   |   Strokes 1",
+   "Hole 1  -  Par 2",
+   "Back on the path",
+   "Pull back from the ball to putt  -  drag elsewhere to look around  -  pinch to zoom"
+  ]
+ },
+ "problems": {
+  "server": [],
+  "client": []
+ }
+}
+[runner] PASS stroke -> Explore -> back: strokes 1 -> 1, ball moved 0.000

@@ -308,3 +308,53 @@ Studio is in Edit mode, one window, with GolfTestMode false.
 | Random sweep, 10 shots × 9 holes (seed 113) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 console warnings/errors. 4 expected water drops (H5 1, H6 2, H7 1). `playtests/stage-m/sweep/` |
 | `progress` (full 9-hole round to the results screen) | PASS |
 | Smoke, desktop and phone | PASS: stroke → Explore → back, 0 errors. `playtests/stage-m/smoke/` |
+
+# Stage n report (2026-10-11, 13:35 PT): Playtest round 4 (v116) fixes + slope pattern C + H9 Round 9. **Published v131**
+
+**Version:** File > Save to Roblox 20:31:14Z, then File > Publish to Roblox 20:31:26Z. Both are in the Studio log. Codex read **v131** (Oct 11, 1:31 PM) in Version History (`logs/codex-publish-n.log`). Audience is unchanged (Friends and Playtesters), and no Robux was spent. Studio is left in Edit mode, one window, workspace attributes `SimulateVR=false, GolfTestMode=false`, and `src/` matches Studio (export diff = only this stage's edits).
+
+1. **Slopes: pattern C (one-way arrowheads).**
+   - Source: 3D Model Bot's `models/textures/slope_felt_color.png`, 8 studs per tile, +V = downhill.
+   - The slope pieces are plain Parts, so they can't take a SurfaceAppearance (normal/roughness maps unused; the nap comes from Fabric). They use a Top-face Texture instead.
+   - A Texture can't be rotated or brightened past its image, so `art/slope/make_slope_C.py` bakes the colour map into the three felt tones (felt / feltHi / feltLo) × 4 rotations. That's 12 uploads, keyed in CourseBuilder `SLOPE_FELT` by tone and part-local downhill axis. Pattern A is gone.
+   - **All 17 sloped pieces are textured.** `tools/slope_shots.py` shoots each one from above and uphill (occluders hidden with LocalTransparencyModifier, nothing saved) into `playtests/stage-n/slopes/` (17 PNGs, `contact.png`, `slopes.json`).
+   - **Verified:** I checked H4, H3 bank, H8 alcove (21°) and H9 tunnel up close: bright tips point away from the camera (downhill) with the dark fill toward it. The contact sheet shows the same orientation on every piece.
+2. **H9 Round 9.** Re-imported from holes.json in one regenerate step.
+   - The foot measures 0.9×0.4×1.6, yaw 0 (square to the swing), 7.762 below the hinge, invisible, CanCollide, GolfMover, welded to the bob. The hinge and the ±13°/4 s swing are unchanged.
+   - **0.9 block rate:** 9/24 = **37.5%** (13 touched), so under 38%.
+   - **1.0×0.4×1.6, as the spec says:** 7/24 = **29.2%** (11 touched).
+   - Both runs fire at the same swing angles but some outcomes flip (e.g. 12.7° blocked vs 12.6° not), so a 24-shot run is about ±2 shots of noise. At 48 shots: **0.9 = 14/48 (29%), 1.0 = 15/48 (31%)**, 24–25 touched. **0 traps** in every run, 0 errors.
+   - **Shipped at 1.0×0.4×1.6.** That's my edit to holes.json's foot size, flagged for Game Art Bot. Studio blocks about 30%, not the 45% their sim predicts. Widening the foot doesn't move it, since many touches still cross (the swinging foot pushes the ball on), so the fix is a design call: timing or a taller/wider bob.
+   - Raw data: `playtests/stage-n/blockrate*/`.
+3. **VR menu.**
+   - The panel is anchored once per menu session: placed when the menu opens, and re-anchored only if a teleport moves the head more than 6 studs. Page changes and the lazy 70° follow no longer move it. `menu_shots.py --vr` now logs the panel position on every page: **max jump 0.000 studs across all 5 pages, PASS**.
+   - `menu_shots.py --vr` levels the simulated head (`VRDebug.Head`, position and yaw kept) before opening the menu, so the shots frame the panel.
+   - Also fixed: `UITextSizeConstraint` caps the post-UIScale size, so every capped label and button on the VR canvas (UIScale 1.6) drew at about 1/1.6 size. The caps now scale with VR_SCALE.
+4. **Camera see-through, thicker.**
+   - New `THICK_R` 1.5 spherecast along the camera→ball line (felt skipped), stopping 2.5 short of the ball so rails beside it stay. The near-camera fade radius went from 0.45 to 1.5.
+   - At the H6 spot, the tee sign now fades (15 part-hits over 12 yaws).
+   - **Near-camera glow:** Neon parts and light carriers within 3 studs of the camera hide (LTM 1) and their lights switch off, restored after. H9 pendulum: core hidden and both lights (bob glow + LanternGlow) off at 0.5–2.5 studs, back on at 4+.
+   - Cost: about 0.43 ms/frame at H9.
+5. **Hollow tree.**
+   - Round 4's whole-tree fade came from the near-camera overlap: it tests bounding boxes, and the shell meshes (40–128 studs) have boxes that contain the whole H8/H9 play area. On top of that, the model (35 parts) faded as a group.
+   - Now whole-model fades only apply to models ≤ 16 studs. Parts over 12 studs are left to the rays and the sphere sweep, which test real geometry.
+   - Shell parts faded per pose: H8 1 → **0**, H9 14 → **0** (of 35). Total faded per pose at H9: 19 → 5.
+6. **H8 rails.** PropsBuilder `RAIL_LANTERN_DIM[8]` caps all 30 H8 rail-crook lanterns (manifest lights + dressing) at brightness 0.5, range 7 (was 0.9–1.2 / 8–10), and scales their neon cores to 60%. Before/after: `playtests/stage-n/h8_rails_{before,after}_edit.jpg`. Other holes are unchanged.
+7. **How to play.**
+   - One platform per page with VR / Phone / Desktop tabs, defaulting to the player's device, and a fixed TextSize of 31.
+   - Effective size: **desktop 27.8 px, iPhone 17 Pro emulator 18.5 pt** (root scale 0.60), **VR 49.6 canvas px** = 0.145 studs at 4 studs (~2.1°). `TextFits = true` on all three; the longest tab (VR) measures 341 of 348 px.
+   - Shots: `playtests/stage-n/ui/{desktop,phone,vr}_menu_*.png`.
+8. **Personal best on the real DataStore: PASS.**
+   - Studio access to API services: OFF → **ON** (Codex, Game Settings > Security, other toggles unchanged).
+   - Test: Play-mode server, fresh module clones per "server", mock UserId -424242, real store `VRMiniGolf_PB_v1`. Save 30 → reload 30 → 33 kept at 30 → 26 saved → reload 26. Test key removed afterwards.
+   - The real Studio player also loads from the store (SettingsLoaded). 0 errors. `PBInStudio` was removed afterwards, so Studio test runs stay in memory.
+   - Details: `playtests/stage-n/personal_best.md`.
+
+**Tests.**
+
+| Test | Result |
+|---|---|
+| Camprobe (483 round-3 spots × 12 yaws) | **0 / 5,796 bad** on all 9 holes |
+| Random sweep 10 × 9 holes (seed 114) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 console warnings/errors. Expected hazard drops: H2 2, H5 3, H7 1. H2 logged 2 seam-hop nudges during ball placement (0.35 s apart, not stuck) |
+| Smoke desktop / iPhone 17 Pro | PASS / PASS (stroke → Explore → back, 0 errors) |
+| Menu shots desktop / phone / VR | 0 errors; VR panel jump 0.000 |

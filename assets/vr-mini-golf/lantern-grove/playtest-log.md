@@ -580,3 +580,117 @@ was tuned against a sim that over-counted blocks. The obstacle is now real in-en
   Its bottom is 0.055 above the felt (world: felt + 0.055). Set Transparency 1, CanCollide true, group GolfMover, and weld it to the bob.
   The lantern body collider and mesh are unchanged.
 - **Retest** with GolfTest `BLOCK_LINES` (same line and 20 phases). Expect about 6–8/20 blocked at 7.75 studs/s; the fixed sim says 7/20.
+
+## Round 9: H9 pendulum foot, square to the swing (2026-10-11)
+
+**Studio v116:** H9 pendulum blocked **8/24 (33.3%)**, touched 12/24 on the Studio line. Target: 38–50% blocked in Studio with 0 traps.
+Calibration: the fixed sim predicted 7/20 (35%) where Studio measured ~33%, so the sim target is ~45% blocked at 7.75 studs/s.
+Only the invisible collider foot changes. Hinge (21.2, 8.996, -38.5), ±13° and 4 s are unchanged. The lantern body collider is unchanged.
+
+### 1. Tools
+- `timing_check.py --studio-h9 --phases N`: N phases spread evenly over one period (t0 = k·T/N; 24 → every 1/6 s, 80 → every 0.05 s).
+  Without `--phases` it uses the old 20 phases 0..4.75 s.
+- `tools/sweep_r9.py '{"h9_foot": [x,y,z], "h9_foot_yaw": deg}' [--fuzz 100000] [--full]`: felt clearance, Studio line at 24 and 80 phases ×
+  speeds 7/7.75/8.5/9, intended line, and fuzz.
+- `sweep_r5.py`: `LG_SCRATCH` sets the scratch holes.json path, so sweeps can run in parallel. The first parallel batch shared one
+  scratch file and its results were discarded.
+- `build_holes.py`: new knob `h9_foot_yaw`. The foot's rest gap now rounds **up** with a +0.001 margin, so the swing minimum is ≥ 0.021.
+  In Round 8 rounding could give 0.0199.
+
+### 2. Foot sweep (Studio line blocked count; 24 phases | 80 phases at 7 / 7.75 / 8.5 / 9 studs/s)
+
+Rest gap = foot bottom above the felt with the lantern hanging straight down. Every row has min gap ≥ 0.02 over the swing (all 8 corners).
+
+| Foot [x,y,z] | Yaw | Rest gap | 24 ph | 80 ph | Traps | Inside lantern footprint? |
+|---|---|---|---|---|---|---|
+| 0.8,0.4,1.6 (R8) | 30 | 0.056 | 11/10/9/9 | 36/32/27/26 | 0 | yes |
+| 1.0,0.4,1.6 | 30 | 0.063 | 12/10/9/9 | 37/32/28/26 | 0 | yes |
+| 1.2,0.4,1.6 | 30 | 0.073 | 12/10/9/9 | 38/32/29/26 | 0 | yes |
+| 1.4,0.4,1.6 | 30 | 0.083 | 10/9/8/8 | 34/29/26/23 | 0 | yes |
+| 1.6,0.4,1.6 | 30 | 0.095 | 8/6/5/6 | 25/22/19/16 | 0 | yes |
+| 0.8,0.4,2.0 | 30 | 0.065 | 12/10/9/9 | 42/35/29/28 | **1** | no |
+| 1.0,0.4,2.0 | 30 | 0.074 | 11/10/9/9 | 42/35/31/27 | **1** | no |
+| 1.2,0.4,2.0 | 30 | 0.085 | 10/8/6/7 | 36/28/25/23 | **1** | no |
+| 0.6,0.4,2.0 | 30 | 0.058 | 11/8/8/8 | 40/33/30/27 | 0 | no |
+| 0.6,0.4,2.4 / 0.4,0.4,2.4 | 30 | 0.068 / 0.059 | 12/10/9/8 / 12/10/9/9 | 42/35/30/29 / 41/34/30/28 | **2 / 1** | no |
+| 0.8,0.6,1.6 (taller) | 30 | 0.056 | 11/10/9/9 | 36/32/27/26 | 0 | yes |
+| 0.6 / 0.4 / 0.3, 0.4, 1.6 | 30 | 0.049 / 0.042 / 0.039 | 11/9/8/8 | 36/31/28/25 … 35/30/26/25 | 0 | yes |
+| 0.4,0.4,1.4 | 30 | 0.039 | 10/9/8/8 | 33/29/26/24 | 0 | yes |
+| 0.4,0.4,1.6 | 0 | 0.030 | 10/8/7/7 | 32/28/25/22 | 0 | no |
+| 0.6,0.4,1.5 | 0 | 0.030 | 12/9/7/7 | 36/31/28/26 | 0 | yes (max yaw-0 fit) |
+| 0.8,0.4,1.38 | 0 | 0.032 | 12/10/9/8 | 38/34/32/29 | 0 | yes (max yaw-0 fit) |
+| 0.8,0.4,1.6 | 0 | 0.032 | 12/10/10/10 | 40/35/32/29 | 0 | no (+0.09) |
+| 0.8,0.4,1.8 | 0 | 0.032 | 12/11/10/10 | 41/34/33/29 | 0 | no |
+| 0.8,0.4,2.0 | 0 | 0.032 | 13/11/10/10 | 41/37/33/30 | 0 | no (+0.27) |
+| **0.9,0.4,1.6** | **0** | **0.034** | **12/11/10/10** | **40/36/33/30** | **0** | **no (+0.12)** |
+| 0.9,0.4,1.8 | 0 | 0.034 | 14/12/11/10 | 41/37/33/31 | 0 | no |
+| 1.0,0.4,1.6 | 0 | 0.037 | 12/12/11/11 | 42/36/34/32 | 0 | no |
+| 1.0,0.4,1.8 | 0 | 0.037 | 14/12/11/11 | 42/37/34/32 | 0 | no |
+| 1.2,0.4,1.6 | 0 | 0.044 | 13/11/10/11 | 40/36/35/31 | 0 | no |
+
+What the sweep shows:
+- **Widening along the swing backfires.** A box on a 8-stud arm must hang higher the longer it is along the swing (rest gap ≈ 0.02 +
+  half-length² / 16) or its corners hit the felt mid-swing. Above ~0.06 the foot meets the ball (centre 0.08) above its middle and the
+  block rate falls: 1.6 wide gave 22/80.
+- **Deeper across the swing at yaw 30 traps the ball.** Feet 2.0–2.4 deep gave 1–2 pins at 80 phases.
+- **Height doesn't matter** (0.4 and 0.6 gave identical results).
+- **Turning the foot square to the swing (yaw 0)** gives the most block per unit of height. At yaw 30 the 1.6 depth adds 0.4 to the
+  half-length along the swing; at yaw 0 it adds nothing. So a 0.9-long foot sits at 0.034 (was 0.055) and stops more balls low.
+  No foot that fits inside the yaw-30 lantern footprint beats Round 8 by more than ±1/24, so reaching ~45% takes a foot that pokes out
+  of the footprint, plus a mesh change.
+
+### 3. Final foot
+
+| | Round 8 | **Round 9** |
+|---|---|---|
+| Size [x along swing, y, z across] | 0.8 x 0.4 x 1.6 | **0.9 x 0.4 x 1.6** |
+| Yaw | 30 (same as the body) | **0** (square to the swing plane = -30° relative to the body) |
+| Centre from the hinge (hanging straight down) | (0, -7.741, 0) | **(0, -7.762, 0)** |
+| Bottom above the felt at rest | 0.055 | **0.034** (0.062 below the lantern's visible bottom, 0.096) |
+| Min bottom clearance over the ±13° swing (all corners of both colliders) | 0.020 | **0.021** |
+
+**Mesh fit: NO.** The foot covers a 0.9 x 1.6 rectangle aligned with the course. In the lantern's yaw-30 frame its corners reach 0.918
+from the centre against the body's 0.8 half-width, so they stick out **up to 0.12** past two of the body's faces.
+**3D Model Bot:** add a **base plinth** to the pendulum lantern mesh: a 0.9 (along the swing) x 0.4 x 1.6 block turned **-30° relative
+to the lantern body** (yaw 0 in the course), centred under the body, with its bottom 0.062 below the body's bottom. It should be dark
+iron/wood, like a weighted base. Alternative: widen the lantern's bottom 0.4 to a **1.84 x 1.84** square (same yaw 30) and extend it
+0.062 lower. That covers the foot but shows some visible base where there is no collider.
+
+### 4. Timing check (`timing-r9-final.txt`, fuzz 100k per mover)
+
+| Hole | Obstacle | Line | Blocked | Deflected | Blocked+deflected | Traps | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|
+| H7 | log | intended / ace | 11/24 / 7/24 | 0 / 2 | 45.8% / 37.5% | 0 | 0/100000 |
+| H8 | root_door | intended / ace | 12/24 / 7/24 | 0 / 0 | 50% / 29.2% | 0 | 0/100000 |
+| H9 | lantern_pendulum | intended | **11/24** (was 10) | 1 | **50%** | 0 | **0/100000** |
+| H9 | lantern_pendulum | ace (knot) | 0/24 | 0 | 0% | 0 | - |
+
+H7 and H8 are unchanged. H9 Studio line (`studio-h9-r9-{before,after}-{24,80}.json`, phases spread evenly over 4 s):
+
+| Speed | Speed at z -38.5 | 24 phases before → **after** | 80 phases before → **after** | Traps |
+|---|---|---|---|---|
+| 7.0 | 1.86 | 11/24 (46%) → **12/24 (50%)** | 36/80 (45%) → **40/80 (50%)** | 0 |
+| **7.75** | 2.94 | 10/24 (42%) → **11/24 (46%)** | 32/80 (40%) → **36/80 (45%)** | 0 |
+| 8.5 | 3.89 | 9/24 (38%) → **10/24 (42%)** | 27/80 (34%) → **33/80 (41%)** | 0 |
+| 9.0 | 4.48 | 9/24 (38%) → **10/24 (42%)** | 26/80 (32%) → **30/80 (38%)** | 0 |
+
+Same-geometry calibration: the sim says 42% (24 even phases) for the Round-8 foot and Studio measured 33%. Expect Studio at about
+**38–40%** with the new foot. If Studio comes in under 38%, the next step is 1.0 x 0.4 x 1.6 yaw 0 (12/24, 36/80 in the sim, 0 traps;
+plinth sticks out 0.14).
+
+### 5. H9 stats (2000 plays per skill, same seeds)
+
+| | Good avg | Avg avg | Skill gap | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|
+| Round 8 | 3.74 | 4.13 | 0.39 | 3.0% | 0.2% | 0.1% | 0.2% | ok |
+| **Round 9** | **3.81** | **4.21** | **0.40** | 3.0% | 0.3% | 0.1% | 0.4% | ok |
+
+Targets met: gap 0.40 ≥ 0.3, average 4.21 ≤ par + 1.5 (5.5), caps ≤ 1%. The ace line (Lantern Knot, 55 grid hits) never meets the pendulum.
+Course total 25.40 → **25.47** good, 32.05 → **32.13** average. Felt, walls, cup and tee are unchanged, so `world/tools/validate.py` wasn't rerun.
+
+### What changes (H9 only)
+
+- **RobloxDevBot:** resize the foot collider to **0.9 x 0.4 x 1.6**, set **yaw 0** in the course (rotate it -30° relative to the
+  lantern body), and put its centre **7.762 below the hinge** (bottom = felt + 0.034 at rest). Keep it Transparency 1, CanCollide, group
+  GolfMover, welded to the bob. Hinge, ±13° and 4 s are unchanged. Retest with GolfTest `BLOCK_LINES` (24 phases): expect about 9–11/24.
+- **3D Model Bot:** add the base plinth (section 3) to the pendulum lantern mesh.

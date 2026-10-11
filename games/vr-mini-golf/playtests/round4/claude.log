@@ -1,0 +1,29 @@
+Blockrate (24 shots × H7/H8/H9) is still running. I'll continue when it finishes.
+
+I finished the round 4 playtest of v116 without changing anything permanent: nothing was saved or published, `src/` wasn't touched, and no agreement pop-ups appeared. Studio is back in Edit mode with the workspace attributes it started with. The full report is `playtests/round4/round4-findings.md`.
+
+| # | Check | Result |
+|---|---|---|
+| 1 | Camera near walls | **Fixed: 0 bad poses out of 5,796** (round 3 had 178 severe spots). The camera stays 5.99 studs from the ball at every spot, and walls in the way fade to 0.7 transparency. All 9 worst-spot screenshots are in `camera/`. |
+| 2 | Slopes | 17 sloped pieces (over 1.5°), **all have the chevron texture** and none were missed. The texture lines up with the real slope on all 14 pieces where it can be checked. **But the pattern is a symmetric zigzag**: players can see that a piece slopes and along which line, not which way is downhill. Screenshots are in `slopes/`. |
+| 3 | Hole-in audio | Sound, volume, length and speed measured for all 7 results. The crowd starts 0.27 s after the plunk and overlaps it by 0.25 s. Only 2 of the 7 sounds could be downloaded for peak/RMS analysis (no clipping); recording Studio's output wasn't possible on the Mini. **Nobody has listened to any of it.** |
+| 4 | Front end | Title, course picker (1 course + 2 Coming soon), Settings, How to play, results scorecard and Play again all render on desktop, phone and VR, with 0 errors. |
+| 5 | Personal best | With `PBInStudio` off it stays in memory and logs no errors. It keeps the lowest score, and bad settings values are clamped or dropped. Studio's DataStore refuses requests (error 502, API access disabled). I never enabled live writes. |
+| 6 | Block rate | **H7 12/24 = 50%, H8 12/24 = 50%** (both at the top edge of the target). **H9 8/24 = 33.3%** (12 touched): still below 38%, but up from 8.3%. |
+| 7 | Lanterns | 212 visible lantern/glow/firefly props, **178 lit**. All rail lanterns and H8 glow props now have lights. Unlit: 24 sky lanterns, 8 lantern boats, the old lantern tower and the lantern falls curtain, all backdrop pieces that only glow. |
+| 8 | Regression | clubviz matches round 3. Smoke passes on desktop and on the iPhone 17 Pro emulator, with 0 errors. |
+
+**New issues:**
+- **VR menu shots show only the floor:** `menu_shots.py --vr` leaves the simulated head pitched 60° down, so all six shots miss the panel. With the head level the panel renders fine (`ui-vr/vr_level_*.png`), but its position jumps left or right between pages.
+- **Things the camera doesn't fade:** big objects just off the line to the ball stay solid, like the swinging H9 lantern (which washes the view yellow when it passes the camera) and the H6 tee sign.
+- **Hollow tree turns see-through on H8/H9:** being under it fades the whole tree shell at once, about 39–56 parts per camera angle there.
+- **H8 rails glow:** they bloom white and look overexposed.
+- **Small text:** How to play is hard to read on phone and in VR.
+
+**Not tested:**
+- Listening to the audio.
+- A real headset or real phone.
+- A full 9-hole round that saves a best score.
+- Saving to the real DataStore on a live server.
+- Clicking the menu buttons for real (they were driven through the debug hook).
+- Which face of the 45° banks the player actually sees.

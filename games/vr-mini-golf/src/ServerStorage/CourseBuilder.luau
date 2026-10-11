@@ -211,20 +211,49 @@ function Hole:feltColor(pc)
 	return P.felt
 end
 
--- Sloped felt reads as sloped (Chase, stage m; like Walkabout): any felt top tilted more than MIN_DEG gets Game Art
--- Bot's chevron felt (lantern-grove/textures/slope_felt_A.png as a neutral mask, art/slope/), tinted with the piece's
--- felt colour, chevron tips (+V) pointing downhill. A Top-face Texture maps +U to part -X and +V to part -Z, and
--- can't be turned, so the mask is uploaded in four rotations keyed by the part-local downhill axis.
+-- Sloped felt reads as sloped and shows which way is down (Chase, stage m; pattern C, stage n): any felt top tilted
+-- more than MIN_DEG gets 3D Model Bot's one-way arrowhead felt (lantern-grove/models/textures/slope_felt_color.png,
+-- 8 studs per tile, +V = downhill), baked into each felt tone by art/slope/make_slope_C.py. A Top-face Texture maps +U
+-- to part -X and +V to part -Z and can't be turned, so each tone is uploaded in four rotations keyed by the part-local
+-- downhill axis; the bright arrow tips point downhill. Plain Parts can't take a SurfaceAppearance, so the nap comes
+-- from the Fabric material.
 local SLOPE_FELT = {
 	MIN_DEG = 2,
-	STUDS_PER_TILE = 4, -- 4 chevrons across a tile: one per stud
+	STUDS_PER_TILE = 8,
 	textures = {
-		["-Z"] = "rbxassetid://93672705345921", -- slope_mask_r0
-		["+X"] = "rbxassetid://78003072927889", -- slope_mask_r90
-		["+Z"] = "rbxassetid://120294739676349", -- slope_mask_r180
-		["-X"] = "rbxassetid://84410090237143", -- slope_mask_r270
+		felt = {
+			["-Z"] = "rbxassetid://73580481363879", -- slope_C_felt_r0
+			["+X"] = "rbxassetid://129592782423546", -- slope_C_felt_r90
+			["+Z"] = "rbxassetid://113253314312541", -- slope_C_felt_r180
+			["-X"] = "rbxassetid://121717075552560", -- slope_C_felt_r270
+		},
+		feltHi = {
+			["-Z"] = "rbxassetid://80509726173823",
+			["+X"] = "rbxassetid://81751955839110",
+			["+Z"] = "rbxassetid://131309615299067",
+			["-X"] = "rbxassetid://117574107082616",
+		},
+		feltLo = {
+			["-Z"] = "rbxassetid://89306582470432",
+			["+X"] = "rbxassetid://124677910862174",
+			["+Z"] = "rbxassetid://105060035224927",
+			["-X"] = "rbxassetid://97307371441525",
+		},
 	},
 }
+
+-- the baked tone closest to a piece colour
+local function slopeTone(color: Color3): string
+	local best, bestD = "felt", math.huge
+	for tone in SLOPE_FELT.textures do
+		local c = P[tone]
+		local d = (c.R - color.R) ^ 2 + (c.G - color.G) ^ 2 + (c.B - color.B) ^ 2
+		if d < bestD then
+			best, bestD = tone, d
+		end
+	end
+	return best
+end
 
 function Hole:slopeFelt(p: BasePart, color: Color3)
 	local n = p.CFrame.UpVector
@@ -243,8 +272,7 @@ function Hole:slopeFelt(p: BasePart, color: Color3)
 	new("Texture", {
 		Name = "SlopeFelt",
 		Face = Enum.NormalId.Top,
-		Texture = SLOPE_FELT.textures[key],
-		Color3 = color,
+		Texture = SLOPE_FELT.textures[slopeTone(color)][key],
 		StudsPerTileU = SLOPE_FELT.STUDS_PER_TILE,
 		StudsPerTileV = SLOPE_FELT.STUDS_PER_TILE,
 	}, p)

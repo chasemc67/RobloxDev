@@ -141,8 +141,14 @@ end
 
 -------------------------------------------------------------------------- golf cameras: pass-through + see-through
 CameraOcclusion.FADE = 0.7 -- LocalTransparencyModifier for parts between the camera and the ball
-local FADE_MODEL_MAX = 80 -- a hit on a decor model with at most this many parts fades the whole model
-local FADE_INSIDE_R = 0.45 -- parts within this of the camera (it sits inside them) fade too
+local FADE_MODEL_MAX = 80 -- a hit on a decor model with at most this many parts fades the whole model...
+local FADE_MODEL_EXTENT = 16 -- ...if it's no bigger than this (the hollow tree shell fades part by part)
+local FADE_INSIDE_R = 1.5 -- parts within this of the camera (it sits in or right next to them) fade too
+local INSIDE_MAX_SIZE = 12 -- that overlap is by bounding box, so huge meshes (the hollow tree shell, 40-128 studs, whose
+-- boxes hold the whole H8/H9 play area) are left to the rays and the sphere sweep, which test real geometry
+local THICK_R = 1.5 -- radius of the thick sight-line sweep: big decor just off the line (H6 tee sign) fades
+local THICK_STOP = 2.5 -- the thick sweep stops this far short of the ball, so rails beside the ball stay
+local GLOW_HIDE_R = 3 -- glow/neon parts this close to the camera hide and their lights go off (H9 pendulum)
 
 local terrainParams = RaycastParams.new()
 terrainParams.FilterType = Enum.RaycastFilterType.Include
@@ -199,8 +205,12 @@ local function fadeGroup(p: BasePart, into)
 	local parts = modelParts[m]
 	if parts == nil then
 		parts = {}
+		local ext = m:GetExtentsSize()
+		if math.max(ext.X, ext.Y, ext.Z) > FADE_MODEL_EXTENT then
+			parts = false
+		end
 		for _, d in m:GetDescendants() do
-			if d:IsA("BasePart") then
+			if parts and d:IsA("BasePart") then
 				table.insert(parts, d)
 				if #parts > FADE_MODEL_MAX then
 					parts = false
@@ -221,7 +231,8 @@ local CONE = { { 5, 0 }, { -5, 0 }, { 10, 0 }, { -10, 0 }, { 0, 4 }, { 0, -4 }, 
 
 -- The parts a golf camera at `camPos` sees in front of `focus`: everything on the sight line (centre plus four rays
 -- 0.3 off it, so a rail edge at the frame centre goes too), on the CONE lines around it (felt excepted, so the green
--- in front of the ball stays) and whatever the camera sits inside. Rails, walls, felt banks, movers and the
+-- in front of the ball stays), a THICK_R sphere swept along the line (big decor just off it) and whatever sits
+-- within FADE_INSIDE_R of the camera. Rails, walls, felt banks, movers and the
 -- camera-queryable decor (tagDecor) count; the ball, `ignore` and Terrain don't. Mostly see-through parts are skipped.
 -- Returns a set { [BasePart] = true }.
 function CameraOcclusion.occluders(camPos: Vector3, focus: Vector3, ignore: { Instance }?)
@@ -265,9 +276,28 @@ function CameraOcclusion.occluders(camPos: Vector3, focus: Vector3, ignore: { In
 	for _, a in CONE do
 		sweep(camPos, (look * CFrame.Angles(math.rad(a[2]), math.rad(-a[1]), 0)).LookVector * reach, true)
 	end
+	-- thick sweep: a THICK_R sphere along the sight line (felt skipped), stopping THICK_STOP short of the ball
+	if len - THICK_STOP > 0.1 then
+		local f = table.clone(filter)
+		for _, p in feltParts() do
+			table.insert(f, p)
+		end
+		for _ = 1, 16 do
+			fadeRay.FilterDescendantsInstances = f
+			local hit = workspace:Spherecast(camPos, THICK_R, fwd * (len - THICK_STOP), fadeRay)
+			if not hit then
+				break
+			end
+			table.insert(f, hit.Instance)
+			if hit.Instance:IsA("BasePart") and hit.Instance.Transparency < 0.95 then
+				hits[hit.Instance] = true
+			end
+		end
+	end
 	fadeOverlap.FilterDescendantsInstances = filter
 	for _, p in workspace:GetPartBoundsInRadius(camPos, FADE_INSIDE_R, fadeOverlap) do
-		if p.Transparency < 0.95 then
+		if p.Transparency < 0.95 and not CollectionService:HasTag(p, "GolfSurface")
+			and math.max(p.Size.X, p.Size.Y, p.Size.Z) <= INSIDE_MAX_SIZE then
 			hits[p] = true
 		end
 	end
@@ -279,12 +309,87 @@ end
 
 local faded: { [BasePart]: boolean } = {}
 
+-- Glow parts (Neon, or carrying a light) and their lights, cached on first use. Near the camera they hide and the
+-- lights go off, so a lantern swinging past the lens doesn't wash the view (H9 pendulum, round 4). Most of them have
+-- CanQuery off, so this is plain box-distance maths instead of a query.
+local glow: { { part: BasePart, lights: { Light } } }? = nil
+local function glowParts()
+	if glow then
+		return glow
+	end
+	local list = {}
+	for _, root in { workspace:FindFirstChild("Course"), workspace:FindFirstChild("World") } do
+		for _, d in root and root:GetDescendants() or {} do
+			if d:IsA("BasePart") then
+				local lights = {}
+				for _, c in d:GetChildren() do
+					if c:IsA("Light") then
+						table.insert(lights, c)
+					end
+				end
+				-- (lights count on invisible carriers too: the pendulum's LanternGlow point)
+				if (d.Material == Enum.Material.Neon and d.Transparency < 0.95) or #lights > 0 then
+					table.insert(list, { part = d, lights = lights })
+				end
+			end
+		end
+	end
+	glow = list
+	return list
+end
+
+local function boxDistance(p: BasePart, at: Vector3): number
+	local l = p.CFrame:PointToObjectSpace(at)
+	local h = p.Size / 2
+	local c = Vector3.new(math.clamp(l.X, -h.X, h.X), math.clamp(l.Y, -h.Y, h.Y), math.clamp(l.Z, -h.Z, h.Z))
+	return (l - c).Magnitude
+end
+
+local hiddenGlow: { [BasePart]: { Light } } = {}
+
+local function hideNearGlow(camPos: Vector3?)
+	local near = {}
+	if camPos then
+		for _, g in glowParts() do
+			local p = g.part
+			if p.Parent and (p.Position - camPos).Magnitude < GLOW_HIDE_R + p.Size.Magnitude / 2
+				and boxDistance(p, camPos) < GLOW_HIDE_R then
+				near[p] = g.lights
+			end
+		end
+	end
+	for p, lights in hiddenGlow do
+		if not near[p] then
+			p.LocalTransparencyModifier = faded[p] and CameraOcclusion.FADE or 0
+			for _, l in lights do
+				l.Enabled = true
+			end
+			hiddenGlow[p] = nil
+		end
+	end
+	for p, lights in near do
+		if not hiddenGlow[p] then
+			p.LocalTransparencyModifier = 1
+			local off = {}
+			for _, l in lights do
+				if l.Enabled then
+					l.Enabled = false
+					table.insert(off, l)
+				end
+			end
+			hiddenGlow[p] = off
+		end
+	end
+end
+
 -- Fade (client-side LocalTransparencyModifier) what's between the camera and the ball; restore what's clear again.
 function CameraOcclusion.fade(camPos: Vector3, focus: Vector3, ignore: { Instance }?)
 	local now = CameraOcclusion.occluders(camPos, focus, ignore)
 	for p in faded do
 		if not now[p] then
-			p.LocalTransparencyModifier = 0
+			if not hiddenGlow[p] then
+				p.LocalTransparencyModifier = 0
+			end
 			faded[p] = nil
 		end
 	end
@@ -294,6 +399,7 @@ function CameraOcclusion.fade(camPos: Vector3, focus: Vector3, ignore: { Instanc
 			faded[p] = true
 		end
 	end
+	hideNearGlow(camPos)
 end
 
 -- Restore everything fade() changed (leaving the golf camera, e.g. into Explore).
@@ -302,6 +408,7 @@ function CameraOcclusion.clearFade()
 		p.LocalTransparencyModifier = 0
 	end
 	table.clear(faded)
+	hideNearGlow(nil)
 end
 
 return CameraOcclusion

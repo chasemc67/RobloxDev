@@ -404,6 +404,27 @@ local function setLight(model, spec)
 	return true
 end
 
+-- Per-hole caps on the manifest's rail-lantern lights. H8 packs 30 crook lanterns along its cream rail trim, which
+-- bloomed white (Playtest round 4), so they're dimmed to sit with the other holes: PointLight brightness/range caps
+-- and the neon glow core's colour scaled by `neon`.
+local RAIL_LANTERN_DIM = {
+	[8] = { brightness = 0.5, range = 7, neon = 0.6 },
+}
+local function dimRailLantern(m: Model, hole: number)
+	local dim = RAIL_LANTERN_DIM[hole]
+	if not dim then
+		return
+	end
+	for _, d in m:GetDescendants() do
+		if d:IsA("PointLight") then
+			d.Brightness = math.min(d.Brightness, dim.brightness)
+			d.Range = math.min(d.Range, dim.range)
+		elseif d:IsA("BasePart") and d.Material == Enum.Material.Neon then
+			d.Color = d.Color:Lerp(Color3.new(), 1 - dim.neon)
+		end
+	end
+end
+
 -- world-layout keep-outs for the set dressing (it was authored around each hole on its own)
 local function worldKeepouts(course)
 	local wl = ServerStorage.CourseData:FindFirstChild("WorldLayout")
@@ -706,6 +727,9 @@ function PropsBuilder.Place(course)
 				if ensureLight(m, lightSpecFor(it.prop)) then
 					lights += 1
 				end
+				if string.sub(it.prop, 1, 13) == "rail_lantern_" then
+					dimRailLantern(m, n)
+				end
 			end
 			rep.dressing += 1
 		end
@@ -789,6 +813,9 @@ function PropsBuilder.Place(course)
 				end
 			end
 			setLight(m, spec)
+			if l.kind == "rail_lantern" then
+				dimRailLantern(m, n)
+			end
 			m.Parent = lfolder
 			rep.pointLights = (rep.pointLights or 0) + 1
 		end

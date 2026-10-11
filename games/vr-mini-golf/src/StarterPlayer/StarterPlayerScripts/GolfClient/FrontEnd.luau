@@ -71,6 +71,12 @@ local function stroke(parent, color, thickness, transparency)
 	return new("UIStroke", { Color = color or C.amber, Thickness = thickness or 2, Transparency = transparency or 0, ApplyStrokeMode = Enum.ApplyStrokeMode.Border }, parent)
 end
 
+-- UITextSizeConstraint caps the on-screen (post-UIScale) size, so on the VR panel's canvas (UIScale VR_SCALE) the caps
+-- scale up with it; without that every capped label and button there drew at a third of its size (round 4).
+local function maxTextSize(design: number): number
+	return math.floor(design * (isVR and VR_SCALE or 1) + 0.5)
+end
+
 local function label(props, parent)
 	props.BackgroundTransparency = 1
 	props.Font = props.Font or FONT
@@ -82,7 +88,7 @@ local function label(props, parent)
 	props.MaxTextSize = nil
 	local l = new("TextLabel", props, parent)
 	if maxSize then
-		new("UITextSizeConstraint", { MaxTextSize = maxSize }, l)
+		new("UITextSizeConstraint", { MaxTextSize = maxTextSize(maxSize) }, l)
 	end
 	return l
 end
@@ -102,7 +108,9 @@ local function button(text, props, parent, onClick, style)
 	style = style or "secondary"
 	props.Text = text
 	props.Font = FONT
-	props.TextScaled = true
+	if props.TextScaled == nil then
+		props.TextScaled = true
+	end
 	props.AutoButtonColor = true
 	props.BorderSizePixel = 0
 	props.BackgroundColor3 = props.BackgroundColor3 or (style == "primary" and C.amber or (style == "danger" and Color3.fromRGB(150, 60, 50) or C.secondary))
@@ -111,7 +119,7 @@ local function button(text, props, parent, onClick, style)
 	corner(b, 14)
 	stroke(b, style == "primary" and C.cream or C.amber, 2, style == "primary" and 0.6 or 0.25)
 	new("UIPadding", { PaddingTop = UDim.new(0, 8), PaddingBottom = UDim.new(0, 8), PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }, b)
-	new("UITextSizeConstraint", { MaxTextSize = 30 }, b)
+	new("UITextSizeConstraint", { MaxTextSize = maxTextSize(30) }, b)
 	b.Activated:Connect(function()
 		if clickSound then
 			clickSound:Play()
@@ -452,36 +460,48 @@ local HOWTO = {
 	},
 }
 
+-- One platform at a time (tabs), so the text can be big: Playtest round 4 found the three-column page about 6 px on a
+-- phone. HOWTO_TEXT design px x the phone's root scale (0.60 on the iPhone 17 Pro emulator) is 18.6 pt; in VR it is
+-- 0.145 studs tall at 4 studs (~2.1 deg). 31 is the most the longest (VR) tab fits.
+local HOWTO_TEXT = 31
+local howtoTab: number? = nil
+
+local function defaultHowToTab(): number
+	if isVR then
+		return 1
+	end
+	if UserInputService.TouchEnabled then -- (same test as the HUD's touch hint)
+		return 2
+	end
+	return 3
+end
+
 local function buildHowTo()
 	header("How to play", function()
 		show("title")
 	end)
-	local row = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 80), Size = UDim2.fromOffset(870, 374) }, content)
-	new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Center, Padding = UDim.new(0, 14), SortOrder = Enum.SortOrder.LayoutOrder }, row)
+	howtoTab = howtoTab or defaultHowToTab()
+	local tabs = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 76), Size = UDim2.fromOffset(640, 48) }, content)
+	new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Center, Padding = UDim.new(0, 14), SortOrder = Enum.SortOrder.LayoutOrder }, tabs)
 	for i, section in HOWTO do
-		local col = panelFrame({ LayoutOrder = i, Size = UDim2.fromOffset(280, 374) }, row)
-		label({ Text = section[1], Position = UDim2.fromOffset(14, 10), Size = UDim2.new(1, -28, 0, 36), TextColor3 = C.amber }, col)
-		label({
-			Text = section[2],
-			Font = BODY,
-			TextWrapped = true,
-			TextXAlignment = Enum.TextXAlignment.Left,
-			TextYAlignment = Enum.TextYAlignment.Top,
-			Position = UDim2.fromOffset(16, 54),
-			Size = UDim2.new(1, -32, 1, -66),
-			MaxTextSize = 19,
-		}, col)
+		button(section[1], { Name = "Tab" .. section[1], LayoutOrder = i, Size = UDim2.fromOffset(200, 48), TextScaled = false, TextSize = 28 }, tabs, function()
+			howtoTab = i
+			show("howto")
+		end, i == howtoTab and "primary" or nil)
 	end
+	local panel = panelFrame({ Name = "HowToBody", AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 134), Size = UDim2.fromOffset(840, 376) }, content)
 	label({
-		Text = string.format("Sink the ball in as few strokes as you can.  %d strokes max per hole; out of bounds or water costs +%d.", Config.MaxStrokes, Config.PenaltyStrokes),
+		Name = "Text",
+		Text = HOWTO[howtoTab][2] .. string.format("\nSink the ball in as few strokes as you can. %d strokes max per hole; out of bounds or water costs +%d.", Config.MaxStrokes, Config.PenaltyStrokes),
 		Font = BODY,
-		AnchorPoint = Vector2.new(0.5, 1),
-		Position = UDim2.new(0.5, 0, 1, -16),
-		Size = UDim2.fromOffset(820, 24),
-		TextStrokeTransparency = 0.3,
-		TextStrokeColor3 = C.navy,
-		MaxTextSize = 19,
-	}, content)
+		TextScaled = false,
+		TextSize = HOWTO_TEXT,
+		TextWrapped = true,
+		TextXAlignment = Enum.TextXAlignment.Left,
+		TextYAlignment = Enum.TextYAlignment.Top,
+		Position = UDim2.fromOffset(22, 16),
+		Size = UDim2.new(1, -44, 1, -28),
+	}, panel)
 end
 
 -- End of round: per-hole strokes vs par, totals, personal best. (The frame is named "Scorecard": the Studio
@@ -679,7 +699,10 @@ local function mountVR(playerGui)
 	stroke(vrBg, C.amber, 3, 0.3)
 end
 
--- VR: float the panel in front of the head at eye height; re-place it if you warp/teleport away while it's open.
+-- VR: float the panel in front of the head at eye height. One fixed world anchor per menu session (Playtest round 4:
+-- it jumped left/right between pages): placed when the menu opens, and again only if a teleport carries the head
+-- more than VR_REANCHOR studs away while it's open.
+local VR_REANCHOR = 6
 local placedFrom: Vector3? = nil
 local function placeVRPanel(force)
 	if not vrPart then
@@ -688,12 +711,8 @@ local function placeVRPanel(force)
 	local head = HUD.getHeadCF()
 	local look = Vector3.new(head.LookVector.X, 0, head.LookVector.Z)
 	look = look.Magnitude > 0.1 and look.Unit or Vector3.new(0, 0, -1)
-	if not force and placedFrom and (head.Position - placedFrom).Magnitude < 2.5 then
-		-- lazy follow: stay put until it's well out of view (more than 70 degrees off where the head faces)
-		local toPanel = Vector3.new(vrPart.Position.X - head.Position.X, 0, vrPart.Position.Z - head.Position.Z)
-		if toPanel.Magnitude < 0.1 or look:Dot(toPanel.Unit) > math.cos(math.rad(70)) then
-			return
-		end
+	if not force and placedFrom and (head.Position - placedFrom).Magnitude < VR_REANCHOR then
+		return
 	end
 	placedFrom = head.Position
 	local pos = head.Position + look * VR_DISTANCE - Vector3.new(0, 0.3, 0)
@@ -725,8 +744,7 @@ function FrontEnd.isResultsOpen()
 end
 
 function FrontEnd.open(name)
-	setOpen(true)
-	placeVRPanel(true) -- in front of where the player is looking now
+	setOpen(true) -- (anchors the VR panel in front of the head if the menu was closed; page changes keep it)
 	show(name or "title")
 end
 

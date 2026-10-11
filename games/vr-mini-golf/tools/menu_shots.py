@@ -29,6 +29,11 @@ def menu(st, cmd, arg=None):
                       if isinstance(arg, dict) else json.dumps(arg)), "Client")
 
 
+def panel_pos(st):
+    return json.loads(st.luau("local p = workspace.CurrentCamera:FindFirstChild('GolfMenuPanel') "
+                              "return game:GetService('HttpService'):JSONEncode(p and {p.Position.X, p.Position.Y, p.Position.Z} or {0, 0, 0})", "Client"))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(GAME_DIR, "playtests", "stage-m", "ui"))
@@ -46,13 +51,46 @@ def main():
     try:
         st.start_play()
         time.sleep(args.wait)
+        if args.vr:
+            # the simulated head starts pitched ~60 deg down at the tee; level it (keep position and yaw) and reopen
+            # the menu so its panel is anchored in front of a level head
+            print("head", st.luau("""local h = game.ReplicatedStorage:WaitForChild('VRDebug'):WaitForChild('Head')
+local before = h.Value
+local look = Vector3.new(before.LookVector.X, 0, before.LookVector.Z)
+look = look.Magnitude > 0.01 and look.Unit or Vector3.new(0, 0, -1)
+h.Value = CFrame.lookAt(before.Position, before.Position + look)
+return tostring(before) .. ' -> ' .. tostring(h.Value)""", "Client"))
+            print("close", menu(st, "close"))
+            time.sleep(1.0)
+        panels = []
         for page in ["title", "courses", "settings", "howto"]:
             print(page, menu(st, "open", page))
             time.sleep(1.5)
             capture(st, os.path.join(args.out, "%s_menu_%s.png" % (prefix, page)))
+            if args.vr:
+                panels.append(panel_pos(st))
+            if page == "howto":
+                print("text", st.luau("""local out = {}
+    for _, g in game.Players.LocalPlayer.PlayerGui:GetChildren() do
+      if g.Name == 'GolfMenu' then
+        local scale = 1
+        for _, d in g:GetDescendants() do if d:IsA('UIScale') then scale = d.Scale end end
+        for _, d in g:GetDescendants() do
+          if d:IsA('TextLabel') and d.Name == 'Text' and d.Parent.Name == 'HowToBody' then
+            table.insert(out, string.format('%s TextSize %d x scale %.2f = %.1f px, fits %s', g.ClassName, d.TextSize, scale, d.TextSize * scale, tostring(d.TextFits)))
+          end
+        end
+      end
+    end
+    return table.concat(out, '; ')""", "Client"))
         print("results", menu(st, "results", RESULT))
         time.sleep(1.5)
         capture(st, os.path.join(args.out, "%s_menu_results.png" % prefix))
+        if args.vr:
+            panels.append(panel_pos(st))
+            spread = max(max(abs(a[i] - b[i]) for i in range(3)) for a in panels for b in panels)
+            print("vr panel positions", panels, "max jump %.3f studs" % spread, "PASS" if spread < 0.01 else "FAIL")
+
         print("close", menu(st, "close"))
         time.sleep(1.5)
         capture(st, os.path.join(args.out, "%s_golf_hud.png" % prefix))
