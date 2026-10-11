@@ -20,6 +20,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from holes_to_lua import GAME_DIR, REPO, to_lua  # noqa: E402
+from fbx_bounds import mesh_bounds, prop_bounds  # noqa: E402
 
 MODELS = os.path.join(REPO, "assets", "vr-mini-golf", "lantern-grove", "models")
 OVERRIDES = os.path.join(HERE, "props_overrides.json")  # spec changes newer than the manifest (see its note)
@@ -88,6 +89,15 @@ def convert():
                 e["scale_z_to"] = pl["scale_z_to"]
             out["placements"].append(e)
     applied = apply_overrides(out["placements"])
+    # FBXs re-exported after the manifest (props_overrides.json fbx_refresh): per-mesh centres + prop bbox from the FBX
+    ov = json.load(open(OVERRIDES)) if os.path.exists(OVERRIDES) else {}
+    for name in ov.get("fbx_refresh", []):
+        parts = mesh_bounds(os.path.join(MODELS, "fbx", name + ".fbx"))
+        for mesh, b in parts.items():
+            out["parts"].setdefault(mesh, {"color": "#FFFFFF", "material": "SmoothPlastic", "transparency": 0})["center"] = r3(b["center"])
+        pb = prop_bounds(parts)
+        out["props"][name].update({"bbox": r3(pb["size"]), "center": r3(pb["center"])})
+        applied.append("fbx_refresh: " + name)
     for hk, h in man["dressing"]["holes"].items():
         n = int(hk[1:])
         out["dressing"][str(n)] = [{"prop": i["prop"], "pos": r3(i["pos"]), "yaw": round(i.get("yaw", 0), 1),

@@ -1,5 +1,5 @@
 {
-  "note": "Spec changes newer than the prop manifest. match = [prop, hole, old pos] within 0.05 studs; set replaces fields; remove drops a placement; add creates a placement. Stage j: Round 7 FBXs imported at scale 1 and stretch overrides removed. H9 uses the imported lantern_large_hanging at the three amber anchors, with bottom y 7.2 and manifest lights via light_id. The obsolete H9 lantern string stays removed.",
+  "note": "Spec changes newer than the prop manifest. match = [prop, hole, old pos] within 0.05 studs; set replaces fields; remove drops a placement; add creates a placement. Stage j: Round 7 FBXs imported at scale 1 and stretch overrides removed. H9 uses the imported lantern_large_hanging at the three amber anchors, with bottom y 7.2 and manifest lights via light_id. The obsolete H9 lantern string stays removed. Stage o: fbx_refresh = props whose FBX is newer than manifest.json (per-mesh centres/bbox read from the FBX by fbx_bounds.py); H9 Round 9 pendulum (Iron now includes the 0.9x0.4x1.6 base plinth) and root beam (pivot = hinge x 21.2, beam still centred at x 22).",
   "placements": [
     {
       "match": [
@@ -13,6 +13,25 @@
       ],
       "remove": true,
       "why": "H9 heart lantern string removed (props.md Round 7: H3 only)"
+    },
+    {
+      "match": [
+        "h9_pendulum_root_beam",
+        9,
+        [
+          22.0,
+          8.996,
+          -38.5
+        ]
+      ],
+      "set": {
+        "pos": [
+          21.2,
+          8.996,
+          -38.5
+        ]
+      },
+      "why": "Stage o: root beam FBX pivot moved to the Round 8/9 hinge x 21.2 (beam/legs/lanterns still at x 22)"
     }
   ],
   "add": [
@@ -52,5 +71,9 @@
       "why": "Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",
       "light_id": "H9_hanging_lantern_3"
     }
+  ],
+  "fbx_refresh": [
+    "h9_lantern_pendulum",
+    "h9_pendulum_root_beam"
   ]
 }

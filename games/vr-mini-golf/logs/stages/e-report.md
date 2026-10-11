@@ -358,3 +358,38 @@ Studio is in Edit mode, one window, with GolfTestMode false.
 | Random sweep 10 × 9 holes (seed 114) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 console warnings/errors. Expected hazard drops: H2 2, H5 3, H7 1. H2 logged 2 seam-hop nudges during ball placement (0.35 s apart, not stuck) |
 | Smoke desktop / iPhone 17 Pro | PASS / PASS (stroke → Explore → back, 0 errors) |
 | Menu shots desktop / phone / VR | 0 errors; VR panel jump 0.000 |
+
+# Stage o report (2026-10-11, 15:25 PT): H9 pendulum plinth mesh import. **Published v135**
+
+**Version:** File > Save to Roblox 22:19:12Z, then File > Publish to Roblox 22:19:35Z. Both are in the Studio log. Codex read **v135** (Oct 11, 3:19 PM) in Version History (`logs/codex-publish-o.log`). Audience is unchanged (Friends and Playtesters), and no Robux was spent. Studio is left in Edit mode, one window, workspace attributes `SimulateVR=false, GolfTestMode=false`, and `src/` matches Studio (the export diff shows only this stage's edits).
+
+1. **Import.** Codex used the 3D Importer (preset "LG Stud Scene Anchored", one file per import, `logs/codex-import-h9-o.log`) for two files, with no warnings:
+   - `h9_lantern_pendulum.fbx`: 5 MeshParts, 1,820 polys, 2.16×8.07×2.16.
+   - `h9_pendulum_root_beam.fbx`: 6 MeshParts, 1,650 polys, 20.45×9.58×1.44.
+   - `PropsBuilder.PrepareLibrary` registered both: 11 parts, 0 unknown meshes, no scale fix needed. The root beam came in turned 180° by the importer and was turned back automatically.
+2. **Data-driven refresh.** 3D Model Bot re-exported these two FBXs (12:45) but didn't update `models/manifest.json` (still 10-10). So:
+   - New `tools/fbx_bounds.py` reads per-mesh bounds straight from a binary FBX. Checked against the manifest on the unchanged meshes (CapGold, Glow, MoveCream): exact.
+   - `props_to_lua.py` now applies `props_overrides.json` `fbx_refresh` (per-mesh centres + prop bbox from the FBX) for `h9_lantern_pendulum` and `h9_pendulum_root_beam`.
+   - A placement override moves the beam's pivot to the hinge, x 21.2.
+   - When the manifest is updated, delete those entries. The re-import is still one step: `props_to_lua.py --push`, then `holes_to_lua.py --push --build`.
+3. **Result in Studio** (hole-local):
+   - Beam pivot is at (21.2, 8.996, −38.5) and the beam bbox centre is at x 22.00. Only the bracket is at the hinge.
+   - Pendulum `Iron` = 0.9×8.072×1.6 with the plinth. Its bottom is 7.962 below the hinge, which is exactly the foot's bottom, and its rotation relative to the foot is identity (yaw 0).
+   - The 5 pendulum MeshParts are welded to the mover's MoverRoot. The bob Blocker and the foot are welded to the same root, so all of it is one rigid assembly. Every MeshPart is CanCollide/CanTouch/CanQuery false and Massless.
+   - The only colliders on the mover are the Blocker 1.6×1.8×1.6 and the invisible foot 1.0×0.4×1.6.
+4. **Swing (Play, 40 samples).**
+   - Angle vs `13·sin(2π·t/4)` about hole +Z at the hinge: max error 0.33° (servo lag, as before).
+   - Plinth-to-foot offset drift: 0.0001 studs.
+5. **Visual overlap.** Shots are in `playtests/stage-o/plinth/`, at 0°, −13° and +13° with the foot tinted cyan for the check (restored afterwards), plus a wide shot.
+   - The dark plinth covers the foot at every angle.
+   - Only 0.05-stud slivers show on each side along the swing, because the shipped foot is 1.0 wide (stage n) and the plinth is 0.9. The foot is invisible in game, so nothing shows there.
+   - **Game Art Bot:** to close the slivers, either widen the plinth to 1.0 or decide on the 0.9 foot.
+   - The large cyan patch in the first tinted shots was z-fighting between the coplanar 1.6-deep faces. It went away when the debug tint was 1% shallower.
+
+**Tests.**
+
+| Test | Result |
+|---|---|
+| H9 block rate, 24 shots, same opts as stage n (`blockShots 24`) | **7/24 = 29.2% blocked (stage n: 7/24), 12 touched (stage n: 11)**, all at rest, 0 traps, 0 console warnings/errors. `playtests/stage-o/blockrate/` |
+| Random sweep, H9, 20 shots (seed 115) | 0 escapes, 0 stuck, 0 resets, 0 timeouts, 0 nudges, 0 console warnings/errors. `playtests/stage-o/sweep/` |
+| Smoke desktop / iPhone 17 Pro | PASS / PASS (stroke → Explore → back, 0 errors) |
