@@ -1,5 +1,174 @@
 {
-  "note": "Spec changes newer than 3D Model Bot's manifest go here (tools/props_to_lua.py applies them on top of models/manifest.json). match = [prop, hole, old pos] (within 0.05 studs); set = fields to replace; remove = drop the placement; add = extra placements of library props. Empty since pass 6 (2026-10-10 14:35), which covers spec v2; the stage-c interim overrides (H8 exit ring/bank2/c2 arch, H7 gap posts, H4 bar scale, H9 bar removal + lantern bob, H4 side-gap posts) were never committed; they are listed in playtests/lantern-v1/stage-c/README.md.",
-  "placements": [],
-  "add": []
+  "note": "Spec changes newer than 3D Model Bot's manifest go here (tools/props_to_lua.py applies them on top of models/manifest.json). match = [prop, hole, old pos] (within 0.05 studs); set = fields to replace; remove = drop the placement; add = extra placements of library props (optional light = {range, brightness, color3} for its Neon part, chain_top = hole-local y of a hanging chain). Stage g (2026-10-10, holes.json Round 7): the H7 log / H8 door / H9 pendulum meshes are stretched to the new blocker sizes until 3D Model Bot re-exports them; the H9 heart lantern cluster + string are replaced by the 3 amber_lantern anchors.",
+  "placements": [
+    {
+      "match": [
+        "h7_floating_log",
+        7,
+        [
+          0,
+          -1.2,
+          -20.5
+        ]
+      ],
+      "set": {
+        "scale": [
+          1.179,
+          1,
+          1
+        ]
+      },
+      "why": "H7 log 5 -> 6 long (Round 7)"
+    },
+    {
+      "match": [
+        "h8_root_door",
+        8,
+        [
+          4.75,
+          0.0,
+          -11.5
+        ]
+      ],
+      "set": {
+        "scale": [
+          1,
+          1,
+          1.106
+        ]
+      },
+      "why": "H8 door 3.2 -> 3.6 long (Round 7)"
+    },
+    {
+      "match": [
+        "h9_lantern_pendulum",
+        9,
+        [
+          22.0,
+          8.96,
+          -38.5
+        ]
+      ],
+      "set": {
+        "pos": [
+          22.0,
+          8.996,
+          -38.5
+        ],
+        "yaw": 30,
+        "scale": [
+          1,
+          1,
+          1.613
+        ]
+      },
+      "why": "H9 bob 1.6x1.8x1.6 turned 30 deg, hinge y 8.996 (Round 7)"
+    },
+    {
+      "match": [
+        "heart_lantern_cluster",
+        9,
+        [
+          23,
+          7.5,
+          -47
+        ]
+      ],
+      "remove": true,
+      "why": "H9 heart lantern cluster -> 3 amber lanterns (Round 7)"
+    },
+    {
+      "match": [
+        "lantern_string",
+        9,
+        [
+          23,
+          3.0,
+          -44
+        ]
+      ],
+      "remove": true,
+      "why": "H9 heart lantern string removed (props.md Round 7: H3 only)"
+    }
+  ],
+  "add": [
+    {
+      "prop": "lantern_medium",
+      "hole": 9,
+      "pos": [
+        18.5,
+        7.2,
+        -47.5
+      ],
+      "yaw": 0,
+      "scale": [
+        1.408,
+        1.411,
+        1.481
+      ],
+      "light": {
+        "range": 16,
+        "brightness": 2.5,
+        "color3": [
+          255,
+          169,
+          87
+        ]
+      },
+      "chain_top": 16,
+      "why": "H9 amber_lantern_1 (holes.json Round 7)"
+    },
+    {
+      "prop": "lantern_medium",
+      "hole": 9,
+      "pos": [
+        28.5,
+        7.2,
+        -46.5
+      ],
+      "yaw": 0,
+      "scale": [
+        1.408,
+        1.411,
+        1.481
+      ],
+      "light": {
+        "range": 16,
+        "brightness": 2.5,
+        "color3": [
+          255,
+          169,
+          87
+        ]
+      },
+      "chain_top": 16,
+      "why": "H9 amber_lantern_2 (holes.json Round 7)"
+    },
+    {
+      "prop": "lantern_medium",
+      "hole": 9,
+      "pos": [
+        20.0,
+        7.2,
+        -51.5
+      ],
+      "yaw": 0,
+      "scale": [
+        1.408,
+        1.411,
+        1.481
+      ],
+      "light": {
+        "range": 16,
+        "brightness": 2.5,
+        "color3": [
+          255,
+          169,
+          87
+        ]
+      },
+      "chain_top": 16,
+      "why": "H9 amber_lantern_3 (holes.json Round 7)"
+    }
+  ]
 }

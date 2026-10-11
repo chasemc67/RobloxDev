@@ -51,7 +51,7 @@ def apply_overrides(placements):
         applied.append(o.get("why", prop))
     for a in ov.get("add", []):
         e = {k: a[k] for k in ("prop", "hole", "pos", "yaw") if k in a}
-        for k in ("scale", "motion"):
+        for k in ("scale", "motion", "light", "chain_top"):
             if k in a:
                 e[k] = a[k]
         placements.append(e)
@@ -93,6 +93,11 @@ def convert():
         out["dressing"][str(n)] = [{"prop": i["prop"], "pos": r3(i["pos"]), "yaw": round(i.get("yaw", 0), 1),
                                     "scale": round(i.get("scale", 1), 3), "role": i.get("role")} for i in h["instances"]]
         out["lights"][str(n)] = [r3(l if isinstance(l, list) else l.get("pos")) for l in h.get("lights", [])]
+    # pass-8 PointLights (manifest lights[]). H9's hanging lanterns are superseded by holes.json's amber_lantern
+    # anchors (props_overrides.json adds them with their own light), so only the rail/glow lights come from here.
+    out["pointLights"] = [{"id": l["id"], "hole": int(l["hole"][1:]), "kind": l["kind"], "pos": r3(l["pos"]),
+                           "color3": l["color3"], "range": l["range"], "brightness": l["brightness"], "prop": l.get("prop")}
+                          for l in man.get("lights", []) if l["kind"] != "hanging_lantern"]
     out["overrides"] = applied
     src = to_lua(out)
     for n in range(1, 10):

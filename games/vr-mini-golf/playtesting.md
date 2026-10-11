@@ -36,10 +36,10 @@ python3 tools/run_playtests.py compare playtests/2026-10-03/baseline playtests/2
 python3 tools/run_playtests.py smoke     # normal solo playtest: errors/warnings + HUD texts, test mode off
 python3 tools/run_playtests.py push src/<path>.luau ...    # copy edited src/ files into Studio (Edit)
 python3 tools/run_playtests.py export    # mirror every Studio script into src/ (run before committing)
-python3 tools/run_playtests.py clubviz --out playtests/<date>-clubfix   # VR club mount screenshots, before/after
+python3 tools/run_playtests.py clubviz [--out playtests/club-flip]   # VR club mount screenshots: VRClubFlip off/on, both hands (--legacy: aim-ray mount)
 ```
 
-- `clubviz` captures the Studio window (`screencapture -l<window id>`) for each view and crops it to the game viewport (the 2 px blue play border, minus the CoreGui strip).
+- `clubviz` grabs the play viewport with the Studio MCP `screen_capture` (stage runs have no macOS screen-recording permission).
   - Mounts: legacy aim ray, then the grip mount.
   - Views: `side`, `front`, `top`, `side_close`, `front_close`.
   - It writes `before_<view>.png`, `after_<view>.png` and `clubpose.json`.
@@ -82,10 +82,11 @@ require(game.ServerStorage.CourseBuilder:Clone()).ApplyPhysics(nil, require(game
 | `movers` | Every moving part: server constraint value vs the spec at server time, each blocker's pose vs the spec formula, server network ownership, and how far behind the client sees it (replication lag) |
 | `h1` … `h9` | The per-hole suites (Lantern Grove), see below |
 | `h7pin` | Hole 7's sliding log: 30 balls parked in / beside the log's path at both ends of its travel and 12 slow putts into it at 4 phases. Logs contact time at ~0 speed and the unstick nudges |
+| `blockrate` | H7 log / H8 root door / H9 lantern pendulum: Game Art Bot's intended line through each obstacle at `blockShots` (default 20) evenly spaced phases of its cycle. blocked = touched the mover's Blocker and never crossed its line; target 38-50%. Opts: `blockShots`, `blockHoles` ("7,9") |
 | `h8door` | Hole 8's sliding root door: balls parked against the alcove rails at the door's ends of travel (the crush case) |
 | `progress` | (best with SimulateVR) Sinks holes 1 → 9 in turn: the server moves the ball to the next tee, the VR rig warps beside it, the HUD title changes, and the final 9-hole scorecard (par 27) opens |
 | `ledge` | (SimulateVR) Ball against a wall or rail. The (fake) club is held over the ledge and the player stance is on or over the wall. Logs ball-plane Y vs VR rig floor, character feet and putter head bottom. Pass = all within 0.05 studs (character 0.1) |
-| `clubviz` | (SimulateVR) Holds the club hand in a putting grip next to a ball (hand 0.91 m up, handle aimed at the ball), with the legacy mount and then the grip mount. Pass: the shaft is within 2° of the handle axis, starts at the handle bottom, and puts the head on the ball's plane right behind the ball. Then presses A (refit): shaft vertical from the handle bottom, head on the plane |
+| `clubviz` | (SimulateVR) Holds the club hand in a putting grip next to a ball (hand 0.91 m up, shaft aimed at the ball), with the legacy mount and then the grip mount (left and right hand). Pass: the shaft is within 2° of the handle axis on the end it should leave (top with Config.VRClubFlip, else bottom), starts there, and puts the head on the ball's plane right behind the ball. Then presses A (refit): shaft vertical from the handle bottom, head on the plane |
 | `ghost` | (SimulateVR) Sweeps the putter head through a wall and a bumper post at ball-plane height. Checks it follows the hand exactly (no pushback, no climbing), the club parts can't collide/touch, and the ball doesn't move. Then makes a real simulated VR swing through the ball (face speed 1.2 m/s → ball speed = face speed × `VRHitMultiplier`) |
 
 **Adding a scenario:** add a `scenario({ name, desc, seconds, vr?, run = function() ... end })` block in `src/StarterPlayer/StarterPlayerScripts/GolfClient/GolfTest.luau`. `seconds` is the recording length.

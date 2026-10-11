@@ -9,17 +9,18 @@ Priority: **P1** = needed for a playable, readable course. **P2** = strong themi
 
 ## Moving meshes (separate parts, pivot required)
 
-holes.json is the source of truth for all pivots and motion; this table mirrors it (updated 2026-10-10 for playtest Round 5;
-**bold** = changed or new in Round 5).
+holes.json is the source of truth for all pivots and motion; this table mirrors it (updated 2026-10-10 for playtest Round 7;
+**bold** = changed or new in Round 5, ⏱ = changed in Round 7: timing obstacles retuned with pauses, see playtest-log.md Round 7).
+Sliders with pauses must follow holes.json `dwell` exactly (tween each leg at the listed speed, then wait); `period_s` is the full cycle.
 
 | Prop | Hole | Size (studs) | Pivot / axis | Motion | Pri |
 |---|---|---|---|---|---|
 | Puffball carousel bar (2 **padded** arms + toadstool hub cap) | H4 | **6 x 4 x 6 (arms 2.3 long from r 0.7 to 3.0, 0.7 thick, 1 high)** | Pivot at hub centre (0,0,-21 local), axis +Y | Rotates **30 deg/s** continuous. Arms are soft puffball bumpers (restitution 0.65) | P1 |
 | Mill wheel (2 opposed paddles, rim, axle) | H6 | 1 x 7.2 x 8 (radius 3.6, paddles 7.6 wide) | Axle centre (7.5,3.6,-8.5 local), axis +Z | Rotates 30 deg/s continuous | P1 |
-| Sliding root door | H8 | 0.7 x 1 x 3.2 | Centre (4.75,0,-11.5 local), slides along +Z | Ping-pong **-3.5..+3.5** studs at 2 studs/s (7 s cycle). At the ends it slides **into pockets in the root-knot walls** (passes through the junction rail lines at z -8 / -15 by up to 1.6) | P1 |
-| Floating log on hidden rail | H7 | 5 x 0.8 x 0.8 | Centre (0,-1.2,-20.5 local), slides along +X | Ping-pong **-7..+7** studs at 5 studs/s: **log ends stop 0.5 stud short of each rail line (x = ±10)** | P1 |
+| ⏱ Sliding root door | H8 | 0.7 x 1 x **3.6** (was 3.2) | Centre (4.75,0,-11.5 local) = **closed** position, slides along +Z (south) | **Gate cycle 6.67 s: closed at offset 0 for 1.8 s, slides to +4.0 at 3 studs/s (1.33 s), open (hidden in the south root-knot pocket, door spans z -9.3..-5.7) for 2.2 s, slides back (1.33 s).** Was ping-pong -3.5..+3.5 at 2 studs/s, 7 s. Only the south pocket is needed now (door passes through the junction rail line z -8 by up to 2.3) | P1 |
+| ⏱ Floating log on hidden rail | H7 | **6 x 0.8 x 0.8** (was 5) **with pointed ends**: the last 0.4 at each end tapers to a vertical 90° edge (whittled point / root knot). Collision: 5.2 x 0.8 x 0.8 box + a 0.566 x 0.8 x 0.566 box turned 45° at each end | Centre (0,-1.2,-20.5 local), slides along +X | **Ping-pong -6..+6 at 3.5 studs/s, pausing 1.0 s at the west end (-6) and 1.5 s at the east end (+6); cycle 9.36 s.** Log ends stop **1.0 stud** short of each rail line (x = ±10). Was ±7 at 5 studs/s, 0.5 short, no pauses, flat ends | P1 |
 | Root portcullis gate | H9 | 0.8 x 1.4 x 7.4 | Base centre (6,1,-25.5 local), slides along +Y | Ping-pong **0..1.8 studs at 0.9 studs/s** (same 4 s cycle, open ~70%) | P1 |
-| **Great lantern pendulum (NEW, replaces the lantern bar + post)** | H9 | Bob (lantern body) **1.6 x 1.8 x 1.0** (x across the swing, y up, z along the chain axis); chain 7 long from the hinge to the bob centre | **Hinge (22, 8.96, -38.5 local), axis +Z** (swings east-west in the local x-y plane). Model the pivot at the hinge; bob centre 7.0 below it | **Swing: angle(t) = 35° x sin(360°·t / 4 s)**, peak 55 deg/s at the bottom. Bob bottom hangs 0.06 above the felt at rest; it can hit a ball within ±16° of the bottom and lifts clear near the ends | P1 |
+| ⏱ Great lantern pendulum | H9 | Bob (square lantern body) **1.6 x 1.8 x 1.6** (was 1.6 x 1.8 x 1.0), **turned 30° about the vertical** (yaw 30 in holes.json), so it is 2.19 wide across the swing; chain 7 long from the hinge to the bob centre | **Hinge (22, 8.996, -38.5 local)** (was y 8.96), axis +Z (swings east-west in the local x-y plane). Model the pivot at the hinge; bob centre 7.0 below it | **Swing: angle(t) = 30° x sin(360°·t / 5 s)** (was 35°, 4 s), peak 38 deg/s at the bottom. Bob bottom hangs 0.096 above the felt at rest (0.02 under the lowest corner mid-swing); it can hit a ball within ±18° of the bottom (the middle ~6.5 studs of the 8-stud mouth) and lifts clear near the ends | P1 |
 
 ## Static hero props
 
@@ -33,7 +34,7 @@ holes.json is the source of truth for all pivots and motion; this table mirrors 
 | Arched root bridge | H5 | 3.5 x 3 x 14 | Gnarled roots under a 1.8-wide felt deck. No rails | P1 |
 | Covered plank bridge | H5 | 7 x 6 x 14 | Shingle roof, lanterns at both ends. Felt runs inside | P1 |
 | Three-step waterfall cascade | H7 | 8 x 14 x 10 | Rock steps with Beam water into the pool hazard | P1 |
-| Firefly ring (entry, in a root knot) | H8 | 3 x 4 x 4 | Root arch with a glowing torus (**ring radius 0.55 trigger**, glow disc 1.1 across) | P1 |
+| Firefly ring (entry, in a root knot) | H8 | 3 x 4 x 4 | Root arch with a glowing torus (⏱ **ring radius 0.45 trigger**, glow disc **0.9** across; was 0.55 / 1.1) | P1 |
 | Firefly ring (exit) | H8 | 2.5 x 3 x 1 | Standing torus on the green, **moved to the north-east corner (9, 1.5, -47 local)** | P1 |
 | Giant acorn on stump | H2 | 3 x 4 x 3 | Sits on the stump block between the chutes | P1 |
 | Toadstool hub (static) | H4 | 1.4 x 2 x 1.4 | Under the carousel. Collision is the static `hub` block | P1 |
@@ -58,13 +59,19 @@ holes.json is the source of truth for all pivots and motion; this table mirrors 
 
 Removed in Round 5: H9 lantern bar and its lantern post (replaced by the pendulum).
 
+## New in Round 7 (static, decoration only)
+
+| Prop | Hole(s) | Size (studs) | Placement (hole-local) / notes | Pri |
+|---|---|---|---|---|
+| **Hanging amber lanterns ×3** (`amber_lantern_1..3`) | H9 | 1.2 x 1.8 x 1.2 paper lantern (medium lantern model, amber), chain up into the trunk canopy (top of chain y ≈ 16) | Over the heart green at (18.5, -47.5), (28.5, -46.5), (20.0, -51.5). **Bottoms at y 7.2 = 8 studs above the green felt (y -0.8)**, so they are above the ball (0.16), above a VR player's head (2.4 m) and level with the flag top. Measured clearances (lantern box edge): ≥ 3.9 studs from the tee→flag sightline (the LOS check counts them as occluders: flag still VISIBLE, +0.20), ≥ 7.6 studs from every point the pendulum bob sweeps (x 17.1..26.9, y 1.02..4.26, z -39.6..-37.4) and ≥ 6.3 studs north of the pendulum's swing plane / chain / root beam (z -38.5), so nothing can touch them. Warm PointLight in each (range ~12, amber). **No collision.** They replace the old "dozens of hanging lanterns" cluster anchor | P1 |
+
 ## Set dressing (reuse everywhere)
 
 | Prop | Size (studs) | Used at | Pri |
 |---|---|---|---|
 | Paper lantern, small / medium / large | 0.8 / 1.2 / 2 tall | All holes; strings over greens | P1 |
 | Lantern post (timber, hook) | 0.5 x 3–3.5 x 0.5 | H2 chutes, H4 green + side gaps, H7 gap (now x 3.75 / 6.75) | P1 |
-| Lantern string (catenary of 6 lanterns) | 12 x 1 x 0.3 | H3 green entrance, H9 heart | P2 |
+| Lantern string (catenary of 6 lanterns) | 12 x 1 x 0.3 | H3 green entrance | P2 |
 | Red maple tree | 10 x 16 x 10 | H1, around the map | P2 |
 | Golden birch / oak | 8 x 14 x 8 | Background | P2 |
 | Mossy boulder | 4 x 3 x 4 (scale 0.5–1.5) | H1, stream banks | P2 |
@@ -84,5 +91,5 @@ Removed in Round 5: H9 lantern bar and its lantern post (replaced by the pendulu
 - One **mushroom house** model with 3 scales and 2 cap colours covers H3 and H4 plus the background village.
 - One **lantern** model in 3 sizes covers the whole course (day and night).
 - The **firefly ring** model is shared by H8 entry, H8 exit and H9's secret knot (scaled down).
-- The **lantern** model scaled up (1.6 x 1.8 x 1.0 body) is the H9 pendulum bob; one **flag** model serves all 9 cups (H9 uses an 8-stud pole).
+- The **lantern** model scaled up (square 1.6 x 1.8 x 1.6 body, turned 30°) is the H9 pendulum bob; the medium lantern in amber is H9's 3 green lanterns; one **flag** model serves all 9 cups (H9 uses an 8-stud pole).
 - The **rail kit** (straight, 45° and corner pieces) is shared by every hole. The H1, H6 and H9 deflector boards are the same timber plank mesh.

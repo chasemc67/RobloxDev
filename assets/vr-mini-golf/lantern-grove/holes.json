@@ -10,7 +10,7 @@
   "walls": "Invisible collision blocks. {id, center:[x,y,z] = box centre, size:[sx,sy,sz] local box size, yaw, kind?}. kind='bumper' (static obstacle blocks: hub, stump, posts) uses bumper restitution 0.65; everything else is a wall (0.63). Authored rails have local Z along the run and local X = thickness 0.5; height is 1.0 above the highest felt they border (boxes along ramps are simply taller; visual rails can follow the slope). Rails sit OUTSIDE the felt edge (inner face on the edge). Blocks named hub/stump/rock are static obstacles.",
   "hazards": "Out-of-bounds volumes below felt level: {id, type:'water'|'pit', center:[x,y,z] (water/pit surface), size:[sx,sz], yaw, reset:'previous_position'|'respawn', respawn?:[x,y,z], penalty:1}. A ball that leaves the felt over a hazard gets +1 stroke and is returned to where its stroke started (reset='previous_position'), or, if reset='respawn', placed at rest on the `respawn` point (a felt point, e.g. a bridge entry). Any ball leaving all felt elsewhere goes back to its stroke start (and is flagged as an escape bug).",
   "drops": "Intentional level changes: {id, from, to, edge, height}. The upper piece's edge is open (no rail) and the lower felt starts directly below/beyond it; the ball falls and keeps ~80% of horizontal speed. Lower felt may extend under the upper piece (the upper piece then acts as a cliff face for the lower level).",
-  "moving_parts": "Separate parts. type 'swing' = pendulum: {id, type:'swing', pivot:[x,y,z] (hinge point above the felt), axis (unit vector, horizontal; swing plane is perpendicular to it), amplitude_deg, period_s, phase (deg of the swing cycle at t=0), blockers (relative to the pivot with the pendulum hanging straight down)}: angle(t) = amplitude_deg*sin(360*t/period_s + phase), right-hand rule about axis; `speed` = peak angular speed at the bottom (info), range = [-amp, amp]. Other types: {id, type:'rotate'|'slide', pivot:[x,y,z], axis:[ax,ay,az] unit vector, speed (deg/s for rotate, studs/s for slide, sign = direction, right-hand rule about axis), range:null (continuous) | [min,max] (ping-pong between angles in deg or offsets in studs), phase (angle/offset at t=0), blockers:[{center:[dx,dy,dz] relative to pivot at angle/offset 0, size:[sx,sy,sz], yaw, roll?}]} (roll = extra initial rotation in deg about the part axis, applied to the blocker's centre and orientation, e.g. wheel paddles at 0/120/240). At time t a blocker is pivot + Rot(axis, angle(t)) * center (rotate) or pivot + center + axis*offset(t) (slide).",
+  "moving_parts": "Separate parts. type 'swing' = pendulum: {id, type:'swing', pivot:[x,y,z] (hinge point above the felt), axis (unit vector, horizontal; swing plane is perpendicular to it), amplitude_deg, period_s, phase (deg of the swing cycle at t=0), blockers (relative to the pivot with the pendulum hanging straight down)}: angle(t) = amplitude_deg*sin(360*t/period_s + phase), right-hand rule about axis; `speed` = peak angular speed at the bottom (info), range = [-amp, amp]. Other types: {id, type:'rotate'|'slide', pivot:[x,y,z], axis:[ax,ay,az] unit vector, speed (deg/s for rotate, studs/s for slide, sign = direction, right-hand rule about axis), range:null (continuous) | [min,max] (ping-pong between angles in deg or offsets in studs), phase (angle/offset at t=0), blockers:[{center:[dx,dy,dz] relative to pivot at angle/offset 0, size:[sx,sy,sz], yaw, roll?}]} (roll = extra initial rotation in deg about the part axis, applied to the blocker's centre and orientation, e.g. wheel paddles at 0/120/240). At time t a blocker is pivot + Rot(axis, angle(t)) * center (rotate) or pivot + center + axis*offset(t) (slide). Slides may pause: dwell:[{at: offset, s: seconds}]. One cycle = range[0] -> range[1] -> range[0] at |speed|; a stop at a range end pauses once per visit, an interior stop on both passes; phase = offset at t=0 on the forward (min -> max) pass (if a stop sits at that offset, t=0 is the start of its pause). period_s = full cycle incl. pauses (info). The game script must reproduce this profile (e.g. tween legs + waits), not a plain sine/ping-pong.",
   "teleports": "{id, entry:{center:[x,y,z], radius}, exit:{center:[x,y,z], dir:[dx,dz]}, speed_factor, min_speed, max_speed}. A ball whose centre enters the entry radius (same level) reappears at exit moving along dir with speed = clamp(speed_in*speed_factor, min_speed, max_speed).",
   "cup": "{position:[x,y,z] (on felt), radius, flag}. Gameplay cup radius 0.5 stud (real cup 4.25 in = 0.36 stud diameter; enlarged ~2.8x for VR readability). Ball is holed when its centre is within radius and speed < 5.33 studs/s (1.6 m/s). flag = {pole_height (studs above the cup felt), pole_diameter, banner_size [w,h,t], banner_color, top:[x,y,z] (pole top, the point the tee line-of-sight check aims at), collision:false}: visual only, the ball passes through it.",
   "ball": "radius 0.08 stud (~real 42.7 mm ball at 0.3 m/stud). Full physics constants in the top-level 'physics' block (= tools/sim.py).",
@@ -3533,11 +3533,11 @@
       0,
       0
      ],
-     "speed": 5.0,
+     "speed": 3.5,
      "speed_units": "studs/s",
      "range": [
-      -7.0,
-      7.0
+      -6.0,
+      6.0
      ],
      "phase": 0.0,
      "blockers": [
@@ -3548,15 +3548,52 @@
         0
        ],
        "size": [
-        5.0,
+        5.2,
         0.8,
         0.8
        ],
        "yaw": 0.0
+      },
+      {
+       "center": [
+        -2.6,
+        0.4,
+        0
+       ],
+       "size": [
+        0.5657,
+        0.8,
+        0.5657
+       ],
+       "yaw": 45.0
+      },
+      {
+       "center": [
+        2.6,
+        0.4,
+        0
+       ],
+       "size": [
+        0.5657,
+        0.8,
+        0.5657
+       ],
+       "yaw": 45.0
       }
      ],
-     "visual": "Floating log on a hidden rail; log ends stop 0.5 studs short of each rail line (x=+-10): travel +-7",
-     "end_clearance": 0.5
+     "visual": "Floating log on a hidden rail; log ends stop 1 studs short of each rail line (x=+-10): travel +-6",
+     "dwell": [
+      {
+       "at": -6.0,
+       "s": 1.0
+      },
+      {
+       "at": 6.0,
+       "s": 1.5
+      }
+     ],
+     "period_s": 9.3571,
+     "end_clearance": 1.0
     }
    ],
    "teleports": [],
@@ -3616,9 +3653,9 @@
       -1.2,
       -20.5
      ],
-     "notes": "Floating log (moving mesh) on a hidden rail across the middle tier; stops 0.5 short of each rail",
+     "notes": "Floating log (moving mesh) on a hidden rail across the middle tier; stops 1 short of each rail",
      "approx_size": [
-      5,
+      6.0,
       0.8,
       0.8
      ]
@@ -4156,11 +4193,11 @@
       0,
       1
      ],
-     "speed": 2.0,
+     "speed": 3.0,
      "speed_units": "studs/s",
      "range": [
-      -3.5,
-      3.5
+      0.0,
+      4.0
      ],
      "phase": 0.0,
      "blockers": [
@@ -4173,12 +4210,23 @@
        "size": [
         0.7,
         1.0,
-        3.2
+        3.6
        ],
        "yaw": 0.0
       }
      ],
-     "visual": "Sliding root door across the alcove mouth"
+     "visual": "Sliding root door across the alcove mouth",
+     "dwell": [
+      {
+       "at": 0.0,
+       "s": 1.8
+      },
+      {
+       "at": 4.0,
+       "s": 2.2
+      }
+     ],
+     "period_s": 6.6667
     }
    ],
    "teleports": [
@@ -4190,7 +4238,7 @@
        0.0,
        -11.5
       ],
-      "radius": 0.55
+      "radius": 0.45
      },
      "exit": {
       "center": [
@@ -4320,7 +4368,7 @@
       0,
       -11.5
      ],
-     "notes": "Root knot arch with a glowing firefly ring (teleport entry); the ring's glow disc is 1.1 studs across",
+     "notes": "Root knot arch with a glowing firefly ring (teleport entry); the ring's glow disc is 0.9 studs across",
      "landmark": true,
      "approx_size": [
       3,
@@ -4896,14 +4944,15 @@
        "yaw": 0.0
       }
      ],
-     "visual": "Root portcullis rising/falling 0..1.8 in the tunnel mouth (open ~70% of its 4 s cycle)"
+     "visual": "Root portcullis rising/falling 0..1.8 in the tunnel mouth (open ~70% of its 4 s cycle)",
+     "period_s": 4.0
     },
     {
      "id": "lantern_pendulum",
      "type": "swing",
      "pivot": [
       22.0,
-      8.96,
+      8.996,
       -38.5
      ],
      "axis": [
@@ -4911,14 +4960,14 @@
       0,
       1
      ],
-     "amplitude_deg": 35.0,
-     "period_s": 4.0,
+     "amplitude_deg": 30.0,
+     "period_s": 5.0,
      "phase": 0.0,
-     "speed": 54.9779,
+     "speed": 37.6991,
      "speed_units": "deg/s (peak, at the bottom of the swing)",
      "range": [
-      -35.0,
-      35.0
+      -30.0,
+      30.0
      ],
      "blockers": [
       {
@@ -4930,12 +4979,12 @@
        "size": [
         1.6,
         1.8,
-        1.0
+        1.6
        ],
-       "yaw": 0.0
+       "yaw": 30.0
       }
      ],
-     "visual": "Great lantern on a 7-stud chain from a root beam, swinging east-west across the heart-well mouth (1.5 studs before the drop edge); the bob (1.6x1.8x1 box) skims the felt at the bottom of its swing and lifts clear of the ball near the ends"
+     "visual": "Great lantern on a 7-stud chain from a root beam, swinging east-west across the heart-well mouth (1.5 studs before the drop edge); the bob (1.6x1.8x1.6 box turned 30 deg about the vertical, 2.19 across the swing) skims the felt at the bottom of its swing and lifts clear of the ball near the ends"
     }
    ],
    "teleports": [
@@ -5073,17 +5122,90 @@
      ]
     },
     {
-     "name": "heart_lanterns",
+     "name": "amber_lantern_1",
      "position": [
-      23,
-      4,
-      -47
+      18.5,
+      7.2,
+      -47.5
      ],
-     "notes": "Dozens of hanging lanterns inside the heart (hung above y 5; clear of the flag sightline)",
+     "notes": "Hanging amber paper lantern 1/3 lighting the heart green (warm PointLight); bottom at y 7.2 = 8 studs above the green felt, chain up into the trunk canopy (y ~16). Decoration only, no collision",
      "approx_size": [
-      16,
-      6,
-      12
+      1.2,
+      1.8,
+      1.2
+     ],
+     "occluders": [
+      {
+       "center": [
+        18.5,
+        8.1,
+        -47.5
+       ],
+       "size": [
+        1.2,
+        1.8,
+        1.2
+       ],
+       "yaw": 0.0
+      }
+     ]
+    },
+    {
+     "name": "amber_lantern_2",
+     "position": [
+      28.5,
+      7.2,
+      -46.5
+     ],
+     "notes": "Hanging amber paper lantern 2/3 lighting the heart green (warm PointLight); bottom at y 7.2 = 8 studs above the green felt, chain up into the trunk canopy (y ~16). Decoration only, no collision",
+     "approx_size": [
+      1.2,
+      1.8,
+      1.2
+     ],
+     "occluders": [
+      {
+       "center": [
+        28.5,
+        8.1,
+        -46.5
+       ],
+       "size": [
+        1.2,
+        1.8,
+        1.2
+       ],
+       "yaw": 0.0
+      }
+     ]
+    },
+    {
+     "name": "amber_lantern_3",
+     "position": [
+      20.0,
+      7.2,
+      -51.5
+     ],
+     "notes": "Hanging amber paper lantern 3/3 lighting the heart green (warm PointLight); bottom at y 7.2 = 8 studs above the green felt, chain up into the trunk canopy (y ~16). Decoration only, no collision",
+     "approx_size": [
+      1.2,
+      1.8,
+      1.2
+     ],
+     "occluders": [
+      {
+       "center": [
+        20.0,
+        8.1,
+        -51.5
+       ],
+       "size": [
+        1.2,
+        1.8,
+        1.2
+       ],
+       "yaw": 0.0
+      }
      ]
     },
     {
@@ -5132,7 +5254,7 @@
      "name": "pendulum_beam",
      "position": [
       22.0,
-      8.96,
+      8.996,
       -38.5
      ],
      "notes": "Root beam spanning the chamber high above the heart-well mouth (x 14..30), hinge of the lantern pendulum at its middle",

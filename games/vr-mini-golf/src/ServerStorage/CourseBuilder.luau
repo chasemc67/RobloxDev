@@ -23,6 +23,7 @@ local CollectionService = game:GetService("CollectionService")
 local PhysicsService = game:GetService("PhysicsService")
 local Lighting = game:GetService("Lighting")
 local Config = require(game:GetService("ReplicatedStorage"):WaitForChild("Golf"):WaitForChild("Config"))
+local MoverMath = require(game:GetService("ReplicatedStorage"):WaitForChild("Golf"):WaitForChild("MoverMath"))
 
 -- World placement. Each hole's frame comes from the WorldLayout module (ServerStorage.CourseData.WorldLayout,
 -- generated from the world map by tools/world_to_lua.py): holeCF = CFrame.new(origin) * Angles(0, rad(yaw), 0), and
@@ -507,35 +508,17 @@ function Hole:buildWall(w)
 end
 
 ------------------------------------------------------------------------------------------------ moving parts
+-- spec value / cycle of a moving part (shared with GolfServer.Movers and the harness): ReplicatedStorage.Golf.MoverMath
+local function moverProfile(m)
+	return { type = m.type, speed = m.speed, phase = m.phase or 0, range = m.range, period = m.period_s, amplitude = m.amplitude_deg, dwell = m.dwell }
+end
 local function moverValue(m, t)
-	-- same as the designer's sim (tools/sim.py part_state): returns value (deg or studs) and rate (per s)
-	local sp = m.speed
-	if not m.range then
-		return (m.phase or 0) + sp * t, sp
-	end
-	local a, b = m.range[1], m.range[2]
-	local span = b - a
-	if span <= 0 then
-		return a, 0
-	end
-	local per = 2 * span
-	local u = ((m.phase or 0) - a) + math.abs(sp) * t
-	u = u - per * math.floor(u / per)
-	if u < span then
-		return a + u, math.abs(sp)
-	end
-	return b - (u - span), -math.abs(sp)
+	return MoverMath.value(moverProfile(m), t)
 end
 CourseBuilder.moverValue = moverValue
 
 local function moverPeriod(m)
-	if m.type == "swing" then
-		return m.period_s
-	end
-	if m.range then
-		return 2 * (m.range[2] - m.range[1]) / math.abs(m.speed)
-	end
-	return 360 / math.abs(m.speed)
+	return MoverMath.period(moverProfile(m))
 end
 
 local function axisFrame(pos, axis)
@@ -693,8 +676,21 @@ function Hole:buildMover(m)
 			model:SetAttribute("SpecRange", Vector2.new(m.range[1], m.range[2]))
 			print(string.format("CourseBuilder: hole %d %s range [%g, %g] -> [%g, %g] (clearance %.2f to the rails)",
 				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], m.clearance or m.end_clearance or SLIDE_CLEARANCE))
+			-- dwell stops at the spec range ends move with the clamped ends
+			local dwell = nil
+			for _, d in m.dwell or {} do
+				local at = d.at
+				if math.abs(at - m.range[1]) < 1e-3 then
+					at = r[1]
+				elseif math.abs(at - m.range[2]) < 1e-3 then
+					at = r[2]
+				end
+				dwell = dwell or {}
+				table.insert(dwell, { at = at, s = d.s })
+			end
 			m = table.clone(m)
 			m.range = r
+			m.dwell = dwell
 		end
 	end
 	local a0 = new("Attachment", { Name = "A0" }, base)
@@ -763,6 +759,7 @@ function Hole:buildMover(m)
 	model:SetAttribute("RangeMin", m.range and m.range[1] or 0)
 	model:SetAttribute("RangeMax", m.range and m.range[2] or 0)
 	model:SetAttribute("Period", moverPeriod(m))
+	model:SetAttribute("Dwell", MoverMath.encodeDwell(m.dwell))
 	if m.type == "swing" then
 		model:SetAttribute("Amplitude", m.amplitude_deg)
 	end

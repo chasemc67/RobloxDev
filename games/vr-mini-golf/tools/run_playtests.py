@@ -10,7 +10,7 @@
   python3 run_playtests.py export                 mirror every Studio script into games/vr-mini-golf/src/
   python3 run_playtests.py push FILE [FILE ...]   copy local src/ files into Studio (Edit) - dev convenience
   python3 run_playtests.py compare BEFORE_DIR AFTER_DIR   before/after table of the key numbers
-  python3 run_playtests.py clubviz [--out DIR]    VR club mount screenshots (legacy vs grip; side/front/top)
+  python3 run_playtests.py clubviz [--out DIR]    VR club mount screenshots (VRClubFlip off/on, both hands; --legacy)
 
 Only ever talks to the Studio whose name contains PLACE_ID.
 """
@@ -301,31 +301,48 @@ print("no border; kept full window")
         log("crop failed:", e)
 
 
+def mcp_grab(st, path):
+    """Studio MCP screen_capture of the play viewport into a PNG (no macOS screen-recording permission needed)."""
+    import base64
+    r = st.m.req("tools/call", {"name": "screen_capture", "arguments": {"studio_id": st.id, "capture_id": os.path.basename(path)}})
+    img = [c for c in r["result"]["content"] if c.get("type") == "image"][0]
+    with open(path + ".jpg", "wb") as fh:
+        fh.write(base64.b64decode(img["data"]))
+    subprocess.run(["uv", "run", "-q", "--with", "pillow", "python", "-c",
+                    "import sys; from PIL import Image; Image.open(sys.argv[1]).save(sys.argv[2])", path + ".jpg", path],
+                   check=True, timeout=120)
+    os.remove(path + ".jpg")
+
+
 def cmd_clubviz(args):
+    """VR club mount debug screenshots + geometry. Default: before (VRClubFlip off, out of the handle bottom) and
+    after (VRClubFlip on, out of the top) for both hands. --legacy compares the old aim-ray mount instead."""
     st = Studio()
     st.stop_play()
-    out_dir = args.out or os.path.join(GAME_DIR, "playtests", datetime.date.today().isoformat() + "-clubfix")
+    out_dir = args.out or os.path.join(GAME_DIR, "playtests", "club-flip")
     os.makedirs(out_dir, exist_ok=True)
     set_edit_attrs(st, {"GolfTestMode": True, "SimulateVR": True, "GolfTestCamera": ""})
     metrics = {}
+    if args.legacy:
+        combos = [("before", True, None, "right"), ("after", False, None, "right")]
+    else:
+        combos = [("%s_%s" % (tag, hand), False, flip, hand) for hand in args.hands.split(",")
+                  for tag, flip in (("before", False), ("after", True))]
     try:
         st.start_play()
         wait_api(st)
-        st.luau("game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.All, false) return 'ok'", "Client")
-        w = window("front")
-        if not w or "error" in w:
-            raise SystemExit("Studio window not found: %s" % w)
-        for tag, legacy in (("before", True), ("after", False)):
+        st.luau("game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.All, false) "
+                "for _, g in game.Players.LocalPlayer.PlayerGui:GetChildren() do if g:IsA('ScreenGui') then g.Enabled = false end end "
+                "return 'ok'", "Client")
+        for tag, legacy, flip, hand in combos:
             for view in args.views.split(","):
-                r = st.api("clubpose", legacy, view, timeout=90)
+                r = st.api("clubpose", legacy, view, hand, flip, timeout=90)
                 if not r.startswith("{"):
                     raise RuntimeError("clubpose %s %s: %s" % (tag, view, r[:300]))
                 metrics["%s_%s" % (tag, view)] = json.loads(r)
-                time.sleep(args.settle)  # the Studio viewport lags the game a little
+                time.sleep(args.settle)
                 path = os.path.join(out_dir, "%s%s_%s.png" % (args.prefix, tag, view))
-                capture_window(w["id"], path)
-                if not args.no_crop:
-                    crop_viewport(path)
+                mcp_grab(st, path)
                 log(tag, view, os.path.relpath(path, GAME_DIR))
         metrics["problems"] = {"server": st.problems("Server"), "client": st.problems("Client")}
     finally:
@@ -333,12 +350,13 @@ def cmd_clubviz(args):
         clear_test_attrs(st)
     with open(os.path.join(out_dir, args.prefix + "clubpose.json"), "w") as fh:
         json.dump(metrics, fh, indent=1)
-    keys = ["handHeightM", "handleLeanDeg", "shaftVsHandleDeg", "shaftVisualVsHandleDeg", "shaftStartGap", "shaftLeanDeg",
-            "aimRayElevationDeg", "headBottomAbovePlane", "headToTarget", "headToBallFlat", "clubLength"]
-    print("| metric | before | after |\n|---|---|---|")
-    b, a = metrics.get("before_side", {}), metrics.get("after_side", {})
+    keys = ["flip", "hand", "handHeightM", "handleLeanDeg", "shaftVsHandleDeg", "shaftVsMountAxisDeg", "shaftOutOfTop",
+            "shaftVisualVsHandleDeg", "shaftStartGap", "shaftLeanDeg", "faceDotRight", "aimRayElevationDeg",
+            "headBottomAbovePlane", "headToTarget", "headToBallFlat", "clubLength"]
+    cols = [k for k in metrics if k.endswith("_side")]
+    print("| metric | " + " | ".join(cols) + " |\n|---|" + "---|" * len(cols))
     for k in keys:
-        print("| %s | %s | %s |" % (k, b.get(k), a.get(k)))
+        print("| %s | %s |" % (k, " | ".join(str(metrics[c].get(k)) for c in cols)))
     print("problems:", json.dumps(metrics.get("problems")))
 
 
@@ -1030,10 +1048,11 @@ def main():
     sub.add_parser("export")
     cv = sub.add_parser("clubviz")
     cv.add_argument("--out")
-    cv.add_argument("--views", default="side,front,top,side_close,front_close")
+    cv.add_argument("--views", default="side,front,side_close")
+    cv.add_argument("--hands", default="right,left")
+    cv.add_argument("--legacy", action="store_true", help="legacy aim-ray mount vs grip mount (right hand)")
     cv.add_argument("--prefix", default="")
     cv.add_argument("--settle", type=float, default=3.0)
-    cv.add_argument("--no-crop", action="store_true")
     p = sub.add_parser("push")
     p.add_argument("files", nargs="+")
     c = sub.add_parser("compare")

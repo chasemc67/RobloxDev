@@ -10,9 +10,10 @@
 --   Invoke("status")               -> JSON {running, name, cam, elapsed, lines, error}
 --   Invoke("log", fromLine, chars) -> "<nextLine>\n<jsonl lines>"
 --   Invoke("result", name)         -> JSON result of the last run of that scenario
---   Invoke("clubpose", legacy, view) -> JSON club geometry: holds the club hand in a putting grip next to the ball
---                                      (Config.VRClubLegacyAim = legacy) with the club debug overlay on and the
---                                      camera on "side" | "front" | "top" of the stance (for screenshots)
+--   Invoke("clubpose", legacy, view, hand, flip) -> JSON club geometry: holds the club hand ("right" | "left") in a
+--                                      putting grip next to the ball (Config.VRClubLegacyAim = legacy, VRClubFlip =
+--                                      flip unless nil) with the club debug overlay on and the camera on "side" |
+--                                      "front" | "top" (+ "_close") of the stance (for screenshots)
 -- Compact event lines are also printed with the prefix "GOLFTEST|".
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -23,6 +24,7 @@ local CollectionService = game:GetService("CollectionService")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
 local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
+local MoverMath = require(Golf:WaitForChild("MoverMath"))
 local Remotes = Golf:WaitForChild("Remotes")
 
 local player = Players.LocalPlayer
@@ -372,7 +374,7 @@ local function parkHand()
 	if debugFolder then
 		-- PARKED is the club's rotation; turn it into the hand rotation for the current club mount
 		local _, clubOffset = VR.test.getClubMount()
-		debugFolder.RightHand.Value = PARKED * clubOffset.Rotation:Inverse()
+		debugFolder[VR.test.getDominant().Name].Value = PARKED * clubOffset.Rotation:Inverse()
 	end
 end
 
@@ -383,7 +385,7 @@ local function driveHand()
 	lastPoseClock = os.clock()
 	local cf = poseFn(lastPoseClock)
 	if cf then
-		debugFolder.RightHand.Value = VR.test.toLocal(cf)
+		debugFolder[VR.test.getDominant().Name].Value = VR.test.toLocal(cf)
 	end
 end
 
@@ -528,22 +530,9 @@ local function moversOf(n)
 	return out
 end
 
--- spec value of a mover at server time t (same as GolfServer.Movers.value)
+-- spec value of a mover at server time t (same as GolfServer.Movers.value: ReplicatedStorage.Golf.MoverMath)
 local function moverValue(m, t)
-	local sp = m:GetAttribute("Speed")
-	local phase = m:GetAttribute("Phase") or 0
-	local per = m:GetAttribute("Period")
-	if m:GetAttribute("Type") == "swing" then
-		return m:GetAttribute("Amplitude") * math.sin(2 * math.pi * (t % per) / per + math.rad(phase))
-	end
-	if not m:GetAttribute("HasRange") then
-		return phase + sp * (t % per)
-	end
-	local a, b = m:GetAttribute("RangeMin"), m:GetAttribute("RangeMax")
-	local span = b - a
-	local u = (phase - a) + math.abs(sp) * (t % per)
-	u = u - 2 * span * math.floor(u / (2 * span))
-	return u < span and a + u or b - (u - span)
+	return (MoverMath.value(MoverMath.fromModel(m), t))
 end
 
 -- the value this client currently SEES (replicated physics), from the first blocker's pose
@@ -1352,6 +1341,104 @@ for n = 1, 9 do
 	})
 end
 
+-- Timing obstacles (H7 log, H8 root door, H9 lantern pendulum): Game Art Bot's intended line through each one
+-- (playtest-log.md Round 7), fired at `count` evenly spaced phases of the mover's cycle as this client sees it.
+-- blocked = touched the mover's Blocker and never crossed its line (spec timing_check definition); touched = any
+-- Blocker contact. Target block rate 38-50%.
+local BLOCK_LINES = {
+	{ hole = 7, mover = "log", from = nil, aim = 281, speed = 12.0, axis = "z", at = -20.5 },
+	{ hole = 8, mover = "root_door", from = nil, aim = 291.3, speed = 11.2, axis = "x", at = 4.75 },
+	{ hole = 9, mover = "lantern_pendulum", from = { 18.5, -25.0, 1.0 }, aim = 281.2, speed = 7.75, axis = "z", at = -38.5 },
+}
+scenario({
+	name = "blockrate",
+	desc = "H7/H8/H9 timing obstacles: intended line at evenly spaced phases, block rate (target 38-50%)",
+	seconds = 900,
+	run = function()
+		refreshFelt()
+		table.clear(issues)
+		local count = opts().blockShots or 20
+		local only = opts().blockHoles -- e.g. "7,9"
+		local out = { holes = {} }
+		for _, L in BLOCK_LINES do
+			if only and not string.find("," .. only .. ",", "," .. L.hole .. ",", 1, true) then
+				continue
+			end
+			local n = L.hole
+			local mover
+			for _, m in moversOf(n) do
+				if m:GetAttribute("MoverId") == L.mover then
+					mover = m
+				end
+			end
+			if not mover then
+				out.holes["h" .. n] = { error = "no mover " .. L.mover }
+				continue
+			end
+			local per = mover:GetAttribute("Period")
+			local sp = spec(n)
+			local from = L.from or { sp.tee.position[1], sp.tee.position[3], sp.tee.position[2] }
+			local rows, blocked, touched = {}, 0, 0
+			for k = 0, count - 1 do
+				local ph = per * k / count
+				placeL(n, from[1], from[2], from[3])
+				task.wait(0.3)
+				local startSide = toLocal(n, Ball.ball.Position)[L.axis] - L.at
+				-- watch the ball cross the obstacle line during the shot
+				local crossed, watching = false, true
+				task.spawn(function()
+					while watching do
+						local lp = toLocal(n, Ball.ball.Position)
+						local d = lp[L.axis] - L.at
+						if d * startSide < 0 and math.abs(d) > 0.5 then
+							crossed = true
+						end
+						RunService.Heartbeat:Wait()
+					end
+				end)
+				local lag = holeLag(n)
+				local t0 = os.clock()
+				while os.clock() - t0 < per + 1 do
+					local seen = (workspace:GetServerTimeNow() - lag) % per
+					local d = (seen - ph) % per
+					if d < 0.02 or d > per - 0.005 then
+						break
+					end
+					RunService.Heartbeat:Wait()
+				end
+				local seenPhase = round((workspace:GetServerTimeNow() - lag) % per, 2)
+				local value = round(moverObserved(mover) or 0, 2)
+				local r = shootS(string.format("h%d-block-%d", n, k), aimDir(n, L.aim), L.speed, { cup = hole(n).Cup, timeout = 15 })
+				watching = false
+				local hit = false
+				for _, c in r.contacts or {} do
+					local part = c.part or ""
+					if string.find(part, "Mover_" .. L.mover, 1, true) or (string.find(part, "Blocker", 1, true) and string.find(part, L.mover, 1, true)) then
+						hit = true
+					end
+				end
+				local isBlocked = hit and not crossed
+				blocked += isBlocked and 1 or 0
+				touched += hit and 1 or 0
+				table.insert(rows, { phase = round(ph, 2), seen = seenPhase, value = value, touched = hit, crossed = crossed, blocked = isBlocked, outcome = r.outcome, finish = r.finish, flags = #(r.flags or {}) })
+				event("block", { hole = n, k = k, phase = round(ph, 2), value = value, touched = hit, crossed = crossed, outcome = r.outcome })
+			end
+			out.holes["h" .. n] = {
+				mover = L.mover,
+				period = round(per, 3),
+				shots = count,
+				blocked = blocked,
+				touched = touched,
+				blockRate = round(blocked / count, 3),
+				lag = round(holeLag(n), 3),
+				rows = rows,
+			}
+		end
+		out.issues = issues
+		return out
+	end,
+})
+
 -- Hole 7: can the sliding log pin the ball? Balls parked in / beside the log's path near both ends of its
 -- travel (next to the side rails and the pool gap) and slow putts into its path; each one records whether the
 -- ball ended up stuck against the log (contact + ~0 speed for > 0.5 s), what the unstick nudge did, and where.
@@ -1923,7 +2010,9 @@ scenario({
 -- A part-built Quest Touch proxy at the simulated club-hand CFrame, plus axis gizmos (X red, Y green, Z blue;
 -- thick = hand, thin = club mount at the shaft start), the aim ray (-Z, yellow) and a marker for the head.
 -- The proxy is the PHYSICAL controller (handle along Config.VRClubGripPitch), whatever mount the code uses, so
--- with VRClubLegacyAim the screenshots show where the old club came out relative to the real handle.
+-- with VRClubLegacyAim the screenshots show where the old club came out relative to the real handle. The orange
+-- cap marks the handle end the shaft leaves from: the bottom unflipped, the TOP with Config.VRClubFlip (a grey
+-- link then runs from the top of the handle to the shaft start, VRClubButtOffset past the hand).
 local clubDebug = nil
 local function dbgPart(name, size, color, material, shape)
 	local p = Instance.new("Part")
@@ -1952,6 +2041,7 @@ local function buildClubDebug()
 	dbgPart("Ring", Vector3.new(0.03, 0.34, 0.34), grey, nil, Enum.PartType.Cylinder).Transparency = 0.25
 	dbgPart("Trigger", Vector3.new(0.05, 0.09, 0.04), Color3.fromRGB(230, 80, 60))
 	dbgPart("ButtCap", Vector3.new(0.025, 0.13, 0.13), Color3.fromRGB(255, 170, 0), Enum.Material.Neon, Enum.PartType.Cylinder)
+	dbgPart("Link", Vector3.new(0.05, 0.05, 0.2), grey)
 	for _, set in { { "Hand", 0.03, 0.65 }, { "Club", 0.016, 0.45 } } do
 		for _, ax in { { "X", Color3.fromRGB(255, 40, 40) }, { "Y", Color3.fromRGB(40, 230, 40) }, { "Z", Color3.fromRGB(50, 90, 255) } } do
 			dbgPart(set[1] .. ax[1], Vector3.new(set[2], set[2], set[3]), ax[2], Enum.Material.Neon)
@@ -1985,13 +2075,22 @@ local function updateClubDebug()
 	local cyl = CFrame.Angles(0, math.rad(90), 0) -- cylinder axis (X) along a lookAt's LookVector
 	clubDebug.Handle.Size = Vector3.new((butt - top).Magnitude, 0.12, 0.12)
 	clubDebug.Handle.CFrame = CFrame.lookAt((butt + top) / 2, butt) * cyl
-	clubDebug.ButtCap.CFrame = CFrame.lookAt(butt, butt + g) * cyl
+	local flip = Config.VRClubFlip ~= false and not Config.VRClubLegacyAim
+	local _, _, clubCF = VR.test.getClubMount()
+	if flip then
+		-- shaft leaves the top: cap the top end and link it to the shaft start
+		clubDebug.ButtCap.CFrame = CFrame.lookAt(top, top - g) * cyl
+		clubDebug.Link.Transparency = 0
+		segment(clubDebug.Link, top, clubCF.Position)
+	else
+		clubDebug.ButtCap.CFrame = CFrame.lookAt(butt, butt + g) * cyl
+		clubDebug.Link.Transparency = 1
+	end
 	clubDebug.Top.CFrame = hand * CFrame.new(0, 0.03, -0.03)
 	clubDebug.Stick.CFrame = hand * CFrame.new(0, 0.06, 0.0) * CFrame.Angles(0, 0, math.rad(90))
 	-- tracking ring: a halo over the top front of the controller
 	clubDebug.Ring.CFrame = hand * CFrame.new(0, 0.1, -0.12) * CFrame.Angles(math.rad(-45), 0, 0) * CFrame.Angles(0, 0, math.rad(90))
 	clubDebug.Trigger.CFrame = hand * CFrame.new(0, -0.03, -0.1) * CFrame.Angles(math.rad(-(Config.VRClubGripPitch or 35)), 0, 0)
-	local _, _, clubCF = VR.test.getClubMount()
 	for _, set in { { "Hand", hand }, { "Club", clubCF } } do
 		local cf, len = set[2], clubDebug[set[1] .. "X"].Size.Z
 		segment(clubDebug[set[1] .. "X"], cf.Position, cf.Position + cf.RightVector * len)
@@ -2012,8 +2111,17 @@ local HAND_HEIGHT = 0.9144 / STUD
 local function deg(a: Vector3, b: Vector3)
 	return math.deg(math.acos(math.clamp(a.Unit:Dot(b.Unit), -1, 1)))
 end
-local function clubPose(legacy: boolean, view: string?)
+-- `hand` "left" puts the club in the left hand (mirrored mount, head on the other side of the ball); `flip` sets
+-- Config.VRClubFlip for the shot (nil keeps it). Legacy holds the PHYSICAL handle at the head target (to show
+-- where the old club went); grip mounts hold the club shaft at it, so the flipped shots show the controller
+-- held top-down with the shaft leaving its top.
+local function clubPose(legacy: boolean, view: string?, hand: string?, flip: boolean?)
 	Config.VRClubLegacyAim = legacy == true
+	if flip ~= nil then
+		Config.VRClubFlip = flip
+	end
+	local left = hand == "left"
+	VR.test.setDominant(left and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand)
 	VR.test.resetClubMount()
 	if not GolfTest.vizBall then
 		refreshFelt()
@@ -2023,7 +2131,7 @@ local function clubPose(legacy: boolean, view: string?)
 		task.wait(0.3)
 	end
 	-- park the off hand (and its wrist HUD) out of the shots
-	debugFolder.LeftHand.Value = CFrame.new(-0.6, 3, 2)
+	debugFolder[left and "RightHand" or "LeftHand"].Value = CFrame.new(left and 0.6 or -0.6, 3, 2)
 	local ballPos = GolfTest.vizBall
 	local half = VR.test.headSize / 2
 	local plane = ballPos.Y - R
@@ -2031,7 +2139,8 @@ local function clubPose(legacy: boolean, view: string?)
 	local F = flat(headCF.LookVector).Unit -- golfer facing: toward the ball
 	local Rt = F:Cross(Vector3.yAxis) -- golfer's right
 	-- warpToBall faces you so the target is on your lead (left) side: the putter face points along -Rt
-	local headTarget = ballPos - (-Rt) * (R + half.X + 0.06)
+	-- (left-handed: the mirror image, head on the golfer's left of the ball)
+	local headTarget = ballPos + (left and -Rt or Rt) * (R + half.X + 0.06)
 	headTarget = Vector3.new(headTarget.X, plane + half.Y + 0.01, headTarget.Z)
 	local floorY = VR.test.getOrigin().Y
 	local handPos = Vector3.new(headCF.X, floorY + HAND_HEIGHT, headCF.Z) + F * (flat(headTarget - headCF.Position):Dot(F) - 0.6)
@@ -2044,6 +2153,9 @@ local function clubPose(legacy: boolean, view: string?)
 	local handleRot = CFrame.fromMatrix(Vector3.zero, right, back:Cross(right), back)
 	local physicalRot = CFrame.Angles(math.rad(-90 - (Config.VRClubGripPitch or 35)), 0, 0)
 	local handCF = CFrame.new(handPos) * handleRot * physicalRot:Inverse()
+	if not legacy then
+		handCF = VR.test.handCFrameAlong(handPos, gripDir, Rt)
+	end
 	poseFn = function()
 		return handCF
 	end
@@ -2075,14 +2187,23 @@ local function clubPose(legacy: boolean, view: string?)
 	local _, _, clubCF = VR.test.getClubMount()
 	local handNow = VR.getState().hand
 	local handleWorld = handNow:VectorToWorldSpace(physicalRot.LookVector)
-	local buttWorld = handNow.Position + handleWorld * (Config.VRClubButtOffset or 0.25)
+	local flipped = Config.VRClubFlip ~= false and not legacy
+	-- the handle end the shaft should leave from: bottom, or top when flipped
+	local mountAxis = flipped and -handleWorld or handleWorld
+	local buttWorld = handNow.Position + mountAxis * (Config.VRClubButtOffset or 0.25)
 	local shaftVis = VR.test.putter.Shaft.CFrame.LookVector
 	local res = {
 		legacy = legacy == true,
+		flip = flipped,
+		hand = left and "left" or "right",
 		view = view,
 		handHeightM = round((handNow.Position.Y - floorY) * STUD),
 		handleLeanDeg = round(deg(handleWorld, -Vector3.yAxis), 1),
-		shaftVsHandleDeg = round(deg(clubCF.LookVector, handleWorld), 1),
+		shaftVsHandleDeg = round(deg(clubCF.LookVector, handleWorld), 1), -- vs the handle's bottom direction
+		shaftVsMountAxisDeg = round(deg(clubCF.LookVector, mountAxis), 1), -- vs the end it should leave (0 = ok)
+		shaftOutOfTop = clubCF.LookVector:Dot(handleWorld) < 0,
+		-- putter face normal vs the golfer's right (+1/-1 = square to the target line; same sign before/after)
+		faceDotRight = round(head.CFrame.RightVector:Dot(Rt), 3),
 		shaftVisualVsHandleDeg = round(deg(shaftVis, handleWorld), 1),
 		shaftStartGap = round((clubCF.Position - buttWorld).Magnitude, 3),
 		shaftLeanDeg = round(deg(clubCF.LookVector, -Vector3.yAxis), 1),
@@ -2101,7 +2222,7 @@ end
 
 scenario({
 	name = "clubviz",
-	desc = "VR club mount: putting-grip hand pose, shaft along the handle out of its bottom (vs legacy aim-ray mount)",
+	desc = "VR club mount: putting-grip hand pose, shaft along the handle out of its top (VRClubFlip) or bottom, both hands (vs legacy aim-ray mount)",
 	vr = true,
 	seconds = 6,
 	run = function()
@@ -2110,7 +2231,9 @@ scenario({
 			return skip
 		end
 		GolfTest.vizBall = nil
-		local out = { legacy = clubPose(true, "side"), grip = clubPose(false, "side") }
+		local out = { legacy = clubPose(true, "side") }
+		out.gripLeft = clubPose(false, "side", "left")
+		out.grip = clubPose(false, "side") -- back to the right hand; the A-button fit below uses this pose
 		-- A-button re-fit from the grip pose: the shaft should go straight down from the handle bottom, with the
 		-- head on the ball's plane
 		local lengthBefore = VR.test.clubLength()
@@ -2137,7 +2260,7 @@ scenario({
 		local g = out.grip
 		-- shaft continues the handle (< 2 deg), starts at its bottom (< 1 cm), head on the ball's plane (3 mm
 		-- clearance, < 1.5 cm error) right behind the ball (within ~3 cm of the intended spot)
-		out.ok = g.shaftVsHandleDeg < 2 and g.shaftStartGap < 0.03 and math.abs(g.headBottomAbovePlane - 0.01) < 0.05
+		out.ok = g.shaftVsMountAxisDeg < 2 and g.shaftStartGap < 0.03 and out.gripLeft.shaftVsMountAxisDeg < 2 and math.abs(g.headBottomAbovePlane - 0.01) < 0.05
 			and g.headToTarget < 0.1 and out.fit.ok
 		return out
 	end,
@@ -2171,6 +2294,7 @@ local function runScenario(name, cam)
 			StopSpeed = Config.StopSpeed,
 			VRHitMultiplier = Config.VRHitMultiplier,
 			VRClubLegacyAim = Config.VRClubLegacyAim,
+			VRClubFlip = Config.VRClubFlip,
 			VRClubGripPitch = Config.VRClubGripPitch,
 			VRClubGripYaw = Config.VRClubGripYaw,
 			VRClubGripRoll = Config.VRClubGripRoll,
@@ -2207,7 +2331,7 @@ local function runScenario(name, cam)
 	run.running = false
 end
 
-local function api(cmd, a, b, c)
+local function api(cmd, a, b, c, d)
 	if cmd == "list" then
 		local out = {}
 		for _, s in SCENARIOS do
@@ -2251,7 +2375,7 @@ local function api(cmd, a, b, c)
 		if not (simVR and VR and VR.test) then
 			return "error: needs SimulateVR"
 		end
-		local ok, res = pcall(clubPose, a == true, b)
+		local ok, res = pcall(clubPose, a == true, b, c, d)
 		return ok and HttpService:JSONEncode(res) or ("error: " .. tostring(res))
 	elseif cmd == "camera" then
 		workspace:SetAttribute("GolfTestCamera", a or "")

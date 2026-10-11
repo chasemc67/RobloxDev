@@ -47,18 +47,21 @@ return {
 	VRMoveSpeed = 6.5, -- thumbstick walk speed, studs/s (~2 m/s)
 	VRSnapTurnDegrees = 30,
 	VRStanceDistance = 1.5, -- warp-to-ball puts your head this far from the ball (45 cm)
-	-- Club mount: the shaft runs PARALLEL to the controller handle and comes out of its bottom end, as if the
-	-- controller were the top of a putter grip. Hand UserCFrame axes on Quest Touch (aim pose): -Z = aim/laser ray,
+	-- Club mount: the shaft runs PARALLEL to the controller handle. With VRClubFlip (default, v80) it comes out
+	-- of the handle's TOP end; unflipped (v12-v79) it came out of the bottom, which Chase found pointing the wrong
+	-- way in VR (2026-10-10 playtest of v79). Hand UserCFrame axes on Quest Touch (aim pose): -Z = aim/laser ray,
 	-- +Y = top of the controller (face buttons), +X = controller right. The handle runs down from the top along -Y,
 	-- raked back toward +Z (the bottom of the grip sits down and back toward your wrist, like a pistol grip).
 	-- Shaft direction in hand space = CFrame.Angles(rad(-90 - VRClubGripPitch), 0, 0) * yaw * roll applied to -Z,
-	-- i.e. -Y tilted VRClubGripPitch degrees toward +Z. Starts VRClubButtOffset studs along that axis from the hand
-	-- origin (the bottom of the handle). Pitch is about hand X, so it is the same for both hands; yaw/roll are
+	-- i.e. -Y tilted VRClubGripPitch degrees toward +Z, when unflipped. VRClubFlip negates that vector (+Y tilted
+	-- toward -Z, i.e. adds 180 deg about hand X and negates yaw). Starts VRClubButtOffset studs along the shaft
+	-- from the hand origin (bottom of the handle unflipped, top when flipped). Pitch is about hand X, so it is the same for both hands; yaw/roll are
 	-- mirrored for the left hand. Unverified on a real Quest: see games/vr-mini-golf/playtesting.md.
+	VRClubFlip = true, -- shaft out of the handle's top (false = v12-v79 out-of-the-bottom mount)
 	VRClubGripPitch = 35, -- degrees, + rakes the handle bottom back toward the wrist (+Z)
 	VRClubGripYaw = 0, -- degrees, + swings the shaft toward the controller's right (+X); mirrored for the left hand
 	VRClubGripRoll = 0, -- degrees about the shaft (turns the putter face); mirrored for the left hand
-	VRClubButtOffset = 0.25, -- 7.5 cm from the hand origin to the bottom of the handle
+	VRClubButtOffset = 0.25, -- 7.5 cm from the hand origin to the shaft-side handle end
 	-- Legacy mount (v9, before 2026-10-09): the shaft came out of the controller TIP along the aim ray (LookVector),
 	-- which ends up ~perpendicular to the handle on a real Quest. Kept only for before/after comparisons.
 	VRClubLegacyAim = false,

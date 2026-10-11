@@ -8,40 +8,22 @@
 -- proper contact response from their surface velocity.
 local RunService = game:GetService("RunService")
 local CollectionService = game:GetService("CollectionService")
+local MoverMath = require(game:GetService("ReplicatedStorage"):WaitForChild("Golf"):WaitForChild("MoverMath"))
 
 local Movers = {}
 
 local KP = 6 -- 1/s: position correction gain
 local MAX_CORRECTION = 2 -- x the spec rate (rad/s or studs/s) at most
 
--- Spec value (degrees or studs) and rate at time t; the same function as the designer's sim (part_state).
+-- Spec value (degrees or studs) and rate at time t (ReplicatedStorage.Golf.MoverMath, incl. slide dwell pauses).
+local profiles = setmetatable({}, { __mode = "k" })
 function Movers.value(model, t)
-	local sp = model:GetAttribute("Speed")
-	local phase = model:GetAttribute("Phase") or 0
-	if model:GetAttribute("Type") == "swing" then
-		-- pendulum: angle = amp * sin(360 t / period + phase), phase in degrees of the cycle
-		local amp, period = model:GetAttribute("Amplitude"), model:GetAttribute("Period")
-		local w = 2 * math.pi / period
-		local a = w * (t % period) + math.rad(phase)
-		return amp * math.sin(a), amp * w * math.cos(a)
+	local p = profiles[model]
+	if not p then
+		p = MoverMath.fromModel(model)
+		profiles[model] = p
 	end
-	if not model:GetAttribute("HasRange") then
-		local period = model:GetAttribute("Period")
-		-- reduce t first: GetServerTimeNow() is ~1.7e9, and deg/s * that loses precision
-		return phase + sp * (t % period), sp
-	end
-	local a, b = model:GetAttribute("RangeMin"), model:GetAttribute("RangeMax")
-	local span = b - a
-	if span <= 0 then
-		return a, 0
-	end
-	local per = 2 * span
-	local u = (phase - a) + math.abs(sp) * (t % (per / math.abs(sp)))
-	u = u - per * math.floor(u / per)
-	if u < span then
-		return a + u, math.abs(sp)
-	end
-	return b - (u - span), -math.abs(sp)
+	return MoverMath.value(p, t)
 end
 
 local function wrap180(d)

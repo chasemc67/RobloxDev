@@ -317,6 +317,28 @@ local function addGlow(model, range, brightness)
 	return false
 end
 
+-- PointLight with the given {range, brightness, color3} on the model's first Neon part (or existing PointLight)
+local function setLight(model, spec)
+	local light = model:FindFirstChildWhichIsA("PointLight", true)
+	if not light then
+		for _, p in model:GetDescendants() do
+			if p:IsA("BasePart") and p.Material == Enum.Material.Neon then
+				light = Instance.new("PointLight")
+				light.Parent = p
+				break
+			end
+		end
+	end
+	if not light then
+		return false
+	end
+	light.Color = spec.color3 and Color3.fromRGB(table.unpack(spec.color3)) or Color3.fromHex("FFA957")
+	light.Range = spec.range or 16
+	light.Brightness = spec.brightness or 2
+	light.Shadows = false
+	return true
+end
+
 -- world-layout keep-outs for the set dressing (it was authored around each hole on its own)
 local function worldKeepouts(course)
 	local wl = ServerStorage.CourseData:FindFirstChild("WorldLayout")
@@ -503,8 +525,28 @@ function PropsBuilder.Place(course)
 						end
 					end
 				end
-				if string.find(pl.prop, "lantern") or string.find(pl.prop, "torii") or string.find(pl.prop, "mushroom") or string.find(pl.prop, "ring") then
+				if pl.light then
+					-- props_overrides.json lantern with its own light (H9 amber lanterns over the green)
+					setLight(m, pl.light)
+				elseif string.find(pl.prop, "lantern") or string.find(pl.prop, "torii") or string.find(pl.prop, "mushroom") or string.find(pl.prop, "ring") then
 					addGlow(m, 10, 1)
+				end
+				if pl.chain_top then
+					-- hanging chain from the lantern top up into the canopy
+					local top = m:GetBoundingBox().Position + Vector3.new(0, m:GetExtentsSize().Y / 2, 0)
+					local len = cfH.Position.Y + pl.chain_top - top.Y
+					if len > 0.1 then
+						local c = Instance.new("Part")
+						c.Name = "Chain"
+						c.Shape = Enum.PartType.Cylinder
+						c.Size = Vector3.new(len, 0.08, 0.08)
+						c.CFrame = CFrame.new(top + Vector3.new(0, len / 2, 0)) * CFrame.Angles(0, 0, math.rad(90))
+						c.Color = Color3.fromHex("3B3A3F")
+						c.Material = Enum.Material.Metal
+						c.CastShadow = false
+						decorate(c)
+						c.Parent = m
+					end
 				end
 				rep.hero += 1
 			end
@@ -596,6 +638,67 @@ function PropsBuilder.Place(course)
 			rep.dressing += 1
 		end
 		rep.lights = lights
+
+		-- pass-8 PointLights (manifest lights[]): amber rail lanterns (H7 lower tiers, H8) and the H8 mushroom /
+		-- firefly glow. The rail_lantern_* meshes aren't imported yet, so each rail light gets a small stand-in
+		-- (stake + lantern_small, or a primitive lantern); glow lights hang on an invisible point over their cluster.
+		local lfolder = Instance.new("Folder")
+		lfolder.Name = "Lights"
+		lfolder.Parent = folder
+		for _, l in d.pointLights or {} do
+			if l.hole ~= n then
+				continue
+			end
+			local wp = cfH:PointToWorldSpace(Vector3.new(table.unpack(l.pos)))
+			local spec = { range = l.range, brightness = l.brightness, color3 = l.color3 }
+			local m = Instance.new("Model")
+			m.Name = "Light_" .. l.id
+			if l.kind == "rail_lantern" then
+				local mesh = lib:FindFirstChild(l.prop or "") and instance(lib, l.prop, CFrame.new(wp), 1)
+				if mesh then
+					mesh.Parent = m
+				else
+					local stake = Instance.new("Part")
+					stake.Name = "Stake"
+					stake.Size = Vector3.new(0.14, 1.2, 0.14)
+					stake.CFrame = CFrame.new(wp + Vector3.new(0, 0.6, 0))
+					stake.Color = Color3.fromHex("8A5A33")
+					stake.Material = Enum.Material.WoodPlanks
+					stake.Parent = m
+					local lan = instance(lib, "lantern_small", CFrame.new(wp + Vector3.new(0, 1.2, 0)), 1)
+					if lan then
+						lan.Parent = m
+					else
+						local core = Instance.new("Part")
+						core.Name = "Glow"
+						core.Shape = Enum.PartType.Ball
+						core.Size = Vector3.new(0.35, 0.35, 0.35)
+						core.CFrame = CFrame.new(wp + Vector3.new(0, 1.45, 0))
+						core.Color = Color3.fromRGB(table.unpack(l.color3))
+						core.Material = Enum.Material.Neon
+						core.Parent = m
+					end
+				end
+			else
+				local pt = Instance.new("Part")
+				pt.Name = "GlowPoint"
+				pt.Size = Vector3.new(0.2, 0.2, 0.2)
+				pt.CFrame = CFrame.new(wp + Vector3.new(0, 0.3, 0))
+				pt.Transparency = 1
+				pt.Parent = m
+				local light = Instance.new("PointLight")
+				light.Parent = pt
+			end
+			for _, p in m:GetDescendants() do
+				if p:IsA("BasePart") then
+					decorate(p)
+					p.CastShadow = false
+				end
+			end
+			setLight(m, spec)
+			m.Parent = lfolder
+			rep.pointLights = (rep.pointLights or 0) + 1
+		end
 	end
 
 	-- the old H9 hollow tree mesh stands in the NW forest as a sister tree (world layout)
