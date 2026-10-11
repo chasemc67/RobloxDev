@@ -1,0 +1,600 @@
+{
+  "placeId": 87725688219952,
+  "creator": "MetavrseBuilder",
+  "importer": "Studio 3D Importer",
+  "scaleFactor": 1,
+  "scaleUnit": "Stud",
+  "registration": "PropsBuilder.PrepareLibrary(sources) -> ServerStorage.LanternGroveProps",
+  "registrationResult": {
+    "props": 13,
+    "parts": 56,
+    "unknownMeshes": 0,
+    "scaleCorrections": []
+  },
+  "sourceFiles": {
+    "firefly_cluster_low": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/firefly_cluster_low.fbx",
+      "sha256": "fc65d999f44e609bd8a62d5073e02781610b262d800cc7a584f0f0c778532687"
+    },
+    "glow_shroom_patch": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/glow_shroom_patch.fbx",
+      "sha256": "e762d96f18cbc3a16e8b5a89afd7939f5392f56aaf4719923539fc7904745b0b"
+    },
+    "h9_lantern_pendulum": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/h9_lantern_pendulum.fbx",
+      "sha256": "3635d08dc2711d624be686f658c7be88930ce5a7e10346f810cb4e8a7b489142"
+    },
+    "rail_lantern_stake": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/rail_lantern_stake.fbx",
+      "sha256": "998ac2d7de6bca389ee0392ba7061a94063c4d42048170a6e66e3ba4b77aefc8"
+    },
+    "firefly_swarm": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/firefly_swarm.fbx",
+      "sha256": "efe51a7640dc79ba1b2b127193ef8943692de2d3466dde81d4a4fa0f5f8742c8"
+    },
+    "glow_root_arch": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/glow_root_arch.fbx",
+      "sha256": "7b3179ce475e2c50c02e5a5d5aa0819a263178cd1031e08159df075e3f1fb88b"
+    },
+    "h9_pendulum_root_beam": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/h9_pendulum_root_beam.fbx",
+      "sha256": "c860ff0db0b90d20039a849d78b95d1d6f561dc0dbc5ef27b5a6237a902aa438"
+    },
+    "lantern_large_hanging": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/lantern_large_hanging.fbx",
+      "sha256": "ce553093001b912f26bf917ed3febd9c1d6e32adc0587aba0328673bf6ed003b"
+    },
+    "h8_root_door": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/h8_root_door.fbx",
+      "sha256": "0c11a8b67d29c7cf4cf6969fa5a79d9490e4a41b60056968908f58ec8fdb46d2"
+    },
+    "firefly_ring_entry": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/firefly_ring_entry.fbx",
+      "sha256": "f5b4185a937e034850b3841587101d455a2550da95c216cb6f2109b15bbf9b1e"
+    },
+    "h7_floating_log": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/h7_floating_log.fbx",
+      "sha256": "2bbee5423b1b88c728fdd5c2f15cb9158a2b0a62980c90ef2c5ad5284a341a78"
+    },
+    "h8_door_pocket": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/h8_door_pocket.fbx",
+      "sha256": "c0c727d4a7f14a74fcf8e78e40e59736008fdfaf29dcd73f6f004d7bceecb15b"
+    },
+    "rail_lantern_crook": {
+      "path": "assets/vr-mini-golf/lantern-grove/models/fbx/rail_lantern_crook.fbx",
+      "sha256": "65cdaf4b852866e8e624c2d9497b062fd650cbf92364ecd20e1dead3a3adefec"
+    }
+  },
+  "meshes": {
+    "firefly_cluster_low": [
+      {
+        "meshId": "rbxassetid://87853688084654",
+        "name": "firefly_cluster_low__Firefly",
+        "size": [
+          2.6529054641723633,
+          1.6794580221176147,
+          2.4285330772399902
+        ]
+      }
+    ],
+    "glow_shroom_patch": [
+      {
+        "meshId": "rbxassetid://106610620189984",
+        "name": "glow_shroom_patch__Cream",
+        "size": [
+          1.318833351135254,
+          0.8792542815208435,
+          0.636014461517334
+        ]
+      },
+      {
+        "meshId": "rbxassetid://121745938739348",
+        "name": "glow_shroom_patch__Firefly",
+        "size": [
+          0.8480370044708252,
+          0.47686660289764404,
+          0.573188304901123
+        ]
+      },
+      {
+        "meshId": "rbxassetid://76259313977068",
+        "name": "glow_shroom_patch__Moss",
+        "size": [
+          1.5598846673965454,
+          0.16000021994113922,
+          1.5207750797271729
+        ]
+      },
+      {
+        "meshId": "rbxassetid://125960627228599",
+        "name": "glow_shroom_patch__ShroomGlow",
+        "size": [
+          1.7699391841888428,
+          0.7265873551368713,
+          1.1402997970581055
+        ]
+      }
+    ],
+    "h9_lantern_pendulum": [
+      {
+        "meshId": "rbxassetid://92482557530857",
+        "name": "h9_lantern_pendulum__CapGold",
+        "size": [
+          1.7047996520996094,
+          1.8000001907348633,
+          1.7047996520996094
+        ]
+      },
+      {
+        "meshId": "rbxassetid://130032305569587",
+        "name": "h9_lantern_pendulum__Glow",
+        "size": [
+          2.15285587310791,
+          0.2200002670288086,
+          2.15285587310791
+        ]
+      },
+      {
+        "meshId": "rbxassetid://130840855919888",
+        "name": "h9_lantern_pendulum__Iron",
+        "size": [
+          0.4099999964237213,
+          0.27500006556510925,
+          0.7000000476837158
+        ]
+      },
+      {
+        "meshId": "rbxassetid://90880324312486",
+        "name": "h9_lantern_pendulum__MoveCream",
+        "size": [
+          2.1549017429351807,
+          7.047430038452148,
+          2.1549019813537598
+        ]
+      },
+      {
+        "meshId": "rbxassetid://82973411371530",
+        "name": "h9_lantern_pendulum__MoveRed",
+        "size": [
+          2.1637840270996094,
+          7.624333381652832,
+          2.1637840270996094
+        ]
+      }
+    ],
+    "rail_lantern_stake": [
+      {
+        "meshId": "rbxassetid://106099743616158",
+        "name": "rail_lantern_stake__Glow",
+        "size": [
+          0.18706151843070984,
+          0.21600008010864258,
+          0.2160000205039978
+        ]
+      },
+      {
+        "meshId": "rbxassetid://118426105082611",
+        "name": "rail_lantern_stake__Iron",
+        "size": [
+          0.2944486439228058,
+          0.04999995231628418,
+          0.3400000333786011
+        ]
+      },
+      {
+        "meshId": "rbxassetid://93296512354122",
+        "name": "rail_lantern_stake__Oak",
+        "size": [
+          0.17119018733501434,
+          1.1200000047683716,
+          0.1628115475177765
+        ]
+      },
+      {
+        "meshId": "rbxassetid://102815031163737",
+        "name": "rail_lantern_stake__Paper",
+        "size": [
+          0.4871312379837036,
+          0.6000000238418579,
+          0.4996587932109833
+        ]
+      },
+      {
+        "meshId": "rbxassetid://84631054882406",
+        "name": "rail_lantern_stake__RootBark",
+        "size": [
+          0.3264058530330658,
+          0.75,
+          0.3182222843170166
+        ]
+      }
+    ],
+    "firefly_swarm": [
+      {
+        "meshId": "rbxassetid://73867538325082",
+        "name": "firefly_swarm__Firefly",
+        "size": [
+          2.8266210556030273,
+          4.102895259857178,
+          2.920159101486206
+        ]
+      }
+    ],
+    "glow_root_arch": [
+      {
+        "meshId": "rbxassetid://129485061923601",
+        "name": "glow_root_arch__Cream",
+        "size": [
+          2.2597436904907227,
+          0.5154227018356323,
+          0.9009941816329956
+        ]
+      },
+      {
+        "meshId": "rbxassetid://113256808529292",
+        "name": "glow_root_arch__Firefly",
+        "size": [
+          0.08592677116394043,
+          0.08509039878845215,
+          0.08555912971496582
+        ]
+      },
+      {
+        "meshId": "rbxassetid://103807180814872",
+        "name": "glow_root_arch__Moss",
+        "size": [
+          4.53818416595459,
+          0.18120154738426208,
+          0.525327205657959
+        ]
+      },
+      {
+        "meshId": "rbxassetid://140264504010616",
+        "name": "glow_root_arch__RootBark",
+        "size": [
+          4.957172870635986,
+          1.753591775894165,
+          1.7114524841308594
+        ]
+      },
+      {
+        "meshId": "rbxassetid://112718656448606",
+        "name": "glow_root_arch__ShroomGlow",
+        "size": [
+          2.5294008255004883,
+          0.2579291760921478,
+          1.1181890964508057
+        ]
+      }
+    ],
+    "h9_pendulum_root_beam": [
+      {
+        "meshId": "rbxassetid://130719555198193",
+        "name": "h9_pendulum_root_beam__Glow",
+        "size": [
+          13.374590873718262,
+          0.20159995555877686,
+          0.20160001516342163
+        ]
+      },
+      {
+        "meshId": "rbxassetid://92646197356941",
+        "name": "h9_pendulum_root_beam__Iron",
+        "size": [
+          13.30679988861084,
+          2.1512458324432373,
+          1.440000057220459
+        ]
+      },
+      {
+        "meshId": "rbxassetid://76070687791924",
+        "name": "h9_pendulum_root_beam__Moss",
+        "size": [
+          20.274572372436523,
+          9.031000137329102,
+          0.9900000095367432
+        ]
+      },
+      {
+        "meshId": "rbxassetid://80394187501866",
+        "name": "h9_pendulum_root_beam__Paper",
+        "size": [
+          13.694625854492188,
+          0.4899999499320984,
+          0.4704176187515259
+        ]
+      },
+      {
+        "meshId": "rbxassetid://95343955000664",
+        "name": "h9_pendulum_root_beam__RootBark",
+        "size": [
+          20.447551727294922,
+          9.48654556274414,
+          1.3564473390579224
+        ]
+      },
+      {
+        "meshId": "rbxassetid://124314976493123",
+        "name": "h9_pendulum_root_beam__ToadRed",
+        "size": [
+          13.29700756072998,
+          0.0840001106262207,
+          0.09225986897945404
+        ]
+      }
+    ],
+    "lantern_large_hanging": [
+      {
+        "meshId": "rbxassetid://103089303718673",
+        "name": "lantern_large_hanging__Glow",
+        "size": [
+          0.4689008593559265,
+          0.5414400100708008,
+          0.5414400100708008
+        ]
+      },
+      {
+        "meshId": "rbxassetid://108512730692834",
+        "name": "lantern_large_hanging__Iron",
+        "size": [
+          0.30000001192092896,
+          8.78350830078125,
+          0.07000136375427246
+        ]
+      },
+      {
+        "meshId": "rbxassetid://91644425460507",
+        "name": "lantern_large_hanging__Paper",
+        "size": [
+          1.3284250497817993,
+          1.31600022315979,
+          1.2634072303771973
+        ]
+      },
+      {
+        "meshId": "rbxassetid://77643053724186",
+        "name": "lantern_large_hanging__RootBark",
+        "size": [
+          1.4197759628295898,
+          1.692000150680542,
+          1.3502871990203857
+        ]
+      },
+      {
+        "meshId": "rbxassetid://124805331063443",
+        "name": "lantern_large_hanging__ToadRed",
+        "size": [
+          0.16434256732463837,
+          0.22560003399848938,
+          0.15629906952381134
+        ]
+      }
+    ],
+    "h8_root_door": [
+      {
+        "meshId": "rbxassetid://134950194438607",
+        "name": "h8_root_door__Iron",
+        "size": [
+          0.4000000059604645,
+          0.640000581741333,
+          3.5799999237060547
+        ]
+      },
+      {
+        "meshId": "rbxassetid://89503689476685",
+        "name": "h8_root_door__Moss",
+        "size": [
+          0.6600000262260437,
+          0.09000003337860107,
+          1.2000000476837158
+        ]
+      },
+      {
+        "meshId": "rbxassetid://132442765435913",
+        "name": "h8_root_door__MoveCream",
+        "size": [
+          0.36000001430511475,
+          0.9600003361701965,
+          2.3600001335144043
+        ]
+      },
+      {
+        "meshId": "rbxassetid://97164021494736",
+        "name": "h8_root_door__MoveRed",
+        "size": [
+          0.36000001430511475,
+          0.9600003361701965,
+          2.3600001335144043
+        ]
+      },
+      {
+        "meshId": "rbxassetid://91655015238111",
+        "name": "h8_root_door__RootBark",
+        "size": [
+          0.8136898279190063,
+          1.0294430255889893,
+          3.6380386352539062
+        ]
+      }
+    ],
+    "firefly_ring_entry": [
+      {
+        "meshId": "rbxassetid://78768250350686",
+        "name": "firefly_ring_entry__Cream",
+        "size": [
+          0.10392308235168457,
+          0.3000006079673767,
+          3.7200002670288086
+        ]
+      },
+      {
+        "meshId": "rbxassetid://84782495245819",
+        "name": "firefly_ring_entry__Firefly",
+        "size": [
+          1.9246926307678223,
+          2.8889174461364746,
+          2.9658303260803223
+        ]
+      },
+      {
+        "meshId": "rbxassetid://83925184841607",
+        "name": "firefly_ring_entry__Moss",
+        "size": [
+          1.2666194438934326,
+          0.3116035461425781,
+          2.112090587615967
+        ]
+      },
+      {
+        "meshId": "rbxassetid://90994962951369",
+        "name": "firefly_ring_entry__RootBark",
+        "size": [
+          3.839592456817627,
+          4.077816009521484,
+          4.757648468017578
+        ]
+      },
+      {
+        "meshId": "rbxassetid://106364332146306",
+        "name": "firefly_ring_entry__ShroomGlow",
+        "size": [
+          0.31999993324279785,
+          0.17600059509277344,
+          3.9200003147125244
+        ]
+      }
+    ],
+    "h7_floating_log": [
+      {
+        "meshId": "rbxassetid://117882642952252",
+        "name": "h7_floating_log__CapOrange",
+        "size": [
+          0.4399999976158142,
+          0.13999998569488525,
+          0.08399999141693115
+        ]
+      },
+      {
+        "meshId": "rbxassetid://139510178938642",
+        "name": "h7_floating_log__Cream",
+        "size": [
+          0.35196155309677124,
+          0.0599999725818634,
+          0.12000000476837158
+        ]
+      },
+      {
+        "meshId": "rbxassetid://117826517225919",
+        "name": "h7_floating_log__Moss",
+        "size": [
+          3.311033248901367,
+          0.15999996662139893,
+          0.6991655826568604
+        ]
+      },
+      {
+        "meshId": "rbxassetid://72503387199788",
+        "name": "h7_floating_log__MoveCream",
+        "size": [
+          5.980020523071289,
+          0.7608453035354614,
+          0.800000011920929
+        ]
+      },
+      {
+        "meshId": "rbxassetid://126252279615720",
+        "name": "h7_floating_log__MoveRed",
+        "size": [
+          5.199999809265137,
+          0.8500000238418579,
+          0.8083981275558472
+        ]
+      }
+    ],
+    "h8_door_pocket": [
+      {
+        "meshId": "rbxassetid://70470404319253",
+        "name": "h8_door_pocket__Cream",
+        "size": [
+          0.08660256862640381,
+          0.20000004768371582,
+          0.10000000894069672
+        ]
+      },
+      {
+        "meshId": "rbxassetid://125480412023902",
+        "name": "h8_door_pocket__Moss",
+        "size": [
+          1.1999999284744263,
+          0.2999999523162842,
+          2.429629325866699
+        ]
+      },
+      {
+        "meshId": "rbxassetid://138959338824090",
+        "name": "h8_door_pocket__RootBark",
+        "size": [
+          1.441805124282837,
+          2.1353759765625,
+          2.6634559631347656
+        ]
+      },
+      {
+        "meshId": "rbxassetid://84772895939237",
+        "name": "h8_door_pocket__ShroomGlow",
+        "size": [
+          0.2200000286102295,
+          0.12100005149841309,
+          0.2199999988079071
+        ]
+      }
+    ],
+    "rail_lantern_crook": [
+      {
+        "meshId": "rbxassetid://131238109812077",
+        "name": "rail_lantern_crook__Glow",
+        "size": [
+          0.21200311183929443,
+          0.24479961395263672,
+          0.24480000138282776
+        ]
+      },
+      {
+        "meshId": "rbxassetid://112402865783882",
+        "name": "rail_lantern_crook__Iron",
+        "size": [
+          0.12540006637573242,
+          0.39680004119873047,
+          0.03749377280473709
+        ]
+      },
+      {
+        "meshId": "rbxassetid://89985266564129",
+        "name": "rail_lantern_crook__Oak",
+        "size": [
+          2.189126968383789,
+          6.5,
+          0.21708203852176666
+        ]
+      },
+      {
+        "meshId": "rbxassetid://118056939205857",
+        "name": "rail_lantern_crook__Paper",
+        "size": [
+          0.5520821809768677,
+          0.5949997901916504,
+          0.5662800073623657
+        ]
+      },
+      {
+        "meshId": "rbxassetid://137748965358456",
+        "name": "rail_lantern_crook__RootBark",
+        "size": [
+          0.3699265718460083,
+          0.7649998664855957,
+          0.3606519103050232
+        ]
+      }
+    ]
+  }
+}

@@ -1,69 +1,6 @@
 {
-  "note": "Spec changes newer than 3D Model Bot's manifest go here (tools/props_to_lua.py applies them on top of models/manifest.json). match = [prop, hole, old pos] (within 0.05 studs); set = fields to replace; remove = drop the placement; add = extra placements of library props (optional light = {range, brightness, color3} for its Neon part, chain_top = hole-local y of a hanging chain). Stage g (2026-10-10, holes.json Round 7): the H7 log / H8 door / H9 pendulum meshes are stretched to the new blocker sizes until 3D Model Bot re-exports them; the H9 heart lantern cluster + string are replaced by the 3 amber_lantern anchors. Stage h (pass 8): the FBX importer is unavailable (Codex limit), so the H9 hanging lanterns use the library lantern_large at 0.85 (the same lantern mesh as lantern_large_hanging, chain_top stands in for its cord) and take their light from manifest lights[] via light_id.",
+  "note": "Spec changes newer than the prop manifest. match = [prop, hole, old pos] within 0.05 studs; set replaces fields; remove drops a placement; add creates a placement. Stage j: Round 7 FBXs imported at scale 1 and stretch overrides removed. H9 uses the imported lantern_large_hanging at the three amber anchors, with bottom y 7.2 and manifest lights via light_id. The obsolete H9 lantern string stays removed.",
   "placements": [
-    {
-      "match": [
-        "h7_floating_log",
-        7,
-        [
-          0,
-          -1.2,
-          -20.5
-        ]
-      ],
-      "set": {
-        "scale": [
-          1.179,
-          1,
-          1
-        ]
-      },
-      "why": "H7 log 5 -> 6 long (Round 7)"
-    },
-    {
-      "match": [
-        "h8_root_door",
-        8,
-        [
-          4.75,
-          0.0,
-          -11.5
-        ]
-      ],
-      "set": {
-        "scale": [
-          1,
-          1,
-          1.106
-        ]
-      },
-      "why": "H8 door 3.2 -> 3.6 long (Round 7)"
-    },
-    {
-      "match": [
-        "h9_lantern_pendulum",
-        9,
-        [
-          22.0,
-          8.96,
-          -38.5
-        ]
-      ],
-      "set": {
-        "pos": [
-          22.0,
-          8.996,
-          -38.5
-        ],
-        "yaw": 30,
-        "scale": [
-          1,
-          1,
-          1.613
-        ]
-      },
-      "why": "H9 bob 1.6x1.8x1.6 turned 30 deg, hinge y 8.996 (Round 7)"
-    },
     {
       "match": [
         "lantern_string",
@@ -80,45 +17,39 @@
   ],
   "add": [
     {
-      "prop": "lantern_large",
+      "prop": "lantern_large_hanging",
       "hole": 9,
       "pos": [
         18.5,
-        7.29,
+        7.306,
         -47.5
       ],
       "yaw": 0,
-      "scale": 0.85,
-      "chain_top": 16,
-      "why": "H9 amber_lantern_1 (pass 8: lantern_large_hanging = lantern_large x0.85, bottom 7.2; light from manifest lights[])",
+      "why": "Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",
       "light_id": "H9_hanging_lantern_1"
     },
     {
-      "prop": "lantern_large",
+      "prop": "lantern_large_hanging",
       "hole": 9,
       "pos": [
         28.5,
-        7.29,
+        7.306,
         -46.5
       ],
       "yaw": 0,
-      "scale": 0.85,
-      "chain_top": 16,
-      "why": "H9 amber_lantern_2 (pass 8: lantern_large_hanging = lantern_large x0.85, bottom 7.2; light from manifest lights[])",
+      "why": "Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",
       "light_id": "H9_hanging_lantern_2"
     },
     {
-      "prop": "lantern_large",
+      "prop": "lantern_large_hanging",
       "hole": 9,
       "pos": [
         20.0,
-        7.29,
+        7.306,
         -51.5
       ],
       "yaw": 0,
-      "scale": 0.85,
-      "chain_top": 16,
-      "why": "H9 amber_lantern_3 (pass 8: lantern_large_hanging = lantern_large x0.85, bottom 7.2; light from manifest lights[])",
+      "why": "Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",
       "light_id": "H9_hanging_lantern_3"
     }
   ]

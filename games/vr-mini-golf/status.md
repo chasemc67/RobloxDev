@@ -175,3 +175,11 @@ Chase reported that on a real Quest the club came out roughly perpendicular to t
 - `from-claude-session/`: material from the original Claude Code session (MacBook Pro, Claude desktop "No folder" scratch session "Roblox VR mini golf game"):
   - `CourseBuilder.scratch.lua`: an earlier draft. The live version is `src/ServerStorage/CourseBuilder.luau`.
   - `session-summary.md`: what was built and the decisions made.
+
+
+## 2026-10-10 Stage j: published v105
+- Preserved stages e+g+h with Save to Roblox and Publish to Roblox first (**v102**). Imported and registered 13 replacement/missing prop FBXs at scale 1, removed the three Round 7 stretch overrides, rebuilt the course, and published **v105**. Studio Version History confirms both versions.
+- All 37 H8 dressing placements now present. H9 uses the imported hanging lanterns. Asset IDs and source hashes: `logs/stages/j-imports.json`.
+- H7–H9: 20 random shots each, no escapes/stuck/resets/timeouts/nudges, no console errors/warnings. Desktop stroke → Explore → back smoke PASS.
+- Creator Dashboard updates blocked: Chrome is MetavrsePlumber and presents Updated Agreements; Chase needs to handle the agreement and switch to MetavrseBuilder. Icon, eight thumbnails, description pending. Access/privacy unchanged.
+- Full details: Stage j in `logs/stages/e-report.md`. One Studio window, Edit mode, test flags off.
