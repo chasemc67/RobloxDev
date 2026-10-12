@@ -1,0 +1,1424 @@
+{
+ "pass": false,
+ "steps": [
+  {
+   "step": 1,
+   "button": "Settings",
+   "text": "Settings",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Settings",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_01_title_Settings_LeftHand.png"
+  },
+  {
+   "step": 2,
+   "button": "Back",
+   "text": "< Back",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "Back",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_02_settings_Back_RightHand.png"
+  },
+  {
+   "step": 3,
+   "button": "Settings",
+   "text": "Settings",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "Settings",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_03_title_Settings_RightHand.png"
+  },
+  {
+   "step": 4,
+   "button": "MusicVolumeDown",
+   "text": "-",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "MusicVolumeDown",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_04_settings_MusicVolumeDown_LeftHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.5
+   },
+   "attr_changed": true,
+   "text_changed": true,
+   "changed": true
+  },
+  {
+   "step": 5,
+   "button": "MusicVolumeUp",
+   "text": "+",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "MusicVolumeUp",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_05_settings_MusicVolumeUp_RightHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.5
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": true,
+   "changed": true
+  },
+  {
+   "step": 6,
+   "button": "SFXVolumeDown",
+   "text": "-",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "SFXVolumeDown",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_06_settings_SFXVolumeDown_RightHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.7000000000000001,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": true,
+   "changed": true
+  },
+  {
+   "step": 7,
+   "button": "SFXVolumeUp",
+   "text": "+",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "SFXVolumeUp",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_07_settings_SFXVolumeUp_LeftHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.7000000000000001,
+    "MusicVolume": 0.6000000000000001
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": true,
+   "changed": true
+  },
+  {
+   "step": 8,
+   "button": "CameraSensitivityDown",
+   "text": "-",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "CameraSensitivityDown",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_08_settings_CameraSensitivityDown_LeftHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 0.75,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": true,
+   "changed": true
+  },
+  {
+   "step": 9,
+   "button": "CameraSensitivityUp",
+   "text": "+",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "CameraSensitivityUp",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_09_settings_CameraSensitivityUp_RightHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 0.75,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": true,
+   "changed": true
+  },
+  {
+   "step": 10,
+   "button": "HandLeft",
+   "text": "Left",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "HandLeft",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_10_settings_HandLeft_LeftHand.png",
+   "settings_before": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "settings_after": {
+    "Handedness": "Left",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": false,
+   "changed": true
+  },
+  {
+   "step": 11,
+   "button": "HandRight",
+   "text": "Right",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "HandRight",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "settings",
+   "expected": "settings",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_11_settings_HandRight_RightHand.png",
+   "settings_before": {
+    "Handedness": "Left",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "settings_after": {
+    "Handedness": "Right",
+    "CameraSensitivity": 1,
+    "SFXVolume": 0.8,
+    "MusicVolume": 0.6000000000000001
+   },
+   "attr_changed": true,
+   "text_changed": false,
+   "changed": true
+  },
+  {
+   "step": 12,
+   "button": "Back",
+   "text": "< Back",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Back",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "settings",
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_12_settings_Back_LeftHand.png"
+  },
+  {
+   "step": 13,
+   "button": "HowToPlay",
+   "text": "How to play",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "HowToPlay",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "howto",
+   "expected": "howto",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_13_title_HowToPlay_LeftHand.png"
+  },
+  {
+   "step": 14,
+   "button": "TabVR",
+   "text": "VR",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "TabVR",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "howto",
+   "page_after": "howto",
+   "expected": "howto",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_14_howto_TabVR_RightHand.png"
+  },
+  {
+   "step": 15,
+   "button": "TabPhone",
+   "text": "Phone",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "TabPhone",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "howto",
+   "page_after": "howto",
+   "expected": "howto",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_15_howto_TabPhone_LeftHand.png"
+  },
+  {
+   "step": 16,
+   "button": "TabDesktop",
+   "text": "Desktop",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "TabDesktop",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "howto",
+   "page_after": "howto",
+   "expected": "howto",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_16_howto_TabDesktop_RightHand.png"
+  },
+  {
+   "step": 17,
+   "button": "Back",
+   "text": "< Back",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "Back",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "howto",
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_17_howto_Back_RightHand.png"
+  },
+  {
+   "step": 18,
+   "button": "HowToPlay",
+   "text": "How to play",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "HowToPlay",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "howto",
+   "expected": "howto",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_18_title_HowToPlay_RightHand.png"
+  },
+  {
+   "step": 19,
+   "button": "Back",
+   "text": "< Back",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Back",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "howto",
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_19_howto_Back_LeftHand.png"
+  },
+  {
+   "step": 20,
+   "button": "Play",
+   "text": "Play",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Play",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "courses",
+   "expected": "courses",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_20_title_Play_LeftHand.png"
+  },
+  {
+   "step": 21,
+   "button": "Back",
+   "text": "< Back",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Back",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "courses",
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_21_courses_Back_LeftHand.png"
+  },
+  {
+   "step": 22,
+   "button": "Play",
+   "text": "Play",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "Play",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "courses",
+   "expected": "courses",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_22_title_Play_RightHand.png"
+  },
+  {
+   "step": 23,
+   "button": "@image2",
+   "text": "",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "Image",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "courses",
+   "page_after": "courses",
+   "expected": "courses",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_23_courses_image2_RightHand.png"
+  },
+  {
+   "step": 24,
+   "button": "@image3",
+   "text": "",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Image",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "courses",
+   "page_after": "courses",
+   "expected": "courses",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_24_courses_image3_LeftHand.png"
+  },
+  {
+   "step": 25,
+   "button": "PlayCourse",
+   "text": "Play",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "PlayCourse",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "courses",
+   "page_after": null,
+   "expected": null,
+   "beam_after": false,
+   "pass": true,
+   "shot": "c1_25_courses_PlayCourse_LeftHand.png"
+  },
+  {
+   "step": 26,
+   "button": "WristMenu",
+   "text": "MENU",
+   "panel": "VRWrist",
+   "hand": "RightHand",
+   "hovered": "WristMenu",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": null,
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_26_play_WristMenu_RightHand.png"
+  },
+  {
+   "step": 27,
+   "button": "Resume",
+   "hand": "RightHand",
+   "error": "not on any open panel",
+   "targets": [
+    "Play",
+    "Settings",
+    "HowToPlay"
+   ]
+  },
+  {
+   "step": 28,
+   "button": "WristMenu",
+   "hand": "RightHand",
+   "error": "not on any open panel",
+   "targets": [
+    "Play",
+    "Settings",
+    "HowToPlay"
+   ]
+  },
+  {
+   "step": 29,
+   "button": "Play",
+   "text": "Play",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "Play",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "courses",
+   "expected": "courses",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_29_title_Play_RightHand.png"
+  },
+  {
+   "step": 30,
+   "button": "PlayCourse",
+   "text": "Play",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "PlayCourse",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "courses",
+   "page_after": null,
+   "expected": null,
+   "beam_after": false,
+   "pass": true,
+   "shot": "c1_30_courses_PlayCourse_RightHand.png"
+  },
+  {
+   "step": 31,
+   "button": "WristScores",
+   "text": "SCORES",
+   "panel": "VRWrist",
+   "hand": "RightHand",
+   "hovered": "WristScores",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": null,
+   "page_after": "scorecard",
+   "expected": "scorecard",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_31_play_WristScores_RightHand.png"
+  },
+  {
+   "step": 32,
+   "button": "Close",
+   "text": "X",
+   "panel": "VRScorecard",
+   "hand": "LeftHand",
+   "hovered": "Close",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "scorecard",
+   "page_after": null,
+   "expected": null,
+   "beam_after": false,
+   "pass": true,
+   "shot": "c1_32_scorecard_Close_LeftHand.png"
+  },
+  {
+   "step": 34,
+   "button": "PlayAgain",
+   "text": "Play again  (B / Y)",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "PlayAgain",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "results",
+   "page_after": null,
+   "expected": null,
+   "beam_after": false,
+   "pass": true,
+   "shot": "c1_34_results_PlayAgain_RightHand.png"
+  },
+  {
+   "step": 36,
+   "button": "BackToMenu",
+   "text": "Back to menu",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "BackToMenu",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "results",
+   "page_after": "title",
+   "expected": "title",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_36_results_BackToMenu_LeftHand.png"
+  },
+  {
+   "step": 37,
+   "button": "Play",
+   "text": "Play",
+   "panel": "GolfMenuPanel",
+   "hand": "LeftHand",
+   "hovered": "Play",
+   "hover_hand": "LeftHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "title",
+   "page_after": "courses",
+   "expected": "courses",
+   "beam_after": true,
+   "pass": true,
+   "shot": "c1_37_title_Play_LeftHand.png"
+  },
+  {
+   "step": 38,
+   "button": "PlayCourse",
+   "text": "Play again",
+   "panel": "GolfMenuPanel",
+   "hand": "RightHand",
+   "hovered": "PlayCourse",
+   "hover_hand": "RightHand",
+   "glow_wraps_button": true,
+   "beam_on_hover": true,
+   "page_before": "courses",
+   "page_after": null,
+   "expected": null,
+   "beam_after": false,
+   "pass": true,
+   "shot": "c1_38_courses_PlayCourse_RightHand.png"
+  }
+ ],
+ "panels": [
+  {
+   "session": 1,
+   "page": "title_initial",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "settings",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "howto",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "howto",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "howto",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "howto",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "howto",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "courses",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "courses",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "courses",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 1,
+   "page": "courses",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 2,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 2,
+   "page": "courses",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 6,
+   "page": "results",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 8,
+   "page": "results",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 8,
+   "page": "title",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  },
+  {
+   "session": 8,
+   "page": "courses",
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ],
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "maxDeltaFromSessionStart": 0.0,
+   "lookDelta": 0
+  }
+ ],
+ "initial": {
+  "panel": {
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ]
+  },
+  "scorecard": false,
+  "head": [
+   188.5,
+   29.399999618530273,
+   170
+  ],
+  "attrs": {
+   "MusicVolume": 0.6,
+   "Strokes": 0,
+   "Handedness": "Right",
+   "Hole": 1,
+   "Scores": "[0]",
+   "CameraSensitivity": 1,
+   "SFXVolume": 0.8,
+   "SettingsLoaded": "true"
+  },
+  "panelRelHead": [
+   0,
+   3.3142077922821045,
+   -2.2596518993377686
+  ],
+  "panelDist": 4.011234283447266,
+  "panelYawOffDeg": 0,
+  "settings": {
+   "Handedness": "Right",
+   "CameraSensitivity": 1,
+   "SFXVolume": 0.8,
+   "MusicVolume": 0.6
+  },
+  "glows": [],
+  "sticks": [],
+  "panelFacesHeadDeg": 4.289163239829381,
+  "hints": [],
+  "texts": [
+   "Play",
+   "Settings",
+   "How to play",
+   "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist."
+  ],
+  "page": "title"
+ },
+ "level": {
+  "panel": {
+   "look": [
+    -1,
+    0,
+    0
+   ],
+   "pos": [
+    192.5,
+    29.100000381469727,
+    170
+   ]
+  },
+  "panelRelHead": [
+   0,
+   -0.2999992370605469,
+   -4
+  ],
+  "panelDist": 4.011234283447266,
+  "panelYawOffDeg": 0,
+  "panelFacesHeadDeg": 4.289163239829381
+ },
+ "thumbstick_hints": [
+  "Players.MetavrseBuilder.PlayerGui.GolfMenu.Root.Content.HowToBody.Text: Hold the controller like a putter grip, handle down, and swing through the ball.\nTrigger: warp to your ball\nRight stick: left/right snap turn, forward to teleport, back to rewind your last shot\nLeft stick: walk\nA: re-fit the club (hold it straight down first)\nX: swap hands    B / Y: scorecard\nMenus: point, trigger.  Look at wrist: score + MENU\nSink the ball in as few strokes as you can. 8 strokes max per hole; out of bounds or water costs +1.",
+  "Players.MetavrseBuilder.PlayerGui.GolfMenu.Root.Content.HowToBody.Text: Touch near the ball and pull back. Distance sets the power, sideways sets the aim. Let go to putt; slide back to the ball to cancel.\nDrag anywhere else to look around, pinch to zoom.\nButtons: Reset Ball, Scorecard, Explore, Menu.\nExplore: thumbstick to walk, plus Sprint, Fly and Teleport buttons.\nSink the ball in as few strokes as you can. 8 strokes max per hole; out of bounds or water costs +1."
+ ],
+ "texts_by_page": {
+  "title": [
+   "Play",
+   "Settings",
+   "How to play",
+   "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist."
+  ],
+  "settings": [
+   "Settings",
+   "< Back",
+   "Music volume",
+   "60%",
+   "-",
+   "+",
+   "Sound effects",
+   "Cup, crowd and putt sounds",
+   "80%",
+   "-",
+   "+",
+   "Camera sensitivity",
+   "Phone / desktop camera drag",
+   "1x",
+   "-",
+   "+",
+   "VR club hand",
+   "Also: press X in VR to swap",
+   "Left",
+   "Right"
+  ],
+  "howto": [
+   "How to play",
+   "< Back",
+   "VR",
+   "Phone",
+   "Desktop",
+   "Hold the controller like a putter grip, handle down, and swing through the ball.\nTrigger: warp to your ball\nRight stick: left/right snap turn, forward to teleport, back to rewind your last shot\nLeft stick: walk\nA: re-fit the club (hold it straight down first)\nX: swap hands    B / Y: scorecard\nMenus: point, trigger.  Look at wrist: score + MENU\nSink the ball in as few strokes as you can. 8 strokes max per hole; out of bounds or water costs +1."
+  ],
+  "howto_TabVR": [
+   "How to play",
+   "< Back",
+   "VR",
+   "Phone",
+   "Desktop",
+   "Hold the controller like a putter grip, handle down, and swing through the ball.\nTrigger: warp to your ball\nRight stick: left/right snap turn, forward to teleport, back to rewind your last shot\nLeft stick: walk\nA: re-fit the club (hold it straight down first)\nX: swap hands    B / Y: scorecard\nMenus: point, trigger.  Look at wrist: score + MENU\nSink the ball in as few strokes as you can. 8 strokes max per hole; out of bounds or water costs +1."
+  ],
+  "howto_TabPhone": [
+   "How to play",
+   "< Back",
+   "VR",
+   "Phone",
+   "Desktop",
+   "Touch near the ball and pull back. Distance sets the power, sideways sets the aim. Let go to putt; slide back to the ball to cancel.\nDrag anywhere else to look around, pinch to zoom.\nButtons: Reset Ball, Scorecard, Explore, Menu.\nExplore: thumbstick to walk, plus Sprint, Fly and Teleport buttons.\nSink the ball in as few strokes as you can. 8 strokes max per hole; out of bounds or water costs +1."
+  ],
+  "howto_TabDesktop": [
+   "How to play",
+   "< Back",
+   "VR",
+   "Phone",
+   "Desktop",
+   "Click near the ball and drag back. Distance sets the power, sideways sets the aim. Release to putt.\nDrag elsewhere (or hold right mouse) to look around, scroll to zoom. R resets the ball.\nExplore: WASD walk, Space jump, Shift sprint, F fly (Space/E up, Q down), T teleport.\nSink the ball in as few strokes as you can. 8 strokes max per hole; out of bounds or water costs +1."
+  ],
+  "courses": [
+   "Choose a course",
+   "< Back",
+   "Lantern Grove",
+   "9 holes  -  Par 27",
+   "No best yet",
+   "Play",
+   "Sugarloaf Canyon",
+   "Coming soon",
+   "Aurora Archipelago",
+   "Coming soon"
+  ],
+  "results": [
+   "Aurora Archipelago is coming soon!",
+   "Course Complete!",
+   "Lantern Grove",
+   "Hole",
+   "Par",
+   "You",
+   "1",
+   "2",
+   "2",
+   "2",
+   "2",
+   "3",
+   "3",
+   "3",
+   "2",
+   "4",
+   "3",
+   "4",
+   "5",
+   "3",
+   "3",
+   "6",
+   "3",
+   "2",
+   "7",
+   "3",
+   "3",
+   "8",
+   "4",
+   "3",
+   "9",
+   "4",
+   "3",
+   "Tot",
+   "27",
+   "25",
+   "Total 25   (-2)",
+   "Par 27   -   Personal best: 25  (-2)   -   was 28",
+   "New best!",
+   "Play again  (B / Y)",
+   "Back to menu"
+  ]
+ },
+ "console": {
+  "server": [],
+  "client": []
+ }
+}

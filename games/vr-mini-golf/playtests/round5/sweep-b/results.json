@@ -1,0 +1,177 @@
+{
+ "h6": {
+  "default": {
+   "seconds": 131.36,
+   "scenario": "h6",
+   "hole": 6,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "list": []
+   },
+   "name": "Mill Wheel Run",
+   "stuck": 0,
+   "par": 3,
+   "cam": "",
+   "clientLag": 0.179
+  }
+ },
+ "h7": {
+  "default": {
+   "seconds": 137.16,
+   "scenario": "h7",
+   "hole": 7,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 2,
+    "stuck": 0,
+    "shots": 20,
+    "list": []
+   },
+   "name": "Cascade Steps",
+   "stuck": 0,
+   "par": 3,
+   "cam": "",
+   "clientLag": 0.172
+  }
+ },
+ "h8": {
+  "default": {
+   "seconds": 127.15,
+   "scenario": "h8",
+   "hole": 8,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "list": [
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h8-fuzz-8",
+        "id": "ring",
+        "t": 42.1654,
+        "event": "flag",
+        "shot": "h8-fuzz-8",
+        "speedOut": 4,
+        "speedIn": 4.447,
+        "kind": "teleport",
+        "hole": 8,
+        "pos": [
+         -19,
+         37.59,
+         23
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h8-fuzz-8",
+      "start": [
+       0.28300999061081633,
+       -1.2150300654307082,
+       0
+      ],
+      "finish": [
+       -15.5758,
+       37.5793,
+       16.1517
+      ],
+      "speed": 15.63,
+      "aim": 286.6
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h8-fuzz-9",
+        "id": "ring",
+        "t": 48.2822,
+        "event": "flag",
+        "shot": "h8-fuzz-9",
+        "speedOut": 4.516,
+        "speedIn": 6.451,
+        "kind": "teleport",
+        "hole": 8,
+        "pos": [
+         -19,
+         37.59,
+         23
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h8-fuzz-9",
+      "start": [
+       7.3672998985645215,
+       -10.508874672879443,
+       0
+      ],
+      "finish": [
+       -14.8935,
+       37.5793,
+       14.6951
+      ],
+      "speed": 16.211,
+      "aim": 52.9
+     }
+    ]
+   },
+   "name": "Firefly Hollow",
+   "stuck": 0,
+   "par": 4,
+   "cam": "",
+   "clientLag": 0
+  }
+ },
+ "h9": {
+  "default": {
+   "seconds": 127.89,
+   "scenario": "h9",
+   "hole": 9,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "list": []
+   },
+   "name": "Heart of the Grove",
+   "stuck": 0,
+   "par": 4,
+   "cam": "",
+   "clientLag": 0.231
+  }
+ }
+}

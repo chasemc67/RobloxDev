@@ -1,0 +1,34 @@
+[runner] studio VR Mini Golf (placeId: 87725688219952) ee2e1446-53b6-4363-937f-9e22188c182f
+[runner] mode Edit
+[runner] harness ready {'simulateVR': False, 'running': False, 'name': '', 'cam': '', 'ballState': 'ready', 'lines': 0}
+[runner] h6         cam=-        132.9s  lines=3805  
+[runner] h7         cam=-        138.3s  lines=4080  
+[runner] h8         cam=-        128.4s  lines=3630  
+[runner] h9         cam=-        129.5s  lines=3464  
+[runner] mode Edit
+# VR Mini Golf playtest summary
+
+- Run: 2026-10-11 18:12
+- Scenarios: h6, h7, h8, h9
+- Cameras: default
+- SimulateVR: False
+
+## Lantern Grove per-hole suites
+
+Intended = the waypoint line played best-of-K per stroke (aim ±3/6°, speed ±10-25% from the same spot; every counted stroke is a real in-engine shot), good / safe. Routes = strokes to hole out with the spec's AI waypoints, one shot per stroke (good = aggressive/risk line, average = safe line). Banks = normal restitution of the first rail contact. Fuzz = shots / hazards / escapes / stuck.
+
+| Hole | Par | Intended (good / safe) | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |
+|---|---|---|---|---|---|---|---|---|---|
+| 6 Mill Wheel Run | 3 | - / - | - | - | - | - | - | 20/0/0/0 | 0 / 0 / 0 |
+| 7 Cascade Steps | 3 | - / - | - | - | - | - | - | 20/2/0/0 | 0 / 0 / 0 |
+| 8 Firefly Hollow | 4 | - / - | - | - | - | - | - | 20/0/0/0 | 0 / 0 / 0 |
+| 9 Heart of the Grove | 4 | - / - | - | - | - | - | - | 20/0/0/0 | 0 / 0 / 0 |
+
+
+## Console
+
+- Server warnings/errors: 0
+- Client warnings/errors: 0
+
+Raw logs: `<scenario>[-<cam>].jsonl` and `results.json` in this folder.
+

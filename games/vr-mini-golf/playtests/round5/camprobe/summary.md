@@ -1,0 +1,47 @@
+# Round 5 camera probe (round-3 spots), flat golf camera + VR head
+
+| Hole | Spots | Flat bad poses / all | Flat min cam dist | Flat max fill | Flat mean fill | Flat faded mean / max | VR bad poses / all | VR max fill | VR mean fill | VR faded mean / max |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 31 | 0 / 372 | 6.00 | 0.14 | 0.005 | 4.9 / 18 | 0 / 744 | 0.31 | 0.047 | 3.2 / 17 |
+| 2 | 38 | 0 / 456 | 6.00 | 0.16 | 0.006 | 5.9 / 33 | 0 / 912 | 0.27 | 0.040 | 4.4 / 27 |
+| 3 | 69 | 0 / 828 | 6.00 | 0.16 | 0.010 | 6.4 / 19 | 0 / 1656 | 0.29 | 0.046 | 5.4 / 18 |
+| 4 | 55 | 0 / 660 | 6.00 | 0.20 | 0.011 | 4.8 / 21 | 0 / 1320 | 0.31 | 0.049 | 3.2 / 19 |
+| 5 | 42 | 0 / 504 | 6.00 | 0.14 | 0.006 | 5.6 / 23 | 0 / 1008 | 0.29 | 0.049 | 4.6 / 16 |
+| 6 | 56 | 0 / 672 | 6.00 | 0.14 | 0.007 | 5.7 / 25 | 0 / 1344 | 0.24 | 0.042 | 3.9 / 23 |
+| 7 | 49 | 0 / 588 | 6.00 | 0.16 | 0.011 | 5.1 / 25 | 0 / 1176 | 0.27 | 0.030 | 3.6 / 21 |
+| 8 | 57 | 0 / 684 | 6.00 | 0.18 | 0.016 | 4.7 / 27 | 0 / 1368 | 0.31 | 0.054 | 3.1 / 21 |
+| 9 | 86 | 0 / 1032 | 6.00 | 0.18 | 0.017 | 4.7 / 15 | 0 / 2064 | 0.29 | 0.042 | 3.5 / 15 |
+| all | 483 | 0 / 5796 | 6.00 | 0.20 | 0.011 | 5.3 / 33 | 0 / 11592 | 0.31 | 0.044 | 3.9 / 27 |
+
+Worst flat:
+
+- H4 [184.5, 48.5, -31.8] {"names": {"Rails/Bumper_hub": 8, "PropVisual/h4_carousel_bar__MoveCream": 2}, "score": 0.20408163265306123, "yaw": 30, "faded": 0, "d": 6, "fill": 0.2}
+- H8 [-18.4, 36.7, -15.3] {"names": {"hollow_tree_world_shell/hollow_tree_world_shell_part5__RootBark": 2, "Rails/RailCap_rail15": 3, "h8_alcove_bank_cladding/h8_alcove_bank_cladding__RootBark": 4}, "score": 0.1836734693877551, "yaw": 30, "faded": 6, "d": 6, "fill": 0.18}
+- H9 [-79.2, 39.9, -15.7] {"names": {"Rails/RailCap_rail16": 3, "Rails/Rail_rail12": 6}, "score": 0.1836734693877551, "yaw": 300, "faded": 3, "d": 6, "fill": 0.18}
+- H9 [-74.6, 41.5, 13.4] {"names": {"lantern_knot/lantern_knot__RootBark": 1, "trunk_tunnel_arch/trunk_tunnel_arch__RootBark": 8}, "score": 0.1836734693877551, "yaw": 30, "faded": 7, "d": 6, "fill": 0.18}
+- H2 [216, 26.5, 109.5] {"names": {"stump_cladding/stump_cladding__RootBark": 3, "giant_acorn/giant_acorn__Oak": 5}, "score": 0.16326530612244897, "yaw": 330, "faded": 0, "d": 6, "fill": 0.16}
+- H3 [148.1, 44.5, 26.1] {"names": {"Rails/Rail_bank1_backing": 8}, "score": 0.16326530612244897, "yaw": 180, "faded": 2, "d": 5.99, "fill": 0.16}
+- H4 [184.5, 48.5, -34.3] {"names": {"PropVisual/h4_carousel_bar__MoveRed": 2, "Rails/Bumper_hub": 4, "PropVisual/h4_carousel_bar__MoveCream": 2}, "score": 0.16326530612244897, "yaw": 150, "faded": 0, "d": 6, "fill": 0.16}
+- H7 [30.1, 24.4, 0] {"names": {"Rails/RailCap_rail8": 1, "Rails/Rail_rail8": 7}, "score": 0.16326530612244897, "yaw": 30, "faded": 2, "d": 6, "fill": 0.16}
+- H7 [31.5, 24.4, 0] {"names": {"Rails/RailCap_rail8": 1, "Rails/Rail_rail8": 7}, "score": 0.16326530612244897, "yaw": 30, "faded": 0, "d": 6, "fill": 0.16}
+- H7 [32.9, 24.3, 0] {"names": {"Rails/Rail_rail8": 8}, "score": 0.16326530612244897, "yaw": 330, "faded": 0, "d": 6, "fill": 0.16}
+
+Worst VR:
+
+- H1 [192.8, 25, 139.3] {"faded": 3, "names": {"Rails/RailCap_rail5": 8, "Rails/Rail_deflector": 7}, "score": 0.30612244897959184, "yaw": 240, "eye": [194.35885620117188, 29.850000381469727, 140.1999969482422], "fill": 0.3, "back": 1.8}
+- H4 [179.7, 49, -48.6] {"faded": 3, "names": {"Rails/Rail_rail6": 6, "Rails/Rail_rail5": 2, "Rails/Rail_rail7": 7}, "score": 0.30612244897959184, "yaw": 120, "eye": [178.14114379882812, 53.849998474121094, -47.69999694824219], "fill": 0.3, "back": 1.8}
+- H8 [-18.4, 36.7, -15.3] {"faded": 5, "names": {"Rails/RailCap_rail15": 7, "Rails/Rail_rail16": 1, "Rails/RailCap_rail16": 7}, "score": 0.30612244897959184, "yaw": 240, "eye": [-16.841154098510742, 41.54999923706055, -14.40000057220459], "fill": 0.3, "back": 1.8}
+- H1 [179.6, 25, 145.3] {"faded": 2, "names": {"Rails/Rail_rail2": 7, "Rails/Rail_rail3": 7}, "score": 0.2857142857142857, "yaw": 150, "eye": [178.70001220703125, 29.850000381469727, 146.85885620117188], "fill": 0.28, "back": 1.8}
+- H1 [187.1, 24.5, 171.3] {"faded": 2, "names": {"Rails/Rail_rail6": 7, "Rails/Rail_rail1": 7}, "score": 0.2857142857142857, "yaw": 150, "eye": [186.20001220703125, 29.350000381469727, 172.85885620117188], "fill": 0.28, "back": 1.8}
+- H1 [192.8, 24.5, 171.3] {"faded": 1, "names": {"Rails/RailCap_rail5": 8, "Rails/Rail_rail6": 6}, "score": 0.2857142857142857, "yaw": 240, "eye": [194.35885620117188, 29.350000381469727, 172.1999969482422], "fill": 0.28, "back": 1.8}
+- H3 [152.8, 44.5, 41.4] {"faded": 2, "names": {"Rails/Rail_rail13": 7, "Rails/Rail_rail14": 7}, "score": 0.2857142857142857, "yaw": 240, "eye": [154.35885620117188, 49.349998474121094, 42.30000305175781], "fill": 0.28, "back": 1.8}
+- H4 [190.2, 49, -48.6] {"faded": 1, "names": {"Rails/RailCap_rail11": 6, "Rails/Rail_rail10": 2, "Rails/RailCap_rail9": 6}, "score": 0.2857142857142857, "yaw": 240, "eye": [191.75885009765625, 53.849998474121094, -47.69999694824219], "fill": 0.28, "back": 1.8}
+- H4 [191.2, 48.5, -39.5] {"faded": 3, "names": {"Rails/Rail_rail13": 8, "Rails/RailCap_rail11": 6}, "score": 0.2857142857142857, "yaw": 0, "eye": [191.1999969482422, 53.349998474121094, -43.5], "fill": 0.28, "back": 4}
+- H5 [71.4, 38.5, -95.8] {"faded": 9, "names": {"Rails/Rail_rail9": 7, "Rails/RailCap_rail7": 1, "Rails/RailCap_rail10": 6}, "score": 0.2857142857142857, "yaw": 210, "eye": [72.30000305175781, 43.349998474121094, -94.24115753173828], "fill": 0.28, "back": 1.8}
+- H5 [85.5, 38.5, -95.8] {"faded": 12, "names": {"Rails/Rail_rail5": 8, "Rails/Rail_rail7": 6}, "score": 0.2857142857142857, "yaw": 90, "eye": [81.5, 43.349998474121094, -95.80000305175781], "fill": 0.28, "back": 4}
+- H8 [-7.2, 36.5, -25.4] {"faded": 12, "names": {"Rails/Rail_rail18": 7, "Rails/Rail_rail3": 7}, "score": 0.2857142857142857, "yaw": 300, "eye": [-5.6411542892456055, 41.349998474121094, -26.299999237060547], "fill": 0.28, "back": 1.8}
+- H9 [-75.3, 41.5, 15.7] {"faded": 7, "names": {"Rails/Rail_rail8": 7, "PropVisual/h9_root_portcullis__Moss": 3, "PropVisual/h9_root_portcullis__RootBark": 4}, "score": 0.2857142857142857, "yaw": 300, "eye": [-73.74115753173828, 46.349998474121094, 14.800000190734863], "fill": 0.28, "back": 1.8}
+- H9 [-91.1, 39.7, -20.4] {"faded": 1, "names": {"glowing_mushrooms/glowing_mushrooms__ShroomGlow": 6, "Rails/Rail_rail14": 8}, "score": 0.2857142857142857, "yaw": 150, "eye": [-92, 44.54999923706055, -18.841154098510742], "fill": 0.28, "back": 1.8}
+- H9 [-57.7, 40.5, 33.8] {"faded": 1, "names": {"Rails/Rail_rail6": 7, "Rails/RailCap_rail5": 7}, "score": 0.2857142857142857, "yaw": 180, "eye": [-57.70000076293945, 45.349998474121094, 35.599998474121094], "fill": 0.28, "back": 1.8}
+
+Console: {"server": [], "client": []}
