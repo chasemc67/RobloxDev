@@ -1,0 +1,6 @@
+Stage u (Sugarloaf Canyon p9 movers pass 5). Work in the open Roblox Studio (place 87725688219952) via the Studio MCP. First confirm the MCP sees Studio; if not, stop and write BLOCKED in u-notes.md.
+1. Import at scale 1 the FBX files in ~/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/movers/ per ~/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/_work/p9-report.md, replacing the previous versions: H9 vane collider (collision mesh, visual vanes CanCollide off), H14 ore bucket foot collider likewise, the nine H17 hour stones at radius 12.5, H7 exit pad [5.15,0,-59] and island pad [4.5,0,-38.5]. Skip h07_island_respawn_stone.fbx (being rebuilt; keep the existing one).
+2. Stuck-ball tests first on H9 and H14: random-shot sweeps of at least 30 shots each plus at least 15 very slow rollers aimed into the moving vane/bucket path. Report stuck, escapes, nudges, errors. Do not script par shots.
+3. Quick 20-shot random sweeps on H7 and H17.
+4. Do NOT publish. File > Save to Roblox is fine only if all tests pass. Keep Studio in Edit mode and do not close it.
+Append concise progress to u-notes.md after each step and finish with RESULT=PASS or RESULT=FAIL plus a one-paragraph summary. Commit work to git (unlock the keychain with ~/bin/unlock-keychain.sh before push).

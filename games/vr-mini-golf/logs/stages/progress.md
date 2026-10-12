@@ -209,3 +209,6 @@ Round 6 fixes (bank tint from adjacent felt, TOTAL excludes current hole, H1 pre
 Evidence: `playtests/stage-t/`; resume notes: `logs/stages/t-notes.md`. Published version evidence: `playtests/stage-t/published-version.json`.
 
 **Repository delivery blocker:** local `main` contains the Stage t release commit, but `git push origin main` failed with macOS keychain -25308 / unavailable GitHub credentials. `gh` authentication also fails; no SSH key is configured. Restore authentication and retry push. Roblox v202 is verified Published; Studio is saved in Edit.
+
+## Stage u (Sugarloaf p9 movers pass 5) - 2026-10-12 00:11 PT
+RESULT=FAIL (blocked): place 87725688219952 has only Lantern Grove (Hole1-9) + lobby; there is no Sugarloaf Canyon course to import H7/H9/H14/H17 movers into or test. No Studio changes, no save, no publish. See logs/stages/u-notes.md.
