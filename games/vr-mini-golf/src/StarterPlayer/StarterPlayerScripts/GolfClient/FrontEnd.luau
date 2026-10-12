@@ -11,6 +11,7 @@ local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
+local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
@@ -196,6 +197,26 @@ local function roundInProgress()
 	return Ball ~= nil and Ball.ball ~= nil -- the H1 tee is already an active round, even at zero strokes
 end
 
+-- An active round with at least one stroke taken. Before that the course card offers "Play", not "Restart round"
+-- (stage v, round 7 #9): there is nothing to restart yet.
+local function roundStarted()
+	if not roundInProgress() then
+		return false
+	end
+	if (player:GetAttribute("Strokes") or 0) > 0 or (player:GetAttribute("Hole") or 1) > 1 then
+		return true
+	end
+	local ok, scores = pcall(HttpService.JSONDecode, HttpService, player:GetAttribute("Scores") or "[]")
+	if ok and type(scores) == "table" then
+		for _, s in scores do
+			if type(s) == "number" and s > 0 then
+				return true
+			end
+		end
+	end
+	return false
+end
+
 ---------------------------------------------------------------------------- settings
 local function applySettings()
 	HUD.soundGroup("Music").Volume = settings.MusicVolume
@@ -291,7 +312,7 @@ local function buildTitle()
 end
 
 local function startCourse()
-	local fresh = not roundInProgress() and not roundFinished
+	local fresh = not roundStarted() and not roundFinished
 	if Explore and Explore.active then
 		Explore.setActive(false) -- (SetExplore off reaches the server before the restart)
 	end
@@ -347,7 +368,7 @@ local function buildCourses()
 				saveSettings()
 			end)
 			onClick = startCourse
-			local playText = roundInProgress() and "Restart round" or (roundFinished and "Play again" or "Play")
+			local playText = roundStarted() and "Restart round" or (roundFinished and "Play again" or "Play")
 			button(playText, { Name = "PlayCourse", Position = UDim2.fromOffset(22, 362), Size = UDim2.new(1, -44, 0, 46) }, card, onClick, "primary")
 		else
 			label({ Text = "Coming soon", Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)

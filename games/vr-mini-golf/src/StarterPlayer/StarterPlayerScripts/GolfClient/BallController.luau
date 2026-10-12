@@ -10,6 +10,7 @@ local Debris = game:GetService("Debris")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
+local MoverMath = require(Golf:WaitForChild("MoverMath"))
 local Remotes = Golf:WaitForChild("Remotes")
 
 local player = Players.LocalPlayer
@@ -138,6 +139,7 @@ function Ball.hit(velocity: Vector3, source: string?)
 	strokeTime = 0
 	rollVel = nil
 	lastVel = nil
+	Ball.seeThrough = false -- the outlines fade out from this frame (stage v), not when the controls next update
 	Ball.setState("moving")
 	Remotes.Stroke:FireServer(startPos)
 	hitSound.PlaybackSpeed = 0.8 + math.clamp(velocity.Magnitude / 40, 0, 0.6)
@@ -452,13 +454,41 @@ local function pushFromDescending(b: BasePart)
 	return false
 end
 
--- A sliding part's END closing on a ball (the H8 root door, which slides through the alcove rails into pockets):
--- against a wall, push the ball sideways off the end face (along the part's thin axis) before it pinches; on open
--- felt, bump it ahead like a real end-on hit.
+-- A sliding part's END closing on a slow or parked ball (the H8 root door, which slides through the alcove rails into
+-- pockets; the H7 log): nudge the ball gently sideways off the end face (along the part's thin axis, at
+-- SLIDE_NUDGE_SPEED, never faster than ~2 studs/s) early enough that it is clear before the end arrives, so it is
+-- never shoved ahead, flung or pinned against a rail (stage v, Playtest Bot round 7). Faster balls keep the normal
+-- contact (a real hit on the moving part).
+local SLIDE_NUDGE_SPEED = 1.2
+local SLIDE_LOOKAHEAD = 0.5 -- s: a part about to leave a dwell stop counts as already moving
+local slideProfiles = setmetatable({}, { __mode = "k" })
+-- Flat velocity of a sliding blocker: its spec motion (MoverMath at server time, the same profile the server drives
+-- it with, looking SLIDE_LOOKAHEAD ahead out of a dwell stop) or, failing that, its replicated part velocity.
+local function slideVelocity(blk: BasePart, pos: Vector3): Vector3
+	local model = blk.Parent
+	if model and model:GetAttribute("Type") == "slide" and model:GetAttribute("AxisWorld") then
+		local p = slideProfiles[model]
+		if not p then
+			p = MoverMath.fromModel(model)
+			slideProfiles[model] = p
+		end
+		local t = workspace:GetServerTimeNow()
+		local _, rate = MoverMath.value(p, t)
+		if math.abs(rate) < 1e-3 then
+			_, rate = MoverMath.value(p, t + SLIDE_LOOKAHEAD)
+		end
+		return flat(model:GetAttribute("AxisWorld") * rate)
+	end
+	return flat(blk:GetVelocityAtPosition(pos))
+end
 local function pushFromSliding(b: BasePart)
 	local pos = b.Position
+	local v = b.AssemblyLinearVelocity
+	if flat(v).Magnitude > 2.5 then
+		return false
+	end
 	for _, blk in cacheBlockers do
-		local mv = flat(blk:GetVelocityAtPosition(pos))
+		local mv = slideVelocity(blk, pos)
 		if mv.Magnitude < 0.05 then
 			continue
 		end
@@ -475,35 +505,28 @@ local function pushFromSliding(b: BasePart)
 		local alongP, alongH = alongZ and lp.Z or lp.X, alongZ and h.Z or h.X
 		local crossP, crossH = alongZ and lp.X or lp.Z, alongZ and h.X or h.Z
 		local ahead = alongP * (a > 0 and 1 or -1) - alongH -- gap from the end face to the ball centre
-		if math.abs(crossP) < crossH + R and math.abs(lp.Y) < h.Y + R and ahead > -R and ahead < R + 0.35 then
-			-- a wall close ahead (within 1.5 studs): sideways, so the ball is never driven into it and pinched
-			local hit = workspace:Raycast(pos, dir * 1.5, rayParams)
-			local v = b.AssemblyLinearVelocity
-			if not (hit and table.find(cacheObstacles, hit.Instance)) then
-				-- open felt ahead: the end face bumps a ball it catches up with (a resting client-owned ball does
-				-- not always get the contact from the server-driven part, which then slides through it)
-				if ahead < R + 0.06 and flat(v):Dot(dir) < mv.Magnitude then
-					local nv = flat(v) - dir * flat(v):Dot(dir) + dir * mv.Magnitude * 1.6
-					b.AssemblyLinearVelocity = Vector3.new(nv.X, v.Y, nv.Z)
-					b.AssemblyAngularVelocity = Vector3.yAxis:Cross(nv) / R
-					rollVel, lastVel = nil, nil
-					return true
-				end
-			else
-				local axis = flat(alongZ and blk.CFrame.RightVector or blk.CFrame.LookVector)
-				if axis.Magnitude < 1e-3 then
-					continue
-				end
-				local side = (alongZ and 1 or -1) * crossP
-				local pdir = axis.Unit * (side >= 0 and 1 or -1)
-				if flat(v):Dot(pdir) < 2.5 then
-					local nv = pdir * 3 + dir * math.min(flat(v):Dot(dir), mv.Magnitude)
-					b.AssemblyLinearVelocity = Vector3.new(nv.X, v.Y, nv.Z)
-					b.AssemblyAngularVelocity = Vector3.yAxis:Cross(Vector3.new(nv.X, 0, nv.Z)) / R
-					rollVel, lastVel = nil, nil
-				end
-				return true
+		local need = crossH + R + 0.05 - math.abs(crossP) -- sideways distance to get clear of the end face
+		-- start early: the end must not reach the ball before the nudge has moved it `need` sideways
+		local reach = R + 0.15 + mv.Magnitude * math.max(need, 0) / (SLIDE_NUDGE_SPEED * 0.85)
+		if need > 0 and math.abs(lp.Y) < h.Y + R and ahead > -R and ahead < reach then
+			local axis = flat(alongZ and blk.CFrame.RightVector or blk.CFrame.LookVector)
+			if axis.Magnitude < 1e-3 then
+				continue
 			end
+			local side = (alongZ and 1 or -1) * crossP
+			local pdir = axis.Unit * (side >= 0 and 1 or -1)
+			-- the nearer side is walled in: go the other way
+			local probe = workspace:Raycast(pos, pdir * (need + R + 0.1), rayParams)
+			if probe and table.find(cacheObstacles, probe.Instance) then
+				pdir = -pdir
+			end
+			if flat(v):Dot(pdir) < SLIDE_NUDGE_SPEED * 0.85 then
+				local nv = pdir * SLIDE_NUDGE_SPEED + dir * math.clamp(flat(v):Dot(dir), 0, 0.5)
+				b.AssemblyLinearVelocity = Vector3.new(nv.X, v.Y, nv.Z)
+				b.AssemblyAngularVelocity = Vector3.yAxis:Cross(nv) / R
+				rollVel, lastVel = nil, nil
+			end
+			return true
 		end
 	end
 	return false

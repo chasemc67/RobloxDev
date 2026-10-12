@@ -7,7 +7,23 @@ local golf = game:GetService("ReplicatedStorage"):WaitForChild("Golf")
 local remotes = golf:WaitForChild("Remotes")
 local remote = remotes:FindFirstChild("WristPose") or Instance.new("RemoteEvent")
 remote.Name = "WristPose"; remote.Parent = remotes
-local store = DataStoreService:GetDataStore("WristPoseLog")
+-- Like PersonalBest: DataStore calls are pcall'd and become a no-op (warned once) when DataStores are
+-- unavailable (Studio, unpublished place, API access off).
+local offline, warned = RunService:IsStudio(), true
+local store = nil
+if not offline then
+	warned = false
+	local ok, result = pcall(function() return DataStoreService:GetDataStore("WristPoseLog") end)
+	if ok and result then store = result else offline = true end
+	if not ok then warned = true; warn("[WristPoseLog] DataStores unavailable (" .. tostring(result) .. "); samples are dropped") end
+end
+local function isFatal(err)
+	local s = string.lower(tostring(err))
+	for _, w in { "studio", "publish", "403", "not allowed", "forbidden" } do
+		if string.find(s, w, 1, true) then return true end
+	end
+	return false
+end
 local records = {}
 local EVENTS = { open = true, close = true, button = true, nearFace = true }
 local function finite(v, low, high)
@@ -16,9 +32,10 @@ end
 local function flush(player)
 	local r = records[player]
 	if not r or r.busy or #r.samples == 0 then return end
+	if offline or not store then r.samples = {}; return end
 	r.busy = true
 	local batch = r.samples; r.samples = {}
-	local ok = pcall(function()
+	local ok, err = pcall(function()
 		store:UpdateAsync("u_" .. player.UserId, function(old)
 			old = type(old) == "table" and old or {}
 			local rows = type(old.samples) == "table" and old.samples or {}
@@ -27,13 +44,16 @@ local function flush(player)
 			return { version = 1, updated = os.time(), samples = rows }
 		end)
 	end)
-	if not ok then for _, row in batch do table.insert(r.samples, row) end end
+	if not ok and isFatal(err) then
+		offline = true
+		if not warned then warned = true; warn("[WristPoseLog] DataStores unavailable (" .. tostring(err) .. "); samples are dropped") end
+	elseif not ok then for _, row in batch do table.insert(r.samples, row) end end
 	while #r.samples > 120 do table.remove(r.samples, 1) end
 	r.busy = false
 	player:SetAttribute("WristPoseLogStatus", ok and "saved" or "retry")
 end
 remote.OnServerEvent:Connect(function(player, data)
-	if RunService:IsStudio() or type(data) ~= "table" then return end
+	if offline or type(data) ~= "table" then return end
 	local r = records[player] or { samples = {}, last = -math.huge, lastEvent = -math.huge, minute = 0, perMinute = 0 }; records[player] = r
 	local now = os.clock()
 	local event = EVENTS[data.event] and data.event or nil

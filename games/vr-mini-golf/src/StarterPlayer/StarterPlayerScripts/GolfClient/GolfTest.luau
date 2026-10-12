@@ -1568,12 +1568,15 @@ scenario({
 	end,
 })
 
--- Hole 8 root door (slides +-2.5 along z across the alcove mouth; its ends reach into the alcove rails):
--- balls parked against the rails at the door's ends of travel. Does the door crush/launch/pin them?
+-- Hole 8 root door (slides 0..4 along spec z across the alcove mouth, its open end through rail16 into the door
+-- pocket; dwell 1.8 s shut / 2.2 s open): balls parked in the door's path, against the alcove rails and at random
+-- spots (opts.h8park random cases, default 14, seeded by opts.seed). Each ball is placed while the door (spec
+-- position as this client sees it) dwells at the end of its travel FARTHEST from the ball, then watched for a full
+-- cycle. Pass (stage v): max speed <= ~2 studs/s, never pinned (touching the door at < 0.5 studs/s for > 0.3 s).
 scenario({
 	name = "h8door",
-	desc = "Hole 8 sliding root door: balls parked against the alcove rails at the door's end of travel",
-	seconds = 120,
+	desc = "Hole 8 sliding root door: balls parked in the door's path (rails + random spots), door sweeps a full cycle",
+	seconds = 600,
 	run = function()
 		refreshFelt()
 		table.clear(issues)
@@ -1581,20 +1584,34 @@ scenario({
 		local door = moversOf(n)[1]
 		local blk = door:FindFirstChild("Blocker")
 		setFrame(W(n, 5, 0, -11.5), 10, Vector3.new(0, 0, -1))
+		local o = opts()
+		local rng = Random.new(tonumber(o.seed) or 808)
+		local list = { { 4.75, -8.1 }, { 4.75, -14.9 }, { 4.5, -8.2 }, { 5.0, -14.8 }, { 4.75, -9.0 }, { 3.9, -8.1 } }
+		for _ = 1, tonumber(o.h8park) or 14 do
+			table.insert(list, { round(rng:NextNumber(4.3, 5.2), 2), round(rng:NextNumber(-14.85, -8.15), 2), random = true })
+		end
+		local lo, hi = door:GetAttribute("RangeMin"), door:GetAttribute("RangeMax")
+		local lag = holeLag(n)
+		local per = door:GetAttribute("Period")
 		local cases = {}
-		for _, c in { { 4.75, -8.1 }, { 4.75, -14.9 }, { 4.5, -8.2 }, { 5.0, -14.8 }, { 4.75, -9.0 }, { 3.9, -8.1 } } do
-			-- place each ball while the door is at the far end of its travel, so the window sees it sweep toward
-			-- the ball (spec range: the door is at RangeMin at 3/4 of its cycle and at RangeMax at 1/4, phase 0)
-			local per = door:GetAttribute("Period")
-			local toward = c[2] > -11.5 and 0.75 or 0.25 -- ball on the +offset side: start from RangeMin
-			waitPhase(n, (toward * per + (door:GetAttribute("Phase") or 0) / math.abs(door:GetAttribute("Speed"))) % per, per)
+		for _, c in list do
+			-- door centre (spec z) is -11.5 + value: the far end is RangeMin for balls past the middle of its travel
+			local target = c[2] > -11.5 + (lo + hi) / 2 and lo or hi
+			local tw = os.clock()
+			while os.clock() - tw < per + 1 do
+				local v, rate = MoverMath.value(MoverMath.fromModel(door), workspace:GetServerTimeNow() - lag)
+				if math.abs(v - target) < 0.01 and math.abs(rate or 0) < 1e-3 then
+					break
+				end
+				RunService.Heartbeat:Wait()
+			end
 			local ok = pcall(placeL, n, c[1], c[2], 0.5)
 			if ok then
 				local start = Ball.ball.Position
 				local t0 = os.clock()
 				local maxSpeed, maxY, pinned, maxPinned, lastT = 0, start.Y, 0, 0, os.clock()
 				shotFlags = {}
-				while os.clock() - t0 < 5.5 do
+				while os.clock() - t0 < per + 0.3 do
 					RunService.Heartbeat:Wait()
 					local dt = os.clock() - lastT
 					lastT = os.clock()
@@ -1614,7 +1631,9 @@ scenario({
 				local fl = shotFlags
 				shotFlags = nil
 				table.insert(cases, {
-					start = c,
+					start = { c[1], c[2] },
+					random = c.random == true,
+					pass = maxSpeed <= 2.1 and maxPinned <= 0.3,
 					maxSpeed = round(maxSpeed),
 					maxRise = round(maxY - start.Y),
 					maxPinnedS = round(maxPinned, 2),

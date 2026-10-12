@@ -1,11 +1,31 @@
 -- Per-player, per-hand grip calibration. Studio tests use memory unless ClubSetupInStudio=true.
+-- Like PersonalBest: every DataStore call is pcall'd; if DataStores are unavailable (unpublished place, API
+-- access off) it warns once and keeps fits in memory for the session.
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local DataStoreService = game:GetService("DataStoreService")
 local ClubSetup = {}
 local cache, busy, lastSave = {}, {}, {}
 local offline = RunService:IsStudio() and workspace:GetAttribute("ClubSetupInStudio") ~= true
-local store = DataStoreService:GetDataStore("VRMiniGolf_ClubSetup_v1")
+local store, warned = nil, false
+local function goOffline(err)
+	offline = true
+	if not warned then
+		warned = true
+		warn("[ClubSetup] DataStores unavailable (" .. tostring(err) .. "); club fits are kept for this session only")
+	end
+end
+local function isFatal(err)
+	local s = string.lower(tostring(err))
+	for _, w in { "studio", "publish", "403", "not allowed", "forbidden" } do
+		if string.find(s, w, 1, true) then return true end
+	end
+	return false
+end
+if not offline then
+	local ok, result = pcall(function() return DataStoreService:GetDataStore("VRMiniGolf_ClubSetup_v1") end)
+	if ok and result then store = result else goOffline(result) end
+end
 local function valid(raw)
 	if type(raw) ~= "table" or type(raw.angles) ~= "table" then return nil end
 	local out = { angles = {}, length = raw.length }
@@ -18,9 +38,11 @@ local function valid(raw)
 	return out
 end
 local function request(fn)
+	if offline or not store then return false, nil end
 	for attempt = 1, 3 do
 		local ok, value = pcall(fn)
 		if ok then return true, value end
+		if isFatal(value) then goOffline(value); return false, nil end
 		if attempt < 3 then task.wait(0.5 * attempt) end
 	end
 	return false, nil
@@ -41,6 +63,7 @@ function ClubSetup.init(remotes)
 		if not cache[id] then
 			local ok, data = true, {}
 			if not offline then ok, data = request(function() return store:GetAsync("u_" .. id) end) end
+			if not ok and offline then ok, data = true, {} end -- DataStores just went away: session-only
 			if not ok then busy[id] = nil; return { ok = false, message = "Could not load saved fit; try again" } end
 			local rec = {}
 			if type(data) == "table" then
@@ -59,6 +82,7 @@ function ClubSetup.init(remotes)
 					return rec
 				end)
 			end)
+			if not ok and offline then ok = true end -- DataStores just went away: keep it for the session
 		end
 		if ok then cache[id][hand] = value end
 		busy[id] = nil

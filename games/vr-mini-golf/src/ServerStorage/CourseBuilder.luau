@@ -242,11 +242,12 @@ end
 -- 8 studs per tile, +V = downhill), baked into each felt tone by art/slope/make_slope_C.py. A Top-face Texture maps +U
 -- to part -X and +V to part -Z and can't be turned, so each tone is uploaded in four rotations keyed by the part-local
 -- downhill axis; the bright arrow tips point downhill. Plain Parts can't take a SurfaceAppearance, so the nap comes
--- from the Fabric material. Banks at 25 degrees or steeper use plain felt, 15% darker.
+-- from the Fabric material. Banks at 25 degrees or steeper use plain felt at 0.78x the adjacent felt colour (Game Art
+-- Bot, round 7: same hue, darker); a shallower `kind = "bank"` piece keeps its chevrons, tinted 0.78x too.
 local SLOPE_FELT = {
 	MIN_DEG = 2,
 	MAX_CHEVRON_DEG = 25,
-	BANK_TINT = 0.85,
+	BANK_TINT = 0.78,
 	STUDS_PER_TILE = 8,
 	textures = {
 		felt = {
@@ -308,13 +309,21 @@ function Hole:slopeFelt(p: BasePart, color: Color3, pc)
 	else
 		key = down.Z > 0 and "+Z" or "-Z"
 	end
-	new("Texture", {
+	local tex = new("Texture", {
 		Name = "SlopeFelt",
 		Face = Enum.NormalId.Top,
 		Texture = SLOPE_FELT.textures[slopeTone(color)][key],
 		StudsPerTileU = SLOPE_FELT.STUDS_PER_TILE,
 		StudsPerTileV = SLOPE_FELT.STUDS_PER_TILE,
 	}, p)
+	if pc and pc.def and pc.def.kind == "bank" then
+		local k = SLOPE_FELT.BANK_TINT
+		tex.Color3 = Color3.new(k, k, k)
+		p.Color = Color3.new(color.R * k, color.G * k, color.B * k)
+		p:SetAttribute("FeltPattern", "ChevronBank")
+		p:SetAttribute("AdjacentFeltColor", color)
+		return
+	end
 	p:SetAttribute("SlopeDeg", math.floor(tilt * 10 + 0.5) / 10)
 end
 
@@ -496,10 +505,13 @@ end
 -- Gaps cut into a visual rail (hole-local x or z range along the rail), where a decoration mesh passes through it:
 -- the H6 mill wheel's rims and paddles cross the north rail (rail5) at x 5..10 (models/README.md). Collision walls
 -- are untouched.
--- H8: the root door's open end slides 2.05 past rail16 into the south door pocket (models pass 8: x 4.2..5.3).
+-- H8: the root door's open end slides 2.05 past rail16 into the south door pocket (models pass 8: x 4.2..5.3; stage v
+-- widened the west cut to 5.6 so the tilted cut face keeps >= 0.15 studs from the door; the placed h8_door_pocket
+-- prop was also widened x1.4, raised 0.17 and moved 0.05 deeper in Studio for the same clearance).
+local H9_RAIL_WOOD = Color3.fromHex("7A4E32")
 local RAIL_NOTCHES = {
 	[6] = { rail5 = { axis = "x", from = 5, to = 10 } },
-	[8] = { rail16 = { axis = "x", from = 4.2, to = 5.3 } },
+	[8] = { rail16 = { axis = "x", from = 4.2, to = 5.6 } },
 }
 -- per-hole rail skins (3D Model Bot manifest hole_skins, via tools/props_to_lua.py into CourseData.PropPlacements)
 local RAIL_SKINS = {}
@@ -633,6 +645,12 @@ function Hole:buildWall(w)
 		material = skin.rail_block_roblox_material and Enum.Material[skin.rail_block_roblox_material] or material
 		capColor = skin.rail_cap_color and Color3.fromHex(skin.rail_cap_color) or capColor
 		capMat = skin.rail_cap_roblox_material and Enum.Material[skin.rail_cap_roblox_material] or capMat
+	end
+	-- H9 (under the heart-well lantern): oak rail wood washed out lighter than the felt; Game Art Bot round 7 wants
+	-- #7A4E32, Reflectance 0 (stage v)
+	if self.def.number == 9 then
+		color = color == P.oak and H9_RAIL_WOOD or color
+		capColor = capColor == P.oak and H9_RAIL_WOOD or capColor
 	end
 	for _, pc in pieces do
 		local mid, l = (pc[1] + pc[2]) / 2, pc[2] - pc[1]

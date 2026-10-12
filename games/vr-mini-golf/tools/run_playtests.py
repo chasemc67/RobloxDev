@@ -591,10 +591,15 @@ def hole_summary_md(results):
     if r:
         r = first(r)
         L += ["## Hole 8 root door vs balls at the alcove rails", "", "Door range: %s" % r.get("range"), "",
-              "| Start | Max speed | Max rise | Max pinned (s) | Flags | Finish zone |", "|---|---|---|---|---|---|"]
-        for c in r.get("cases", []):
-            L.append("| %s | %s | %s | %s | %s | %s |" % (c["start"], c["maxSpeed"], c["maxRise"], c["maxPinnedS"],
-                                                     ", ".join(x.get("kind", "") for x in c.get("flags") or []) or "-", c.get("zone")))
+              "| Start | Random | Max speed | Max rise | Max pinned (s) | Flags | Finish zone | Pass |", "|---|---|---|---|---|---|---|---|"]
+        cases = r.get("cases", [])
+        for c in cases:
+            L.append("| %s | %s | %s | %s | %s | %s | %s | %s |" % (c["start"], "yes" if c.get("random") else "-", c["maxSpeed"], c["maxRise"], c["maxPinnedS"],
+                                                     ", ".join(x.get("kind", "") for x in c.get("flags") or []) or "-", c.get("zone"),
+                                                     {True: "PASS", False: "FAIL"}.get(c.get("pass"), "-")))
+        if cases and "pass" in cases[0]:
+            L += ["", "h8door: %d/%d cases pass (max speed <= 2.1 studs/s, pinned <= 0.3 s); max speed %s" % (
+                sum(1 for c in cases if c.get("pass")), len(cases), max(c["maxSpeed"] for c in cases))]
         L.append("")
     r = results.get("movers")
     if r:

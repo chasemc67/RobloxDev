@@ -6,6 +6,8 @@ Truth uses independent rays to LIVE ball/putter positions after GolfXRay rendere
 No transition allowance: both logical state and Highlight.Enabled must match.
 Stage t (round 7): the ball outline also needs the fade gate (ball at rest + aiming/lining up, XRay.state().gate),
 so expected = occluded AND gate; a second phase putts the ball and requires 0 ball-outline frames while it rolls.
+Stage v (round 7 #4): the VR club-head outline uses the same gate, so the club's expected state is also occluded AND
+gate, and the rolling phase also requires 0 club-outline frames.
 """
 import argparse
 import json
@@ -147,8 +149,11 @@ def main():
         moving = [r for r in roll["rows"] if r["ball"]["speed"] > 0.2]
         result["rolling"] = {"frames": len(moving), "occludedFrames": sum(r["ball"]["occluded"] for r in moving),
                              "outlineShown": sum(r["ball"]["enabled"] or r["ball"]["on"] for r in moving),
+                             "clubOccludedFrames": sum(r["club"]["occluded"] for r in moving),
+                             "clubOutlineShown": sum(r["club"]["enabled"] or r["club"]["on"] for r in moving),
                              "error": roll.get("error")}
-        result["pass"] = result["pass"] and not roll.get("error") and len(moving) > 0 and result["rolling"]["outlineShown"] == 0
+        result["pass"] = (result["pass"] and not roll.get("error") and len(moving) > 0 and result["rolling"]["outlineShown"] == 0
+                          and result["rolling"]["clubOutlineShown"] == 0)
         with open(os.path.join(args.out, "h6_wheel_live.json"), "w") as f:
             json.dump(result, f, indent=1)
         print(json.dumps({k: v for k, v in result.items() if k != "rows"}), flush=True)

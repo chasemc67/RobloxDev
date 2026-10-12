@@ -2,7 +2,9 @@
 --   * A Highlight with DepthMode AlwaysOnTop (subtle amber fill, soft white outline) on each target, shown only while
 --     a ray from the eye (VR head, or the phone/desktop camera) to it hits something. Flat-screen views fade; VR tracks occlusion immediately each frame.
 --   * The ball's outline uses the same gate as the occluder fade (Ball.seeThrough: ball at rest and the player aiming /
---     lining up a swing), so it never shows while the ball rolls (round 7). The club outline only needs occlusion.
+--     lining up a swing), so it never shows while the ball rolls (round 7). The VR club-head outline uses the same
+--     gate (stage v, round 7 #4): only at rest while aiming, never while the ball rolls or after it sinks.
+--   * Fades are a linear ramp of FADE_TIME (<= 0.1 s) both ways (round 7 #5/#6); VR snaps with the frame.
 --   * Works with CameraOcclusion's fade: faded parts (LocalTransparencyModifier 0.7) still count as blocking, so the
 --     outline shows through a faded rail or tunnel too.
 --   * The rays use CameraOcclusion's GolfCamera group, so walls, rails, movers, Terrain and the visible decor block;
@@ -21,7 +23,7 @@ local FILL = Color3.fromHex("FFB040")
 local OUTLINE = Color3.fromHex("FFF2D6")
 local FILL_T = 0.72 -- subtle fill
 local OUTLINE_T = 0.1
-local FADE = 12 -- 1/s
+local FADE_TIME = 0.08 -- s: full fade in or out (<= 0.1 s)
 local CHECK_EVERY = 1 / 20 -- s between ray checks
 
 local rayParams = RaycastParams.new()
@@ -98,11 +100,14 @@ function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
 	end
 
 	local lastCheck = 0
+	local lastGate = false
 	-- (last, after every camera writer: the golf / VR cameras and the Studio harness' screenshot cameras)
 	RunService:BindToRenderStep("GolfXRay", Enum.RenderPriority.Last.Value, function(dt)
 		local now = os.clock()
 		local vr = clubHead ~= nil
-		local check = vr or now - lastCheck >= CHECK_EVERY
+		-- (check at once when the aim gate opens, so the fade-in starts this frame)
+		local check = vr or now - lastCheck >= CHECK_EVERY or (Ball.seeThrough and not lastGate)
+		lastGate = Ball.seeThrough == true
 		if check then
 			lastCheck = now
 		end
@@ -110,7 +115,7 @@ function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
 		local off = Ball.exploring and Ball.exploring()
 		for _, t in targets do
 			local part = t.get()
-			if not part or not part.Parent or off or (t == targets.ball and not Ball.seeThrough) then
+			if not part or not part.Parent or off or not Ball.seeThrough then
 				t.on = false
 			elseif check then
 				t.on = blocked(from, part.Position, t.margin)
@@ -123,10 +128,8 @@ function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
 			if vr then
 				t.alpha = target
 			else
-				t.alpha += (target - t.alpha) * math.min(1, dt * FADE)
-			end
-			if math.abs(target - t.alpha) < 0.01 then
-				t.alpha = target
+				local stepA = dt / FADE_TIME
+				t.alpha = target > t.alpha and math.min(target, t.alpha + stepA) or math.max(target, t.alpha - stepA)
 			end
 			t.hl.Enabled = t.alpha > 0
 			t.hl.FillTransparency = 1 - (1 - FILL_T) * t.alpha
@@ -139,7 +142,7 @@ end
 function XRay.state()
 	local out = {}
 	for k, t in targets do
-		out[k] = { on = t.on, alpha = t.alpha, gate = k ~= "ball" or (BallRef and BallRef.seeThrough == true) }
+		out[k] = { on = t.on, alpha = t.alpha, gate = BallRef ~= nil and BallRef.seeThrough == true }
 	end
 	return out
 end

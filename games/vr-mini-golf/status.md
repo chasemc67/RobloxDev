@@ -1,5 +1,11 @@
 # VR Mini Golf: status
 
+## Stage v — live v210 (2026-10-12, ~02:29 PT)
+- Playtest Bot round 7 fixes (RobloxDevBot items 1, 2+3, 4, 5/6, 9) plus Game Art Bot colour notes, published. Version History marks v210 Published. Local copy playtest-v210.rbxl (gitignored).
+- ClubSetup/WristPoseLog DataStore calls guarded like PersonalBest. H8 root door: pocket widened and rail16 cut trimmed (>= 0.187 stud clearance); slow/parked balls get a 1.2 studs/s sideways nudge driven by spec motion (MoverMath, 0.5 s dwell look-ahead). h8door 20/20 (max 1.2 studs/s, 0 pinned), block rate 50%, H8 20-shot sweep clean.
+- XRay: VR club outline only at rest while aiming; flat fades 0.06-0.07 s. Course card shows "Play" until the first stroke. Banks 0.78x adjacent felt; H9 oak rail wood #7A4E32, Reflectance 0.
+- Evidence playtests/stage-v/, notes logs/stages/v-notes.md.
+
 ## Stage t — live v202 (2026-10-11, 23:31 PT)
 - Lobby fixes, Peaceful/PVP collision modes, independent progression, wrist event telemetry and rest/aim-only XRay published. Version History explicitly marks v202 Published.
 - Untouched v190 local backup retained (3,285,911 bytes, gitignored). Studio left saved in Edit, source export matches src/.
