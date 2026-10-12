@@ -34,3 +34,11 @@ Go to `https://create.roblox.com/dashboard/creations`, open the experience, then
 
 ## Updates
 Change in Studio → playtest → File > Publish to Roblox. Publishing updates the live place, and new servers pick it up. Use **Restart servers** on the dashboard for urgent fixes. If something breaks, roll back from the place's version history on the dashboard.
+
+## More than one place in an experience (learned on vr-mini-golf, stage z)
+- **Adding a place**: this Studio's Asset Manager ("Places in Experience") has no "Add New Place". Instead, open a local `.rbxl` with the new place's content, then File > **Publish to Roblox As** > pick the existing experience > create a new place. It gets a default name ("<user>'s Place: <date>_1"); rename it in Creator Hub (`create.roblox.com/dashboard/creations/experiences/<universeId>/places`). Never pick the start place in that dialog: that would overwrite it. Codex computer use did this reliably when told the place IDs it must not touch.
+- List a universe's places from Studio with `AssetService:GetGamePlacesAsync()` (ids + names), and record them in `games/<game>/places.json`.
+- Open a cloud place directly with `open "roblox-studio:1+launchmode:edit+task:EditPlace+placeId:<id>+universeId:<universe>"`, and a local file with `open -a /Applications/RobloxStudio.app <file>.rbxl`. Keep one place open at a time and call `list_roblox_studios` again after each switch (the studio id changes).
+- **Quitting Studio on a Team Create place can hang** on "Applying script changes. Studio will close automatically when complete" (seen three times in stage z). Don't press Escape on it. Once the place has been saved and published, it's safe to `kill -TERM` the RobloxStudio process (then `-KILL`).
+- If Version History won't open in Studio, read it in Creator Hub: `.../experiences/<universe>/places/<placeId>/version-history` (read-only; don't click Restore).
+- TeleportService doesn't work in Studio playtests. Guard teleports with `RunService:IsStudio()` and record the request (an attribute or a log line) so tests can check it.

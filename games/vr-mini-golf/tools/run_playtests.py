@@ -44,7 +44,13 @@ class Studio:
     def __init__(self):
         self.m = StudioMCP()
         studios = json.loads(self.m.call("list_roblox_studios")).get("studios", [])
-        match = [s for s in studios if "placeId: %s" % PLACE_ID in s["name"]]
+        # (stage z) three places, one open at a time: GOLF_STUDIO=<name substring> picks one; else the lobby place;
+        # else the only open Studio
+        want = os.environ.get("GOLF_STUDIO")
+        if want:
+            match = [s for s in studios if want in s["name"]]
+        else:
+            match = [s for s in studios if "placeId: %s" % PLACE_ID in s["name"]] or (studios if len(studios) == 1 else [])
         if not match:
             raise SystemExit("VR Mini Golf (placeId %s) is not open in Studio. Open: %s" % (PLACE_ID, [s["name"] for s in studios]))
         self.id = match[0]["id"]
@@ -804,6 +810,9 @@ def cmd_smoke(args):
     st = Studio()
     st.stop_play()
     set_edit_attrs(st, {"GolfTestMode": False, "SimulateVR": False})
+    role = st.luau("return tostring(workspace:GetAttribute('PlaceRole'))", "Edit")
+    if role in ("lobby", "lantern_grove", "sugarloaf_canyon"):
+        return smoke_place(st, role, args)
     if args.device:
         log("device", st.luau("game:GetService('StudioDeviceSimulatorService'):SetDeviceAsync(%s) return 'ok'" % json.dumps(args.device), "Edit"))
     try:
@@ -931,6 +940,62 @@ return game:GetService('HttpService'):JSONEncode({hud = gui ~= nil, texts = text
         log("FAIL stroke -> Explore -> back:", json.dumps(rt))
         sys.exit(1)
     log("PASS stroke -> Explore -> back: strokes %s -> %s, ball moved %.3f" % (rt["strokesBefore"], rt["strokesAfter"], rt["ballMoved"]))
+
+
+def smoke_place(st, role, args):
+    """(stage z) the place split: tools/place_smoke.py checks for the lobby or a course place, plus (Lantern Grove) the
+    stroke -> Explore -> back round trip, (Sugarloaf) one real putt on hole 1. 0 console errors/warnings required."""
+    import place_smoke
+    if args.device:
+        log("device", st.luau("game:GetService('StudioDeviceSimulatorService'):SetDeviceAsync(%s) return 'ok'" % json.dumps(args.device), "Edit"))
+    out = {"role": role, "device": args.device or "desktop"}
+    try:
+        st.start_play()
+        time.sleep(args.wait)
+        if role == "lobby":
+            out["lobby"] = place_smoke.lobby(st, log)
+            ok = out["lobby"]["ok"]
+        else:
+            out["course"] = place_smoke.course(st, role, log)
+            ok = out["course"]["ok"]
+            out["putt"] = json.loads(st.luau(PUTT_CHECK % json.dumps("Course" if role == "lantern_grove" else "CourseSugarloaf"), "Client", timeout=120))
+            ok = ok and out["putt"].get("ok")
+            log("course putt", json.dumps(out["putt"]))
+        out["problems"] = {"server": st.problems("Server"), "client": st.problems("Client")}
+    finally:
+        st.stop_play()
+        if args.device:
+            st.luau("pcall(function() game:GetService('StudioDeviceSimulatorService'):StopSimulationAsync() end) return 'ok'", "Edit")
+    print(json.dumps(out, indent=1))
+    problems = [m for v in out["problems"].values() for m in v]
+    if problems:
+        log("FAIL console errors/warnings:", json.dumps(problems))
+        sys.exit(1)
+    if not ok:
+        log("FAIL", role)
+        sys.exit(1)
+    log("PASS %s smoke (%s), 0 console errors/warnings" % (role, out["device"]))
+
+
+# one real putt on hole 1 through the client's GolfExploreDebug hook (Ball.hit): strokes 0 -> 1, the ball moved
+PUTT_CHECK = """local me = game:GetService('Players').LocalPlayer
+local ball = workspace.Balls:FindFirstChild(tostring(me.UserId))
+local h1 = workspace[%s].Hole1
+local hook = me.PlayerScripts:FindFirstChild('GolfExploreDebug')
+if not hook then return game:GetService('HttpService'):JSONEncode({ok = false, err = 'no GolfExploreDebug (VR?)'}) end
+local t0 = os.clock()
+while hook:Invoke('ballState').state ~= 'ready' and os.clock() - t0 < 15 do task.wait(0.2) end
+local s0, p0 = me:GetAttribute('Strokes'), ball.Position
+local aim = (h1:FindFirstChild('AimTarget') or h1.Cup).Position - ball.Position
+aim = Vector3.new(aim.X, 0, aim.Z).Unit
+hook:Invoke('putt', aim * 4)
+task.wait(0.5)
+t0 = os.clock()
+while hook:Invoke('ballState').state ~= 'ready' and os.clock() - t0 < 20 do task.wait(0.2) end
+local s1 = me:GetAttribute('Strokes')
+local moved = math.floor((ball.Position - p0).Magnitude * 100) / 100
+return game:GetService('HttpService'):JSONEncode({ok = s0 == 0 and s1 == 1 and moved > 0.5, strokesBefore = s0, strokesAfter = s1, moved = moved,
+  hole = me:GetAttribute('Hole'), course = me:GetAttribute('Course')})"""
 
 
 # ----------------------------------------------------------------------------------------- export / push

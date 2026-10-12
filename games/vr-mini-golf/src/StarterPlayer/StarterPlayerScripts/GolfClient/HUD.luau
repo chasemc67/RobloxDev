@@ -578,7 +578,7 @@ local function buildScreen()
 	infoSub = label({ Size = UDim2.new(1, -20, 0, 22), Position = UDim2.new(0, 10, 0, 36), TextScaled = true, TextXAlignment = Enum.TextXAlignment.Left, TextColor3 = Color3.fromRGB(190, 230, 200) }, info)
 
 	-- (the Roblox player list is hidden by GolfMain, so the top-right corner is ours; the scorecard lists everyone)
-	local btns = new("Frame", { Name = "GolfButtons", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 120, 0, 208) }, gui)
+	local btns = new("Frame", { Name = "GolfButtons", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 120, 0, 156) }, gui)
 	golfButtons = btns
 	new("UIListLayout", { Padding = UDim.new(0, 8), HorizontalAlignment = Enum.HorizontalAlignment.Right, SortOrder = Enum.SortOrder.LayoutOrder }, btns)
 	button("Reset Ball", { Name = "ResetBall", LayoutOrder = 1, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(60, 90, 150) }, btns, function()
@@ -593,11 +593,7 @@ local function buildScreen()
 			Explore.setActive(true)
 		end
 	end)
-	button("Menu", { Name = "Menu", LayoutOrder = 4, Size = UDim2.new(1, 0, 0, 44), BackgroundColor3 = Color3.fromRGB(28, 40, 64) }, btns, function()
-		if FrontEnd then
-			FrontEnd.open("title")
-		end
-	end)
+	-- (stage z) no Menu button here: FrontEnd's top-right Menu button is the only one (lobby and course)
 
 	-- Explore mode bar (replaces the golf buttons while exploring)
 	exploreBar = new("Frame", { Name = "ExploreBar", BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -12, 0, 12), Size = UDim2.new(0, 150, 0, 260), Visible = false }, gui)

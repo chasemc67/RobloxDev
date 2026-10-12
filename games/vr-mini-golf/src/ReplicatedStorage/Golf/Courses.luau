@@ -2,7 +2,9 @@
 -- ServerStorage.CourseBuilder (Lantern Grove: workspace.Course; Sugarloaf Canyon: workspace.CourseSugarloaf, 5000
 -- studs north). A player plays one course at a time: the server keeps it in the player attribute "Course" (a
 -- Config.Courses id) and SelectCourse switches it (GolfServer).
+-- Stage z: each course is its own place (Golf.Places); a course place builds only its own folder, the lobby none.
 local Config = require(script.Parent:WaitForChild("Config"))
+local Places = require(script.Parent:WaitForChild("Places"))
 
 local Courses = {}
 
@@ -10,7 +12,7 @@ Courses.FOLDERS = {
 	lantern_grove = "Course",
 	sugarloaf_canyon = "CourseSugarloaf",
 }
-Courses.DEFAULT = Config.CurrentCourse -- "lantern_grove"
+Courses.DEFAULT = Places.course() or Config.CurrentCourse -- this place's course ("lantern_grove" in the lobby)
 
 function Courses.folderName(id: string?): string
 	return Courses.FOLDERS[id or Courses.DEFAULT] or "Course"
@@ -47,10 +49,15 @@ function Courses.info(id: string?)
 	return nil
 end
 
--- Playable = marked playable in Config and built in this place.
+-- Built in this place (stage z: only a course's own place has its folder).
+function Courses.here(id: string?): boolean
+	return Courses.FOLDERS[id] ~= nil and Courses.folder(id) ~= nil
+end
+
+-- Playable = marked playable in Config and built here or reachable by teleport (it has a place).
 function Courses.playable(id: string?): boolean
 	local c = Courses.info(id)
-	return c ~= nil and c.playable == true and Courses.FOLDERS[id] ~= nil and Courses.folder(id) ~= nil
+	return c ~= nil and c.playable == true and (Courses.here(id) or Places.placeIdOf(id) ~= nil)
 end
 
 -- The course whose folder holds `inst`, or nil.

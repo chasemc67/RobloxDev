@@ -7,9 +7,18 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
+-- (stage z) one place per course: the lobby place has no golf (ServerScriptService.LobbyServer runs it), and a course
+-- place only hosts its own course (ReplicatedStorage.Golf.Places)
+local Places = require(Golf:WaitForChild("Places"))
+if Places.isLobby() then
+	return
+end
+local PLACE_COURSE = Places.course() or "lantern_grove"
 local Config = require(Golf:WaitForChild("Config"))
 local Remotes = Golf:WaitForChild("Remotes")
 local PersonalBest = require(script:WaitForChild("PersonalBest"))
+local PlaceTeleport = require(script.Parent:WaitForChild("PlaceTeleport"))
+local Leaderboard = require(script.Parent:WaitForChild("Leaderboard"))
 -- course modes: Peaceful balls pass through each other, PVP balls collide (register before anything walks the groups)
 local BallGroups = require(Golf:WaitForChild("BallGroups"))
 BallGroups.setup()
@@ -30,10 +39,11 @@ local SaveSettings = remote("SaveSettings") -- client -> server: settings table 
 -- Studio harness rounds never count toward a personal best
 local TEST_MODE = RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true
 
-local course = workspace:WaitForChild("Course")
--- More than one course (stage w): every player is on one course (st.course, player attribute "Course"); each course
--- is its own workspace folder (ReplicatedStorage.Golf.Courses). Lantern Grove (workspace.Course) is the default.
+-- Each course is its own workspace folder (ReplicatedStorage.Golf.Courses: Lantern Grove workspace.Course, Sugarloaf
+-- Canyon workspace.CourseSugarloaf). Stage z: each place builds only its own course (PLACE_COURSE), and every player
+-- in it plays that course (st.course, player attribute "Course").
 local Courses = require(Golf:WaitForChild("Courses"))
+local course = workspace:WaitForChild(Courses.folderName(PLACE_COURSE))
 local courseHoles = {}
 for id in Courses.FOLDERS do
 	local list = Courses.holes(id)
@@ -41,9 +51,9 @@ for id in Courses.FOLDERS do
 		courseHoles[id] = list
 	end
 end
-local holes = courseHoles[Courses.DEFAULT]
+local holes = courseHoles[PLACE_COURSE]
 local function holesOf(st)
-	return courseHoles[st and st.course or Courses.DEFAULT] or holes
+	return courseHoles[st and st.course or PLACE_COURSE] or holes
 end
 
 local ballsFolder = workspace:FindFirstChild("Balls")
@@ -166,11 +176,33 @@ local function roundResult(player, st)
 	local result = { course = courseId, total = total, par = parTotal, counted = counted, newBest = false }
 	if counted then
 		result.best, result.newBest, result.previousBest = PersonalBest.recordRound(player, courseId, total)
+		-- (stage z) the lobby's leaderboard wall reads these
+		Leaderboard.submit(player.UserId, courseId, result.best or total)
 	else
 		result.best = PersonalBest.get(player, courseId)
 		result.previousBest = result.best
 	end
+	-- (stage z) back to the lobby after the results, unless they play again (not in the Studio harness)
+	if not TEST_MODE then
+		result.returnIn = Config.ReturnToLobbyAfter
+	end
 	return result
+end
+
+-- Course finished: teleport back to the lobby after Config.ReturnToLobbyAfter seconds unless a new round started
+-- (Play again) or they already left. Not in the Studio harness (TEST_MODE); in a Studio playtest PlaceTeleport only
+-- records the request.
+local function scheduleReturn(player, st)
+	if TEST_MODE or not isReal(player) then
+		return
+	end
+	local token = {}
+	st.returnToken = token
+	task.delay(Config.ReturnToLobbyAfter, function()
+		if states[player] == st and st.finished and st.returnToken == token then
+			PlaceTeleport.send(player, "lobby", "finished")
+		end
+	end)
 end
 
 local function finishHole(player, st, maxed)
@@ -205,6 +237,7 @@ local function finishHole(player, st, maxed)
 		else
 			st.finished = true
 			sendTo(Remotes.CourseComplete, player, st.strokes, isReal(player) and roundResult(player, st) or nil)
+			scheduleReturn(player, st)
 		end
 	end)
 end
@@ -259,18 +292,7 @@ local function setupCharacter(character)
 	character.DescendantAdded:Connect(apply)
 end
 
--- Lobby (stage x): a fresh join spawns in the lobby (workspace.SpawnLocation sits on Lobby.LobbySpawn) with no
--- course. The ball waits there, hidden and anchored, until the player picks a course on the course card
--- (SelectCourse starts its hole 1). The Studio harness (GolfTestMode) keeps Lantern Grove, started on Ready.
-local function lobbyBallPosition()
-	local lobby = workspace:FindFirstChild("Lobby")
-	local spot = lobby and lobby:FindFirstChild("LobbySpawn")
-	if not spot then
-		return nil
-	end
-	return Vector3.new(spot.Position.X, spot.Position.Y - spot.Size.Y / 2 + Config.BallRadius + 0.03, spot.Position.Z)
-end
-
+-- (stage z) the lobby is its own place now (no ball there): arriving in a course place starts its hole 1 on Ready.
 local function onPlayerAdded(player)
 	local real = isReal(player)
 	local userId = real and player.UserId or player:GetAttribute("UserId")
@@ -282,16 +304,12 @@ local function onPlayerAdded(player)
 	ball.NameTag.Label.Text = real and player.DisplayName or player.Name
 	ball.Trail.Color = ColorSequence.new(ball.Color)
 	ball.Anchored = true
-	local lobbyPos = real and not TEST_MODE and lobbyBallPosition() or nil
-	ball.CFrame = CFrame.new(lobbyPos or teePosition(holes[1]))
-	if lobbyPos then
-		ball.Transparency = 1
-	end
+	ball.CFrame = CFrame.new(teePosition(holes[1]))
 	ball.Parent = ballsFolder
 
 	states[player] = {
 		ball = ball,
-		course = not lobbyPos and Courses.DEFAULT or nil, -- nil = in the lobby, no course picked yet
+		course = PLACE_COURSE,
 		hole = 1,
 		strokes = {},
 		lastPos = ball.Position,
@@ -358,12 +376,6 @@ local function onReady(player)
 		return
 	end
 	if not st.started then
-		if not st.course then
-			-- in the lobby: wait for a course (SelectCourse); the controls frame the lobby around the parked ball
-			st.ready = true
-			sendTo(Remotes.BallPlaced, player, st.ball.Position, "lobby", 1)
-			return
-		end
 		st.started = true
 		-- Studio testing aid: set workspace attribute DebugStartHole to begin on a later hole
 		local first = math.clamp(workspace:GetAttribute("DebugStartHole") or 1, 1, #holesOf(st))
@@ -430,18 +442,27 @@ Remotes.PlayAgain.OnServerEvent:Connect(function(player, restart)
 	end
 	st.lastPlayAgain = now
 	st.transitionToken = nil -- cancel a pending "next hole"
+	st.returnToken = nil -- and the trip back to the lobby
 	st.strokes = {}
 	st.roundValid = true
 	startHole(player, st, 1)
 end)
 
--- Course picker (stage w): switch this player to another playable course and start its hole 1 (a fresh round; the
--- previous course's strokes are dropped). Before the first Ready it only sets the course, so Ready starts there.
--- From the lobby (Ready already sent, no round yet) it starts the round on that course's hole 1.
+-- Course picker (stage w): this place's course restarts at hole 1 (a fresh round). Stage z: another course is
+-- another place, so picking it teleports there (PlaceTeleport).
 local SelectCourse = remote("SelectCourse")
 SelectCourse.OnServerEvent:Connect(function(player, courseId)
 	local st = states[player]
-	if not st or typeof(courseId) ~= "string" or not courseHoles[courseId] or not Courses.playable(courseId) then
+	if not st or typeof(courseId) ~= "string" then
+		return
+	end
+	if courseId ~= PLACE_COURSE and not courseHoles[courseId] then
+		if isReal(player) and Courses.playable(courseId) then
+			PlaceTeleport.send(player, courseId, "menu")
+		end
+		return
+	end
+	if not courseHoles[courseId] or not Courses.playable(courseId) then
 		return
 	end
 	local now = os.clock()
@@ -450,6 +471,7 @@ SelectCourse.OnServerEvent:Connect(function(player, courseId)
 	end
 	st.lastSelect = now
 	st.transitionToken = nil
+	st.returnToken = nil
 	st.course = courseId
 	player:SetAttribute("Course", courseId)
 	st.strokes = {}
@@ -500,7 +522,8 @@ do
 	local ok, layout = pcall(function()
 		return require(game:GetService("ServerStorage"):WaitForChild("CourseData"):WaitForChild("WorldLayout"))
 	end)
-	if ok and layout and layout.enabled then
+	-- (WorldLayout is Lantern Grove's world; Sugarloaf has no Explore viewpoints/walls yet)
+	if ok and layout and layout.enabled and PLACE_COURSE == "lantern_grove" and workspace:FindFirstChild("World") then
 		local data = { views = {}, paths = {}, bounds = layout.bounds }
 		local poi = {}
 		for _, p in layout.pois or {} do
@@ -571,7 +594,13 @@ end
 do
 	local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
 	CameraOcclusion.setupGroups()
-	CameraOcclusion.tagDecor({ course, workspace:FindFirstChild("World"), Courses.folder("sugarloaf_canyon") })
+	local roots = { course }
+	for _, r in { workspace:FindFirstChild("World"), Courses.folder("sugarloaf_canyon") } do
+		if r ~= course then
+			table.insert(roots, r)
+		end
+	end
+	CameraOcclusion.tagDecor(roots)
 end
 
 -- Moving parts (spinner, mill wheel, log, door, gate, lantern bar): server physics, phase-locked to server time.
@@ -593,6 +622,33 @@ if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 		onReady = onReady,
 		onStroke = onStroke,
 	})
+end
+
+-- (stage z) Studio-only hook for tools/place_smoke.py (normal playtests, not the harness): finish this player's round
+-- now with the strokes so far and run the real results -> back-to-lobby path with a short delay.
+if RunService:IsStudio() and not TEST_MODE then
+	local hook = Instance.new("BindableFunction")
+	hook.Name = "GolfFinishDebug"
+	hook.OnInvoke = function(player, returnAfter)
+		local st = states[player]
+		if not st then
+			return "no state"
+		end
+		st.transitionToken = nil
+		st.finished = true
+		local result = roundResult(player, st)
+		result.returnIn = returnAfter
+		sendTo(Remotes.CourseComplete, player, st.strokes, result)
+		local token = {}
+		st.returnToken = token
+		task.delay(returnAfter, function()
+			if states[player] == st and st.finished and st.returnToken == token then
+				PlaceTeleport.send(player, "lobby", "finished")
+			end
+		end)
+		return "ok"
+	end
+	hook.Parent = script
 end
 
 -- Watch every ball for sinking / leaving the course.

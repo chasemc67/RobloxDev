@@ -107,6 +107,12 @@ return {
 		IconStroke = "rbxassetid://80712879947831",
 		IconTotal = "rbxassetid://131506164236528",
 		IconBest = "rbxassetid://101092439594881",
+		-- stage z (assets/vr-mini-golf/ui/menu, ui/loading; tools/stage_z_assets.json)
+		MenuFrame = "rbxassetid://98077960555772", -- menu_frame.png 1200x800 9-slice, SliceCenter 64,64,1136,736
+		CloseX = "rbxassetid://76456557541351", -- close_x.png 128x128
+		MenuButton = "rbxassetid://128214642978551", -- menu_button.png 320x112 (no text; "Menu" is drawn on it)
+		LoadingLanternGrove = "rbxassetid://91887346064262", -- loading_lantern_grove.png 1920x1080
+		LoadingSugarloaf = "rbxassetid://95850509303844", -- loading_sugarloaf_canyon.png 1920x1080
 	},
 	-- VR wrist (bracer + card on its face): hidden in normal play; it shows only while you actively look at the
 	-- off-hand wrist (Walkabout style). Show: the back of the wrist faces your eyes within WristShowDeg AND the wrist
@@ -126,10 +132,12 @@ return {
 	VRFadeRange = 40,
 	-- Courses on the picker. Only playable ones have a personal best (player attribute "Best_<id>").
 	Courses = {
-		{ id = "lantern_grove", name = "Lantern Grove", image = "CardLanternGrove", playable = true },
-		{ id = "sugarloaf_canyon", name = "Sugarloaf Canyon", image = "CardSugarloafPlay", playable = true }, -- stage w
+		-- (stage z: holes / par for the cards in places where the course isn't built, i.e. the lobby)
+		{ id = "lantern_grove", name = "Lantern Grove", image = "CardLanternGrove", playable = true, holes = 9, par = 27, loading = "LoadingLanternGrove" },
+		{ id = "sugarloaf_canyon", name = "Sugarloaf Canyon", image = "CardSugarloafPlay", playable = true, holes = 18, par = 54, loading = "LoadingSugarloaf" }, -- stage w
 		{ id = "aurora_archipelago", name = "Aurora Archipelago", image = "CardAurora", playable = false },
 	},
+	ReturnToLobbyAfter = 30, -- (stage z) seconds on the results page before a finished round teleports back to the lobby
 	CurrentCourse = "lantern_grove", -- the default course; each player's own is the player attribute "Course" (Golf.Courses)
 
 	-- Player settings (saved with the personal best record). Volumes are 0..1, CameraSensitivity a multiplier.

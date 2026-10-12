@@ -1,4 +1,4 @@
--- LobbyRoam (stage y): phone/desktop free walking in the lobby before a course is picked.
+-- LobbyRoam (stage y): phone/desktop free walking in the lobby (stage z: the lobby place; VR too, with Roblox's VR controls).
 --   * In the lobby (no "Course" attribute) Ball.lobbyRoam is true, so TouchControls hands over the camera and input
 --     (Ball.exploring()), and the default Roblox camera follows the character.
 --   * Menu closed: the default character controls (WASD/arrows + jump + mouse camera, the touch thumbstick and jump
@@ -15,8 +15,10 @@ local LobbyRoam = { active = false, walking = false }
 
 local Ball, controls
 
+-- (stage z) the lobby is its own place (Golf.Places); course places never roam
+local Places = require(game:GetService("ReplicatedStorage"):WaitForChild("Golf"):WaitForChild("Places"))
 local function inLobby()
-	return player:GetAttribute("Course") == nil
+	return Places.isLobby()
 end
 
 local function humanoid()

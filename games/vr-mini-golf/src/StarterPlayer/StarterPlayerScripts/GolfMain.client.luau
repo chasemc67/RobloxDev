@@ -11,15 +11,40 @@ local player = Players.LocalPlayer
 local modules = script.Parent:WaitForChild("GolfClient")
 local Remotes = ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Remotes")
 
-local Ball = require(modules.BallController)
+local Places = require(ReplicatedStorage.Golf:WaitForChild("Places"))
 local HUD = require(modules.HUD)
 
-workspace:WaitForChild("Course")
+local playerModule = player:WaitForChild("PlayerScripts"):FindFirstChild("PlayerModule")
+local controls = playerModule and require(playerModule):GetControls()
+
+-- (stage z) The lobby is its own place with no golf ball: walk around (GolfClient.LobbyRoam), the menu (FrontEnd:
+-- course cards teleport to that course's place) and the loading screen for the trip (TeleportScreen). VR uses
+-- Roblox's own VR camera, walking and UI pointer here (the ScreenGui menu shows on Roblox's VR panel).
+if Places.isLobby() then
+	pcall(function()
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+	end)
+	local vrUser = UserInputService.VREnabled or VRService.VREnabled
+	local lobbyBall = { menuOpen = false, lobbyRoam = true }
+	function lobbyBall.canHit()
+		return false
+	end
+	function lobbyBall.exploring()
+		return true
+	end
+	local LobbyRoam = require(modules.LobbyRoam)
+	LobbyRoam.start(lobbyBall, controls)
+	local FrontEnd = require(modules.FrontEnd)
+	FrontEnd.start({ HUD = HUD, Ball = lobbyBall, LobbyRoam = LobbyRoam, isVR = false, vrUser = vrUser })
+	require(modules.TeleportScreen).start({ notify = FrontEnd.toast })
+	return
+end
+
+local Ball = require(modules.BallController)
+workspace:WaitForChild(require(ReplicatedStorage.Golf:WaitForChild("Courses")).folderName())
 
 -- Golf replaces walking: freeze the humanoid (works with any control scripts) and, if the classic
 -- PlayerModule is present, disable its controls too. Also hide the touch thumbstick/jump button.
-local playerModule = player:WaitForChild("PlayerScripts"):FindFirstChild("PlayerModule")
-local controls = playerModule and require(playerModule):GetControls()
 local Explore = require(modules.Explore)
 local function freezeCharacter(char)
 	if Explore.active or Ball.lobbyRoam then
@@ -115,6 +140,7 @@ end)
 local FrontEnd = require(modules.FrontEnd)
 HUD.attachFrontEnd(FrontEnd)
 FrontEnd.start({ HUD = HUD, Ball = Ball, VR = VR, Explore = not VR and Explore or nil, LobbyRoam = LobbyRoam, isVR = isVR or simulateVR })
+require(modules.TeleportScreen).start({ notify = FrontEnd.toast })
 
 -- Studio-only playtest harness (see games/vr-mini-golf/playtesting.md)
 if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then

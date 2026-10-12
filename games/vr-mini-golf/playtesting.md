@@ -24,7 +24,7 @@ Every scripted shot goes through `Ball.hit()` in `GolfClient.BallController`, th
 
 ## Runner
 
-`tools/run_playtests.py` uses only the Python stdlib plus `tools/studio_mcp.py`. It only ever talks to the Studio whose name contains placeId 87725688219952.
+`tools/run_playtests.py` uses only the Python stdlib plus `tools/studio_mcp.py`. It talks to the Studio whose name contains `GOLF_STUDIO` if that's set, else the lobby place (87725688219952), else the only open Studio. Stage z: three places (places.json), opened one at a time. `smoke` runs `tools/place_smoke.py`'s lobby or course checks, chosen by the place's workspace `PlaceRole`.
 
 ```bash
 cd ~/src/RobloxDev/games/vr-mini-golf

@@ -1,5 +1,13 @@
 # VR Mini Golf: status
 
+## Stage z — the place split, phase 1 (2026-10-12, ~12:55 PT)
+- **Three places in universe 10769274294** (places.json): **Lobby** "VR Mini Golf" 87725688219952 (start place, live **v243**), **Lantern Grove** 91438142503824 (**v5**) and **Sugarloaf Canyon** 124440050576723 (**v4**), connected by TeleportService (TeleportOptions, a loading screen per course).
+- Lobby: no golf ball. Walk around, pick a course on the menu or walk into an arch (10x10x3 Neon portal triggers in the LG and SC arches). The "Best Rounds" leaderboard wall reads OrderedDataStores the course places write, and refreshes every 60 s.
+- Course places: hole 1 starts on arrival. Menu > Lobby, results > Back to lobby, or 30 s after finishing takes you back to the lobby. In Studio, teleports are skipped and recorded.
+- One **Menu button, top right** (top bar row, TopbarSafeInsets) in every place; the HUD's Menu button is removed. New menu art: 9-slice frame, close X, menu button. **It's stand-in art** (the box's /workspace was unreachable); swap the PNGs in assets/vr-mini-golf/ui/ and re-upload.
+- Same scripts in every place, synced from src/ with `run_playtests.py push` (one place open at a time; each place's workspace PlaceRole decides what runs). Tests pass with 0 console errors: lobby smoke (desktop + phone), LG 9/9 in its own place, LG and SC smoke. Notes: logs/stages/z-notes.md.
+- Not yet: a live cross-place teleport check, real leaderboard data (live only), VR lobby on a headset, the Sugarloaf scenery kit, lobby dressing and portal meshes (phase 2).
+
 ## Stage y — live v241 (2026-10-12, ~09:44 PT)
 - **Lobby menu is a window you can close** (Chase on v239: full-screen menu, couldn't walk around the lobby, no way back on mobile). The title/course menu is a centred panel (~60% of the screen, more of the height on phones) with the 3D lobby visible around it, and an X. Closing it in the lobby gives normal Roblox controls (GolfClient.LobbyRoam: WASD/jump/mouse camera, touch thumbstick; VR walks with the left stick). Ball stays hidden in the lobby.
 - Reopen: top-left Menu button (top bar row, phone + desktop), M on desktop, left-stick click / wrist MENU in VR. Picking a course still uses SelectCourse.
@@ -43,6 +51,8 @@
 | | Owner | Universe | Root place | URL |
 |---|---|---|---|---|
 | **Current (use this)** | MetavrseBuilder (user 1818120139) | 10769274294 | 87725688219952 | https://www.roblox.com/games/87725688219952 |
+| ↳ Lantern Grove place (stage z) | MetavrseBuilder | 10769274294 | 91438142503824 | teleport only (from the lobby) |
+| ↳ Sugarloaf Canyon place (stage z) | MetavrseBuilder | 10769274294 | 124440050576723 | teleport only (from the lobby) |
 | Original (leave alone) | MetavrsePlumber (user 2021224569) | 10769263747 | 135374506016678 | https://www.roblox.com/games/135374506016678 |
 
 - 2026-10-03 ~21:59 PT: re-published as a **new experience under MetavrseBuilder** (Grok Bot, via Studio File > Publish to Roblox As > Create new experience).

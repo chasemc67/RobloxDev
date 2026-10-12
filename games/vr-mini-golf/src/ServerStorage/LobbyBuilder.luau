@@ -6,10 +6,14 @@
 --                          -- importer's turn about Y, applies the Neon colours and makes every part pure decoration
 --   LB.Build()             -- (re)builds workspace.Lobby at the layout origin
 --   LB.MeasureClearance()  -- moving parts vs every static part, at 36 phases (stage t: >= 0.15 studs)
+--   LB.BuildPortals()      -- (stage z; Build calls it) Lobby.Portals.Portal_<courseId>: 10x10x3 walk-in triggers inside
+--                          -- each playable course's arch (ServerScriptService.LobbyServer teleports on touch)
+--   LB.BuildLeaderboard()  -- (stage z; Build calls it) Lobby.Leaderboard: the board on leaderboard_wall (LobbyServer fills it)
 -- Data: ServerStorage.CourseData.LobbyLayout (tools/lobby_to_lua.py; fixes in tools/lobby_overrides.json). Positions
 -- are lobby-frame studs (X east, Z south, deck top Y 0); `origin` puts the lobby frame in the world, away from the
 -- course. Meshes never collide: walking uses invisible box colliders (walkways, railings, manifest collision boxes).
--- Players spawn here (stage x: workspace.SpawnLocation under LobbySpawn) and pick a course on the menu; the portals / course board hookup is still the lobby integration ticket.
+-- Players spawn here (stage x: workspace.SpawnLocation under LobbySpawn). Stage z: the lobby is its own place; the menu's
+-- course cards and the arch portals teleport to each course's place. Lobby dressing and portal meshes: phase 2.
 local ServerStorage = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
 local CollectionService = game:GetService("CollectionService")
@@ -319,6 +323,8 @@ function LobbyBuilder.Build()
 	end
 	lobby.WorldPivot = origin
 	lobby.Parent = workspace
+	LobbyBuilder.BuildPortals()
+	LobbyBuilder.BuildLeaderboard()
 	report.missing = (function()
 		local t = {}
 		for k in report.missing do
@@ -327,6 +333,124 @@ function LobbyBuilder.Build()
 		return t
 	end)()
 	return HttpService:JSONEncode(report)
+end
+
+-- (stage z) Walk-in portals: a 10x10x3 trigger standing in each playable course's arch opening (the arch's legs are
+-- 10 studs apart, its crossbeam 12 up). A translucent Neon sheet in the course colour until the phase 2 portal meshes.
+local PORTALS = {
+	lantern_grove = { arch = "arch_lantern_grove", color = Color3.fromRGB(255, 190, 90) },
+	sugarloaf_canyon = { arch = "arch_sugarloaf_canyon", color = Color3.fromRGB(255, 120, 150) },
+}
+
+function LobbyBuilder.BuildPortals()
+	local lobby = workspace:FindFirstChild("Lobby")
+	assert(lobby, "no workspace.Lobby")
+	local old = lobby:FindFirstChild("Portals")
+	if old then
+		old:Destroy()
+	end
+	local folder = Instance.new("Folder")
+	folder.Name = "Portals"
+	local out = {}
+	for courseId, p in PORTALS do
+		local arch = lobby.Decor:FindFirstChild(p.arch)
+		if arch then
+			local pivot = arch:GetPivot()
+			local t = box("Portal_" .. courseId, pivot * CFrame.new(0, 5, 0), Vector3.new(10, 10, 3), folder, {
+				CanCollide = false,
+				CanTouch = true,
+				Material = Enum.Material.Neon,
+				Color = p.color,
+				Transparency = 0.72,
+				CastShadow = false,
+			})
+			t:SetAttribute("CourseId", courseId)
+			t.CollisionGroup = "Default"
+			table.insert(out, courseId .. "@" .. tostring(t.Position))
+		end
+	end
+	folder.Parent = lobby
+	return table.concat(out, ", ")
+end
+
+-- (stage z) Leaderboard: an invisible part flush with leaderboard_wall's lobby-side face, with a SurfaceGui of one
+-- column per playable course (Col_<courseId>: Header, Note, Row1..Row8 with Rank / Player / Total). LobbyServer
+-- writes the rows every 60 s from the OrderedDataStores (ServerScriptService.Leaderboard).
+local BOARD_ROWS = 8
+function LobbyBuilder.BuildLeaderboard()
+	local lobby = workspace:FindFirstChild("Lobby")
+	assert(lobby, "no workspace.Lobby")
+	local old = lobby:FindFirstChild("Leaderboard")
+	if old then
+		old:Destroy()
+	end
+	local wall = lobby.Decor:FindFirstChild("leaderboard_wall")
+	assert(wall, "no leaderboard_wall")
+	local cf, size = wall:GetBoundingBox()
+	-- the wall's thin axis is its local Z; the lobby side is the one facing the spawn
+	local spawn = lobby:FindFirstChild("LobbySpawn")
+	local toSpawn = (spawn and spawn.Position or Vector3.new(0, 0, 6100)) - cf.Position
+	local normal = cf.LookVector
+	if normal:Dot(toSpawn) < 0 then
+		normal = -normal
+	end
+	local face = cf.Position + normal * (size.Z / 2 + 0.06)
+	local w, h = size.X - 1.2, size.Y - 1.4
+	local part = box("Leaderboard", CFrame.lookAt(face, face + normal), Vector3.new(w, h, 0.05), lobby, { Transparency = 1, CanCollide = false })
+	local gui = Instance.new("SurfaceGui")
+	gui.Name = "Board"
+	gui.Face = Enum.NormalId.Front
+	gui.SizingMode = Enum.SurfaceGuiSizingMode.FixedSize
+	gui.CanvasSize = Vector2.new(math.floor(w * 80), math.floor(h * 80))
+	gui.LightInfluence = 0
+	gui.Brightness = 1.4
+	gui.Parent = part
+	local bg = Instance.new("Frame")
+	bg.Size = UDim2.fromScale(1, 1)
+	bg.BackgroundColor3 = Color3.fromRGB(14, 22, 38)
+	bg.BackgroundTransparency = 0.15
+	bg.Parent = gui
+	local function text(name, parent, props)
+		local l = Instance.new("TextLabel")
+		l.Name = name
+		l.BackgroundTransparency = 1
+		l.Font = Enum.Font.FredokaOne
+		l.TextScaled = true
+		l.TextColor3 = Color3.fromRGB(255, 238, 206)
+		l.Text = ""
+		for k, v in props do
+			l[k] = v
+		end
+		l.Parent = parent
+		return l
+	end
+	text("Title", bg, { Text = "Best Rounds", TextColor3 = Color3.fromRGB(255, 179, 71), Position = UDim2.fromScale(0.05, 0.02), Size = UDim2.fromScale(0.9, 0.13) })
+	local courses = { "lantern_grove", "sugarloaf_canyon" }
+	local namesById = { lantern_grove = "Lantern Grove", sugarloaf_canyon = "Sugarloaf Canyon" }
+	for i, id in courses do
+		local col = Instance.new("Frame")
+		col.Name = "Col_" .. id
+		col.BackgroundTransparency = 1
+		col.Position = UDim2.fromScale(0.03 + (i - 1) * 0.49, 0.17)
+		col.Size = UDim2.fromScale(0.45, 0.8)
+		col.Parent = bg
+		text("Header", col, { Text = namesById[id], TextColor3 = Color3.fromRGB(255, 179, 71), Size = UDim2.fromScale(1, 0.12) })
+		text("Note", col, { Font = Enum.Font.GothamMedium, TextColor3 = Color3.fromRGB(184, 196, 186), Position = UDim2.fromScale(0, 0.4), Size = UDim2.fromScale(1, 0.08), Text = "Loading scores..." })
+		for r = 1, BOARD_ROWS do
+			local row = Instance.new("Frame")
+			row.Name = "Row" .. r
+			row.BackgroundTransparency = r % 2 == 0 and 1 or 0.85
+			row.BackgroundColor3 = Color3.fromRGB(30, 46, 70)
+			row.BorderSizePixel = 0
+			row.Position = UDim2.fromScale(0, 0.14 + (r - 1) * 0.107)
+			row.Size = UDim2.fromScale(1, 0.1)
+			row.Parent = col
+			text("Rank", row, { Size = UDim2.fromScale(0.14, 0.8), Position = UDim2.fromScale(0, 0.1), TextColor3 = Color3.fromRGB(184, 196, 186) })
+			text("Player", row, { Font = Enum.Font.GothamMedium, Size = UDim2.fromScale(0.64, 0.8), Position = UDim2.fromScale(0.16, 0.1), TextXAlignment = Enum.TextXAlignment.Left })
+			text("Total", row, { Size = UDim2.fromScale(0.18, 0.8), Position = UDim2.fromScale(0.82, 0.1), TextColor3 = Color3.fromRGB(130, 235, 150) })
+		end
+	end
+	return tostring(part.CFrame)
 end
 
 -- Clearance of every spinning part from every static lobby part, over a full turn (36 phases). Uses temporary

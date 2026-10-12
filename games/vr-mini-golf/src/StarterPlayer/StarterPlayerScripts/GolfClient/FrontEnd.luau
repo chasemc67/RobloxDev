@@ -7,9 +7,13 @@
 --   * While open, Ball.menuOpen is true: TouchControls ignores pointer input, and in VR the putter can't hit.
 --   * Close: the X in the panel's top-right corner (every page but the results). In the lobby that hands the character
 --     to GolfClient.LobbyRoam (walk/jump/camera with the default controls) until a course is picked.
---   * Reopen: the top-left "Menu" button in the Roblox top bar row or the M key (phone/desktop, stage y), the HUD
---     "Menu" button on a course, the MENU button on the VR wrist card (turn your other wrist up and
---     point at it). Clicking the left thumbstick still toggles it in VR, but nothing asks you to.
+--   * Reopen: the "Menu" button at the top RIGHT of the Roblox top bar row (stage z: Roblox's own menu covers the
+--     top left; the only Menu button, lobby and course) or the M key (phone/desktop), the MENU button on the VR wrist
+--     card (turn your other wrist up and point at it). Clicking the left thumbstick still toggles it in VR.
+--   * Stage z, one place per course (Golf.Places): in the lobby the course cards teleport to that course's place
+--     (Remotes.RequestTeleport); on a course the title has "Lobby" and the results "Back to lobby" (and a finished
+--     round goes back by itself after Config.ReturnToLobbyAfter s).
+--   * Art (stage z): Config.UI.MenuFrame (9-slice panel frame), CloseX, MenuButton.
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -22,6 +26,7 @@ local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
 local Config = require(Golf:WaitForChild("Config"))
 local Courses = require(Golf:WaitForChild("Courses"))
+local Places = require(Golf:WaitForChild("Places"))
 local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
 
 local player = Players.LocalPlayer
@@ -49,10 +54,11 @@ local C = {
 
 local HUD, Ball, VR, Explore
 local isVR = false
+local vrUser = false -- (lobby) a VR player on the flat menu: How to play opens on the VR tab
 
 local screenGui, menuButtonGui, menuButton -- phone/desktop
 local vrPart, vrGui -- VR
-local panelBg, panelWash -- the panel's own title-art background (both)
+local panelBg, panelWash, panelFrameArt -- the panel's own title-art background and 9-slice frame (both)
 local LobbyRoam
 local root, rootScale, content, toastLabel
 local page = nil -- nil when closed: "title" | "courses" | "settings" | "howto" | "results"
@@ -190,9 +196,9 @@ local function bestOf(courseId)
 	return player:GetAttribute("Best_" .. courseId)
 end
 
--- (stage x) a fresh join waits in the lobby with no course (no "Course" attribute) until one is picked here
+-- (stage z) the lobby is its own place (no ball, no "Course" attribute)
 local function inLobby()
-	return player:GetAttribute("Course") == nil
+	return Places.isLobby()
 end
 
 local function roundInProgress()
@@ -310,14 +316,26 @@ local function buildTitle()
 	button("How to play", { Name = "HowToPlay", LayoutOrder = 3, Size = UDim2.fromOffset(210, 62) }, row2, function()
 		show("howto")
 	end)
+	if not inLobby() then
+		-- (stage z) back to the lobby place
+		row2.Size = UDim2.fromOffset(860, 62)
+		for _, b in row2:GetChildren() do
+			if b:IsA("TextButton") then
+				b.Size = UDim2.fromOffset(196, 62)
+			end
+		end
+		button("Lobby", { Name = "BackToLobby", LayoutOrder = 4, Size = UDim2.fromOffset(196, 62) }, row2, function()
+			FrontEnd.backToLobby()
+		end)
+	end
 
 	local foot
 	if isVR then
 		foot = "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist or click the left stick."
 	elseif inLobby() then
-		foot = "Close (X) to walk around the lobby.  The Menu button (top left) or M brings this back."
+		foot = "Close (X) to walk around the lobby, or walk through an arch.  Menu (top right) or M brings this back."
 	else
-		foot = "The Menu button (top left) or M brings you back here."
+		foot = "The Menu button (top right) or M brings you back here."
 	end
 	label({ Text = foot, Font = BODY, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -14), Size = UDim2.fromOffset(760, 26), TextColor3 = C.cream, TextStrokeTransparency = 0.3, TextStrokeColor3 = C.navy, MaxTextSize = 20 }, content)
 end
@@ -328,10 +346,13 @@ local function startCourse(courseId)
 		Explore.setActive(false) -- (SetExplore off reaches the server before the restart)
 	end
 	FrontEnd.close()
-	if courseId and (inLobby() or courseId ~= Courses.of(player)) then
-		-- another course (stage w), or the first pick from the lobby: the server moves this player to its hole 1 with a
-		-- fresh round
-		roundFinished = false
+	if courseId and inLobby() then
+		-- (stage z) from the lobby: teleport to that course's place (PlaceTeleport; TeleportScreen shows the loading art)
+		Remotes:WaitForChild("RequestTeleport"):FireServer(courseId)
+		return
+	end
+	if courseId and courseId ~= Courses.of(player) then
+		-- another course: another place (GolfServer's SelectCourse teleports there)
 		Remotes:WaitForChild("SelectCourse"):FireServer(courseId)
 		return
 	end
@@ -353,7 +374,7 @@ local function buildCourses()
 		course = table.clone(course)
 		course.playable = playable
 		local par = parTotal(course.id)
-		local current = course.id == Courses.of(player)
+		local current = not inLobby() and course.id == Courses.of(player)
 		local card = new("Frame", { Name = course.id, LayoutOrder = i, BackgroundColor3 = C.panel, BackgroundTransparency = 0.1, Size = UDim2.fromOffset(264, 412) }, row)
 		corner(card, 18)
 		stroke(card, course.playable and C.amber or C.dim, course.playable and 3 or 2, course.playable and 0 or 0.6)
@@ -374,6 +395,10 @@ local function buildCourses()
 			local nHoles = 0
 			for _ in holeList(course.id) do
 				nHoles += 1
+			end
+			if nHoles == 0 then
+				-- (stage z) not built in this place: Config's numbers
+				nHoles, par = course.holes or 0, course.par or 0
 			end
 			label({ Text = string.format("%d holes  -  Par %d", nHoles, par), Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.cream, MaxTextSize = 20 }, card)
 			label({
@@ -521,7 +546,7 @@ local HOWTO = {
 		"Phone",
 		"Touch near the ball and pull back. Distance sets the power, sideways sets the aim. Let go to putt; slide back to the ball to cancel.\n"
 			.. "Drag anywhere else to look around, pinch to zoom.\n"
-			.. "Buttons: Reset Ball, Scorecard, Explore, Menu.\n"
+			.. "Buttons: Reset Ball, Scorecard, Explore; Menu at the top right.\n"
 			.. "Explore: thumbstick to walk, plus Sprint, Fly and Teleport buttons.",
 	},
 	{
@@ -539,7 +564,7 @@ local HOWTO_TEXT = 31
 local howtoTab: number? = nil
 
 local function defaultHowToTab(): number
-	if isVR then
+	if isVR or vrUser then
 		return 1
 	end
 	if UserInputService.TouchEnabled then -- (same test as the HUD's touch hint)
@@ -666,14 +691,29 @@ local function buildResults()
 		TweenService:Create(s, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 }):Play()
 	end
 
-	local btns = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -24), Size = UDim2.fromOffset(640, 70) }, card)
-	new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Center, Padding = UDim.new(0, 24), SortOrder = Enum.SortOrder.LayoutOrder }, btns)
-	button(isVR and "Play again  (B / Y)" or "Play again", { Name = "PlayAgain", LayoutOrder = 1, Size = UDim2.fromOffset(290, 70) }, btns, function()
+	local btns = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -24), Size = UDim2.fromOffset(840, 70) }, card)
+	new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Center, Padding = UDim.new(0, 20), SortOrder = Enum.SortOrder.LayoutOrder }, btns)
+	button(isVR and "Play again  (B / Y)" or "Play again", { Name = "PlayAgain", LayoutOrder = 1, Size = UDim2.fromOffset(266, 70) }, btns, function()
 		FrontEnd.playAgain()
 	end, "primary")
-	button("Back to menu", { Name = "BackToMenu", LayoutOrder = 2, Size = UDim2.fromOffset(290, 70) }, btns, function()
+	button("Back to lobby", { Name = "BackToLobby", LayoutOrder = 2, Size = UDim2.fromOffset(266, 70) }, btns, function()
+		FrontEnd.backToLobby()
+	end)
+	button("Menu", { Name = "BackToMenu", LayoutOrder = 3, Size = UDim2.fromOffset(200, 70) }, btns, function()
 		show("title")
 	end)
+	-- (stage z) the server takes a finished round back to the lobby after result.returnIn s unless they play again
+	if type(result.returnIn) == "number" and lastResult then
+		local countdown = label({ Name = "ReturnCountdown", Text = "", Font = BODY, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 356), Size = UDim2.fromOffset(600, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)
+		local endsAt = lastResult.at + result.returnIn
+		task.spawn(function()
+			while countdown.Parent and page == "results" and roundFinished do
+				local left = math.max(0, math.ceil(endsAt - os.clock()))
+				countdown.Text = left > 0 and string.format("Back to the lobby in %d s", left) or "Heading back to the lobby..."
+				task.wait(0.25)
+			end
+		end)
+	end
 end
 
 local BUILDERS = { title = buildTitle, courses = buildCourses, settings = buildSettings, howto = buildHowTo, results = buildResults }
@@ -685,14 +725,28 @@ show = function(name)
 	-- title art behind every page except the results (a plain navy panel on screen; nothing in VR, over the course)
 	if panelBg then
 		panelBg.ImageTransparency = results and 1 or 0
-		panelWash.BackgroundTransparency = results and 0.2 or 0.5
+		panelWash.BackgroundTransparency = panelFrameArt and (results and 0.4 or 1) or (results and 0.2 or 0.5)
 		panelBg.Visible = not (results and isVR)
+		if panelFrameArt then
+			panelFrameArt.Visible = panelBg.Visible
+		end
 	end
 	BUILDERS[name]()
 	-- (stage y) close (X): every page but the results, which have their own buttons
 	if not results then
-		local x = button("X", { Name = "CloseMenu", AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -16, 0, 14), Size = UDim2.fromOffset(60, 52), ZIndex = 5 }, content, FrontEnd.close, "danger")
-		x.TextXAlignment = Enum.TextXAlignment.Center
+		if Config.UI.CloseX ~= "" then
+			-- (stage z) close_x.png
+			local x = new("ImageButton", { Name = "CloseMenu", Image = Config.UI.CloseX, BackgroundTransparency = 1, AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -14, 0, 12), Size = UDim2.fromOffset(58, 58), ZIndex = 5 }, content)
+			x.Activated:Connect(VRPointer.bind(x, function()
+				if clickSound then
+					clickSound:Play()
+				end
+				FrontEnd.close()
+			end))
+		else
+			local x = button("X", { Name = "CloseMenu", AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -16, 0, 14), Size = UDim2.fromOffset(60, 52), ZIndex = 5 }, content, FrontEnd.close, "danger")
+			x.TextXAlignment = Enum.TextXAlignment.Center
+		end
 	end
 end
 
@@ -736,31 +790,65 @@ local function buildRoot(parent)
 	corner(panelBg, 24)
 	panelWash = new("Frame", { Name = "Wash", BackgroundColor3 = C.navy, BackgroundTransparency = 0.5, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, panelBg)
 	corner(panelWash, 24)
-	stroke(panelBg, C.amber, 3, 0.3)
+	if Config.UI.MenuFrame ~= "" then
+		-- (stage z) menu_frame.png: 1200x800 9-slice (SliceCenter 64,64,1136,736) drawn over the title art
+		panelFrameArt = new("ImageLabel", {
+			Name = "Frame",
+			BackgroundTransparency = 1,
+			Image = Config.UI.MenuFrame,
+			ScaleType = Enum.ScaleType.Slice,
+			SliceCenter = Rect.new(64, 64, 1136, 736),
+			SliceScale = 0.5,
+			Size = UDim2.fromScale(1, 1),
+			ZIndex = 0,
+		}, root)
+	else
+		stroke(panelBg, C.amber, 3, 0.3)
+	end
 end
 
--- (stage y) the top-left Menu button that reopens the menu while it's closed: in the Roblox top bar row, right of
--- its own buttons (GuiService.TopbarInset), touch-sized; under the top bar at the left edge if there's no inset
+-- The Menu button that reopens the menu while it's closed (the only one: lobby and course). Stage z: TOP RIGHT of the
+-- Roblox top bar row (Chase: Roblox's own menu covers the top left). The ScreenGui uses ScreenInsets.TopbarSafeInsets,
+-- i.e. exactly the free part of the top bar (GuiService.TopbarInset; phones: inside the safe area), and the button
+-- hugs its right edge, touch-sized. With no top bar inset it sits under the top bar at the right edge.
+local MENU_W = 128
 local function placeMenuButton()
 	local inset = GuiService.TopbarInset
+	menuButton.AnchorPoint = Vector2.new(1, 0.5)
 	if inset.Width > 0 and inset.Height > 0 then
+		pcall(function()
+			menuButtonGui.ScreenInsets = Enum.ScreenInsets.TopbarSafeInsets
+		end)
 		local h = math.max(44, inset.Height - 8)
-		menuButton.Position = UDim2.fromOffset(inset.Min.X + 8, inset.Min.Y + (inset.Height - h) / 2)
-		menuButton.Size = UDim2.fromOffset(104, h)
+		menuButton.Position = UDim2.new(1, -8, 0.5, 0)
+		menuButton.Size = UDim2.fromOffset(MENU_W, h)
 	else
-		menuButton.Position = UDim2.fromOffset(12, GuiService:GetGuiInset().Y + 8)
-		menuButton.Size = UDim2.fromOffset(104, 48)
+		pcall(function()
+			menuButtonGui.ScreenInsets = Enum.ScreenInsets.CoreUISafeInsets
+		end)
+		menuButton.Position = UDim2.new(1, -12, 0, 32)
+		menuButton.Size = UDim2.fromOffset(MENU_W, 48)
 	end
 end
 
 local function mountMenuButton(playerGui)
-	menuButtonGui = new("ScreenGui", { Name = "GolfMenuButton", ResetOnSpawn = false, IgnoreGuiInset = true, DisplayOrder = 19, Enabled = false }, playerGui)
-	pcall(function()
-		menuButtonGui.ScreenInsets = Enum.ScreenInsets.None
-	end)
-	menuButton = button("Menu", { Name = "MenuButton" }, menuButtonGui, function()
+	menuButtonGui = new("ScreenGui", { Name = "GolfMenuButton", ResetOnSpawn = false, DisplayOrder = 19, Enabled = false }, playerGui)
+	local function onClick()
 		FrontEnd.open("title")
-	end, "primary")
+	end
+	if Config.UI.MenuButton ~= "" then
+		-- menu_button.png (an amber pill with a menu icon on the left; the label is ours)
+		menuButton = new("ImageButton", { Name = "MenuButton", Image = Config.UI.MenuButton, BackgroundTransparency = 1, ScaleType = Enum.ScaleType.Stretch }, menuButtonGui)
+		label({ Name = "Label", Text = "Menu", TextColor3 = C.navy, AnchorPoint = Vector2.new(1, 0.5), Position = UDim2.new(1, -12, 0.5, 0), Size = UDim2.new(0.62, -12, 0.56, 0), TextXAlignment = Enum.TextXAlignment.Center }, menuButton)
+		menuButton.Activated:Connect(VRPointer.bind(menuButton, function()
+			if clickSound then
+				clickSound:Play()
+			end
+			onClick()
+		end))
+	else
+		menuButton = button("Menu", { Name = "MenuButton" }, menuButtonGui, onClick, "primary")
+	end
 	placeMenuButton()
 	GuiService:GetPropertyChangedSignal("TopbarInset"):Connect(placeMenuButton)
 end
@@ -860,6 +948,16 @@ function FrontEnd.close()
 	setOpen(false)
 end
 
+-- (stage z) Menu > Lobby / results > Back to lobby: PlaceTeleport sends this player to the lobby place
+function FrontEnd.backToLobby()
+	FrontEnd.close()
+	Remotes:WaitForChild("RequestTeleport"):FireServer("lobby")
+end
+
+function FrontEnd.toast(text)
+	toast(text)
+end
+
 function FrontEnd.playAgain()
 	roundFinished = false
 	Remotes.PlayAgain:FireServer()
@@ -869,13 +967,14 @@ end
 -- Remotes.CourseComplete (via HUD): scores = strokes per hole, result = GolfServer's round summary (may be nil)
 function FrontEnd.showResults(scores, result)
 	roundFinished = true
-	lastResult = { scores = type(scores) == "table" and scores or {}, result = type(result) == "table" and result or {} }
+	lastResult = { scores = type(scores) == "table" and scores or {}, result = type(result) == "table" and result or {}, at = os.clock() }
 	FrontEnd.open("results")
 end
 
 function FrontEnd.start(opts)
 	HUD, Ball, VR, Explore, LobbyRoam = opts.HUD, opts.Ball, opts.VR, opts.Explore, opts.LobbyRoam
 	isVR = opts.isVR == true
+	vrUser = opts.vrUser == true
 	local playerGui = player:WaitForChild("PlayerGui")
 	clickSound = new("Sound", { Name = "MenuClick", SoundId = "rbxasset://sounds/clickfast.wav", Volume = 0.35, SoundGroup = HUD.soundGroup("SFX") }, script)
 
@@ -938,8 +1037,11 @@ function FrontEnd.start(opts)
 	end
 
 	local skip = workspace:GetAttribute("GolfTestMode") == true or workspace:GetAttribute("SkipMenu") == true
-	if not skip then
+	if not skip and inLobby() then
 		FrontEnd.open("title")
+	else
+		-- (stage z) a course place: you picked the course in the lobby, so hole 1 starts with the menu closed
+		FrontEnd.close()
 	end
 
 	-- Studio-only hook for tools/ui_shots.py (an MCP require() gets its own copy of this module):
@@ -954,6 +1056,10 @@ function FrontEnd.start(opts)
 				FrontEnd.close()
 			elseif cmd == "results" then
 				FrontEnd.showResults(arg and arg.scores, arg and arg.result)
+			elseif cmd == "pick" then
+				startCourse(arg)
+			elseif cmd == "lobby" then
+				FrontEnd.backToLobby()
 			end
 			return { page = page, open = Ball.menuOpen == true, menuButton = menuButtonGui ~= nil and menuButtonGui.Enabled }
 		end

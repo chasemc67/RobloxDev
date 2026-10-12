@@ -1,0 +1,102 @@
+[runner] studio Lantern Grove (placeId: 91438142503824) 238e47eb-38de-400e-bcd9-af0c61094378
+[runner] mode Edit
+[runner] course arrival {"course": "lantern_grove", "ballToTee": 0.06, "hole": 1, "anchored": false, "lobby": false, "otherCourse": false} menu {"menuClosedOnArrival": true, "menuButtonTopRight": true} [{"shown": true, "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"}]
+[runner] course menu > lobby {"opened": true, "request": "MetavrseBuilder|lobby|menu|87725688219952", "loading": {"up": "lobby|rbxassetid://75624699940778", "down": "gone"}}
+[runner] course finish > lobby {"hook": "ok", "results": {"countdown": "Back to the lobby in 3 s", "page": "results", "lobbyButton": true}, "request": "MetavrseBuilder|lobby|finished|87725688219952"}
+[runner] course putt {"ok": true, "course": "lantern_grove", "strokesBefore": 0, "moved": 7.58, "strokesAfter": 1, "hole": 1}
+[runner] mode Edit
+{
+ "role": "lantern_grove",
+ "device": "desktop",
+ "course": {
+  "arrival": {
+   "course": "lantern_grove",
+   "ballToTee": 0.06,
+   "hole": 1,
+   "anchored": false,
+   "lobby": false,
+   "otherCourse": false
+  },
+  "menu": {
+   "frame": {
+    "scale": "Enum.ScaleType.Slice",
+    "image": "rbxassetid://98077960555772",
+    "slice": "64, 64, 1136, 736"
+   },
+   "menus": [
+    {
+     "shown": true,
+     "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"
+    }
+   ],
+   "menuButtonShown": true,
+   "cam": "Enum.CameraType.Scriptable",
+   "jump": 0,
+   "button": {
+    "screenRight": 821,
+    "image": "rbxassetid://128214642978551",
+    "y0": -54,
+    "y1": -4,
+    "topbar": [
+     208,
+     829,
+     58
+    ],
+    "screenTop": 4,
+    "x0": 693,
+    "x1": 821
+   },
+   "menuOpen": false,
+   "balls": 1,
+   "closeImage": "",
+   "topRight": true,
+   "course": "lantern_grove",
+   "viewport": [
+    829,
+    499
+   ],
+   "golfHud": true,
+   "walkSpeed": 0,
+   "pos": [
+    188.3000030517578,
+    26.99802589416504,
+    170
+   ]
+  },
+  "menuClosedOnArrival": true,
+  "menuButtonTopRight": true,
+  "selMenu": "MenuButton",
+  "selLobby": "BackToLobby",
+  "backToLobby": {
+   "opened": true,
+   "request": "MetavrseBuilder|lobby|menu|87725688219952",
+   "loading": {
+    "up": "lobby|rbxassetid://75624699940778",
+    "down": "gone"
+   }
+  },
+  "finish": {
+   "hook": "ok",
+   "results": {
+    "countdown": "Back to the lobby in 3 s",
+    "page": "results",
+    "lobbyButton": true
+   },
+   "request": "MetavrseBuilder|lobby|finished|87725688219952"
+  },
+  "ok": true
+ },
+ "putt": {
+  "ok": true,
+  "course": "lantern_grove",
+  "strokesBefore": 0,
+  "moved": 7.58,
+  "strokesAfter": 1,
+  "hole": 1
+ },
+ "problems": {
+  "server": [],
+  "client": []
+ }
+}
+[runner] PASS lantern_grove smoke (desktop), 0 console errors/warnings
