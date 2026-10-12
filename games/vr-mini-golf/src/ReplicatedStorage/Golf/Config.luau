@@ -137,6 +137,7 @@ return {
 		SFXVolume = 0.8,
 		Handedness = "Right", -- "Right" | "Left" (VR club hand)
 		CameraSensitivity = 1,
+		CourseMode = "Peaceful", -- "Peaceful" (balls pass through each other) | "PVP" (balls collide); BallGroups
 	},
 	CameraSensitivityRange = { 0.5, 2 },
 }

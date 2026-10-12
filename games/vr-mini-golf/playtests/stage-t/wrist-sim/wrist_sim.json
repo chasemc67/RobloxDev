@@ -1,0 +1,239 @@
+{
+ "runs": [
+  {
+   "lookFramesBy": {
+    "none": 217
+   },
+   "hides": 6,
+   "lookFrames": 217,
+   "frames": 520,
+   "events": [
+    {
+     "why": "face 0 deg, gaze 7 deg",
+     "t": 2862.0395467916387,
+     "event": "show"
+    },
+    {
+     "why": "open",
+     "t": 2862.0397430416488,
+     "event": "pose"
+    },
+    {
+     "why": "face 83 deg, gaze 87 deg",
+     "t": 2863.405987624981,
+     "event": "hide"
+    },
+    {
+     "why": "face 0 deg, gaze 7 deg",
+     "t": 2864.472682874999,
+     "event": "show"
+    },
+    {
+     "why": "open",
+     "t": 2864.4728967916453,
+     "event": "pose"
+    },
+    {
+     "why": "face 83 deg, gaze 87 deg",
+     "t": 2865.821579874988,
+     "event": "hide"
+    },
+    {
+     "why": "face 0 deg, gaze 7 deg",
+     "t": 2866.8882526666566,
+     "event": "show"
+    },
+    {
+     "why": "open",
+     "t": 2866.8884247916576,
+     "event": "pose"
+    },
+    {
+     "why": "face 83 deg, gaze 87 deg",
+     "t": 2868.2385969999887,
+     "event": "hide"
+    }
+   ],
+   "latencyMs": [
+    266,
+    282,
+    281
+   ],
+   "scenario": "watch",
+   "seconds": 8.651105708326213,
+   "shows": 3,
+   "seed": 7
+  },
+  {
+   "lookFramesBy": {
+    "none": 57
+   },
+   "hides": 1,
+   "lookFrames": 57,
+   "frames": 397,
+   "events": [
+    {
+     "why": "nearFace",
+     "t": 2870.5892397499993,
+     "event": "pose"
+    }
+   ],
+   "latencyMs": [],
+   "scenario": "glance",
+   "seconds": 6.601932041667169,
+   "shows": 0,
+   "seed": 7
+  },
+  {
+   "lookFramesBy": {
+    "swing": 491
+   },
+   "hides": 0,
+   "lookFrames": 491,
+   "frames": 829,
+   "events": [],
+   "latencyMs": [],
+   "scenario": "swings",
+   "seconds": 13.803599999984726,
+   "shows": 0,
+   "seed": 7
+  },
+  {
+   "lookFramesBy": {
+    "stance": 636
+   },
+   "hides": 0,
+   "lookFrames": 636,
+   "frames": 1072,
+   "events": [],
+   "latencyMs": [],
+   "scenario": "stance",
+   "seconds": 17.851003249990754,
+   "shows": 0,
+   "seed": 7
+  },
+  {
+   "lookFramesBy": {
+    "none": 390,
+    "swing": 58
+   },
+   "hides": 9,
+   "lookFrames": 448,
+   "frames": 1688,
+   "events": [
+    {
+     "why": "nearFace",
+     "t": 2912.18849458333,
+     "event": "pose"
+    },
+    {
+     "why": "face 63 deg, gaze 40 deg",
+     "t": 2915.289286458312,
+     "event": "show"
+    },
+    {
+     "why": "open",
+     "t": 2915.289447374991,
+     "event": "pose"
+    },
+    {
+     "why": "face 80 deg, gaze 80 deg",
+     "t": 2919.272745916649,
+     "event": "hide"
+    },
+    {
+     "why": "close",
+     "t": 2919.272930166655,
+     "event": "pose"
+    },
+    {
+     "why": "face 0 deg, gaze 48 deg",
+     "t": 2920.705330249999,
+     "event": "show"
+    },
+    {
+     "why": "swing",
+     "t": 2922.739172416652,
+     "event": "hide"
+    },
+    {
+     "why": "close",
+     "t": 2922.739344874979,
+     "event": "pose"
+    },
+    {
+     "why": "nearFace",
+     "t": 2929.939225499984,
+     "event": "pose"
+    },
+    {
+     "why": "face 0 deg, gaze 49 deg",
+     "t": 2934.2892722499964,
+     "event": "show"
+    },
+    {
+     "why": "open",
+     "t": 2934.2895174583246,
+     "event": "pose"
+    },
+    {
+     "why": "swing",
+     "t": 2935.505248624977,
+     "event": "hide"
+    }
+   ],
+   "latencyMs": [],
+   "scenario": "head",
+   "seconds": 28.13542791668442,
+   "shows": 3,
+   "seed": 7
+  }
+ ],
+ "shots": {
+  "up": {
+   "gazeDeg": 22.15628344021032,
+   "total": "E",
+   "hole": "HOLE 1",
+   "shown": true,
+   "bracer": 5,
+   "alpha": 1,
+   "faceDeg": 0,
+   "name": "Lantern Gate",
+   "par": "2",
+   "best": "-",
+   "stroke": "0"
+  },
+  "hover": {
+   "buttonText": "MENU",
+   "beam": true,
+   "modal": false,
+   "button": "WristMenu",
+   "panel": "WristFace",
+   "hand": "RightHand",
+   "pixel": [
+    296,
+    720
+   ]
+  },
+  "down_after": {
+   "gazeDeg": 75.6957700632376,
+   "total": "E",
+   "hole": "HOLE 1",
+   "shown": false,
+   "bracer": 5,
+   "alpha": 0,
+   "faceDeg": 82.84406231478668,
+   "name": "Lantern Gate",
+   "par": "2",
+   "best": "-",
+   "stroke": "0"
+  }
+ },
+ "false_shows": 0,
+ "watch_ok": false,
+ "problems": {
+  "server": [],
+  "client": []
+ },
+ "pass": false
+}

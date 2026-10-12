@@ -10,6 +10,9 @@ local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
 local Remotes = Golf:WaitForChild("Remotes")
 local PersonalBest = require(script:WaitForChild("PersonalBest"))
+-- course modes: Peaceful balls pass through each other, PVP balls collide (register before anything walks the groups)
+local BallGroups = require(Golf:WaitForChild("BallGroups"))
+BallGroups.setup()
 require(script:WaitForChild("ClubSetup")).init(Remotes)
 
 -- Remotes added with the front end (created here; clients WaitForChild them)
@@ -55,6 +58,24 @@ local colorIndex = 0
 
 local states = {} -- [Player] = state
 
+-- Every player plays the course at their own pace: no groups, shot timer, idle skip, spectating or replay vote.
+-- Sinking moves that player (only) to the next hole; a late joiner starts on hole 1 straight away.
+-- The Studio harness can add simulated players (GolfTestServer.addSimPlayer): Folders standing in for a Player,
+-- with a server-owned ball. Nothing is sent to them over the network.
+local function isReal(player)
+	return typeof(player) == "Instance" and player:IsA("Player")
+end
+
+local function sendTo(remote, player, ...)
+	if isReal(player) then
+		remote:FireClient(player, ...)
+	end
+end
+
+local function applyCourseMode(player, st)
+	st.ball.CollisionGroup = BallGroups.groupFor(player:GetAttribute("CourseMode"))
+end
+
 -- st.testHole is only set by the Studio test harness (GolfServer.GolfTestServer).
 local function holeOf(st)
 	return st.testHole or holes[st.hole]
@@ -92,7 +113,7 @@ local function placeBall(player, st, pos, reason)
 		st.resumePos = pos
 		ball.Anchored = true
 		ball.CFrame = CFrame.new(pos)
-		Remotes.BallPlaced:FireClient(player, pos, reason, st.testHole and 0 or st.hole)
+		sendTo(Remotes.BallPlaced, player, pos, reason, st.testHole and 0 or st.hole)
 		return
 	end
 	-- the owning client may still send a stale position or two from before the move (e.g. a rewind while the
@@ -103,10 +124,12 @@ local function placeBall(player, st, pos, reason)
 	ball.AssemblyAngularVelocity = Vector3.zero
 	ball.CFrame = CFrame.new(pos)
 	ball.Anchored = false
-	if player.Parent then
+	if isReal(player) and player.Parent then
 		ball:SetNetworkOwner(player)
+	else
+		ball:SetNetworkOwner(nil)
 	end
-	Remotes.BallPlaced:FireClient(player, pos, reason, st.testHole and 0 or st.hole)
+	sendTo(Remotes.BallPlaced, player, pos, reason, st.testHole and 0 or st.hole)
 end
 
 local function startHole(player, st, index)
@@ -160,7 +183,9 @@ local function finishHole(player, st, maxed)
 		st.ball.CFrame = CFrame.new(cup.Position - Vector3.new(0, Config.CupDepth - Config.BallRadius, 0))
 	end
 	publish(player, st)
-	Remotes.HoleComplete:FireAllClients(player, st.hole, strokes, hole:GetAttribute("Par"), maxed == true)
+	if isReal(player) then
+		Remotes.HoleComplete:FireAllClients(player, st.hole, strokes, hole:GetAttribute("Par"), maxed == true)
+	end
 
 	local token = {}
 	st.transitionToken = token
@@ -172,7 +197,7 @@ local function finishHole(player, st, maxed)
 			startHole(player, st, st.hole + 1)
 		else
 			st.finished = true
-			Remotes.CourseComplete:FireClient(player, st.strokes, roundResult(player, st))
+			sendTo(Remotes.CourseComplete, player, st.strokes, isReal(player) and roundResult(player, st) or nil)
 		end
 	end)
 end
@@ -196,7 +221,7 @@ end
 
 local function outOfBounds(player, st)
 	st.resetting = true
-	st.strokes[st.hole] += Config.PenaltyStrokes
+	st.strokes[st.hole] = (st.strokes[st.hole] or 0) + Config.PenaltyStrokes
 	publish(player, st)
 	-- the ball's last airborne position tells a hazard (water, rabbit hole) from a ball that escaped the course
 	local hz = hazardAt(holeOf(st), st.ball.Position)
@@ -205,7 +230,7 @@ local function outOfBounds(player, st)
 	st.oobCount = (st.oobCount or 0) + 1
 	st.ball:SetAttribute("LastOOB", (hz and ("hazard:" .. hz:GetAttribute("HazardId")) or "escape") .. "#" .. st.oobCount)
 	local text = kind == "water" and "Splash!  Water hazard  +" or (kind == "pit" and "Down the rabbit hole!  +" or "Out of bounds!  +")
-	Remotes.Notice:FireClient(player, text .. Config.PenaltyStrokes, "bad", kind)
+	sendTo(Remotes.Notice, player, text .. Config.PenaltyStrokes, "bad", kind)
 	-- spec hazard reset = 'respawn': back at a set felt point (H5: the root-bridge entry), else the stroke start
 	local respawn = hz and hz:GetAttribute("RespawnWorld")
 	task.delay(1, function()
@@ -228,12 +253,14 @@ local function setupCharacter(character)
 end
 
 local function onPlayerAdded(player)
+	local real = isReal(player)
+	local userId = real and player.UserId or player:GetAttribute("UserId")
 	colorIndex += 1
 	local ball = Golf.BallTemplate:Clone()
-	ball.Name = tostring(player.UserId)
+	ball.Name = tostring(userId)
 	ball.Color = BALL_COLORS[(colorIndex - 1) % #BALL_COLORS + 1]
-	ball:SetAttribute("OwnerId", player.UserId)
-	ball.NameTag.Label.Text = player.DisplayName
+	ball:SetAttribute("OwnerId", userId)
+	ball.NameTag.Label.Text = real and player.DisplayName or player.Name
 	ball.Trail.Color = ColorSequence.new(ball.Color)
 	ball.Anchored = true
 	ball.CFrame = CFrame.new(teePosition(holes[1]))
@@ -254,12 +281,30 @@ local function onPlayerAdded(player)
 	player:SetAttribute("Hole", 1)
 	player:SetAttribute("Strokes", 0)
 	player:SetAttribute("Scores", "[]")
+	applyCourseMode(player, states[player])
+	player:GetAttributeChangedSignal("CourseMode"):Connect(function()
+		local st = states[player]
+		if st then
+			applyCourseMode(player, st)
+		end
+	end)
 
-	player.CharacterAdded:Connect(setupCharacter)
-	if player.Character then
-		setupCharacter(player.Character)
+	if real then
+		player.CharacterAdded:Connect(setupCharacter)
+		if player.Character then
+			setupCharacter(player.Character)
+		end
+		PersonalBest.load(player)
 	end
-	PersonalBest.load(player)
+	return states[player]
+end
+
+local function removePlayer(player)
+	local st = states[player]
+	states[player] = nil
+	if st and st.ball then
+		st.ball:Destroy()
+	end
 end
 
 Players.PlayerAdded:Connect(onPlayerAdded)
@@ -268,11 +313,7 @@ for _, p in Players:GetPlayers() do
 end
 
 Players.PlayerRemoving:Connect(function(player)
-	local st = states[player]
-	states[player] = nil
-	if st and st.ball then
-		st.ball:Destroy()
-	end
+	removePlayer(player)
 	PersonalBest.unload(player)
 end)
 
@@ -286,7 +327,7 @@ SaveSettings.OnServerEvent:Connect(function(player, settings)
 	end
 end)
 
-Remotes.Ready.OnServerEvent:Connect(function(player)
+local function onReady(player)
 	local st = states[player]
 	if not st then
 		return
@@ -300,9 +341,10 @@ Remotes.Ready.OnServerEvent:Connect(function(player)
 	elseif not st.sunk then
 		placeBall(player, st, st.lastPos, "hole")
 	end
-end)
+end
+Remotes.Ready.OnServerEvent:Connect(onReady)
 
-Remotes.Stroke.OnServerEvent:Connect(function(player, startPos)
+local function onStroke(player, startPos)
 	local st = states[player]
 	if not st or not st.started or st.sunk or st.resetting or st.finished or st.exploring then
 		return
@@ -318,7 +360,8 @@ Remotes.Stroke.OnServerEvent:Connect(function(player, startPos)
 	st.lastPos = startPos
 	st.strokes[st.hole] = (st.strokes[st.hole] or 0) + 1
 	publish(player, st)
-end)
+end
+Remotes.Stroke.OnServerEvent:Connect(onStroke)
 
 Remotes.BallRest.OnServerEvent:Connect(function(player)
 	local st = states[player]
@@ -326,7 +369,7 @@ Remotes.BallRest.OnServerEvent:Connect(function(player)
 		return
 	end
 	if (st.strokes[st.hole] or 0) >= Config.MaxStrokes then
-		Remotes.Notice:FireClient(player, "Max strokes reached", "bad")
+		sendTo(Remotes.Notice, player, "Max strokes reached", "bad")
 		finishHole(player, st, true)
 	end
 end)
@@ -484,6 +527,10 @@ if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 		publish = publish,
 		placeBall = placeBall,
 		movers = Movers,
+		addPlayer = onPlayerAdded,
+		removePlayer = removePlayer,
+		onReady = onReady,
+		onStroke = onStroke,
 	})
 end
 

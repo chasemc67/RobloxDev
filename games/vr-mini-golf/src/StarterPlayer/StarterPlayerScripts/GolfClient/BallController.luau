@@ -95,6 +95,10 @@ function Ball.isOwner()
 	return Ball.ball ~= nil and Ball.ball.ReceiveAge == 0
 end
 
+-- Set every frame by the active controls (TouchControls aim camera / VRControls see-through): true while the ball is
+-- at rest and the player is aiming or lining up a swing. The occluder fade and the ball's XRay outline share it.
+Ball.seeThrough = false
+
 function Ball.canHit()
 	return Ball.state == "ready" and Ball.ball ~= nil and not Ball.ball.Anchored
 end

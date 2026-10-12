@@ -1,6 +1,8 @@
 -- XRay: keeps your ball (and the VR putter head) visible through whatever blocks them (stage p, Chase's VR playtest).
 --   * A Highlight with DepthMode AlwaysOnTop (subtle amber fill, soft white outline) on each target, shown only while
 --     a ray from the eye (VR head, or the phone/desktop camera) to it hits something. Flat-screen views fade; VR tracks occlusion immediately each frame.
+--   * The ball's outline uses the same gate as the occluder fade (Ball.seeThrough: ball at rest and the player aiming /
+--     lining up a swing), so it never shows while the ball rolls (round 7). The club outline only needs occlusion.
 --   * Works with CameraOcclusion's fade: faded parts (LocalTransparencyModifier 0.7) still count as blocking, so the
 --     outline shows through a faded rail or tunnel too.
 --   * The rays use CameraOcclusion's GolfCamera group, so walls, rails, movers, Terrain and the visible decor block;
@@ -58,6 +60,7 @@ XRay.blocked = blocked
 type Target = { get: () -> BasePart?, margin: number, hl: Highlight, on: boolean, alpha: number }
 
 local targets: { [string]: Target } = {}
+local BallRef -- BallController (for the harness' state())
 
 local function makeHighlight(name: string): Highlight
 	local h = Instance.new("Highlight")
@@ -74,6 +77,7 @@ end
 
 -- eye: () -> Vector3 (the viewpoint). clubHead: the VR putter head part, or nil (phone/desktop have no club).
 function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
+	BallRef = Ball
 	targets.ball = { get = function()
 		return Ball.ball
 	end, margin = 0.12, hl = makeHighlight("BallXRay"), on = false, alpha = 0 }
@@ -106,7 +110,7 @@ function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
 		local off = Ball.exploring and Ball.exploring()
 		for _, t in targets do
 			local part = t.get()
-			if not part or not part.Parent or off then
+			if not part or not part.Parent or off or (t == targets.ball and not Ball.seeThrough) then
 				t.on = false
 			elseif check then
 				t.on = blocked(from, part.Position, t.margin)
@@ -135,7 +139,7 @@ end
 function XRay.state()
 	local out = {}
 	for k, t in targets do
-		out[k] = { on = t.on, alpha = t.alpha }
+		out[k] = { on = t.on, alpha = t.alpha, gate = k ~= "ball" or (BallRef and BallRef.seeThrough == true) }
 	end
 	return out
 end

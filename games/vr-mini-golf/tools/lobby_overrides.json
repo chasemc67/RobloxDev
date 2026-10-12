@@ -1,0 +1,13 @@
+{
+  "_doc": "Stage t (SRV-138) fixes on top of RobloxDevBot's builder data (assets/vr-mini-golf/lobby/boardwalk/models/manifest.json instances + lobby.json). Applied by tools/lobby_to_lua.py; positions are lobby-frame studs (X east, Z south, deck top Y 0).",
+  "origin": [-110, 0, 6000],
+  "instances": {
+    "bw_windmill_blades_216": {"position": [150, 7.4, 67.45], "why": "(1) pivot is the hub: windmill (150,0.4,64) + hub (0,7,3.3) = (150,7.4,67.3); +0.15 Z so the 0.5-thick blades clear the tower face (>=0.15, measured by LobbyBuilder.MeasureClearance)"},
+    "bw_lantern_tree_canopy_236": {"position": [12, -0.1, 12], "why": "(2) mesh includes its trunks (base at local Y 0); Y 10 floated it"},
+    "leaderboard_wall": {"yaw": 90, "why": "(4) panels are on local +Z; yaw +90 turns them east"},
+    "course_board": {"position": [74, 0, 89], "faceSpawn": true, "why": "(5) Chase: ~(86,0,85) facing spawn so the arches show. (86,85) sits on the spawn->Lantern Grove arch sight line (both ~40 deg left of north) and hides it; (74,89) is the nearest spot facing spawn with every arch opening fully visible from the spawn eye (tools/lobby_to_lua.py --check-board)"},
+    "bw_string_lights_233": {"position": [165, 5.874, 145], "scale": null, "why": "(6) new 24-stud export spans the pier posts at X 153/177 unscaled; wire ends (bbox top, local Y 1.126) at the post tops Y 7.0"}
+  },
+  "noScale": {"bw_practice_green": "(3) keep the full 1.2-tall mesh (0.4 slab + 0.8 bumper); builder size lists the slab only"},
+  "_scaleRule": "only manifest 'scalable' axes are ever scaled; everything else keeps its native mesh size"
+}

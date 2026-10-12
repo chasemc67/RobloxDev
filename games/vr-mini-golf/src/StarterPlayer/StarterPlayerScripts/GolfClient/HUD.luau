@@ -359,6 +359,7 @@ end
 local WRIST_OFFSET = Vector3.new(0, -0.12, 0.33) -- controller origin -> wrist centre (3.6 cm down, 10 cm back)
 local FACE_LIFT = 0.256 -- Preserve the approved look-at-wrist gate reference point.
 local WRIST_RANGE = 4 -- studs from the eyes (1.2 m)
+local WRIST_NEAR_FACE = 2.5 -- studs (0.75 m): the off hand raised toward the face (pose log event "nearFace")
 local WRIST_FADE = 12 -- 1/s
 local WRIST_LOG_MAX = 200
 local function wristLog(kind, why)
@@ -398,13 +399,18 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 		gazeDeg = math.deg(math.acos(math.clamp(headCF.LookVector:Dot(-toEye / dist), -1, 1)))
 	end
 	wrist.faceDeg, wrist.gazeDeg = faceDeg, gazeDeg
-	if game:GetService("VRService").VREnabled and now - (wrist.poseAt or 0) >= 10 then
-		wrist.poseAt = now
-		local remote = Remotes:FindFirstChild("WristPose")
+	local headset = game:GetService("VRService").VREnabled
+	-- pose samples for tuning the thresholds (ServerScriptService.WristPoseLog): every 10 s, plus one per event
+	local function sendPose(event)
+		local remote = headset and Remotes:FindFirstChild("WristPose")
 		if remote then remote:FireServer({ faceDeg = faceDeg, gazeDeg = gazeDeg,
 			backDeg = math.deg(math.acos(math.clamp(rawBack:Dot(toEye.Unit), -1, 1))),
 			distance = dist, speed = opts.clubSpeed or 0, shown = wrist.shown == true,
-			manual = wrist.manual == true, hand = leftHand and "left" or "right" }) end
+			manual = wrist.manual == true, hand = leftHand and "left" or "right", event = event }) end
+	end
+	if headset and now - (wrist.poseAt or 0) >= 10 then
+		wrist.poseAt = now
+		sendPose(nil)
 	end
 	if (opts.clubSpeed or 0) > Config.WristMaxClubSpeed then
 		wrist.swingAt = now
@@ -449,6 +455,23 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 			end
 		end
 	end
+	-- event samples (stage t): card open/close, the X/A toggle, and the off hand held near the face while the card
+	-- stays closed (the "I looked but nothing showed" case). At most one per 1.5 s; near-face at most every 15 s.
+	local event = wrist.pendingEvent
+	wrist.pendingEvent = nil
+	if not event and wrist.prevShown ~= nil and wrist.shown ~= wrist.prevShown then
+		event = wrist.shown and "open" or "close"
+	end
+	wrist.prevShown = wrist.shown
+	if not event and not wrist.shown and not blocked and dist < WRIST_NEAR_FACE and now - (wrist.nearFaceAt or -math.huge) >= 15 then
+		event = "nearFace"
+		wrist.nearFaceAt = now
+	end
+	if event and now - (wrist.eventAt or -math.huge) >= 1.5 then
+		wrist.eventAt = now
+		wristLog("pose", event)
+		sendPose(event)
+	end
 	local target = wrist.shown and 1 or 0
 	wrist.alpha += (target - wrist.alpha) * math.min(1, dt * WRIST_FADE)
 	if math.abs(target - wrist.alpha) < 0.01 then
@@ -487,6 +510,7 @@ function HUD.toggleWrist()
 	wrist.manualDismissed = not wrist.manual
 	wrist.shown = false
 	wrist.inSince, wrist.outSince = nil, nil
+	wrist.pendingEvent = "button"
 	wristLog("toggle", wrist.manual and "controller on" or "controller off")
 end
 

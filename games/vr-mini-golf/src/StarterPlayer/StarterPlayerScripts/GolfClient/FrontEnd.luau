@@ -319,30 +319,38 @@ local function buildCourses()
 			Image = Config.UI[course.image] or "",
 			BackgroundColor3 = C.navy,
 			AutoButtonColor = course.playable,
-			Position = UDim2.fromOffset(12, 12),
-			Size = UDim2.fromOffset(240, 240),
+			Position = UDim2.fromOffset(32, 12),
+			Size = UDim2.fromOffset(200, 200),
 			ScaleType = Enum.ScaleType.Crop,
 		}, card)
 		corner(img, 14)
-		label({ Text = course.name, Position = UDim2.fromOffset(10, 262), Size = UDim2.new(1, -20, 0, 34), TextColor3 = course.playable and C.amber or C.dim }, card)
+		label({ Text = course.name, Position = UDim2.fromOffset(10, 222), Size = UDim2.new(1, -20, 0, 34), TextColor3 = course.playable and C.amber or C.dim }, card)
 		local onClick
 		if course.playable then
 			local best = bestOf(course.id)
-			label({ Text = string.format("9 holes  -  Par %d", par), Font = BODY, Position = UDim2.fromOffset(10, 300), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.cream, MaxTextSize = 20 }, card)
+			label({ Text = string.format("9 holes  -  Par %d", par), Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.cream, MaxTextSize = 20 }, card)
 			label({
 				Name = "Best",
 				Text = best and string.format("Best: %d  (%s)", best, relText(best - par)) or "No best yet",
 				Font = BODY,
-				Position = UDim2.fromOffset(10, 326),
+				Position = UDim2.fromOffset(10, 286),
 				Size = UDim2.new(1, -20, 0, 24),
 				TextColor3 = best and C.good or C.dim,
 				MaxTextSize = 20,
 			}, card)
+			-- course mode (SRV-139): Peaceful = balls pass through each other, PVP = balls bump (GolfServer/BallGroups)
+			local modeButton
+			modeButton = button("Mode: " .. settings.CourseMode, { Name = "CourseMode", Position = UDim2.fromOffset(22, 316), Size = UDim2.new(1, -44, 0, 40) }, card, function()
+				settings.CourseMode = settings.CourseMode == "PVP" and "Peaceful" or "PVP"
+				modeButton.Text = "Mode: " .. settings.CourseMode
+				toast(settings.CourseMode == "PVP" and "PVP: balls bump into each other" or "Peaceful: balls pass through each other")
+				saveSettings()
+			end)
 			onClick = startCourse
 			local playText = roundInProgress() and "Restart round" or (roundFinished and "Play again" or "Play")
-			button(playText, { Name = "PlayCourse", Position = UDim2.fromOffset(22, 356), Size = UDim2.new(1, -44, 0, 46) }, card, onClick, "primary")
+			button(playText, { Name = "PlayCourse", Position = UDim2.fromOffset(22, 362), Size = UDim2.new(1, -44, 0, 46) }, card, onClick, "primary")
 		else
-			label({ Text = "Coming soon", Font = BODY, Position = UDim2.fromOffset(10, 300), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)
+			label({ Text = "Coming soon", Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)
 			onClick = function()
 				toast(course.name .. " is coming soon!")
 			end

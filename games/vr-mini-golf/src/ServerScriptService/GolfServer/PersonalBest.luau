@@ -101,6 +101,7 @@ local function clampSettings(raw)
 	local lo, hi = Config.CameraSensitivityRange[1], Config.CameraSensitivityRange[2]
 	local cs = raw.CameraSensitivity
 	out.CameraSensitivity = type(cs) == "number" and cs == cs and math.clamp(cs, lo, hi) or d.CameraSensitivity
+	out.CourseMode = (raw.CourseMode == "PVP" or raw.CourseMode == "Peaceful") and raw.CourseMode or d.CourseMode
 	return out
 end
 

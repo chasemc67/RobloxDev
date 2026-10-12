@@ -745,6 +745,7 @@ function VR.start(Ball, HUD, simulate)
 		local focus = b and b.Position + Vector3.new(0, 0.25, 0)
 		local nearClub = b and (head.Position - b.Position).Magnitude <= Config.WristStanceRange + 1
 		local eligible = focus and Ball.canHit() and b.AssemblyLinearVelocity.Magnitude < 0.15 and not setup.active and nearClub and (focus - eye).Magnitude <= Config.VRFadeRange
+		Ball.seeThrough = eligible == true
 		if not eligible then
 			if fading then CameraOcclusion.clearFade(); fading = false end
 			return

@@ -382,6 +382,7 @@ function Touch.start(Ball, HUD)
 	RunService:BindToRenderStep("GolfCamera", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		local b = Ball.ball
 		if not b or Ball.exploring() then
+			Ball.seeThrough = false
 			CameraOcclusion.clearFade()
 			return
 		end
@@ -396,7 +397,8 @@ function Touch.start(Ball, HUD)
 		-- pass through rails, walls, props and movers (only Terrain pulls the camera in); what's in between fades
 		desired = CameraOcclusion.passThrough(focus, desired)
 		camera.CFrame = CFrame.lookAt(desired, focus)
-		if mode == "aim" and Ball.canHit() and b.AssemblyLinearVelocity.Magnitude < 0.15 then
+		Ball.seeThrough = mode == "aim" and Ball.canHit() and b.AssemblyLinearVelocity.Magnitude < 0.15
+		if Ball.seeThrough then
 			CameraOcclusion.fade(desired, focus, { player.Character })
 		else
 			CameraOcclusion.clearFade()
