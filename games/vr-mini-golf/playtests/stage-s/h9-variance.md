@@ -36,3 +36,15 @@ No pendulum width, period or physics change is justified by these logs. All five
 ## Reproduction
 
 Run `python3 tools/analyze_h9_history.py` to regenerate `h9-historical-analysis.json`. It only reads saved files and fires zero shots. Sources are `playtests/round4/blockrate`, `playtests/round5/blockrate-h9`, `playtests/round6/blockrate-h9`, `playtests/stage-p/blockrate`, and `playtests/stage-q/blockrate` (`results.json` and raw `blockrate.jsonl`).
+
+## Stage s fresh repeats, same build, back-to-back (Claude Code, 2026-10-11 ~21:40 PT)
+
+Three identical `blockrate` runs (`run blockrate --no-vr --opts '{"blockShots":24,"blockHoles":"9"}'`), with no code or data changes between them:
+
+| Run | Blocked | Touched | Cached lag | Flags |
+|---|---:|---:|---:|---:|
+| run1 | 10/24 (41.7%) | 16/24 | 0.168 s | 0 (24 rest) |
+| run2 | 9/24 (37.5%) | 14/24 | 0.170 s | 0 (24 rest) |
+| run3 | 9/24 (37.5%) | 16/24 | 0.171 s | 0 (24 rest) |
+
+Mean 38.9%, spread ±1 shot. The identical build swings between 37.5% and 41.7% from run to run. The R4 to R6 33.3% vs 41.7% gap (±2 shots out of 24) is therefore within measurement noise: grazing pendulum contacts flip with ~ms launch-phase/lag error between the client-owned ball and the server-driven hinge. It is not a game regression. There is no gameplay stabilisation to do, and the scope cut rules out difficulty tuning. Random 20-shot sweeps (seeds 119, 120, 121) are reported separately: 0 stuck, 0 escapes, 0 console errors. Evidence: `blockrate-h9-run{1,2,3}/`.

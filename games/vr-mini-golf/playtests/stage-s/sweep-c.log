@@ -1,0 +1,17 @@
+[runner] studio VR Mini Golf (placeId: 87725688219952) 927a7b2c-6aae-43ca-ae23-4b7316707f46
+[runner] mode Edit
+[runner] harness ready {'simulateVR': False, 'running': False, 'name': '', 'cam': '', 'ballState': 'ready', 'lines': 0}
+[runner] h7         cam=-        280.8s  lines=5490  
+[runner] mode Edit
+Traceback (most recent call last):
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 1067, in <module>
+    main()
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 1062, in main
+    {"list": cmd_list, "run": cmd_run, "holes": cmd_holes, "shots": cmd_shots, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 900, in cmd_holes
+    cmd_run(ns)
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 250, in cmd_run
+    res, clip = run_one(st, name, cam, out_dir, args.record, secs[name] + 2, rect)
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 215, in run_one
+    "ERROR " + result.get("error", "")[:200] if result.get("error") else ""))
+AttributeError: 'list' object has no attribute 'get'

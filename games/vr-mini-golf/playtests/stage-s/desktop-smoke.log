@@ -8,7 +8,7 @@
   "touch": false,
   "hole": 1,
   "camType": "Enum.CameraType.Scriptable",
-  "fps": 60.2,
+  "fps": 60,
   "anchored": false,
   "ball": true,
   "ballToTee": 0.06,
@@ -47,18 +47,18 @@
    "afterPutt": {
     "state": "ready",
     "strokes": 1,
-    "ballFromTee": 10.38
+    "ballFromTee": 10.53
    },
    "fallRespawnY": 26,
    "strokeRoundTrip": {
     "ok": true,
-    "ballMoved": 0,
+    "ballMoved": 0.007,
     "strokesBefore": 1,
     "strokesAfter": 1
    },
    "menuButtons": 14,
    "back": {
-    "ballMoved": 0,
+    "ballMoved": 0.007,
     "strokes": 1,
     "cam": "Enum.CameraType.Scriptable",
     "anchored": false,
@@ -85,4 +85,4 @@
   "client": []
  }
 }
-[runner] PASS stroke -> Explore -> back: strokes 1 -> 1, ball moved 0.000
+[runner] PASS stroke -> Explore -> back: strokes 1 -> 1, ball moved 0.007

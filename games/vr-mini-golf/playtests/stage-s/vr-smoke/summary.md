@@ -1,6 +1,6 @@
 # VR Mini Golf playtest summary
 
-- Run: 2026-10-11 20:28
+- Run: 2026-10-11 21:36
 - Scenarios: progress, ghost, ledge
 - Cameras: default
 - SimulateVR: True
@@ -13,7 +13,7 @@ Heights are relative to the plane the ball rests on (studs; 1 stud = 30 cm).
 |---|---|---|---|---|---|---|
 | h1-ball-at-rail | 23.999 | 0.001 | 0.001 | 0.011 | GolfWall (no) | yes |
 | h1-stance-on-rail | 23.999 | 0.001 | 0.001 | 0.011 | GolfWall (no) | yes |
-| h4-green-edge | 48.599 | 0.001 | 0.001 | 0.011 | GolfWall (no) | yes |
+| h4-green-edge | 48.592 | 0.008 | 0.008 | 0.018 | GolfWall (no) | yes |
 
 ## Club ghosting (SimulateVR)
 
@@ -22,7 +22,7 @@ Heights are relative to the plane the ball rests on (studs; 1 stud = 30 cm).
 | through-rail | 0 | 0.001 | 0 | 0 | yes | yes |
 | through-bumper | 0 | 0.001 | 0 | 0 | yes | yes |
 
-VR swing through the ball (putter face 1.2 m/s): hit=yes source=vr ball speed 6.80 studs/s (expected 6.80), outcome rest, 3.05 m. Pass: yes
+VR swing through the ball (putter face 1.2 m/s): hit=yes source=vr ball speed 6.80 studs/s (expected 6.80), outcome rest, 2.89 m. Pass: yes
 
 ## Hole-to-hole progression
 

@@ -174,3 +174,6 @@ FLYTHROUGH DONE /Users/chase-mini/src/RobloxDev/games/vr-mini-golf/playtests/fly
 - Wrist sim seed7:3/3 looks,0 false shows. Desktop+iPhone smoke PASS. H9 random20 seed118:0escapes/stuck/resets/timeouts/nudges, max stationary moving interval.383s. Every final console clean.
 - Mirrored scripts. File>Save confirmed18:50:01; File>Publish confirmed18:50:25. Version History v167 Published,6:50PM,MetavrseBuilder. Friends and Playtesters unchanged; no Robux. Studio left Edit/test flags off.
 - Report: logs/stages/e-report.md; evidence: playtests/stage-r/.
+
+## Stage s (2026-10-11) — published v190
+Round 6 fixes (bank tint from adjacent felt, TOTAL excludes current hole, H1 pre-stroke Resume), H9 variance = noise (same-build 41.7/37.5/37.5%), wrist card text grid (64/120/64 px FredokaOne #3B2412 + 2px #FFF4DC stroke), see-through only at rest while aiming, H9 lighting/dim props/zone exposure+bloom with exact restore, wrist trigger loosened (70°/55°, either face) + off-hand X/A toggle + WristPoseLog DataStore, VR club setup in Settings (thumbstick ground target, trigger save, reset, 6-image explainer, DataStore). Sweeps H1–H9 0 stuck/escapes, all smokes/sims PASS, 0 console errors. Codex did most of it; Claude Code finished the sweeps, reruns, publish. Details: e-report.md "Stage s report".

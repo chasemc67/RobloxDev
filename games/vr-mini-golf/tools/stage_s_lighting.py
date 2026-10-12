@@ -51,7 +51,7 @@ end
 local function check(name, inside, exact)
     local expectedExposure = baselineExposure - (inside and 0.3 or 0)
     local currentExposure = Lighting.ExposureCompensation
-    local pass = workspace:GetAttribute("H9LightingActive") == inside
+    local pass = (workspace:GetAttribute("H9LightingActive") == true) == inside
         and (exact and currentExposure == expectedExposure
             or not exact and math.abs(currentExposure - expectedExposure) < 1e-6)
     local row = {name = name, inside = inside, exposure = currentExposure,

@@ -63,13 +63,14 @@
           "total": "E",
           "hole": "HOLE 1",
           "shown": true,
-          "bracer": 5,
-          "alpha": 0.8318264125381976,
+          "stroke": "0",
+          "alpha": 0.8318288972678674,
           "faceDeg": 82.84377061330497,
           "name": "Lantern Gate",
+          "blocked": false,
           "par": "2",
           "best": "-",
-          "stroke": "0"
+          "bracer": 5
         },
         "ballState": "ready",
         "holed": false
@@ -87,26 +88,25 @@
           "total": "E",
           "hole": "HOLE 1",
           "shown": true,
-          "bracer": 5,
-          "alpha": 0.8348435452781389,
+          "stroke": "0",
+          "alpha": 0.9564309836159098,
           "faceDeg": 0,
           "name": "Lantern Gate",
+          "blocked": false,
           "par": "2",
           "best": "-",
-          "stroke": "0"
+          "bracer": 5
         },
         "ballState": "ready",
         "holed": false
       }
     },
+    "button_dismiss_rearm": {
+      "pass": true
+    },
     "text": {
-      "pass": false,
-      "failures": [
-        "par",
-        "stroke",
-        "total",
-        "best"
-      ],
+      "pass": true,
+      "failures": [],
       "geometry": {
         "face": "Top",
         "canvas": [
@@ -190,25 +190,25 @@
             "color": "3b2412",
             "text": "2",
             "extent": [
-              308,
-              140
+              256,
+              116
             ],
             "scaled": false,
             "font": "FredokaOne",
             "name": "par",
             "position": [
-              640,
-              84
+              0,
+              0
             ],
             "button": false,
             "fits": true,
             "strokes": [
               {
-                "thickness": 2,
+                "thickness": 2.000000031789142,
                 "color": "fff4dc"
               }
             ],
-            "size": 100
+            "size": 120.00000476837158
           },
           {
             "color": "3b2412",
@@ -238,25 +238,25 @@
             "color": "3b2412",
             "text": "0",
             "extent": [
-              308,
-              140
+              256,
+              116
             ],
             "scaled": false,
             "font": "FredokaOne",
             "name": "stroke",
             "position": [
-              640,
-              224
+              0,
+              0
             ],
             "button": false,
             "fits": true,
             "strokes": [
               {
-                "thickness": 2,
+                "thickness": 2.000000031789142,
                 "color": "fff4dc"
               }
             ],
-            "size": 100
+            "size": 120.00000476837158
           },
           {
             "color": "3b2412",
@@ -286,25 +286,25 @@
             "color": "3b2412",
             "text": "E",
             "extent": [
-              308,
-              140
+              256,
+              116
             ],
             "scaled": false,
             "font": "FredokaOne",
             "name": "total",
             "position": [
-              640,
-              364
+              0,
+              0
             ],
             "button": false,
             "fits": true,
             "strokes": [
               {
-                "thickness": 2,
+                "thickness": 2.000000031789142,
                 "color": "fff4dc"
               }
             ],
-            "size": 100
+            "size": 120.00000476837158
           },
           {
             "color": "3b2412",
@@ -334,25 +334,25 @@
             "color": "3b2412",
             "text": "-",
             "extent": [
-              308,
-              140
+              256,
+              116
             ],
             "scaled": false,
             "font": "FredokaOne",
             "name": "best",
             "position": [
-              640,
-              504
+              0,
+              0
             ],
             "button": false,
             "fits": true,
             "strokes": [
               {
-                "thickness": 2,
+                "thickness": 2.000000031789142,
                 "color": "fff4dc"
               }
             ],
-            "size": 100
+            "size": 120.00000476837158
           },
           {
             "color": "3b2412",
@@ -431,20 +431,21 @@
           "total": "E",
           "hole": "HOLE 1",
           "shown": false,
-          "bracer": 5,
+          "stroke": "1",
           "alpha": 0,
           "faceDeg": 82.84406231478668,
           "name": "Lantern Gate",
+          "blocked": false,
           "par": "2",
           "best": "-",
-          "stroke": "1"
+          "bracer": 5
         },
         "ballState": "moving",
         "holed": false
       }
     }
   },
-  "pass": false,
+  "pass": true,
   "problems": {
     "server": [],
     "client": []

@@ -571,3 +571,59 @@ Stage p had already done item 8: wrist card art and text zones, pointer dot/beam
 | Mirror src/, append progress.md, commit + push | Complete: scripts mirrored, progress/report/evidence committed as `a7db94b`, pushed to `origin/main` |
 
 **Remaining limitation:** the supplied FBX had not received the promised revised face. Its in-Studio fit is complete and verified, but the upstream source asset remains stale. No other requested issue remains open from the final simulations.
+
+
+# Stage s report (2026-10-11): Round 6 fixes, wrist text, see-through, H9 lighting, wrist trigger, VR club setup
+
+**LIVE_VERSION=v190.** Saved to Roblox at 21:41:54 PT and published at 21:42:05 PT (Studio log: "Saved new changes…" / "Published new changes…"; Studio: "Place published. Friends and playtesters can now play this place in Roblox."). File > Version History lists **v190, October 11, 2026, 9:41 PM** as the newest version. Studio is back in Edit mode and `src/` mirrors Studio exactly. Audience is unchanged and no Robux was spent. Codex did most of the stage. Codex hit its usage limit at 20:43 and Claude Code finished the rest: H7–H9 sweeps, pushing the last two source fixes, reruns, publish and this report. Save/publish went through `tools/codex_ui.sh`; log in `logs/publish-s.log`.
+
+| Item | Result |
+|---|---|
+| 0 Bracer | Done. Studio no longer had a placeholder, but the refreshed `vr_wrist_bracer.fbx` was measured (WristFace 0.37 × 0.28), reimported through the 3D Importer and installed with `tools/prepare_wrist_bracer.luau`. 5 MeshParts, Massless, CanCollide/CanQuery/CanTouch off. SurfaceGui Face=Top, CanvasSize 1024×784, face 0.37 × 0.28328 (exact canvas aspect, so no squash or crop). The upstream FBX is now correct, which clears the Stage r stale-asset limitation. |
+| 1a Bank tint | Done. CourseBuilder now finds the nearest playable felt next to the bank's low edge and multiplies that felt's colour by 0.85 (no longer the cup green). It records `AdjacentFeltPiece`/`AdjacentFeltColor` on each bank. Checked after regenerating: 5 banks at 0.837–0.845 of their neighbour (8-bit rounding of 0.85). Still data-driven through `holes_to_lua.py --push --build`. |
+| 1b Wrist TOTAL | Done. TOTAL skips the current hole until it is holed. `stage_s_checks.py` fires a real seeded first stroke on H1 and confirms TOTAL stays `E`. |
+| 1c MENU > Resume on H1 tee before stroke 1 | Done. FrontEnd treats "H1 ball present" as an active round. The regression opens wrist MENU and then Resume with the simulated controller ray at 0 strokes: PASS. |
+| 1d H9 variance | **Cause: measurement noise, not a game regression.** Three back-to-back `blockrate` runs on the same build, with no changes between them, gave **10/24 (41.7%), 9/24 (37.5%), 9/24 (37.5%)**: mean 38.9%, ±1 shot, 0 flags, all at rest, 0 console errors. Historical: R4 8/24, R5 10/24, R6 8/24, p 19/48, q 18/48, with identical physics/Config headers. The harness has no random seed; it uses fixed phases. The R5→R6 change came from 4 grazing pendulum contacts flipping their crossing result (net −2). That happens because the client-owned ball meets a server-driven hinge with a few ms of launch-phase/lag error (cached lag 0.164–0.174 s). The same build swings by as much as the reported gap, so there is nothing to stabilise. Difficulty tuning is outside the scope cut. Details: `playtests/stage-s/h9-variance.md`, `blockrate-h9-run{1,2,3}/`. |
+| 2 Wrist card text | Done. 4-row icon / label / number grid in 3 columns. Labels 64 px, numbers 120 px, buttons 64 px, hole name 56 px. FredokaOne, #3B2412, UIStroke 2 px #FFF4DC, TextScaled off. Roblox clamps TextSize at 100, so the numbers use TextSize 100 inside a fixed UIScale 1.2, giving 120 canvas px. Regression PASS (font, colour, stroke, TextScaled, TextFits, bounds). Screenshots in `playtests/stage-s/wrist-regression/` (`wrist_card_zoom.png`, `palm_up.png`). |
+| 3 See-through | Done. Flat: occluders fade only while aiming and `Ball.canHit()` is true. VR: only with a resting, hittable ball, the club nearby, and club setup closed. The fade clears immediately when any condition fails (rolling, sunk). The fade-gate fixture checks rest, rolling and sunk: PASS. H6 XRay over 603 frames: 0 misses, 0 false shows. |
+| 4 H9 lighting | Done. Covers all 20 Hole9 PointLights: brightness ×0.6, range ×0.75, #FFB25C, shadows only on the 3 amber hero lanterns. All 14 `*_h9dim` FBXs were imported and swapped in (bounds identical, 0 unknown meshes). Neon colours: Glow #B37D32, Firefly #97B24A at glow 4.2, ShroomGlow #599F92 at glow 3.5. That is 13 SurfaceAppearances with a white emissive mask (asset 123838752967413); no errors. New `H9Lighting` client module: on entry it captures the current values and applies ExposureCompensation −0.3 (relative) and every Bloom ×0.5; on exit, stop, or a missing position it restores the exact values. `tools/stage_s_lighting.py` passes 8/8 cases with exact restore (including re-entry after a baseline change and no compounding). |
+| 5 Wrist trigger | Done. Either face counts (closest normal, so palm-up or back-of-wrist). Thresholds loosened from 32° face / 25° gaze to **70° face / 55° gaze**. **Non-club-hand button toggles the card regardless of pose: X when the club is in the right hand, A when it is in the left.** A toggle also dismisses an auto-shown card, and the card stays hidden until the wrist is lowered. It stays hidden during swings (swing gate kept). wrist_sim seed 7: 3/3 shows and hides, 264–282 ms, 0 false shows across glances, swings and stance. The looser thresholds now intentionally show on 3 deliberate head-motion looks. |
+| 5 Pose logging | Done. On a real headset only (not Studio), the client sends one sample every ~10 s. The server (`ServerScriptService.WristPoseLog`) keeps a rolling 120 samples per user and writes at most once a minute, plus on leave and on shutdown. See "Reading wrist pose logs" below. |
+| 6 VR club setup | Done. The A angle-refit and X hand-swap buttons are removed; the club hand is chosen only in Settings. **Settings > Club setup**: stand like putting, either thumbstick nudges the ground marker for the club head, the game solves the grip angle and length offset, the club-hand trigger saves (per hand, DataStore `VRMiniGolf_ClubSetup_v1`, key `u_<UserId>`, server-validated UpdateAsync), B/Y resets to default, Menu cancels. **Settings > Reset fit** is also available. Swings and movement are suppressed during setup. The explainer uses all 6 uploaded store/ui/club-setup images (IDs in Config and `tools/stage_s_assets.json`) on a world-space card above the view. `tools/club_setup_sim.py` drives the real Settings > Club setup buttons with the simulated controller, then tests fit, save, server round-trip, reset in setup and reset from Settings: PASS. Screenshots: `playtests/stage-s/club-setup/`. The Notion page couldn't be opened from the tools, so I built it from the spec in the stage brief. |
+
+**Tests (final build v190; reruns after the last pushes are marked †):**
+
+| Test | Result |
+|---|---|
+| Random sweeps, 20 shots/hole, seed 119 (H1–H8) + 119/120/121 (H9) | 0 stuck, 0 escapes, 0 auto-resets, 0 timeouts on every hole; longest still-while-moving 0.40 s. H8: 1 pin nudge (the 1.5 s unstick, not a >3 s stall). H2: 1 seam-unstuck nudge. H5: 6 hazards, H6/H7: 1 hazard (normal water). Console 0 everywhere logged (H7's console summary was lost when the harness crashed starting H8, a "busy" start race. H8 was rerun cleanly.) |
+| Wrist regression† (`stage_s_checks.py`) | PASS: H1 Resume, TOTAL, off-hand toggle, palm-up, text minimums, fade gate; consoles 0 |
+| Club setup sim† | PASS; explainer visible; consoles 0 |
+| H9 lighting† | PASS 8/8 |
+| VR smoke† (progress, ghost, ledge) | 9/9 holes + final card, VR swing 6.80/6.80 studs/s, ghosting and ledge 3/3; consoles 0 |
+| Wrist sim† seed 7 | PASS, 0 false shows |
+| XRay H6 (`stage_r_xray.py`) | PASS 603 frames, 0 misses / 0 false shows (not rerun; XRay/occlusion code unchanged since) |
+| Desktop† / iPhone 17 Pro† smoke | PASS / PASS: stroke → Explore → back, strokes 1→1, drift ≤ 0.007; consoles 0 |
+
+**Reading wrist pose logs.** DataStore `WristPoseLog`, key `u_<UserId>`, value `{version=1, updated=<unix>, samples={…up to 120}}`. Each sample is `{t, face, back, gaze, distance, speed, shown, manual, hand, hole, job}`:
+- `face` / `back`: angle in degrees between the head direction and the palm / back-of-wrist normal.
+- `gaze`: angle between the view ray and the wrist.
+- `distance`: head-to-wrist distance in studs.
+- `speed`: hand speed.
+- `shown`: the card was visible.
+- `manual`: opened by the button.
+
+Studio API access is on, so paste this into the Studio command bar (Edit mode):
+```lua
+local s = game:GetService("DataStoreService"):GetDataStore("WristPoseLog")
+local keys = s:ListKeysAsync():GetCurrentPage()
+for _, k in keys do print(k.KeyName) end
+local d = s:GetAsync("u_<ChaseUserId>")
+print(game:GetService("HttpService"):JSONEncode(d))
+```
+Compare `face`/`gaze` on samples where the wrist was deliberately raised against the current thresholds of 70° and 55°. Nothing is logged from Studio sessions; play on the headset in the live game first.
+
+**Not done / caveats.**
+- The new thresholds and the off-hand button need a headset check. The simulations pass, but the original bug only showed on real hardware; the pose log is there to tune from.
+- `game.PlaceVersion` in the open Edit session still reports 175, the value loaded at startup. v190 comes from Version History.
+- The Notion club-setup page was unreachable, so the implementation follows the stage brief.
+- Test-side fix: `tools/stage_s_lighting.py` treated the unset `H9LightingActive` attribute (nil) as a mismatch. It now compares against `== true`; the game code is unchanged.

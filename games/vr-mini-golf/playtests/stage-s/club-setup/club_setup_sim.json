@@ -1,42 +1,204 @@
 {
+  "ui_steps": [
+    {
+      "button": "Settings",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Settings",
+        "beam": true,
+        "modal": true,
+        "button": "Settings",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          539,
+          603
+        ]
+      },
+      "page": "settings",
+      "pass": true
+    },
+    {
+      "button": "ClubSetup",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Set up",
+        "beam": true,
+        "modal": true,
+        "button": "ClubSetup",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          925,
+          736
+        ]
+      },
+      "page": null,
+      "pass": true
+    },
+    {
+      "button": "Settings",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Settings",
+        "beam": true,
+        "modal": true,
+        "button": "Settings",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          539,
+          603
+        ]
+      },
+      "page": "settings",
+      "pass": true
+    },
+    {
+      "button": "ResetClubSetup",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Reset fit",
+        "beam": true,
+        "modal": true,
+        "button": "ResetClubSetup",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          1190,
+          736
+        ]
+      },
+      "page": "settings",
+      "pass": true
+    }
+  ],
+  "settings_entry": {
+    "pass": true,
+    "state": {
+      "fit": {
+        "length": 2.62467360496521,
+        "angles": [
+          -0.11985261738300323,
+          0,
+          0
+        ]
+      },
+      "active": true,
+      "target": [
+        188.7999725341797,
+        24.065000534057617,
+        170.60000610351562
+      ],
+      "hand": "RightHand",
+      "saving": false
+    }
+  },
+  "explainer": {
+    "visible": true,
+    "enabled": true,
+    "canvas": [
+      1024,
+      784
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "image": "rbxassetid://71799829989383",
+        "name": "InstructionsBackground"
+      },
+      {
+        "loaded": true,
+        "image": "rbxassetid://122984304115771",
+        "name": "step1_stance"
+      },
+      {
+        "loaded": true,
+        "image": "rbxassetid://110561580015778",
+        "name": "step2_stick"
+      },
+      {
+        "loaded": true,
+        "image": "rbxassetid://124290294292343",
+        "name": "step3_trigger"
+      }
+    ],
+    "adornee": true,
+    "face": "Front",
+    "screen": [
+      432.3152770996094,
+      169.32696533203125,
+      4
+    ],
+    "texts": [
+      {
+        "text": "STAND LIKE YOU'RE\nPUTTING",
+        "name": "Step1",
+        "fits": true
+      },
+      {
+        "text": "NUDGE THE HEAD\nWITH EITHER STICK",
+        "name": "Step2",
+        "fits": true
+      },
+      {
+        "text": "PULL CLUB TRIGGER\nTO SAVE",
+        "name": "Step3",
+        "fits": true
+      },
+      {
+        "text": "B / Y: reset default     Menu: cancel",
+        "name": "TextLabel",
+        "fits": true
+      }
+    ]
+  },
   "fit_test": {
     "solveError": 0,
     "noButtonHandChange": true,
     "saved": true,
     "fit": {
-      "length": 2.501640796661377,
+      "length": 2.641204833984375,
       "angles": [
-        0.06749965250492096,
-        -0.058967672288417816,
-        -0.0031589132267981768
+        -0.05557137355208397,
+        -0.06867178529500961,
+        0.004719355143606663
       ]
     },
     "pass": true,
-    "targetMoved": 0.16445690393447876
+    "targetMoved": 0.1641746163368225
   },
   "server_roundtrip": {
     "ok": true,
     "fits": {
       "RightHand": {
         "angles": [
-          0.06749965250492096,
-          -0.058967672288417816,
-          -0.0031589132267981768
+          -0.05557137355208397,
+          -0.06867178529500961,
+          0.004719355143606663
         ],
-        "length": 2.501640796661377
+        "length": 2.641204833984375
       }
     },
     "sessionOnly": true
   },
   "reset": {
     "target": [
-      190.37351989746094,
+      188.96896362304688,
       24.065000534057617,
-      170.24710083007812
+      170.7809600830078
     ],
     "saving": false,
     "hand": "RightHand",
     "active": false
+  },
+  "reset_server_roundtrip": {
+    "ok": true,
+    "fits": [],
+    "sessionOnly": true
+  },
+  "reset_via_settings": {
+    "pass": true
   },
   "problems": {
     "server": [],
