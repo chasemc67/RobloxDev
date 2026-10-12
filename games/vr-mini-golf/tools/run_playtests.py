@@ -6,7 +6,7 @@
                                 [--opts '{"fuzz":12,"sweep":6,"hioTries":9,"parts":"routes,hio,banks,sweep,fuzz"}']
   python3 run_playtests.py holes [N ...] [--opts ...] [--out DIR]   per-hole suites h1..h9 + h7pin, h8door, movers
   python3 run_playtests.py shots [--out DIR] [--holes 1,2,..]       overview.png, holeNN.png, topdown/follow per hole
-  python3 run_playtests.py smoke                  normal (non-test) solo playtest: lobby spawn + course picks, errors/warnings + HUD check
+  python3 run_playtests.py smoke                  normal (non-test) solo playtest: lobby spawn, menu close/walk/reopen, course picks, errors/warnings + HUD check
   python3 run_playtests.py export                 mirror every Studio script into games/vr-mini-golf/src/
   python3 run_playtests.py push FILE [FILE ...]   copy local src/ files into Studio (Edit) - dev convenience
   python3 run_playtests.py compare BEFORE_DIR AFTER_DIR   before/after table of the key numbers
@@ -708,11 +708,79 @@ return game:GetService('HttpService'):JSONEncode({course = me:GetAttribute('Cour
   ballAnchored = ball.Anchored, ballVisible = ball.Transparency == 0, menuPage = me.PlayerScripts.GolfMenuDebug:Invoke('state').page})"""
 
 
+# (stage y) The join menu is a window (~60% of the screen, no full-screen backdrop) with a close X. Closing it in the
+# lobby hands the character to the default controls: real W key presses must walk it more than 5 studs, ball still
+# hidden. The top-left Menu button and the M key bring it back.
+PANEL_STATE = """local me = game:GetService('Players').LocalPlayer
+local gui = me.PlayerGui
+local root = gui.GolfMenu.Root
+local vp = workspace.CurrentCamera.ViewportSize
+local x = gui.GolfMenu:FindFirstChild('CloseMenu', true)
+return game:GetService('HttpService'):JSONEncode({w = math.floor(root.AbsoluteSize.X / vp.X * 100) / 100, h = math.floor(root.AbsoluteSize.Y / vp.Y * 100) / 100,
+  viewport = tostring(vp), backdrop = gui:FindFirstChild('GolfMenuBg') ~= nil, closeButton = x ~= nil and x.Visible})"""
+
+SELECT = """local me = game:GetService('Players').LocalPlayer
+local GuiService = game:GetService('GuiService')
+GuiService.SelectedObject = %s
+task.wait(0.2)
+return tostring(GuiService.SelectedObject)"""
+
+ROAM_STATE = """local me = game:GetService('Players').LocalPlayer
+local GuiService = game:GetService('GuiService')
+GuiService.SelectedObject = nil
+task.wait(0.5)
+local hum = me.Character.Humanoid
+local hrp = me.Character.HumanoidRootPart
+local ball = workspace.Balls:FindFirstChild(tostring(me.UserId))
+local menu = me.PlayerScripts.GolfMenuDebug:Invoke('state')
+local hud = me.PlayerGui:FindFirstChild('GolfHUD')
+return game:GetService('HttpService'):JSONEncode({menuOpen = menu.open, menuPage = menu.page, menuButton = menu.menuButton,
+  cam = tostring(workspace.CurrentCamera.CameraType), walkSpeed = hum.WalkSpeed, jump = hum.UseJumpPower and hum.JumpPower or hum.JumpHeight,
+  anchored = hrp.Anchored, pos = {hrp.Position.X, hrp.Position.Y, hrp.Position.Z}, ballHidden = ball ~= nil and ball.Transparency == 1,
+  golfHud = hud ~= nil and hud.Enabled, course = me:GetAttribute('Course')})"""
+
+
+def key(st, *actions):
+    st.call("user_keyboard_input", {"actions": list(actions), "datamodel_type": "Client"})
+
+
+def smoke_lobby_roam(st):
+    r = {"panel": json.loads(st.luau(PANEL_STATE, "Client"))}
+    p = r["panel"]
+    ok = 0.35 <= p["w"] <= 0.95 and 0.35 <= p["h"] <= 0.95 and not p["backdrop"] and p["closeButton"]
+    # close with the real X button
+    r["selClose"] = st.luau(SELECT % "me.PlayerGui.GolfMenu:FindFirstChild('CloseMenu', true)", "Client")
+    key(st, {"action": "keyPress", "key_code": "Return"})
+    c = r["closed"] = json.loads(st.luau(ROAM_STATE, "Client"))
+    ok = ok and not c["menuOpen"] and c["menuButton"] and c["cam"] == "Enum.CameraType.Custom" and c["walkSpeed"] > 0 \
+        and c["jump"] > 0 and not c["anchored"] and c["ballHidden"] and not c.get("golfHud") and c.get("course") is None
+    # walk with the default controls (W held 2 s)
+    key(st, {"action": "keyDown", "key_code": "W"}, {"action": "wait", "wait_time_ms": 2000}, {"action": "keyUp", "key_code": "W"})
+    m = r["walked"] = json.loads(st.luau(ROAM_STATE, "Client"))
+    r["moved"] = round(((m["pos"][0] - c["pos"][0]) ** 2 + (m["pos"][2] - c["pos"][2]) ** 2) ** 0.5, 2)
+    ok = ok and r["moved"] > 5
+    # reopen with the top-left Menu button, then M closes and M reopens
+    r["selMenu"] = st.luau(SELECT % "me.PlayerGui.GolfMenuButton.MenuButton", "Client")
+    key(st, {"action": "keyPress", "key_code": "Return"})
+    o = r["reopened"] = json.loads(st.luau(ROAM_STATE, "Client"))
+    ok = ok and o["menuOpen"] and o["menuPage"] == "title" and not o["menuButton"] and o["walkSpeed"] == 0
+    key(st, {"action": "keyPress", "key_code": "M"})
+    r["mClosed"] = not json.loads(st.luau(ROAM_STATE, "Client"))["menuOpen"]
+    key(st, {"action": "keyPress", "key_code": "M"})
+    mo = json.loads(st.luau(ROAM_STATE, "Client"))
+    r["mReopened"] = mo["menuOpen"] and mo["menuPage"] == "title"
+    r["ok"] = bool(ok and r["mClosed"] and r["mReopened"])
+    log("lobby roam", json.dumps(r))
+    return r
+
+
 def smoke_lobby(st):
     out = {"join": json.loads(st.luau(LOBBY_STATE, "Client"))}
     j = out["join"]
     ok = (j.get("inLobby") and j.get("course") is None and j.get("ballInLobby") and j.get("ballAnchored")
           and j.get("menuOpen") and j.get("menuPage") == "title" and not j.get("resumeButton"))
+    out["roam"] = smoke_lobby_roam(st)
+    ok = ok and out["roam"]["ok"]
     out["picks"] = []
     # from the lobby: Lantern Grove; then Sugarloaf Canyon; then back to Lantern Grove (for the rest of the smoke run)
     for course, folder in (("lantern_grove", "Course"), ("sugarloaf_canyon", "CourseSugarloaf"), ("lantern_grove", "Course")):
@@ -850,6 +918,9 @@ return game:GetService('HttpService'):JSONEncode({hud = gui ~= nil, texts = text
     if not lobby.get("ok"):
         log("FAIL lobby spawn / course pick:", json.dumps(lobby))
         sys.exit(1)
+    rm = lobby["roam"]
+    log("PASS lobby menu window %.2fx%.2f of the screen, X closes, walked %.1f studs, Menu button + M reopen" % (
+        rm["panel"]["w"], rm["panel"]["h"], rm["moved"]))
     log("PASS lobby spawn: in lobby, no course, menu on title; picks -> " + ", ".join(
         "%s H1 (ball %.2f, char %.2f)" % (p["course"], p["ballToTee"], p["charToTee"]) for p in lobby["picks"]))
     errors = [m for v in problems.values() if isinstance(v, list) for m in v if str(m).startswith("ERROR")]

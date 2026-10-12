@@ -1,17 +1,21 @@
 -- FrontEnd: title screen, course picker, settings, how to play and the end-of-round results.
 --   * The round is already set up behind it (the server starts hole 1 on Remotes.Ready); the menu is an overlay.
---   * Built once per page into a fixed 900x520 design frame, mounted in a ScreenGui (phone/desktop, scaled to the
---     safe area) or a SurfaceGui on a floating panel in front of your head (VR: GolfClient.VRPointer's laser from
+--   * Built once per page into a fixed 900x520 design frame, mounted in a ScreenGui (phone/desktop: a centred window
+--     about 60% of the screen, so the 3D lobby/course stays visible around it; no full-screen backdrop) or a SurfaceGui on a floating panel in front of your head (VR: GolfClient.VRPointer's laser from
 --     either controller, trigger = click).
 --   * Not shown at startup when workspace GolfTestMode or SkipMenu is true (Studio harness / smoke runs).
 --   * While open, Ball.menuOpen is true: TouchControls ignores pointer input, and in VR the putter can't hit.
---   * Reopen: HUD "Menu" button (phone/desktop), the MENU button on the VR wrist card (turn your other wrist up and
+--   * Close: the X in the panel's top-right corner (every page but the results). In the lobby that hands the character
+--     to GolfClient.LobbyRoam (walk/jump/camera with the default controls) until a course is picked.
+--   * Reopen: the top-left "Menu" button in the Roblox top bar row or the M key (phone/desktop, stage y), the HUD
+--     "Menu" button on a course, the MENU button on the VR wrist card (turn your other wrist up and
 --     point at it). Clicking the left thumbstick still toggles it in VR, but nothing asks you to.
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
+local GuiService = game:GetService("GuiService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
@@ -46,8 +50,10 @@ local C = {
 local HUD, Ball, VR, Explore
 local isVR = false
 
-local screenGui, bgGui, bgImage, bgDim -- phone/desktop
-local vrPart, vrGui, vrBg -- VR
+local screenGui, menuButtonGui, menuButton -- phone/desktop
+local vrPart, vrGui -- VR
+local panelBg, panelWash -- the panel's own title-art background (both)
+local LobbyRoam
 local root, rootScale, content, toastLabel
 local page = nil -- nil when closed: "title" | "courses" | "settings" | "howto" | "results"
 local roundFinished = false
@@ -305,8 +311,14 @@ local function buildTitle()
 		show("howto")
 	end)
 
-	local foot = isVR and "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist."
-		or "The Menu button (top right) brings you back here."
+	local foot
+	if isVR then
+		foot = "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist or click the left stick."
+	elseif inLobby() then
+		foot = "Close (X) to walk around the lobby.  The Menu button (top left) or M brings this back."
+	else
+		foot = "The Menu button (top left) or M brings you back here."
+	end
 	label({ Text = foot, Font = BODY, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -14), Size = UDim2.fromOffset(760, 26), TextColor3 = C.cream, TextStrokeTransparency = 0.3, TextStrokeColor3 = C.navy, MaxTextSize = 20 }, content)
 end
 
@@ -670,15 +682,18 @@ show = function(name)
 	page = name
 	clear()
 	local results = name == "results"
-	-- title art behind every page except the results (shown over the course)
-	if bgImage then
-		bgImage.Visible = not results
-		bgDim.BackgroundTransparency = results and 0.45 or 0.55
-	end
-	if vrBg then
-		vrBg.Visible = not results
+	-- title art behind every page except the results (a plain navy panel on screen; nothing in VR, over the course)
+	if panelBg then
+		panelBg.ImageTransparency = results and 1 or 0
+		panelWash.BackgroundTransparency = results and 0.2 or 0.5
+		panelBg.Visible = not (results and isVR)
 	end
 	BUILDERS[name]()
+	-- (stage y) close (X): every page but the results, which have their own buttons
+	if not results then
+		local x = button("X", { Name = "CloseMenu", AnchorPoint = Vector2.new(1, 0), Position = UDim2.new(1, -16, 0, 14), Size = UDim2.fromOffset(60, 52), ZIndex = 5 }, content, FrontEnd.close, "danger")
+		x.TextXAlignment = Enum.TextXAlignment.Center
+	end
 end
 
 ---------------------------------------------------------------------------- mounting
@@ -690,7 +705,10 @@ local function rescaleScreen()
 	if size.X < 1 or size.Y < 1 then
 		return
 	end
-	rootScale.Scale = math.clamp(math.min((size.X - 16) / W, (size.Y - 12) / H), 0.4, 1.6)
+	-- (stage y) a window about 60% of the screen; on short (phone landscape) screens most of the height, so the
+	-- buttons stay finger-sized, which still leaves the lobby showing at the sides
+	local frac = size.Y < 400 and 0.92 or 0.62
+	rootScale.Scale = math.clamp(math.min(size.X * frac / W, size.Y * frac / H), 0.4, 1.6)
 end
 
 local function buildRoot(parent)
@@ -713,18 +731,42 @@ local function buildRoot(parent)
 	}, root)
 	corner(toastLabel, 14)
 	new("UIPadding", { PaddingTop = UDim.new(0, 8), PaddingBottom = UDim.new(0, 8) }, toastLabel)
+	-- the panel's own background: title art under a navy wash, rounded, amber rim
+	panelBg = new("ImageLabel", { Name = "Background", BackgroundColor3 = C.navy, BorderSizePixel = 0, Image = Config.UI.TitleBackground, ScaleType = Enum.ScaleType.Crop, Size = UDim2.fromScale(1, 1), ZIndex = 0 }, root)
+	corner(panelBg, 24)
+	panelWash = new("Frame", { Name = "Wash", BackgroundColor3 = C.navy, BackgroundTransparency = 0.5, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, panelBg)
+	corner(panelWash, 24)
+	stroke(panelBg, C.amber, 3, 0.3)
+end
+
+-- (stage y) the top-left Menu button that reopens the menu while it's closed: in the Roblox top bar row, right of
+-- its own buttons (GuiService.TopbarInset), touch-sized; under the top bar at the left edge if there's no inset
+local function placeMenuButton()
+	local inset = GuiService.TopbarInset
+	if inset.Width > 0 and inset.Height > 0 then
+		local h = math.max(44, inset.Height - 8)
+		menuButton.Position = UDim2.fromOffset(inset.Min.X + 8, inset.Min.Y + (inset.Height - h) / 2)
+		menuButton.Size = UDim2.fromOffset(104, h)
+	else
+		menuButton.Position = UDim2.fromOffset(12, GuiService:GetGuiInset().Y + 8)
+		menuButton.Size = UDim2.fromOffset(104, 48)
+	end
+end
+
+local function mountMenuButton(playerGui)
+	menuButtonGui = new("ScreenGui", { Name = "GolfMenuButton", ResetOnSpawn = false, IgnoreGuiInset = true, DisplayOrder = 19, Enabled = false }, playerGui)
+	pcall(function()
+		menuButtonGui.ScreenInsets = Enum.ScreenInsets.None
+	end)
+	menuButton = button("Menu", { Name = "MenuButton" }, menuButtonGui, function()
+		FrontEnd.open("title")
+	end, "primary")
+	placeMenuButton()
+	GuiService:GetPropertyChangedSignal("TopbarInset"):Connect(placeMenuButton)
 end
 
 local function mountScreen(playerGui)
-	bgGui = new("ScreenGui", { Name = "GolfMenuBg", ResetOnSpawn = false, IgnoreGuiInset = true, DisplayOrder = 20, Enabled = false }, playerGui)
-	pcall(function()
-		bgGui.ScreenInsets = Enum.ScreenInsets.None
-	end)
-	bgImage = new("ImageLabel", { Name = "Background", BackgroundColor3 = C.navy, BorderSizePixel = 0, Image = Config.UI.TitleBackground, ScaleType = Enum.ScaleType.Crop, Size = UDim2.fromScale(1, 1), Active = true }, bgGui)
-	-- (a navy wash so the menu reads on top of the busy art)
-	bgDim = new("Frame", { Name = "Dim", BackgroundColor3 = C.navy, BackgroundTransparency = 0.55, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1), Active = true }, bgGui)
-	new("UIGradient", { Rotation = 90, Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.6), NumberSequenceKeypoint.new(0.5, 0.2), NumberSequenceKeypoint.new(1, 0) }) }, bgDim)
-
+	mountMenuButton(playerGui)
 	screenGui = new("ScreenGui", { Name = "GolfMenu", ResetOnSpawn = false, DisplayOrder = 21, ZIndexBehavior = Enum.ZIndexBehavior.Sibling, Enabled = false }, playerGui)
 	pcall(function()
 		screenGui.ScreenInsets = Enum.ScreenInsets.CoreUISafeInsets -- below the top bar, clear of notches
@@ -753,11 +795,6 @@ local function mountVR(playerGui)
 	}, playerGui)
 	buildRoot(vrGui)
 	VRPointer.register(vrPart, vrGui, { modal = true, scale = VR_SCALE })
-	vrBg = new("ImageLabel", { Name = "Background", BackgroundColor3 = C.navy, BorderSizePixel = 0, Image = Config.UI.TitleBackground, ScaleType = Enum.ScaleType.Crop, Size = UDim2.fromScale(1, 1), ZIndex = 0 }, root)
-	corner(vrBg, 24)
-	local wash = new("Frame", { BackgroundColor3 = C.navy, BackgroundTransparency = 0.5, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, vrBg)
-	corner(wash, 24)
-	stroke(vrBg, C.amber, 3, 0.3)
 end
 
 -- VR: float the panel in front of the head at eye height. One fixed world anchor per menu session (Playtest round 4:
@@ -783,16 +820,20 @@ end
 ---------------------------------------------------------------------------- open / close
 local function setOpen(on)
 	Ball.menuOpen = on
-	HUD.setMenuHidden(on)
+	-- (stage y) the golf HUD stays hidden in the lobby too: there's no hole or ball yet
+	HUD.setMenuHidden(on or inLobby())
 	if screenGui then
 		screenGui.Enabled = on
-		bgGui.Enabled = on
+		menuButtonGui.Enabled = not on
 	end
 	if vrGui then
 		if on and not vrGui.Enabled then
 			placeVRPanel(true)
 		end
 		vrGui.Enabled = on
+	end
+	if LobbyRoam then
+		LobbyRoam.refresh()
 	end
 end
 
@@ -833,7 +874,7 @@ function FrontEnd.showResults(scores, result)
 end
 
 function FrontEnd.start(opts)
-	HUD, Ball, VR, Explore = opts.HUD, opts.Ball, opts.VR, opts.Explore
+	HUD, Ball, VR, Explore, LobbyRoam = opts.HUD, opts.Ball, opts.VR, opts.Explore, opts.LobbyRoam
 	isVR = opts.isVR == true
 	local playerGui = player:WaitForChild("PlayerGui")
 	clickSound = new("Sound", { Name = "MenuClick", SoundId = "rbxasset://sounds/clickfast.wav", Volume = 0.35, SoundGroup = HUD.soundGroup("SFX") }, script)
@@ -867,7 +908,22 @@ function FrontEnd.start(opts)
 		end)
 	else
 		mountScreen(playerGui)
+		-- (stage y) M opens / closes the menu on desktop (not over the results)
+		UserInputService.InputBegan:Connect(function(input, gameProcessed)
+			if gameProcessed or input.KeyCode ~= Enum.KeyCode.M then
+				return
+			end
+			if page == nil then
+				FrontEnd.open("title")
+			elseif page ~= "results" then
+				FrontEnd.close()
+			end
+		end)
 	end
+	-- lobby -> course (or back): the golf HUD shows only on a course
+	player:GetAttributeChangedSignal("Course"):Connect(function()
+		HUD.setMenuHidden(Ball.menuOpen == true or inLobby())
+	end)
 
 	-- settings: defaults now, the saved ones once the server has read them
 	applySettings()
@@ -899,7 +955,7 @@ function FrontEnd.start(opts)
 			elseif cmd == "results" then
 				FrontEnd.showResults(arg and arg.scores, arg and arg.result)
 			end
-			return { page = page, open = Ball.menuOpen == true }
+			return { page = page, open = Ball.menuOpen == true, menuButton = menuButtonGui ~= nil and menuButtonGui.Enabled }
 		end
 		hook.Parent = player:WaitForChild("PlayerScripts")
 	end

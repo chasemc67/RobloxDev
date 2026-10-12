@@ -22,8 +22,8 @@ local playerModule = player:WaitForChild("PlayerScripts"):FindFirstChild("Player
 local controls = playerModule and require(playerModule):GetControls()
 local Explore = require(modules.Explore)
 local function freezeCharacter(char)
-	if Explore.active then
-		return -- Explore.applyCharacter sets it up for walking
+	if Explore.active or Ball.lobbyRoam then
+		return -- Explore.applyCharacter / LobbyRoam set it up for walking
 	end
 	if controls then
 		controls:Disable()
@@ -79,6 +79,13 @@ else
 	HUD.attachExplore(Explore)
 end
 
+-- (stage y) phone/desktop: walk around the lobby with the default controls and camera until a course is picked
+-- (VR walks with VRControls' left stick)
+local LobbyRoam = not VR and require(modules.LobbyRoam) or nil
+if LobbyRoam then
+	LobbyRoam.start(Ball, controls)
+end
+
 -- ball (and VR putter head) outline through whatever blocks them
 local XRay = require(modules.XRay)
 local camera = workspace.CurrentCamera
@@ -107,7 +114,7 @@ end)
 -- workspace GolfTestMode or SkipMenu is true)
 local FrontEnd = require(modules.FrontEnd)
 HUD.attachFrontEnd(FrontEnd)
-FrontEnd.start({ HUD = HUD, Ball = Ball, VR = VR, Explore = not VR and Explore or nil, isVR = isVR or simulateVR })
+FrontEnd.start({ HUD = HUD, Ball = Ball, VR = VR, Explore = not VR and Explore or nil, LobbyRoam = LobbyRoam, isVR = isVR or simulateVR })
 
 -- Studio-only playtest harness (see games/vr-mini-golf/playtesting.md)
 if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then

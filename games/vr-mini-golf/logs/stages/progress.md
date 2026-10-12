@@ -212,3 +212,6 @@ Evidence: `playtests/stage-t/`; resume notes: `logs/stages/t-notes.md`. Publishe
 
 ## Stage u (Sugarloaf p9 movers pass 5) - 2026-10-12 00:11 PT
 RESULT=FAIL (blocked): place 87725688219952 has only Lantern Grove (Hole1-9) + lobby; there is no Sugarloaf Canyon course to import H7/H9/H14/H17 movers into or test. No Studio changes, no save, no publish. See logs/stages/u-notes.md.
+
+## Stage y (lobby menu window + walk the lobby) - 2026-10-12 09:44 PT
+RESULT=PASS, live v241 (Published). Windowed title/course menu with an X; closing it in the lobby hands the character to the default controls (new GolfClient.LobbyRoam); top-left Menu button + M (desktop) reopen it, VR keeps left-stick click / wrist MENU. Smoke (desktop + iPhone emulation: close, walk 32 studs, reopen, course picks) + LG 9/9 regression, 0 console errors. See logs/stages/y-notes.md.

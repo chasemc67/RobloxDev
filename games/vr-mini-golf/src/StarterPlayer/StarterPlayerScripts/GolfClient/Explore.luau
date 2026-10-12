@@ -353,6 +353,8 @@ local function applyCharacter()
 				d.LocalTransparencyModifier = 0
 			end
 		end
+	elseif Ball.lobbyRoam then
+		return -- (stage y) GolfClient.LobbyRoam owns the character in the lobby
 	else
 		clearForces(char)
 		hum.PlatformStand = false

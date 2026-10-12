@@ -403,7 +403,9 @@ function VR.start(Ball, HUD, simulate)
 			return -- the front-end menu is up (GolfClient.FrontEnd)
 		end
 		if keyCode == Enum.KeyCode.ButtonR2 or keyCode == Enum.KeyCode.ButtonL2 then
-			warpToBall(nil)
+			if player:GetAttribute("Course") ~= nil then
+				warpToBall(nil) -- (stage y: not in the lobby, where the hidden ball is just parked on the spawn deck)
+			end
 		elseif keyCode == Enum.KeyCode.ButtonR1 then
 			gripHeld[Enum.UserCFrame.RightHand] = true
 		elseif keyCode == Enum.KeyCode.ButtonL1 then

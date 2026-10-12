@@ -91,8 +91,9 @@ function Ball.getAimPoint(fromPos: Vector3?)
 end
 
 -- Explore mode (GolfClient.Explore): the server parks the ball and the golf controls stand down.
+-- (stage y) Same while walking around the lobby before a course is picked (GolfClient.LobbyRoam).
 function Ball.exploring()
-	return Ball.exploreActive == true
+	return Ball.exploreActive == true or Ball.lobbyRoam == true
 end
 
 function Ball.isOwner()

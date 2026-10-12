@@ -1,5 +1,10 @@
 # VR Mini Golf: status
 
+## Stage y — live v241 (2026-10-12, ~09:44 PT)
+- **Lobby menu is a window you can close** (Chase on v239: full-screen menu, couldn't walk around the lobby, no way back on mobile). The title/course menu is a centred panel (~60% of the screen, more of the height on phones) with the 3D lobby visible around it, and an X. Closing it in the lobby gives normal Roblox controls (GolfClient.LobbyRoam: WASD/jump/mouse camera, touch thumbstick; VR walks with the left stick). Ball stays hidden in the lobby.
+- Reopen: top-left Menu button (top bar row, phone + desktop), M on desktop, left-stick click / wrist MENU in VR. Picking a course still uses SelectCourse.
+- `run_playtests.py smoke` now also opens/closes the panel, walks the character 32 studs with W, and reopens it (Menu button + M). Desktop + phone smoke, LG 9/9 regression, 0 console errors. Notes: logs/stages/y-notes.md.
+
 ## Stage x — live v239 (2026-10-12, ~09:23 PT)
 - **Lobby spawn fix** (Chase: live v235 dropped players on Lantern Grove H1 with no lobby). Cause: the only SpawnLocation sat on LG's Welcome Plaza beside H1 (CourseBuilder put it there), the lobby's LobbySpawn was only a marker, and GolfServer defaulted every join to Lantern Grove and started H1 on Ready.
 - Now: workspace.SpawnLocation sits under Lobby.LobbySpawn (CourseBuilder keeps it there). A fresh join has no course (no `Course` attribute); the ball waits hidden on the lobby spot and the menu opens on the title. Picking a course on the course card (SelectCourse) starts that course's hole 1. GolfTestMode keeps the old LG-on-Ready default.
