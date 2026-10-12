@@ -74,7 +74,12 @@ function GolfTestServer.init(ctx)
 				st.testHole = lane
 			else
 				st.testHole = nil
-				st.hole = math.clamp(args.hole, 1, #ctx.holes)
+				-- (stage w) args.course: play a hole of another course (Sugarloaf Canyon sweeps)
+				if args.course and ctx.courseHoles[args.course] then
+					st.course = args.course
+					player:SetAttribute("Course", args.course)
+				end
+				st.hole = math.clamp(args.hole, 1, #ctx.holesOf(st))
 			end
 			st.started = true
 			st.sunk = false
@@ -89,7 +94,7 @@ function GolfTestServer.init(ctx)
 			return Config.BallRadius
 		elseif cmd == "spec" then
 			-- the hole's spec (tee, cup, cup_from, waypoints, HIO line, movers, teleports) for the client scenarios
-			local data = require(game:GetService("ServerStorage").CourseData.LanternGrove)
+			local data = require(game:GetService("ServerStorage").CourseData[args.course == "sugarloaf_canyon" and "SugarloafCanyon" or "LanternGrove"])
 			local h = data.holes[args.hole]
 			if not h then
 				return false, "no hole " .. tostring(args.hole)
@@ -204,7 +209,7 @@ end
 
 local function sink(ctx, p)
 	local st = ctx.states[p]
-	local cup = ctx.holes[st.hole]:FindFirstChild("Cup")
+	local cup = ctx.holesOf(st)[st.hole]:FindFirstChild("Cup")
 	ctx.onStroke(p, st.ball.Position)
 	ctx.placeBall(p, st, cup.Position - Vector3.new(0, Config.CupDepth - Config.BallRadius, 0), "test")
 end
@@ -343,7 +348,7 @@ end
 
 local function sink(ctx, p)
 	local st = ctx.states[p]
-	local cup = ctx.holes[st.hole]:FindFirstChild("Cup")
+	local cup = ctx.holesOf(st)[st.hole]:FindFirstChild("Cup")
 	ctx.onStroke(p, st.ball.Position)
 	ctx.placeBall(p, st, cup.Position - Vector3.new(0, Config.CupDepth - Config.BallRadius, 0), "test")
 end

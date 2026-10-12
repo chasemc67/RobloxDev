@@ -23,6 +23,15 @@ local CollectionService = game:GetService("CollectionService")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
+local Courses = require(Golf:WaitForChild("Courses"))
+-- (stage w) GolfTestOpts.course = "sugarloaf_canyon" runs the per-hole scenarios on Sugarloaf Canyon
+local function testCourse()
+	local raw = workspace:GetAttribute("GolfTestOpts")
+	local ok, o = pcall(function()
+		return game:GetService("HttpService"):JSONDecode(raw or "{}")
+	end)
+	return ok and type(o) == "table" and o.course or nil
+end
 local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
 local MoverMath = require(Golf:WaitForChild("MoverMath"))
 local Remotes = Golf:WaitForChild("Remotes")
@@ -281,7 +290,7 @@ local function place(hole: number, x: number, z: number, surfaceY: number)
 	local before = placedCount
 	outcome = nil
 	shot = nil
-	local ok, err = testRemote:InvokeServer("place", { hole = hole, pos = pos })
+	local ok, err = testRemote:InvokeServer("place", { hole = hole, pos = pos, course = testCourse() })
 	if not ok then
 		error("place failed: " .. tostring(err))
 	end
@@ -400,14 +409,15 @@ local function vrRequired()
 	return nil
 end
 
------------------------------------------------------------------------- course helpers (Lantern Grove)
+------------------------------------------------------------------------ course helpers (Lantern Grove; Sugarloaf with opts.course)
 -- Spec coordinates are per-hole local (studs, Y up, play toward -Z). CourseBuilder stores each hole's frame
 -- origin/yaw as attributes, so helpers can take spec coordinates straight from holes.json / hNN-notes.md.
 local G = Config.BallRadius
 local VMAX = 19.78 -- spec max putt (studs/s): a full putt rolls 60 studs on flat felt
 
 local function hole(n)
-	return workspace.Course:FindFirstChild("Hole" .. n)
+	local course = Courses.folder(testCourse() or Courses.DEFAULT)
+	return course and course:FindFirstChild("Hole" .. n)
 end
 
 local function holeCF(n)
@@ -715,11 +725,12 @@ end
 ------------------------------------------------------------------------ AI golfer (intended lines)
 local specCache = {}
 local function spec(n)
-	if not specCache[n] then
-		local s = testRemote:InvokeServer("spec", { hole = n })
-		specCache[n] = HttpService:JSONDecode(s)
+	local key = (testCourse() or Courses.DEFAULT) .. ":" .. n
+	if not specCache[key] then
+		local s = testRemote:InvokeServer("spec", { hole = n, course = testCourse() })
+		specCache[key] = HttpService:JSONDecode(s)
 	end
-	return specCache[n]
+	return specCache[key]
 end
 
 local function inList(list, v)
@@ -1183,6 +1194,79 @@ local function fuzz(n, count, seed)
 	return res
 end
 
+-- Slow rollers (stage w): `count` gentle putts (1.5-5 studs/s) from random felt spots 2.5-12 studs from one of the
+-- hole's moving parts, aimed at its pivot +-25 deg, so the ball arrives slowly at (or stops under/against) the moving
+-- blockers: the stuck/pinned/escape bookkeeping is the same as fuzz.
+local function slowRollers(n, count, seed)
+	local rng = Random.new((seed or 0) + n * 104729)
+	local sp = spec(n)
+	local pivots = {}
+	for _, m in moversOf(n) do
+		table.insert(pivots, toLocal(n, m:GetAttribute("PivotWorld")))
+	end
+	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, resets = 0, timeouts = 0, holed = 0, list = {} }
+	if #pivots == 0 then
+		res.skipped = "no movers"
+		return res
+	end
+	for i = 1, count do
+		local start, target
+		for _ = 1, 80 do
+			local f = sp.felt[rng:NextInteger(1, #sp.felt)]
+			if not f.overlay then
+				local hx, hz = f.size[1] / 2 - 0.4, f.size[2] / 2 - 0.4
+				if hx > 0 and hz > 0 then
+					local lx, lz = rng:NextNumber(-hx, hx), rng:NextNumber(-hz, hz)
+					local yaw = math.rad(f.yaw or 0)
+					local x, z = f.center[1] + lx * math.cos(yaw) + lz * math.sin(yaw), f.center[3] - lx * math.sin(yaw) + lz * math.cos(yaw)
+					local pv = pivots[rng:NextInteger(1, #pivots)]
+					local d = Vector2.new(x - pv.X, z - pv.Z).Magnitude
+					if d >= 2.5 and d <= 12 then
+						start, target = { x, z, f.center[2] }, pv
+						break
+					end
+				end
+			end
+		end
+		if not start then
+			continue
+		end
+		local ok = pcall(placeL, n, start[1], start[2], start[3] + 0.3)
+		if ok then
+			local ang = math.deg(math.atan2(target.Z - start[2], target.X - start[1])) + rng:NextNumber(-25, 25)
+			local v = rng:NextNumber(1.5, 5)
+			local r = shootS(string.format("h%d-slow-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
+			res.shots += 1
+			res.maxMovingStillS = math.max(res.maxMovingStillS or 0, r.maxMovingStillS or 0)
+			local shotStuck = r.outcome == "timeout"
+			if r.outcome == "hazard" then
+				res.hazards += 1
+			elseif r.outcome == "escape" then
+				res.escapes += 1
+			elseif r.outcome == "timeout" then
+				res.timeouts += 1
+			elseif r.outcome == "cup" then
+				res.holed += 1
+			end
+			for _, f in r.flags or {} do
+				if f.kind == "unstuck" then
+					res.nudges += 1
+				elseif f.kind == "autoreset" then
+					res.resets += 1
+					if f.reason == "timeout" then res.timeouts += 1 end
+				elseif f.kind == "offsurface" or f.kind == "forcedrest" or f.kind == "stuck-3s" then
+					shotStuck = true
+				end
+			end
+			if shotStuck then res.stuck += 1 end
+			if r.outcome == "escape" or r.outcome == "timeout" or #(r.flags or {}) > 0 then
+				table.insert(res.list, { label = r.label, start = start, aim = round(ang, 1), speed = round(v), outcome = r.outcome, finish = r.finish, flags = r.flags })
+			end
+		end
+	end
+	return res
+end
+
 local function holeScenario(n)
 	return function()
 		refreshFelt()
@@ -1190,7 +1274,7 @@ local function holeScenario(n)
 		lagCache[n] = nil
 		local o = opts()
 		local parts = o.parts or "routes,intended,hio,banks,sweep,fuzz"
-		local out = { hole = n, name = hole(n):GetAttribute("HoleName"), par = hole(n):GetAttribute("Par") }
+		local out = { hole = n, course = testCourse() or Courses.DEFAULT, name = hole(n):GetAttribute("HoleName"), par = hole(n):GetAttribute("Par") }
 		frameHole(n)
 		if #moversOf(n) > 0 then
 			out.clientLag = round(holeLag(n), 3)
@@ -1212,6 +1296,9 @@ local function holeScenario(n)
 		end
 		if string.find(parts, "fuzz") then
 			out.fuzz = fuzz(n, o.fuzz or 12, o.seed)
+		end
+		if string.find(parts, "slow") then
+			out.slow = slowRollers(n, o.slow or 15, o.seed)
 		end
 		out.issues = table.clone(issues)
 		out.escapes, out.stuck = 0, 0
@@ -1374,7 +1461,7 @@ scenario({
 	end,
 })
 
-for n = 1, 9 do
+for n = 1, 18 do -- (h10-h18: Sugarloaf Canyon only, with opts.course)
 	scenario({
 		name = "h" .. n,
 		desc = "Hole " .. n .. ": intended lines (good/average), HIO line + sweep, rail banks, mover timing sweep, fuzz (escape/stuck)",

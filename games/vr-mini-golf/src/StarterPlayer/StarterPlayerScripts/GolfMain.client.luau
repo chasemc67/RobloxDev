@@ -95,6 +95,14 @@ require(modules.H9Lighting).start(VR and VR.getEye or function()
 	return Ball.ball and Ball.ball.Position
 end)
 
+-- each course's own sky (stage w): Sugarloaf Canyon's sunset while you're in its world box, Lantern Grove's otherwise
+require(modules.CourseLighting).start(function()
+	if VR and VR.getEye then
+		return VR.getEye()
+	end
+	return camera.CFrame.Position
+end)
+
 -- title screen / menus / results (an overlay: the round is already set up behind it; skipped when
 -- workspace GolfTestMode or SkipMenu is true)
 local FrontEnd = require(modules.FrontEnd)

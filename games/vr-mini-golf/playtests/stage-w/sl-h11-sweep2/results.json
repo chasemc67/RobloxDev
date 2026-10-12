@@ -1,0 +1,371 @@
+{
+ "h11": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h11",
+   "hole": 11,
+   "nudges": 3,
+   "issues": [
+    {
+     "type": "event",
+     "to": [
+      150.1726,
+      120.09,
+      -5278.0854
+     ],
+     "hole": 11,
+     "t": 85.2297,
+     "event": "flag",
+     "reason": "pinned",
+     "shot": "h11-slow-1",
+     "from": [
+      149.7909,
+      120.0766,
+      -5277.6226
+     ],
+     "kind": "unstuck",
+     "label": "h11-slow-1"
+    },
+    {
+     "type": "event",
+     "to": [
+      148.1756,
+      120.09,
+      -5278.1763
+     ],
+     "hole": 11,
+     "t": 128.0938,
+     "event": "flag",
+     "reason": "pinned",
+     "shot": "h11-slow-6",
+     "from": [
+      148.1347,
+      120.08,
+      -5277.5776
+     ],
+     "kind": "unstuck",
+     "label": "h11-slow-6"
+    },
+    {
+     "type": "event",
+     "hole": 11,
+     "t": 198.1917,
+     "event": "flag",
+     "reason": "still",
+     "shot": "h11-slow-13",
+     "kind": "autoreset",
+     "label": "h11-slow-13",
+     "pos": [
+      149.8701,
+      120.0766,
+      -5277.6289
+     ]
+    },
+    {
+     "type": "event",
+     "to": [
+      148.4561,
+      120.09,
+      -5278.2251
+     ],
+     "hole": 11,
+     "t": 211.9406,
+     "event": "flag",
+     "reason": "pinned",
+     "shot": "h11-slow-15",
+     "from": [
+      148.3899,
+      120.08,
+      -5277.6289
+     ],
+     "kind": "unstuck",
+     "label": "h11-slow-15"
+    }
+   ],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 9,
+    "maxMovingStillS": 0.146,
+    "list": []
+   },
+   "seconds": 251.76,
+   "name": "Floodgate Lock",
+   "cam": "",
+   "stuck": 0,
+   "slow": {
+    "nudges": 3,
+    "resets": 1,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "maxMovingStillS": 0.496,
+    "list": [
+     {
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         150.1726,
+         120.09,
+         -5278.0854
+        ],
+        "hole": 11,
+        "t": 85.2297,
+        "event": "flag",
+        "reason": "pinned",
+        "shot": "h11-slow-1",
+        "from": [
+         149.7909,
+         120.0766,
+         -5277.6226
+        ],
+        "kind": "unstuck",
+        "label": "h11-slow-1"
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-1",
+      "start": [
+       0.4193404207285947,
+       -27.65080326427043,
+       4
+      ],
+      "finish": [
+       150.1726,
+       120.0793,
+       -5278.0854
+      ],
+      "speed": 1.688,
+      "aim": 103.3
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h11-slow-4",
+        "id": "lock_lift",
+        "t": 110.9799,
+        "event": "flag",
+        "shot": "h11-slow-4",
+        "speedOut": 1.683,
+        "speedIn": 3.366,
+        "kind": "teleport",
+        "hole": 11,
+        "pos": [
+         150,
+         120.09,
+         -5279
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-4",
+      "start": [
+       2.403268545963438,
+       -18.373051489568677,
+       0
+      ],
+      "finish": [
+       150,
+       120.0793,
+       -5280.8579
+      ],
+      "speed": 4.635,
+      "aim": -126
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         148.1756,
+         120.09,
+         -5278.1763
+        ],
+        "hole": 11,
+        "t": 128.0938,
+        "event": "flag",
+        "reason": "pinned",
+        "shot": "h11-slow-6",
+        "from": [
+         148.1347,
+         120.08,
+         -5277.5776
+        ],
+        "kind": "unstuck",
+        "label": "h11-slow-6"
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-6",
+      "start": [
+       1.3431008503369313,
+       -29.494377597680312,
+       4
+      ],
+      "finish": [
+       148.1756,
+       120.0793,
+       -5278.1763
+      ],
+      "speed": 4.844,
+      "aim": 128.3
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h11-slow-8",
+        "id": "lock_lift",
+        "t": 153.7778,
+        "event": "flag",
+        "shot": "h11-slow-8",
+        "speedOut": 1.5,
+        "speedIn": 0.02,
+        "kind": "teleport",
+        "hole": 11,
+        "pos": [
+         150,
+         120.09,
+         -5279
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-8",
+      "start": [
+       4.087349938729399,
+       -17.157491096986988,
+       0
+      ],
+      "finish": [
+       150,
+       120.069,
+       -5280.5791
+      ],
+      "speed": 3.691,
+      "aim": -134.2
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h11-slow-9",
+        "id": "lock_lift",
+        "t": 164.476,
+        "event": "flag",
+        "shot": "h11-slow-9",
+        "speedOut": 1.5,
+        "speedIn": 1.753,
+        "kind": "teleport",
+        "hole": 11,
+        "pos": [
+         150,
+         120.09,
+         -5279
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-9",
+      "start": [
+       -1.530045597638222,
+       -19.242183759065835,
+       0
+      ],
+      "finish": [
+       150,
+       120.0793,
+       -5280.5811
+      ],
+      "speed": 2.685,
+      "aim": -57.9
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "hole": 11,
+        "t": 198.1917,
+        "event": "flag",
+        "reason": "still",
+        "shot": "h11-slow-13",
+        "kind": "autoreset",
+        "label": "h11-slow-13",
+        "pos": [
+         149.8701,
+         120.0766,
+         -5277.6289
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-13",
+      "start": [
+       0.6721499173736198,
+       -28.457374881349093,
+       4
+      ],
+      "finish": [
+       150.6721,
+       120.0793,
+       -5280.4575
+      ],
+      "speed": 2.049,
+      "aim": 104.5
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         148.4561,
+         120.09,
+         -5278.2251
+        ],
+        "hole": 11,
+        "t": 211.9406,
+        "event": "flag",
+        "reason": "pinned",
+        "shot": "h11-slow-15",
+        "from": [
+         148.3899,
+         120.08,
+         -5277.6289
+        ],
+        "kind": "unstuck",
+        "label": "h11-slow-15"
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-15",
+      "start": [
+       0.37335388152619847,
+       -28.57204600687623,
+       4
+      ],
+      "finish": [
+       148.4561,
+       120.0793,
+       -5278.2251
+      ],
+      "speed": 2.914,
+      "aim": 112
+     }
+    ]
+   },
+   "par": 3,
+   "clientLag": 0
+  }
+ }
+}

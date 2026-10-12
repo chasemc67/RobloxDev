@@ -16,6 +16,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
 local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
+local Courses = require(Golf:WaitForChild("Courses"))
 
 local player = Players.LocalPlayer
 
@@ -245,13 +246,9 @@ end
 -- Teleport destinations: hole tees (standing a few studs behind the tee, looking down the hole) + scenic views.
 function Explore.destinations()
 	local list = {}
-	local holes = {}
-	for _, h in workspace.Course:GetChildren() do
-		local n = h:GetAttribute("HoleNumber")
-		if n then
-			holes[n] = h
-		end
-	end
+	-- (stage w) the holes of the course you're on; the scenic views and walkways are Lantern Grove's
+	local courseId = Courses.of(game:GetService("Players").LocalPlayer)
+	local holes = Courses.holes(courseId)
 	for n = 1, #holes do
 		local h = holes[n]
 		local tee = h:FindFirstChild("Tee")
@@ -266,7 +263,7 @@ function Explore.destinations()
 			})
 		end
 	end
-	for _, v in data.views or {} do
+	for _, v in courseId == Courses.DEFAULT and data.views or {} do
 		table.insert(list, { kind = "view", name = v.name, title = v.name, xz = v.pos, look = v.look })
 	end
 	return list
@@ -301,7 +298,9 @@ end
 -- Nearest walkway point (spawn plaza -> H9 paths) to where we fell from.
 local function respawnNearPath(from: Vector3)
 	local best, bestD = nil, math.huge
-	for _, p in data.paths or {} do
+	-- (Sugarloaf Canyon has no walkway list: back to the last safe spot)
+	local paths = Courses.of(game:GetService("Players").LocalPlayer) == Courses.DEFAULT and data.paths or {}
+	for _, p in paths or {} do
 		local d = (Vector3.new(p[1], 0, p[3]) - Vector3.new(from.X, 0, from.Z)).Magnitude
 		if d < bestD then
 			best, bestD = p, d
@@ -318,6 +317,12 @@ end
 
 local function inWorld(p: Vector3)
 	local b = data.bounds
+	-- (stage w: Sugarloaf Canyon's terrain box comes from its course folder)
+	local sc = Courses.folder("sugarloaf_canyon")
+	local mn, mx = sc and sc:GetAttribute("WorldMin"), sc and sc:GetAttribute("WorldMax")
+	if mn and mx and p.X > mn.X and p.X < mx.X and p.Z > mn.Z and p.Z < mx.Z then
+		return true
+	end
 	if not b then
 		return true
 	end

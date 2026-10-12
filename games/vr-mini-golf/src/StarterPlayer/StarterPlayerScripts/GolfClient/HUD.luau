@@ -9,6 +9,7 @@ local ContentProvider = game:GetService("ContentProvider")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
 local Config = require(Golf:WaitForChild("Config"))
+local Courses = require(Golf:WaitForChild("Courses"))
 local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
 
 local player = Players.LocalPlayer
@@ -76,15 +77,9 @@ local function button(text, props, parent, onClick)
 end
 
 ---------------------------------------------------------------------------- scorecard
+-- the holes of the course this player is on (stage w: Lantern Grove or Sugarloaf Canyon)
 local function holeList()
-	local list = {}
-	for _, h in workspace.Course:GetChildren() do
-		local n = h:GetAttribute("HoleNumber")
-		if n then
-			list[n] = h
-		end
-	end
-	return list
+	return Courses.holes(Courses.of(player))
 end
 
 local function relText(d)
@@ -127,12 +122,20 @@ local function buildScorecard(final)
 	end
 	local holes = holeList()
 	local cols = #holes + 2
-	local rows = #Players:GetPlayers() + 2
+	-- only players on the same course share the card
+	local mates = {}
+	for _, p in Players:GetPlayers() do
+		if Courses.of(p) == Courses.of(player) then
+			table.insert(mates, p)
+		end
+	end
+	local rows = #mates + 2
 	-- compact on narrow / short screens (Playtest Bot round 1): fit the card to the screen, shorter rows, and scroll
 	-- the player rows when there are many
 	local vp = workspace.CurrentCamera.ViewportSize
 	local scale = (not HUD.isVR and uiScale) and uiScale.Scale or 1
-	local maxW = HUD.isVR and 620 or math.min(620, vp.X / scale - 24)
+	-- (an 18-hole card is wider on a flat screen)
+	local maxW = HUD.isVR and 620 or math.min(#holes > 9 and 960 or 620, vp.X / scale - 24)
 	local maxH = HUD.isVR and 520 or math.min(520, vp.Y / scale - 70)
 	local compact = maxW < 560 or maxH < 420
 	local rowH = compact and 30 or 40
@@ -180,7 +183,7 @@ local function buildScorecard(final)
 	end
 	cell(1, #holes + 1, "Tot", Color3.fromRGB(180, 220, 190))
 	cell(2, #holes + 1, tostring(parTotal), Color3.fromRGB(180, 220, 190))
-	for r, p in Players:GetPlayers() do
+	for r, p in mates do
 		local scores = scoresOf(p)
 		local total = 0
 		cell(r + 2, 0, p.DisplayName, p == player and Color3.fromRGB(255, 230, 120) or nil, true)
@@ -279,7 +282,7 @@ function HUD.refresh()
 			end
 		end
 		wrist.total.Text = relText(d)
-		local best = player:GetAttribute("Best_" .. Config.CurrentCourse)
+		local best = player:GetAttribute("Best_" .. Courses.of(player))
 		wrist.best.Text = best and relText(best - parSum) or "-"
 	end
 	if scorecard and scorecard.Parent then
@@ -1100,7 +1103,10 @@ function HUD.init(isVR, ballController)
 	-- (the VR wrist card shows the round total and the personal best)
 	player:GetAttributeChangedSignal("Scores"):Connect(HUD.refresh)
 	player:GetAttributeChangedSignal("HoleHoled"):Connect(HUD.refresh)
-	player:GetAttributeChangedSignal("Best_" .. Config.CurrentCourse):Connect(HUD.refresh)
+	for _, c in Config.Courses do
+		player:GetAttributeChangedSignal("Best_" .. c.id):Connect(HUD.refresh)
+	end
+	player:GetAttributeChangedSignal("Course"):Connect(HUD.refresh)
 
 	-- Hole-to-hole travel (Walkabout style): after holing out, fade to black just before the server moves the ball
 	-- to the next tee, and fade back in once you've been put there (VR: warped beside the ball; desktop/phone: the

@@ -318,7 +318,7 @@ local function glowParts()
 		return glow
 	end
 	local list = {}
-	for _, root in { workspace:FindFirstChild("Course"), workspace:FindFirstChild("World") } do
+	for _, root in { workspace:FindFirstChild("Course"), workspace:FindFirstChild("World"), workspace:FindFirstChild("CourseSugarloaf") } do
 		for _, d in root and root:GetDescendants() or {} do
 			if d:IsA("BasePart") then
 				local lights = {}

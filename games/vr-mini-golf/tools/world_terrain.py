@@ -38,17 +38,34 @@ def main():
     ap.add_argument("--rows", type=int, default=10, help="rows per WriteVoxels call")
     ap.add_argument("--carve", action="store_true")
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--course", default="Course", help="workspace folder to carve/check (Sugarloaf: CourseSugarloaf)")
+    ap.add_argument("--sugarloaf", action="store_true",
+                    help="Sugarloaf Canyon: its grid, shifted by the SugarloafLayout offset, y 0..260, canyon materials")
     args = ap.parse_args()
+    extra = ""
+    dx = dz = 0.0
+    y_lo, y_hi = -12, 164
+    if args.sugarloaf:
+        import sugarloaf_to_lua as sl
+        args.grid = sl.GRID if args.grid == GRID else args.grid
+        args.course = "CourseSugarloaf"
+        dx, dz = sl.OFFSET[0], sl.OFFSET[2]
+        y_lo, y_hi = -4, 268
+        extra = ", y0=-4, ny=68, set='sugarloaf'"
+    course = "workspace:FindFirstChild(%s)" % json.dumps(args.course)
     st = rp.Studio()
     if st.mode()[0] != "Edit":
         raise SystemExit("stop play first")
     if not (args.carve or args.check):
         g = json.load(open(args.grid))
-        meta = "{cols=%d, cell=%d, x0=%s, z0=%s}" % (g["cols"], g["cell"], g["x0"], g["z0"])
+        g["x0"] += dx
+        g["z0"] += dz
+        meta = "{cols=%d, cell=%d, x0=%s, z0=%s%s}" % (g["cols"], g["cell"], g["x0"], g["z0"], extra)
         x1 = g["x0"] + g["cols"] * g["cell"]
         z1 = g["z0"] + g["rows"] * g["cell"]
-        print(st.luau("workspace.Terrain:FillBlock(CFrame.new(%s, 74, %s), Vector3.new(%s, 172, %s), Enum.Material.Air) return 'cleared'"
-                      % ((g["x0"] + x1) / 2, (g["z0"] + z1) / 2, x1 - g["x0"] + 8, z1 - g["z0"] + 8), "Edit", timeout=300))
+        print(st.luau("workspace.Terrain:FillBlock(CFrame.new(%s, %s, %s), Vector3.new(%s, %s, %s), Enum.Material.Air) return 'cleared'"
+                      % ((g["x0"] + x1) / 2, (y_lo + y_hi) / 2, (g["z0"] + z1) / 2, x1 - g["x0"] + 8, y_hi - y_lo, z1 - g["z0"] + 8),
+                      "Edit", timeout=300))
         t0 = time.time()
         for j0 in range(0, g["rows"], args.rows):
             n = min(args.rows, g["rows"] - j0)
@@ -59,8 +76,8 @@ def main():
                         "Edit", timeout=300)
             print("rows %d-%d: %s (%.0fs)" % (j0, j0 + n - 1, r, time.time() - t0), flush=True)
     if not args.check:
-        print("carve:", st.luau("return %s.CarveHoles()" % WB, "Edit", timeout=300))
-    print("clearance:", st.luau("return %s.CheckClearance()" % WB, "Edit", timeout=300))
+        print("carve:", st.luau("return %s.CarveHoles(%s)" % (WB, course), "Edit", timeout=300))
+    print("clearance:", st.luau("return %s.CheckClearance(%s)" % (WB, course), "Edit", timeout=300))
 
 
 if __name__ == "__main__":

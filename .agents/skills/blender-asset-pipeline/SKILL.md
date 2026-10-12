@@ -45,5 +45,8 @@ Count triangles before exporting:
 
 ## Getting it into Roblox
 1. **Studio 3D Importer** (File > Import 3D): a UI dialog, so it needs computer use. Check the scale, the preview and any warnings, then insert. The result is a `Model` with `MeshPart`s, saved as assets on the account.
+   - **Many small FBX?** Merge them in Blender into one FBX first (one top-level Empty per source file, the same export settings), so it's a single importer pass instead of one computer-use run per file. Example: `assets/vr-mini-golf/sugarloaf-canyon/models/_src/movers/merge_for_import.py` (35 files -> 1, with a bbox round-trip check).
+   - **Check sizes after import.** As seen in stage w, the importer can auto-scale the *whole scene* so its widest object lands on 2048 (warning "One of the objects dimensions are larger than can be imported"; a 92-stud piece made everything x22.26), and it also turned the scene 180 deg about Y. Compare MeshPart sizes with the export's bboxes and undo it in Luau: `Size /= k; CFrame = CFrame.Angles(0, math.pi, 0) * CFrame.new(pos / k) * rotation`.
+   - Untextured materials can come in near-white: re-apply colours/materials from your manifest by the `<piece>__<Material>` mesh names.
 2. **Open Cloud Assets API** (`POST https://apis.roblox.com/assets/v1/assets`, type Model, with `.fbx`): needs an API key with asset write permission. **None is configured yet**, so ask Chase before setting one up. Afterwards, use `insert_asset` via the Studio MCP with the returned asset ID.
 3. After inserting: anchor and position with `execute_luau`, set `CollisionFidelity` (Box or Hull for performance), and check in a playtest.

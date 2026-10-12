@@ -93,10 +93,33 @@ end
 -- comma-separated strings, row-major. Each column is solid up to `height` (top two voxels in the surface material,
 -- Rock below so cliffs read as rock), Mud under water, Water from the bed up to the water surface.
 local MATS = { [0] = M.Grass, [1] = M.LeafyGrass, [2] = M.Rock, [3] = M.Ground, [4] = M.Water, [5] = M.Sand }
+-- Sugarloaf Canyon (stage w, meta.set = "sugarloaf"): only materials Lantern Grove's Terrain doesn't use, so their
+-- (place-wide) material colours can be the canyon's: floor sand, cliff sandstone, mesa-top sand, walkway, river bed, dune
+local SETS = {
+	sugarloaf = {
+		mats = { [0] = M.Limestone, [1] = M.Sandstone, [2] = M.Concrete, [3] = M.Pavement, [4] = M.Water, [5] = M.Salt },
+		deep = M.Sandstone,
+		colors = {
+			[M.Limestone] = "D88E5C", -- brown-sugar sand (canyon floor)
+			[M.Sandstone] = "C68C59", -- ochre strata (cliffs)
+			[M.Concrete] = "E59C7C", -- peach sand (mesa tops)
+			[M.Pavement] = "B97A50", -- walkways
+			[M.Salt] = "FBEAD6", -- powdered-sugar dunes
+		},
+	},
+}
 WorldBuilder.Y0 = -12
 WorldBuilder.NY = 44 -- y -12 .. 164
 function WorldBuilder.WriteTerrainRows(meta, j0, n, hs, ws, ms)
 	local cols, cell = meta.cols, meta.cell
+	local set = meta.set and SETS[meta.set]
+	local MATS = set and set.mats or MATS
+	local DEEP = set and set.deep or M.Rock
+	if set and j0 == 1 then
+		for mat, c in set.colors do
+			Terrain:SetMaterialColor(mat, Color3.fromHex(c))
+		end
+	end
 	local function nums(s, conv)
 		local out = {}
 		for v in string.gmatch(s, "[^,]+") do
@@ -109,7 +132,7 @@ function WorldBuilder.WriteTerrainRows(meta, j0, n, hs, ws, ms)
 		return v ~= "_" and tonumber(v) or false
 	end)
 	local MI = nums(ms, tonumber)
-	local NY, Y0 = WorldBuilder.NY, WorldBuilder.Y0
+	local NY, Y0 = meta.ny or WorldBuilder.NY, meta.y0 or WorldBuilder.Y0
 	local mats, occs = {}, {}
 	for i = 1, cols do
 		local mx, ox = {}, {}
@@ -138,7 +161,7 @@ function WorldBuilder.WriteTerrainRows(meta, j0, n, hs, ws, ms)
 				local occ = math.clamp((h - centre) / cell, 0, 1)
 				local mat, o = M.Air, 0
 				if occ > 0 then
-					mat, o = (h - ybot) <= 2 * cell and surf or M.Rock, occ
+					mat, o = (h - ybot) <= 2 * cell and surf or DEEP, occ
 					if wet and occ < 0.5 then
 						-- the voxel holding the bed surface: water reads better than a half-empty mud cell
 						mat, o = M.Water, math.clamp((w - centre) / cell, occ, 1)

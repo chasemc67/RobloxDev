@@ -79,6 +79,41 @@ local P = {
 	firefly = hex("D8FF6A"),
 	lawn = hex("6F8F3A"),
 }
+-- Sugarloaf Canyon (stage w; assets/vr-mini-golf/sugarloaf-canyon/course.md): Build(..., {palette = "sugarloaf"})
+-- swaps these into P for that build (each Build runs on a fresh clone of this module)
+local SUGARLOAF_P = {
+	felt = hex("4FA83D"),
+	feltHi = hex("86C24A"),
+	feltLo = hex("3B7F35"),
+	limestone = hex("E39A82"), -- pink sandstone rail blocks
+	oak = hex("8A5A33"), -- weathered timber caps
+	bark = hex("AF7061"), -- muted terracotta (bases / cliff faces under the felt)
+	cream = hex("FFF8F0"), -- mint white
+	slate = hex("C68C59"), -- ochre strata
+	toadstool = hex("D9343A"), -- peppermint red
+	firefly = hex("D8FF6A"), -- sour-apple lime (teleports)
+	paper = hex("FFD36B"), -- sunset gold (sign text)
+	amber = hex("FFB347"),
+	water = hex("3FB7C9"),
+	moss = hex("3E8E41"), -- saguaro green
+	lawn = hex("D88E5C"),
+	candy = hex("FF6FA8"), -- rock-candy pink
+	rope = hex("C9A46A"),
+}
+-- Sugarloaf felt: grayscale masters of sugarloaf-canyon/textures (felt.png, slope_felt_C.png; textures/_make_roblox_tints.py)
+-- tinted per part with Texture.Color3, so one upload serves every felt tone
+local SUGARLOAF_FELT = {
+	flat = "rbxassetid://109987285887975", -- felt_gray
+	studs = 6,
+	slope = {
+		["-Z"] = "rbxassetid://109008728097658", -- slope_gray_r0
+		["+X"] = "rbxassetid://90010334104026", -- r90
+		["+Z"] = "rbxassetid://105111549391714", -- r180
+		["-X"] = "rbxassetid://122003802815451", -- r270
+	},
+	GRAY = 0.86, -- mean of the masters: tint = colour / GRAY
+}
+local COURSE = nil -- nil = Lantern Grove; "sugarloaf_canyon" while building Sugarloaf (set by Build)
 local M = Enum.Material
 local SMOOTH = Enum.SurfaceType.Smooth
 
@@ -134,7 +169,9 @@ local function makePiece(def)
 		axis = sl and sl.axis or nil,
 		rise = sl and sl.rise or 0,
 		overlay = def.overlay == true,
-		bridge = def.kind == "bridge",
+		-- solid = false decks (Sugarloaf H16 upper deck, bridges): a lower level runs underneath, so no base block
+		bridge = def.kind == "bridge" or def.solid == false,
+		thickness = def.thickness,
 	}
 	if pc.axis == "x" then
 		pc.tilt = CFrame.Angles(0, 0, math.atan2(pc.rise, def.size[1]))
@@ -284,10 +321,26 @@ local function slopeTone(color: Color3): string
 	return best
 end
 
+-- Sugarloaf felt nap: the grayscale master tinted to the part colour (Color3 = colour / GRAY), on the Top face
+local function tintedTexture(p: BasePart, id: string, color: Color3, name: string)
+	local k = 1 / SUGARLOAF_FELT.GRAY
+	return new("Texture", {
+		Name = name,
+		Face = Enum.NormalId.Top,
+		Texture = id,
+		StudsPerTileU = SUGARLOAF_FELT.studs,
+		StudsPerTileV = SUGARLOAF_FELT.studs,
+		Color3 = Color3.new(math.min(1, color.R * k), math.min(1, color.G * k), math.min(1, color.B * k)),
+	}, p)
+end
+
 function Hole:slopeFelt(p: BasePart, color: Color3, pc)
 	local n = p.CFrame.UpVector
 	local tilt = math.deg(math.acos(math.clamp(n.Y, -1, 1)))
 	if tilt <= SLOPE_FELT.MIN_DEG then
+		if COURSE then
+			tintedTexture(p, SUGARLOAF_FELT.flat, p.Color, "FeltNap")
+		end
 		return
 	end
 	p:SetAttribute("SlopeDeg", math.floor(tilt * 10 + 0.5) / 10)
@@ -298,6 +351,9 @@ function Hole:slopeFelt(p: BasePart, color: Color3, pc)
 		p:SetAttribute("AdjacentFeltColor", color)
 		p.Color = Color3.new(color.R * SLOPE_FELT.BANK_TINT, color.G * SLOPE_FELT.BANK_TINT, color.B * SLOPE_FELT.BANK_TINT)
 		p:SetAttribute("FeltPattern", "PlainBank")
+		if COURSE then
+			tintedTexture(p, SUGARLOAF_FELT.flat, p.Color, "FeltNap")
+		end
 		return
 	end
 	p:SetAttribute("FeltPattern", "ChevronC")
@@ -309,16 +365,22 @@ function Hole:slopeFelt(p: BasePart, color: Color3, pc)
 	else
 		key = down.Z > 0 and "+Z" or "-Z"
 	end
-	local tex = new("Texture", {
-		Name = "SlopeFelt",
-		Face = Enum.NormalId.Top,
-		Texture = SLOPE_FELT.textures[slopeTone(color)][key],
-		StudsPerTileU = SLOPE_FELT.STUDS_PER_TILE,
-		StudsPerTileV = SLOPE_FELT.STUDS_PER_TILE,
-	}, p)
+	local tex
+	if COURSE then
+		tex = tintedTexture(p, SUGARLOAF_FELT.slope[key], color, "SlopeFelt")
+		tex.StudsPerTileU, tex.StudsPerTileV = SLOPE_FELT.STUDS_PER_TILE, SLOPE_FELT.STUDS_PER_TILE
+	else
+		tex = new("Texture", {
+			Name = "SlopeFelt",
+			Face = Enum.NormalId.Top,
+			Texture = SLOPE_FELT.textures[slopeTone(color)][key],
+			StudsPerTileU = SLOPE_FELT.STUDS_PER_TILE,
+			StudsPerTileV = SLOPE_FELT.STUDS_PER_TILE,
+		}, p)
+	end
 	if pc and pc.def and pc.def.kind == "bank" then
 		local k = SLOPE_FELT.BANK_TINT
-		tex.Color3 = Color3.new(k, k, k)
+		tex.Color3 = Color3.new(tex.Color3.R * k, tex.Color3.G * k, tex.Color3.B * k)
 		p.Color = Color3.new(color.R * k, color.G * k, color.B * k)
 		p:SetAttribute("FeltPattern", "ChevronBank")
 		p:SetAttribute("AdjacentFeltColor", color)
@@ -356,12 +418,41 @@ function Hole:buildPiece(pc)
 		sz = math.sqrt(sz * sz + pc.rise * pc.rise)
 	end
 	-- sloped (non-overlay) slabs are thicker so they reach down to the flat base below their low end
-	local t = FELT_T
+	local t = pc.thickness or FELT_T
 	if pc.axis and not pc.overlay and not pc.bridge then
-		t = FELT_T + math.abs(pc.rise)
+		t = t + math.abs(pc.rise)
 	end
 	local top = self.cf * pc.base * pc.tilt
-	self:feltPart("Felt", top * CFrame.new(0, -t / 2, 0), Vector3.new(sx, t, sz), color, pc)
+	local felt = self:feltPart("Felt", top * CFrame.new(0, -t / 2, 0), Vector3.new(sx, t, sz), color, pc)
+	if self.def.number == 9 and COURSE == nil and felt:GetAttribute("FeltPattern") == "PlainBank" then
+		self:bankLip(felt)
+	end
+end
+
+-- Lantern Grove H9: a 0.05-stud lip along the top edge of each bank, #6CC79F, no glow (Playtest Bot round 8 #3: bank
+-- and felt are both very dark under H9's night lighting; an edge highlight reads better than a darker tint). Visual
+-- only (no collision, no queries), plain SmoothPlastic, never Neon, no lights.
+local BANK_LIP = { color = Color3.fromHex("6CC79F"), height = 0.05, width = 0.12 }
+function Hole:bankLip(p: BasePart)
+	local s = p.Size
+	local best, bestY
+	for _, e in { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } } do
+		local y = p.CFrame:PointToWorldSpace(Vector3.new(e[1] * s.X / 2, s.Y / 2, e[2] * s.Z / 2)).Y
+		if not bestY or y > bestY then
+			best, bestY = e, y
+		end
+	end
+	local W, H = BANK_LIP.width, BANK_LIP.height
+	local size, off
+	if best[1] ~= 0 then
+		size, off = Vector3.new(W, H, s.Z), Vector3.new(best[1] * (s.X / 2 - W / 2), s.Y / 2 + H / 2, 0)
+	else
+		size, off = Vector3.new(s.X, H, W), Vector3.new(0, s.Y / 2 + H / 2, best[2] * (s.Z / 2 - W / 2))
+	end
+	local lip = vis("BankLip", p.CFrame * CFrame.new(off), size, BANK_LIP.color, M.SmoothPlastic, self.rails)
+	lip.CastShadow = false
+	lip:SetAttribute("PieceId", p:GetAttribute("PieceId"))
+	return lip
 end
 
 -- A flat felt piece with the cup cut into it: four strips around a CSG plate.
@@ -477,6 +568,72 @@ function Hole:buildCupPiece(pc, cupLocal)
 	end
 end
 
+-- A cup near the edge of its piece also cuts into the neighbouring felt: split that slab along its long axis into the
+-- part clear of the cup and a strip around it, and subtract the cup cylinder from the strip (only the strip becomes a
+-- CSG part, so the rest keeps its felt texture).
+function Hole:cutNeighbourCup(cupLocal)
+	local radius = self.def.cup.radius or 0.5
+	local cupWorld = self.cf:PointToWorldSpace(cupLocal)
+	for _, p in self.geo:GetChildren() do
+		if p.Name ~= "Felt" or not p:IsA("Part") then
+			continue
+		end
+		local lp = p.CFrame:PointToObjectSpace(cupWorld)
+		local h = p.Size / 2
+		local dx = math.max(0, math.abs(lp.X) - h.X)
+		local dz = math.max(0, math.abs(lp.Z) - h.Z)
+		if dx * dx + dz * dz >= radius * radius or math.abs(lp.Y) > h.Y + 1 then
+			continue
+		end
+		-- strip across the axis the cup is NOT near the edge of
+		local alongZ = math.abs(lp.X) > h.X - radius
+		local c = alongZ and lp.Z or lp.X
+		local half = alongZ and h.Z or h.X
+		local a0, a1 = math.max(-half, c - radius - 0.6), math.min(half, c + radius + 0.6)
+		local function sub(b0, b1)
+			if b1 - b0 < 0.01 then
+				return nil
+			end
+			local q = p:Clone()
+			local mid = (b0 + b1) / 2
+			q.Size = alongZ and Vector3.new(p.Size.X, p.Size.Y, b1 - b0) or Vector3.new(b1 - b0, p.Size.Y, p.Size.Z)
+			q.CFrame = p.CFrame * (alongZ and CFrame.new(0, 0, mid) or CFrame.new(mid, 0, 0))
+			q.Parent = self.geo
+			return q
+		end
+		sub(-half, a0)
+		sub(a1, half)
+		local strip = sub(a0, a1)
+		p:Destroy()
+		local cutterH = CUP_DEPTH + 2
+		local cutter = new("Part", {
+			Anchored = true,
+			Shape = Enum.PartType.Cylinder,
+			Size = Vector3.new(cutterH, radius * 2, radius * 2),
+			CFrame = CFrame.new(cupWorld + Vector3.new(0, -CUP_DEPTH + cutterH / 2, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+		}, workspace)
+		local cut = GeometryService:SubtractAsync(strip, { cutter }, {
+			CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition,
+			RenderFidelity = Enum.RenderFidelity.Precise,
+			SplitApart = false,
+		})[1]
+		cutter:Destroy()
+		cut.Name = "Felt"
+		cut.Anchored = true
+		cut.UsePartColor = true
+		cut.Color = strip.Color
+		cut.Material = strip.Material
+		cut.CustomPhysicalProperties = FELT_PHYS
+		for k, v in strip:GetAttributes() do
+			cut:SetAttribute(k, v)
+		end
+		cut:SetAttribute("CupCut", true)
+		CollectionService:AddTag(cut, SURFACE_TAG)
+		strip:Destroy()
+		cut.Parent = self.geo
+	end
+end
+
 -- Base blocks under the felt, down to the lawn: they are the cliff faces between levels, so they collide
 -- (GolfWall: the ball bounces off them like a rail, players pass through).
 function Hole:buildBase(pc)
@@ -544,12 +701,69 @@ local function wallStyle(w)
 	if string.find(id, "deflector") or string.find(id, "board") then
 		return P.oak, M.WoodPlanks
 	elseif string.find(id, "backing") then
-		return P.bark, M.Wood
+		-- the bank backing face reads as stone (Playtest Bot round 8 #1, stage w): the bank_backing_stone prop sits
+		-- inside this rail, so the rail face itself is limestone; the prop carries the oak cap
+		return P.limestone, M.Limestone
 	end
 	return P.limestone, M.Limestone
 end
 
+-- Sugarloaf wall families (holes.json ids, with __cutN suffixes from the mover collision cuts): body colour,
+-- material, timber cap?, transparency
+local function sugarloafWallStyle(w)
+	local id = w.id
+	local function has(k)
+		return string.find(id, k, 1, true) ~= nil
+	end
+	if has("crystal") then
+		return P.candy, M.Glass, false, 0.25
+	elseif has("gumdrop") then
+		return hex("F78FB3"), M.SmoothPlastic, false
+	elseif has("hoodoo") then
+		return hex("CC8D91"), M.Sandstone, false
+	elseif has("boulder") then
+		return hex("E8736B"), M.Sandstone, false
+	elseif has("gnomon_plinth") or has("hour_stone") then
+		return hex("E8C9A1"), M.Sandstone, false
+	elseif has("rock") or has("pocket") then
+		return hex("C68C59"), M.Sandstone, false
+	elseif has("rope_rail") or has("bridge_rail") or has("house") then
+		return P.oak, M.WoodPlanks, false
+	elseif has("quay") or has("gate_approach") then
+		return P.cream, M.Concrete, true
+	end
+	return P.limestone, M.Sandstone, true
+end
+
+-- Sugarloaf mover clearance trims (stage w): the H9 pump-house front walls either side of the tunnel (rail2, house13)
+-- and the tunnel side walls (rail3, house18) ended at z = -18.0, 0.05 from the windpump vane colliders (z -17.95); the
+-- H9/H14 blocker rule is >= 0.06, so those faces move to z = -18.01 (hole-local, axis-aligned walls only).
+local SUGARLOAF_TRIMS = {
+	[9] = { rail2 = { zmax = -18.01 }, house13 = { zmax = -18.01 }, rail3 = { zmax = -18.01 }, house18 = { zmax = -18.01 } },
+}
+local function trimWall(w, t)
+	local yaw = (w.yaw or 0) % 180
+	assert(yaw == 0 or yaw == 90, "trimWall: axis-aligned walls only")
+	local ex, ez = w.size[1], w.size[3]
+	if yaw == 90 then
+		ex, ez = w.size[3], w.size[1]
+	end
+	local z0, z1 = w.center[3] - ez / 2, w.center[3] + ez / 2
+	z1 = t.zmax and math.min(z1, t.zmax) or z1
+	z0 = t.zmin and math.max(z0, t.zmin) or z0
+	local out = table.clone(w)
+	out.center = { w.center[1], w.center[2], (z0 + z1) / 2 }
+	out.size = { ex, w.size[2], z1 - z0 }
+	out.yaw = 0
+	out.trimmed = true
+	return out
+end
+
 function Hole:buildWall(w)
+	local trim = COURSE and SUGARLOAF_TRIMS[self.def.number] and SUGARLOAF_TRIMS[self.def.number][w.id]
+	if trim then
+		w = trimWall(w, trim)
+	end
 	local c = v3(w.center)
 	local size = v3(w.size)
 	local cf = CFrame.new(c) * CFrame.Angles(0, math.rad(w.yaw or 0), 0)
@@ -567,6 +781,27 @@ function Hole:buildWall(w)
 		BottomSurface = SMOOTH,
 	}, self.geo)
 	p:SetAttribute("WallId", w.id)
+	if w.hour_stone then
+		p:SetAttribute("HourStone", w.hour_stone == true and w.id or tostring(w.hour_stone))
+	end
+
+	if COURSE then
+		-- Sugarloaf: the visual is exactly the collision box (its cut pieces included), so what you see is what the
+		-- ball hits and the 0.15 mover clearance holds for the visuals too; plain rails get a timber cap inset at the top
+		local color, material, cap, transp = sugarloafWallStyle(w)
+		local body = vis((bumper and "Bumper_" or "Rail_") .. w.id, self.cf * cf, size, color, material, self.rails)
+		body:SetAttribute("WallId", w.id)
+		if transp then
+			body.Transparency = transp
+			body.CastShadow = false
+		end
+		if cap and size.Y > 0.3 and size.X > 0.1 and size.Z > 0.1 then
+			local capT = 0.12
+			local capPart = vis("RailCap_" .. w.id, self.cf * cf * CFrame.new(0, size.Y / 2 - capT / 2, 0), Vector3.new(size.X, capT, size.Z), P.oak, M.WoodPlanks, self.rails)
+			capPart:SetAttribute("WallId", w.id)
+		end
+		return
+	end
 
 	local color, material = wallStyle(w)
 	local bottom = self.lawnTopLocal
@@ -616,7 +851,7 @@ function Hole:buildWall(w)
 	local tilt = CFrame.new(c.X, midTop, c.Z) * CFrame.Angles(0, math.rad(w.yaw or 0), 0) * CFrame.Angles(-ang, 0, 0)
 	-- pieces along the rail (s = distance along its local Z, from -len/2 to len/2), minus any notch
 	local pieces = { { -len / 2, len / 2 } }
-	local notch = RAIL_NOTCHES[self.def.number] and RAIL_NOTCHES[self.def.number][w.id]
+	local notch = COURSE == nil and RAIL_NOTCHES[self.def.number] and RAIL_NOTCHES[self.def.number][w.id]
 	if notch then
 		local function sAt(v)
 			local probe = notch.axis == "x" and Vector3.new(v, c.Y, c.Z) or Vector3.new(c.X, c.Y, v)
@@ -635,10 +870,13 @@ function Hole:buildWall(w)
 			table.insert(pieces, { n1, len / 2 })
 		end
 	end
-	local capped = not string.find(w.id, "deflector") and not string.find(w.id, "board")
+	-- no cap on deflector boards, and none on bank backings: their bank_backing_stone prop has its own oak cap (two
+	-- caps 0.15 apart z-fought, round 8 #1)
+	local backing = string.find(w.id, "backing") ~= nil
+	local capped = not string.find(w.id, "deflector") and not string.find(w.id, "board") and not backing
 	-- the hole's rail-kit skin (manifest hole_skins: H8/H9 cream trim) on plain limestone rails
-	local skin = RAIL_SKINS[self.def.number]
-	local plain = color == P.limestone and material == M.Limestone
+	local skin = COURSE == nil and RAIL_SKINS[self.def.number] or nil
+	local plain = color == P.limestone and material == M.Limestone and not backing
 	local capColor, capMat = P.oak, M.Wood
 	if skin and plain then
 		color = skin.rail_block_color and Color3.fromHex(skin.rail_block_color) or color
@@ -646,11 +884,15 @@ function Hole:buildWall(w)
 		capColor = skin.rail_cap_color and Color3.fromHex(skin.rail_cap_color) or capColor
 		capMat = skin.rail_cap_roblox_material and Enum.Material[skin.rail_cap_roblox_material] or capMat
 	end
-	-- H9 (under the heart-well lantern): oak rail wood washed out lighter than the felt; Game Art Bot round 7 wants
-	-- #7A4E32, Reflectance 0 (stage v)
-	if self.def.number == 9 then
-		color = color == P.oak and H9_RAIL_WOOD or color
-		capColor = capColor == P.oak and H9_RAIL_WOOD or capColor
+	-- H9 (under the heart-well lantern): rail tops and faces are oak #7A4E32, Reflectance 0 (Game Art Bot round 7,
+	-- stage v; Playtest Bot round 8 #2, stage w: the cream limestone skin is gone). Limestone stays only on the bank
+	-- backing (and posts).
+	if self.def.number == 9 and self.course == nil then
+		if not backing then
+			color, material = H9_RAIL_WOOD, M.WoodPlanks
+		end
+		capColor, capMat = H9_RAIL_WOOD, M.Wood
+		skin = nil
 	end
 	for _, pc in pieces do
 		local mid, l = (pc[1] + pc[2]) / 2, pc[2] - pc[1]
@@ -669,8 +911,32 @@ end
 ------------------------------------------------------------------------------------------------ moving parts
 -- spec value / cycle of a moving part (shared with GolfServer.Movers and the harness): ReplicatedStorage.Golf.MoverMath
 local function moverProfile(m)
-	return { type = m.type, speed = m.speed, phase = m.phase or 0, range = m.range, period = m.period_s, amplitude = m.amplitude_deg, dwell = m.dwell }
+	return { type = m.type, speed = m.speed, phase = m.phase or 0, range = m.range, period = m.period_s, amplitude = m.amplitude_deg, dwell = m.dwell, keys = m.keys }
 end
+
+-- Sugarloaf H11's timetable movers (holes.json `schedule`) as keyframed slides along their axis (MoverMath "keys"):
+--   lift:     deck down until rise[1], up `height` by rise[2], level until return_[1], down by return_[2]
+--   quay_lip: top at 0 except the `flush` interval, where it is sunk 1 stud (top y 5 -> 4), moving at `speed` studs/s
+local function normalizeMover(m)
+	if m.type == "lift" then
+		local sc = m.schedule
+		local h = sc.height or 4
+		m = table.clone(m)
+		m.type = "keys"
+		m.keys = { { t = 0, v = 0 }, { t = sc.rise[1], v = 0 }, { t = sc.rise[2], v = h }, { t = sc.return_[1], v = h }, { t = sc.return_[2], v = 0 }, { t = m.period_s, v = 0 } }
+		m.range = { 0, h }
+		m.speed = m.speed or h / (sc.rise[2] - sc.rise[1])
+	elseif m.type == "quay_lip" then
+		local f = m.schedule.flush
+		local drop, ramp = 1, 1 / (m.speed or 10)
+		m = table.clone(m)
+		m.type = "keys"
+		m.keys = { { t = 0, v = 0 }, { t = f[1] - ramp, v = 0 }, { t = f[1], v = -drop }, { t = f[2], v = -drop }, { t = f[2] + ramp, v = 0 }, { t = m.period_s, v = 0 } }
+		m.range = { -drop, 0 }
+	end
+	return m
+end
+CourseBuilder.normalizeMover = normalizeMover
 local function moverValue(m, t)
 	return MoverMath.value(moverProfile(m), t)
 end
@@ -688,6 +954,14 @@ local function axisFrame(pos, axis)
 end
 
 local MOVER_STYLE = {
+	-- Sugarloaf Canyon (stand-ins until the pass 5 mover meshes are welded on; SugarloafMeshes)
+	sluice_gate = { Color3.fromHex("8A5A33"), M.WoodPlanks },
+	windpump = { Color3.fromHex("F78FB3"), M.SmoothPlastic },
+	lock_gate = { Color3.fromHex("8A5A33"), M.WoodPlanks },
+	lock_lift_deck = { Color3.fromHex("8A5A33"), M.WoodPlanks },
+	quay_lip = { Color3.fromHex("D9343A"), M.SmoothPlastic },
+	ore_bucket = { Color3.fromHex("3B3A3F"), M.Metal },
+	shadow_arm = { Color3.fromHex("5E6470"), M.Slate },
 	spinner = { P.cream, M.SmoothPlastic },
 	millwheel = { P.oak, M.WoodPlanks },
 	log = { P.bark, M.Wood },
@@ -703,7 +977,8 @@ local MOVER_STYLE = {
 -- H9 root gate's ends sit inside the corridor rails and slide vertically along them).
 local SLIDE_CLEARANCE = 0.5
 function Hole:clampSlideRange(m, blockers, axis)
-	local clearance = m.clearance or m.end_clearance or SLIDE_CLEARANCE
+	-- (Sugarloaf: the course-wide 0.15 mover clearance; its holes.json already carries the collision cuts for it)
+	local clearance = m.clearance or m.end_clearance or (COURSE and 0.15 or SLIDE_CLEARANCE)
 	local walls = {}
 	for _, d in self.geo:GetChildren() do
 		if d:IsA("BasePart") and (d.Name == "Wall" or d.Name == "Bumper") then
@@ -802,7 +1077,25 @@ function Hole:clampSlideRange(m, blockers, axis)
 	return out
 end
 
+-- Lantern Grove block-rate tuning (stage w, Playtest Bot round 8 #5: H7 and H8 sat at 50%, the top of the band;
+-- target ~44% over 24 shots): shorter dwells where the blocker sits in the intended line, same speeds and travel.
+--   H7 log: the +6 end stop (in the ball's path) 1.5 -> 1.025 s; H8 root door: the closed stop 1.8 -> 1.1 s.
+--   Measured (blockrate, 24 aimed shots per run; one run varies +-2 with the phase grid): H7 1.0 s 9/11/9,
+--   1.025 s 10/11/12 (45.8%), 1.05 s 12/13/9, 1.1 s 10/13; H8 1.1 s 11/24 twice (playtests/stage-w).
+-- (dwell `at` values at the spec range ends follow the clearance-clamped ends, see buildMover)
+local LG_DWELL = {
+	[7] = { log = { { at = -6, s = 1.0 }, { at = 6, s = 1.025 } } },
+	[8] = { root_door = { { at = 0, s = 1.1 }, { at = 4, s = 2.2 } } },
+}
+
 function Hole:buildMover(m)
+	m = normalizeMover(m)
+	local tune = COURSE == nil and LG_DWELL[self.def.number] and LG_DWELL[self.def.number][m.id]
+	if tune then
+		m = table.clone(m)
+		m.spec_dwell = m.dwell
+		m.dwell = tune
+	end
 	local model = new("Model", { Name = "Mover_" .. m.id }, self.movers)
 	local pivotLocal = v3(m.pivot)
 	local axisLocal = v3(m.axis).Unit
@@ -834,7 +1127,7 @@ function Hole:buildMover(m)
 		if math.abs(r[1] - m.range[1]) > 1e-3 or math.abs(r[2] - m.range[2]) > 1e-3 then
 			model:SetAttribute("SpecRange", Vector2.new(m.range[1], m.range[2]))
 			print(string.format("CourseBuilder: hole %d %s range [%g, %g] -> [%g, %g] (clearance %.2f to the rails)",
-				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], m.clearance or m.end_clearance or SLIDE_CLEARANCE))
+				self.def.number, m.id, m.range[1], m.range[2], r[1], r[2], m.clearance or m.end_clearance or (COURSE and 0.15 or SLIDE_CLEARANCE)))
 			-- dwell stops at the spec range ends move with the clamped ends
 			local dwell = nil
 			for _, d in m.dwell or {} do
@@ -911,6 +1204,7 @@ function Hole:buildMover(m)
 			new("WeldConstraint", { Part0 = blk, Part1 = vp }, vp)
 		end
 	end
+	self:moverFelt(m, model, root)
 	self:moverExtras(m, model, root, pivotLocal, axisLocal)
 
 	model:SetAttribute("MoverId", m.id)
@@ -922,6 +1216,9 @@ function Hole:buildMover(m)
 	model:SetAttribute("RangeMax", m.range and m.range[2] or 0)
 	model:SetAttribute("Period", moverPeriod(m))
 	model:SetAttribute("Dwell", MoverMath.encodeDwell(m.dwell))
+	if m.keys then
+		model:SetAttribute("Keys", MoverMath.encodeKeys(m.keys))
+	end
 	if m.type == "swing" then
 		model:SetAttribute("Amplitude", m.amplitude_deg)
 	end
@@ -930,6 +1227,50 @@ function Hole:buildMover(m)
 	model:SetAttribute("Visual", m.visual)
 	CollectionService:AddTag(model, MOVER_TAG)
 	return model
+end
+
+-- A mover's own felt (Sugarloaf H11: gate top, lift deck, quay lip; holes.json moving_parts[].felt, top-surface centre
+-- at offset 0). Where the felt box is the same box as a blocker, that blocker IS the felt: it gets the GolfSurface tag
+-- (the ball and the VR floor treat it as felt) and felt colour; thin decks (<= 0.2) also get felt physics (the ball
+-- rides on them), while thick ones (the gate, the lip) keep wall physics for side hits. Otherwise a welded felt slab.
+function Hole:moverFelt(m, model, root)
+	for _, f in m.felt or {} do
+		local pc = makePiece(f)
+		local t = f.thickness or FELT_T
+		local top = self.cf * pc.base * pc.tilt
+		local cf = top * CFrame.new(0, -t / 2, 0)
+		local size = Vector3.new(f.size[1], t, f.size[2])
+		local part
+		for _, b in model:GetChildren() do
+			if b.Name == "Blocker" and (b.Position - cf.Position).Magnitude < 0.02 and (b.Size - size).Magnitude < 0.02 then
+				part = b
+				break
+			end
+		end
+		if not part then
+			part = new("Part", { Name = "Blocker", Anchored = false, Size = size, CFrame = cf, Transparency = 1, CanTouch = false, CastShadow = false, TopSurface = SMOOTH, BottomSurface = SMOOTH }, model)
+			part:SetAttribute("RestCFrame", cf)
+			CollectionService:AddTag(part, MOVER_PART_TAG)
+			new("WeldConstraint", { Part0 = root, Part1 = part }, part)
+		end
+		part:SetAttribute("MoverFelt", f.id)
+		part:SetAttribute("PieceId", f.id)
+		part:SetAttribute("Zone", f.zone)
+		if t <= 0.2 then
+			part:SetAttribute("FeltPhysics", true)
+			part.CustomPhysicalProperties = FELT_PHYS
+		end
+		CollectionService:AddTag(part, SURFACE_TAG)
+		-- visible felt top (a thin skin on the box top, riding with it)
+		local skin = vis("MoverFeltTop", cf * CFrame.new(0, t / 2 - 0.005, 0), Vector3.new(size.X, 0.02, size.Z), P.felt, M.Fabric, model)
+		skin.Anchored = false
+		skin.Massless = true
+		skin.CastShadow = false
+		new("WeldConstraint", { Part0 = part, Part1 = skin }, skin)
+		if COURSE then
+			tintedTexture(skin, SUGARLOAF_FELT.flat, P.felt, "FeltNap")
+		end
+	end
 end
 
 -- decorative pieces that ride on a mover (welded, massless, no collision)
@@ -984,6 +1325,34 @@ function Hole:moverExtras(m, model, root, pivotLocal, axisLocal)
 	end
 end
 
+------------------------------------------------------------------------------------------------ slot guards
+-- Sugarloaf H11 (stage w sweep): the mover collision cuts leave 0.15-stud slots beside the lock gate and the quay lip
+-- (the mover clearance), and the 0.16-stud ball squeezed into them in the engine (a slow roll into the lock fell
+-- through the gate slot = out of bounds +1; a ball against the lip from the quay wedged 2 studs down). A slot narrower
+-- than the ball can't swallow it, so these invisible guards (no collision, no queries) tell BallController to keep a
+-- ball over them at the felt's support height (hole-local boxes = the cut boxes; SupportY = the felt top beside them).
+local SUGARLOAF_SLOT_GUARDS = {
+	[11] = {
+		{ id = "gate_slot", min = { -1.95, -1.45, -21.65 }, max = { 1.95, 1.35, -20.85 }, support = 0 },
+		{ id = "lip_slot", min = { -1.95, 2.35, -25.7 }, max = { 1.95, 5.15, -25.2 }, support = 4 },
+	},
+}
+function Hole:buildSlotGuards()
+	local guards = COURSE and SUGARLOAF_SLOT_GUARDS[self.def.number]
+	if not guards then
+		return
+	end
+	local folder = self:folder("SlotGuards")
+	for _, g in guards do
+		local mn, mx = v3(g.min), v3(g.max)
+		local p = vis("SlotGuard", self.cf * CFrame.new((mn + mx) / 2), mx - mn, Color3.new(1, 1, 0), M.SmoothPlastic, folder)
+		p.Transparency = 1
+		p.CastShadow = false
+		p:SetAttribute("GuardId", g.id)
+		p:SetAttribute("SupportY", self.cf:PointToWorldSpace(Vector3.new(0, g.support, 0)).Y)
+	end
+end
+
 ------------------------------------------------------------------------------------------------ hazards, teleports
 function Hole:buildHazard(hz)
 	local c = v3(hz.center)
@@ -998,10 +1367,13 @@ function Hole:buildHazard(hz)
 		-- a miss is placed at rest on this felt point (e.g. H5's bridge entry) instead of the stroke start
 		volume:SetAttribute("RespawnWorld", self.cf:PointToWorldSpace(v3(hz.respawn)) + Vector3.new(0, Config.BallRadius + 0.03, 0))
 		-- glowing mossy marker flush on the felt where the ball comes back (spec anchor bridge_respawn_stone)
-		local rs = vis("RespawnStone", self.cf * CFrame.new(v3(hz.respawn) + Vector3.new(0, 0.006, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+		local rs = COURSE == nil and vis("RespawnStone", self.cf * CFrame.new(v3(hz.respawn) + Vector3.new(0, 0.006, 0)) * CFrame.Angles(0, 0, math.rad(90)),
 			Vector3.new(0.01, 0.8, 0.8), P.firefly, M.Neon, self.hazards, Enum.PartType.Cylinder)
-		rs.Transparency = 0.35
-		rs.CastShadow = false
+		if rs then
+			-- (Sugarloaf: the pass 5 sandstone respawn marker mesh goes here instead; SugarloafBuilder)
+			rs.Transparency = 0.35
+			rs.CastShadow = false
+		end
 	end
 	-- water surface (world y): Terrain water is buoyant, so the server calls a ball that reaches it a hazard
 	volume:SetAttribute("SurfaceY", (cf * CFrame.new(0, 0, 0)).Y)
@@ -1014,6 +1386,8 @@ function Hole:buildHazard(hz)
 		w.CastShadow = false
 		-- stream bed
 		vis("StreamBed", cf * CFrame.new(0, -depth + 0.05, 0), Vector3.new(sx, 0.1, sz), P.slate, M.Pebble, self.hazards)
+	elseif depth <= 0.1 or COURSE then
+		-- (Sugarloaf H7 Taffy Gap: the canyon itself is the pit; the hazard surface sits 30 below the felt)
 	else
 		-- a dark rabbit hole: the felt has a gap here; fill the gap's floor with a dark disc
 		vis("PitFloor", cf * CFrame.new(0, -depth / 2 + 0.05, 0), Vector3.new(sx, depth, sz), Color3.fromRGB(28, 20, 14), M.Ground, self.hazards)
@@ -1046,7 +1420,30 @@ function Hole:buildTeleport(tp)
 	marker:SetAttribute("SpeedFactor", tp.speed_factor or 1)
 	marker:SetAttribute("MinSpeed", tp.min_speed or 2)
 	marker:SetAttribute("MaxSpeed", tp.max_speed or 8)
-	local secret = tp.entry.radius < 0.32
+	if tp.entry.half_size then
+		-- rectangle trigger (hole-local axes): centre +- half_size; the marker's CFrame carries the hole yaw
+		marker.CFrame = self.cf * CFrame.new(entry)
+		marker:SetAttribute("HalfSize", Vector2.new(tp.entry.half_size[1], tp.entry.half_size[2]))
+	end
+	if tp.kind == "lift" then
+		-- Sugarloaf H11: the lock chamber floor is the lift deck. The ball rides the deck (Movers/Mover_<platform>) up
+		-- and is pushed out at the exit when the release starts (BallController.checkTeleports)
+		marker:SetAttribute("Kind", "lift")
+		local deck
+		for _, mm in self.def.moving_parts or {} do
+			if mm.type == "lift" then
+				deck = mm
+			end
+		end
+		if deck then
+			marker:SetAttribute("LiftMover", "Mover_" .. deck.id)
+			marker:SetAttribute("Release", deck.schedule.release[1])
+			marker:SetAttribute("RideStart", deck.schedule.rise[1])
+			marker:SetAttribute("Period", deck.period_s)
+		end
+		return
+	end
+	local secret = COURSE == nil and tp.entry.radius < 0.32
 	local col = secret and P.amber or P.firefly
 	marker:SetAttribute("FxColor", col) -- BallController's exit flash
 	if secret then
@@ -1326,6 +1723,142 @@ function Hole:placeholder(a, parent)
 	end
 end
 
+------------------------------------------------------------------------------------------------ Sugarloaf decor
+-- Part-built stand-ins for Sugarloaf's decoration anchors (props.md P1 landmarks, signs, felt arrows). Visual only.
+-- Skipped: anchors whose look comes from elsewhere (the flag, the pass 5 mover meshes and their static frames, the
+-- slot-canyon Terrain walls, the bumper/rock collision blocks that already render, teleport rings).
+local SC_SKIP = {
+	cup_flag = true, sluice_gate = true, gate_frame = true, windpump_wheel = true, ore_bucket = true, cableway_trestle = true,
+	shadow_arm = true, hour_stones = true, gnomon_plinth = true, rope_bridges = true, gap_view = true, island_respawn_stone = true,
+	island_edge_lip = true, lock_chamber = true, dam_view = true, slot_walls = true, echo_walls = true, geode_entry = true,
+	geode_exit = true, intake_grate = true, striped_boulder = true, gumdrops = true, maze_rock = true, rock_face = true,
+	hoodoo_deco = true, sugar_dune = true, tier_lip = true, dune_cliff = true, deck_overhang = true, bowl_rim = true,
+	cliff_edge = true, dip_trim = true, basin_bank = true, sluice_flume = true, pipe_lip = true, left_open_cut = true,
+	log_plank = true, ranger_footbridge = true, safe_east_wait = true, plank_respawn_stone = false,
+}
+local SIGN_TEXT = {
+	sign_left = "Shortcut", sign_mid = "Mine-Cart Junction", sign_right = "Long way", sign_plank = "Log plank", sign_bridge = "Footbridge",
+	sign_overflow = "Overflow", sign_bypass = "Round the back - no vanes", sign_pier = "Intake pier", sign_shore = "Shoreline",
+	sign_west = "West", sign_centre = "Centre", sign_east = "East", safe_bank_sign = "Bank west - safe", sign_rim = "Rim route",
+}
+
+function Hole:sugarloafPlaceholder(a, parent)
+	local name = a.name
+	if SC_SKIP[name] or string.find(name, "^hour_stone") or string.find(name, "^player_tp_") or string.find(name, "_skirt_")
+		or string.find(name, "^crystal_%d") or string.find(name, "^hoodoo_%d") then
+		return
+	end
+	local pos = v3(a.position)
+	local size = a.approx_size and v3(a.approx_size) or Vector3.new(2, 2, 2)
+	local base = self.cf * CFrame.new(pos)
+	local lawn = math.min(pos.Y, self.lawnTopLocal + 1.5)
+	local function box(n, cf, sz, col, mat)
+		return vis(n, cf, sz, col, mat or M.SmoothPlastic, parent)
+	end
+	local function striped(n, cf, sz, cols)
+		-- horizontal candy bands every 1 stud
+		local bands = math.max(1, math.floor(sz.Y))
+		for k = 0, bands - 1 do
+			local h = sz.Y / bands
+			box(n, cf * CFrame.new(0, -sz.Y / 2 + h * (k + 0.5), 0), Vector3.new(sz.X, h, sz.Z), cols[k % #cols + 1], M.Sandstone)
+		end
+	end
+	local candy = { hex("E8736B"), hex("F6E3C8"), hex("D9534F"), hex("F2B48A") }
+	if string.find(name, "arrow") or string.find(name, "chevron") then
+		-- glowing lime arrow decal flat on the felt, pointing local -Z (or the anchor's facing)
+		local dir = a.facing and Vector3.new(a.facing[1], 0, a.facing[2]) or Vector3.new(0, 0, -1)
+		local f = self.cf * CFrame.lookAt(pos + Vector3.new(0, 0.006, 0), pos + Vector3.new(0, 0.006, 0) + dir)
+		local L = math.max(size.Z, size.X) * 0.5
+		for _, sgn in { -1, 1 } do
+			local bar = box("Arrow", f * CFrame.new(sgn * L * 0.22, 0, -L * 0.05) * CFrame.Angles(0, sgn * math.rad(40), 0), Vector3.new(0.18, 0.01, L * 0.75), P.firefly, M.SmoothPlastic)
+			bar.CastShadow = false
+		end
+		return
+	end
+	if string.find(name, "sign") then
+		local face = self.cf:VectorToWorldSpace(Vector3.new(0, 0, 1))
+		local post = CFrame.lookAt(base.Position, base.Position + face)
+		box("SignPost", post * CFrame.new(0, size.Y / 2, 0), Vector3.new(0.2, size.Y, 0.2), P.oak, M.WoodPlanks)
+		local board = box("SignBoard", post * CFrame.new(0, size.Y - 0.5, 0), Vector3.new(math.max(1.6, size.X), 0.8, 0.15), P.toadstool, M.SmoothPlastic)
+		local gui = new("SurfaceGui", { Face = Enum.NormalId.Back, CanvasSize = Vector2.new(240, 100), LightInfluence = 0 }, board)
+		new("TextLabel", { Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Text = SIGN_TEXT[name] or name, TextScaled = true, Font = Enum.Font.FredokaOne, TextColor3 = P.cream }, gui)
+		return
+	end
+	if name == "trailhead_arch" or name == "arch_gate" then
+		-- candy-striped posts and a lintel; the opening stays >= 8 high (props.md: H18 underside >= 8 over the ramp)
+		local w, h = size.X, math.max(size.Y, 9.4)
+		for _, sx in { -1, 1 } do
+			striped("Post", base * CFrame.new(sx * (w / 2 - 0.6), h / 2, 0), Vector3.new(1.2, h, size.Z), candy)
+		end
+		box("Lintel", base * CFrame.new(0, h - 0.6, 0), Vector3.new(w, 1.2, size.Z), P.oak, M.WoodPlanks)
+		return
+	end
+	if name == "pump_house" then
+		-- timber pump house around the 2.4-wide tunnel (pump_tunnel felt z -24..-18): its front face is at local z = -18
+		-- (stage w: the house front stays at z <= -18 (-18.01, with the trimmed rail2/house13), 0.06 behind the windpump
+		-- vanes at z -17.95..-17.25)
+		local z0, z1, top = -24, -18.01, 8
+		for _, xr in { { -8, -1.2 }, { 1.2, 8 } } do
+			local cx, w = (xr[1] + xr[2]) / 2, xr[2] - xr[1]
+			local hb = top - lawn
+			box("PumpHouse", self.cf * CFrame.new(cx, lawn + hb / 2, (z0 + z1) / 2), Vector3.new(w, hb, z1 - z0), hex("FFF8F0"), M.WoodPlanks)
+			box("Trim", self.cf * CFrame.new(cx, top - 0.3, z1 - 0.05), Vector3.new(w, 0.6, 0.1), P.toadstool, M.SmoothPlastic)
+		end
+		box("Roof", self.cf * CFrame.new(0, top + 0.3, (z0 + z1) / 2), Vector3.new(16.4, 0.6, z1 - z0 + 0.4), P.toadstool, M.SmoothPlastic)
+		return
+	end
+	if name == "lollipop_cactus_1" or name == "island_hoodoo" or name == "big_gumdrop_bg" then
+		if name == "lollipop_cactus_1" then
+			box("Cactus", base * CFrame.new(0, size.Y * 0.35, 0), Vector3.new(1.2, size.Y * 0.7, 1.2), P.moss, M.Grass)
+			box("Arm", base * CFrame.new(0.9, size.Y * 0.45, 0), Vector3.new(0.7, 2.4, 0.7), P.moss, M.Grass)
+			local pop = vis("Lollipop", base * CFrame.new(0, size.Y * 0.8, 0) * CFrame.Angles(0, 0, math.rad(90)), Vector3.new(0.3, 2.6, 2.6), hex("F78FB3"), M.SmoothPlastic, parent, Enum.PartType.Cylinder)
+			pop.Reflectance = 0.05
+		elseif name == "island_hoodoo" then
+			striped("Hoodoo", base * CFrame.new(0, size.Y / 2, 0), Vector3.new(size.X, size.Y, size.Z), { hex("CC8D91"), hex("E8C9A1") })
+			vis("GumdropCap", base * CFrame.new(0, size.Y + 0.6, 0), Vector3.new(size.X + 1, 1.6, size.Z + 1), hex("F78FB3"), M.SmoothPlastic, parent, Enum.PartType.Ball)
+		else
+			vis("Gumdrop", base * CFrame.new(0, size.Y * 0.45, 0), size, hex("9BDB4D"), M.SmoothPlastic, parent, Enum.PartType.Ball)
+		end
+		return
+	end
+	if string.find(name, "lantern") or name == "crystal_cue" or name == "gate_light" then
+		local core = vis("Glow", base * CFrame.new(0, size.Y / 2, 0), size, name == "gate_light" and hex("9BDB4D") or P.amber, M.Neon, parent)
+		core.Transparency = 0.2
+		new("PointLight", { Color = core.Color, Range = 8, Brightness = 0.5, Shadows = false }, core)
+		return
+	end
+	if name == "sinkhole_rim" then
+		for k = 0, 11 do
+			local ang = k * math.pi / 6
+			box("Rim", base * CFrame.new(math.cos(ang) * 1.55, 0.06, math.sin(ang) * 1.55) * CFrame.Angles(0, -ang, 0), Vector3.new(0.3, 0.12, 0.85), hex("E8C9A1"), M.Sandstone)
+		end
+		return
+	end
+	if name == "gnomon" then
+		box("Gnomon", base * CFrame.new(0, size.Y / 2 + 1.2, 0), Vector3.new(size.X, size.Y, size.Z * 0.6), hex("3B3A3F"), M.Metal)
+		return
+	end
+	if name == "plank_respawn_stone" then
+		local d = vis("RespawnStone", base * CFrame.new(0, 0.006, 0) * CFrame.Angles(0, 0, math.rad(90)), Vector3.new(0.01, 0.8, 0.8), hex("E8C9A1"), M.Sandstone, parent, Enum.PartType.Cylinder)
+		d.CastShadow = false
+		return
+	end
+	-- buildings and big props: a body + a peppermint roof/band; rocks and piles: sandstone
+	local rocky = string.find(name, "rock") or string.find(name, "pile") or string.find(name, "flood") or name == "geode_wall"
+	local h = size.Y + (pos.Y - lawn)
+	local body = box(rocky and "Rock" or "Body", self.cf * CFrame.new(pos.X, lawn + h / 2, pos.Z), Vector3.new(size.X, h, size.Z),
+		rocky and hex("C68C59") or hex("FFF8F0"), rocky and M.Sandstone or M.WoodPlanks)
+	if name == "geode_wall" then
+		body.Color = hex("CC8D91")
+		for k = 0, 5 do
+			local g = box("Crystal", self.cf * CFrame.new(pos.X + size.X / 2, lawn + 2 + k * 2, pos.Z - size.Z / 2 + 2 + k * 2.6) * CFrame.Angles(0, 0, math.rad(25 + k * 9)), Vector3.new(0.8, 1.8, 0.8), P.candy, M.Glass)
+			g.Transparency = 0.25
+		end
+	elseif not rocky and size.Y >= 2 then
+		box("Roof", self.cf * CFrame.new(pos.X, lawn + h + 0.25, pos.Z), Vector3.new(size.X + 0.6, 0.5, size.Z + 0.6), P.toadstool, M.SmoothPlastic)
+	end
+end
+
 function Hole:buildDecor()
 	for _, a in self.def.decoration_anchors or {} do
 		local m = new("Model", { Name = a.name }, self.decor)
@@ -1340,7 +1873,11 @@ function Hole:buildDecor()
 		anchor:SetAttribute("Landmark", a.landmark == true)
 		m.PrimaryPart = anchor
 		local ph = new("Model", { Name = "Placeholder" }, m)
-		self:placeholder(a, ph)
+		if COURSE then
+			self:sugarloafPlaceholder(a, ph)
+		else
+			self:placeholder(a, ph)
+		end
 	end
 end
 
@@ -1444,6 +1981,7 @@ local function buildHole(course, def, layout)
 	local holeCF, yaw, inWorld = holeFrame(def, layout)
 	local model = new("Model", { Name = "Hole" .. def.number })
 	model:SetAttribute("HoleNumber", def.number)
+	model:SetAttribute("CourseId", COURSE or "lantern_grove")
 	model:SetAttribute("Par", def.par)
 	model:SetAttribute("HoleName", def.name)
 	model:SetAttribute("Zone", def.zone)
@@ -1477,7 +2015,14 @@ local function buildHole(course, def, layout)
 
 	local fmin, fmax = math.huge, -math.huge
 	local bx0, bx1, bz0, bz1 = math.huge, -math.huge, math.huge, -math.huge
+	local removed = {}
+	for _, id in def.removed_static_felt or {} do
+		removed[id] = true
+	end
 	for _, f in def.felt do
+		if removed[f.id] then
+			continue -- (Sugarloaf H11: the lock floor is the moving lift deck's own felt)
+		end
 		local pc = makePiece(f)
 		table.insert(self.pieces, pc)
 		fmin = math.min(fmin, pieceMinTop(pc))
@@ -1507,6 +2052,17 @@ local function buildHole(course, def, layout)
 			end
 		end
 	end
+	if not cupPiece then
+		-- (Sugarloaf H16: the cup is 0.2 from the edge of its flat piece; cutNeighbourCup clears the rest of the hole)
+		for _, pc in self.pieces do
+			if not pc.overlay and not pc.axis then
+				local hh = pieceHeight(pc, cupLocal.X, cupLocal.Z, 0)
+				if hh and math.abs(hh - cupLocal.Y) < 0.05 then
+					cupPiece = pc
+				end
+			end
+		end
+	end
 	assert(cupPiece, "hole " .. def.number .. ": no flat felt piece under the cup")
 	for _, pc in self.pieces do
 		if pc == cupPiece then
@@ -1518,6 +2074,7 @@ local function buildHole(course, def, layout)
 			self:buildBase(pc)
 		end
 	end
+	self:cutNeighbourCup(cupLocal)
 	for _, w in def.walls do
 		self:buildWall(w)
 	end
@@ -1534,6 +2091,7 @@ local function buildHole(course, def, layout)
 	for _, tp in def.teleports or {} do
 		self:buildTeleport(tp)
 	end
+	self:buildSlotGuards()
 	self:buildTee()
 	self:buildDecor()
 	if not inWorld then
@@ -1583,7 +2141,8 @@ function CourseBuilder.ApplyPhysics(course, cfg)
 			counts.obstacle += 1
 		elseif CollectionService:HasTag(d, MOVER_PART_TAG) then
 			d.CollisionGroup = MOVER_GROUP
-			d.CustomPhysicalProperties = wall
+			-- (a mover's thin felt deck, e.g. Sugarloaf H11's lift, keeps felt physics: the ball rides on it)
+			d.CustomPhysicalProperties = d:GetAttribute("FeltPhysics") and FELT_PHYS or wall
 			counts.mover += 1
 		elseif d.Name == "MoverRoot" or d.Name == "BlockerVisual" or (d.Parent and d.Parent:IsA("Model") and CollectionService:HasTag(d.Parent, MOVER_TAG)) then
 			d.CollisionGroup = MOVER_GROUP
@@ -1622,20 +2181,35 @@ end
 ------------------------------------------------------------------------------------------------ build
 -- data: the course spec module (default ServerStorage.CourseData.LanternGrove). Yields (CSG).
 -- layout: WorldLayout table (default ServerStorage.CourseData.WorldLayout if present), or false for the flat layout.
-function CourseBuilder.Build(data, layout)
+-- opts (stage w, second course): { folder = "CourseSugarloaf", courseId = "sugarloaf_canyon", palette = "sugarloaf" }
+--   builds into workspace[opts.folder] (only that folder is replaced; Lantern Grove's workspace.Course is untouched),
+--   with Sugarloaf's palette, felt textures, exact-box rails and props, and leaves Lighting and the spawn alone:
+--   require(game.ServerStorage.CourseBuilder:Clone()).Build(require(game.ServerStorage.CourseData.SugarloafCanyon:Clone()),
+--     require(game.ServerStorage.CourseData.SugarloafLayout:Clone()), { folder = "CourseSugarloaf", courseId = "sugarloaf_canyon", palette = "sugarloaf" })
+function CourseBuilder.Build(data, layout, opts)
+	opts = opts or {}
+	local folderName = opts.folder or "Course"
+	local primary = folderName == "Course"
 	local courseData = game:GetService("ServerStorage"):WaitForChild("CourseData")
 	data = data or require(courseData:WaitForChild("LanternGrove"))
-	if layout == nil and courseData:FindFirstChild("WorldLayout") then
+	if primary and layout == nil and courseData:FindFirstChild("WorldLayout") then
 		layout = require(courseData.WorldLayout:Clone())
 	end
 	if layout and layout.enabled == false then
 		layout = nil
 	end
-	local old = workspace:FindFirstChild("Course")
+	if opts.palette == "sugarloaf" then
+		for k, v in SUGARLOAF_P do
+			P[k] = v
+		end
+		COURSE = opts.courseId or "sugarloaf_canyon"
+	end
+	local old = workspace:FindFirstChild(folderName)
 	if old then
 		old:Destroy()
 	end
-	local course = new("Folder", { Name = "Course" })
+	local course = new("Folder", { Name = folderName })
+	course:SetAttribute("CourseId", opts.courseId or "lantern_grove")
 	course:SetAttribute("CourseName", data.course)
 	course:SetAttribute("TotalPar", data.total_par)
 	course:SetAttribute("SpecSha1", data.source and data.source.sha1 or "")
@@ -1654,6 +2228,11 @@ function CourseBuilder.Build(data, layout)
 		task.wait()
 	end
 	local counts = CourseBuilder.ApplyPhysics(course)
+	if not primary then
+		stats.surface, stats.obstacle, stats.mover = counts.surface, counts.obstacle, counts.mover
+		stats.parts = #course:GetDescendants()
+		return game:GetService("HttpService"):JSONEncode(stats)
+	end
 	local wb = game:GetService("ServerStorage"):FindFirstChild("WorldBuilder")
 	if layout and wb then
 		require(wb:Clone()).ApplyLighting()

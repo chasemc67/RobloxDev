@@ -95,7 +95,8 @@ return {
 		Logo = "rbxassetid://73526573447336", -- 2048x768 transparent
 		TitleBackground = "rbxassetid://75624699940778", -- title_bg_v2.png 1920x1080 (stage q)
 		CardLanternGrove = "rbxassetid://100112215630907", -- card_lanterngrove_v2.png 1024 square (stage q)
-		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in
+		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in (unused since stage w)
+		CardSugarloafPlay = "rbxassetid://71252934424990", -- card_sugarloafcanyon_v2.png 1024 square (stage w: playable)
 		CardAurora = "rbxassetid://82146694601580", -- grey, "coming soon" tag baked in
 		-- VR pointer + wrist card (stage p, store/ui/wrist, tools/stage_p_assets.json)
 		PointerDot = "rbxassetid://124186475881466", -- 64x64
@@ -126,10 +127,10 @@ return {
 	-- Courses on the picker. Only playable ones have a personal best (player attribute "Best_<id>").
 	Courses = {
 		{ id = "lantern_grove", name = "Lantern Grove", image = "CardLanternGrove", playable = true },
-		{ id = "sugarloaf_canyon", name = "Sugarloaf Canyon", image = "CardSugarloaf", playable = false },
+		{ id = "sugarloaf_canyon", name = "Sugarloaf Canyon", image = "CardSugarloafPlay", playable = true }, -- stage w
 		{ id = "aurora_archipelago", name = "Aurora Archipelago", image = "CardAurora", playable = false },
 	},
-	CurrentCourse = "lantern_grove",
+	CurrentCourse = "lantern_grove", -- the default course; each player's own is the player attribute "Course" (Golf.Courses)
 
 	-- Player settings (saved with the personal best record). Volumes are 0..1, CameraSensitivity a multiplier.
 	DefaultSettings = {

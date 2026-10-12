@@ -17,6 +17,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Remotes = Golf:WaitForChild("Remotes")
 local Config = require(Golf:WaitForChild("Config"))
+local Courses = require(Golf:WaitForChild("Courses"))
 local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
 
 local player = Players.LocalPlayer
@@ -159,21 +160,14 @@ local function toast(text)
 end
 
 ---------------------------------------------------------------------------- course data
-local function holeList()
-	local list = {}
-	local course = workspace:FindFirstChild("Course")
-	for _, h in course and course:GetChildren() or {} do
-		local n = h:GetAttribute("HoleNumber")
-		if n then
-			list[n] = h
-		end
-	end
-	return list
+-- (stage w) holes of a course (default: the one this player is on)
+local function holeList(courseId)
+	return Courses.holes(courseId or Courses.of(player))
 end
 
-local function parTotal()
+local function parTotal(courseId)
 	local t = 0
-	for _, h in holeList() do
+	for _, h in holeList(courseId) do
 		t += h:GetAttribute("Par") or 0
 	end
 	return t
@@ -311,27 +305,37 @@ local function buildTitle()
 	label({ Text = foot, Font = BODY, AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -14), Size = UDim2.fromOffset(760, 26), TextColor3 = C.cream, TextStrokeTransparency = 0.3, TextStrokeColor3 = C.navy, MaxTextSize = 20 }, content)
 end
 
-local function startCourse()
+local function startCourse(courseId)
 	local fresh = not roundStarted() and not roundFinished
 	if Explore and Explore.active then
 		Explore.setActive(false) -- (SetExplore off reaches the server before the restart)
 	end
 	FrontEnd.close()
+	if courseId and courseId ~= Courses.of(player) then
+		-- another course (stage w): the server moves this player to its hole 1 with a fresh round
+		roundFinished = false
+		Remotes:WaitForChild("SelectCourse"):FireServer(courseId)
+		return
+	end
 	if not fresh then
 		roundFinished = false
 		Remotes.PlayAgain:FireServer(true)
 	end
 end
 
--- Course picker: Lantern Grove + two "coming soon" cards.
+-- Course picker: Lantern Grove, Sugarloaf Canyon (stage w) and a "coming soon" card.
 local function buildCourses()
 	header("Choose a course", function()
 		show("title")
 	end)
 	local row = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 82), Size = UDim2.fromOffset(860, 420) }, content)
 	new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Center, Padding = UDim.new(0, 26), SortOrder = Enum.SortOrder.LayoutOrder }, row)
-	local par = parTotal()
 	for i, course in Config.Courses do
+		local playable = course.playable and Courses.playable(course.id)
+		course = table.clone(course)
+		course.playable = playable
+		local par = parTotal(course.id)
+		local current = course.id == Courses.of(player)
 		local card = new("Frame", { Name = course.id, LayoutOrder = i, BackgroundColor3 = C.panel, BackgroundTransparency = 0.1, Size = UDim2.fromOffset(264, 412) }, row)
 		corner(card, 18)
 		stroke(card, course.playable and C.amber or C.dim, course.playable and 3 or 2, course.playable and 0 or 0.6)
@@ -349,7 +353,11 @@ local function buildCourses()
 		local onClick
 		if course.playable then
 			local best = bestOf(course.id)
-			label({ Text = string.format("9 holes  -  Par %d", par), Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.cream, MaxTextSize = 20 }, card)
+			local nHoles = 0
+			for _ in holeList(course.id) do
+				nHoles += 1
+			end
+			label({ Text = string.format("%d holes  -  Par %d", nHoles, par), Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.cream, MaxTextSize = 20 }, card)
 			label({
 				Name = "Best",
 				Text = best and string.format("Best: %d  (%s)", best, relText(best - par)) or "No best yet",
@@ -367,8 +375,11 @@ local function buildCourses()
 				toast(settings.CourseMode == "PVP" and "PVP: balls bump into each other" or "Peaceful: balls pass through each other")
 				saveSettings()
 			end)
-			onClick = startCourse
-			local playText = roundStarted() and "Restart round" or (roundFinished and "Play again" or "Play")
+			onClick = function()
+				startCourse(course.id)
+			end
+			-- (only the course you're on has a round to restart)
+			local playText = not current and "Play" or (roundStarted() and "Restart round" or (roundFinished and "Play again" or "Play"))
 			button(playText, { Name = "PlayCourse", Position = UDim2.fromOffset(22, 362), Size = UDim2.new(1, -44, 0, 46) }, card, onClick, "primary")
 		else
 			label({ Text = "Coming soon", Font = BODY, Position = UDim2.fromOffset(10, 260), Size = UDim2.new(1, -20, 0, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)
@@ -557,7 +568,7 @@ local function buildResults()
 	corner(card, 22)
 	stroke(card, C.amber, 3, 0.2)
 	label({ Text = "Course Complete!", AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 14), Size = UDim2.fromOffset(520, 52), TextColor3 = C.amber }, card)
-	label({ Text = "Lantern Grove", Font = BODY, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 66), Size = UDim2.fromOffset(400, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)
+	label({ Text = (Courses.info(Courses.of(player)) or { name = "Lantern Grove" }).name, Font = BODY, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 66), Size = UDim2.fromOffset(400, 24), TextColor3 = C.dim, MaxTextSize = 20 }, card)
 
 	-- grid: Hole / Par / You
 	local n = #holes
@@ -614,7 +625,7 @@ local function buildResults()
 		Size = UDim2.fromOffset(600, 48),
 		TextColor3 = d < 0 and C.good or (d > 0 and C.bad or C.cream),
 	}, card)
-	local best = result.best or bestOf(Config.CurrentCourse)
+	local best = result.best or bestOf(Courses.of(player))
 	local bestText
 	if result.counted == false then
 		bestText = best and string.format("Personal best: %d  (this round doesn't count)", best) or "This round doesn't count toward a personal best"
@@ -856,11 +867,13 @@ function FrontEnd.start(opts)
 	applySettings()
 	loadSettingsFromAttributes()
 	player:GetAttributeChangedSignal("SettingsLoaded"):Connect(loadSettingsFromAttributes)
-	player:GetAttributeChangedSignal("Best_" .. Config.CurrentCourse):Connect(function()
-		if page == "courses" then
-			show("courses")
-		end
-	end)
+	for _, c in Config.Courses do
+		player:GetAttributeChangedSignal("Best_" .. c.id):Connect(function()
+			if page == "courses" then
+				show("courses")
+			end
+		end)
+	end
 
 	local skip = workspace:GetAttribute("GolfTestMode") == true or workspace:GetAttribute("SkipMenu") == true
 	if not skip then

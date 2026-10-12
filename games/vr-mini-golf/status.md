@@ -1,5 +1,12 @@
 # VR Mini Golf: status
 
+## Stage w — live v235 (2026-10-12, ~07:23 PT)
+- **Sugarloaf Canyon (18 holes, par 54) is playable** in the same place as its own course: workspace.CourseSugarloaf, 5000 studs north of Lantern Grove (SugarloafLayout offset (0,0,-5000)). Players pick it on the course card ("18 holes - Par 54"); each player's course is the player attribute `Course` (ReplicatedStorage.Golf.Courses, GolfServer SelectCourse). Sugarloaf has its own sunset lighting while the camera is in its world box (GolfClient.CourseLighting).
+- Rebuild: `python3 tools/sugarloaf_to_lua.py --push`, then in Edit `CourseBuilder.Build(SugarloafCanyon, SugarloafLayout, {folder="CourseSugarloaf", courseId="sugarloaf_canyon", palette="sugarloaf"})`, `SugarloafBuilder.PlaceMeshes()` (pass 5 mover meshes from ServerStorage.SugarloafMovers) and `SugarloafBuilder.CheckClearance()`. Terrain: `python3 tools/world_terrain.py --sugarloaf` (writes Terrain only in Sugarloaf's box).
+- Sweeps: `run_playtests.py holes N --opts '{"course":"sugarloaf_canyon","parts":"fuzz,slow"}'`.
+- Lantern Grove: round 8 bank-backing/H9 rail/H9 lip art fixes, and H7/H8 block rate ~46% (shorter dwell in the ball's path). Details and numbers: logs/stages/w-notes.md. Local copy playtest-v235.rbxl (gitignored).
+- Known gaps: Sugarloaf's world kit (106 cliff/building FBX), walkways/lifts/gondola and water beams are not built (Terrain + part props + mover meshes only). The lobby arch is still decorative.
+
 ## Stage v — live v210 (2026-10-12, ~02:29 PT)
 - Playtest Bot round 7 fixes (RobloxDevBot items 1, 2+3, 4, 5/6, 9) plus Game Art Bot colour notes, published. Version History marks v210 Published. Local copy playtest-v210.rbxl (gitignored).
 - ClubSetup/WristPoseLog DataStore calls guarded like PersonalBest. H8 root door: pocket widened and rail16 cut trimmed (>= 0.187 stud clearance); slow/parked balls get a 1.2 studs/s sideways nudge driven by spec motion (MoverMath, 0.5 s dwell look-ahead). h8door 20/20 (max 1.2 studs/s, 0 pinned), block rate 50%, H8 20-shot sweep clean.

@@ -31,12 +31,19 @@ local SaveSettings = remote("SaveSettings") -- client -> server: settings table 
 local TEST_MODE = RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true
 
 local course = workspace:WaitForChild("Course")
-local holes = {}
-for _, model in course:GetChildren() do
-	local n = model:GetAttribute("HoleNumber")
-	if n then
-		holes[n] = model
+-- More than one course (stage w): every player is on one course (st.course, player attribute "Course"); each course
+-- is its own workspace folder (ReplicatedStorage.Golf.Courses). Lantern Grove (workspace.Course) is the default.
+local Courses = require(Golf:WaitForChild("Courses"))
+local courseHoles = {}
+for id in Courses.FOLDERS do
+	local list = Courses.holes(id)
+	if next(list) then
+		courseHoles[id] = list
 	end
+end
+local holes = courseHoles[Courses.DEFAULT]
+local function holesOf(st)
+	return courseHoles[st and st.course or Courses.DEFAULT] or holes
 end
 
 local ballsFolder = workspace:FindFirstChild("Balls")
@@ -78,7 +85,7 @@ end
 
 -- st.testHole is only set by the Studio test harness (GolfServer.GolfTestServer).
 local function holeOf(st)
-	return st.testHole or holes[st.hole]
+	return st.testHole or holesOf(st)[st.hole]
 end
 
 local function teePosition(hole)
@@ -138,15 +145,15 @@ local function startHole(player, st, index)
 	st.sunk = false
 	st.finished = false
 	publish(player, st)
-	placeBall(player, st, teePosition(holes[index]), "hole")
+	placeBall(player, st, teePosition(holesOf(st)[index]), "hole")
 end
 
 -- Course complete: totals, and the personal best (only full 9-hole rounds started on hole 1 outside the test
 -- harness count). Sent to the client as the 2nd CourseComplete argument.
 local function roundResult(player, st)
-	local courseId = Config.CurrentCourse
+	local courseId = st.course or Courses.DEFAULT
 	local total, parTotal, complete = 0, 0, true
-	for i, h in holes do
+	for i, h in holesOf(st) do
 		parTotal += h:GetAttribute("Par") or 0
 		local s = st.strokes[i]
 		if type(s) == "number" and s > 0 then
@@ -193,7 +200,7 @@ local function finishHole(player, st, maxed)
 		if states[player] ~= st or st.transitionToken ~= token then
 			return
 		end
-		if st.hole < #holes then
+		if st.hole < #holesOf(st) then
 			startHole(player, st, st.hole + 1)
 		else
 			st.finished = true
@@ -268,6 +275,7 @@ local function onPlayerAdded(player)
 
 	states[player] = {
 		ball = ball,
+		course = Courses.DEFAULT,
 		hole = 1,
 		strokes = {},
 		lastPos = ball.Position,
@@ -278,6 +286,7 @@ local function onPlayerAdded(player)
 		lastStroke = 0,
 		lastReset = 0,
 	}
+	player:SetAttribute("Course", Courses.DEFAULT)
 	player:SetAttribute("Hole", 1)
 	player:SetAttribute("Strokes", 0)
 	player:SetAttribute("Scores", "[]")
@@ -335,7 +344,7 @@ local function onReady(player)
 	if not st.started then
 		st.started = true
 		-- Studio testing aid: set workspace attribute DebugStartHole to begin on a later hole
-		local first = math.clamp(workspace:GetAttribute("DebugStartHole") or 1, 1, #holes)
+		local first = math.clamp(workspace:GetAttribute("DebugStartHole") or 1, 1, #holesOf(st))
 		st.roundValid = first == 1
 		startHole(player, st, first)
 	elseif not st.sunk then
@@ -402,6 +411,29 @@ Remotes.PlayAgain.OnServerEvent:Connect(function(player, restart)
 	st.strokes = {}
 	st.roundValid = true
 	startHole(player, st, 1)
+end)
+
+-- Course picker (stage w): switch this player to another playable course and start its hole 1 (a fresh round; the
+-- previous course's strokes are dropped). Before the first Ready it only sets the course, so Ready starts there.
+local SelectCourse = remote("SelectCourse")
+SelectCourse.OnServerEvent:Connect(function(player, courseId)
+	local st = states[player]
+	if not st or typeof(courseId) ~= "string" or not courseHoles[courseId] or not Courses.playable(courseId) then
+		return
+	end
+	local now = os.clock()
+	if now - (st.lastSelect or 0) < 1 then
+		return
+	end
+	st.lastSelect = now
+	st.transitionToken = nil
+	st.course = courseId
+	player:SetAttribute("Course", courseId)
+	st.strokes = {}
+	st.roundValid = true
+	if st.started then
+		startHole(player, st, 1)
+	end
 end)
 
 -- Explore mode (per player): walk/fly around the world with no ball and no scoring. The ball is parked (anchored)
@@ -512,7 +544,7 @@ end
 do
 	local CameraOcclusion = require(Golf:WaitForChild("CameraOcclusion"))
 	CameraOcclusion.setupGroups()
-	CameraOcclusion.tagDecor({ course, workspace:FindFirstChild("World") })
+	CameraOcclusion.tagDecor({ course, workspace:FindFirstChild("World"), Courses.folder("sugarloaf_canyon") })
 end
 
 -- Moving parts (spinner, mill wheel, log, door, gate, lantern bar): server physics, phase-locked to server time.
@@ -524,6 +556,8 @@ if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 	require(script:WaitForChild("GolfTestServer")).init({
 		states = states,
 		holes = holes,
+		holesOf = holesOf,
+		courseHoles = courseHoles,
 		publish = publish,
 		placeBall = placeBall,
 		movers = Movers,

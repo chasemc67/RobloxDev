@@ -11,6 +11,7 @@ local Debris = game:GetService("Debris")
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
 local MoverMath = require(Golf:WaitForChild("MoverMath"))
+local Courses = require(Golf:WaitForChild("Courses"))
 local Remotes = Golf:WaitForChild("Remotes")
 
 local player = Players.LocalPlayer
@@ -66,7 +67,9 @@ function Ball.getHole()
 	if Ball.holeIndex == 0 then
 		return workspace:FindFirstChild("GolfTestLane") -- Studio test harness only
 	end
-	return workspace.Course:FindFirstChild("Hole" .. Ball.holeIndex)
+	-- (stage w: the hole of the course this player is on)
+	local course = Courses.folder(Courses.of(Players.LocalPlayer))
+	return course and course:FindFirstChild("Hole" .. Ball.holeIndex)
 end
 
 -- Where the player should be aiming from the ball's current spot (handles doglegs).
@@ -244,6 +247,7 @@ end
 
 -- per-hole caches: moving blockers, collision obstacles, teleports
 local cacheHole, cacheBlockers, cacheObstacles, cacheTeleports = nil, {}, {}, {}
+local cacheGuards = {}
 local function refreshCache(hole)
 	if hole == cacheHole then
 		return
@@ -251,6 +255,7 @@ local function refreshCache(hole)
 	cacheHole = hole
 	if not hole then
 		cacheBlockers, cacheObstacles, cacheTeleports = {}, {}, {}
+		cacheGuards = {}
 		return
 	end
 	cacheBlockers = holeParts(hole, function(d)
@@ -259,6 +264,8 @@ local function refreshCache(hole)
 	cacheObstacles = holeParts(hole, function(d)
 		return d.CanCollide and (d.Name == "Wall" or d.Name == "Bumper")
 	end)
+	local sg = hole:FindFirstChild("SlotGuards")
+	cacheGuards = sg and sg:GetChildren() or {}
 	local tp = hole:FindFirstChild("Teleports")
 	cacheTeleports = {}
 	if tp then
@@ -313,8 +320,56 @@ local function teleportFx(pos: Vector3, color: Color3)
 	Debris:AddItem(p, 1)
 end
 
+-- Lift teleports (Sugarloaf H11 lock, stage w): the trigger is the lift deck itself. A ball that rolls onto it is
+-- held on the deck (riding it up with the mover's spec motion), then pushed out at the exit along its direction at
+-- clamp(entry speed * SpeedFactor, MinSpeed, MaxSpeed) once the release starts (marker attribute Release, s into the
+-- cycle). While riding, the rest/stuck/timeout checks are paused (step returns early).
+local riding = nil
+local function liftOffset(m)
+	local hole = cacheHole
+	local movers = hole and hole:FindFirstChild("Movers")
+	local mover = movers and movers:FindFirstChild(m:GetAttribute("LiftMover") or "")
+	if not mover then
+		return 0
+	end
+	return MoverMath.value(MoverMath.fromModel(mover), workspace:GetServerTimeNow())
+end
+
+local function stepRide(b: BasePart)
+	local r = riding
+	local m = r.marker
+	local period = m:GetAttribute("Period") or 10.7
+	local tau = workspace:GetServerTimeNow() % period
+	local up = liftOffset(m)
+	b.AssemblyLinearVelocity = Vector3.zero
+	b.AssemblyAngularVelocity = Vector3.zero
+	b.CFrame = CFrame.new(Vector3.new(r.x, m.Position.Y + up + R + 0.005, r.z))
+	local release = m:GetAttribute("Release") or 7.1
+	local started = os.clock() - r.t0
+	if (tau >= release and tau < release + 1.5 and started > 0.3) or started > period + 2 then
+		riding = nil
+		local dir = m:GetAttribute("ExitDir")
+		local speedOut = math.clamp(r.speedIn * m:GetAttribute("SpeedFactor"), m:GetAttribute("MinSpeed"), m:GetAttribute("MaxSpeed"))
+		b.CFrame = CFrame.new(m:GetAttribute("ExitPos") + Vector3.new(0, R + 0.01, 0))
+		b.AssemblyLinearVelocity = dir * speedOut
+		b.AssemblyAngularVelocity = Vector3.yAxis:Cross(dir * speedOut) / R
+		teleportCooldown = os.clock() + 0.5
+		rollVel, lastVel = nil, nil
+		slowTime, stillTime, pinTime = 0, 0, 0
+		stuckTime, stuckAnchor = 0, nil
+		strokeTime = 0
+		task.spawn(teleportFx, b.Position, m:GetAttribute("FxColor") or Color3.fromRGB(255, 226, 140))
+		Ball.Teleported:Fire(m:GetAttribute("TeleportId"), r.speedIn, speedOut)
+	end
+end
+
+function Ball.riding()
+	return riding ~= nil
+end
+
 -- Teleport rings: a ball whose centre enters the entry radius (same level) reappears at the exit, moving along
--- the exit direction at clamp(speed * SpeedFactor, MinSpeed, MaxSpeed) (spec `teleports`).
+-- the exit direction at clamp(speed * SpeedFactor, MinSpeed, MaxSpeed) (spec `teleports`). A HalfSize attribute
+-- (stage w) makes the trigger the rectangle centre +- HalfSize in the marker's (hole) axes.
 local function checkTeleports(b: BasePart)
 	if os.clock() < teleportCooldown then
 		return false
@@ -322,7 +377,30 @@ local function checkTeleports(b: BasePart)
 	local pos = b.Position
 	for _, m in cacheTeleports do
 		local off = pos - m.Position
-		if Vector3.new(off.X, 0, off.Z).Magnitude < m:GetAttribute("Radius") and math.abs(off.Y - R) < 0.5 then
+		local inside
+		local hs = m:GetAttribute("HalfSize")
+		if hs then
+			local l = m.CFrame:PointToObjectSpace(pos)
+			inside = math.abs(l.X) <= hs.X and math.abs(l.Z) <= hs.Y
+		else
+			inside = Vector3.new(off.X, 0, off.Z).Magnitude < m:GetAttribute("Radius")
+		end
+		if inside and m:GetAttribute("Kind") == "lift" then
+			-- only while the deck is down (the ball rolled in at felt level)
+			if math.abs(off.Y - R) < 0.3 and liftOffset(m) < 0.05 then
+				local v = b.AssemblyLinearVelocity
+				-- held where it stopped, kept 0.3 inside the deck edges
+				local l = m.CFrame:PointToObjectSpace(pos)
+				local lx = math.clamp(l.X, -hs.X + 0.4, hs.X - 0.4)
+				local lz = math.clamp(l.Z, -hs.Y + 0.4, hs.Y - 0.4)
+				local w = m.CFrame:PointToWorldSpace(Vector3.new(lx, 0, lz))
+				riding = { marker = m, speedIn = Vector3.new(v.X, 0, v.Z).Magnitude, x = w.X, z = w.Z, t0 = os.clock() }
+				stepRide(b)
+				return true
+			end
+			continue
+		end
+		if inside and math.abs(off.Y - R) < 0.5 then
 			local v = b.AssemblyLinearVelocity
 			local speedIn = Vector3.new(v.X, 0, v.Z).Magnitude
 			local speedOut = math.clamp(speedIn * m:GetAttribute("SpeedFactor"), m:GetAttribute("MinSpeed"), m:GetAttribute("MaxSpeed"))
@@ -337,6 +415,38 @@ local function checkTeleports(b: BasePart)
 			task.spawn(teleportFx, b.Position, m:GetAttribute("FxColor") or Color3.fromRGB(255, 226, 140))
 			Ball.Teleported:Fire(m:GetAttribute("TeleportId"), speedIn, speedOut)
 			return true
+		end
+	end
+	return false
+end
+
+-- Slot guards (CourseBuilder: Sugarloaf H11 mover slots narrower than the ball): over one, the ball is held at the
+-- felt's support height (it bridges the slot, as a real ball would) instead of squeezing down into it.
+local function guardSlots(b: BasePart)
+	if #cacheGuards == 0 then
+		return false
+	end
+	local pos = b.Position
+	for _, g in cacheGuards do
+		local l = g.CFrame:PointToObjectSpace(pos)
+		local h = g.Size / 2
+		if math.abs(l.X) <= h.X and math.abs(l.Z) <= h.Z then
+			local y = g:GetAttribute("SupportY") + R
+			if pos.Y < y - 0.005 and pos.Y > y - 2.5 then
+				local v = b.AssemblyLinearVelocity
+				if Vector3.new(v.X, 0, v.Z).Magnitude < 0.5 then
+					-- (nearly stopped over the slot: step out onto the felt beside it, nearest side, so it can rest)
+					local z = l.Z >= 0 and h.Z + R + 0.01 or -h.Z - R - 0.01
+					local out = g.CFrame:PointToWorldSpace(Vector3.new(l.X, 0, z))
+					b.CFrame = CFrame.new(out.X, y, out.Z)
+					b.AssemblyLinearVelocity = Vector3.zero
+					b.AssemblyAngularVelocity = Vector3.zero
+				else
+					b.CFrame = CFrame.new(pos.X, y, pos.Z)
+					b.AssemblyLinearVelocity = Vector3.new(v.X, math.max(v.Y, 0), v.Z)
+				end
+				return true
+			end
 		end
 	end
 	return false
@@ -595,6 +705,7 @@ local function step(dt)
 		-- is hopped clear, like a pinned rolling ball
 		local hole = Ball.getHole()
 		refreshCache(hole)
+		guardSlots(b)
 		if pushFromDescending(b) or pushFromSliding(b) then
 			slowTime, rollTime, stillTime, pinTime = 0, 0, 0, 0
 			stuckTime, stuckAnchor = 0, nil
@@ -625,6 +736,13 @@ local function step(dt)
 	if Ball.state ~= "moving" then
 		return
 	end
+	if riding then
+		if riding.marker.Parent and Ball.getHole() == cacheHole then
+			stepRide(b)
+			return
+		end
+		riding = nil
+	end
 
 	rollTime += dt
 	strokeTime += dt
@@ -643,6 +761,7 @@ local function step(dt)
 	if checkTeleports(b) then
 		return
 	end
+	guardSlots(b)
 	if not pushFromDescending(b) then
 		pushFromSliding(b)
 	end
@@ -829,6 +948,7 @@ function Ball.init()
 		Ball.holeIndex = holeIndex
 		Ball.setState("locked")
 		strokeTime = 0
+		riding = nil
 		placeToken += 1
 		local token = placeToken
 		Ball.Placed:Fire(pos, reason)

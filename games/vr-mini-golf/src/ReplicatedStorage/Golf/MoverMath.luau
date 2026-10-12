@@ -5,6 +5,8 @@
 --   slide:  ping-pong range[1] -> range[2] -> range[1] at |speed|, with optional dwell stops
 --           (dwell = {{at, s}}: a stop at a range end pauses once per visit, an interior stop on both passes;
 --           phase = offset at t=0 on the forward pass, and if a stop sits there t=0 is the start of its pause).
+--   keys:   piecewise-linear offset over one `period` from keyframes {{t, v}} (Sugarloaf H11 lift deck and quay lip,
+--           whose holes.json `schedule` is a timetable rather than a speed; stage w)
 -- Same as the designer's sim (tools/sim.py part_state / slide_dwell_state).
 local MoverMath = {}
 
@@ -17,6 +19,23 @@ function MoverMath.encodeDwell(dwell)
 		table.insert(parts, string.format("%g:%g", d.at, d.s))
 	end
 	return table.concat(parts, ";")
+end
+
+-- Keyframes as "t:v;t:v" (Model attribute form) <-> {{t=, v=}}
+function MoverMath.encodeKeys(keys)
+	local parts = {}
+	for _, k in keys or {} do
+		table.insert(parts, string.format("%g:%g", k.t, k.v))
+	end
+	return table.concat(parts, ";")
+end
+
+function MoverMath.decodeKeys(str)
+	local out = {}
+	for t, v in string.gmatch(str or "", "([%-%d%.e]+):([%-%d%.e]+)") do
+		table.insert(out, { t = tonumber(t), v = tonumber(v) })
+	end
+	return out
 end
 
 function MoverMath.decodeDwell(str)
@@ -102,6 +121,21 @@ end
 -- Returns value (deg or studs) and rate (per s) at time t.
 function MoverMath.value(p, t)
 	local phase = p.phase or 0
+	if p.type == "keys" then
+		local keys = p.keys
+		local tau = (t + phase) % p.period
+		for i = 1, #keys - 1 do
+			local a, b = keys[i], keys[i + 1]
+			if tau >= a.t and tau <= b.t then
+				if b.t - a.t < 1e-9 then
+					return b.v, 0
+				end
+				local rate = (b.v - a.v) / (b.t - a.t)
+				return a.v + rate * (tau - a.t), rate
+			end
+		end
+		return keys[#keys] and keys[#keys].v or 0, 0
+	end
 	if p.type == "swing" then
 		local w = 2 * math.pi / p.period
 		local a = w * (t % p.period) + math.rad(phase)
@@ -133,7 +167,7 @@ end
 
 -- Full cycle length in s (incl. pauses).
 function MoverMath.period(p)
-	if p.type == "swing" then
+	if p.type == "swing" or p.type == "keys" then
 		return p.period
 	end
 	if not p.range then
@@ -153,6 +187,7 @@ function MoverMath.fromModel(model)
 		period = model:GetAttribute("Period"),
 		amplitude = model:GetAttribute("Amplitude"),
 		dwell = MoverMath.decodeDwell(model:GetAttribute("Dwell")),
+		keys = MoverMath.decodeKeys(model:GetAttribute("Keys")),
 	}
 end
 
