@@ -18,7 +18,7 @@
 --   Grip (club hand) ........... hold to make the putter solid (only when Config.VRGripToPutt = true)
 --   B / Y ...................... scorecard
 --   Off-hand X / A .............. toggle wrist. Hand and grip fit are chosen in Settings only.
---   Look at the off-hand wrist .. bracer + wrist card: hole, par, stroke, total, best + MENU / SCORES buttons (HUD)
+--   Look at the off-hand wrist .. bracer + wrist card: hole, par, stroke, total, best (HUD; no buttons)
 --
 -- For testing without a headset set workspace attribute "SimulateVR" = true before playing. Poses are then read
 -- from CFrameValues in ReplicatedStorage.VRDebug (Head/LeftHand/RightHand, relative to the floor origin),

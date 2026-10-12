@@ -199,6 +199,26 @@ local function buildScorecard(final)
 		end
 		cell(r + 2, #holes + 1, tostring(total))
 	end
+	-- settings gear: a round badge hanging off the card's top-right corner (clear of the grid); opens Settings
+	-- (64 canvas px everywhere: ~38 px on a phone after the HUD's UIScale, still a fair touch target)
+	local gs = 64
+	local gear = new("ImageButton", {
+		Name = "SettingsButton",
+		Image = Config.UI.SettingsButton,
+		PressedImage = Config.UI.SettingsButtonPressed,
+		BackgroundTransparency = 1,
+		AutoButtonColor = false,
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.new(1, -12, 0, 8),
+		Size = UDim2.fromOffset(gs, gs),
+		ZIndex = 13,
+	}, scorecard)
+	gear.Activated:Connect(VRPointer.bind(gear, function()
+		if FrontEnd then
+			closeScorecard()
+			FrontEnd.openSettings()
+		end
+	end))
 	if final then
 		button(HUD.isVR and "Play Again  (B / Y)" or "Play Again", {
 			Name = "PlayAgain",
@@ -213,7 +233,7 @@ local function buildScorecard(final)
 		button("X", {
 			Name = "Close",
 			AnchorPoint = Vector2.new(1, 0),
-			Position = UDim2.new(1, -8, 0, 8),
+			Position = UDim2.new(1, -(20 + gs / 2), 0, 8), -- (left of the gear)
 			Size = UDim2.new(0, s, 0, s),
 			BackgroundColor3 = Color3.fromRGB(150, 50, 50),
 			ZIndex = 12,
@@ -944,7 +964,9 @@ local function buildVR()
 
 	VRPointer.register(vrCardPart, vrCardGui, { modal = true })
 
-	-- WristFace Top: approved 1024x640 art plus MENU/SCORES strip, canvas 1024x784.
+	-- WristFace Top: wrist_card_bg_nobuttons.png (1024x784, symmetric, so the same art on either wrist) with the
+	-- text drawn live on top (zones from assets/vr-mini-golf/ui/README_wrist_scorecard.md). No buttons: the menu is
+	-- the left-stick click, the scorecard is B / Y, and settings are the gear on the scorecard.
 	local CW, CH = 1024, 784
 	local FACE_W = 0.37
 	local part, gui = vrPanel("VRWrist", Vector3.new(FACE_W, FACE_W * CH / CW, 0.002), Vector2.new(CW, CH))
@@ -979,67 +1001,31 @@ local function buildVR()
 	-- Adorned CanvasGroups need depth rendering here. The existing .256 lift clears the .252 rim.
 	gui.AlwaysOnTop = false
 	local group = new("CanvasGroup", { Name = "Card", BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), GroupTransparency = 1 }, gui)
-	new("Frame", { Name = "Background", BackgroundColor3 = Color3.fromHex("FFE5AC"), BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, group)
-	local BROWN = Color3.fromHex("3B2412")
-	local function text(name, x, y, w, h, size, color, align)
-		-- Roblox clamps TextSize to 100. Fixed UIScale supplies the requested 120 canvas pixels.
-		local scale = math.max(1, size / 100)
-		local parent = group
-		if scale > 1 then
-			parent = new("Frame", { Name = name .. "Cell", BackgroundTransparency = 1, Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w, h) }, group)
-			x, y = 0, 0
-		end
-		local t = label({ Name = name, Text = "", Font = FONT, TextScaled = false, Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w / scale, h / scale), TextSize = math.min(size, 100), TextColor3 = BROWN, TextXAlignment = align or Enum.TextXAlignment.Left }, parent)
-		if scale > 1 then new("UIScale", { Scale = scale }, t) end
-		new("UIStroke", { Thickness = 2 / scale, Color = Color3.fromHex("FFF4DC"), ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual }, t)
+	new("ImageLabel", { Name = "Background", BackgroundTransparency = 1, Image = Config.UI.WristCardBg, Size = UDim2.fromScale(1, 1) }, group)
+	local VALUE, LABEL = Color3.fromHex("4A240E"), Color3.fromHex("9C5218")
+	-- (x, y) = the text's left (or right) edge and vertical centre on the canvas
+	local function text(name, x, y, w, size, color, align)
+		local right = align == Enum.TextXAlignment.Right
+		-- (TextScaled capped at the design size, so a long hole name shrinks to fit instead of spilling)
+		local t = label({ Name = name, Text = "", Font = FONT, TextScaled = true, TextColor3 = color, TextXAlignment = align or Enum.TextXAlignment.Left, AnchorPoint = Vector2.new(right and 1 or 0, 0.5), Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w, size + 8) }, group)
+		new("UITextSizeConstraint", { MaxTextSize = size }, t)
 		return t
 	end
-	local function icon(name, x, y)
-		new("ImageLabel", { Name = name, BackgroundTransparency = 1, Image = Config.UI[name], Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(96, 96) }, group)
+	local function icon(name, x, y, s)
+		new("ImageLabel", { Name = name, BackgroundTransparency = 1, Image = Config.UI[name], Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(s, s) }, group)
 	end
 	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false, bracer = bracer, events = {} }
-	wrist.hole = text("Hole", 56, 8, 300, 76, 64)
-	wrist.name = text("HoleName", 356, 8, 620, 76, 56, BROWN, Enum.TextXAlignment.Right)
-	-- Four rows, three consistent columns: icon / label / number.
-	for i, z in { { "par", "PAR", "IconPar" }, { "stroke", "STROKE", "IconStroke" }, { "total", "TOTAL", "IconTotal" }, { "best", "BEST", "IconBest" } } do
-		local y = 84 + (i - 1) * 140
-		icon(z[3], 72, y + 22)
-		text(z[2], 204, y, 430, 140, 64).Text = z[2]
-		wrist[z[1]] = text(z[1], 640, y, 308, 140, 120, BROWN, Enum.TextXAlignment.Right)
+	-- header zone 80,72-944,212: flag, "HOLE n", hole name on the right
+	icon("IconHole", 94, 92, 100)
+	wrist.hole = text("Hole", 210, 142, 330, 76, VALUE)
+	wrist.name = text("HoleName", 916, 142, 370, 40, LABEL, Enum.TextXAlignment.Right)
+	-- 2x2 zones (418x223): icon in the zone's circle, label over value
+	for _, z in { { "par", "PAR", "IconPar", 80, 236 }, { "stroke", "STROKE", "IconStroke", 526, 236 }, { "total", "TOTAL", "IconTotal", 80, 481 }, { "best", "BEST", "IconBest", 526, 481 } } do
+		local x, y = z[4], z[5]
+		icon(z[3], x + 30, y + 63, 96)
+		text(z[2] .. "Label", x + 160, y + 78, 238, 38, LABEL).Text = z[2]
+		wrist[z[1]] = text(z[1], x + 160, y + 144, 238, 78, VALUE)
 	end
-	-- buttons under the card (the laser pointer from the other hand clicks them)
-	local function pill(name, text_, x, onClick)
-		local b = new("TextButton", {
-			Name = name,
-			Text = text_,
-			Font = FONT,
-			TextSize = 64,
-			TextScaled = false,
-			TextColor3 = BROWN,
-			BackgroundColor3 = Color3.fromHex("FFB347"),
-			AutoButtonColor = false,
-			Position = UDim2.fromOffset(x, 664),
-			Size = UDim2.fromOffset(392, 112),
-		}, group)
-		new("UIStroke", { Thickness = 2, Color = Color3.fromHex("FFF4DC"), ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual }, b)
-		corner(b, 56)
-		new("UIStroke", { Color = Color3.fromHex("7A4E1E"), Thickness = 6, ApplyStrokeMode = Enum.ApplyStrokeMode.Border }, b)
-		b.Activated:Connect(VRPointer.bind(b, onClick))
-	end
-	pill("WristMenu", "MENU", 100, function()
-		if FrontEnd then
-			FrontEnd.openFromWrist()
-		end
-	end)
-	pill("WristScores", "SCORES", 532, function()
-		HUD.toggleScorecard()
-	end)
-	VRPointer.register(part, gui, {
-		modal = false,
-		enabled = function()
-			return wrist.alpha > 0.6
-		end,
-	})
 end
 
 

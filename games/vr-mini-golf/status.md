@@ -1,5 +1,10 @@
 # VR Mini Golf: status
 
+## Stage aa — new wrist card + scorecard settings gear (2026-10-12, ~13:50 PT)
+- **VR wrist card** uses the new art (`ui/wrist/wrist_card_bg_nobuttons.png`, same file on both wrists) with hole / name / PAR / STROKE / TOTAL / BEST drawn live in the README zones. **No MENU / SCORES buttons**: the menu is the left-stick click, the scorecard is B / Y.
+- **Scorecard settings gear** (`ui/scorecard/settings_button{,_pressed}.png`): an ImageButton badge on the card's top-right corner (Close X beside it) that opens Settings. Works on desktop, phone and VR (laser pointer).
+- Published all three places: **LG v7, SC v5, Lobby v244**. Smoke (desktop/phone), VR pointer walk and wrist shots pass with 0 console errors. Notes: logs/stages/aa-notes.md.
+
 ## Stage z — the place split, phase 1 (2026-10-12, ~12:55 PT)
 - **Three places in universe 10769274294** (places.json): **Lobby** "VR Mini Golf" 87725688219952 (start place, live **v243**), **Lantern Grove** 91438142503824 (**v5**) and **Sugarloaf Canyon** 124440050576723 (**v4**), connected by TeleportService (TeleportOptions, a loading screen per course).
 - Lobby: no golf ball. Walk around, pick a course on the menu or walk into an arch (10x10x3 Neon portal triggers in the LG and SC arches). The "Best Rounds" leaderboard wall reads OrderedDataStores the course places write, and refreshes every 60 s.

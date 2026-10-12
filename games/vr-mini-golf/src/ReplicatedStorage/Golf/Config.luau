@@ -102,6 +102,9 @@ return {
 		PointerDot = "rbxassetid://124186475881466", -- 64x64
 		HoverGlow = "rbxassetid://89859858365518", -- 128x128 9-slice, SliceCenter 40,40,88,88
 		WristCard = "rbxassetid://73442368184232", -- 1024x640 parchment + brass, no text
+		WristCardBg = "rbxassetid://120826005037595", -- ui/wrist/wrist_card_bg_nobuttons.png 1024x784, both wrists, text drawn live
+		SettingsButton = "rbxassetid://96941474818531", -- ui/scorecard/settings_button.png 256x256 gear badge
+		SettingsButtonPressed = "rbxassetid://73928136041549", -- ui/scorecard/settings_button_pressed.png
 		IconHole = "rbxassetid://89045323420740",
 		IconPar = "rbxassetid://100554682607003",
 		IconStroke = "rbxassetid://80712879947831",

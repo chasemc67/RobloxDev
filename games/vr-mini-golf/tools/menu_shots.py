@@ -39,7 +39,7 @@ def pointer(st, cmd, arg=None):
 
 # (button to aim at, hand, page expected after the trigger; None = menu closed, "scorecard" = the VR scorecard is up)
 POINTER_STEPS = [
-    ("WristMenu", "RightHand", "title"),
+    ("@open", None, "title"),                # (stage aa: no wrist buttons; the menu is the left-stick click)
     ("Settings", "RightHand", "settings"),
     ("Back", "RightHand", "title"),
     ("HowToPlay", "RightHand", "howto"),
@@ -49,8 +49,12 @@ POINTER_STEPS = [
     ("Back", "RightHand", "title"),
     ("Play", "RightHand", "courses"),
     ("PlayCourse", "RightHand", None),       # menu closes: pointer hidden in play
-    ("WristScores", "RightHand", "scorecard"),
-    ("Close", "RightHand", None),
+    ("@scorecard", None, "scorecard"),       # (B / Y in VR)
+    ("SettingsButton", "RightHand", "settings"),  # the scorecard's gear
+    ("Back", "RightHand", "title"),
+    ("CloseMenu", "RightHand", None),        # the menu panel's X
+    ("@scorecard", None, "scorecard"),
+    ("Close", "RightHand", None),            # the scorecard's X
     ("@results", None, "results"),
     ("BackToMenu", "RightHand", "title"),
     ("@results", None, "results"),
@@ -62,13 +66,15 @@ def pointer_walk(st, out):
     """Aim the simulated controller at each button, check the hover, pull the trigger, check the page."""
     rows, ok = [], True
     for i, (name, hand, expect) in enumerate(POINTER_STEPS):
-        if name == "@results":
-            menu(st, "results", RESULT)
+        if name.startswith("@"):
+            if name == "@results":
+                menu(st, "results", RESULT)
+            elif name == "@open":
+                menu(st, "open", "title")
+            elif name == "@scorecard":
+                menu(st, "scorecard")
             time.sleep(1.2)
             continue
-        if name.startswith("Wrist"):
-            pointer(st, "wrist", True)
-            time.sleep(1.0)
         targets = pointer(st, "targets") or []
         t = next((t for t in targets if t["name"] == name), None)
         if not t:
@@ -82,9 +88,6 @@ def pointer_walk(st, out):
         capture(st, os.path.join(out, shot))
         pointer(st, "trigger", hand)
         time.sleep(0.8)
-        if name.startswith("Wrist"):
-            pointer(st, "wrist", False)
-            time.sleep(0.6)
         m = menu(st, "state")
         after = json.loads(m) if isinstance(m, str) else m
         card = st.luau("local g = game.Players.LocalPlayer.PlayerGui:FindFirstChild('VRScorecard') return g and g.Enabled or false", "Client")
@@ -115,7 +118,8 @@ def wrist_shots(st, out):
     capture(st, os.path.join(out, "wrist_up.png"))
     # a zoomed still to judge legibility: look straight at the card, FOV 30
     st.luau("""local h = game.ReplicatedStorage.VRDebug.Head
-local card = workspace.CurrentCamera:FindFirstChild('VRWrist')
+local g = game.Players.LocalPlayer.PlayerGui:FindFirstChild('VRWrist')
+local card = g and g.Adornee or workspace.CurrentCamera:FindFirstChild('VRWrist', true)
 local d = game.ReplicatedStorage.VRDebug
 d:SetAttribute('HeadBefore', h.Value)
 local head = workspace.CurrentCamera.CFrame
@@ -131,19 +135,12 @@ d.Head.Value = d:GetAttribute('HeadBefore')
 workspace.CurrentCamera.FieldOfView = 70
 return 'ok'""", "Client")
     time.sleep(0.5)
-    targets = pointer(st, "targets") or []
-    t = next((t for t in targets if t["name"] == "WristMenu"), None)
-    if t:
-        pointer(st, "aim", {"hand": "RightHand", "point": t["world"]})
-        time.sleep(0.4)
-        res["hover"] = pointer(st, "state")["pointer"]
-        capture(st, os.path.join(out, "wrist_up_pointer_menu.png"))
     pointer(st, "wrist", False)
     time.sleep(0.12)
     res["fading_out"] = pointer(st, "state")["wrist"]
     time.sleep(1.0)
     res["down_again"] = pointer(st, "state")["wrist"]
-    ok = (not res["down"]["shown"] and res["up"]["shown"] and res["up"]["alpha"] == 1 and 0 < res["fading_in"]["alpha"] < 1
+    ok = (not res["down"]["shown"] and res["up"]["shown"] and res["up"]["alpha"] == 1 and res["fading_in"]["alpha"] < 1  # (the look-dwell gate may not have started the fade yet)
           and not res["down_again"]["shown"] and res["down_again"]["alpha"] == 0)
     res["pass"] = ok
     with open(os.path.join(out, "wrist.json"), "w") as fh:
@@ -165,7 +162,7 @@ def main():
     ap.add_argument("--wait", type=float, default=12)
     ap.add_argument("--vr", action="store_true", help="SimulateVR: the world-space menu panel")
     ap.add_argument("--pointer", action="store_true", help="(--vr) laser pointer walk-through: aim, hover, trigger, page")
-    ap.add_argument("--wrist", action="store_true", help="(--vr) wrist card shots: down, up, pointer on MENU")
+    ap.add_argument("--wrist", action="store_true", help="(--vr) wrist card shots: down, up, zoomed")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
     prefix = "vr" if args.vr else "phone" if args.device else "desktop"

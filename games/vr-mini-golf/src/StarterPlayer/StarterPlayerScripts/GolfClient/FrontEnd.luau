@@ -8,8 +8,8 @@
 --   * Close: the X in the panel's top-right corner (every page but the results). In the lobby that hands the character
 --     to GolfClient.LobbyRoam (walk/jump/camera with the default controls) until a course is picked.
 --   * Reopen: the "Menu" button at the top RIGHT of the Roblox top bar row (stage z: Roblox's own menu covers the
---     top left; the only Menu button, lobby and course) or the M key (phone/desktop), the MENU button on the VR wrist
---     card (turn your other wrist up and point at it). Clicking the left thumbstick still toggles it in VR.
+--     top left; the only Menu button, lobby and course) or the M key (phone/desktop), or the left thumbstick click in VR.
+--     The scorecard's gear (top right) opens Settings (FrontEnd.openSettings).
 --   * Stage z, one place per course (Golf.Places): in the lobby the course cards teleport to that course's place
 --     (Remotes.RequestTeleport); on a course the title has "Lobby" and the results "Back to lobby" (and a finished
 --     round goes back by itself after Config.ReturnToLobbyAfter s).
@@ -331,7 +331,7 @@ local function buildTitle()
 
 	local foot
 	if isVR then
-		foot = "Point with either controller, pull the trigger to click.  Menu later: look at your other wrist or click the left stick."
+		foot = "Point with either controller, pull the trigger to click.  Menu later: click the left stick."
 	elseif inLobby() then
 		foot = "Close (X) to walk around the lobby, or walk through an arch.  Menu (top right) or M brings this back."
 	else
@@ -540,7 +540,7 @@ local HOWTO = {
 			.. "Left stick: walk\n"
 			.. "Settings: choose club hand and Club setup\n"
 			.. "Off-hand X / A: wrist card    B / Y: scorecard\n"
-			.. "Menus: point, trigger.  Look at wrist: score + MENU",
+			.. "Menus: point, trigger.  Left stick click: menu.  Look at wrist: score",
 	},
 	{
 		"Phone",
@@ -937,6 +937,11 @@ function FrontEnd.openFromWrist()
 	FrontEnd.open("title")
 end
 
+-- the scorecard's gear button
+function FrontEnd.openSettings()
+	FrontEnd.open("settings")
+end
+
 function FrontEnd.open(name)
 	if VR and VR.cancelClubSetup then VR.cancelClubSetup() end
 	setOpen(true) -- (anchors the VR panel in front of the head if the menu was closed; page changes keep it)
@@ -993,8 +998,8 @@ function FrontEnd.start(opts)
 				placeVRPanel(false)
 			end
 		end)
-		-- left thumbstick click (unused by VRControls) still opens / closes the menu (the wrist card's MENU button is
-		-- the way in now; this is just a shortcut)
+		-- left thumbstick click (unused by VRControls) opens / closes the menu (the VR way in since the wrist card lost
+		-- its MENU button)
 		UserInputService.InputBegan:Connect(function(input)
 			if input.KeyCode ~= Enum.KeyCode.ButtonL3 then
 				return
@@ -1045,7 +1050,7 @@ function FrontEnd.start(opts)
 	end
 
 	-- Studio-only hook for tools/ui_shots.py (an MCP require() gets its own copy of this module):
-	-- Invoke("open", page) / ("close") / ("results", {scores, result}) / ("state")
+	-- Invoke("open", page) / ("close") / ("results", {scores, result}) / ("scorecard") / ("state")
 	if RunService:IsStudio() then
 		local hook = Instance.new("BindableFunction")
 		hook.Name = "GolfMenuDebug"
@@ -1060,6 +1065,8 @@ function FrontEnd.start(opts)
 				startCourse(arg)
 			elseif cmd == "lobby" then
 				FrontEnd.backToLobby()
+			elseif cmd == "scorecard" then
+				HUD.toggleScorecard()
 			end
 			return { page = page, open = Ball.menuOpen == true, menuButton = menuButtonGui ~= nil and menuButtonGui.Enabled }
 		end
