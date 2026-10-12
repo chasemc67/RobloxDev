@@ -193,7 +193,7 @@ local function roundInProgress()
 	if roundFinished then
 		return false
 	end
-	return (player:GetAttribute("Hole") or 1) > 1 or (player:GetAttribute("Strokes") or 0) > 0
+	return Ball ~= nil and Ball.ball ~= nil -- the H1 tee is already an active round, even at zero strokes
 end
 
 ---------------------------------------------------------------------------- settings
@@ -357,13 +357,13 @@ local function buildSettings()
 		show("title")
 	end)
 	if VR and VR.isLeftHanded then
-		settings.Handedness = VR.isLeftHanded() and "Left" or "Right" -- (X swaps hands in game)
+		settings.Handedness = VR.isLeftHanded() and "Left" or "Right"
 	end
 	local list = new("Frame", { BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 86), Size = UDim2.fromOffset(780, 400) }, content)
-	new("UIListLayout", { Padding = UDim.new(0, 14), SortOrder = Enum.SortOrder.LayoutOrder }, list)
+	new("UIListLayout", { Padding = UDim.new(0, isVR and 8 or 14), SortOrder = Enum.SortOrder.LayoutOrder }, list)
 
 	local function row(order, title, note)
-		local r = panelFrame({ LayoutOrder = order, Size = UDim2.new(1, 0, 0, 80) }, list)
+		local r = panelFrame({ LayoutOrder = order, Size = UDim2.new(1, 0, 0, isVR and 76 or 80) }, list)
 		label({ Text = title, Position = UDim2.fromOffset(20, 10), Size = UDim2.fromOffset(330, 34), TextXAlignment = Enum.TextXAlignment.Left }, r)
 		if note then
 			label({ Text = note, Font = BODY, Position = UDim2.fromOffset(20, 46), Size = UDim2.fromOffset(330, 22), TextXAlignment = Enum.TextXAlignment.Left, TextColor3 = C.dim, MaxTextSize = 18 }, r)
@@ -418,7 +418,7 @@ local function buildSettings()
 		return t .. "x"
 	end)
 
-	local r = row(4, "VR club hand", "Also: press X in VR to swap")
+	local r = row(4, "VR club hand", "Choose your club hand here")
 	local toggles = {}
 	local function refreshHand()
 		for hand, b in toggles do
@@ -435,6 +435,16 @@ local function buildSettings()
 		end)
 	end
 	refreshHand()
+	if isVR and VR and VR.beginClubSetup then
+		local setup = row(5, "Club setup", "Stand as if putting, then fit your grip")
+		button("Set up", { Name = "ClubSetup", AnchorPoint = Vector2.new(1, 0.5), Position = UDim2.new(1, -184, 0.5, 0), Size = UDim2.fromOffset(156, 56) }, setup, function()
+			FrontEnd.close()
+			VR.beginClubSetup()
+		end)
+		button("Reset fit", { Name = "ResetClubSetup", AnchorPoint = Vector2.new(1, 0.5), Position = UDim2.new(1, -18, 0.5, 0), Size = UDim2.fromOffset(156, 56) }, setup, function()
+			VR.resetClubSetup()
+		end)
+	end
 end
 
 -- How to play: VR / phone / desktop columns (from VRControls' and TouchControls' real controls).
@@ -445,8 +455,8 @@ local HOWTO = {
 			.. "Trigger: warp to your ball\n"
 			.. "Right stick: left/right snap turn, forward to teleport, back to rewind your last shot\n"
 			.. "Left stick: walk\n"
-			.. "A: re-fit the club (hold it straight down first)\n"
-			.. "X: swap hands    B / Y: scorecard\n"
+			.. "Settings: choose club hand and Club setup\n"
+			.. "Off-hand X / A: wrist card    B / Y: scorecard\n"
 			.. "Menus: point, trigger.  Look at wrist: score + MENU",
 	},
 	{
@@ -748,7 +758,12 @@ function FrontEnd.isResultsOpen()
 	return page == "results"
 end
 
+function FrontEnd.openFromWrist()
+	FrontEnd.open("title")
+end
+
 function FrontEnd.open(name)
+	if VR and VR.cancelClubSetup then VR.cancelClubSetup() end
 	setOpen(true) -- (anchors the VR panel in front of the head if the menu was closed; page changes keep it)
 	show(name or "title")
 end

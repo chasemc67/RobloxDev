@@ -91,6 +91,7 @@ return {
 
 	-- Front-end art (uploaded 2026-10-11, assets/vr-mini-golf/store/ui)
 	UI = {
+		ClubSetup = { step1_stance = "rbxassetid://122984304115771", step2_stick = "rbxassetid://110561580015778", step3_trigger = "rbxassetid://124290294292343", howto_card_bg = "rbxassetid://71799829989383", ground_marker = "rbxassetid://113621422195787", icon_reset = "rbxassetid://107608940377791" },
 		Logo = "rbxassetid://73526573447336", -- 2048x768 transparent
 		TitleBackground = "rbxassetid://75624699940778", -- title_bg_v2.png 1920x1080 (stage q)
 		CardLanternGrove = "rbxassetid://100112215630907", -- card_lanterngrove_v2.png 1024 square (stage q)
@@ -111,10 +112,10 @@ return {
 	-- is within WristGazeDeg of your gaze centre, held for WristShowHold s. Hide: once out past WristHideDeg /
 	-- WristGazeHideDeg for WristHideHold s. Never while the putter head moves faster than WristMaxClubSpeed (and
 	-- WristSwingQuiet s after), or in a putting stance (putter head within WristStanceRange of a hittable ball).
-	WristShowDeg = 32,
-	WristHideDeg = 45,
-	WristGazeDeg = 25,
-	WristGazeHideDeg = 35,
+	WristShowDeg = 70,
+	WristHideDeg = 85,
+	WristGazeDeg = 55,
+	WristGazeHideDeg = 70,
 	WristShowHold = 0.25,
 	WristHideHold = 0.4,
 	WristMaxClubSpeed = 3, -- studs/s (0.9 m/s); a putt stroke is faster

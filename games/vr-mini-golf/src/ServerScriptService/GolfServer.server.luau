@@ -10,6 +10,7 @@ local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
 local Remotes = Golf:WaitForChild("Remotes")
 local PersonalBest = require(script:WaitForChild("PersonalBest"))
+require(script:WaitForChild("ClubSetup")).init(Remotes)
 
 -- Remotes added with the front end (created here; clients WaitForChild them)
 local function remote(name)
@@ -77,6 +78,7 @@ end
 
 local function publish(player, st)
 	player:SetAttribute("Hole", st.hole)
+	player:SetAttribute("HoleHoled", st.sunk == true)
 	player:SetAttribute("Strokes", st.strokes[st.hole] or 0)
 	player:SetAttribute("Scores", HttpService:JSONEncode(st.strokes))
 end

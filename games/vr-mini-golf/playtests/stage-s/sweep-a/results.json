@@ -1,0 +1,99 @@
+{
+ "h1": {
+  "default": {
+   "seconds": 206.92,
+   "scenario": "h1",
+   "hole": 1,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "maxMovingStillS": 0.167,
+    "list": []
+   },
+   "name": "Lantern Gate",
+   "stuck": 0,
+   "par": 2,
+   "cam": ""
+  }
+ },
+ "h2": {
+  "default": {
+   "seconds": 184.54,
+   "scenario": "h2",
+   "hole": 2,
+   "nudges": 1,
+   "issues": [
+    {
+     "type": "event",
+     "to": [
+      209.5618,
+      21.2601,
+      97.9624
+     ],
+     "hole": 2,
+     "t": 157.5268,
+     "event": "flag",
+     "reason": "seam",
+     "from": [
+      209.5618,
+      21.2601,
+      97.9624
+     ],
+     "kind": "unstuck"
+    }
+   ],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 1,
+    "stuck": 0,
+    "shots": 20,
+    "maxMovingStillS": 0.217,
+    "list": []
+   },
+   "name": "Acorn Ledge",
+   "stuck": 0,
+   "par": 2,
+   "cam": ""
+  }
+ },
+ "h3": {
+  "default": {
+   "seconds": 179.68,
+   "scenario": "h3",
+   "hole": 3,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "maxMovingStillS": 0.1,
+    "list": []
+   },
+   "name": "Toadstool Row",
+   "stuck": 0,
+   "par": 3,
+   "cam": ""
+  }
+ }
+}

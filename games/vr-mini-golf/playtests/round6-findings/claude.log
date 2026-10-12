@@ -1,0 +1,22 @@
+Round 6 is partly done. Checks 1–5 are complete, but Studio crashed during check 6 and came back signed out, so three regression items didn't run. The full report is `playtests/round6/round6-findings.md`, with all screenshots, logs and scripts in `playtests/round6/`.
+
+**Passed**
+- **Wrist buttons (all three round-5 failures are fixed):** SCORES works after MENU → Resume 3/3 times. MENU and SCORES work after switching hands in both directions. Best shows −2 on both wrists. 32/32 pointer steps passed.
+- **VR smoke:** all 9 holes sink, including H2. The simulated swing gives 6.80 studs/s against 6.80 expected. Ledge passes 3/3.
+- **H6 mill wheel outline:** 600 frames with 0 missing and 0 false outlines. Most of round 5's 16 missing / 8 false came from the old test: the wheel pushes the ball up to 6 studs, but it checked against the ball's starting spot.
+- **New wrist card:** 0.37 × 0.283 studs, 15.6% bigger each way than round 5's 0.32 × 0.245. Aspect matches the 1024 × 784 canvas, AlwaysOnTop is off, nothing is cropped and all text fits. The bracer covers no part of the card on either wrist, and the card sits 1.3 mm above it. Layout matches the mock.
+- **Gentle slopes:** all 12 under 25° have the right chevron texture pointing downhill.
+- **Regression that ran:** camera probe 0/5796 flat and 0/11592 VR, same as round 5. Ball and putter outlines work at the H9 trunk tunnel, H3 mushroom house and H5 bridge. No console errors or warnings in any run.
+
+**Failed or flagged**
+- **45° banks are lighter, not darker (P3, RobloxDevBot):** they have plain felt as intended, but they're tinted to 0.85 of the light green felt. The felt they actually meet is darker, so they come out 11–63% lighter than their neighbours, and the screenshots agree. Fix is around `CourseBuilder.luau:268`.
+- **Wrist TOTAL counts the hole in progress (P3, RobloxDevBot):** it shows −1 after one unholed stroke on a par 2, because the score list includes the current hole.
+- **No Resume before the first stroke (minor UX):** opening the wrist MENU on H1 before any stroke gives a title page with only Play.
+- **H9 pendulum block rate:** 8/24 = 33.3%, under the 38–50% target (round 5 was 41.7%). This swings by about ±2 shots between runs.
+- **Small card text (Game Art Bot):** the labels are about 0.62° tall at the eye, which is likely too small to read in a headset. Needs a real headset check.
+
+**Not tested**
+- H7/H8 block rate, clubviz both hands, and the desktop and iPhone smoke tests. At 19:22 Studio crashed with "Ran out of remap ids" as the H7/H8 run started Play. That's an engine limit after about 34 hours and hundreds of Play sessions in one Studio process, not a game bug.
+- I relaunched Studio once on the place and it came up **signed out**, at the sign-in dialog. I did not sign in.
+
+**Studio rules:** nothing was saved or published, `src/` is untouched, there were no commits and no agreement pop-ups. Every run up to the crash restored the starting workspace attributes. I couldn't confirm Studio is back in Edit mode or re-check the attributes after the crash, because it's waiting for a sign-in. Once you sign in and reopen place 87725688219952, the three untested items can be rerun.

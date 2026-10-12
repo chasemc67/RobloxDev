@@ -1089,7 +1089,7 @@ return {
 				},
 			},
 			notes = "",
-			hio = { aim_deg = 236.5, speed = 19, phase = 1.5, from = "h07-notes.md" },
+			hio = { aim_deg = 236.5, speed = 19, phase = 0, from = "h07-notes.md" },
 		},
 		{
 			number = 8,
@@ -1318,7 +1318,7 @@ return {
 				},
 			},
 			notes = "",
-			hio = { aim_deg = 288.5, speed = 17.9, phase = 0, from = "h08-notes.md" },
+			hio = { aim_deg = 288.5, speed = 17.9, phase = 1.5, from = "h08-notes.md" },
 		},
 		{
 			number = 9,

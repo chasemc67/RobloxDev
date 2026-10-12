@@ -1,5 +1,5 @@
 -- Run in Edit after File > Import of vr_wrist_bracer.fbx with LG Stud Scene Anchored.
--- The supplied October 11 file still has a .32 x .20 face; fit it without changing the other meshes.
+-- Refreshed October 11 file has .37 x .28 face; fit exact canvas aspect without changing straps.
 local golf = game.ReplicatedStorage.Golf
 local old = golf:WaitForChild("WristBracer")
 local model = workspace:WaitForChild("vr_wrist_bracer")

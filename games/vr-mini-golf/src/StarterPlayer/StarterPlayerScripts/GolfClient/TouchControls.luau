@@ -396,7 +396,11 @@ function Touch.start(Ball, HUD)
 		-- pass through rails, walls, props and movers (only Terrain pulls the camera in); what's in between fades
 		desired = CameraOcclusion.passThrough(focus, desired)
 		camera.CFrame = CFrame.lookAt(desired, focus)
-		CameraOcclusion.fade(desired, focus, { player.Character })
+		if mode == "aim" and Ball.canHit() and b.AssemblyLinearVelocity.Magnitude < 0.15 then
+			CameraOcclusion.fade(desired, focus, { player.Character })
+		else
+			CameraOcclusion.clearFade()
+		end
 		if mode == "aim" then
 			updateAim()
 		end

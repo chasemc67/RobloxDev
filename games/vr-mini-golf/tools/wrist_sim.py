@@ -5,7 +5,7 @@
 
 Scenarios (see VRControls wristSim): watch (3 deliberate looks: expect 3 shows), glance (0.15 s flicks), swings
 (practice swings, off hand on the grip then IN the watch pose), stance (address waggles behind a hittable ball),
-head (25 s looking around / walking / pointing / near-watch poses). Any show outside "watch" is a false show.
+head (25 s looking around / walking / pointing / near-watch poses). Glance/swing/stance shows are false shows. Relaxed Stage s gaze deliberately accepts near-watch head poses.
 Also saves shots of the wrist up (bracer + card) and the pointer on the wrist MENU button.
 """
 import argparse
@@ -97,7 +97,7 @@ def main():
                 r = pointer(st, "wristSim", {"scenario": sc, "seed": seed})
                 r["seed"] = seed
                 res["runs"].append(r)
-                if sc != "watch":
+                if sc in ("glance", "swings", "stance"):
                     false_shows += r["shows"]
                 print("%-6s seed %d: shows %d hides %d frames %d lookFrames %d by %s latency %s" % (
                     sc, seed, r["shows"], r["hides"], r["frames"], r["lookFrames"], r.get("lookFramesBy"), r.get("latencyMs")))

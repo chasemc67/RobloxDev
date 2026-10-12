@@ -16,8 +16,8 @@
 --   Right stick back ........... rewind ball to where your last shot started
 --   Left stick ................. walk
 --   Grip (club hand) ........... hold to make the putter solid (only when Config.VRGripToPutt = true)
---   B / Y ...................... scorecard     A ... re-fit club (hold the club straight down first)
---   X .......................... swap hands
+--   B / Y ...................... scorecard
+--   Off-hand X / A .............. toggle wrist. Hand and grip fit are chosen in Settings only.
 --   Look at the off-hand wrist .. bracer + wrist card: hole, par, stroke, total, best + MENU / SCORES buttons (HUD)
 --
 -- For testing without a headset set workspace attribute "SimulateVR" = true before playing. Poses are then read
@@ -35,6 +35,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Config = require(ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Config"))
 local CameraOcclusion = require(ReplicatedStorage:WaitForChild("Golf"):WaitForChild("CameraOcclusion"))
 local VRPointer = require(script.Parent:WaitForChild("VRPointer"))
+local ClubSetup = require(script.Parent:WaitForChild("ClubSetup"))
 
 local player = Players.LocalPlayer
 local R = Config.BallRadius
@@ -335,39 +336,38 @@ function VR.start(Ball, HUD, simulate)
 		end
 	end
 
-	-- Manual re-fit: hold the club straight down at the floor and press A. Keeps the butt point (shaft start at
-	-- the handle end) and re-aims the shaft from it.
-	local function fitClub()
-		local handCF = worldPose(dominant)
-		local headPos = worldPose(Enum.UserCFrame.Head).Position
-		local toe = flat(handCF.Position - headPos)
-		if toe.Magnitude < 0.2 then
-			toe = flat(handCF.UpVector)
-		end
-		if toe.Magnitude < 1e-3 then
-			return
-		end
-		toe = toe.Unit
-		local back = Vector3.yAxis -- shaft points straight down
-		local right = toe:Cross(back)
-		local desired = CFrame.fromMatrix(Vector3.zero, right, toe, back)
-		clubOffset = handCF.Rotation:Inverse() * desired
-		local tipPos = handCF:PointToWorldSpace(clubButt)
-		local floor = groundY(tipPos, 0.5) or origin.Y
-		clubLength = math.clamp(tipPos.Y - floor - HEAD_SIZE.Y / 2, 1.2, 4)
-		clubFitted = true
-		teleportedThisFrame = true -- the head jumps; don't treat that as a swing
-		haptic(0.4, 0.15)
-		HUD.message("Club fitted", Color3.fromRGB(180, 230, 255), 1.5)
-	end
+	local setup
+	setup = ClubSetup.new({
+		eye = function() return worldPose(Enum.UserCFrame.Head) end,
+		pose = function() return worldPose(dominant) end,
+		hand = function() return dominant.Name end,
+		headPosition = function() return head.Position end,
+		ground = function(pos) return groundY(pos, 3) or origin.Y end,
+		butt = function() return clubButt end,
+		rotation = function() return clubOffset end,
+		active = function(on) player:SetAttribute("ClubSetupActive",on) end,
+		apply = function(rotation,length)
+			clubOffset,clubLength,clubFitted = rotation,length,true
+			teleportedThisFrame = true
+		end,
+		defaults = function()
+			clubButt,clubOffset = defaultClubMount(dominant)
+			autoFitClub()
+			teleportedThisFrame = true
+		end,
+	}, Config, HUD)
+	VR.beginClubSetup = function() setup:begin() end
+	VR.resetClubSetup = function() setup:save(true) end
+	VR.cancelClubSetup = function() if setup.active then setup:cancel() end end
 
 	local function switchHands()
 		dominant = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
 		clubButt, clubOffset = defaultClubMount(dominant)
+		setup:applySaved()
 		teleportedThisFrame = true
 		HUD.message(dominant == Enum.UserCFrame.RightHand and "Right-handed" or "Left-handed", Color3.new(1, 1, 1), 1.5)
 	end
-	-- Settings menu handedness (GolfClient.FrontEnd): same as pressing X when it differs
+	-- Handedness is changed only through Settings (or the Studio-only test hook).
 	VR.setLeftHanded = function(left: boolean)
 		if (dominant == Enum.UserCFrame.LeftHand) ~= left then
 			switchHands()
@@ -387,6 +387,12 @@ function VR.start(Ball, HUD, simulate)
 	local gripHeld = { [Enum.UserCFrame.RightHand] = false, [Enum.UserCFrame.LeftHand] = false }
 
 	local function onButtonDown(keyCode)
+		if setup.active then
+			local clubTrigger = dominant == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonR2 or Enum.KeyCode.ButtonL2
+			if keyCode == clubTrigger then setup:save(false)
+			elseif keyCode == Enum.KeyCode.ButtonB or keyCode == Enum.KeyCode.ButtonY then setup:save(true) end
+			return
+		end
 		-- trigger: the laser pointer's click first (menus, scorecard, wrist card buttons)
 		if keyCode == Enum.KeyCode.ButtonR2 or keyCode == Enum.KeyCode.ButtonL2 then
 			if VRPointer.press(keyCode == Enum.KeyCode.ButtonR2 and Enum.UserCFrame.RightHand or Enum.UserCFrame.LeftHand) then
@@ -408,10 +414,9 @@ function VR.start(Ball, HUD, simulate)
 			else
 				HUD.toggleScorecard()
 			end
-		elseif keyCode == Enum.KeyCode.ButtonA then
-			fitClub()
-		elseif keyCode == Enum.KeyCode.ButtonX then
-			switchHands()
+		elseif (dominant == Enum.UserCFrame.RightHand and keyCode == Enum.KeyCode.ButtonX)
+			or (dominant == Enum.UserCFrame.LeftHand and keyCode == Enum.KeyCode.ButtonA) then
+			if HUD.toggleWrist then HUD.toggleWrist() end
 		end
 	end
 	local function onButtonUp(keyCode)
@@ -422,6 +427,7 @@ function VR.start(Ball, HUD, simulate)
 		end
 	end
 	local function onStick(keyCode, pos: Vector2)
+		if setup.active then setup.stick = pos; moveStick, actionStick = Vector2.zero, Vector2.zero; return end
 		if keyCode == Enum.KeyCode.Thumbstick1 then
 			moveStick = pos
 		elseif keyCode == Enum.KeyCode.Thumbstick2 then
@@ -673,7 +679,7 @@ function VR.start(Ball, HUD, simulate)
 		end
 
 		local b = Ball.ball
-		local solid = not aimingTeleport and (not Config.VRGripToPutt or gripHeld[dominant])
+		local solid = not setup.active and not aimingTeleport and (not Config.VRGripToPutt or gripHeld[dominant])
 		local ready = Ball.canHit() and solid
 		-- "ghost" the putter while it can't hit the ball
 		local ghost = not ready or now < cooldownUntil
@@ -735,13 +741,17 @@ function VR.start(Ball, HUD, simulate)
 	local fadeAt, fading = 0, false
 	local function updateSeeThrough(eye: Vector3)
 		local now = os.clock()
-		if now - fadeAt < 1 / 30 then
-			return
-		end
-		fadeAt = now
 		local b = Ball.ball
 		local focus = b and b.Position + Vector3.new(0, 0.25, 0)
-		if focus and (focus - eye).Magnitude <= Config.VRFadeRange then
+		local nearClub = b and (head.Position - b.Position).Magnitude <= Config.WristStanceRange + 1
+		local eligible = focus and Ball.canHit() and b.AssemblyLinearVelocity.Magnitude < 0.15 and not setup.active and nearClub and (focus - eye).Magnitude <= Config.VRFadeRange
+		if not eligible then
+			if fading then CameraOcclusion.clearFade(); fading = false end
+			return
+		end
+		if now - fadeAt < 1 / 30 then return end
+		fadeAt = now
+		if eligible then
 			CameraOcclusion.fade(eye, focus, { player.Character })
 			fading = true
 		elseif fading then
@@ -754,10 +764,10 @@ function VR.start(Ball, HUD, simulate)
 	RunService:BindToRenderStep("GolfVR", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		camera.HeadScale = 1 -- life size: 1 stud = 0.3 m, regardless of avatar size
 		updateBallPlane()
-		handleActionStick()
+		if not setup.active then handleActionStick() end
 
 		-- smooth locomotion relative to where you're looking
-		if moveStick.Magnitude > 0.2 then
+		if not setup.active and not Ball.menuOpen and moveStick.Magnitude > 0.2 then
 			local headWorld = worldPose(Enum.UserCFrame.Head)
 			local yaw = yawOnly(headWorld)
 			local move = (yaw.LookVector * moveStick.Y + yaw.RightVector * moveStick.X) * Config.VRMoveSpeed * dt
@@ -782,6 +792,7 @@ function VR.start(Ball, HUD, simulate)
 		if not clubFitted then
 			autoFitClub()
 		end
+		setup:update(dt)
 		local headCF = updatePutter(worldPose(dominant))
 		detectHit(headCF)
 		teleportedThisFrame = false
@@ -791,7 +802,7 @@ function VR.start(Ball, HUD, simulate)
 		local b = Ball.ball
 		local toBall = b and (headCF.Position - b.Position)
 		local stance = toBall ~= nil and Ball.canHit() and Vector3.new(toBall.X, 0, toBall.Z).Magnitude < Config.WristStanceRange and math.abs(toBall.Y) < 0.8
-		HUD.placeVRWrist(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand, { clubSpeed = headVelocity().Magnitude, stance = stance })
+		HUD.placeVRWrist(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand, { clubSpeed = headVelocity().Magnitude, stance = stance or setup.active })
 		HUD.placeVRMessage(headWorld)
 		VRPointer.update({
 			[Enum.UserCFrame.RightHand] = worldPose(Enum.UserCFrame.RightHand),
@@ -1109,6 +1120,75 @@ function VR.start(Ball, HUD, simulate)
 					setHand(dominant, VR.test.handCFrameFor(v3(arg.club), v3(arg.face or { 1, 0, 0 })))
 				end
 				return { origin = { origin.X, origin.Y, origin.Z } }
+			elseif cmd == "offHandToggle" then
+				onButtonDown(dominant == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonX or Enum.KeyCode.ButtonA)
+				return HUD.wristState()
+			elseif cmd == "clubAway" then
+				local pos = headW.Position + headW.RightVector * 3 - Vector3.new(0,4,0)
+				setHand(dominant,VR.test.handCFrameFor(pos,headW.RightVector))
+				return true
+			elseif cmd == "wristPalm" then
+				local off = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
+				local pose = watchPose(headW,off == Enum.UserCFrame.LeftHand)
+				local pivot = pose:PointToWorldSpace(Vector3.new(0,-0.12,0.33))
+				local rot = pose.Rotation * CFrame.Angles(0,0,math.pi)
+				setHand(off,CFrame.new(pivot-rot:VectorToWorldSpace(Vector3.new(0,-0.12,0.33)))*rot)
+				return {hand=off.Name}
+			elseif cmd == "randomStroke" then
+				local rng = Random.new(tonumber(arg) or 617)
+				local angle = rng:NextNumber(0,math.pi*2)
+				local speed = rng:NextNumber(1.5,3)
+				return {hit=Ball.hit(Vector3.new(math.cos(angle),0,math.sin(angle))*speed,"test"),angle=angle,speed=speed}
+			elseif cmd == "regressionState" then
+				local n=0
+				for _,d in workspace:GetDescendants() do
+					if d:IsA("BasePart") and d.LocalTransparencyModifier>0.01 and not d:IsDescendantOf(camera) and not (player.Character and d:IsDescendantOf(player.Character)) then n+=1 end
+				end
+				return {ballState=Ball.state,hole=player:GetAttribute("Hole"),strokes=player:GetAttribute("Strokes"),holed=player:GetAttribute("HoleHoled"),wrist=HUD.wristState(),fadeActive=fading,fadedParts=n}
+			elseif cmd == "fadeGateTest" then
+				if not Ball.ball then return {pass=false,error="no ball"} end
+				local savedState,savedHead,savedAnchored=Ball.state,head.CFrame,Ball.ball.Anchored
+				local states={}
+				head.CFrame=CFrame.new(Ball.ball.Position+Vector3.new(0,0.1,0.5))
+				for _,case in {{"aim","ready",false},{"rolling","moving",false},{"sunk","locked",true}} do
+					Ball.state,Ball.ball.Anchored=case[2],case[3]
+					fadeAt=0
+					updateSeeThrough(headW.Position)
+					states[case[1]]=fading
+				end
+				Ball.state,head.CFrame,Ball.ball.Anchored=savedState,savedHead,savedAnchored
+				fadeAt=0;updateSeeThrough(headW.Position)
+				return {pass=states.aim and not states.rolling and not states.sunk,states=states,fixture="synchronous local gate states; no shot"}
+			elseif cmd == "clubSetup" then
+				local action = type(arg) == "table" and arg.action or arg
+				if action == "begin" then setup:begin()
+				elseif action == "cancel" then setup:cancel()
+				elseif action == "save" then onButtonDown(dominant == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonR2 or Enum.KeyCode.ButtonL2)
+				elseif action == "reset" then setup:save(true)
+				elseif action == "stick" then onStick(Enum.KeyCode.Thumbstick2,Vector2.new(arg.x or 0,arg.y or 0)) end
+				local fit = setup.active and setup:solve() or nil
+				return { active=setup.active, saving=setup.saving, hand=dominant.Name, fit=fit,
+					target=setup.target and {setup.target.X,setup.target.Y,setup.target.Z}, saved=setup.fits[dominant.Name] }
+			elseif cmd == "clubSetupTest" then
+				local before = dominant
+				onButtonDown(before == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonA or Enum.KeyCode.ButtonX)
+				local noSwap = dominant == before
+				setup:begin()
+				local p0 = setup.target
+				onStick(Enum.KeyCode.Thumbstick2,Vector2.new(0.8,0.4))
+				for _ = 1,20 do RunService.RenderStepped:Wait() end
+				onStick(Enum.KeyCode.Thumbstick2,Vector2.zero)
+				local fit = setup:solve()
+				local moved = (setup.target-p0).Magnitude
+				local hand = worldPose(dominant)
+				local solvedHead = hand:PointToWorldSpace(clubButt) + (hand.Rotation * clubOffset).LookVector * clubLength
+				local err = (solvedHead-setup.target).Magnitude
+				onButtonDown(dominant == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonR2 or Enum.KeyCode.ButtonL2)
+				local t0 = os.clock()
+				while setup.saving and os.clock()-t0<15 do task.wait(0.05) end
+				local saved = setup.fits[dominant.Name] ~= nil and not setup.active
+				return { noButtonHandChange=noSwap, targetMoved=moved, solveError=err,
+					saved=saved, fit=fit, pass=noSwap and moved>0.02 and err<0.02 and saved }
 			elseif cmd == "state" then
 				return { pointer = VRPointer.state(), wrist = HUD.wristState() }
 			elseif cmd == "wristSim" then

@@ -1,0 +1,13 @@
+[runner] studio VR Mini Golf (placeId: 87725688219952) ee2e1446-53b6-4363-937f-9e22188c182f
+[runner] mode Edit
+[runner] mode ?
+Traceback (most recent call last):
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 1067, in <module>
+    main()
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 1062, in main
+    {"list": cmd_list, "run": cmd_run, "holes": cmd_holes, "shots": cmd_shots, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 231, in cmd_run
+    st.start_play()
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 83, in start_play
+    raise RuntimeError("play did not start: " + s)
+RuntimeError: play did not start: No Roblox Studio instances are connected. Ask the user to confirm that Studio is running with a place open and the MCP server enabled in Assistant settings.

@@ -425,6 +425,64 @@ local function dimRailLantern(m: Model, hole: number)
 	end
 end
 
+-- Applied to fresh instances and existing course primitives. Store original values
+-- so running Place repeatedly does not compound the H9 reduction.
+function PropsBuilder.DimH9(hole)
+	local spec = data().h9Dim or {}
+	local colors = spec.colors or { Glow = "#B37D32", Firefly = "#97B24A", ShroomGlow = "#599F92" }
+	local strengths = spec.strength or { Firefly = 4.2, ShroomGlow = 3.5 }
+	for _, obj in hole:GetDescendants() do
+		if obj:IsA("PointLight") then
+			local brightness = obj:GetAttribute("H9OriginalBrightness") or obj.Brightness
+			local range = obj:GetAttribute("H9OriginalRange") or obj.Range
+			obj:SetAttribute("H9OriginalBrightness", brightness)
+			obj:SetAttribute("H9OriginalRange", range)
+			obj.Brightness = brightness * 0.6
+			obj.Range = range * 0.75
+			obj.Color = Color3.fromHex("FFB25C")
+			obj.Shadows = obj:GetAttribute("H9HeroLantern") == true
+		elseif obj:IsA("BasePart") and obj.Material == Enum.Material.Neon then
+			local material = string.match(obj.Name, "__([%a]+)") or obj.Name
+			if material == "LanternGlow" or material == "ExitGlow" or material == "LanternCore" then material = "Glow" end
+			if colors[material] then
+				obj.Color = Color3.fromHex(colors[material])
+				obj:SetAttribute("H9EmissiveStrength", strengths[material])
+				if obj:IsA("MeshPart") and strengths[material] then
+					local appearance = obj:FindFirstChildOfClass("SurfaceAppearance")
+					local created = false
+					if not appearance and spec.whiteMask and spec.whiteMask ~= "" then
+						appearance = Instance.new("SurfaceAppearance")
+						appearance.Name = "H9Emissive"
+						created = true
+					end
+					if appearance then
+						local ok, reason = pcall(function()
+							if spec.whiteMask and spec.whiteMask ~= "" then
+								-- Texture assignment requires edit-time/plugin permission.
+								appearance.ColorMap = spec.whiteMask
+								appearance.EmissiveMaskContent = Content.fromUri(spec.whiteMask)
+							end
+							appearance.Color = obj.Color
+							appearance.EmissiveStrength = strengths[material]
+							-- Tint the albedo once, avoiding a second darkening of the desired hue.
+							appearance.EmissiveTint = Color3.new(1, 1, 1)
+						end)
+						if ok then
+							appearance.Parent = obj
+							obj:SetAttribute("H9EmissiveApplied", true)
+							obj:SetAttribute("H9EmissiveError", nil)
+						else
+							if created then appearance:Destroy() end
+							obj:SetAttribute("H9EmissiveApplied", false)
+							obj:SetAttribute("H9EmissiveError", tostring(reason))
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
 -- world-layout keep-outs for the set dressing (it was authored around each hole on its own)
 local function worldKeepouts(course)
 	local wl = ServerStorage.CourseData:FindFirstChild("WorldLayout")
@@ -537,6 +595,10 @@ function PropsBuilder.Place(course)
 
 	for n, h in holes do
 		local cfH = holeCF(h)
+		local function variantName(name)
+			local variant = n == 9 and d.h9Dim and d.h9Dim.variants[name]
+			return variant and lib:FindFirstChild(variant) and variant or name
+		end
 		local rep = { hero = 0, moving = 0, dressing = 0, skipped = {} }
 		report["Hole" .. n] = rep
 		local function skip(why)
@@ -553,7 +615,7 @@ function PropsBuilder.Place(course)
 			end
 			local info = d.props[pl.prop]
 			local cf = cfH * CFrame.new(table.unpack(pl.pos)) * CFrame.Angles(0, math.rad(pl.yaw or 0), 0)
-			local m = instance(lib, pl.prop, cf, pl.scale, pl.scale_z_to, info and info.bbox)
+			local m = instance(lib, variantName(pl.prop), cf, pl.scale, pl.scale_z_to, info and info.bbox)
 			if not m then
 				skip("missing:" .. pl.prop)
 				continue
@@ -619,6 +681,10 @@ function PropsBuilder.Place(course)
 				if pl.light then
 					-- props_overrides.json lantern with its own light (H9 amber lanterns over the green)
 					setLight(m, pl.light)
+					if n == 9 and pl.light.id and string.match(pl.light.id, "^H9_hanging_lantern_[123]$") then
+						local heroLight = m:FindFirstChildWhichIsA("PointLight", true)
+						if heroLight then heroLight:SetAttribute("H9HeroLantern", true) end
+					end
 				elseif lightSpecFor(pl.prop) then
 					ensureLight(m, lightSpecFor(pl.prop))
 				elseif string.find(pl.prop, "lantern") or string.find(pl.prop, "torii") or string.find(pl.prop, "mushroom") or string.find(pl.prop, "ring") then
@@ -709,7 +775,7 @@ function PropsBuilder.Place(course)
 				continue
 			end
 			local cf = CFrame.new(wp.X, y, wp.Z) * (cfH - cfH.Position) * CFrame.Angles(0, math.rad(it.yaw or 0), 0)
-			local m = instance(lib, it.prop, cf, sc)
+			local m = instance(lib, variantName(it.prop), cf, sc)
 			if not m then
 				skip("missing:" .. it.prop)
 				continue
@@ -820,6 +886,8 @@ function PropsBuilder.Place(course)
 			rep.pointLights = (rep.pointLights or 0) + 1
 		end
 	end
+
+	if holes[9] then PropsBuilder.DimH9(holes[9]) end
 
 	-- the old H9 hollow tree mesh stands in the NW forest as a sister tree (world layout)
 	local worldLib = ServerStorage:FindFirstChild("LanternGroveWorld")

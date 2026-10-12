@@ -139,6 +139,31 @@ def convert():
     for hk, sk in man.get("hole_skins", {}).get("holes", {}).items():
         out["skins"][str(int(hk[1:]))] = {k: sk[k] for k in ("rail_straight_4", "rail_straight_2", "rail_end_post", "rail_block_color",
                                                              "rail_block_roblox_material", "rail_cap_color", "rail_cap_roblox_material") if k in sk}
+    # H9 variants share geometry and pivots, but are real separately imported meshes.
+    # Keep mapping in generated data so refreshed art remains a single regenerate step.
+    dim = man.get("h9_emissive_dim", {})
+    out["h9Dim"] = {"variants": {}, "colors": {k: v["after"] for k, v in dim.get("colors", {}).items()},
+                    "strength": dim.get("surface_appearance_emissive_strength_h9", {})}
+    emissive_assets = os.path.join(HERE, "h9_emissive_assets.json")
+    if os.path.exists(emissive_assets):
+        out["h9Dim"]["whiteMask"] = json.load(open(emissive_assets)).get("white_mask", "")
+    material_specs = {mesh.split("__")[-1].split(".")[0]: spec for mesh, spec in out["parts"].items()}
+    for original, relative in dim.get("fbx", {}).items():
+        variant = os.path.splitext(os.path.basename(relative))[0]
+        out["h9Dim"]["variants"][original] = variant
+        bounds = mesh_bounds(os.path.join(MODELS, relative))
+        pb = prop_bounds(bounds)
+        info = dict(out["props"].get(original, {"kind": "static", "group": "dressing", "tris": 0}))
+        info.update({"bbox": r3(pb["size"]), "center": r3(pb["center"])})
+        out["props"][variant] = info
+        for mesh, b in bounds.items():
+            original_mesh = mesh.replace(variant, original, 1)
+            material = mesh.split("__")[-1].split(".")[0]
+            spec = dict(out["parts"].get(original_mesh, material_specs.get(material, {"color": "#FFFFFF", "material": "SmoothPlastic", "transparency": 0})))
+            if material in out["h9Dim"]["colors"]:
+                spec.update({"color": out["h9Dim"]["colors"][material], "material": "Neon"})
+            spec["center"] = r3(b["center"])
+            out["parts"][mesh] = spec
     out["overrides"] = applied
     src = to_lua(out)
     for n in range(1, 10):

@@ -16,6 +16,7 @@ local player = Players.LocalPlayer
 local HUD = {}
 HUD.isVR = false
 
+local completedWristHole = nil
 local FONT = Enum.Font.FredokaOne
 local gui: ScreenGui
 local uiScale: UIScale
@@ -273,7 +274,7 @@ function HUD.refresh()
 			local hp = h:GetAttribute("Par") or 0
 			parSum += hp
 			local sc = scores[i]
-			if type(sc) == "number" and sc > 0 then
+			if type(sc) == "number" and sc > 0 and (i < n or (i == n and (player:GetAttribute("HoleHoled") == true or i == completedWristHole))) then
 				d += sc - hp
 			end
 		end
@@ -381,6 +382,9 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 	local dt = math.min(now - (wrist.t or now), 0.1)
 	wrist.t = now
 	local back = handCF.RightVector * (leftHand and -1 or 1)
+	local rawBack = back
+	-- Either side of the wrist is accepted; turn the readable face toward the eye.
+	if back:Dot(headCF.Position - handCF.Position) < 0 then back = -back end
 	local fingers = handCF.LookVector
 	local pivot = handCF:PointToWorldSpace(WRIST_OFFSET)
 	-- bracer frame: +Y = back of the wrist, +X = toward the fingers, pivot at the wrist centre
@@ -394,12 +398,24 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 		gazeDeg = math.deg(math.acos(math.clamp(headCF.LookVector:Dot(-toEye / dist), -1, 1)))
 	end
 	wrist.faceDeg, wrist.gazeDeg = faceDeg, gazeDeg
+	if game:GetService("VRService").VREnabled and now - (wrist.poseAt or 0) >= 10 then
+		wrist.poseAt = now
+		local remote = Remotes:FindFirstChild("WristPose")
+		if remote then remote:FireServer({ faceDeg = faceDeg, gazeDeg = gazeDeg,
+			backDeg = math.deg(math.acos(math.clamp(rawBack:Dot(toEye.Unit), -1, 1))),
+			distance = dist, speed = opts.clubSpeed or 0, shown = wrist.shown == true,
+			manual = wrist.manual == true, hand = leftHand and "left" or "right" }) end
+	end
 	if (opts.clubSpeed or 0) > Config.WristMaxClubSpeed then
 		wrist.swingAt = now
 	end
-	local blocked = (Ball and Ball.menuOpen and "menu") or (finalCardOpen and "final card") or (opts.stance and "stance")
+	local blocked = (Ball and Ball.menuOpen and "menu") or (finalCardOpen and "final card") or (opts.stance and not wrist.manual and "stance")
 		or (wrist.swingAt and now - wrist.swingAt < Config.WristSwingQuiet and "swing") or nil
 	local near = dist < WRIST_RANGE
+	if wrist.manualDismissed and (not near or faceDeg > Config.WristHideDeg or gazeDeg > Config.WristGazeHideDeg) then
+		wrist.manualDismissed = false
+	end
+	blocked = blocked or (wrist.manualDismissed and "controller off")
 	wrist.blocked = blocked
 	if blocked then
 		wrist.inSince, wrist.outSince = nil, nil
@@ -407,6 +423,9 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 			wrist.shown = false
 			wristLog("hide", blocked)
 		end
+	elseif wrist.manual then
+		wrist.shown = true
+		wrist.inSince, wrist.outSince = nil, nil
 	elseif not wrist.shown then
 		wrist.outSince = nil
 		if near and faceDeg <= Config.WristShowDeg and gazeDeg <= Config.WristGazeDeg then
@@ -459,6 +478,16 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 		-- Top canvas spans local Z by X; rotate it upright and retain the approved rim clearance.
 		wrist.part.CFrame = CFrame.fromMatrix(facePos, -read, back) * CFrame.Angles(0, math.pi / 2, 0)
 	end
+end
+
+function HUD.toggleWrist()
+	if not wrist then return end
+	wrist.manual = not (wrist.manual or wrist.shown)
+	-- A button dismissal stays closed until the wrist leaves the watch pose.
+	wrist.manualDismissed = not wrist.manual
+	wrist.shown = false
+	wrist.inSince, wrist.outSince = nil, nil
+	wristLog("toggle", wrist.manual and "controller on" or "controller off")
 end
 
 -- Studio harness: the wrist show/hide log ({t, event, why}) since `since` (os.clock), and console printing.
@@ -927,28 +956,33 @@ local function buildVR()
 	-- Adorned CanvasGroups need depth rendering here. The existing .256 lift clears the .252 rim.
 	gui.AlwaysOnTop = false
 	local group = new("CanvasGroup", { Name = "Card", BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), GroupTransparency = 1 }, gui)
-	new("ImageLabel", { Name = "Background", BackgroundTransparency = 1, Image = Config.UI.WristCard, Size = UDim2.fromOffset(1024, 640) }, group)
-	local BROWN, RUST = Color3.fromHex("4A240E"), Color3.fromHex("9C5218")
+	new("Frame", { Name = "Background", BackgroundColor3 = Color3.fromHex("FFE5AC"), BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, group)
+	local BROWN = Color3.fromHex("3B2412")
 	local function text(name, x, y, w, h, size, color, align)
-		return label({ Name = name, Text = "", Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w, h), TextSize = size, TextColor3 = color, TextXAlignment = align or Enum.TextXAlignment.Left }, group)
+		-- Roblox clamps TextSize to 100. Fixed UIScale supplies the requested 120 canvas pixels.
+		local scale = math.max(1, size / 100)
+		local parent = group
+		if scale > 1 then
+			parent = new("Frame", { Name = name .. "Cell", BackgroundTransparency = 1, Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w, h) }, group)
+			x, y = 0, 0
+		end
+		local t = label({ Name = name, Text = "", Font = FONT, TextScaled = false, Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(w / scale, h / scale), TextSize = math.min(size, 100), TextColor3 = BROWN, TextXAlignment = align or Enum.TextXAlignment.Left }, parent)
+		if scale > 1 then new("UIScale", { Scale = scale }, t) end
+		new("UIStroke", { Thickness = 2 / scale, Color = Color3.fromHex("FFF4DC"), ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual }, t)
+		return t
 	end
 	local function icon(name, x, y)
 		new("ImageLabel", { Name = name, BackgroundTransparency = 1, Image = Config.UI[name], Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(96, 96) }, group)
 	end
 	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false, bracer = bracer, events = {} }
-	-- header zone 80,72 - 944,196: icon, "HOLE n" (76 px), the hole name right-aligned
-	icon("IconHole", 110, 86)
-	wrist.hole = text("Hole", 240, 72, 300, 124, 76, BROWN)
-	wrist.name = text("HoleName", 540, 72, 376, 124, 44, RUST, Enum.TextXAlignment.Right)
-	wrist.name.TextScaled = true
-	new("UITextSizeConstraint", { MaxTextSize = 44 }, wrist.name)
-	new("UIPadding", { PaddingTop = UDim.new(0, 36), PaddingBottom = UDim.new(0, 36) }, wrist.name)
-	-- zones 418 x 170: icon at +30,+37, label centred at +52 (38 px), number centred at +118 (78 px)
-	for _, z in { { "par", "PAR", "IconPar", 80, 222 }, { "stroke", "STROKE", "IconStroke", 526, 222 }, { "total", "TOTAL", "IconTotal", 80, 414 }, { "best", "BEST", "IconBest", 526, 414 } } do
-		local x, y = z[4], z[5]
-		icon(z[3], x + 30, y + 37)
-		text(z[2], x + 160, y + 27, 240, 50, 38, RUST).Text = z[2]
-		wrist[z[1]] = text(z[1], x + 160, y + 73, 240, 90, 78, BROWN)
+	wrist.hole = text("Hole", 56, 8, 300, 76, 64)
+	wrist.name = text("HoleName", 356, 8, 620, 76, 56, BROWN, Enum.TextXAlignment.Right)
+	-- Four rows, three consistent columns: icon / label / number.
+	for i, z in { { "par", "PAR", "IconPar" }, { "stroke", "STROKE", "IconStroke" }, { "total", "TOTAL", "IconTotal" }, { "best", "BEST", "IconBest" } } do
+		local y = 84 + (i - 1) * 140
+		icon(z[3], 72, y + 22)
+		text(z[2], 204, y, 430, 140, 64).Text = z[2]
+		wrist[z[1]] = text(z[1], 640, y, 308, 140, 120, BROWN, Enum.TextXAlignment.Right)
 	end
 	-- buttons under the card (the laser pointer from the other hand clicks them)
 	local function pill(name, text_, x, onClick)
@@ -956,20 +990,22 @@ local function buildVR()
 			Name = name,
 			Text = text_,
 			Font = FONT,
-			TextSize = 60,
+			TextSize = 64,
+			TextScaled = false,
 			TextColor3 = BROWN,
 			BackgroundColor3 = Color3.fromHex("FFB347"),
 			AutoButtonColor = false,
 			Position = UDim2.fromOffset(x, 664),
 			Size = UDim2.fromOffset(392, 112),
 		}, group)
+		new("UIStroke", { Thickness = 2, Color = Color3.fromHex("FFF4DC"), ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual }, b)
 		corner(b, 56)
 		new("UIStroke", { Color = Color3.fromHex("7A4E1E"), Thickness = 6, ApplyStrokeMode = Enum.ApplyStrokeMode.Border }, b)
 		b.Activated:Connect(VRPointer.bind(b, onClick))
 	end
 	pill("WristMenu", "MENU", 100, function()
 		if FrontEnd then
-			FrontEnd.open("title")
+			FrontEnd.openFromWrist()
 		end
 	end)
 	pill("WristScores", "SCORES", 532, function()
@@ -1035,9 +1071,11 @@ function HUD.init(isVR, ballController)
 	end
 
 	player:GetAttributeChangedSignal("Strokes"):Connect(HUD.refresh)
-	player:GetAttributeChangedSignal("Hole"):Connect(HUD.refresh)
+	player:GetAttributeChangedSignal("Hole"):Connect(function() completedWristHole = nil; HUD.refresh() end)
+	player:GetAttributeChangedSignal("Strokes"):Connect(function() if player:GetAttribute("Strokes") == 0 then completedWristHole = nil end end)
 	-- (the VR wrist card shows the round total and the personal best)
 	player:GetAttributeChangedSignal("Scores"):Connect(HUD.refresh)
+	player:GetAttributeChangedSignal("HoleHoled"):Connect(HUD.refresh)
 	player:GetAttributeChangedSignal("Best_" .. Config.CurrentCourse):Connect(HUD.refresh)
 
 	-- Hole-to-hole travel (Walkabout style): after holing out, fade to black just before the server moves the ball
@@ -1097,6 +1135,7 @@ function HUD.init(isVR, ballController)
 	Remotes.HoleComplete.OnClientEvent:Connect(function(who, holeNum, strokes, par, maxed)
 		local name, color = scoreName(strokes, par)
 		if who == player then
+			completedWristHole = holeNum
 			holeOutAudio(strokes, par, maxed)
 			HUD.message(maxed and ("Max strokes  -  " .. strokes) or name, color, 3)
 		else

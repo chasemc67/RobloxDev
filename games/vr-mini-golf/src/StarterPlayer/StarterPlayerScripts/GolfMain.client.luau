@@ -86,6 +86,15 @@ XRay.start(Ball, VR and VR.getEye or function()
 	return camera.CFrame.Position
 end, VR and VR.putterHead or nil)
 
+require(modules.H9Lighting).start(VR and VR.getEye or function()
+	if Explore.active then
+		local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+		return root and root.Position
+	end
+	-- The flat camera can orbit far above/outside the hole; the active ball is the playing position.
+	return Ball.ball and Ball.ball.Position
+end)
+
 -- title screen / menus / results (an overlay: the round is already set up behind it; skipped when
 -- workspace GolfTestMode or SkipMenu is true)
 local FrontEnd = require(modules.FrontEnd)

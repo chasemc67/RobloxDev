@@ -211,6 +211,32 @@ function Hole:feltColor(pc)
 	return P.felt
 end
 
+-- A bank meets the playable felt at its low edge. Resolve that adjacent surface
+-- geometrically, so a bank's zone label cannot accidentally borrow the cup's tint.
+function Hole:adjacentBankColor(pc)
+	local sign = pc.rise >= 0 and -1 or 1
+	local low = pc.base:PointToWorldSpace(Vector3.new(pc.axis == "x" and sign * pc.hx or 0,
+		-math.abs(pc.rise) / 2, pc.axis == "z" and sign * pc.hz or 0))
+	local best, bestDistance
+	for _, other in self.pieces do
+		if other ~= pc and not other.overlay then
+			local angle = other.axis and math.deg(math.atan(math.abs(other.rise) /
+				(other.axis == "x" and other.hx * 2 or other.hz * 2))) or 0
+			if angle < 25 then
+				local q = other.base:PointToObjectSpace(low)
+				local x, z = math.clamp(q.X, -other.hx, other.hx), math.clamp(q.Z, -other.hz, other.hz)
+				local near = other.base:PointToWorldSpace(Vector3.new(x, 0, z))
+				near = Vector3.new(near.X, pieceHeight(other, near.X, near.Z) or other.c.Y, near.Z)
+				local distance = (near - low).Magnitude
+				if not bestDistance or distance < bestDistance then
+					best, bestDistance = other, distance
+				end
+			end
+		end
+	end
+	return self:feltColor(best or pc), best and best.def.id or pc.def.id
+end
+
 -- Sloped felt reads as sloped and shows which way is down (Chase, stage m; pattern C, stage n): any felt top tilted
 -- between MIN_DEG and 25 degrees gets 3D Model Bot's one-way arrowhead felt (lantern-grove/models/textures/slope_felt_color.png,
 -- 8 studs per tile, +V = downhill), baked into each felt tone by art/slope/make_slope_C.py. A Top-face Texture maps +U
@@ -257,7 +283,7 @@ local function slopeTone(color: Color3): string
 	return best
 end
 
-function Hole:slopeFelt(p: BasePart, color: Color3)
+function Hole:slopeFelt(p: BasePart, color: Color3, pc)
 	local n = p.CFrame.UpVector
 	local tilt = math.deg(math.acos(math.clamp(n.Y, -1, 1)))
 	if tilt <= SLOPE_FELT.MIN_DEG then
@@ -265,6 +291,10 @@ function Hole:slopeFelt(p: BasePart, color: Color3)
 	end
 	p:SetAttribute("SlopeDeg", math.floor(tilt * 10 + 0.5) / 10)
 	if tilt >= SLOPE_FELT.MAX_CHEVRON_DEG then
+		local adjacentId
+		color, adjacentId = self:adjacentBankColor(pc)
+		p:SetAttribute("AdjacentFeltPiece", adjacentId)
+		p:SetAttribute("AdjacentFeltColor", color)
 		p.Color = Color3.new(color.R * SLOPE_FELT.BANK_TINT, color.G * SLOPE_FELT.BANK_TINT, color.B * SLOPE_FELT.BANK_TINT)
 		p:SetAttribute("FeltPattern", "PlainBank")
 		return
@@ -303,7 +333,7 @@ function Hole:feltPart(name, cf, size, color, pc)
 	p:SetAttribute("PieceId", pc.def.id)
 	p:SetAttribute("Zone", pc.def.zone)
 	CollectionService:AddTag(p, SURFACE_TAG)
-	self:slopeFelt(p, color)
+	self:slopeFelt(p, color, pc)
 	return p
 end
 
