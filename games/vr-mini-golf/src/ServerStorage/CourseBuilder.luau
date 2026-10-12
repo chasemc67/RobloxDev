@@ -212,13 +212,15 @@ function Hole:feltColor(pc)
 end
 
 -- Sloped felt reads as sloped and shows which way is down (Chase, stage m; pattern C, stage n): any felt top tilted
--- more than MIN_DEG gets 3D Model Bot's one-way arrowhead felt (lantern-grove/models/textures/slope_felt_color.png,
+-- between MIN_DEG and 25 degrees gets 3D Model Bot's one-way arrowhead felt (lantern-grove/models/textures/slope_felt_color.png,
 -- 8 studs per tile, +V = downhill), baked into each felt tone by art/slope/make_slope_C.py. A Top-face Texture maps +U
 -- to part -X and +V to part -Z and can't be turned, so each tone is uploaded in four rotations keyed by the part-local
 -- downhill axis; the bright arrow tips point downhill. Plain Parts can't take a SurfaceAppearance, so the nap comes
--- from the Fabric material.
+-- from the Fabric material. Banks at 25 degrees or steeper use plain felt, 15% darker.
 local SLOPE_FELT = {
 	MIN_DEG = 2,
+	MAX_CHEVRON_DEG = 25,
+	BANK_TINT = 0.85,
 	STUDS_PER_TILE = 8,
 	textures = {
 		felt = {
@@ -261,6 +263,13 @@ function Hole:slopeFelt(p: BasePart, color: Color3)
 	if tilt <= SLOPE_FELT.MIN_DEG then
 		return
 	end
+	p:SetAttribute("SlopeDeg", math.floor(tilt * 10 + 0.5) / 10)
+	if tilt >= SLOPE_FELT.MAX_CHEVRON_DEG then
+		p.Color = Color3.new(color.R * SLOPE_FELT.BANK_TINT, color.G * SLOPE_FELT.BANK_TINT, color.B * SLOPE_FELT.BANK_TINT)
+		p:SetAttribute("FeltPattern", "PlainBank")
+		return
+	end
+	p:SetAttribute("FeltPattern", "ChevronC")
 	-- downhill along the surface, in part space
 	local down = p.CFrame:VectorToObjectSpace(Vector3.new(0, -1, 0) + n * n.Y)
 	local key

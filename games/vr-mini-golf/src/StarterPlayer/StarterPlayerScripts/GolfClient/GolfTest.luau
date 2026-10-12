@@ -643,7 +643,46 @@ local function shootS(label: string, dir: Vector3, studsPerSec: number, opts)
 	shotFlags = {}
 	local before = Ball.ball:GetAttribute("LastOOB")
 	Ball.ball:SetAttribute("LastOOB", nil)
+	-- Random-sweep telemetry only: ordinary ready/resting putts are not stuck.
+	-- Watch a moving ball away from the cup; classify after the shot so a free
+	-- auto-reset is reported as a reset, not counted again as a stuck failure.
+	local stillAnchor, stillFor, maxStill = nil, 0, 0
+	local stillConn
+	if opts.watchStill then
+		stillConn = RunService.PostSimulation:Connect(function(dt)
+			local b = Ball.ball
+			local cup = opts.cup
+			local away = b and cup and flat(b.Position - cup.Position).Magnitude > (cup:GetAttribute("Radius") or 0.5) + 0.3
+			if not b or Ball.state ~= "moving" or not away or b.AssemblyLinearVelocity.Magnitude > 0.05 then
+				stillAnchor, stillFor = nil, 0
+			elseif not stillAnchor or (b.Position - stillAnchor).Magnitude > 0.03 then
+				stillAnchor, stillFor = b.Position, 0
+			else
+				stillFor += dt
+				maxStill = math.max(maxStill, stillFor)
+			end
+		end)
+	end
 	local r = shoot(label, dir, studsPerSec * STUD, opts)
+	if opts.watchStill and r.outcome == "rest" then
+		-- Keep observing briefly: a moving obstacle can hold a ready ball and trigger
+		-- its normal free auto-reset after the shot's initial rest event.
+		shotLabel = label
+		task.wait(3.25)
+		shotLabel = nil
+	end
+	if stillConn then stillConn:Disconnect() end
+	local autoReset = false
+	for _, f in shotFlags do
+		if f.kind == "autoreset" then autoReset = true end
+	end
+	r.maxMovingStillS = round(maxStill, 3)
+	r.stillExcludedByAutoReset = autoReset and maxStill > 3
+	if opts.watchStill and maxStill > 3 and not autoReset then
+		shotLabel = label
+		flag("stuck-3s", { pos = r.finish, seconds = r.maxMovingStillS })
+		shotLabel = nil
+	end
 	r.speed = round(studsPerSec)
 	r.flags = shotFlags
 	shotFlags = nil
@@ -1087,7 +1126,8 @@ local function timingSweep(n, count)
 end
 
 -- Fuzz: random shots (any direction, 20-100% power) from the tee and from random spots on the felt.
--- Counts escapes (OOB outside any hazard), stuck balls (timeouts, off-felt rests, forced rests) and nudges.
+-- Counts escapes (OOB outside any hazard), >3 s stationary moving balls away from cup (excluding auto-resets),
+-- timeouts, off-felt/forced rests and nudges. Normal ready/resting balls are valid completed putts.
 local function fuzz(n, count, seed)
 	local rng = Random.new(seed or n * 7919)
 	local sp = spec(n)
@@ -1111,28 +1151,30 @@ local function fuzz(n, count, seed)
 		if ok then
 			local ang = rng:NextNumber(0, 360)
 			local v = rng:NextNumber(0.2, 1.0) * VMAX
-			local r = shootS(string.format("h%d-fuzz-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26 })
+			local r = shootS(string.format("h%d-fuzz-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
 			res.shots += 1
+			res.maxMovingStillS = math.max(res.maxMovingStillS or 0, r.maxMovingStillS or 0)
+			local shotStuck = r.outcome == "timeout"
 			if r.outcome == "hazard" then
 				res.hazards += 1
 			elseif r.outcome == "escape" then
 				res.escapes += 1
 			elseif r.outcome == "timeout" then
-				res.stuck += 1
+				res.timeouts += 1
 			elseif r.outcome == "cup" then
 				res.holed += 1
 			end
 			for _, f in r.flags or {} do
 				if f.kind == "unstuck" then
 					res.nudges += 1
-				elseif f.kind == "autoreset" and f.reason == "timeout" then
-					res.timeouts += 1 -- Config.StrokeTimeout safety net
 				elseif f.kind == "autoreset" then
-					res.resets += 1
-				elseif f.kind == "offsurface" or f.kind == "forcedrest" then
-					res.stuck += 1
+					res.resets += 1 -- includes the StrokeTimeout safety-net reset
+					if f.reason == "timeout" then res.timeouts += 1 end
+				elseif f.kind == "offsurface" or f.kind == "forcedrest" or f.kind == "stuck-3s" then
+					shotStuck = true
 				end
 			end
+			if shotStuck then res.stuck += 1 end
 			if r.outcome == "escape" or r.outcome == "timeout" or #(r.flags or {}) > 0 then
 				table.insert(res.list, { label = r.label, start = start, aim = round(ang, 1), speed = round(v), outcome = r.outcome, finish = r.finish, flags = r.flags })
 			end
@@ -1749,7 +1791,8 @@ scenario({
 				placeL(n, x, z, sp.cup.position[2])
 			end
 			local placedBefore = placedCount
-			local r = shootS("progress-h" .. n, cupW - Ball.ball.Position, speedFor(1.5 + 0.6), { cup = hole(n).Cup, timeout = 8 })
+			-- Fixed short smoke putt: enough momentum to cross the CSG cup lip, still below capture speed.
+			local r = shootS("progress-h" .. n, cupW - Ball.ball.Position, 3.0, { cup = hole(n).Cup, timeout = 8 })
 			local row = { hole = n, sunk = r.outcome == "cup" }
 			if n < 9 then
 				-- wait for the server's next-hole placement (HoleTransitionTime)
@@ -1955,8 +1998,15 @@ scenario({
 		if skip then
 			return skip
 		end
+		-- A preceding progress scenario leaves FrontEnd's results menu open. Its VR canHit
+		-- wrapper correctly blocks putting; test placement alone does not dismiss that menu.
+		local menu = player.PlayerScripts:FindFirstChild("GolfMenuDebug")
+		local menuBefore = menu and menu:Invoke("state")
+		if menu then
+			menu:Invoke("close")
+		end
 		refreshFelt()
-		local out = {}
+		local out = { menuBefore = menuBefore, menuAfter = menu and menu:Invoke("state") }
 		-- through hole 1's east lane rail (x 3.5..4.0) with the ball well away
 		placeL(1, 0, -12, 1)
 		setFrame(W(1, 3.75, 0, -12), 8, Vector3.new(0, 0, 1))
@@ -1975,6 +2025,8 @@ scenario({
 		local a = Vector3.new(bp.X, y, bp.Z) - fwd * (R + half.X + 0.5)
 		local t0 = os.clock() + 0.5
 		local strokesBefore = GolfTest.hitCount
+		GolfTest.lastHitSource = nil
+		GolfTest.lastHitVelocity = nil
 		outcome = nil
 		shot = { label = "vr-swing", start = Ball.ball.Position, dir = fwd, t0 = now(), contacts = {}, maxY = 0, maxAlong = 0 }
 		shotLabel = "vr-swing"
@@ -1983,8 +2035,12 @@ scenario({
 			return VR.test.handCFrameFor(a + fwd * math.min(d, 1.4), fwd)
 		end
 		local tWait = os.clock()
+		local swingSamples = {}
 		while GolfTest.hitCount == strokesBefore and os.clock() - tWait < 3 do
-			task.wait()
+			RunService.PostSimulation:Wait()
+			if os.clock() < t0 + 0.5 then
+				table.insert(swingSamples, { t = round(os.clock() - t0, 4), head = vec(headPart().Position), ball = vec(Ball.ball.Position), canHit = Ball.canHit(), ghost = headPart().Transparency })
+			end
 		end
 		parkHand()
 		local res = waitOutcome(10)
@@ -1992,6 +2048,7 @@ scenario({
 		shotLabel = nil
 		local expected = clubSpeed * Config.VRHitMultiplier
 		out.swing = {
+			samples = swingSamples,
 			hit = GolfTest.hitCount > strokesBefore,
 			source = GolfTest.lastHitSource,
 			ballSpeed = GolfTest.lastHitVelocity and round(GolfTest.lastHitVelocity.Magnitude),

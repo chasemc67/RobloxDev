@@ -1,6 +1,6 @@
 -- XRay: keeps your ball (and the VR putter head) visible through whatever blocks them (stage p, Chase's VR playtest).
 --   * A Highlight with DepthMode AlwaysOnTop (subtle amber fill, soft white outline) on each target, shown only while
---     a ray from the eye (VR head, or the phone/desktop camera) to it hits something. It fades in and out.
+--     a ray from the eye (VR head, or the phone/desktop camera) to it hits something. Flat-screen views fade; VR tracks occlusion immediately each frame.
 --   * Works with CameraOcclusion's fade: faded parts (LocalTransparencyModifier 0.7) still count as blocking, so the
 --     outline shows through a faded rail or tunnel too.
 --   * The rays use CameraOcclusion's GolfCamera group, so walls, rails, movers, Terrain and the visible decor block;
@@ -97,7 +97,8 @@ function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
 	-- (last, after every camera writer: the golf / VR cameras and the Studio harness' screenshot cameras)
 	RunService:BindToRenderStep("GolfXRay", Enum.RenderPriority.Last.Value, function(dt)
 		local now = os.clock()
-		local check = now - lastCheck >= CHECK_EVERY
+		local vr = clubHead ~= nil
+		local check = vr or now - lastCheck >= CHECK_EVERY
 		if check then
 			lastCheck = now
 		end
@@ -114,7 +115,12 @@ function XRay.start(Ball, eye: () -> Vector3, clubHead: BasePart?)
 				t.hl.Adornee = part
 			end
 			local target = t.on and 1 or 0
-			t.alpha += (target - t.alpha) * math.min(1, dt * FADE)
+			-- Rotating spokes must match this rendered frame, including disappearance.
+			if vr then
+				t.alpha = target
+			else
+				t.alpha += (target - t.alpha) * math.min(1, dt * FADE)
+			end
 			if math.abs(target - t.alpha) < 0.01 then
 				t.alpha = target
 			end

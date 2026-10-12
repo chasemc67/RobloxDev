@@ -1,5 +1,14 @@
 # VR Mini Golf: status
 
+## Stage r — live v167 (2026-10-11, 18:50 PT)
+- Round5 wrist failures traced to test timing/hand selection/synthetic Best fixtures; final regression passes 23 pointer actions, three resume/scores cycles and both hands with Best-2.
+- VR all nine holes + simulated swing pass (6.809 studs/s measured / 6.80 expected). Physics and v12 mount unchanged.
+- VR mill-wheel outlines now update every render frame: 600-frame check, 0 misses / 0 false shows for ball and club.
+- Banks at 25° or steeper use plain felt tinted 15% darker; gentle slopes retain pattern C; one-step regeneration preserved.
+- Reimported five-part bracer; supplied FBX still had old face, fitted to 0.37 × 0.28328125 for exact 1024 × 784 Top canvas. Both-hand screenshots verified. Existing wrist gates unchanged.
+- Wrist simulation and desktop/iPhone smoke pass with clean consoles. H9 random20:0 escapes/stuck/resets; all final consoles clean. Saved and published; Version History confirms v167 Published. Studio left in Edit; audience remains Friends and Playtesters.
+- Evidence: `playtests/stage-r/`; full report: `logs/stages/e-report.md`; resume notes: `logs/stages/r-notes.md`.
+
 ## Where it lives
 | | Owner | Universe | Root place | URL |
 |---|---|---|---|---|

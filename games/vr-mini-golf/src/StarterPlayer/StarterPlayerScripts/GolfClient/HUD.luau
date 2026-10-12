@@ -356,7 +356,7 @@ end
 -- On the aim pose of a Quest controller held normally, the back of the hand is -X on the left hand and +X on the
 -- right, and the wrist is behind (+Z) and below (-Y) the controller origin.
 local WRIST_OFFSET = Vector3.new(0, -0.12, 0.33) -- controller origin -> wrist centre (3.6 cm down, 10 cm back)
-local FACE_LIFT = 0.256 -- bracer pivot -> the WristFace quad (y 0.238, 0.32 x 0.20, normal +Y), lifted over the brass rim (0.252)
+local FACE_LIFT = 0.256 -- Preserve the approved look-at-wrist gate reference point.
 local WRIST_RANGE = 4 -- studs from the eyes (1.2 m)
 local WRIST_FADE = 12 -- 1/s
 local WRIST_LOG_MAX = 200
@@ -454,10 +454,10 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 			workspace:BulkMoveTo(parts, cfs, Enum.BulkMoveMode.FireCFrameChanged)
 		end
 		-- card on the face: text reads toward the fingers on the left wrist (away from them on the right), so it's
-		-- upright with the forearm across the body; the pointer strip hangs off the face's near edge
+		-- upright with the forearm across the body; the pointer strip fits within the face
 		local read = leftHand and fingers or -fingers
-		local up = back:Cross(read)
-		wrist.part.CFrame = CFrame.fromMatrix(facePos - up * wrist.stripShift, -read, up)
+		-- Top canvas spans local Z by X; rotate it upright and retain the approved rim clearance.
+		wrist.part.CFrame = CFrame.fromMatrix(facePos, -read, back) * CFrame.Angles(0, math.pi / 2, 0)
 	end
 end
 
@@ -892,15 +892,14 @@ local function buildVR()
 
 	VRPointer.register(vrCardPart, vrCardGui, { modal = true })
 
-	-- wrist card: Game Art Bot's 1024x640 parchment card (store/ui/wrist, text zones from the art spec) exactly over
-	-- the bracer's 0.32 x 0.20 WristFace (16:10), plus a strip of two pointer buttons off its near edge. The panel's
-	-- Front face lies on the WristFace (VRPointer hits Front faces). Faded as a CanvasGroup.
+	-- WristFace Top: approved 1024x640 art plus MENU/SCORES strip, canvas 1024x784.
 	local CW, CH = 1024, 784
-	local FACE_W = 0.32
+	local FACE_W = 0.37
 	local part, gui = vrPanel("VRWrist", Vector3.new(FACE_W, FACE_W * CH / CW, 0.002), Vector2.new(CW, CH))
 	gui.Enabled = false
 	-- the bracer: a client copy in the camera, every part non-colliding, non-queryable, massless; moved as one
 	local bracer = {}
+	local face
 	local src = Golf:FindFirstChild("WristBracer")
 	if src then
 		local model = src:Clone()
@@ -910,10 +909,23 @@ local function buildVR()
 				d.Anchored, d.CanCollide, d.CanQuery, d.CanTouch, d.Massless, d.CastShadow = true, false, false, false, true, false
 				table.insert(bracer, { part = d, offset = pivot:ToObjectSpace(d.CFrame), base = d.Transparency })
 				d.Transparency = 1
+				if d.Name == "WristFace" then face = d end
 			end
 		end
 		model.Parent = workspace.CurrentCamera
 	end
+	if face then
+		part:Destroy()
+		part = face
+	else
+		part.Name = "WristFace"
+	end
+	-- 15.625% wider, with exact canvas aspect (nominal 0.37 x 0.28 studs).
+	part.Size = Vector3.new(FACE_W * CH / CW, 0.001, FACE_W)
+	gui.Adornee = part
+	gui.Face = Enum.NormalId.Top
+	-- Adorned CanvasGroups need depth rendering here. The existing .256 lift clears the .252 rim.
+	gui.AlwaysOnTop = false
 	local group = new("CanvasGroup", { Name = "Card", BackgroundTransparency = 1, Size = UDim2.fromScale(1, 1), GroupTransparency = 1 }, gui)
 	new("ImageLabel", { Name = "Background", BackgroundTransparency = 1, Image = Config.UI.WristCard, Size = UDim2.fromOffset(1024, 640) }, group)
 	local BROWN, RUST = Color3.fromHex("4A240E"), Color3.fromHex("9C5218")
@@ -923,7 +935,7 @@ local function buildVR()
 	local function icon(name, x, y)
 		new("ImageLabel", { Name = name, BackgroundTransparency = 1, Image = Config.UI[name], Position = UDim2.fromOffset(x, y), Size = UDim2.fromOffset(96, 96) }, group)
 	end
-	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false, bracer = bracer, events = {}, stripShift = (CH - 640) / 2 / CW * FACE_W }
+	wrist = { part = part, gui = gui, group = group, alpha = 0, shown = false, bracer = bracer, events = {} }
 	-- header zone 80,72 - 944,196: icon, "HOLE n" (76 px), the hole name right-aligned
 	icon("IconHole", 110, 86)
 	wrist.hole = text("Hole", 240, 72, 300, 124, 76, BROWN)

@@ -1,0 +1,44 @@
+# Stage r resume notes
+2026-10-11 18:28 PT. Started from v153, correct single Studio ee2e1446-53b6-4363-937f-9e22188c182f in Edit. Stage q report is logs/stages/e-report.md (NOT root e-report.md). Read report, round5-findings report/logs/scripts. No prior r-notes existed.
+- Initial git: unrelated asset edits/untracked model files and round5 outputs; preserve these.
+- Item 2 delegated to local subagent smoke_harness for source-only harness diagnosis. Main owns all Studio changes.
+- Inspected current HUD/VRPointer/XRay. XRay checks 20 Hz with fading; needs VR per-frame response. Wrist root cause under investigation; no changes pushed yet.
+- Bracer still old WristFace 0.32 x .001 x .20 in ReplicatedStorage.Golf.WristBracer. Need UI reimport.
+- Studio game.PlaceVersion reads 29 (stale open session); do not use it as live version. Stage q verified v153 through Version History.
+
+Import checkpoint: Imported supplied bracer via File > Import, LG Stud Scene Anchored preset, Stud scale1, scene origin+position, no merge, upload Me, 978 polys. Imported Workspace.vr_wrist_bracer STILL has WristFace .32 x .001 x .20 (file is old, modified15:31). Will fit face to .37x.28 in Studio and record mismatch; straps etc unchanged. UI import complete; no pending dialog.
+Items1 diagnosis: Best test explicitly clears attribute before switch; right wrist test points with wrong (wrist-bearing) hand. Resume likely 0.4sec aim wait vs0.5sec quiet gate; pending runtime proof. No stale connections found.
+Item2 fixes pushed: ghost closes previous results menu (Ball.canHit correctly false with menu), clears stale hit telemetry. H2 fixed smoke fixture 3stud/s vs1.818 (old slowed/deflected at cup lip). Tests running via shell session35229 to playtests/stage-r/vr-smoke-triage.
+Local unpushed: CourseBuilder banks>=25deg plain .85 tint; XRay VR every frame immediate alpha; VRPointer Top face support.
+
+Smoke checkpoint item2 validated: progress all9 PASS, ghost hit=yes source=vr speed6.80 expected6.80, rail/bumper ghosting PASS, ledge3/3 PASS, 0 warnings/errors. See vr-smoke-triage.log/results. Both failures were harness; game physics unchanged. Bracer source binary bounds confirm old .32x.20. New wrist regression running against unmodified game first to confirm item1 gate diagnosis.
+
+Item1 runtime proof (unmodified HUD/VRPointer): new stage_r_wrist logs show SCORES +0.1/+0.4sec blocked=swing, then hover+click succeeds ~1sec later. Best remains -2. Baseline regression still running. Local HUD switches to actual WristFace Top, width.37 depth.28328125 for exact 1024/784 aspect, face centre y.238, approved gate reference y.256 unchanged.
+
+Item1 fixture correction (source-only): baseline wrist regression reached left-hand switch but lost Best because the first Stage r fixture seeded only Best_lantern_grove. PersonalBest.setSettings republishes rec.best; a synthetic attribute is correctly overwritten. tools/stage_r_wrist.py now seeds the real in-memory record through require(ServerScriptService.GolfServer.PersonalBest).recordRound(player, "lantern_grove", 25), verified against module API and GolfServer require path. PBInStudio=False is set before starting and restored in finally, so fixtures remain in-memory. No game PB bug identified. Python syntax check passed; main agent must rerun Studio regression.
+
+Item1 fixture follow-up: MCP execute_luau require uses a separate module cache, so direct PB.recordRound saw no records. stage_r_wrist.py now creates a temporary actual ServerScriptService Script (StageRWristBestFixture), requires PB in the real server runtime, records Best25, returns JSON through its Result StringValue, polls and destroys the fixture in finally. Source-only change; Python compile passed, rerun pending. No product debug hook introduced.
+
+18:34 PT: Pushed HUD actual WristFace Top + VRPointer Top geometry, VR per-frame XRay, slope-angle felt rule. Reimport installed fresh 5-part bracer in Golf library, corrected importer 180Y as previous asset, Massless/noncollision preserved (existing model had no welds; anchored BulkMoveTo unchanged). Preparation recorded tools/prepare_wrist_bracer.luau. Ran holes_to_lua.py --push --build successfully: 9 holes, 1561 course parts, terrain intrusions0. Wrist test seeding via MCP require had separate module cache; fixing fixture with actual temporary server Script. No game error: the failed fixture assertion was test code. Xray test now running.
+
+Item1 consolidated diagnosis: all three round5 wrist complaints were harness faults, not lost input connections. (a) Instant simulated pointer movement after Resume activates unchanged swing suppression; baseline logs prove blocked=swing at +0.1/+0.4s and successful SCORES hover/click after settling. (b) Right-wrist MENU was aimed with RightHand, moving the wrist-bearing hand instead of the left dominant pointer. (c) Round5 explicitly cleared its synthetic Best attribute before switching hands; authoritative settings publication also replaces attribute-only fixtures. Regression now polls actual hover, selects dominant hand, and seeds the real server-runtime in-memory PB record through a temporary Script. No show/hide thresholds, product PB logic, or physical club behavior changed for these diagnoses.
+
+Wrist blank-render source audit: no gui-shadowing bug found: playerGui is captured before the local wrist gui declaration and children/wrist.gui point to the correct SurfaceGui. Existing FrontEnd.mountVR explicitly documents AlwaysOnTop=true failing to draw adorned SurfaceGuis in this place. Main is testing AlwaysOnTop=false plus ZOffset=.025; pointer success only verifies custom plane math, not actual GUI rendering.
+
+18:40 PT: Wrist full regression PASS (3 resume/scores cycles, handedness MENU, authoritative Best-2, zero console), but visual review caught blank card. AlwaysOnTop=true fails adorned SurfaceGui rendering in this experience (existing FrontEnd documents this). Live debug confirmed false fixes rendering. Top canvas actually spans local Z by X; rotated face90Y, swapped local dimensions to preserve world .37x.2833, updated pointer Top basis to Look/Right; retained existing .256 runtime lift over brass .252. Asset centre remains .238. Debug screenshot wrist-lift-debug.png shows upright, full card+buttons with no crop. Final rerun required.
+
+18:41 PT: FINAL wrist functional regression PASS after rendering/Top-axis correction: MENU→Resume→SCORES x3, switch left dominant/right wrist MENU+SCORES, Best stays-2, 0 console errors/warnings. Visually reviewed final left/right zoom PNGs: upright, correct aspect1.306, full strip, no crop. Five45deg banks have0 Textures;12 gentler slopes have1 Texture including H8 6.1deg and21deg. Final serial test job session52581 runs xray, progress+ghost, wristSim seed7, desktop/iPhone smoke, H9 fuzz20 seed118. No concurrent Studio writers.
+
+18:41 PT: H6 FINAL xray PASS600frames/10.014s: ball223blocked/377clear, club177blocked/423clear. Logical state and actual Highlight.Enabled each0misses/0falseShows. 0 console warnings/errors. playtests/stage-r/xray/h6_wheel_live.json. Serial job continues final VR smoke.
+
+18:42 PT: FINAL VR progress all9 PASS including H2; ghost simulated swing PASS6.809 measured/6.80 expected, rail/bumper tests PASS; 0 console warnings/errors. See playtests/stage-r/vr-smoke-final. Serial job now wrist look/show-hide sim then desktop/iPhone/H9.
+
+18:44 PT: Wrist sim seed7 PASS: deliberate watch3shows/3hides, latency265–280ms; glance0, swings0, stance0, head0 false shows. Console0 warnings/errors. Pointer-menu screenshot visually confirms beam lands on actual MENU art. Normal desktop smoke now running.
+
+18:45 PT: Desktop smoke PASS stroke→Explore→back, strokes1→1, ball displacement0, console0 warnings/errors. iPhone Studio-device smoke running next.
+
+18:46 PT: iPhone17Pro Studio-device smoke PASS stroke→Explore→back, strokes1→1, ball displacement.009stud; console0 warnings/errors. Device emulator stopped by harness. H9 fuzz-only20shots seed118 now running (session52581); after it, mirror/save/publish/VersionHistory/commit+push remain.
+
+18:49 PT: H9 fuzz20 seed118 PASS:0escapes/0stuck/0resets/0timeouts/0nudges,1holed, maxMovingStillS.383;2normal knot teleports. Console0 errors/warnings. All final tests complete. Studio Edit confirmed, test/simVR false, correct place/universe, bracer5parts all Massless and noncolliding/nonquery/non-touch. Export mirror running/completing; File>Save to Roblox clicked18:49:59.
+
+18:51 PT: ALL work/tests complete. Export mirror finished. File>Save confirmed18:50:01.573, File>Publish confirmed18:50:25.635. Version History visually confirmed v167 Published, Oct11 6:50PM, MetavrseBuilder. Output confirms Friends and playtesters audience. Closed history; Studio Edit, test/simVR false. published-version.json records evidence. Reports/status/progress updated; commit+push remain next, no background test jobs.

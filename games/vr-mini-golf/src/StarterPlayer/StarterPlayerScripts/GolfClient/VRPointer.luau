@@ -176,31 +176,28 @@ local function buttonAt(p: Panel, px: Vector2): GuiButton?
 	return best
 end
 
--- Ray (origin, unit dir) against the panel's Front face. Returns world point, canvas pixel, distance.
-local function hitPanel(p: Panel, origin: Vector3, dir: Vector3): (Vector3?, Vector2?, number?)
+-- Shared face basis for rendering and pointer targets: Front panels and Top wrist face.
+local function faceBasis(p: Panel)
 	local cf, size = p.part.CFrame, p.part.Size
-	local n = cf.LookVector -- Front face normal
+	if p.gui.Face == Enum.NormalId.Top then
+		return cf.Position + cf.UpVector * size.Y / 2, cf.UpVector, cf.LookVector, cf.RightVector, size.Z, size.X
+	end
+	return cf.Position + cf.LookVector * size.Z / 2, cf.LookVector, -cf.RightVector, -cf.UpVector, size.X, size.Y
+end
+
+local function hitPanel(p: Panel, origin: Vector3, dir: Vector3): (Vector3?, Vector2?, number?)
+	local centre, n, right, down, w, h = faceBasis(p)
 	local denom = dir:Dot(n)
-	if denom > -1e-3 then
-		return nil -- edge-on or from behind
-	end
-	local planePoint = cf.Position + n * (size.Z / 2)
-	local t = (planePoint - origin):Dot(n) / denom
-	if t <= 0 or t > MAX_RANGE then
-		return nil
-	end
+	if denom > -1e-3 then return nil end
+	local t = (centre - origin):Dot(n) / denom
+	if t <= 0 or t > MAX_RANGE then return nil end
 	local hit = origin + dir * t
-	local l = cf:PointToObjectSpace(hit)
-	if math.abs(l.X) > size.X / 2 or math.abs(l.Y) > size.Y / 2 then
-		return nil
-	end
-	-- seen from the front, the canvas runs right along part -X and down along part -Y
+	local delta = hit - centre
+	local x, y = delta:Dot(right), delta:Dot(down)
+	if math.abs(x) > w / 2 or math.abs(y) > h / 2 then return nil end
 	local canvas = p.gui.AbsoluteSize
-	if canvas.X < 1 then
-		canvas = p.gui.CanvasSize
-	end
-	local px = Vector2.new((size.X / 2 - l.X) / size.X * canvas.X, (size.Y / 2 - l.Y) / size.Y * canvas.Y)
-	return hit, px, t
+	if canvas.X < 1 then canvas = p.gui.CanvasSize end
+	return hit, Vector2.new((0.5 + x / w) * canvas.X, (0.5 + y / h) * canvas.Y), t
 end
 
 local function aimOf(hand: Enum.UserCFrame): (Vector3?, Vector3?)
@@ -379,9 +376,8 @@ function VRPointer.targets()
 			for _, d in p.gui:GetDescendants() do
 				if d:IsA("GuiButton") and handlers[d] and visibleChain(d, p.gui) then
 					local c = d.AbsolutePosition + d.AbsoluteSize / 2
-					local lx = size.X / 2 - c.X / canvas.X * size.X
-					local ly = size.Y / 2 - c.Y / canvas.Y * size.Y
-					local w = p.part.CFrame:PointToWorldSpace(Vector3.new(lx, ly, -size.Z / 2))
+					local centre, _, right, down, width, height = faceBasis(p)
+					local w = centre + right * (c.X / canvas.X - 0.5) * width + down * (c.Y / canvas.Y - 0.5) * height
 					table.insert(out, { panel = p.part.Name, name = d.Name, text = d:IsA("TextButton") and d.Text or "", world = w })
 				end
 			end

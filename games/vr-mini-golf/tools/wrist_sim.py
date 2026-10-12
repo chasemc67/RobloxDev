@@ -21,6 +21,10 @@ from menu_shots import menu, pointer  # noqa: E402
 
 LOOK_AT_CARD = """local h = game.ReplicatedStorage:WaitForChild('VRDebug'):WaitForChild('Head')
 local card = workspace.CurrentCamera:FindFirstChild('VRWrist')
+if not card then
+  local gui = game.Players.LocalPlayer.PlayerGui:FindFirstChild('VRWrist')
+  card = gui and gui.Adornee
+end
 local cam = workspace.CurrentCamera
 local o = cam.CFrame * h.Value:Inverse() -- sim camera = origin * head
 local headW = o * h.Value

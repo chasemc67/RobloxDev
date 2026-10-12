@@ -1,0 +1,100 @@
+{
+ "h9": {
+  "default": {
+   "seconds": 198.66,
+   "scenario": "h9",
+   "hole": 9,
+   "nudges": 0,
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 1,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 20,
+    "maxMovingStillS": 0.383,
+    "list": [
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h9-fuzz-12",
+        "id": "lantern_knot",
+        "t": 122.4935,
+        "event": "flag",
+        "shot": "h9-fuzz-12",
+        "speedOut": 10,
+        "speedIn": 11.685,
+        "kind": "teleport",
+        "hole": 9,
+        "pos": [
+         -96.6678,
+         39.29,
+         -6.7527
+        ]
+       }
+      ],
+      "outcome": "cup",
+      "label": "h9-fuzz-12",
+      "start": [
+       7.419748760933766,
+       -25.08283148006233,
+       1
+      ],
+      "finish": [
+       -91.5546,
+       38.93,
+       -16.492
+      ],
+      "speed": 12.351,
+      "aim": 115.7
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h9-fuzz-20",
+        "id": "lantern_knot",
+        "t": 191.0077,
+        "event": "flag",
+        "shot": "h9-fuzz-20",
+        "speedOut": 4,
+        "speedIn": 0,
+        "kind": "teleport",
+        "hole": 9,
+        "pos": [
+         -96.6678,
+         39.29,
+         -6.7527
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h9-fuzz-20",
+      "start": [
+       1.7658716238444279,
+       -25.20073957953957,
+       1
+      ],
+      "finish": [
+       -93.7233,
+       39.2719,
+       -12.3613
+      ],
+      "speed": 19.672,
+      "aim": 48.2
+     }
+    ]
+   },
+   "name": "Heart of the Grove",
+   "stuck": 0,
+   "par": 4,
+   "cam": "",
+   "clientLag": 0.164
+  }
+ }
+}
