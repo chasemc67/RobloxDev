@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "ok": true,
+      "name": "peaceful balls pass through each other",
+      "detail": {
+        "groupA": "GolfBall",
+        "za": 15.256967544555664,
+        "zb": 8.743032455444336,
+        "groupB": "GolfBall"
+      }
+    },
+    {
+      "ok": true,
+      "name": "PVP balls collide",
+      "detail": {
+        "groupA": "GolfBallPVP",
+        "za": 31.451499938964844,
+        "zb": 32.54855728149414,
+        "groupB": "GolfBallPVP"
+      }
+    },
+    {
+      "ok": true,
+      "name": "PVP ball passes through a Peaceful ball",
+      "detail": {
+        "groupA": "GolfBallPVP",
+        "za": 55.269596099853516,
+        "zb": 48.730403900146484,
+        "groupB": "GolfBall"
+      }
+    },
+    {
+      "ok": true,
+      "name": "mode switch regroups the ball",
+      "detail": "GolfBall"
+    },
+    {
+      "ok": true,
+      "name": "both start on H1"
+    },
+    {
+      "ok": true,
+      "name": "A advances to H2 after sinking H1",
+      "detail": {
+        "hole": 2
+      }
+    },
+    {
+      "ok": true,
+      "name": "P1 stays on H1 (A passes P1)",
+      "detail": {
+        "hole": 1
+      }
+    },
+    {
+      "ok": true,
+      "name": "A advances only to the NEXT hole (H3)",
+      "detail": {
+        "hole": 3
+      }
+    },
+    {
+      "ok": true,
+      "name": "idle P1 is not skipped/spectating",
+      "detail": {
+        "hole": 1
+      }
+    },
+    {
+      "ok": true,
+      "name": "A still on H3 (no group sync)"
+    },
+    {
+      "ok": true,
+      "name": "late joiner starts on H1",
+      "detail": {
+        "hole": 1
+      }
+    },
+    {
+      "ok": true,
+      "name": "late joiner can stroke immediately",
+      "detail": {
+        "strokes": 1
+      }
+    },
+    {
+      "ok": true,
+      "name": "late joiner did not move the others"
+    }
+  ],
+  "provenance": "Existing Claude Stage t final modes test, extracted from logs/stages/t.jsonl; no rerun or result modification"
+}

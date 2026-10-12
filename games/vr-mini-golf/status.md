@@ -1,5 +1,12 @@
 # VR Mini Golf: status
 
+## Stage t — live v202 (2026-10-11, 23:31 PT)
+- Lobby fixes, Peaceful/PVP collision modes, independent progression, wrist event telemetry and rest/aim-only XRay published. Version History explicitly marks v202 Published.
+- Untouched v190 local backup retained (3,285,911 bytes, gitignored). Studio left saved in Edit, source export matches src/.
+- Modes 13/13, all-nine VR/swing, desktop/iPhone, Stage s wrist checks, club setup, H9 lighting and XRay pass with clean consoles. H6 random sweep has no stuck/escape/reset flags; fixture limitations recorded.
+- Wrist behavior verified from actual events; legacy aggregate counter falsely counts new pose events as hides and remains unfixed. Boardwalk exists separately; gameplay-spawn/portal integration remains separate work.
+- Full report: logs/stages/e-report.md; evidence: playtests/stage-t/. Audience unchanged, no Robux spent.
+
 ## Stage r — live v167 (2026-10-11, 18:50 PT)
 - Round5 wrist failures traced to test timing/hand selection/synthetic Best fixtures; final regression passes 23 pointer actions, three resume/scores cycles and both hands with Best-2.
 - VR all nine holes + simulated swing pass (6.809 studs/s measured / 6.80 expected). Physics and v12 mount unchanged.

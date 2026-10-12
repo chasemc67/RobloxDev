@@ -1,0 +1,28 @@
+[runner] studio VR Mini Golf (placeId: 87725688219952) a29f6d26-f2bf-4c3a-8287-44692a0d3c75
+[runner] mode Edit
+[runner] harness ready {'simulateVR': False, 'running': False, 'name': '', 'cam': '', 'ballState': 'ready', 'lines': 0}
+[runner] h6         cam=-        181.8s  lines=5250  
+[runner] mode Edit
+# VR Mini Golf playtest summary
+
+- Run: 2026-10-11 23:30
+- Scenarios: h6
+- Cameras: default
+- SimulateVR: False
+
+## Lantern Grove per-hole suites
+
+Intended = the waypoint line played best-of-K per stroke (aim ±3/6°, speed ±10-25% from the same spot; every counted stroke is a real in-engine shot), good / safe. Routes = strokes to hole out with the spec's AI waypoints, one shot per stroke (good = aggressive/risk line, average = safe line). Banks = normal restitution of the first rail contact. Fuzz = shots / hazards / escapes / stuck.
+
+| Hole | Par | Intended (good / safe) | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |
+|---|---|---|---|---|---|---|---|---|---|
+| 6 Mill Wheel Run | 3 | - / - | - | - | - | - | - | 20/0/0/0 | 0 / 0 / 0 |
+
+
+## Console
+
+- Server warnings/errors: 0
+- Client warnings/errors: 0
+
+Raw logs: `<scenario>[-<cam>].jsonl` and `results.json` in this folder.
+

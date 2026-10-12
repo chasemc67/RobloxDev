@@ -1,0 +1,218 @@
+[runner] studio VR Mini Golf (placeId: 87725688219952) a29f6d26-f2bf-4c3a-8287-44692a0d3c75
+[runner] mode Edit
+UI {"button": "Settings", "controller": "LeftHand", "hover": {"buttonText": "Settings", "beam": true, "modal": true, "button": "Settings", "panel": "GolfMenuPanel", "hand": "LeftHand", "pixel": [539, 603]}, "page": "settings", "pass": true}
+[runner] shot playtests/stage-t/club-setup/settings_club_setup.png
+UI {"button": "ClubSetup", "controller": "LeftHand", "hover": {"buttonText": "Set up", "beam": true, "modal": true, "button": "ClubSetup", "panel": "GolfMenuPanel", "hand": "LeftHand", "pixel": [925, 736]}, "page": null, "pass": true}
+[runner] shot playtests/stage-t/club-setup/club_setup_explainer.png
+[runner] shot playtests/stage-t/club-setup/club_setup_explainer_close.png
+UI {"button": "Settings", "controller": "LeftHand", "hover": {"buttonText": "Settings", "beam": true, "modal": true, "button": "Settings", "panel": "GolfMenuPanel", "hand": "LeftHand", "pixel": [539, 603]}, "page": "settings", "pass": true}
+UI {"button": "ResetClubSetup", "controller": "LeftHand", "hover": {"buttonText": "Reset fit", "beam": true, "modal": true, "button": "ResetClubSetup", "panel": "GolfMenuPanel", "hand": "LeftHand", "pixel": [1190, 736]}, "page": "settings", "pass": true}
+{
+  "ui_steps": [
+    {
+      "button": "Settings",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Settings",
+        "beam": true,
+        "modal": true,
+        "button": "Settings",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          539,
+          603
+        ]
+      },
+      "page": "settings",
+      "pass": true
+    },
+    {
+      "button": "ClubSetup",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Set up",
+        "beam": true,
+        "modal": true,
+        "button": "ClubSetup",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          925,
+          736
+        ]
+      },
+      "page": null,
+      "pass": true
+    },
+    {
+      "button": "Settings",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Settings",
+        "beam": true,
+        "modal": true,
+        "button": "Settings",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          539,
+          603
+        ]
+      },
+      "page": "settings",
+      "pass": true
+    },
+    {
+      "button": "ResetClubSetup",
+      "controller": "LeftHand",
+      "hover": {
+        "buttonText": "Reset fit",
+        "beam": true,
+        "modal": true,
+        "button": "ResetClubSetup",
+        "panel": "GolfMenuPanel",
+        "hand": "LeftHand",
+        "pixel": [
+          1190,
+          736
+        ]
+      },
+      "page": "settings",
+      "pass": true
+    }
+  ],
+  "settings_entry": {
+    "pass": true,
+    "state": {
+      "fit": {
+        "length": 2.62467360496521,
+        "angles": [
+          -0.11985261738300323,
+          0,
+          0
+        ]
+      },
+      "active": true,
+      "target": [
+        188.7999725341797,
+        24.065000534057617,
+        170.60000610351562
+      ],
+      "hand": "RightHand",
+      "saving": false
+    }
+  },
+  "explainer": {
+    "visible": true,
+    "enabled": true,
+    "canvas": [
+      1024,
+      784
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "image": "rbxassetid://71799829989383",
+        "name": "InstructionsBackground"
+      },
+      {
+        "loaded": true,
+        "image": "rbxassetid://122984304115771",
+        "name": "step1_stance"
+      },
+      {
+        "loaded": true,
+        "image": "rbxassetid://110561580015778",
+        "name": "step2_stick"
+      },
+      {
+        "loaded": true,
+        "image": "rbxassetid://124290294292343",
+        "name": "step3_trigger"
+      }
+    ],
+    "adornee": true,
+    "face": "Front",
+    "screen": [
+      432.3152770996094,
+      169.32696533203125,
+      4
+    ],
+    "texts": [
+      {
+        "text": "STAND LIKE YOU'RE\nPUTTING",
+        "name": "Step1",
+        "fits": true
+      },
+      {
+        "text": "NUDGE THE HEAD\nWITH EITHER STICK",
+        "name": "Step2",
+        "fits": true
+      },
+      {
+        "text": "PULL CLUB TRIGGER\nTO SAVE",
+        "name": "Step3",
+        "fits": true
+      },
+      {
+        "text": "B / Y: reset default     Menu: cancel",
+        "name": "TextLabel",
+        "fits": true
+      }
+    ]
+  },
+  "fit_test": {
+    "solveError": 0,
+    "noButtonHandChange": true,
+    "saved": true,
+    "fit": {
+      "length": 2.6411218643188477,
+      "angles": [
+        -0.05571044608950615,
+        -0.06840188801288605,
+        0.004706454463303089
+      ]
+    },
+    "pass": true,
+    "targetMoved": 0.1633719652891159
+  },
+  "server_roundtrip": {
+    "ok": true,
+    "fits": {
+      "RightHand": {
+        "angles": [
+          -0.05571044608950615,
+          -0.06840188801288605,
+          0.004706454463303089
+        ],
+        "length": 2.6411218643188477
+      }
+    },
+    "sessionOnly": true
+  },
+  "reset": {
+    "target": [
+      188.96859741210938,
+      24.065000534057617,
+      170.78024291992188
+    ],
+    "saving": false,
+    "hand": "RightHand",
+    "active": false
+  },
+  "reset_server_roundtrip": {
+    "ok": true,
+    "fits": [],
+    "sessionOnly": true
+  },
+  "reset_via_settings": {
+    "pass": true
+  },
+  "problems": {
+    "server": [],
+    "client": []
+  },
+  "pass": true
+}
+[runner] mode Edit

@@ -1,0 +1,49 @@
+{
+  "source": "playtests/stage-t/wrist-sim/wrist_sim.json",
+  "assessment": "PASS behavior; aggregate watch_ok/pass are false because pose telemetry is incorrectly counted as hide by existing wristSim counter",
+  "watch_actual_show": 3,
+  "watch_actual_hide": 3,
+  "false_shows": 0,
+  "console": {
+    "server": [],
+    "client": []
+  },
+  "runs": [
+    {
+      "scenario": "watch",
+      "events_by_type": {
+        "show": 3,
+        "pose": 3,
+        "hide": 3
+      },
+      "reported_hides": 6
+    },
+    {
+      "scenario": "glance",
+      "events_by_type": {
+        "pose": 1
+      },
+      "reported_hides": 1
+    },
+    {
+      "scenario": "swings",
+      "events_by_type": {},
+      "reported_hides": 0
+    },
+    {
+      "scenario": "stance",
+      "events_by_type": {},
+      "reported_hides": 0
+    },
+    {
+      "scenario": "head",
+      "events_by_type": {
+        "pose": 6,
+        "show": 3,
+        "hide": 3
+      },
+      "reported_hides": 9
+    }
+  ],
+  "limitation": "Counter source unchanged: no Codex coding permitted; Cursor unavailable due locked macOS login keychain."
+}
