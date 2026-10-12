@@ -9,7 +9,7 @@
 -- Data: ServerStorage.CourseData.LobbyLayout (tools/lobby_to_lua.py; fixes in tools/lobby_overrides.json). Positions
 -- are lobby-frame studs (X east, Z south, deck top Y 0); `origin` puts the lobby frame in the world, away from the
 -- course. Meshes never collide: walking uses invisible box colliders (walkways, railings, manifest collision boxes).
--- The lobby is not the spawn yet (the portals / course board hookup is the lobby integration ticket).
+-- Players spawn here (stage x: workspace.SpawnLocation under LobbySpawn) and pick a course on the menu; the portals / course board hookup is still the lobby integration ticket.
 local ServerStorage = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
 local CollectionService = game:GetService("CollectionService")
@@ -311,7 +311,7 @@ function LobbyBuilder.Build()
 	end
 	local sp = v3(d.spawn.position)
 	local spawnMarker = box("LobbySpawn", origin * CFrame.new(sp + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, math.rad(d.spawn.yaw or 0), 0), Vector3.new(4, 0.1, 4), lobby, { Transparency = 1, CanCollide = false })
-	spawnMarker:SetAttribute("Note", "lobby spawn (100,0,100), facing north; not a SpawnLocation until the lobby is wired in")
+	spawnMarker:SetAttribute("Note", "lobby spawn (100,0,100), facing north; workspace.SpawnLocation sits under it (stage x)")
 	for _, p in lobby:GetDescendants() do
 		if p:IsA("BasePart") and p.Parent == colliders then
 			p.CollisionGroup = "Default"

@@ -84,6 +84,7 @@ For all three: give one focused task per run, say whether changes are allowed (`
 - `get_console_output` can be huge. To read only problems, run this in both `Server` and `Client`: `LogService:GetLogHistory()` filtered to `MessageWarning` / `MessageError`.
 - `user_mouse_input` clicks are reliable only with `instance_path` (for example `LocalPlayer.PlayerGui.MyUI.Root.Btn_PLAY`). Raw x/y clicks often miss. Give buttons and their containers stable names, and hide the CoreGui chat window or it can steal clicks.
 - `user_mouse_input` actions are `moveTo` (with `instance_path`) followed by `mouseButtonClick` with `mouse_button="left"`. There is no `click` action.
+- If `user_mouse_input` stops reaching the game (no `MouseEnter`/`Activated` on the button), activate a GUI button with gamepad selection instead: from `Client` set `GuiService.SelectedObject = <button>`, then `user_keyboard_input` `keyPress` `Return`. That fires its `Activated` (used by `run_playtests.py smoke` for the course card, stage x).
 - Virtual gamepad keys (`ButtonA` and so on) arrive as keyboard input, and there is no virtual touch. Test touch layout by forcing the touch UI with a temporary flag, then remove the flag.
 - Phone layout test: from `Edit`, call `game:GetService("StudioDeviceSimulatorService"):SetDeviceAsync("iphone_17_pro")`, then start play. The playtest gets `TouchEnabled = true`, a 750x361 viewport and a 58 px Roblox top bar. Call `StopSimulationAsync()` when done.
   - `GuiService.TopbarInset` is in screen space, but `AbsolutePosition` is relative to the inset origin. The screen-space top is `AbsolutePosition.Y + GuiService:GetGuiInset().Y`.
@@ -108,4 +109,5 @@ For all three: give one focused task per run, say whether changes are allowed (`
 - **Tool call hangs**: Studio is probably showing a confirmation prompt. Approve it in Studio (computer use) or ask Chase to.
 - **Stale studio id**: call `list_roblox_studios` again.
 - **Binary missing after a Studio update**: `ls /Applications/RobloxStudio.app/Contents/MacOS/` and run `StudioMCP --help`.
+- **`codex exec` hangs with 0 CPU** (seen 2026-10-12 with Homebrew `/opt/homebrew/bin/codex` 0.153.4, even `--version`): use the CLI bundled with the ChatGPT app, `/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex` (0.160.1 worked).
 - **Logs**: `~/Library/Logs/Roblox/`. To see the processes: `ps aux | grep -i -E 'RobloxStudio|StudioMCP'`.

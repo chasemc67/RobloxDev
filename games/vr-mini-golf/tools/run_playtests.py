@@ -6,7 +6,7 @@
                                 [--opts '{"fuzz":12,"sweep":6,"hioTries":9,"parts":"routes,hio,banks,sweep,fuzz"}']
   python3 run_playtests.py holes [N ...] [--opts ...] [--out DIR]   per-hole suites h1..h9 + h7pin, h8door, movers
   python3 run_playtests.py shots [--out DIR] [--holes 1,2,..]       overview.png, holeNN.png, topdown/follow per hole
-  python3 run_playtests.py smoke                  normal (non-test) solo playtest: errors/warnings + HUD check
+  python3 run_playtests.py smoke                  normal (non-test) solo playtest: lobby spawn + course picks, errors/warnings + HUD check
   python3 run_playtests.py export                 mirror every Studio script into games/vr-mini-golf/src/
   python3 run_playtests.py push FILE [FILE ...]   copy local src/ files into Studio (Edit) - dev convenience
   python3 run_playtests.py compare BEFORE_DIR AFTER_DIR   before/after table of the key numbers
@@ -669,6 +669,66 @@ def cmd_compare(args):
 
 
 # ----------------------------------------------------------------------------------------- smoke
+# (stage x) A fresh join must spawn in the lobby with no course picked and the menu on the title page; picking a
+# course on the course card (the real FrontEnd button, activated by gamepad selection + Return because virtual mouse
+# clicks are unreliable) must move the ball to that course's hole 1 tee and the character beside it. Ends on Lantern
+# Grove hole 1 so the rest of the smoke run plays there.
+LOBBY_STATE = """local me = game:GetService('Players').LocalPlayer
+local lobby = workspace:FindFirstChild('Lobby')
+local cf, size = lobby:GetBoundingBox()
+local hrp = me.Character and me.Character:FindFirstChild('HumanoidRootPart')
+local lp = hrp and cf:PointToObjectSpace(hrp.Position)
+local inside = lp ~= nil and math.abs(lp.X) <= size.X / 2 and math.abs(lp.Z) <= size.Z / 2 and math.abs(lp.Y) <= size.Y / 2 + 6
+local ball = workspace.Balls:FindFirstChild(tostring(me.UserId))
+local menu = me.PlayerScripts.GolfMenuDebug:Invoke('state')
+local gui = me.PlayerGui:FindFirstChild('GolfMenu')
+return game:GetService('HttpService'):JSONEncode({inLobby = inside, char = hrp and tostring(hrp.Position), course = me:GetAttribute('Course'),
+  ballInLobby = ball ~= nil and (ball.Position - lobby.LobbySpawn.Position).Magnitude < 1, ballAnchored = ball and ball.Anchored,
+  menuPage = menu.page, menuOpen = menu.open, resumeButton = gui ~= nil and gui:FindFirstChild('Resume', true) ~= nil,
+  exploreButton = gui ~= nil and gui:FindFirstChild('Explore', true) ~= nil})"""
+
+PICK_COURSE = """local me = game:GetService('Players').LocalPlayer
+me.PlayerScripts.GolfMenuDebug:Invoke('open', 'courses')
+task.wait(0.5)
+local card = me.PlayerGui.GolfMenu:FindFirstChild(%s, true)
+game:GetService('GuiService').SelectedObject = card and card:FindFirstChild('PlayCourse')
+task.wait(0.2)
+return tostring(game:GetService('GuiService').SelectedObject)"""
+
+PICK_RESULT = """local me = game:GetService('Players').LocalPlayer
+local t0 = os.clock()
+while me:GetAttribute('Course') ~= %s and os.clock() - t0 < 8 do task.wait(0.2) end
+task.wait(3)
+local ball = workspace.Balls:FindFirstChild(tostring(me.UserId))
+local tee = workspace[%s].Hole1.Tee.Position
+local hrp = me.Character.HumanoidRootPart
+game:GetService('GuiService').SelectedObject = nil
+return game:GetService('HttpService'):JSONEncode({course = me:GetAttribute('Course'), hole = me:GetAttribute('Hole'),
+  ballToTee = math.floor((ball.Position - tee).Magnitude * 100) / 100, charToTee = math.floor((hrp.Position - tee).Magnitude * 100) / 100,
+  ballAnchored = ball.Anchored, ballVisible = ball.Transparency == 0, menuPage = me.PlayerScripts.GolfMenuDebug:Invoke('state').page})"""
+
+
+def smoke_lobby(st):
+    out = {"join": json.loads(st.luau(LOBBY_STATE, "Client"))}
+    j = out["join"]
+    ok = (j.get("inLobby") and j.get("course") is None and j.get("ballInLobby") and j.get("ballAnchored")
+          and j.get("menuOpen") and j.get("menuPage") == "title" and not j.get("resumeButton"))
+    out["picks"] = []
+    # from the lobby: Lantern Grove; then Sugarloaf Canyon; then back to Lantern Grove (for the rest of the smoke run)
+    for course, folder in (("lantern_grove", "Course"), ("sugarloaf_canyon", "CourseSugarloaf"), ("lantern_grove", "Course")):
+        sel = st.luau(PICK_COURSE % json.dumps(course), "Client")
+        st.call("user_keyboard_input", {"actions": [{"action": "keyPress", "key_code": "Return"}], "datamodel_type": "Client"})
+        r = json.loads(st.luau(PICK_RESULT % (json.dumps(course), json.dumps(folder)), "Client"))
+        r["selected"] = sel
+        out["picks"].append(r)
+        ok = ok and r.get("course") == course and r.get("hole") == 1 and r.get("ballToTee", 99) < 0.5 and r.get("charToTee", 99) < 6 \
+            and not r.get("ballAnchored") and r.get("ballVisible") and r.get("menuPage") is None
+        time.sleep(1.2)  # (GolfServer rate-limits SelectCourse to once a second)
+    out["ok"] = bool(ok)
+    log("lobby", json.dumps(out))
+    return out
+
+
 def cmd_smoke(args):
     """Normal solo playtest (test mode off): loads, then plays real putts on hole 1 through the regular client code
     (BallController.hit, the function the touch/mouse and VR controls call), and collects errors/warnings and the HUD.
@@ -681,6 +741,7 @@ def cmd_smoke(args):
     try:
         st.start_play()
         time.sleep(args.wait)
+        lobby = smoke_lobby(st)
         # (a require() from the MCP command context gets its own copy of BallController, so this checks the real
         # ball instance; scripted putts through Ball.hit are covered by the test-mode harness)
         play = st.luau("""local Players = game:GetService('Players')
@@ -785,7 +846,16 @@ return game:GetService('HttpService'):JSONEncode({hud = gui ~= nil, texts = text
     except ValueError:
         pass
     rt = play.get("explore", {}).get("strokeRoundTrip") if isinstance(play, dict) else None
-    print(json.dumps({"device": args.device or "desktop", "play": play, "hud": json.loads(hud), "problems": problems}, indent=1))
+    print(json.dumps({"device": args.device or "desktop", "lobby": lobby, "play": play, "hud": json.loads(hud), "problems": problems}, indent=1))
+    if not lobby.get("ok"):
+        log("FAIL lobby spawn / course pick:", json.dumps(lobby))
+        sys.exit(1)
+    log("PASS lobby spawn: in lobby, no course, menu on title; picks -> " + ", ".join(
+        "%s H1 (ball %.2f, char %.2f)" % (p["course"], p["ballToTee"], p["charToTee"]) for p in lobby["picks"]))
+    errors = [m for v in problems.values() if isinstance(v, list) for m in v if str(m).startswith("ERROR")]
+    if errors:
+        log("FAIL console errors:", json.dumps(errors))
+        sys.exit(1)
     if not rt or not rt.get("ok"):
         log("FAIL stroke -> Explore -> back:", json.dumps(rt))
         sys.exit(1)

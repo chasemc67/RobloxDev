@@ -2251,7 +2251,11 @@ function CourseBuilder.Build(data, layout, opts)
 			decal.Transparency = 1
 		end
 	end
-	if spawn and layout and layout.spawn then
+	local lobbySpot = workspace:FindFirstChild("Lobby") and workspace.Lobby:FindFirstChild("LobbySpawn")
+	if spawn and lobbySpot then
+		-- (stage x) players spawn in the lobby and pick a course there (GolfServer parks the ball on this spot)
+		spawn.CFrame = lobbySpot.CFrame * CFrame.new(0, -lobbySpot.Size.Y / 2 - spawn.Size.Y / 2, 0)
+	elseif spawn and layout and layout.spawn then
 		-- Welcome Plaza, facing hole 1 (the ball starts on its tee; VR warps you to it)
 		local p, look = layout.spawn.pos, layout.spawn.look_at
 		local pos = Vector3.new(p[1], p[2] + spawn.Size.Y / 2, p[3])

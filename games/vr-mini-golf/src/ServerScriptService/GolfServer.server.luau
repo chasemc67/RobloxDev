@@ -259,6 +259,18 @@ local function setupCharacter(character)
 	character.DescendantAdded:Connect(apply)
 end
 
+-- Lobby (stage x): a fresh join spawns in the lobby (workspace.SpawnLocation sits on Lobby.LobbySpawn) with no
+-- course. The ball waits there, hidden and anchored, until the player picks a course on the course card
+-- (SelectCourse starts its hole 1). The Studio harness (GolfTestMode) keeps Lantern Grove, started on Ready.
+local function lobbyBallPosition()
+	local lobby = workspace:FindFirstChild("Lobby")
+	local spot = lobby and lobby:FindFirstChild("LobbySpawn")
+	if not spot then
+		return nil
+	end
+	return Vector3.new(spot.Position.X, spot.Position.Y - spot.Size.Y / 2 + Config.BallRadius + 0.03, spot.Position.Z)
+end
+
 local function onPlayerAdded(player)
 	local real = isReal(player)
 	local userId = real and player.UserId or player:GetAttribute("UserId")
@@ -270,12 +282,16 @@ local function onPlayerAdded(player)
 	ball.NameTag.Label.Text = real and player.DisplayName or player.Name
 	ball.Trail.Color = ColorSequence.new(ball.Color)
 	ball.Anchored = true
-	ball.CFrame = CFrame.new(teePosition(holes[1]))
+	local lobbyPos = real and not TEST_MODE and lobbyBallPosition() or nil
+	ball.CFrame = CFrame.new(lobbyPos or teePosition(holes[1]))
+	if lobbyPos then
+		ball.Transparency = 1
+	end
 	ball.Parent = ballsFolder
 
 	states[player] = {
 		ball = ball,
-		course = Courses.DEFAULT,
+		course = not lobbyPos and Courses.DEFAULT or nil, -- nil = in the lobby, no course picked yet
 		hole = 1,
 		strokes = {},
 		lastPos = ball.Position,
@@ -286,7 +302,7 @@ local function onPlayerAdded(player)
 		lastStroke = 0,
 		lastReset = 0,
 	}
-	player:SetAttribute("Course", Courses.DEFAULT)
+	player:SetAttribute("Course", states[player].course)
 	player:SetAttribute("Hole", 1)
 	player:SetAttribute("Strokes", 0)
 	player:SetAttribute("Scores", "[]")
@@ -342,6 +358,12 @@ local function onReady(player)
 		return
 	end
 	if not st.started then
+		if not st.course then
+			-- in the lobby: wait for a course (SelectCourse); the controls frame the lobby around the parked ball
+			st.ready = true
+			sendTo(Remotes.BallPlaced, player, st.ball.Position, "lobby", 1)
+			return
+		end
 		st.started = true
 		-- Studio testing aid: set workspace attribute DebugStartHole to begin on a later hole
 		local first = math.clamp(workspace:GetAttribute("DebugStartHole") or 1, 1, #holesOf(st))
@@ -385,7 +407,7 @@ end)
 
 Remotes.RequestReset.OnServerEvent:Connect(function(player)
 	local st = states[player]
-	if not st or st.sunk or st.resetting or st.finished or st.exploring then
+	if not st or not st.started or st.sunk or st.resetting or st.finished or st.exploring then
 		return
 	end
 	local now = os.clock()
@@ -415,6 +437,7 @@ end)
 
 -- Course picker (stage w): switch this player to another playable course and start its hole 1 (a fresh round; the
 -- previous course's strokes are dropped). Before the first Ready it only sets the course, so Ready starts there.
+-- From the lobby (Ready already sent, no round yet) it starts the round on that course's hole 1.
 local SelectCourse = remote("SelectCourse")
 SelectCourse.OnServerEvent:Connect(function(player, courseId)
 	local st = states[player]
@@ -432,6 +455,10 @@ SelectCourse.OnServerEvent:Connect(function(player, courseId)
 	st.strokes = {}
 	st.roundValid = true
 	if st.started then
+		startHole(player, st, 1)
+	elseif st.ready then
+		st.started = true
+		st.ball.Transparency = 0
 		startHole(player, st, 1)
 	end
 end)

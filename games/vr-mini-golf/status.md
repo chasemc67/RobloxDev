@@ -1,5 +1,10 @@
 # VR Mini Golf: status
 
+## Stage x — live v239 (2026-10-12, ~09:23 PT)
+- **Lobby spawn fix** (Chase: live v235 dropped players on Lantern Grove H1 with no lobby). Cause: the only SpawnLocation sat on LG's Welcome Plaza beside H1 (CourseBuilder put it there), the lobby's LobbySpawn was only a marker, and GolfServer defaulted every join to Lantern Grove and started H1 on Ready.
+- Now: workspace.SpawnLocation sits under Lobby.LobbySpawn (CourseBuilder keeps it there). A fresh join has no course (no `Course` attribute); the ball waits hidden on the lobby spot and the menu opens on the title. Picking a course on the course card (SelectCourse) starts that course's hole 1. GolfTestMode keeps the old LG-on-Ready default.
+- `run_playtests.py smoke` now checks the lobby spawn first (character in Lobby bounds, no course, title menu, then the LG / Sugarloaf / LG course-card picks each land on hole 1). Smoke + LG 9-hole regression pass, 0 console errors. Notes: logs/stages/x-notes.md.
+
 ## Stage w — live v235 (2026-10-12, ~07:23 PT)
 - **Sugarloaf Canyon (18 holes, par 54) is playable** in the same place as its own course: workspace.CourseSugarloaf, 5000 studs north of Lantern Grove (SugarloafLayout offset (0,0,-5000)). Players pick it on the course card ("18 holes - Par 54"); each player's course is the player attribute `Course` (ReplicatedStorage.Golf.Courses, GolfServer SelectCourse). Sugarloaf has its own sunset lighting while the camera is in its world box (GolfClient.CourseLighting).
 - Rebuild: `python3 tools/sugarloaf_to_lua.py --push`, then in Edit `CourseBuilder.Build(SugarloafCanyon, SugarloafLayout, {folder="CourseSugarloaf", courseId="sugarloaf_canyon", palette="sugarloaf"})`, `SugarloafBuilder.PlaceMeshes()` (pass 5 mover meshes from ServerStorage.SugarloafMovers) and `SugarloafBuilder.CheckClearance()`. Terrain: `python3 tools/world_terrain.py --sugarloaf` (writes Terrain only in Sugarloaf's box).

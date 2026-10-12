@@ -184,8 +184,13 @@ local function bestOf(courseId)
 	return player:GetAttribute("Best_" .. courseId)
 end
 
+-- (stage x) a fresh join waits in the lobby with no course (no "Course" attribute) until one is picked here
+local function inLobby()
+	return player:GetAttribute("Course") == nil
+end
+
 local function roundInProgress()
-	if roundFinished then
+	if roundFinished or inLobby() then
 		return false
 	end
 	return Ball ~= nil and Ball.ball ~= nil -- the H1 tee is already an active round, even at zero strokes
@@ -285,7 +290,7 @@ local function buildTitle()
 
 	local row2 = new("Frame", { Name = "More", BackgroundTransparency = 1, AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, 346), Size = UDim2.fromOffset(700, 62) }, content)
 	new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Center, Padding = UDim.new(0, 16), SortOrder = Enum.SortOrder.LayoutOrder }, row2)
-	if Explore and not isVR then
+	if Explore and not isVR and not inLobby() then
 		button("Explore", { Name = "Explore", LayoutOrder = 1, Size = UDim2.fromOffset(210, 62) }, row2, function()
 			FrontEnd.close()
 			if not Explore.active then
@@ -311,8 +316,9 @@ local function startCourse(courseId)
 		Explore.setActive(false) -- (SetExplore off reaches the server before the restart)
 	end
 	FrontEnd.close()
-	if courseId and courseId ~= Courses.of(player) then
-		-- another course (stage w): the server moves this player to its hole 1 with a fresh round
+	if courseId and (inLobby() or courseId ~= Courses.of(player)) then
+		-- another course (stage w), or the first pick from the lobby: the server moves this player to its hole 1 with a
+		-- fresh round
 		roundFinished = false
 		Remotes:WaitForChild("SelectCourse"):FireServer(courseId)
 		return
