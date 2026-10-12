@@ -568,6 +568,6 @@ Stage p had already done item 8: wrist card art and text zones, pointer dot/beam
 | Console | Zero server/client warnings and errors in every final run |
 | Studio Edit, saved and published | Complete; test flags off,5 bracer parts Massless/noncolliding; no leftover import |
 | Version History live version | v167, Published at6:50PM by MetavrseBuilder; `playtests/stage-r/published-version.json` |
-| Mirror src/, append progress.md, commit + push | Scripts mirrored; report/progress included in the Stage r commit |
+| Mirror src/, append progress.md, commit + push | Complete: scripts mirrored, progress/report/evidence committed as `a7db94b`, pushed to `origin/main` |
 
 **Remaining limitation:** the supplied FBX had not received the promised revised face. Its in-Studio fit is complete and verified, but the upstream source asset remains stale. No other requested issue remains open from the final simulations.
