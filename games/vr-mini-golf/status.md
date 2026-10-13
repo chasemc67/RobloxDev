@@ -1,5 +1,12 @@
 # VR Mini Golf: status
 
+## Stage ak — lobby published v248 (2026-10-13)
+- Lobby **v248 Published**, verified in Studio Version History: October 13, 11:35 AM, <Auto save>, Published. Publish confirmation at 11:38 AM PT.
+- Current src pushed; all 51 scripts verified. Lobby uses OUR VRControls, wrist card, putter, sticks and B/Y scorecard gear; Close/title/gear have no overlap. Desktop retains LobbyRoam.
+- Desktop + iPhone smoke and SimulateVR quick check PASS, zero console warnings/errors. SimulateVR=false and GolfTestMode=false. Cloud lobby content retained; no course place opened/saved/published. **LG v9 and SC v19 unchanged.**
+- Local copy: `playtest/playtest-lobby-v248.rbxl` (849,772 bytes); all 51 serialized sources match src. Download created no additional history row observed after refresh. Studio closed; no git push.
+- Notes: `logs/stages/ak-notes.md`; evidence: `playtests/stage-ak/`.
+
 ## Stage ah — local Aurora collider check (2026-10-12)
 - H18 ramp foot is continuous; H6 east cup-pad lip is 0.008736 studs and matches the authored slope/pad overlap. H6 pool footprint matches holes.json exactly in X/Z.
 - Raised H18 crystal-bank edges and H6 pad/layout improvements remain Game Art Bot design/data issues. No source/geometry fixes or conditional shot regressions were needed.
