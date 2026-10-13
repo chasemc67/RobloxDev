@@ -18,6 +18,8 @@ end
 
 local Config = require(Golf:WaitForChild("Config"))
 local Remotes = Golf:WaitForChild("Remotes")
+-- (stage ad) Our lobby VR controls load/save the same club fit as the course places.
+require(script.Parent:WaitForChild("GolfServer"):WaitForChild("ClubSetup")).init(Remotes)
 local PersonalBest = require(script.Parent:WaitForChild("GolfServer"):WaitForChild("PersonalBest"))
 local PlaceTeleport = require(script.Parent:WaitForChild("PlaceTeleport"))
 local Leaderboard = require(script.Parent:WaitForChild("Leaderboard"))

@@ -278,6 +278,11 @@ function HUD.refresh()
 	end
 	local hole = Ball.getHole()
 	if not hole then
+		if Ball.lobbyRoam and wrist then
+			wrist.hole.Text, wrist.name.Text = "LOBBY", "VR Mini Golf"
+			wrist.par.Text, wrist.stroke.Text = "-", "-"
+			wrist.total.Text, wrist.best.Text = "-", "-"
+		end
 		return
 	end
 	local n = hole:GetAttribute("HoleNumber")

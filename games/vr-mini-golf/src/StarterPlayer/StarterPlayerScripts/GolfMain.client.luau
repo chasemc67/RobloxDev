@@ -17,25 +17,50 @@ local HUD = require(modules.HUD)
 local playerModule = player:WaitForChild("PlayerScripts"):FindFirstChild("PlayerModule")
 local controls = playerModule and require(playerModule):GetControls()
 
--- (stage z) The lobby is its own place with no golf ball: walk around (GolfClient.LobbyRoam), the menu (FrontEnd:
--- course cards teleport to that course's place) and the loading screen for the trip (TeleportScreen). VR uses
--- Roblox's own VR camera, walking and UI pointer here (the ScreenGui menu shows on Roblox's VR panel).
+-- VR can take a moment to report as enabled at startup
+local isVR = UserInputService.VREnabled or VRService.VREnabled
+if not isVR then
+	local t0 = os.clock()
+	while os.clock() - t0 < 1 do
+		if UserInputService.VREnabled or VRService.VREnabled then
+			isVR = true
+			break
+		end
+		task.wait()
+	end
+end
+local simulateVR = not isVR and workspace:GetAttribute("SimulateVR") == true
+
+
+-- (stage z, updated ad) The lobby has no golf ball/course. Desktop keeps LobbyRoam; real VR
+-- (including the startup wait) and SimulateVR use our wrist HUD, putter, locomotion and menu.
+-- TeleportScreen and the server's portal walk-in triggers work with either character controller.
 if Places.isLobby() then
 	pcall(function()
 		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
 	end)
-	local vrUser = UserInputService.VREnabled or VRService.VREnabled
 	local lobbyBall = { menuOpen = false, lobbyRoam = true }
-	function lobbyBall.canHit()
-		return false
+	function lobbyBall.canHit() return false end
+	function lobbyBall.exploring() return true end
+	local VR, LobbyRoam
+	if isVR or simulateVR then
+		-- The HUD/VR contract, without BallController.init's course waits or any stroke remotes.
+		lobbyBall.Placed = Instance.new("BindableEvent")
+		lobbyBall.Teleported = Instance.new("BindableEvent")
+		function lobbyBall.getHole() return nil end
+		function lobbyBall.requestReset() end
+		if controls then controls:Disable() end
+		pcall(function() GuiService.TouchControlsEnabled = false end)
+		HUD.init(true, lobbyBall)
+		VR = require(modules.VRControls)
+		VR.start(lobbyBall, HUD, simulateVR)
+	else
+		LobbyRoam = require(modules.LobbyRoam)
+		LobbyRoam.start(lobbyBall, controls)
 	end
-	function lobbyBall.exploring()
-		return true
-	end
-	local LobbyRoam = require(modules.LobbyRoam)
-	LobbyRoam.start(lobbyBall, controls)
 	local FrontEnd = require(modules.FrontEnd)
-	FrontEnd.start({ HUD = HUD, Ball = lobbyBall, LobbyRoam = LobbyRoam, isVR = false, vrUser = vrUser })
+	if VR then HUD.attachFrontEnd(FrontEnd) end
+	FrontEnd.start({ HUD = HUD, Ball = lobbyBall, VR = VR, LobbyRoam = LobbyRoam, isVR = isVR or simulateVR, vrUser = isVR })
 	require(modules.TeleportScreen).start({ notify = FrontEnd.toast })
 	return
 end
@@ -76,19 +101,6 @@ pcall(function()
 	StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 end)
 
--- VR can take a moment to report as enabled at startup
-local isVR = UserInputService.VREnabled or VRService.VREnabled
-if not isVR then
-	local t0 = os.clock()
-	while os.clock() - t0 < 1 do
-		if UserInputService.VREnabled then
-			isVR = true
-			break
-		end
-		task.wait()
-	end
-end
-local simulateVR = not isVR and workspace:GetAttribute("SimulateVR") == true
 
 Ball.init()
 HUD.init(isVR or simulateVR, Ball)

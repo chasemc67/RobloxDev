@@ -139,6 +139,16 @@ function VR.start(Ball, HUD, simulate)
 
 	-- origin: world CFrame (position + yaw) of the real-world floor centre
 	local origin = CFrame.new(0, 1, -6)
+	if Ball.lobbyRoam then
+		local char = player.Character or player.CharacterAdded:Wait()
+		local root = char:WaitForChild("HumanoidRootPart", 10)
+		local hum = char:WaitForChild("Humanoid", 10)
+		if root and hum then
+			origin = CFrame.new(root.Position - Vector3.new(0, hum.HipHeight + root.Size.Y / 2, 0)) * yawOnly(root.CFrame)
+			hum.WalkSpeed, hum.JumpPower, hum.JumpHeight = 0, 0, 0
+			hum.AutoRotate = false
+		end
+	end
 	local teleportedThisFrame = true
 
 	local function localPose(which)
