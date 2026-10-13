@@ -1,5 +1,10 @@
 # VR Mini Golf: status
 
+## Stage ah — local Aurora collider check (2026-10-12)
+- H18 ramp foot is continuous; H6 east cup-pad lip is 0.008736 studs and matches the authored slope/pad overlap. H6 pool footprint matches holes.json exactly in X/Z.
+- Raised H18 crystal-bank edges and H6 pad/layout improvements remain Game Art Bot design/data issues. No source/geometry fixes or conditional shot regressions were needed.
+- Aurora `playtest/playtest-aurora-v3.rbxl` unchanged; no v3b, save, publish, upload or push. Studio closed. Sugarloaf H8 untouched. Evidence: `playtests/stage-ah/`; notes: `logs/stages/ah-notes.md`.
+
 ## Stage ab — Sugarloaf kit + lighting + cups, VR feedback, real menu/loading art, lobby portals (2026-10-12, ~18:10 PT)
 - Published **Sugarloaf Canyon v19, Lantern Grove v9, Lobby v246** (each confirmed Published in Version History).
 - **Chase's VR items** (all places): the wrist card works on either wrist; no thumbstick-click menu (VR menu = B / Y scorecard, then the gear); club setup stick LEFT/RIGHT turns the putter head (saved headYaw) instead of moving it on the ground; the head is level only on / near the ground and rigid with the club when lifted (smooth blend).

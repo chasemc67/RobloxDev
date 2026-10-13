@@ -1,0 +1,1058 @@
+[
+  {
+    "number": 6,
+    "id": "h06",
+    "name": "Palm Lagoon",
+    "par": 3,
+    "zone": "Steamwhistle Lagoons",
+    "landmark": "Kettle Lagoon: a steaming turquoise hot spring with frosted palms on a warm basalt shelf",
+    "gimmick": "Side-slope green: a snow-felt shelf tilted toward a turquoise hot-spring pool (hazard; misses respawn beside it)",
+    "world_offset": [
+      305.0,
+      84.0,
+      478.0
+    ],
+    "world_yaw": 0.0,
+    "tee": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "aim_hint": [
+        0,
+        -1
+      ]
+    },
+    "cup": {
+      "position": [
+        0.0,
+        0.0,
+        -54.0
+      ],
+      "radius": 0.5,
+      "flag": {
+        "pole_height": 7.5,
+        "pole_diameter": 0.15,
+        "banner_size": [
+          2.0,
+          1.2,
+          0.05
+        ],
+        "banner_color": "#e03c31",
+        "top": [
+          0.0,
+          7.5,
+          -54.0
+        ],
+        "collision": false
+      }
+    },
+    "felt": [
+      {
+        "id": "lane",
+        "zone": "lane",
+        "center": [
+          0.0,
+          0.0,
+          -5.0
+        ],
+        "size": [
+          8,
+          14
+        ],
+        "yaw": 0.0,
+        "slope": null
+      },
+      {
+        "id": "shelf",
+        "zone": "shelf",
+        "center": [
+          -3.0,
+          0.0434,
+          -35.75
+        ],
+        "size": [
+          23.0,
+          47.5
+        ],
+        "yaw": 0.0,
+        "slope": {
+          "axis": "x",
+          "rise": -0.3331
+        }
+      },
+      {
+        "id": "shelf_se",
+        "zone": "shelf",
+        "center": [
+          11.5,
+          -0.1666,
+          -18.0
+        ],
+        "size": [
+          6.0,
+          12.0
+        ],
+        "yaw": 0.0,
+        "slope": {
+          "axis": "x",
+          "rise": -0.0869
+        }
+      },
+      {
+        "id": "shelf_ne",
+        "zone": "shelf",
+        "center": [
+          11.5,
+          -0.1666,
+          -52.75
+        ],
+        "size": [
+          6.0,
+          13.5
+        ],
+        "yaw": 0.0,
+        "slope": {
+          "axis": "x",
+          "rise": -0.0869
+        }
+      },
+      {
+        "id": "cup_pad",
+        "zone": "shelf",
+        "center": [
+          0.0,
+          0.0,
+          -54.0
+        ],
+        "size": [
+          1.2,
+          1.2
+        ],
+        "yaw": 0.0,
+        "slope": null
+      }
+    ],
+    "walls": [
+      {
+        "id": "rail1",
+        "center": [
+          -4.25,
+          0.25,
+          -4.75
+        ],
+        "size": [
+          0.5,
+          1.5,
+          14.5
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "rail2",
+        "center": [
+          -9.5,
+          0.355,
+          -11.75
+        ],
+        "size": [
+          0.5,
+          1.71,
+          11.0
+        ],
+        "yaw": -90.0
+      },
+      {
+        "id": "rail3",
+        "center": [
+          -14.75,
+          0.46,
+          -35.75
+        ],
+        "size": [
+          0.5,
+          1.5,
+          48.5
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "rail4",
+        "center": [
+          0.0,
+          0.25,
+          -59.75
+        ],
+        "size": [
+          0.5,
+          1.92,
+          30.0
+        ],
+        "yaw": 90.0
+      },
+      {
+        "id": "rail5",
+        "center": [
+          14.75,
+          0.04,
+          -35.75
+        ],
+        "size": [
+          0.5,
+          1.5,
+          48.5
+        ],
+        "yaw": 0.0
+      },
+      {
+        "id": "rail6",
+        "center": [
+          9.5,
+          0.145,
+          -11.75
+        ],
+        "size": [
+          0.5,
+          1.71,
+          11.0
+        ],
+        "yaw": -90.0
+      },
+      {
+        "id": "rail7",
+        "center": [
+          4.25,
+          0.25,
+          -4.75
+        ],
+        "size": [
+          0.5,
+          1.5,
+          14.5
+        ],
+        "yaw": 0.0
+      },
+      {
+        "id": "rail8",
+        "center": [
+          0.0,
+          0.25,
+          2.25
+        ],
+        "size": [
+          0.5,
+          1.5,
+          9.0
+        ],
+        "yaw": -90.0
+      }
+    ],
+    "hazards": [
+      {
+        "id": "kettle_pool",
+        "type": "water",
+        "center": [
+          11.5,
+          -0.81,
+          -35.0
+        ],
+        "size": [
+          6.0,
+          22.0
+        ],
+        "yaw": 0.0,
+        "reset": "respawn",
+        "penalty": 1,
+        "respawn": [
+          5.5,
+          -0.0797,
+          -35.0
+        ]
+      }
+    ],
+    "drops": [],
+    "moving_parts": [],
+    "teleports": [],
+    "ai_waypoints": {},
+    "cup_from": null,
+    "decoration_anchors": [
+      {
+        "name": "cup_flag",
+        "position": [
+          0.0,
+          0.0,
+          -54.0
+        ],
+        "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+        "approx_size": [
+          2.0,
+          7.5,
+          0.15
+        ]
+      },
+      {
+        "name": "kettle_pool",
+        "position": [
+          11.5,
+          -0.8099999999999999,
+          -35.0
+        ],
+        "notes": "Turquoise hot-spring pool #2FD6C8 set into the shelf's low east edge (6 x 22), steam curling off it, basalt rim on its far (east) side under the rail; a ball that rolls in bubbles back up on the respawn stone beside it",
+        "landmark": true,
+        "approx_size": [
+          6.0,
+          1,
+          22.0
+        ]
+      },
+      {
+        "name": "pool_respawn_stone",
+        "position": [
+          5.5,
+          -0.0797,
+          -35.0
+        ],
+        "notes": "Warm basalt marker stone flush in the felt beside the pool: where a pooled ball reappears",
+        "approx_size": [
+          0.8,
+          0.02,
+          0.8
+        ]
+      },
+      {
+        "name": "frosted_palms",
+        "position": [
+          16.5,
+          0,
+          -35
+        ],
+        "notes": "Three frosted palms leaning over the pool from the east rim (fronds >= 8 above the felt)",
+        "approx_size": [
+          6,
+          12,
+          8
+        ],
+        "occluders": [
+          {
+            "center": [
+              16.5,
+              4,
+              -35
+            ],
+            "size": [
+              0.8,
+              8,
+              0.8
+            ],
+            "yaw": 0.0
+          }
+        ]
+      },
+      {
+        "name": "slope_ripples",
+        "position": [
+          0.0,
+          0.0,
+          -36.0
+        ],
+        "notes": "Faint wind-ripple chevrons printed across the shelf felt pointing east (down the fall line toward the pool): the reading aid",
+        "approx_size": [
+          20,
+          0.01,
+          2
+        ]
+      },
+      {
+        "name": "snowpuffs",
+        "position": [
+          -16.0,
+          0.2,
+          -30
+        ],
+        "notes": "Snowpuffs (round penguin-puffin figures, ink #222233 body, cream #FFF4E2 belly, orange #FF9A3C beak, knitted scarves) in a little steaming foot-bath outside the west rail, towels on their heads; heads turn to follow the ball (visual only)",
+        "approx_size": [
+          2.5,
+          2.2,
+          2.0
+        ]
+      }
+    ],
+    "notes": "",
+    "world_placement_source": "world/world.json holes[5].placement",
+    "footprint_fit": {
+      "pads": [
+        {
+          "id": "pad",
+          "x": [
+            -15.0,
+            15.0
+          ],
+          "z": [
+            -60,
+            6
+          ],
+          "y": 0.0
+        }
+      ],
+      "outside": 0
+    }
+  },
+  {
+    "number": 18,
+    "id": "h18",
+    "name": "Halo Arch",
+    "par": 4,
+    "zone": "Skylight Summit",
+    "landmark": "Halo Arch: a glowing translucent ice arch over the final green framing the aurora, Starfrost Spire to the south-east",
+    "gimmick": "Finale: read two crystal banks round the plaza, climb the ramp onto the raised green under the Halo Arch",
+    "world_offset": [
+      -235.0,
+      222.0,
+      -232.0
+    ],
+    "world_yaw": 0.0,
+    "tee": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "aim_hint": [
+        0,
+        -1
+      ]
+    },
+    "cup": {
+      "position": [
+        -4.0,
+        0.8,
+        -46.0
+      ],
+      "radius": 0.5,
+      "flag": {
+        "pole_height": 7.5,
+        "pole_diameter": 0.15,
+        "banner_size": [
+          2.0,
+          1.2,
+          0.05
+        ],
+        "banner_color": "#e03c31",
+        "top": [
+          -4.0,
+          8.3,
+          -46.0
+        ],
+        "collision": false
+      }
+    },
+    "felt": [
+      {
+        "id": "lane",
+        "zone": "lane",
+        "center": [
+          0.0,
+          0.0,
+          -7.0
+        ],
+        "size": [
+          8,
+          18.0
+        ],
+        "yaw": 0.0,
+        "slope": null
+      },
+      {
+        "id": "plaza_w",
+        "zone": "plaza_w",
+        "center": [
+          -13.5,
+          0.0,
+          -22.0
+        ],
+        "size": [
+          8.0,
+          12.0
+        ],
+        "yaw": 0.0,
+        "slope": null
+      },
+      {
+        "id": "plaza",
+        "zone": "plaza",
+        "center": [
+          -2.75,
+          0.0,
+          -22.0
+        ],
+        "size": [
+          13.5,
+          12.0
+        ],
+        "yaw": 0.0,
+        "slope": null
+      },
+      {
+        "id": "ramp",
+        "zone": "ramp",
+        "center": [
+          -13.5,
+          0.4,
+          -33.0
+        ],
+        "size": [
+          8.0,
+          10.0
+        ],
+        "yaw": 0.0,
+        "slope": {
+          "axis": "z",
+          "rise": -0.8
+        }
+      },
+      {
+        "id": "green",
+        "zone": "green",
+        "center": [
+          0.0,
+          0.8,
+          -49.0
+        ],
+        "size": [
+          35.0,
+          22.0
+        ],
+        "yaw": 0.0,
+        "slope": null
+      },
+      {
+        "id": "chute",
+        "zone": "chute",
+        "center": [
+          -6.5,
+          0.4,
+          -33.0
+        ],
+        "size": [
+          1.6,
+          10.0
+        ],
+        "yaw": 0.0,
+        "slope": {
+          "axis": "z",
+          "rise": -0.8
+        }
+      },
+      {
+        "id": "crystal_bank_ne",
+        "zone": "plaza",
+        "center": [
+          0.4243,
+          0.6,
+          -24.4243
+        ],
+        "size": [
+          1.2,
+          11.9137
+        ],
+        "yaw": -135.0,
+        "slope": {
+          "axis": "x",
+          "rise": -1.2
+        },
+        "overlay": true,
+        "kind": "bank"
+      },
+      {
+        "id": "crystal_bank_sw",
+        "zone": "plaza_w",
+        "center": [
+          -10.3243,
+          0.6,
+          -21.5757
+        ],
+        "size": [
+          1.2,
+          17.5706
+        ],
+        "yaw": 45.0,
+        "slope": {
+          "axis": "x",
+          "rise": -1.2
+        },
+        "overlay": true,
+        "kind": "bank"
+      }
+    ],
+    "walls": [
+      {
+        "id": "rail1",
+        "center": [
+          -4.25,
+          1.35,
+          -6.75
+        ],
+        "size": [
+          0.5,
+          3.7,
+          18.5
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "rail2",
+        "center": [
+          -11.0,
+          1.35,
+          -15.75
+        ],
+        "size": [
+          0.5,
+          3.7,
+          14.0
+        ],
+        "yaw": -90.0
+      },
+      {
+        "id": "rail3",
+        "center": [
+          -17.75,
+          1.35,
+          -21.75
+        ],
+        "size": [
+          0.5,
+          3.7,
+          12.5
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "rail4",
+        "center": [
+          -17.75,
+          1.35,
+          -33.0
+        ],
+        "size": [
+          0.5,
+          3.7,
+          10.0
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "rail5",
+        "center": [
+          -17.75,
+          1.75,
+          -49.25
+        ],
+        "size": [
+          0.5,
+          2.9,
+          22.5
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "rail6",
+        "center": [
+          0.0,
+          1.75,
+          -60.25
+        ],
+        "size": [
+          0.5,
+          2.9,
+          36.0
+        ],
+        "yaw": 90.0
+      },
+      {
+        "id": "rail7",
+        "center": [
+          17.75,
+          1.75,
+          -49.0
+        ],
+        "size": [
+          0.5,
+          2.9,
+          23.0
+        ],
+        "yaw": 0.0
+      },
+      {
+        "id": "rail8",
+        "center": [
+          6.15,
+          1.75,
+          -37.75
+        ],
+        "size": [
+          0.5,
+          2.9,
+          23.7
+        ],
+        "yaw": -90.0
+      },
+      {
+        "id": "rail9",
+        "center": [
+          -5.45,
+          1.35,
+          -33.0
+        ],
+        "size": [
+          0.5,
+          3.7,
+          10.0
+        ],
+        "yaw": 0.0
+      },
+      {
+        "id": "rail10",
+        "center": [
+          -0.6,
+          1.35,
+          -28.25
+        ],
+        "size": [
+          0.5,
+          3.7,
+          10.2
+        ],
+        "yaw": 90.0
+      },
+      {
+        "id": "rail11",
+        "center": [
+          4.25,
+          1.35,
+          -22.25
+        ],
+        "size": [
+          0.5,
+          3.7,
+          12.5
+        ],
+        "yaw": 0.0
+      },
+      {
+        "id": "rail12",
+        "center": [
+          4.25,
+          1.35,
+          -6.75
+        ],
+        "size": [
+          0.5,
+          3.7,
+          18.5
+        ],
+        "yaw": 0.0
+      },
+      {
+        "id": "rail13",
+        "center": [
+          0.0,
+          1.35,
+          2.25
+        ],
+        "size": [
+          0.5,
+          3.7,
+          9.0
+        ],
+        "yaw": -90.0
+      },
+      {
+        "id": "chute_divider",
+        "center": [
+          -8.4,
+          1.35,
+          -33.0
+        ],
+        "size": [
+          2.2,
+          3.7,
+          10.0
+        ],
+        "yaw": 180.0
+      },
+      {
+        "id": "crystal_bank_ne_backing",
+        "center": [
+          1.0253,
+          0.85,
+          -25.0253
+        ],
+        "size": [
+          0.5,
+          2.7,
+          12.5137
+        ],
+        "yaw": -135.0
+      },
+      {
+        "id": "crystal_bank_sw_backing",
+        "center": [
+          -10.9253,
+          0.85,
+          -20.9747
+        ],
+        "size": [
+          0.5,
+          2.7,
+          18.1706
+        ],
+        "yaw": 45.0
+      }
+    ],
+    "hazards": [],
+    "drops": [],
+    "moving_parts": [],
+    "teleports": [],
+    "ai_waypoints": {
+      "all": [
+        {
+          "id": "ne_bank",
+          "pos": [
+            0.0,
+            0.0,
+            -23.0
+          ],
+          "from": [
+            "lane"
+          ],
+          "carry": 10.0,
+          "power_scale": 1.0
+        },
+        {
+          "id": "ramp_foot",
+          "pos": [
+            -13.5,
+            0.0,
+            -25.5
+          ],
+          "from": [
+            "plaza"
+          ],
+          "carry": 1.0,
+          "power_scale": 1.0
+        },
+        {
+          "id": "ramp_top",
+          "pos": [
+            -13.5,
+            0.8,
+            -41.0
+          ],
+          "from": [
+            "plaza_w",
+            "ramp"
+          ],
+          "carry": 3.0,
+          "power_scale": 1.2
+        }
+      ]
+    },
+    "cup_from": [
+      "green",
+      "ramp",
+      "plaza_w",
+      "chute"
+    ],
+    "decoration_anchors": [
+      {
+        "name": "cup_flag",
+        "position": [
+          -4.0,
+          0.8,
+          -46.0
+        ],
+        "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision",
+        "approx_size": [
+          2.0,
+          7.5,
+          0.15
+        ]
+      },
+      {
+        "name": "halo_arch",
+        "position": [
+          0,
+          0.8,
+          -52
+        ],
+        "notes": "Halo Arch: a translucent glowing ice arch (Glass 0.3 + crystal-core neon) 46 wide and 34 tall spanning the green east-west; its feet stand outside the footprint at x +-23 (world dressing), clear opening 18 high, so nothing is lower than 18 over the felt; it frames the aurora to the north",
+        "landmark": true,
+        "approx_size": [
+          46,
+          34,
+          4
+        ],
+        "occluders": [
+          {
+            "center": [
+              -23.0,
+              17,
+              -52
+            ],
+            "size": [
+              4,
+              34,
+              4
+            ],
+            "yaw": 0.0
+          },
+          {
+            "center": [
+              23.0,
+              17,
+              -52
+            ],
+            "size": [
+              4,
+              34,
+              4
+            ],
+            "yaw": 0.0
+          },
+          {
+            "center": [
+              0,
+              26.8,
+              -52
+            ],
+            "size": [
+              46,
+              16,
+              4
+            ],
+            "yaw": 0.0
+          }
+        ]
+      },
+      {
+        "name": "crystal_bank_ne_deco",
+        "position": [
+          0.0,
+          0,
+          -26.0
+        ],
+        "notes": "Faceted ice-crystal wall dressing the 45-degree banked felt and its backing rail (crystal clusters 3-5 tall behind the rail, glowing cyan); the banked felt itself is frosted glass-green",
+        "approx_size": [
+          9,
+          4,
+          2
+        ]
+      },
+      {
+        "name": "crystal_bank_sw_deco",
+        "position": [
+          -11.5,
+          0,
+          -22.0
+        ],
+        "notes": "Faceted ice-crystal wall dressing the 45-degree banked felt and its backing rail (crystal clusters 3-5 tall behind the rail, glowing cyan); the banked felt itself is frosted glass-green",
+        "approx_size": [
+          9,
+          4,
+          2
+        ]
+      },
+      {
+        "name": "ramp_lanterns",
+        "position": [
+          -8.5,
+          0,
+          -33.0
+        ],
+        "notes": "Brass lanterns on posts lining the ramp's east side (outside the rail)",
+        "approx_size": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "name": "felt_arrow_bank",
+        "position": [
+          0.0,
+          0.0,
+          -10.0
+        ],
+        "notes": "Glowing felt arrow decal: 'off the crystals, round and up'",
+        "approx_size": [
+          2.0,
+          0.01,
+          2.6
+        ]
+      },
+      {
+        "name": "crystal_chute",
+        "position": [
+          -6.5,
+          0.4,
+          -33.0
+        ],
+        "notes": "The Halo Run: a narrow 1.6-wide crystal chute (rails dressed as glowing ice-crystal walls) straight up through the plaza's north wall onto the green: the risky shortcut / ace line",
+        "approx_size": [
+          3.5999999999999996,
+          3,
+          10
+        ]
+      },
+      {
+        "name": "ramp_chevrons",
+        "position": [
+          -13.5,
+          0.4,
+          -33.0
+        ],
+        "notes": "Felt chevrons up the ramp pointing -Z",
+        "approx_size": [
+          6,
+          0.01,
+          2
+        ]
+      },
+      {
+        "name": "snowpuffs",
+        "position": [
+          14.0,
+          0.8,
+          -44
+        ],
+        "notes": "Snowpuffs (round penguin-puffin figures, ink #222233 body, cream #FFF4E2 belly, orange #FF9A3C beak, knitted scarves) in a grandstand of snow blocks beside the final green, holding up score cards; heads turn to follow the ball (visual only)",
+        "approx_size": [
+          6,
+          3,
+          4
+        ]
+      }
+    ],
+    "notes": "",
+    "world_placement_source": "world/world.json holes[17].placement",
+    "footprint_fit": {
+      "pads": [
+        {
+          "id": "pad",
+          "x": [
+            -18.0,
+            18.0
+          ],
+          "z": [
+            -76,
+            6
+          ],
+          "y": 0.0
+        }
+      ],
+      "outside": 0
+    }
+  }
+]
