@@ -287,3 +287,10 @@ Saved `playtest/playtest-sc-batch34.rbxl`; Studio closed. Imported all 12 landma
 Saved `playtest/playtest-aurora-v4.rbxl`; Studio closed. LOCAL ONLY: no cloud place opened/saved, no publish or git push. Imported all 74 approved props (188 meshes, 65,088 triangles; zero missing); regenerated current Aurora data including H4 ice decel_scale=0.7, which scales both constant and speed-dependent rolling drag per supporting piece. All visual meshes remain non-colliding/non-queryable/non-touchable at runtime.
 
 Result PARTIAL for clearance: 46 conservative built prop bounds findings across 13 props and two visible coplanar candidates remain; source checker reports 12 real findings. Gameplay passes: cupdrop54/54, 144 random shots,36 mover slow rollers, H4 crawl15=0/12, stuck0, escapes0, H17 sync324/324, zero console errors. Full evidence and caveats: `logs/stages/ai-notes.md`, `playtests/stage-ai/`.
+
+
+## Stage al — 2026-10-13, local Sugarloaf fix2
+
+Saved `playtest/playtest-sc-fix2.rbxl`; Studio closed. H14 dock imported, ore/pump placeholders removed while signs remain, and all 387 rail-top coplanar pairs resolved through idempotent visual-only offsets. Physical collider geometry unchanged. H15 friction 0.1/weight 100 is explicitly a TEST setting and persists through rebuilds.
+
+PARTIAL: paired 80-shot H15 experiment gives wedges 26→26, crawls 38→39, native timeouts 26→33 (timeouts overlap crawls). Full sweep: cupdrop 54/54, 144 random + 30 slow, stuck 0, escapes 0, one H15 native timeout; zero console warnings/errors. Local only, no cloud place open/save or publish, no git push. Details: `logs/stages/al-notes.md`, `playtests/stage-al/`.

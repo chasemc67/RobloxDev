@@ -1,0 +1,20 @@
+[runner] studio playtest-sc-fix1.rbxl f4c14ea6-ed7c-4e89-8d7b-ad2cd3a7f884
+[runner] mode Edit
+[runner] harness ready {'simulateVR': False, 'running': False, 'name': '', 'cam': '', 'ballState': 'ready', 'lines': 0}
+[runner] mode Edit
+Traceback (most recent call last):
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 1279, in <module>
+    main()
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 1274, in main
+    {"list": cmd_list, "run": cmd_run, "holes": cmd_holes, "shots": cmd_shots, "smoke": cmd_smoke, "export": cmd_export, "push": cmd_push, "compare": cmd_compare,
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 256, in cmd_run
+    res, clip = run_one(st, name, cam, out_dir, args.record, secs[name] + 2, rect)
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/run_playtests.py", line 217, in run_one
+    result = json.loads(st.api("result", name) or "{}")
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 99997 (char 99996)

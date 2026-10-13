@@ -2177,7 +2177,16 @@ function CourseBuilder.ApplyPhysics(course, cfg)
 			counts.surface += 1
 		elseif OBSTACLE_NAMES[d.Name] and d.CanCollide then
 			d.CollisionGroup = OBSTACLE_GROUP
-			d.CustomPhysicalProperties = d.Name == "Bumper" and bumper or wall
+            local base = d.Name == "Bumper" and bumper or wall
+            local friction = d:GetAttribute("WallFrictionOverride")
+            if friction ~= nil then
+                -- Per-wall test/data override; density and elasticity remain the existing wall values.
+                local current = d.CurrentPhysicalProperties
+                d.CustomPhysicalProperties = PhysicalProperties.new(current.Density, friction, current.Elasticity,
+                    d:GetAttribute("WallFrictionWeightOverride") or current.FrictionWeight, current.ElasticityWeight)
+            else
+                d.CustomPhysicalProperties = base
+            end
 			counts.obstacle += 1
 		elseif CollectionService:HasTag(d, MOVER_PART_TAG) then
 			d.CollisionGroup = MOVER_GROUP

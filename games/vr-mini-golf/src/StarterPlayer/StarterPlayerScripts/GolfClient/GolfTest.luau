@@ -1374,6 +1374,113 @@ local function biasedShots(n, count, seed)
 	return out
 end
 
+-- Stage al: paired, fixed-seed H15 rail friction experiment. Physics is never modified here.
+local function h15Friction()
+	assert(testCourse() == "sugarloaf_canyon", "H15 friction requires Sugarloaf")
+	refreshFelt()
+	local h, rng = hole(15), Random.new(20261013)
+	local rails, leans = {}, {}
+	for _, p in h:GetDescendants() do
+		local id = p:GetAttribute("WallId")
+		if p:IsA("BasePart") and p.CanCollide and type(id) == "string" then
+			if id == "dune_rail2" then table.insert(rails, p) end
+			if string.find(id, "dune_lean", 1, true) then table.insert(leans, p) end
+		end
+	end
+	local function order(a, b)
+		return a:GetFullName() .. tostring(a.Position) < b:GetFullName() .. tostring(b.Position)
+	end
+	table.sort(rails, order); table.sort(leans, order)
+	assert(#rails > 0 and #leans > 0, "missing H15 dune colliders")
+	local function near(p, parts)
+		for _, wall in parts do
+			local q = wall.CFrame:PointToObjectSpace(p)
+			if math.abs(q.X) <= wall.Size.X / 2 + 0.35 and math.abs(q.Z) <= wall.Size.Z / 2 + 0.35
+				and math.abs(q.Y) <= wall.Size.Y / 2 + 0.35 then return true end
+		end
+		return false
+	end
+	local manifest, rows = {}, {}
+	local tee = h.Tee.Position
+	for i = 1, 80 do
+		local group = i <= 20 and "tee" or (i <= 50 and "seam_approach" or "lean_approach")
+		local targets = group == "lean_approach" and leans or rails
+		local wall = targets[((i - 1) % #targets) + 1]
+		local longX = wall.Size.X > wall.Size.Z
+		local function wallPoint(side, along)
+			return wall.CFrame:PointToWorldSpace(longX and Vector3.new(along, 0, side) or Vector3.new(side, 0, along))
+		end
+		local along = rng:NextNumber(-0.40, 0.40) * (longX and wall.Size.X or wall.Size.Z)
+		local tangentAxis = longX and wall.CFrame.RightVector or wall.CFrame.LookVector
+		local target = wallPoint(0, along)
+		local start, speed, direction
+		if group == "tee" then
+			start = tee + Vector3.new(rng:NextNumber(-0.8, 0.8), 0, rng:NextNumber(-0.4, 0.4))
+			speed = rng:NextNumber(10, 19)
+			direction = flat(target - start).Unit
+		else
+			-- Inner side is the side facing dune centre. Raycast gives the actual sloped felt height.
+			local centre = W(15, 0, -2.2, -24)
+			local localCentre = wall.CFrame:PointToObjectSpace(centre)
+			local sign = (longX and localCentre.Z or localCentre.X) >= 0 and 1 or -1
+			start = wallPoint(sign * ((longX and wall.Size.Z or wall.Size.X) / 2 + rng:NextNumber(0.35, 1.4)), along)
+			if group == "lean_approach" then
+				local tangent = flat(tangentAxis).Unit * (i % 2 == 0 and 1 or -1)
+				direction = (tangent + flat(target - start).Unit * rng:NextNumber(0.04, 0.30)).Unit
+				speed = rng:NextNumber(1.1, 5)
+			else
+				direction = flat(target - start + tangentAxis * rng:NextNumber(-2, 2)).Unit
+				speed = rng:NextNumber(0.7, 7)
+			end
+		end
+		local hit = feltHit(start, start.Y + 8)
+		assert(hit and hit.Instance:IsDescendantOf(h), "H15 manifest start has no felt: " .. i)
+		table.insert(manifest, {shot=i, group=group, start=vec(hit.Position), direction=vec(direction), speed=round(speed, 5), wall=wall:GetAttribute("WallId")})
+	end
+	if opts().h15ManifestOnly then return {seed=20261013, manifest=manifest, railParts=#rails, leanParts=#leans} end
+	for i, m in manifest do
+		place(15, m.start[1], m.start[3], m.start[2])
+		local lowAt, lowPos, crawlPos, movingAt, movingPos, movingCrawl, wedgePos = nil, nil, nil, nil, nil, nil, nil
+		local active = false
+		local conn = RunService.PostSimulation:Connect(function()
+			local b = Ball.ball
+			if Ball.state == "moving" then active = true end
+			if not active then return end
+			local speed, t = b.AssemblyLinearVelocity.Magnitude, os.clock()
+			if speed < 1 then
+				if not lowAt then lowAt, lowPos = t, b.Position end
+				if t - lowAt > 3 and not crawlPos then crawlPos = lowPos end
+			else lowAt, lowPos = nil, nil end
+			if speed < 1 and Ball.state == "moving" then
+				if not movingAt then movingAt, movingPos = t, b.Position end
+				if t - movingAt > 3 then
+					if near(b.Position, leans) and not movingCrawl then movingCrawl = movingPos end
+					if speed < 0.05 and near(b.Position, rails) and (b.Position - movingPos).Magnitude < 0.03 then wedgePos = b.Position end
+				end
+			else movingAt, movingPos = nil, nil end
+		end)
+		local r = shootS("h15-friction-" .. i, Vector3.new(unpack(m.direction)), m.speed, {cup=h.Cup, timeout=30, watchStill=true})
+		conn:Disconnect()
+		assert(r.outcome ~= "refused", "H15 shot refused: " .. i)
+		local nativeTimeout = false
+		for _, f in r.flags or {} do
+			if (f.kind == "autoreset" or f.kind == "forcedrest") and f.reason == "timeout" then nativeTimeout = true end
+			if f.kind == "forcedrest" and f.pos and near(Vector3.new(unpack(f.pos)), rails) then wedgePos = Vector3.new(unpack(f.pos)) end
+		end
+		r.shot, r.group, r.direction = i, m.group, m.direction
+		r.crawl_location = crawlPos and vec(crawlPos) or nil
+		r.crawl_lean_location = movingCrawl and vec(movingCrawl) or nil
+		r.wedge_location = wedgePos and vec(wedgePos) or nil
+		r.stop_time_s = r.tRest or r.tStop or r.tEnd
+		r.nativeTimeout = nativeTimeout
+		r.category = r.outcome == "cup" and "sunk" or (wedgePos and "wedge_seam" or (movingCrawl and "crawl_lean" or ((r.outcome == "timeout" or nativeTimeout) and "timeout" or "rest")))
+		table.insert(rows, r)
+		event("h15-friction-row", r)
+	end
+	return {seed=20261013, manifest=manifest, shots=rows, railParts=#rails, leanParts=#leans,
+		classification="wedge: forcedrest within 0.35 stud of rail2 or moving <1 for >3s there with terminal speed <0.05 and displacement <0.03; crawl: moving <1 for >3s within 0.35 of lean; priority sunk,wedge,crawl,timeout (including native timeout reset),rest; raw outcome retained"}
+end
+
 local function holeScenario(n)
 	return function()
 		refreshFelt()
@@ -1437,6 +1544,13 @@ local SCENARIOS = {}
 local function scenario(def)
 	table.insert(SCENARIOS, def)
 end
+
+scenario({
+	name = "h15friction",
+	desc = "Stage al H15 fixed-seed 80-shot paired friction experiment",
+	seconds = 3000,
+	run = h15Friction,
+})
 
 local S = 1 -- test lane felt height
 

@@ -6,6 +6,7 @@ local Overrides = {}
 local APPROVED_VISUALS = {
  {id="h08_ground",hole=8,position={360,70,55},yaw=0},
  {id="h09_water_tank",hole=9,position={370,70,-121.65},yaw=-90},
+ {id="h14_loading_dock",hole=14,position={-300,150,-167},yaw=180},
 }
 
 local function restoreApprovedVisuals(course)
@@ -97,6 +98,11 @@ function Overrides.Apply(course)
 		end
 		report.railcapsByHole[tostring(h.number)] = count
 		if decor then
+            -- Stage al: remove obsolete prop bodies only; retain route, safe-bank and timing signs/arrows.
+            local obsolete = h.number == 14 and "ore_piles" or h.number == 9 and "pump_house" or nil
+            local oldAnchor = obsolete and decor:FindFirstChild(obsolete)
+            local oldPlaceholder = oldAnchor and oldAnchor:FindFirstChild("Placeholder")
+            if oldPlaceholder then table.insert(report.removedPlaceholders, oldPlaceholder:GetFullName()); oldPlaceholder:Destroy() end
 			local name = h.number == 14 and "loading_dock" or h.number == 9 and "water_tank" or nil
 			local anchor = name and decor:FindFirstChild(name)
 			-- Water-tank placeholder is suppressed permanently: the approved imported mesh is the visual.
@@ -105,6 +111,19 @@ function Overrides.Apply(course)
 		end
 		local geometry = hole:FindFirstChild("Geometry")
 		if not geometry then continue end
+        -- Stage al TEST setting, deliberately local-only: H15 rails including every dune_lean piece.
+        -- Store the override so CourseBuilder.ApplyPhysics cannot reset it on rebuild.
+        if h.number == 15 then
+            for _, p in geometry:GetDescendants() do
+                if p:IsA("BasePart") and p.CanCollide and p:GetAttribute("WallId") then
+                    local current = p.CurrentPhysicalProperties
+                    p:SetAttribute("WallFrictionOverride", 0.1)
+                    p:SetAttribute("WallFrictionWeightOverride", 100)
+                    p:SetAttribute("StageAlFrictionTest", true)
+                    p.CustomPhysicalProperties = PhysicalProperties.new(current.Density, 0.1, current.Elasticity, 100, current.ElasticityWeight)
+                end
+            end
+        end
 		for _, a in h.decoration_anchors or {} do
 			local boxes = {}
 			if h.number == 7 and a.name == "island_hoodoo" then
@@ -135,6 +154,7 @@ function Overrides.Apply(course)
 			end
 		end
 	end
+	report.railTops = require(ServerStorage.SugarloafRailTops:Clone()).Apply(course)
 	return report
 end
 
