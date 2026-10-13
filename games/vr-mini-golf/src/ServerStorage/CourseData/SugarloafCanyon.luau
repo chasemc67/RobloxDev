@@ -2652,14 +2652,14 @@ return {
 					speed = 4.333333333333334,
 					speed_units = "studs/s",
 					range = { -1.3, 0 },
-					phase = 0,
+					phase = -1.3,
 					blockers = {
 						{ center = { 0, 0.6, 0 }, size = { 3.6, 1.2, 0.5 }, yaw = 0 },
 					},
 					visual = "Mitre-style lock gate (one leaf, 3.6 wide, 1.2 tall, 0.5 thick) that sinks into a slot in the felt to open (offset -1.3: top 0.1 below the felt) and rises to close (offset 0). It is down while the platform waits at the bottom and up while the platform rides",
 					dwell = {
-						{ at = 0, s = 5.5 },
-						{ at = -1.3, s = 4.6 },
+						{ at = -1.3, s = 5.5 },
+						{ at = 0, s = 4.6 },
 					},
 					period_s = 10.7,
 					felt = {
@@ -4935,18 +4935,8 @@ return {
 		sha1 = "f6c6eeb1c5526faa1d6343ca099eb0723cbf0efd",
 		schemaVersion = "1.0",
 		motionOverrides = {
-			note = "Stage ae: Chase/Game Art Bot requested gate CLOSED 0-5.5, OPENING 5.5-5.8, OPEN 5.8-10.4, CLOSING 10.4-10.7. Raised offset 0 is closed; sunk -1.3 is open. Original source had the opposite phase.",
-			holes = {
-				["11"] = {
-					lock_gate = {
-						phase = 0,
-						dwell = {
-							{ at = 0, s = 5.5 },
-							{ at = -1.3, s = 4.6 },
-						},
-					},
-				},
-			},
+			note = "Stage af, Chase Oct 12 2026: holes.json is authoritative. Removed ae inversion. H11 gate sunk/open -1.3 at 0-5.5, rises 5.5-5.8, up/closed 0 at 5.8-10.4, sinks 10.4-10.7.",
+			holes = {},
 		},
 	},
 }

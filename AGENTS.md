@@ -52,3 +52,6 @@ assets/<game-name>/               Blender generator scripts (*.py) + exports (*.
 - Use kebab-case for game folder names. Record the Roblox place ID and universe ID in `games/<game>/status.md` once published.
 - Commit notes, skills and asset scripts often, with short clear messages. Never commit secrets or API keys.
 - When a workflow gets repeated or a lesson is learned, update the matching skill.
+
+## VR Mini Golf lobby controls
+- The VR Mini Golf lobby uses OUR VR controls (`VRControls`, wrist card, VR putter, sticks, and B/Y scorecard gear) under both real VR and SimulateVR. Chase decided this on Oct 12, 2026 (stages ad/ae). Desktop keeps LobbyRoam.

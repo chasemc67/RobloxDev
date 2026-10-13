@@ -102,7 +102,7 @@ def main():
     ap.add_argument("--terrain-grid", action="store_true")
     args = ap.parse_args()
     src, data = convert(SPEC)
-    # Reproducible stage-ae timing correction; preserve the supplied art spec on disk.
+    # Optional motion overrides; stage af removed the H11 inversion so holes.json governs.
     overrides_path = os.path.join(HERE, "sugarloaf_motion_overrides.json")
     overrides = json.load(open(overrides_path))
     for hole in data["holes"]:

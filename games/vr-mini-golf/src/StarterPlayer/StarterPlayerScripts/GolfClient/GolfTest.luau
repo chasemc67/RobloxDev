@@ -1145,7 +1145,9 @@ local function fuzz(n, count, seed)
 	local rng = Random.new(seed or n * 7919)
 	local sp = spec(n)
 	local res = { shots = 0, hazards = 0, escapes = 0, stuck = 0, nudges = 0, resets = 0, timeouts = 0, holed = 0, list = {} }
-	for i = 1, count do
+	-- Retry rejected placements so the requested number means completed shots.
+	for i = 1, count * 20 do
+		if res.shots >= count then break end
 		local start
 		if i % 3 == 1 then
 			local t = sp.tee.position
@@ -1165,6 +1167,7 @@ local function fuzz(n, count, seed)
 			local ang = rng:NextNumber(0, 360)
 			local v = rng:NextNumber(0.2, 1.0) * VMAX
 			local r = shootS(string.format("h%d-fuzz-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
+			if r.outcome == "refused" then continue end
 			res.shots += 1
 			res.maxMovingStillS = math.max(res.maxMovingStillS or 0, r.maxMovingStillS or 0)
 			local shotStuck = r.outcome == "timeout"

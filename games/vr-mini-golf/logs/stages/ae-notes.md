@@ -95,3 +95,8 @@ Aurora sweeps were requested only for H2; unrun sweep cells on other Aurora hole
 | sugarloaf | H11 | 3/3 | 8 / 6 | 0 | 0 | 0 | — |
 | sugarloaf | H14 | 3/3 | 8 / 6 | 0 | 0 | 0 | — |
 | sugarloaf | H17 | 3/3 | 8 / 6 | 0 | 0 | 0 | — |
+
+## Stage af follow-up: portability and H11 (Oct 12, 2026)
+- Af proved that the importer creates child RenderMesh assets even with Upload to Roblox unchecked: all 51 af mesh metadata records identify MetavrseBuilder and import-time creation timestamps. Unchecked suppresses the inventory Model, not all cloud asset creation. Therefore ae's importer portability uncertainty must not be read as a guarantee of zero asset uploads.
+- Af MeshId/MeshContent inspection shows URI-backed render geometry. Copying the local file does not embed that geometry or grant a second account permission. Cheapest next test: open the copied file on the PC as Builder; Plumber access remains unverified and may need explicit collaborator grants. No PC transfer, account/permission change, or extra upload was performed. Full report and official sources: [af portability report](af-portability.md).
+- Af measured ae's H11 gate at ~0, -1.3, -1.3 for phases 2, 8, 10.3, then removed the inverted override to follow holes.json. Rebuilt gate measurements are ~-1.3, 0, 0; the lift/deck schedule was retained. See `playtests/stage-af/h11-before.json`, `h11-after.json`, and `h11-rebuild.json`.

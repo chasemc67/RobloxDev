@@ -1,20 +1,4 @@
 {
-  "note": "Stage ae: Chase/Game Art Bot requested gate CLOSED 0-5.5, OPENING 5.5-5.8, OPEN 5.8-10.4, CLOSING 10.4-10.7. Raised offset 0 is closed; sunk -1.3 is open. Original source had the opposite phase.",
-  "holes": {
-    "11": {
-      "lock_gate": {
-        "phase": 0,
-        "dwell": [
-          {
-            "at": 0,
-            "s": 5.5
-          },
-          {
-            "at": -1.3,
-            "s": 4.6
-          }
-        ]
-      }
-    }
-  }
+  "note": "Stage af, Chase Oct 12 2026: holes.json is authoritative. Removed ae inversion. H11 gate sunk/open -1.3 at 0-5.5, rises 5.5-5.8, up/closed 0 at 5.8-10.4, sinks 10.4-10.7.",
+  "holes": {}
 }

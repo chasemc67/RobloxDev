@@ -119,3 +119,9 @@ For all three: give one focused task per run, say whether changes are allowed (`
 - **Binary missing after a Studio update**: `ls /Applications/RobloxStudio.app/Contents/MacOS/` and run `StudioMCP --help`.
 - **`codex exec` hangs with 0 CPU** (seen 2026-10-12 with Homebrew `/opt/homebrew/bin/codex` 0.153.4, even `--version`): use the CLI bundled with the ChatGPT app, `/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex` (0.160.1 worked).
 - **Logs**: `~/Library/Logs/Roblox/`. To see the processes: `ps aux | grep -i -E 'RobloxStudio|StudioMCP'`.
+
+## Local import is not an offline asset guarantee (stage af)
+- In Studio 0.742, importing FBX with **Upload to Roblox unchecked** still created child RenderMesh assets owned by the signed-in creator. The checkbox controls the inventory Model, not necessarily mesh uploads. Stage af verified all 51 child MeshIds through read-only asset metadata.
+- For future strict **zero cloud asset creation** tasks, explain this before importing; do not promise that unchecked means offline. Local `.rbxl` MeshId/MeshContent URI references do not embed their render geometry or grant a different account access. See `games/vr-mini-golf/logs/stages/af-portability.md`.
+
+- VR Mini Golf per-hole tests must pass an explicit `GolfTestOpts.course` (for example `sugarloaf_canyon`) even when only that course is in the place: the spec remote otherwise defaults to Lantern Grove. Require completed-shot counts, not placement-attempt counts, in fuzz and slow-roller evidence.

@@ -1,0 +1,42 @@
+{
+  "hole": 15,
+  "failed_shots": [
+    "h15-fuzz-1",
+    "h15-fuzz-4",
+    "h15-fuzz-8"
+  ],
+  "reason": "seam nudges followed by forcedrest/wedged",
+  "positions": [
+    [
+      -309.6015,
+      146.6875,
+      -5083.3843
+    ],
+    [
+      -311.2796,
+      146.6876,
+      -5086.9839
+    ],
+    [
+      -315.5236,
+      146.6857,
+      -5096.084
+    ]
+  ],
+  "nearby_exact_collision": [
+    "Geometry.Felt PieceId=dune",
+    "Geometry.Wall WallId=dune_rail2"
+  ],
+  "felt_obb_distance": [
+    0.0791558,
+    0.0792236,
+    0.0773746
+  ],
+  "rail_obb_distance": [
+    0.0795787,
+    0.079971,
+    0.0794976
+  ],
+  "first_shot_also_near": "green_s_rail (0.1375061 studs)",
+  "interpretation": "All three positions touch the dune felt / dune_rail2 boundary at approximately the 0.08-stud ball radius. New visual props are nonphysical. Geometry intentionally left unchanged as requested."
+}
