@@ -1211,7 +1211,9 @@ local function slowRollers(n, count, seed)
 		res.skipped = "no movers"
 		return res
 	end
-	for i = 1, count do
+	-- Count completed putts, not sampled spots: sparse mover felt can reject a placement.
+	for i = 1, count * 10 do
+		if res.shots >= count then break end
 		local start, target
 		for _ = 1, 80 do
 			local f = sp.felt[rng:NextInteger(1, #sp.felt)]
@@ -1238,6 +1240,7 @@ local function slowRollers(n, count, seed)
 			local ang = math.deg(math.atan2(target.Z - start[2], target.X - start[1])) + rng:NextNumber(-25, 25)
 			local v = rng:NextNumber(1.5, 5)
 			local r = shootS(string.format("h%d-slow-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
+			if r.outcome == "refused" then continue end
 			res.shots += 1
 			res.maxMovingStillS = math.max(res.maxMovingStillS or 0, r.maxMovingStillS or 0)
 			local shotStuck = r.outcome == "timeout"
@@ -1316,6 +1319,34 @@ local function cupDrop(n)
 	return res
 end
 
+-- Stage ae: measure the final settling interval, from last speed > StopSpeed to rest.
+local function troughStops(n)
+ local results = {}
+ for j, z in { -15.875, -24, -32.125 } do
+  for k = 1, 4 do
+   local side = k % 2 == 0 and 1 or -1
+   local x = k <= 2 and -1.5 or 1.5
+   placeL(n, x, z + side * 0.9, 0)
+   local lastFast, restAt = nil, nil
+   local conn = RunService.PostSimulation:Connect(function()
+    if Ball.state == "moving" and Ball.ball.AssemblyLinearVelocity.Magnitude > Config.StopSpeed then
+     lastFast = os.clock()
+    elseif lastFast and Ball.state == "ready" and not restAt then
+     restAt = os.clock()
+    end
+   end)
+   local r = shootS(string.format("h8-floor-%d-%d", j, k), WD(n, 0, -side), 1.0 + 0.15 * k,
+    {cup=hole(n).Cup, timeout=26})
+   conn:Disconnect()
+   r.trough = j
+   r.stopInterval = restAt and lastFast and round(restAt-lastFast, 4) or nil
+   r.over15 = r.stopInterval and r.stopInterval > 1.5 or false
+   table.insert(results, r)
+  end
+ end
+ return results
+end
+
 local function holeScenario(n)
 	return function()
 		refreshFelt()
@@ -1352,6 +1383,7 @@ local function holeScenario(n)
 		if string.find(parts, "cupdrop") then
 			out.cupdrop = cupDrop(n)
 		end
+		if string.find(parts, "floorstop") then out.floorstop = troughStops(n) end
 		out.issues = table.clone(issues)
 		out.escapes, out.stuck = 0, 0
 		for _, it in issues do

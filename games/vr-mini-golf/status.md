@@ -260,3 +260,7 @@ Saved and reopened the exact Lantern Grove description in Studio Basic Info. Ico
 - **See-through:** the camera fade now runs from the VR head too. The ball (and the VR putter head) get an always-on-top outline when something hides them.
 - **H9:** pendulum ±11°, block rate 19/48 (39.6%), 0 traps.
 - **Tests:** camprobe 0 bad, 90-shot sweep clean, smoke desktop/phone/VR sim PASS. Report: `logs/stages/e-report.md` (Stage p).
+
+## Stage ae — 2026-10-12, local only
+PASS: Aurora H2 cup clearance 2.25, 54/54 Aurora cupdrops; Sugarloaf batch 1+2 visuals and exact H8 floors, 33/33 affected-hole cupdrops, 88 random + 30 slow shots, zero escapes/unrecovered stuck balls. H8 settling median 0.518 s over 12 shots; no >1.5 s flags. H11 phase corrected through generator overrides and measured near 0/5.5/5.8/10.4/10.7 s. Two successful pinned recoveries (H6/H9).
+Local files: playtest-aurora-v2.rbxl; playtest/playtest-sc-batch12.rbxl. Studio closed. No cloud edits/publishing, no git push. Lobby keeps our VR controls under VR/SimulateVR. See logs/stages/ae-notes.md and playtests/stage-ae/result.json for evidence and retained limits.

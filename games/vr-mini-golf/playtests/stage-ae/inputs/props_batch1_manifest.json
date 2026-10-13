@@ -1,0 +1,860 @@
+{
+ "name": "Sugarloaf Canyon final props, batch 1 (timing meshes + flag)",
+ "generated": "2026-10-12",
+ "source": "holes.json (only H8 changed after this batch was built; batch-1 holes identical) + props.md + silhouettes/sheet04",
+ "fbx_export": "Blender 5.2.2, unit NONE, axis_forward -Z, axis_up Y, scale 1 (FBX_SCALE_UNITS). Root empty <part> at the pivot; one MeshPart per material <part>__<Material>.",
+ "import_settings": "Import 3D at scale 1 (Stud), keep hierarchy. Anchored; CanCollide/CanQuery/CanTouch OFF (visual only). Gameplay collision stays the holes.json blockers (existing *_collision FBX / parts).",
+ "placement": "model:PivotTo(CFrame.new(world_pivot) * CFrame.Angles(0, math.rad(hole world_yaw), 0)); then animate about the pivot per holes.json motion (the pivot is the mesh origin).",
+ "fitcheck": "fitcheck_props_batch1.txt (ALL PASS)",
+ "previews": "previews/props_batch1/<part>_{34,eye,front}.png",
+ "parts": [
+  {
+   "id": "h06_sluice_gate",
+   "fbx": "fbx/h06_sluice_gate.fbx",
+   "tris": 296,
+   "max_mesh_tris": 96,
+   "meshes": [
+    {
+     "mesh": "h06_sluice_gate__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 96
+    },
+    {
+     "mesh": "h06_sluice_gate__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 84
+    },
+    {
+     "mesh": "h06_sluice_gate__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 96
+    },
+    {
+     "mesh": "h06_sluice_gate__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 20
+    }
+   ],
+   "hole": "h06",
+   "pivot_local": [
+    0,
+    0.0,
+    -28.0
+   ],
+   "motion": "slide x, range [-7,0], see holes.json h06.sluice_gate",
+   "world_pivot": [
+    280.0,
+    26.0,
+    227.0
+   ],
+   "hole_world": {
+    "offset": [
+     280.0,
+     26.0,
+     255.0
+    ],
+    "yaw": 0.0
+   },
+   "motion_holes_json": {
+    "id": "sluice_gate",
+    "type": "slide",
+    "pivot": [
+     0,
+     0.0,
+     -28.0
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "speed": 3.0,
+    "speed_units": "studs/s",
+    "range": [
+     -7.0,
+     0.0
+    ],
+    "phase": 0.0,
+    "dwell": [
+     {
+      "at": 0.0,
+      "s": 1.2
+     },
+     {
+      "at": -7.0,
+      "s": 2.0
+     }
+    ],
+    "period_s": 7.8667
+   }
+  },
+  {
+   "id": "h09_windpump_rotor",
+   "fbx": "fbx/h09_windpump_rotor.fbx",
+   "tris": 1148,
+   "max_mesh_tris": 544,
+   "meshes": [
+    {
+     "mesh": "h09_windpump_rotor__Bubblegum",
+     "material": "Bubblegum",
+     "color": "#F78FB3",
+     "roblox_material": "SmoothPlastic",
+     "tris": 400
+    },
+    {
+     "mesh": "h09_windpump_rotor__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 60
+    },
+    {
+     "mesh": "h09_windpump_rotor__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 144
+    },
+    {
+     "mesh": "h09_windpump_rotor__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 544
+    }
+   ],
+   "hole": "h09",
+   "pivot_local": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "motion": "rotate about +z at 20 deg/s, continuous (18 s period)",
+   "world_pivot": [
+    347.75,
+    74.12,
+    -110.0
+   ],
+   "hole_world": {
+    "offset": [
+     330.0,
+     70.0,
+     -110.0
+    ],
+    "yaw": -90.0
+   },
+   "motion_holes_json": {
+    "id": "windpump",
+    "type": "rotate",
+    "pivot": [
+     0,
+     4.12,
+     -17.75
+    ],
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "speed": 20.0,
+    "speed_units": "deg/s",
+    "range": null,
+    "phase": 0.0
+   }
+  },
+  {
+   "id": "h11_lock_gate",
+   "fbx": "fbx/h11_lock_gate.fbx",
+   "tris": 228,
+   "max_mesh_tris": 72,
+   "meshes": [
+    {
+     "mesh": "h11_lock_gate__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 72
+    },
+    {
+     "mesh": "h11_lock_gate__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 72
+    },
+    {
+     "mesh": "h11_lock_gate__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 72
+    },
+    {
+     "mesh": "h11_lock_gate__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 12
+    }
+   ],
+   "hole": "h11",
+   "pivot_local": [
+    0,
+    0.0,
+    -21.25
+   ],
+   "motion": "slide y, range [-1.3,0] (single flat leaf per Game Art Bot)",
+   "world_pivot": [
+    150.0,
+    116.0,
+    -273.25
+   ],
+   "hole_world": {
+    "offset": [
+     150.0,
+     116.0,
+     -252.0
+    ],
+    "yaw": 0.0
+   },
+   "motion_holes_json": {
+    "id": "lock_gate",
+    "type": "slide",
+    "pivot": [
+     0,
+     0.0,
+     -21.25
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "speed": 4.333333333333334,
+    "speed_units": "studs/s",
+    "range": [
+     -1.3,
+     0.0
+    ],
+    "phase": -1.3,
+    "dwell": [
+     {
+      "at": -1.3,
+      "s": 5.5
+     },
+     {
+      "at": 0.0,
+      "s": 4.6
+     }
+    ],
+    "period_s": 10.7
+   }
+  },
+  {
+   "id": "h14_ore_bucket",
+   "fbx": "fbx/h14_ore_bucket.fbx",
+   "tris": 196,
+   "max_mesh_tris": 76,
+   "meshes": [
+    {
+     "mesh": "h14_ore_bucket__Brass",
+     "material": "Brass",
+     "color": "#FFD36B",
+     "roblox_material": "Metal",
+     "tris": 44
+    },
+    {
+     "mesh": "h14_ore_bucket__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 52
+    },
+    {
+     "mesh": "h14_ore_bucket__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 12
+    },
+    {
+     "mesh": "h14_ore_bucket__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 12
+    },
+    {
+     "mesh": "h14_ore_bucket__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 76
+    }
+   ],
+   "hole": "h14",
+   "pivot_local": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "motion": "swing about +z, amplitude 9 deg, period 4 s, sinusoidal",
+   "world_pivot": [
+    -300.0,
+    160.35,
+    -176.0
+   ],
+   "hole_world": {
+    "offset": [
+     -300.0,
+     150.0,
+     -200.0
+    ],
+    "yaw": 180.0
+   },
+   "motion_holes_json": {
+    "id": "ore_bucket",
+    "type": "swing",
+    "pivot": [
+     0.0,
+     10.35,
+     -24.0
+    ],
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "amplitude_deg": 9.0,
+    "period_s": 4.0,
+    "phase": 0.0,
+    "speed": 14.1372,
+    "speed_units": "deg/s (peak, at the bottom of the swing)",
+    "range": [
+     -9.0,
+     9.0
+    ]
+   }
+  },
+  {
+   "id": "h17_shadow_arms",
+   "fbx": "fbx/h17_shadow_arms.fbx",
+   "tris": 128,
+   "max_mesh_tris": 80,
+   "meshes": [
+    {
+     "mesh": "h17_shadow_arms__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 48
+    },
+    {
+     "mesh": "h17_shadow_arms__Slate",
+     "material": "Slate",
+     "color": "#5E5A66",
+     "roblox_material": "Slate",
+     "tris": 80
+    }
+   ],
+   "hole": "h17",
+   "pivot_local": [
+    0.0,
+    0.0,
+    -36.0
+   ],
+   "motion": "rotate about +y at 12 deg/s, continuous",
+   "world_pivot": [
+    -345.0,
+    190.0,
+    196.0
+   ],
+   "hole_world": {
+    "offset": [
+     -345.0,
+     190.0,
+     232.0
+    ],
+    "yaw": 0.0
+   },
+   "motion_holes_json": {
+    "id": "shadow_arm",
+    "type": "rotate",
+    "pivot": [
+     0.0,
+     0.0,
+     -36.0
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "speed": 12.0,
+    "speed_units": "deg/s",
+    "range": null,
+    "phase": 0.0
+   }
+  },
+  {
+   "id": "flag",
+   "fbx": "fbx/flag.fbx",
+   "tris": 48,
+   "max_mesh_tris": 36,
+   "meshes": [
+    {
+     "mesh": "flag__FlagRed",
+     "material": "FlagRed",
+     "color": "#E03C31",
+     "roblox_material": "Fabric",
+     "tris": 12
+    },
+    {
+     "mesh": "flag__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 36
+    }
+   ],
+   "hole": "all",
+   "pivot_local": "cup.flag base (cup position)",
+   "motion": "static, visual only, no collision",
+   "instances": [
+    {
+     "hole": "h01",
+     "world_pos": [
+      66.0,
+      18.0,
+      439.5
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h02",
+     "world_pos": [
+      89.0,
+      18.0,
+      364.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h03",
+     "world_pos": [
+      -39.5,
+      18.0,
+      331.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "hole": "h04",
+     "world_pos": [
+      239.0,
+      18.0,
+      334.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "hole": "h05",
+     "world_pos": [
+      279.5,
+      22.0,
+      284.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h06",
+     "world_pos": [
+      276.0,
+      26.0,
+      210.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h07",
+     "world_pos": [
+      343.0,
+      70.0,
+      90.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h08",
+     "world_pos": [
+      365.0,
+      70.0,
+      0.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h09",
+     "world_pos": [
+      372.0,
+      70.0,
+      -111.5
+     ],
+     "yaw": -90.0
+    },
+    {
+     "hole": "h10",
+     "world_pos": [
+      283.0,
+      112.4,
+      -266.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "hole": "h11",
+     "world_pos": [
+      150.0,
+      120.0,
+      -295.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h12",
+     "world_pos": [
+      -142.0,
+      116.0,
+      -268.0
+     ],
+     "yaw": -90.0
+    },
+    {
+     "hole": "h13",
+     "world_pos": [
+      -300.5,
+      150.0,
+      -239.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "hole": "h14",
+     "world_pos": [
+      -301.0,
+      150.8,
+      -156.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "hole": "h15",
+     "world_pos": [
+      -306.0,
+      145.4,
+      -58.0
+     ],
+     "yaw": 180.0
+    },
+    {
+     "hole": "h16",
+     "world_pos": [
+      -301.8,
+      186.4,
+      150.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "hole": "h17",
+     "world_pos": [
+      -334.9,
+      190.0,
+      189.0
+     ],
+     "yaw": 0.0
+    },
+    {
+     "hole": "h18",
+     "world_pos": [
+      -412.0,
+      190.8,
+      172.0
+     ],
+     "yaw": 0.0
+    }
+   ]
+  }
+ ],
+ "totals": {
+  "parts": 6,
+  "tris": 2044,
+  "max_mesh_tris": 544
+ },
+ "notes": [
+  "H11 lock gate = single flat leaf 3.6x1.2x0.5 (Game Art Bot); top flush y 1.2 = gate_top felt.",
+  "H9: visual vanes follow props.md envelope (2.4 wide, r .6..4.1, circular tip). holes.json collider uses 12 strips 0.2 wide per vane, props.md lists 6 strips 0.4 wide: same envelope, collision from holes.json. Visual tip r 4.1 overhangs collider strip corners (r~4.06) by design; tip clears felt 0.02.",
+  "H14: tapered bucket inside the 2.1x2x1.8 collider; skid plate follows the holes.json curved foot strips (props.md lists a single 2.1x0.4x0.15 foot) and never sits below them. Hanger rod and bail above y -8 have no collider.",
+  "H11 timing: props.md says speed 2.0 with dwells 2.3/7.0 s; holes.json says speed 4.333, dwells 5.5/4.6, period 10.7. Manifest motion copies holes.json."
+ ],
+ "revision": "rev1 2026-10-12: H9 hub plate + bubblegum swirl vanes (3248 tris); H14 stronger taper, peppermint band, brass rivets, ore lumps (712 tris). rev0 backup _src/props_batch1/_backup_rev0_20261012/",
+ "build_report_rev1": {
+  "parts": [
+   {
+    "id": "h06_sluice_gate",
+    "fbx": "fbx/h06_sluice_gate.fbx",
+    "tris": 296,
+    "max_mesh_tris": 96,
+    "meshes": [
+     {
+      "mesh": "h06_sluice_gate__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 96
+     },
+     {
+      "mesh": "h06_sluice_gate__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 84
+     },
+     {
+      "mesh": "h06_sluice_gate__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 96
+     },
+     {
+      "mesh": "h06_sluice_gate__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 20
+     }
+    ],
+    "hole": "h06",
+    "pivot_local": [
+     0,
+     0.0,
+     -28.0
+    ],
+    "motion": "slide x, range [-7,0], see holes.json h06.sluice_gate"
+   },
+   {
+    "id": "h09_windpump_rotor",
+    "fbx": "fbx/h09_windpump_rotor.fbx",
+    "tris": 3248,
+    "max_mesh_tris": 1696,
+    "meshes": [
+     {
+      "mesh": "h09_windpump_rotor__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 44
+     },
+     {
+      "mesh": "h09_windpump_rotor__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 1496
+     },
+     {
+      "mesh": "h09_windpump_rotor__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 12
+     },
+     {
+      "mesh": "h09_windpump_rotor__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 1696
+     }
+    ],
+    "hole": "h09",
+    "pivot_local": [
+     0,
+     4.12,
+     -17.75
+    ],
+    "motion": "rotate about +z at 20 deg/s, continuous (18 s period)"
+   },
+   {
+    "id": "h11_lock_gate",
+    "fbx": "fbx/h11_lock_gate.fbx",
+    "tris": 228,
+    "max_mesh_tris": 72,
+    "meshes": [
+     {
+      "mesh": "h11_lock_gate__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 72
+     },
+     {
+      "mesh": "h11_lock_gate__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 72
+     },
+     {
+      "mesh": "h11_lock_gate__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 72
+     },
+     {
+      "mesh": "h11_lock_gate__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 12
+     }
+    ],
+    "hole": "h11",
+    "pivot_local": [
+     0,
+     0.0,
+     -21.25
+    ],
+    "motion": "slide y, range [-1.3,0] (single flat leaf per Game Art Bot)"
+   },
+   {
+    "id": "h14_ore_bucket",
+    "fbx": "fbx/h14_ore_bucket.fbx",
+    "tris": 712,
+    "max_mesh_tris": 284,
+    "meshes": [
+     {
+      "mesh": "h14_ore_bucket__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 284
+     },
+     {
+      "mesh": "h14_ore_bucket__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 52
+     },
+     {
+      "mesh": "h14_ore_bucket__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 132
+     },
+     {
+      "mesh": "h14_ore_bucket__OreAmber",
+      "material": "OreAmber",
+      "color": "#FFB347",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "h14_ore_bucket__OrePink",
+      "material": "OrePink",
+      "color": "#FF6FA8",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "h14_ore_bucket__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 132
+     },
+     {
+      "mesh": "h14_ore_bucket__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 64
+     }
+    ],
+    "hole": "h14",
+    "pivot_local": [
+     0.0,
+     10.35,
+     -24.0
+    ],
+    "motion": "swing about +z, amplitude 9 deg, period 4 s, sinusoidal"
+   },
+   {
+    "id": "h17_shadow_arms",
+    "fbx": "fbx/h17_shadow_arms.fbx",
+    "tris": 128,
+    "max_mesh_tris": 80,
+    "meshes": [
+     {
+      "mesh": "h17_shadow_arms__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 48
+     },
+     {
+      "mesh": "h17_shadow_arms__Slate",
+      "material": "Slate",
+      "color": "#5E5A66",
+      "roblox_material": "Slate",
+      "tris": 80
+     }
+    ],
+    "hole": "h17",
+    "pivot_local": [
+     0.0,
+     0.0,
+     -36.0
+    ],
+    "motion": "rotate about +y at 12 deg/s, continuous"
+   },
+   {
+    "id": "flag",
+    "fbx": "fbx/flag.fbx",
+    "tris": 48,
+    "max_mesh_tris": 36,
+    "meshes": [
+     {
+      "mesh": "flag__FlagRed",
+      "material": "FlagRed",
+      "color": "#E03C31",
+      "roblox_material": "Fabric",
+      "tris": 12
+     },
+     {
+      "mesh": "flag__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 36
+     }
+    ],
+    "hole": "all",
+    "pivot_local": "cup.flag base (cup position)",
+    "motion": "static, visual only, no collision"
+   }
+  ]
+ }
+}

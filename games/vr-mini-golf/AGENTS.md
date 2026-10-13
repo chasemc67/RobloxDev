@@ -94,3 +94,6 @@ Sink checks, stuck-ball sweeps, difficulty bands against the simulator, the VR v
 - `.rbxl`/`.rbxlx`, `logs/`, the reference videos and the concept PNGs are gitignored.
 - As of Oct 12 2026, git tracks only 5 FBX files. About 680 FBX, 38 `.blend` and about 1,900 PNG/JPG files under `assets/vr-mini-golf/` are untracked, about 2.1 GB, and they exist only on the Mini and the box.
 - Git LFS isn't installed on the Mini. Setting up LFS needs Chase's decision on a GitHub LFS data plan. Until then, don't `git add` asset binaries in bulk.
+
+## Default VR controls (Chase confirmed, stage ae)
+- The lobby keeps our VR controls under real VR and SimulateVR, following stage ad. Desktop keeps LobbyRoam.

@@ -1,0 +1,1517 @@
+{
+ "result": "PASS",
+ "output": "/private/tmp/stage_ae_props.fbx",
+ "size_bytes": 1290364,
+ "size_mb": 1.231,
+ "source_files": 13,
+ "top_level_empties": 13,
+ "top_level_non_empty": [],
+ "mesh_objects": 51,
+ "total_tris": 11490,
+ "max_mesh": {
+  "name": "h08_ground__ClayBrick",
+  "tris": 2280
+ },
+ "any_mesh_over_20000_tris": false,
+ "object_names_with_numeric_suffix": [],
+ "materials": 51,
+ "images": [
+  "clay_brick.png.001",
+  "red_dirt.png.001",
+  "red_dirt_light.png.001",
+  "strata.png.001"
+ ],
+ "problems": [],
+ "export_settings": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1,
+  "path_mode": "COPY",
+  "embed_textures": true,
+  "add_leaf_bones": false,
+  "bake_anim": false
+ },
+ "files": {
+  "flag": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "flag__FlagRed",
+     "tris": 12,
+     "bbox_min": [
+      0.075,
+      -0.024999,
+      6.3
+     ],
+     "bbox_max": [
+      2.075,
+      0.025001,
+      7.5
+     ],
+     "material": [
+      "FlagRed"
+     ],
+     "image": null,
+     "bbox_max_err": 8.940696716308594e-07,
+     "merged_material": [
+      "FlagRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "flag__MintWhite",
+     "tris": 36,
+     "bbox_min": [
+      -0.075,
+      -0.071329,
+      -0.0
+     ],
+     "bbox_max": [
+      0.075,
+      0.07133,
+      7.5
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 8.940696716308594e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 48,
+   "pass": true
+  },
+  "h01_trailhead_arch": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h01_trailhead_arch__Bubblegum",
+     "tris": 120,
+     "bbox_min": [
+      -4.05,
+      -0.599999,
+      8.8
+     ],
+     "bbox_max": [
+      4.05,
+      -0.579998,
+      9.7
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1324882507324219e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h01_trailhead_arch__MintWhite",
+     "tris": 60,
+     "bbox_min": [
+      -4.7,
+      -0.6,
+      2.0
+     ],
+     "bbox_max": [
+      4.7,
+      0.300002,
+      9.8
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1622905731201172e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h01_trailhead_arch__PepRed",
+     "tris": 48,
+     "bbox_min": [
+      -4.7,
+      -0.3,
+      -0.0
+     ],
+     "bbox_max": [
+      4.7,
+      0.300001,
+      6.0
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 7.152557373046875e-07,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h01_trailhead_arch__Timber",
+     "tris": 48,
+     "bbox_min": [
+      -4.75,
+      -0.579999,
+      8.0
+     ],
+     "bbox_max": [
+      4.75,
+      0.580002,
+      10.0
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-06,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 276,
+   "pass": true
+  },
+  "h02_headframe": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h02_headframe__Iron",
+     "tris": 164,
+     "bbox_min": [
+      -1.5,
+      -0.229998,
+      13.0
+     ],
+     "bbox_max": [
+      1.5,
+      0.150003,
+      16.0
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h02_headframe__MintWhite",
+     "tris": 96,
+     "bbox_min": [
+      -3.9,
+      -2.65798,
+      0.31852
+     ],
+     "bbox_max": [
+      3.7,
+      2.657981,
+      8.08148
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h02_headframe__PepRed",
+     "tris": 92,
+     "bbox_min": [
+      -3.99799,
+      -2.793719,
+      8.65677
+     ],
+     "bbox_max": [
+      3.79978,
+      2.793722,
+      14.85
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h02_headframe__Timber",
+     "tris": 120,
+     "bbox_min": [
+      -4.0,
+      -2.8,
+      -0.0
+     ],
+     "bbox_max": [
+      3.8,
+      2.832072,
+      13.775
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.6689300537109375e-06,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 472,
+   "pass": true
+  },
+  "h03_ranger_station": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h03_ranger_station__MintWhite",
+     "tris": 60,
+     "bbox_min": [
+      -4.76,
+      -4.759999,
+      7.999999
+     ],
+     "bbox_max": [
+      4.76,
+      4.760003,
+      13.400001
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 1.430511474609375e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h03_ranger_station__PepRed",
+     "tris": 26,
+     "bbox_min": [
+      -5.0,
+      -4.999999,
+      7.999999
+     ],
+     "bbox_max": [
+      5.0,
+      5.000003,
+      18.0
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 2.384185791015625e-06,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h03_ranger_station__Timber",
+     "tris": 252,
+     "bbox_min": [
+      -4.8,
+      -4.8,
+      -1e-06
+     ],
+     "bbox_max": [
+      4.8,
+      4.800003,
+      16.9
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h03_ranger_station__Window",
+     "tris": 60,
+     "bbox_min": [
+      -2.6,
+      -3.039998,
+      10.099999
+     ],
+     "bbox_max": [
+      2.6,
+      3.040003,
+      17.4
+     ],
+     "material": [
+      "Window"
+     ],
+     "image": null,
+     "bbox_max_err": 2.1457672119140625e-06,
+     "merged_material": [
+      "Window"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 398,
+   "pass": true
+  },
+  "h04_geode_wall": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h04_geode_wall__CreamTaffy",
+     "tris": 36,
+     "bbox_min": [
+      0.4,
+      -9.0,
+      -1e-06
+     ],
+     "bbox_max": [
+      0.9,
+      9.000002,
+      13.900002
+     ],
+     "material": [
+      "CreamTaffy"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "CreamTaffy"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h04_geode_wall__CrystalGlow",
+     "tris": 188,
+     "bbox_min": [
+      1.0,
+      -2.579999,
+      3.16
+     ],
+     "bbox_max": [
+      1.395,
+      2.580002,
+      10.04
+     ],
+     "material": [
+      "CrystalGlow"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-06,
+     "merged_material": [
+      "CrystalGlow"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h04_geode_wall__GeodeRim",
+     "tris": 76,
+     "bbox_min": [
+      0.9,
+      -3.0,
+      2.599999
+     ],
+     "bbox_max": [
+      1.0,
+      3.000002,
+      10.600001
+     ],
+     "material": [
+      "GeodeRim"
+     ],
+     "image": null,
+     "bbox_max_err": 1.430511474609375e-06,
+     "merged_material": [
+      "GeodeRim"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h04_geode_wall__Watermelon",
+     "tris": 36,
+     "bbox_min": [
+      -1.5,
+      -9.0,
+      -1e-06
+     ],
+     "bbox_max": [
+      0.4,
+      9.000002,
+      13.900002
+     ],
+     "material": [
+      "Watermelon"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "Watermelon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 336,
+   "pass": true
+  },
+  "h05_echo_walls": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h05_echo_walls__CreamTaffy",
+     "tris": 264,
+     "bbox_min": [
+      -7.85,
+      -23.0,
+      3.999998
+     ],
+     "bbox_max": [
+      6.85,
+      15.350007,
+      43.000004
+     ],
+     "material": [
+      "CreamTaffy"
+     ],
+     "image": null,
+     "bbox_max_err": 5.7220458984375e-06,
+     "merged_material": [
+      "CreamTaffy"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h05_echo_walls__Watermelon",
+     "tris": 308,
+     "bbox_min": [
+      -7.85,
+      -23.0,
+      -3e-06
+     ],
+     "bbox_max": [
+      6.85,
+      15.350008,
+      44.000004
+     ],
+     "material": [
+      "Watermelon"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-06,
+     "merged_material": [
+      "Watermelon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 572,
+   "pass": true
+  },
+  "h06_bell_tower": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h06_bell_tower__Brass",
+     "tris": 96,
+     "bbox_min": [
+      -0.75,
+      -0.439999,
+      5.0
+     ],
+     "bbox_max": [
+      0.75,
+      1.060001,
+      6.7
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_bell_tower__Iron",
+     "tris": 12,
+     "bbox_min": [
+      -0.075,
+      0.235001,
+      6.7
+     ],
+     "bbox_max": [
+      0.075,
+      0.385001,
+      7.0
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_bell_tower__MintWhite",
+     "tris": 24,
+     "bbox_min": [
+      -1.375,
+      -0.79288,
+      0.35913
+     ],
+     "bbox_max": [
+      1.375,
+      1.412881,
+      3.64087
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_bell_tower__PepRed",
+     "tris": 6,
+     "bbox_min": [
+      -1.5,
+      -0.879999,
+      7.199999
+     ],
+     "bbox_max": [
+      1.5,
+      1.500001,
+      9.0
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 1.0728836059570312e-06,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_bell_tower__Timber",
+     "tris": 72,
+     "bbox_min": [
+      -1.5,
+      -0.88,
+      -0.0
+     ],
+     "bbox_max": [
+      1.5,
+      1.500001,
+      7.2
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 210,
+   "pass": true
+  },
+  "h06_sluice_gate": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h06_sluice_gate__Iron",
+     "tris": 96,
+     "bbox_min": [
+      -2.49,
+      -0.3,
+      -0.0
+     ],
+     "bbox_max": [
+      2.49,
+      0.3,
+      0.9
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_sluice_gate__MintWhite",
+     "tris": 84,
+     "bbox_min": [
+      -3.2,
+      -0.3,
+      0.9
+     ],
+     "bbox_max": [
+      3.2,
+      0.3,
+      1.0
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_sluice_gate__PepRed",
+     "tris": 96,
+     "bbox_min": [
+      -3.5,
+      -0.3,
+      0.9
+     ],
+     "bbox_max": [
+      3.5,
+      0.3,
+      1.0
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h06_sluice_gate__Timber",
+     "tris": 20,
+     "bbox_min": [
+      -3.48,
+      -0.28,
+      -0.0
+     ],
+     "bbox_max": [
+      3.48,
+      0.28,
+      0.9
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 296,
+   "pass": true
+  },
+  "h08_ground": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h08_ground__ClayBrick",
+     "tris": 2280,
+     "bbox_min": [
+      -10.400001,
+      -3.4,
+      -0.08001
+     ],
+     "bbox_max": [
+      10.400001,
+      59.399998,
+      0.370001
+     ],
+     "material": [
+      "ClayBrick"
+     ],
+     "image": "clay_brick.png",
+     "bbox_max_err": 7.078051567077637e-06,
+     "merged_material": [
+      "ClayBrick"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__Pebble",
+     "tris": 752,
+     "bbox_min": [
+      -35.456963,
+      -18.203693,
+      -0.297113
+     ],
+     "bbox_max": [
+      28.584787,
+      81.179192,
+      0.671503
+     ],
+     "material": [
+      "Pebble"
+     ],
+     "image": null,
+     "bbox_max_err": 9.655952453613281e-06,
+     "merged_material": [
+      "Pebble"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__RedDirt",
+     "tris": 430,
+     "bbox_min": [
+      -33.376999,
+      -23.0,
+      -0.283014
+     ],
+     "bbox_max": [
+      39.422001,
+      85.587997,
+      0.649004
+     ],
+     "material": [
+      "RedDirt"
+     ],
+     "image": "red_dirt.png",
+     "bbox_max_err": 1.0192394256591797e-05,
+     "merged_material": [
+      "RedDirt"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__RedDirtLight",
+     "tris": 640,
+     "bbox_min": [
+      -36.398998,
+      -13.983,
+      -0.244013
+     ],
+     "bbox_max": [
+      33.476002,
+      82.139999,
+      0.623002
+     ],
+     "material": [
+      "RedDirtLight"
+     ],
+     "image": "red_dirt_light.png",
+     "bbox_max_err": 9.79006290435791e-06,
+     "merged_material": [
+      "RedDirtLight"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__Strata",
+     "tris": 464,
+     "bbox_min": [
+      -35.485149,
+      -18.187059,
+      -0.294913
+     ],
+     "bbox_max": [
+      28.531713,
+      81.158859,
+      0.669903
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 9.655952453613281e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 4566,
+   "pass": true
+  },
+  "h09_windpump_rotor": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h09_windpump_rotor__Brass",
+     "tris": 44,
+     "bbox_min": [
+      -0.35,
+      -0.21,
+      -0.35
+     ],
+     "bbox_max": [
+      0.35,
+      0.21,
+      0.35
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 4.470348358154297e-08,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_windpump_rotor__Bubblegum",
+     "tris": 1496,
+     "bbox_min": [
+      -4.1,
+      -0.200001,
+      -4.1
+     ],
+     "bbox_max": [
+      4.1,
+      0.200001,
+      4.1
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 4.917383193969727e-07,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_windpump_rotor__Iron",
+     "tris": 12,
+     "bbox_min": [
+      -1.2,
+      -0.2,
+      -1.2
+     ],
+     "bbox_max": [
+      1.2,
+      0.2,
+      1.2
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_windpump_rotor__MintWhite",
+     "tris": 1696,
+     "bbox_min": [
+      -4.1,
+      -0.200001,
+      -4.1
+     ],
+     "bbox_max": [
+      4.1,
+      0.200001,
+      4.1
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 4.917383193969727e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 3248,
+   "pass": true
+  },
+  "h11_lock_gate": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h11_lock_gate__Iron",
+     "tris": 72,
+     "bbox_min": [
+      -1.28,
+      -0.25,
+      0.02
+     ],
+     "bbox_max": [
+      1.28,
+      0.25,
+      1.18
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h11_lock_gate__MintWhite",
+     "tris": 72,
+     "bbox_min": [
+      -1.8,
+      -0.25,
+      0.2
+     ],
+     "bbox_max": [
+      1.8,
+      0.25,
+      1.2
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h11_lock_gate__PepRed",
+     "tris": 72,
+     "bbox_min": [
+      -1.8,
+      -0.25,
+      -0.0
+     ],
+     "bbox_max": [
+      1.8,
+      0.25,
+      1.0
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h11_lock_gate__Timber",
+     "tris": 12,
+     "bbox_min": [
+      -1.78,
+      -0.23,
+      -0.0
+     ],
+     "bbox_max": [
+      1.78,
+      0.23,
+      1.2
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 228,
+   "pass": true
+  },
+  "h14_ore_bucket": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h14_ore_bucket__Brass",
+     "tris": 284,
+     "bbox_min": [
+      -1.009412,
+      -0.859413,
+      -9.64
+     ],
+     "bbox_max": [
+      1.009412,
+      0.859412,
+      0.2
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-06,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h14_ore_bucket__Iron",
+     "tris": 52,
+     "bbox_min": [
+      -1.05,
+      -0.900002,
+      -10.0
+     ],
+     "bbox_max": [
+      1.05,
+      0.9,
+      0.0
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-06,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h14_ore_bucket__MintWhite",
+     "tris": 132,
+     "bbox_min": [
+      -1.05,
+      -0.900001,
+      -8.3
+     ],
+     "bbox_max": [
+      1.05,
+      0.899999,
+      -8.0
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h14_ore_bucket__OreAmber",
+     "tris": 24,
+     "bbox_min": [
+      -0.75,
+      -0.530001,
+      -8.5
+     ],
+     "bbox_max": [
+      0.4,
+      0.547999,
+      -8.02
+     ],
+     "material": [
+      "OreAmber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.0132789611816406e-06,
+     "merged_material": [
+      "OreAmber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h14_ore_bucket__OrePink",
+     "tris": 24,
+     "bbox_min": [
+      -0.76,
+      -0.630001,
+      -8.436
+     ],
+     "bbox_max": [
+      0.79,
+      0.533999,
+      -8.02
+     ],
+     "material": [
+      "OrePink"
+     ],
+     "image": null,
+     "bbox_max_err": 1.0132789611816406e-06,
+     "merged_material": [
+      "OrePink"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h14_ore_bucket__PepRed",
+     "tris": 132,
+     "bbox_min": [
+      -1.05,
+      -0.900001,
+      -8.3
+     ],
+     "bbox_max": [
+      1.05,
+      0.899999,
+      -8.0
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h14_ore_bucket__Timber",
+     "tris": 64,
+     "bbox_min": [
+      -1.05,
+      -0.075002,
+      -10.28775
+     ],
+     "bbox_max": [
+      1.05,
+      0.074998,
+      -10.0
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 1.2293457984924316e-06,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 712,
+   "pass": true
+  },
+  "h17_shadow_arms": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h17_shadow_arms__MintWhite",
+     "tris": 48,
+     "bbox_min": [
+      -11.2,
+      -11.2,
+      0.879998
+     ],
+     "bbox_max": [
+      11.2,
+      11.2,
+      0.900002
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 1.3113021850585938e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h17_shadow_arms__Slate",
+     "tris": 80,
+     "bbox_min": [
+      -11.5,
+      -11.5,
+      -2e-06
+     ],
+     "bbox_max": [
+      11.5,
+      11.5,
+      0.880002
+     ],
+     "material": [
+      "Slate"
+     ],
+     "image": null,
+     "bbox_max_err": 1.370906943520822e-06,
+     "merged_material": [
+      "Slate"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 128,
+   "pass": true
+  }
+ }
+}

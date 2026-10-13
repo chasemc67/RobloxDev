@@ -102,6 +102,15 @@ def main():
     ap.add_argument("--terrain-grid", action="store_true")
     args = ap.parse_args()
     src, data = convert(SPEC)
+    # Reproducible stage-ae timing correction; preserve the supplied art spec on disk.
+    overrides_path = os.path.join(HERE, "sugarloaf_motion_overrides.json")
+    overrides = json.load(open(overrides_path))
+    for hole in data["holes"]:
+        by_id = overrides["holes"].get(str(hole["number"]), {})
+        for mover in hole.get("moving_parts", []):
+            mover.update(by_id.get(mover["id"], {}))
+    data["source"]["motionOverrides"] = overrides
+    src = src.split("return ", 1)[0] + "-- Motion overrides: tools/sugarloaf_motion_overrides.json\nreturn " + to_lua(data) + "\n"
     open(OUT_HOLES, "w").write(src.replace("tools/holes_to_lua.py --push --build",
                                            "tools/sugarloaf_to_lua.py --push; CourseBuilder.Build into CourseSugarloaf"))
     lay = layout()

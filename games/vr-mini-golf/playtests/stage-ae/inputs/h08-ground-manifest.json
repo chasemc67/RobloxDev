@@ -1,0 +1,175 @@
+{
+  "id": "h08_ground",
+  "group": "hole_dressing",
+  "notes": "H8 Gumdrop Gulch: merged per-material ground dressing (693 members/elements) baked at world offsets. 2026-10-12 H8 crease update: clay-brick edging regenerated for the new rails (114 bricks, was 108); carpet/pebbles unchanged (felt XZ outline unchanged). Backup: _src/backup_h8crease_20261012/.",
+  "pivot": "hole tee world position [360.0, 70.0, 55.0] (geometry baked at world offsets, yaw 0)",
+  "files": [
+    "fbx/h08_ground.fbx"
+  ],
+  "tris": 4566,
+  "max_mesh_tris": 2280,
+  "meshparts": 5,
+  "materials": [
+    "ClayBrick",
+    "Pebble",
+    "RedDirt",
+    "RedDirtLight",
+    "Strata"
+  ],
+  "bbox_size": [
+    75.82,
+    0.97,
+    108.59
+  ],
+  "bbox_center_from_origin": [
+    1.51,
+    0.19,
+    -31.29
+  ],
+  "world_json_ids": [],
+  "parts": [
+    {
+      "file": "fbx/h08_ground.fbx",
+      "role": "merged per-hole ground (Gumdrop Gulch)",
+      "strata_y0": 70.0,
+      "tris": 4566,
+      "meshparts": 5,
+      "bbox_size": [
+        75.82,
+        0.97,
+        108.59
+      ],
+      "bbox_center_from_origin": [
+        1.51,
+        0.19,
+        -31.29
+      ],
+      "meshes": [
+        {
+          "mesh": "h08_ground__ClayBrick",
+          "material": "ClayBrick",
+          "color": "#B65C3E",
+          "roblox_material": "Brick",
+          "tris": 2280,
+          "texture": "textures/clay_brick.png",
+          "tile_studs": 2.0,
+          "transparency": 0,
+          "cast_shadow": true,
+          "size": [
+            20.8,
+            0.45,
+            62.8
+          ],
+          "bbox_center_from_origin": [
+            0.0,
+            0.15,
+            -28.0
+          ]
+        },
+        {
+          "mesh": "h08_ground__Pebble",
+          "material": "Pebble",
+          "color": "#A9785F",
+          "roblox_material": "Pebble",
+          "tris": 752,
+          "texture": null,
+          "tile_studs": null,
+          "transparency": 0,
+          "cast_shadow": true,
+          "size": [
+            64.04,
+            0.97,
+            99.38
+          ],
+          "bbox_center_from_origin": [
+            -3.44,
+            0.19,
+            -31.49
+          ]
+        },
+        {
+          "mesh": "h08_ground__RedDirt",
+          "material": "RedDirt",
+          "color": "#B9643F",
+          "roblox_material": "Ground",
+          "tris": 430,
+          "texture": "textures/red_dirt.png",
+          "tile_studs": 12.0,
+          "transparency": 0,
+          "cast_shadow": false,
+          "size": [
+            72.8,
+            0.93,
+            108.59
+          ],
+          "bbox_center_from_origin": [
+            3.02,
+            0.18,
+            -31.29
+          ]
+        },
+        {
+          "mesh": "h08_ground__RedDirtLight",
+          "material": "RedDirtLight",
+          "color": "#C98055",
+          "roblox_material": "Ground",
+          "tris": 640,
+          "texture": "textures/red_dirt_light.png",
+          "tile_studs": 12.0,
+          "transparency": 0,
+          "cast_shadow": false,
+          "size": [
+            69.88,
+            0.87,
+            96.12
+          ],
+          "bbox_center_from_origin": [
+            -1.46,
+            0.19,
+            -34.08
+          ]
+        },
+        {
+          "mesh": "h08_ground__Strata",
+          "material": "Strata",
+          "color": "#F2B48A",
+          "roblox_material": "Sandstone",
+          "tris": 464,
+          "texture": "textures/strata.png",
+          "tile_studs": 36.0,
+          "transparency": 0,
+          "cast_shadow": true,
+          "size": [
+            64.02,
+            0.96,
+            99.35
+          ],
+          "bbox_center_from_origin": [
+            -3.48,
+            0.19,
+            -31.49
+          ]
+        }
+      ]
+    }
+  ],
+  "built": "2026-10-12 11:42",
+  "blender": "5.2.2 LTS",
+  "previews": [
+    "previews\\h08_ground_eye.png",
+    "previews\\h08_ground_34.png"
+  ],
+  "world_json_size": null,
+  "instances": [
+    {
+      "pos": [
+        360.0,
+        70.0,
+        55.0
+      ],
+      "yaw": 0.0,
+      "src": "pass6:h08",
+      "note": "H8 merged ground dressing; geometry baked at world offsets from the tee pivot, so yaw stays 0"
+    }
+  ]
+}
