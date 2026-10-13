@@ -1,0 +1,963 @@
+{
+ "h17": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h17",
+   "hole": 17,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.939,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -334.9,
+       189.73,
+       -4811
+      ]
+     },
+     {
+      "rimSpeed": 2.965,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -334.9,
+       189.73,
+       -4811
+      ]
+     },
+     {
+      "rimSpeed": 2.986,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -334.9,
+       189.73,
+       -4811
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "seconds": 107.68,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "maxMovingStillS": 0.2,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "allShots": [
+     {
+      "v0": 6.08,
+      "speedMps": 1.8239582467402136,
+      "label": "h17-fuzz-1",
+      "contacts": [
+       {
+        "angleOut": 41,
+        "angleIn": 25.3,
+        "vOut": [
+         -1.4271,
+         -0.0001,
+         -1.242
+        ],
+        "vnOut": 1.427,
+        "tContact": 2.6659,
+        "speedOut": 1.892,
+        "speedIn": 3.167,
+        "normal": [
+         -1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": -1.356,
+        "speedRetention": 0.597,
+        "event": "contact",
+        "t": 2.6659,
+        "vtOut": -1.242,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail7",
+        "speedAfter300ms": 1.452,
+        "tangentialRetention": 0.916,
+        "shot": "h17-fuzz-1",
+        "vIn": [
+         2.8623,
+         -0.0001,
+         -1.3556
+        ],
+        "vnIn": -2.862,
+        "restitution": 0.499,
+        "retentionAfter300ms": 0.458,
+        "pos": [
+         -337.5905,
+         190.08,
+         -4771.542
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 8.212,
+      "distM": 2.381,
+      "outcome": "rest",
+      "speed": 6.08,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 5.117,
+      "flags": [],
+      "maxY": 190.08,
+      "distStuds": 7.937,
+      "start": [
+       -345,
+       190.0791,
+       -4768
+      ],
+      "tEnd": 5.167,
+      "tStop": 4.584,
+      "finish": [
+       -339.2209,
+       190.0787,
+       -4773.4409
+      ]
+     },
+     {
+      "v0": 6.108,
+      "speedMps": 1.8324141475072424,
+      "label": "h17-fuzz-2",
+      "contacts": [
+       {
+        "angleOut": 74.5,
+        "angleIn": 60.4,
+        "vOut": [
+         -0.8726,
+         -0.0001,
+         3.1451
+        ],
+        "vnOut": 0.873,
+        "tContact": 11.1488,
+        "speedOut": 3.264,
+        "speedIn": 3.776,
+        "normal": [
+         -1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": 3.284,
+        "speedRetention": 0.864,
+        "event": "contact",
+        "t": 11.1488,
+        "vtOut": 3.145,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail7",
+        "speedAfter300ms": 2.88,
+        "tangentialRetention": 0.958,
+        "shot": "h17-fuzz-2",
+        "vIn": [
+         1.8643,
+         -0.0001,
+         3.2836
+        ],
+        "vnIn": -1.864,
+        "restitution": 0.468,
+        "retentionAfter300ms": 0.763,
+        "pos": [
+         -337.5774,
+         190.0797,
+         -4775.1992
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 11.26,
+      "distM": 3.605,
+      "outcome": "rest",
+      "speed": 6.108,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.2,
+      "tRest": 6.034,
+      "flags": [],
+      "maxY": 190.08,
+      "distStuds": 12.017,
+      "start": [
+       -340.8843,
+       190.0785,
+       -4781.0469
+      ],
+      "tEnd": 6.084,
+      "tStop": 5.532,
+      "finish": [
+       -338.9756,
+       190.0793,
+       -4769.1821
+      ]
+     },
+     {
+      "v0": 17.147,
+      "speedMps": 5.144064108838342,
+      "label": "h17-fuzz-4",
+      "contacts": [
+       {
+        "angleOut": 18.6,
+        "angleIn": 12.9,
+        "vOut": [
+         -8.767,
+         -0.1683,
+         -2.9539
+        ],
+        "vnOut": 8.767,
+        "tContact": 20.5815,
+        "speedOut": 9.251,
+        "speedIn": 14.948,
+        "normal": [
+         -1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": -3.333,
+        "speedRetention": 0.619,
+        "event": "contact",
+        "t": 20.5815,
+        "vtOut": -2.954,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail7",
+        "speedAfter300ms": 6.097,
+        "tangentialRetention": 0.886,
+        "shot": "h17-fuzz-4",
+        "vIn": [
+         14.5717,
+         -0.0001,
+         -3.3333
+        ],
+        "vnIn": -14.572,
+        "restitution": 0.602,
+        "retentionAfter300ms": 0.408,
+        "pos": [
+         -337.6266,
+         190.0882,
+         -4769.7319
+        ]
+       },
+       {
+        "angleOut": 90,
+        "angleIn": 28.5,
+        "vOut": [
+         0,
+         -0.0001,
+         -0.2732
+        ],
+        "vnOut": 0,
+        "tContact": 25.8334,
+        "speedOut": 0.273,
+        "speedIn": 0.666,
+        "normal": [
+         1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": 0.318,
+        "speedRetention": 0.41,
+        "event": "contact",
+        "t": 25.8334,
+        "vtOut": 0.273,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail1",
+        "speedAfter300ms": 0.161,
+        "tangentialRetention": 0.86,
+        "shot": "h17-fuzz-4",
+        "vIn": [
+         -0.5851,
+         -0.0001,
+         -0.3178
+        ],
+        "vnIn": -0.585,
+        "restitution": 0,
+        "retentionAfter300ms": 0.242,
+        "pos": [
+         -352.4214,
+         190.08,
+         -4777.3228
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 7.574,
+      "distM": 3.601,
+      "outcome": "rest",
+      "speed": 17.147,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.033,
+      "tRest": 6.501,
+      "flags": [],
+      "maxY": 190.098,
+      "distStuds": 12.004,
+      "start": [
+       -345,
+       190.0787,
+       -4768
+      ],
+      "tEnd": 6.551,
+      "tStop": 5.984,
+      "finish": [
+       -352.418,
+       190.0793,
+       -4777.4375
+      ]
+     },
+     {
+      "v0": 12.522,
+      "speedMps": 3.7566269284407823,
+      "label": "h17-fuzz-5",
+      "contacts": [
+       {
+        "angleOut": 17.8,
+        "angleIn": 19.7,
+        "vOut": [
+         -7.0841,
+         -0.0007,
+         -1.4768
+        ],
+        "vnOut": 6.891,
+        "tContact": 30.8824,
+        "speedOut": 7.236,
+        "speedIn": 6.54,
+        "normal": [
+         -0.87,
+         0,
+         -0.4931
+        ],
+        "type": "event",
+        "vtIn": 2.208,
+        "speedRetention": 1.106,
+        "event": "contact",
+        "t": 30.8824,
+        "vtOut": 2.208,
+        "part": "Workspace.CourseSugarloaf.Hole17.Movers.Mover_shadow_arm.Blocker:shadow_arm",
+        "speedAfter300ms": 5.438,
+        "tangentialRetention": 1,
+        "shot": "h17-fuzz-5",
+        "vIn": [
+         4.2668,
+         -0.0003,
+         4.9565
+        ],
+        "vnIn": -6.156,
+        "restitution": 1.119,
+        "retentionAfter300ms": 0.831,
+        "pos": [
+         -341.8571,
+         190.0831,
+         -4813.8433
+        ]
+       },
+       {
+        "angleOut": 12.3,
+        "angleIn": 7,
+        "vOut": [
+         1.601,
+         -0.0003,
+         -0.3481
+        ],
+        "vnOut": 1.601,
+        "tContact": 32.7657,
+        "speedOut": 1.638,
+        "speedIn": 3.122,
+        "normal": [
+         1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": 0.379,
+        "speedRetention": 0.525,
+        "event": "contact",
+        "t": 32.7657,
+        "vtOut": 0.348,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:hour_stone_XI_proxy_1",
+        "speedAfter300ms": 1.087,
+        "tangentialRetention": 0.919,
+        "shot": "h17-fuzz-5",
+        "vIn": [
+         -3.0987,
+         -0.0003,
+         -0.3789
+        ],
+        "vnIn": -3.099,
+        "restitution": 0.517,
+        "retentionAfter300ms": 0.348,
+        "pos": [
+         -350.558,
+         190.0797,
+         -4814.9824
+        ]
+       }
+      ],
+      "piece": "dial_a",
+      "maxAlong": 6.159,
+      "distM": 1.422,
+      "outcome": "rest",
+      "speed": 12.522,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.033,
+      "tRest": 5.065,
+      "flags": [],
+      "maxY": 190.087,
+      "distStuds": 4.739,
+      "start": [
+       -344.3286,
+       190.0787,
+       -4816.332
+      ],
+      "tEnd": 5.115,
+      "tStop": 4.55,
+      "finish": [
+       -348.9815,
+       190.0787,
+       -4815.4341
+      ]
+     },
+     {
+      "v0": 18.902,
+      "speedMps": 5.670459968643848,
+      "label": "h17-fuzz-6",
+      "contacts": [
+       {
+        "angleOut": 40.8,
+        "angleIn": 5.6,
+        "vOut": [
+         0.1336,
+         -0.0003,
+         0.1403
+        ],
+        "vnOut": 0.147,
+        "tContact": 40.3657,
+        "speedOut": 0.194,
+        "speedIn": 1.302,
+        "normal": [
+         0.9952,
+         0,
+         0.0979
+        ],
+        "type": "event",
+        "speedRetention": 0.149,
+        "vtIn": -0.127,
+        "t": 40.3657,
+        "vtOut": -0.127,
+        "part": "Workspace.CourseSugarloaf.Hole17.Movers.Mover_shadow_arm.Blocker:shadow_arm",
+        "speedAfter300ms": 0.085,
+        "event": "contact",
+        "shot": "h17-fuzz-6",
+        "vIn": [
+         -1.3024,
+         -0.0005,
+         -0.001
+        ],
+        "vnIn": -1.296,
+        "restitution": 0.113,
+        "retentionAfter300ms": 0.065,
+        "pos": [
+         -353.022,
+         190.0797,
+         -4805.5869
+        ]
+       }
+      ],
+      "piece": "dial_a",
+      "maxAlong": 1.013,
+      "distM": 0.487,
+      "outcome": "rest",
+      "speed": 18.902,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 1.65,
+      "flags": [],
+      "maxY": 190.08,
+      "distStuds": 1.622,
+      "start": [
+       -351.3575,
+       190.0785,
+       -4805.5625
+      ],
+      "tEnd": 1.7,
+      "tStop": 1.134,
+      "finish": [
+       -352.9795,
+       190.0787,
+       -4805.5425
+      ]
+     },
+     {
+      "v0": 8.585,
+      "speedMps": 2.575603882240888,
+      "label": "h17-fuzz-7",
+      "contacts": [
+       {
+        "angleOut": 58.2,
+        "angleIn": 44.4,
+        "vOut": [
+         -5.0395,
+         -0.0003,
+         -3.1218
+        ],
+        "vnOut": 3.122,
+        "tContact": 45.0322,
+        "speedOut": 5.928,
+        "speedIn": 7.76,
+        "normal": [
+         0,
+         0,
+         -1
+        ],
+        "type": "event",
+        "vtIn": 5.424,
+        "speedRetention": 0.764,
+        "event": "contact",
+        "t": 45.0322,
+        "vtOut": 5.039,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail8",
+        "speedAfter300ms": 5.098,
+        "tangentialRetention": 0.929,
+        "shot": "h17-fuzz-7",
+        "vIn": [
+         -5.4245,
+         -0.0003,
+         5.5487
+        ],
+        "vnIn": -5.549,
+        "restitution": 0.563,
+        "retentionAfter300ms": 0.657,
+        "pos": [
+         -346.9357,
+         190.0802,
+         -4766.0923
+        ]
+       },
+       {
+        "angleOut": 39.4,
+        "angleIn": 21.5,
+        "vOut": [
+         1.6526,
+         0,
+         -1.2818
+        ],
+        "vnOut": 1.616,
+        "tContact": 46.3143,
+        "speedOut": 2.091,
+        "speedIn": 3.625,
+        "normal": [
+         0.9996,
+         0,
+         0.0281
+        ],
+        "type": "event",
+        "vtIn": 1.328,
+        "speedRetention": 0.577,
+        "event": "contact",
+        "t": 46.3143,
+        "vtOut": 1.328,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail1",
+        "speedAfter300ms": 1.574,
+        "tangentialRetention": 1,
+        "shot": "h17-fuzz-7",
+        "vIn": [
+         -3.3341,
+         -0.0002,
+         -1.422
+        ],
+        "vnIn": -3.373,
+        "restitution": 0.479,
+        "retentionAfter300ms": 0.434,
+        "pos": [
+         -352.4329,
+         190.0796,
+         -4768.5508
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 4.846,
+      "distM": 1.822,
+      "outcome": "rest",
+      "speed": 8.585,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.033,
+      "tRest": 5.099,
+      "flags": [],
+      "maxY": 190.08,
+      "distStuds": 6.072,
+      "start": [
+       -345,
+       190.0785,
+       -4768
+      ],
+      "tEnd": 5.149,
+      "tStop": 4.582,
+      "finish": [
+       -350.4877,
+       190.0787,
+       -4770.5981
+      ]
+     },
+     {
+      "v0": 4.368,
+      "speedMps": 1.310300165900928,
+      "label": "h17-fuzz-8",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 0.02,
+      "distM": 0.013,
+      "outcome": "rest",
+      "speed": 4.368,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.067,
+      "tRest": 0.533,
+      "flags": [],
+      "maxY": 190.079,
+      "distStuds": 0.043,
+      "start": [
+       -344.5138,
+       190.0791,
+       -4808.375
+      ],
+      "tEnd": 0.583,
+      "tStop": 0.05,
+      "finish": [
+       -344.5567,
+       190.0793,
+       -4808.376
+      ]
+     },
+     {
+      "v0": 12.379,
+      "speedMps": 3.713628541207175,
+      "label": "h17-fuzz-9",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 0.925,
+      "distM": 0.489,
+      "outcome": "rest",
+      "speed": 12.379,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.033,
+      "tRest": 2.816,
+      "flags": [],
+      "maxY": 190.08,
+      "distStuds": 1.63,
+      "start": [
+       -343.4871,
+       190.0791,
+       -4802.75
+      ],
+      "tEnd": 2.866,
+      "tStop": 2.3,
+      "finish": [
+       -341.8572,
+       190.0793,
+       -4802.75
+      ]
+     }
+    ],
+    "list": []
+   },
+   "cam": "",
+   "name": "Sundial",
+   "nudges": 0,
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "maxMovingStillS": 0.479,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 6,
+    "allShots": [
+     {
+      "v0": 2.036,
+      "speedMps": 0.6108420382868901,
+      "label": "h17-slow-1",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 0.055,
+      "distM": 0.021,
+      "outcome": "rest",
+      "speed": 2.036,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 0.617,
+      "flags": [],
+      "maxY": 190.079,
+      "distStuds": 0.07,
+      "start": [
+       -352.0268,
+       190.0791,
+       -4806.1875
+      ],
+      "tEnd": 0.667,
+      "tStop": 0.1,
+      "finish": [
+       -351.9565,
+       190.0793,
+       -4806.1875
+      ]
+     },
+     {
+      "v0": 3.861,
+      "speedMps": 1.1581866043227658,
+      "label": "h17-slow-2",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 7.038,
+      "distM": 2.111,
+      "outcome": "rest",
+      "speed": 3.861,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 4.783,
+      "flags": [],
+      "maxY": 190.079,
+      "distStuds": 7.038,
+      "start": [
+       -349.3016,
+       190.0787,
+       -4815.4653
+      ],
+      "tEnd": 4.833,
+      "tStop": 4.267,
+      "finish": [
+       -352.7059,
+       190.0793,
+       -4809.3057
+      ]
+     },
+     {
+      "v0": 4.916,
+      "speedMps": 1.4747617602108172,
+      "label": "h17-slow-3",
+      "contacts": [
+       {
+        "angleOut": 12,
+        "angleIn": 7,
+        "vOut": [
+         0.7333,
+         -0.0001,
+         0.7764
+        ],
+        "vnOut": 1.045,
+        "tContact": 83.0298,
+        "speedOut": 1.068,
+        "speedIn": 1.834,
+        "normal": [
+         0.8229,
+         0,
+         0.5682
+        ],
+        "type": "event",
+        "speedRetention": 0.582,
+        "vtIn": -0.222,
+        "t": 83.0298,
+        "vtOut": -0.222,
+        "part": "Workspace.CourseSugarloaf.Hole17.Movers.Mover_shadow_arm.Blocker:shadow_arm",
+        "speedAfter300ms": 0.772,
+        "event": "contact",
+        "shot": "h17-slow-3",
+        "vIn": [
+         -1.6244,
+         -0.0001,
+         -0.8518
+        ],
+        "vnIn": -1.821,
+        "restitution": 0.574,
+        "retentionAfter300ms": 0.421,
+        "pos": [
+         -352.4087,
+         190.0796,
+         -4807.4565
+        ]
+       },
+       {
+        "angleOut": 90,
+        "angleIn": 48.2,
+        "vOut": [
+         0,
+         -0.0001,
+         0.4182
+        ],
+        "vnOut": 0,
+        "tContact": 83.7124,
+        "speedOut": 0.418,
+        "speedIn": 0.61,
+        "normal": [
+         -1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": 0.455,
+        "speedRetention": 0.685,
+        "event": "contact",
+        "t": 83.7124,
+        "vtOut": 0.418,
+        "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Bumper:gnomon_plinth_14",
+        "speedAfter300ms": 0.293,
+        "tangentialRetention": 0.919,
+        "shot": "h17-slow-3",
+        "vIn": [
+         0.4064,
+         -0.0001,
+         0.4551
+        ],
+        "vnIn": -0.406,
+        "restitution": 0,
+        "retentionAfter300ms": 0.48,
+        "pos": [
+         -352.0324,
+         190.0795,
+         -4807.0347
+        ]
+       }
+      ],
+      "piece": "dial_a",
+      "maxAlong": 0.328,
+      "distM": 0.158,
+      "outcome": "rest",
+      "speed": 4.916,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.479,
+      "tRest": 1.999,
+      "flags": [],
+      "maxY": 190.08,
+      "distStuds": 0.527,
+      "start": [
+       -352.0713,
+       190.0787,
+       -4807.4204
+      ],
+      "tEnd": 2.049,
+      "tStop": 1.484,
+      "finish": [
+       -352.0324,
+       190.0793,
+       -4806.8945
+      ]
+     },
+     {
+      "v0": 3.633,
+      "speedMps": 1.0899451535606788,
+      "label": "h17-slow-4",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 0.26,
+      "distM": 0.085,
+      "outcome": "rest",
+      "speed": 3.633,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.183,
+      "tRest": 1.233,
+      "flags": [],
+      "maxY": 190.079,
+      "distStuds": 0.284,
+      "start": [
+       -349.7729,
+       190.0791,
+       -4803.6875
+      ],
+      "tEnd": 1.283,
+      "tStop": 0.716,
+      "finish": [
+       -349.4885,
+       190.0793,
+       -4803.6875
+      ]
+     },
+     {
+      "v0": 1.832,
+      "speedMps": 0.5497458093647601,
+      "label": "h17-slow-5",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 2.458,
+      "distM": 0.737,
+      "outcome": "rest",
+      "speed": 1.832,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 3.133,
+      "flags": [],
+      "maxY": 190.079,
+      "distStuds": 2.458,
+      "start": [
+       -339.1808,
+       190.0791,
+       -4812.3018
+      ],
+      "tEnd": 3.183,
+      "tStop": 2.616,
+      "finish": [
+       -340.199,
+       190.0793,
+       -4810.0649
+      ]
+     },
+     {
+      "v0": 2.758,
+      "speedMps": 0.8273331401749838,
+      "label": "h17-slow-6",
+      "contacts": [],
+      "piece": "dial_a",
+      "maxAlong": 0.048,
+      "distM": 0.02,
+      "outcome": "rest",
+      "speed": 2.758,
+      "zone": "dial",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.167,
+      "tRest": 0.65,
+      "flags": [],
+      "maxY": 190.079,
+      "distStuds": 0.066,
+      "start": [
+       -347.4626,
+       190.0791,
+       -4799.625
+      ],
+      "tEnd": 0.7,
+      "tStop": 0.133,
+      "finish": [
+       -347.3966,
+       190.0793,
+       -4799.626
+      ]
+     }
+    ],
+    "list": []
+   },
+   "par": 3,
+   "clientLag": 0.595
+  }
+ }
+}

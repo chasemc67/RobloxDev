@@ -46,6 +46,18 @@ function CameraOcclusion.tagDecor(roots)
 	local n = 0
 	for _, root in roots do
 		for _, d in root:GetDescendants() do
+			-- Imported library copies may predate the builder override. Preserve Trading Post camera pass-through.
+			if d:IsA("BasePart") then
+				local node = d
+				while node do
+					if string.find(string.lower(node.Name):gsub("[^%w]", ""), "tradingpost", 1, true) then
+						d.CanCollide, d.CanQuery, d.CanTouch = false, false, false
+						d:SetAttribute("VisualQueryDisabled", true)
+						break
+					end
+					node = node.Parent
+				end
+			end
 			if not d:IsA("BasePart") or d.CanCollide or d.CanQuery or d:GetAttribute("VisualQueryDisabled") or d.Transparency >= SEE_THROUGH then
 				continue
 			end

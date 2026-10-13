@@ -1,0 +1,376 @@
+{
+ "result": "PASS",
+ "output": "/private/tmp/stage_aj_props.fbx",
+ "size_bytes": 1151740,
+ "size_mb": 1.098,
+ "source_files": 2,
+ "top_level_empties": 2,
+ "top_level_non_empty": [],
+ "mesh_objects": 12,
+ "total_tris": 6398,
+ "max_mesh": {
+  "name": "h08_ground__ClayBrick",
+  "tris": 2320
+ },
+ "any_mesh_over_20000_tris": false,
+ "object_names_with_numeric_suffix": [],
+ "materials": 12,
+ "images": [
+  "clay_brick.png.001",
+  "red_dirt.png.001",
+  "red_dirt_light.png.001",
+  "strata.png.001"
+ ],
+ "problems": [],
+ "export_settings": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1,
+  "path_mode": "COPY",
+  "embed_textures": true,
+  "add_leaf_bones": false,
+  "bake_anim": false
+ },
+ "files": {
+  "h08_ground": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h08_ground__ClayBrick",
+     "tris": 2320,
+     "bbox_min": [
+      -10.4,
+      -3.4,
+      -0.080017
+     ],
+     "bbox_max": [
+      10.4,
+      59.400002,
+      0.370011
+     ],
+     "material": [
+      "ClayBrick"
+     ],
+     "image": "clay_brick.png",
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "ClayBrick"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__MintWhite",
+     "tris": 300,
+     "bbox_min": [
+      -4.56,
+      8.5,
+      -0.05001
+     ],
+     "bbox_max": [
+      4.56,
+      40.0,
+      0.670004
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": null,
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__Pebble",
+     "tris": 752,
+     "bbox_min": [
+      -35.456963,
+      -18.203693,
+      -0.297123
+     ],
+     "bbox_max": [
+      28.584787,
+      81.179192,
+      0.671505
+     ],
+     "material": [
+      "Pebble"
+     ],
+     "image": null,
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "Pebble"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__PepRed",
+     "tris": 300,
+     "bbox_min": [
+      -4.56,
+      8.0,
+      -0.05001
+     ],
+     "bbox_max": [
+      4.56,
+      39.5,
+      0.670003
+     ],
+     "material": [
+      "PepRed"
+     ],
+     "image": null,
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "PepRed"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__RedDirt",
+     "tris": 430,
+     "bbox_min": [
+      -33.376999,
+      -23.0,
+      -0.283024
+     ],
+     "bbox_max": [
+      39.422001,
+      85.587997,
+      0.649006
+     ],
+     "material": [
+      "RedDirt"
+     ],
+     "image": "red_dirt.png",
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "RedDirt"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__RedDirtLight",
+     "tris": 640,
+     "bbox_min": [
+      -36.398998,
+      -13.983,
+      -0.244023
+     ],
+     "bbox_max": [
+      33.476002,
+      82.139999,
+      0.623004
+     ],
+     "material": [
+      "RedDirtLight"
+     ],
+     "image": "red_dirt_light.png",
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "RedDirtLight"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h08_ground__Strata",
+     "tris": 464,
+     "bbox_min": [
+      -35.485149,
+      -18.187059,
+      -0.294923
+     ],
+     "bbox_max": [
+      28.531713,
+      81.158859,
+      0.669905
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 5206,
+   "pass": true
+  },
+  "h09_water_tank": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h09_water_tank__Brass",
+     "tris": 208,
+     "bbox_min": [
+      -0.16,
+      -1.819999,
+      4.010001
+     ],
+     "bbox_max": [
+      0.16,
+      -1.559999,
+      4.33
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_water_tank__Iron",
+     "tris": 564,
+     "bbox_min": [
+      -1.945,
+      -1.945,
+      -0.0
+     ],
+     "bbox_max": [
+      1.945,
+      1.945001,
+      8.0
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_water_tank__RockCandyLilac",
+     "tris": 64,
+     "bbox_min": [
+      -1.70256,
+      -1.702559,
+      4.15
+     ],
+     "bbox_max": [
+      1.70256,
+      1.702561,
+      6.95
+     ],
+     "material": [
+      "RockCandyLilac"
+     ],
+     "image": null,
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "RockCandyLilac"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_water_tank__Timber",
+     "tris": 248,
+     "bbox_min": [
+      -1.78597,
+      -1.8,
+      0.56965
+     ],
+     "bbox_max": [
+      1.78597,
+      1.800001,
+      7.6
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h09_water_tank__TimberWeathered",
+     "tris": 108,
+     "bbox_min": [
+      -1.925,
+      -1.925,
+      0.06
+     ],
+     "bbox_max": [
+      1.925,
+      1.925001,
+      7.940001
+     ],
+     "material": [
+      "TimberWeathered"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "TimberWeathered"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 1192,
+   "pass": true
+  }
+ }
+}

@@ -1,0 +1,3519 @@
+{
+  "hole": 15,
+  "seed": 2026101316,
+  "approach": true,
+  "total": 80,
+  "expected": 80,
+  "definition": "last sample speed > Config.StopSpeed to native ready/rest",
+  "rest_samples": 30,
+  "median": 0.5164368958212435,
+  "p90": 0.5181778750265948,
+  "over_1_5": [],
+  "forced_rest": [],
+  "wedged": [],
+  "timeouts": [
+    {
+      "index": 4,
+      "launched": true,
+      "velocity": [
+        -11.355806350708008,
+        0,
+        1.7758878469467163
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999168958340306,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.60614013671875,
+            146.70957946777344,
+            -5073.18408203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.7143249511719,
+        147.40687561035156,
+        -5087.79052734375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6042175292969,
+        146.7092742919922,
+        -5073.17333984375
+      ]
+    },
+    {
+      "index": 7,
+      "launched": true,
+      "velocity": [
+        -3.644354820251465,
+        0,
+        2.9414570331573486
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999133333330974,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.0053405761719,
+            146.7686309814453,
+            -5075.4296875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.5801696777344,
+        147.39132690429688,
+        -5093.568359375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.0032653808594,
+        146.768310546875,
+        -5075.41796875
+      ]
+    },
+    {
+      "index": 8,
+      "launched": true,
+      "velocity": [
+        -2.884193181991577,
+        0,
+        0.8287901282310486
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998866375011858,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.69818115234375,
+            146.72158813476562,
+            -5073.703125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.2741394042969,
+        147.17359924316406,
+        -5087.76025390625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6979064941406,
+        146.7210693359375,
+        -5073.69091796875
+      ]
+    },
+    {
+      "index": 9,
+      "launched": true,
+      "velocity": [
+        -6.377964973449707,
+        0,
+        1.8856281042099
+      ],
+      "groundZone": "green",
+      "elapsed": 19.999787208333146,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.4629211425781,
+            146.68592834472656,
+            -5072.36767578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.9873352050781,
+        147.408203125,
+        -5088.4072265625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.4608459472656,
+        146.68551635742188,
+        -5072.35595703125
+      ]
+    },
+    {
+      "index": 11,
+      "launched": true,
+      "velocity": [
+        -4.043896198272705,
+        0,
+        1.4129199981689453
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999207083310466,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.46502685546875,
+            146.8357696533203,
+            -5078.02880859375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.23382568359375,
+        147.5197296142578,
+        -5093.71923828125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.46417236328125,
+        146.83531188964844,
+        -5078.0166015625
+      ]
+    },
+    {
+      "index": 12,
+      "launched": true,
+      "velocity": [
+        -5.975536823272705,
+        0,
+        4.732324600219727
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999432958313264,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.4991149902344,
+            146.8400115966797,
+            -5078.203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.284912109375,
+        147.49295043945312,
+        -5099.62890625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.4970397949219,
+        146.83969116210938,
+        -5078.19140625
+      ]
+    },
+    {
+      "index": 13,
+      "launched": true,
+      "velocity": [
+        -2.2586669921875,
+        0,
+        1.0933209657669067
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999037666711956,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.7032775878906,
+            146.87081909179688,
+            -5079.37060546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.7686462402344,
+        147.26931762695312,
+        -5093.22998046875
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.7024230957031,
+        146.870361328125,
+        -5079.3583984375
+      ]
+    },
+    {
+      "index": 17,
+      "launched": true,
+      "velocity": [
+        -11.589455604553223,
+        0,
+        2.113922119140625
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99913695838768,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.90130615234375,
+            146.89837646484375,
+            -5080.48583984375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.16009521484375,
+        147.52984619140625,
+        -5095.9453125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.90045166015625,
+        146.89791870117188,
+        -5080.4736328125
+      ]
+    },
+    {
+      "index": 19,
+      "launched": true,
+      "velocity": [
+        -5.820870399475098,
+        0,
+        2.9332637786865234
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99986595835071,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.6723937988281,
+            146.8667755126953,
+            -5079.18994140625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.97442626953125,
+        147.37994384765625,
+        -5096.2890625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.672119140625,
+        146.86627197265625,
+        -5079.177734375
+      ]
+    },
+    {
+      "index": 20,
+      "launched": true,
+      "velocity": [
+        -2.6912875175476074,
+        0,
+        0.962959349155426
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99939183332026,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.512939453125,
+            146.98837280273438,
+            -5083.92041015625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.2998962402344,
+        147.6265411376953,
+        -5098.53271484375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.5113525390625,
+        146.9881134033203,
+        -5083.91162109375
+      ]
+    },
+    {
+      "index": 21,
+      "launched": true,
+      "velocity": [
+        -6.373794078826904,
+        0,
+        1.265269160270691
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01550512498943,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.34503173828125,
+            146.96633911132812,
+            -5082.97900390625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.8777160644531,
+        147.2965545654297,
+        -5094.1083984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.3440246582031,
+        146.9661102294922,
+        -5082.97119140625
+      ]
+    },
+    {
+      "index": 22,
+      "launched": true,
+      "velocity": [
+        -5.701120376586914,
+        0,
+        1.7557703256607056
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998981041659135,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.7062072753906,
+            146.72434997558594,
+            -5073.74560546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.6264953613281,
+        147.2840576171875,
+        -5088.98486328125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.7041320800781,
+        146.72402954101562,
+        -5073.73388671875
+      ]
+    },
+    {
+      "index": 23,
+      "launched": true,
+      "velocity": [
+        -3.3742427825927734,
+        0,
+        0.36938828229904175
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.015793958329596,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -307.4653015136719,
+            147.12916564941406,
+            -5089.2861328125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.2221374511719,
+        147.63536071777344,
+        -5100.71923828125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -307.4638977050781,
+        147.12892150878906,
+        -5089.2783203125
+      ]
+    },
+    {
+      "index": 28,
+      "launched": true,
+      "velocity": [
+        -6.423492431640625,
+        0,
+        2.432736873626709
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99905191664584,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.60736083984375,
+            146.85675048828125,
+            -5078.822265625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.14422607421875,
+        147.36534118652344,
+        -5092.25732421875
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.6056213378906,
+        146.85646057128906,
+        -5078.8125
+      ]
+    },
+    {
+      "index": 30,
+      "launched": true,
+      "velocity": [
+        -10.323972702026367,
+        0,
+        3.102659225463867
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01597025000956,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6363830566406,
+            146.712890625,
+            -5073.3544921875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.9873962402344,
+        147.3362579345703,
+        -5088.849609375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6350402832031,
+        146.712646484375,
+        -5073.3466796875
+      ]
+    },
+    {
+      "index": 31,
+      "launched": true,
+      "velocity": [
+        -6.250239849090576,
+        0,
+        0.9093779921531677
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999283958342858,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.03680419921875,
+            146.91976928710938,
+            -5081.23828125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.32928466796875,
+        147.22048950195312,
+        -5091.37109375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.0350036621094,
+        146.9194793701172,
+        -5081.22802734375
+      ]
+    },
+    {
+      "index": 32,
+      "launched": true,
+      "velocity": [
+        -7.893208980560303,
+        0,
+        1.9256441593170166
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99907129164785,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.4076843261719,
+            146.8256378173828,
+            -5077.69775390625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.95135498046875,
+        147.4945068359375,
+        -5090.61083984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.4058837890625,
+        146.82534790039062,
+        -5077.6875
+      ]
+    },
+    {
+      "index": 33,
+      "launched": true,
+      "velocity": [
+        -2.550224781036377,
+        0,
+        0.8900068402290344
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99959116667742,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.45281982421875,
+            146.83401489257812,
+            -5077.95068359375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.6019287109375,
+        147.26702880859375,
+        -5088.76806640625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.4510803222656,
+        146.83372497558594,
+        -5077.94091796875
+      ]
+    },
+    {
+      "index": 34,
+      "launched": true,
+      "velocity": [
+        -5.833157539367676,
+        0,
+        0.9112055897712708
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998981875018217,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.16510009765625,
+            146.93865966796875,
+            -5081.96142578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.80010986328125,
+        147.41009521484375,
+        -5092.578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.16363525390625,
+        146.93841552734375,
+        -5081.95361328125
+      ]
+    },
+    {
+      "index": 35,
+      "launched": true,
+      "velocity": [
+        -7.420942783355713,
+        0,
+        2.497227668762207
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99963087501237,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6295166015625,
+            146.71046447753906,
+            -5073.3134765625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.8956298828125,
+        147.15814208984375,
+        -5086.8212890625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6278076171875,
+        146.71018981933594,
+        -5073.3037109375
+      ]
+    },
+    {
+      "index": 40,
+      "launched": true,
+      "velocity": [
+        -2.33646559715271,
+        0,
+        2.2984800338745117
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999850833322853,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.6351013183594,
+            146.85887145996094,
+            -5078.98828125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.1091003417969,
+        147.40919494628906,
+        -5093.2197265625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.6348876953125,
+        146.85842895507812,
+        -5078.97802734375
+      ]
+    },
+    {
+      "index": 41,
+      "launched": true,
+      "velocity": [
+        -5.292193412780762,
+        0,
+        4.298605442047119
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999596541631036,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.8404846191406,
+            146.74302673339844,
+            -5074.50146484375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.7419128417969,
+        147.41482543945312,
+        -5092.5654296875
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.83868408203125,
+        146.74273681640625,
+        -5074.4912109375
+      ]
+    },
+    {
+      "index": 42,
+      "launched": true,
+      "velocity": [
+        -10.149582862854004,
+        0,
+        4.076961994171143
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99896083335625,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.32464599609375,
+            146.96202087402344,
+            -5082.85986328125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.9841613769531,
+        147.60330200195312,
+        -5099.68896484375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.3228454589844,
+        146.96173095703125,
+        -5082.849609375
+      ]
+    },
+    {
+      "index": 43,
+      "launched": true,
+      "velocity": [
+        -4.8471198081970215,
+        0,
+        2.80021595954895
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99971187498886,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.0960693359375,
+            146.92971801757812,
+            -5081.58447265625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.5611267089844,
+        147.38612365722656,
+        -5095.78759765625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.0958557128906,
+        146.9292755126953,
+        -5081.57421875
+      ]
+    },
+    {
+      "index": 45,
+      "launched": true,
+      "velocity": [
+        -11.02297306060791,
+        0,
+        3.801546812057495
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999081208370626,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.621826171875,
+            146.71031188964844,
+            -5073.2724609375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4169921875,
+        147.3211669921875,
+        -5089.65234375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.61968994140625,
+        146.7099609375,
+        -5073.26025390625
+      ]
+    },
+    {
+      "index": 47,
+      "launched": true,
+      "velocity": [
+        -8.751293182373047,
+        0,
+        1.214780330657959
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999718750012107,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.7185974121094,
+            146.72601318359375,
+            -5073.814453125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.183837890625,
+        147.13034057617188,
+        -5084.63720703125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.7168273925781,
+        146.72572326660156,
+        -5073.8046875
+      ]
+    },
+    {
+      "index": 48,
+      "launched": true,
+      "velocity": [
+        -6.875076770782471,
+        0,
+        2.379922866821289
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01633383333683,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.5229797363281,
+            146.8436279296875,
+            -5078.34765625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.6606750488281,
+        147.50692749023438,
+        -5092.42578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.52166748046875,
+        146.84336853027344,
+        -5078.3388671875
+      ]
+    },
+    {
+      "index": 49,
+      "launched": true,
+      "velocity": [
+        -7.705449104309082,
+        0,
+        0.7090725302696228
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999280499992892,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -307.5074768066406,
+            147.13497924804688,
+            -5089.521484375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.98126220703125,
+        147.43910217285156,
+        -5100.08642578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -307.5059509277344,
+        147.13473510742188,
+        -5089.5126953125
+      ]
+    },
+    {
+      "index": 50,
+      "launched": true,
+      "velocity": [
+        -5.1273956298828125,
+        0,
+        3.7347118854522705
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999397208332084,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.29058837890625,
+            146.955322265625,
+            -5082.66943359375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.2772216796875,
+        147.43423461914062,
+        -5098.46142578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.2888488769531,
+        146.9550323486328,
+        -5082.65966796875
+      ]
+    },
+    {
+      "index": 51,
+      "launched": true,
+      "velocity": [
+        -6.637777805328369,
+        0,
+        1.3507264852523804
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.001064750016667,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.51495361328125,
+            146.98941040039062,
+            -5083.93408203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.1371154785156,
+        147.63021850585938,
+        -5096.36474609375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.5132141113281,
+        146.98910522460938,
+        -5083.92431640625
+      ]
+    },
+    {
+      "index": 53,
+      "launched": true,
+      "velocity": [
+        -7.636580944061279,
+        0,
+        3.2454607486724854
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000311999989208,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.63653564453125,
+            147.00711059570312,
+            -5084.61865234375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.7289123535156,
+        147.46585083007812,
+        -5099.939453125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.6351318359375,
+        147.00686645507812,
+        -5084.61083984375
+      ]
+    },
+    {
+      "index": 54,
+      "launched": true,
+      "velocity": [
+        -10.261894226074219,
+        0,
+        2.620814800262451
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99989058333449,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.7598876953125,
+            147.02578735351562,
+            -5085.31201171875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.9626159667969,
+        147.4939727783203,
+        -5099.2001953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.7579040527344,
+        147.02548217773438,
+        -5085.30224609375
+      ]
+    },
+    {
+      "index": 56,
+      "launched": true,
+      "velocity": [
+        -4.183415412902832,
+        0,
+        1.258341908454895
+      ],
+      "groundZone": "green",
+      "elapsed": 19.99889591668034,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.35931396484375,
+            146.07998657226562,
+            -5071.87548828125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.482666015625,
+        147.05941772460938,
+        -5083.36083984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.35662841796875,
+        146.07998657226562,
+        -5071.86376953125
+      ]
+    },
+    {
+      "index": 58,
+      "launched": true,
+      "velocity": [
+        -8.714326858520508,
+        0,
+        2.097912311553955
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000445958343334,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.85791015625,
+            146.74510192871094,
+            -5074.60205078125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.3340759277344,
+        147.34634399414062,
+        -5087.92578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.8561706542969,
+        146.7447967529297,
+        -5074.59228515625
+      ]
+    },
+    {
+      "index": 59,
+      "launched": true,
+      "velocity": [
+        -9.887319564819336,
+        0,
+        6.064799785614014
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998997291666456,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.8835754394531,
+            146.750732421875,
+            -5074.74462890625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4815368652344,
+        147.72474670410156,
+        -5099.1015625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.8821105957031,
+        146.75051879882812,
+        -5074.73681640625
+      ]
+    },
+    {
+      "index": 60,
+      "launched": true,
+      "velocity": [
+        -2.666351318359375,
+        0,
+        2.2935574054718018
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01474099996267,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6588134765625,
+            146.71705627441406,
+            -5073.47802734375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.2295837402344,
+        147.41714477539062,
+        -5089.1376953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.65728759765625,
+        146.71681213378906,
+        -5073.46923828125
+      ]
+    },
+    {
+      "index": 63,
+      "launched": true,
+      "velocity": [
+        -2.821944236755371,
+        0,
+        0.30605462193489075
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99970429163659,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -307.16204833984375,
+            147.08441162109375,
+            -5087.578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.68109130859375,
+        147.68936157226562,
+        -5098.69189453125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -307.159912109375,
+        147.08407592773438,
+        -5087.56591796875
+      ]
+    },
+    {
+      "index": 64,
+      "launched": true,
+      "velocity": [
+        -9.599839210510254,
+        0,
+        4.621922492980957
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000204000039957,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.87255859375,
+            146.89422607421875,
+            -5080.31494140625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.9955749511719,
+        147.479736328125,
+        -5098.6953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.8703918457031,
+        146.89389038085938,
+        -5080.302734375
+      ]
+    },
+    {
+      "index": 65,
+      "launched": true,
+      "velocity": [
+        -4.997400760650635,
+        0,
+        2.695603609085083
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999328208330553,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.663818359375,
+            147.0124053955078,
+            -5084.77099609375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.8834533691406,
+        147.63539123535156,
+        -5099.99365234375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.66168212890625,
+        147.01206970214844,
+        -5084.7587890625
+      ]
+    },
+    {
+      "index": 66,
+      "launched": true,
+      "velocity": [
+        -4.360067367553711,
+        0,
+        1.6029530763626099
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999850333319046,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6836853027344,
+            146.71897888183594,
+            -5073.6201171875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.29754638671875,
+        147.4118194580078,
+        -5087.01318359375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6822814941406,
+        146.71876525878906,
+        -5073.6123046875
+      ]
+    },
+    {
+      "index": 67,
+      "launched": true,
+      "velocity": [
+        -3.7488558292388916,
+        0,
+        3.0733728408813477
+      ],
+      "groundZone": "green",
+      "elapsed": 19.9995565416757,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.291015625,
+            146.07997131347656,
+            -5071.63232421875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.9867248535156,
+        147.29737854003906,
+        -5087.927734375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.2890625,
+        146.07997131347656,
+        -5071.62451171875
+      ]
+    },
+    {
+      "index": 68,
+      "launched": true,
+      "velocity": [
+        -5.527613162994385,
+        0,
+        3.3977787494659424
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99927587498678,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.89080810546875,
+            146.74972534179688,
+            -5074.78369140625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.1155700683594,
+        147.21896362304688,
+        -5090.6376953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.8892822265625,
+        146.74948120117188,
+        -5074.77490234375
+      ]
+    },
+    {
+      "index": 69,
+      "launched": true,
+      "velocity": [
+        -2.1649973392486572,
+        0,
+        0.20529130101203918
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.9981242500362,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.9345703125,
+            146.7561492919922,
+            -5075.033203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.331787109375,
+        147.36968994140625,
+        -5086.08984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.93243408203125,
+        146.7558135986328,
+        -5075.021484375
+      ]
+    },
+    {
+      "index": 70,
+      "launched": true,
+      "velocity": [
+        -7.753112316131592,
+        0,
+        4.681118965148926
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998288916656747,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.58465576171875,
+            146.70516967773438,
+            -5073.060546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.5196228027344,
+        147.54090881347656,
+        -5092.6884765625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.5823669433594,
+        146.70480346679688,
+        -5073.04736328125
+      ]
+    },
+    {
+      "index": 71,
+      "launched": true,
+      "velocity": [
+        -3.9651970863342285,
+        0,
+        3.260150671005249
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.06466645828914,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.1557922363281,
+            146.7891845703125,
+            -5076.27978515625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.854248046875,
+        147.53878784179688,
+        -5093.35595703125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.1539001464844,
+        146.78887939453125,
+        -5076.26806640625
+      ]
+    },
+    {
+      "index": 72,
+      "launched": true,
+      "velocity": [
+        -2.16937255859375,
+        0,
+        1.5871731042861938
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.049367541621905,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.3495788574219,
+            146.96588134765625,
+            -5083.00146484375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4410095214844,
+        147.6238555908203,
+        -5096.626953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.34808349609375,
+        146.96563720703125,
+        -5082.99267578125
+      ]
+    },
+    {
+      "index": 74,
+      "launched": true,
+      "velocity": [
+        -7.812473297119141,
+        0,
+        3.28613018989563
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998105416656472,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.8706359863281,
+            146.74765014648438,
+            -5074.67333984375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.5197448730469,
+        147.37652587890625,
+        -5090.94384765625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.86907958984375,
+        146.74740600585938,
+        -5074.66455078125
+      ]
+    },
+    {
+      "index": 75,
+      "launched": true,
+      "velocity": [
+        -9.630544662475586,
+        0,
+        1.496655821800232
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000250541663263,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.6134948730469,
+            147.00538635253906,
+            -5084.4892578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.33331298828125,
+        147.6402130126953,
+        -5096.783203125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.6125793457031,
+        147.0050811767578,
+        -5084.48046875
+      ]
+    },
+    {
+      "index": 76,
+      "launched": true,
+      "velocity": [
+        -1.5358704328536987,
+        0,
+        1.3183362483978271
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.017250166623853,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.6410827636719,
+            147.00697326660156,
+            -5084.64453125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.8745422363281,
+        147.40818786621094,
+        -5096.74267578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.63934326171875,
+        147.0066680908203,
+        -5084.634765625
+      ]
+    },
+    {
+      "index": 78,
+      "launched": true,
+      "velocity": [
+        -8.335915565490723,
+        0,
+        2.1534996032714844
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.049913208349608,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.28546142578125,
+            146.8090362548828,
+            -5077.0185546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4316711425781,
+        147.3603057861328,
+        -5090.37109375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.2850036621094,
+        146.80868530273438,
+        -5077.009765625
+      ]
+    }
+  ],
+  "other_outcomes": [
+    {
+      "index": 4,
+      "launched": true,
+      "velocity": [
+        -11.355806350708008,
+        0,
+        1.7758878469467163
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999168958340306,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.60614013671875,
+            146.70957946777344,
+            -5073.18408203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.7143249511719,
+        147.40687561035156,
+        -5087.79052734375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6042175292969,
+        146.7092742919922,
+        -5073.17333984375
+      ]
+    },
+    {
+      "index": 7,
+      "launched": true,
+      "velocity": [
+        -3.644354820251465,
+        0,
+        2.9414570331573486
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999133333330974,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.0053405761719,
+            146.7686309814453,
+            -5075.4296875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.5801696777344,
+        147.39132690429688,
+        -5093.568359375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.0032653808594,
+        146.768310546875,
+        -5075.41796875
+      ]
+    },
+    {
+      "index": 8,
+      "launched": true,
+      "velocity": [
+        -2.884193181991577,
+        0,
+        0.8287901282310486
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998866375011858,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.69818115234375,
+            146.72158813476562,
+            -5073.703125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.2741394042969,
+        147.17359924316406,
+        -5087.76025390625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6979064941406,
+        146.7210693359375,
+        -5073.69091796875
+      ]
+    },
+    {
+      "index": 9,
+      "launched": true,
+      "velocity": [
+        -6.377964973449707,
+        0,
+        1.8856281042099
+      ],
+      "groundZone": "green",
+      "elapsed": 19.999787208333146,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.4629211425781,
+            146.68592834472656,
+            -5072.36767578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.9873352050781,
+        147.408203125,
+        -5088.4072265625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.4608459472656,
+        146.68551635742188,
+        -5072.35595703125
+      ]
+    },
+    {
+      "index": 11,
+      "launched": true,
+      "velocity": [
+        -4.043896198272705,
+        0,
+        1.4129199981689453
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999207083310466,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.46502685546875,
+            146.8357696533203,
+            -5078.02880859375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.23382568359375,
+        147.5197296142578,
+        -5093.71923828125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.46417236328125,
+        146.83531188964844,
+        -5078.0166015625
+      ]
+    },
+    {
+      "index": 12,
+      "launched": true,
+      "velocity": [
+        -5.975536823272705,
+        0,
+        4.732324600219727
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999432958313264,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.4991149902344,
+            146.8400115966797,
+            -5078.203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.284912109375,
+        147.49295043945312,
+        -5099.62890625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.4970397949219,
+        146.83969116210938,
+        -5078.19140625
+      ]
+    },
+    {
+      "index": 13,
+      "launched": true,
+      "velocity": [
+        -2.2586669921875,
+        0,
+        1.0933209657669067
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999037666711956,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.7032775878906,
+            146.87081909179688,
+            -5079.37060546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.7686462402344,
+        147.26931762695312,
+        -5093.22998046875
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.7024230957031,
+        146.870361328125,
+        -5079.3583984375
+      ]
+    },
+    {
+      "index": 17,
+      "launched": true,
+      "velocity": [
+        -11.589455604553223,
+        0,
+        2.113922119140625
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99913695838768,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.90130615234375,
+            146.89837646484375,
+            -5080.48583984375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.16009521484375,
+        147.52984619140625,
+        -5095.9453125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.90045166015625,
+        146.89791870117188,
+        -5080.4736328125
+      ]
+    },
+    {
+      "index": 19,
+      "launched": true,
+      "velocity": [
+        -5.820870399475098,
+        0,
+        2.9332637786865234
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99986595835071,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.6723937988281,
+            146.8667755126953,
+            -5079.18994140625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.97442626953125,
+        147.37994384765625,
+        -5096.2890625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.672119140625,
+        146.86627197265625,
+        -5079.177734375
+      ]
+    },
+    {
+      "index": 20,
+      "launched": true,
+      "velocity": [
+        -2.6912875175476074,
+        0,
+        0.962959349155426
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99939183332026,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.512939453125,
+            146.98837280273438,
+            -5083.92041015625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.2998962402344,
+        147.6265411376953,
+        -5098.53271484375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.5113525390625,
+        146.9881134033203,
+        -5083.91162109375
+      ]
+    },
+    {
+      "index": 21,
+      "launched": true,
+      "velocity": [
+        -6.373794078826904,
+        0,
+        1.265269160270691
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01550512498943,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.34503173828125,
+            146.96633911132812,
+            -5082.97900390625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.8777160644531,
+        147.2965545654297,
+        -5094.1083984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.3440246582031,
+        146.9661102294922,
+        -5082.97119140625
+      ]
+    },
+    {
+      "index": 22,
+      "launched": true,
+      "velocity": [
+        -5.701120376586914,
+        0,
+        1.7557703256607056
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998981041659135,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.7062072753906,
+            146.72434997558594,
+            -5073.74560546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.6264953613281,
+        147.2840576171875,
+        -5088.98486328125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.7041320800781,
+        146.72402954101562,
+        -5073.73388671875
+      ]
+    },
+    {
+      "index": 23,
+      "launched": true,
+      "velocity": [
+        -3.3742427825927734,
+        0,
+        0.36938828229904175
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.015793958329596,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -307.4653015136719,
+            147.12916564941406,
+            -5089.2861328125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.2221374511719,
+        147.63536071777344,
+        -5100.71923828125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -307.4638977050781,
+        147.12892150878906,
+        -5089.2783203125
+      ]
+    },
+    {
+      "index": 28,
+      "launched": true,
+      "velocity": [
+        -6.423492431640625,
+        0,
+        2.432736873626709
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99905191664584,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.60736083984375,
+            146.85675048828125,
+            -5078.822265625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.14422607421875,
+        147.36534118652344,
+        -5092.25732421875
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.6056213378906,
+        146.85646057128906,
+        -5078.8125
+      ]
+    },
+    {
+      "index": 30,
+      "launched": true,
+      "velocity": [
+        -10.323972702026367,
+        0,
+        3.102659225463867
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01597025000956,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6363830566406,
+            146.712890625,
+            -5073.3544921875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.9873962402344,
+        147.3362579345703,
+        -5088.849609375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6350402832031,
+        146.712646484375,
+        -5073.3466796875
+      ]
+    },
+    {
+      "index": 31,
+      "launched": true,
+      "velocity": [
+        -6.250239849090576,
+        0,
+        0.9093779921531677
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999283958342858,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.03680419921875,
+            146.91976928710938,
+            -5081.23828125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.32928466796875,
+        147.22048950195312,
+        -5091.37109375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.0350036621094,
+        146.9194793701172,
+        -5081.22802734375
+      ]
+    },
+    {
+      "index": 32,
+      "launched": true,
+      "velocity": [
+        -7.893208980560303,
+        0,
+        1.9256441593170166
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99907129164785,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.4076843261719,
+            146.8256378173828,
+            -5077.69775390625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.95135498046875,
+        147.4945068359375,
+        -5090.61083984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.4058837890625,
+        146.82534790039062,
+        -5077.6875
+      ]
+    },
+    {
+      "index": 33,
+      "launched": true,
+      "velocity": [
+        -2.550224781036377,
+        0,
+        0.8900068402290344
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99959116667742,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.45281982421875,
+            146.83401489257812,
+            -5077.95068359375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.6019287109375,
+        147.26702880859375,
+        -5088.76806640625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.4510803222656,
+        146.83372497558594,
+        -5077.94091796875
+      ]
+    },
+    {
+      "index": 34,
+      "launched": true,
+      "velocity": [
+        -5.833157539367676,
+        0,
+        0.9112055897712708
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998981875018217,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.16510009765625,
+            146.93865966796875,
+            -5081.96142578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.80010986328125,
+        147.41009521484375,
+        -5092.578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.16363525390625,
+        146.93841552734375,
+        -5081.95361328125
+      ]
+    },
+    {
+      "index": 35,
+      "launched": true,
+      "velocity": [
+        -7.420942783355713,
+        0,
+        2.497227668762207
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99963087501237,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6295166015625,
+            146.71046447753906,
+            -5073.3134765625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.8956298828125,
+        147.15814208984375,
+        -5086.8212890625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6278076171875,
+        146.71018981933594,
+        -5073.3037109375
+      ]
+    },
+    {
+      "index": 40,
+      "launched": true,
+      "velocity": [
+        -2.33646559715271,
+        0,
+        2.2984800338745117
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999850833322853,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.6351013183594,
+            146.85887145996094,
+            -5078.98828125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.1091003417969,
+        147.40919494628906,
+        -5093.2197265625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.6348876953125,
+        146.85842895507812,
+        -5078.97802734375
+      ]
+    },
+    {
+      "index": 41,
+      "launched": true,
+      "velocity": [
+        -5.292193412780762,
+        0,
+        4.298605442047119
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999596541631036,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.8404846191406,
+            146.74302673339844,
+            -5074.50146484375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.7419128417969,
+        147.41482543945312,
+        -5092.5654296875
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.83868408203125,
+        146.74273681640625,
+        -5074.4912109375
+      ]
+    },
+    {
+      "index": 42,
+      "launched": true,
+      "velocity": [
+        -10.149582862854004,
+        0,
+        4.076961994171143
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99896083335625,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.32464599609375,
+            146.96202087402344,
+            -5082.85986328125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.9841613769531,
+        147.60330200195312,
+        -5099.68896484375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.3228454589844,
+        146.96173095703125,
+        -5082.849609375
+      ]
+    },
+    {
+      "index": 43,
+      "launched": true,
+      "velocity": [
+        -4.8471198081970215,
+        0,
+        2.80021595954895
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99971187498886,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.0960693359375,
+            146.92971801757812,
+            -5081.58447265625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.5611267089844,
+        147.38612365722656,
+        -5095.78759765625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.0958557128906,
+        146.9292755126953,
+        -5081.57421875
+      ]
+    },
+    {
+      "index": 45,
+      "launched": true,
+      "velocity": [
+        -11.02297306060791,
+        0,
+        3.801546812057495
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999081208370626,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.621826171875,
+            146.71031188964844,
+            -5073.2724609375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4169921875,
+        147.3211669921875,
+        -5089.65234375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.61968994140625,
+        146.7099609375,
+        -5073.26025390625
+      ]
+    },
+    {
+      "index": 47,
+      "launched": true,
+      "velocity": [
+        -8.751293182373047,
+        0,
+        1.214780330657959
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999718750012107,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.7185974121094,
+            146.72601318359375,
+            -5073.814453125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.183837890625,
+        147.13034057617188,
+        -5084.63720703125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.7168273925781,
+        146.72572326660156,
+        -5073.8046875
+      ]
+    },
+    {
+      "index": 48,
+      "launched": true,
+      "velocity": [
+        -6.875076770782471,
+        0,
+        2.379922866821289
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01633383333683,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.5229797363281,
+            146.8436279296875,
+            -5078.34765625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.6606750488281,
+        147.50692749023438,
+        -5092.42578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.52166748046875,
+        146.84336853027344,
+        -5078.3388671875
+      ]
+    },
+    {
+      "index": 49,
+      "launched": true,
+      "velocity": [
+        -7.705449104309082,
+        0,
+        0.7090725302696228
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999280499992892,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -307.5074768066406,
+            147.13497924804688,
+            -5089.521484375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.98126220703125,
+        147.43910217285156,
+        -5100.08642578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -307.5059509277344,
+        147.13473510742188,
+        -5089.5126953125
+      ]
+    },
+    {
+      "index": 50,
+      "launched": true,
+      "velocity": [
+        -5.1273956298828125,
+        0,
+        3.7347118854522705
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999397208332084,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.29058837890625,
+            146.955322265625,
+            -5082.66943359375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.2772216796875,
+        147.43423461914062,
+        -5098.46142578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.2888488769531,
+        146.9550323486328,
+        -5082.65966796875
+      ]
+    },
+    {
+      "index": 51,
+      "launched": true,
+      "velocity": [
+        -6.637777805328369,
+        0,
+        1.3507264852523804
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.001064750016667,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.51495361328125,
+            146.98941040039062,
+            -5083.93408203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.1371154785156,
+        147.63021850585938,
+        -5096.36474609375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.5132141113281,
+        146.98910522460938,
+        -5083.92431640625
+      ]
+    },
+    {
+      "index": 53,
+      "launched": true,
+      "velocity": [
+        -7.636580944061279,
+        0,
+        3.2454607486724854
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000311999989208,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.63653564453125,
+            147.00711059570312,
+            -5084.61865234375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -308.7289123535156,
+        147.46585083007812,
+        -5099.939453125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.6351318359375,
+        147.00686645507812,
+        -5084.61083984375
+      ]
+    },
+    {
+      "index": 54,
+      "launched": true,
+      "velocity": [
+        -10.261894226074219,
+        0,
+        2.620814800262451
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99989058333449,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.7598876953125,
+            147.02578735351562,
+            -5085.31201171875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.9626159667969,
+        147.4939727783203,
+        -5099.2001953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.7579040527344,
+        147.02548217773438,
+        -5085.30224609375
+      ]
+    },
+    {
+      "index": 56,
+      "launched": true,
+      "velocity": [
+        -4.183415412902832,
+        0,
+        1.258341908454895
+      ],
+      "groundZone": "green",
+      "elapsed": 19.99889591668034,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.35931396484375,
+            146.07998657226562,
+            -5071.87548828125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.482666015625,
+        147.05941772460938,
+        -5083.36083984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.35662841796875,
+        146.07998657226562,
+        -5071.86376953125
+      ]
+    },
+    {
+      "index": 58,
+      "launched": true,
+      "velocity": [
+        -8.714326858520508,
+        0,
+        2.097912311553955
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000445958343334,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.85791015625,
+            146.74510192871094,
+            -5074.60205078125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.3340759277344,
+        147.34634399414062,
+        -5087.92578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.8561706542969,
+        146.7447967529297,
+        -5074.59228515625
+      ]
+    },
+    {
+      "index": 59,
+      "launched": true,
+      "velocity": [
+        -9.887319564819336,
+        0,
+        6.064799785614014
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998997291666456,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.8835754394531,
+            146.750732421875,
+            -5074.74462890625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4815368652344,
+        147.72474670410156,
+        -5099.1015625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.8821105957031,
+        146.75051879882812,
+        -5074.73681640625
+      ]
+    },
+    {
+      "index": 60,
+      "launched": true,
+      "velocity": [
+        -2.666351318359375,
+        0,
+        2.2935574054718018
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.01474099996267,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6588134765625,
+            146.71705627441406,
+            -5073.47802734375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.2295837402344,
+        147.41714477539062,
+        -5089.1376953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.65728759765625,
+        146.71681213378906,
+        -5073.46923828125
+      ]
+    },
+    {
+      "index": 63,
+      "launched": true,
+      "velocity": [
+        -2.821944236755371,
+        0,
+        0.30605462193489075
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99970429163659,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -307.16204833984375,
+            147.08441162109375,
+            -5087.578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.68109130859375,
+        147.68936157226562,
+        -5098.69189453125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -307.159912109375,
+        147.08407592773438,
+        -5087.56591796875
+      ]
+    },
+    {
+      "index": 64,
+      "launched": true,
+      "velocity": [
+        -9.599839210510254,
+        0,
+        4.621922492980957
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000204000039957,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.87255859375,
+            146.89422607421875,
+            -5080.31494140625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.9955749511719,
+        147.479736328125,
+        -5098.6953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.8703918457031,
+        146.89389038085938,
+        -5080.302734375
+      ]
+    },
+    {
+      "index": 65,
+      "launched": true,
+      "velocity": [
+        -4.997400760650635,
+        0,
+        2.695603609085083
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999328208330553,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.663818359375,
+            147.0124053955078,
+            -5084.77099609375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -306.8834533691406,
+        147.63539123535156,
+        -5099.99365234375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.66168212890625,
+        147.01206970214844,
+        -5084.7587890625
+      ]
+    },
+    {
+      "index": 66,
+      "launched": true,
+      "velocity": [
+        -4.360067367553711,
+        0,
+        1.6029530763626099
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.999850333319046,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.6836853027344,
+            146.71897888183594,
+            -5073.6201171875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.29754638671875,
+        147.4118194580078,
+        -5087.01318359375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.6822814941406,
+        146.71876525878906,
+        -5073.6123046875
+      ]
+    },
+    {
+      "index": 67,
+      "launched": true,
+      "velocity": [
+        -3.7488558292388916,
+        0,
+        3.0733728408813477
+      ],
+      "groundZone": "green",
+      "elapsed": 19.9995565416757,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.291015625,
+            146.07997131347656,
+            -5071.63232421875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.9867248535156,
+        147.29737854003906,
+        -5087.927734375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.2890625,
+        146.07997131347656,
+        -5071.62451171875
+      ]
+    },
+    {
+      "index": 68,
+      "launched": true,
+      "velocity": [
+        -5.527613162994385,
+        0,
+        3.3977787494659424
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.99927587498678,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.89080810546875,
+            146.74972534179688,
+            -5074.78369140625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.1155700683594,
+        147.21896362304688,
+        -5090.6376953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.8892822265625,
+        146.74948120117188,
+        -5074.77490234375
+      ]
+    },
+    {
+      "index": 69,
+      "launched": true,
+      "velocity": [
+        -2.1649973392486572,
+        0,
+        0.20529130101203918
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.9981242500362,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.9345703125,
+            146.7561492919922,
+            -5075.033203125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -303.331787109375,
+        147.36968994140625,
+        -5086.08984375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.93243408203125,
+        146.7558135986328,
+        -5075.021484375
+      ]
+    },
+    {
+      "index": 70,
+      "launched": true,
+      "velocity": [
+        -7.753112316131592,
+        0,
+        4.681118965148926
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998288916656747,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.58465576171875,
+            146.70516967773438,
+            -5073.060546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.5196228027344,
+        147.54090881347656,
+        -5092.6884765625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.5823669433594,
+        146.70480346679688,
+        -5073.04736328125
+      ]
+    },
+    {
+      "index": 71,
+      "launched": true,
+      "velocity": [
+        -3.9651970863342285,
+        0,
+        3.260150671005249
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.06466645828914,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.1557922363281,
+            146.7891845703125,
+            -5076.27978515625
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -304.854248046875,
+        147.53878784179688,
+        -5093.35595703125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.1539001464844,
+        146.78887939453125,
+        -5076.26806640625
+      ]
+    },
+    {
+      "index": 72,
+      "launched": true,
+      "velocity": [
+        -2.16937255859375,
+        0,
+        1.5871731042861938
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.049367541621905,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.3495788574219,
+            146.96588134765625,
+            -5083.00146484375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4410095214844,
+        147.6238555908203,
+        -5096.626953125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.34808349609375,
+        146.96563720703125,
+        -5082.99267578125
+      ]
+    },
+    {
+      "index": 74,
+      "launched": true,
+      "velocity": [
+        -7.812473297119141,
+        0,
+        3.28613018989563
+      ],
+      "groundZone": "dune",
+      "elapsed": 19.998105416656472,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -304.8706359863281,
+            146.74765014648438,
+            -5074.67333984375
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.5197448730469,
+        147.37652587890625,
+        -5090.94384765625
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -304.86907958984375,
+        146.74740600585938,
+        -5074.66455078125
+      ]
+    },
+    {
+      "index": 75,
+      "launched": true,
+      "velocity": [
+        -9.630544662475586,
+        0,
+        1.496655821800232
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.000250541663263,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.6134948730469,
+            147.00538635253906,
+            -5084.4892578125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.33331298828125,
+        147.6402130126953,
+        -5096.783203125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.6125793457031,
+        147.0050811767578,
+        -5084.48046875
+      ]
+    },
+    {
+      "index": 76,
+      "launched": true,
+      "velocity": [
+        -1.5358704328536987,
+        0,
+        1.3183362483978271
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.017250166623853,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -306.6410827636719,
+            147.00697326660156,
+            -5084.64453125
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -307.8745422363281,
+        147.40818786621094,
+        -5096.74267578125
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -306.63934326171875,
+        147.0066680908203,
+        -5084.634765625
+      ]
+    },
+    {
+      "index": 78,
+      "launched": true,
+      "velocity": [
+        -8.335915565490723,
+        0,
+        2.1534996032714844
+      ],
+      "groundZone": "dune",
+      "elapsed": 20.049913208349608,
+      "events": [
+        {
+          "kind": "auto_reset",
+          "detail": "timeout",
+          "pos": [
+            -305.28546142578125,
+            146.8090362548828,
+            -5077.0185546875
+          ]
+        }
+      ],
+      "outcome": "reset_requested",
+      "start": [
+        -305.4316711425781,
+        147.3603057861328,
+        -5090.37109375
+      ],
+      "kind": "dune_lean3_approach",
+      "ground": "Workspace.CourseSugarloaf.Hole15.Geometry.Felt",
+      "finish": [
+        -305.2850036621094,
+        146.80868530273438,
+        -5077.009765625
+      ]
+    }
+  ],
+  "errors": []
+}

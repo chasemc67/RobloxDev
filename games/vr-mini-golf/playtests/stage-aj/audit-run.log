@@ -1,0 +1,327 @@
+[runner] studio playtest-sc-batch34.rbxl bebbcff5-4abb-432d-95a4-d9c7e0b4218c
+{
+  "remaining_trim_lip_top_candidates": 0,
+  "method": "Actual oriented part bounds, 15-axis SAT; .15 gap, .16 ball headroom and horizontal footprint player headroom felt-0.4 through felt+8. Mesh envelope candidates require visual/triangle refinement; intended labels are name-based, not waivers.",
+  "built_visual_parts": 1830,
+  "targets": 993,
+  "clearance_candidates": 15652,
+  "by_target_kind": {
+    "player_headroom_8": 3849,
+    "felt": 2713,
+    "ball_headroom": 2843,
+    "rail": 6247
+  },
+  "by_classification": {
+    "clearance_candidate": 10454,
+    "intended_dressing_envelope_candidate": 5198
+  },
+  "by_hole": {
+    "1": 437,
+    "2": 1121,
+    "3": 609,
+    "4": 275,
+    "5": 1381,
+    "6": 1182,
+    "7": 865,
+    "8": 1291,
+    "9": 894,
+    "10": 457,
+    "11": 1724,
+    "12": 703,
+    "13": 1008,
+    "14": 250,
+    "15": 229,
+    "16": 782,
+    "17": 1398,
+    "18": 1046
+  },
+  "authored_deco_rows": 492,
+  "authored_by_hole": {
+    "1": 4,
+    "2": 18,
+    "3": 12,
+    "4": 27,
+    "5": 30,
+    "6": 5,
+    "7": 47,
+    "8": 43,
+    "9": 13,
+    "10": 11,
+    "11": 24,
+    "12": 9,
+    "13": 18,
+    "14": 16,
+    "15": 18,
+    "16": 24,
+    "17": 162,
+    "18": 11
+  },
+  "comparison_note": "Authored rows use anchor envelopes; built rows use individual actual MeshPart bounds, so counts are not equivalent. Full rows retained for review.",
+  "import_transform_checks": [
+    {
+      "id": "h08_ground",
+      "models": 1,
+      "mesh_count": 7,
+      "expected_mesh_count": 7,
+      "missing": [],
+      "pivot_errors": [
+        0.0
+      ],
+      "mesh_errors": [],
+      "pass": true
+    },
+    {
+      "id": "h09_water_tank",
+      "models": 1,
+      "mesh_count": 5,
+      "expected_mesh_count": 5,
+      "missing": [],
+      "pivot_errors": [
+        9.765624963620212e-05
+      ],
+      "mesh_errors": [],
+      "pass": true
+    }
+  ],
+  "railcaps": {
+    "1": {
+      "baseline_unique_caps": 6,
+      "built_caps": 6,
+      "raised": 6,
+      "coplanar_after": 0
+    },
+    "2": {
+      "baseline_unique_caps": 14,
+      "built_caps": 14,
+      "raised": 14,
+      "coplanar_after": 0
+    },
+    "3": {
+      "baseline_unique_caps": 12,
+      "built_caps": 12,
+      "raised": 12,
+      "coplanar_after": 0
+    },
+    "4": {
+      "baseline_unique_caps": 4,
+      "built_caps": 4,
+      "raised": 4,
+      "coplanar_after": 0
+    },
+    "5": {
+      "baseline_unique_caps": 12,
+      "built_caps": 12,
+      "raised": 12,
+      "coplanar_after": 0
+    },
+    "6": {
+      "baseline_unique_caps": 15,
+      "built_caps": 15,
+      "raised": 15,
+      "coplanar_after": 0
+    },
+    "7": {
+      "baseline_unique_caps": 14,
+      "built_caps": 14,
+      "raised": 14,
+      "coplanar_after": 0
+    },
+    "8": {
+      "baseline_unique_caps": 32,
+      "built_caps": 32,
+      "raised": 32,
+      "coplanar_after": 0
+    },
+    "9": {
+      "baseline_unique_caps": 12,
+      "built_caps": 12,
+      "raised": 12,
+      "coplanar_after": 0
+    },
+    "10": {
+      "baseline_unique_caps": 14,
+      "built_caps": 14,
+      "raised": 14,
+      "coplanar_after": 0
+    },
+    "11": {
+      "baseline_unique_caps": 43,
+      "built_caps": 43,
+      "raised": 43,
+      "coplanar_after": 0
+    },
+    "12": {
+      "baseline_unique_caps": 13,
+      "built_caps": 13,
+      "raised": 13,
+      "coplanar_after": 0
+    },
+    "13": {
+      "baseline_unique_caps": 8,
+      "built_caps": 8,
+      "raised": 8,
+      "coplanar_after": 0
+    },
+    "14": {
+      "baseline_unique_caps": 10,
+      "built_caps": 10,
+      "raised": 10,
+      "coplanar_after": 0
+    },
+    "15": {
+      "baseline_unique_caps": 11,
+      "built_caps": 12,
+      "raised": 12,
+      "coplanar_after": 0
+    },
+    "16": {
+      "baseline_unique_caps": 8,
+      "built_caps": 8,
+      "raised": 8,
+      "coplanar_after": 0
+    },
+    "17": {
+      "baseline_unique_caps": 8,
+      "built_caps": 8,
+      "raised": 8,
+      "coplanar_after": 0
+    },
+    "18": {
+      "baseline_unique_caps": 17,
+      "built_caps": 17,
+      "raised": 17,
+      "coplanar_after": 0
+    }
+  },
+  "checks": {
+    "camera_parts": 17,
+    "camera_flags_pass": true,
+    "primitive_proxies": 7,
+    "proxy_pass": true,
+    "placeholder_pass": true,
+    "import_visual_flags": [
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__ClayBrick",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__MintWhite",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__Pebble",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__PepRed",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__RedDirt",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__RedDirtLight",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground.h08_ground__Strata",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole9.StageAJVisuals.h09_water_tank.h09_water_tank__Brass",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole9.StageAJVisuals.h09_water_tank.h09_water_tank__Iron",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole9.StageAJVisuals.h09_water_tank.h09_water_tank__RockCandyLilac",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole9.StageAJVisuals.h09_water_tank.h09_water_tank__Timber",
+        "pass": true
+      },
+      {
+        "path": "Workspace.CourseSugarloaf.Hole9.StageAJVisuals.h09_water_tank.h09_water_tank__TimberWeathered",
+        "pass": true
+      }
+    ]
+  },
+  "import_models": [
+    {
+      "boundsSize": [
+        75.8154296875,
+        0.9689846038818359,
+        108.58674621582031
+      ],
+      "path": "Workspace.CourseSugarloaf.Hole8.StageAJVisuals.h08_ground",
+      "pivot": [
+        360,
+        70,
+        -4945,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "boundsCenter": [
+        361.5122375488281,
+        70.1869888305664,
+        -4976.29443359375
+      ]
+    },
+    {
+      "boundsSize": [
+        3.8899242877960205,
+        8,
+        3.8899242877960205
+      ],
+      "path": "Workspace.CourseSugarloaf.Hole9.StageAJVisuals.h09_water_tank",
+      "pivot": [
+        370,
+        70,
+        -5121.64990234375,
+        -4.371138828673793e-08,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-08
+      ],
+      "boundsCenter": [
+        370,
+        74,
+        -5121.64990234375
+      ]
+    }
+  ],
+  "geometry_equality": [
+    {
+      "capUnderCupCount": 0,
+      "hole": 8,
+      "unmatchedReference": [],
+      "unmatchedBuilt": [],
+      "pass": true,
+      "matched": 132
+    },
+    {
+      "capUnderCupCount": 0,
+      "hole": 15,
+      "unmatchedReference": [],
+      "unmatchedBuilt": [],
+      "pass": true,
+      "matched": 50
+    }
+  ]
+}

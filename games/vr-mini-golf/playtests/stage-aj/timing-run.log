@@ -1,0 +1,25 @@
+[runner] studio playtest-sc-batch34.rbxl bebbcff5-4abb-432d-95a4-d9c7e0b4218c
+34723
+started 80 shots / 4 workers (native ready timing)
+8 {'done': 0, 'shots': 0, 'errors': 0}
+8 {'done': 0, 'shots': 5, 'errors': 0}
+8 {'done': 0, 'shots': 14, 'errors': 0}
+8 {'done': 0, 'shots': 21, 'errors': 0}
+8 {'done': 0, 'shots': 30, 'errors': 0}
+8 {'done': 0, 'shots': 38, 'errors': 0}
+8 {'done': 0, 'shots': 43, 'errors': 0}
+8 {'done': 0, 'shots': 53, 'errors': 0}
+8 {'done': 0, 'shots': 60, 'errors': 0}
+8 {'done': 0, 'shots': 67, 'errors': 0}
+8 {'done': 1, 'shots': 75, 'errors': 0}
+8 {'done': 3, 'shots': 79, 'errors': 0}
+8 {'done': 4, 'shots': 80, 'errors': 0}
+[runner] mode Edit
+Traceback (most recent call last):
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/stage_aj_timing.py", line 83, in <module>
+    if __name__=='__main__': main()
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/stage_aj_timing.py", line 74, in main
+    traces=read_json_chunks(st, 'local t={} for _,v in game.ServerStorage.QA_SC:GetChildren() do if v:IsA("StringValue") and v.Name:match("^Trace") then t[v.Name]=game:GetService("HttpService"):JSONDecode(v.Value) end end local payload=game:GetService("HttpService"):JSONEncode(t)')
+  File "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/tools/stage_aj_timing.py", line 21, in read_json_chunks
+    length = int(st.luau(build_payload + '\nlocal export=Instance.new("StringValue") export.Name="AJExport" export.Value=payload export.Parent=game.ServerStorage.QA_SC return #payload', 'Server'))
+ValueError: invalid literal for int() with base 10: 'sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:86: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:5

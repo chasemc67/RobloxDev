@@ -806,8 +806,9 @@ function Hole:buildWall(w)
 		end
 		if cap and size.Y > 0.3 and size.X > 0.1 and size.Z > 0.1 then
 			local capT = 0.12
-			local capPart = vis("RailCap_" .. w.id, self.cf * cf * CFrame.new(0, size.Y / 2 - capT / 2, 0), Vector3.new(size.X, capT, size.Z), P.oak, M.WoodPlanks, self.rails)
+			local capPart = vis("RailCap_" .. w.id, self.cf * cf * CFrame.new(0, size.Y / 2 - capT / 2 + 0.02, 0), Vector3.new(size.X, capT, size.Z), P.oak, M.WoodPlanks, self.rails)
 			capPart:SetAttribute("WallId", w.id)
+			capPart:SetAttribute("StageAjRaised", true)
 		end
 		return
 	end
@@ -1783,7 +1784,7 @@ local SIGN_TEXT = {
 
 function Hole:sugarloafPlaceholder(a, parent)
 	local name = a.name
-	if SC_SKIP[name] or string.find(name, "^hour_stone") or string.find(name, "^player_tp_") or string.find(name, "_skirt_")
+	if name == "loading_dock" or name == "water_tank" or SC_SKIP[name] or string.find(name, "^hour_stone") or string.find(name, "^player_tp_") or string.find(name, "_skirt_")
 		or string.find(name, "^crystal_%d") or string.find(name, "^hoodoo_%d") then
 		return
 	end
@@ -2267,6 +2268,9 @@ function CourseBuilder.Build(data, layout, opts)
 		buildHole(course, h, layout)
 		stats.holes += 1
 		task.wait()
+	end
+	if COURSE == "sugarloaf_canyon" then
+		require(game.ServerStorage.SugarloafOverrides:Clone()).Apply(course)
 	end
 	local counts = CourseBuilder.ApplyPhysics(course)
 	if not primary then

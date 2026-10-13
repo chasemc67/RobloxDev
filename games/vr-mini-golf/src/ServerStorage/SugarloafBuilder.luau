@@ -261,6 +261,7 @@ function SugarloafBuilder.PlaceMeshes(course: Folder?)
 			r.Transparency = 1
 		end
 	end
+	require(ServerStorage.SugarloafOverrides:Clone()).Apply(course)
 	return table.concat(report, "\n")
 end
 
@@ -527,6 +528,7 @@ function SugarloafBuilder.PlaceKit(course: Folder?)
 		table.insert(report, "missing library model " .. stem)
 	end
 	table.insert(report, 1, string.format("placed %d instances, %d mesh parts", placed, parts))
+	require(ServerStorage.SugarloafOverrides:Clone()).Apply(course)
 	return table.concat(report, "\n")
 end
 
