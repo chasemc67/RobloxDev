@@ -28,7 +28,9 @@ local function buildLane()
 	geo.Name = "Geometry"
 	geo.Parent = lane
 
-	local source = workspace.Course.Hole1.Geometry:FindFirstChild("Felt")
+	-- (stage ab) since the place split a course place may hold only Sugarloaf: take hole 1's felt of whichever is here
+	local course = workspace:FindFirstChild("Course") or workspace:FindFirstChild("CourseSugarloaf")
+	local source = course.Hole1.Geometry:FindFirstChild("Felt")
 	local felt = source:Clone()
 	felt.Size = Vector3.new(LANE_W, 1, LANE_Z1 - LANE_Z0)
 	felt.CFrame = CFrame.new(LANE_X, SURFACE_Y - 0.5, (LANE_Z0 + LANE_Z1) / 2)

@@ -360,4 +360,174 @@ function SugarloafBuilder.CheckClearance(course: Folder?, n: number?)
 	return table.concat(out, "\n")
 end
 
+-- Stage ab: the pass 6 world kit (assets/vr-mini-golf/sugarloaf-canyon/models, 213 FBX merged into
+-- fbx/kit_merged_pass6/sugarloaf_kit_pass6_{a,b,c}.fbx; data in CourseData.SugarloafKit, tools/sugarloaf_kit_to_lua.py).
+--   require(game.ServerStorage.SugarloafBuilder:Clone()).PrepareKit({ workspace.sugarloaf_kit_pass6_a, ... }, sceneYaw)
+--   require(game.ServerStorage.SugarloafBuilder:Clone()).PlaceKit()
+-- PrepareKit turns the importer's models into ServerStorage.SugarloafKit: one Model per FBX file, pivot at the piece
+-- origin. Each MeshPart gets its size and centre from the manifest (so any importer auto-scale or scene offset is
+-- undone) and its rotation with the importer's scene yaw (0 or 180) taken out. Material, colour (untextured meshes),
+-- transparency and CastShadow come from the manifest; Neon per manifest. Decoration only: nothing collides, takes
+-- queries or touches (the course parts and terrain are the collision).
+-- PlaceKit clones every manifest instance into workspace.CourseSugarloaf.Kit at SugarloafLayout.offset + pos, yaw,
+-- and per-axis scale. The gondola cabin is tagged SugarloafGondola; GolfClient's SugarloafGondola moves it.
+local NO_SHADOW_GROUPS = { far_card = true, sky = true }
+
+function SugarloafBuilder.PrepareKit(roots: { Instance }, sceneYaw: number?)
+	local KIT = require(ServerStorage.CourseData.SugarloafKit:Clone())
+	local undo = CFrame.Angles(0, -math.rad(sceneYaw or 0), 0)
+	local lib = ServerStorage:FindFirstChild("SugarloafKit") or Instance.new("Folder")
+	lib.Name = "SugarloafKit"
+	lib.Parent = ServerStorage
+	local report, done, missing, scales = {}, 0, 0, {}
+	for _, root in roots do
+		local models = {}
+		for _, d in root:GetDescendants() do
+			if KIT.files[d.Name] and not d:IsA("BasePart") then
+				models[d.Name] = d
+			end
+		end
+		for stem, src in models do
+			local spec = KIT.files[stem]
+			local old = lib:FindFirstChild(stem)
+			if old then
+				old:Destroy()
+			end
+			local model = Instance.new("Model")
+			model.Name = stem
+			local found = {}
+			for _, p in src:GetDescendants() do
+				local m = p:IsA("MeshPart") and spec.meshes[p.Name]
+				if m then
+					found[p.Name] = true
+					local size = Vector3.new(m.s[1], m.s[2], m.s[3])
+					table.insert(scales, p.Size.Magnitude / math.max(size.Magnitude, 1e-3))
+					local rot = undo * p.CFrame.Rotation
+					p.Parent = model
+					p.Size = size
+					p.CFrame = CFrame.new(m.c[1], m.c[2], m.c[3]) * rot
+					p.Anchored = true
+					p.CanCollide, p.CanQuery, p.CanTouch = false, false, false
+					p.Massless = true
+					local ok, mat = pcall(function() return Enum.Material[m.mat] end)
+					if ok and mat then
+						p.Material = mat
+					end
+					if not m.tex or m.mat == "Neon" then
+						p.Color = Color3.fromHex(m.color)
+					end
+					if m.mat == "Neon" then
+						local sa = p:FindFirstChildOfClass("SurfaceAppearance")
+						if sa and not m.tex then
+							sa:Destroy()
+						end
+					end
+					p.Transparency = m.tr or 0
+					p.CastShadow = not (m.noShadow or NO_SHADOW_GROUPS[spec.group] or m.mat == "Neon")
+					p:SetAttribute("SugarloafKitMesh", true)
+				end
+			end
+			for name in spec.meshes do
+				if not found[name] then
+					missing += 1
+					table.insert(report, stem .. ": missing mesh " .. name)
+				end
+			end
+			model.WorldPivot = CFrame.identity
+			model.Parent = lib
+			done += 1
+		end
+	end
+	table.sort(scales)
+	table.insert(report, 1, string.format("prepared %d files (%d in the kit), %d meshes missing, importer size ratio min %.3f median %.3f max %.3f",
+		done, (function() local n = 0 for _ in KIT.files do n += 1 end return n end)(), missing,
+		scales[1] or 0, scales[math.max(1, #scales // 2)] or 0, scales[#scales] or 0))
+	return table.concat(report, "\n")
+end
+
+-- (stage ab) The kit's library models, at the piece origin. `stem` = FBX file stem.
+function SugarloafBuilder.PlaceKit(course: Folder?)
+	course = course or workspace:FindFirstChild("CourseSugarloaf")
+	assert(course, "build CourseSugarloaf first")
+	local lib = ServerStorage:FindFirstChild("SugarloafKit")
+	assert(lib, "ServerStorage.SugarloafKit missing (import the merged pass 6 FBX, then PrepareKit)")
+	local KIT = require(ServerStorage.CourseData.SugarloafKit:Clone())
+	local layout = require(ServerStorage.CourseData.SugarloafLayout:Clone())
+	local off = Vector3.new(layout.offset[1], layout.offset[2], layout.offset[3])
+	local old = course:FindFirstChild("Kit")
+	if old then
+		old:Destroy()
+	end
+	local kit = Instance.new("Folder")
+	kit.Name = "Kit"
+	local report, placed, parts, missing = {}, 0, 0, {}
+	local groups = {}
+	for id, piece in KIT.pieces do
+		local gf = groups[piece.group]
+		if not gf then
+			gf = Instance.new("Folder")
+			gf.Name = piece.group
+			gf.Parent = kit
+			groups[piece.group] = gf
+		end
+		for i, inst in piece.instances do
+			local cf = CFrame.new(off + Vector3.new(inst.pos[1], inst.pos[2], inst.pos[3])) * CFrame.Angles(0, math.rad(inst.yaw), 0)
+			local holder = Instance.new("Model")
+			holder.Name = #piece.instances > 1 and (id .. "_" .. i) or id
+			for _, stem in piece.files do
+				local src = lib:FindFirstChild(stem)
+				if not src then
+					missing[stem] = true
+					continue
+				end
+				local m = src:Clone()
+				if inst.scale then
+					local sc = Vector3.new(inst.scale[1], inst.scale[2], inst.scale[3])
+					for _, p in m:GetDescendants() do
+						if p:IsA("BasePart") then
+							local rot = p.CFrame.Rotation
+							-- per-axis scale in the piece frame (parts are axis-aligned there after PrepareKit)
+							local l = rot:VectorToObjectSpace(sc)
+							p.Size *= Vector3.new(math.abs(l.X), math.abs(l.Y), math.abs(l.Z))
+							p.CFrame = CFrame.new(p.Position * sc) * rot
+						end
+					end
+				end
+				m:PivotTo(cf)
+				m.Parent = holder
+				parts += #m:GetChildren()
+			end
+			holder.WorldPivot = cf
+			if piece.motion then
+				-- the ride for GolfClient's SugarloafGondola (world coords: + offset)
+				local mo = piece.motion
+				local function v3(t)
+					return off + Vector3.new(t[1], t[2], t[3])
+				end
+				for _, dir in { "up", "down" } do
+					local l = mo[dir]
+					holder:SetAttribute(dir .. "A", v3(l.A))
+					holder:SetAttribute(dir .. "T", v3(l.T))
+					holder:SetAttribute(dir .. "B", v3(l.B))
+					holder:SetAttribute(dir .. "Arcs", Vector2.new(l.arcs[1], l.arcs[2]))
+					holder:SetAttribute(dir .. "Sags", Vector2.new(l.sags[1], l.sags[2]))
+				end
+				holder:SetAttribute("Speed", mo.speed)
+				holder:SetAttribute("UpYaw", mo.upYaw)
+				holder:SetAttribute("DownYaw", mo.downYaw)
+				holder:SetAttribute("Dwell", 8)
+				CollectionService:AddTag(holder, "SugarloafGondola")
+			end
+			holder.Parent = gf
+			placed += 1
+		end
+	end
+	kit.Parent = course
+	for stem in missing do
+		table.insert(report, "missing library model " .. stem)
+	end
+	table.insert(report, 1, string.format("placed %d instances, %d mesh parts", placed, parts))
+	return table.concat(report, "\n")
+end
+
 return SugarloafBuilder

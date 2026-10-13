@@ -94,7 +94,9 @@ local function event(kind: string, data)
 end
 
 local function physicsOf(name: string)
-	for _, d in workspace.Course:GetDescendants() do
+	-- (stage ab) a course place may hold only Sugarloaf (CourseSugarloaf) since the place split
+	local course = workspace:FindFirstChild("Course") or workspace:FindFirstChild("CourseSugarloaf")
+	for _, d in course and course:GetDescendants() or {} do
 		if d:IsA("BasePart") and d.Name == name then
 			local p = d.CustomPhysicalProperties
 			return p and {
@@ -1267,6 +1269,53 @@ local function slowRollers(n, count, seed)
 	return res
 end
 
+-- (stage ab) Cup drop: from up to 3 spots 1.4 studs from the cup (on the cup's felt, a clear line to the cup), a gentle
+-- 3.5 studs/s putt straight at it must drop in (outcome "cup"). Checks that nothing under the cup (terrain, kit ground)
+-- holds the ball up at the rim.
+local function cupDrop(n)
+	local cup = hole(n).Cup
+	local c = cup.Position
+	local feltOnly = RaycastParams.new()
+	feltOnly.FilterType = Enum.RaycastFilterType.Include
+	feltOnly.FilterDescendantsInstances = CollectionService:GetTagged("GolfSurface")
+	local walls = RaycastParams.new()
+	walls.FilterType = Enum.RaycastFilterType.Exclude
+	walls.FilterDescendantsInstances = { Ball.ball, workspace.CurrentCamera, Players.LocalPlayer.Character }
+	local res = { tries = {}, sunk = 0, n = 0 }
+	-- what is under the cup centre (first thing below the cup bottom, any collidable)
+	local under = workspace:Raycast(c + Vector3.new(0, 0.05, 0), Vector3.new(0, -3, 0), walls)
+	res.underCup = under and { name = under.Instance.Name, depth = round(c.Y - under.Position.Y, 3) } or "nothing within 3"
+	for k = 0, 7 do
+		if res.n >= 3 then
+			break
+		end
+		local ang = math.rad(k * 45 + 22.5)
+		local d = Vector3.new(math.cos(ang), 0, math.sin(ang))
+		local start = c + d * 1.4
+		local hit = workspace:Raycast(start + Vector3.new(0, 1, 0), Vector3.new(0, -2, 0), feltOnly)
+		if hit and math.abs(hit.Position.Y - c.Y) < 0.08 and hit.Normal.Y > 0.95 then
+			local from = hit.Position + Vector3.new(0, R, 0)
+			local block = workspace:Raycast(from, (c + Vector3.new(0, R, 0)) - from, walls)
+			if not block or (block.Instance.Name == "CupPlate" or block.Instance.Name == "Felt") then
+				local ok = pcall(place, n, hit.Position.X, hit.Position.Z, hit.Position.Y)
+				if ok then
+					local r = shootS(string.format("h%d-cupdrop-%d", n, k), -d, 3.5, { cup = cup, timeout = 10 })
+					table.insert(res.tries, { angle = k * 45 + 22.5, outcome = r.outcome, finish = r.finish, rimSpeed = r.rimSpeed })
+					-- a refused hit (ball not settled after placing) is no putt: try the next spot instead
+					if r.outcome ~= "refused" then
+						res.n += 1
+						if r.outcome == "cup" then
+							res.sunk += 1
+						end
+					end
+				end
+			end
+		end
+	end
+	res.pass = res.n > 0 and res.sunk == res.n
+	return res
+end
+
 local function holeScenario(n)
 	return function()
 		refreshFelt()
@@ -1299,6 +1348,9 @@ local function holeScenario(n)
 		end
 		if string.find(parts, "slow") then
 			out.slow = slowRollers(n, o.slow or 15, o.seed)
+		end
+		if string.find(parts, "cupdrop") then
+			out.cupdrop = cupDrop(n)
 		end
 		out.issues = table.clone(issues)
 		out.escapes, out.stuck = 0, 0

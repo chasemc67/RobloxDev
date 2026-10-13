@@ -111,11 +111,12 @@ return {
 		IconTotal = "rbxassetid://131506164236528",
 		IconBest = "rbxassetid://101092439594881",
 		-- stage z (assets/vr-mini-golf/ui/menu, ui/loading; tools/stage_z_assets.json)
-		MenuFrame = "rbxassetid://98077960555772", -- menu_frame.png 1200x800 9-slice, SliceCenter 64,64,1136,736
-		CloseX = "rbxassetid://76456557541351", -- close_x.png 128x128
-		MenuButton = "rbxassetid://128214642978551", -- menu_button.png 320x112 (no text; "Menu" is drawn on it)
-		LoadingLanternGrove = "rbxassetid://91887346064262", -- loading_lantern_grove.png 1920x1080
-		LoadingSugarloaf = "rbxassetid://95850509303844", -- loading_sugarloaf_canyon.png 1920x1080
+		MenuFrame = "rbxassetid://101738563295695", -- menu_frame.png 1200x800 9-slice, SliceCenter 64,64,1136,736 (stage ab: real art)
+		CloseX = "rbxassetid://136135028155789", -- close_x.png 128x128 round badge (stage ab: real art)
+		MenuButton = "rbxassetid://120033471344558", -- menu_button.png 128x128 round menu badge, no label (stage ab: real art)
+		LoadingLanternGrove = "rbxassetid://126025818593472", -- loading_lantern_grove.png 1920x1080 (stage ab: real art)
+		LoadingSugarloaf = "rbxassetid://107743406289905", -- loading_sugarloaf.png 1920x1080 (stage ab: real art)
+		LoadingAurora = "rbxassetid://133372645732228", -- loading_aurora.png 1920x1080 (stage ab; for when Aurora opens)
 	},
 	-- VR wrist (bracer + card on its face): hidden in normal play; it shows only while you actively look at the
 	-- off-hand wrist (Walkabout style). Show: the back of the wrist faces your eyes within WristShowDeg AND the wrist

@@ -8,8 +8,9 @@
 --   * Close: the X in the panel's top-right corner (every page but the results). In the lobby that hands the character
 --     to GolfClient.LobbyRoam (walk/jump/camera with the default controls) until a course is picked.
 --   * Reopen: the "Menu" button at the top RIGHT of the Roblox top bar row (stage z: Roblox's own menu covers the
---     top left; the only Menu button, lobby and course) or the M key (phone/desktop), or the left thumbstick click in VR.
---     The scorecard's gear (top right) opens Settings (FrontEnd.openSettings).
+--     top left; the only Menu button, lobby and course) or the M key (phone/desktop). In VR (stage ab: no thumbstick
+--     click) the scorecard's gear (B / Y, then the gear at its top right) opens Settings (FrontEnd.openSettings), and
+--     Settings' Back goes to the title.
 --   * Stage z, one place per course (Golf.Places): in the lobby the course cards teleport to that course's place
 --     (Remotes.RequestTeleport); on a course the title has "Lobby" and the results "Back to lobby" (and a finished
 --     round goes back by itself after Config.ReturnToLobbyAfter s).
@@ -331,7 +332,7 @@ local function buildTitle()
 
 	local foot
 	if isVR then
-		foot = "Point with either controller, pull the trigger to click.  Menu later: click the left stick."
+		foot = "Point with either controller, pull the trigger to click.  Menu later: B / Y, then the gear."
 	elseif inLobby() then
 		foot = "Close (X) to walk around the lobby, or walk through an arch.  Menu (top right) or M brings this back."
 	else
@@ -540,7 +541,7 @@ local HOWTO = {
 			.. "Left stick: walk\n"
 			.. "Settings: choose club hand and Club setup\n"
 			.. "Off-hand X / A: wrist card    B / Y: scorecard\n"
-			.. "Menus: point, trigger.  Left stick click: menu.  Look at wrist: score",
+			.. "Menus: point, trigger.  Menu: B / Y, then the gear.  Look at either wrist: score",
 	},
 	{
 		"Phone",
@@ -811,7 +812,6 @@ end
 -- Roblox top bar row (Chase: Roblox's own menu covers the top left). The ScreenGui uses ScreenInsets.TopbarSafeInsets,
 -- i.e. exactly the free part of the top bar (GuiService.TopbarInset; phones: inside the safe area), and the button
 -- hugs its right edge, touch-sized. With no top bar inset it sits under the top bar at the right edge.
-local MENU_W = 128
 local function placeMenuButton()
 	local inset = GuiService.TopbarInset
 	menuButton.AnchorPoint = Vector2.new(1, 0.5)
@@ -821,13 +821,13 @@ local function placeMenuButton()
 		end)
 		local h = math.max(44, inset.Height - 8)
 		menuButton.Position = UDim2.new(1, -8, 0.5, 0)
-		menuButton.Size = UDim2.fromOffset(MENU_W, h)
+		menuButton.Size = UDim2.fromOffset(h, h) -- (stage ab) the real menu_button.png is a round 128x128 badge
 	else
 		pcall(function()
 			menuButtonGui.ScreenInsets = Enum.ScreenInsets.CoreUISafeInsets
 		end)
 		menuButton.Position = UDim2.new(1, -12, 0, 32)
-		menuButton.Size = UDim2.fromOffset(MENU_W, 48)
+		menuButton.Size = UDim2.fromOffset(48, 48)
 	end
 end
 
@@ -837,9 +837,8 @@ local function mountMenuButton(playerGui)
 		FrontEnd.open("title")
 	end
 	if Config.UI.MenuButton ~= "" then
-		-- menu_button.png (an amber pill with a menu icon on the left; the label is ours)
-		menuButton = new("ImageButton", { Name = "MenuButton", Image = Config.UI.MenuButton, BackgroundTransparency = 1, ScaleType = Enum.ScaleType.Stretch }, menuButtonGui)
-		label({ Name = "Label", Text = "Menu", TextColor3 = C.navy, AnchorPoint = Vector2.new(1, 0.5), Position = UDim2.new(1, -12, 0.5, 0), Size = UDim2.new(0.62, -12, 0.56, 0), TextXAlignment = Enum.TextXAlignment.Center }, menuButton)
+		-- menu_button.png (stage ab, real art: a round wood-and-brass badge with a menu icon, no label)
+		menuButton = new("ImageButton", { Name = "MenuButton", Image = Config.UI.MenuButton, BackgroundTransparency = 1, ScaleType = Enum.ScaleType.Fit }, menuButtonGui)
 		menuButton.Activated:Connect(VRPointer.bind(menuButton, function()
 			if clickSound then
 				clickSound:Play()
@@ -998,18 +997,8 @@ function FrontEnd.start(opts)
 				placeVRPanel(false)
 			end
 		end)
-		-- left thumbstick click (unused by VRControls) opens / closes the menu (the VR way in since the wrist card lost
-		-- its MENU button)
-		UserInputService.InputBegan:Connect(function(input)
-			if input.KeyCode ~= Enum.KeyCode.ButtonL3 then
-				return
-			end
-			if page == nil then
-				FrontEnd.open("title")
-			elseif page ~= "results" then
-				FrontEnd.close()
-			end
-		end)
+		-- (stage ab, Chase) no thumbstick-click menu: in VR the menu opens from the scorecard (B / Y), whose gear opens
+		-- Settings, and Settings' Back goes to the title.
 	else
 		mountScreen(playerGui)
 		-- (stage y) M opens / closes the menu on desktop (not over the results)

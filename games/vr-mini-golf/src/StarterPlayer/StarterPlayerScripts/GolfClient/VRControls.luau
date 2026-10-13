@@ -18,7 +18,7 @@
 --   Grip (club hand) ........... hold to make the putter solid (only when Config.VRGripToPutt = true)
 --   B / Y ...................... scorecard
 --   Off-hand X / A .............. toggle wrist. Hand and grip fit are chosen in Settings only.
---   Look at the off-hand wrist .. bracer + wrist card: hole, par, stroke, total, best (HUD; no buttons)
+--   Look at either wrist ....... bracer + wrist card: hole, par, stroke, total, best (HUD; no buttons)
 --
 -- For testing without a headset set workspace attribute "SimulateVR" = true before playing. Poses are then read
 -- from CFrameValues in ReplicatedStorage.VRDebug (Head/LeftHand/RightHand, relative to the floor origin),
@@ -47,6 +47,10 @@ local HEAD_SIZE = Vector3.new(0.11, 0.11, 0.42) -- X = face thickness, Y = heigh
 local HIT_COOLDOWN = 0.6
 local REACH_EXTRA = 0.5 -- the shaft may stretch this much (15 cm) to keep the head on the ground
 local TELEPORT_SPEED = 22 -- ~6.5 m max reach
+-- (stage ab, Chase) the head is level with the ground only while on / near it; lifted, it moves rigidly with the club.
+-- Blend by the head's height over its resting height: level up to HEAD_LEVEL_NEAR, rigid from HEAD_LEVEL_FAR.
+local HEAD_LEVEL_NEAR = 0.15 -- 4.5 cm
+local HEAD_LEVEL_FAR = 0.6 -- 18 cm
 local TELEPORT_GRAVITY = Vector3.new(0, -22, 0)
 
 local function flat(v: Vector3)
@@ -266,6 +270,8 @@ function VR.start(Ball, HUD, simulate)
 	local clubButt, clubOffset = defaultClubMount(dominant) -- hand-space shaft start and club rotation
 	local clubLength = 2.6 -- replaced by the height-based fit below
 	local clubFitted = false
+	local clubHeadYaw = 0 -- degrees about the shaft (club setup, stick left/right; saved with the fit)
+	local headRel: CFrame? = nil -- head rotation in the club frame, from the last frame the head was level on the ground
 
 	------------------------------------------------------------ helpers
 	local function motorFor(hand)
@@ -346,12 +352,16 @@ function VR.start(Ball, HUD, simulate)
 		butt = function() return clubButt end,
 		rotation = function() return clubOffset end,
 		active = function(on) player:SetAttribute("ClubSetupActive",on) end,
-		apply = function(rotation,length)
+		apply = function(rotation,length,headYaw)
 			clubOffset,clubLength,clubFitted = rotation,length,true
+			clubHeadYaw = headYaw or 0
+			headRel = nil
 			teleportedThisFrame = true
 		end,
 		defaults = function()
 			clubButt,clubOffset = defaultClubMount(dominant)
+			clubHeadYaw = 0
+			headRel = nil
 			autoFitClub()
 			teleportedThisFrame = true
 		end,
@@ -399,7 +409,7 @@ function VR.start(Ball, HUD, simulate)
 				return
 			end
 		end
-		if Ball.menuOpen and keyCode ~= Enum.KeyCode.ButtonL3 then
+		if Ball.menuOpen then
 			return -- the front-end menu is up (GolfClient.FrontEnd)
 		end
 		if keyCode == Enum.KeyCode.ButtonR2 or keyCode == Enum.KeyCode.ButtonL2 then
@@ -631,6 +641,7 @@ function VR.start(Ball, HUD, simulate)
 		lastClubCF = clubCF
 
 		local floor = groundY(headPos, 1.5)
+		local level = 0 -- 1: on / near the ground (head level), 0: lifted (rigid with the club)
 		if floor then
 			local restY = floor + half.Y + 0.01
 			if headPos.Y < restY then
@@ -645,14 +656,26 @@ function VR.start(Ball, HUD, simulate)
 					headPos += shaftDir * REACH_EXTRA
 				end
 			end
+			local k = math.clamp((headPos.Y - restY - HEAD_LEVEL_NEAR) / (HEAD_LEVEL_FAR - HEAD_LEVEL_NEAR), 0, 1)
+			level = 1 - k * k * (3 - 2 * k)
 		end
 
-		local faceN = flat(clubCF.RightVector)
+		-- face normal: the club's face direction turned by the saved head yaw about the shaft
+		local faceRaw = clubCF.RightVector
+		if clubHeadYaw ~= 0 then
+			faceRaw = CFrame.fromAxisAngle(shaftDir, math.rad(clubHeadYaw)):VectorToWorldSpace(faceRaw)
+		end
+		local faceN = flat(faceRaw)
 		if faceN.Magnitude < 0.2 then
 			faceN = flat(clubCF.UpVector:Cross(shaftDir))
 		end
 		faceN = faceN.Magnitude > 1e-3 and faceN.Unit or Vector3.xAxis
-		local headCF = CFrame.fromMatrix(headPos, faceN, Vector3.yAxis)
+		local levelRot = CFrame.fromMatrix(Vector3.zero, faceN, Vector3.yAxis)
+		if level >= 0.999 or not headRel then
+			headRel = clubCF.Rotation:Inverse() * levelRot
+		end
+		local headRot = level >= 0.999 and levelRot or (clubCF.Rotation * headRel):Lerp(levelRot, level)
+		local headCF = CFrame.new(headPos) * headRot
 
 		-- visuals: a short ferrule at the shaft start (handle end), then the shaft down to the hosel
 		grip.CFrame = CFrame.lookAt(gripPos + shaftDir * (grip.Size.Z / 2), gripPos + shaftDir * grip.Size.Z)
@@ -764,6 +787,7 @@ function VR.start(Ball, HUD, simulate)
 	end
 
 	------------------------------------------------------------ frame update
+	local wristHand: Enum.UserCFrame? = nil
 	RunService:BindToRenderStep("GolfVR", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		camera.HeadScale = 1 -- life size: 1 stud = 0.3 m, regardless of avatar size
 		updateBallPlane()
@@ -800,12 +824,21 @@ function VR.start(Ball, HUD, simulate)
 		detectHit(headCF)
 		teleportedThisFrame = false
 
+		-- the wrist card goes on whichever wrist you look at (stage ab, Chase: either wrist). It only changes wrists
+		-- while hidden; the off hand wins ties, so nothing changes for players who check the off hand.
 		local offHand = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
+		if not wristHand or not HUD.isWristShown() then
+			local offScore = HUD.wristLookScore(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand)
+			local clubScore = HUD.wristLookScore(worldPose(dominant), headWorld, dominant == Enum.UserCFrame.LeftHand)
+			wristHand = clubScore < offScore - 0.05 and dominant or offHand
+		end
 		-- the wrist stays down mid-swing (putter head speed) and in a putting stance (head low beside a hittable ball)
 		local b = Ball.ball
 		local toBall = b and (headCF.Position - b.Position)
 		local stance = toBall ~= nil and Ball.canHit() and Vector3.new(toBall.X, 0, toBall.Z).Magnitude < Config.WristStanceRange and math.abs(toBall.Y) < 0.8
-		HUD.placeVRWrist(worldPose(offHand), headWorld, offHand == Enum.UserCFrame.LeftHand, { clubSpeed = headVelocity().Magnitude, stance = stance or setup.active })
+		-- (the club hand raised to look at its wrist isn't putting, even with the putter dangling by the ball)
+		stance = stance and wristHand ~= dominant
+		HUD.placeVRWrist(worldPose(wristHand), headWorld, wristHand == Enum.UserCFrame.LeftHand, { clubSpeed = headVelocity().Magnitude, stance = stance or setup.active })
 		HUD.placeVRMessage(headWorld)
 		VRPointer.update({
 			[Enum.UserCFrame.RightHand] = worldPose(Enum.UserCFrame.RightHand),
@@ -1100,6 +1133,18 @@ function VR.start(Ball, HUD, simulate)
 				return VRPointer.state()
 			elseif cmd == "wrist" then
 				local off = dominant == Enum.UserCFrame.RightHand and Enum.UserCFrame.LeftHand or Enum.UserCFrame.RightHand
+				-- (stage ab) "club": the club hand's wrist in the watch pose instead (the card works on either wrist)
+				if arg == "club" then
+					off = dominant
+				elseif arg == "down" then
+					-- both hands well below the head (out of the 4-stud look range): the card hides
+					for _, h in { Enum.UserCFrame.LeftHand, Enum.UserCFrame.RightHand } do
+						local side = h == Enum.UserCFrame.RightHand and 1 or -1
+						local rest = headW.Position + headW.RightVector * (0.7 * side) - Vector3.new(0, 4.4, 0)
+						setHand(h, CFrame.lookAt(rest, rest + flat(headW.LookVector) + Vector3.new(0, -1, 0)))
+					end
+					return { hand = "both" }
+				end
 				local left = off == Enum.UserCFrame.LeftHand
 				local side = left and -1 or 1
 				local flatLook = flat(headW.LookVector)
@@ -1123,6 +1168,52 @@ function VR.start(Ball, HUD, simulate)
 					setHand(dominant, VR.test.handCFrameFor(v3(arg.club), v3(arg.face or { 1, 0, 0 })))
 				end
 				return { origin = { origin.X, origin.Y, origin.Z } }
+			elseif cmd == "headBlend" then
+				-- (stage ab) the putter head: level on / near the ground, rigid with the club when lifted (smooth blend).
+				-- Club hand placed so the head rests on the felt beside the ball, then raised 0.35 (in the blend) and
+				-- 2 studs (rigid) with the wrist rolled 30 deg about the aim axis. Reports the head's tilt from level.
+				local b = Ball.ball and Ball.ball.Position
+				if not b then
+					return { error = "no ball" }
+				end
+				local fl = flat(headW.LookVector)
+				fl = fl.Magnitude > 1e-3 and fl.Unit or Vector3.new(0, 0, -1)
+				local spot = Vector3.new(b.X, b.Y - R + half.Y + 0.01, b.Z) + fl:Cross(Vector3.yAxis) * 1.5
+				local base = VR.test.handCFrameFor(spot, fl)
+				local function settle()
+					for _ = 1, 6 do
+						RunService.RenderStepped:Wait()
+					end
+					return math.deg(math.acos(math.clamp(head.CFrame.UpVector.Y, -1, 1))), head.Position.Y - spot.Y
+				end
+				local res = {}
+				if setup.active then
+					setup:cancel()
+				end
+				setHand(dominant, base)
+				res.groundTilt, res.groundLift = settle()
+				local roll = CFrame.fromAxisAngle(base.LookVector, math.rad(30))
+				local function lifted(h)
+					return CFrame.new(base.Position + Vector3.new(0, h, 0)) * roll * base.Rotation
+				end
+				setHand(dominant, lifted(0.55)) -- (the shaft stretches to keep the head down, so 0.55 lifts it ~0.3)
+				res.midTilt, res.midLift = settle()
+				setHand(dominant, lifted(2))
+				res.liftedTilt, res.liftedLift = settle()
+				-- rigid: the head keeps its club-frame relation as the hand rolls further while lifted
+				local rel1 = (lastClubCF.Rotation:Inverse() * head.CFrame.Rotation)
+				setHand(dominant, CFrame.new(base.Position + Vector3.new(0, 2, 0)) * CFrame.fromAxisAngle(base.LookVector, math.rad(50)) * base.Rotation)
+				settle()
+				local rel2 = (lastClubCF.Rotation:Inverse() * head.CFrame.Rotation)
+				local d = rel1:Inverse() * rel2
+				local _, ang = d:ToAxisAngle()
+				res.rigidDriftDeg = math.deg(ang)
+				setHand(dominant, base)
+				res.backTilt = settle()
+				res.headYaw = clubHeadYaw
+				res.pass = res.groundTilt < 1 and res.midTilt > 1 and res.midTilt < res.liftedTilt and res.liftedTilt > 15
+					and res.rigidDriftDeg < 1 and res.backTilt < 1
+				return res
 			elseif cmd == "offHandToggle" then
 				onButtonDown(dominant == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonX or Enum.KeyCode.ButtonA)
 				return HUD.wristState()
@@ -1176,13 +1267,23 @@ function VR.start(Ball, HUD, simulate)
 				local before = dominant
 				onButtonDown(before == Enum.UserCFrame.RightHand and Enum.KeyCode.ButtonA or Enum.KeyCode.ButtonX)
 				local noSwap = dominant == before
+				-- (stage ab) start from a putting pose: the head on the felt beside the ball
+				if Ball.ball then
+					local bp = Ball.ball.Position
+					local fl = flat(headW.LookVector)
+					fl = fl.Magnitude > 1e-3 and fl.Unit or Vector3.new(0, 0, -1)
+					setHand(dominant, VR.test.handCFrameFor(Vector3.new(bp.X, bp.Y - R + half.Y + 0.01, bp.Z) + fl:Cross(Vector3.yAxis) * 1.5, fl))
+					for _ = 1, 4 do RunService.RenderStepped:Wait() end
+				end
 				setup:begin()
-				local p0 = setup.target
+				local p0, yaw0 = setup.target, setup.headYaw
 				onStick(Enum.KeyCode.Thumbstick2,Vector2.new(0.8,0.4))
 				for _ = 1,20 do RunService.RenderStepped:Wait() end
 				onStick(Enum.KeyCode.Thumbstick2,Vector2.zero)
 				local fit = setup:solve()
+				-- (stage ab) the stick turns the head (yaw) and no longer moves the ground target
 				local moved = (setup.target-p0).Magnitude
+				local yawTurned = setup.headYaw - yaw0
 				local hand = worldPose(dominant)
 				local solvedHead = hand:PointToWorldSpace(clubButt) + (hand.Rotation * clubOffset).LookVector * clubLength
 				local err = (solvedHead-setup.target).Magnitude
@@ -1190,10 +1291,11 @@ function VR.start(Ball, HUD, simulate)
 				local t0 = os.clock()
 				while setup.saving and os.clock()-t0<15 do task.wait(0.05) end
 				local saved = setup.fits[dominant.Name] ~= nil and not setup.active
-				return { noButtonHandChange=noSwap, targetMoved=moved, solveError=err,
-					saved=saved, fit=fit, pass=noSwap and moved>0.02 and err<0.02 and saved }
+				local savedYaw = setup.fits[dominant.Name] and setup.fits[dominant.Name].headYaw
+				return { noButtonHandChange=noSwap, targetMoved=moved, headYaw=yawTurned, savedHeadYaw=savedYaw, liveHeadYaw=clubHeadYaw, solveError=err,
+					saved=saved, fit=fit, pass=noSwap and moved<0.02 and yawTurned>0.5 and savedYaw ~= nil and math.abs(savedYaw-clubHeadYaw)<1e-3 and err<0.02 and saved }
 			elseif cmd == "state" then
-				return { pointer = VRPointer.state(), wrist = HUD.wristState() }
+				return { pointer = VRPointer.state(), wrist = HUD.wristState(), scorecard = HUD.isScorecardOpen(), menuOpen = Ball.menuOpen == true }
 			elseif cmd == "wristSim" then
 				HUD.wristEvents(nil, true) -- print show/hide events to the output from now on
 				return wristSim(arg.scenario, arg.seed)

@@ -1,10 +1,13 @@
--- VR-only guided grip fitting. The thumbstick moves a world-space ground target;
--- the current controller pose and target solve a hand-space shaft rotation.
+-- VR-only guided grip fitting. A ground target is set where the putter head is when setup starts; the current
+-- controller pose and that target solve a hand-space shaft rotation (hold the controller the way you putt).
+-- Stage ab (Chase): the thumbstick no longer moves the head on the ground. Stick LEFT / RIGHT turns the putter head
+-- (yaw about the shaft, HEAD_YAW_MAX each way), saved with the fit as headYaw (degrees).
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local Setup = {}
 function Setup.new(api, Config, HUD)
-	local self = { active = false, saving = false, stick = Vector2.zero, fits = {}, target = nil }
+	local HEAD_YAW_MAX, HEAD_YAW_RATE = 30, 25 -- degrees, degrees/s at full stick
+	local self = { active = false, saving = false, stick = Vector2.zero, fits = {}, target = nil, headYaw = 0 }
 	local remote = ReplicatedStorage:WaitForChild("Golf"):WaitForChild("Remotes"):WaitForChild("ClubSetup")
 	local art = Config.UI.ClubSetup or {}
 	local marker, card, cardGui
@@ -41,7 +44,7 @@ function Setup.new(api, Config, HUD)
 		bg.Name = "InstructionsBackground"
 		bg.Size, bg.BackgroundColor3 = UDim2.fromScale(1,1), Color3.fromRGB(250,232,198)
 		bg.Image, bg.ScaleType, bg.Parent = art.howto_card_bg or "", Enum.ScaleType.Fit, gui
-		local words = { "STAND LIKE YOU'RE\nPUTTING", "NUDGE THE HEAD\nWITH EITHER STICK", "PULL CLUB TRIGGER\nTO SAVE" }
+		local words = { "STAND LIKE YOU'RE\nPUTTING", "STICK LEFT / RIGHT\nTURNS THE HEAD", "PULL CLUB TRIGGER\nTO SAVE" }
 		for i, key in { "step1_stance", "step2_stick", "step3_trigger" } do
 			local icon = Instance.new("ImageLabel")
 			icon.Size, icon.Position = UDim2.fromOffset(140,140), UDim2.fromOffset(112,100+(i-1)*222)
@@ -68,7 +71,7 @@ function Setup.new(api, Config, HUD)
 	end
 	function self:applySaved()
 		local fit = self.fits[api.hand()]
-		if fit then api.apply(CFrame.fromOrientation(unpack(fit.angles)), fit.length) else api.defaults() end
+		if fit then api.apply(CFrame.fromOrientation(unpack(fit.angles)), fit.length, fit.headYaw or 0) else api.defaults() end
 	end
 	function self:cancel()
 		self.active, self.stick = false, Vector2.zero
@@ -79,6 +82,8 @@ function Setup.new(api, Config, HUD)
 	function self:begin()
 		if self.saving then return end
 		self.active, self.stick = true, Vector2.zero
+		local saved = self.fits[api.hand()]
+		self.headYaw = saved and saved.headYaw or 0
 		api.active(true)
 		local pos = api.headPosition()
 		local hand = api.pose()
@@ -101,28 +106,22 @@ function Setup.new(api, Config, HUD)
 		right = right.Unit
 		local rot = hand.Rotation:Inverse() * CFrame.fromMatrix(Vector3.zero,right,back:Cross(right),back)
 		local x,y,z = rot:ToOrientation()
-		return { angles = {x,y,z}, length = delta.Magnitude }, rot
+		return { angles = {x,y,z}, length = delta.Magnitude, headYaw = self.headYaw }, rot
 	end
 	function self:update(dt)
 		if not self.active then return end
-		local eye = api.eye()
-		local forward = Vector3.new(eye.LookVector.X,0,eye.LookVector.Z)
-		forward = forward.Magnitude > 0.01 and forward.Unit or Vector3.new(0,0,-1)
-		if self.stick.Magnitude > 0.15 then
-			local move = (forward*self.stick.Y + forward:Cross(Vector3.yAxis)*self.stick.X) * math.min(dt,0.05)*0.55
-			local proposed = self.target + move
-			local h = api.pose().Position
-			if Vector3.new(proposed.X-h.X,0,proposed.Z-h.Z).Magnitude <= 2.5 then self.target = proposed end
+		if math.abs(self.stick.X) > 0.15 then
+			self.headYaw = math.clamp(self.headYaw + self.stick.X * HEAD_YAW_RATE * math.min(dt,0.05), -HEAD_YAW_MAX, HEAD_YAW_MAX)
 		end
 		self.target = Vector3.new(self.target.X,api.ground(self.target)+0.065,self.target.Z)
 		marker.CFrame = CFrame.new(self.target-Vector3.new(0,0.05,0))
 		local fit, rotation = self:solve()
-		if fit then api.apply(rotation,fit.length) end
+		if fit then api.apply(rotation,fit.length,self.headYaw) end
 	end
 	function self:save(reset)
 		if self.saving then return end
 		local fit = not reset and self:solve() or nil
-		if not reset and not fit then HUD.message("Move the marker closer to your feet", Color3.fromRGB(255,200,120),3); return end
+		if not reset and not fit then HUD.message("Stand so the marker is near your feet", Color3.fromRGB(255,200,120),3); return end
 		self.saving = true
 		local hand = api.hand()
 		task.spawn(function()

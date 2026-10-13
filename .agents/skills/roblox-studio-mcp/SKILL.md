@@ -102,6 +102,12 @@ For all three: give one focused task per run, say whether changes are allowed (`
 - Raw x/y in `user_mouse_input` are in GUI space, which excludes the 58 px top bar. Clicks that land on CoreGui are rejected ("hits CoreGUI"). To clear CoreGui popups before window captures, call `StarterGui:SetCoreGuiEnabled(PlayerList/Chat, false)` from `Client`.
 - In Edit, the Studio camera re-aims at `camera.Focus`. To frame a shot off-center, move the look-at point and set both `CFrame` and `Focus` to it; offsetting `CFrame` alone gets cancelled.
 
+## Limits and timing (learned on vr-mini-golf, stage ab)
+- **A script's Source is capped at 200,000 characters.** Setting a longer string errors ("Provided string length ... greater than or equal to max length (200000)"), and a push that swallows the error leaves the module empty. Split big generated data into chunk modules (and have the main module `require` them by absolute path, because builders often `require(x:Clone())`, which has no siblings).
+- **Terrain collision lags a frame behind `WriteVoxels` / `FillBlock`.** Raycasts in the same `execute_luau` call (with no yield) still see the old surface. `task.wait()` before measuring.
+- **The smoothed Terrain surface steps, it doesn't follow occupancy.** A voxel at 0.76 occupancy under full neighbours still read flush with the surface above; 0.5 dropped it a whole 2 studs. To keep Terrain under something, aim ~1.5 studs lower than the occupancy math says, and cap the neighbouring columns too.
+- **Team Create places show a NetworkClient in Edit mode.** A computer-use agent may read that as "in a playtest". Say so in its prompt and confirm the mode with `get_studio_state` first.
+
 ## Audio
 - `search_asset` with `assetType=Audio, scope=creator_store, priceFilter=free` returns a lot of ripped game audio, and `verifiedCreatorsOnly` barely filters. Prefer the licensed library uploads: **ProSoundEffects** (descriptions end "Courtesy of Pro Sound Effects", ids around 9.1e9), **APMOfficial** music, and **Roblox** UI sounds.
 - Before using an id, confirm it loads: create `Sound`s, call `ContentProvider:PreloadAsync(list, cb)`, and check that `AssetFetchStatus.Success` and `TimeLength > 0`. Built-in `rbxasset://sounds/` only has a few files (an explosion, jump/land, oof).

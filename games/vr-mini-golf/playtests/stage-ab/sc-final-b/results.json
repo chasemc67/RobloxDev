@@ -1,0 +1,1302 @@
+{
+ "h10": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h10",
+   "hole": 10,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.993,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       283,
+       112.13,
+       -5266.5
+      ]
+     },
+     {
+      "rimSpeed": 2.992,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       283,
+       112.13,
+       -5266.5
+      ]
+     },
+     {
+      "rimSpeed": 2.994,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       283,
+       112.13,
+       -5266.5
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.467,
+    "list": []
+   },
+   "seconds": 100.55,
+   "name": "Sluice Chute",
+   "cam": "",
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 0,
+    "skipped": "no movers",
+    "list": []
+   },
+   "nudges": 0,
+   "par": 2
+  }
+ },
+ "h11": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h11",
+   "hole": 11,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.955,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       150,
+       119.73,
+       -5295
+      ]
+     },
+     {
+      "rimSpeed": 3.018,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       150,
+       119.73,
+       -5295
+      ]
+     },
+     {
+      "rimSpeed": 2.989,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       150,
+       119.73,
+       -5295
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "seconds": 126.68,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 7,
+    "maxMovingStillS": 0.25,
+    "list": []
+   },
+   "cam": "",
+   "name": "Floodgate Lock",
+   "nudges": 0,
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 6,
+    "maxMovingStillS": 0.054,
+    "list": [
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h11-slow-2",
+        "id": "lock_lift",
+        "t": 81.1774,
+        "event": "flag",
+        "shot": "h11-slow-2",
+        "speedOut": 1.5,
+        "speedIn": 2.091,
+        "kind": "teleport",
+        "hole": 11,
+        "pos": [
+         150,
+         120.09,
+         -5279
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-2",
+      "start": [
+       3.660558345295023,
+       -16.982486991602563,
+       0
+      ],
+      "finish": [
+       150,
+       120.0787,
+       -5281.104
+      ],
+      "speed": 4.103,
+      "aim": -129.8
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "label": "h11-slow-4",
+        "id": "lock_lift",
+        "t": 102.5762,
+        "event": "flag",
+        "shot": "h11-slow-4",
+        "speedOut": 1.5,
+        "speedIn": 0.537,
+        "kind": "teleport",
+        "hole": 11,
+        "pos": [
+         150,
+         120.09,
+         -5279
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h11-slow-4",
+      "start": [
+       0.7163088444608805,
+       -15.107399034848168,
+       0
+      ],
+      "finish": [
+       150,
+       120.0787,
+       -5281.1045
+      ],
+      "speed": 3.476,
+      "aim": -97.8
+     }
+    ]
+   },
+   "par": 3,
+   "clientLag": 0
+  }
+ },
+ "h12": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h12",
+   "hole": 12,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.994,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -142,
+       115.73,
+       -5268
+      ]
+     },
+     {
+      "rimSpeed": 2.968,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -142,
+       115.73,
+       -5268
+      ]
+     },
+     {
+      "rimSpeed": 2.99,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -142,
+       115.73,
+       -5268
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 1,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.063,
+    "list": []
+   },
+   "seconds": 81.79,
+   "name": "Intake Tower",
+   "cam": "",
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 0,
+    "skipped": "no movers",
+    "list": []
+   },
+   "nudges": 0,
+   "par": 4
+  }
+ },
+ "h13": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h13",
+   "hole": 13,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.966,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -300.5,
+       149.73,
+       -5239
+      ]
+     },
+     {
+      "rimSpeed": 2.873,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -300.5,
+       149.73,
+       -5239
+      ]
+     },
+     {
+      "rimSpeed": 2.966,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -300.5,
+       149.73,
+       -5239
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.067,
+    "list": []
+   },
+   "seconds": 86.09,
+   "name": "Hoodoo Maze",
+   "cam": "",
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 0,
+    "skipped": "no movers",
+    "list": []
+   },
+   "nudges": 0,
+   "par": 3
+  }
+ },
+ "h14": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h14",
+   "hole": 14,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 3,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -301,
+       150.53,
+       -5156
+      ]
+     },
+     {
+      "rimSpeed": 2.985,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -301,
+       150.53,
+       -5156
+      ]
+     },
+     {
+      "rimSpeed": 3,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -301,
+       150.53,
+       -5156
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "seconds": 139.3,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.229,
+    "list": []
+   },
+   "cam": "",
+   "name": "Ore Bucket Swing",
+   "nudges": 0,
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 6,
+    "maxMovingStillS": 0.05,
+    "list": []
+   },
+   "par": 3,
+   "clientLag": 0.158
+  }
+ },
+ "h15": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h15",
+   "hole": 15,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 3.097,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -306,
+       145.13,
+       -5058
+      ]
+     },
+     {
+      "rimSpeed": 2.584,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -306,
+       145.13,
+       -5058
+      ]
+     },
+     {
+      "rimSpeed": 3.052,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -306,
+       145.13,
+       -5058
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [
+    {
+     "type": "event",
+     "to": [
+      -315.7891,
+      146.7157,
+      -5096.6538
+     ],
+     "hole": 15,
+     "t": 16.264,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-2",
+     "from": [
+      -315.7891,
+      146.7157,
+      -5096.6538
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-2"
+    },
+    {
+     "type": "event",
+     "to": [
+      -315.7891,
+      146.7164,
+      -5096.6538
+     ],
+     "hole": 15,
+     "t": 16.5962,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-2",
+     "from": [
+      -315.7891,
+      146.7164,
+      -5096.6538
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-2"
+    },
+    {
+     "type": "event",
+     "to": [
+      -315.7891,
+      146.7171,
+      -5096.6538
+     ],
+     "hole": 15,
+     "t": 16.9299,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-2",
+     "from": [
+      -315.7891,
+      146.7171,
+      -5096.6538
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-2"
+    },
+    {
+     "type": "event",
+     "hole": 15,
+     "t": 18.9635,
+     "event": "flag",
+     "reason": "wedged",
+     "shot": "h15-fuzz-2",
+     "kind": "forcedrest",
+     "label": "h15-fuzz-2",
+     "pos": [
+      -315.7891,
+      146.6877,
+      -5096.6538
+     ]
+    },
+    {
+     "type": "event",
+     "to": [
+      -313.5726,
+      146.7178,
+      -5091.9009
+     ],
+     "hole": 15,
+     "t": 46.1452,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-4",
+     "from": [
+      -313.5726,
+      146.7178,
+      -5091.9009
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-4"
+    },
+    {
+     "type": "event",
+     "to": [
+      -313.5726,
+      146.7158,
+      -5091.9009
+     ],
+     "hole": 15,
+     "t": 46.4793,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-4",
+     "from": [
+      -313.5726,
+      146.7158,
+      -5091.9009
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-4"
+    },
+    {
+     "type": "event",
+     "to": [
+      -313.573,
+      146.7181,
+      -5091.9009
+     ],
+     "hole": 15,
+     "t": 46.8121,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-4",
+     "from": [
+      -313.573,
+      146.7181,
+      -5091.9009
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-4"
+    },
+    {
+     "type": "event",
+     "hole": 15,
+     "t": 48.8467,
+     "event": "flag",
+     "reason": "wedged",
+     "shot": "h15-fuzz-4",
+     "kind": "forcedrest",
+     "label": "h15-fuzz-4",
+     "pos": [
+      -313.573,
+      146.686,
+      -5091.9009
+     ]
+    },
+    {
+     "type": "event",
+     "to": [
+      -305.7369,
+      146.7162,
+      -5075.0981
+     ],
+     "hole": 15,
+     "t": 79.2955,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-7",
+     "from": [
+      -305.7369,
+      146.7162,
+      -5075.0981
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-7"
+    },
+    {
+     "type": "event",
+     "to": [
+      -305.7369,
+      146.7168,
+      -5075.0981
+     ],
+     "hole": 15,
+     "t": 79.629,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-7",
+     "from": [
+      -305.7369,
+      146.7168,
+      -5075.0981
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-7"
+    },
+    {
+     "type": "event",
+     "to": [
+      -305.7369,
+      146.7175,
+      -5075.0981
+     ],
+     "hole": 15,
+     "t": 79.9614,
+     "event": "flag",
+     "reason": "seam",
+     "shot": "h15-fuzz-7",
+     "from": [
+      -305.7369,
+      146.7175,
+      -5075.0981
+     ],
+     "kind": "unstuck",
+     "label": "h15-fuzz-7"
+    },
+    {
+     "type": "event",
+     "hole": 15,
+     "t": 82.0115,
+     "event": "flag",
+     "reason": "wedged",
+     "shot": "h15-fuzz-7",
+     "kind": "forcedrest",
+     "label": "h15-fuzz-7",
+     "pos": [
+      -305.737,
+      146.6876,
+      -5075.0981
+     ]
+    }
+   ],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 9,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 1,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 3,
+    "shots": 8,
+    "maxMovingStillS": 1.983,
+    "list": [
+     {
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         -315.7891,
+         146.7157,
+         -5096.6538
+        ],
+        "hole": 15,
+        "t": 16.264,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-2",
+        "from": [
+         -315.7891,
+         146.7157,
+         -5096.6538
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-2"
+       },
+       {
+        "type": "event",
+        "to": [
+         -315.7891,
+         146.7164,
+         -5096.6538
+        ],
+        "hole": 15,
+        "t": 16.5962,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-2",
+        "from": [
+         -315.7891,
+         146.7164,
+         -5096.6538
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-2"
+       },
+       {
+        "type": "event",
+        "to": [
+         -315.7891,
+         146.7171,
+         -5096.6538
+        ],
+        "hole": 15,
+        "t": 16.9299,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-2",
+        "from": [
+         -315.7891,
+         146.7171,
+         -5096.6538
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-2"
+       },
+       {
+        "type": "event",
+        "hole": 15,
+        "t": 18.9635,
+        "event": "flag",
+        "reason": "wedged",
+        "shot": "h15-fuzz-2",
+        "kind": "forcedrest",
+        "label": "h15-fuzz-2",
+        "pos": [
+         -315.7891,
+         146.6877,
+         -5096.6538
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h15-fuzz-2",
+      "start": [
+       1.7473666138353319,
+       -10.043643443215531,
+       -2.2
+      ],
+      "finish": [
+       -315.7891,
+       146.6769,
+       -5096.6538
+      ],
+      "speed": 11.21,
+      "aim": 4.9
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         -313.5726,
+         146.7178,
+         -5091.9009
+        ],
+        "hole": 15,
+        "t": 46.1452,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-4",
+        "from": [
+         -313.5726,
+         146.7178,
+         -5091.9009
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-4"
+       },
+       {
+        "type": "event",
+        "to": [
+         -313.5726,
+         146.7158,
+         -5091.9009
+        ],
+        "hole": 15,
+        "t": 46.4793,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-4",
+        "from": [
+         -313.5726,
+         146.7158,
+         -5091.9009
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-4"
+       },
+       {
+        "type": "event",
+        "to": [
+         -313.573,
+         146.7181,
+         -5091.9009
+        ],
+        "hole": 15,
+        "t": 46.8121,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-4",
+        "from": [
+         -313.573,
+         146.7181,
+         -5091.9009
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-4"
+       },
+       {
+        "type": "event",
+        "hole": 15,
+        "t": 48.8467,
+        "event": "flag",
+        "reason": "wedged",
+        "shot": "h15-fuzz-4",
+        "kind": "forcedrest",
+        "label": "h15-fuzz-4",
+        "pos": [
+         -313.573,
+         146.686,
+         -5091.9009
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h15-fuzz-4",
+      "start": [
+       0,
+       0,
+       0
+      ],
+      "finish": [
+       -313.573,
+       146.6864,
+       -5091.9009
+      ],
+      "speed": 14.805,
+      "aim": 210.3
+     },
+     {
+      "flags": [
+       {
+        "type": "event",
+        "to": [
+         -305.7369,
+         146.7162,
+         -5075.0981
+        ],
+        "hole": 15,
+        "t": 79.2955,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-7",
+        "from": [
+         -305.7369,
+         146.7162,
+         -5075.0981
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-7"
+       },
+       {
+        "type": "event",
+        "to": [
+         -305.7369,
+         146.7168,
+         -5075.0981
+        ],
+        "hole": 15,
+        "t": 79.629,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-7",
+        "from": [
+         -305.7369,
+         146.7168,
+         -5075.0981
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-7"
+       },
+       {
+        "type": "event",
+        "to": [
+         -305.7369,
+         146.7175,
+         -5075.0981
+        ],
+        "hole": 15,
+        "t": 79.9614,
+        "event": "flag",
+        "reason": "seam",
+        "shot": "h15-fuzz-7",
+        "from": [
+         -305.7369,
+         146.7175,
+         -5075.0981
+        ],
+        "kind": "unstuck",
+        "label": "h15-fuzz-7"
+       },
+       {
+        "type": "event",
+        "hole": 15,
+        "t": 82.0115,
+        "event": "flag",
+        "reason": "wedged",
+        "shot": "h15-fuzz-7",
+        "kind": "forcedrest",
+        "label": "h15-fuzz-7",
+        "pos": [
+         -305.737,
+         146.6876,
+         -5075.0981
+        ]
+       }
+      ],
+      "outcome": "rest",
+      "label": "h15-fuzz-7",
+      "start": [
+       0,
+       0,
+       0
+      ],
+      "finish": [
+       -305.737,
+       146.6869,
+       -5075.0981
+      ],
+      "speed": 15.201,
+      "aim": 239.4
+     }
+    ]
+   },
+   "seconds": 90.58,
+   "name": "Sugar Dune",
+   "cam": "",
+   "stuck": 3,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 0,
+    "skipped": "no movers",
+    "list": []
+   },
+   "nudges": 9,
+   "par": 3
+  }
+ },
+ "h16": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h16",
+   "hole": 16,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.766,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -301.8,
+       186.13,
+       -4849.5
+      ]
+     },
+     {
+      "rimSpeed": 2.977,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -301.8,
+       186.13,
+       -4849.5
+      ]
+     },
+     {
+      "rimSpeed": 2.828,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -301.8,
+       186.13,
+       -4849.5
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.267,
+    "list": []
+   },
+   "seconds": 88.16,
+   "name": "Sinkhole Drop",
+   "cam": "",
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 0,
+    "skipped": "no movers",
+    "list": []
+   },
+   "nudges": 0,
+   "par": 2
+  }
+ },
+ "h17": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h17",
+   "hole": 17,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.999,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -334.9,
+       189.73,
+       -4811
+      ]
+     },
+     {
+      "rimSpeed": 2.609,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -334.9,
+       189.73,
+       -4811
+      ]
+     },
+     {
+      "rimSpeed": 2.936,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -334.9,
+       189.73,
+       -4811
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "seconds": 145.58,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.196,
+    "list": []
+   },
+   "cam": "",
+   "name": "Sundial",
+   "nudges": 0,
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 6,
+    "maxMovingStillS": 0.467,
+    "list": []
+   },
+   "par": 3,
+   "clientLag": 0.171
+  }
+ },
+ "h18": {
+  "default": {
+   "course": "sugarloaf_canyon",
+   "scenario": "h18",
+   "hole": 18,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.99,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       -412,
+       190.53,
+       -4828
+      ]
+     },
+     {
+      "rimSpeed": 2.977,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       -412,
+       190.53,
+       -4828
+      ]
+     },
+     {
+      "rimSpeed": 2.998,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       -412,
+       190.53,
+       -4828
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "maxMovingStillS": 0.146,
+    "list": []
+   },
+   "seconds": 87.36,
+   "name": "Sunset Arch",
+   "cam": "",
+   "stuck": 0,
+   "slow": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 0,
+    "skipped": "no movers",
+    "list": []
+   },
+   "nudges": 0,
+   "par": 4
+  }
+ }
+}

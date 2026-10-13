@@ -879,8 +879,11 @@ function Hole:buildWall(w)
 	local plain = color == P.limestone and material == M.Limestone and not backing
 	local capColor, capMat = P.oak, M.Wood
 	if skin and plain then
-		color = skin.rail_block_color and Color3.fromHex(skin.rail_block_color) or color
-		material = skin.rail_block_roblox_material and Enum.Material[skin.rail_block_roblox_material] or material
+		-- (stage ab, Game Art Bot) H8's old cream #DDD3BE block is retired: its plain rails stay limestone like H1-H7
+		if self.def.number ~= 8 then
+			color = skin.rail_block_color and Color3.fromHex(skin.rail_block_color) or color
+			material = skin.rail_block_roblox_material and Enum.Material[skin.rail_block_roblox_material] or material
+		end
 		capColor = skin.rail_cap_color and Color3.fromHex(skin.rail_cap_color) or capColor
 		capMat = skin.rail_cap_roblox_material and Enum.Material[skin.rail_cap_roblox_material] or capMat
 	end

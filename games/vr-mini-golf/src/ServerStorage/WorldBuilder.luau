@@ -13,6 +13,9 @@ local CollectionService = game:GetService("CollectionService")
 local Lighting = game:GetService("Lighting")
 local ServerStorage = game:GetService("ServerStorage")
 local Terrain = workspace.Terrain
+local Config = require(game:GetService("ReplicatedStorage").Golf.Config:Clone())
+-- the smoothed Terrain surface steps (stage ab, measured): aim this much lower when it must stay under something
+local CUP_SURFACE_BIAS = 1.5
 local M = Enum.Material
 
 local function hex(s)
@@ -206,6 +209,36 @@ function WorldBuilder.CarveHoles(course)
 				WorldBuilder.CapUnder(p, 2, 0.1)
 			end
 		end
+		-- (stage ab) the cap above leaves the Terrain 0.1 under the CupPlate top, i.e. inside the 0.35-deep cup: the ball
+		-- sat on it and never dropped (Sugarloaf P1). Take the ground under every cup down to 0.6 below the cup bottom.
+		WorldBuilder.CapUnderCup(hole)
+		-- (stage ab) the same surface step lets the Terrain stay flush with (or just above) a felt piece that sits a
+		-- little lower than its neighbours (Sugarloaf H8 "dip" pieces 0.04-0.13 under the 70 plateau: the ball rolled
+		-- on Terrain). Pieces the Terrain still reaches get a second cap aimed a step lower, 0.5 around them.
+		task.wait(0.2) -- Terrain collision catches up with the writes above a frame later
+		local probe = RaycastParams.new()
+		probe.FilterType = Enum.RaycastFilterType.Include
+		probe.FilterDescendantsInstances = { Terrain }
+		for _, p in geo:GetChildren() do
+			if p:IsA("BasePart") and (p.Name == "Felt" or p.Name == "CupPlate") then
+				-- terrain standing clearly above the felt (H15 lower_tier: 1.08, bleeding from the higher level next to it)
+				-- comes from neighbouring columns, so those get the wider 2-stud margin
+				local hx, hz, hit, above = p.Size.X / 2, p.Size.Z / 2, false, 0
+				for x = -hx + 0.1, hx - 0.1, 1 do
+					for z = -hz + 0.1, hz - 0.1, 1 do
+						local top = p.CFrame:PointToWorldSpace(Vector3.new(x, p.Size.Y / 2, z))
+						local r = workspace:Raycast(top + Vector3.new(0, 3, 0), Vector3.new(0, -3.05, 0), probe)
+						if r then
+							hit = true
+							above = math.max(above, r.Position.Y - top.Y)
+						end
+					end
+				end
+				if hit then
+					WorldBuilder.CapUnder(p, above > 0.05 and 2 or 0.5, 0.1 + CUP_SURFACE_BIAS)
+				end
+			end
+		end
 		WorldBuilder.ClearGrassNearRails(hole)
 		local hz = hole:FindFirstChild("Hazards")
 		for _, h in hz and hz:GetChildren() or {} do
@@ -241,6 +274,56 @@ function WorldBuilder.ClearGrassNearRails(hole, strip)
 			Terrain:ReplaceMaterial(region, 4, M.Grass, M.LeafyGrass)
 		end
 	end
+end
+
+-- (stage ab) Terrain under a hole's cup: every voxel column within `reach` studs (centres) of the cup is capped so the
+-- surface (about voxel centre + occupancy * 4, as in CapUnder) stays `below` under the rim (default: cup depth + 0.6).
+-- Under the felt, so it only shows through the cup. Reach 6 (a 4x4 block of columns): with only the 2x2 columns
+-- around the cup capped, full neighbours on a raised plateau (Sugarloaf H8/H9/H11-H13/H17) held the smoothed surface
+-- at the rim.
+function WorldBuilder.CapUnderCup(hole, below, reach)
+	local cup = hole:FindFirstChild("Cup")
+	if not cup then
+		return false
+	end
+	local cell = 4
+	below = below or (Config.CupDepth + 0.6)
+	reach = reach or 3
+	local c = cup.Position
+	local function snap(v, up)
+		return (up and math.ceil(v / cell) or math.floor(v / cell)) * cell
+	end
+	local lo = Vector3.new(snap(c.X - reach - cell), snap(c.Y - 12), snap(c.Z - reach - cell))
+	local hi = Vector3.new(snap(c.X + reach + cell, true), snap(c.Y + 8, true), snap(c.Z + reach + cell, true))
+	local region = Region3.new(lo, hi)
+	local mats, occs = Terrain:ReadVoxels(region, cell)
+	local size = mats.Size
+	local changed = false
+	for i = 1, size.X do
+		for k = 1, size.Z do
+			local cx, cz = lo.X + (i - 0.5) * cell, lo.Z + (k - 0.5) * cell
+			if math.abs(cx - c.X) <= reach and math.abs(cz - c.Z) <= reach then
+				for j = 1, size.Y do
+					local cy = lo.Y + (j - 0.5) * cell
+					-- measured on Sugarloaf H8 (stage ab): the smoothed surface steps rather than following occupancy (a
+					-- 0.76 voxel under full neighbours still reads at the rim, 0.5 drops it a whole 2 studs), so aim
+					-- CUP_SURFACE_BIAS lower to land on the step below. Under the cup that means ~2 studs of air.
+					local cap = math.clamp((c.Y - below - CUP_SURFACE_BIAS - cy) / cell, 0, 1)
+					if occs[i][j][k] > cap then
+						occs[i][j][k] = cap
+						if cap <= 0 then
+							mats[i][j][k] = Enum.Material.Air
+						end
+						changed = true
+					end
+				end
+			end
+		end
+	end
+	if changed then
+		Terrain:WriteVoxels(region, cell, mats, occs)
+	end
+	return changed
 end
 
 function WorldBuilder.CapUnder(p: BasePart, margin, clearance)

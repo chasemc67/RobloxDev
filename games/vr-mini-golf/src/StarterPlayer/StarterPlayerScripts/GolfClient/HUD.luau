@@ -255,6 +255,11 @@ function HUD.isFinalCardOpen()
 	return finalCardOpen or (FrontEnd ~= nil and FrontEnd.isResultsOpen())
 end
 
+-- (stage ab, Studio checks) whether the (non-final) scorecard is up
+function HUD.isScorecardOpen(): boolean
+	return scorecard ~= nil
+end
+
 function HUD.toggleScorecard()
 	if FrontEnd and FrontEnd.isOpen() then
 		return
@@ -372,7 +377,7 @@ function HUD.getHeadCF()
 	return lastHeadCF
 end
 
--- Wrist (Walkabout style): 3D Model Bot's bracer (ReplicatedStorage.Golf.WristBracer) on the off-hand wrist with the
+-- Wrist (Walkabout style): 3D Model Bot's bracer (ReplicatedStorage.Golf.WristBracer) on either wrist (stage ab) with the
 -- card on its WristFace, both hidden in normal play. They show only while you actively look at the wrist: the back
 -- of the wrist faces your eyes (Config.WristShowDeg) AND it's near your gaze centre (WristGazeDeg), held
 -- WristShowHold s; they hide WristHideHold s after either goes out (WristHideDeg / WristGazeHideDeg). Never mid-swing
@@ -396,6 +401,38 @@ local function wristLog(kind, why)
 	end
 end
 
+-- The look test for one wrist: where its face is and how squarely it faces / sits in the gaze of the eyes.
+local function wristGeom(handCF: CFrame, headCF: CFrame, leftHand: boolean)
+	local back = handCF.RightVector * (leftHand and -1 or 1)
+	local rawBack = back
+	-- Either side of the wrist is accepted; turn the readable face toward the eye.
+	if back:Dot(headCF.Position - handCF.Position) < 0 then back = -back end
+	local pivot = handCF:PointToWorldSpace(WRIST_OFFSET)
+	local facePos = pivot + back * FACE_LIFT
+	local toEye = headCF.Position - facePos
+	local dist = toEye.Magnitude
+	local faceDeg, gazeDeg = 180, 180
+	if dist > 1e-3 then
+		faceDeg = math.deg(math.acos(math.clamp(back:Dot(toEye / dist), -1, 1)))
+		gazeDeg = math.deg(math.acos(math.clamp(headCF.LookVector:Dot(-toEye / dist), -1, 1)))
+	end
+	return back, rawBack, pivot, facePos, toEye, dist, faceDeg, gazeDeg
+end
+
+-- (stage ab, Chase: the watch works on either wrist) How well `handCF`'s wrist meets the look test: lower is better,
+-- math.huge when out of range. VRControls compares both hands while the card is hidden and puts it on the better one.
+function HUD.wristLookScore(handCF: CFrame, headCF: CFrame, leftHand: boolean): number
+	local _, _, _, _, _, dist, faceDeg, gazeDeg = wristGeom(handCF, headCF, leftHand)
+	if dist >= WRIST_RANGE then
+		return math.huge
+	end
+	return faceDeg / Config.WristShowDeg + gazeDeg / Config.WristGazeDeg
+end
+
+function HUD.isWristShown(): boolean
+	return wrist ~= nil and (wrist.shown or wrist.alpha > 0)
+end
+
 -- opts: { clubSpeed = studs/s, stance = boolean }
 function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opts)
 	if not wrist then
@@ -405,22 +442,14 @@ function HUD.placeVRWrist(handCF: CFrame, headCF: CFrame, leftHand: boolean, opt
 	local now = os.clock()
 	local dt = math.min(now - (wrist.t or now), 0.1)
 	wrist.t = now
-	local back = handCF.RightVector * (leftHand and -1 or 1)
-	local rawBack = back
-	-- Either side of the wrist is accepted; turn the readable face toward the eye.
-	if back:Dot(headCF.Position - handCF.Position) < 0 then back = -back end
+	if wrist.leftHand ~= nil and wrist.leftHand ~= leftHand then
+		wrist.inSince, wrist.outSince = nil, nil -- moved to the other wrist: the show hold starts over
+	end
+	wrist.leftHand = leftHand
+	local back, rawBack, pivot, facePos, toEye, dist, faceDeg, gazeDeg = wristGeom(handCF, headCF, leftHand)
 	local fingers = handCF.LookVector
-	local pivot = handCF:PointToWorldSpace(WRIST_OFFSET)
 	-- bracer frame: +Y = back of the wrist, +X = toward the fingers, pivot at the wrist centre
 	local bracerCF = CFrame.fromMatrix(pivot, fingers, back)
-	local facePos = pivot + back * FACE_LIFT
-	local toEye = headCF.Position - facePos
-	local dist = toEye.Magnitude
-	local faceDeg, gazeDeg = 180, 180
-	if dist > 1e-3 then
-		faceDeg = math.deg(math.acos(math.clamp(back:Dot(toEye / dist), -1, 1)))
-		gazeDeg = math.deg(math.acos(math.clamp(headCF.LookVector:Dot(-toEye / dist), -1, 1)))
-	end
 	wrist.faceDeg, wrist.gazeDeg = faceDeg, gazeDeg
 	local headset = game:GetService("VRService").VREnabled
 	-- pose samples for tuning the thresholds (ServerScriptService.WristPoseLog): every 10 s, plus one per event
@@ -559,7 +588,7 @@ function HUD.wristState()
 	if not wrist then
 		return nil
 	end
-	return { shown = wrist.shown == true, alpha = wrist.alpha, faceDeg = wrist.faceDeg, gazeDeg = wrist.gazeDeg, blocked = wrist.blocked, bracer = #wrist.bracer, hole = wrist.hole.Text, name = wrist.name.Text, par = wrist.par.Text, stroke = wrist.stroke.Text, total = wrist.total.Text, best = wrist.best.Text }
+	return { hand = wrist.leftHand and "LeftHand" or "RightHand", shown = wrist.shown == true, alpha = wrist.alpha, faceDeg = wrist.faceDeg, gazeDeg = wrist.gazeDeg, blocked = wrist.blocked, bracer = #wrist.bracer, hole = wrist.hole.Text, name = wrist.name.Text, par = wrist.par.Text, stroke = wrist.stroke.Text, total = wrist.total.Text, best = wrist.best.Text }
 end
 
 ---------------------------------------------------------------------------- power meter (touch)
@@ -965,8 +994,8 @@ local function buildVR()
 	VRPointer.register(vrCardPart, vrCardGui, { modal = true })
 
 	-- WristFace Top: wrist_card_bg_nobuttons.png (1024x784, symmetric, so the same art on either wrist) with the
-	-- text drawn live on top (zones from assets/vr-mini-golf/ui/README_wrist_scorecard.md). No buttons: the menu is
-	-- the left-stick click, the scorecard is B / Y, and settings are the gear on the scorecard.
+	-- text drawn live on top (zones from assets/vr-mini-golf/ui/README_wrist_scorecard.md). No buttons: the scorecard is
+	-- B / Y, and settings (and from there the menu) are the gear on the scorecard.
 	local CW, CH = 1024, 784
 	local FACE_W = 0.37
 	local part, gui = vrPanel("VRWrist", Vector3.new(FACE_W, FACE_W * CH / CW, 0.002), Vector2.new(CW, CH))

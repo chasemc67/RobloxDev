@@ -35,6 +35,9 @@ local function valid(raw)
 		if type(v) ~= "number" or v ~= v or math.abs(v) > math.pi * 2 then return nil end
 		out.angles[i] = v
 	end
+	-- (stage ab) putter head yaw about the shaft, degrees, from the club setup's stick left/right; older saves have none
+	local yaw = raw.headYaw
+	out.headYaw = (type(yaw) == "number" and yaw == yaw) and math.clamp(yaw, -45, 45) or 0
 	return out
 end
 local function request(fn)

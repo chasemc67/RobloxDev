@@ -620,6 +620,15 @@ function PropsBuilder.Place(course)
 				skip("missing:" .. pl.prop)
 				continue
 			end
+			-- (stage ab) props_overrides "hide": mesh materials left out of this placement (H9 bank backing: the stone's
+			-- Limestone face sat coplanar inside the plain backing rail, a hidden duplicate that z-fought)
+			for _, mat in pl.hide or {} do
+				for _, d in m:GetDescendants() do
+					if d:IsA("BasePart") and string.sub(d.Name, -(#mat + 2)) == "__" .. mat then
+						d:Destroy()
+					end
+				end
+			end
 			local motion = pl.motion or (info and info.motion)
 			if motion then
 				-- ride on the physics mover (phase-locked to the spec on the server): weld, massless, no collision

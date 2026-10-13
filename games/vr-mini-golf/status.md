@@ -1,5 +1,14 @@
 # VR Mini Golf: status
 
+## Stage ab — Sugarloaf kit + lighting + cups, VR feedback, real menu/loading art, lobby portals (2026-10-12, ~18:10 PT)
+- Published **Sugarloaf Canyon v19, Lantern Grove v9, Lobby v246** (each confirmed Published in Version History).
+- **Chase's VR items** (all places): the wrist card works on either wrist; no thumbstick-click menu (VR menu = B / Y scorecard, then the gear); club setup stick LEFT/RIGHT turns the putter head (saved headYaw) instead of moving it on the ground; the head is level only on / near the ground and rigid with the club when lifted (smooth blend).
+- **Real UI art**: menu frame, close X, round menu badge, and the Lantern Grove / Sugarloaf loading cards (Config.UI, tools/stage_ab_assets.json).
+- **Sugarloaf**: pass 6 world kit placed (874 instances, decoration only; gondola cabin rides at 6 studs/s), Game Art Bot's lighting preset, Terrain taken out of the cups (WorldBuilder.CapUnderCup) and out of H8's washboard troughs. Cup drop 18/18 holes (54/54 putts), stuck sweep 0 escapes / 0 lost balls.
+- **Lantern Grove**: H7 block rate 41.7% (in 38-50%), H9 hidden backing-stone dup removed, H8 floating stone onto its bank, H8 cream rails now limestone. 9/9 regression PASS.
+- **Lobby**: pass 10 portal arches, lanterns, portal quads and per-course scenery (crown tips Neon #9FE6F2, low candy glow, lantern shadows off). Default Roblox VR controls in the lobby. Smoke desktop + iPhone PASS.
+- 0 console errors in every run. Round 9 report not reachable from the Mini (not read). Notes: logs/stages/ab-notes.md.
+
 ## Stage aa — new wrist card + scorecard settings gear (2026-10-12, ~13:50 PT)
 - **VR wrist card** uses the new art (`ui/wrist/wrist_card_bg_nobuttons.png`, same file on both wrists) with hole / name / PAR / STROKE / TOTAL / BEST drawn live in the README zones. **No MENU / SCORES buttons**: the menu is the left-stick click, the scorecard is B / Y.
 - **Scorecard settings gear** (`ui/scorecard/settings_button{,_pressed}.png`): an ImageButton badge on the card's top-right corner (Close X beside it) that opens Settings. Works on desktop, phone and VR (laser pointer).

@@ -2,8 +2,8 @@
 -- (WorldBuilder.ApplyLighting, warm autumn evening); Sugarloaf Canyon's golden-hour sunset is applied locally while
 -- the camera is inside Sugarloaf's world box (workspace.CourseSugarloaf WorldMin/WorldMax, 5000 studs north) and the
 -- captured Lantern Grove values come back when it leaves. Same idea as H9Lighting (which only acts inside LG's H9).
--- Sugarloaf values: assets/vr-mini-golf/sugarloaf-canyon/course.md "Lighting (sunset, launch)": the game sun at
--- bearing 277, elevation 25 (GeographicLatitude 17 + ClockTime 16.3 measure 277.2 / 25.3 in Studio).
+-- Sugarloaf values: Game Art Bot's preset (stage ab): the game sun at bearing 277, elevation 25 (GeographicLatitude 17
+-- + ClockTime 16.3 measure 277.2 / 25.3 in Studio), plain sky (no skybox textures), SunAngularSize 18.
 local Lighting = game:GetService("Lighting")
 local RunService = game:GetService("RunService")
 
@@ -13,21 +13,27 @@ local function hex(s)
 	return Color3.fromHex(s)
 end
 
+-- Stage ab: Game Art Bot's Sugarloaf preset. The Sugarloaf place's own Lighting holds the same values (set in Edit),
+-- so in that place this is a no-op; the table stays the single list of what the preset sets.
 local SUGARLOAF = {
 	lighting = {
 		ClockTime = 16.3,
 		GeographicLatitude = 17,
-		Ambient = hex("7A4A50"),
-		OutdoorAmbient = hex("C9806A"),
-		Brightness = 2.0,
-		ColorShift_Top = hex("FFC38A"),
-		ColorShift_Bottom = hex("B45A7A"),
+		Brightness = 2.2,
+		Ambient = hex("6B4A52"),
+		OutdoorAmbient = hex("B07A6A"),
+		ColorShift_Top = hex("FFC890"),
+		EnvironmentDiffuseScale = 0.6,
+		EnvironmentSpecularScale = 0.4,
 	},
-	Atmosphere = { Density = 0.35, Offset = 0.1, Color = hex("F7B48E"), Decay = hex("B4699A"), Glare = 0.6, Haze = 2.0 },
-	BloomEffect = { Intensity = 0.7, Threshold = 1.3 },
-	SunRaysEffect = { Intensity = 0.12 },
+	Atmosphere = { Density = 0.38, Offset = 0.15, Color = hex("FFB98A"), Decay = hex("C2607A"), Glare = 0.6, Haze = 2.2 },
+	Sky = { SunAngularSize = 18 },
+	ColorCorrectionEffect = { TintColor = hex("FFE9D6"), Saturation = 0.12, Contrast = 0.08 },
+	SunRaysEffect = { Intensity = 0.12, Spread = 0.6 },
+	BloomEffect = { Intensity = 0.6, Size = 24, Threshold = 0.95 },
 	terrain = { WaterColor = hex("3FB7C9"), WaterTransparency = 0.6 },
 }
+CourseLighting.SUGARLOAF = SUGARLOAF
 
 local saved = nil
 local active = false

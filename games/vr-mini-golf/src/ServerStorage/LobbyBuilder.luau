@@ -13,7 +13,8 @@
 -- are lobby-frame studs (X east, Z south, deck top Y 0); `origin` puts the lobby frame in the world, away from the
 -- course. Meshes never collide: walking uses invisible box colliders (walkways, railings, manifest collision boxes).
 -- Players spawn here (stage x: workspace.SpawnLocation under LobbySpawn). Stage z: the lobby is its own place; the menu's
--- course cards and the arch portals teleport to each course's place. Lobby dressing and portal meshes: phase 2.
+-- course cards and the arch portals teleport to each course's place. Stage ab: the pass 10 portal kit (arches, lanterns,
+-- portal quads, aprons, per-course scenery) is imported from fbx_merged/lobby_portals_pass10.fbx (tools/merge_fbx_for_import.py).
 local ServerStorage = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
 local CollectionService = game:GetService("CollectionService")
@@ -90,10 +91,12 @@ local function fit(parts, spec)
 			end
 		end
 	end
-	-- a prop whose mesh centres all sit on the Y axis can't tell its turn apart
+	-- a prop can only show its turn if two of its mesh centres differ in XZ (stage ab: a single-mesh prop, or one whose
+	-- meshes share an XZ centre, fits every yaw with error 0, and yaw 0 used to win; they now take the common turn)
 	local decisive = false
+	local first = spec.parts[1]
 	for _, ps in spec.parts do
-		if math.abs(ps.center[1]) > 0.05 or math.abs(ps.center[3]) > 0.05 then
+		if math.abs(ps.center[1] - first.center[1]) > 0.05 or math.abs(ps.center[3] - first.center[3]) > 0.05 then
 			decisive = true
 		end
 	end
@@ -172,10 +175,26 @@ function LobbyBuilder.PrepareLibrary()
 					p.Color = Color3.fromHex(ps.color)
 				end
 				p.CastShadow = ps.material ~= "Neon"
+				-- (stage ab, pass 10 portal kit) the Sugarloaf candy crystals: a low glow, not full Neon (their pink /
+				-- yellow is vertex colour; Neon would wash it white): plastic plus one dim pink light per cluster
+				if ps.mesh:find("__Glow_Crystal") then
+					p.Material = Enum.Material.SmoothPlastic
+					p.Color = Color3.new(1, 1, 1)
+					p.CastShadow = false
+					local light = Instance.new("PointLight")
+					light.Color, light.Brightness, light.Range, light.Shadows = Color3.fromHex("F59AC8"), 0.5, 7, false
+					light.Parent = p
+				end
 			else
 				table.insert(report.unknownMeshes, p:GetFullName())
 			end
 			decorate(p)
+		end
+		-- (stage ab) the arch lanterns hang in the arch: no shadows from them (Game Art Bot)
+		if string.find(name, "_lantern_%d+$") then
+			for _, p in parts do
+				p.CastShadow = false
+			end
 		end
 		model.WorldPivot = CFrame.new()
 		local _, size = model:GetBoundingBox()
@@ -336,10 +355,17 @@ function LobbyBuilder.Build()
 end
 
 -- (stage z) Walk-in portals: a 10x10x3 trigger standing in each playable course's arch opening (the arch's legs are
--- 10 studs apart, its crossbeam 12 up). A translucent Neon sheet in the course colour until the phase 2 portal meshes.
+-- 10 studs apart, its crossbeam 12 up). Stage ab: the trigger is invisible and the pass 10 portal quad
+-- (bw_portal_surface_<course>, 10x12 in the opening, placed by Build) is the glowing surface, in the course colour;
+-- Aurora (not playable yet) gets a dim icy sheet and no trigger.
 local PORTALS = {
 	lantern_grove = { arch = "arch_lantern_grove", color = Color3.fromRGB(255, 190, 90) },
 	sugarloaf_canyon = { arch = "arch_sugarloaf_canyon", color = Color3.fromRGB(255, 120, 150) },
+}
+local PORTAL_SURFACES = {
+	lantern_grove = { color = Color3.fromRGB(255, 190, 90), transparency = 0.35 },
+	sugarloaf_canyon = { color = Color3.fromRGB(255, 120, 150), transparency = 0.35 },
+	aurora_archipelago = { color = Color3.fromHex("9FE6F2"), transparency = 0.7 },
 }
 
 function LobbyBuilder.BuildPortals()
@@ -352,6 +378,24 @@ function LobbyBuilder.BuildPortals()
 	local folder = Instance.new("Folder")
 	folder.Name = "Portals"
 	local out = {}
+	for courseId, look in PORTAL_SURFACES do
+		local surface = lobby.Decor:FindFirstChild("arch_" .. courseId .. "__bw_portal_surface_" .. courseId)
+		for _, part in surface and surface:GetDescendants() or {} do
+			if part:IsA("BasePart") then
+				part.Material = Enum.Material.Neon
+				part.Color = look.color
+				part.Transparency = look.transparency
+				part.CastShadow = false
+				if part:IsA("MeshPart") then
+					part.TextureID = ""
+				end
+				local sa = part:FindFirstChildOfClass("SurfaceAppearance")
+				if sa then
+					sa:Destroy()
+				end
+			end
+		end
+	end
 	for courseId, p in PORTALS do
 		local arch = lobby.Decor:FindFirstChild(p.arch)
 		if arch then
@@ -361,7 +405,7 @@ function LobbyBuilder.BuildPortals()
 				CanTouch = true,
 				Material = Enum.Material.Neon,
 				Color = p.color,
-				Transparency = 0.72,
+				Transparency = lobby.Decor:FindFirstChild(p.arch .. "__bw_portal_surface_" .. courseId) and 1 or 0.72,
 				CastShadow = false,
 			})
 			t:SetAttribute("CourseId", courseId)

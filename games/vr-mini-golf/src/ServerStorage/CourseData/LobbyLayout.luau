@@ -2062,72 +2062,484 @@ return {
 			scale = nil,
 			solid = true,
 		},
+		{
+			id = "arch_lantern_grove__bw_portal_surface_lantern_grove",
+			asset = "bw_portal_surface_lantern_grove",
+			position = { 45, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_portal_apron",
+			asset = "bw_portal_apron",
+			position = { 45, 0, 36 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_arch_lantern_grove_lantern_01",
+			asset = "bw_arch_lantern_grove_lantern_01",
+			position = { 36.8, 21.3, 34.3 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_arch_lantern_grove_lantern_02",
+			asset = "bw_arch_lantern_grove_lantern_02",
+			position = { 53.2, 21.3, 34.3 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_arch_lantern_grove_lantern_03",
+			asset = "bw_arch_lantern_grove_lantern_03",
+			position = { 39, 22.3, 34.3 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_arch_lantern_grove_lantern_04",
+			asset = "bw_arch_lantern_grove_lantern_04",
+			position = { 51, 22.3, 34.3 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_arch_lantern_grove_lantern_05",
+			asset = "bw_arch_lantern_grove_lantern_05",
+			position = { 41.5, 23.3, 34.3 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_arch_lantern_grove_lantern_06",
+			asset = "bw_arch_lantern_grove_lantern_06",
+			position = { 48.5, 23.3, 34.3 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_portal_surface_sugarloaf_canyon",
+			asset = "bw_portal_surface_sugarloaf_canyon",
+			position = { 110, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_portal_apron",
+			asset = "bw_portal_apron",
+			position = { 110, 0, 36 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_arch_sugarloaf_canyon_lantern_01",
+			asset = "bw_arch_sugarloaf_canyon_lantern_01",
+			position = { 103.5, 12.6, 33.6 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_arch_sugarloaf_canyon_lantern_02",
+			asset = "bw_arch_sugarloaf_canyon_lantern_02",
+			position = { 116.5, 12.6, 33.6 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_portal_surface_aurora_archipelago",
+			asset = "bw_portal_surface_aurora_archipelago",
+			position = { 175, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_portal_apron",
+			asset = "bw_portal_apron",
+			position = { 175, 0, 36 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_arch_aurora_archipelago_lantern_01",
+			asset = "bw_arch_aurora_archipelago_lantern_01",
+			position = { 168.2, 6.2, 33.25 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_arch_aurora_archipelago_lantern_02",
+			asset = "bw_arch_aurora_archipelago_lantern_02",
+			position = { 181.8, 6.2, 33.25 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_arch_aurora_archipelago_snowpuff",
+			asset = "bw_arch_aurora_archipelago_snowpuff",
+			position = { 175, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_scn_lantern_grove_planter_e",
+			asset = "bw_scn_lantern_grove_planter_e",
+			position = { 53.6, 0, 33.5 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_scn_lantern_grove_planter_w",
+			asset = "bw_scn_lantern_grove_planter_w",
+			position = { 36.4, 0, 33.5 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_scn_lantern_grove_trunk_e",
+			asset = "bw_scn_lantern_grove_trunk_e",
+			position = { 49.4024, 0, 31.7746 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_lantern_grove__bw_scn_lantern_grove_trunk_w",
+			asset = "bw_scn_lantern_grove_trunk_w",
+			position = { 40.6002, 0, 31.7746 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_scn_sugarloaf_crystals_e",
+			asset = "bw_scn_sugarloaf_crystals_e",
+			position = { 122.1787, -0.3929, 33.0634 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_scn_sugarloaf_crystals_w",
+			asset = "bw_scn_sugarloaf_crystals_w",
+			position = { 97.9166, -0.3641, 32.7402 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_scn_sugarloaf_lollipop_cactus",
+			asset = "bw_scn_sugarloaf_lollipop_cactus",
+			position = { 95, 0, 32.7644 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_scn_sugarloaf_tower_e",
+			asset = "bw_scn_sugarloaf_tower_e",
+			position = { 118.0879, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_sugarloaf_canyon__bw_scn_sugarloaf_tower_w",
+			asset = "bw_scn_sugarloaf_tower_w",
+			position = { 101.9121, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_scn_aurora_crown",
+			asset = "bw_scn_aurora_crown",
+			position = { 175, 0, 32 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_scn_aurora_rocks_e",
+			asset = "bw_scn_aurora_rocks_e",
+			position = { 184.9903, 0, 31.6775 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
+		{
+			id = "arch_aurora_archipelago__bw_scn_aurora_rocks_w",
+			asset = "bw_scn_aurora_rocks_w",
+			position = { 164.9561, 0, 31.727 },
+			yaw = 0,
+			scale = nil,
+			solid = false,
+		},
 	},
 	assets = {
 		bw_arch_aurora_archipelago = {
-			bbox = { 16, 17.875, 4 },
-			center = { 0, 8.937, 0 },
+			bbox = { 16, 18, 4 },
+			center = { 0, 9, 0 },
 			parts = {
 				{
 					mesh = "bw_arch_aurora_archipelago__BW_Atlas",
-					center = { 0, 8.653, 0 },
+					center = { 0, 3.1, 1.207 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_aurora_archipelago__BW_Backdrop",
+					center = { 0, 8.935, 0 },
 					color = nil,
 					material = "SmoothPlastic",
 				},
 				{
 					mesh = "bw_arch_aurora_archipelago__BW_Neon",
-					center = { 0, 11.225, -0.007 },
+					center = { 0, 11.278, -0.007 },
 					color = "#9FE6F2",
 					material = "Neon",
 				},
 			},
 			collision = {
 				{
-					center = { -6.5, 6, 0 },
-					size = { 3, 12, 4 },
+					center = { -6.5, 9, 0 },
+					size = { 3, 18, 4 },
 				},
 				{
-					center = { 6.5, 6, 0 },
-					size = { 3, 12, 4 },
+					center = { 6.5, 9, 0 },
+					size = { 3, 18, 4 },
 				},
 				{
-					center = { 0, 15, 0 },
-					size = { 16, 6, 4 },
+					center = { 0, 14, 0 },
+					size = { 10, 4, 4 },
 				},
 			},
 			motion = nil,
 		},
-		bw_arch_lantern_grove = {
-			bbox = { 16, 17.926, 3.887 },
-			center = { 0, 8.963, 0 },
+		bw_arch_aurora_archipelago_lantern_01 = {
+			bbox = { 0.951, 2.2, 0.78 },
+			center = { 0, -1.1, 0 },
 			parts = {
 				{
-					mesh = "bw_arch_lantern_grove__BW_Atlas",
-					center = { 0, 8.963, 0 },
+					mesh = "bw_arch_aurora_archipelago_lantern_01__BW_Atlas",
+					center = { 0, -1.1, 0 },
 					color = nil,
 					material = "SmoothPlastic",
 				},
 				{
-					mesh = "bw_arch_lantern_grove__BW_Neon",
-					center = { 0, 12.645, 0.057 },
+					mesh = "bw_arch_aurora_archipelago_lantern_01__BW_Neon",
+					center = { 0, -1.4, 0 },
 					color = "#FFC867",
 					material = "Neon",
 				},
 			},
-			collision = {
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_aurora_archipelago_lantern_02 = {
+			bbox = { 0.951, 2.2, 0.78 },
+			center = { 0, -1.1, 0 },
+			parts = {
 				{
-					center = { -6.5, 6, 0 },
-					size = { 3, 12, 4 },
+					mesh = "bw_arch_aurora_archipelago_lantern_02__BW_Atlas",
+					center = { 0, -1.1, 0 },
+					color = nil,
+					material = "SmoothPlastic",
 				},
 				{
-					center = { 6.5, 6, 0 },
-					size = { 3, 12, 4 },
-				},
-				{
-					center = { 0, 15, 0 },
-					size = { 16, 6, 4 },
+					mesh = "bw_arch_aurora_archipelago_lantern_02__BW_Neon",
+					center = { 0, -1.4, 0 },
+					color = "#FFC867",
+					material = "Neon",
 				},
 			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_aurora_archipelago_snowpuff = {
+			bbox = { 1.617, 3, 1.45 },
+			center = { -6.5, 1.5, 1.275 },
+			parts = {
+				{
+					mesh = "bw_arch_aurora_archipelago_snowpuff__BW_Backdrop",
+					center = { -6.5, 1.5, 1.275 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_lantern_grove = {
+			bbox = { 16, 18, 4 },
+			center = { 0, 9, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove__BW_Atlas",
+					center = { 0, 8.95, -0.07 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove__BW_Backdrop",
+					center = { 0, 9, 0.522 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { -6.5, 9, 0 },
+					size = { 3, 18, 4 },
+				},
+				{
+					center = { 6.5, 9, 0 },
+					size = { 3, 18, 4 },
+				},
+				{
+					center = { 0, 14, 0 },
+					size = { 10, 4, 4 },
+				},
+			},
+			motion = nil,
+		},
+		bw_arch_lantern_grove_lantern_01 = {
+			bbox = { 0.9, 2.03, 0.9 },
+			center = { 0, -1.015, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove_lantern_01__BW_Atlas",
+					center = { 0, -1.015, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove_lantern_01__BW_Neon",
+					center = { 0, -1.28, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_lantern_grove_lantern_02 = {
+			bbox = { 0.9, 2.03, 0.9 },
+			center = { 0, -1.015, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove_lantern_02__BW_Atlas",
+					center = { 0, -1.015, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove_lantern_02__BW_Neon",
+					center = { 0, -1.28, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_lantern_grove_lantern_03 = {
+			bbox = { 0.9, 2.03, 0.9 },
+			center = { 0, -1.015, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove_lantern_03__BW_Atlas",
+					center = { 0, -1.015, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove_lantern_03__BW_Neon",
+					center = { 0, -1.28, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_lantern_grove_lantern_04 = {
+			bbox = { 0.9, 2.03, 0.9 },
+			center = { 0, -1.015, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove_lantern_04__BW_Atlas",
+					center = { 0, -1.015, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove_lantern_04__BW_Neon",
+					center = { 0, -1.28, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_lantern_grove_lantern_05 = {
+			bbox = { 0.9, 2.03, 0.9 },
+			center = { 0, -1.015, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove_lantern_05__BW_Atlas",
+					center = { 0, -1.015, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove_lantern_05__BW_Neon",
+					center = { 0, -1.28, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_lantern_grove_lantern_06 = {
+			bbox = { 0.9, 2.03, 0.9 },
+			center = { 0, -1.015, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_lantern_grove_lantern_06__BW_Atlas",
+					center = { 0, -1.015, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_lantern_grove_lantern_06__BW_Neon",
+					center = { 0, -1.28, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
 			motion = nil,
 		},
 		bw_arch_nameplate = {
@@ -2156,30 +2568,82 @@ return {
 			motion = nil,
 		},
 		bw_arch_sugarloaf_canyon = {
-			bbox = { 16, 18, 4 },
-			center = { 0, 9, 0 },
+			bbox = { 15.977, 18, 3.487 },
+			center = { 0.011, 9, 0.191 },
 			parts = {
 				{
 					mesh = "bw_arch_sugarloaf_canyon__BW_Atlas",
-					center = { 0, 9, 0 },
+					center = { -6.4, 2.975, 1.38 },
 					color = nil,
 					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_sugarloaf_canyon__BW_Backdrop",
+					center = { 0.011, 9, 0.191 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_sugarloaf_canyon__BW_Neon",
+					center = { 0, 9.644, 1.477 },
+					color = "#F6A6C8",
+					material = "Neon",
 				},
 			},
 			collision = {
 				{
-					center = { -6.5, 6, 0 },
-					size = { 3, 12, 4 },
+					center = { -6.5, 9, 0 },
+					size = { 3, 18, 4 },
 				},
 				{
-					center = { 6.5, 6, 0 },
-					size = { 3, 12, 4 },
+					center = { 6.5, 9, 0 },
+					size = { 3, 18, 4 },
 				},
 				{
-					center = { 0, 15, 0 },
-					size = { 16, 6, 4 },
+					center = { 0, 14, 0 },
+					size = { 10, 4, 4 },
 				},
 			},
+			motion = nil,
+		},
+		bw_arch_sugarloaf_canyon_lantern_01 = {
+			bbox = { 0.951, 2.2, 0.78 },
+			center = { 0, -1.1, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_sugarloaf_canyon_lantern_01__BW_Atlas",
+					center = { 0, -1.1, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_sugarloaf_canyon_lantern_01__BW_Neon",
+					center = { 0, -1.4, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_arch_sugarloaf_canyon_lantern_02 = {
+			bbox = { 0.951, 2.2, 0.78 },
+			center = { 0, -1.1, 0 },
+			parts = {
+				{
+					mesh = "bw_arch_sugarloaf_canyon_lantern_02__BW_Atlas",
+					center = { 0, -1.1, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_arch_sugarloaf_canyon_lantern_02__BW_Neon",
+					center = { 0, -1.4, 0 },
+					color = "#FFC867",
+					material = "Neon",
+				},
+			},
+			collision = {  },
 			motion = nil,
 		},
 		bw_barrel = {
@@ -2564,6 +3028,62 @@ return {
 			},
 			motion = nil,
 		},
+		bw_portal_apron = {
+			bbox = { 12, 0.1, 4 },
+			center = { 0, -0.05, 0 },
+			parts = {
+				{
+					mesh = "bw_portal_apron__BW_Atlas",
+					center = { 0, -0.05, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_portal_surface_aurora_archipelago = {
+			bbox = { 10, 12, 0 },
+			center = { 0, 6, 1.5 },
+			parts = {
+				{
+					mesh = "bw_portal_surface_aurora_archipelago__BW_Atlas",
+					center = { 0, 6, 1.5 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_portal_surface_lantern_grove = {
+			bbox = { 10, 12, 0 },
+			center = { 0, 6, 1.5 },
+			parts = {
+				{
+					mesh = "bw_portal_surface_lantern_grove__BW_Atlas",
+					center = { 0, 6, 1.5 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_portal_surface_sugarloaf_canyon = {
+			bbox = { 10, 12, 0 },
+			center = { 0, 6, 1.5 },
+			parts = {
+				{
+					mesh = "bw_portal_surface_sugarloaf_canyon__BW_Atlas",
+					center = { 0, 6, 1.5 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
 		bw_practice_green = {
 			bbox = { 34, 1.2, 20 },
 			center = { 0, 0.6, 0 },
@@ -2617,6 +3137,319 @@ return {
 				{
 					center = { 0, 11.87, 0 },
 					size = { 31.677, 23.74, 10.023 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_aurora_crown = {
+			bbox = { 20.2359, 15.1777, 4.7515 },
+			center = { 0.4297, 19.4112, -0.6 },
+			parts = {
+				{
+					mesh = "bw_scn_aurora_crown__Glow_Tips",
+					center = { 0.4297, 21.3736, -0.6 },
+					color = "#9FE6F2",
+					material = "Neon",
+				},
+				{
+					mesh = "bw_scn_aurora_crown__BW_Crown_Crystal",
+					center = { 0.4297, 18.1786, -0.6 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_scn_aurora_rocks_e = {
+			bbox = { 6.9357, 6.5944, 8.1016 },
+			center = { 0, 3.2972, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_aurora_rocks_e__BW_Rock_VC",
+					center = { 0, 3.2972, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { 0.8607, 2.8, 2.3367 },
+					size = { 5.2143, 5.6, 3.4283 },
+				},
+				{
+					center = { -0.0526, 3.2972, -1.7191 },
+					size = { 6.8306, 6.5944, 4.6634 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_aurora_rocks_w = {
+			bbox = { 6.7426, 6.6646, 8.2685 },
+			center = { 0, 3.3323, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_aurora_rocks_w__BW_Rock_VC",
+					center = { 0, 3.3323, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { -0.589, 2.8, 2.3536 },
+					size = { 5.4868, 5.6, 3.5612 },
+				},
+				{
+					center = { 0, 3.3323, -1.7856 },
+					size = { 6.7426, 6.6646, 4.6973 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_lantern_grove_planter_e = {
+			bbox = { 3.348, 3.17, 1.85 },
+			center = { 0, 1.585, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_lantern_grove_planter_e__BW_Atlas",
+					center = { 0, 1.7, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_lantern_grove_planter_e__BW_Backdrop",
+					center = { 0, 1.585, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { 0, 0.8, -0.4 },
+					size = { 3, 1.6, 0.8 },
+				},
+				{
+					center = { 0, 0.8, 0.4 },
+					size = { 3, 1.6, 0.8 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_lantern_grove_planter_w = {
+			bbox = { 3.348, 3.17, 1.85 },
+			center = { 0, 1.585, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_lantern_grove_planter_w__BW_Atlas",
+					center = { 0, 1.7, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_lantern_grove_planter_w__BW_Backdrop",
+					center = { 0, 1.585, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { 0, 0.8, -0.4 },
+					size = { 3, 1.6, 0.8 },
+				},
+				{
+					center = { 0, 0.8, 0.4 },
+					size = { 3, 1.6, 0.8 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_lantern_grove_trunk_e = {
+			bbox = { 13.9951, 28.1672, 9.5247 },
+			center = { 0, 14.0836, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_lantern_grove_trunk_e__BW_Backdrop",
+					center = { -0.0199, 20.1773, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_lantern_grove_trunk_e__BW_Bark_VC",
+					center = { 3.2779, 10.5, 0.0543 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { 3.9976, 6.5, 0.2254 },
+					size = { 2.6, 13, 2.6 },
+				},
+				{
+					center = { 2.1976, 17, 0.2254 },
+					size = { 3.6, 8, 2 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_lantern_grove_trunk_w = {
+			bbox = { 14.2343, 28.1672, 9.5247 },
+			center = { 0, 14.0836, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_lantern_grove_trunk_w__BW_Backdrop",
+					center = { 0.1588, 20.1773, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_lantern_grove_trunk_w__BW_Bark_VC",
+					center = { -3.2621, 10.5, 0.0543 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { -4.0002, 6.5, 0.2254 },
+					size = { 2.6, 13, 2.6 },
+				},
+				{
+					center = { -2.2002, 17, 0.2254 },
+					size = { 3.6, 8, 2 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_sugarloaf_crystals_e = {
+			bbox = { 9.7912, 15.0393, 5.6962 },
+			center = { 0, 7.5197, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_sugarloaf_crystals_e__Glow_Crystal",
+					center = { 0, 7.5197, 0 },
+					color = nil,
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_scn_sugarloaf_crystals_w = {
+			bbox = { 9.4537, 15.1959, 5.6282 },
+			center = { 0, 7.598, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_sugarloaf_crystals_w__Glow_Crystal",
+					center = { 0, 7.598, 0 },
+					color = nil,
+					material = "Neon",
+				},
+			},
+			collision = {  },
+			motion = nil,
+		},
+		bw_scn_sugarloaf_lollipop_cactus = {
+			bbox = { 8.32, 15.743, 2.738 },
+			center = { 0, 7.871, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_sugarloaf_lollipop_cactus__BW_Atlas",
+					center = { 0, 9.13, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_sugarloaf_lollipop_cactus__BW_Backdrop",
+					center = { 0, 7.871, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { 0, 6, -0.7644 },
+					size = { 2.5, 12, 2.5 },
+				},
+				{
+					center = { 0, 0.25, -0.7644 },
+					size = { 4.8, 0.5, 3 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_sugarloaf_tower_e = {
+			bbox = { 9.283, 27.689, 4.181 },
+			center = { 0, 13.845, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_sugarloaf_tower_e__BW_Atlas",
+					center = { 2.112, 0.25, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_sugarloaf_tower_e__BW_Backdrop",
+					center = { 0, 13.845, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { 1.4949, 3.5, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+				{
+					center = { 0.3488, 10, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+				{
+					center = { -0.7973, 16.5, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+				{
+					center = { -1.9434, 23, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+			},
+			motion = nil,
+		},
+		bw_scn_sugarloaf_tower_w = {
+			bbox = { 9.283, 27.689, 4.181 },
+			center = { 0, 13.845, 0 },
+			parts = {
+				{
+					mesh = "bw_scn_sugarloaf_tower_w__BW_Atlas",
+					center = { -2.112, 0.25, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+				{
+					mesh = "bw_scn_sugarloaf_tower_w__BW_Backdrop",
+					center = { 0, 13.845, 0 },
+					color = nil,
+					material = "SmoothPlastic",
+				},
+			},
+			collision = {
+				{
+					center = { -1.4949, 3.5, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+				{
+					center = { -0.3488, 10, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+				{
+					center = { 0.7973, 16.5, 0 },
+					size = { 2.8, 6.5, 3.2 },
+				},
+				{
+					center = { 1.9434, 23, 0 },
+					size = { 2.8, 6.5, 3.2 },
 				},
 			},
 			motion = nil,

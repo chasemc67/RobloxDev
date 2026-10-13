@@ -967,8 +967,16 @@ return {
 		{ prop = "bank_backing_stone", hole = 3, pos = { -1.275, 0, -13.275 }, yaw = 135 },
 		{ prop = "bank_backing_stone", hole = 3, pos = { 18.775, 0, -10.725 }, yaw = 135 },
 		{ prop = "bank_backing_stone", hole = 8, pos = { -17.775, 0, -10.225 }, yaw = -135 },
-		{ prop = "bank_backing_stone", hole = 8, pos = { -17.775, 1.5, -49.775 }, yaw = 135 },
-		{ prop = "bank_backing_stone", hole = 9, pos = { -1.275, 1, -26.775 }, yaw = 135 },
+		{ prop = "bank_backing_stone", hole = 8, pos = { -17.775, 1.5, -40.775 }, yaw = 135 },
+		{
+			prop = "bank_backing_stone",
+			hole = 9,
+			pos = { -1.275, 1, -26.775 },
+			yaw = 135,
+			hide = {
+				"Limestone",
+			},
+		},
 		{ prop = "drop_face_stone", hole = 2, pos = { 0, -1.5, -19.8 }, yaw = 0, scale = { 2, 1.5, 1 } },
 		{ prop = "drop_face_stone", hole = 7, pos = { 0, -1.2, -13.8 }, yaw = 0, scale = { 2, 1.2, 1 } },
 		{ prop = "drop_face_stone", hole = 7, pos = { 0, -2.4, -26.8 }, yaw = 0, scale = { 5, 1.2, 1 } },
@@ -2073,6 +2081,8 @@ return {
 	},
 	overrides = {
 		"H9 heart lantern string removed (props.md Round 7: H3 only)",
+		"Stage ab (Game Art Bot: H8 stone floating 1.66 up): the bank2 stone hung 9 studs past the end of its bank, over lower terrain; now on Rail_bank2_backing (local z -40.775) like bank1's stone",
+		"Stage ab (Game Art Bot: hidden stone dup in H9 backing): the stone's Limestone face sat coplanar inside Rail_bank1_backing; dropped, the oak cap and moss stay",
 		"Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",
 		"Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",
 		"Stage j: imported hanging lantern at scale 1, bottom y 7.2; light from manifest lights[]",

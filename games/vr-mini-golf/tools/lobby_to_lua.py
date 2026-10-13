@@ -115,7 +115,8 @@ def main():
             "parts": [{"mesh": q["mesh"], "center": q["center_from_pivot"], "color": q["color"],
                        "material": q["roblox_material"]} for q in p["parts"]],
             "collision": [{"center": c["center"], "size": c["size"]} for c in (p.get("collision") or [])],
-            "motion": ({"axis": p["motion"]["axis_roblox"], "rpm": p["motion"]["rpm"]} if p.get("motion") else None),
+            # (pass 10: the arch lanterns / snowpuff describe a sway or bob in words; only spinners have an axis + rpm)
+            "motion": ({"axis": p["motion"]["axis_roblox"], "rpm": p["motion"]["rpm"]} if isinstance(p.get("motion"), dict) else None),
         }
 
     board = next(i for i in insts if i["id"] == "course_board")

@@ -1,0 +1,4825 @@
+{
+ "result": "PASS",
+ "output": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/kit_merged_pass6/sugarloaf_kit_pass6_c.fbx",
+ "size_bytes": 6618780,
+ "size_mb": 6.312,
+ "source_files": 47,
+ "top_level_empties": 47,
+ "top_level_non_empty": [],
+ "mesh_objects": 163,
+ "total_tris": 74390,
+ "max_mesh": {
+  "name": "hoodoos_south__Strata",
+  "tris": 4324
+ },
+ "any_mesh_over_20000_tris": false,
+ "object_names_with_numeric_suffix": [],
+ "materials": 163,
+ "images": [
+  "cactus.png.001",
+  "cactus_2.png",
+  "clay_brick.png.001",
+  "concrete_white.png.001",
+  "crystal_amber.png.001",
+  "crystal_pink.png.001",
+  "powder_sugar.png.001",
+  "red_dirt.png.001",
+  "red_dirt_light.png.001",
+  "rope.png.001",
+  "sandstone_block.png.001",
+  "strata.png.001",
+  "timber.png.001",
+  "timber_weathered.png.001"
+ ],
+ "problems": [
+  "info: different image content shares name cactus.png; saved as cactus_2.png"
+ ],
+ "export_settings": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1,
+  "path_mode": "COPY",
+  "embed_textures": true,
+  "add_leaf_bones": false,
+  "bake_anim": false
+ },
+ "files": {
+  "barrel_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "barrel_a__Brass",
+     "tris": 36,
+     "bbox_min": [
+      -0.678221,
+      -0.833897,
+      0.91
+     ],
+     "bbox_max": [
+      0.776849,
+      0.522363,
+      0.99
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_a__Iron",
+     "tris": 84,
+     "bbox_min": [
+      -0.765,
+      -0.727558,
+      0.25
+     ],
+     "bbox_max": [
+      0.765,
+      0.727559,
+      2.02
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_a__Timber",
+     "tris": 36,
+     "bbox_min": [
+      -0.570634,
+      -0.6,
+      1.88
+     ],
+     "bbox_max": [
+      0.570634,
+      0.6,
+      1.96
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": "timber.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_a__TimberWeathered",
+     "tris": 96,
+     "bbox_min": [
+      -0.8,
+      -0.760845,
+      -0.0
+     ],
+     "bbox_max": [
+      0.8,
+      0.760845,
+      1.9
+     ],
+     "material": [
+      "TimberWeathered"
+     ],
+     "image": "timber_weathered.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "TimberWeathered"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 252,
+   "pass": true
+  },
+  "barrel_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "barrel_b__Brass",
+     "tris": 36,
+     "bbox_min": [
+      -0.678221,
+      -0.833897,
+      0.91
+     ],
+     "bbox_max": [
+      0.776849,
+      0.522363,
+      0.99
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__Bubblegum",
+     "tris": 64,
+     "bbox_min": [
+      -0.159232,
+      -0.539232,
+      1.675878
+     ],
+     "bbox_max": [
+      0.259232,
+      -0.120767,
+      2.115878
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 2.5331974029541016e-07,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__GumCherry",
+     "tris": 128,
+     "bbox_min": [
+      -0.429232,
+      -0.409232,
+      1.674286
+     ],
+     "bbox_max": [
+      0.209232,
+      0.209233,
+      2.120941
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 2.5331974029541016e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__GumLemon",
+     "tris": 128,
+     "bbox_min": [
+      0.090768,
+      -0.459232,
+      1.687173
+     ],
+     "bbox_max": [
+      0.529232,
+      0.329233,
+      2.130486
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__GumLime",
+     "tris": 64,
+     "bbox_min": [
+      -0.489232,
+      0.010768,
+      1.730905
+     ],
+     "bbox_max": [
+      -0.070768,
+      0.429233,
+      2.170905
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 2.682209014892578e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__Iron",
+     "tris": 72,
+     "bbox_min": [
+      -0.765,
+      -0.727558,
+      0.25
+     ],
+     "bbox_max": [
+      0.765,
+      0.727559,
+      1.65
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.7881393432617188e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__Timber",
+     "tris": 36,
+     "bbox_min": [
+      -0.570634,
+      -0.6,
+      1.695
+     ],
+     "bbox_max": [
+      0.570634,
+      0.6,
+      1.745
+     ],
+     "material": [
+      "Timber"
+     ],
+     "image": "timber.png",
+     "bbox_max_err": 1.7881393432617188e-07,
+     "merged_material": [
+      "Timber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "barrel_b__TimberWeathered",
+     "tris": 96,
+     "bbox_min": [
+      -0.8,
+      -0.760845,
+      -0.0
+     ],
+     "bbox_max": [
+      0.8,
+      0.760845,
+      1.9
+     ],
+     "material": [
+      "TimberWeathered"
+     ],
+     "image": "timber_weathered.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "TimberWeathered"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 624,
+   "pass": true
+  },
+  "boulder_scatter": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "boulder_scatter__Strata",
+     "tris": 180,
+     "bbox_min": [
+      -2.164725,
+      -1.652061,
+      -0.3
+     ],
+     "bbox_max": [
+      2.894696,
+      1.408534,
+      1.759791
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 180,
+   "pass": true
+  },
+  "cacti_crown": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "cacti_crown__Bubblegum",
+     "tris": 1850,
+     "bbox_min": [
+      -102.847641,
+      -79.404022,
+      4.470946
+     ],
+     "bbox_max": [
+      118.943016,
+      77.563629,
+      14.449426
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 9.059906005859375e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_crown__Cactus",
+     "tris": 1934,
+     "bbox_min": [
+      -103.236877,
+      -79.173302,
+      -0.400013
+     ],
+     "bbox_max": [
+      119.745934,
+      77.467934,
+      10.964293
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 9.238719940185547e-06,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_crown__GumCherry",
+     "tris": 260,
+     "bbox_min": [
+      -102.245941,
+      -77.957649,
+      2.351784
+     ],
+     "bbox_max": [
+      117.054482,
+      76.28701,
+      6.190731
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 9.059906005859375e-06,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_crown__GumLemon",
+     "tris": 380,
+     "bbox_min": [
+      -102.60392,
+      -78.377457,
+      2.430116
+     ],
+     "bbox_max": [
+      119.231003,
+      76.219604,
+      6.315029
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 9.059906005859375e-06,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_crown__GumLime",
+     "tris": 280,
+     "bbox_min": [
+      -99.040497,
+      -78.368782,
+      2.593805
+     ],
+     "bbox_max": [
+      119.517532,
+      75.946991,
+      6.336022
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 9.059906005859375e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_crown__MintWhite",
+     "tris": 2294,
+     "bbox_min": [
+      -102.847641,
+      -79.404022,
+      3.661516
+     ],
+     "bbox_max": [
+      118.943016,
+      77.563629,
+      14.447951
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 9.298324584960938e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 6998,
+   "pass": true
+  },
+  "cacti_floor": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "cacti_floor__Bubblegum",
+     "tris": 2400,
+     "bbox_min": [
+      -130.175674,
+      -62.389015,
+      5.874747
+     ],
+     "bbox_max": [
+      164.265427,
+      98.509583,
+      14.262577
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1444091796875e-05,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_floor__Cactus",
+     "tris": 2508,
+     "bbox_min": [
+      -129.71965,
+      -61.708805,
+      -0.400016
+     ],
+     "bbox_max": [
+      165.597839,
+      97.402687,
+      11.057811
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 1.1622905731201172e-05,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_floor__GumCherry",
+     "tris": 360,
+     "bbox_min": [
+      -119.822945,
+      -61.644352,
+      3.559281
+     ],
+     "bbox_max": [
+      127.901474,
+      96.374596,
+      6.919717
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1444091796875e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_floor__GumLemon",
+     "tris": 480,
+     "bbox_min": [
+      -128.99144,
+      -61.809486,
+      2.925553
+     ],
+     "bbox_max": [
+      165.260086,
+      96.639214,
+      6.654792
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1444091796875e-05,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_floor__GumLime",
+     "tris": 360,
+     "bbox_min": [
+      -129.113068,
+      -60.594662,
+      3.204177
+     ],
+     "bbox_max": [
+      165.525177,
+      93.88282,
+      6.525471
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1205673217773438e-05,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_floor__MintWhite",
+     "tris": 2976,
+     "bbox_min": [
+      -130.175674,
+      -62.389015,
+      5.012547
+     ],
+     "bbox_max": [
+      164.265427,
+      98.509583,
+      14.2612
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 1.1444091796875e-05,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 9084,
+   "pass": true
+  },
+  "cacti_taffy_north": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "cacti_taffy_north__Bubblegum",
+     "tris": 2000,
+     "bbox_min": [
+      -128.563553,
+      -150.096863,
+      5.596232
+     ],
+     "bbox_max": [
+      106.194519,
+      172.338089,
+      16.113569
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 2.0503997802734375e-05,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_north__Cactus",
+     "tris": 2090,
+     "bbox_min": [
+      -128.688583,
+      -150.428635,
+      -0.400028
+     ],
+     "bbox_max": [
+      107.180168,
+      171.538376,
+      12.045864
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 2.0444393157958984e-05,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_north__GumCherry",
+     "tris": 300,
+     "bbox_min": [
+      -104.971054,
+      -117.630539,
+      3.087992
+     ],
+     "bbox_max": [
+      88.941727,
+      168.996841,
+      6.531787
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 2.0265579223632812e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_north__GumLemon",
+     "tris": 400,
+     "bbox_min": [
+      -127.803375,
+      -149.575958,
+      3.408919
+     ],
+     "bbox_max": [
+      106.573486,
+      171.074448,
+      6.981359
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 2.0265579223632812e-05,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_north__GumLime",
+     "tris": 300,
+     "bbox_min": [
+      -127.956291,
+      -149.648193,
+      2.875503
+     ],
+     "bbox_max": [
+      106.893875,
+      171.36351,
+      7.140683
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 2.0503997802734375e-05,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_north__MintWhite",
+     "tris": 2480,
+     "bbox_min": [
+      -128.57431,
+      -150.096863,
+      4.847232
+     ],
+     "bbox_max": [
+      106.194519,
+      172.338089,
+      16.111832
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 2.0503997802734375e-05,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 7570,
+   "pass": true
+  },
+  "cacti_taffy_south": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "cacti_taffy_south__Bubblegum",
+     "tris": 3300,
+     "bbox_min": [
+      -151.036011,
+      -239.158691,
+      4.770932
+     ],
+     "bbox_max": [
+      161.104721,
+      163.287918,
+      16.220549
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 2.86102294921875e-05,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_south__Cactus",
+     "tris": 3450,
+     "bbox_min": [
+      -148.777161,
+      -238.89325,
+      -0.400026
+     ],
+     "bbox_max": [
+      161.713043,
+      162.289307,
+      12.295679
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 2.86102294921875e-05,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_south__GumCherry",
+     "tris": 480,
+     "bbox_min": [
+      -91.305504,
+      -170.721039,
+      2.65177
+     ],
+     "bbox_max": [
+      159.892807,
+      161.529083,
+      7.012789
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 2.0503997802734375e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_south__GumLemon",
+     "tris": 660,
+     "bbox_min": [
+      -147.645386,
+      -238.380112,
+      2.730102
+     ],
+     "bbox_max": [
+      161.411057,
+      161.744247,
+      6.355882
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 2.86102294921875e-05,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_south__GumLime",
+     "tris": 500,
+     "bbox_min": [
+      -147.622833,
+      -238.686844,
+      2.931431
+     ],
+     "bbox_max": [
+      161.635284,
+      159.859879,
+      6.515173
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 2.8133392333984375e-05,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "cacti_taffy_south__MintWhite",
+     "tris": 4092,
+     "bbox_min": [
+      -151.036011,
+      -239.158691,
+      3.961502
+     ],
+     "bbox_max": [
+      161.104721,
+      163.287918,
+      16.218863
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 2.86102294921875e-05,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 12482,
+   "pass": true
+  },
+  "clay_brick_edging": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "clay_brick_edging__ClayBrick",
+     "tris": 120,
+     "bbox_min": [
+      -0.35,
+      -4.375,
+      -1e-06
+     ],
+     "bbox_max": [
+      0.35,
+      3.625,
+      0.450001
+     ],
+     "material": [
+      "ClayBrick"
+     ],
+     "image": "clay_brick.png",
+     "bbox_max_err": 5.066394805908203e-07,
+     "merged_material": [
+      "ClayBrick"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 120,
+   "pass": true
+  },
+  "crystal_cluster_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "crystal_cluster_a__CandyAmber",
+     "tris": 68,
+     "bbox_min": [
+      -0.418198,
+      -1.984295,
+      -0.464932
+     ],
+     "bbox_max": [
+      1.517388,
+      2.027971,
+      2.958165
+     ],
+     "material": [
+      "CandyAmber"
+     ],
+     "image": "crystal_amber.png",
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "CandyAmber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_a__CandyCore",
+     "tris": 14,
+     "bbox_min": [
+      -0.199429,
+      -0.199429,
+      -0.2
+     ],
+     "bbox_max": [
+      0.199429,
+      0.199429,
+      3.175
+     ],
+     "material": [
+      "CandyCore"
+     ],
+     "image": null,
+     "bbox_max_err": 3.725290298461914e-07,
+     "merged_material": [
+      "CandyCore"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_a__CandyPink",
+     "tris": 102,
+     "bbox_min": [
+      -2.232319,
+      -1.545074,
+      -0.549843
+     ],
+     "bbox_max": [
+      0.569796,
+      1.499759,
+      4.300001
+     ],
+     "material": [
+      "CandyPink"
+     ],
+     "image": "crystal_pink.png",
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "CandyPink"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_a__Strata",
+     "tris": 20,
+     "bbox_min": [
+      -1.720414,
+      -0.852627,
+      -0.1
+     ],
+     "bbox_max": [
+      1.97228,
+      0.996587,
+      0.98043
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 204,
+   "pass": true
+  },
+  "crystal_cluster_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "crystal_cluster_b__CandyAmber",
+     "tris": 68,
+     "bbox_min": [
+      -1.154759,
+      -2.846214,
+      -0.547318
+     ],
+     "bbox_max": [
+      1.763284,
+      2.679811,
+      3.500883
+     ],
+     "material": [
+      "CandyAmber"
+     ],
+     "image": "crystal_amber.png",
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "CandyAmber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_b__CandyCore",
+     "tris": 14,
+     "bbox_min": [
+      -0.270833,
+      -0.270833,
+      -0.2
+     ],
+     "bbox_max": [
+      0.270833,
+      0.270833,
+      4.675
+     ],
+     "material": [
+      "CandyCore"
+     ],
+     "image": null,
+     "bbox_max_err": 5.364418029785156e-07,
+     "merged_material": [
+      "CandyCore"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_b__CandyPink",
+     "tris": 136,
+     "bbox_min": [
+      -3.525777,
+      -2.266219,
+      -0.661161
+     ],
+     "bbox_max": [
+      1.310232,
+      2.739793,
+      6.300001
+     ],
+     "material": [
+      "CandyPink"
+     ],
+     "image": "crystal_pink.png",
+     "bbox_max_err": 7.152557373046875e-07,
+     "merged_material": [
+      "CandyPink"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_b__Strata",
+     "tris": 20,
+     "bbox_min": [
+      -2.000273,
+      -1.554085,
+      -0.1
+     ],
+     "bbox_max": [
+      2.10487,
+      2.049338,
+      1.506794
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.4586915969848633e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 238,
+   "pass": true
+  },
+  "crystal_cluster_c": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "crystal_cluster_c__CandyAmber",
+     "tris": 68,
+     "bbox_min": [
+      -2.549535,
+      -4.797612,
+      -0.86219
+     ],
+     "bbox_max": [
+      3.014272,
+      4.160054,
+      5.526607
+     ],
+     "material": [
+      "CandyAmber"
+     ],
+     "image": "crystal_amber.png",
+     "bbox_max_err": 5.364418029785156e-07,
+     "merged_material": [
+      "CandyAmber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_c__CandyCore",
+     "tris": 14,
+     "bbox_min": [
+      -0.479317,
+      -0.479317,
+      -0.2
+     ],
+     "bbox_max": [
+      0.479317,
+      0.479319,
+      7.3
+     ],
+     "material": [
+      "CandyCore"
+     ],
+     "image": null,
+     "bbox_max_err": 8.642673492431641e-07,
+     "merged_material": [
+      "CandyCore"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_c__CandyPink",
+     "tris": 136,
+     "bbox_min": [
+      -4.632698,
+      -5.179902,
+      -0.894049
+     ],
+     "bbox_max": [
+      1.963849,
+      3.454143,
+      9.800001
+     ],
+     "material": [
+      "CandyPink"
+     ],
+     "image": "crystal_pink.png",
+     "bbox_max_err": 1.1920928955078125e-06,
+     "merged_material": [
+      "CandyPink"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "crystal_cluster_c__Strata",
+     "tris": 20,
+     "bbox_min": [
+      -3.560194,
+      -2.734128,
+      -0.1
+     ],
+     "bbox_max": [
+      3.300545,
+      2.836687,
+      2.196344
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 3.3527612686157227e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 238,
+   "pass": true
+  },
+  "fallen_rock_scatter": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "fallen_rock_scatter__Pebble",
+     "tris": 40,
+     "bbox_min": [
+      0.158812,
+      -1.48168,
+      -0.12
+     ],
+     "bbox_max": [
+      1.645051,
+      1.012593,
+      0.41513
+     ],
+     "material": [
+      "Pebble"
+     ],
+     "image": null,
+     "bbox_max_err": 1.7881393432617188e-07,
+     "merged_material": [
+      "Pebble"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "fallen_rock_scatter__Strata",
+     "tris": 60,
+     "bbox_min": [
+      -1.526082,
+      -1.20421,
+      -0.12
+     ],
+     "bbox_max": [
+      0.460739,
+      0.846194,
+      0.734205
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.7881393432617188e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 100,
+   "pass": true
+  },
+  "gumdrop_boulder_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "gumdrop_boulder_a__GumCherry",
+     "tris": 94,
+     "bbox_min": [
+      -2.4,
+      -2.4,
+      -0.3
+     ],
+     "bbox_max": [
+      2.4,
+      2.400001,
+      3.400001
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 94,
+   "pass": true
+  },
+  "gumdrop_boulder_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "gumdrop_boulder_b__GumLemon",
+     "tris": 94,
+     "bbox_min": [
+      1.6,
+      -2.6,
+      -0.3
+     ],
+     "bbox_max": [
+      4.4,
+      0.2,
+      2.0
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_boulder_b__GumLime",
+     "tris": 94,
+     "bbox_min": [
+      -3.0,
+      -3.0,
+      -0.3
+     ],
+     "bbox_max": [
+      3.0,
+      3.000001,
+      4.2
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 188,
+   "pass": true
+  },
+  "gumdrop_shrub_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "gumdrop_shrub_a__GumCherry",
+     "tris": 68,
+     "bbox_min": [
+      -0.858742,
+      -0.20378,
+      0.501644
+     ],
+     "bbox_max": [
+      0.950184,
+      0.62402,
+      1.030429
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_a__GumLemon",
+     "tris": 102,
+     "bbox_min": [
+      -1.021001,
+      -0.313157,
+      0.579438
+     ],
+     "bbox_max": [
+      0.331768,
+      0.317233,
+      1.260994
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_a__GumLime",
+     "tris": 102,
+     "bbox_min": [
+      0.028775,
+      -0.426817,
+      0.692877
+     ],
+     "bbox_max": [
+      0.524634,
+      0.580624,
+      1.080817
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_a__Scrub",
+     "tris": 320,
+     "bbox_min": [
+      -0.984722,
+      -1.059536,
+      -0.15
+     ],
+     "bbox_max": [
+      0.951472,
+      0.757348,
+      1.324297
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 592,
+   "pass": true
+  },
+  "gumdrop_shrub_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "gumdrop_shrub_b__Bubblegum",
+     "tris": 136,
+     "bbox_min": [
+      -0.731183,
+      -0.767953,
+      0.694505
+     ],
+     "bbox_max": [
+      0.570355,
+      0.269424,
+      1.303828
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_b__Cactus",
+     "tris": 60,
+     "bbox_min": [
+      -0.922073,
+      -0.813967,
+      0.473167
+     ],
+     "bbox_max": [
+      0.928803,
+      0.95442,
+      1.926833
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_b__Scrub",
+     "tris": 160,
+     "bbox_min": [
+      -0.893014,
+      -0.944042,
+      -0.15
+     ],
+     "bbox_max": [
+      1.232717,
+      0.886078,
+      1.413603
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 1.7881393432617188e-07,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 356,
+   "pass": true
+  },
+  "gumdrop_shrub_c": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "gumdrop_shrub_c__GumCherry",
+     "tris": 34,
+     "bbox_min": [
+      -1.150404,
+      0.125994,
+      0.537991
+     ],
+     "bbox_max": [
+      -0.810404,
+      0.420442,
+      0.807991
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_c__GumLemon",
+     "tris": 68,
+     "bbox_min": [
+      -0.466374,
+      0.374468,
+      0.472802
+     ],
+     "bbox_max": [
+      0.015241,
+      0.762438,
+      0.93815
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 8.940696716308594e-08,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_c__GumLime",
+     "tris": 34,
+     "bbox_min": [
+      0.306414,
+      -0.073,
+      0.497533
+     ],
+     "bbox_max": [
+      0.646414,
+      0.221449,
+      0.767533
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 1.043081283569336e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "gumdrop_shrub_c__Scrub",
+     "tris": 320,
+     "bbox_min": [
+      -1.454257,
+      -0.717226,
+      -0.15
+     ],
+     "bbox_max": [
+      1.457277,
+      1.293556,
+      0.757974
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 456,
+   "pass": true
+  },
+  "hoodoo_spire_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoo_spire_a__GumCherry",
+     "tris": 94,
+     "bbox_min": [
+      -3.029376,
+      -3.029373,
+      21.02
+     ],
+     "bbox_max": [
+      3.029376,
+      3.02938,
+      24.0
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 2.86102294921875e-06,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoo_spire_a__Strata",
+     "tris": 332,
+     "bbox_min": [
+      -4.190392,
+      -4.003639,
+      -1.000001
+     ],
+     "bbox_max": [
+      4.164003,
+      3.8275,
+      21.120001
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.6226043701171875e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 426,
+   "pass": true
+  },
+  "hoodoo_spire_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoo_spire_b__GumLime",
+     "tris": 94,
+     "bbox_min": [
+      -3.78672,
+      -3.786716,
+      28.059999
+     ],
+     "bbox_max": [
+      3.78672,
+      3.786725,
+      32.0
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 3.814697265625e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoo_spire_b__Strata",
+     "tris": 392,
+     "bbox_min": [
+      -5.054377,
+      -4.723269,
+      -1.000001
+     ],
+     "bbox_max": [
+      5.0,
+      4.910155,
+      28.16
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 3.337860107421875e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 486,
+   "pass": true
+  },
+  "hoodoo_spire_c": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoo_spire_c__GumLemon",
+     "tris": 94,
+     "bbox_min": [
+      -2.650704,
+      -2.650701,
+      17.5
+     ],
+     "bbox_max": [
+      2.650704,
+      2.650707,
+      20.0
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 2.384185791015625e-06,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoo_spire_c__Strata",
+     "tris": 292,
+     "bbox_min": [
+      -3.510835,
+      -3.50863,
+      -1.000001
+     ],
+     "bbox_max": [
+      3.5,
+      3.325944,
+      17.6
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.1457672119140625e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 386,
+   "pass": true
+  },
+  "hoodoo_spire_d": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoo_spire_d__Bubblegum",
+     "tris": 94,
+     "bbox_min": [
+      -4.544064,
+      -4.544058,
+      35.099998
+     ],
+     "bbox_max": [
+      4.544064,
+      4.544071,
+      40.0
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoo_spire_d__Strata",
+     "tris": 452,
+     "bbox_min": [
+      -6.289928,
+      -5.814087,
+      -1.000001
+     ],
+     "bbox_max": [
+      6.0,
+      5.9122,
+      35.200001
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 4.291534423828125e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 546,
+   "pass": true
+  },
+  "hoodoos_mid": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoos_mid__Bubblegum",
+     "tris": 188,
+     "bbox_min": [
+      -22.918861,
+      -28.659767,
+      20.34
+     ],
+     "bbox_max": [
+      6.959772,
+      2.818867,
+      35.700005
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 4.291534423828125e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_mid__GumCherry",
+     "tris": 282,
+     "bbox_min": [
+      -63.439308,
+      -31.839302,
+      18.515987
+     ],
+     "bbox_max": [
+      121.237389,
+      70.467651,
+      22.700006
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_mid__GumLemon",
+     "tris": 282,
+     "bbox_min": [
+      -135.846573,
+      -34.866856,
+      16.503996
+     ],
+     "bbox_max": [
+      28.366859,
+      23.306225,
+      28.100004
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 3.814697265625e-06,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_mid__GumLime",
+     "tris": 282,
+     "bbox_min": [
+      -66.422455,
+      -34.022449,
+      16.643991
+     ],
+     "bbox_max": [
+      110.414276,
+      57.934906,
+      26.500006
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_mid__Strata",
+     "tris": 3472,
+     "bbox_min": [
+      -137.003403,
+      -35.750072,
+      -1.000012
+     ],
+     "bbox_max": [
+      122.210587,
+      72.08477,
+      31.464005
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 8.58306884765625e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 4506,
+   "pass": true
+  },
+  "hoodoos_north": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoos_north__Bubblegum",
+     "tris": 188,
+     "bbox_min": [
+      -104.293564,
+      -22.235249,
+      19.171995
+     ],
+     "bbox_max": [
+      90.935257,
+      34.493568,
+      29.200003
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 3.814697265625e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_north__GumCherry",
+     "tris": 282,
+     "bbox_min": [
+      -80.533035,
+      -34.390652,
+      17.811989
+     ],
+     "bbox_max": [
+      136.757935,
+      68.557938,
+      22.400005
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_north__GumLemon",
+     "tris": 282,
+     "bbox_min": [
+      -115.007111,
+      -81.211891,
+      16.591991
+     ],
+     "bbox_max": [
+      -32.134438,
+      49.407108,
+      23.100014
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 9.5367431640625e-06,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_north__GumLime",
+     "tris": 282,
+     "bbox_min": [
+      -7.177496,
+      -63.772602,
+      21.019989
+     ],
+     "bbox_max": [
+      89.830269,
+      65.077499,
+      39.400013
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_north__Strata",
+     "tris": 3552,
+     "bbox_min": [
+      -116.177284,
+      -82.518791,
+      -1.000011
+     ],
+     "bbox_max": [
+      137.836777,
+      69.734215,
+      34.696014
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 8.344650268554688e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 4586,
+   "pass": true
+  },
+  "hoodoos_south": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "hoodoos_south__Bubblegum",
+     "tris": 282,
+     "bbox_min": [
+      -33.323502,
+      -70.189049,
+      20.879992
+     ],
+     "bbox_max": [
+      132.58905,
+      43.123508,
+      38.800011
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_south__GumCherry",
+     "tris": 282,
+     "bbox_min": [
+      -38.166882,
+      -50.223495,
+      21.659983
+     ],
+     "bbox_max": [
+      122.4235,
+      103.766884,
+      39.300007
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1444091796875e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_south__GumLemon",
+     "tris": 282,
+     "bbox_min": [
+      -114.54776,
+      -66.947762,
+      17.247993
+     ],
+     "bbox_max": [
+      17.143816,
+      47.143826,
+      37.600014
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_south__GumLime",
+     "tris": 282,
+     "bbox_min": [
+      -122.045738,
+      -57.33532,
+      18.37999
+     ],
+     "bbox_max": [
+      74.935326,
+      60.645744,
+      30.60001
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 7.62939453125e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "hoodoos_south__Strata",
+     "tris": 4324,
+     "bbox_min": [
+      -123.327637,
+      -71.505379,
+      -1.000017
+     ],
+     "bbox_max": [
+      134.291565,
+      104.915558,
+      34.584011
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.2516975402832031e-05,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 5452,
+   "pass": true
+  },
+  "lantern_hanging": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "lantern_hanging__Brass",
+     "tris": 20,
+     "bbox_min": [
+      -0.277128,
+      -0.32,
+      0.99
+     ],
+     "bbox_max": [
+      0.277128,
+      0.32,
+      1.21
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1920928955078125e-07,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_hanging__Iron",
+     "tris": 108,
+     "bbox_min": [
+      -0.31,
+      -0.31,
+      0.135
+     ],
+     "bbox_max": [
+      0.31,
+      0.31,
+      1.409593
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_hanging__LanternGlow",
+     "tris": 20,
+     "bbox_min": [
+      -0.147224,
+      -0.17,
+      0.31
+     ],
+     "bbox_max": [
+      0.147224,
+      0.17,
+      0.83
+     ],
+     "material": [
+      "LanternGlow"
+     ],
+     "image": null,
+     "bbox_max_err": 1.043081283569336e-07,
+     "merged_material": [
+      "LanternGlow"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_hanging__Window",
+     "tris": 8,
+     "bbox_min": [
+      -0.169706,
+      -0.169706,
+      0.24
+     ],
+     "bbox_max": [
+      0.169706,
+      0.169706,
+      0.9
+     ],
+     "material": [
+      "Window"
+     ],
+     "image": null,
+     "bbox_max_err": 1.043081283569336e-07,
+     "merged_material": [
+      "Window"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 156,
+   "pass": true
+  },
+  "lantern_post": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "lantern_post__Brass",
+     "tris": 32,
+     "bbox_min": [
+      -0.263272,
+      0.210001,
+      4.8305
+     ],
+     "bbox_max": [
+      0.263272,
+      1.504001,
+      5.41
+     ],
+     "material": [
+      "Brass"
+     ],
+     "image": null,
+     "bbox_max_err": 7.152557373046875e-07,
+     "merged_material": [
+      "Brass"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_post__Iron",
+     "tris": 108,
+     "bbox_min": [
+      -0.2945,
+      0.905501,
+      4.01825
+     ],
+     "bbox_max": [
+      0.2945,
+      1.494501,
+      5.229113
+     ],
+     "material": [
+      "Iron"
+     ],
+     "image": null,
+     "bbox_max_err": 5.960464477539062e-07,
+     "merged_material": [
+      "Iron"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_post__LanternGlow",
+     "tris": 20,
+     "bbox_min": [
+      -0.139863,
+      1.038501,
+      4.1845
+     ],
+     "bbox_max": [
+      0.139863,
+      1.361501,
+      4.6785
+     ],
+     "material": [
+      "LanternGlow"
+     ],
+     "image": null,
+     "bbox_max_err": 5.960464477539062e-07,
+     "merged_material": [
+      "LanternGlow"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_post__Rope",
+     "tris": 28,
+     "bbox_min": [
+      -0.27,
+      -0.27,
+      1.35
+     ],
+     "bbox_max": [
+      0.27,
+      0.27,
+      1.85
+     ],
+     "material": [
+      "Rope"
+     ],
+     "image": "rope.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Rope"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_post__SandBlock",
+     "tris": 12,
+     "bbox_min": [
+      -0.45,
+      -0.45,
+      -0.1
+     ],
+     "bbox_max": [
+      0.45,
+      0.45,
+      0.4
+     ],
+     "material": [
+      "SandBlock"
+     ],
+     "image": "sandstone_block.png",
+     "bbox_max_err": 5.960464477539063e-08,
+     "merged_material": [
+      "SandBlock"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_post__TimberWeathered",
+     "tris": 36,
+     "bbox_min": [
+      -0.18,
+      -0.18,
+      0.4
+     ],
+     "bbox_max": [
+      0.18,
+      1.350001,
+      5.8
+     ],
+     "material": [
+      "TimberWeathered"
+     ],
+     "image": "timber_weathered.png",
+     "bbox_max_err": 7.152557373046875e-07,
+     "merged_material": [
+      "TimberWeathered"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lantern_post__Window",
+     "tris": 8,
+     "bbox_min": [
+      -0.16122,
+      1.03878,
+      4.118
+     ],
+     "bbox_max": [
+      0.16122,
+      1.361221,
+      4.745
+     ],
+     "material": [
+      "Window"
+     ],
+     "image": null,
+     "bbox_max_err": 5.960464477539062e-07,
+     "merged_material": [
+      "Window"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 244,
+   "pass": true
+  },
+  "lollipop_cactus_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "lollipop_cactus_a__Bubblegum",
+     "tris": 150,
+     "bbox_min": [
+      -2.350119,
+      -0.928375,
+      5.680465
+     ],
+     "bbox_max": [
+      2.333734,
+      0.835688,
+      9.51379
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.1324882507324219e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_a__Cactus",
+     "tris": 156,
+     "bbox_min": [
+      -2.054028,
+      -0.916259,
+      -0.4
+     ],
+     "bbox_max": [
+      2.005953,
+      0.747681,
+      7.15232
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_a__GumCherry",
+     "tris": 40,
+     "bbox_min": [
+      -1.493811,
+      -1.039033,
+      3.027126
+     ],
+     "bbox_max": [
+      1.552669,
+      0.089983,
+      4.255855
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 5.066394805908203e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_a__GumLemon",
+     "tris": 20,
+     "bbox_min": [
+      -1.769628,
+      -0.225999,
+      3.253817
+     ],
+     "bbox_max": [
+      -1.40047,
+      0.149852,
+      3.712457
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 4.3213367462158203e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_a__GumLime",
+     "tris": 20,
+     "bbox_min": [
+      0.92484,
+      -0.950497,
+      3.52753
+     ],
+     "bbox_max": [
+      1.284675,
+      -0.572747,
+      3.986171
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_a__MintWhite",
+     "tris": 186,
+     "bbox_min": [
+      -2.350119,
+      -0.928376,
+      4.785921
+     ],
+     "bbox_max": [
+      2.333734,
+      0.835688,
+      9.51279
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 1.1324882507324219e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 572,
+   "pass": true
+  },
+  "lollipop_cactus_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "lollipop_cactus_b__Bubblegum",
+     "tris": 150,
+     "bbox_min": [
+      -2.873914,
+      -0.953264,
+      6.57878
+     ],
+     "bbox_max": [
+      2.901873,
+      1.058815,
+      12.46856
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.5497207641601562e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_b__Cactus",
+     "tris": 156,
+     "bbox_min": [
+      -2.377092,
+      -0.922434,
+      -0.4
+     ],
+     "bbox_max": [
+      2.437194,
+      1.057318,
+      9.348
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 1.0728836059570312e-06,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_b__GumCherry",
+     "tris": 40,
+     "bbox_min": [
+      -1.771987,
+      -1.082847,
+      3.232616
+     ],
+     "bbox_max": [
+      1.930905,
+      0.239665,
+      4.143299
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 4.917383193969727e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_b__GumLemon",
+     "tris": 20,
+     "bbox_min": [
+      -2.092871,
+      -0.110358,
+      3.534903
+     ],
+     "bbox_max": [
+      -1.663396,
+      0.33931,
+      4.080903
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 5.066394805908203e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_b__GumLime",
+     "tris": 20,
+     "bbox_min": [
+      1.16595,
+      -1.006134,
+      3.296008
+     ],
+     "bbox_max": [
+      1.60378,
+      -0.558006,
+      3.842009
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 4.172325134277344e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_b__MintWhite",
+     "tris": 186,
+     "bbox_min": [
+      -2.873914,
+      -0.953264,
+      5.387189
+     ],
+     "bbox_max": [
+      2.901873,
+      1.058815,
+      12.467226
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 1.5497207641601562e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 572,
+   "pass": true
+  },
+  "lollipop_cactus_c": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "lollipop_cactus_c__Bubblegum",
+     "tris": 100,
+     "bbox_min": [
+      -1.8039,
+      -0.798087,
+      10.21171
+     ],
+     "bbox_max": [
+      3.393923,
+      1.468917,
+      15.916073
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_c__Cactus",
+     "tris": 106,
+     "bbox_min": [
+      -0.798466,
+      -0.737894,
+      -0.4
+     ],
+     "bbox_max": [
+      2.982959,
+      1.146657,
+      11.9176
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 1.430511474609375e-06,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_c__GumLemon",
+     "tris": 20,
+     "bbox_min": [
+      1.610293,
+      -0.33307,
+      5.846591
+     ],
+     "bbox_max": [
+      2.132356,
+      0.205665,
+      6.501791
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 7.748603820800781e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_c__GumLime",
+     "tris": 20,
+     "bbox_min": [
+      2.000354,
+      -0.23098,
+      6.263943
+     ],
+     "bbox_max": [
+      2.522418,
+      0.307756,
+      6.919143
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_c__MintWhite",
+     "tris": 124,
+     "bbox_min": [
+      -1.8039,
+      -0.798087,
+      8.675409
+     ],
+     "bbox_max": [
+      3.393923,
+      1.468917,
+      15.914353
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 1.9073486328125e-06,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 370,
+   "pass": true
+  },
+  "lollipop_cactus_cluster": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "lollipop_cactus_cluster__Bubblegum",
+     "tris": 96,
+     "bbox_min": [
+      -1.850691,
+      -1.528135,
+      2.3715
+     ],
+     "bbox_max": [
+      2.033755,
+      0.731286,
+      6.720001
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_cluster__Cactus",
+     "tris": 308,
+     "bbox_min": [
+      -1.902707,
+      -1.597986,
+      -0.3
+     ],
+     "bbox_max": [
+      2.032724,
+      0.836135,
+      4.777601
+     ],
+     "material": [
+      "Cactus"
+     ],
+     "image": "cactus.png",
+     "bbox_max_err": 5.960464477539062e-07,
+     "merged_material": [
+      "Cactus"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_cluster__GumCherry",
+     "tris": 36,
+     "bbox_min": [
+      1.692154,
+      0.36,
+      -0.09
+     ],
+     "bbox_max": [
+      2.107846,
+      0.84,
+      0.39
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.043081283569336e-07,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_cluster__GumLemon",
+     "tris": 96,
+     "bbox_min": [
+      -1.214426,
+      -1.506064,
+      -0.09
+     ],
+     "bbox_max": [
+      1.962783,
+      1.440001,
+      3.541189
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 3.5762786865234375e-07,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_cluster__GumLime",
+     "tris": 76,
+     "bbox_min": [
+      -1.833734,
+      -0.428659,
+      -0.09
+     ],
+     "bbox_max": [
+      -0.692154,
+      1.140001,
+      3.821808
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "lollipop_cactus_cluster__MintWhite",
+     "tris": 84,
+     "bbox_min": [
+      -1.829548,
+      -1.505021,
+      2.0965
+     ],
+     "bbox_max": [
+      2.014991,
+      0.705249,
+      6.678579
+     ],
+     "material": [
+      "MintWhite"
+     ],
+     "image": "concrete_white.png",
+     "bbox_max_err": 8.344650268554688e-07,
+     "merged_material": [
+      "MintWhite"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 696,
+   "pass": true
+  },
+  "narrows_crystals": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "narrows_crystals__CandyAmber",
+     "tris": 1122,
+     "bbox_min": [
+      -67.496552,
+      -133.545547,
+      -0.765227
+     ],
+     "bbox_max": [
+      58.978954,
+      68.475899,
+      15.524968
+     ],
+     "material": [
+      "CandyAmber"
+     ],
+     "image": "crystal_amber.png",
+     "bbox_max_err": 1.621246337890625e-05,
+     "merged_material": [
+      "CandyAmber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "narrows_crystals__CandyCore",
+     "tris": 224,
+     "bbox_min": [
+      -62.969326,
+      -130.633514,
+      -0.200011
+     ],
+     "bbox_max": [
+      56.88073,
+      65.709457,
+      18.200022
+     ],
+     "material": [
+      "CandyCore"
+     ],
+     "image": null,
+     "bbox_max_err": 1.52587890625e-05,
+     "merged_material": [
+      "CandyCore"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "narrows_crystals__CandyPink",
+     "tris": 2210,
+     "bbox_min": [
+      -65.5783,
+      -132.50798,
+      -0.654226
+     ],
+     "bbox_max": [
+      58.997684,
+      68.42131,
+      21.30002
+     ],
+     "material": [
+      "CandyPink"
+     ],
+     "image": "crystal_pink.png",
+     "bbox_max_err": 1.71661376953125e-05,
+     "merged_material": [
+      "CandyPink"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "narrows_crystals__Strata",
+     "tris": 320,
+     "bbox_min": [
+      -64.982315,
+      -132.476913,
+      -0.100011
+     ],
+     "bbox_max": [
+      58.957748,
+      67.152176,
+      12.228217
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.52587890625e-05,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 3876,
+   "pass": true
+  },
+  "pebble_scatter": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "pebble_scatter__Pebble",
+     "tris": 48,
+     "bbox_min": [
+      -0.177606,
+      -1.397764,
+      -0.023354
+     ],
+     "bbox_max": [
+      0.821923,
+      0.901183,
+      0.221159
+     ],
+     "material": [
+      "Pebble"
+     ],
+     "image": null,
+     "bbox_max_err": 1.6391277313232422e-07,
+     "merged_material": [
+      "Pebble"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "pebble_scatter__Strata",
+     "tris": 32,
+     "bbox_min": [
+      -0.995189,
+      -0.602298,
+      -0.039075
+     ],
+     "bbox_max": [
+      1.420407,
+      1.223319,
+      0.25784
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.4528632164001465e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 80,
+   "pass": true
+  },
+  "red_dirt_patch_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "red_dirt_patch_a__RedDirt",
+     "tris": 12,
+     "bbox_min": [
+      -1.974977,
+      -2.321913,
+      0.06
+     ],
+     "bbox_max": [
+      2.017324,
+      1.963774,
+      0.06
+     ],
+     "material": [
+      "RedDirt"
+     ],
+     "image": "red_dirt.png",
+     "bbox_max_err": 2.7567148208618164e-07,
+     "merged_material": [
+      "RedDirt"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "red_dirt_patch_a__RedDirtLight",
+     "tris": 24,
+     "bbox_min": [
+      -2.889868,
+      -3.397519,
+      0.03
+     ],
+     "bbox_max": [
+      2.951832,
+      2.816188,
+      0.060001
+     ],
+     "material": [
+      "RedDirtLight"
+     ],
+     "image": "red_dirt_light.png",
+     "bbox_max_err": 4.023313522338867e-07,
+     "merged_material": [
+      "RedDirtLight"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 36,
+   "pass": true
+  },
+  "red_dirt_patch_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "red_dirt_patch_b__RedDirt",
+     "tris": 12,
+     "bbox_min": [
+      -2.64778,
+      -2.807877,
+      0.06
+     ],
+     "bbox_max": [
+      2.889192,
+      2.760296,
+      0.06
+     ],
+     "material": [
+      "RedDirt"
+     ],
+     "image": "red_dirt.png",
+     "bbox_max_err": 3.3527612686157227e-07,
+     "merged_material": [
+      "RedDirt"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "red_dirt_patch_b__RedDirtLight",
+     "tris": 24,
+     "bbox_min": [
+      -4.098775,
+      -4.346606,
+      0.029999
+     ],
+     "bbox_max": [
+      4.227585,
+      4.03898,
+      0.060001
+     ],
+     "material": [
+      "RedDirtLight"
+     ],
+     "image": "red_dirt_light.png",
+     "bbox_max_err": 5.178153514862061e-07,
+     "merged_material": [
+      "RedDirtLight"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 36,
+   "pass": true
+  },
+  "rock_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "rock_a__Strata",
+     "tris": 80,
+     "bbox_min": [
+      -1.5606,
+      -1.130523,
+      -0.2
+     ],
+     "bbox_max": [
+      1.619696,
+      1.207997,
+      1.208589
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 80,
+   "pass": true
+  },
+  "rock_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "rock_b__Strata",
+     "tris": 160,
+     "bbox_min": [
+      -2.08227,
+      -1.906161,
+      -0.2
+     ],
+     "bbox_max": [
+      2.695911,
+      2.009653,
+      1.904749
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 160,
+   "pass": true
+  },
+  "rock_candy_cluster": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "rock_candy_cluster__CandyAmber",
+     "tris": 68,
+     "bbox_min": [
+      -1.109474,
+      -1.109474,
+      0.226119
+     ],
+     "bbox_max": [
+      1.647109,
+      0.864425,
+      2.417226
+     ],
+     "material": [
+      "CandyAmber"
+     ],
+     "image": "crystal_amber.png",
+     "bbox_max_err": 2.384185791015625e-07,
+     "merged_material": [
+      "CandyAmber"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "rock_candy_cluster__CandyCore",
+     "tris": 14,
+     "bbox_min": [
+      -0.141852,
+      -0.141852,
+      0.35
+     ],
+     "bbox_max": [
+      0.141852,
+      0.141852,
+      2.9
+     ],
+     "material": [
+      "CandyCore"
+     ],
+     "image": null,
+     "bbox_max_err": 3.427267074584961e-07,
+     "merged_material": [
+      "CandyCore"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "rock_candy_cluster__CandyPink",
+     "tris": 102,
+     "bbox_min": [
+      -1.44078,
+      -1.614052,
+      0.225421
+     ],
+     "bbox_max": [
+      0.60096,
+      1.052849,
+      3.75
+     ],
+     "material": [
+      "CandyPink"
+     ],
+     "image": "crystal_pink.png",
+     "bbox_max_err": 4.76837158203125e-07,
+     "merged_material": [
+      "CandyPink"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "rock_candy_cluster__Strata",
+     "tris": 80,
+     "bbox_min": [
+      -1.163228,
+      -1.057794,
+      -0.15
+     ],
+     "bbox_max": [
+      1.379236,
+      1.191929,
+      0.536947
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.4901161193847656e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 264,
+   "pass": true
+  },
+  "scatter_crown": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scatter_crown__GumCherry",
+     "tris": 188,
+     "bbox_min": [
+      28.271496,
+      -62.308506,
+      -0.33002
+     ],
+     "bbox_max": [
+      49.962616,
+      121.712624,
+      43.075008
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4513731002807617e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_crown__GumLemon",
+     "tris": 188,
+     "bbox_min": [
+      -38.79097,
+      -77.980965,
+      -0.060018
+     ],
+     "bbox_max": [
+      44.385174,
+      107.36351,
+      43.71981
+     ],
+     "material": [
+      "GumLemon"
+     ],
+     "image": null,
+     "bbox_max_err": 1.2800097465515137e-05,
+     "merged_material": [
+      "GumLemon"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_crown__GumLime",
+     "tris": 188,
+     "bbox_min": [
+      42.551544,
+      105.501549,
+      -0.330019
+     ],
+     "bbox_max": [
+      50.633003,
+      117.427589,
+      3.956983
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 1.4007091522216797e-05,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_crown__Scrub",
+     "tris": 300,
+     "bbox_min": [
+      -31.236641,
+      -51.270405,
+      0.599984
+     ],
+     "bbox_max": [
+      44.769653,
+      95.742073,
+      41.425655
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 1.138448715209961e-05,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_crown__Strata",
+     "tris": 320,
+     "bbox_min": [
+      -78.331818,
+      -90.81469,
+      40.130001
+     ],
+     "bbox_max": [
+      -33.853165,
+      -1.276494,
+      42.782631
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.1444091796875e-05,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 1184,
+   "pass": true
+  },
+  "scatter_dam": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scatter_dam__Scrub",
+     "tris": 1600,
+     "bbox_min": [
+      -307.372223,
+      -45.906166,
+      -0.070007
+     ],
+     "bbox_max": [
+      313.289032,
+      45.892986,
+      1.524985
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 5.4836273193359375e-06,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_dam__Strata",
+     "tris": 880,
+     "bbox_min": [
+      -314.288147,
+      -44.165688,
+      -0.020006
+     ],
+     "bbox_max": [
+      269.201782,
+      33.922848,
+      2.602716
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 5.245208740234375e-06,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 2480,
+   "pass": true
+  },
+  "scatter_hoodoo_garden": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scatter_hoodoo_garden__Bubblegum",
+     "tris": 94,
+     "bbox_min": [
+      -34.400173,
+      -161.390182,
+      0.340025
+     ],
+     "bbox_max": [
+      -28.759827,
+      -155.749832,
+      4.634226
+     ],
+     "material": [
+      "Bubblegum"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-05,
+     "merged_material": [
+      "Bubblegum"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_hoodoo_garden__GumCherry",
+     "tris": 188,
+     "bbox_min": [
+      -31.383039,
+      -162.560532,
+      0.060006
+     ],
+     "bbox_max": [
+      14.196169,
+      -38.993832,
+      4.476027
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.9073486328125e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_hoodoo_garden__GumLime",
+     "tris": 94,
+     "bbox_min": [
+      12.685863,
+      -44.810917,
+      0.060007
+     ],
+     "bbox_max": [
+      15.40762,
+      -42.089161,
+      2.320008
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 5.245208740234375e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_hoodoo_garden__Scrub",
+     "tris": 400,
+     "bbox_min": [
+      -31.145491,
+      -143.464096,
+      -0.050019
+     ],
+     "bbox_max": [
+      15.995028,
+      115.277306,
+      1.123764
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 1.71661376953125e-05,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_hoodoo_garden__Strata",
+     "tris": 400,
+     "bbox_min": [
+      5.112778,
+      -30.999228,
+      -0.230017
+     ],
+     "bbox_max": [
+      37.035789,
+      106.042648,
+      2.157619
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 1.265108585357666e-05,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 1176,
+   "pass": true
+  },
+  "scatter_junction": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scatter_junction__Scrub",
+     "tris": 1500,
+     "bbox_min": [
+      -158.848373,
+      -78.31472,
+      -0.050009
+     ],
+     "bbox_max": [
+      94.247719,
+      54.669975,
+      2.286754
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 9.298324584960938e-06,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_junction__Strata",
+     "tris": 1920,
+     "bbox_min": [
+      -57.632744,
+      -170.805634,
+      0.019991
+     ],
+     "bbox_max": [
+      81.606964,
+      54.005775,
+      3.270705
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.0265579223632812e-05,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 3420,
+   "pass": true
+  },
+  "scatter_rock_candy_narrows": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scatter_rock_candy_narrows__Scrub",
+     "tris": 400,
+     "bbox_min": [
+      -31.678291,
+      -14.715754,
+      -0.110003
+     ],
+     "bbox_max": [
+      70.069962,
+      17.610376,
+      2.402491
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 2.1010637283325195e-06,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_rock_candy_narrows__Strata",
+     "tris": 160,
+     "bbox_min": [
+      -30.700094,
+      -7.349809,
+      0.550001
+     ],
+     "bbox_max": [
+      -26.396622,
+      -3.472087,
+      2.307724
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 560,
+   "pass": true
+  },
+  "scatter_taffy_mesa": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scatter_taffy_mesa__GumCherry",
+     "tris": 188,
+     "bbox_min": [
+      41.117714,
+      55.447716,
+      0.189976
+     ],
+     "bbox_max": [
+      51.984245,
+      144.244247,
+      4.998791
+     ],
+     "material": [
+      "GumCherry"
+     ],
+     "image": null,
+     "bbox_max_err": 1.7195940017700195e-05,
+     "merged_material": [
+      "GumCherry"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_taffy_mesa__GumLime",
+     "tris": 188,
+     "bbox_min": [
+      -43.751568,
+      14.898431,
+      0.22999
+     ],
+     "bbox_max": [
+      48.598209,
+      58.174294,
+      3.680398
+     ],
+     "material": [
+      "GumLime"
+     ],
+     "image": null,
+     "bbox_max_err": 6.92903995513916e-06,
+     "merged_material": [
+      "GumLime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_taffy_mesa__Scrub",
+     "tris": 600,
+     "bbox_min": [
+      -51.945457,
+      -231.435043,
+      0.019979
+     ],
+     "bbox_max": [
+      51.857697,
+      131.388474,
+      1.602729
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 2.765655517578125e-05,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "scatter_taffy_mesa__Strata",
+     "tris": 400,
+     "bbox_min": [
+      -53.341595,
+      -238.899246,
+      -0.160017
+     ],
+     "bbox_max": [
+      40.957291,
+      106.722595,
+      1.983934
+     ],
+     "material": [
+      "Strata"
+     ],
+     "image": "strata.png",
+     "bbox_max_err": 2.849102020263672e-05,
+     "merged_material": [
+      "Strata"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 1376,
+   "pass": true
+  },
+  "scrub_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scrub_a__Scrub",
+     "tris": 100,
+     "bbox_min": [
+      -1.054885,
+      -1.112587,
+      -0.1
+     ],
+     "bbox_max": [
+      1.374399,
+      1.291686,
+      0.831618
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 1.564621925354004e-07,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 100,
+   "pass": true
+  },
+  "scrub_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "scrub_b__Scrub",
+     "tris": 100,
+     "bbox_min": [
+      -0.86962,
+      -0.956515,
+      -0.1
+     ],
+     "bbox_max": [
+      1.094032,
+      1.111581,
+      0.616816
+     ],
+     "material": [
+      "Scrub"
+     ],
+     "image": null,
+     "bbox_max_err": 1.341104507446289e-07,
+     "merged_material": [
+      "Scrub"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 100,
+   "pass": true
+  },
+  "sugar_dune_cap_a": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "sugar_dune_cap_a__PowderSugar",
+     "tris": 344,
+     "bbox_min": [
+      -11.999999,
+      -8.000001,
+      -7.500001
+     ],
+     "bbox_max": [
+      12.6,
+      8.000001,
+      5.000001
+     ],
+     "material": [
+      "PowderSugar"
+     ],
+     "image": "powder_sugar.png",
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "PowderSugar"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 344,
+   "pass": true
+  },
+  "sugar_dune_cap_b": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "sugar_dune_cap_b__PowderSugar",
+     "tris": 344,
+     "bbox_min": [
+      -15.999999,
+      -9.000002,
+      -9.750002
+     ],
+     "bbox_max": [
+      16.799999,
+      9.000001,
+      6.500001
+     ],
+     "material": [
+      "PowderSugar"
+     ],
+     "image": "powder_sugar.png",
+     "bbox_max_err": 9.5367431640625e-07,
+     "merged_material": [
+      "PowderSugar"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 344,
+   "pass": true
+  }
+ }
+}
