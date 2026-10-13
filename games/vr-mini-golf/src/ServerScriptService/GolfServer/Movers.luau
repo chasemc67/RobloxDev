@@ -41,7 +41,13 @@ local function add(model)
 				table.insert(parts, ref.Value)
 			end
 		end
-		active[model] = { toggle = true, parts = parts }
+		local visuals = {}
+		for _, part in model:GetDescendants() do
+			if part:IsA("BasePart") and part:GetAttribute("ToggleVisual") then
+				table.insert(visuals, part)
+			end
+		end
+		active[model] = { toggle = true, parts = parts, visuals = visuals }
 		return
 	end
 	local drive = model:FindFirstChild("Drive")
@@ -82,6 +88,10 @@ local function step()
 			local solid = Movers.value(model, t) == 1
 			for _, part in s.parts do
 				part.CanCollide, part.CanQuery, part.CanTouch = solid, solid, solid
+			end
+			-- Render skins follow the same server-time solid window; they never provide collision.
+			for _, part in s.visuals do
+				part.Transparency = solid and (part:GetAttribute("ManifestTransparency") or 0) or 1
 			end
 			continue
 		end

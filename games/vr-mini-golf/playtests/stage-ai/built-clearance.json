@@ -1,0 +1,5148 @@
+{
+  "summary": {
+    "gap": 0.15,
+    "felt_headroom": 8,
+    "method": "Actual Studio per-MeshPart oriented bounds projected to hole XZ plus Y intervals; built wall and supporting-piece bounds. Conservative for meshes with holes/disconnected pieces. Coplanar bounds are z-fight candidates, not triangle-confirmed z-fighting.",
+    "source": {
+      "raw": 296,
+      "by_class": {
+        "dressing": 222,
+        "flat": 40,
+        "prop": 12,
+        "envelope": 9,
+        "exception": 13
+      },
+      "real": 12,
+      "coplanar": 20
+    },
+    "built": {
+      "imported_props": 74,
+      "anchors": 0,
+      "raw": 377,
+      "by_class": {
+        "dressing": 310,
+        "prop": 46,
+        "exception": 17,
+        "flat": 4
+      },
+      "real": 46,
+      "imported_real": 46,
+      "coplanar_candidates": 4,
+      "visible_coplanar_candidates": 2,
+      "imported_props_with_real_bounds_violations": [
+        "h02_rookery_drift",
+        "h02_lintel_left",
+        "h02_lintel_mid",
+        "h02_lintel_right",
+        "h05_cliff_face_w",
+        "h05_cliff_face_e",
+        "h09_conch_entry",
+        "h10_bobsled_hut",
+        "h10_snow_walls_w",
+        "h11_fishing_hut",
+        "h11_floe_frame_e",
+        "h12_icebreaker",
+        "h15_lip_ice"
+      ],
+      "visual_collision_errors": [],
+      "mover_weld_errors": []
+    }
+  },
+  "props": [
+    {
+      "hole": 1,
+      "id": "h01_harbour_lantern",
+      "anchor": "harbour_lantern",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 1,
+      "id": "h01_snow_boulder",
+      "anchor": "snow_boulder",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "boulder",
+          "other_cls": null,
+          "sep": -4.2428,
+          "meshes": [
+            "h01_snow_boulder__AuroraMint",
+            "h01_snow_boulder__Rock"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -4.3215,
+          "meshes": [
+            "h01_snow_boulder__AuroraMint",
+            "h01_snow_boulder__Rock",
+            "h01_snow_boulder__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": 0.07849,
+          "meshes": [
+            "h01_snow_boulder__Rock"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail2",
+          "other_cls": null,
+          "sep": 0.07852,
+          "meshes": [
+            "h01_snow_boulder__Rock"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 2,
+      "id": "h02_rookery_drift",
+      "anchor": "rookery_drift",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "drift15",
+          "other_cls": null,
+          "sep": 0.11,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift16",
+          "other_cls": null,
+          "sep": -5.39002,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift17",
+          "other_cls": null,
+          "sep": -3.89,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift18",
+          "other_cls": null,
+          "sep": -4.39001,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift19",
+          "other_cls": null,
+          "sep": 0.11,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift20",
+          "other_cls": null,
+          "sep": 0.10999,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift24",
+          "other_cls": null,
+          "sep": 0.10998,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "mid_burrow",
+          "other_cls": null,
+          "sep": -8.39001,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "prop",
+          "other": "h02_lintel_left",
+          "other_cls": "prop",
+          "sep": -0.3655,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "prop",
+          "other": "h02_lintel_mid",
+          "other_cls": "prop",
+          "sep": -0.36449,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "prop",
+          "other": "h02_lintel_right",
+          "other_cls": "prop",
+          "sep": -0.3655,
+          "meshes": [
+            "h02_rookery_drift__Snow",
+            "h02_rookery_drift__SnowShadow"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 11
+    },
+    {
+      "hole": 2,
+      "id": "h02_lintel_left",
+      "anchor": "lintel_left",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 5,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -0.6275,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "rail4",
+          "other_cls": null,
+          "sep": -0.6275,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "rail5",
+          "other_cls": null,
+          "sep": -0.9755,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift15",
+          "other_cls": null,
+          "sep": -0.62749,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift24",
+          "other_cls": null,
+          "sep": -0.9755,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "plaza",
+          "other_cls": null,
+          "sep": -0.1275,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "left_burrow",
+          "other_cls": null,
+          "sep": -0.9755,
+          "meshes": [
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "prop",
+          "other": "h02_rookery_drift",
+          "other_cls": "prop",
+          "sep": -0.3655,
+          "meshes": [
+            "h02_lintel_left__Basalt",
+            "h02_lintel_left__Basalt"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 8
+    },
+    {
+      "hole": 2,
+      "id": "h02_lintel_mid",
+      "anchor": "lintel_mid",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 5,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "drift15",
+          "other_cls": null,
+          "sep": -0.5725,
+          "meshes": [
+            "h02_lintel_mid__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift16",
+          "other_cls": null,
+          "sep": -0.97449,
+          "meshes": [
+            "h02_lintel_mid__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift18",
+          "other_cls": null,
+          "sep": -0.97449,
+          "meshes": [
+            "h02_lintel_mid__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift19",
+          "other_cls": null,
+          "sep": -0.5725,
+          "meshes": [
+            "h02_lintel_mid__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "plaza",
+          "other_cls": null,
+          "sep": -0.0725,
+          "meshes": [
+            "h02_lintel_mid__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "mid_burrow",
+          "other_cls": null,
+          "sep": -0.97449,
+          "meshes": [
+            "h02_lintel_mid__Basalt",
+            "h02_lintel_mid__Ice",
+            "h02_lintel_mid__IceCore"
+          ],
+          "real": true
+        },
+        {
+          "kind": "prop",
+          "other": "h02_rookery_drift",
+          "other_cls": "prop",
+          "sep": -0.36449,
+          "meshes": [
+            "h02_lintel_mid__Basalt",
+            "h02_lintel_mid__Basalt"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 7
+    },
+    {
+      "hole": 2,
+      "id": "h02_lintel_right",
+      "anchor": "lintel_right",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 5,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail9",
+          "other_cls": null,
+          "sep": -0.9755,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "rail10",
+          "other_cls": null,
+          "sep": -0.5935,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "rail11",
+          "other_cls": null,
+          "sep": -0.10001,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift19",
+          "other_cls": null,
+          "sep": -0.5935,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "drift20",
+          "other_cls": null,
+          "sep": -0.9755,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "plaza",
+          "other_cls": null,
+          "sep": -0.0935,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "felt",
+          "other": "right_burrow",
+          "other_cls": null,
+          "sep": -0.9755,
+          "meshes": [
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        },
+        {
+          "kind": "prop",
+          "other": "h02_rookery_drift",
+          "other_cls": "prop",
+          "sep": -0.3655,
+          "meshes": [
+            "h02_lintel_right__Basalt",
+            "h02_lintel_right__Basalt"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 8
+    },
+    {
+      "hole": 2,
+      "id": "h02_lantern_cue",
+      "anchor": "lantern_cue",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 2,
+      "id": "h02_lantern_crook",
+      "anchor": "lantern_crook",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 2,
+      "id": "h02_sign_left",
+      "anchor": "sign_left",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 2,
+      "id": "h02_sign_right",
+      "anchor": "sign_right",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 3,
+      "id": "h03_glimmer_islet",
+      "anchor": "glimmer_islet",
+      "cls": "envelope",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 3,
+      "id": "h03_ice_plank",
+      "anchor": "ice_plank",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "shore_rail1",
+          "other_cls": null,
+          "sep": -0.2,
+          "meshes": [
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Ice",
+            "h03_ice_plank__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "shore_rail5",
+          "other_cls": null,
+          "sep": -0.2,
+          "meshes": [
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Ice",
+            "h03_ice_plank__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "green_rail11",
+          "other_cls": null,
+          "sep": -0.20002,
+          "meshes": [
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Ice",
+            "h03_ice_plank__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "green_rail12",
+          "other_cls": null,
+          "sep": -0.19998,
+          "meshes": [
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Ice",
+            "h03_ice_plank__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "plank",
+          "other_cls": null,
+          "sep": -2.2,
+          "meshes": [
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Ice",
+            "h03_ice_plank__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -4e-05,
+          "meshes": [
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Felt",
+            "h03_ice_plank__Ice",
+            "h03_ice_plank__Ice"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 3,
+      "id": "h03_ice_bridge",
+      "anchor": "ice_bridge",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "shore_rail4",
+          "other_cls": null,
+          "sep": 3e-05,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "coplanar",
+          "other": "shore_rail4",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false,
+          "visible_generated_rail_skins": [
+            "Workspace.CourseAurora.Hole3.Rails.Rail_shore_rail4"
+          ],
+          "visible_zfight_candidate": true
+        },
+        {
+          "kind": "wall",
+          "other": "shore_rail5",
+          "other_cls": null,
+          "sep": -0.49999,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "bridge_rail6",
+          "other_cls": null,
+          "sep": -0.50001,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "bridge_rail7",
+          "other_cls": null,
+          "sep": -0.49999,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "green_rail8",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "coplanar",
+          "other": "green_rail8",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false,
+          "visible_generated_rail_skins": [
+            "Workspace.CourseAurora.Hole3.Rails.Rail_green_rail8"
+          ],
+          "visible_zfight_candidate": true
+        },
+        {
+          "kind": "wall",
+          "other": "green_rail12",
+          "other_cls": null,
+          "sep": -0.49999,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "ice_bridge",
+          "other_cls": null,
+          "sep": -4.5,
+          "meshes": [
+            "h03_ice_bridge__Ice",
+            "h03_ice_bridge__Snow",
+            "h03_ice_bridge__Timber"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 5,
+      "id": "h05_geyser_column",
+      "anchor": "geyser_column",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 7,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "basin",
+          "other_cls": null,
+          "sep": -3.0,
+          "meshes": [
+            "h05_geyser_column__Basalt",
+            "h05_geyser_column__Brass",
+            "h05_geyser_column__Ink",
+            "h05_geyser_column__MoveRed",
+            "h05_geyser_column__Rock"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 5,
+      "id": "h05_steamwhistle_geyser",
+      "anchor": "steamwhistle_geyser",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 5,
+      "id": "h05_signal_lamp",
+      "anchor": "signal_lamp",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 5,
+      "id": "h05_geyser_steps",
+      "anchor": "geyser_steps",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 5,
+      "id": "h05_cliff_face_w",
+      "anchor": "cliff_face_w",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "upper_rail9",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h05_cliff_face_w__Basalt"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 5,
+      "id": "h05_cliff_face_e",
+      "anchor": "cliff_face_e",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "upper_rail11",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h05_cliff_face_e__Basalt"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_w1",
+      "anchor": "coral_w1",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_w2",
+      "anchor": "coral_w2",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_w3",
+      "anchor": "coral_w3",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_w4",
+      "anchor": "coral_w4",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_w5",
+      "anchor": "coral_w5",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_e6",
+      "anchor": "coral_e6",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_e7",
+      "anchor": "coral_e7",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_e8",
+      "anchor": "coral_e8",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_e9",
+      "anchor": "coral_e9",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_coral_e10",
+      "anchor": "coral_e10",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 7,
+      "id": "h07_mogul_trim",
+      "anchor": "mogul_trim",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail2",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail4",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail6",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail7",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail8",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail9",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail17",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail18",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail19",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail20",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail21",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail22",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail23",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail24",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul1",
+          "other_cls": null,
+          "sep": -3.56894,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul2",
+          "other_cls": null,
+          "sep": -6.89999,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul3",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul4",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul5",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul6",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul7",
+          "other_cls": null,
+          "sep": -6.89999,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "mogul8",
+          "other_cls": null,
+          "sep": -3.56894,
+          "meshes": [
+            "h07_mogul_trim__Snow",
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": 0.10001,
+          "meshes": [
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail10",
+          "other_cls": null,
+          "sep": 0.10001,
+          "meshes": [
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail16",
+          "other_cls": null,
+          "sep": 0.10001,
+          "meshes": [
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail25",
+          "other_cls": null,
+          "sep": 0.10001,
+          "meshes": [
+            "h07_mogul_trim__Timber"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_giant_coral",
+      "anchor": "giant_coral",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_1",
+      "anchor": "coral_1",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "reef_a",
+          "other_cls": null,
+          "sep": -5.27301,
+          "meshes": [
+            "h08_coral_1__CoralMint",
+            "h08_coral_1__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral1",
+          "other_cls": null,
+          "sep": -2.54581,
+          "meshes": [
+            "h08_coral_1__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_2",
+      "anchor": "coral_2",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "reef_a",
+          "other_cls": null,
+          "sep": -4.26999,
+          "meshes": [
+            "h08_coral_2__CoralMint",
+            "h08_coral_2__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral2",
+          "other_cls": null,
+          "sep": -2.12786,
+          "meshes": [
+            "h08_coral_2__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_3",
+      "anchor": "coral_3",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "reef_b",
+          "other_cls": null,
+          "sep": -1.59799,
+          "meshes": [
+            "h08_coral_3__CoralMint",
+            "h08_coral_3__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral3",
+          "other_cls": null,
+          "sep": -2.12785,
+          "meshes": [
+            "h08_coral_3__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "reef_a",
+          "other_cls": null,
+          "sep": -0.59799,
+          "meshes": [
+            "h08_coral_3__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_4",
+      "anchor": "coral_4",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "reef_b",
+          "other_cls": null,
+          "sep": -5.77301,
+          "meshes": [
+            "h08_coral_4__CoralMint",
+            "h08_coral_4__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral4",
+          "other_cls": null,
+          "sep": -2.54581,
+          "meshes": [
+            "h08_coral_4__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_5",
+      "anchor": "coral_5",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "reef_b",
+          "other_cls": null,
+          "sep": -5.483,
+          "meshes": [
+            "h08_coral_5__CoralMint",
+            "h08_coral_5__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral5",
+          "other_cls": null,
+          "sep": -1.95255,
+          "meshes": [
+            "h08_coral_5__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_6",
+      "anchor": "coral_6",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "reef_b",
+          "other_cls": null,
+          "sep": -3.616,
+          "meshes": [
+            "h08_coral_6__CoralMint",
+            "h08_coral_6__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral6",
+          "other_cls": null,
+          "sep": -1.86601,
+          "meshes": [
+            "h08_coral_6__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 8,
+      "id": "h08_coral_7",
+      "anchor": "coral_7",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -5.53152,
+          "meshes": [
+            "h08_coral_7__CoralMint",
+            "h08_coral_7__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "coral7",
+          "other_cls": null,
+          "sep": -2.26288,
+          "meshes": [
+            "h08_coral_7__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 9,
+      "id": "h09_conch_entry",
+      "anchor": "conch_entry",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [
+        {
+          "kind": "prop",
+          "other": "h09_reef_wall_skins",
+          "other_cls": "dressing",
+          "sep": -16.5,
+          "meshes": [
+            "h09_conch_entry__CoralMint",
+            "h09_conch_entry__CoralMint",
+            "h09_conch_entry__CoralOrange",
+            "h09_conch_entry__CoralOrange",
+            "h09_conch_entry__CoralPink",
+            "h09_conch_entry__CoralPink"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 9,
+      "id": "h09_reef_lagoon",
+      "anchor": "reef_lagoon",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 9,
+      "id": "h09_reef_wall_skins",
+      "anchor": "reef_wall_skins",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": -13.0,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail2",
+          "other_cls": null,
+          "sep": -10.5,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail4",
+          "other_cls": null,
+          "sep": -12.71399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5",
+          "other_cls": null,
+          "sep": -12.71399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail6",
+          "other_cls": null,
+          "sep": -0.71399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail7",
+          "other_cls": null,
+          "sep": -1.01401,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail8",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail9",
+          "other_cls": null,
+          "sep": -15.51401,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail10",
+          "other_cls": null,
+          "sep": -6.21399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail11",
+          "other_cls": null,
+          "sep": -15.21399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "route_bank_backing",
+          "other_cls": null,
+          "sep": -4.57758,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "green_bank_backing",
+          "other_cls": null,
+          "sep": -3.55741,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "lane",
+          "other_cls": null,
+          "sep": -16.5,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "junction",
+          "other_cls": null,
+          "sep": -20.71399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "spit",
+          "other_cls": null,
+          "sep": -16.0,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "reef_route",
+          "other_cls": null,
+          "sep": -5.71399,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -15.01401,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow",
+            "h09_reef_wall_skins__Snow",
+            "h09_reef_wall_skins__Snow",
+            "h09_reef_wall_skins__Snow",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "route_bank",
+          "other_cls": null,
+          "sep": -5.35541,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green_bank",
+          "other_cls": null,
+          "sep": -4.75737,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_conch_entry",
+          "other_cls": "prop",
+          "sep": -16.5,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__CoralPink",
+            "h09_reef_wall_skins__Snow",
+            "h09_reef_wall_skins__Snow",
+            "h09_reef_wall_skins__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_conch_ring",
+          "other_cls": "dressing",
+          "sep": -14.79999,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_coral_spit",
+          "other_cls": "exception",
+          "sep": -16.29999,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_conch_exit_ring",
+          "other_cls": "flat",
+          "sep": -4.20001,
+          "meshes": [
+            "h09_reef_wall_skins__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 9,
+      "id": "h09_conch_ring",
+      "anchor": "conch_ring",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "spit",
+          "other_cls": null,
+          "sep": -1.79999,
+          "meshes": [
+            "h09_conch_ring__Lime"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_reef_wall_skins",
+          "other_cls": "dressing",
+          "sep": -14.79999,
+          "meshes": [
+            "h09_conch_ring__Lime"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 9,
+      "id": "h09_conch_exit",
+      "anchor": "conch_exit",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 9,
+      "id": "h09_coral_spit",
+      "anchor": "coral_spit",
+      "cls": "exception",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": 0.12,
+          "meshes": [
+            "h09_coral_spit__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail11",
+          "other_cls": null,
+          "sep": 0.12,
+          "meshes": [
+            "h09_coral_spit__CoralPink"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_reef_wall_skins",
+          "other_cls": "dressing",
+          "sep": -16.29999,
+          "meshes": [
+            "h09_coral_spit__CoralPink"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 9,
+      "id": "h09_conch_exit_ring",
+      "anchor": "conch_exit_ring",
+      "cls": "flat",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -3.7,
+          "meshes": [
+            "h09_conch_exit_ring__Lime"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h09_reef_wall_skins",
+          "other_cls": "dressing",
+          "sep": -4.20001,
+          "meshes": [
+            "h09_conch_exit_ring__Lime"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 10,
+      "id": "h10_bobsled_hut",
+      "anchor": "bobsled_hut",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 6,
+      "hits": [
+        {
+          "kind": "prop",
+          "other": "h10_snow_wall_skins",
+          "other_cls": "dressing",
+          "sep": -1.875,
+          "meshes": [
+            "h10_bobsled_hut__Brass",
+            "h10_bobsled_hut__Brass",
+            "h10_bobsled_hut__Brass",
+            "h10_bobsled_hut__Canvas",
+            "h10_bobsled_hut__Canvas",
+            "h10_bobsled_hut__Canvas",
+            "h10_bobsled_hut__HullTeal",
+            "h10_bobsled_hut__Timber",
+            "h10_bobsled_hut__Timber",
+            "h10_bobsled_hut__Timber"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall1",
+          "other_cls": null,
+          "sep": 0.125,
+          "meshes": [
+            "h10_bobsled_hut__Canvas"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 2
+    },
+    {
+      "hole": 10,
+      "id": "h10_snow_wall_skins",
+      "anchor": "snow_wall_skins",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "snowwall1",
+          "other_cls": null,
+          "sep": -2.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall2",
+          "other_cls": null,
+          "sep": -2.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall3",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall4",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall5",
+          "other_cls": null,
+          "sep": -4.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall6",
+          "other_cls": null,
+          "sep": -4.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall7",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "snowwall8",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail9",
+          "other_cls": null,
+          "sep": -4.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail10",
+          "other_cls": null,
+          "sep": -10.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail11",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail12",
+          "other_cls": null,
+          "sep": -10.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail13",
+          "other_cls": null,
+          "sep": -3.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail14",
+          "other_cls": null,
+          "sep": -8.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail15",
+          "other_cls": null,
+          "sep": -8.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail16",
+          "other_cls": null,
+          "sep": -1.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail17",
+          "other_cls": null,
+          "sep": -7.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "run_rail18",
+          "other_cls": null,
+          "sep": -7.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "green_s_rail_e",
+          "other_cls": null,
+          "sep": -8.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "green_s_rail_w",
+          "other_cls": null,
+          "sep": -3.0,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "plate1",
+          "other_cls": null,
+          "sep": -12.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "plate2",
+          "other_cls": null,
+          "sep": -15.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "plate3",
+          "other_cls": null,
+          "sep": -15.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -9.9,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_L1",
+          "other_cls": null,
+          "sep": -5.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_R1",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_L2",
+          "other_cls": null,
+          "sep": -11.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_R2",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_L3",
+          "other_cls": null,
+          "sep": -8.07844,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_R3",
+          "other_cls": null,
+          "sep": -2.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_L4",
+          "other_cls": null,
+          "sep": -11.49999,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_R4",
+          "other_cls": null,
+          "sep": -9.49999,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_L5",
+          "other_cls": null,
+          "sep": -4.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "bank_R5",
+          "other_cls": null,
+          "sep": -9.5,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h10_bobsled_hut",
+          "other_cls": "prop",
+          "sep": -1.875,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h10_snow_walls_w",
+          "other_cls": "prop",
+          "sep": -1.85,
+          "meshes": [
+            "h10_snow_wall_skins__Ice",
+            "h10_snow_wall_skins__Snow",
+            "h10_snow_wall_skins__SnowShadow"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 10,
+      "id": "h10_snow_walls_w",
+      "anchor": "snow_walls_w",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "prop",
+          "other": "h10_snow_wall_skins",
+          "other_cls": "dressing",
+          "sep": -1.85,
+          "meshes": [
+            "h10_snow_walls_w__SnowShadow",
+            "h10_snow_walls_w__SnowShadow",
+            "h10_snow_walls_w__SnowShadow"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 10,
+      "id": "h10_snow_walls_e",
+      "anchor": "snow_walls_e",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 11,
+      "id": "h11_ice_floe",
+      "anchor": "ice_floe",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 5,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "neck",
+          "other_cls": null,
+          "sep": -2.318,
+          "meshes": [
+            "h11_ice_floe__Beak",
+            "h11_ice_floe__Ice",
+            "h11_ice_floe__Ink",
+            "h11_ice_floe__MoveCream",
+            "h11_ice_floe__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "floe_pocket_floor",
+          "other_cls": null,
+          "sep": -0.788,
+          "meshes": [
+            "h11_ice_floe__Beak",
+            "h11_ice_floe__Ice",
+            "h11_ice_floe__Ink",
+            "h11_ice_floe__MoveCream",
+            "h11_ice_floe__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h11_snowbank_skins",
+          "other_cls": "dressing",
+          "sep": -15.0,
+          "meshes": [
+            "h11_ice_floe__Beak",
+            "h11_ice_floe__Beak",
+            "h11_ice_floe__Ice",
+            "h11_ice_floe__Ice",
+            "h11_ice_floe__Ink",
+            "h11_ice_floe__Ink",
+            "h11_ice_floe__MoveCream",
+            "h11_ice_floe__MoveCream",
+            "h11_ice_floe__Snow",
+            "h11_ice_floe__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5__cut0",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_ice_floe__Ice"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg18__cut0",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_ice_floe__Ice"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 11,
+      "id": "h11_fishing_hut",
+      "anchor": "fishing_hut",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [
+        {
+          "kind": "prop",
+          "other": "h11_snowbank_skins",
+          "other_cls": "dressing",
+          "sep": -4.0,
+          "meshes": [
+            "h11_fishing_hut__Canvas",
+            "h11_fishing_hut__Canvas",
+            "h11_fishing_hut__Timber",
+            "h11_fishing_hut__Timber"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 11,
+      "id": "h11_snowbank_skins",
+      "anchor": "snowbank_skins",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": -7.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail2",
+          "other_cls": null,
+          "sep": -7.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail4",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5__cut0",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5__cut1",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5__cut2",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5__cut3",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail6",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail7",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail8",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail9",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail10",
+          "other_cls": null,
+          "sep": -7.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail11",
+          "other_cls": null,
+          "sep": -7.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail12",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg13",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg14",
+          "other_cls": null,
+          "sep": -4.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg15",
+          "other_cls": null,
+          "sep": -4.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg16",
+          "other_cls": null,
+          "sep": -5.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg17",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg18__cut0",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg18__cut1",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg18__cut2",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "berg18__cut3",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pocket_w19",
+          "other_cls": null,
+          "sep": -9.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pocket_w20",
+          "other_cls": null,
+          "sep": -0.82001,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pocket_w21",
+          "other_cls": null,
+          "sep": -9.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pocket_e22",
+          "other_cls": null,
+          "sep": -9.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pocket_e23",
+          "other_cls": null,
+          "sep": -7.82001,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pocket_e24",
+          "other_cls": null,
+          "sep": -9.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "lane",
+          "other_cls": null,
+          "sep": -15.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "pond",
+          "other_cls": null,
+          "sep": -22.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "neck",
+          "other_cls": null,
+          "sep": -14.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "spill",
+          "other_cls": null,
+          "sep": -14.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "side_channel",
+          "other_cls": null,
+          "sep": -3.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "crossover",
+          "other_cls": null,
+          "sep": -3.5,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -14.40002,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "floe_pocket_floor",
+          "other_cls": null,
+          "sep": -15.17999,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h11_ice_floe",
+          "other_cls": "dressing",
+          "sep": -15.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h11_fishing_hut",
+          "other_cls": "prop",
+          "sep": -4.0,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h11_floe_frame_e",
+          "other_cls": "prop",
+          "sep": -7.03601,
+          "meshes": [
+            "h11_snowbank_skins__Snow",
+            "h11_snowbank_skins__SnowShadow"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 11,
+      "id": "h11_floe_frame_w",
+      "anchor": "floe_frame_w",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 11,
+      "id": "h11_floe_frame_e",
+      "anchor": "floe_frame_e",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "prop",
+          "other": "h11_snowbank_skins",
+          "other_cls": "dressing",
+          "sep": -7.03601,
+          "meshes": [
+            "h11_floe_frame_e__Timber",
+            "h11_floe_frame_e__Timber"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 12,
+      "id": "h12_paddle_wheel",
+      "anchor": "paddle_wheel",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 3,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": 0.12,
+          "meshes": [
+            "h12_paddle_wheel__Brass"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "approach",
+          "other_cls": null,
+          "sep": -0.45001,
+          "meshes": [
+            "h12_paddle_wheel__Brass",
+            "h12_paddle_wheel__MoveCream",
+            "h12_paddle_wheel__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail2",
+          "other_cls": null,
+          "sep": 0.06,
+          "meshes": [
+            "h12_paddle_wheel__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": 0.06,
+          "meshes": [
+            "h12_paddle_wheel__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hull13",
+          "other_cls": null,
+          "sep": 0.06,
+          "meshes": [
+            "h12_paddle_wheel__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hull18",
+          "other_cls": null,
+          "sep": 0.06,
+          "meshes": [
+            "h12_paddle_wheel__MoveRed"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 12,
+      "id": "h12_icebreaker",
+      "anchor": "icebreaker",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 5,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "wheel_channel",
+          "other_cls": null,
+          "sep": -5.34,
+          "meshes": [
+            "h12_icebreaker__Canvas",
+            "h12_icebreaker__Glow",
+            "h12_icebreaker__HullTeal",
+            "h12_icebreaker__Snow"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -4.8,
+          "meshes": [
+            "h12_icebreaker__HullTeal"
+          ],
+          "real": true
+        },
+        {
+          "kind": "wall",
+          "other": "hull18",
+          "other_cls": null,
+          "sep": -5.34,
+          "meshes": [
+            "h12_icebreaker__HullTeal"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 3
+    },
+    {
+      "hole": 13,
+      "id": "h13_carousel_arms",
+      "anchor": "carousel_arms",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 5,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "ring",
+          "other_cls": null,
+          "sep": -20.5,
+          "meshes": [
+            "h13_carousel_arms__Beak",
+            "h13_carousel_arms__Beak",
+            "h13_carousel_arms__Beak",
+            "h13_carousel_arms__Brass",
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed",
+            "h13_carousel_arms__MoveRed",
+            "h13_carousel_arms__MoveRed",
+            "h13_carousel_arms__MoveRed",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h13_carousel_canopy",
+          "other_cls": "dressing",
+          "sep": -11.574,
+          "meshes": [
+            "h13_carousel_arms__Beak",
+            "h13_carousel_arms__Brass",
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_00",
+          "other_cls": null,
+          "sep": -4.31244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_01",
+          "other_cls": null,
+          "sep": -4.62506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_02",
+          "other_cls": null,
+          "sep": -4.93744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_03",
+          "other_cls": null,
+          "sep": -5.25006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_04",
+          "other_cls": null,
+          "sep": -5.56244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_05",
+          "other_cls": null,
+          "sep": -5.87506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_06",
+          "other_cls": null,
+          "sep": -6.18744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_07",
+          "other_cls": null,
+          "sep": -6.50006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_08",
+          "other_cls": null,
+          "sep": -6.81244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_09",
+          "other_cls": null,
+          "sep": -7.12506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_10",
+          "other_cls": null,
+          "sep": -7.43744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_11",
+          "other_cls": null,
+          "sep": -7.75006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_12",
+          "other_cls": null,
+          "sep": -8.06244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_13",
+          "other_cls": null,
+          "sep": -8.37506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_14",
+          "other_cls": null,
+          "sep": -8.68744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_15",
+          "other_cls": null,
+          "sep": -9.00006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_16",
+          "other_cls": null,
+          "sep": -9.31244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_17",
+          "other_cls": null,
+          "sep": -9.62506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_18",
+          "other_cls": null,
+          "sep": -9.93744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_19",
+          "other_cls": null,
+          "sep": -10.25006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_20",
+          "other_cls": null,
+          "sep": -10.56244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_21",
+          "other_cls": null,
+          "sep": -10.87506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_22",
+          "other_cls": null,
+          "sep": -11.18744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_23",
+          "other_cls": null,
+          "sep": -11.50006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_24",
+          "other_cls": null,
+          "sep": -11.50006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_25",
+          "other_cls": null,
+          "sep": -11.18744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_26",
+          "other_cls": null,
+          "sep": -10.87506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_27",
+          "other_cls": null,
+          "sep": -10.56244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_28",
+          "other_cls": null,
+          "sep": -10.25006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_29",
+          "other_cls": null,
+          "sep": -9.93744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_30",
+          "other_cls": null,
+          "sep": -9.62506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_31",
+          "other_cls": null,
+          "sep": -9.31244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_32",
+          "other_cls": null,
+          "sep": -9.00006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_33",
+          "other_cls": null,
+          "sep": -8.68744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_34",
+          "other_cls": null,
+          "sep": -8.37506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_35",
+          "other_cls": null,
+          "sep": -8.06244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_36",
+          "other_cls": null,
+          "sep": -7.75006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_37",
+          "other_cls": null,
+          "sep": -7.43744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_38",
+          "other_cls": null,
+          "sep": -7.12506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_39",
+          "other_cls": null,
+          "sep": -6.81244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_40",
+          "other_cls": null,
+          "sep": -6.50006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_41",
+          "other_cls": null,
+          "sep": -6.18744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_42",
+          "other_cls": null,
+          "sep": -5.87506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_43",
+          "other_cls": null,
+          "sep": -5.56244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_44",
+          "other_cls": null,
+          "sep": -5.25006,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_45",
+          "other_cls": null,
+          "sep": -4.93744,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_46",
+          "other_cls": null,
+          "sep": -4.62506,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_47",
+          "other_cls": null,
+          "sep": -4.31244,
+          "meshes": [
+            "h13_carousel_arms__Ink",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h13_hub_base",
+          "other_cls": "dressing",
+          "sep": -19.0,
+          "meshes": [
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveCream",
+            "h13_carousel_arms__MoveRed"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 13,
+      "id": "h13_hub_base",
+      "anchor": "hub_base",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "hub_plinth_00",
+          "other_cls": null,
+          "sep": -0.31244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_01",
+          "other_cls": null,
+          "sep": -0.62506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_02",
+          "other_cls": null,
+          "sep": -0.93744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_03",
+          "other_cls": null,
+          "sep": -1.25006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_04",
+          "other_cls": null,
+          "sep": -1.56244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_05",
+          "other_cls": null,
+          "sep": -1.87506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_06",
+          "other_cls": null,
+          "sep": -2.18744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_07",
+          "other_cls": null,
+          "sep": -2.50006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_08",
+          "other_cls": null,
+          "sep": -2.81244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_09",
+          "other_cls": null,
+          "sep": -3.12506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_10",
+          "other_cls": null,
+          "sep": -3.43744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_11",
+          "other_cls": null,
+          "sep": -3.75006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_12",
+          "other_cls": null,
+          "sep": -4.06244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_13",
+          "other_cls": null,
+          "sep": -4.37506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_14",
+          "other_cls": null,
+          "sep": -4.68744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_15",
+          "other_cls": null,
+          "sep": -5.00006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_16",
+          "other_cls": null,
+          "sep": -5.31244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_17",
+          "other_cls": null,
+          "sep": -5.62506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_18",
+          "other_cls": null,
+          "sep": -5.93744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_19",
+          "other_cls": null,
+          "sep": -6.25006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_20",
+          "other_cls": null,
+          "sep": -6.56244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_21",
+          "other_cls": null,
+          "sep": -6.87506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_22",
+          "other_cls": null,
+          "sep": -7.18744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_23",
+          "other_cls": null,
+          "sep": -7.50006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_24",
+          "other_cls": null,
+          "sep": -7.50006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_25",
+          "other_cls": null,
+          "sep": -7.18744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_26",
+          "other_cls": null,
+          "sep": -6.87506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_27",
+          "other_cls": null,
+          "sep": -6.56244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_28",
+          "other_cls": null,
+          "sep": -6.25006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_29",
+          "other_cls": null,
+          "sep": -5.93744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_30",
+          "other_cls": null,
+          "sep": -5.62506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_31",
+          "other_cls": null,
+          "sep": -5.31244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_32",
+          "other_cls": null,
+          "sep": -5.00006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_33",
+          "other_cls": null,
+          "sep": -4.68744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_34",
+          "other_cls": null,
+          "sep": -4.37506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_35",
+          "other_cls": null,
+          "sep": -4.06244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_36",
+          "other_cls": null,
+          "sep": -3.75006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_37",
+          "other_cls": null,
+          "sep": -3.43744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_38",
+          "other_cls": null,
+          "sep": -3.12506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_39",
+          "other_cls": null,
+          "sep": -2.81244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_40",
+          "other_cls": null,
+          "sep": -2.50006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_41",
+          "other_cls": null,
+          "sep": -2.18744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_42",
+          "other_cls": null,
+          "sep": -1.87506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_43",
+          "other_cls": null,
+          "sep": -1.56244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_44",
+          "other_cls": null,
+          "sep": -1.25006,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_45",
+          "other_cls": null,
+          "sep": -0.93744,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_46",
+          "other_cls": null,
+          "sep": -0.62506,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_47",
+          "other_cls": null,
+          "sep": -0.31244,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "ring",
+          "other_cls": null,
+          "sep": -16.5,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h13_carousel_arms",
+          "other_cls": "dressing",
+          "sep": -19.0,
+          "meshes": [
+            "h13_hub_base__Brass",
+            "h13_hub_base__Brass",
+            "h13_hub_base__Snow"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 13,
+      "id": "h13_carousel_canopy",
+      "anchor": "carousel_canopy",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "hub_plinth_22",
+          "other_cls": null,
+          "sep": -0.06793,
+          "meshes": [
+            "h13_carousel_canopy__Brass"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_23",
+          "other_cls": null,
+          "sep": -0.38055,
+          "meshes": [
+            "h13_carousel_canopy__Brass"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_24",
+          "other_cls": null,
+          "sep": -0.38055,
+          "meshes": [
+            "h13_carousel_canopy__Brass"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "hub_plinth_25",
+          "other_cls": null,
+          "sep": -0.06793,
+          "meshes": [
+            "h13_carousel_canopy__Brass"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "ring",
+          "other_cls": null,
+          "sep": -9.324,
+          "meshes": [
+            "h13_carousel_canopy__Brass"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h13_carousel_arms",
+          "other_cls": "dressing",
+          "sep": -11.574,
+          "meshes": [
+            "h13_carousel_canopy__Brass",
+            "h13_carousel_canopy__Brass",
+            "h13_carousel_canopy__Brass",
+            "h13_carousel_canopy__Brass"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 15,
+      "id": "h15_lip_ice",
+      "anchor": "lip_ice",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "lip_lane",
+          "other_cls": null,
+          "sep": -0.64999,
+          "meshes": [
+            "h15_lip_ice__Ice"
+          ],
+          "real": true
+        }
+      ],
+      "real_count": 1
+    },
+    {
+      "hole": 15,
+      "id": "h15_ice_parapet",
+      "anchor": "ice_parapet",
+      "cls": "exception",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "lip_lane",
+          "other_cls": null,
+          "sep": -0.37201,
+          "meshes": [
+            "h15_ice_parapet__IceGuard",
+            "h15_ice_parapet__Snow"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 15,
+      "id": "h15_steps",
+      "anchor": "steps",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 15,
+      "id": "h15_great_frozen_falls",
+      "anchor": "great_frozen_falls",
+      "cls": "envelope",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 16,
+      "id": "h16_moonstone_coping",
+      "anchor": "moonstone_coping",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail1",
+          "other_cls": null,
+          "sep": -7.0,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail2",
+          "other_cls": null,
+          "sep": -7.0,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail4",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail6",
+          "other_cls": null,
+          "sep": -7.0,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail7",
+          "other_cls": null,
+          "sep": -7.0,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail8",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "spout_w",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "spout_e",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "lane",
+          "other_cls": null,
+          "sep": -13.0,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "well_floor",
+          "other_cls": null,
+          "sep": -11.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "well_w",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "well_e",
+          "other_cls": null,
+          "sep": -8.5,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "green",
+          "other_cls": null,
+          "sep": -10.0,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow",
+            "h16_moonstone_coping__Snow",
+            "h16_moonstone_coping__Snow",
+            "h16_moonstone_coping__Snow",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h16_moonwell",
+          "other_cls": "dressing",
+          "sep": -21.45,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Moonstone",
+            "h16_moonstone_coping__Snow",
+            "h16_moonstone_coping__Snow"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h16_spout_glow",
+          "other_cls": "flat",
+          "sep": -10.25,
+          "meshes": [
+            "h16_moonstone_coping__Moonstone"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 16,
+      "id": "h16_moonwell",
+      "anchor": "moonwell",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "rail3",
+          "other_cls": null,
+          "sep": -1.95,
+          "meshes": [
+            "h16_moonwell__Ice",
+            "h16_moonwell__Moonstone"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "rail5",
+          "other_cls": null,
+          "sep": -1.95,
+          "meshes": [
+            "h16_moonwell__Ice",
+            "h16_moonwell__Moonstone"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "well_floor",
+          "other_cls": null,
+          "sep": -12.95,
+          "meshes": [
+            "h16_moonwell__Ice",
+            "h16_moonwell__Moonstone"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "well_w",
+          "other_cls": null,
+          "sep": -9.95,
+          "meshes": [
+            "h16_moonwell__Ice",
+            "h16_moonwell__Moonstone"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "well_e",
+          "other_cls": null,
+          "sep": -9.95,
+          "meshes": [
+            "h16_moonwell__Ice",
+            "h16_moonwell__Moonstone"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h16_moonstone_coping",
+          "other_cls": "dressing",
+          "sep": -21.45,
+          "meshes": [
+            "h16_moonwell__Ice",
+            "h16_moonwell__Ice",
+            "h16_moonwell__Moonstone",
+            "h16_moonwell__Moonstone"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 16,
+      "id": "h16_spout_glow",
+      "anchor": "spout_glow",
+      "cls": "flat",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "well_floor",
+          "other_cls": null,
+          "sep": -1.75,
+          "meshes": [
+            "h16_spout_glow__AuroraMint"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h16_moonstone_coping",
+          "other_cls": "dressing",
+          "sep": -10.25,
+          "meshes": [
+            "h16_spout_glow__AuroraMint"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 16,
+      "id": "h16_crescent_spout_w",
+      "anchor": "crescent_spout_w",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 16,
+      "id": "h16_crescent_spout_e",
+      "anchor": "crescent_spout_e",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 17,
+      "id": "h17_aurora_span",
+      "anchor": "aurora_span",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "light_span",
+          "other_cls": null,
+          "sep": -3.0,
+          "meshes": [
+            "h17_aurora_span__AuroraMint"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h17_crystal_piers",
+          "other_cls": "exception",
+          "sep": -3.5,
+          "meshes": [
+            "h17_aurora_span__AuroraMint",
+            "h17_aurora_span__AuroraMint"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 17,
+      "id": "h17_aurora_ribbon",
+      "anchor": "aurora_ribbon",
+      "cls": "envelope",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    },
+    {
+      "hole": 17,
+      "id": "h17_span_respawn_stone",
+      "anchor": "span_respawn_stone",
+      "cls": "dressing",
+      "imported": true,
+      "mesh_count": 1,
+      "hits": [
+        {
+          "kind": "felt",
+          "other": "rim",
+          "other_cls": null,
+          "sep": -1.89999,
+          "meshes": [
+            "h17_span_respawn_stone__Lime"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 17,
+      "id": "h17_crystal_piers",
+      "anchor": "crystal_piers",
+      "cls": "exception",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "pier_s_rail6",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h17_crystal_piers__Ice"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pier_s_rail7",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h17_crystal_piers__Ice"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pier_n_rail8",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h17_crystal_piers__Ice"
+          ],
+          "real": false
+        },
+        {
+          "kind": "wall",
+          "other": "pier_n_rail9",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h17_crystal_piers__Ice"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "pier_s",
+          "other_cls": null,
+          "sep": -3.5,
+          "meshes": [
+            "h17_crystal_piers__Ice",
+            "h17_crystal_piers__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "light_span",
+          "other_cls": null,
+          "sep": -3.5,
+          "meshes": [
+            "h17_crystal_piers__Ice",
+            "h17_crystal_piers__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "felt",
+          "other": "pier_n",
+          "other_cls": null,
+          "sep": -3.5,
+          "meshes": [
+            "h17_crystal_piers__Ice",
+            "h17_crystal_piers__IceCore"
+          ],
+          "real": false
+        },
+        {
+          "kind": "prop",
+          "other": "h17_aurora_span",
+          "other_cls": "dressing",
+          "sep": -3.5,
+          "meshes": [
+            "h17_crystal_piers__Ice",
+            "h17_crystal_piers__IceCore"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 17,
+      "id": "h17_ice_bridge",
+      "anchor": "ice_bridge",
+      "cls": "exception",
+      "imported": true,
+      "mesh_count": 4,
+      "hits": [
+        {
+          "kind": "wall",
+          "other": "bridge_rail10",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h17_ice_bridge__Ice",
+            "h17_ice_bridge__Snow",
+            "h17_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "coplanar",
+          "other": "bridge_rail10",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h17_ice_bridge__Ice"
+          ],
+          "real": false,
+          "visible_generated_rail_skins": [],
+          "visible_zfight_candidate": false
+        },
+        {
+          "kind": "wall",
+          "other": "bridge_rail11",
+          "other_cls": null,
+          "sep": -0.5,
+          "meshes": [
+            "h17_ice_bridge__Ice",
+            "h17_ice_bridge__Snow",
+            "h17_ice_bridge__Timber"
+          ],
+          "real": false
+        },
+        {
+          "kind": "coplanar",
+          "other": "bridge_rail11",
+          "other_cls": null,
+          "sep": 0.0,
+          "meshes": [
+            "h17_ice_bridge__Ice"
+          ],
+          "real": false,
+          "visible_generated_rail_skins": [],
+          "visible_zfight_candidate": false
+        },
+        {
+          "kind": "felt",
+          "other": "ice_bridge",
+          "other_cls": null,
+          "sep": -4.5,
+          "meshes": [
+            "h17_ice_bridge__Ice",
+            "h17_ice_bridge__IceCore",
+            "h17_ice_bridge__Snow",
+            "h17_ice_bridge__Timber"
+          ],
+          "real": false
+        }
+      ],
+      "real_count": 0
+    },
+    {
+      "hole": 17,
+      "id": "h17_span_lamp",
+      "anchor": "span_lamp",
+      "cls": "prop",
+      "imported": true,
+      "mesh_count": 2,
+      "hits": [],
+      "real_count": 0
+    }
+  ],
+  "anchors": []
+}

@@ -700,7 +700,8 @@ local function step(dt)
 	local v = b.AssemblyLinearVelocity
 	local speed = v.Magnitude
 	local ground, slopeAccel = groundInfo(b)
-	-- Layout scales the entire rolling law and static slope threshold (Aurora ice).
+	-- The supporting piece scales both rolling terms and the static slope threshold.
+	-- Aurora authors decel_scale only; no independent drag scale is present in its data.
 	local decelScale = ground and ground.Instance:GetAttribute("decel_scale") or 1
 	local rollDecel = Config.RollDecel * decelScale
 

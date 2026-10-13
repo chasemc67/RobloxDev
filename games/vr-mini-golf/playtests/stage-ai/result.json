@@ -1,0 +1,91 @@
+{
+  "result": "PARTIAL",
+  "reason": "Unresolved conservative built bounds violations and visible coplanar candidates",
+  "aurora_rbxl": "games/vr-mini-golf/playtest/playtest-aurora-v4.rbxl",
+  "deco": 46,
+  "visible_coplanar_candidates": 2,
+  "tests": {
+    "completed_holes": 18,
+    "cupdrop_sunk": 54,
+    "cupdrop_attempted": 54,
+    "random": 144,
+    "slow": 36,
+    "stuck": 0,
+    "escapes": 0,
+    "h4_focused": 12,
+    "h4_crawl15": 0,
+    "hazard_returns": 2,
+    "timeouts": 0,
+    "nudges": 1,
+    "h17": {
+      "samples": 324,
+      "duration": 19.982928037643433,
+      "mismatches": 0,
+      "bad": []
+    },
+    "console": {
+      "Server": [],
+      "Client": []
+    }
+  },
+  "saved_file": {
+    "file": "/Users/chase-mini/src/RobloxDev/games/vr-mini-golf/playtest/playtest-aurora-v4.rbxl",
+    "bytes": 1089884,
+    "sha256": "6c9b809b00ac747cb5cbf9a6027b9bbc0fbcea2e94636c057f8e6ffbec4b7a56",
+    "v3_unchanged": true,
+    "mesh_ids_expected": 188,
+    "mesh_ids_present": 188,
+    "missing_mesh_ids": [],
+    "studio_processes": "",
+    "closed": true
+  },
+  "clearance": {
+    "gap": 0.15,
+    "felt_headroom": 8,
+    "method": "Actual Studio per-MeshPart oriented bounds projected to hole XZ plus Y intervals; built wall and supporting-piece bounds. Conservative for meshes with holes/disconnected pieces. Coplanar bounds are z-fight candidates, not triangle-confirmed z-fighting.",
+    "source": {
+      "raw": 296,
+      "by_class": {
+        "dressing": 222,
+        "flat": 40,
+        "prop": 12,
+        "envelope": 9,
+        "exception": 13
+      },
+      "real": 12,
+      "coplanar": 20
+    },
+    "built": {
+      "imported_props": 74,
+      "anchors": 0,
+      "raw": 377,
+      "by_class": {
+        "dressing": 310,
+        "prop": 46,
+        "exception": 17,
+        "flat": 4
+      },
+      "real": 46,
+      "imported_real": 46,
+      "coplanar_candidates": 4,
+      "visible_coplanar_candidates": 2,
+      "imported_props_with_real_bounds_violations": [
+        "h02_rookery_drift",
+        "h02_lintel_left",
+        "h02_lintel_mid",
+        "h02_lintel_right",
+        "h05_cliff_face_w",
+        "h05_cliff_face_e",
+        "h09_conch_entry",
+        "h10_bobsled_hut",
+        "h10_snow_walls_w",
+        "h11_fishing_hut",
+        "h11_floe_frame_e",
+        "h12_icebreaker",
+        "h15_lip_ice"
+      ],
+      "visual_collision_errors": [],
+      "mover_weld_errors": []
+    }
+  }
+}

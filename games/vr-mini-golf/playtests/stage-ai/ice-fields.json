@@ -1,0 +1,71 @@
+{
+  "source": "assets/vr-mini-golf/aurora-archipelago/holes.json",
+  "source_sha256": "c8bb4f4c73bcdd33b5520cf678c695a422d69864c29e016f4775930de5a89501",
+  "recursive_decel_drag_fields": [
+    {
+      "path": "$.physics.rolling_decel",
+      "value": "0.5 + 0.25*speed studs/s^2 (x decel_scale on ice felt)"
+    },
+    {
+      "path": "$.physics.rolling_decel_const",
+      "value": 0.5
+    },
+    {
+      "path": "$.physics.rolling_decel_per_speed",
+      "value": 0.25
+    },
+    {
+      "path": "$.physics.surfaces.felt.decel_scale",
+      "value": 1.0
+    },
+    {
+      "path": "$.physics.surfaces.ice.decel_scale",
+      "value": 0.35
+    },
+    {
+      "path": "$.holes[3].felt[1].decel_scale",
+      "value": 0.7
+    }
+  ],
+  "explicit_felt_fields": [
+    {
+      "hole": 4,
+      "piece": "ice",
+      "decel_scale": 0.7
+    }
+  ],
+  "independent_drag_fields_authored": [],
+  "semantics": "Per supporting piece: decel_scale multiplies Config.RollDecel, Config.RollDrag and slope rest threshold; absent scale defaults to 1. Physics surface metadata does not override explicit piece attributes.",
+  "config_unchanged": {
+    "RollDecel": 0.5,
+    "RollDrag": 0.25,
+    "EngineRollLoss": 0.2
+  },
+  "h4_ice": {
+    "decel_scale": 0.7,
+    "roll_decel": 0.35,
+    "roll_drag": 0.175,
+    "script_constant_after_engine_compensation": 0.15,
+    "script_decel_formula": "max(0, Config.RollDecel * 0.7 - Config.EngineRollLoss) + Config.RollDrag * 0.7 * speed"
+  },
+  "static_validation": {
+    "generated_felt_value": 0.7,
+    "static_felt_attribute_path": true,
+    "cup_attribute_path": true,
+    "mover_felt_attribute_path": true,
+    "supporting_raycast_read_each_frame": true,
+    "speed_term_scaled": true
+  },
+  "runtime_validation": {
+    "native_edit_ice_attribute": 0.7,
+    "focused_h4_shots": 12,
+    "moving_after_15_seconds": 0,
+    "rest_seconds_min": 3.199,
+    "rest_seconds_max": 5.716,
+    "evidence": [
+      "test-summary.json",
+      "sweep/results.json"
+    ],
+    "limitation": "Focused shots are H4 biased shots: ten telemetry labels ice and two lane; no per-frame scale instrumentation added."
+  }
+}

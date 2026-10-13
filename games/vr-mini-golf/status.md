@@ -273,3 +273,10 @@ Local files: playtest-aurora-v2.rbxl; playtest/playtest-sc-batch12.rbxl. Studio 
 ## Stage af — 2026-10-12, local batch3+4
 Saved `playtest/playtest-sc-batch34.rbxl`; Studio closed. Imported all 12 landmarks, 51 meshes / 7,828 triangles, no missing manifest items. Exact H7–H18 felt/wall/collider audit passes. Reversed ae H11 gate inversion to match holes.json: offsets -1.3 / 0 / 0 at cycle phases 2 / 8 / 10.3; deck rides while gate is closed.
 36/36 cupdrops, 96 random shots, 24 slow rollers; zero console warnings/errors, escapes or lost balls. RESULT=FAIL: three H15 wedged shots remain, and Studio automatically created 51 RenderMesh assets despite Upload to Roblox unchecked. No place publication, cloud place edits, or git push. H15 drift bases are partly hidden by existing terrain. Portability report and full evidence: `logs/stages/af-notes.md`, `logs/stages/af-portability.md`, `playtests/stage-af/result.json`.
+
+
+## Stage ai — 2026-10-13, local Aurora v4
+
+Saved `playtest/playtest-aurora-v4.rbxl`; Studio closed. LOCAL ONLY: no cloud place opened/saved, no publish or git push. Imported all 74 approved props (188 meshes, 65,088 triangles; zero missing); regenerated current Aurora data including H4 ice decel_scale=0.7, which scales both constant and speed-dependent rolling drag per supporting piece. All visual meshes remain non-colliding/non-queryable/non-touchable at runtime.
+
+Result PARTIAL for clearance: 46 conservative built prop bounds findings across 13 props and two visible coplanar candidates remain; source checker reports 12 real findings. Gameplay passes: cupdrop54/54, 144 random shots,36 mover slow rollers, H4 crawl15=0/12, stuck0, escapes0, H17 sync324/324, zero console errors. Full evidence and caveats: `logs/stages/ai-notes.md`, `playtests/stage-ai/`.

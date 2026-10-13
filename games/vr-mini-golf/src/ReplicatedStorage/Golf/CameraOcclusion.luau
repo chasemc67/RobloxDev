@@ -46,7 +46,7 @@ function CameraOcclusion.tagDecor(roots)
 	local n = 0
 	for _, root in roots do
 		for _, d in root:GetDescendants() do
-			if not d:IsA("BasePart") or d.CanCollide or d.CanQuery or d.Transparency >= SEE_THROUGH then
+			if not d:IsA("BasePart") or d.CanCollide or d.CanQuery or d:GetAttribute("VisualQueryDisabled") or d.Transparency >= SEE_THROUGH then
 				continue
 			end
 			if math.max(d.Size.X, d.Size.Y, d.Size.Z) < 1 then
