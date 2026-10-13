@@ -1,0 +1,31 @@
+[runner] studio playtest-sc-batch34.rbxl 2c78d2d1-fd83-4345-ac29-89c26bfb7d35
+[runner] mode Edit
+[runner] harness ready {'simulateVR': False, 'running': False, 'name': '', 'cam': '', 'ballState': 'ready', 'lines': 0}
+[runner] h4         cam=-          4.5s  lines=121
+[runner] h11        cam=-          4.5s  lines=132
+[runner] h15        cam=-          4.5s  lines=120
+[runner] mode Edit
+# VR Mini Golf playtest summary
+
+- Run: 2026-10-12 23:32
+- Scenarios: h4, h11, h15
+- Cameras: default
+- SimulateVR: False
+
+## Per-hole suites
+
+Intended = the waypoint line played best-of-K per stroke (aim ±3/6°, speed ±10-25% from the same spot; every counted stroke is a real in-engine shot), good / safe. Routes = strokes to hole out with the spec's AI waypoints, one shot per stroke (good = aggressive/risk line, average = safe line). Banks = normal restitution of the first rail contact. Fuzz = shots / hazards / escapes / stuck.
+
+| Hole | Par | Intended (good / safe) | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |
+|---|---|---|---|---|---|---|---|---|---|
+| 4 Crystal Corridor | 3 | - / - | - | - | - | - | - | -/-/-/- | 0 / 0 / 0 |
+| 11 Floodgate Lock | 3 | - / - | - | - | - | - | - | -/-/-/- | 0 / 0 / 0 |
+| 15 Sugar Dune | 3 | - / - | - | - | - | - | - | -/-/-/- | 0 / 0 / 0 |
+
+
+## Console
+
+- Server warnings/errors: 0
+- Client warnings/errors: 0
+
+Raw logs: `<scenario>[-<cam>].jsonl` and `results.json` in this folder.

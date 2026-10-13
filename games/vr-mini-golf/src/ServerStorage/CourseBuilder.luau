@@ -405,6 +405,7 @@ function Hole:feltPart(name, cf, size, color, pc)
 	}, self.geo)
 	p:SetAttribute("PieceId", pc.def.id)
 	p:SetAttribute("Zone", pc.def.zone)
+	p:SetAttribute("decel_scale", pc.def.decel_scale)
 	CollectionService:AddTag(p, SURFACE_TAG)
 	self:slopeFelt(p, color, pc)
 	return p
@@ -505,6 +506,7 @@ function Hole:buildCupPiece(pc, cupLocal)
 	cup.CustomPhysicalProperties = FELT_PHYS
 	cup:SetAttribute("PieceId", pc.def.id)
 	cup:SetAttribute("Zone", pc.def.zone)
+	cup:SetAttribute("decel_scale", pc.def.decel_scale)
 	CollectionService:AddTag(cup, SURFACE_TAG)
 	cup.Parent = self.geo
 
@@ -921,7 +923,7 @@ end
 ------------------------------------------------------------------------------------------------ moving parts
 -- spec value / cycle of a moving part (shared with GolfServer.Movers and the harness): ReplicatedStorage.Golf.MoverMath
 local function moverProfile(m)
-	return { type = m.type, speed = m.speed, phase = m.phase or 0, range = m.range, period = m.period_s, amplitude = m.amplitude_deg, dwell = m.dwell, keys = m.keys }
+	return { type = m.type, speed = m.speed, phase = m.phase_s or m.phase or 0, solidStart = m.solid_window and m.solid_window[1], solidEnd = m.solid_window and m.solid_window[2], range = m.range, period = m.period_s, amplitude = m.amplitude_deg, dwell = m.dwell, keys = m.keys }
 end
 
 -- Sugarloaf H11's timetable movers (holes.json `schedule`) as keyframed slides along their axis (MoverMath "keys"):
@@ -1099,19 +1101,30 @@ local LG_DWELL = {
 }
 
 function Hole:buildMover(m)
-	if BLOCKOUT and m.type == "toggle" then
-		-- Existing motion driver has no collision-toggle profile. Keep the spec felt solid for this local test.
+	if m.type == "toggle" then
+		assert(m.period_s > 0 and m.solid_window, "toggle requires period and solid_window")
 		local model = new("Model", { Name = "Mover_" .. m.id }, self.movers)
 		model:SetAttribute("MoverId", m.id)
-		model:SetAttribute("Type", "keys")
+		model:SetAttribute("Type", "toggle")
 		model:SetAttribute("Period", m.period_s)
-		model:SetAttribute("Keys", "0:0;" .. tostring(m.period_s) .. ":0")
-		model:SetAttribute("Speed", 0)
-		model:SetAttribute("Phase", 0)
-		CollectionService:AddTag(model, MOVER_TAG)
+		model:SetAttribute("Phase", m.phase_s or 0)
+		model:SetAttribute("SolidStart", m.solid_window[1])
+		model:SetAttribute("SolidEnd", m.solid_window[2])
 		model:SetAttribute("PivotWorld", self.cf:PointToWorldSpace(v3(m.pivot)))
 		model:SetAttribute("AxisWorld", self.cf:VectorToWorldSpace(v3(m.axis)))
-		model:SetAttribute("StaticReason", "toggle unsupported; spec felt remains solid")
+		local ids = {}
+		for _, id in m.felt_ids do ids[id] = true end
+		local solid = MoverMath.value(MoverMath.fromModel(model), workspace:GetServerTimeNow()) == 1
+		local count = 0
+		for _, part in self.geo:GetDescendants() do
+			if part:IsA("BasePart") and ids[part:GetAttribute("PieceId")] and CollectionService:HasTag(part, SURFACE_TAG) then
+				new("ObjectValue", { Name = "TogglePart", Value = part }, model)
+				part.CanCollide, part.CanQuery, part.CanTouch = solid, solid, solid
+				count += 1
+			end
+		end
+		assert(count > 0, "toggle has no matching felt")
+		CollectionService:AddTag(model, MOVER_TAG)
 		return model
 	end
 	m = normalizeMover(m)
@@ -1281,6 +1294,7 @@ function Hole:moverFelt(m, model, root)
 		part:SetAttribute("MoverFelt", f.id)
 		part:SetAttribute("PieceId", f.id)
 		part:SetAttribute("Zone", f.zone)
+		part:SetAttribute("decel_scale", f.decel_scale)
 		if t <= 0.2 then
 			part:SetAttribute("FeltPhysics", true)
 			part.CustomPhysicalProperties = FELT_PHYS

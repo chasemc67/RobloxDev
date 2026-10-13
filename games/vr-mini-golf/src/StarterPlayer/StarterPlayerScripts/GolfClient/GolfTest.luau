@@ -244,6 +244,9 @@ local function onPostSimulation(dt)
 	end
 	if shot then
 		local speed = v.Magnitude
+		if not shot.at15 and t - shot.t0 >= 15 then
+			shot.at15 = { t = t - shot.t0, speed = speed, moving = speed > Config.StopSpeed, pos = vec(p) }
+		end
 		shot.maxY = math.max(shot.maxY, p.Y)
 		shot.maxAlong = math.max(shot.maxAlong, (p - shot.start):Dot(shot.dir))
 		if not shot.tStop and Ball.state == "moving" and t - shot.t0 > 0.05 and speed < Config.StopSpeed then
@@ -355,6 +358,8 @@ local function shoot(label: string, dir: Vector3, speedMps: number, opts)
 		distStuds = round(flatDist),
 		distM = round(flatDist * STUD),
 		tStop = s.tStop and round(s.tStop),
+		at15 = s.at15,
+		tRest = res == "rest" and round(now() - s.t0 - 0.05, 3) or nil,
 		tEnd = round(now() - s.t0),
 		maxY = round(s.maxY),
 		maxAlong = round(s.maxAlong),
@@ -1169,6 +1174,8 @@ local function fuzz(n, count, seed)
 			local r = shootS(string.format("h%d-fuzz-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
 			if r.outcome == "refused" then continue end
 			res.shots += 1
+			res.allShots = res.allShots or {}
+			table.insert(res.allShots, r)
 			res.maxMovingStillS = math.max(res.maxMovingStillS or 0, r.maxMovingStillS or 0)
 			local shotStuck = r.outcome == "timeout"
 			if r.outcome == "hazard" then
@@ -1245,6 +1252,8 @@ local function slowRollers(n, count, seed)
 			local r = shootS(string.format("h%d-slow-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
 			if r.outcome == "refused" then continue end
 			res.shots += 1
+			res.allShots = res.allShots or {}
+			table.insert(res.allShots, r)
 			res.maxMovingStillS = math.max(res.maxMovingStillS or 0, r.maxMovingStillS or 0)
 			local shotStuck = r.outcome == "timeout"
 			if r.outcome == "hazard" then
@@ -1350,6 +1359,21 @@ local function troughStops(n)
  return results
 end
 
+-- Stage ag: reproducible shots aimed toward a reported world-space crawl spot.
+local function biasedShots(n, count, seed)
+	local rng = Random.new(seed or 20261012)
+	local target = Vector3.new(182.9, 84.1, 460.9)
+	local out = {}
+	for i = 1, count do
+		local start = target + Vector3.new(rng:NextNumber(-0.7, 0.7), 0, rng:NextNumber(2, 6))
+		place(n, start.X, start.Z, start.Y)
+		local dir = target + Vector3.new(rng:NextNumber(-0.4, 0.4), 0, rng:NextNumber(-0.4, 0.4)) - Ball.ball.Position
+		local r = shootS(string.format("h%d-biased-%d", n, i), dir, rng:NextNumber(1.5, 5), {cup=hole(n).Cup, timeout=26, watchStill=true})
+		table.insert(out, r)
+	end
+	return out
+end
+
 local function holeScenario(n)
 	return function()
 		refreshFelt()
@@ -1386,6 +1410,7 @@ local function holeScenario(n)
 		if string.find(parts, "cupdrop") then
 			out.cupdrop = cupDrop(n)
 		end
+		if string.find(parts, "biased") then out.biased = biasedShots(n, o.biased or 12, o.seed) end
 		if string.find(parts, "floorstop") then out.floorstop = troughStops(n) end
 		out.issues = table.clone(issues)
 		out.escapes, out.stuck = 0, 0

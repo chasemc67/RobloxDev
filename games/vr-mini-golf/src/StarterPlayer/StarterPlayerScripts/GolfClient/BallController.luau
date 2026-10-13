@@ -700,6 +700,9 @@ local function step(dt)
 	local v = b.AssemblyLinearVelocity
 	local speed = v.Magnitude
 	local ground, slopeAccel = groundInfo(b)
+	-- Layout scales the entire rolling law and static slope threshold (Aurora ice).
+	local decelScale = ground and ground.Instance:GetAttribute("decel_scale") or 1
+	local rollDecel = Config.RollDecel * decelScale
 
 	if Ball.state == "ready" then
 		-- a resting ball that a moving part keeps touching (rubbing past it, or about to squeeze it) for > 0.5 s
@@ -717,7 +720,7 @@ local function step(dt)
 			return
 		end
 		-- static friction: hold the ball still on gentle slopes; let it go if something pushes it
-		if ground and slopeAccel < Config.RollDecel and speed < 1.5 then
+		if ground and slopeAccel < rollDecel and speed < 1.5 then
 			-- cancel sideways creep only: zeroing the vertical velocity too fights the contact solver
 			-- and the ball slowly sinks into the felt
 			if Vector3.new(v.X, 0, v.Z).Magnitude > 0.005 then
@@ -828,7 +831,7 @@ local function step(dt)
 			end
 		elseif speed > 0 then
 			rollVel = nil
-			local decel = math.max(0, Config.RollDecel - Config.EngineRollLoss) + Config.RollDrag * speed
+			local decel = math.max(0, rollDecel - Config.EngineRollLoss) + Config.RollDrag * decelScale * speed
 			local newSpeed = math.max(0, speed - decel * dt)
 			if newSpeed > Config.MaxBallSpeed then
 				newSpeed = Config.MaxBallSpeed
@@ -842,7 +845,7 @@ local function step(dt)
 		local n = ground.Normal
 		local along = newVel - n * newVel:Dot(n)
 		b.AssemblyAngularVelocity = n:Cross(along) / R
-		if speed < Config.StopSpeed and slopeAccel < Config.RollDecel then
+		if speed < Config.StopSpeed and slopeAccel < rollDecel then
 			slowTime += dt
 			if slowTime >= Config.RestTime then
 				rest(b)
@@ -859,7 +862,7 @@ local function step(dt)
 			-- next felt piece at the foot of a slope. Hop it over the lip, downhill, a few times before giving up.
 			-- (parked = practically motionless: a ball turning round at the top of its climb is not hopped)
 			local downhill = flat(ground.Normal)
-			if slopeAccel >= Config.RollDecel and downhill.Magnitude > 1e-3 then
+			if slopeAccel >= rollDecel and downhill.Magnitude > 1e-3 then
 				local vp = valleyPoint(b.Position, downhill.Unit, 0.15)
 				if vp then
 					b.CFrame = CFrame.new(vp)
@@ -867,7 +870,7 @@ local function step(dt)
 					return
 				end
 			end
-			if slopeAccel >= Config.RollDecel and parkTime >= 0.3 and seamHops < 3 and downhill.Magnitude > 1e-3 then
+			if slopeAccel >= rollDecel and parkTime >= 0.3 and seamHops < 3 and downhill.Magnitude > 1e-3 then
 				seamHops += 1
 				stillTime = 0
 				parkTime = 0

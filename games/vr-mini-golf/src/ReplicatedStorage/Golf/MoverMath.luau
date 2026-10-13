@@ -121,6 +121,11 @@ end
 -- Returns value (deg or studs) and rate (per s) at time t.
 function MoverMath.value(p, t)
 	local phase = p.phase or 0
+	if p.type == "toggle" then
+		local clock = t + phase
+		local cycleStart = math.floor(clock / p.period) * p.period
+		return (clock >= cycleStart + p.solidStart and clock < cycleStart + p.solidEnd) and 1 or 0, 0
+	end
 	if p.type == "keys" then
 		local keys = p.keys
 		local tau = (t + phase) % p.period
@@ -167,7 +172,7 @@ end
 
 -- Full cycle length in s (incl. pauses).
 function MoverMath.period(p)
-	if p.type == "swing" or p.type == "keys" then
+	if p.type == "swing" or p.type == "keys" or p.type == "toggle" then
 		return p.period
 	end
 	if not p.range then
@@ -185,6 +190,8 @@ function MoverMath.fromModel(model)
 		phase = model:GetAttribute("Phase") or 0,
 		range = model:GetAttribute("HasRange") and { model:GetAttribute("RangeMin"), model:GetAttribute("RangeMax") } or nil,
 		period = model:GetAttribute("Period"),
+		solidStart = model:GetAttribute("SolidStart"),
+		solidEnd = model:GetAttribute("SolidEnd"),
 		amplitude = model:GetAttribute("Amplitude"),
 		dwell = MoverMath.decodeDwell(model:GetAttribute("Dwell")),
 		keys = MoverMath.decodeKeys(model:GetAttribute("Keys")),

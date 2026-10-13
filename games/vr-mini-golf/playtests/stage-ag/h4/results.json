@@ -1,0 +1,1142 @@
+{
+ "h4": {
+  "default": {
+   "course": "aurora_archipelago",
+   "scenario": "h4",
+   "hole": 4,
+   "cupdrop": {
+    "sunk": 3,
+    "pass": true,
+    "tries": [
+     {
+      "rimSpeed": 2.99,
+      "angle": 22.5,
+      "outcome": "cup",
+      "finish": [
+       194,
+       84.33,
+       416
+      ]
+     },
+     {
+      "rimSpeed": 2.962,
+      "angle": 67.5,
+      "outcome": "cup",
+      "finish": [
+       194,
+       84.33,
+       416
+      ]
+     },
+     {
+      "rimSpeed": 2.979,
+      "angle": 112.5,
+      "outcome": "cup",
+      "finish": [
+       194,
+       84.33,
+       416
+      ]
+     }
+    ],
+    "underCup": {
+     "name": "CupPlate",
+     "depth": 0.35
+    },
+    "n": 3
+   },
+   "issues": [],
+   "escapes": 0,
+   "fuzz": {
+    "nudges": 0,
+    "resets": 0,
+    "escapes": 0,
+    "holed": 0,
+    "timeouts": 0,
+    "maxMovingStillS": 0.167,
+    "hazards": 0,
+    "stuck": 0,
+    "shots": 8,
+    "allShots": [
+     {
+      "v0": 10.727,
+      "speedMps": 3.2179684906218333,
+      "label": "h4-fuzz-1",
+      "contacts": [
+       {
+        "angleOut": 15.5,
+        "angleIn": 9.6,
+        "vOut": [
+         1.532,
+         -0.0009,
+         -6.0337
+        ],
+        "vnOut": 5.999,
+        "tContact": 0.8005,
+        "speedOut": 6.225,
+        "speedIn": 9.925,
+        "normal": [
+         -0.0215,
+         0,
+         -0.9998
+        ],
+        "type": "event",
+        "vtIn": -1.661,
+        "speedRetention": 0.627,
+        "event": "contact",
+        "t": 0.8005,
+        "vtOut": -1.661,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail9",
+        "speedAfter300ms": 5.574,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-1",
+        "vIn": [
+         1.8711,
+         -0.0005,
+         9.7467
+        ],
+        "vnIn": -9.785,
+        "restitution": 0.613,
+        "retentionAfter300ms": 0.562,
+        "pos": [
+         185.4108,
+         84.0837,
+         471.8604
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 2.042,
+      "distM": 2.363,
+      "outcome": "rest",
+      "speed": 10.727,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.167,
+      "tRest": 11.933,
+      "flags": [],
+      "maxY": 84.128,
+      "distStuds": 7.878,
+      "start": [
+       185,
+       84.0718,
+       470
+      ],
+      "tEnd": 11.983,
+      "tStop": 5.617,
+      "finish": [
+       188.918,
+       84.0719,
+       463.1657
+      ]
+     },
+     {
+      "v0": 7.733,
+      "speedMps": 2.3198849353380027,
+      "label": "h4-fuzz-2",
+      "contacts": [
+       {
+        "angleOut": 15.4,
+        "angleIn": 8.9,
+        "vOut": [
+         3.6575,
+         -0.0005,
+         -0.9623
+        ],
+        "vnOut": 3.647,
+        "tContact": 16.7994,
+        "speedOut": 3.782,
+        "speedIn": 6.483,
+        "normal": [
+         0.9999,
+         0,
+         0.0112
+        ],
+        "type": "event",
+        "vtIn": 1.003,
+        "speedRetention": 0.583,
+        "event": "contact",
+        "t": 16.7994,
+        "vtOut": 1.003,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail1",
+        "speedAfter300ms": 2.464,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-2",
+        "vIn": [
+         -6.3938,
+         -0.0005,
+         -1.0744
+        ],
+        "vnIn": -6.405,
+        "restitution": 0.569,
+        "retentionAfter300ms": 0.38,
+        "pos": [
+         181.1154,
+         84.0798,
+         464.1664
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 3.391,
+      "distM": 0.749,
+      "outcome": "rest",
+      "speed": 7.733,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.067,
+      "tRest": 4.533,
+      "flags": [],
+      "maxY": 84.08,
+      "distStuds": 2.495,
+      "start": [
+       184.3925,
+       84.0718,
+       464.7442
+      ],
+      "tEnd": 4.583,
+      "tStop": 4.016,
+      "finish": [
+       185.4917,
+       84.0719,
+       462.5044
+      ]
+     },
+     {
+      "v0": 18.239,
+      "speedMps": 5.47183267214235,
+      "label": "h4-fuzz-3",
+      "contacts": [
+       {
+        "angleOut": 0.8,
+        "angleIn": 0.5,
+        "vOut": [
+         0.1306,
+         -0.2183,
+         -9.9823
+        ],
+        "vnOut": 9.982,
+        "tContact": 24.9329,
+        "speedOut": 9.983,
+        "speedIn": 16.515,
+        "normal": [
+         -0.0007,
+         0,
+         -1
+        ],
+        "type": "event",
+        "speedRetention": 0.605,
+        "vtIn": -0.137,
+        "t": 24.9329,
+        "vtOut": -0.137,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail6",
+        "speedAfter300ms": 6.977,
+        "event": "contact",
+        "shot": "h4-fuzz-3",
+        "vIn": [
+         0.1483,
+         -0.0001,
+         16.5138
+        ],
+        "vnIn": -16.514,
+        "restitution": 0.604,
+        "retentionAfter300ms": 0.422,
+        "pos": [
+         191.6974,
+         84.6978,
+         429.7759
+        ]
+       }
+      ],
+      "piece": "green",
+      "maxAlong": 5.466,
+      "distM": 3.384,
+      "outcome": "rest",
+      "speed": 18.239,
+      "zone": "green",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.067,
+      "tRest": 6.466,
+      "flags": [],
+      "maxY": 84.707,
+      "distStuds": 11.281,
+      "start": [
+       191.646,
+       84.6718,
+       424.4955
+      ],
+      "tEnd": 6.516,
+      "tStop": 5.949,
+      "finish": [
+       192.0221,
+       84.6719,
+       413.2206
+      ]
+     },
+     {
+      "v0": 6.638,
+      "speedMps": 1.9914416284843357,
+      "label": "h4-fuzz-4",
+      "contacts": [
+       {
+        "angleOut": 68,
+        "angleIn": 47.7,
+        "vOut": [
+         1.4136,
+         -0.0005,
+         -3.1544
+        ],
+        "vnOut": 1.296,
+        "tContact": 36.0326,
+        "speedOut": 3.457,
+        "speedIn": 4.334,
+        "normal": [
+         0.9993,
+         0,
+         0.0371
+        ],
+        "type": "event",
+        "vtIn": 3.205,
+        "speedRetention": 0.798,
+        "event": "contact",
+        "t": 36.0326,
+        "vtOut": 3.205,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail1",
+        "speedAfter300ms": 2.958,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-4",
+        "vIn": [
+         -2.7966,
+         -0.0005,
+         -3.3105
+        ],
+        "vnIn": -2.917,
+        "restitution": 0.444,
+        "retentionAfter300ms": 0.683,
+        "pos": [
+         181.1021,
+         84.0794,
+         465.2988
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 8.803,
+      "distM": 2.068,
+      "outcome": "rest",
+      "speed": 6.638,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 11.549,
+      "flags": [],
+      "maxY": 84.121,
+      "distStuds": 6.892,
+      "start": [
+       185,
+       84.0718,
+       470
+      ],
+      "tEnd": 11.599,
+      "tStop": 11.032,
+      "finish": [
+       184.4565,
+       84.0719,
+       463.1298
+      ]
+     },
+     {
+      "v0": 4.172,
+      "speedMps": 1.2514630689719326,
+      "label": "h4-fuzz-5",
+      "contacts": [
+       {
+        "angleOut": 57.1,
+        "angleIn": 36.3,
+        "vOut": [
+         0.8382,
+         -0.0005,
+         -1.2963
+        ],
+        "vnOut": 0.838,
+        "tContact": 51.4484,
+        "speedOut": 1.544,
+        "speedIn": 2.329,
+        "normal": [
+         1,
+         0,
+         0
+        ],
+        "type": "event",
+        "vtIn": 1.378,
+        "speedRetention": 0.663,
+        "event": "contact",
+        "t": 51.4484,
+        "vtOut": 1.296,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail1",
+        "speedAfter300ms": 1.234,
+        "tangentialRetention": 0.941,
+        "shot": "h4-fuzz-5",
+        "vIn": [
+         -1.8771,
+         -0.0005,
+         -1.3778
+        ],
+        "vnIn": -1.877,
+        "restitution": 0.447,
+        "retentionAfter300ms": 0.53,
+        "pos": [
+         181.0961,
+         84.0788,
+         465.9897
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 4.089,
+      "distM": 1.327,
+      "outcome": "rest",
+      "speed": 4.172,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.067,
+      "tRest": 3.867,
+      "flags": [],
+      "maxY": 84.079,
+      "distStuds": 4.425,
+      "start": [
+       184.2182,
+       84.0718,
+       468.3171
+      ],
+      "tEnd": 3.917,
+      "tStop": 3.35,
+      "finish": [
+       181.9227,
+       84.0719,
+       464.5343
+      ]
+     },
+     {
+      "v0": 6.77,
+      "speedMps": 2.031030980425149,
+      "label": "h4-fuzz-6",
+      "contacts": [
+       {
+        "angleOut": 72,
+        "angleIn": 54,
+        "vOut": [
+         -1.8632,
+         -0.0005,
+         -5.0515
+        ],
+        "vnOut": 1.66,
+        "tContact": 58.0315,
+        "speedOut": 5.384,
+        "speedIn": 6.331,
+        "normal": [
+         -0.9992,
+         0,
+         0.0399
+        ],
+        "type": "event",
+        "vtIn": -5.122,
+        "speedRetention": 0.85,
+        "event": "contact",
+        "t": 58.0315,
+        "vtOut": -5.122,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail5",
+        "speedAfter300ms": 4.758,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-6",
+        "vIn": [
+         3.5146,
+         -0.0005,
+         -5.2663
+        ],
+        "vnIn": -3.722,
+        "restitution": 0.446,
+        "retentionAfter300ms": 0.751,
+        "pos": [
+         196.3997,
+         84.6797,
+         418.0972
+        ]
+       },
+       {
+        "angleOut": 26.7,
+        "angleIn": 14.4,
+        "vOut": [
+         -0.7609,
+         -0.0005,
+         1.5622
+        ],
+        "vnOut": 1.553,
+        "tContact": 59.415,
+        "speedOut": 1.738,
+        "speedIn": 3.146,
+        "normal": [
+         0.0126,
+         0,
+         0.9999
+        ],
+        "type": "event",
+        "vtIn": -0.781,
+        "speedRetention": 0.552,
+        "event": "contact",
+        "t": 59.415,
+        "vtOut": -0.781,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail4",
+        "speedAfter300ms": 1.221,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-6",
+        "vIn": [
+         -0.8188,
+         -0.0005,
+         -3.0375
+        ],
+        "vnIn": -3.048,
+        "restitution": 0.509,
+        "retentionAfter300ms": 0.388,
+        "pos": [
+         194.8586,
+         84.6794,
+         412.5973
+        ]
+       }
+      ],
+      "piece": "green",
+      "maxAlong": 4.774,
+      "distM": 1.594,
+      "outcome": "rest",
+      "speed": 6.77,
+      "zone": "green",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 4.249,
+      "flags": [],
+      "maxY": 84.68,
+      "distStuds": 5.314,
+      "start": [
+       195.8969,
+       84.6718,
+       418.9894
+      ],
+      "tEnd": 4.299,
+      "tStop": 3.733,
+      "finish": [
+       193.935,
+       84.6719,
+       414.0507
+      ]
+     },
+     {
+      "v0": 14.421,
+      "speedMps": 4.326298114307049,
+      "label": "h4-fuzz-7",
+      "contacts": [
+       {
+        "angleOut": 21.7,
+        "angleIn": 13.3,
+        "vOut": [
+         7.5389,
+         -0.6002,
+         -2.8683
+        ],
+        "vnOut": 7.492,
+        "tContact": 66.2482,
+        "speedOut": 8.066,
+        "speedIn": 12.998,
+        "normal": [
+         0.9999,
+         0,
+         0.0159
+        ],
+        "type": "event",
+        "vtIn": 2.988,
+        "speedRetention": 0.621,
+        "event": "contact",
+        "t": 66.2482,
+        "vtOut": 2.988,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail1",
+        "speedAfter300ms": 5.565,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-7",
+        "vIn": [
+         -12.6009,
+         -0.0005,
+         -3.1889
+        ],
+        "vnIn": -12.65,
+        "restitution": 0.592,
+        "retentionAfter300ms": 0.428,
+        "pos": [
+         181.1874,
+         84.0881,
+         468.9539
+        ]
+       },
+       {
+        "angleOut": 49.7,
+        "angleIn": 29.1,
+        "vOut": [
+         -1.2493,
+         -0.0005,
+         -1.4015
+        ],
+        "vnOut": 1.214,
+        "tContact": 68.181,
+        "speedOut": 1.877,
+        "speedIn": 2.945,
+        "normal": [
+         -0.9997,
+         0,
+         0.0248
+        ],
+        "type": "event",
+        "vtIn": -1.432,
+        "speedRetention": 0.637,
+        "event": "contact",
+        "t": 68.181,
+        "vtOut": -1.432,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail8",
+        "speedAfter300ms": 1.46,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-7",
+        "vIn": [
+         2.5371,
+         -0.0005,
+         -1.4956
+        ],
+        "vnIn": -2.574,
+        "restitution": 0.472,
+        "retentionAfter300ms": 0.496,
+        "pos": [
+         188.9014,
+         84.079,
+         464.614
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 4.07,
+      "distM": 2.283,
+      "outcome": "rest",
+      "speed": 14.421,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.067,
+      "tRest": 5.166,
+      "flags": [],
+      "maxY": 84.088,
+      "distStuds": 7.609,
+      "start": [
+       185,
+       84.0718,
+       470
+      ],
+      "tEnd": 5.216,
+      "tStop": 4.65,
+      "finish": [
+       187.6616,
+       84.0719,
+       462.8715
+      ]
+     },
+     {
+      "v0": 6.728,
+      "speedMps": 2.0184449292695925,
+      "label": "h4-fuzz-8",
+      "contacts": [
+       {
+        "angleOut": 71.5,
+        "angleIn": 53.1,
+        "vOut": [
+         4.138,
+         -0.0005,
+         -1.5729
+        ],
+        "vnOut": 1.404,
+        "tContact": 75.5638,
+        "speedOut": 4.427,
+        "speedIn": 5.253,
+        "normal": [
+         -0.0406,
+         0,
+         -0.9992
+        ],
+        "type": "event",
+        "vtIn": -4.198,
+        "speedRetention": 0.843,
+        "event": "contact",
+        "t": 75.5638,
+        "vtOut": -4.198,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail9",
+        "speedAfter300ms": 1.826,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-8",
+        "vIn": [
+         4.3231,
+         -0.0005,
+         2.9847
+        ],
+        "vnIn": -3.158,
+        "restitution": 0.445,
+        "retentionAfter300ms": 0.348,
+        "pos": [
+         188.2305,
+         84.0796,
+         471.9101
+        ]
+       },
+       {
+        "angleOut": 26.3,
+        "angleIn": 14.8,
+        "vOut": [
+         -2.1716,
+         -0.0001,
+         -1.0267
+        ],
+        "vnOut": 2.154,
+        "tContact": 75.7475,
+        "speedOut": 2.402,
+        "speedIn": 4.172,
+        "normal": [
+         -0.9999,
+         0,
+         0.0168
+        ],
+        "type": "event",
+        "vtIn": -1.063,
+        "speedRetention": 0.576,
+        "event": "contact",
+        "t": 75.7475,
+        "vtOut": -1.063,
+        "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail8",
+        "speedAfter300ms": 1.649,
+        "tangentialRetention": 1,
+        "shot": "h4-fuzz-8",
+        "vIn": [
+         4.0154,
+         -0.0001,
+         -1.1304
+        ],
+        "vnIn": -4.034,
+        "restitution": 0.534,
+        "retentionAfter300ms": 0.395,
+        "pos": [
+         188.8901,
+         84.0794,
+         471.6754
+        ]
+       }
+      ],
+      "piece": "lane",
+      "maxAlong": 4.455,
+      "distM": 0.531,
+      "outcome": "rest",
+      "speed": 6.728,
+      "zone": "lane",
+      "stillExcludedByAutoReset": false,
+      "maxMovingStillS": 0.05,
+      "tRest": 4.183,
+      "flags": [],
+      "maxY": 84.08,
+      "distStuds": 1.77,
+      "start": [
+       184.9011,
+       84.0718,
+       469.6901
+      ],
+      "tEnd": 4.233,
+      "tStop": 3.666,
+      "finish": [
+       186.5999,
+       84.0719,
+       470.1889
+      ]
+     }
+    ],
+    "list": []
+   },
+   "biased": [
+    {
+     "v0": 2.891,
+     "speedMps": 0.8672426567220937,
+     "label": "h4-biased-1",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 4.428,
+     "distM": 0.623,
+     "outcome": "rest",
+     "speed": 2.891,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.033,
+     "tRest": 9.133,
+     "flags": [],
+     "maxY": 84.112,
+     "distStuds": 2.078,
+     "start": [
+      182.5077,
+      84.0718,
+      464.6115
+     ],
+     "tEnd": 9.183,
+     "tStop": 3.583,
+     "finish": [
+      183.8637,
+      84.0793,
+      463.037
+     ]
+    },
+    {
+     "v0": 2.37,
+     "speedMps": 0.711006541428289,
+     "label": "h4-biased-2",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 3.541,
+     "distM": 1.062,
+     "outcome": "rest",
+     "speed": 2.37,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.05,
+     "tRest": 3.699,
+     "flags": [],
+     "maxY": 84.079,
+     "distStuds": 3.541,
+     "start": [
+      183.1762,
+      84.0792,
+      465.6121
+     ],
+     "tEnd": 3.749,
+     "tStop": 3.183,
+     "finish": [
+      183.0841,
+      84.0793,
+      462.0722
+     ]
+    },
+    {
+     "v0": 4.71,
+     "speedMps": 1.412895641722945,
+     "label": "h4-biased-3",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 9.247,
+     "distM": 0.858,
+     "outcome": "rest",
+     "speed": 4.71,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.033,
+     "tRest": 14.516,
+     "flags": [],
+     "maxY": 84.182,
+     "distStuds": 2.861,
+     "start": [
+      183.4637,
+      84.0792,
+      465.4534
+     ],
+     "tEnd": 14.566,
+     "tStop": 4.917,
+     "finish": [
+      181.2216,
+      84.0793,
+      463.6766
+     ]
+    },
+    {
+     "v0": 2.776,
+     "speedMps": 0.8328690190659814,
+     "label": "h4-biased-4",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 4.492,
+     "distM": 0.753,
+     "outcome": "rest",
+     "speed": 2.776,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.05,
+     "tRest": 9.082,
+     "flags": [],
+     "maxY": 84.111,
+     "distStuds": 2.511,
+     "start": [
+      182.3792,
+      84.0792,
+      464.6559
+     ],
+     "tEnd": 9.132,
+     "tStop": 8.565,
+     "finish": [
+      184.2848,
+      84.069,
+      463.0214
+     ]
+    },
+    {
+     "v0": 4.892,
+     "speedMps": 1.4677157799411011,
+     "label": "h4-biased-5",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 11.846,
+     "distM": 0.753,
+     "outcome": "rest",
+     "speed": 4.892,
+     "at15": {
+      "speed": 1.4855680465698242,
+      "t": 15.015312166680815,
+      "moving": true,
+      "pos": [
+       181.082,
+       84.08,
+       462.598
+      ]
+     },
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.217,
+     "tRest": 18.065,
+     "flags": [],
+     "maxY": 84.267,
+     "distStuds": 2.51,
+     "start": [
+      183.3808,
+      84.0792,
+      463.6114
+     ],
+     "tEnd": 18.115,
+     "tStop": 5.466,
+     "finish": [
+      181.082,
+      84.0793,
+      464.6199
+     ]
+    },
+    {
+     "v0": 2.876,
+     "speedMps": 0.8626967132074089,
+     "label": "h4-biased-6",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 4.763,
+     "distM": 0.457,
+     "outcome": "rest",
+     "speed": 2.876,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.15,
+     "tRest": 9.783,
+     "flags": [],
+     "maxY": 84.119,
+     "distStuds": 1.524,
+     "start": [
+      182.6328,
+      84.0792,
+      464.6341
+     ],
+     "tEnd": 9.833,
+     "tStop": 3.633,
+     "finish": [
+      182.3281,
+      84.0793,
+      463.1411
+     ]
+    },
+    {
+     "v0": 4.668,
+     "speedMps": 1.4004339830273724,
+     "label": "h4-biased-7",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 10.344,
+     "distM": 0.977,
+     "outcome": "rest",
+     "speed": 4.668,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.046,
+     "tRest": 14.599,
+     "flags": [],
+     "maxY": 84.181,
+     "distStuds": 3.257,
+     "start": [
+      183.1748,
+      84.0793,
+      466.8339
+     ],
+     "tEnd": 14.649,
+     "tStop": 5.35,
+     "finish": [
+      181.5303,
+      84.0793,
+      464.0226
+     ]
+    },
+    {
+     "v0": 2.989,
+     "speedMps": 0.896647441298284,
+     "label": "h4-biased-8",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 4.533,
+     "distM": 0.924,
+     "outcome": "rest",
+     "speed": 2.989,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.033,
+     "tRest": 7.582,
+     "flags": [],
+     "maxY": 84.096,
+     "distStuds": 3.08,
+     "start": [
+      182.9922,
+      84.0786,
+      465.5609
+     ],
+     "tEnd": 7.632,
+     "tStop": 3.317,
+     "finish": [
+      182.297,
+      84.0793,
+      462.5609
+     ]
+    },
+    {
+     "v0": 4.7,
+     "speedMps": 1.4099945426968157,
+     "label": "h4-biased-9",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 9.059,
+     "distM": 0.741,
+     "outcome": "rest",
+     "speed": 4.7,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.167,
+     "tRest": 13.55,
+     "flags": [],
+     "maxY": 84.166,
+     "distStuds": 2.47,
+     "start": [
+      182.9661,
+      84.0786,
+      466.3685
+     ],
+     "tEnd": 13.6,
+     "tStop": 4.416,
+     "finish": [
+      182.6081,
+      84.0787,
+      463.9245
+     ]
+    },
+    {
+     "v0": 2.019,
+     "speedMps": 0.605678610414247,
+     "label": "h4-biased-10",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 2.626,
+     "distM": 0.788,
+     "outcome": "rest",
+     "speed": 2.019,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.05,
+     "tRest": 3.165,
+     "flags": [],
+     "maxY": 84.079,
+     "distStuds": 2.626,
+     "start": [
+      182.9091,
+      84.0787,
+      465.7719
+     ],
+     "tEnd": 3.215,
+     "tStop": 2.649,
+     "finish": [
+      182.8886,
+      84.0787,
+      463.1457
+     ]
+    },
+    {
+     "v0": 3.871,
+     "speedMps": 1.1612380406425626,
+     "label": "h4-biased-11",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 6.919,
+     "distM": 0.122,
+     "outcome": "rest",
+     "speed": 3.871,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.2,
+     "tRest": 12.865,
+     "flags": [],
+     "maxY": 84.164,
+     "distStuds": 0.408,
+     "start": [
+      182.5584,
+      84.0786,
+      464.3125
+     ],
+     "tEnd": 12.915,
+     "tStop": 3.932,
+     "finish": [
+      182.6905,
+      84.0787,
+      463.9263
+     ]
+    },
+    {
+     "v0": 4.364,
+     "speedMps": 1.3091392020199666,
+     "label": "h4-biased-12",
+     "contacts": [],
+     "piece": "lane",
+     "maxAlong": 8.517,
+     "distM": 0.529,
+     "outcome": "rest",
+     "speed": 4.364,
+     "zone": "lane",
+     "stillExcludedByAutoReset": false,
+     "maxMovingStillS": 0.183,
+     "tRest": 14.165,
+     "flags": [],
+     "maxY": 84.176,
+     "distStuds": 1.764,
+     "start": [
+      182.8185,
+      84.0786,
+      465.3184
+     ],
+     "tEnd": 14.215,
+     "tStop": 4.349,
+     "finish": [
+      183.1521,
+      84.0787,
+      463.586
+     ]
+    }
+   ],
+   "name": "Glissade",
+   "seconds": 261.32,
+   "stuck": 0,
+   "par": 3,
+   "cam": "",
+   "nudges": 0
+  }
+ }
+}

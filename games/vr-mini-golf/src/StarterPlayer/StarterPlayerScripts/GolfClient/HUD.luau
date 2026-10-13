@@ -139,22 +139,25 @@ local function buildScorecard(final)
 	local maxH = HUD.isVR and 520 or math.min(520, vp.Y / scale - 70)
 	local compact = maxW < 560 or maxH < 420
 	local rowH = compact and 30 or 40
+	local closeSize = HUD.isVR and 56 or 36
+	local headerH = math.max(compact and 44 or 56, final and 0 or closeSize + 16)
+	local headerReserve = final and 52 or 60 + closeSize
 	local footer = final and 60 or 0
-	local gridH = math.min(rows * rowH, maxH - 60 - footer)
+	local gridH = math.min(rows * rowH, maxH - headerH - footer)
 	scorecard = panel({
 		Name = "Scorecard",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.fromScale(0.5, 0.5),
-		Size = UDim2.new(0, math.min(maxW, 140 + cols * 64), 0, (compact and 44 or 56) + gridH + footer),
+		Size = UDim2.new(0, math.min(maxW, math.max(360, 140 + cols * 64)), 0, headerH + gridH + footer),
 		BackgroundTransparency = 0.08,
 		ZIndex = 10,
 	}, cardParent)
 	new("UIScale", { Scale = 1 }, scorecard)
-	label({ Text = final and "Course Complete!" or "Scorecard", Size = UDim2.new(1, 0, 0, compact and 32 or 44), TextScaled = true, ZIndex = 11, TextColor3 = Color3.fromRGB(255, 230, 120) }, scorecard)
+	label({ Name = "Title", Text = final and "Course Complete!" or "Scorecard", Position = UDim2.fromOffset(14, 0), Size = UDim2.new(1, -14 - headerReserve, 0, compact and 32 or 44), TextScaled = true, ZIndex = 11, TextColor3 = Color3.fromRGB(255, 230, 120) }, scorecard)
 	local grid = new("ScrollingFrame", {
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0,
-		Position = UDim2.new(0, 14, 0, compact and 38 or 50),
+		Position = UDim2.new(0, 14, 0, headerH),
 		Size = UDim2.new(1, -28, 0, gridH),
 		CanvasSize = UDim2.new(0, 0, 0, rows * rowH),
 		ScrollBarThickness = rows * rowH > gridH and 6 or 0,
@@ -229,7 +232,7 @@ local function buildScorecard(final)
 		}, scorecard, HUD.playAgain)
 	else
 		-- (VR: a bigger target for the laser pointer; B / Y closes it too)
-		local s = HUD.isVR and 56 or 36
+		local s = closeSize
 		button("X", {
 			Name = "Close",
 			AnchorPoint = Vector2.new(1, 0),

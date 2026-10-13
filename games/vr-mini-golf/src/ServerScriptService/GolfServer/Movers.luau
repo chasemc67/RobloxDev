@@ -33,6 +33,17 @@ end
 local active = {}
 
 local function add(model)
+	if active[model] then return end
+	if model:GetAttribute("Type") == "toggle" then
+		local parts = {}
+		for _, ref in model:GetChildren() do
+			if ref:IsA("ObjectValue") and ref.Name == "TogglePart" and ref.Value then
+				table.insert(parts, ref.Value)
+			end
+		end
+		active[model] = { toggle = true, parts = parts }
+		return
+	end
 	local drive = model:FindFirstChild("Drive")
 	local root = model:FindFirstChild("MoverRoot")
 	if not drive or not root or active[model] then
@@ -51,6 +62,7 @@ function Movers.state(model, t)
 		return nil
 	end
 	local want, rate = Movers.value(model, t)
+	if s.toggle then return want, 0, 0 end
 	if s.rotate then
 		local cur = s.drive.CurrentAngle
 		return cur, wrap180(want - cur), rate
@@ -64,6 +76,13 @@ local function step()
 	for model, s in active do
 		if not model.Parent then
 			active[model] = nil
+			continue
+		end
+		if s.toggle then
+			local solid = Movers.value(model, t) == 1
+			for _, part in s.parts do
+				part.CanCollide, part.CanQuery, part.CanTouch = solid, solid, solid
+			end
 			continue
 		end
 		local _, err, rate = Movers.state(model, t)
