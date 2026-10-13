@@ -17,6 +17,8 @@
 --   Ground/     the lawn under the hole (flat layout only; in the world layout the Terrain is the ground).
 --   Tee, Cup (marker, attribute Radius), AimTarget, Bounds, Sign, FlagPole, Flag.
 local CourseBuilder = {}
+local BLOCKOUT = false
+local BUILD_COURSE_ID = nil
 
 local GeometryService = game:GetService("GeometryService")
 local CollectionService = game:GetService("CollectionService")
@@ -785,6 +787,11 @@ function Hole:buildWall(w)
 		p:SetAttribute("HourStone", w.hour_stone == true and w.id or tostring(w.hour_stone))
 	end
 
+	if BLOCKOUT then
+		local body = vis("Rail_" .. w.id, self.cf * cf, size, P.limestone, M.SmoothPlastic, self.rails)
+		body:SetAttribute("WallId", w.id)
+		return
+	end
 	if COURSE then
 		-- Sugarloaf: the visual is exactly the collision box (its cut pieces included), so what you see is what the
 		-- ball hits and the 0.15 mover clearance holds for the visuals too; plain rails get a timber cap inset at the top
@@ -1092,6 +1099,21 @@ local LG_DWELL = {
 }
 
 function Hole:buildMover(m)
+	if BLOCKOUT and m.type == "toggle" then
+		-- Existing motion driver has no collision-toggle profile. Keep the spec felt solid for this local test.
+		local model = new("Model", { Name = "Mover_" .. m.id }, self.movers)
+		model:SetAttribute("MoverId", m.id)
+		model:SetAttribute("Type", "keys")
+		model:SetAttribute("Period", m.period_s)
+		model:SetAttribute("Keys", "0:0;" .. tostring(m.period_s) .. ":0")
+		model:SetAttribute("Speed", 0)
+		model:SetAttribute("Phase", 0)
+		CollectionService:AddTag(model, MOVER_TAG)
+		model:SetAttribute("PivotWorld", self.cf:PointToWorldSpace(v3(m.pivot)))
+		model:SetAttribute("AxisWorld", self.cf:VectorToWorldSpace(v3(m.axis)))
+		model:SetAttribute("StaticReason", "toggle unsupported; spec felt remains solid")
+		return model
+	end
 	m = normalizeMover(m)
 	local tune = COURSE == nil and LG_DWELL[self.def.number] and LG_DWELL[self.def.number][m.id]
 	if tune then
@@ -1120,7 +1142,7 @@ function Hole:buildMover(m)
 		CustomPhysicalProperties = PhysicalProperties.new(2, 0.3, 0, 1, 1),
 	}, model)
 	model.PrimaryPart = root
-	if m.type == "slide" and m.range then
+	if not BLOCKOUT and m.type == "slide" and m.range then
 		local bl = {}
 		for _, b in m.blockers do
 			local rollRot = b.roll and CFrame.fromAxisAngle(axisLocal, math.rad(b.roll)) or CFrame.new()
@@ -1984,7 +2006,7 @@ local function buildHole(course, def, layout)
 	local holeCF, yaw, inWorld = holeFrame(def, layout)
 	local model = new("Model", { Name = "Hole" .. def.number })
 	model:SetAttribute("HoleNumber", def.number)
-	model:SetAttribute("CourseId", COURSE or "lantern_grove")
+	model:SetAttribute("CourseId", BUILD_COURSE_ID or COURSE or "lantern_grove")
 	model:SetAttribute("Par", def.par)
 	model:SetAttribute("HoleName", def.name)
 	model:SetAttribute("Zone", def.zone)
@@ -2096,7 +2118,7 @@ local function buildHole(course, def, layout)
 	end
 	self:buildSlotGuards()
 	self:buildTee()
-	self:buildDecor()
+	if not BLOCKOUT then self:buildDecor() end
 	if not inWorld then
 		self:buildGround()
 	end
@@ -2191,6 +2213,8 @@ end
 --     require(game.ServerStorage.CourseData.SugarloafLayout:Clone()), { folder = "CourseSugarloaf", courseId = "sugarloaf_canyon", palette = "sugarloaf" })
 function CourseBuilder.Build(data, layout, opts)
 	opts = opts or {}
+	BLOCKOUT = opts.blockout == true
+	BUILD_COURSE_ID = opts.courseId
 	local folderName = opts.folder or "Course"
 	local primary = folderName == "Course"
 	local courseData = game:GetService("ServerStorage"):WaitForChild("CourseData")

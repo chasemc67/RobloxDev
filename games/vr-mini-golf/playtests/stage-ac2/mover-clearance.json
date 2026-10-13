@@ -1,0 +1,76 @@
+{
+  "method": "Sample exact mover OBBs against every spec wall; run with uv run --with numpy.\nSAT separation is a lower bound, not Euclidean closest distance. Subtract a motion\nbound between samples to certify clearance across the continuous sweep.\n",
+  "movers": [
+    {
+      "hole": 5,
+      "id": "geyser_column",
+      "type": "slide",
+      "samples": 3601,
+      "min_sampled_separating_plane_gap": 0.15,
+      "wall": "upper_rail8",
+      "blocker": 1,
+      "pose": 3.35,
+      "between_sample_motion_bound": 0.000556,
+      "continuous_lower_bound": 0.149444,
+      "clearance_006_certified": true
+    },
+    {
+      "hole": 11,
+      "id": "ice_floe",
+      "type": "slide",
+      "samples": 3601,
+      "min_sampled_separating_plane_gap": 0.15,
+      "wall": "rail5__cut0",
+      "blocker": 1,
+      "pose": -6.848333333333334,
+      "between_sample_motion_bound": 0.000972,
+      "continuous_lower_bound": 0.149028,
+      "clearance_006_certified": true
+    },
+    {
+      "hole": 12,
+      "id": "paddle_wheel",
+      "type": "rotate",
+      "samples": 3601,
+      "min_sampled_separating_plane_gap": 0.06,
+      "wall": "rail3",
+      "blocker": 1,
+      "pose": 0.0,
+      "between_sample_motion_bound": 0.003627,
+      "continuous_lower_bound": 0.06,
+      "clearance_006_certified": true
+    },
+    {
+      "hole": 13,
+      "id": "carousel_arms",
+      "type": "rotate",
+      "samples": 3601,
+      "min_sampled_separating_plane_gap": 0.399962,
+      "wall": "hub_plinth_00",
+      "blocker": 3,
+      "pose": 254.10000000000002,
+      "between_sample_motion_bound": 0.010771,
+      "continuous_lower_bound": 0.38919,
+      "clearance_006_certified": true
+    },
+    {
+      "hole": 14,
+      "id": "icicle_bell",
+      "type": "swing",
+      "samples": 3601,
+      "min_sampled_separating_plane_gap": 1.086448,
+      "wall": "rail1",
+      "blocker": 1,
+      "pose": -9.0,
+      "between_sample_motion_bound": 0.000468,
+      "continuous_lower_bound": 1.08598,
+      "clearance_006_certified": true
+    },
+    {
+      "hole": 17,
+      "id": "aurora_span",
+      "type": "toggle",
+      "status": "STATIC_SOLID; no moving blockers in spec"
+    }
+  ]
+}

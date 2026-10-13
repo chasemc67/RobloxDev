@@ -13,6 +13,7 @@ Places.LOBBY = 87725688219952
 Places.COURSES = {
 	lantern_grove = 91438142503824,
 	sugarloaf_canyon = 124440050576723,
+	aurora_archipelago = 0, -- local blockout only; no cloud place
 }
 
 function Places.role(): string

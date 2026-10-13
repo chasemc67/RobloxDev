@@ -11,6 +11,7 @@ local Courses = {}
 Courses.FOLDERS = {
 	lantern_grove = "Course",
 	sugarloaf_canyon = "CourseSugarloaf",
+	aurora_archipelago = "CourseAurora",
 }
 Courses.DEFAULT = Places.course() or Config.CurrentCourse -- this place's course ("lantern_grove" in the lobby)
 

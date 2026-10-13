@@ -29,7 +29,7 @@ local function buildLane()
 	geo.Parent = lane
 
 	-- (stage ab) since the place split a course place may hold only Sugarloaf: take hole 1's felt of whichever is here
-	local course = workspace:FindFirstChild("Course") or workspace:FindFirstChild("CourseSugarloaf")
+	local course = workspace:FindFirstChild("Course") or workspace:FindFirstChild("CourseSugarloaf") or workspace:FindFirstChild("CourseAurora")
 	local source = course.Hole1.Geometry:FindFirstChild("Felt")
 	local felt = source:Clone()
 	felt.Size = Vector3.new(LANE_W, 1, LANE_Z1 - LANE_Z0)
@@ -96,7 +96,7 @@ function GolfTestServer.init(ctx)
 			return Config.BallRadius
 		elseif cmd == "spec" then
 			-- the hole's spec (tee, cup, cup_from, waypoints, HIO line, movers, teleports) for the client scenarios
-			local data = require(game:GetService("ServerStorage").CourseData[args.course == "sugarloaf_canyon" and "SugarloafCanyon" or "LanternGrove"])
+			local data = require(game:GetService("ServerStorage").CourseData[args.course == "aurora_archipelago" and "AuroraArchipelago" or args.course == "sugarloaf_canyon" and "SugarloafCanyon" or "LanternGrove"])
 			local h = data.holes[args.hole]
 			if not h then
 				return false, "no hole " .. tostring(args.hole)

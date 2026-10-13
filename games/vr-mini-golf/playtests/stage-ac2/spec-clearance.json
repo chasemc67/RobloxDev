@@ -1,0 +1,198 @@
+{
+  "method": "Spec-space cup centre to oriented wall boxes at ball height; wheel/pendulum corner sweep. Does not prove all dynamic pinch clearances.",
+  "holes": [
+    {
+      "hole": 1,
+      "cup_wall_clearance": 2.5,
+      "nearest_wall": "rail3",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 2,
+      "cup_wall_clearance": 1.0,
+      "nearest_wall": "rail7",
+      "cup_2_2_pass": false,
+      "movers": []
+    },
+    {
+      "hole": 3,
+      "cup_wall_clearance": 5.5,
+      "nearest_wall": "green_rail11",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 4,
+      "cup_wall_clearance": 2.5,
+      "nearest_wall": "rail5",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 5,
+      "cup_wall_clearance": 8.5,
+      "nearest_wall": "upper_rail9",
+      "cup_2_2_pass": true,
+      "movers": [
+        {
+          "id": "geyser_column",
+          "type": "slide",
+          "blockers": 1,
+          "range": [
+            0.0,
+            4.0
+          ],
+          "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+          "animation": "existing constraint driver"
+        }
+      ]
+    },
+    {
+      "hole": 6,
+      "cup_wall_clearance": 5.5,
+      "nearest_wall": "rail4",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 7,
+      "cup_wall_clearance": 2.5,
+      "nearest_wall": "rail13",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 8,
+      "cup_wall_clearance": 5.0,
+      "nearest_wall": "rail4",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 9,
+      "cup_wall_clearance": 6.0,
+      "nearest_wall": "rail7",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 10,
+      "cup_wall_clearance": 4.99996,
+      "nearest_wall": "run_rail14",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 11,
+      "cup_wall_clearance": 5.0,
+      "nearest_wall": "rail8",
+      "cup_2_2_pass": true,
+      "movers": [
+        {
+          "id": "ice_floe",
+          "type": "slide",
+          "blockers": 3,
+          "range": [
+            -7.0,
+            0.0
+          ],
+          "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+          "animation": "existing constraint driver"
+        }
+      ]
+    },
+    {
+      "hole": 12,
+      "cup_wall_clearance": 6.0,
+      "nearest_wall": "rail8",
+      "cup_2_2_pass": true,
+      "movers": [
+        {
+          "id": "paddle_wheel",
+          "type": "rotate",
+          "blockers": 24,
+          "range": null,
+          "min_floor_clearance": 0.06,
+          "passes_006_015": true,
+          "method": "3601 angle samples, all 8 corners per exact blocker, flat felt y=0",
+          "animation": "existing constraint driver"
+        }
+      ]
+    },
+    {
+      "hole": 13,
+      "cup_wall_clearance": 2.9,
+      "nearest_wall": "rail5",
+      "cup_2_2_pass": true,
+      "movers": [
+        {
+          "id": "carousel_arms",
+          "type": "rotate",
+          "blockers": 4,
+          "range": null,
+          "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+          "animation": "existing constraint driver"
+        }
+      ]
+    },
+    {
+      "hole": 14,
+      "cup_wall_clearance": 4.0,
+      "nearest_wall": "rail5",
+      "cup_2_2_pass": true,
+      "movers": [
+        {
+          "id": "icicle_bell",
+          "type": "swing",
+          "blockers": 10,
+          "range": [
+            -9.0,
+            9.0
+          ],
+          "min_floor_clearance": 0.060989,
+          "passes_006_015": true,
+          "method": "3601 angle samples, all 8 corners per exact blocker, flat felt y=0",
+          "animation": "existing constraint driver"
+        }
+      ]
+    },
+    {
+      "hole": 15,
+      "cup_wall_clearance": 6.0,
+      "nearest_wall": "basin_rail9",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 16,
+      "cup_wall_clearance": 4.0,
+      "nearest_wall": "rail4",
+      "cup_2_2_pass": true,
+      "movers": []
+    },
+    {
+      "hole": 17,
+      "cup_wall_clearance": 5.8,
+      "nearest_wall": "green_rail12",
+      "cup_2_2_pass": true,
+      "movers": [
+        {
+          "id": "aurora_span",
+          "type": "toggle",
+          "blockers": 0,
+          "range": null,
+          "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+          "animation": "STATIC_SOLID (unsupported profile)"
+        }
+      ]
+    },
+    {
+      "hole": 18,
+      "cup_wall_clearance": 8.0,
+      "nearest_wall": "rail8",
+      "cup_2_2_pass": true,
+      "movers": []
+    }
+  ]
+}

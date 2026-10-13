@@ -526,10 +526,11 @@ def summary_md(results, problems, clips, out_dir, args):
 
 
 def hole_summary_md(results):
-    """Per-hole tables for the Lantern Grove suites (h1..h9), the H7 log-pin hunt, the H8 door test and movers."""
+    """Per-hole tables for every returned hole suite, the H7 log-pin hunt, the H8 door test and movers."""
     L = []
     rows = []
-    for n in range(1, 10):
+    hole_numbers = sorted(int(k[1:]) for k in results if re.fullmatch(r"h[0-9]+", k))
+    for n in hole_numbers:
         r = results.get("h%d" % n)
         if not r:
             continue
@@ -556,14 +557,14 @@ def hole_summary_md(results):
             swtxt, fz.get("shots", "-"), fz.get("hazards", "-"), fz.get("escapes", "-"), fz.get("stuck", "-"),
             r.get("escapes", 0), r.get("stuck", 0), r.get("nudges", 0)))
     if rows:
-        L += ["## Lantern Grove per-hole suites", "",
+        L += ["## Per-hole suites", "",
               "Intended = the waypoint line played best-of-K per stroke (aim ±3/6°, speed ±10-25% from the same spot; every "
               "counted stroke is a real in-engine shot), good / safe. "
               "Routes = strokes to hole out with the spec's AI waypoints, one shot per stroke (good = aggressive/risk line, average = safe line). "
               "Banks = normal restitution of the first rail contact. Fuzz = shots / hazards / escapes / stuck.", "",
               "| Hole | Par | Intended (good / safe) | Good line | Safe line | Hole-in-one | Banks (restitution) | Mover timing sweep | Fuzz | Escapes / stuck / nudges |",
               "|---|---|---|---|---|---|---|---|---|---|"] + rows + [""]
-        for n in range(1, 10):
+        for n in hole_numbers:
             r = results.get("h%d" % n)
             if not r:
                 continue

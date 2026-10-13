@@ -1,0 +1,1154 @@
+{
+  "stage": "ac2",
+  "result": "PARTIAL",
+  "console": {
+    "cupdrop": {
+      "server": 0,
+      "client": 0
+    },
+    "sweep": {
+      "server": 0,
+      "client": 0
+    },
+    "h1-spawn-recheck": {
+      "server": 0,
+      "client": 0
+    }
+  },
+  "cloud_copies": {
+    "lg": {
+      "file": "playtest-lg-v11.rbxl",
+      "download_version": 11,
+      "published_version": 9,
+      "bytes": 3391455,
+      "sha256": "d71f3a3b4e9c3f6f6e871ec0e9bffa4c98442eaef73124555304191b91a6815d",
+      "verification": "Studio Version History screenshot observed Published badge before and after Download a Copy"
+    },
+    "sc": {
+      "file": "playtest-sc-v20.rbxl",
+      "download_version": 20,
+      "published_version": 19,
+      "bytes": 3282837,
+      "sha256": "bb538f1cd725521ac71bf5136477d129d859ed844019296128139be8bccd08ac",
+      "verification": "Studio Version History screenshot observed Published badge before and after Download a Copy"
+    }
+  },
+  "local_files": {
+    "aurora-test.rbxl": {
+      "bytes": 655437,
+      "sha256": "407f21ac8ef37664531f3331a3fef9e89e5923e25e5afc56e16e237c63c3ce00"
+    },
+    "playtest-aurora-blockout.rbxl": {
+      "bytes": 655437,
+      "sha256": "407f21ac8ef37664531f3331a3fef9e89e5923e25e5afc56e16e237c63c3ce00"
+    }
+  },
+  "cupdrop_sunk": 54,
+  "cupdrop_total": 54,
+  "sweep_complete": true,
+  "escapes": 0,
+  "stuck_shots": 1,
+  "lost_definition": "No unrecovered/missing ball observed when every requested shot completed without harness errors or timeouts. OOB returns are separately escapes/hazard_returns; unknown is null.",
+  "static_movers": [
+    "H17 aurora_span: toggle unsupported; remains solid"
+  ],
+  "limitations": [
+    "H2 cup-wall clearance 1.0 < 2.2 studs",
+    "H4 random shot forcedrest: wedged",
+    "H17 toggle remains static; timing not tested",
+    "Local mesh portability to another machine unverified"
+  ],
+  "shutdown": {
+    "studio_closed": true,
+    "mcp_studios": [],
+    "studio_processes": [],
+    "checked_at": "2026-10-12T21:14:35.039732-07:00"
+  },
+  "geometry": {
+    "noSugarloaf": true,
+    "role": "aurora_archipelago",
+    "visualCollisionFailures": 0,
+    "placeId": 0,
+    "holes": [
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 1,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 7,
+        "collisionCupBottomDepth": 0.3500022888183594,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 2,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 24,
+        "collisionCupBottomDepth": 0.3500022888183594,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 3,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 12,
+        "collisionCupBottomDepth": 0.3500022888183594,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 4,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 9,
+        "collisionCupBottomDepth": 0.34999847412109375,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 5,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 12,
+        "collisionCupBottomDepth": 0.34999847412109375,
+        "movers": [
+          {
+            "type": "slide",
+            "id": "geyser_column",
+            "blockers": 1,
+            "range": [
+              0,
+              4
+            ]
+          }
+        ],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 1,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 6,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 8,
+        "collisionCupBottomDepth": 0.34999847412109375,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 7,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 26,
+        "collisionCupBottomDepth": 0.34999847412109375,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 8,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 15,
+        "collisionCupBottomDepth": 0.34999847412109375,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 9,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.34400177001953125,
+        "wallCount": 13,
+        "collisionCupBottomDepth": 0.34999847412109375,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 10,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 20,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 11,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 30,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [
+          {
+            "type": "slide",
+            "id": "ice_floe",
+            "blockers": 3,
+            "range": [
+              -7,
+              0
+            ]
+          }
+        ],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 3,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 12,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 18,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [
+          {
+            "type": "rotate",
+            "id": "paddle_wheel",
+            "blockers": 24,
+            "range": [
+              0,
+              0
+            ]
+          }
+        ],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 24,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 13,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 56,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [
+          {
+            "type": "rotate",
+            "id": "carousel_arms",
+            "blockers": 4,
+            "range": [
+              0,
+              0
+            ]
+          }
+        ],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 4,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 14,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 10,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [
+          {
+            "type": "swing",
+            "id": "icicle_bell",
+            "blockers": 10,
+            "range": [
+              -9,
+              9
+            ]
+          }
+        ],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 10,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 15,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 10,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 16,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 10,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 17,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 16,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [
+          {
+            "type": "keys",
+            "id": "aurora_span",
+            "blockers": 0,
+            "staticReason": "toggle unsupported; spec felt remains solid",
+            "range": []
+          }
+        ],
+        "maxWallPositionError": 0,
+        "pass": true,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "autoResetStill": 3,
+        "missingWalls": [],
+        "maxMoverAngleError": 0,
+        "maxMoverPositionError": 0
+      },
+      {
+        "maxWallAngleError": 0,
+        "maxWallSizeError": 0,
+        "hole": 18,
+        "cupPositionError": 0,
+        "visualCupBottomDepth": 0.343994140625,
+        "wallCount": 16,
+        "collisionCupBottomDepth": 0.3499908447265625,
+        "movers": [],
+        "maxWallPositionError": 0,
+        "moverBlockers": 0,
+        "maxMoverSizeError": 0,
+        "missingMovers": [],
+        "configCupDepth": 0.35,
+        "pass": true,
+        "maxMoverPositionError": 0,
+        "maxMoverAngleError": 0,
+        "missingWalls": []
+      }
+    ],
+    "visualParts": 135
+  },
+  "spec_clearance": {
+    "method": "Spec-space cup centre to oriented wall boxes at ball height; wheel/pendulum corner sweep. Does not prove all dynamic pinch clearances.",
+    "holes": [
+      {
+        "hole": 1,
+        "cup_wall_clearance": 2.5,
+        "nearest_wall": "rail3",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 2,
+        "cup_wall_clearance": 1.0,
+        "nearest_wall": "rail7",
+        "cup_2_2_pass": false,
+        "movers": []
+      },
+      {
+        "hole": 3,
+        "cup_wall_clearance": 5.5,
+        "nearest_wall": "green_rail11",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 4,
+        "cup_wall_clearance": 2.5,
+        "nearest_wall": "rail5",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 5,
+        "cup_wall_clearance": 8.5,
+        "nearest_wall": "upper_rail9",
+        "cup_2_2_pass": true,
+        "movers": [
+          {
+            "id": "geyser_column",
+            "type": "slide",
+            "blockers": 1,
+            "range": [
+              0.0,
+              4.0
+            ],
+            "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+            "animation": "existing constraint driver"
+          }
+        ]
+      },
+      {
+        "hole": 6,
+        "cup_wall_clearance": 5.5,
+        "nearest_wall": "rail4",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 7,
+        "cup_wall_clearance": 2.5,
+        "nearest_wall": "rail13",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 8,
+        "cup_wall_clearance": 5.0,
+        "nearest_wall": "rail4",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 9,
+        "cup_wall_clearance": 6.0,
+        "nearest_wall": "rail7",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 10,
+        "cup_wall_clearance": 4.99996,
+        "nearest_wall": "run_rail14",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 11,
+        "cup_wall_clearance": 5.0,
+        "nearest_wall": "rail8",
+        "cup_2_2_pass": true,
+        "movers": [
+          {
+            "id": "ice_floe",
+            "type": "slide",
+            "blockers": 3,
+            "range": [
+              -7.0,
+              0.0
+            ],
+            "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+            "animation": "existing constraint driver"
+          }
+        ]
+      },
+      {
+        "hole": 12,
+        "cup_wall_clearance": 6.0,
+        "nearest_wall": "rail8",
+        "cup_2_2_pass": true,
+        "movers": [
+          {
+            "id": "paddle_wheel",
+            "type": "rotate",
+            "blockers": 24,
+            "range": null,
+            "min_floor_clearance": 0.06,
+            "passes_006_015": true,
+            "method": "3601 angle samples, all 8 corners per exact blocker, flat felt y=0",
+            "animation": "existing constraint driver"
+          }
+        ]
+      },
+      {
+        "hole": 13,
+        "cup_wall_clearance": 2.9,
+        "nearest_wall": "rail5",
+        "cup_2_2_pass": true,
+        "movers": [
+          {
+            "id": "carousel_arms",
+            "type": "rotate",
+            "blockers": 4,
+            "range": null,
+            "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+            "animation": "existing constraint driver"
+          }
+        ]
+      },
+      {
+        "hole": 14,
+        "cup_wall_clearance": 4.0,
+        "nearest_wall": "rail5",
+        "cup_2_2_pass": true,
+        "movers": [
+          {
+            "id": "icicle_bell",
+            "type": "swing",
+            "blockers": 10,
+            "range": [
+              -9.0,
+              9.0
+            ],
+            "min_floor_clearance": 0.060989,
+            "passes_006_015": true,
+            "method": "3601 angle samples, all 8 corners per exact blocker, flat felt y=0",
+            "animation": "existing constraint driver"
+          }
+        ]
+      },
+      {
+        "hole": 15,
+        "cup_wall_clearance": 6.0,
+        "nearest_wall": "basin_rail9",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 16,
+        "cup_wall_clearance": 4.0,
+        "nearest_wall": "rail4",
+        "cup_2_2_pass": true,
+        "movers": []
+      },
+      {
+        "hole": 17,
+        "cup_wall_clearance": 5.8,
+        "nearest_wall": "green_rail12",
+        "cup_2_2_pass": true,
+        "movers": [
+          {
+            "id": "aurora_span",
+            "type": "toggle",
+            "blockers": 0,
+            "range": null,
+            "clearance_status": "requires engine sweep; no universal floor-gap test for slides, horizontal carousel, or toggle",
+            "animation": "STATIC_SOLID (unsupported profile)"
+          }
+        ]
+      },
+      {
+        "hole": 18,
+        "cup_wall_clearance": 8.0,
+        "nearest_wall": "rail8",
+        "cup_2_2_pass": true,
+        "movers": []
+      }
+    ]
+  },
+  "mover_clearance": {
+    "method": "Sample exact mover OBBs against every spec wall; run with uv run --with numpy.\nSAT separation is a lower bound, not Euclidean closest distance. Subtract a motion\nbound between samples to certify clearance across the continuous sweep.\n",
+    "movers": [
+      {
+        "hole": 5,
+        "id": "geyser_column",
+        "type": "slide",
+        "samples": 3601,
+        "min_sampled_separating_plane_gap": 0.15,
+        "wall": "upper_rail8",
+        "blocker": 1,
+        "pose": 3.35,
+        "between_sample_motion_bound": 0.000556,
+        "continuous_lower_bound": 0.149444,
+        "clearance_006_certified": true
+      },
+      {
+        "hole": 11,
+        "id": "ice_floe",
+        "type": "slide",
+        "samples": 3601,
+        "min_sampled_separating_plane_gap": 0.15,
+        "wall": "rail5__cut0",
+        "blocker": 1,
+        "pose": -6.848333333333334,
+        "between_sample_motion_bound": 0.000972,
+        "continuous_lower_bound": 0.149028,
+        "clearance_006_certified": true
+      },
+      {
+        "hole": 12,
+        "id": "paddle_wheel",
+        "type": "rotate",
+        "samples": 3601,
+        "min_sampled_separating_plane_gap": 0.06,
+        "wall": "rail3",
+        "blocker": 1,
+        "pose": 0.0,
+        "between_sample_motion_bound": 0.003627,
+        "continuous_lower_bound": 0.06,
+        "clearance_006_certified": true
+      },
+      {
+        "hole": 13,
+        "id": "carousel_arms",
+        "type": "rotate",
+        "samples": 3601,
+        "min_sampled_separating_plane_gap": 0.399962,
+        "wall": "hub_plinth_00",
+        "blocker": 3,
+        "pose": 254.10000000000002,
+        "between_sample_motion_bound": 0.010771,
+        "continuous_lower_bound": 0.38919,
+        "clearance_006_certified": true
+      },
+      {
+        "hole": 14,
+        "id": "icicle_bell",
+        "type": "swing",
+        "samples": 3601,
+        "min_sampled_separating_plane_gap": 1.086448,
+        "wall": "rail1",
+        "blocker": 1,
+        "pose": -9.0,
+        "between_sample_motion_bound": 0.000468,
+        "continuous_lower_bound": 1.08598,
+        "clearance_006_certified": true
+      },
+      {
+        "hole": 17,
+        "id": "aurora_span",
+        "type": "toggle",
+        "status": "STATIC_SOLID; no moving blockers in spec"
+      }
+    ]
+  },
+  "holes": [
+    {
+      "hole": 1,
+      "name": "Lantern Quay",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 2.5
+    },
+    {
+      "hole": 2,
+      "name": "Snowpuff Burrows",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 1.0
+    },
+    {
+      "hole": 3,
+      "name": "Glimmer Crossing",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 5.5
+    },
+    {
+      "hole": 4,
+      "name": "Glissade",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 1,
+      "stuck_flags": [
+        {
+          "type": "event",
+          "hole": 4,
+          "t": 34.2302,
+          "event": "flag",
+          "reason": "wedged",
+          "shot": "h4-fuzz-4",
+          "kind": "forcedrest",
+          "label": "h4-fuzz-4",
+          "pos": [
+            182.914,
+            84.0989,
+            460.9039
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "type": "event",
+          "hole": 4,
+          "t": 34.2302,
+          "event": "flag",
+          "reason": "wedged",
+          "shot": "h4-fuzz-4",
+          "kind": "forcedrest",
+          "label": "h4-fuzz-4",
+          "pos": [
+            182.914,
+            84.0989,
+            460.9039
+          ]
+        }
+      ],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 2.5
+    },
+    {
+      "hole": 5,
+      "name": "Geyser Hop",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 6,
+      "expected_slow": 6,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [
+        {
+          "type": "event",
+          "to": [
+            242.3398,
+            84.09,
+            418.0385
+          ],
+          "hole": 5,
+          "t": 88.2269,
+          "event": "flag",
+          "reason": "pinned",
+          "shot": "h5-slow-2",
+          "from": [
+            242.8028,
+            84.0792,
+            418.42
+          ],
+          "kind": "unstuck",
+          "label": "h5-slow-2"
+        }
+      ],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 8.5
+    },
+    {
+      "hole": 6,
+      "name": "Palm Lagoon",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 1,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 5.5
+    },
+    {
+      "hole": 7,
+      "name": "Mogul Meadow",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 2.5
+    },
+    {
+      "hole": 8,
+      "name": "Coral Pinball",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 5.0
+    },
+    {
+      "hole": 9,
+      "name": "Conch Shortcut",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 6.0
+    },
+    {
+      "hole": 10,
+      "name": "Bobsled Bend",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 4.99996
+    },
+    {
+      "hole": 11,
+      "name": "Floe Drift",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 6,
+      "expected_slow": 6,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 5.0
+    },
+    {
+      "hole": 12,
+      "name": "Icebreaker Wheel",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 6,
+      "expected_slow": 6,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 6.0
+    },
+    {
+      "hole": 13,
+      "name": "Snowpuff Carousel",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 6,
+      "expected_slow": 6,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 2.9
+    },
+    {
+      "hole": 14,
+      "name": "Bell Buoy",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 6,
+      "expected_slow": 6,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 4.0
+    },
+    {
+      "hole": 15,
+      "name": "Frozen Falls",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 6.0
+    },
+    {
+      "hole": 16,
+      "name": "Moonwell",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 4.0
+    },
+    {
+      "hole": 17,
+      "name": "Aurora Bridge",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 6,
+      "expected_slow": 6,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 5.8
+    },
+    {
+      "hole": 18,
+      "name": "Halo Arch",
+      "cupdrop_sunk": 3,
+      "cupdrop_total": 3,
+      "random_shots": 8,
+      "slow_rollers": 0,
+      "expected_slow": 0,
+      "escapes": 0,
+      "hazard_returns": 0,
+      "lost_balls": 0,
+      "timeouts": 0,
+      "stuck_shots": 0,
+      "stuck_flags": [],
+      "issues": [],
+      "complete": true,
+      "error": null,
+      "cup_wall_clearance": 8.0
+    }
+  ]
+}
