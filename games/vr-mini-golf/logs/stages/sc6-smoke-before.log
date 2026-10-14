@@ -1,0 +1,102 @@
+[runner] studio Sugarloaf Canyon (placeId: 124440050576723) 46b0b4a2-11cc-4693-8d64-6bdc010db68f
+[runner] mode Edit
+[runner] course arrival {"course": "sugarloaf_canyon", "ballToTee": 0.09, "hole": 1, "anchored": false, "lobby": false, "otherCourse": false} menu {"menuClosedOnArrival": true, "menuButtonTopRight": true} [{"shown": true, "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"}]
+[runner] course menu > lobby {"opened": true, "request": "MetavrseBuilder|lobby|menu|87725688219952", "loading": {"up": "lobby|rbxassetid://75624699940778", "down": "gone"}}
+[runner] course finish > lobby {"hook": "ok", "results": {"countdown": "Back to the lobby in 3 s", "page": "results", "lobbyButton": true}, "request": "MetavrseBuilder|lobby|finished|87725688219952"}
+[runner] course putt {"ok": true, "course": "sugarloaf_canyon", "strokesBefore": 0, "moved": 7.08, "strokesAfter": 1, "hole": 1}
+[runner] mode Edit
+{
+ "role": "sugarloaf_canyon",
+ "device": "desktop",
+ "course": {
+  "arrival": {
+   "course": "sugarloaf_canyon",
+   "ballToTee": 0.09,
+   "hole": 1,
+   "anchored": false,
+   "lobby": false,
+   "otherCourse": false
+  },
+  "menu": {
+   "frame": {
+    "scale": "Enum.ScaleType.Slice",
+    "image": "rbxassetid://125693854537650",
+    "slice": "32, 32, 224, 224"
+   },
+   "menus": [
+    {
+     "shown": true,
+     "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"
+    }
+   ],
+   "menuButtonShown": true,
+   "cam": "Enum.CameraType.Scriptable",
+   "jump": 0,
+   "button": {
+    "screenRight": 1713,
+    "image": "rbxassetid://120033471344558",
+    "y0": -54,
+    "y1": -4,
+    "topbar": [
+     208,
+     1721,
+     58
+    ],
+    "screenTop": 4,
+    "x0": 1663,
+    "x1": 1713
+   },
+   "menuOpen": false,
+   "balls": 1,
+   "closeImage": "",
+   "topRight": true,
+   "course": "sugarloaf_canyon",
+   "viewport": [
+    1721,
+    648
+   ],
+   "golfHud": true,
+   "walkSpeed": 0,
+   "pos": [
+    58.29999923706055,
+    20.99802589416504,
+    -4530
+   ]
+  },
+  "menuClosedOnArrival": true,
+  "menuButtonTopRight": true,
+  "selMenu": "MenuButton",
+  "selLobby": "BackToLobby",
+  "backToLobby": {
+   "opened": true,
+   "request": "MetavrseBuilder|lobby|menu|87725688219952",
+   "loading": {
+    "up": "lobby|rbxassetid://75624699940778",
+    "down": "gone"
+   }
+  },
+  "finish": {
+   "hook": "ok",
+   "results": {
+    "countdown": "Back to the lobby in 3 s",
+    "page": "results",
+    "lobbyButton": true
+   },
+   "request": "MetavrseBuilder|lobby|finished|87725688219952"
+  },
+  "ok": true
+ },
+ "putt": {
+  "ok": true,
+  "course": "sugarloaf_canyon",
+  "strokesBefore": 0,
+  "moved": 7.08,
+  "strokesAfter": 1,
+  "hole": 1
+ },
+ "problems": {
+  "server": [],
+  "client": []
+ }
+}
+[runner] PASS sugarloaf_canyon smoke (desktop), 0 console errors/warnings

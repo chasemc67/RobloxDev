@@ -1,0 +1,4896 @@
+{
+  "h1": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h1",
+      "hole": 1,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.993,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              66,
+              17.73,
+              -4560.5
+            ]
+          },
+          {
+            "rimSpeed": 2.978,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              66,
+              17.73,
+              -4560.5
+            ]
+          },
+          {
+            "rimSpeed": 2.994,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              66,
+              17.73,
+              -4560.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h1-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 85.1,
+                "angleIn": 70.6,
+                "vOut": [
+                  0.2502,
+                  -0.0001,
+                  -2.9187
+                ],
+                "vnOut": 0.25,
+                "tContact": 2.7158,
+                "speedOut": 2.929,
+                "speedIn": 3.174,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.994,
+                "speedRetention": 0.923,
+                "event": "contact",
+                "t": 2.7158,
+                "vtOut": 2.919,
+                "part": "Workspace.CourseSugarloaf.Hole1.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.597,
+                "tangentialRetention": 0.975,
+                "shot": "h1-fuzz-1",
+                "vIn": [
+                  -1.0549,
+                  -0.0001,
+                  -2.9939
+                ],
+                "vnIn": -1.055,
+                "restitution": 0.237,
+                "retentionAfter300ms": 0.818,
+                "pos": [
+                  56.5898,
+                  18.0798,
+                  -4537.54
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 3.973,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.038,
+            "tRest": 6.666,
+            "flags": [],
+            "maxY": 18.098,
+            "distStuds": 13.242,
+            "start": [
+              60,
+              18.0792,
+              -4530
+            ],
+            "tEnd": 6.716,
+            "tStop": 6.165,
+            "finish": [
+              57.0508,
+              18.0793,
+              -4542.9092
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h1-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.4,
+                "angleIn": 7.5,
+                "vOut": [
+                  -1.9247,
+                  -0.3468,
+                  -9.2916
+                ],
+                "vnOut": 9.267,
+                "tContact": 11.1661,
+                "speedOut": 9.489,
+                "speedIn": 15.568,
+                "normal": [
+                  0.0122,
+                  0,
+                  -0.9999
+                ],
+                "type": "event",
+                "vtIn": 2.038,
+                "speedRetention": 0.61,
+                "event": "contact",
+                "t": 11.1661,
+                "vtOut": 2.038,
+                "part": "Workspace.CourseSugarloaf.Hole1.Geometry.Wall:rail6",
+                "speedAfter300ms": 6.381,
+                "tangentialRetention": 1,
+                "shot": "h1-fuzz-2",
+                "vIn": [
+                  -2.227,
+                  -0.0001,
+                  15.4077
+                ],
+                "vnIn": -15.434,
+                "restitution": 0.6,
+                "retentionAfter300ms": 0.41,
+                "pos": [
+                  57.5677,
+                  18.0957,
+                  -4528.2026
+                ]
+              },
+              {
+                "angleOut": 82.5,
+                "angleIn": 72,
+                "vOut": [
+                  0.7391,
+                  -0.0001,
+                  -5.5909
+                ],
+                "vnOut": 0.739,
+                "tContact": 11.6841,
+                "speedOut": 5.64,
+                "speedIn": 6.038,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.742,
+                "speedRetention": 0.934,
+                "event": "contact",
+                "t": 11.6841,
+                "vtOut": 5.591,
+                "part": "Workspace.CourseSugarloaf.Hole1.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.086,
+                "tangentialRetention": 0.974,
+                "shot": "h1-fuzz-2",
+                "vIn": [
+                  -1.8654,
+                  -0.0001,
+                  -5.7422
+                ],
+                "vnIn": -1.865,
+                "restitution": 0.396,
+                "retentionAfter300ms": 0.842,
+                "pos": [
+                  56.5866,
+                  18.0798,
+                  -4531.9893
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.651,
+            "distM": 4.345,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 7.051,
+            "flags": [],
+            "maxY": 18.102,
+            "distStuds": 14.484,
+            "start": [
+              57.9793,
+              18.0792,
+              -4530.644
+            ],
+            "tEnd": 7.101,
+            "tStop": 6.551,
+            "finish": [
+              58.1149,
+              18.0793,
+              -4545.1274
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Trailhead Gate",
+      "seconds": 24.7,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h2": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h2",
+      "hole": 2,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.986,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              89,
+              17.73,
+              -4636
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              89,
+              17.73,
+              -4636
+            ]
+          },
+          {
+            "rimSpeed": 2.723,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              89,
+              17.73,
+              -4636
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h2-fuzz-1",
+            "contacts": [],
+            "piece": "plaza",
+            "maxAlong": 1.921,
+            "distM": 4.243,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "plaza",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.849,
+            "flags": [],
+            "maxY": 18.098,
+            "distStuds": 14.145,
+            "start": [
+              100,
+              18.0793,
+              -4590
+            ],
+            "tEnd": 6.899,
+            "tStop": 6.333,
+            "finish": [
+              94.6078,
+              18.0793,
+              -4603.0767
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h2-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 82.9,
+                "angleIn": 71.4,
+                "vOut": [
+                  0.464,
+                  -0.0001,
+                  -3.7357
+                ],
+                "vnOut": 0.464,
+                "tContact": 13.0644,
+                "speedOut": 3.764,
+                "speedIn": 4.038,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.827,
+                "speedRetention": 0.932,
+                "event": "contact",
+                "t": 13.0644,
+                "vtOut": 3.736,
+                "part": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall:rail5",
+                "speedAfter300ms": 3.368,
+                "tangentialRetention": 0.976,
+                "shot": "h2-fuzz-2",
+                "vIn": [
+                  -1.2885,
+                  -0.0005,
+                  -3.8272
+                ],
+                "vnIn": -1.289,
+                "restitution": 0.36,
+                "retentionAfter300ms": 0.834,
+                "pos": [
+                  89.0829,
+                  18.0798,
+                  -4608.3955
+                ]
+              }
+            ],
+            "piece": "left_tunnel",
+            "maxAlong": 0.861,
+            "distM": 5.162,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "ltun",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 7.083,
+            "flags": [],
+            "maxY": 18.105,
+            "distStuds": 17.206,
+            "start": [
+              92.4385,
+              18.0792,
+              -4598.9941
+            ],
+            "tEnd": 7.133,
+            "tStop": 6.581,
+            "finish": [
+              90.0338,
+              18.0793,
+              -4616.0317
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Mine-Cart Junction",
+      "seconds": 24.87,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h3": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h3",
+      "hole": 3,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.992,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -39.5,
+              17.73,
+              -4669
+            ]
+          },
+          {
+            "rimSpeed": 2.969,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -39.5,
+              17.73,
+              -4669
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -39.5,
+              17.73,
+              -4669
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.054,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h3-fuzz-1",
+            "contacts": [],
+            "piece": "shore",
+            "maxAlong": 1.922,
+            "distM": 4.242,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.849,
+            "flags": [],
+            "maxY": 18.098,
+            "distStuds": 14.142,
+            "start": [
+              -95,
+              18.0793,
+              -4670
+            ],
+            "tEnd": 6.899,
+            "tStop": 6.332,
+            "finish": [
+              -81.9211,
+              18.0793,
+              -4675.3784
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h3-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 11.8,
+                "angleIn": 8.2,
+                "vOut": [
+                  9.2419,
+                  -0.2123,
+                  -1.9364
+                ],
+                "vnOut": 9.242,
+                "tContact": 11.3985,
+                "speedOut": 9.443,
+                "speedIn": 15.491,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.216,
+                "speedRetention": 0.61,
+                "event": "contact",
+                "t": 11.3985,
+                "vtOut": 1.936,
+                "part": "Workspace.CourseSugarloaf.Hole3.Geometry.Wall:rail3",
+                "speedAfter300ms": 6.252,
+                "tangentialRetention": 0.874,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  -15.3319,
+                  -0.0001,
+                  -2.2161
+                ],
+                "vnIn": -15.332,
+                "restitution": 0.603,
+                "retentionAfter300ms": 0.404,
+                "pos": [
+                  -96.8339,
+                  18.0926,
+                  -4679.3804
+                ]
+              },
+              {
+                "angleOut": 82.4,
+                "angleIn": 71.6,
+                "vOut": [
+                  3.4471,
+                  -0.0001,
+                  0.4602
+                ],
+                "vnOut": 0.46,
+                "tContact": 13.2485,
+                "speedOut": 3.478,
+                "speedIn": 3.722,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 3.532,
+                "speedRetention": 0.934,
+                "event": "contact",
+                "t": 13.2485,
+                "vtOut": 3.447,
+                "part": "Workspace.CourseSugarloaf.Hole3.Geometry.Wall:rail4",
+                "speedAfter300ms": 3.084,
+                "tangentialRetention": 0.976,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  3.5316,
+                  -0.0001,
+                  -1.1748
+                ],
+                "vnIn": -1.175,
+                "restitution": 0.392,
+                "retentionAfter300ms": 0.829,
+                "pos": [
+                  -87.0826,
+                  18.0798,
+                  -4682.4194
+                ]
+              }
+            ],
+            "piece": "shore",
+            "maxAlong": 2.911,
+            "distM": 4.207,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.054,
+            "tRest": 7.033,
+            "flags": [],
+            "maxY": 18.102,
+            "distStuds": 14.024,
+            "start": [
+              -94.026,
+              18.0792,
+              -4678.9316
+            ],
+            "tEnd": 7.083,
+            "tStop": 6.534,
+            "finish": [
+              -80.2418,
+              18.0793,
+              -4681.5127
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Ranger's Riverbend",
+      "seconds": 24.82,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h4": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h4",
+      "hole": 4,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.991,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              239,
+              17.73,
+              -4665.5
+            ]
+          },
+          {
+            "rimSpeed": 2.955,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              239,
+              17.73,
+              -4665.5
+            ]
+          },
+          {
+            "rimSpeed": 3.018,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              239,
+              17.73,
+              -4665.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.2,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h4-fuzz-1",
+            "contacts": [],
+            "piece": "slot_a",
+            "maxAlong": 1.922,
+            "distM": 4.245,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "slot_a",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.046,
+            "tRest": 6.851,
+            "flags": [],
+            "maxY": 18.098,
+            "distStuds": 14.149,
+            "start": [
+              200,
+              18.0793,
+              -4670
+            ],
+            "tEnd": 6.901,
+            "tStop": 6.334,
+            "finish": [
+              213.0871,
+              18.0793,
+              -4675.3774
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h4-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 86.7,
+                "angleIn": 68.6,
+                "vOut": [
+                  4.7609,
+                  -0.0001,
+                  0.5357
+                ],
+                "vnOut": 0.277,
+                "tContact": 12.3821,
+                "speedOut": 4.791,
+                "speedIn": 5.137,
+                "normal": [
+                  -0.0542,
+                  0,
+                  0.9985
+                ],
+                "type": "event",
+                "vtIn": 4.783,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 12.3821,
+                "vtOut": 4.783,
+                "part": "Workspace.CourseSugarloaf.Hole4.Geometry.Wall:rail1",
+                "speedAfter300ms": 4.308,
+                "tangentialRetention": 1,
+                "shot": "h4-fuzz-2",
+                "vIn": [
+                  4.8776,
+                  -0.0003,
+                  -1.6128
+                ],
+                "vnIn": -1.875,
+                "restitution": 0.148,
+                "retentionAfter300ms": 0.839,
+                "pos": [
+                  204.8091,
+                  18.0798,
+                  -4675.917
+                ]
+              }
+            ],
+            "piece": "slot_a",
+            "maxAlong": 2.081,
+            "distM": 4.597,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "slot_a",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.2,
+            "tRest": 6.985,
+            "flags": [],
+            "maxY": 18.103,
+            "distStuds": 15.325,
+            "start": [
+              200.149,
+              18.0793,
+              -4673.6504
+            ],
+            "tEnd": 7.035,
+            "tStop": 6.483,
+            "finish": [
+              215.4324,
+              18.0793,
+              -4674.7749
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Crystal Corridor",
+      "seconds": 24.76,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h5": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h5",
+      "hole": 5,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.113,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              279.5,
+              21.73,
+              -4716
+            ]
+          },
+          {
+            "rimSpeed": 3.064,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              279.5,
+              21.73,
+              -4716
+            ]
+          },
+          {
+            "rimSpeed": 3.11,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              279.5,
+              21.73,
+              -4716
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.163,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h5-fuzz-1",
+            "contacts": [],
+            "piece": "plate2",
+            "maxAlong": 1.921,
+            "distM": 3.655,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "s2",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.163,
+            "tRest": 6.515,
+            "flags": [],
+            "maxY": 22.126,
+            "distStuds": 12.185,
+            "start": [
+              280,
+              22.0793,
+              -4674
+            ],
+            "tEnd": 6.565,
+            "tStop": 5.983,
+            "finish": [
+              280.5482,
+              22.0793,
+              -4686.1724
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h5-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 87.4,
+                "angleIn": 81.8,
+                "vOut": [
+                  0.4716,
+                  -0.0001,
+                  10.3014
+                ],
+                "vnOut": 0.472,
+                "tContact": 12.3319,
+                "speedOut": 10.312,
+                "speedIn": 10.548,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": -10.44,
+                "speedRetention": 0.978,
+                "event": "contact",
+                "t": 12.3319,
+                "vtOut": -10.301,
+                "part": "Workspace.CourseSugarloaf.Hole5.Geometry.Wall:rock1",
+                "speedAfter300ms": 9.353,
+                "tangentialRetention": 0.987,
+                "shot": "h5-fuzz-2",
+                "vIn": [
+                  -1.5089,
+                  -0.0001,
+                  10.4396
+                ],
+                "vnIn": -1.509,
+                "restitution": 0.313,
+                "retentionAfter300ms": 0.887,
+                "pos": [
+                  275.0912,
+                  22.0799,
+                  -4681.8135
+                ]
+              },
+              {
+                "angleOut": 4.2,
+                "angleIn": 2.5,
+                "vOut": [
+                  0.3066,
+                  -0.0003,
+                  -4.3088
+                ],
+                "vnOut": 4.308,
+                "tContact": 13.415,
+                "speedOut": 4.32,
+                "speedIn": 7.447,
+                "normal": [
+                  -0.0029,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": -0.319,
+                "speedRetention": 0.58,
+                "event": "contact",
+                "t": 13.415,
+                "vtOut": -0.319,
+                "part": "Workspace.CourseSugarloaf.Hole5.Geometry.Wall:rock8",
+                "speedAfter300ms": 2.717,
+                "tangentialRetention": 1,
+                "shot": "h5-fuzz-2",
+                "vIn": [
+                  0.3406,
+                  -0.0003,
+                  7.4393
+                ],
+                "vnIn": -7.44,
+                "restitution": 0.579,
+                "retentionAfter300ms": 0.365,
+                "pos": [
+                  275.5454,
+                  22.0836,
+                  -4672.1401
+                ]
+              }
+            ],
+            "piece": "plate1",
+            "maxAlong": 29.294,
+            "distM": 7.159,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "s1",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.799,
+            "flags": [],
+            "maxY": 22.084,
+            "distStuds": 23.864,
+            "start": [
+              277.8719,
+              22.0786,
+              -4701.3242
+            ],
+            "tEnd": 6.849,
+            "tStop": 6.282,
+            "finish": [
+              275.9203,
+              22.0787,
+              -4677.5405
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Echo Slot",
+      "seconds": 24.23,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h6": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h6",
+      "hole": 6,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.994,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              276,
+              25.73,
+              -4790
+            ]
+          },
+          {
+            "rimSpeed": 3.064,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              276,
+              25.73,
+              -4790
+            ]
+          },
+          {
+            "rimSpeed": 3.11,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              276,
+              25.73,
+              -4790
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 47.15,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h6-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 82.6,
+                "angleIn": 64.6,
+                "vOut": [
+                  0,
+                  -0.0003,
+                  -1.6208
+                ],
+                "vnOut": -0.209,
+                "tContact": 29.5323,
+                "speedOut": 1.621,
+                "speedIn": 1.779,
+                "normal": [
+                  0.9916,
+                  0,
+                  0.1292
+                ],
+                "type": "event",
+                "vtIn": 1.607,
+                "speedRetention": 0.911,
+                "event": "contact",
+                "t": 29.5323,
+                "vtOut": 1.607,
+                "part": "Workspace.CourseSugarloaf.Hole6.Geometry.Wall:rail1",
+                "speedAfter300ms": 1.364,
+                "tangentialRetention": 1,
+                "shot": "h6-fuzz-1",
+                "vIn": [
+                  -0.5493,
+                  -0.0005,
+                  -1.6924
+                ],
+                "vnIn": -0.763,
+                "restitution": 0.274,
+                "retentionAfter300ms": 0.767,
+                "pos": [
+                  276.0762,
+                  26.0791,
+                  -4754.7827
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 3.731,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.067,
+            "flags": [],
+            "maxY": 26.094,
+            "distStuds": 12.437,
+            "start": [
+              280,
+              26.0787,
+              -4745
+            ],
+            "tEnd": 6.117,
+            "tStop": 5.549,
+            "finish": [
+              276.082,
+              26.0787,
+              -4756.8042
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h6-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 30,
+                "angleIn": 17.3,
+                "vOut": [
+                  -1.3835,
+                  -0.0003,
+                  2.5287
+                ],
+                "vnOut": 2.496,
+                "tContact": 37.4975,
+                "speedOut": 2.882,
+                "speedIn": 4.851,
+                "normal": [
+                  0.0231,
+                  0,
+                  0.9997
+                ],
+                "type": "event",
+                "vtIn": -1.441,
+                "speedRetention": 0.594,
+                "event": "contact",
+                "t": 37.4975,
+                "vtOut": -1.441,
+                "part": "Workspace.CourseSugarloaf.Hole6.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.008,
+                "tangentialRetention": 1,
+                "shot": "h6-fuzz-2",
+                "vIn": [
+                  -1.5481,
+                  -0.0003,
+                  -4.5976
+                ],
+                "vnIn": -4.632,
+                "restitution": 0.539,
+                "retentionAfter300ms": 0.414,
+                "pos": [
+                  270.5194,
+                  26.0788,
+                  -4770.9082
+                ]
+              },
+              {
+                "angleOut": 90,
+                "angleIn": 52,
+                "vOut": [
+                  -0.0001,
+                  -0.0003,
+                  0.799
+                ],
+                "vnOut": 0,
+                "tContact": 38.8646,
+                "speedOut": 0.799,
+                "speedIn": 1.072,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": -0.845,
+                "speedRetention": 0.745,
+                "event": "contact",
+                "t": 38.8646,
+                "vtOut": -0.799,
+                "part": "Workspace.CourseSugarloaf.Hole6.Geometry.Wall:rail3",
+                "speedAfter300ms": 0.608,
+                "tangentialRetention": 0.945,
+                "shot": "h6-fuzz-2",
+                "vIn": [
+                  -0.66,
+                  -0.0005,
+                  0.8452
+                ],
+                "vnIn": -0.66,
+                "restitution": 0,
+                "retentionAfter300ms": 0.567,
+                "pos": [
+                  269.0774,
+                  26.0785,
+                  -4768.9951
+                ]
+              }
+            ],
+            "piece": "basin",
+            "maxAlong": 0.86,
+            "distM": 1.775,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "basin",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 4.416,
+            "flags": [],
+            "maxY": 26.102,
+            "distStuds": 5.917,
+            "start": [
+              273.0904,
+              26.0786,
+              -4763.9941
+            ],
+            "tEnd": 4.466,
+            "tStop": 3.9,
+            "finish": [
+              269.0797,
+              26.0787,
+              -4768.3442
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Flash Flood",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "sluice_gate",
+          "period": 7.866666666666667,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                278.1322,
+                26.0787,
+                -4794.1973
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 3.93,
+              "blocked": false,
+              "finish": [
+                278.1164,
+                26.0787,
+                -4794.0859
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.172
+    }
+  },
+  "h7": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h7",
+      "hole": 7,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.961,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              343,
+              69.73,
+              -4910
+            ]
+          },
+          {
+            "rimSpeed": 2.962,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              343,
+              69.73,
+              -4910
+            ]
+          },
+          {
+            "rimSpeed": 2.984,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              343,
+              69.73,
+              -4910
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h7-fuzz-1",
+            "contacts": [],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 3.929,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 5.966,
+            "flags": [],
+            "maxY": 70.094,
+            "distStuds": 13.096,
+            "start": [
+              340,
+              70.0787,
+              -4850
+            ],
+            "tEnd": 6.016,
+            "tStop": 5.448,
+            "finish": [
+              335.2867,
+              70.0787,
+              -4862.2187
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h7-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 11.7,
+                "angleIn": 8.2,
+                "vOut": [
+                  -1.928,
+                  0.0665,
+                  -9.3347
+                ],
+                "vnOut": 9.335,
+                "tContact": 10.4828,
+                "speedOut": 9.532,
+                "speedIn": 15.643,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 2.238,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 10.4828,
+                "vtOut": 1.928,
+                "part": "Workspace.CourseSugarloaf.Hole7.Geometry.Wall:rail3",
+                "speedAfter300ms": 6.628,
+                "tangentialRetention": 0.862,
+                "shot": "h7-fuzz-2",
+                "vIn": [
+                  -2.2378,
+                  -0.0001,
+                  15.4821
+                ],
+                "vnIn": -15.482,
+                "restitution": 0.603,
+                "retentionAfter300ms": 0.424,
+                "pos": [
+                  336.614,
+                  70.0847,
+                  -4848.0815
+                ]
+              },
+              {
+                "angleOut": 82.8,
+                "angleIn": 72.6,
+                "vOut": [
+                  0.624,
+                  -0.0001,
+                  -4.9618
+                ],
+                "vnOut": 0.624,
+                "tContact": 11.2984,
+                "speedOut": 5.001,
+                "speedIn": 5.318,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.075,
+                "speedRetention": 0.94,
+                "event": "contact",
+                "t": 11.2985,
+                "vtOut": 4.962,
+                "part": "Workspace.CourseSugarloaf.Hole7.Geometry.Wall:rail4",
+                "speedAfter300ms": 4.484,
+                "tangentialRetention": 0.978,
+                "shot": "h7-fuzz-2",
+                "vIn": [
+                  -1.5903,
+                  -0.0003,
+                  -5.0745
+                ],
+                "vnIn": -1.59,
+                "restitution": 0.392,
+                "retentionAfter300ms": 0.843,
+                "pos": [
+                  335.0849,
+                  70.0797,
+                  -4853.5923
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.592,
+            "distM": 4.221,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.029,
+            "tRest": 6.997,
+            "flags": [],
+            "maxY": 70.103,
+            "distStuds": 14.071,
+            "start": [
+              337.0015,
+              70.0786,
+              -4850.644
+            ],
+            "tEnd": 7.047,
+            "tStop": 6.481,
+            "finish": [
+              336.5375,
+              70.0793,
+              -4864.707
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Rope Bridge Run",
+      "seconds": 23.93,
+      "stuck": 0,
+      "par": 4,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h8": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h8",
+      "hole": 8,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.986,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              365,
+              69.73,
+              -5000
+            ]
+          },
+          {
+            "rimSpeed": 2.967,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              365,
+              69.73,
+              -5000
+            ]
+          },
+          {
+            "rimSpeed": 2.987,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              365,
+              69.73,
+              -5000
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h8-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 25.5,
+                "angleIn": 19.5,
+                "vOut": [
+                  -0.909,
+                  0.7696,
+                  -1.903
+                ],
+                "vnOut": -1.903,
+                "tContact": 2.8667,
+                "speedOut": 2.109,
+                "speedIn": 2.849,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": -0.952,
+                "speedRetention": 0.74,
+                "event": "contact",
+                "t": 2.8667,
+                "vtOut": -0.909,
+                "part": "Workspace.CourseSugarloaf.Hole8.Geometry.Felt",
+                "speedAfter300ms": 1.146,
+                "tangentialRetention": 0.955,
+                "shot": "h8-fuzz-1",
+                "vIn": [
+                  -0.9522,
+                  -0.0001,
+                  -2.6851
+                ],
+                "vnIn": -2.685,
+                "restitution": 0.709,
+                "retentionAfter300ms": 0.402,
+                "pos": [
+                  356.357,
+                  70.0995,
+                  -4953.0371
+                ]
+              },
+              {
+                "angleOut": 89.9,
+                "angleIn": 53.4,
+                "vOut": [
+                  0,
+                  -0.5459,
+                  -1.3792
+                ],
+                "vnOut": 0.003,
+                "tContact": 3.2009,
+                "speedOut": 1.379,
+                "speedIn": 1.266,
+                "normal": [
+                  1,
+                  0,
+                  -0.0019
+                ],
+                "type": "event",
+                "vtIn": 1.016,
+                "speedRetention": 1.089,
+                "event": "contact",
+                "t": 3.2009,
+                "vtOut": 1.379,
+                "part": "Workspace.CourseSugarloaf.Hole8.Geometry.Wall:rail3",
+                "speedAfter300ms": 1.982,
+                "tangentialRetention": 1.357,
+                "shot": "h8-fuzz-1",
+                "vIn": [
+                  -0.7575,
+                  -0.4081,
+                  -1.0147
+                ],
+                "vnIn": -0.756,
+                "restitution": 0.003,
+                "retentionAfter300ms": 1.565,
+                "pos": [
+                  356.079,
+                  70.171,
+                  -4953.3872
+                ]
+              }
+            ],
+            "piece": "crease1",
+            "maxAlong": 1.982,
+            "distM": 3.841,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "dips",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.614,
+            "flags": [],
+            "maxY": 70.202,
+            "distStuds": 12.804,
+            "start": [
+              360,
+              70.0787,
+              -4945
+            ],
+            "tEnd": 6.664,
+            "tStop": 6.099,
+            "finish": [
+              356.1761,
+              70.0793,
+              -4957.2192
+            ]
+          },
+          {
+            "v0": 19.267,
+            "speedMps": 5.780054082976791,
+            "label": "h8-fuzz-3",
+            "contacts": [
+              {
+                "angleOut": 7.7,
+                "angleIn": 5.3,
+                "vOut": [
+                  -10.3271,
+                  0.089,
+                  -1.3899
+                ],
+                "vnOut": 10.327,
+                "tContact": 11.8324,
+                "speedOut": 10.42,
+                "speedIn": 17.124,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": -1.585,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 11.8324,
+                "vtOut": -1.39,
+                "part": "Workspace.CourseSugarloaf.Hole8.Geometry.Wall:rail19",
+                "speedAfter300ms": 7.378,
+                "tangentialRetention": 0.877,
+                "shot": "h8-fuzz-3",
+                "vIn": [
+                  17.0506,
+                  -0.0001,
+                  -1.5853
+                ],
+                "vnIn": -17.051,
+                "restitution": 0.606,
+                "retentionAfter300ms": 0.431,
+                "pos": [
+                  363.8611,
+                  70.0903,
+                  -4987.6704
+                ]
+              },
+              {
+                "angleOut": 20,
+                "angleIn": 12,
+                "vOut": [
+                  1.9244,
+                  0,
+                  -0.6999
+                ],
+                "vnOut": 1.924,
+                "tContact": 14.0168,
+                "speedOut": 2.048,
+                "speedIn": 3.701,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 0.768,
+                "speedRetention": 0.553,
+                "event": "contact",
+                "t": 14.0168,
+                "vtOut": 0.7,
+                "part": "Workspace.CourseSugarloaf.Hole8.Geometry.Wall:rail15",
+                "speedAfter300ms": 1.386,
+                "tangentialRetention": 0.912,
+                "shot": "h8-fuzz-3",
+                "vIn": [
+                  -3.6209,
+                  -0.0001,
+                  -0.7677
+                ],
+                "vnIn": -3.621,
+                "restitution": 0.531,
+                "retentionAfter300ms": 0.374,
+                "pos": [
+                  351.0972,
+                  70.0807,
+                  -4990.2241
+                ]
+              }
+            ],
+            "piece": "green",
+            "maxAlong": 7.328,
+            "distM": 1.645,
+            "outcome": "rest",
+            "speed": 19.267,
+            "zone": "green",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 5.732,
+            "flags": [],
+            "maxY": 70.109,
+            "distStuds": 5.484,
+            "start": [
+              356.6008,
+              70.0792,
+              -4986.9717
+            ],
+            "tEnd": 5.782,
+            "tStop": 5.232,
+            "finish": [
+              353.1705,
+              70.0793,
+              -4991.2505
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Gumdrop Gulch",
+      "seconds": 23.78,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h9": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h9",
+      "hole": 9,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.994,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              372,
+              69.73,
+              -5111.5
+            ]
+          },
+          {
+            "rimSpeed": 2.966,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              372,
+              69.73,
+              -5111.5
+            ]
+          },
+          {
+            "rimSpeed": 2.99,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              372,
+              69.73,
+              -5111.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 48.51,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h9-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.7,
+                "angleIn": 8.7,
+                "vOut": [
+                  8.4115,
+                  -0.3212,
+                  -1.9018
+                ],
+                "vnOut": 8.412,
+                "tContact": 24.5628,
+                "speedOut": 8.624,
+                "speedIn": 14.165,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.144,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 24.5628,
+                "vtOut": 1.902,
+                "part": "Workspace.CourseSugarloaf.Hole9.Geometry.Wall:rail12",
+                "speedAfter300ms": 5.769,
+                "tangentialRetention": 0.887,
+                "shot": "h9-fuzz-1",
+                "vIn": [
+                  -14.0014,
+                  -0.0001,
+                  -2.1441
+                ],
+                "vnIn": -14.001,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.407,
+                "pos": [
+                  328.1606,
+                  70.0912,
+                  -5110.3232
+                ]
+              },
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  2.4956,
+                  -0.0001,
+                  0
+                ],
+                "vnOut": 0,
+                "tContact": 26.979,
+                "speedOut": 2.496,
+                "speedIn": 2.723,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 2.568,
+                "speedRetention": 0.917,
+                "event": "contact",
+                "t": 26.979,
+                "vtOut": 2.496,
+                "part": "Workspace.CourseSugarloaf.Hole9.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.201,
+                "tangentialRetention": 0.972,
+                "shot": "h9-fuzz-1",
+                "vIn": [
+                  2.5682,
+                  -0.0001,
+                  -0.9044
+                ],
+                "vnIn": -0.904,
+                "restitution": 0,
+                "retentionAfter300ms": 0.808,
+                "pos": [
+                  338.989,
+                  70.0798,
+                  -5113.9238
+                ]
+              }
+            ],
+            "piece": "approach",
+            "maxAlong": 1.922,
+            "distM": 4.204,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.717,
+            "flags": [],
+            "maxY": 70.098,
+            "distStuds": 14.013,
+            "start": [
+              330,
+              70.0793,
+              -5110
+            ],
+            "tEnd": 6.767,
+            "tStop": 6.199,
+            "finish": [
+              343.4547,
+              70.0793,
+              -5113.918
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h9-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.4,
+                "angleIn": 8.2,
+                "vOut": [
+                  7.4865,
+                  -0.4365,
+                  -1.6457
+                ],
+                "vnOut": 7.487,
+                "tContact": 35.7971,
+                "speedOut": 7.665,
+                "speedIn": 12.65,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.809,
+                "speedRetention": 0.606,
+                "event": "contact",
+                "t": 35.7971,
+                "vtOut": 1.646,
+                "part": "Workspace.CourseSugarloaf.Hole9.Geometry.Wall:rail12",
+                "speedAfter300ms": 5.049,
+                "tangentialRetention": 0.91,
+                "shot": "h9-fuzz-2",
+                "vIn": [
+                  -12.52,
+                  0,
+                  -1.8095
+                ],
+                "vnIn": -12.52,
+                "restitution": 0.598,
+                "retentionAfter300ms": 0.399,
+                "pos": [
+                  328.1735,
+                  70.0898,
+                  -5113.0161
+                ]
+              },
+              {
+                "angleOut": 83.2,
+                "angleIn": 71.3,
+                "vOut": [
+                  4.3665,
+                  -0.0001,
+                  0.5238
+                ],
+                "vnOut": 0.524,
+                "tContact": 36.347,
+                "speedOut": 4.398,
+                "speedIn": 4.727,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 4.477,
+                "speedRetention": 0.93,
+                "event": "contact",
+                "t": 36.347,
+                "vtOut": 4.366,
+                "part": "Workspace.CourseSugarloaf.Hole9.Geometry.Wall:rail1",
+                "speedAfter300ms": 3.912,
+                "tangentialRetention": 0.975,
+                "shot": "h9-fuzz-2",
+                "vIn": [
+                  4.4768,
+                  -0.0001,
+                  -1.5187
+                ],
+                "vnIn": -1.519,
+                "restitution": 0.345,
+                "retentionAfter300ms": 0.828,
+                "pos": [
+                  331.3349,
+                  70.0797,
+                  -5113.9136
+                ]
+              }
+            ],
+            "piece": "approach",
+            "maxAlong": 13,
+            "distM": 0.501,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.999,
+            "flags": [],
+            "maxY": 70.095,
+            "distStuds": 1.67,
+            "start": [
+              340.994,
+              70.0792,
+              -5111.1279
+            ],
+            "tEnd": 7.049,
+            "tStop": 6.482,
+            "finish": [
+              340.8216,
+              70.0793,
+              -5112.7891
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Lollipop Windmill",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "windpump",
+          "period": 18,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "cup",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                372,
+                69.73,
+                -5111.5
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "cup",
+              "zone": "green",
+              "phase": 9,
+              "blocked": false,
+              "finish": [
+                372,
+                69.73,
+                -5111.5
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.167
+    }
+  },
+  "h10": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h10",
+      "hole": 10,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.078,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              283,
+              112.13,
+              -5266.5
+            ]
+          },
+          {
+            "rimSpeed": 2.938,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              283,
+              112.13,
+              -5266.5
+            ]
+          },
+          {
+            "rimSpeed": 2.994,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              283,
+              112.13,
+              -5266.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.113,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h10-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 81.9,
+                "angleIn": 70.6,
+                "vOut": [
+                  -0.4304,
+                  -0.0001,
+                  3.0415
+                ],
+                "vnOut": 0.43,
+                "tContact": 2.6301,
+                "speedOut": 3.072,
+                "speedIn": 3.308,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.12,
+                "speedRetention": 0.929,
+                "event": "contact",
+                "t": 2.6301,
+                "vtOut": 3.041,
+                "part": "Workspace.CourseSugarloaf.Hole10.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.729,
+                "tangentialRetention": 0.975,
+                "shot": "h10-fuzz-1",
+                "vIn": [
+                  1.0991,
+                  -0.0001,
+                  3.1196
+                ],
+                "vnIn": -1.099,
+                "restitution": 0.392,
+                "retentionAfter300ms": 0.825,
+                "pos": [
+                  293.4201,
+                  116.0798,
+                  -5292.4971
+                ]
+              }
+            ],
+            "piece": "deck",
+            "maxAlong": 1.921,
+            "distM": 4.102,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "deck",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.731,
+            "flags": [],
+            "maxY": 116.098,
+            "distStuds": 13.672,
+            "start": [
+              290,
+              116.0793,
+              -5300
+            ],
+            "tEnd": 6.781,
+            "tStop": 6.216,
+            "finish": [
+              292.5793,
+              116.0793,
+              -5286.5737
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h10-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.1,
+                "angleIn": 71.4,
+                "vOut": [
+                  -0.8795,
+                  -0.0001,
+                  5.5975
+                ],
+                "vnOut": 0.879,
+                "tContact": 11.7639,
+                "speedOut": 5.666,
+                "speedIn": 6.07,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.752,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 11.7639,
+                "vtOut": 5.597,
+                "part": "Workspace.CourseSugarloaf.Hole10.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.126,
+                "tangentialRetention": 0.973,
+                "shot": "h10-fuzz-2",
+                "vIn": [
+                  1.9389,
+                  -0.0005,
+                  5.7521
+                ],
+                "vnIn": -1.939,
+                "restitution": 0.454,
+                "retentionAfter300ms": 0.844,
+                "pos": [
+                  293.4305,
+                  116.0798,
+                  -5297.541
+                ]
+              },
+              {
+                "angleOut": 17.5,
+                "angleIn": 7.7,
+                "vOut": [
+                  -0.1863,
+                  -0.0001,
+                  -0.5912
+                ],
+                "vnOut": 0.591,
+                "tContact": 15.1643,
+                "speedOut": 0.62,
+                "speedIn": 1.491,
+                "normal": [
+                  0.001,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "speedRetention": 0.416,
+                "vtIn": 0.199,
+                "t": 15.1644,
+                "vtOut": 0.187,
+                "part": "Workspace.CourseSugarloaf.Hole10.Geometry.Wall:rail3",
+                "speedAfter300ms": 0.48,
+                "event": "contact",
+                "shot": "h10-fuzz-2",
+                "vIn": [
+                  -0.2,
+                  -0.0001,
+                  1.4773
+                ],
+                "vnIn": -1.478,
+                "restitution": 0.4,
+                "retentionAfter300ms": 0.322,
+                "pos": [
+                  291.8705,
+                  116.0797,
+                  -5286.0815
+                ]
+              }
+            ],
+            "piece": "deck",
+            "maxAlong": 1.607,
+            "distM": 4.138,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "deck",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.113,
+            "tRest": 5.65,
+            "flags": [],
+            "maxY": 116.104,
+            "distStuds": 13.794,
+            "start": [
+              292.0208,
+              116.0793,
+              -5300.3462
+            ],
+            "tEnd": 5.7,
+            "tStop": 5.133,
+            "finish": [
+              291.7235,
+              116.0793,
+              -5286.5552
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Sluice Chute",
+      "seconds": 23.43,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h11": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h11",
+      "hole": 11,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.966,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              150,
+              119.73,
+              -5295
+            ]
+          },
+          {
+            "rimSpeed": 2.969,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              150,
+              119.73,
+              -5295
+            ]
+          },
+          {
+            "rimSpeed": 3.06,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              150,
+              119.73,
+              -5295
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 119.56,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.246,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h11-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.9,
+                "angleIn": 8.7,
+                "vOut": [
+                  -1.9188,
+                  -0.3236,
+                  -8.3651
+                ],
+                "vnOut": 8.365,
+                "tContact": 96.0459,
+                "speedOut": 8.582,
+                "speedIn": 14.091,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 2.14,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 96.0459,
+                "vtOut": 1.919,
+                "part": "Workspace.CourseSugarloaf.Hole11.Geometry.Wall:rail12",
+                "speedAfter300ms": 5.745,
+                "tangentialRetention": 0.897,
+                "shot": "h11-fuzz-1",
+                "vIn": [
+                  -2.1402,
+                  -0.0001,
+                  13.9271
+                ],
+                "vnIn": -13.927,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.408,
+                "pos": [
+                  149.6771,
+                  116.0912,
+                  -5250.166
+                ]
+              }
+            ],
+            "piece": "approach__cut0",
+            "maxAlong": 1.909,
+            "distM": 4.109,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.063,
+            "tRest": 6.701,
+            "flags": [],
+            "maxY": 116.098,
+            "distStuds": 13.696,
+            "start": [
+              150,
+              116.0718,
+              -5252
+            ],
+            "tEnd": 6.751,
+            "tStop": 6.167,
+            "finish": [
+              144.7049,
+              116.0793,
+              -5264.6313
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h11-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.3,
+                "angleIn": 8.2,
+                "vOut": [
+                  -1.7542,
+                  -0.2253,
+                  -8.0506
+                ],
+                "vnOut": 8.051,
+                "tContact": 107.0281,
+                "speedOut": 8.24,
+                "speedIn": 13.548,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 1.938,
+                "speedRetention": 0.608,
+                "event": "contact",
+                "t": 107.0281,
+                "vtOut": 1.754,
+                "part": "Workspace.CourseSugarloaf.Hole11.Geometry.Wall:rail12",
+                "speedAfter300ms": 5.461,
+                "tangentialRetention": 0.905,
+                "shot": "h11-fuzz-2",
+                "vIn": [
+                  -1.938,
+                  -0.0001,
+                  13.4082
+                ],
+                "vnIn": -13.408,
+                "restitution": 0.6,
+                "retentionAfter300ms": 0.403,
+                "pos": [
+                  147.6022,
+                  116.0877,
+                  -5250.1362
+                ]
+              },
+              {
+                "angleOut": 90,
+                "angleIn": 71.2,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  -1.6842
+                ],
+                "vnOut": 0,
+                "tContact": 109.946,
+                "speedOut": 1.684,
+                "speedIn": 1.861,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.762,
+                "speedRetention": 0.905,
+                "event": "contact",
+                "t": 109.946,
+                "vtOut": 1.684,
+                "part": "Workspace.CourseSugarloaf.Hole11.Geometry.Wall:rail3",
+                "speedAfter300ms": 1.411,
+                "tangentialRetention": 0.956,
+                "shot": "h11-fuzz-2",
+                "vIn": [
+                  -0.5986,
+                  -0.0005,
+                  -1.7617
+                ],
+                "vnIn": -0.599,
+                "restitution": 0,
+                "retentionAfter300ms": 0.758,
+                "pos": [
+                  144.0778,
+                  116.079,
+                  -5261.0742
+                ]
+              }
+            ],
+            "piece": "approach__cut0",
+            "maxAlong": 9.535,
+            "distM": 1.835,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.246,
+            "tRest": 6.584,
+            "flags": [],
+            "maxY": 116.097,
+            "distStuds": 6.117,
+            "start": [
+              148.9896,
+              116.0792,
+              -5259.5591
+            ],
+            "tEnd": 6.634,
+            "tStop": 6.051,
+            "finish": [
+              144.082,
+              116.0793,
+              -5263.2104
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Floodgate Lock",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "quay_lip",
+          "period": 10.7,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h11-sweep-quay_lip-0",
+                  "id": "lock_lift",
+                  "t": 13.8323,
+                  "event": "flag",
+                  "shot": "h11-sweep-quay_lip-0",
+                  "speedOut": 6.85,
+                  "speedIn": 13.7,
+                  "kind": "teleport",
+                  "hole": 11,
+                  "pos": [
+                    150,
+                    120.09,
+                    -5279
+                  ]
+                }
+              ],
+              "outcome": "cup",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                150,
+                119.73,
+                -5295
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 5.35,
+              "blocked": false,
+              "finish": [
+                146.9431,
+                116.0719,
+                -5252.4507
+              ]
+            }
+          ]
+        },
+        {
+          "mover": "lock_gate",
+          "period": 10.7,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h11-sweep-lock_gate-0",
+                  "id": "lock_lift",
+                  "t": 45.9315,
+                  "event": "flag",
+                  "shot": "h11-sweep-lock_gate-0",
+                  "speedOut": 6.741,
+                  "speedIn": 13.481,
+                  "kind": "teleport",
+                  "hole": 11,
+                  "pos": [
+                    150,
+                    120.09,
+                    -5279
+                  ]
+                }
+              ],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                150,
+                120.0719,
+                -5292.5649
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 5.35,
+              "blocked": false,
+              "finish": [
+                147.0902,
+                116.0719,
+                -5254.6309
+              ]
+            }
+          ]
+        },
+        {
+          "mover": "lock_lift_deck",
+          "period": 10.7,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h11-sweep-lock_lift_deck-0",
+                  "id": "lock_lift",
+                  "t": 78.0297,
+                  "event": "flag",
+                  "shot": "h11-sweep-lock_lift_deck-0",
+                  "speedOut": 6.741,
+                  "speedIn": 13.481,
+                  "kind": "teleport",
+                  "hole": 11,
+                  "pos": [
+                    150,
+                    120.09,
+                    -5279
+                  ]
+                }
+              ],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                150,
+                120.0793,
+                -5293.1353
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 5.35,
+              "blocked": false,
+              "finish": [
+                146.95,
+                116.0793,
+                -5252.6431
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0
+    }
+  },
+  "h12": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h12",
+      "hole": 12,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.997,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -142,
+              115.73,
+              -5268
+            ]
+          },
+          {
+            "rimSpeed": 2.968,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -142,
+              115.73,
+              -5268
+            ]
+          },
+          {
+            "rimSpeed": 2.99,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -142,
+              115.73,
+              -5268
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.196,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h12-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 84.6,
+                "angleIn": 65.2,
+                "vOut": [
+                  2.3565,
+                  -0.0001,
+                  0
+                ],
+                "vnOut": -0.223,
+                "tContact": 3.2323,
+                "speedOut": 2.356,
+                "speedIn": 2.585,
+                "normal": [
+                  -0.0948,
+                  0,
+                  0.9955
+                ],
+                "type": "event",
+                "vtIn": 2.346,
+                "speedRetention": 0.912,
+                "event": "contact",
+                "t": 3.2323,
+                "vtOut": 2.346,
+                "part": "Workspace.CourseSugarloaf.Hole12.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.062,
+                "tangentialRetention": 1,
+                "shot": "h12-fuzz-1",
+                "vIn": [
+                  2.4383,
+                  -0.0005,
+                  -0.8584
+                ],
+                "vnIn": -1.086,
+                "restitution": 0.206,
+                "retentionAfter300ms": 0.798,
+                "pos": [
+                  -190.9787,
+                  116.0798,
+                  -5273.9321
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.98,
+            "distM": 4.071,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.196,
+            "tRest": 6.731,
+            "flags": [],
+            "maxY": 116.098,
+            "distStuds": 13.569,
+            "start": [
+              -200,
+              116.0793,
+              -5270
+            ],
+            "tEnd": 6.781,
+            "tStop": 6.2,
+            "finish": [
+              -187.009,
+              116.0793,
+              -5273.918
+            ]
+          },
+          {
+            "v0": 19.267,
+            "speedMps": 5.780054082976791,
+            "label": "h12-fuzz-3",
+            "contacts": [
+              {
+                "angleOut": 7.7,
+                "angleIn": 5.3,
+                "vOut": [
+                  1.3898,
+                  0.089,
+                  -10.3272
+                ],
+                "vnOut": 10.327,
+                "tContact": 11.9486,
+                "speedOut": 10.42,
+                "speedIn": 17.145,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": -1.587,
+                "speedRetention": 0.608,
+                "event": "contact",
+                "t": 11.9486,
+                "vtOut": -1.39,
+                "part": "Workspace.CourseSugarloaf.Hole12.Geometry.Wall:rail2",
+                "speedAfter300ms": 7.215,
+                "tangentialRetention": 0.876,
+                "shot": "h12-fuzz-3",
+                "vIn": [
+                  1.5872,
+                  -0.0001,
+                  17.071
+                ],
+                "vnIn": -17.071,
+                "restitution": 0.605,
+                "retentionAfter300ms": 0.421,
+                "pos": [
+                  -193.4384,
+                  116.0903,
+                  -5266.1387
+                ]
+              },
+              {
+                "angleOut": 19,
+                "angleIn": 12,
+                "vOut": [
+                  1.0032,
+                  -0.0001,
+                  2.9149
+                ],
+                "vnOut": 2.915,
+                "tContact": 13.0802,
+                "speedOut": 3.083,
+                "speedIn": 5.325,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 1.104,
+                "speedRetention": 0.579,
+                "event": "contact",
+                "t": 13.0802,
+                "vtOut": 1.003,
+                "part": "Workspace.CourseSugarloaf.Hole12.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.027,
+                "tangentialRetention": 0.908,
+                "shot": "h12-fuzz-3",
+                "vIn": [
+                  1.1041,
+                  -0.0001,
+                  -5.2088
+                ],
+                "vnIn": -5.209,
+                "restitution": 0.56,
+                "retentionAfter300ms": 0.381,
+                "pos": [
+                  -191.9516,
+                  116.0811,
+                  -5273.9131
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 7.294,
+            "distM": 1.363,
+            "outcome": "rest",
+            "speed": 19.267,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 5.132,
+            "flags": [],
+            "maxY": 116.109,
+            "distStuds": 4.544,
+            "start": [
+              -194.135,
+              116.0793,
+              -5273.3994
+            ],
+            "tEnd": 5.182,
+            "tStop": 4.615,
+            "finish": [
+              -190.4233,
+              116.0793,
+              -5270.7788
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Intake Tower",
+      "seconds": 23.33,
+      "stuck": 0,
+      "par": 4,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h13": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h13",
+      "hole": 13,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.989,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -300.5,
+              149.73,
+              -5239
+            ]
+          },
+          {
+            "rimSpeed": 2.992,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -300.5,
+              149.73,
+              -5239
+            ]
+          },
+          {
+            "rimSpeed": 2.993,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -300.5,
+              149.73,
+              -5239
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h13-fuzz-1",
+            "contacts": [],
+            "piece": "foyer",
+            "maxAlong": 1.921,
+            "distM": 4.211,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "foyer",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.766,
+            "flags": [],
+            "maxY": 150.098,
+            "distStuds": 14.036,
+            "start": [
+              -300,
+              150.0793,
+              -5290
+            ],
+            "tEnd": 6.816,
+            "tStop": 6.265,
+            "finish": [
+              -294.6423,
+              150.0793,
+              -5277.0269
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h13-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 71.4,
+                "vOut": [
+                  0,
+                  -0.0005,
+                  1.7865
+                ],
+                "vnOut": 0,
+                "tContact": 14.832,
+                "speedOut": 1.787,
+                "speedIn": 1.945,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.844,
+                "speedRetention": 0.918,
+                "event": "contact",
+                "t": 14.832,
+                "vtOut": 1.787,
+                "part": "Workspace.CourseSugarloaf.Hole13.Geometry.Wall:rail3",
+                "speedAfter300ms": 1.533,
+                "tangentialRetention": 0.969,
+                "shot": "h13-fuzz-2",
+                "vIn": [
+                  0.6208,
+                  -0.0001,
+                  1.8435
+                ],
+                "vnIn": -0.621,
+                "restitution": 0,
+                "retentionAfter300ms": 0.788,
+                "pos": [
+                  -286.0792,
+                  150.0797,
+                  -5270.7495
+                ]
+              }
+            ],
+            "piece": "west",
+            "maxAlong": 1.234,
+            "distM": 5.186,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "west",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.031,
+            "flags": [],
+            "maxY": 150.105,
+            "distStuds": 17.287,
+            "start": [
+              -291.1348,
+              150.0793,
+              -5284.6758
+            ],
+            "tEnd": 7.081,
+            "tStop": 6.516,
+            "finish": [
+              -286.082,
+              150.0793,
+              -5268.1436
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Hoodoo Maze",
+      "seconds": 24.76,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h14": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h14",
+      "hole": 14,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.983,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -301,
+              150.53,
+              -5156
+            ]
+          },
+          {
+            "rimSpeed": 2.987,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -301,
+              150.53,
+              -5156
+            ]
+          },
+          {
+            "rimSpeed": 2.995,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -301,
+              150.53,
+              -5156
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 47.97,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.213,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h14-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.7,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  2.4082
+                ],
+                "vnOut": 0,
+                "tContact": 26.4327,
+                "speedOut": 2.408,
+                "speedIn": 2.612,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.465,
+                "speedRetention": 0.922,
+                "event": "contact",
+                "t": 26.4327,
+                "vtOut": 2.408,
+                "part": "Workspace.CourseSugarloaf.Hole14.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.104,
+                "tangentialRetention": 0.977,
+                "shot": "h14-fuzz-1",
+                "vIn": [
+                  0.8653,
+                  -0.0001,
+                  2.4648
+                ],
+                "vnIn": -0.865,
+                "restitution": 0,
+                "retentionAfter300ms": 0.805,
+                "pos": [
+                  -296.0791,
+                  150.0797,
+                  -5191.0396
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.904,
+            "distM": 4.086,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.046,
+            "tRest": 6.648,
+            "flags": [],
+            "maxY": 150.098,
+            "distStuds": 13.62,
+            "start": [
+              -300,
+              150.0793,
+              -5200
+            ],
+            "tEnd": 6.698,
+            "tStop": 6.132,
+            "finish": [
+              -296.082,
+              150.0793,
+              -5186.9556
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h14-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.2,
+                "angleIn": 8.2,
+                "vOut": [
+                  2.0231,
+                  0.0869,
+                  9.3495
+                ],
+                "vnOut": 9.35,
+                "tContact": 34.4151,
+                "speedOut": 9.566,
+                "speedIn": 15.648,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 2.239,
+                "speedRetention": 0.611,
+                "event": "contact",
+                "t": 34.4152,
+                "vtOut": 2.023,
+                "part": "Workspace.CourseSugarloaf.Hole14.Geometry.Wall:rail10",
+                "speedAfter300ms": 6.608,
+                "tangentialRetention": 0.904,
+                "shot": "h14-fuzz-2",
+                "vIn": [
+                  2.2385,
+                  -0.0001,
+                  -15.4874
+                ],
+                "vnIn": -15.487,
+                "restitution": 0.604,
+                "retentionAfter300ms": 0.422,
+                "pos": [
+                  -297.2836,
+                  150.0848,
+                  -5201.8945
+                ]
+              },
+              {
+                "angleOut": 81.2,
+                "angleIn": 71.4,
+                "vOut": [
+                  -0.8467,
+                  -0.0005,
+                  5.4629
+                ],
+                "vnOut": 0.847,
+                "tContact": 35.0154,
+                "speedOut": 5.528,
+                "speedIn": 5.923,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.612,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 35.0154,
+                "vtOut": 5.463,
+                "part": "Workspace.CourseSugarloaf.Hole14.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.007,
+                "tangentialRetention": 0.973,
+                "shot": "h14-fuzz-2",
+                "vIn": [
+                  1.8939,
+                  -0.0001,
+                  5.6118
+                ],
+                "vnIn": -1.894,
+                "restitution": 0.447,
+                "retentionAfter300ms": 0.845,
+                "pos": [
+                  -296.0852,
+                  150.0798,
+                  -5197.6172
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.484,
+            "distM": 4.412,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.213,
+            "tRest": 7.033,
+            "flags": [],
+            "maxY": 150.104,
+            "distStuds": 14.706,
+            "start": [
+              -297.6533,
+              150.0793,
+              -5199.4385
+            ],
+            "tEnd": 7.083,
+            "tStop": 6.514,
+            "finish": [
+              -297.7471,
+              150.0793,
+              -5184.7324
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Ore Bucket Swing",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "ore_bucket",
+          "period": 4,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                -299.4523,
+                150.8793,
+                -5153.1079
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 2,
+              "blocked": false,
+              "finish": [
+                -299.4799,
+                150.8793,
+                -5152.8472
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.166
+    }
+  },
+  "h15": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h15",
+      "hole": 15,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.115,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -306,
+              145.13,
+              -5058
+            ]
+          },
+          {
+            "rimSpeed": 3.061,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -306,
+              145.13,
+              -5058
+            ]
+          },
+          {
+            "rimSpeed": 3.113,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -306,
+              145.13,
+              -5058
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [
+        {
+          "type": "event",
+          "hole": 15,
+          "t": 20.5172,
+          "event": "flag",
+          "reason": "timeout",
+          "shot": "h15-fuzz-1",
+          "kind": "autoreset",
+          "label": "h15-fuzz-1",
+          "pos": [
+            -307.1319,
+            147.0795,
+            -5087.4082
+          ]
+        },
+        {
+          "type": "event",
+          "hole": 15,
+          "t": 44.5144,
+          "event": "flag",
+          "reason": "timeout",
+          "shot": "h15-fuzz-2",
+          "kind": "autoreset",
+          "label": "h15-fuzz-2",
+          "pos": [
+            -306.7957,
+            147.03,
+            -5085.5146
+          ]
+        }
+      ],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 2,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 2,
+        "maxMovingStillS": 0,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h15-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.6,
+                "angleIn": 7.5,
+                "vOut": [
+                  1.684,
+                  0.5066,
+                  8.37
+                ],
+                "vnOut": 8.334,
+                "tContact": 0.7012,
+                "speedOut": 8.538,
+                "speedIn": 14.16,
+                "normal": [
+                  -0.0205,
+                  0,
+                  0.9998
+                ],
+                "type": "event",
+                "vtIn": 1.856,
+                "speedRetention": 0.603,
+                "event": "contact",
+                "t": 0.7012,
+                "vtOut": 1.856,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:lane_rail7",
+                "speedAfter300ms": 5.689,
+                "tangentialRetention": 1,
+                "shot": "h15-fuzz-1",
+                "vIn": [
+                  2.1435,
+                  0,
+                  -13.9973
+                ],
+                "vnIn": -14.038,
+                "restitution": 0.594,
+                "retentionAfter300ms": 0.402,
+                "pos": [
+                  -299.6721,
+                  150.1122,
+                  -5116.8022
+                ]
+              },
+              {
+                "angleOut": 66.8,
+                "angleIn": 87,
+                "vOut": [
+                  -0.1067,
+                  -0.1116,
+                  2.3439
+                ],
+                "vnOut": 0.924,
+                "tContact": 3.8835,
+                "speedOut": 2.346,
+                "speedIn": 2.16,
+                "normal": [
+                  -0.9361,
+                  0,
+                  0.3517
+                ],
+                "type": "event",
+                "vtIn": 2.157,
+                "speedRetention": 1.086,
+                "event": "contact",
+                "t": 3.8835,
+                "vtOut": 2.157,
+                "part": "(no part: landing or slope change)",
+                "speedAfter300ms": 2.349,
+                "tangentialRetention": 1,
+                "shot": "h15-fuzz-1",
+                "vIn": [
+                  0.6528,
+                  -8.7205,
+                  2.0585
+                ],
+                "vnIn": 0.113,
+                "restitution": 8.186,
+                "retentionAfter300ms": 1.088,
+                "pos": [
+                  -295.9253,
+                  148.8137,
+                  -5104.3994
+                ]
+              },
+              {
+                "angleOut": 31.4,
+                "angleIn": 17.1,
+                "vOut": [
+                  2.695,
+                  0.2023,
+                  0.9765
+                ],
+                "vnOut": 2.447,
+                "tContact": 8.3167,
+                "speedOut": 2.867,
+                "speedIn": 5.079,
+                "normal": [
+                  0.9801,
+                  0,
+                  -0.1987
+                ],
+                "type": "event",
+                "vtIn": -1.493,
+                "speedRetention": 0.564,
+                "event": "contact",
+                "t": 8.3167,
+                "vtOut": -1.493,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:dune_lean3",
+                "speedAfter300ms": 1.707,
+                "tangentialRetention": 1,
+                "shot": "h15-fuzz-1",
+                "vIn": [
+                  -4.461,
+                  -0.5093,
+                  2.4275
+                ],
+                "vnIn": -4.854,
+                "restitution": 0.504,
+                "retentionAfter300ms": 0.336,
+                "pos": [
+                  -308.3281,
+                  147.2653,
+                  -5094.3179
+                ]
+              },
+              {
+                "angleOut": 69.8,
+                "angleIn": 38.5,
+                "vOut": [
+                  0.5863,
+                  0.0087,
+                  1.0027
+                ],
+                "vnOut": 0.402,
+                "tContact": 9.9011,
+                "speedOut": 1.162,
+                "speedIn": 1.884,
+                "normal": [
+                  0.9846,
+                  0,
+                  -0.1748
+                ],
+                "type": "event",
+                "vtIn": -1.172,
+                "speedRetention": 0.616,
+                "event": "contact",
+                "t": 9.9011,
+                "vtOut": -1.09,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:dune_lean3",
+                "speedAfter300ms": 1.118,
+                "tangentialRetention": 0.93,
+                "shot": "h15-fuzz-1",
+                "vIn": [
+                  -1.2478,
+                  -0.1748,
+                  1.4117
+                ],
+                "vnIn": -1.475,
+                "restitution": 0.272,
+                "retentionAfter300ms": 0.593,
+                "pos": [
+                  -307.9701,
+                  147.2043,
+                  -5092.166
+                ]
+              },
+              {
+                "angleOut": 90,
+                "angleIn": 66.1,
+                "vOut": [
+                  0.1761,
+                  -0.027,
+                  0.9933
+                ],
+                "vnOut": 0,
+                "tContact": 10.3328,
+                "speedOut": 1.009,
+                "speedIn": 1.168,
+                "normal": [
+                  0.9846,
+                  0,
+                  -0.1748
+                ],
+                "type": "event",
+                "vtIn": -1.068,
+                "speedRetention": 0.864,
+                "event": "contact",
+                "t": 10.3328,
+                "vtOut": -1.009,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:dune_lean3",
+                "speedAfter300ms": 0.925,
+                "tangentialRetention": 0.945,
+                "shot": "h15-fuzz-1",
+                "vIn": [
+                  -0.2788,
+                  -0.0743,
+                  1.1339
+                ],
+                "vnIn": -0.473,
+                "restitution": 0,
+                "retentionAfter300ms": 0.792,
+                "pos": [
+                  -307.8927,
+                  147.1935,
+                  -5091.6909
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.98,
+            "distM": 0,
+            "outcome": "rest",
+            "speed": 14.735,
+            "at15": {
+              "speed": 0.31441083550453186,
+              "t": 15.00025874999119,
+              "moving": true,
+              "pos": [
+                -307.3688,
+                147.1159,
+                -5088.7432
+              ]
+            },
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0,
+            "tRest": 20.2,
+            "flags": [
+              {
+                "type": "event",
+                "hole": 15,
+                "t": 20.5172,
+                "event": "flag",
+                "reason": "timeout",
+                "shot": "h15-fuzz-1",
+                "kind": "autoreset",
+                "label": "h15-fuzz-1",
+                "pos": [
+                  -307.1319,
+                  147.0795,
+                  -5087.4082
+                ]
+              }
+            ],
+            "maxY": 150.155,
+            "distStuds": 0,
+            "start": [
+              -300,
+              150.0787,
+              -5115
+            ],
+            "tEnd": 20.25,
+            "finish": [
+              -300,
+              150.0787,
+              -5115
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h15-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 83.9,
+                "angleIn": 75.3,
+                "vOut": [
+                  -0.5357,
+                  -0.0003,
+                  5.0226
+                ],
+                "vnOut": 0.536,
+                "tContact": 25.5326,
+                "speedOut": 5.051,
+                "speedIn": 5.372,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.196,
+                "speedRetention": 0.94,
+                "event": "contact",
+                "t": 25.5326,
+                "vtOut": 5.023,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:lane_rail6",
+                "speedAfter300ms": 4.506,
+                "tangentialRetention": 0.967,
+                "shot": "h15-fuzz-2",
+                "vIn": [
+                  1.3669,
+                  -0.0003,
+                  5.1957
+                ],
+                "vnIn": -1.367,
+                "restitution": 0.392,
+                "retentionAfter300ms": 0.839,
+                "pos": [
+                  -296.0792,
+                  150.0798,
+                  -5110.8271
+                ]
+              },
+              {
+                "angleOut": 50,
+                "angleIn": 63,
+                "vOut": [
+                  -1.0889,
+                  -0.2345,
+                  3.1362
+                ],
+                "vnOut": 2.134,
+                "tContact": 27.2818,
+                "speedOut": 3.32,
+                "speedIn": 2.855,
+                "normal": [
+                  -0.9345,
+                  0,
+                  0.3561
+                ],
+                "type": "event",
+                "vtIn": 2.543,
+                "speedRetention": 1.163,
+                "event": "contact",
+                "t": 27.2818,
+                "vtOut": 2.543,
+                "part": "(no part: landing or slope change)",
+                "speedAfter300ms": 3.397,
+                "tangentialRetention": 1,
+                "shot": "h15-fuzz-2",
+                "vIn": [
+                  -0.3073,
+                  -9.2242,
+                  2.8384
+                ],
+                "vnIn": 1.298,
+                "restitution": 1.644,
+                "retentionAfter300ms": 1.19,
+                "pos": [
+                  -296.82,
+                  148.7223,
+                  -5104.1167
+                ]
+              },
+              {
+                "angleOut": 35.5,
+                "angleIn": 19.6,
+                "vOut": [
+                  2.7602,
+                  0.1979,
+                  1.2132
+                ],
+                "vnOut": 2.454,
+                "tContact": 30.9332,
+                "speedOut": 3.015,
+                "speedIn": 5.216,
+                "normal": [
+                  0.9789,
+                  0,
+                  -0.2043
+                ],
+                "type": "event",
+                "vtIn": -1.751,
+                "speedRetention": 0.578,
+                "event": "contact",
+                "t": 30.9332,
+                "vtOut": -1.751,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:dune_lean3",
+                "speedAfter300ms": 1.937,
+                "tangentialRetention": 1,
+                "shot": "h15-fuzz-2",
+                "vIn": [
+                  -4.4515,
+                  -0.521,
+                  2.7182
+                ],
+                "vnIn": -4.913,
+                "restitution": 0.5,
+                "retentionAfter300ms": 0.371,
+                "pos": [
+                  -308.2266,
+                  147.2464,
+                  -5093.6519
+                ]
+              },
+              {
+                "angleOut": 66.1,
+                "angleIn": 41.4,
+                "vOut": [
+                  0.8081,
+                  0.0214,
+                  1.1987
+                ],
+                "vnOut": 0.586,
+                "tContact": 32.4995,
+                "speedOut": 1.446,
+                "speedIn": 2.087,
+                "normal": [
+                  0.9846,
+                  0,
+                  -0.1748
+                ],
+                "type": "event",
+                "vtIn": -1.381,
+                "speedRetention": 0.693,
+                "event": "contact",
+                "t": 32.4996,
+                "vtOut": -1.322,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:dune_lean3",
+                "speedAfter300ms": 1.314,
+                "tangentialRetention": 0.957,
+                "shot": "h15-fuzz-2",
+                "vIn": [
+                  -1.2986,
+                  -0.1885,
+                  1.6335
+                ],
+                "vnIn": -1.564,
+                "restitution": 0.375,
+                "retentionAfter300ms": 0.63,
+                "pos": [
+                  -307.8018,
+                  147.1816,
+                  -5091.2124
+                ]
+              },
+              {
+                "angleOut": 86.5,
+                "angleIn": 64.6,
+                "vOut": [
+                  0.1398,
+                  -0.0401,
+                  1.2096
+                ],
+                "vnOut": -0.074,
+                "tContact": 33.0654,
+                "speedOut": 1.218,
+                "speedIn": 1.402,
+                "normal": [
+                  0.9846,
+                  0,
+                  -0.1748
+                ],
+                "type": "event",
+                "vtIn": -1.266,
+                "speedRetention": 0.869,
+                "event": "contact",
+                "t": 33.0654,
+                "vtOut": -1.215,
+                "part": "Workspace.CourseSugarloaf.Hole15.Geometry.Wall:dune_lean3",
+                "speedAfter300ms": 1.061,
+                "tangentialRetention": 0.96,
+                "shot": "h15-fuzz-2",
+                "vIn": [
+                  -0.3709,
+                  -0.0924,
+                  1.352
+                ],
+                "vnIn": -0.602,
+                "restitution": 0.123,
+                "retentionAfter300ms": 0.757,
+                "pos": [
+                  -307.679,
+                  147.1604,
+                  -5090.4629
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.341,
+            "distM": 0,
+            "outcome": "rest",
+            "speed": 16.353,
+            "at15": {
+              "speed": 0.28200653195381165,
+              "t": 15.016300166666042,
+              "moving": true,
+              "pos": [
+                -307.0208,
+                147.0653,
+                -5086.7798
+              ]
+            },
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0,
+            "tRest": 20.216,
+            "flags": [
+              {
+                "type": "event",
+                "hole": 15,
+                "t": 44.5144,
+                "event": "flag",
+                "reason": "timeout",
+                "shot": "h15-fuzz-2",
+                "kind": "autoreset",
+                "label": "h15-fuzz-2",
+                "pos": [
+                  -306.7957,
+                  147.03,
+                  -5085.5146
+                ]
+              }
+            ],
+            "maxY": 150.167,
+            "distStuds": 0,
+            "start": [
+              -297.6529,
+              150.0785,
+              -5115.6758
+            ],
+            "tEnd": 20.266,
+            "finish": [
+              -297.6529,
+              150.0787,
+              -5115.6758
+            ]
+          }
+        ],
+        "list": [
+          {
+            "flags": [
+              {
+                "type": "event",
+                "hole": 15,
+                "t": 20.5172,
+                "event": "flag",
+                "reason": "timeout",
+                "shot": "h15-fuzz-1",
+                "kind": "autoreset",
+                "label": "h15-fuzz-1",
+                "pos": [
+                  -307.1319,
+                  147.0795,
+                  -5087.4082
+                ]
+              }
+            ],
+            "outcome": "rest",
+            "label": "h15-fuzz-1",
+            "start": [
+              0,
+              0,
+              0
+            ],
+            "finish": [
+              -300,
+              150.0787,
+              -5115
+            ],
+            "speed": 14.735,
+            "aim": 98.7
+          },
+          {
+            "flags": [
+              {
+                "type": "event",
+                "hole": 15,
+                "t": 44.5144,
+                "event": "flag",
+                "reason": "timeout",
+                "shot": "h15-fuzz-2",
+                "kind": "autoreset",
+                "label": "h15-fuzz-2",
+                "pos": [
+                  -306.7957,
+                  147.03,
+                  -5085.5146
+                ]
+              }
+            ],
+            "outcome": "rest",
+            "label": "h15-fuzz-2",
+            "start": [
+              -2.346665595152445,
+              0.6760128828765897,
+              0
+            ],
+            "finish": [
+              -297.6529,
+              150.0787,
+              -5115.6758
+            ],
+            "speed": 16.353,
+            "aim": 98.2
+          }
+        ]
+      },
+      "name": "Sugar Dune",
+      "seconds": 51.35,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h16": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h16",
+      "hole": 16,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.709,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -301.8,
+              186.13,
+              -4849.5
+            ]
+          },
+          {
+            "rimSpeed": 3.004,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -301.8,
+              186.13,
+              -4849.5
+            ]
+          },
+          {
+            "rimSpeed": 2.896,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -301.8,
+              186.13,
+              -4849.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h16-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 72,
+                "vOut": [
+                  0,
+                  -0.0003,
+                  1.9643
+                ],
+                "vnOut": 0,
+                "tContact": 3.6501,
+                "speedOut": 1.964,
+                "speedIn": 2.127,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.023,
+                "speedRetention": 0.923,
+                "event": "contact",
+                "t": 3.6501,
+                "vtOut": 1.964,
+                "part": "Workspace.CourseSugarloaf.Hole16.Geometry.Wall:deck_rail1",
+                "speedAfter300ms": 1.695,
+                "tangentialRetention": 0.971,
+                "shot": "h16-fuzz-1",
+                "vIn": [
+                  0.6566,
+                  -0.0003,
+                  2.0233
+                ],
+                "vnIn": -0.657,
+                "restitution": 0,
+                "retentionAfter300ms": 0.797,
+                "pos": [
+                  -296.0781,
+                  190.0797,
+                  -4878.229
+                ]
+              }
+            ],
+            "piece": "deck_m",
+            "maxAlong": 1.921,
+            "distM": 3.981,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "deck",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 6.383,
+            "flags": [],
+            "maxY": 190.094,
+            "distStuds": 13.27,
+            "start": [
+              -300,
+              190.0787,
+              -4888
+            ],
+            "tEnd": 6.433,
+            "tStop": 5.882,
+            "finish": [
+              -296.082,
+              190.0787,
+              -4875.3213
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h16-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 89.5,
+                "angleIn": 77.9,
+                "vOut": [
+                  -0.7467,
+                  -0.0005,
+                  -12.7854
+                ],
+                "vnOut": -0.117,
+                "tContact": 11.5157,
+                "speedOut": 12.807,
+                "speedIn": 13.097,
+                "normal": [
+                  -0.9977,
+                  0,
+                  0.0674
+                ],
+                "type": "event",
+                "vtIn": -12.807,
+                "speedRetention": 0.978,
+                "event": "contact",
+                "t": 11.5157,
+                "vtOut": -12.807,
+                "part": "Workspace.CourseSugarloaf.Hole16.Geometry.Wall:deck_rail1",
+                "speedAfter300ms": 6.801,
+                "tangentialRetention": 1,
+                "shot": "h16-fuzz-2",
+                "vIn": [
+                  1.8736,
+                  -0.0003,
+                  -12.9625
+                ],
+                "vnIn": -2.744,
+                "restitution": 0.043,
+                "retentionAfter300ms": 0.519,
+                "pos": [
+                  -296.0863,
+                  190.0799,
+                  -4886.6079
+                ]
+              },
+              {
+                "angleOut": 4.4,
+                "angleIn": 2.9,
+                "vOut": [
+                  -0.5567,
+                  -0.6038,
+                  7.1894
+                ],
+                "vnOut": 7.189,
+                "tContact": 11.7821,
+                "speedOut": 7.211,
+                "speedIn": 12.061,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": -0.616,
+                "speedRetention": 0.598,
+                "event": "contact",
+                "t": 11.7821,
+                "vtOut": -0.557,
+                "part": "Workspace.CourseSugarloaf.Hole16.Geometry.Wall:deck_rail4",
+                "speedAfter300ms": 4.557,
+                "tangentialRetention": 0.904,
+                "shot": "h16-fuzz-2",
+                "vIn": [
+                  -0.6155,
+                  -0.0003,
+                  -12.0448
+                ],
+                "vnIn": -12.045,
+                "restitution": 0.597,
+                "retentionAfter300ms": 0.378,
+                "pos": [
+                  -296.2673,
+                  190.0862,
+                  -4889.8691
+                ]
+              }
+            ],
+            "piece": "deck_s",
+            "maxAlong": 14.5,
+            "distM": 0.804,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "deck",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.983,
+            "flags": [],
+            "maxY": 190.092,
+            "distStuds": 2.679,
+            "start": [
+              -297.6538,
+              190.0786,
+              -4875.4185
+            ],
+            "tEnd": 7.033,
+            "tStop": 6.466,
+            "finish": [
+              -297.6306,
+              190.0787,
+              -4878.0972
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Sinkhole Drop",
+      "seconds": 24.36,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h17": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h17",
+      "hole": 17,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.94,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -334.9,
+              189.73,
+              -4811
+            ]
+          },
+          {
+            "rimSpeed": 2.965,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -334.9,
+              189.73,
+              -4811
+            ]
+          },
+          {
+            "angle": 112.5,
+            "outcome": "refused"
+          },
+          {
+            "angle": 157.5,
+            "outcome": "refused"
+          },
+          {
+            "rimSpeed": 3.015,
+            "angle": 202.5,
+            "outcome": "cup",
+            "finish": [
+              -334.9,
+              189.73,
+              -4811
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 51.31,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h17-fuzz-1",
+            "contacts": [],
+            "piece": "lane",
+            "maxAlong": 1.924,
+            "distM": 4.353,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.781,
+            "flags": [],
+            "maxY": 190.098,
+            "distStuds": 14.511,
+            "start": [
+              -345,
+              190.0793,
+              -4768
+            ],
+            "tEnd": 6.831,
+            "tStop": 6.265,
+            "finish": [
+              -350.5017,
+              190.0793,
+              -4781.4272
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h17-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 83.8,
+                "angleIn": 72.1,
+                "vOut": [
+                  0.4646,
+                  -0.0001,
+                  -4.2723
+                ],
+                "vnOut": 0.465,
+                "tContact": 38.2806,
+                "speedOut": 4.298,
+                "speedIn": 4.599,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 4.375,
+                "speedRetention": 0.935,
+                "event": "contact",
+                "t": 38.2806,
+                "vtOut": 4.272,
+                "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail1",
+                "speedAfter300ms": 3.822,
+                "tangentialRetention": 0.977,
+                "shot": "h17-fuzz-2",
+                "vIn": [
+                  -1.4168,
+                  -0.0001,
+                  -4.375
+                ],
+                "vnIn": -1.417,
+                "restitution": 0.328,
+                "retentionAfter300ms": 0.831,
+                "pos": [
+                  -352.4129,
+                  190.0797,
+                  -4774.3735
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.335,
+            "distM": 4.57,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.982,
+            "flags": [],
+            "maxY": 190.102,
+            "distStuds": 15.232,
+            "start": [
+              -349.6281,
+              190.0793,
+              -4768.3965
+            ],
+            "tEnd": 7.032,
+            "tStop": 6.483,
+            "finish": [
+              -351.5276,
+              190.0793,
+              -4783.5093
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Sundial",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "shadow_arm",
+          "period": 30,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "dial",
+              "phase": 0,
+              "blocked": true,
+              "finish": [
+                -333.3903,
+                190.0793,
+                -4794.6484
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "dial",
+              "phase": 15,
+              "blocked": true,
+              "finish": [
+                -333.6511,
+                190.0793,
+                -4794.6147
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.167
+    }
+  },
+  "h18": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h18",
+      "hole": 18,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.942,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -412,
+              190.53,
+              -4828
+            ]
+          },
+          {
+            "rimSpeed": 2.967,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -412,
+              190.53,
+              -4828
+            ]
+          },
+          {
+            "rimSpeed": 2.988,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -412,
+              190.53,
+              -4828
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h18-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  -2.4651
+                ],
+                "vnOut": 0,
+                "tContact": 3.1502,
+                "speedOut": 2.465,
+                "speedIn": 2.694,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.541,
+                "speedRetention": 0.915,
+                "event": "contact",
+                "t": 3.1502,
+                "vtOut": 2.465,
+                "part": "Workspace.CourseSugarloaf.Hole18.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.152,
+                "tangentialRetention": 0.97,
+                "shot": "h18-fuzz-1",
+                "vIn": [
+                  -0.8953,
+                  -0.0001,
+                  -2.541
+                ],
+                "vnIn": -0.895,
+                "restitution": 0,
+                "retentionAfter300ms": 0.799,
+                "pos": [
+                  -423.92,
+                  190.0797,
+                  -4772.9585
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 4.147,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.617,
+            "flags": [],
+            "maxY": 190.098,
+            "distStuds": 13.823,
+            "start": [
+              -420,
+              190.0793,
+              -4764
+            ],
+            "tEnd": 6.667,
+            "tStop": 6.1,
+            "finish": [
+              -423.92,
+              190.0793,
+              -4777.2559
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h18-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 57.1,
+                "angleIn": 38.9,
+                "vOut": [
+                  -0.0317,
+                  2.1949,
+                  -4.0381
+                ],
+                "vnOut": -2.195,
+                "tContact": 11.7335,
+                "speedOut": 4.038,
+                "speedIn": 6.039,
+                "normal": [
+                  0.8436,
+                  0,
+                  0.5369
+                ],
+                "type": "event",
+                "vtIn": 3.794,
+                "speedRetention": 0.669,
+                "event": "contact",
+                "t": 11.7335,
+                "vtOut": 3.39,
+                "part": "Workspace.CourseSugarloaf.Hole18.Geometry.Felt",
+                "speedAfter300ms": 3.486,
+                "tangentialRetention": 0.893,
+                "shot": "h18-fuzz-2",
+                "vIn": [
+                  -1.9268,
+                  -0.0001,
+                  -5.7233
+                ],
+                "vnIn": -4.698,
+                "restitution": 0.467,
+                "retentionAfter300ms": 0.577,
+                "pos": [
+                  -430.4621,
+                  190.1186,
+                  -4782.9312
+                ]
+              }
+            ],
+            "piece": "junction",
+            "maxAlong": 0.861,
+            "distM": 2.848,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "junction",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 5.95,
+            "flags": [],
+            "maxY": 190.404,
+            "distStuds": 9.494,
+            "start": [
+              -428.9541,
+              190.0791,
+              -4778.9941
+            ],
+            "tEnd": 6,
+            "tStop": 5.433,
+            "finish": [
+              -422.4611,
+              190.0793,
+              -4785.9204
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Sunset Arch",
+      "seconds": 23.63,
+      "stuck": 0,
+      "par": 4,
+      "cam": "",
+      "nudges": 0
+    }
+  }
+}
