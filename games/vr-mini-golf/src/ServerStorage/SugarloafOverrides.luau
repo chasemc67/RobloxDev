@@ -155,6 +155,7 @@ function Overrides.Apply(course)
 		end
 	end
 	report.railTops = require(ServerStorage.SugarloafRailTops:Clone()).Apply(course)
+	report.hints = require(ServerStorage.SugarloafHints:Clone()).Apply(course)
 	return report
 end
 

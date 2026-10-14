@@ -1,3 +1,7 @@
+## Stage al2 — Sugarloaf hint decals, local fix2 (Oct 13, 2026)
+
+Five approved MetavrseBuilder image assets placed persistently through SugarloafHints/Overrides; 10 primitive placeholder parts removed. Route-relative arrows follow the rotated H9 bypass and H14 left-bank/bucket routes (coordinate ambiguity documented in `logs/stages/al2-notes.md`). H9/H14: cupdrop 6/6, random 16 completed, stuck/escapes/timeouts 0; zero client/server console warnings/errors. All 705 physical colliders unchanged. Saved `playtest/playtest-sc-fix2.rbxl`; Studio closed. No cloud place open/save, publish or git push. Publishing waits for Playtest Bot's clean sweep; H15 findings remain.
+
 ## Stage am — Aurora v5 local (Oct 13, 2026)
 
 Local `playtest/playtest-aurora-v5.rbxl` saved; Studio closed. Batch 3: 23 props / 83 meshes, rev2 H18 arch and steamless rev2 H6 pool with low runtime steam. Data-driven H17 fades/lamp/sparkles; 6/6 timed crossings, 3/3 +1 fall/entry respawns. Cupdrop 54/54, random 144, slow 36, stuck 0/escapes 0, zero console warnings/errors. Clearance report lists 16 unique flagged props (12 source real + 56 built prop-class findings). All 55 sources match. No cloud place open/save, publish, asset sync, or git push. See `logs/stages/am-notes.md` and `playtests/stage-am/flagged-props.md`.
