@@ -34,3 +34,17 @@ Final histories show lobby published v251 unchanged and Sugarloaf published v23 
 No git push, RBXL commit, or asset-owner edits. Local Aurora v4 copy is on the Mini; no Linux transfer performed in this partial run. Live headset/cross-place teleport remain external checks.
 
 RESULT=PARTIAL AU_NEW=4 LG_NEW=0 AU_SCAN=3290/1451/0 LG_SCAN=NA/NA/NA PROPS=2/2 LOBBY=251 SC=23
+
+## Lantern Grove (zf3)
+
+Status: **FAIL WRONG_PLACE** at the explicitly required identity gate. No build or publish performed.
+
+No competing stage job or preexisting Studio application found. Launched one Studio, visually confirmed Welcome, MetavrseBuilder, then used File > Open from File to open the exact `games/vr-mini-golf/playtest-lg-v11.rbxl`. MCP reported one local session, PlaceId 0, PlaceVersion 0, and PlaceRole `lantern_grove`. However, `CourseLanternGrove` is absent both at Workspace root and in a full DataModel descendant-name search; the actual course root is `Workspace.Course`. The user's explicit gate required CourseLanternGrove to be present and instructed stopping on failure, so no alternative root was substituted or renamed. Evidence: `playtests/stage-zf2/lg/zf3-preflight.json`.
+
+Creator Hub Show published only baselines, checked before and after: lobby **251**, Sugarloaf **23**, LG **9**, Aurora **4**, all unchanged. No protected place was opened in Studio. Studio quit normally without a save; MCP inventory is empty and no Studio application process remains. No PC use, git push, RBXL commit, or asset edits.
+
+Counts per category before/after (coplanar, decorated, placeholder, transparency), exposed after, collider inventory, placeholder inventory, mesh-hit lists, screenshots, smoke, and hole sweep: **NOT RUN**, not zero. Top fixes: none applied. New published version/local output copy: none. LG remains published v9.
+
+Open item: resolve the explicit CourseLanternGrove identity requirement against the supplied file's actual Workspace.Course root before a new build attempt. Source helper `tools/zf2_stage.py` also maps LG to Course, but that does not override this stage's explicit stop condition.
+
+RESULT=FAIL WRONG_PLACE LG_NEW=0 LG_SCAN=NA/NA/NA PLACEHOLDERS=NA/NA
