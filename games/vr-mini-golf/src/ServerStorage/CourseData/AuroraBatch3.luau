@@ -1,4 +1,4 @@
--- Generated batch-three specs; stage-au5 corrected FBX bounds.
+-- Generated batch-three specs; stage-au6 corrected FBX bounds.
 return {
 	{
 		id = "h04_frosted_palm_a",
@@ -872,10 +872,10 @@ return {
 				color = "#8FE3FF",
 				roblox_material = "Glass",
 				transparency = 0.3,
-				tris = 440,
+				tris = 2322,
 			},
 			h18_crystal_bank_ne_deco__IceCore = {
-				center = { 6.585, 2.015, -0.763 },
+				center = { 6.585, 2.015, -0.764 },
 				size = { 0.507, 4.03, 4.676 },
 				mesh = "h18_crystal_bank_ne_deco__IceCore",
 				material = "IceCore",
@@ -883,14 +883,14 @@ return {
 				color = "#BFF6FF",
 				roblox_material = "Neon",
 				transparency = 0,
-				tris = 440,
+				tris = 456,
 			},
 		},
 		pivot = { -235, 222, -258 },
 		yaw = 0,
 		lights = {},
 		revision = 0,
-		tris = 880,
+		tris = 2778,
 	},
 	{
 		id = "h18_crystal_bank_sw_deco",
@@ -905,10 +905,10 @@ return {
 				color = "#8FE3FF",
 				roblox_material = "Glass",
 				transparency = 0.3,
-				tris = 440,
+				tris = 2318,
 			},
 			h18_crystal_bank_sw_deco__IceCore = {
-				center = { -7.615, 2.015, 2.337 },
+				center = { -7.615, 2.015, 2.336 },
 				size = { 0.506, 4.03, 4.676 },
 				mesh = "h18_crystal_bank_sw_deco__IceCore",
 				material = "IceCore",
@@ -916,14 +916,14 @@ return {
 				color = "#BFF6FF",
 				roblox_material = "Neon",
 				transparency = 0,
-				tris = 440,
+				tris = 456,
 			},
 		},
 		pivot = { -246.5, 222, -254 },
 		yaw = 0,
 		lights = {},
 		revision = 0,
-		tris = 880,
+		tris = 2774,
 	},
 	{
 		id = "h18_crystal_chute",

@@ -71,6 +71,47 @@ function Cleanup.Apply(course)
   end
   stone:SetAttribute('AU5Separated',true);r.stone=true
  end
+ -- Stage au6: stack the two visible respawn layers above the unchanged shelf.
+ -- Both are non-gameplay visuals; rebase every cached pose used by VisualSeparation.
+ if stone then
+  local marker=h6.Hazards:FindFirstChild('RespawnStone')
+  local lime=stone:FindFirstChild('h06_respawn_stone__Lime',true)
+  local layers={}
+  if marker then table.insert(layers,marker) end
+  if lime then table.insert(layers,lime) end
+  local function halfY(p)
+   return (math.abs(p.CFrame.RightVector.Y)*p.Size.X+math.abs(p.CFrame.UpVector.Y)*p.Size.Y+math.abs(p.CFrame.ZVector.Y)*p.Size.Z)/2
+  end
+  local supports={}
+  for _,p in parts(h6) do if p.CanCollide or (p.Transparency<1 and p.Name=='Visual_Felt') then table.insert(supports,p) end end
+  for _,p in layers do
+   assert(not p.CanCollide and not p.CanQuery and not p.CanTouch,'AU6 protected stone layer')
+   p.Size=Vector3.new(math.max(.2,p.Size.X),math.max(.2,p.Size.Y),math.max(.2,p.Size.Z))
+   local top=-math.huge
+   -- Analytic top plane avoids CanQuery=false omitting the visible felt skin.
+   for _,support in supports do
+    local n=support.CFrame.UpVector
+    if math.abs(n.Y)>.9 then
+     for _,x in {-1,1} do for _,z in {-1,1} do
+      local wx=p.Position.X+x*.4 local wz=p.Position.Z+z*.4
+      local plane=support.Position+n*support.Size.Y/2
+      local y=plane.Y-(n.X*(wx-plane.X)+n.Z*(wz-plane.Z))/n.Y
+      local q=support.CFrame:PointToObjectSpace(Vector3.new(wx,y,wz))
+      if math.abs(q.X)<=support.Size.X/2+.001 and math.abs(q.Z)<=support.Size.Z/2+.001 then top=math.max(top,y) end
+     end end
+    end
+   end
+   assert(top>-math.huge,'AU6 missing shelf')
+   if p==lime and marker then top=math.max(top,marker.Position.Y+halfY(marker)) end
+   local y=top+.081+halfY(p)
+   if p.Position.Y<y then p.CFrame=p.CFrame+Vector3.new(0,y-p.Position.Y,0) end
+   p:SetAttribute('ZF1BaseCF',p.CFrame);p:SetAttribute('ZF1BaseSize',p.Size)
+   if p:GetAttribute('ZF1MeshTerrainBaseCF') then
+    p:SetAttribute('ZF1MeshTerrainBaseCF',p.CFrame);p:SetAttribute('ZF1MeshTerrainBaseSize',p.Size)
+   end
+  end
+  stone:SetAttribute('AU6Separated',true);r.stone=true
+ end
  local h5=course:FindFirstChild('Hole5')
  local col=h5 and h5:FindFirstChild('h05_geyser_column',true)
  if col then

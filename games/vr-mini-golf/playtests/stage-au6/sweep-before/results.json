@@ -1,0 +1,4597 @@
+{
+  "h1": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h1",
+      "hole": 1,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.987,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -144,
+              59.73,
+              514.5
+            ]
+          },
+          {
+            "rimSpeed": 2.976,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -144,
+              59.73,
+              514.5
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -144,
+              59.73,
+              514.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h1-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 84.2,
+                "angleIn": 70.6,
+                "vOut": [
+                  0.3044,
+                  -0.0001,
+                  -3.015
+                ],
+                "vnOut": 0.304,
+                "tContact": 2.6482,
+                "speedOut": 3.03,
+                "speedIn": 3.278,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.092,
+                "speedRetention": 0.924,
+                "event": "contact",
+                "t": 2.6482,
+                "vtOut": 3.015,
+                "part": "Workspace.CourseAurora.Hole1.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.673,
+                "tangentialRetention": 0.975,
+                "shot": "h1-fuzz-1",
+                "vIn": [
+                  -1.0891,
+                  -0.0001,
+                  -3.0921
+                ],
+                "vnIn": -1.089,
+                "restitution": 0.279,
+                "retentionAfter300ms": 0.815,
+                "pos": [
+                  -153.4099,
+                  60.0798,
+                  537.4492
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 4.108,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.715,
+            "flags": [],
+            "maxY": 60.098,
+            "distStuds": 13.692,
+            "start": [
+              -150,
+              60.0792,
+              545
+            ],
+            "tEnd": 6.765,
+            "tStop": 6.199,
+            "finish": [
+              -152.8183,
+              60.0793,
+              531.6012
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h1-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.4,
+                "angleIn": 7.5,
+                "vOut": [
+                  -1.9182,
+                  -0.3483,
+                  -9.2916
+                ],
+                "vnOut": 9.267,
+                "tContact": 11.2645,
+                "speedOut": 9.488,
+                "speedIn": 15.568,
+                "normal": [
+                  0.0125,
+                  0,
+                  -0.9999
+                ],
+                "type": "event",
+                "vtIn": 2.034,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 11.2645,
+                "vtOut": 2.034,
+                "part": "Workspace.CourseAurora.Hole1.Geometry.Wall:rail6",
+                "speedAfter300ms": 6.416,
+                "tangentialRetention": 1,
+                "shot": "h1-fuzz-2",
+                "vIn": [
+                  -2.227,
+                  -0.0001,
+                  15.4078
+                ],
+                "vnIn": -15.434,
+                "restitution": 0.6,
+                "retentionAfter300ms": 0.412,
+                "pos": [
+                  -152.4321,
+                  60.0957,
+                  546.7983
+                ]
+              },
+              {
+                "angleOut": 82,
+                "angleIn": 72.1,
+                "vOut": [
+                  0.7914,
+                  -0.0001,
+                  -5.6284
+                ],
+                "vnOut": 0.791,
+                "tContact": 11.764,
+                "speedOut": 5.684,
+                "speedIn": 6.069,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.774,
+                "speedRetention": 0.936,
+                "event": "contact",
+                "t": 11.764,
+                "vtOut": 5.628,
+                "part": "Workspace.CourseAurora.Hole1.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.156,
+                "tangentialRetention": 0.975,
+                "shot": "h1-fuzz-2",
+                "vIn": [
+                  -1.8704,
+                  -0.0001,
+                  -5.7738
+                ],
+                "vnIn": -1.87,
+                "restitution": 0.423,
+                "retentionAfter300ms": 0.85,
+                "pos": [
+                  -153.4158,
+                  60.0799,
+                  543.0074
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.653,
+            "distM": 4.539,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.099,
+            "flags": [],
+            "maxY": 60.102,
+            "distStuds": 15.131,
+            "start": [
+              -152.0207,
+              60.0792,
+              544.356
+            ],
+            "tEnd": 7.149,
+            "tStop": 6.583,
+            "finish": [
+              -151.7158,
+              60.0793,
+              529.2278
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Lantern Quay",
+      "seconds": 24.7,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h2": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h2",
+      "hole": 2,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.993,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -69,
+              59.73,
+              470.25
+            ]
+          },
+          {
+            "rimSpeed": 2.919,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -69,
+              59.73,
+              470.25
+            ]
+          },
+          {
+            "rimSpeed": 2.988,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -69,
+              59.73,
+              470.25
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h2-fuzz-1",
+            "contacts": [],
+            "piece": "plaza",
+            "maxAlong": 1.922,
+            "distM": 4.4,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "plaza",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.85,
+            "flags": [],
+            "maxY": 60.098,
+            "distStuds": 14.667,
+            "start": [
+              -115,
+              60.0793,
+              480
+            ],
+            "tEnd": 6.9,
+            "tStop": 6.35,
+            "finish": [
+              -101.4269,
+              60.0793,
+              474.4408
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h2-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 82.3,
+                "angleIn": 71.3,
+                "vOut": [
+                  3.7899,
+                  -0.0001,
+                  0.5135
+                ],
+                "vnOut": 0.514,
+                "tContact": 13.0329,
+                "speedOut": 3.825,
+                "speedIn": 4.1,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 3.884,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 13.0329,
+                "vtOut": 3.79,
+                "part": "Workspace.CourseAurora.Hole2.Geometry.Wall:rail5",
+                "speedAfter300ms": 3.389,
+                "tangentialRetention": 0.976,
+                "shot": "h2-fuzz-2",
+                "vIn": [
+                  3.8845,
+                  -0.0001,
+                  -1.3115
+                ],
+                "vnIn": -1.312,
+                "restitution": 0.392,
+                "retentionAfter300ms": 0.827,
+                "pos": [
+                  -96.6091,
+                  60.0797,
+                  469.0818
+                ]
+              }
+            ],
+            "piece": "left_burrow",
+            "maxAlong": 0.861,
+            "distM": 5.228,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "ltun",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.981,
+            "flags": [],
+            "maxY": 60.105,
+            "distStuds": 17.425,
+            "start": [
+              -106.006,
+              60.0792,
+              472.4385
+            ],
+            "tEnd": 7.031,
+            "tStop": 6.465,
+            "finish": [
+              -88.7315,
+              60.0793,
+              470.1521
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Snowpuff Burrows",
+      "seconds": 24.83,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h3": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h3",
+      "hole": 3,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.856,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -1.4627,
+              59.73,
+              430.0485
+            ]
+          },
+          {
+            "rimSpeed": 2.968,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -1.4627,
+              59.73,
+              430.0485
+            ]
+          },
+          {
+            "rimSpeed": 2.965,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -1.4627,
+              59.73,
+              430.0485
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h3-fuzz-1",
+            "contacts": [],
+            "piece": "shore",
+            "maxAlong": 1.921,
+            "distM": 4.4,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.866,
+            "flags": [],
+            "maxY": 60.098,
+            "distStuds": 14.667,
+            "start": [
+              -40,
+              60.0793,
+              470
+            ],
+            "tEnd": 6.916,
+            "tStop": 6.349,
+            "finish": [
+              -34.3318,
+              60.0793,
+              456.4729
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h3-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12,
+                "angleIn": 8.2,
+                "vOut": [
+                  5.1955,
+                  -0.1926,
+                  -8.0089
+                ],
+                "vnOut": 9.337,
+                "tContact": 11.3803,
+                "speedOut": 9.546,
+                "speedIn": 15.663,
+                "normal": [
+                  0.7071,
+                  0,
+                  -0.7071
+                ],
+                "type": "event",
+                "vtIn": 2.24,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 11.3803,
+                "vtOut": 1.99,
+                "part": "Workspace.CourseAurora.Hole3.Geometry.Wall:shore_rail3",
+                "speedAfter300ms": 6.639,
+                "tangentialRetention": 0.888,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  -12.5461,
+                  -0.0001,
+                  9.3773
+                ],
+                "vnIn": -15.502,
+                "restitution": 0.602,
+                "retentionAfter300ms": 0.424,
+                "pos": [
+                  -45.0591,
+                  60.0928,
+                  467.5204
+                ]
+              },
+              {
+                "angleOut": 83.5,
+                "angleIn": 71.6,
+                "vOut": [
+                  3.2516,
+                  -0.0001,
+                  -2.5832
+                ],
+                "vnOut": 0.473,
+                "tContact": 12.797,
+                "speedOut": 4.153,
+                "speedIn": 4.479,
+                "normal": [
+                  0.7071,
+                  0,
+                  0.7071
+                ],
+                "type": "event",
+                "vtIn": 4.25,
+                "speedRetention": 0.927,
+                "event": "contact",
+                "t": 12.797,
+                "vtOut": 4.126,
+                "part": "Workspace.CourseAurora.Hole3.Geometry.Wall:shore_rail2",
+                "speedAfter300ms": 3.715,
+                "tangentialRetention": 0.971,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  2.0048,
+                  -0.0001,
+                  -4.0053
+                ],
+                "vnIn": -1.414,
+                "restitution": 0.334,
+                "retentionAfter300ms": 0.829,
+                "pos": [
+                  -40.8635,
+                  60.0798,
+                  459.6734
+                ]
+              }
+            ],
+            "piece": "shore",
+            "maxAlong": 2.333,
+            "distM": 4.54,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 6.982,
+            "flags": [],
+            "maxY": 60.102,
+            "distStuds": 15.132,
+            "start": [
+              -43.1644,
+              60.0792,
+              466.1583
+            ],
+            "tEnd": 7.032,
+            "tStop": 6.449,
+            "finish": [
+              -33.9319,
+              60.0719,
+              454.1688
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Glimmer Crossing",
+      "seconds": 24.83,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h4": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h4",
+      "hole": 4,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.858,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              194,
+              83.88,
+              416
+            ]
+          },
+          {
+            "rimSpeed": 2.805,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              194,
+              83.88,
+              416
+            ]
+          },
+          {
+            "rimSpeed": 2.968,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              194,
+              83.88,
+              416
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h4-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 69.7,
+                "vOut": [
+                  0,
+                  0.0082,
+                  -1.7873
+                ],
+                "vnOut": 0,
+                "tContact": 3.4823,
+                "speedOut": 1.787,
+                "speedIn": 1.991,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.867,
+                "speedRetention": 0.898,
+                "event": "contact",
+                "t": 3.4824,
+                "vtOut": 1.787,
+                "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail2",
+                "speedAfter300ms": 1.483,
+                "tangentialRetention": 0.958,
+                "shot": "h4-fuzz-1",
+                "vIn": [
+                  -0.6923,
+                  0.0081,
+                  -1.8666
+                ],
+                "vnIn": -0.692,
+                "restitution": 0,
+                "retentionAfter300ms": 0.745,
+                "pos": [
+                  181.0767,
+                  84.0824,
+                  461.1203
+                ]
+              }
+            ],
+            "piece": "ice",
+            "maxAlong": 1.9,
+            "distM": 3.535,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "ice",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0,
+            "tRest": 5.966,
+            "flags": [],
+            "maxY": 84.098,
+            "distStuds": 11.782,
+            "start": [
+              185,
+              84.0718,
+              470
+            ],
+            "tEnd": 6.016,
+            "tStop": 5.449,
+            "finish": [
+              181.082,
+              84.0868,
+              458.8887
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h4-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.4,
+                "angleIn": 71.7,
+                "vOut": [
+                  0.8107,
+                  -0.0005,
+                  -5.3708
+                ],
+                "vnOut": 0.811,
+                "tContact": 11.1486,
+                "speedOut": 5.432,
+                "speedIn": 5.805,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.51,
+                "speedRetention": 0.936,
+                "event": "contact",
+                "t": 11.1486,
+                "vtOut": 5.371,
+                "part": "Workspace.CourseAurora.Hole4.Geometry.Wall:rail1",
+                "speedAfter300ms": 4.856,
+                "tangentialRetention": 0.975,
+                "shot": "h4-fuzz-2",
+                "vIn": [
+                  -1.8255,
+                  -0.0005,
+                  -5.5102
+                ],
+                "vnIn": -1.825,
+                "restitution": 0.444,
+                "retentionAfter300ms": 0.837,
+                "pos": [
+                  181.099,
+                  84.0797,
+                  466.8871
+                ]
+              }
+            ],
+            "piece": "ice",
+            "maxAlong": 1.07,
+            "distM": 4.574,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "ice",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0,
+            "tRest": 6.6,
+            "flags": [],
+            "maxY": 84.11,
+            "distStuds": 15.247,
+            "start": [
+              182.6533,
+              84.0718,
+              470.841
+            ],
+            "tEnd": 6.65,
+            "tStop": 6.084,
+            "finish": [
+              182.6829,
+              84.1022,
+              455.5942
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Glissade",
+      "seconds": 23.6,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h5": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h5",
+      "hole": 5,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.969,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              260,
+              87.73,
+              416
+            ]
+          },
+          {
+            "rimSpeed": 2.807,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              260,
+              87.73,
+              416
+            ]
+          },
+          {
+            "rimSpeed": 2.858,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              260,
+              87.73,
+              416
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 54.25,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h5-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.9,
+                "angleIn": 8.7,
+                "vOut": [
+                  8.3649,
+                  -0.3239,
+                  -1.9174
+                ],
+                "vnOut": 8.365,
+                "tContact": 31.8153,
+                "speedOut": 8.582,
+                "speedIn": 14.09,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.14,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 31.8153,
+                "vtOut": 1.917,
+                "part": "Workspace.CourseAurora.Hole5.Geometry.Wall:basin_rail4",
+                "speedAfter300ms": 5.709,
+                "tangentialRetention": 0.896,
+                "shot": "h5-fuzz-1",
+                "vIn": [
+                  -13.9267,
+                  -0.0001,
+                  -2.1402
+                ],
+                "vnIn": -13.927,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.405,
+                "pos": [
+                  213.1655,
+                  84.0912,
+                  419.6771
+                ]
+              },
+              {
+                "angleOut": 84.1,
+                "angleIn": 64.5,
+                "vOut": [
+                  1.8452,
+                  -0.0005,
+                  0
+                ],
+                "vnOut": -0.19,
+                "tContact": 34.5471,
+                "speedOut": 1.845,
+                "speedIn": 2.034,
+                "normal": [
+                  -0.1032,
+                  0,
+                  0.9947
+                ],
+                "type": "event",
+                "vtIn": 1.835,
+                "speedRetention": 0.907,
+                "event": "contact",
+                "t": 34.5471,
+                "vtOut": 1.835,
+                "part": "Workspace.CourseAurora.Hole5.Geometry.Wall:basin_rail5",
+                "speedAfter300ms": 1.544,
+                "tangentialRetention": 1,
+                "shot": "h5-fuzz-1",
+                "vIn": [
+                  1.9161,
+                  -0.0005,
+                  -0.683
+                ],
+                "vnIn": -0.877,
+                "restitution": 0.217,
+                "retentionAfter300ms": 0.759,
+                "pos": [
+                  223.8221,
+                  84.0787,
+                  416.0729
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.911,
+            "distM": 3.509,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 5.782,
+            "flags": [],
+            "maxY": 84.098,
+            "distStuds": 11.695,
+            "start": [
+              215,
+              84.0718,
+              420
+            ],
+            "tEnd": 5.832,
+            "tStop": 5.266,
+            "finish": [
+              226.0196,
+              84.0719,
+              416.082
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h5-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.4,
+                "angleIn": 71.7,
+                "vOut": [
+                  5.356,
+                  -0.0005,
+                  0.8083
+                ],
+                "vnOut": 0.808,
+                "tContact": 42.031,
+                "speedOut": 5.417,
+                "speedIn": 5.789,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 5.495,
+                "speedRetention": 0.936,
+                "event": "contact",
+                "t": 42.031,
+                "vtOut": 5.356,
+                "part": "Workspace.CourseAurora.Hole5.Geometry.Wall:basin_rail5",
+                "speedAfter300ms": 4.842,
+                "tangentialRetention": 0.975,
+                "shot": "h5-fuzz-2",
+                "vIn": [
+                  5.4953,
+                  -0.0005,
+                  -1.8217
+                ],
+                "vnIn": -1.822,
+                "restitution": 0.444,
+                "retentionAfter300ms": 0.836,
+                "pos": [
+                  217.9465,
+                  84.0797,
+                  416.0965
+                ]
+              }
+            ],
+            "piece": "basin",
+            "maxAlong": 1.374,
+            "distM": 4.245,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "basin",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.384,
+            "flags": [],
+            "maxY": 84.104,
+            "distStuds": 14.15,
+            "start": [
+              214.4889,
+              84.0718,
+              417.6533
+            ],
+            "tEnd": 6.434,
+            "tStop": 5.868,
+            "finish": [
+              228.6382,
+              84.0719,
+              417.5395
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Geyser Hop",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "geyser_column",
+          "period": 13.5,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h5-sweep-geyser_column-0",
+                  "id": "geyser_lift",
+                  "t": 7.949,
+                  "event": "flag",
+                  "shot": "h5-sweep-geyser_column-0",
+                  "speedOut": 7.019,
+                  "speedIn": 7.799,
+                  "kind": "teleport",
+                  "hole": 5,
+                  "pos": [
+                    244.6,
+                    88.09,
+                    420
+                  ]
+                }
+              ],
+              "outcome": "rest",
+              "zone": "upper",
+              "phase": 0,
+              "blocked": true,
+              "finish": [
+                259.0628,
+                88.0719,
+                416.3354
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "basin",
+              "phase": 6.75,
+              "blocked": true,
+              "finish": [
+                234.5329,
+                84.0719,
+                421.7723
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.182
+    }
+  },
+  "h6": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h6",
+      "hole": 6,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.99,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              300,
+              83.73,
+              424
+            ]
+          },
+          {
+            "rimSpeed": 2.944,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              300,
+              83.73,
+              424
+            ]
+          },
+          {
+            "rimSpeed": 2.996,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              300,
+              83.73,
+              424
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.083,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h6-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 84.2,
+                "angleIn": 64.5,
+                "vOut": [
+                  0,
+                  -0.0005,
+                  -1.8558
+                ],
+                "vnOut": -0.189,
+                "tContact": 3.4333,
+                "speedOut": 1.856,
+                "speedIn": 2.045,
+                "normal": [
+                  0.9948,
+                  0,
+                  0.1017
+                ],
+                "type": "event",
+                "vtIn": 1.846,
+                "speedRetention": 0.908,
+                "event": "contact",
+                "t": 3.4333,
+                "vtOut": 1.846,
+                "part": "Workspace.CourseAurora.Hole6.Geometry.Wall:rail1",
+                "speedAfter300ms": 1.56,
+                "tangentialRetention": 1,
+                "shot": "h6-fuzz-1",
+                "vIn": [
+                  -0.6865,
+                  -0.0005,
+                  -1.926
+                ],
+                "vnIn": -0.879,
+                "restitution": 0.215,
+                "retentionAfter300ms": 0.763,
+                "pos": [
+                  301.0686,
+                  84.0788,
+                  469.1649
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.911,
+            "distM": 3.539,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.083,
+            "tRest": 5.882,
+            "flags": [],
+            "maxY": 84.098,
+            "distStuds": 11.797,
+            "start": [
+              305,
+              84.0718,
+              478
+            ],
+            "tEnd": 5.932,
+            "tStop": 5.365,
+            "finish": [
+              301.082,
+              84.0719,
+              466.873
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h6-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 8.9,
+                "angleIn": 5.3,
+                "vOut": [
+                  -0.9889,
+                  0.0142,
+                  -8.8538
+                ],
+                "vnOut": 8.801,
+                "tContact": 10.5166,
+                "speedOut": 8.909,
+                "speedIn": 14.897,
+                "normal": [
+                  0.0447,
+                  0,
+                  -0.999
+                ],
+                "type": "event",
+                "vtIn": 1.384,
+                "speedRetention": 0.598,
+                "event": "contact",
+                "t": 10.5166,
+                "vtOut": 1.384,
+                "part": "Workspace.CourseAurora.Hole6.Geometry.Wall:rail2",
+                "speedAfter300ms": 8.05,
+                "tangentialRetention": 1,
+                "shot": "h6-fuzz-2",
+                "vIn": [
+                  -2.0461,
+                  0.0291,
+                  14.7561
+                ],
+                "vnIn": -14.833,
+                "restitution": 0.593,
+                "retentionAfter300ms": 0.54,
+                "pos": [
+                  291.5248,
+                  84.1592,
+                  465.8192
+                ]
+              }
+            ],
+            "piece": "shelf",
+            "maxAlong": 4.393,
+            "distM": 5.551,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "shelf",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0,
+            "tRest": 11.015,
+            "flags": [],
+            "maxY": 84.194,
+            "distStuds": 18.504,
+            "start": [
+              292.1587,
+              84.1639,
+              461.7473
+            ],
+            "tEnd": 11.065,
+            "tStop": 10.499,
+            "finish": [
+              293.6734,
+              84.1493,
+              443.3058
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Palm Lagoon",
+      "seconds": 27.87,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h7": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h7",
+      "hole": 7,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.99,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              371,
+              111.73,
+              277
+            ]
+          },
+          {
+            "rimSpeed": 2.973,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              371,
+              111.73,
+              277
+            ]
+          },
+          {
+            "rimSpeed": 2.996,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              371,
+              111.73,
+              277
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h7-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 51.3,
+                "vOut": [
+                  0,
+                  0.1335,
+                  -0.7785
+                ],
+                "vnOut": 0,
+                "tContact": 3.2662,
+                "speedOut": 0.778,
+                "speedIn": 1.304,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.017,
+                "speedRetention": 0.597,
+                "event": "contact",
+                "t": 3.2663,
+                "vtOut": 0.778,
+                "part": "Workspace.CourseAurora.Hole7.Geometry.Wall:rail2",
+                "speedAfter300ms": 0.498,
+                "tangentialRetention": 0.765,
+                "shot": "h7-fuzz-1",
+                "vIn": [
+                  -0.8156,
+                  0.1741,
+                  -1.0175
+                ],
+                "vnIn": -0.816,
+                "restitution": 0,
+                "retentionAfter300ms": 0.382,
+                "pos": [
+                  361.0771,
+                  112.1945,
+                  321.3319
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.922,
+            "distM": 1.957,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 6.783,
+            "flags": [],
+            "maxY": 112.211,
+            "distStuds": 6.522,
+            "start": [
+              365,
+              112.0793,
+              330
+            ],
+            "tEnd": 6.833,
+            "tStop": 2.85,
+            "finish": [
+              361.1424,
+              112.0793,
+              324.7415
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h7-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12,
+                "angleIn": 8.2,
+                "vOut": [
+                  -1.681,
+                  -0.2565,
+                  -7.8748
+                ],
+                "vnOut": 7.875,
+                "tContact": 11.8661,
+                "speedOut": 8.052,
+                "speedIn": 13.28,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 1.904,
+                "speedRetention": 0.606,
+                "event": "contact",
+                "t": 11.8661,
+                "vtOut": 1.681,
+                "part": "Workspace.CourseAurora.Hole7.Geometry.Wall:rail26",
+                "speedAfter300ms": 6.006,
+                "tangentialRetention": 0.883,
+                "shot": "h7-fuzz-2",
+                "vIn": [
+                  -1.9041,
+                  -0.0001,
+                  13.1426
+                ],
+                "vnIn": -13.143,
+                "restitution": 0.599,
+                "retentionAfter300ms": 0.452,
+                "pos": [
+                  361.1377,
+                  112.0874,
+                  331.8836
+                ]
+              },
+              {
+                "angleOut": 82.5,
+                "angleIn": 78,
+                "vOut": [
+                  0.9518,
+                  -0.0005,
+                  -7.2377
+                ],
+                "vnOut": 0.952,
+                "tContact": 11.9155,
+                "speedOut": 7.3,
+                "speedIn": 8.052,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 7.875,
+                "speedRetention": 0.907,
+                "event": "contact",
+                "t": 11.9156,
+                "vtOut": 7.238,
+                "part": "Workspace.CourseAurora.Hole7.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.905,
+                "tangentialRetention": 0.919,
+                "shot": "h7-fuzz-2",
+                "vIn": [
+                  -1.681,
+                  -0.2565,
+                  -7.8748
+                ],
+                "vnIn": -1.681,
+                "restitution": 0.566,
+                "retentionAfter300ms": 0.733,
+                "pos": [
+                  361.0879,
+                  112.0853,
+                  331.4916
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 10.399,
+            "distM": 1.112,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 7.583,
+            "flags": [],
+            "maxY": 112.257,
+            "distStuds": 3.708,
+            "start": [
+              362.6533,
+              112.1502,
+              321.5959
+            ],
+            "tEnd": 7.633,
+            "tStop": 7.067,
+            "finish": [
+              362.5447,
+              112.0793,
+              325.3018
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Mogul Meadow",
+      "seconds": 25.43,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h8": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h8",
+      "hole": 8,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.99,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              426.5,
+              111.73,
+              251.5
+            ]
+          },
+          {
+            "rimSpeed": 2.974,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              426.5,
+              111.73,
+              251.5
+            ]
+          },
+          {
+            "rimSpeed": 2.997,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              426.5,
+              111.73,
+              251.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h8-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.7,
+                "angleIn": 8.7,
+                "vOut": [
+                  -1.9018,
+                  -0.3212,
+                  -8.4115
+                ],
+                "vnOut": 8.412,
+                "tContact": 0.7492,
+                "speedOut": 8.624,
+                "speedIn": 14.165,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 2.144,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 0.7492,
+                "vtOut": 1.902,
+                "part": "Workspace.CourseAurora.Hole8.Geometry.Wall:rail8",
+                "speedAfter300ms": 5.738,
+                "tangentialRetention": 0.887,
+                "shot": "h8-fuzz-1",
+                "vIn": [
+                  -2.1441,
+                  -0.0001,
+                  14.0014
+                ],
+                "vnIn": -14.001,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.405,
+                "pos": [
+                  429.6764,
+                  112.0912,
+                  301.8394
+                ]
+              }
+            ],
+            "piece": "reef_a",
+            "maxAlong": 1.922,
+            "distM": 4.274,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "reef_a",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.883,
+            "flags": [],
+            "maxY": 112.098,
+            "distStuds": 14.245,
+            "start": [
+              430,
+              112.0793,
+              300
+            ],
+            "tEnd": 6.933,
+            "tStop": 6.366,
+            "finish": [
+              424.5767,
+              112.0793,
+              286.8277
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h8-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 82.5,
+                "angleIn": 71.7,
+                "vOut": [
+                  0.6256,
+                  -0.0001,
+                  -4.7211
+                ],
+                "vnOut": 0.626,
+                "tContact": 12.4652,
+                "speedOut": 4.762,
+                "speedIn": 5.098,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 4.839,
+                "speedRetention": 0.934,
+                "event": "contact",
+                "t": 12.4652,
+                "vtOut": 4.721,
+                "part": "Workspace.CourseAurora.Hole8.Geometry.Wall:rail1",
+                "speedAfter300ms": 4.309,
+                "tangentialRetention": 0.976,
+                "shot": "h8-fuzz-2",
+                "vIn": [
+                  -1.6049,
+                  -0.0001,
+                  -4.8389
+                ],
+                "vnIn": -1.605,
+                "restitution": 0.39,
+                "retentionAfter300ms": 0.845,
+                "pos": [
+                  424.0849,
+                  112.0798,
+                  295.2569
+                ]
+              }
+            ],
+            "piece": "reef_a",
+            "maxAlong": 2.133,
+            "distM": 4.568,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "reef_a",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.082,
+            "flags": [],
+            "maxY": 112.103,
+            "distStuds": 15.227,
+            "start": [
+              426.3496,
+              112.0792,
+              299.851
+            ],
+            "tEnd": 7.132,
+            "tStop": 6.565,
+            "finish": [
+              425.41,
+              112.0793,
+              284.6531
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Coral Pinball",
+      "seconds": 25.02,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h9": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h9",
+      "hole": 9,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.993,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              537,
+              111.73,
+              166
+            ]
+          },
+          {
+            "rimSpeed": 2.974,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              537,
+              111.73,
+              166
+            ]
+          },
+          {
+            "rimSpeed": 2.997,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              537,
+              111.73,
+              166
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h9-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 85.2,
+                "angleIn": 65.8,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  -2.3803
+                ],
+                "vnOut": -0.2,
+                "tContact": 3.2492,
+                "speedOut": 2.38,
+                "speedIn": 2.601,
+                "normal": [
+                  0.9964,
+                  0,
+                  0.0842
+                ],
+                "type": "event",
+                "vtIn": 2.372,
+                "speedRetention": 0.915,
+                "event": "contact",
+                "t": 3.2492,
+                "vtOut": 2.372,
+                "part": "Workspace.CourseAurora.Hole9.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.08,
+                "tangentialRetention": 1,
+                "shot": "h9-fuzz-1",
+                "vIn": [
+                  -0.8639,
+                  -0.0005,
+                  -2.4533
+                ],
+                "vnIn": -1.067,
+                "restitution": 0.188,
+                "retentionAfter300ms": 0.8,
+                "pos": [
+                  531.0717,
+                  112.0798,
+                  221.0313
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.922,
+            "distM": 4.076,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.716,
+            "flags": [],
+            "maxY": 112.098,
+            "distStuds": 13.586,
+            "start": [
+              535,
+              112.0793,
+              230
+            ],
+            "tEnd": 6.766,
+            "tStop": 6.199,
+            "finish": [
+              531.082,
+              112.0793,
+              216.991
+            ]
+          },
+          {
+            "v0": 19.267,
+            "speedMps": 5.780054082976791,
+            "label": "h9-fuzz-3",
+            "contacts": [
+              {
+                "angleOut": 7.7,
+                "angleIn": 5.3,
+                "vOut": [
+                  -10.3272,
+                  0.0887,
+                  -1.3875
+                ],
+                "vnOut": 10.327,
+                "tContact": 11.9829,
+                "speedOut": 10.42,
+                "speedIn": 17.145,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": -1.587,
+                "speedRetention": 0.608,
+                "event": "contact",
+                "t": 11.9829,
+                "vtOut": -1.388,
+                "part": "Workspace.CourseAurora.Hole9.Geometry.Wall:rail2",
+                "speedAfter300ms": 7.215,
+                "tangentialRetention": 0.874,
+                "shot": "h9-fuzz-3",
+                "vIn": [
+                  17.071,
+                  -0.0001,
+                  -1.5872
+                ],
+                "vnIn": -17.071,
+                "restitution": 0.605,
+                "retentionAfter300ms": 0.421,
+                "pos": [
+                  538.8619,
+                  112.0903,
+                  223.4384
+                ]
+              },
+              {
+                "angleOut": 18.9,
+                "angleIn": 12,
+                "vOut": [
+                  2.9146,
+                  -0.0001,
+                  -1.0007
+                ],
+                "vnOut": 2.915,
+                "tContact": 13.1149,
+                "speedOut": 3.082,
+                "speedIn": 5.324,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.102,
+                "speedRetention": 0.579,
+                "event": "contact",
+                "t": 13.1149,
+                "vtOut": 1.001,
+                "part": "Workspace.CourseAurora.Hole9.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.026,
+                "tangentialRetention": 0.908,
+                "shot": "h9-fuzz-3",
+                "vIn": [
+                  -5.2085,
+                  -0.0001,
+                  -1.1025
+                ],
+                "vnIn": -5.208,
+                "restitution": 0.56,
+                "retentionAfter300ms": 0.381,
+                "pos": [
+                  531.0852,
+                  112.0811,
+                  221.9542
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 7.294,
+            "distM": 1.362,
+            "outcome": "rest",
+            "speed": 19.267,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 5.133,
+            "flags": [],
+            "maxY": 112.109,
+            "distStuds": 4.539,
+            "start": [
+              531.6008,
+              112.0793,
+              224.135
+            ],
+            "tEnd": 5.183,
+            "tStop": 4.617,
+            "finish": [
+              534.222,
+              112.0793,
+              220.4295
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Conch Shortcut",
+      "seconds": 23.35,
+      "stuck": 0,
+      "par": 4,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h10": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h10",
+      "hole": 10,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.115,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              468,
+              145.73,
+              60.5
+            ]
+          },
+          {
+            "rimSpeed": 3.015,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              468,
+              145.73,
+              60.5
+            ]
+          },
+          {
+            "rimSpeed": 3.116,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              468,
+              145.73,
+              60.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h10-fuzz-1",
+            "contacts": [],
+            "piece": "plate2",
+            "maxAlong": 1.922,
+            "distM": 3.923,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "s2",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.932,
+            "flags": [],
+            "maxY": 146.127,
+            "distStuds": 13.078,
+            "start": [
+              510,
+              146.0793,
+              60
+            ],
+            "tEnd": 6.982,
+            "tStop": 6.415,
+            "finish": [
+              496.9525,
+              146.0793,
+              59.1146
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h10-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 87.1,
+                "angleIn": 81.8,
+                "vOut": [
+                  10.416,
+                  -0.0001,
+                  -0.5229
+                ],
+                "vnOut": 0.523,
+                "tContact": 12.7657,
+                "speedOut": 10.429,
+                "speedIn": 10.679,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": -10.569,
+                "speedRetention": 0.977,
+                "event": "contact",
+                "t": 12.7657,
+                "vtOut": -10.416,
+                "part": "Workspace.CourseAurora.Hole10.Geometry.Wall:snowwall1",
+                "speedAfter300ms": 9.5,
+                "tangentialRetention": 0.985,
+                "shot": "h10-fuzz-2",
+                "vIn": [
+                  10.5693,
+                  -0.0001,
+                  1.5277
+                ],
+                "vnIn": -1.528,
+                "restitution": 0.342,
+                "retentionAfter300ms": 0.89,
+                "pos": [
+                  502.1715,
+                  146.0799,
+                  64.9063
+                ]
+              },
+              {
+                "angleOut": 4,
+                "angleIn": 2.6,
+                "vOut": [
+                  -4.4537,
+                  -0.0007,
+                  -0.3102
+                ],
+                "vnOut": 4.454,
+                "tContact": 13.8322,
+                "speedOut": 4.464,
+                "speedIn": 7.633,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": -0.349,
+                "speedRetention": 0.585,
+                "event": "contact",
+                "t": 13.8322,
+                "vtOut": -0.31,
+                "part": "Workspace.CourseAurora.Hole10.Geometry.Wall:snowwall8",
+                "speedAfter300ms": 2.766,
+                "tangentialRetention": 0.89,
+                "shot": "h10-fuzz-2",
+                "vIn": [
+                  7.6252,
+                  -0.0001,
+                  -0.3485
+                ],
+                "vnIn": -7.625,
+                "restitution": 0.584,
+                "retentionAfter300ms": 0.362,
+                "pos": [
+                  511.8889,
+                  146.0846,
+                  64.4521
+                ]
+              }
+            ],
+            "piece": "plate1",
+            "maxAlong": 29.245,
+            "distM": 7.069,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "s1",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 6.981,
+            "flags": [],
+            "maxY": 146.085,
+            "distStuds": 23.562,
+            "start": [
+              482.676,
+              146.0791,
+              62.1281
+            ],
+            "tEnd": 7.031,
+            "tStop": 6.449,
+            "finish": [
+              506.157,
+              146.0793,
+              64.082
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Bobsled Bend",
+      "seconds": 24.92,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h11": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h11",
+      "hole": 11,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.055,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              406,
+              145.73,
+              -5
+            ]
+          },
+          {
+            "rimSpeed": 3.004,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              406,
+              145.73,
+              -5
+            ]
+          },
+          {
+            "rimSpeed": 3.116,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              406,
+              145.73,
+              -5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 51.55,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h11-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 81.1,
+                "angleIn": 70.1,
+                "vOut": [
+                  0,
+                  -0.0003,
+                  -2.5324
+                ],
+                "vnOut": -0.391,
+                "tContact": 32.3984,
+                "speedOut": 2.532,
+                "speedIn": 2.661,
+                "normal": [
+                  0.988,
+                  0,
+                  0.1542
+                ],
+                "type": "event",
+                "vtIn": 2.502,
+                "speedRetention": 0.952,
+                "event": "contact",
+                "t": 32.3984,
+                "vtOut": 2.502,
+                "part": "Workspace.CourseAurora.Hole11.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.137,
+                "tangentialRetention": 1,
+                "shot": "h11-fuzz-1",
+                "vIn": [
+                  -0.5084,
+                  -0.0003,
+                  -2.6117
+                ],
+                "vnIn": -0.905,
+                "restitution": 0.431,
+                "retentionAfter300ms": 0.803,
+                "pos": [
+                  406.076,
+                  146.0797,
+                  23.353
+                ]
+              },
+              {
+                "angleOut": 78.2,
+                "angleIn": 87.4,
+                "vOut": [
+                  0.5267,
+                  -0.0003,
+                  -2.0388
+                ],
+                "vnOut": 0.432,
+                "tContact": 32.7481,
+                "speedOut": 2.106,
+                "speedIn": 2.227,
+                "normal": [
+                  0.9989,
+                  0,
+                  0.0461
+                ],
+                "type": "event",
+                "vtIn": 2.225,
+                "speedRetention": 0.945,
+                "event": "contact",
+                "t": 32.7481,
+                "vtOut": 2.061,
+                "part": "Workspace.CourseAurora.Hole11.Geometry.Wall:rail2",
+                "speedAfter300ms": 1.822,
+                "tangentialRetention": 0.926,
+                "shot": "h11-fuzz-1",
+                "vIn": [
+                  0,
+                  -0.0003,
+                  -2.2273
+                ],
+                "vnIn": -0.103,
+                "restitution": 4.204,
+                "retentionAfter300ms": 0.818,
+                "pos": [
+                  406.0804,
+                  146.0797,
+                  22.5024
+                ]
+              }
+            ],
+            "piece": "pond",
+            "maxAlong": 2.04,
+            "distM": 6.29,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "pond",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 7.632,
+            "flags": [],
+            "maxY": 146.095,
+            "distStuds": 20.966,
+            "start": [
+              410,
+              146.0787,
+              40
+            ],
+            "tEnd": 7.682,
+            "tStop": 7.116,
+            "finish": [
+              406.9174,
+              146.0787,
+              19.2617
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h11-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 28.6,
+                "angleIn": 18.6,
+                "vOut": [
+                  -1.417,
+                  -0.0005,
+                  2.5939
+                ],
+                "vnOut": 2.594,
+                "tContact": 41.5304,
+                "speedOut": 2.956,
+                "speedIn": 4.958,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": -1.581,
+                "speedRetention": 0.596,
+                "event": "contact",
+                "t": 41.5304,
+                "vtOut": -1.417,
+                "part": "Workspace.CourseAurora.Hole11.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.08,
+                "tangentialRetention": 0.896,
+                "shot": "h11-fuzz-2",
+                "vIn": [
+                  -1.5811,
+                  -0.0003,
+                  -4.6989
+                ],
+                "vnIn": -4.699,
+                "restitution": 0.552,
+                "retentionAfter300ms": 0.42,
+                "pos": [
+                  400.5334,
+                  146.0806,
+                  14.0712
+                ]
+              },
+              {
+                "angleOut": 87.9,
+                "angleIn": 49.9,
+                "vOut": [
+                  0,
+                  -0.0003,
+                  0.9482
+                ],
+                "vnOut": -0.035,
+                "tContact": 42.831,
+                "speedOut": 0.948,
+                "speedIn": 1.239,
+                "normal": [
+                  0.9993,
+                  0,
+                  -0.0373
+                ],
+                "type": "event",
+                "vtIn": -0.948,
+                "speedRetention": 0.765,
+                "event": "contact",
+                "t": 42.831,
+                "vtOut": -0.948,
+                "part": "Workspace.CourseAurora.Hole11.Geometry.Wall:rail3",
+                "speedAfter300ms": 0.765,
+                "tangentialRetention": 1,
+                "shot": "h11-fuzz-2",
+                "vIn": [
+                  -0.7632,
+                  -0.0003,
+                  0.9767
+                ],
+                "vnIn": -0.799,
+                "restitution": 0.044,
+                "retentionAfter300ms": 0.617,
+                "pos": [
+                  399.0802,
+                  146.0791,
+                  16.0128
+                ]
+              }
+            ],
+            "piece": "pond",
+            "maxAlong": 0.86,
+            "distM": 1.714,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "pond",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 4.666,
+            "flags": [],
+            "maxY": 146.102,
+            "distStuds": 5.712,
+            "start": [
+              403.0904,
+              146.0785,
+              21.0061
+            ],
+            "tEnd": 4.716,
+            "tStop": 4.15,
+            "finish": [
+              399.082,
+              146.0787,
+              16.9364
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Floe Drift",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "ice_floe",
+          "period": 7.866666666666667,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                408.55,
+                146.0787,
+                -8.6564
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 3.93,
+              "blocked": false,
+              "finish": [
+                408.3333,
+                146.0787,
+                -8.5814
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.166
+    }
+  },
+  "h12": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h12",
+      "hole": 12,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.984,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              328,
+              145.73,
+              -58.5
+            ]
+          },
+          {
+            "rimSpeed": 2.969,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              328,
+              145.73,
+              -58.5
+            ]
+          },
+          {
+            "rimSpeed": 2.987,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              328,
+              145.73,
+              -58.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 55.75,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h12-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  -2.4694,
+                  -0.0001,
+                  0
+                ],
+                "vnOut": 0,
+                "tContact": 34.1819,
+                "speedOut": 2.469,
+                "speedIn": 2.688,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 2.536,
+                "speedRetention": 0.919,
+                "event": "contact",
+                "t": 34.1819,
+                "vtOut": 2.469,
+                "part": "Workspace.CourseAurora.Hole12.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.169,
+                "tangentialRetention": 0.974,
+                "shot": "h12-fuzz-1",
+                "vIn": [
+                  -2.5355,
+                  -0.0001,
+                  0.8912
+                ],
+                "vnIn": -0.891,
+                "restitution": 0,
+                "retentionAfter300ms": 0.807,
+                "pos": [
+                  361.0183,
+                  146.0797,
+                  -56.079
+                ]
+              }
+            ],
+            "piece": "approach",
+            "maxAlong": 1.982,
+            "distM": 4.185,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.733,
+            "flags": [],
+            "maxY": 146.099,
+            "distStuds": 13.95,
+            "start": [
+              370,
+              146.0787,
+              -60
+            ],
+            "tEnd": 6.783,
+            "tStop": 6.216,
+            "finish": [
+              356.6119,
+              146.0793,
+              -56.082
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h12-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.4,
+                "angleIn": 8.2,
+                "vOut": [
+                  -7.4866,
+                  -0.4365,
+                  1.6463
+                ],
+                "vnOut": 7.487,
+                "tContact": 42.9818,
+                "speedOut": 7.666,
+                "speedIn": 12.65,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 1.81,
+                "speedRetention": 0.606,
+                "event": "contact",
+                "t": 42.9818,
+                "vtOut": 1.646,
+                "part": "Workspace.CourseAurora.Hole12.Geometry.Wall:rail12",
+                "speedAfter300ms": 5.082,
+                "tangentialRetention": 0.91,
+                "shot": "h12-fuzz-2",
+                "vIn": [
+                  12.5201,
+                  -0.0001,
+                  1.8096
+                ],
+                "vnIn": -12.52,
+                "restitution": 0.598,
+                "retentionAfter300ms": 0.402,
+                "pos": [
+                  371.8262,
+                  146.0898,
+                  -56.9843
+                ]
+              },
+              {
+                "angleOut": 83.7,
+                "angleIn": 71.3,
+                "vOut": [
+                  -4.3842,
+                  -0.0001,
+                  -0.4806
+                ],
+                "vnOut": 0.481,
+                "tContact": 43.5318,
+                "speedOut": 4.411,
+                "speedIn": 4.744,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 4.492,
+                "speedRetention": 0.93,
+                "event": "contact",
+                "t": 43.5319,
+                "vtOut": 4.384,
+                "part": "Workspace.CourseAurora.Hole12.Geometry.Wall:rail1",
+                "speedAfter300ms": 3.931,
+                "tangentialRetention": 0.976,
+                "shot": "h12-fuzz-2",
+                "vIn": [
+                  -4.4923,
+                  -0.0001,
+                  1.5247
+                ],
+                "vnIn": -1.525,
+                "restitution": 0.315,
+                "retentionAfter300ms": 0.829,
+                "pos": [
+                  368.6605,
+                  146.0798,
+                  -56.094
+                ]
+              }
+            ],
+            "piece": "approach",
+            "maxAlong": 13,
+            "distM": 0.518,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.001,
+            "flags": [],
+            "maxY": 146.095,
+            "distStuds": 1.725,
+            "start": [
+              359.006,
+              146.0791,
+              -58.872
+            ],
+            "tEnd": 7.051,
+            "tStop": 6.5,
+            "finish": [
+              359.0771,
+              146.0793,
+              -57.1484
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Icebreaker Wheel",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "paddle_wheel",
+          "period": 12,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "cup",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                328,
+                145.73,
+                -58.5
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "cup",
+              "zone": "green",
+              "phase": 6,
+              "blocked": false,
+              "finish": [
+                328,
+                145.73,
+                -58.5
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.165
+    }
+  },
+  "h13": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h13",
+      "hole": 13,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.984,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              130.1,
+              181.73,
+              -276
+            ]
+          },
+          {
+            "rimSpeed": 2.972,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              130.1,
+              181.73,
+              -276
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              130.1,
+              181.73,
+              -276
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 66.7,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h13-fuzz-1",
+            "contacts": [],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 4.352,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.767,
+            "flags": [],
+            "maxY": 182.098,
+            "distStuds": 14.508,
+            "start": [
+              120,
+              182.0787,
+              -230
+            ],
+            "tEnd": 6.817,
+            "tStop": 6.267,
+            "finish": [
+              114.4941,
+              182.0793,
+              -243.4224
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h13-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.5,
+                "angleIn": 7.6,
+                "vOut": [
+                  -1.952,
+                  -0.3362,
+                  -9.3414
+                ],
+                "vnOut": 9.318,
+                "tContact": 53.2468,
+                "speedOut": 9.543,
+                "speedIn": 15.648,
+                "normal": [
+                  0.0115,
+                  0,
+                  -0.9999
+                ],
+                "type": "event",
+                "vtIn": 2.06,
+                "speedRetention": 0.61,
+                "event": "contact",
+                "t": 53.2468,
+                "vtOut": 2.06,
+                "part": "Workspace.CourseAurora.Hole13.Geometry.Wall:rail8",
+                "speedAfter300ms": 6.552,
+                "tangentialRetention": 1,
+                "shot": "h13-fuzz-2",
+                "vIn": [
+                  -2.2385,
+                  -0.0001,
+                  15.4874
+                ],
+                "vnIn": -15.512,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.419,
+                "pos": [
+                  114.9969,
+                  182.0959,
+                  -228.2069
+                ]
+              },
+              {
+                "angleOut": 84.1,
+                "angleIn": 71.8,
+                "vOut": [
+                  0.4348,
+                  -0.0001,
+                  -4.2272
+                ],
+                "vnOut": 0.435,
+                "tContact": 54.5819,
+                "speedOut": 4.25,
+                "speedIn": 4.555,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 4.327,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 54.5819,
+                "vtOut": 4.227,
+                "part": "Workspace.CourseAurora.Hole13.Geometry.Wall:rail1",
+                "speedAfter300ms": 3.812,
+                "tangentialRetention": 0.977,
+                "shot": "h13-fuzz-2",
+                "vIn": [
+                  -1.4213,
+                  -0.0001,
+                  -4.3275
+                ],
+                "vnIn": -1.421,
+                "restitution": 0.306,
+                "retentionAfter300ms": 0.837,
+                "pos": [
+                  112.5932,
+                  182.0798,
+                  -236.313
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.394,
+            "distM": 4.573,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.968,
+            "flags": [],
+            "maxY": 182.103,
+            "distStuds": 15.245,
+            "start": [
+              115.3719,
+              182.0791,
+              -230.3965
+            ],
+            "tEnd": 7.018,
+            "tStop": 6.466,
+            "finish": [
+              113.544,
+              182.0793,
+              -245.5312
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Snowpuff Carousel",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "carousel_arms",
+          "period": 24,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "dial",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                131.4665,
+                182.0793,
+                -276.5198
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "dial",
+              "phase": 12,
+              "blocked": false,
+              "finish": [
+                131.6998,
+                182.0793,
+                -276.4964
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.172
+    }
+  },
+  "h14": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h14",
+      "hole": 14,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.986,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              41,
+              182.53,
+              -301
+            ]
+          },
+          {
+            "rimSpeed": 2.971,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              41,
+              182.53,
+              -301
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              41,
+              182.53,
+              -301
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 44.22,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h14-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  -2.4555,
+                  -0.0001,
+                  0
+                ],
+                "vnOut": 0,
+                "tContact": 22.7975,
+                "speedOut": 2.456,
+                "speedIn": 2.681,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 2.53,
+                "speedRetention": 0.916,
+                "event": "contact",
+                "t": 22.7975,
+                "vtOut": 2.456,
+                "part": "Workspace.CourseAurora.Hole14.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.159,
+                "tangentialRetention": 0.971,
+                "shot": "h14-fuzz-1",
+                "vIn": [
+                  -2.5296,
+                  -0.0001,
+                  0.889
+                ],
+                "vnIn": -0.889,
+                "restitution": 0,
+                "retentionAfter300ms": 0.805,
+                "pos": [
+                  76.0402,
+                  182.0797,
+                  -296.0768
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.903,
+            "distM": 4.139,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.601,
+            "flags": [],
+            "maxY": 182.098,
+            "distStuds": 13.798,
+            "start": [
+              85,
+              182.0793,
+              -300
+            ],
+            "tEnd": 6.651,
+            "tStop": 6.099,
+            "finish": [
+              71.7699,
+              182.0793,
+              -296.082
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h14-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.2,
+                "angleIn": 8.2,
+                "vOut": [
+                  -9.3387,
+                  -0.051,
+                  2.0196
+                ],
+                "vnOut": 9.339,
+                "tContact": 30.7658,
+                "speedOut": 9.555,
+                "speedIn": 15.648,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.239,
+                "speedRetention": 0.611,
+                "event": "contact",
+                "t": 30.7658,
+                "vtOut": 2.02,
+                "part": "Workspace.CourseAurora.Hole14.Geometry.Wall:rail10",
+                "speedAfter300ms": 6.491,
+                "tangentialRetention": 0.902,
+                "shot": "h14-fuzz-2",
+                "vIn": [
+                  15.4875,
+                  -0.0001,
+                  2.2385
+                ],
+                "vnIn": -15.487,
+                "restitution": 0.603,
+                "retentionAfter300ms": 0.415,
+                "pos": [
+                  86.8554,
+                  182.0891,
+                  -297.2755
+                ]
+              },
+              {
+                "angleOut": 81.6,
+                "angleIn": 71.4,
+                "vOut": [
+                  -5.4974,
+                  -0.0001,
+                  -0.8117
+                ],
+                "vnOut": 0.812,
+                "tContact": 31.3487,
+                "speedOut": 5.557,
+                "speedIn": 5.957,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 5.645,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 31.3487,
+                "vtOut": 5.497,
+                "part": "Workspace.CourseAurora.Hole14.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.037,
+                "tangentialRetention": 0.974,
+                "shot": "h14-fuzz-2",
+                "vIn": [
+                  -5.6451,
+                  -0.0001,
+                  1.9032
+                ],
+                "vnIn": -1.903,
+                "restitution": 0.427,
+                "retentionAfter300ms": 0.846,
+                "pos": [
+                  82.573,
+                  182.0798,
+                  -296.0836
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.446,
+            "distM": 4.526,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.046,
+            "tRest": 7.016,
+            "flags": [],
+            "maxY": 182.103,
+            "distStuds": 15.087,
+            "start": [
+              84.4386,
+              182.0793,
+              -297.6533
+            ],
+            "tEnd": 7.066,
+            "tStop": 6.5,
+            "finish": [
+              69.352,
+              182.0792,
+              -297.7847
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Bell Buoy",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "icicle_bell",
+          "period": 4,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                37.403,
+                182.8793,
+                -299.6698
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 2,
+              "blocked": false,
+              "finish": [
+                37.4674,
+                182.8793,
+                -299.6689
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.161
+    }
+  },
+  "h15": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h15",
+      "hole": 15,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.983,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              15.5,
+              177.73,
+              -365
+            ]
+          },
+          {
+            "rimSpeed": 2.97,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              15.5,
+              177.73,
+              -365
+            ]
+          },
+          {
+            "rimSpeed": 2.988,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              15.5,
+              177.73,
+              -365
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h15-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 83.5,
+                "angleIn": 70.6,
+                "vOut": [
+                  0.343,
+                  -0.0001,
+                  -3.0013
+                ],
+                "vnOut": 0.343,
+                "tContact": 2.6835,
+                "speedOut": 3.021,
+                "speedIn": 3.264,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.079,
+                "speedRetention": 0.925,
+                "event": "contact",
+                "t": 2.6835,
+                "vtOut": 3.001,
+                "part": "Workspace.CourseAurora.Hole15.Geometry.Wall:lane_rail3",
+                "speedAfter300ms": 2.66,
+                "tangentialRetention": 0.975,
+                "shot": "h15-fuzz-1",
+                "vIn": [
+                  -1.0844,
+                  -0.0001,
+                  -3.079
+                ],
+                "vnIn": -1.084,
+                "restitution": 0.316,
+                "retentionAfter300ms": 0.815,
+                "pos": [
+                  8.586,
+                  182.0797,
+                  -341.5441
+                ]
+              }
+            ],
+            "piece": "lip_lane",
+            "maxAlong": 1.922,
+            "distM": 4.062,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.616,
+            "flags": [],
+            "maxY": 182.098,
+            "distStuds": 13.541,
+            "start": [
+              12,
+              182.0793,
+              -334
+            ],
+            "tEnd": 6.666,
+            "tStop": 6.116,
+            "finish": [
+              9.24,
+              182.0793,
+              -347.2568
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h15-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 85.9,
+                "angleIn": 68.5,
+                "vOut": [
+                  0.7135,
+                  -0.0001,
+                  -5.5767
+                ],
+                "vnOut": 0.405,
+                "tContact": 11.6831,
+                "speedOut": 5.622,
+                "speedIn": 6.027,
+                "normal": [
+                  0.9985,
+                  0,
+                  0.0551
+                ],
+                "type": "event",
+                "vtIn": 5.608,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 11.6831,
+                "vtOut": 5.608,
+                "part": "Workspace.CourseAurora.Hole15.Geometry.Wall:lane_rail3",
+                "speedAfter300ms": 5.097,
+                "tangentialRetention": 1,
+                "shot": "h15-fuzz-2",
+                "vIn": [
+                  -1.8977,
+                  -0.0001,
+                  -5.7208
+                ],
+                "vnIn": -2.21,
+                "restitution": 0.183,
+                "retentionAfter300ms": 0.846,
+                "pos": [
+                  8.5917,
+                  182.0798,
+                  -336.2039
+                ]
+              }
+            ],
+            "piece": "lip_lane",
+            "maxAlong": 2.133,
+            "distM": 4.637,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.952,
+            "flags": [],
+            "maxY": 182.103,
+            "distStuds": 15.456,
+            "start": [
+              9.9793,
+              182.0793,
+              -334.149
+            ],
+            "tEnd": 7.002,
+            "tStop": 6.45,
+            "finish": [
+              10.0907,
+              182.0793,
+              -349.605
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Frozen Falls",
+      "seconds": 24.53,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h16": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h16",
+      "hole": 16,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.984,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -106.8,
+              220.93,
+              -335.5
+            ]
+          },
+          {
+            "rimSpeed": 2.97,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -106.8,
+              220.93,
+              -335.5
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -106.8,
+              220.93,
+              -335.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.083,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h16-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.7,
+                "angleIn": 8.7,
+                "vOut": [
+                  -1.9019,
+                  -0.3212,
+                  -8.4115
+                ],
+                "vnOut": 8.411,
+                "tContact": 0.7491,
+                "speedOut": 8.624,
+                "speedIn": 14.165,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 2.144,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 0.7491,
+                "vtOut": 1.902,
+                "part": "Workspace.CourseAurora.Hole16.Geometry.Wall:rail8",
+                "speedAfter300ms": 5.735,
+                "tangentialRetention": 0.887,
+                "shot": "h16-fuzz-1",
+                "vIn": [
+                  -2.1441,
+                  -0.0001,
+                  14.0014
+                ],
+                "vnIn": -14.001,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.405,
+                "pos": [
+                  -110.3235,
+                  222.0912,
+                  -298.1607
+                ]
+              },
+              {
+                "angleOut": 82.6,
+                "angleIn": 70.6,
+                "vOut": [
+                  0.4564,
+                  -0.0001,
+                  -3.5147
+                ],
+                "vnOut": 0.456,
+                "tContact": 2.2664,
+                "speedOut": 3.544,
+                "speedIn": 3.822,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.604,
+                "speedRetention": 0.927,
+                "event": "contact",
+                "t": 2.2664,
+                "vtOut": 3.515,
+                "part": "Workspace.CourseAurora.Hole16.Geometry.Wall:rail1",
+                "speedAfter300ms": 3.139,
+                "tangentialRetention": 0.975,
+                "shot": "h16-fuzz-1",
+                "vIn": [
+                  -1.2695,
+                  -0.0001,
+                  -3.6045
+                ],
+                "vnIn": -1.27,
+                "restitution": 0.36,
+                "retentionAfter300ms": 0.821,
+                "pos": [
+                  -112.9188,
+                  222.0797,
+                  -306.1255
+                ]
+              },
+              {
+                "angleOut": 60,
+                "angleIn": 86.6,
+                "vOut": [
+                  0.7957,
+                  -0.0797,
+                  -1.2368
+                ],
+                "vnOut": 0.736,
+                "tContact": 5.0992,
+                "speedOut": 1.471,
+                "speedIn": 1.276,
+                "normal": [
+                  0.9989,
+                  0,
+                  0.0476
+                ],
+                "type": "event",
+                "vtIn": 1.273,
+                "speedRetention": 1.153,
+                "event": "contact",
+                "t": 5.0992,
+                "vtOut": 1.273,
+                "part": "Workspace.CourseAurora.Hole16.Geometry.Base",
+                "speedAfter300ms": 1.732,
+                "tangentialRetention": 1,
+                "shot": "h16-fuzz-1",
+                "vIn": [
+                  0.1358,
+                  -6.7185,
+                  -1.2683
+                ],
+                "vnIn": 0.075,
+                "restitution": 9.772,
+                "retentionAfter300ms": 1.358,
+                "pos": [
+                  -112.1066,
+                  221.3365,
+                  -312.316
+                ]
+              }
+            ],
+            "piece": "well_floor",
+            "maxAlong": 1.922,
+            "distM": 4.178,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "well",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.083,
+            "tRest": 7.654,
+            "flags": [],
+            "maxY": 222.098,
+            "distStuds": 13.926,
+            "start": [
+              -110,
+              222.0793,
+              -300
+            ],
+            "tEnd": 7.704,
+            "tStop": 7.152,
+            "finish": [
+              -109.7375,
+              221.2793,
+              -313.9231
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h16-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.7,
+                "angleIn": 71.8,
+                "vOut": [
+                  0.849,
+                  -0.0001,
+                  -5.8293
+                ],
+                "vnOut": 0.849,
+                "tContact": 12.6331,
+                "speedOut": 5.891,
+                "speedIn": 6.298,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.984,
+                "speedRetention": 0.935,
+                "event": "contact",
+                "t": 12.6331,
+                "vtOut": 5.829,
+                "part": "Workspace.CourseAurora.Hole16.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.315,
+                "tangentialRetention": 0.974,
+                "shot": "h16-fuzz-2",
+                "vIn": [
+                  -1.9629,
+                  -0.0001,
+                  -5.9841
+                ],
+                "vnIn": -1.963,
+                "restitution": 0.433,
+                "retentionAfter300ms": 0.844,
+                "pos": [
+                  -112.9126,
+                  222.0798,
+                  -301.9243
+                ]
+              },
+              {
+                "angleOut": 72,
+                "angleIn": 87.8,
+                "vOut": [
+                  0.9991,
+                  -0.1,
+                  -2.3633
+                ],
+                "vnOut": 0.794,
+                "tContact": 15.2826,
+                "speedOut": 2.566,
+                "speedIn": 2.442,
+                "normal": [
+                  0.9964,
+                  0,
+                  0.0852
+                ],
+                "type": "event",
+                "vtIn": 2.44,
+                "speedRetention": 1.051,
+                "event": "contact",
+                "t": 15.2826,
+                "vtOut": 2.44,
+                "part": "(no part: landing or slope change)",
+                "speedAfter300ms": 2.268,
+                "tangentialRetention": 1,
+                "shot": "h16-fuzz-2",
+                "vIn": [
+                  0.3026,
+                  -7.2214,
+                  -2.4229
+                ],
+                "vnIn": 0.095,
+                "restitution": 8.359,
+                "retentionAfter300ms": 0.929,
+                "pos": [
+                  -111.5607,
+                  221.2848,
+                  -312.5802
+                ]
+              }
+            ],
+            "piece": "well_floor",
+            "maxAlong": 1.378,
+            "distM": 5.234,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "well",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 7.434,
+            "flags": [],
+            "maxY": 222.104,
+            "distStuds": 17.447,
+            "start": [
+              -111.6948,
+              222.0791,
+              -299.489
+            ],
+            "tEnd": 7.484,
+            "tStop": 6.933,
+            "finish": [
+              -109.715,
+              221.2793,
+              -316.8236
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Moonwell",
+      "seconds": 26.13,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h17": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h17",
+      "hole": 17,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.983,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -162.8,
+              221.73,
+              -318
+            ]
+          },
+          {
+            "rimSpeed": 2.97,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -162.8,
+              221.73,
+              -318
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -162.8,
+              221.73,
+              -318
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 55.2,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h17-fuzz-1",
+            "contacts": [],
+            "piece": "rim",
+            "maxAlong": 1.922,
+            "distM": 4.373,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "rim",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.85,
+            "flags": [],
+            "maxY": 222.098,
+            "distStuds": 14.575,
+            "start": [
+              -165,
+              222.0791,
+              -262
+            ],
+            "tEnd": 6.9,
+            "tStop": 6.349,
+            "finish": [
+              -170.5322,
+              222.0793,
+              -275.4843
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h17-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.3,
+                "angleIn": 8.2,
+                "vOut": [
+                  -1.5714,
+                  -0.3435,
+                  -7.1809
+                ],
+                "vnOut": 7.181,
+                "tContact": 42.6825,
+                "speedOut": 7.351,
+                "speedIn": 12.156,
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 1.739,
+                "speedRetention": 0.605,
+                "event": "contact",
+                "t": 42.6825,
+                "vtOut": 1.571,
+                "part": "Workspace.CourseAurora.Hole17.Geometry.Wall:shore_rail3",
+                "speedAfter300ms": 4.498,
+                "tangentialRetention": 0.904,
+                "shot": "h17-fuzz-2",
+                "vIn": [
+                  -1.739,
+                  -0.0001,
+                  12.0311
+                ],
+                "vnIn": -12.031,
+                "restitution": 0.597,
+                "retentionAfter300ms": 0.37,
+                "pos": [
+                  -170.4251,
+                  222.0867,
+                  -260.1281
+                ]
+              },
+              {
+                "angleOut": 84.7,
+                "angleIn": 71.1,
+                "vOut": [
+                  0.4125,
+                  -0.0001,
+                  -4.4656
+                ],
+                "vnOut": 0.413,
+                "tContact": 42.9984,
+                "speedOut": 4.485,
+                "speedIn": 4.839,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 4.578,
+                "speedRetention": 0.927,
+                "event": "contact",
+                "t": 42.9984,
+                "vtOut": 4.466,
+                "part": "Workspace.CourseAurora.Hole17.Geometry.Wall:shore_rail2",
+                "speedAfter300ms": 4.023,
+                "tangentialRetention": 0.975,
+                "shot": "h17-fuzz-2",
+                "vIn": [
+                  -1.5687,
+                  -0.0001,
+                  -4.5779
+                ],
+                "vnIn": -1.569,
+                "restitution": 0.263,
+                "retentionAfter300ms": 0.831,
+                "pos": [
+                  -170.9023,
+                  222.0798,
+                  -262.0982
+                ]
+              }
+            ],
+            "piece": "shore",
+            "maxAlong": 14.69,
+            "distM": 0.978,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.917,
+            "flags": [],
+            "maxY": 222.093,
+            "distStuds": 3.259,
+            "start": [
+              -168.3021,
+              222.0793,
+              -274.664
+            ],
+            "tEnd": 6.967,
+            "tStop": 6.416,
+            "finish": [
+              -169.9957,
+              222.0793,
+              -271.8795
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Aurora Bridge",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "aurora_span",
+          "period": 9,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                -160.9321,
+                222.0793,
+                -320.0029
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 4.5,
+              "blocked": false,
+              "finish": [
+                -160.7729,
+                222.0793,
+                -319.6392
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0
+    }
+  },
+  "h18": {
+    "default": {
+      "course": "aurora_archipelago",
+      "scenario": "h18",
+      "hole": 18,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.983,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -239,
+              222.23,
+              -278
+            ]
+          },
+          {
+            "rimSpeed": 2.97,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -239,
+              222.23,
+              -278
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -239,
+              222.23,
+              -278
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.45,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h18-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  -2.4664
+                ],
+                "vnOut": 0,
+                "tContact": 3.1322,
+                "speedOut": 2.466,
+                "speedIn": 2.694,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.541,
+                "speedRetention": 0.916,
+                "event": "contact",
+                "t": 3.1322,
+                "vtOut": 2.466,
+                "part": "Workspace.CourseAurora.Hole18.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.169,
+                "tangentialRetention": 0.971,
+                "shot": "h18-fuzz-1",
+                "vIn": [
+                  -0.8949,
+                  -0.0001,
+                  -2.5408
+                ],
+                "vnIn": -0.895,
+                "restitution": 0,
+                "retentionAfter300ms": 0.805,
+                "pos": [
+                  -238.9221,
+                  222.0797,
+                  -240.9579
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.922,
+            "distM": 4.148,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.601,
+            "flags": [],
+            "maxY": 222.098,
+            "distStuds": 13.826,
+            "start": [
+              -235,
+              222.0793,
+              -232
+            ],
+            "tEnd": 6.651,
+            "tStop": 6.1,
+            "finish": [
+              -238.918,
+              222.0793,
+              -245.2596
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h18-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 82.1,
+                "angleIn": 71.4,
+                "vOut": [
+                  0.765,
+                  -0.0001,
+                  -5.512
+                ],
+                "vnOut": 0.765,
+                "tContact": 11.6999,
+                "speedOut": 5.565,
+                "speedIn": 5.971,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.659,
+                "speedRetention": 0.932,
+                "event": "contact",
+                "t": 11.6999,
+                "vtOut": 5.512,
+                "part": "Workspace.CourseAurora.Hole18.Geometry.Wall:rail3",
+                "speedAfter300ms": 5.016,
+                "tangentialRetention": 0.974,
+                "shot": "h18-fuzz-2",
+                "vIn": [
+                  -1.9045,
+                  -0.0001,
+                  -5.6586
+                ],
+                "vnIn": -1.905,
+                "restitution": 0.402,
+                "retentionAfter300ms": 0.84,
+                "pos": [
+                  -252.4066,
+                  222.0798,
+                  -252.9783
+                ]
+              },
+              {
+                "angleOut": 59.7,
+                "angleIn": 38.1,
+                "vOut": [
+                  -2.4836,
+                  -0.0001,
+                  -0.652
+                ],
+                "vnOut": 1.295,
+                "tContact": 12.8156,
+                "speedOut": 2.568,
+                "speedIn": 3.845,
+                "normal": [
+                  -0.7071,
+                  0,
+                  0.7071
+                ],
+                "type": "event",
+                "vtIn": -2.374,
+                "speedRetention": 0.668,
+                "event": "contact",
+                "t": 12.8156,
+                "vtOut": -2.217,
+                "part": "Workspace.CourseAurora.Hole18.Geometry.Wall:crystal_bank_sw_backing",
+                "speedAfter300ms": 1.021,
+                "tangentialRetention": 0.934,
+                "shot": "h18-fuzz-2",
+                "vIn": [
+                  0.4602,
+                  -0.0001,
+                  -3.8173
+                ],
+                "vnIn": -3.025,
+                "restitution": 0.428,
+                "retentionAfter300ms": 0.266,
+                "pos": [
+                  -251.8351,
+                  222.0798,
+                  -258.3492
+                ]
+              },
+              {
+                "angleOut": 43.3,
+                "angleIn": 20.1,
+                "vOut": [
+                  0.83,
+                  -0.0001,
+                  -0.7439
+                ],
+                "vnOut": 0.811,
+                "tContact": 13.0999,
+                "speedOut": 1.115,
+                "speedIn": 2.231,
+                "normal": [
+                  0.9997,
+                  0,
+                  0.0256
+                ],
+                "type": "event",
+                "vtIn": 0.765,
+                "speedRetention": 0.5,
+                "event": "contact",
+                "t": 13.0999,
+                "vtOut": 0.765,
+                "part": "Workspace.CourseAurora.Hole18.Geometry.Wall:rail3",
+                "speedAfter300ms": 0.012,
+                "tangentialRetention": 1,
+                "shot": "h18-fuzz-2",
+                "vIn": [
+                  -2.0754,
+                  -0.0005,
+                  -0.8184
+                ],
+                "vnIn": -2.096,
+                "restitution": 0.387,
+                "retentionAfter300ms": 0.005,
+                "pos": [
+                  -252.4341,
+                  222.0798,
+                  -258.5894
+                ]
+              },
+              {
+                "angleOut": 90,
+                "angleIn": 2,
+                "vOut": [
+                  -0.0121,
+                  -0.0001,
+                  -0.0121
+                ],
+                "vnOut": 0,
+                "tContact": 13.3996,
+                "speedOut": 0.017,
+                "speedIn": 0.888,
+                "normal": [
+                  -0.7071,
+                  0,
+                  0.7071
+                ],
+                "type": "event",
+                "speedRetention": 0.019,
+                "vtIn": -0.031,
+                "t": 13.3996,
+                "vtOut": -0.017,
+                "part": "Workspace.CourseAurora.Hole18.Geometry.Wall:crystal_bank_sw_backing",
+                "speedAfter300ms": 0,
+                "event": "contact",
+                "shot": "h18-fuzz-2",
+                "vIn": [
+                  0.6061,
+                  -0.0001,
+                  -0.6496
+                ],
+                "vnIn": -0.888,
+                "restitution": 0,
+                "retentionAfter300ms": 0,
+                "pos": [
+                  -252.2149,
+                  222.0798,
+                  -258.7997
+                ]
+              }
+            ],
+            "piece": "plaza_w",
+            "maxAlong": 1.234,
+            "distM": 2.872,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "plaza_w",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.45,
+            "tRest": 2.951,
+            "flags": [],
+            "maxY": 222.105,
+            "distStuds": 9.574,
+            "start": [
+              -250.8467,
+              222.0791,
+              -249.324
+            ],
+            "tEnd": 3.001,
+            "tStop": 2.449,
+            "finish": [
+              -252.2163,
+              222.0793,
+              -258.7997
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Halo Arch",
+      "seconds": 20.55,
+      "stuck": 0,
+      "par": 4,
+      "cam": "",
+      "nudges": 0
+    }
+  }
+}
