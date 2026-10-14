@@ -302,3 +302,7 @@ Result PARTIAL for clearance: 46 conservative built prop bounds findings across 
 Saved `playtest/playtest-sc-fix2.rbxl`; Studio closed. H14 dock imported, ore/pump placeholders removed while signs remain, and all 387 rail-top coplanar pairs resolved through idempotent visual-only offsets. Physical collider geometry unchanged. H15 friction 0.1/weight 100 is explicitly a TEST setting and persists through rebuilds.
 
 PARTIAL: paired 80-shot H15 experiment gives wedges 26→26, crawls 38→39, native timeouts 26→33 (timeouts overlap crawls). Full sweep: cupdrop 54/54, 144 random + 30 slow, stuck 0, escapes 0, one H15 native timeout; zero console warnings/errors. Local only, no cloud place open/save or publish, no git push. Details: `logs/stages/al-notes.md`, `playtests/stage-al/`.
+
+
+## Stage zf2 (Oct 13, 2026) — partial
+Aurora published **v4**, verified in Version History; visual separation 3290 → 1451 raw hits, 0 exposed planar; colliders unchanged; 54 cup drops/36 shots, clean console. Local copy `playtest/playtest-aurora_archipelago-v4.rbxl`. Both corrected H6/H18 props imported. Lantern Grove remains published **v9**, saved **v11**, not modified: cloud-launch/wrong-place preflight failed. Lobby remains published **v251**, but unintended brief native opening produced saved-unpublished **v252** without source/geometry edits or a Save/Publish command. Sugarloaf remains published **v23**, saved **v24**. See `logs/stages/zf2-notes.md`. No push.

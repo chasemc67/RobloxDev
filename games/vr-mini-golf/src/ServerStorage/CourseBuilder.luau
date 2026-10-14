@@ -2285,6 +2285,10 @@ function CourseBuilder.Build(data, layout, opts)
 		require(game.ServerStorage.SugarloafOverrides:Clone()).Apply(course)
 	end
 	local counts = CourseBuilder.ApplyPhysics(course)
+	-- Stage zf2: preserve authored physics while separating course visuals.
+	if course:GetAttribute("CourseId") == "aurora_archipelago" or course:GetAttribute("CourseId") == "lantern_grove" then
+		stats.visualSeparation = require(game.ServerStorage.VisualSeparation:Clone()).Apply(course)
+	end
 	if not primary then
 		stats.surface, stats.obstacle, stats.mover = counts.surface, counts.obstacle, counts.mover
 		stats.parts = #course:GetDescendants()

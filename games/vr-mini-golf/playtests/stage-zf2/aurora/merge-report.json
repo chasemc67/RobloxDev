@@ -1,0 +1,128 @@
+{
+ "result": "PASS",
+ "output": "/private/tmp/stage_zf2_props.fbx",
+ "size_bytes": 59196,
+ "size_mb": 0.056,
+ "source_files": 2,
+ "top_level_empties": 2,
+ "top_level_non_empty": [],
+ "mesh_objects": 3,
+ "total_tris": 1105,
+ "max_mesh": {
+  "name": "h18_crystal_chute__Ice",
+  "tris": 877
+ },
+ "any_mesh_over_20000_tris": false,
+ "object_names_with_numeric_suffix": [],
+ "materials": 3,
+ "images": [],
+ "problems": [],
+ "export_settings": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1,
+  "path_mode": "COPY",
+  "embed_textures": true,
+  "add_leaf_bones": false,
+  "bake_anim": false
+ },
+ "files": {
+  "h06_respawn_stone": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h06_respawn_stone__Lime",
+     "tris": 12,
+     "bbox_min": [
+      -0.4,
+      -0.4,
+      0.144173
+     ],
+     "bbox_max": [
+      0.4,
+      0.4,
+      0.17576
+     ],
+     "material": [
+      "Lime"
+     ],
+     "image": null,
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "Lime"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 12,
+   "pass": true
+  },
+  "h18_crystal_chute": {
+   "empty_found": true,
+   "empty_at_origin": true,
+   "objects": [
+    {
+     "name": "h18_crystal_chute__Ice",
+     "tris": 877,
+     "bbox_min": [
+      -11.92004,
+      -35.92004,
+      -0.750014
+     ],
+     "bbox_max": [
+      24.92004,
+      27.92004,
+      3.070055
+     ],
+     "material": [
+      "Ice"
+     ],
+     "image": null,
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "Ice"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    },
+    {
+     "name": "h18_crystal_chute__IceCore",
+     "tris": 216,
+     "bbox_min": [
+      -11.92004,
+      -35.92004,
+      -0.750014
+     ],
+     "bbox_max": [
+      24.92004,
+      27.92004,
+      3.070055
+     ],
+     "material": [
+      "IceCore"
+     ],
+     "image": null,
+     "bbox_max_err": 0.0,
+     "merged_material": [
+      "IceCore"
+     ],
+     "pass_tris": true,
+     "pass_bbox": true,
+     "pass_material": true,
+     "pass_texture": true,
+     "pass": true
+    }
+   ],
+   "tris": 1093,
+   "pass": true
+  }
+ }
+}

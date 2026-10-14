@@ -935,6 +935,7 @@ function PropsBuilder.Place(course)
 	if #report.unlit > 0 then
 		warn("PropsBuilder: " .. #report.unlit .. " lantern/glow props without a PointLight, e.g. " .. report.unlit[1])
 	end
+	report.visualSeparation = require(ServerStorage.VisualSeparation:Clone()).Apply(course)
 	return HttpService:JSONEncode(report)
 end
 
