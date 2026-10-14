@@ -1,0 +1,321 @@
+{
+  "h11": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h11",
+      "hole": 11,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.885,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              150,
+              119.73,
+              -5295
+            ]
+          },
+          {
+            "rimSpeed": 2.962,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              150,
+              119.73,
+              -5295
+            ]
+          },
+          {
+            "rimSpeed": 2.969,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              150,
+              119.73,
+              -5295
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 114.78,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.083,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h11-fuzz-1",
+            "contacts": [],
+            "piece": "approach__cut0",
+            "maxAlong": 1.91,
+            "distM": 3.623,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 5.866,
+            "flags": [],
+            "maxY": 116.098,
+            "distStuds": 12.076,
+            "start": [
+              150,
+              116.0718,
+              -5252
+            ],
+            "tEnd": 5.916,
+            "tStop": 5.366,
+            "finish": [
+              145.2469,
+              116.0719,
+              -5263.1011
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h11-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.8,
+                "angleIn": 7.8,
+                "vOut": [
+                  -1.7433,
+                  -0.5106,
+                  -7.9584
+                ],
+                "vnOut": 7.943,
+                "tContact": 102.8119,
+                "speedOut": 8.147,
+                "speedIn": 13.412,
+                "normal": [
+                  0.0086,
+                  0,
+                  -1
+                ],
+                "type": "event",
+                "vtIn": 1.812,
+                "speedRetention": 0.607,
+                "event": "contact",
+                "t": 102.8119,
+                "vtOut": 1.812,
+                "part": "Workspace.CourseSugarloaf.Hole11.Geometry.Wall:rail12",
+                "speedAfter300ms": 5.236,
+                "tangentialRetention": 1,
+                "shot": "h11-fuzz-2",
+                "vIn": [
+                  -1.9265,
+                  -0.0005,
+                  13.2729
+                ],
+                "vnIn": -13.289,
+                "restitution": 0.598,
+                "retentionAfter300ms": 0.39,
+                "pos": [
+                  147.5835,
+                  116.0896,
+                  -5250.2061
+                ]
+              }
+            ],
+            "piece": "approach__cut0",
+            "maxAlong": 9.591,
+            "distM": 1.593,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "approach",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.083,
+            "tRest": 6.017,
+            "flags": [],
+            "maxY": 116.09,
+            "distStuds": 5.312,
+            "start": [
+              148.9899,
+              116.0718,
+              -5259.5591
+            ],
+            "tEnd": 6.067,
+            "tStop": 5.517,
+            "finish": [
+              144.082,
+              116.0719,
+              -5261.5903
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Floodgate Lock",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "lock_gate",
+          "period": 10.7,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h11-sweep-lock_gate-0",
+                  "id": "lock_lift",
+                  "t": 11.0823,
+                  "event": "flag",
+                  "shot": "h11-sweep-lock_gate-0",
+                  "speedOut": 6.884,
+                  "speedIn": 13.769,
+                  "kind": "teleport",
+                  "hole": 11,
+                  "pos": [
+                    150,
+                    120.09,
+                    -5279
+                  ]
+                }
+              ],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                149.6285,
+                120.0793,
+                -5294.6035
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 5.35,
+              "blocked": true,
+              "finish": [
+                146.7488,
+                116.0793,
+                -5250.0796
+              ]
+            }
+          ]
+        },
+        {
+          "mover": "quay_lip",
+          "period": 10.7,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h11-sweep-quay_lip-0",
+                  "id": "lock_lift",
+                  "t": 43.1655,
+                  "event": "flag",
+                  "shot": "h11-sweep-quay_lip-0",
+                  "speedOut": 6.798,
+                  "speedIn": 13.595,
+                  "kind": "teleport",
+                  "hole": 11,
+                  "pos": [
+                    150,
+                    120.09,
+                    -5279
+                  ]
+                }
+              ],
+              "outcome": "cup",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                150,
+                119.73,
+                -5295
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 5.35,
+              "blocked": true,
+              "finish": [
+                146.9091,
+                116.0719,
+                -5252.2749
+              ]
+            }
+          ]
+        },
+        {
+          "mover": "lock_lift_deck",
+          "period": 10.7,
+          "rows": [
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h11-sweep-lock_lift_deck-0",
+                  "id": "lock_lift",
+                  "t": 75.2796,
+                  "event": "flag",
+                  "shot": "h11-sweep-lock_lift_deck-0",
+                  "speedOut": 6.741,
+                  "speedIn": 13.481,
+                  "kind": "teleport",
+                  "hole": 11,
+                  "pos": [
+                    150,
+                    120.09,
+                    -5279
+                  ]
+                }
+              ],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                150,
+                120.0719,
+                -5292.5649
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 5.35,
+              "blocked": false,
+              "finish": [
+                147.09,
+                116.0719,
+                -5254.6299
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.208
+    }
+  }
+}
