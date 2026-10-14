@@ -1,0 +1,936 @@
+{
+ "stage": "sc8",
+ "place": "Sugarloaf Canyon 124440050576723 (from published v49)",
+ "item1_h16_rim": {
+  "source": "assets/vr-mini-golf/sugarloaf-canyon/models/fbx/h16_rim_2slot_b/h16_sinkhole_rim.fbx (sha256 edd6564c... matches manifest)",
+  "import": "one 3D Importer pass of sc8_K.fbx (rim + h03 props merged by sc5_merge_fbx.py --split-materials, 12 meshes, 2818 tris); importer scale x22.59 undone from the merge bounds",
+  "copies": [
+   {
+    "path": "Workspace.CourseSugarloaf.Hole16.StageAFVisuals.h16_sinkhole_rim",
+    "oldParts": [
+     "h16_sinkhole_rim__Rope",
+     "h16_sinkhole_rim__PepRed",
+     "h16_sinkhole_rim__Timber",
+     "h16_sinkhole_rim__GeodeRim"
+    ],
+    "newParts": [
+     {
+      "name": "h16_sinkhole_rim__CrystalAmber",
+      "material": "Neon",
+      "color": [
+       1,
+       0.6980392336845398,
+       0.24705882370471954
+      ],
+      "castShadow": false,
+      "appearance": "Neon 1, 0.698039, 0.247059"
+     },
+     {
+      "name": "h16_sinkhole_rim__CrystalPink",
+      "material": "Neon",
+      "color": [
+       1,
+       0.4000000059604645,
+       0.7490196228027344
+      ],
+      "castShadow": false,
+      "appearance": "Neon 1, 0.4, 0.74902"
+     },
+     {
+      "name": "h16_sinkhole_rim__GeodeRim",
+      "material": "Neon",
+      "color": [
+       1,
+       0.4000000059604645,
+       0.7490196228027344
+      ],
+      "castShadow": false,
+      "appearance": "old Workspace.CourseSugarloaf.Hole16.StageAFVisuals.h16_sinkhole_rim.h16_sinkhole_rim__GeodeRim"
+     },
+     {
+      "name": "h16_sinkhole_rim__PepRed",
+      "material": "SmoothPlastic",
+      "color": [
+       0.8509804010391235,
+       0.20392157137393951,
+       0.22745098173618317
+      ],
+      "castShadow": true,
+      "appearance": "old Workspace.CourseSugarloaf.Hole16.StageAFVisuals.h16_sinkhole_rim.h16_sinkhole_rim__PepRed"
+     },
+     {
+      "name": "h16_sinkhole_rim__Rope",
+      "material": "Fabric",
+      "color": [
+       0.7882353067398071,
+       0.658823549747467,
+       0.4156862795352936
+      ],
+      "castShadow": true,
+      "appearance": "old Workspace.CourseSugarloaf.Hole16.StageAFVisuals.h16_sinkhole_rim.h16_sinkhole_rim__Rope"
+     },
+     {
+      "name": "h16_sinkhole_rim__Timber",
+      "material": "WoodPlanks",
+      "color": [
+       0.5411764979362488,
+       0.3529411852359772,
+       0.20000000298023224
+      ],
+      "castShadow": true,
+      "appearance": "old Workspace.CourseSugarloaf.Hole16.StageAFVisuals.h16_sinkhole_rim.h16_sinkhole_rim__Timber"
+     }
+    ],
+    "unchangedSlotsDelta": [
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__GeodeRim",
+      "posDelta": 0
+     },
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__PepRed",
+      "posDelta": 0
+     },
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__Rope",
+      "posDelta": 0
+     },
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__Timber",
+      "posDelta": 0
+     }
+    ],
+    "backup": "ServerStorage.SC8Backup.h16_sinkhole_rim__Workspace"
+   },
+   {
+    "path": "ServerStorage.StageAFProps.h16_sinkhole_rim",
+    "oldParts": [
+     "h16_sinkhole_rim__PepRed",
+     "h16_sinkhole_rim__Rope",
+     "h16_sinkhole_rim__Timber",
+     "h16_sinkhole_rim__GeodeRim"
+    ],
+    "newParts": [
+     {
+      "name": "h16_sinkhole_rim__CrystalAmber",
+      "material": "Neon",
+      "color": [
+       1,
+       0.6980392336845398,
+       0.24705882370471954
+      ],
+      "castShadow": false,
+      "appearance": "Neon 1, 0.698039, 0.247059"
+     },
+     {
+      "name": "h16_sinkhole_rim__CrystalPink",
+      "material": "Neon",
+      "color": [
+       1,
+       0.4000000059604645,
+       0.7490196228027344
+      ],
+      "castShadow": false,
+      "appearance": "Neon 1, 0.4, 0.74902"
+     },
+     {
+      "name": "h16_sinkhole_rim__GeodeRim",
+      "material": "Neon",
+      "color": [
+       1,
+       0.4000000059604645,
+       0.7490196228027344
+      ],
+      "castShadow": false,
+      "appearance": "old ServerStorage.StageAFProps.h16_sinkhole_rim.h16_sinkhole_rim__GeodeRim"
+     },
+     {
+      "name": "h16_sinkhole_rim__PepRed",
+      "material": "SmoothPlastic",
+      "color": [
+       0.8509804010391235,
+       0.20392157137393951,
+       0.22745098173618317
+      ],
+      "castShadow": true,
+      "appearance": "old ServerStorage.StageAFProps.h16_sinkhole_rim.h16_sinkhole_rim__PepRed"
+     },
+     {
+      "name": "h16_sinkhole_rim__Rope",
+      "material": "Fabric",
+      "color": [
+       0.7882353067398071,
+       0.658823549747467,
+       0.4156862795352936
+      ],
+      "castShadow": true,
+      "appearance": "old ServerStorage.StageAFProps.h16_sinkhole_rim.h16_sinkhole_rim__Rope"
+     },
+     {
+      "name": "h16_sinkhole_rim__Timber",
+      "material": "WoodPlanks",
+      "color": [
+       0.5411764979362488,
+       0.3529411852359772,
+       0.20000000298023224
+      ],
+      "castShadow": true,
+      "appearance": "old ServerStorage.StageAFProps.h16_sinkhole_rim.h16_sinkhole_rim__Timber"
+     }
+    ],
+    "unchangedSlotsDelta": [
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__GeodeRim",
+      "posDelta": 0
+     },
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__PepRed",
+      "posDelta": 0
+     },
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__Rope",
+      "posDelta": 0
+     },
+     {
+      "rotSame": true,
+      "sizeDelta": 0,
+      "name": "h16_sinkhole_rim__Timber",
+      "posDelta": 0
+     }
+    ],
+    "backup": "ServerStorage.SC8Backup.h16_sinkhole_rim__ServerStorage"
+   }
+  ],
+  "pose": "same pivot/frame as the old rim (rim model pivot -300,190,-4871.8 yaw 180; GeodeRim/PepRed/Rope/Timber land with 0 position/size delta); GeodeRim bottom 0.167 above the felt (190.167)",
+  "flags": "all rim parts CanCollide/CanQuery/CanTouch off, VisualQueryDisabled on the Workspace copy",
+  "appearance": "CrystalPink Neon (1,0.4,0.75), CrystalAmber Neon (1,0.7,0.25), CastShadow off; GeodeRim/PepRed/Rope/Timber copied from the old same-named parts (GeodeRim stays sc6 Neon pink (1,0.4,0.749), CastShadow off)"
+ },
+ "item2_h16_opening": {
+  "halfWidth": "1.2 -> 0.95 (2.4 -> 1.9 square), centre unchanged (-300, -4871.8)",
+  "frameInnerEdge": "GeodeRim inner opening +-1.0 (FBX vertices x/z in {-1.21,-1.0,1.0,1.21}); new opening edge 0.05 inside it",
+  "definedBy": "the gap between the 4 deck felt colliders Hole16.Geometry.Felt (CourseData h16 felt deck_m / deck_w / deck_e / deck_n); no script constant or attribute defines it",
+  "colliders": [
+   {
+    "id": "deck_w",
+    "path": "Workspace.CourseSugarloaf.Hole16.Geometry.Felt",
+    "before": {
+     "pos": [
+      -302.6,
+      189.8,
+      -4871.7998
+     ],
+     "size": [
+      2.8,
+      0.4,
+      2.4
+     ]
+    },
+    "after": {
+     "pos": [
+      -302.475,
+      189.8,
+      -4871.7998
+     ],
+     "size": [
+      3.05,
+      0.4,
+      1.9
+     ]
+    },
+    "visual": "Workspace.CourseSugarloaf.Hole16.ZF1VisualLayers.Visual_Felt",
+    "visualSizeBefore": [
+     2.64,
+     0.4,
+     2.24
+    ],
+    "visualSizeAfter": [
+     2.89,
+     0.4,
+     1.74
+    ]
+   },
+   {
+    "id": "deck_e",
+    "path": "Workspace.CourseSugarloaf.Hole16.Geometry.Felt",
+    "before": {
+     "pos": [
+      -297.4,
+      189.8,
+      -4871.7998
+     ],
+     "size": [
+      2.8,
+      0.4,
+      2.4
+     ]
+    },
+    "after": {
+     "pos": [
+      -297.525,
+      189.8,
+      -4871.7998
+     ],
+     "size": [
+      3.05,
+      0.4,
+      1.9
+     ]
+    },
+    "visual": "Workspace.CourseSugarloaf.Hole16.ZF1VisualLayers.Visual_Felt",
+    "visualSizeBefore": [
+     2.64,
+     0.4,
+     2.24
+    ],
+    "visualSizeAfter": [
+     2.89,
+     0.4,
+     1.74
+    ]
+   },
+   {
+    "id": "deck_n",
+    "path": "Workspace.CourseSugarloaf.Hole16.Geometry.Felt",
+    "before": {
+     "pos": [
+      -300,
+      189.8,
+      -4867.2998
+     ],
+     "size": [
+      8,
+      0.4,
+      6.6
+     ]
+    },
+    "after": {
+     "pos": [
+      -300,
+      189.8,
+      -4867.4248
+     ],
+     "size": [
+      8,
+      0.4,
+      6.85
+     ]
+    },
+    "visual": "Workspace.CourseSugarloaf.Hole16.ZF1VisualLayers.Visual_Felt",
+    "visualSizeBefore": [
+     7.84,
+     0.4,
+     6.44
+    ],
+    "visualSizeAfter": [
+     7.84,
+     0.4,
+     6.69
+    ]
+   },
+   {
+    "id": "deck_m",
+    "path": "Workspace.CourseSugarloaf.Hole16.Geometry.Felt",
+    "before": {
+     "pos": [
+      -300,
+      189.8,
+      -4874.5
+     ],
+     "size": [
+      8,
+      0.4,
+      3
+     ]
+    },
+    "after": {
+     "pos": [
+      -300,
+      189.8,
+      -4874.375
+     ],
+     "size": [
+      8,
+      0.4,
+      3.25
+     ]
+    },
+    "visual": "Workspace.CourseSugarloaf.Hole16.ZF1VisualLayers.Visual_Felt",
+    "visualSizeBefore": [
+     7.84,
+     0.4,
+     2.84
+    ],
+    "visualSizeAfter": [
+     7.84,
+     0.4,
+     3.09
+    ]
+   }
+  ],
+  "unchanged": "rotation, felt top 190.0 (roll height), thickness, collide/query/touch, tags, physics, collision group",
+  "visualFelt": "Visual_Felt clones re-based (ZF1BaseCF/ZF1BaseSize = new collider) so VisualSeparation keeps its 0.08 edge inset; visible felt edge 1.03, under the frame (1.0-1.21)",
+  "src": "src/ServerStorage/CourseData/SugarloafCanyon.luau h16 felt deck_m/deck_w/deck_e/deck_n + drops d1 edge text updated and pushed to the place"
+ },
+ "item3_seams": {
+  "moves": [
+   {
+    "top": 70.33800294995308,
+    "drop": 0.03,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h09_ground.h09_ground.h09_ground_s00__RedDirt",
+    "beforeY": 70.03990173339844,
+    "afterY": 70.00990295410156
+   },
+   {
+    "top": 70.28190243244171,
+    "drop": 0.03,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h09_ground.h09_ground.h09_ground_s00__RedDirtLight",
+    "beforeY": 70.0353012084961,
+    "afterY": 70.00530242919922
+   },
+   {
+    "top": 190.33234453201294,
+    "drop": 0.03,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h16_ground.h16_ground.h16_ground_s03__RedDirtLight",
+    "beforeY": 188.3011932373047,
+    "afterY": 188.2711944580078
+   },
+   {
+    "top": 190.34074573218822,
+    "drop": 0.03,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h16_ground.h16_ground.h16_ground_s03__RedDirt",
+    "beforeY": 190.13499450683594,
+    "afterY": 190.10499572753906
+   },
+   {
+    "top": 150.18394780158997,
+    "drop": 0.04,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h14_ground.h14_ground.h14_ground_s00__Pebble",
+    "beforeY": 150.1064910888672,
+    "afterY": 150.06649780273438
+   },
+   {
+    "top": 150.2121026813984,
+    "drop": 0.04,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h14_ground.h14_ground.h14_ground_s00__RedDirtLight",
+    "beforeY": 150.0489959716797,
+    "afterY": 150.00900268554688
+   },
+   {
+    "top": 150.3297559916973,
+    "drop": 0.04,
+    "part": "Workspace.CourseSugarloaf.Kit.hole_dressing.h14_ground.h14_ground.h14_ground_s00__RedDirt",
+    "beforeY": 150.04299926757812,
+    "afterY": 150.0030059814453
+   }
+  ],
+  "rule": "moved the lower tile (all its material parts) down; tiles are visual (collide/query/touch off)",
+  "bboxTopGap": [
+   {
+    "a": "h09_ground_s00__RedDirt",
+    "b": "h09_ground_s01__RedDirtLight",
+    "before": 0.0021,
+    "after": 0.032
+   },
+   {
+    "a": "h09_ground_s00__RedDirt",
+    "b": "h09_ground_s01__RedDirt",
+    "before": 0.002,
+    "after": 0.032
+   },
+   {
+    "a": "h16_ground_s03__RedDirtLight",
+    "b": "h17_ground_s20__RedDirtLight",
+    "before": 0.0076,
+    "after": 0.0376
+   },
+   {
+    "a": "h16_ground_s03__RedDirtLight",
+    "b": "h17_ground_s10__RedDirt",
+    "before": 0.0076,
+    "after": 0.0376
+   },
+   {
+    "a": "h16_ground_s03__RedDirtLight",
+    "b": "h17_ground_s20__RedDirt",
+    "before": 0.075,
+    "after": 0.105
+   },
+   {
+    "a": "h16_ground_s03__RedDirtLight",
+    "b": "h17_ground_s10__RedDirtLight",
+    "before": 0.0077,
+    "after": 0.0377
+   },
+   {
+    "a": "h16_ground_s03__RedDirt",
+    "b": "h17_ground_s20__RedDirtLight",
+    "before": 0.0008,
+    "after": 0.0292
+   },
+   {
+    "a": "h16_ground_s03__RedDirt",
+    "b": "h17_ground_s20__RedDirt",
+    "before": 0.0666,
+    "after": 0.0966
+   },
+   {
+    "a": "h14_ground_s00__RedDirt",
+    "b": "h13_ground_s04__RedDirt",
+    "before": 0.0089,
+    "after": 0.0311
+   },
+   {
+    "a": "h14_ground_s00__RedDirt",
+    "b": "h13_ground_s04__RedDirtLight",
+    "before": 0.0141,
+    "after": 0.054
+   }
+  ],
+  "trueTopSurfaceMinGap": {
+   "h16_ground_s03|h17_ground_s20": {
+    "before": 0.0604,
+    "after": 0.0904
+   },
+   "h13_ground_s04|h14_ground_s00": {
+    "before": 0.0712,
+    "after": 0.1112
+   },
+   "h09_ground_s00|h09_ground_s01": {
+    "before": 0.0,
+    "after": 0.03
+   }
+  },
+  "sideFaces": "h16_s03/h17_s20 (0.0019) and h13_s04/h14_s00 (0.014) also have vertical side faces at the tile boundary with OPPOSING normals (buried interface); a vertical move cannot change those plane distances, they are not same-facing coplanar faces",
+  "floatCheck": {
+   "checked": 13,
+   "onDroppedTiles": 7,
+   "result": "nothing floats: every dressing unit over a dropped tile still has its base 0.25-0.5 below the ground",
+   "rows": [
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.rock_candy_cluster_v2.rock_candy_cluster_v2_805.rock_candy_cluster_v2__CandyCore",
+     "minGapNow": 0.262
+    },
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.rock_candy_cluster_v2.rock_candy_cluster_v2_805.rock_candy_cluster_v2__CandyAmber",
+     "minGapNow": 0.106
+    },
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.rock_candy_cluster_v2.rock_candy_cluster_v2_805.rock_candy_cluster_v2__CandyPink",
+     "minGapNow": 0.071
+    },
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.rock_candy_cluster_v2.rock_candy_cluster_v2_805.rock_candy_cluster_v2__Strata",
+     "minGapNow": -0.252
+    },
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.rock_a.rock_a_810.rock_a__Strata",
+     "minGapNow": -0.308
+    },
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.rock_b_v2.rock_b_v2_804.rock_b_v2__Strata",
+     "minGapNow": -0.318
+    },
+    {
+     "part": "Workspace.CourseSugarloaf.Look7Dressing.gumdrop_boulder_a.gumdrop_boulder_a_352.gumdrop_boulder_a__GumCherry",
+     "minGapNow": -0.5
+    }
+   ]
+  }
+ },
+ "item4_board": {
+  "parts": [
+   {
+    "path": "Workspace.CourseSugarloaf.Kit.hole_dressing.trading_post_deck.trading_post_deck.trading_post_deck__PepRed",
+    "touch": false,
+    "query": false,
+    "beforeY": 24.81100082397461,
+    "collide": false,
+    "src": "place v23 SugarloafKit.trading_post_deck.trading_post_deck__PepRed",
+    "afterY": 25.31100082397461
+   },
+   {
+    "path": "Workspace.CourseSugarloaf.Kit.hole_dressing.trading_post_deck.trading_post_deck.trading_post_deck__MintWhite",
+    "touch": false,
+    "query": false,
+    "beforeY": 24.910999298095703,
+    "collide": false,
+    "src": "place v23 SugarloafKit.trading_post_deck.trading_post_deck__MintWhite",
+    "afterY": 25.410999298095703
+   }
+  ],
+  "raise": 0.5,
+  "libraryCopy": "ServerStorage.SugarloafKit.trading_post_deck MintWhite 7.55->8.05, PepRed 7.45->7.95 (kept in sync)",
+  "rail1Clearance": [
+   {
+    "part": "trading_post_deck__PepRed",
+    "rails": 2,
+    "rail": "Workspace.CourseSugarloaf.Hole1.Rails.Rail_rail1",
+    "minDist": 14.078529357910156
+   },
+   {
+    "part": "trading_post_deck__MintWhite",
+    "rails": 2,
+    "rail": "Workspace.CourseSugarloaf.Hole1.Rails.Rail_rail1",
+    "minDist": 14.09686279296875
+   }
+  ],
+  "untouched": "bunting, awnings, lanterns"
+ },
+ "item5_h03": {
+  "source": "fbx/fix_v42_item5c/h03_dress_props.fbx (sha256 2b7089a6... matches manifest); fix_v42_item5 / item5b not used",
+  "copies": [
+   {
+    "path": "Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props",
+    "newParts": [
+     {
+      "name": "h03_dress_props__CandyAmber",
+      "material": "Glass",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props.h03_dress_props__CandyAmber"
+     },
+     {
+      "name": "h03_dress_props__CandyPink",
+      "material": "Glass",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props.h03_dress_props__CandyPink"
+     },
+     {
+      "name": "h03_dress_props__GumLime",
+      "material": "SmoothPlastic",
+      "color": [
+       0.6078431606292725,
+       0.8588235378265381,
+       0.3019607961177826
+      ],
+      "appearance": "old Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props.h03_dress_props__GumLime"
+     },
+     {
+      "name": "h03_dress_props__Pebble",
+      "material": "Pebble",
+      "color": [
+       0.6627451181411743,
+       0.47058823704719543,
+       0.37254902720451355
+      ],
+      "appearance": "old Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props.h03_dress_props__Pebble"
+     },
+     {
+      "name": "h03_dress_props__Strata",
+      "material": "Sandstone",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props.h03_dress_props__Strata"
+     },
+     {
+      "name": "h03_dress_props__TimberWeathered",
+      "material": "WoodPlanks",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old Workspace.CourseSugarloaf.Kit.hole_dressing.h03_dress_props.h03_dress_props.h03_dress_props__TimberWeathered"
+     }
+    ],
+    "GumLimeDelta": [
+     {
+      "rotSame": true,
+      "sizeDelta": 9.998679161071777e-05,
+      "name": "h03_dress_props__GumLime",
+      "posDelta": 0
+     }
+    ],
+    "backup": "ServerStorage.SC8Backup.h03_dress_props__Workspace"
+   },
+   {
+    "path": "ServerStorage.SugarloafKit.h03_dress_props",
+    "newParts": [
+     {
+      "name": "h03_dress_props__CandyAmber",
+      "material": "Glass",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old ServerStorage.SugarloafKit.h03_dress_props.h03_dress_props__CandyAmber"
+     },
+     {
+      "name": "h03_dress_props__CandyPink",
+      "material": "Glass",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old ServerStorage.SugarloafKit.h03_dress_props.h03_dress_props__CandyPink"
+     },
+     {
+      "name": "h03_dress_props__GumLime",
+      "material": "SmoothPlastic",
+      "color": [
+       0.6078431606292725,
+       0.8588235378265381,
+       0.3019607961177826
+      ],
+      "appearance": "old ServerStorage.SugarloafKit.h03_dress_props.h03_dress_props__GumLime"
+     },
+     {
+      "name": "h03_dress_props__Pebble",
+      "material": "Pebble",
+      "color": [
+       0.6627451181411743,
+       0.47058823704719543,
+       0.37254902720451355
+      ],
+      "appearance": "old ServerStorage.SugarloafKit.h03_dress_props.h03_dress_props__Pebble"
+     },
+     {
+      "name": "h03_dress_props__Strata",
+      "material": "Sandstone",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old ServerStorage.SugarloafKit.h03_dress_props.h03_dress_props__Strata"
+     },
+     {
+      "name": "h03_dress_props__TimberWeathered",
+      "material": "WoodPlanks",
+      "color": [
+       0.6392157077789307,
+       0.6352941393852234,
+       0.6470588445663452
+      ],
+      "appearance": "old ServerStorage.SugarloafKit.h03_dress_props.h03_dress_props__TimberWeathered"
+     }
+    ],
+    "GumLimeDelta": [
+     {
+      "rotSame": true,
+      "sizeDelta": 9.998679161071777e-05,
+      "name": "h03_dress_props__GumLime",
+      "posDelta": 0.0029999413527548313
+     }
+    ],
+    "backup": "ServerStorage.SC8Backup.h03_dress_props__ServerStorage"
+   }
+  ],
+  "frame": "Workspace root CFrame.new(-95,18,-4670) (= manifest pivot_world + layout offset), library root identity; the unmoved GumLime slot lands with 0 delta",
+  "rockGroundCheck": {
+   "area": "hole-local x 51-54, z 12-14",
+   "rocksOverlappingArea": 0,
+   "groundUnderArea": "117/117 samples hit ground",
+   "nearbyRocks": [
+    {
+     "noGround": 0,
+     "c": [
+      56.94,
+      0.04,
+      13.22
+     ],
+     "obj": "h03_dress_props__Pebble",
+     "hits": [
+      "h03_ground_s22__RedDirtLight"
+     ],
+     "minGap": -0.36103248596191406,
+     "maxGap": -0.28342437744140625,
+     "n": 6
+    },
+    {
+     "noGround": 0,
+     "c": [
+      53.66,
+      0.21,
+      9.21
+     ],
+     "obj": "h03_dress_props__Pebble",
+     "hits": [
+      "h03_ground_s22__RedDirtLight",
+      "Terrain"
+     ],
+     "minGap": -0.3199443817138672,
+     "maxGap": 0.7856216430664062,
+     "n": 6
+    },
+    {
+     "noGround": 0,
+     "c": [
+      58.05,
+      0,
+      11.16
+     ],
+     "obj": "h03_dress_props__Pebble",
+     "hits": [
+      "h03_ground_s22__RedDirtLight"
+     ],
+     "minGap": -0.47037696838378906,
+     "maxGap": -0.3898124694824219,
+     "n": 6
+    },
+    {
+     "noGround": 0,
+     "c": [
+      56.93,
+      -0.04,
+      14.57
+     ],
+     "obj": "h03_dress_props__Strata",
+     "hits": [
+      "h03_ground_s22__RedDirtLight"
+     ],
+     "minGap": -0.5530872344970703,
+     "maxGap": -0.4193859100341797,
+     "n": 6
+    },
+    {
+     "noGround": 0,
+     "c": [
+      57.89,
+      -0.17,
+      15.13
+     ],
+     "obj": "h03_dress_props__Strata",
+     "hits": [
+      "h03_ground_s22__RedDirtLight"
+     ],
+     "minGap": -0.553619384765625,
+     "maxGap": -0.4863452911376953,
+     "n": 6
+    },
+    {
+     "noGround": 0,
+     "c": [
+      57.63,
+      -0.2,
+      13.86
+     ],
+     "obj": "h03_dress_props__Strata",
+     "hits": [
+      "h03_ground_s22__RedDirtLight"
+     ],
+     "minGap": -0.5520401000976562,
+     "maxGap": -0.48713111877441406,
+     "n": 6
+    },
+    {
+     "noGround": 0,
+     "c": [
+      57.09,
+      0.01,
+      11.31
+     ],
+     "obj": "h03_dress_props__Pebble",
+     "hits": [
+      "h03_ground_s22__RedDirtLight"
+     ],
+     "minGap": -0.3962440490722656,
+     "maxGap": -0.3293132781982422,
+     "n": 6
+    }
+   ],
+   "note": "rock components from the FBX vertices (Blender); base points ray-cast against h03 ground tiles + Terrain; gap<0 = sunk. The Pebble at local (53.66, 9.21) is sunk 0.32 on the s22 tile but one base point overhangs the tile edge onto Terrain 0.79 lower. No rock deleted."
+  }
+ },
+ "item6_fillers": {
+  "deleted": [
+   {
+    "folder": "Workspace.CourseSugarloaf.Look7Dressing.cliff_filler_rock_a",
+    "models": 205,
+    "parts": 205
+   },
+   {
+    "folder": "Workspace.CourseSugarloaf.Look7Dressing.cliff_filler_rock_b",
+    "models": 204,
+    "parts": 204
+   }
+  ],
+  "models": 409,
+  "parts": 409,
+  "templatesDeleted": [
+   "ServerStorage.SC7Kit.cliff_filler_rock_a__Strata",
+   "ServerStorage.SC7Kit.cliff_filler_rock_b__Strata"
+  ],
+  "templateOtherUsers": 0,
+  "scriptReferences": 0,
+  "remainingNamedCliffFiller": 0,
+  "workspacePartsBeforeDelete": 8389,
+  "workspacePartsAfterDelete": 7980,
+  "note": "8389 = v49 8387 + 2 new rim crystal parts (items 1 and 5 swap parts 1:1 otherwise)"
+ },
+ "h16Edge": {
+  "before": {
+   "sc5": {
+    "roll_1_0": true,
+    "roll_-1_0": true,
+    "roll_0_1": true,
+    "roll_0_-1": true,
+    "diag_alone_1_1": true,
+    "diag_alone_-1_-1": true,
+    "diag_alone_1_-1": true,
+    "diag_alone_-1_1": true,
+    "rest_0.9_1_0": true,
+    "rest_0.9_0_-1": true,
+    "rest_1.3_1_0": false,
+    "rest_1.3_0_-1": false
+   },
+   "scanAxisMaxAllDrop": 1.175,
+   "scanAxisMinAllStay": 1.2,
+   "scanCornerMaxAllDrop": 1.175,
+   "scanCornerMinAllStay": 1.2,
+   "putts": 72,
+   "puttDrops": 48,
+   "outsideDrops": 48,
+   "maxFallCheb": 1.119262933731079
+  },
+  "after": {
+   "sc5": {
+    "roll_1_0": true,
+    "roll_-1_0": true,
+    "roll_0_1": true,
+    "roll_0_-1": true,
+    "diag_alone_1_1": true,
+    "diag_alone_-1_-1": true,
+    "diag_alone_1_-1": true,
+    "diag_alone_-1_1": true,
+    "rest_0.9_1_0": true,
+    "rest_0.9_0_-1": true,
+    "rest_1.3_1_0": false,
+    "rest_1.3_0_-1": false
+   },
+   "scanAxisMaxAllDrop": 0.925,
+   "scanAxisMinAllStay": 0.95,
+   "scanCornerMaxAllDrop": 0.925,
+   "scanCornerMinAllStay": 0.95,
+   "putts": 72,
+   "puttDrops": 24,
+   "outsideDrops": 0,
+   "maxFallCheb": 0.86572265625
+  }
+ }
+}

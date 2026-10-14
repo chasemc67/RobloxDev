@@ -1,0 +1,369 @@
+{
+ "method": "fit030 FBX triangles placed at the Studio part frames (part position - mesh bbox centre); topSurface = 0.05-stud raster of up-facing triangles (shared cells: both tiles have a top surface); faces3d = parallel (|n.n|>0.99) overlapping triangle pairs within 0.05 (opposing normals = buried side-face interface)",
+ "topSurface": {
+  "before": {
+   "h16_ground_s03|h17_ground_s20": {
+    "sharedCells": 932,
+    "minAbsGap": 0.06039020038903686,
+    "at": [
+     -315.0,
+     190.147,
+     -4828.650000000001
+    ],
+    "aHigherCells": 0,
+    "bHigherCells": 932,
+    "cellsUnder0.02": 0,
+    "cellsUnder0.05": 0,
+    "meanGapAminusB": -0.07750254398752843
+   },
+   "h13_ground_s04|h14_ground_s00": {
+    "sharedCells": 200,
+    "minAbsGap": 0.07115386467492613,
+    "at": [
+     -317.95000000000005,
+     150.316,
+     -5215.85
+    ],
+    "aHigherCells": 200,
+    "bHigherCells": 0,
+    "cellsUnder0.02": 0,
+    "cellsUnder0.05": 0,
+    "meanGapAminusB": 0.08889843279452748
+   },
+   "h09_ground_s00|h09_ground_s01": {
+    "sharedCells": 261,
+    "minAbsGap": 3.37891444246452e-05,
+    "at": [
+     316.3,
+     70.02,
+     -5120.0
+    ],
+    "aHigherCells": 0,
+    "bHigherCells": 261,
+    "cellsUnder0.02": 261,
+    "cellsUnder0.05": 261,
+    "meanGapAminusB": -3.41996972941664e-05
+   }
+  },
+  "after": {
+   "h16_ground_s03|h17_ground_s20": {
+    "sharedCells": 932,
+    "minAbsGap": 0.090390200389038,
+    "at": [
+     -315.0,
+     190.117,
+     -4828.650000000001
+    ],
+    "aHigherCells": 0,
+    "bHigherCells": 932,
+    "cellsUnder0.02": 0,
+    "cellsUnder0.05": 0,
+    "meanGapAminusB": -0.10750254398753087
+   },
+   "h13_ground_s04|h14_ground_s00": {
+    "sharedCells": 200,
+    "minAbsGap": 0.11115386467494659,
+    "at": [
+     -317.95000000000005,
+     150.316,
+     -5215.85
+    ],
+    "aHigherCells": 200,
+    "bHigherCells": 0,
+    "cellsUnder0.02": 0,
+    "cellsUnder0.05": 0,
+    "meanGapAminusB": 0.12889843279452096
+   },
+   "h09_ground_s00|h09_ground_s01": {
+    "sharedCells": 261,
+    "minAbsGap": 0.030033789144425782,
+    "at": [
+     316.3,
+     69.99,
+     -5120.0
+    ],
+    "aHigherCells": 0,
+    "bHigherCells": 261,
+    "cellsUnder0.02": 0,
+    "cellsUnder0.05": 261,
+    "meanGapAminusB": -0.030034199697295032
+   }
+  }
+ },
+ "faces3d": {
+  "before": {
+   "h16_ground_s03|h17_ground_s20": {
+    "overlappingParallelTriPairsUnder0.05": 66,
+    "minGap": 0.001851521409817496,
+    "worst": [
+     [
+      0.001851521409817496,
+      [
+       -325.333,
+       190.22,
+       -4838.527
+      ],
+      [
+       -0.03,
+       0.0,
+       1.0
+      ],
+      -1
+     ],
+     [
+      0.0018515214098186491,
+      [
+       -325.667,
+       190.285,
+       -4838.537
+      ],
+      [
+       -0.03,
+       0.0,
+       1.0
+      ],
+      -1
+     ],
+     [
+      0.0018533172280361162,
+      [
+       -325.667,
+       190.292,
+       -4838.539
+      ],
+      [
+       -0.0,
+       -0.0,
+       -1.0
+      ],
+      -1
+     ],
+     [
+      0.0018533172286424333,
+      [
+       -325.333,
+       190.365,
+       -4838.539
+      ],
+      [
+       -0.0,
+       0.0,
+       -1.0
+      ],
+      -1
+     ]
+    ],
+    "sameFacingUnder0.02": 0,
+    "oppFacingUnder0.02": 34
+   },
+   "h13_ground_s04|h14_ground_s00": {
+    "overlappingParallelTriPairsUnder0.05": 5,
+    "minGap": 0.014121781211568069,
+    "worst": [
+     [
+      0.014121781211568069,
+      [
+       -316.667,
+       150.222,
+       -5215.807
+      ],
+      [
+       0.124,
+       0.0,
+       0.992
+      ],
+      -1
+     ],
+     [
+      0.014121781212174422,
+      [
+       -316.333,
+       150.146,
+       -5215.849
+      ],
+      [
+       0.124,
+       0.0,
+       0.992
+      ],
+      -1
+     ],
+     [
+      0.01423216913056798,
+      [
+       -317.168,
+       150.156,
+       -5215.862
+      ],
+      [
+       -0.001,
+       0.0,
+       -1.0
+      ],
+      -1
+     ],
+     [
+      0.014232299806663,
+      [
+       -316.333,
+       150.135,
+       -5215.863
+      ],
+      [
+       -0.001,
+       0.0,
+       -1.0
+      ],
+      -1
+     ]
+    ],
+    "sameFacingUnder0.02": 0,
+    "oppFacingUnder0.02": 5
+   },
+   "h09_ground_s00|h09_ground_s01": {
+    "overlappingParallelTriPairsUnder0.05": 0,
+    "minGap": null,
+    "worst": [],
+    "sameFacingUnder0.02": 0,
+    "oppFacingUnder0.02": 0
+   }
+  },
+  "after": {
+   "h16_ground_s03|h17_ground_s20": {
+    "overlappingParallelTriPairsUnder0.05": 66,
+    "minGap": 0.001851521409817496,
+    "worst": [
+     [
+      0.001851521409817496,
+      [
+       -325.333,
+       190.19,
+       -4838.527
+      ],
+      [
+       -0.03,
+       0.0,
+       1.0
+      ],
+      -1
+     ],
+     [
+      0.0018515214098186491,
+      [
+       -325.667,
+       190.255,
+       -4838.537
+      ],
+      [
+       -0.03,
+       0.0,
+       1.0
+      ],
+      -1
+     ],
+     [
+      0.0018533172280361162,
+      [
+       -325.667,
+       190.292,
+       -4838.539
+      ],
+      [
+       -0.0,
+       -0.0,
+       -1.0
+      ],
+      -1
+     ],
+     [
+      0.0018533172286424333,
+      [
+       -325.333,
+       190.365,
+       -4838.539
+      ],
+      [
+       -0.0,
+       0.0,
+       -1.0
+      ],
+      -1
+     ]
+    ],
+    "sameFacingUnder0.02": 0,
+    "oppFacingUnder0.02": 34
+   },
+   "h13_ground_s04|h14_ground_s00": {
+    "overlappingParallelTriPairsUnder0.05": 4,
+    "minGap": 0.014121781211568069,
+    "worst": [
+     [
+      0.014121781211568069,
+      [
+       -316.667,
+       150.222,
+       -5215.807
+      ],
+      [
+       0.124,
+       0.0,
+       0.992
+      ],
+      -1
+     ],
+     [
+      0.014121781212174422,
+      [
+       -316.333,
+       150.146,
+       -5215.849
+      ],
+      [
+       0.124,
+       0.0,
+       0.992
+      ],
+      -1
+     ],
+     [
+      0.014232299806663,
+      [
+       -316.333,
+       150.095,
+       -5215.863
+      ],
+      [
+       -0.001,
+       0.0,
+       -1.0
+      ],
+      -1
+     ],
+     [
+      0.014232299806663053,
+      [
+       -316.667,
+       150.034,
+       -5215.862
+      ],
+      [
+       -0.001,
+       -0.0,
+       -1.0
+      ],
+      -1
+     ]
+    ],
+    "sameFacingUnder0.02": 0,
+    "oppFacingUnder0.02": 4
+   },
+   "h09_ground_s00|h09_ground_s01": {
+    "overlappingParallelTriPairsUnder0.05": 0,
+    "minGap": null,
+    "worst": [],
+    "sameFacingUnder0.02": 0,
+    "oppFacingUnder0.02": 0
+   }
+  }
+ }
+}
