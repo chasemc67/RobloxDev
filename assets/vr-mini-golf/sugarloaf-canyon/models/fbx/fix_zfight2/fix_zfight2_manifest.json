@@ -1,0 +1,45 @@
+{
+ "generated": "2026-10-14",
+ "props": {
+  "h11_lock_gate": {
+   "fbx": "fbx/fix_zfight2/h11_lock_gate.fbx",
+   "supersedes": "fbx/fix_zfight/h11_lock_gate.fbx (batch 2, left untouched)",
+   "sha256": "591dc0f6e1b55d1142abb8505903bef185bbe7d32e3ab4c37cc521180a4bdc6f",
+   "tris": 120,
+   "parts": [
+    {
+     "object": "h11_lock_gate__Iron",
+     "mats": [
+      "Iron"
+     ],
+     "tris": 24
+    },
+    {
+     "object": "h11_lock_gate__MintWhite",
+     "mats": [
+      "MintWhite"
+     ],
+     "tris": 36
+    },
+    {
+     "object": "h11_lock_gate__PepRed",
+     "mats": [
+      "PepRed"
+     ],
+     "tris": 36
+    },
+    {
+     "object": "h11_lock_gate__Timber",
+     "mats": [
+      "Timber"
+     ],
+     "tris": 24
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "design": "Timber top+bottom rails 0.206; 6 alternating PepRed/MintWhite vertical bars (0.37-0.51 wide, full depth) + 2 Iron bars 0.206 at x=+-1.2, all 0.086 apart; ends at x+-1.79 and back face at z-0.178 to clear H11 rail5/rail7 by 0.15"
+  }
+ }
+}

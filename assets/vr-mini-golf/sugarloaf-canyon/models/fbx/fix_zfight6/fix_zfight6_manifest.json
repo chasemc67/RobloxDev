@@ -1,0 +1,47 @@
+{
+ "props": {
+  "h16_sinkhole_rim": {
+   "fbx": "fbx/fix_zfight6/h16_sinkhole_rim.fbx",
+   "replaces": "fbx/props_batch4/h16_sinkhole_rim.fbx",
+   "sha256": "0512a4f3ffce1668fd8ce391971c3ca5d408a9502cbbb599f2a664ff1aba3a30",
+   "tris": 756,
+   "parts": [
+    {
+     "object": "h16_sinkhole_rim__GeodeRim",
+     "mats": [
+      "GeodeRim"
+     ],
+     "tris": 32
+    },
+    {
+     "object": "h16_sinkhole_rim__PepRed",
+     "mats": [
+      "PepRed"
+     ],
+     "tris": 72
+    },
+    {
+     "object": "h16_sinkhole_rim__Rope",
+     "mats": [
+      "Rope"
+     ],
+     "tris": 580
+    },
+    {
+     "object": "h16_sinkhole_rim__Timber",
+     "mats": [
+      "Timber"
+     ],
+     "tris": 72
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "look_change_flag": true,
+   "batch": 6,
+   "note": "SQUARE GeodeRim frame matching the square sinkhole edge (holes.json x/z \u00b11.2): one square ring, inner \u00b11.0, outer \u00b11.21, 0.206 thick, bottom y 0.167 (felt clearance 0.167, sits just over the hole edge); crystals, posts and thickened ropes carried over from the batch-4 geometry (no cuts)"
+  }
+ },
+ "note": "h16_sinkhole_rim redo: square frame (supersedes fix_zfight5 round lip)"
+}
