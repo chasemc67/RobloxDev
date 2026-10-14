@@ -1,0 +1,51 @@
+{
+  "gap": 0.15,
+  "felt_headroom": 8,
+  "method": "Actual Studio per-MeshPart oriented bounds projected to hole XZ plus Y intervals; built wall and supporting-piece bounds. Conservative for meshes with holes/disconnected pieces. Coplanar bounds are z-fight candidates, not triangle-confirmed z-fighting.",
+  "source": {
+    "raw": 296,
+    "by_class": {
+      "dressing": 222,
+      "flat": 40,
+      "prop": 12,
+      "envelope": 9,
+      "exception": 13
+    },
+    "real": 12,
+    "coplanar": 20
+  },
+  "built": {
+    "imported_props": 97,
+    "anchors": 0,
+    "raw": 429,
+    "by_class": {
+      "dressing": 352,
+      "prop": 56,
+      "exception": 17,
+      "flat": 4
+    },
+    "real": 56,
+    "imported_real": 56,
+    "coplanar_candidates": 4,
+    "visible_coplanar_candidates": 2,
+    "imported_props_with_real_bounds_violations": [
+      "h02_rookery_drift",
+      "h02_lintel_left",
+      "h02_lintel_mid",
+      "h02_lintel_right",
+      "h05_cliff_face_w",
+      "h05_cliff_face_e",
+      "h09_conch_entry",
+      "h10_bobsled_hut",
+      "h10_snow_walls_w",
+      "h11_fishing_hut",
+      "h11_floe_frame_e",
+      "h12_icebreaker",
+      "h14_bell_gantry",
+      "h15_lip_ice",
+      "h18_halo_arch"
+    ],
+    "visual_collision_errors": [],
+    "mover_weld_errors": []
+  }
+}

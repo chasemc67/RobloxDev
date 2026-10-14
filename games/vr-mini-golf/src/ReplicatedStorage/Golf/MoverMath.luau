@@ -170,6 +170,21 @@ function MoverMath.value(p, t)
 	return a, 0
 end
 
+-- Visual profile shares the collider's clock, but fades never support the ball.
+function MoverMath.toggleVisual(p, t)
+	local clock = t + (p.phase or 0)
+	local start = math.floor(clock / p.period) * p.period
+	local solid = MoverMath.value(p, t) == 1
+	if solid then return 0, "solid" end
+	if clock < start + p.solidStart then
+		return 1 - math.clamp((clock - start) / math.max(p.fadeIn or p.solidStart, 1e-9), 0, 1), "fade_in"
+	end
+	if clock < start + p.solidEnd + (p.fadeOut or 0) then
+		return 0.85 * math.clamp((clock - (start + p.solidEnd)) / p.fadeOut, 0, 1), "fade_out"
+	end
+	return 1, "gone"
+end
+
 -- Full cycle length in s (incl. pauses).
 function MoverMath.period(p)
 	if p.type == "swing" or p.type == "keys" or p.type == "toggle" then
@@ -192,6 +207,8 @@ function MoverMath.fromModel(model)
 		period = model:GetAttribute("Period"),
 		solidStart = model:GetAttribute("SolidStart"),
 		solidEnd = model:GetAttribute("SolidEnd"),
+		fadeIn = model:GetAttribute("Profile_fade_in"),
+		fadeOut = model:GetAttribute("Profile_fade_out"),
 		amplitude = model:GetAttribute("Amplitude"),
 		dwell = MoverMath.decodeDwell(model:GetAttribute("Dwell")),
 		keys = MoverMath.decodeKeys(model:GetAttribute("Keys")),

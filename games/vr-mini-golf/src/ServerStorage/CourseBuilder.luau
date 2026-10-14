@@ -1111,6 +1111,9 @@ function Hole:buildMover(m)
 		model:SetAttribute("Phase", m.phase_s or 0)
 		model:SetAttribute("SolidStart", m.solid_window[1])
 		model:SetAttribute("SolidEnd", m.solid_window[2])
+		for _, segment in m.profile or {} do
+			model:SetAttribute("Profile_" .. segment.state, segment.s)
+		end
 		model:SetAttribute("PivotWorld", self.cf:PointToWorldSpace(v3(m.pivot)))
 		model:SetAttribute("AxisWorld", self.cf:VectorToWorldSpace(v3(m.axis)))
 		local ids = {}

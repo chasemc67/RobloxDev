@@ -1,3 +1,7 @@
+## Stage am — Aurora v5 local (Oct 13, 2026)
+
+Local `playtest/playtest-aurora-v5.rbxl` saved; Studio closed. Batch 3: 23 props / 83 meshes, rev2 H18 arch and steamless rev2 H6 pool with low runtime steam. Data-driven H17 fades/lamp/sparkles; 6/6 timed crossings, 3/3 +1 fall/entry respawns. Cupdrop 54/54, random 144, slow 36, stuck 0/escapes 0, zero console warnings/errors. Clearance report lists 16 unique flagged props (12 source real + 56 built prop-class findings). All 55 sources match. No cloud place open/save, publish, asset sync, or git push. See `logs/stages/am-notes.md` and `playtests/stage-am/flagged-props.md`.
+
 # VR Mini Golf: status
 
 ## Stage ak — lobby published v248 (2026-10-13)
@@ -286,7 +290,7 @@ Saved `playtest/playtest-sc-batch34.rbxl`; Studio closed. Imported all 12 landma
 
 Saved `playtest/playtest-aurora-v4.rbxl`; Studio closed. LOCAL ONLY: no cloud place opened/saved, no publish or git push. Imported all 74 approved props (188 meshes, 65,088 triangles; zero missing); regenerated current Aurora data including H4 ice decel_scale=0.7, which scales both constant and speed-dependent rolling drag per supporting piece. All visual meshes remain non-colliding/non-queryable/non-touchable at runtime.
 
-Result PARTIAL for clearance: 46 conservative built prop bounds findings across 13 props and two visible coplanar candidates remain; source checker reports 12 real findings. Gameplay passes: cupdrop54/54, 144 random shots,36 mover slow rollers, H4 crawl15=0/12, stuck0, escapes0, H17 sync324/324, zero console errors. Full evidence and caveats: `logs/stages/ai-notes.md`, `playtests/stage-ai/`.
+Result PARTIAL for clearance: 46 conservative built prop bounds findings across 13 props and two visible coplanar candidates remain; source checker reports 12 real findings. Gameplay passes: cupdrop54/54, 144 random shots,36 mover slow rollers, H4 crawl15=0/12, stuck 0, escapes 0, H17 sync324/324, zero console errors. Full evidence and caveats: `logs/stages/ai-notes.md`, `playtests/stage-ai/`.
 
 
 ## Stage al — 2026-10-13, local Sugarloaf fix2

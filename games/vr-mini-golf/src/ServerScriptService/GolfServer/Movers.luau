@@ -36,9 +36,12 @@ local function add(model)
 	if active[model] then return end
 	if model:GetAttribute("Type") == "toggle" then
 		local parts = {}
+		local effects = { ToggleRibbon = {}, ToggleLamp = {}, ToggleSparkles = {}, ToggleLight = {} }
 		for _, ref in model:GetChildren() do
 			if ref:IsA("ObjectValue") and ref.Name == "TogglePart" and ref.Value then
 				table.insert(parts, ref.Value)
+			elseif ref:IsA("ObjectValue") and ref.Value and effects[ref.Name] then
+				table.insert(effects[ref.Name], ref.Value)
 			end
 		end
 		local visuals = {}
@@ -47,7 +50,7 @@ local function add(model)
 				table.insert(visuals, part)
 			end
 		end
-		active[model] = { toggle = true, parts = parts, visuals = visuals }
+		active[model] = { toggle = true, parts = parts, visuals = visuals, effects = effects }
 		return
 	end
 	local drive = model:FindFirstChild("Drive")
@@ -89,9 +92,26 @@ local function step()
 			for _, part in s.parts do
 				part.CanCollide, part.CanQuery, part.CanTouch = solid, solid, solid
 			end
-			-- Render skins follow the same server-time solid window; they never provide collision.
+			local alpha, phase = MoverMath.toggleVisual(profiles[model], t)
 			for _, part in s.visuals do
-				part.Transparency = solid and (part:GetAttribute("ManifestTransparency") or 0) or 1
+				local base = part:GetAttribute("ManifestTransparency") or 0
+				part.Transparency = base + (1 - base) * alpha
+			end
+			for _, part in s.effects.ToggleRibbon do
+				local base = part:GetAttribute("ManifestTransparency") or 0
+				part.Transparency = base + (1 - base) * alpha
+			end
+			for _, part in s.effects.ToggleLamp do
+				part.Color = solid and Color3.fromRGB(92, 255, 176) or Color3.fromRGB(176, 124, 255)
+				part.Material = phase == "gone" and Enum.Material.Glass or Enum.Material.Neon
+				part.Transparency = phase == "gone" and 0.65 or 0
+			end
+			for _, light in s.effects.ToggleLight do
+				light.Color = solid and Color3.fromRGB(92, 255, 176) or Color3.fromRGB(176, 124, 255)
+				light.Brightness = phase == "gone" and 0 or (solid and 1.5 or 0.6 * (1 - alpha))
+			end
+			for _, emitter in s.effects.ToggleSparkles do
+				emitter.Enabled = phase == "fade_out"
 			end
 			continue
 		end
