@@ -1,4 +1,4 @@
--- Generated stage-am specs; stage-zf2 corrected h06/h18 source FBX bounds.
+-- Generated batch-three specs; stage-au5 corrected FBX bounds.
 return {
 	{
 		id = "h04_frosted_palm_a",
@@ -962,19 +962,19 @@ return {
 		hole = 18,
 		meshes = {
 			h18_ramp_lanterns__Brass = {
-				center = { 0.5, 3.375, 0 },
-				size = { 1.898, 6.45, 7.95 },
+				center = { 0.5, 3.413, 0 },
+				size = { 1.898, 6.512, 7.95 },
 				mesh = "h18_ramp_lanterns__Brass",
 				material = "Brass",
 				colour = "#C9A04A",
 				color = "#C9A04A",
 				roblox_material = "Metal",
 				transparency = 0,
-				tris = 516,
+				tris = 348,
 			},
 			h18_ramp_lanterns__Glow = {
-				center = { 0, 6.105, 0 },
-				size = { 0.366, 0.558, 7.366 },
+				center = { 0, 6.184, 0 },
+				size = { 0.366, 0.397, 7.366 },
 				mesh = "h18_ramp_lanterns__Glow",
 				material = "Glow",
 				colour = "#FFB861",
@@ -984,8 +984,8 @@ return {
 				tris = 36,
 			},
 			h18_ramp_lanterns__Snow = {
-				center = { 0, 6.573, 0 },
-				size = { 0.51, 0.054, 7.51 },
+				center = { 0, 6.858, 0 },
+				size = { 0.51, 0.206, 7.51 },
 				mesh = "h18_ramp_lanterns__Snow",
 				material = "Snow",
 				colour = "#F4F6FF",
@@ -995,8 +995,8 @@ return {
 				tris = 228,
 			},
 			h18_ramp_lanterns__Timber = {
-				center = { 0, 2.95, 0 },
-				size = { 0.6, 5.5, 7.6 },
+				center = { 0, 3.03, 0 },
+				size = { 0.6, 5.168, 7.6 },
 				mesh = "h18_ramp_lanterns__Timber",
 				material = "Timber",
 				colour = "#8A5A3C",
@@ -1009,7 +1009,7 @@ return {
 		pivot = { -243.9, 224.9, -265 },
 		yaw = 0,
 		lights = {},
-		tris = 816,
+		tris = 648,
 	},
 	{
 		id = "h04_ice_channel_edge",

@@ -123,6 +123,7 @@ function Effects.Apply(course, data)
 		sparkles.Enabled, sparkles.Parent = phase == "fade_out", source
 		ref(mover, "ToggleSparkles", sparkles)
 	end
+	result.au5Cleanup = require(game.ServerStorage.AuroraVisualCleanup:Clone()).Apply(course)
 	result.visualSeparation = require(game.ServerStorage.VisualSeparation:Clone()).Apply(course)
 	return result
 end

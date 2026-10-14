@@ -2240,6 +2240,7 @@ end
 --     require(game.ServerStorage.CourseData.SugarloafLayout:Clone()), { folder = "CourseSugarloaf", courseId = "sugarloaf_canyon", palette = "sugarloaf" })
 -- Reuse the build finalizer on an existing course without rebuilding its colliders.
 function CourseBuilder.ApplyVisualSeparation(course)
+	if course.Name == "CourseAurora" then require(game.ServerStorage.AuroraVisualCleanup:Clone()).Apply(course) end
 	local scenery = course == workspace:FindFirstChild("Course") and workspace:FindFirstChild("World") or nil
 	return require(game.ServerStorage.VisualSeparation:Clone()).Apply(course, scenery)
 end

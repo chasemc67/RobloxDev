@@ -42,3 +42,6 @@ Change in Studio → playtest → File > Publish to Roblox. Publishing updates t
 - **Quitting Studio on a Team Create place can hang** on "Applying script changes. Studio will close automatically when complete" (seen three times in stage z). Don't press Escape on it. Once the place has been saved and published, it's safe to `kill -TERM` the RobloxStudio process (then `-KILL`).
 - If Version History won't open in Studio, read it in Creator Hub: `.../experiences/<universe>/places/<placeId>/version-history` (read-only; don't click Restore).
 - TeleportService doesn't work in Studio playtests. Guard teleports with `RunService:IsStudio()` and record the request (an attribute or a log line) so tests can check it.
+
+## Exact version targets (stage au5)
+Published-only history does not reveal consumed revision numbers. Before a task that requires an exact next version, inspect both published-only and unfiltered history: a saved/unpublished revision advances the next publish number too. Aurora showed published v4 but already had saved/unpublished v5, so one overwrite produced v6. Report an impossible exact-version target before overwriting; do not restore or republish to try to force the numbering. Preserve screenshots of both histories and save the local copy under the actual published version.
