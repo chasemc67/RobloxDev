@@ -1,0 +1,1164 @@
+{
+ "importer": {
+  "bundle": "sc7_K (one 3D Importer pass, merged FBX via tools/sc5_merge_fbx.py --split-materials)",
+  "settings": "Import Only as a Model off, Upload on, Add to Workspace, Insert Using Scene Position, Set Pivot to Scene Origin, Anchored, cages off, No Rig, Stud, scale 1",
+  "merge": {
+   "result": "PASS",
+   "size_mb": 2.1,
+   "sources": 24,
+   "meshes": 56,
+   "total_tris": 12592,
+   "max_mesh_tris": 1436
+  },
+  "importerUniformScale": [
+   85.32356208478902,
+   85.3423203603654
+  ],
+  "evidence": [
+   "logs/stages/sc7-import-settings.png",
+   "logs/stages/sc7-import-geometry.png"
+  ],
+  "stagingBundleRemoved": true
+ },
+ "sources": [
+  {
+   "stem": "clay_brick_edging",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/clay_brick_edging.fbx",
+   "sha": "a9fd67f1f83310f74c4fd0e2943fd16b624006bef0e0e8b2f47b131dcbd21540",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "gumdrop_boulder_a",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/gumdrop_boulder_a.fbx",
+   "sha": "00da667b3cef82dbc6b154e31c630ddf5540347c95221677621796a5a90761ad",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "rock_a",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/rock_a.fbx",
+   "sha": "6d55073c2334c362e807383dfda2a8ada37cf7a94ffa3f0e5927341225dc7be2",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "fallen_rock_scatter",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/fallen_rock_scatter.fbx",
+   "sha": "c39bc611e44d10fab4a4c0d6bf12ece654d07c53304039ec2fb72400ea4b39cf",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "lollipop_cactus_a_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/lollipop_cactus_a_v2.fbx",
+   "sha": "b4359c26314b1de7ac3a1d913801a46fa8b30c73cbf0ba7700cffe51370c954f",
+   "expected": "b4359c26314b1de7ac3a1d913801a46fa8b30c73cbf0ba7700cffe51370c954f",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "gumdrop_shrub_a_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/gumdrop_shrub_a_v2.fbx",
+   "sha": "be8157f82ac09765d3cef9285af3a4e1638625dc514c69a3baf465e7110b189c",
+   "expected": "be8157f82ac09765d3cef9285af3a4e1638625dc514c69a3baf465e7110b189c",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "gumdrop_shrub_c_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/gumdrop_shrub_c_v2.fbx",
+   "sha": "91bcfd1adc70b18b4c3e0569c3eb95ffbffc4e36263565c60a0cbf08a7ce7e7a",
+   "expected": "91bcfd1adc70b18b4c3e0569c3eb95ffbffc4e36263565c60a0cbf08a7ce7e7a",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "crystal_cluster_a_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/crystal_cluster_a_v2.fbx",
+   "sha": "da7e8d6ac5ebee721e3fd51c4309376dec97ee010b9d86c542cd56bbd762f249",
+   "expected": "da7e8d6ac5ebee721e3fd51c4309376dec97ee010b9d86c542cd56bbd762f249",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "crystal_cluster_b_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/crystal_cluster_b_v2.fbx",
+   "sha": "49293ca9aaf82590833c96f78dc6ab0ac0d0d370fbfbc72dc2a0f251ade0cc98",
+   "expected": "49293ca9aaf82590833c96f78dc6ab0ac0d0d370fbfbc72dc2a0f251ade0cc98",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "rock_candy_cluster_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/rock_candy_cluster_v2.fbx",
+   "sha": "7a7259702cf62d90d3d6c08a2fb6c184588737df87f0c731d5e59cf8e745cf4e",
+   "expected": "7a7259702cf62d90d3d6c08a2fb6c184588737df87f0c731d5e59cf8e745cf4e",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "scrub_a_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/scrub_a_v2.fbx",
+   "sha": "c9c140e1b4d485ac412b0adeca876898ed426ed26d3dd5ed98ba063b970e2acf",
+   "expected": "c9c140e1b4d485ac412b0adeca876898ed426ed26d3dd5ed98ba063b970e2acf",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "barrel_a_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/barrel_a_v2.fbx",
+   "sha": "ff6445587850f17ab28a3d8a7503d06dec31ec5f298288c8531a34d253a311ec",
+   "expected": "ff6445587850f17ab28a3d8a7503d06dec31ec5f298288c8531a34d253a311ec",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "barrel_b_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/barrel_b_v2.fbx",
+   "sha": "9e2f84994020c2837196b2ea225c6bf0005c378d6eef0288f01013c154e618f2",
+   "expected": "9e2f84994020c2837196b2ea225c6bf0005c378d6eef0288f01013c154e618f2",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "rock_b_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/rock_b_v2.fbx",
+   "sha": "41aa35dc754adf9916c0fcae1a3cf94d51fe182d12d0fa3256ee041f150f5678",
+   "expected": "41aa35dc754adf9916c0fcae1a3cf94d51fe182d12d0fa3256ee041f150f5678",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "boulder_scatter_v2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/boulder_scatter_v2.fbx",
+   "sha": "d9c1d0cf990b13c927419898e105d8bc5a154e22533f1cc6be55837304b4fded",
+   "expected": "d9c1d0cf990b13c927419898e105d8bc5a154e22533f1cc6be55837304b4fded",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "red_dirt_patch_v2a",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/red_dirt_patch_v2a.fbx",
+   "sha": "36b78ae6b3f89f4423b9e4447977230b2e67c638f6419ce00e185c1d68e724b6",
+   "expected": "36b78ae6b3f89f4423b9e4447977230b2e67c638f6419ce00e185c1d68e724b6",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "red_dirt_patch_v2b",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/look7_dressing/red_dirt_patch_v2b.fbx",
+   "sha": "d1a8d9ef2afa76378f564d2036fd7cd21abc1cc5970375c0dab3fc4a92a5171f",
+   "expected": "d1a8d9ef2afa76378f564d2036fd7cd21abc1cc5970375c0dab3fc4a92a5171f",
+   "shaOk": true,
+   "src": "look7"
+  },
+  {
+   "stem": "cliffT_w24_h6_p2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/cliffT_w24_h6_p2.fbx",
+   "sha": "34c1bcd76e2c18608ef471794840a77369c38b254706590eff02cc89634f09f0",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "cliffT_w24_h6_p1",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/cliffT_w24_h6_p1.fbx",
+   "sha": "bb84be8fdd97394d408d3b06303492bd383d95edd861a3bd861d536bcdd69137",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "cliffT_w24_h6_p0",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/cliffT_w24_h6_p0.fbx",
+   "sha": "c31379c9d72592dddcb2116b5537538bf8d22f221415d9b9c8ecd12800200371",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "cliffT_w24_h6_p4",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/cliffT_w24_h6_p4.fbx",
+   "sha": "6e13ee6148995c2068cee97b87a76e8b26549e19fb2db0beb1dc051ae5291bf5",
+   "expected": null,
+   "shaOk": null,
+   "src": "main kit"
+  },
+  {
+   "stem": "cliff_filler_rock_a",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/cliff_fillers/cliff_filler_rock_a.fbx",
+   "sha": "c7c43177e688f10f1933e39e705c0c78c15d9b584cb5384d4ee15e7f5ee5a43f",
+   "expected": "c7c43177e688f10f1933e39e705c0c78c15d9b584cb5384d4ee15e7f5ee5a43f",
+   "shaOk": true,
+   "src": "cliff_fillers"
+  },
+  {
+   "stem": "cliff_filler_rock_b",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/cliff_fillers/cliff_filler_rock_b.fbx",
+   "sha": "b446c29a7f46c8a201242363443d0a5a9e4deb69e151a551a24c7acf9ca037e4",
+   "expected": "b446c29a7f46c8a201242363443d0a5a9e4deb69e151a551a24c7acf9ca037e4",
+   "shaOk": true,
+   "src": "cliff_fillers"
+  },
+  {
+   "stem": "tunnel_lanterns_post2",
+   "fbx": "/Users/chase-mini/src/RobloxDev/assets/vr-mini-golf/sugarloaf-canyon/models/fbx/placeholders_ph2/tunnel_lanterns_post2.fbx",
+   "sha": "9dcfaab78ad85c5bd8dea3bfc30a86d612178de44d9fbc5f23509e721291c3a3",
+   "expected": "9dcfaab78ad85c5bd8dea3bfc30a86d612178de44d9fbc5f23509e721291c3a3",
+   "shaOk": true,
+   "src": "placeholders_ph2"
+  }
+ ],
+ "templates": {
+  "folder": "ServerStorage.SC7Kit",
+  "count": 56,
+  "missing": [],
+  "rows": [
+   {
+    "meshId": "rbxassetid://132912682465299",
+    "appearance": "ServerStorage.SugarloafKit.clay_brick_edging.clay_brick_edging__ClayBrick",
+    "name": "clay_brick_edging__ClayBrick",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Brick",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://104622926481621"
+   },
+   {
+    "meshId": "rbxassetid://122050111410081",
+    "appearance": "ServerStorage.SugarloafKit.gumdrop_boulder_a.gumdrop_boulder_a__GumCherry",
+    "name": "gumdrop_boulder_a__GumCherry",
+    "variant": "",
+    "color": [
+     0.9098039269447327,
+     0.1882352977991104,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://129477526464014",
+    "appearance": "ServerStorage.SugarloafKit.rock_a.rock_a__Strata",
+    "name": "rock_a__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://75220122595982",
+    "appearance": "ServerStorage.SugarloafKit.fallen_rock_scatter.fallen_rock_scatter__Pebble",
+    "name": "fallen_rock_scatter__Pebble",
+    "variant": "",
+    "color": [
+     0.6627451181411743,
+     0.47058823704719543,
+     0.37254902720451355
+    ],
+    "material": "Pebble",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://81930967826374",
+    "appearance": "ServerStorage.SugarloafKit.fallen_rock_scatter.fallen_rock_scatter__Strata",
+    "name": "fallen_rock_scatter__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://96241563908949",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h17_dress_plants.h17_dress_plants.h17_dress_plants__Bubblegum (material+colour; own texture )",
+    "name": "lollipop_cactus_a_v2__Bubblegum",
+    "variant": "",
+    "color": [
+     0.9686274528503418,
+     0.5607843399047852,
+     0.7019608020782471
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://115238680724963",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h17_dress_plants.h17_dress_plants.h17_dress_plants__Cactus (material+colour; own texture rbxassetid://83809764341346)",
+    "name": "lollipop_cactus_a_v2__Cactus",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://83809764341346"
+   },
+   {
+    "meshId": "rbxassetid://130984465907034",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumCherry (material+colour; own texture )",
+    "name": "lollipop_cactus_a_v2__GumCherry",
+    "variant": "",
+    "color": [
+     0.9098039269447327,
+     0.1882352977991104,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://99685005208759",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLemon (material+colour; own texture )",
+    "name": "lollipop_cactus_a_v2__GumLemon",
+    "variant": "",
+    "color": [
+     1,
+     0.8470588326454163,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://72708882863012",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLime (material+colour; own texture )",
+    "name": "lollipop_cactus_a_v2__GumLime",
+    "variant": "",
+    "color": [
+     0.6078431606292725,
+     0.8588235378265381,
+     0.3019607961177826
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://132896372791539",
+    "appearance": "Workspace.CourseSugarloaf.WorldMeshes.dam_crest_parapets.dam_crest_parapets__MintWhite (material+colour; own texture rbxassetid://102209793765875)",
+    "name": "lollipop_cactus_a_v2__MintWhite",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://102209793765875"
+   },
+   {
+    "meshId": "rbxassetid://93115565668062",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumCherry (material+colour; own texture )",
+    "name": "gumdrop_shrub_a_v2__GumCherry",
+    "variant": "",
+    "color": [
+     0.9098039269447327,
+     0.1882352977991104,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://110432539493178",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLemon (material+colour; own texture )",
+    "name": "gumdrop_shrub_a_v2__GumLemon",
+    "variant": "",
+    "color": [
+     1,
+     0.8470588326454163,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://102608464425867",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLime (material+colour; own texture )",
+    "name": "gumdrop_shrub_a_v2__GumLime",
+    "variant": "",
+    "color": [
+     0.6078431606292725,
+     0.8588235378265381,
+     0.3019607961177826
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://96134195246791",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__Scrub (material+colour; own texture )",
+    "name": "gumdrop_shrub_a_v2__Scrub",
+    "variant": "",
+    "color": [
+     0.5607843399047852,
+     0.6392157077789307,
+     0.3529411852359772
+    ],
+    "material": "Grass",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://104847179579704",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumCherry (material+colour; own texture )",
+    "name": "gumdrop_shrub_c_v2__GumCherry",
+    "variant": "",
+    "color": [
+     0.9098039269447327,
+     0.1882352977991104,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://96986685022645",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLemon (material+colour; own texture )",
+    "name": "gumdrop_shrub_c_v2__GumLemon",
+    "variant": "",
+    "color": [
+     1,
+     0.8470588326454163,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://84417525774878",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLime (material+colour; own texture )",
+    "name": "gumdrop_shrub_c_v2__GumLime",
+    "variant": "",
+    "color": [
+     0.6078431606292725,
+     0.8588235378265381,
+     0.3019607961177826
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://76988043792986",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__Scrub (material+colour; own texture )",
+    "name": "gumdrop_shrub_c_v2__Scrub",
+    "variant": "",
+    "color": [
+     0.5607843399047852,
+     0.6392157077789307,
+     0.3529411852359772
+    ],
+    "material": "Grass",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://111431147618342",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyAmber (material+colour; own texture rbxassetid://133527610491564)",
+    "name": "crystal_cluster_a_v2__CandyAmber",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Glass",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://133527610491564"
+   },
+   {
+    "meshId": "rbxassetid://101374249392043",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyCore (material+colour; own texture )",
+    "name": "crystal_cluster_a_v2__CandyCore",
+    "variant": "",
+    "color": [
+     1,
+     0.6196078658103943,
+     0.7843137383460999
+    ],
+    "material": "Neon",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://96008213961827",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyPink (material+colour; own texture rbxassetid://130314029113067)",
+    "name": "crystal_cluster_a_v2__CandyPink",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Glass",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://130314029113067"
+   },
+   {
+    "meshId": "rbxassetid://97532468322070",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "crystal_cluster_a_v2__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://90816765059049"
+   },
+   {
+    "meshId": "rbxassetid://102779132802895",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyAmber (material+colour; own texture rbxassetid://133527610491564)",
+    "name": "crystal_cluster_b_v2__CandyAmber",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Glass",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://133527610491564"
+   },
+   {
+    "meshId": "rbxassetid://135239192672366",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyCore (material+colour; own texture )",
+    "name": "crystal_cluster_b_v2__CandyCore",
+    "variant": "",
+    "color": [
+     1,
+     0.6196078658103943,
+     0.7843137383460999
+    ],
+    "material": "Neon",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://85490457728073",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyPink (material+colour; own texture rbxassetid://130314029113067)",
+    "name": "crystal_cluster_b_v2__CandyPink",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Glass",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://130314029113067"
+   },
+   {
+    "meshId": "rbxassetid://82560298623684",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "crystal_cluster_b_v2__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://90816765059049"
+   },
+   {
+    "meshId": "rbxassetid://105904837594641",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyAmber (material+colour; own texture rbxassetid://133527610491564)",
+    "name": "rock_candy_cluster_v2__CandyAmber",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Glass",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://133527610491564"
+   },
+   {
+    "meshId": "rbxassetid://126907819703036",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyCore (material+colour; own texture )",
+    "name": "rock_candy_cluster_v2__CandyCore",
+    "variant": "",
+    "color": [
+     1,
+     0.6196078658103943,
+     0.7843137383460999
+    ],
+    "material": "Neon",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://82474756523031",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.slot_w24_h48_p2_1.slot_w24_h48_p2.slot_w24_h48_p2__CandyPink (material+colour; own texture rbxassetid://130314029113067)",
+    "name": "rock_candy_cluster_v2__CandyPink",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Glass",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://130314029113067"
+   },
+   {
+    "meshId": "rbxassetid://116155612973507",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "rock_candy_cluster_v2__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://90816765059049"
+   },
+   {
+    "meshId": "rbxassetid://83309465963098",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__Scrub (material+colour; own texture )",
+    "name": "scrub_a_v2__Scrub",
+    "variant": "",
+    "color": [
+     0.5607843399047852,
+     0.6392157077789307,
+     0.3529411852359772
+    ],
+    "material": "Grass",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://81120117440176",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__Brass (material+colour; own texture )",
+    "name": "barrel_a_v2__Brass",
+    "variant": "",
+    "color": [
+     0.7882353067398071,
+     0.5921568870544434,
+     0.22745098173618317
+    ],
+    "material": "Metal",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://114323579782814",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__Iron (material+colour; own texture )",
+    "name": "barrel_a_v2__Iron",
+    "variant": "",
+    "color": [
+     0.23137255012989044,
+     0.22745098173618317,
+     0.24705882370471954
+    ],
+    "material": "Metal",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://119956633232949",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h17_dress_props.h17_dress_props.h17_dress_props__Timber (material+colour; own texture rbxassetid://120241419255452)",
+    "name": "barrel_a_v2__Timber",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "WoodPlanks",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://120241419255452"
+   },
+   {
+    "meshId": "rbxassetid://79528066406796",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__TimberWeathered (material+colour; own texture rbxassetid://135339283095333)",
+    "name": "barrel_a_v2__TimberWeathered",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "WoodPlanks",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://135339283095333"
+   },
+   {
+    "meshId": "rbxassetid://111566076149409",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__Brass (material+colour; own texture )",
+    "name": "barrel_b_v2__Brass",
+    "variant": "",
+    "color": [
+     0.7882353067398071,
+     0.5921568870544434,
+     0.22745098173618317
+    ],
+    "material": "Metal",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://114988304557214",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h17_dress_plants.h17_dress_plants.h17_dress_plants__Bubblegum (material+colour; own texture )",
+    "name": "barrel_b_v2__Bubblegum",
+    "variant": "",
+    "color": [
+     0.9686274528503418,
+     0.5607843399047852,
+     0.7019608020782471
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://84006832489278",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumCherry (material+colour; own texture )",
+    "name": "barrel_b_v2__GumCherry",
+    "variant": "",
+    "color": [
+     0.9098039269447327,
+     0.1882352977991104,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://104133318253704",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLemon (material+colour; own texture )",
+    "name": "barrel_b_v2__GumLemon",
+    "variant": "",
+    "color": [
+     1,
+     0.8470588326454163,
+     0.29019609093666077
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://95220376315212",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h11_dress_plants.h11_dress_plants.h11_dress_plants__GumLime (material+colour; own texture )",
+    "name": "barrel_b_v2__GumLime",
+    "variant": "",
+    "color": [
+     0.6078431606292725,
+     0.8588235378265381,
+     0.3019607961177826
+    ],
+    "material": "SmoothPlastic",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://97765522131188",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__Iron (material+colour; own texture )",
+    "name": "barrel_b_v2__Iron",
+    "variant": "",
+    "color": [
+     0.23137255012989044,
+     0.22745098173618317,
+     0.24705882370471954
+    ],
+    "material": "Metal",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://120619062328367",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h17_dress_props.h17_dress_props.h17_dress_props__Timber (material+colour; own texture rbxassetid://120241419255452)",
+    "name": "barrel_b_v2__Timber",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "WoodPlanks",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://120241419255452"
+   },
+   {
+    "meshId": "rbxassetid://72862360480343",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__TimberWeathered (material+colour; own texture rbxassetid://135339283095333)",
+    "name": "barrel_b_v2__TimberWeathered",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "WoodPlanks",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://135339283095333"
+   },
+   {
+    "meshId": "rbxassetid://117003154353571",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "rock_b_v2__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://90816765059049"
+   },
+   {
+    "meshId": "rbxassetid://125948574438497",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "boulder_scatter_v2__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://90816765059049"
+   },
+   {
+    "meshId": "rbxassetid://96057629966825",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h10_ground.h10_ground.h10_ground_s20__RedDirt (material+colour; own texture )",
+    "name": "red_dirt_patch_v2a__RedDirt",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Ground",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://128573581525853",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h10_ground.h10_ground.h10_ground_s10__RedDirtLight (material+colour; own texture )",
+    "name": "red_dirt_patch_v2b__RedDirtLight",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Ground",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://100769924736175",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h6_p2.cliffT_w24_h6_p2.cliffT_w24_h6_p2__Strata",
+    "name": "cliffT_w24_h6_p2__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://140261236977652",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h6_p1_1.cliffT_w24_h6_p1.cliffT_w24_h6_p1__Strata",
+    "name": "cliffT_w24_h6_p1__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://97688311926849",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h6_p0_20.cliffT_w24_h6_p0.cliffT_w24_h6_p0__Strata",
+    "name": "cliffT_w24_h6_p0__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://107293882478321",
+    "appearance": "Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h6_p4_12.cliffT_w24_h6_p4.cliffT_w24_h6_p4__Strata",
+    "name": "cliffT_w24_h6_p4__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://95552301568190",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "cliff_filler_rock_a__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://91234542060574",
+    "appearance": "strata donor Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+    "name": "cliff_filler_rock_b__Strata",
+    "variant": "",
+    "color": [
+     0.6392157077789307,
+     0.6352941393852234,
+     0.6470588445663452
+    ],
+    "material": "Sandstone",
+    "surfaceAppearance": false,
+    "texture": "rbxassetid://100807267874640"
+   },
+   {
+    "meshId": "rbxassetid://130484190980270",
+    "appearance": "Workspace.CourseSugarloaf.Kit.hole_dressing.h18_dress_props.h18_dress_props.h18_dress_props__Iron (material+colour; own texture )",
+    "name": "tunnel_lanterns_post2__Iron",
+    "variant": "",
+    "color": [
+     0.23137255012989044,
+     0.22745098173618317,
+     0.24705882370471954
+    ],
+    "material": "Metal",
+    "surfaceAppearance": false,
+    "texture": ""
+   },
+   {
+    "meshId": "rbxassetid://135292634657112",
+    "appearance": "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.SC5Mesh.tunnel_lanterns__NeonAmber_3 (material+colour; own texture )",
+    "name": "tunnel_lanterns_post2__NeonAmber",
+    "variant": "",
+    "color": [
+     1,
+     0.8509804010391235,
+     0.5333333611488342
+    ],
+    "material": "Neon",
+    "surfaceAppearance": false,
+    "texture": ""
+   }
+  ]
+ },
+ "strata": {
+  "material": "Sandstone",
+  "variant": "",
+  "donor": "Workspace.CourseSugarloaf.Kit.cliff_kit.cliffT_w24_h24_p1_7.cliffT_w24_h24_p1.cliffT_w24_h24_p1__Strata",
+  "note": "The place has no MaterialVariants (MaterialService empty). Its cliff kit Strata slot = Enum.Material.Sandstone + baked texture; used Enum Sandstone.",
+  "fillers": "cliff_filler_rock_a/b have no UVs: untextured Enum.Material.Sandstone, colour (0.74,0.42,0.31) = manifest Strata colour; other Strata kit pieces = Enum Sandstone + the cliff kit strata texture (rbxassetid://100807267874640, same-stem donors) or their own importer texture"
+ },
+ "tunnelLanterns": {
+  "fbx": "placeholders_ph2/tunnel_lanterns_post2.fbx",
+  "path": "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.SC7Lanterns",
+  "count": 4,
+  "positions": "manifest placement (109,26,378) + offset (0,0,-5000), duplicated every 6 studs along the H2 right tunnel (hole-local z -20/-26/-32/-38); not lowered",
+  "neon": "tunnel_lanterns_post2__NeonAmber Material=Neon, colour (1,0.698,0.247) = ph1 NeonAmber / sc5 lanterns",
+  "replaced": [
+   "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.SC5Mesh (8 parts)"
+  ],
+  "placeholderKeptHidden": [
+   [
+    "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.Placeholder.Glow",
+    1
+   ]
+  ],
+  "sites": [
+   {
+    "i": 1,
+    "pos": [
+     109,
+     26,
+     390
+    ],
+    "postBaseY": 18.269999027252197,
+    "ground": 18.289955139160156,
+    "groundPart": "Workspace.CourseSugarloaf.Kit.hole_dressing.h02_ground.h02_ground.h02_ground_s12__RedDirtLight",
+    "baseMinusGround": -0.019956111907958984,
+    "minDistGameplay": 0.31999969482421875,
+    "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+    "volumes": {
+     "post": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 0.31999969482421875
+     },
+     "arm+lantern": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 5.59999942779541
+     }
+    }
+   },
+   {
+    "i": 2,
+    "pos": [
+     109,
+     26,
+     384
+    ],
+    "postBaseY": 18.269999027252197,
+    "ground": 18.289993286132812,
+    "groundPart": "Workspace.CourseSugarloaf.Kit.hole_dressing.h02_ground.h02_ground.h02_ground_s12__RedDirtLight",
+    "baseMinusGround": -0.019994258880615234,
+    "minDistGameplay": 0.31999969482421875,
+    "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+    "volumes": {
+     "post": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 0.31999969482421875
+     },
+     "arm+lantern": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 5.59999942779541
+     }
+    }
+   },
+   {
+    "i": 3,
+    "pos": [
+     109,
+     26,
+     378
+    ],
+    "postBaseY": 18.269999027252197,
+    "ground": 18.28996467590332,
+    "groundPart": "Workspace.CourseSugarloaf.Kit.hole_dressing.h02_ground.h02_ground.h02_ground_s12__RedDirtLight",
+    "baseMinusGround": -0.019965648651123047,
+    "minDistGameplay": 0.31999969482421875,
+    "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+    "volumes": {
+     "post": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 0.31999969482421875
+     },
+     "arm+lantern": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 5.59999942779541
+     }
+    }
+   },
+   {
+    "i": 4,
+    "pos": [
+     109,
+     26,
+     372
+    ],
+    "postBaseY": 18.269999027252197,
+    "ground": 18.290040969848633,
+    "groundPart": "Workspace.CourseSugarloaf.Kit.hole_dressing.h02_ground.h02_ground.h02_ground_s11__RedDirtLight",
+    "baseMinusGround": -0.020041942596435547,
+    "minDistGameplay": 0.31999969482421875,
+    "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+    "volumes": {
+     "post": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 0.31999969482421875
+     },
+     "arm+lantern": {
+      "nearest": "Workspace.CourseSugarloaf.Hole2.Geometry.Wall",
+      "minDist": 5.59999942779541
+     }
+    }
+   }
+  ]
+ },
+ "look7Dressing": {
+  "layout": "look7_dressing/layout_look7_dressing_edgefix4.json",
+  "layoutEntries": 1832,
+  "placed": 1832,
+  "parts": 3925,
+  "replacedOld": 0,
+  "folder": "Workspace.CourseSugarloaf.Look7Dressing/<piece>/<piece>_<layout index>",
+  "byPiece": {
+   "rock_candy_cluster_v2": 49,
+   "barrel_a_v2": 52,
+   "crystal_cluster_a_v2": 36,
+   "barrel_b_v2": 53,
+   "gumdrop_shrub_a_v2": 152,
+   "rock_b_v2": 36,
+   "cliff_filler_rock_b": 204,
+   "cliffT_w24_h6_p4": 1,
+   "lollipop_cactus_a_v2": 78,
+   "crystal_cluster_b_v2": 18,
+   "cliff_filler_rock_a": 205,
+   "clay_brick_edging": 402,
+   "scrub_a_v2": 108,
+   "red_dirt_patch_v2a": 34,
+   "cliffT_w24_h6_p1": 1,
+   "gumdrop_shrub_c_v2": 113,
+   "fallen_rock_scatter": 72,
+   "cliffT_w24_h6_p2": 83,
+   "rock_a": 62,
+   "gumdrop_boulder_a": 20,
+   "cliffT_w24_h6_p0": 16,
+   "boulder_scatter_v2": 37
+  },
+  "fillers": 409,
+  "placement": "CFrame.new(pos+(0,0,-5000))*Angles(0,rad(yaw),0); scale per local axis on Size and offset (models/manifest.json placement rule)",
+  "flags": "Anchored, CanCollide/CanQuery/CanTouch false, VisualQueryDisabled (all 3925 parts checked)"
+ }
+}
