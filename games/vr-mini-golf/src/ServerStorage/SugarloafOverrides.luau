@@ -97,18 +97,9 @@ function Overrides.Apply(course)
 			end
 		end
 		report.railcapsByHole[tostring(h.number)] = count
-		if decor then
-            -- Stage al: remove obsolete prop bodies only; retain route, safe-bank and timing signs/arrows.
-            local obsolete = h.number == 14 and "ore_piles" or h.number == 9 and "pump_house" or nil
-            local oldAnchor = obsolete and decor:FindFirstChild(obsolete)
-            local oldPlaceholder = oldAnchor and oldAnchor:FindFirstChild("Placeholder")
-            if oldPlaceholder then table.insert(report.removedPlaceholders, oldPlaceholder:GetFullName()); oldPlaceholder:Destroy() end
-			local name = h.number == 14 and "loading_dock" or h.number == 9 and "water_tank" or nil
-			local anchor = name and decor:FindFirstChild(name)
-			-- Water-tank placeholder is suppressed permanently: the approved imported mesh is the visual.
-			local ph = anchor and anchor:FindFirstChild("Placeholder")
-			if ph then table.insert(report.removedPlaceholders, ph:GetFullName()); ph:Destroy() end
-		end
+        -- Stage zf1: all placeholder instances stay until the owning art bot replaces them.
+        -- Earlier stages deleted obsolete bodies here; source rebuilds now retain them.
+
 		local geometry = hole:FindFirstChild("Geometry")
 		if not geometry then continue end
         -- Stage al TEST setting, deliberately local-only: H15 rails including every dune_lean piece.
@@ -156,6 +147,8 @@ function Overrides.Apply(course)
 	end
 	report.railTops = require(ServerStorage.SugarloafRailTops:Clone()).Apply(course)
 	report.hints = require(ServerStorage.SugarloafHints:Clone()).Apply(course)
+	report.decals = require(ServerStorage.SugarloafDecals:Clone()).Apply(course)
+	report.visualSeparation = require(ServerStorage.VisualSeparation:Clone()).Apply(course)
 	return report
 end
 

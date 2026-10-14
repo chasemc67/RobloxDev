@@ -97,7 +97,8 @@ return {
 		CardLanternGrove = "rbxassetid://100112215630907", -- card_lanterngrove_v2.png 1024 square (stage q)
 		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in (unused since stage w)
 		CardSugarloafPlay = "rbxassetid://71252934424990", -- card_sugarloafcanyon_v2.png 1024 square (stage w: playable)
-		CardAuroraPlay = "rbxassetid://80814432024313", -- card_soon_auroraarchipelago_color_clean.png (stage pub-au1)
+		-- Previous CardAuroraPlay = "rbxassetid://80814432024313" (stage pub-au1)
+		CardAuroraPlay = "rbxassetid://119746292850007", -- card_auroraarchipelago_v2.png (stage zf1)
 		CardAurora = "rbxassetid://82146694601580", -- grey, "coming soon" tag baked in
 		-- VR pointer + wrist card (stage p, store/ui/wrist, tools/stage_p_assets.json)
 		PointerDot = "rbxassetid://124186475881466", -- 64x64
@@ -112,7 +113,8 @@ return {
 		IconTotal = "rbxassetid://131506164236528",
 		IconBest = "rbxassetid://101092439594881",
 		-- stage z (assets/vr-mini-golf/ui/menu, ui/loading; tools/stage_z_assets.json)
-		MenuFrame = "rbxassetid://101738563295695", -- menu_frame.png 1200x800 9-slice, SliceCenter 64,64,1136,736 (stage ab: real art)
+		-- Previous MenuFrame = "rbxassetid://101738563295695" (1200x800, stage ab)
+		MenuFrame = "rbxassetid://125693854537650", -- menu_frame_9slice.png 256x256 (stage zf1)
 		CloseX = "rbxassetid://136135028155789", -- close_x.png 128x128 round badge (stage ab: real art)
 		MenuButton = "rbxassetid://120033471344558", -- menu_button.png 128x128 round menu badge, no label (stage ab: real art)
 		LoadingLanternGrove = "rbxassetid://126025818593472", -- loading_lantern_grove.png 1920x1080 (stage ab: real art)

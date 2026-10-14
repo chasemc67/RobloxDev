@@ -98,3 +98,9 @@ Sink checks, stuck-ball sweeps, difficulty bands against the simulator, the VR v
 
 ## Our lobby VR controls (Chase, Oct 12, 2026; stages ad/ae)
 - The VR Mini Golf lobby uses OUR VR controls (`VRControls`, wrist card, VR putter, sticks, and B/Y scorecard gear) under both real VR and SimulateVR. Chase decided this on Oct 12, 2026 (stages ad/ae). Desktop keeps LobbyRoam.
+
+## Visual separation (stage zf1, all course builders)
+- Apply `VisualSeparation.Apply(course)` after geometry, imported visuals, hints and decals. All visible parts have minimum dimension **0.2 studs**. Stacked/parallel exposed visual layers must have **at least 0.05 studs** normal separation; use **0.08 studs by default** for distance stability.
+- Keep gameplay collider CFrames, sizes, collision/query/touch flags and physical properties exactly unchanged. Thicken, inset or offset noncolliding visuals; when a visible collider needs visual changes, preserve the original hidden collider and use an untagged, noncolliding visual copy. Ball roll heights must not change.
+- Retain every placeholder until explicitly replaced by its owning art bot. Do not delete placeholders to pass a visual audit.
+- Audit every hole after the rule runs. Report raw OBB scan counts honestly: imported mesh/CSG/curved bounding boxes are not real polygon faces, and opposing buried block interfaces require separate justification instead of damaging connected geometry to remove conservative hits. Any unresolved **exposed** coplanar face requires a source fix before publishing.

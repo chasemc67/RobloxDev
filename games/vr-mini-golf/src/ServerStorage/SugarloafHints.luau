@@ -29,9 +29,12 @@ function Hints.Apply(course)
   -- These five targets have primitive placeholders, not imported sign meshes.
   if old then
    for _,p in old:GetDescendants() do
-    if p:IsA("BasePart") then table.insert(report.removedParts,p:GetFullName()) end
+    if p:IsA("BasePart") then
+     table.insert(report.removedParts,p:GetFullName())
+     p.Transparency=1; p.CanCollide=false; p.CanQuery=false; p.CanTouch=false
+    end
    end
-   old:Destroy()
+   -- Stage zf1: keep every placeholder instance; only suppress replaced appearance.
   end
   local prior=target:FindFirstChild("HintVisual")
   if prior then prior:Destroy() end

@@ -792,14 +792,15 @@ local function buildRoot(parent)
 	panelWash = new("Frame", { Name = "Wash", BackgroundColor3 = C.navy, BackgroundTransparency = 0.5, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1) }, panelBg)
 	corner(panelWash, 24)
 	if Config.UI.MenuFrame ~= "" then
-		-- (stage z) menu_frame.png: 1200x800 9-slice (SliceCenter 64,64,1136,736) drawn over the title art
+		-- Stage zf1: one 256px frame with exact Game Art Bot slice coordinates.
 		panelFrameArt = new("ImageLabel", {
 			Name = "Frame",
+			BorderSizePixel = 0,
 			BackgroundTransparency = 1,
 			Image = Config.UI.MenuFrame,
 			ScaleType = Enum.ScaleType.Slice,
-			SliceCenter = Rect.new(64, 64, 1136, 736),
-			SliceScale = 0.5,
+			SliceCenter = Rect.new(32, 32, 224, 224),
+			SliceScale = 0.35,
 			Size = UDim2.fromScale(1, 1),
 			ZIndex = 0,
 		}, root)
