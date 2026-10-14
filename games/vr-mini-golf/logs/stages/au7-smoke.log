@@ -1,0 +1,102 @@
+[runner] studio Aurora Archipelago (placeId: 79649062523043) e0f04c65-3e45-4080-808c-e389d7d4152a
+[runner] mode Edit
+[runner] course arrival {"course": "aurora_archipelago", "ballToTee": 0.08, "hole": 1, "anchored": false, "lobby": false, "otherCourse": false} menu {"menuClosedOnArrival": true, "menuButtonTopRight": true} [{"shown": true, "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"}]
+[runner] course menu > lobby {"opened": true, "request": "MetavrseBuilder|lobby|menu|87725688219952", "loading": {"up": "lobby|rbxassetid://75624699940778", "down": "gone"}}
+[runner] course finish > lobby {"hook": "ok", "results": {"countdown": "Back to the lobby in 3 s", "page": "results", "lobbyButton": true}, "request": "MetavrseBuilder|lobby|finished|87725688219952"}
+[runner] course putt {"ok": true, "course": "aurora_archipelago", "strokesBefore": 0, "moved": 6.45, "strokesAfter": 1, "hole": 1}
+[runner] mode Edit
+{
+ "role": "aurora_archipelago",
+ "device": "desktop",
+ "course": {
+  "arrival": {
+   "course": "aurora_archipelago",
+   "ballToTee": 0.08,
+   "hole": 1,
+   "anchored": false,
+   "lobby": false,
+   "otherCourse": false
+  },
+  "menu": {
+   "frame": {
+    "scale": "Enum.ScaleType.Slice",
+    "image": "rbxassetid://125693854537650",
+    "slice": "32, 32, 224, 224"
+   },
+   "menus": [
+    {
+     "shown": true,
+     "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"
+    }
+   ],
+   "menuButtonShown": true,
+   "cam": "Enum.CameraType.Scriptable",
+   "jump": 0,
+   "button": {
+    "screenRight": 1713,
+    "image": "rbxassetid://120033471344558",
+    "y0": -54,
+    "y1": -4,
+    "topbar": [
+     208,
+     1721,
+     58
+    ],
+    "screenTop": 4,
+    "x0": 1663,
+    "x1": 1713
+   },
+   "menuOpen": false,
+   "balls": 1,
+   "closeImage": "",
+   "topRight": true,
+   "course": "aurora_archipelago",
+   "viewport": [
+    1721,
+    648
+   ],
+   "golfHud": true,
+   "walkSpeed": 0,
+   "pos": [
+    -151.6999969482422,
+    62.998023986816406,
+    545
+   ]
+  },
+  "menuClosedOnArrival": true,
+  "menuButtonTopRight": true,
+  "selMenu": "MenuButton",
+  "selLobby": "BackToLobby",
+  "backToLobby": {
+   "opened": true,
+   "request": "MetavrseBuilder|lobby|menu|87725688219952",
+   "loading": {
+    "up": "lobby|rbxassetid://75624699940778",
+    "down": "gone"
+   }
+  },
+  "finish": {
+   "hook": "ok",
+   "results": {
+    "countdown": "Back to the lobby in 3 s",
+    "page": "results",
+    "lobbyButton": true
+   },
+   "request": "MetavrseBuilder|lobby|finished|87725688219952"
+  },
+  "ok": true
+ },
+ "putt": {
+  "ok": true,
+  "course": "aurora_archipelago",
+  "strokesBefore": 0,
+  "moved": 6.45,
+  "strokesAfter": 1,
+  "hole": 1
+ },
+ "problems": {
+  "server": [],
+  "client": []
+ }
+}
+[runner] PASS aurora_archipelago smoke (desktop), 0 console errors/warnings

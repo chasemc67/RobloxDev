@@ -1,4 +1,4 @@
--- Generated batch-three specs; stage-au6 corrected FBX bounds.
+-- Generated batch-three specs; stage-au6 corrected FBX bounds; stage-au7 h18_ramp_lanterns (props_fix_overlap4).
 return {
 	{
 		id = "h04_frosted_palm_a",
@@ -970,11 +970,11 @@ return {
 				color = "#C9A04A",
 				roblox_material = "Metal",
 				transparency = 0,
-				tris = 348,
+				tris = 492,
 			},
 			h18_ramp_lanterns__Glow = {
-				center = { 0, 6.184, 0 },
-				size = { 0.366, 0.397, 7.366 },
+				center = { 0, 6.185, 0 },
+				size = { 0.206, 0.206, 7.206 },
 				mesh = "h18_ramp_lanterns__Glow",
 				material = "Glow",
 				colour = "#FFB861",
@@ -1009,7 +1009,7 @@ return {
 		pivot = { -243.9, 224.9, -265 },
 		yaw = 0,
 		lights = {},
-		tris = 648,
+		tris = 792,
 	},
 	{
 		id = "h04_ice_channel_edge",
