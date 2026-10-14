@@ -2,10 +2,28 @@
   "universe": 10769274294,
   "owner": "MetavrseBuilder (user 1818120139)",
   "places": {
-    "lobby": { "name": "VR Mini Golf", "placeId": 87725688219952, "start": true, "role": "lobby" },
-    "lantern_grove": { "name": "Lantern Grove", "placeId": 91438142503824, "role": "lantern_grove" },
-    "sugarloaf_canyon": { "name": "Sugarloaf Canyon", "placeId": 124440050576723, "role": "sugarloaf_canyon" }
+    "lobby": {
+      "name": "VR Mini Golf",
+      "placeId": 87725688219952,
+      "start": true,
+      "role": "lobby"
+    },
+    "lantern_grove": {
+      "name": "Lantern Grove",
+      "placeId": 91438142503824,
+      "role": "lantern_grove"
+    },
+    "sugarloaf_canyon": {
+      "name": "Sugarloaf Canyon",
+      "placeId": 124440050576723,
+      "role": "sugarloaf_canyon"
+    },
+    "aurora_archipelago": {
+      "name": "Aurora Archipelago",
+      "placeId": 79649062523043,
+      "role": "aurora_archipelago"
+    }
   },
-  "teleport": "TeleportService:TeleportAsync + TeleportOptions (ServerScriptService.PlaceTeleport); loading screens assets/vr-mini-golf/ui/loading (Config.UI.LoadingLanternGrove / LoadingSugarloaf)",
-  "sync": "All three places run the same scripts: games/vr-mini-golf/src is the source of truth. Open ONE place in Studio, then `python3 tools/run_playtests.py push $(find src -name '*.luau')` (picks the only open Studio, or GOLF_STUDIO=<name substring>), run `python3 tools/run_playtests.py smoke`, Save + Publish, close, next place. Each place's role is its workspace attribute PlaceRole (lobby | lantern_grove | sugarloaf_canyon); ReplicatedStorage.Golf.Places holds these IDs. Export (`run_playtests.py export`) from any one place after pushing; the place content (course folders, terrain, Lobby) differs per place, the scripts don't."
+  "teleport": "TeleportService:TeleportAsync + TeleportOptions (ServerScriptService.PlaceTeleport); loading screens assets/vr-mini-golf/ui/loading (Config.UI.LoadingLanternGrove / LoadingSugarloaf / LoadingAurora)",
+  "sync": "All places run the same scripts: games/vr-mini-golf/src is the source of truth. Open ONE place in Studio, then `python3 tools/run_playtests.py push $(find src -name '*.luau')` (picks the only open Studio, or GOLF_STUDIO=<name substring>), run `python3 tools/run_playtests.py smoke`, Save + Publish, close, next place. Each place's role is its workspace attribute PlaceRole (lobby | lantern_grove | sugarloaf_canyon | aurora_archipelago); ReplicatedStorage.Golf.Places holds these IDs. Export (`run_playtests.py export`) from any one place after pushing; the place content (course folders, terrain, Lobby) differs per place, the scripts don't."
 }

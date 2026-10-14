@@ -154,7 +154,7 @@ return game:GetService('HttpService'):JSONEncode({inLobby = lp ~= nil and math.a
 
     # course card -> teleport request + loading screen
     r["cards"] = {}
-    for course in ("lantern_grove", "sugarloaf_canyon"):
+    for course in ("lantern_grove", "sugarloaf_canyon", "aurora_archipelago"):
         st.luau(CLEAR_REQ, "Server")
         st.luau("game:GetService('Players').LocalPlayer.PlayerScripts.GolfMenuDebug:Invoke('open', 'courses') task.wait(0.4) return 'ok'", "Client")
         info = st.luau("""local card = game:GetService('Players').LocalPlayer.PlayerGui.GolfMenu:FindFirstChild(%s, true)
@@ -173,7 +173,7 @@ return table.concat(t, ' / ')""" % json.dumps(course), "Client")
     # walk into each arch portal (stand 8 studs in front facing it, hold W)
     st.luau("local me = game:GetService('Players').LocalPlayer me.PlayerScripts.GolfMenuDebug:Invoke('close') return 'ok'", "Client")
     r["portals"] = {}
-    for course in ("lantern_grove", "sugarloaf_canyon"):
+    for course in ("lantern_grove", "sugarloaf_canyon", "aurora_archipelago"):
         st.luau(CLEAR_REQ, "Server")
         pos = st.luau("""local me = game:GetService('Players').LocalPlayer
 local portal = workspace.Lobby.Portals:FindFirstChild('Portal_' .. %s)
@@ -227,7 +227,7 @@ return game:GetService('HttpService'):JSONEncode(out)""", "Client"))
 
 def course(st, role, log):
     r = {}
-    folder = "Course" if role == "lantern_grove" else "CourseSugarloaf"
+    folder = {"lantern_grove": "Course", "sugarloaf_canyon": "CourseSugarloaf", "aurora_archipelago": "CourseAurora"}[role]
     a = r["arrival"] = json.loads(st.luau("""local me = game:GetService('Players').LocalPlayer
 local t0 = os.clock()
 local ball

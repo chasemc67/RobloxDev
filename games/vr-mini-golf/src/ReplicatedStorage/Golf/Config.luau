@@ -97,6 +97,7 @@ return {
 		CardLanternGrove = "rbxassetid://100112215630907", -- card_lanterngrove_v2.png 1024 square (stage q)
 		CardSugarloaf = "rbxassetid://75996957007483", -- grey, "coming soon" tag baked in (unused since stage w)
 		CardSugarloafPlay = "rbxassetid://71252934424990", -- card_sugarloafcanyon_v2.png 1024 square (stage w: playable)
+		CardAuroraPlay = "rbxassetid://80814432024313", -- card_soon_auroraarchipelago_color_clean.png (stage pub-au1)
 		CardAurora = "rbxassetid://82146694601580", -- grey, "coming soon" tag baked in
 		-- VR pointer + wrist card (stage p, store/ui/wrist, tools/stage_p_assets.json)
 		PointerDot = "rbxassetid://124186475881466", -- 64x64
@@ -116,7 +117,7 @@ return {
 		MenuButton = "rbxassetid://120033471344558", -- menu_button.png 128x128 round menu badge, no label (stage ab: real art)
 		LoadingLanternGrove = "rbxassetid://126025818593472", -- loading_lantern_grove.png 1920x1080 (stage ab: real art)
 		LoadingSugarloaf = "rbxassetid://107743406289905", -- loading_sugarloaf.png 1920x1080 (stage ab: real art)
-		LoadingAurora = "rbxassetid://133372645732228", -- loading_aurora.png 1920x1080 (stage ab; for when Aurora opens)
+		LoadingAurora = "rbxassetid://136331763963238", -- ui/loading-cards/aurora_loading_card.png, Game Art Bot (stage pub-au1)
 	},
 	-- VR wrist (bracer + card on its face): hidden in normal play; it shows only while you actively look at the
 	-- off-hand wrist (Walkabout style). Show: the back of the wrist faces your eyes within WristShowDeg AND the wrist
@@ -139,7 +140,7 @@ return {
 		-- (stage z: holes / par for the cards in places where the course isn't built, i.e. the lobby)
 		{ id = "lantern_grove", name = "Lantern Grove", image = "CardLanternGrove", playable = true, holes = 9, par = 27, loading = "LoadingLanternGrove" },
 		{ id = "sugarloaf_canyon", name = "Sugarloaf Canyon", image = "CardSugarloafPlay", playable = true, holes = 18, par = 54, loading = "LoadingSugarloaf" }, -- stage w
-		{ id = "aurora_archipelago", name = "Aurora Archipelago", image = "CardAurora", playable = false },
+		{ id = "aurora_archipelago", name = "Aurora Archipelago", image = "CardAuroraPlay", playable = true, holes = 18, par = 53, loading = "LoadingAurora" },
 	},
 	ReturnToLobbyAfter = 30, -- (stage z) seconds on the results page before a finished round teleports back to the lobby
 	CurrentCourse = "lantern_grove", -- the default course; each player's own is the player attribute "Course" (Golf.Courses)

@@ -1,7 +1,7 @@
--- Places (stage z): the game is one universe with three places, all running the same scripts (copied from src/, see
+-- Places (stage z): the game is one universe with all places, all running the same scripts (copied from src/, see
 -- games/vr-mini-golf/places.json "sync"):
 --   * Lobby (the start place): walk around, pick a course on the menu or walk through an arch; no golf ball.
---   * Lantern Grove / Sugarloaf Canyon: one course each. Hole 1 starts on arrival; finishing the course or
+--   * Lantern Grove / Sugarloaf Canyon / Aurora Archipelago: one course each. Hole 1 starts on arrival; finishing the course or
 --     Menu > Back to Lobby teleports back to the lobby.
 -- What a place is comes from the workspace attribute PlaceRole ("lobby" | a Config.Courses id), saved in each place
 -- file; game.PlaceId is the fallback (a local .rbxl copy has PlaceId 0, so the attribute is the one that counts).
@@ -13,7 +13,7 @@ Places.LOBBY = 87725688219952
 Places.COURSES = {
 	lantern_grove = 91438142503824,
 	sugarloaf_canyon = 124440050576723,
-	aurora_archipelago = 0, -- local blockout only; no cloud place
+	aurora_archipelago = 79649062523043, -- stage pub-au1
 }
 
 function Places.role(): string

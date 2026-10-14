@@ -812,7 +812,7 @@ def cmd_smoke(args):
     st.stop_play()
     set_edit_attrs(st, {"GolfTestMode": False, "SimulateVR": False})
     role = st.luau("return tostring(workspace:GetAttribute('PlaceRole'))", "Edit")
-    if role in ("lobby", "lantern_grove", "sugarloaf_canyon"):
+    if role in ("lobby", "lantern_grove", "sugarloaf_canyon", "aurora_archipelago"):
         return smoke_place(st, role, args)
     if args.device:
         log("device", st.luau("game:GetService('StudioDeviceSimulatorService'):SetDeviceAsync(%s) return 'ok'" % json.dumps(args.device), "Edit"))
@@ -959,7 +959,7 @@ def smoke_place(st, role, args):
         else:
             out["course"] = place_smoke.course(st, role, log)
             ok = out["course"]["ok"]
-            out["putt"] = json.loads(st.luau(PUTT_CHECK % json.dumps("Course" if role == "lantern_grove" else "CourseSugarloaf"), "Client", timeout=120))
+            out["putt"] = json.loads(st.luau(PUTT_CHECK % json.dumps({"lantern_grove": "Course", "sugarloaf_canyon": "CourseSugarloaf", "aurora_archipelago": "CourseAurora"}[role]), "Client", timeout=120))
             ok = ok and out["putt"].get("ok")
             log("course putt", json.dumps(out["putt"]))
         out["problems"] = {"server": st.problems("Server"), "client": st.problems("Client")}

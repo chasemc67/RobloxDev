@@ -117,7 +117,7 @@ return {
 			id = "arch_aurora_archipelago",
 			position = { 175, 0, 32 },
 			courseId = "aurora_archipelago",
-			state = "coming_soon",
+			state = "live",
 		},
 	},
 	boardSightlines = {

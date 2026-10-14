@@ -10,16 +10,17 @@ Owner: RobloxDevBot. Source: the Notion pages "Course Design" and "Course Design
 | VR Mini Golf (lobby, start place) | 87725688219952 | `lobby` |
 | Lantern Grove | 91438142503824 | `lantern_grove` |
 | Sugarloaf Canyon | 124440050576723 | `sugarloaf_canyon` |
+| Aurora Archipelago | 79649062523043 | `aurora_archipelago` |
 
 - Universe 10769274294, owner MetavrseBuilder (user 1818120139). Builds on the Mini sign in as MetavrseBuilder.
 - Playtesting on the PC uses MetavrsePlumber. Never edit the same place on both machines.
 - Plumber's original place 135374506016678 is private and must not be touched.
-- Aurora is the next course. Add it to `places.json` and to this table when the place exists.
+- Aurora Archipelago is a course place in this experience (stage pub-au1); its lobby card and arch use LoadingAurora.
 
 ## Machine rules on the Mini
 - **One Studio job and one open place at a time.** Before you start, check that no other stage job is running (`pgrep -fl "codex|claude"`, plus the stage logs). Never kill or edit a stage job you didn't start.
 - Close Studio when the stage ends.
-- The scripts are the same in all three places, and `src/` is the source of truth. For each place in turn: open the one place, then
+- The scripts are the same in all places, and `src/` is the source of truth. For each place in turn: open the one place, then
   `python3 tools/run_playtests.py push $(find src -name '*.luau')`, then `python3 tools/run_playtests.py smoke`, then Save and Publish, then close it. Then do the next place.
 - Stages live in `logs/stages/` (gitignored). Each stage has `<x>-prompt.md`, a `run-<x>.sh` runner and a `<x>.log`, and the log ends in a `RESULT` line.
 

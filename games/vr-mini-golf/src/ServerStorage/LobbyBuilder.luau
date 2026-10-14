@@ -357,15 +357,16 @@ end
 -- (stage z) Walk-in portals: a 10x10x3 trigger standing in each playable course's arch opening (the arch's legs are
 -- 10 studs apart, its crossbeam 12 up). Stage ab: the trigger is invisible and the pass 10 portal quad
 -- (bw_portal_surface_<course>, 10x12 in the opening, placed by Build) is the glowing surface, in the course colour;
--- Aurora (not playable yet) gets a dim icy sheet and no trigger.
+-- Stage pub-au1: Aurora uses the same walk-in teleport trigger as the other live courses.
 local PORTALS = {
+	aurora_archipelago = { arch = "arch_aurora_archipelago", color = Color3.fromHex("9FE6F2") },
 	lantern_grove = { arch = "arch_lantern_grove", color = Color3.fromRGB(255, 190, 90) },
 	sugarloaf_canyon = { arch = "arch_sugarloaf_canyon", color = Color3.fromRGB(255, 120, 150) },
 }
 local PORTAL_SURFACES = {
 	lantern_grove = { color = Color3.fromRGB(255, 190, 90), transparency = 0.35 },
 	sugarloaf_canyon = { color = Color3.fromRGB(255, 120, 150), transparency = 0.35 },
-	aurora_archipelago = { color = Color3.fromHex("9FE6F2"), transparency = 0.7 },
+	aurora_archipelago = { color = Color3.fromHex("9FE6F2"), transparency = 0.35 },
 }
 
 function LobbyBuilder.BuildPortals()
