@@ -18,14 +18,15 @@ def main():
   hits=out/'model-bot-mesh-hits.json'; prior=json.loads(hits.read_text()) if hits.exists() else {}
   prior[sys.argv[3]]=r['modelBotMeshHits'];hits.write_text(json.dumps(prior)+'\n');print(r['counts']);print(r['reviewCounts'])
  elif action=='apply':
-  raw=fetch(s,'local r=require(game.ServerStorage.VisualSeparation:Clone()).Apply(workspace.'+folder+') _G.ZF2Fix=game.HttpService:JSONEncode(r) return #_G.ZF2Fix','_G.ZF2Fix')
+  raw=fetch(s,'local r=require(game.ServerStorage.CourseBuilder:Clone()).ApplyVisualSeparation(workspace.'+folder+') _G.ZF2Fix=game.HttpService:JSONEncode(r) return #_G.ZF2Fix','_G.ZF2Fix')
   (out/'fixes.json').write_text(raw+'\n');r=json.loads(raw);print({k:len(v) if isinstance(v,list) else v for k,v in r.items()})
  elif action=='inventory':
   code=Path('tools/zf1_capture_state.py').read_text().split("code='''",1)[1].split("'''",1)[0]
+  code=code.replace('material=p.Material.Name,', 'material=p.Material.Name,group=p.CollisionGroup,anchored=p.Anchored,customPhysics=p.CustomPhysicalProperties and {p.CustomPhysicalProperties.Density,p.CustomPhysicalProperties.Friction,p.CustomPhysicalProperties.Elasticity,p.CustomPhysicalProperties.FrictionWeight,p.CustomPhysicalProperties.ElasticityWeight} or false,')
   raw=fetch(s,code,'_G.ZF1Inventory');(out/('inventory-'+sys.argv[3]+'.json')).write_text(raw+'\n');print('inventory saved')
  elif action=='verify':
   a=json.loads((out/'inventory-before.json').read_text());b=json.loads((out/'inventory-after.json').read_text())
-  keys=('path','cf','size','collide','query','touch','physics')
+  keys=('path','cf','size','collide','query','touch','physics','group','anchored','customPhysics')
   def canon(r):return sorted(json.dumps({k:p[k] for k in keys},sort_keys=True) for p in r['parts'] if p['collide'])
   assert canon(a)==canon(b),'collider mismatch'
   assert sorted(x['path'] for x in a['placeholders'])==sorted(x['path'] for x in b['placeholders']),'placeholder mismatch'

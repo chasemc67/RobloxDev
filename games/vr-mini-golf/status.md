@@ -1,3 +1,7 @@
+## Stage zf3 — Lantern Grove published v12 (Oct 13, 2026)
+
+Lantern Grove (place 91438142503824, universe 10769274294) published v12, verified in Creator Hub published-only history. Visual separation covers Course and World: scan 5114 → 3208, exposed planar candidates 1050 → 0; all 270 colliders unchanged, placeholders 0/0. Baseline and final nine-hole sweeps each passed 27 cup drops and 18 random shots, with zero stuck/escape/timeout findings or console errors; desktop smoke passed. Saved `playtest/playtest-lantern_grove-v12.rbxl`; Studio closed. Protected published versions unchanged: lobby 251, Sugarloaf 23, Aurora 4. No git push or asset edits. See `logs/stages/zf2-notes.md` (Lantern Grove zf3 corrected-gate retry) and `playtests/stage-zf2/lg/`. Live headset/teleport checks and conservative mesh/terrain/transparency review remain open.
+
 ## Stage al2 — Sugarloaf hint decals, local fix2 (Oct 13, 2026)
 
 Five approved MetavrseBuilder image assets placed persistently through SugarloafHints/Overrides; 10 primitive placeholder parts removed. Route-relative arrows follow the rotated H9 bypass and H14 left-bank/bucket routes (coordinate ambiguity documented in `logs/stages/al2-notes.md`). H9/H14: cupdrop 6/6, random 16 completed, stuck/escapes/timeouts 0; zero client/server console warnings/errors. All 705 physical colliders unchanged. Saved `playtest/playtest-sc-fix2.rbxl`; Studio closed. No cloud place open/save, publish or git push. Publishing waits for Playtest Bot's clean sweep; H15 findings remain.

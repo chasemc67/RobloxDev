@@ -1,6 +1,6 @@
 # Stage zf2 — Aurora and Lantern Grove visual separation
 
-Status: PARTIAL — Aurora PASS, published v4. Lantern Grove FAIL at cloud-launch/preflight; not modified or published.
+Status: COMPLETE — Aurora PASS, published v4; corrected-gate Lantern Grove zf3 retry PASS, published v12. Earlier stopped attempts are retained below.
 
 ## Preflight
 No competing stage job or preexisting Studio application. Launched one Studio and visually confirmed Welcome, MetavrseBuilder. MCP confirmed exactly one local Aurora session, Edit, PlaceId 0, role aurora_archipelago. No PC use.
@@ -48,3 +48,28 @@ Counts per category before/after (coplanar, decorated, placeholder, transparency
 Open item: resolve the explicit CourseLanternGrove identity requirement against the supplied file's actual Workspace.Course root before a new build attempt. Source helper `tools/zf2_stage.py` also maps LG to Course, but that does not override this stage's explicit stop condition.
 
 RESULT=FAIL WRONG_PLACE LG_NEW=0 LG_SCAN=NA/NA/NA PLACEHOLDERS=NA/NA
+
+
+## Lantern Grove (zf3)
+
+Corrected-gate retry, authorized fix-forward. Opened only `playtest-lg-v11.rbxl` through File > Open from File. One Studio, signed in as MetavrseBuilder; MCP verified Edit, PlaceId 0, PlaceRole `lantern_grove`, and `Workspace.Course` with Hole1–Hole9. No competing stage job. Creator Hub published-only baselines: lobby 251, Sugarloaf 23, LG 9, Aurora 4. Input hash and identity evidence: `playtests/stage-zf2/lg/zf3-retry-preflight.json`.
+
+Before categories: coplanar 4738, decorated 0, placeholder 0, transparency 376; total **5114**. Exposed planar candidates **1050**: 873 within Course, 175 within World, and 2 at Course/World joins. Imported mesh hits 2916; terrain ray candidates 104.
+
+Pushed current src. Exposed the existing visual finalizer through `CourseBuilder.ApplyVisualSeparation`, shared by CourseBuilder.Build and PropsBuilder.Place. The finalizer includes Lantern Grove’s `Workspace.World` in the same pairwise pass so scenery and course/scenery joins are fixed without rebuilding or replacing the existing colliders. VisualSeparation’s optional scenery root keeps this extension scoped; other course calls retain their existing single-root behavior.
+
+Applied **1186 fixes**: 737 minimum-thickness corrections, 370 parallel exterior-face separations, and 79 protected felt skins. 79 visual collider copies, 93 joints reconnected, 267 scoped collider invariants, zero unresolved, zero thin visible parts, zero invariant failures. Independent whole-Workspace comparison verifies **all 270 colliders exactly unchanged**, including CFrame, size, collide/query/touch, collision group, anchored state, current and custom physical properties. Placeholder instances **0 before / 0 after**.
+
+After categories: coplanar 2857, decorated 0, placeholder 0, transparency 351; total **3208**. Exposed planar candidates **0**, verified for every hole and World. Remaining geometry: 2598 mesh/curved bounding-box candidates and 259 opposing interfaces. Imported mesh hits 2803; terrain ray candidates 117. Raw terrain and transparency candidates remain reported, not treated as proven rendered z-fighting. Before/after mesh lists and per-hole audit are retained. Worst-overlap evidence is the welcome plaza/walkway junction, captured from the stored camera position before/after (`zf2-lg-before.png`, `zf2-lg-after.png`); viewport dimensions differ between captures.
+
+Untouched-input nine-hole baseline: 27/27 cup drops, 18 completed random shots, zero stuck/escape/timeout findings, zero server/client warnings or errors. The older input harness’s completed shots are verified from shot-event telemetry rather than inferred from attempts. Updated desktop smoke PASS: real putt and menu/finish return-to-lobby requests, zero server/client warnings or errors.
+
+Final nine-hole sweep **PASS**: 27/27 cup drops, 18 completed random shots, zero stuck/escape/timeout findings, zero server/client warnings or errors. Baseline/after comparison reports no new failures.
+
+Published only via File > Publish to Roblox As > VR Mini Golf > exact existing Lantern Grove row > Overwrite. Creator Hub published-only **v12** and MCP PlaceId **91438142503824**, PlaceVersion **12**, PlaceRole `lantern_grove` confirmed. Evidence: `zf2-lg-v12.png`. Saved `playtest/playtest-lantern_grove-v12.rbxl`, 3,458,770 bytes, SHA256 `0b31865bbd722a1009e635fa5e647253e906334a375da063327f60730d683ce4`. Untouched input hash remains unchanged. Local copy is on the Mini; no Linux transfer performed in this stage.
+
+Quit stalled on Applying script changes; no Escape. TERM then KILL closed the sole Studio application. Empty MCP inventory and no RobloxStudio process verified. Final Creator Hub published-only checks: **lobby 251, Sugarloaf 23, Aurora 4**, unchanged.
+
+Open items: live headset rendering and actual cross-place teleports remain external checks; retained conservative mesh, terrain and transparency candidates remain review evidence. No PC use, git push, RBXL commit, or asset-owner file changes.
+
+RESULT=PASS LG_NEW=12 LG_SCAN=5114/3208/0 PLACEHOLDERS=0/0

@@ -63,8 +63,16 @@ local function decorated(p)
  end
  return false
 end
-function Separation.Apply(course)
+function Separation.Apply(course, scenery)
  assert(course,"VisualSeparation requires a course")
+ -- Optional authored scenery participates in the same face-pair pass, including course/world joins.
+ local function descendants()
+  local out=course:GetDescendants()
+  if scenery and scenery~=course then
+   for _,p in scenery:GetDescendants() do table.insert(out,p) end
+  end
+  return out
+ end
  local report={gap=GAP,minimumThickness=MINIMUM,fixes={},exclusions={},unresolved={},colliderCopies={},thinAfter={},protectedFelt={},invariantFailures={}}
  local terrainParams=RaycastParams.new()
  terrainParams.FilterType=Enum.RaycastFilterType.Include
@@ -78,7 +86,7 @@ function Separation.Apply(course)
  -- CFrame assignment to a welded visual otherwise moves the entire mover assembly,
  -- including invisible ball blockers. Disconnect joints for the complete edit pass,
  -- including baseline reset, then reconnect at their new visual-only relative pose.
- for _,j in course:GetDescendants() do
+ for _,j in descendants() do
   if (j:IsA("WeldConstraint") or j:IsA("JointInstance")) and j.Part0 and j.Part1 then
    jointedParts[j.Part0]=true;jointedParts[j.Part1]=true
    table.insert(detachedJoints,{joint=j,p0=j.Part0,p1=j.Part1,c0=j:IsA("JointInstance") and j.C0 or nil,
@@ -106,7 +114,7 @@ function Separation.Apply(course)
   clone:SetAttribute("ZF1SourcePath",r.name)
   clone:SetAttribute("ZF1BaseCF",p.CFrame);clone:SetAttribute("ZF1BaseSize",p.Size)
   local parent=p
-  while parent.Parent and parent.Parent~=course do parent=parent.Parent end
+  while parent.Parent and parent.Parent~=course and parent.Parent~=scenery do parent=parent.Parent end
   local folder=parent:FindFirstChild("ZF1VisualLayers")
   if not folder then folder=Instance.new("Folder");folder.Name="ZF1VisualLayers";folder.Parent=parent end
   clone.Parent=folder
@@ -123,7 +131,7 @@ function Separation.Apply(course)
   table.insert(report.colliderCopies,{name=r.name,hole=r.hole,category="collider-preservation",change="Original collider hidden; untagged noncolliding appearance copy; physical pose/size/properties unchanged"})
   return clone
  end
- for _,p in course:GetDescendants() do
+ for _,p in descendants() do
   if p:IsA("BasePart") and p.CanCollide then
    table.insert(originals,{p=p,cf=p.CFrame,size=p.Size,collide=p.CanCollide,query=p.CanQuery,touch=p.CanTouch,group=p.CollisionGroup,physical=p.CustomPhysicalProperties})
   end

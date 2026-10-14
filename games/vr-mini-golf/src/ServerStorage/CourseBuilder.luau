@@ -2238,6 +2238,12 @@ end
 --   with Sugarloaf's palette, felt textures, exact-box rails and props, and leaves Lighting and the spawn alone:
 --   require(game.ServerStorage.CourseBuilder:Clone()).Build(require(game.ServerStorage.CourseData.SugarloafCanyon:Clone()),
 --     require(game.ServerStorage.CourseData.SugarloafLayout:Clone()), { folder = "CourseSugarloaf", courseId = "sugarloaf_canyon", palette = "sugarloaf" })
+-- Reuse the build finalizer on an existing course without rebuilding its colliders.
+function CourseBuilder.ApplyVisualSeparation(course)
+	local scenery = course == workspace:FindFirstChild("Course") and workspace:FindFirstChild("World") or nil
+	return require(game.ServerStorage.VisualSeparation:Clone()).Apply(course, scenery)
+end
+
 function CourseBuilder.Build(data, layout, opts)
 	opts = opts or {}
 	BLOCKOUT = opts.blockout == true
@@ -2287,7 +2293,7 @@ function CourseBuilder.Build(data, layout, opts)
 	local counts = CourseBuilder.ApplyPhysics(course)
 	-- Stage zf2: preserve authored physics while separating course visuals.
 	if course:GetAttribute("CourseId") == "aurora_archipelago" or course:GetAttribute("CourseId") == "lantern_grove" then
-		stats.visualSeparation = require(game.ServerStorage.VisualSeparation:Clone()).Apply(course)
+		stats.visualSeparation = CourseBuilder.ApplyVisualSeparation(course)
 	end
 	if not primary then
 		stats.surface, stats.obstacle, stats.mover = counts.surface, counts.obstacle, counts.mover
