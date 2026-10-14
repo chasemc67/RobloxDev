@@ -1497,11 +1497,15 @@ function Hole:buildTeleport(tp)
 		hollow.CastShadow = false
 		ring(knot, CFrame.new(entryW + Vector3.new(0, 0.03, 0)), tp.entry.radius + 0.16, 0.12, P.bark, 14)
 	end
-	-- entry: glowing ring flat on the felt, exactly the trigger radius
+	-- entry: glowing ring just above the felt, exactly the trigger radius. Stage lg13 (VisualSeparation): ring and
+	-- glow disc are 0.2 thick, 0.08 clear of the felt, side by side with the disc 0.08 inside the ring's inner face
+	-- (the old 0.04 ring over a 0.01 disc got thickened into each other and into the felt).
 	local entryRing = new("Model", { Name = "EntryRing" }, self.teleports)
-	ring(entryRing, CFrame.new(entryW + Vector3.new(0, 0.012, 0)), tp.entry.radius + 0.03, 0.04, col, 16)
-	local glow = vis("Glow", CFrame.new(entryW + Vector3.new(0, 0.006, 0)) * CFrame.Angles(0, 0, math.rad(90)),
-		Vector3.new(0.01, tp.entry.radius * 2, tp.entry.radius * 2), col, M.Neon, entryRing, Enum.PartType.Cylinder)
+	local ringR, lift = tp.entry.radius + 0.03, 0.08 + 0.1
+	ring(entryRing, CFrame.new(entryW + Vector3.new(0, lift, 0)), ringR, 0.2, col, 16)
+	local glowR = math.max(ringR - 0.1 - 0.08, 0.1)
+	local glow = vis("Glow", CFrame.new(entryW + Vector3.new(0, lift, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+		Vector3.new(0.2, glowR * 2, glowR * 2), col, M.Neon, entryRing, Enum.PartType.Cylinder)
 	glow.Transparency = 0.45
 	new("PointLight", { Color = col, Range = secret and 4 or 7, Brightness = secret and 0.8 or 1.5 }, glow)
 	new("ParticleEmitter", {
