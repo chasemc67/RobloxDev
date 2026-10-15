@@ -1007,6 +1007,8 @@ def studio_to_rel(full, cls):
 
 
 def cmd_export(args):
+    # (exp1) GOLF_EXPORT_DIR=<dir> exports into another dir instead of src/ (stale-file removal applies there only)
+    SRC_DIR = os.path.abspath(os.environ.get("GOLF_EXPORT_DIR") or globals()["SRC_DIR"])
     st = Studio()
     listing = st.luau("""local HttpService = game:GetService('HttpService')
 local out = {}
