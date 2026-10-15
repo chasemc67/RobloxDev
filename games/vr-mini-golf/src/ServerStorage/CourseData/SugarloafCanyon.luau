@@ -3568,6 +3568,16 @@ return {
 					yaw = 25,
 					slope = { axis = "x", rise = -2.4 },
 				},
+				-- stage sc11: flat 0.25 shelf in the dune felt / dune_rail2 corner (top = the dune felt height 0.25 in from the
+				-- rail, 0.025 above it at the rail face), so a ball parked against rail2 rests instead of wedging in the level V
+				{
+					id = "dune_rail2_shelf",
+					zone = "dune",
+					center = { 10.7624, -3.375, -29.0186 },
+					size = { 0.25, 30 },
+					yaw = 25,
+					overlay = true,
+				},
 				{ id = "upper_tier", zone = "green", center = { 0, -4, -40 }, size = { 35, 16 }, yaw = 0 },
 				{
 					id = "tier_ramp",

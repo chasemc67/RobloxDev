@@ -1,0 +1,108 @@
+[runner] studio Sugarloaf Canyon (placeId: 124440050576723) c1854d10-7906-426a-a882-0f6abb70eed3
+[runner] mode Edit
+[runner] course arrival {"course": "sugarloaf_canyon", "ballToTee": 0.09, "hole": 1, "anchored": false, "lobby": false, "otherCourse": false} menu {"menuClosedOnArrival": true, "menuButtonTopRight": true} [{"shown": true, "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"}]
+[runner] course menu > lobby {"opened": false, "request": "nil", "loading": {"up": "none", "down": "gone"}}
+[runner] course finish > lobby {"hook": "ok", "results": {"countdown": "Back to the lobby in 3 s", "page": "results", "lobbyButton": true}, "request": "MetavrseBuilder|lobby|finished|87725688219952"}
+[runner] course putt {"ok": true, "course": "sugarloaf_canyon", "strokesBefore": 0, "moved": 7.56, "strokesAfter": 1, "hole": 1}
+[runner] mode Edit
+{
+ "role": "sugarloaf_canyon",
+ "device": "desktop",
+ "course": {
+  "arrival": {
+   "course": "sugarloaf_canyon",
+   "ballToTee": 0.09,
+   "hole": 1,
+   "anchored": false,
+   "lobby": false,
+   "otherCourse": false
+  },
+  "menu": {
+   "frame": {
+    "scale": "Enum.ScaleType.Slice",
+    "image": "rbxassetid://125693854537650",
+    "slice": "32, 32, 224, 224"
+   },
+   "menus": [
+    {
+     "shown": true,
+     "path": "Players.MetavrseBuilder.PlayerGui.GolfMenuButton.MenuButton"
+    }
+   ],
+   "menuButtonShown": true,
+   "cam": "Enum.CameraType.Scriptable",
+   "jump": 0,
+   "button": {
+    "screenRight": 1713,
+    "image": "rbxassetid://120033471344558",
+    "y0": -54,
+    "y1": -4,
+    "topbar": [
+     208,
+     1721,
+     58
+    ],
+    "screenTop": 4,
+    "x0": 1663,
+    "x1": 1713
+   },
+   "menuOpen": false,
+   "balls": 1,
+   "closeImage": "",
+   "topRight": true,
+   "course": "sugarloaf_canyon",
+   "viewport": [
+    1721,
+    648
+   ],
+   "golfHud": true,
+   "walkSpeed": 0,
+   "pos": [
+    58.29999923706055,
+    20.99802589416504,
+    -4530
+   ]
+  },
+  "menuClosedOnArrival": true,
+  "menuButtonTopRight": true,
+  "selMenu": "MenuButton",
+  "selLobby": "nil",
+  "backToLobby": {
+   "opened": false,
+   "request": "nil",
+   "loading": {
+    "up": "none",
+    "down": "gone"
+   }
+  },
+  "finish": {
+   "hook": "ok",
+   "results": {
+    "countdown": "Back to the lobby in 3 s",
+    "page": "results",
+    "lobbyButton": true
+   },
+   "request": "MetavrseBuilder|lobby|finished|87725688219952"
+  },
+  "ok": false
+ },
+ "putt": {
+  "ok": true,
+  "course": "sugarloaf_canyon",
+  "strokesBefore": 0,
+  "moved": 7.56,
+  "strokesAfter": 1,
+  "hole": 1
+ },
+ "problems": {
+  "server": [],
+  "client": [
+   "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n",
+   "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n",
+   "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n",
+   "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n",
+   "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n"
+  ]
+ }
+}
+[runner] FAIL console errors/warnings: ["WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n", "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n", "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n", "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n", "WARN [Roblox][CorePackages.Packages._Index.UIBlox.UIBlox.Logger] [UIBlox - Warning] - FoundationProvider not found. Please ensure that the FoundationProvider is present in the component tree.\nCorePackages.Packages._Index.UIBlox.UIBlox.App.Style.AppStyleProvider:178 function AppStyleProvider\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberHooks.new:3196 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:209 function renderWithHooks\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:1577 function mountIndeterminateComponent\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberBeginWork.new:3485 function beginWork\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:255\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1977\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1953\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:1896\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:915\nCorePackages.Packages._Index.ReactReconciler.ReactReconciler.ReactFiberWorkLoop.new:860\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:320\nCorePackages.Packages._Index.Scheduler.Scheduler.Scheduler:268\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:260 function doWork\nCorePackages.Packages._Index.Scheduler.Scheduler.forks.SchedulerHostConfig.default:296 function performWorkUntilDeadline\n"]

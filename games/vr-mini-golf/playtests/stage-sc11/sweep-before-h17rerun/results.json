@@ -1,0 +1,247 @@
+{
+  "h17": {
+    "default": {
+      "course": "sugarloaf_canyon",
+      "scenario": "h17",
+      "hole": 17,
+      "cupdrop": {
+        "sunk": 2,
+        "pass": false,
+        "tries": [
+          {
+            "rimSpeed": 2.987,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -334.9,
+              189.73,
+              -4811
+            ]
+          },
+          {
+            "rimSpeed": 2.968,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -334.9,
+              189.73,
+              -4811
+            ]
+          },
+          {
+            "angle": 112.5,
+            "outcome": "rest",
+            "finish": [
+              -333.1367,
+              190.0793,
+              -4813.7759
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 74.6,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h17-fuzz-1",
+            "contacts": [],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 4.211,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 6.781,
+            "flags": [],
+            "maxY": 190.098,
+            "distStuds": 14.037,
+            "start": [
+              -345,
+              190.0793,
+              -4768
+            ],
+            "tEnd": 6.831,
+            "tStop": 6.266,
+            "finish": [
+              -350.3581,
+              190.0793,
+              -4780.9736
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h17-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 12.5,
+                "angleIn": 7.6,
+                "vOut": [
+                  -1.9572,
+                  -0.335,
+                  -9.3414
+                ],
+                "vnOut": 9.319,
+                "tContact": 55.7455,
+                "speedOut": 9.544,
+                "speedIn": 15.648,
+                "normal": [
+                  0.0113,
+                  0,
+                  -0.9999
+                ],
+                "type": "event",
+                "vtIn": 2.063,
+                "speedRetention": 0.61,
+                "event": "contact",
+                "t": 55.7455,
+                "vtOut": 2.063,
+                "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail8",
+                "speedAfter300ms": 6.556,
+                "tangentialRetention": 1,
+                "shot": "h17-fuzz-2",
+                "vIn": [
+                  -2.2385,
+                  -0.0001,
+                  15.4874
+                ],
+                "vnIn": -15.512,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.419,
+                "pos": [
+                  -350.0033,
+                  190.0959,
+                  -4766.209
+                ]
+              },
+              {
+                "angleOut": 83.8,
+                "angleIn": 71.9,
+                "vOut": [
+                  0.4495,
+                  -0.0001,
+                  -4.1177
+                ],
+                "vnOut": 0.45,
+                "tContact": 57.1298,
+                "speedOut": 4.142,
+                "speedIn": 4.441,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 4.221,
+                "speedRetention": 0.933,
+                "event": "contact",
+                "t": 57.1298,
+                "vtOut": 4.118,
+                "part": "Workspace.CourseSugarloaf.Hole17.Geometry.Wall:rail1",
+                "speedAfter300ms": 3.659,
+                "tangentialRetention": 0.976,
+                "shot": "h17-fuzz-2",
+                "vIn": [
+                  -1.3798,
+                  -0.0001,
+                  -4.221
+                ],
+                "vnIn": -1.38,
+                "restitution": 0.326,
+                "retentionAfter300ms": 0.824,
+                "pos": [
+                  -352.4147,
+                  190.0796,
+                  -4774.2729
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.392,
+            "distM": 4.291,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.933,
+            "flags": [],
+            "maxY": 190.103,
+            "distStuds": 14.303,
+            "start": [
+              -349.6281,
+              190.0793,
+              -4768.3965
+            ],
+            "tEnd": 6.983,
+            "tStop": 6.416,
+            "finish": [
+              -351.6343,
+              190.0792,
+              -4782.5581
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Sundial",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "shadow_arm",
+          "period": 30,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "dial",
+              "phase": 0,
+              "blocked": true,
+              "finish": [
+                -333.9299,
+                190.0793,
+                -4796.0293
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "dial",
+              "phase": 15,
+              "blocked": true,
+              "finish": [
+                -333.9412,
+                190.0793,
+                -4796.0796
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.528
+    }
+  }
+}

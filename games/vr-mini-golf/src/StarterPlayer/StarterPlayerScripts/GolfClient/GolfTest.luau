@@ -1552,6 +1552,74 @@ scenario({
 	run = h15Friction,
 })
 
+-- Stage sc11: a fixed list of shots across/along one rail seam. GolfTestOpts: .hole, .seamA/.seamB = world {x,y,z} ends of the
+-- seam line, .shots = {{start={x,y,z}, dir={x,z}, speed=studs/s, group}}. A shot is "stuck" when it times out, is flagged
+-- stuck-3s / forcedrest / offsurface / timeout auto-reset, or crawls (< 0.3 studs/s while still moving) for > 2 s within
+-- .radius (default 0.6) of the seam line. Seam hops (unstuck:seam) are counted separately.
+local function seamShots()
+	local o = opts()
+	refreshFelt()
+	local n = o.hole or 15
+	local h = hole(n)
+	local A, B = Vector3.new(unpack(o.seamA)), Vector3.new(unpack(o.seamB))
+	local radius = o.radius or 0.6
+	local function seamDist(p: Vector3)
+		local ab, ap = flat(B - A), flat(p - A)
+		local t = math.clamp(ap:Dot(ab) / ab:Dot(ab), 0, 1)
+		return (ap - ab * t).Magnitude
+	end
+	local rows = {}
+	for i, m in o.shots do
+		local hit = feltHit(Vector3.new(m.start[1], m.start[2], m.start[3]), m.start[2] + 3)
+		if not hit or not hit.Instance:IsDescendantOf(h) then
+			table.insert(rows, { shot = i, outcome = "nofelt" })
+			continue
+		end
+		local ok, err = pcall(place, n, hit.Position.X, hit.Position.Z, hit.Position.Y)
+		if not ok then
+			table.insert(rows, { shot = i, outcome = "placefail", err = tostring(err) })
+			continue
+		end
+		local active, crawl, minD = false, 0, math.huge
+		local conn = RunService.PostSimulation:Connect(function(dt)
+			local b = Ball.ball
+			if Ball.state == "moving" then active = true end
+			if not active or not b or Ball.state ~= "moving" then return end
+			local d = seamDist(b.Position)
+			minD = math.min(minD, d)
+			if d < radius and b.AssemblyLinearVelocity.Magnitude < 0.3 then crawl += dt end
+		end)
+		local r = shootS("seam-" .. i, Vector3.new(m.dir[1], 0, m.dir[2]), m.speed, { cup = h.Cup, timeout = o.timeout or 26, watchStill = true })
+		conn:Disconnect()
+		local fin = Vector3.new(unpack(r.finish))
+		local kinds = {}
+		local flagged = false
+		for _, f in r.flags or {} do
+			table.insert(kinds, f.kind .. (f.reason and (":" .. f.reason) or ""))
+			if f.kind == "stuck-3s" or f.kind == "forcedrest" or f.kind == "offsurface" or (f.kind == "autoreset" and f.reason == "timeout") then
+				flagged = true
+			end
+		end
+		local hops = 0
+		for _, f in r.flags or {} do if f.kind == "unstuck" then hops += 1 end end
+		local row = { shot = i, start = vec(hit.Position), dir = m.dir, speed = m.speed, group = m.group, outcome = r.outcome, finish = r.finish,
+			flags = kinds, minSeamDist = round(minD, 3), finishSeamDist = round(seamDist(fin), 3), crawlNearS = round(crawl, 2), seamHops = hops,
+			stuck = r.outcome == "timeout" or flagged or crawl > 2, tEnd = r.tEnd }
+		table.insert(rows, row)
+		event("seam-row", row)
+	end
+	local stuck = 0
+	for _, x in rows do if x.stuck then stuck += 1 end end
+	return { seamA = o.seamA, seamB = o.seamB, radius = radius, shots = #rows, stuck = stuck, rows = rows }
+end
+
+scenario({
+	name = "seamshots",
+	desc = "Stage sc11: fixed shots across/along one rail seam (GolfTestOpts.seam/.shots)",
+	seconds = 3000,
+	run = seamShots,
+})
+
 local S = 1 -- test lane felt height
 
 scenario({

@@ -1,0 +1,4189 @@
+{
+ "method": "every BasePart under Workspace.CourseSugarloaf with an ancestor named Placeholder, or \"placeholder\" in its name, tags or attribute names (175 parts, all via a Placeholder ancestor; 0 extra by name/tag/attribute)",
+ "total": 175,
+ "visible": 36,
+ "decalFolder": "assets/vr-mini-golf/sugarloaf-canyon/decals (29 in manifest.json + 8 other PNGs)",
+ "newDecalsApplied": 0,
+ "newUploads": 0,
+ "visibleSummary": {
+  "already applied (asset pixel-identical to the PNG)": 25,
+  "no decal in the folder for this item": 11
+ },
+ "allSummary": {
+  "no decal in the folder for this item": 117,
+  "already applied (asset pixel-identical to the PNG)": 58
+ },
+ "rows": [
+  {
+   "name": "ranger_station",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.ranger_station.Placeholder.Roof",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    10.6,
+    0.5,
+    10.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Ranger station on stilts with a fire-lookout cupola, west of the shore (outside the footprint, in the world dressing)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "ranger_station",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.ranger_station.Placeholder.Body",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    10,
+    18,
+    10
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Ranger station on stilts with a fire-lookout cupola, west of the shore (outside the footprint, in the world dressing)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_plank",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.sign_plank.Placeholder.SignBoard",
+   "hole": 3,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Log Plank - no rails!' with a splash icon beside the plank entry",
+   "decalFile": "h03_sign_log_plank.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_sign_log_plank.png",
+     "tex": "rbxassetid://96229015344567",
+     "face": "Front",
+     "on": "Hole3.Decor.sign_plank.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_plank",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.sign_plank.Placeholder.SignPost",
+   "hole": 3,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    2.6,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Log Plank - no rails!' with a splash icon beside the plank entry",
+   "decalFile": "h03_sign_log_plank.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_sign_log_plank.png",
+     "tex": "rbxassetid://96229015344567",
+     "face": "Front",
+     "on": "Hole3.Decor.sign_plank.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "plank_respawn_stone",
+   "part": "RespawnStone",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.plank_respawn_stone.Placeholder.RespawnStone",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.2,
+    0.8,
+    0.8
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Glowing turquoise marker stone set flush in the felt at the plank entry: where a ball that falls in the river reappears",
+   "decalFile": "plank_respawn_stone_decal.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "plank_respawn_stone_decal.png",
+     "tex": "rbxassetid://135394135115475",
+     "face": "Top",
+     "on": "Hole3.Decor.plank_respawn_stone.SC5Decal.Decal"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "decals/plank_respawn_stone_decal.png"
+  },
+  {
+   "name": "river_rocks",
+   "part": "Rock",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.river_rocks.Placeholder.Rock",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    6,
+    1,
+    8
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Turquoise river with foam, stepping stones and a sunken canoe downstream",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/river_rocks.fbx"
+  },
+  {
+   "name": "route_arrow_bridge",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.route_arrow_bridge.Placeholder.Arrow",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SAFE FOOTBRIDGE: north along the railed crossing",
+   "decalFile": "h03_route_arrow_bridge.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_route_arrow_bridge.png",
+     "tex": "rbxassetid://92616507344160",
+     "face": "Top",
+     "on": "Hole3.Decor.route_arrow_bridge.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_bridge",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.route_arrow_bridge.Placeholder.Arrow",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SAFE FOOTBRIDGE: north along the railed crossing",
+   "decalFile": "h03_route_arrow_bridge.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_route_arrow_bridge.png",
+     "tex": "rbxassetid://92616507344160",
+     "face": "Top",
+     "on": "Hole3.Decor.route_arrow_bridge.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_plank",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.route_arrow_plank.Placeholder.Arrow",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "RISKY PLANK: straight north toward the narrow crossing",
+   "decalFile": "h03_route_arrow_plank.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_route_arrow_plank.png",
+     "tex": "rbxassetid://132467328579602",
+     "face": "Top",
+     "on": "Hole3.Decor.route_arrow_plank.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_plank",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.route_arrow_plank.Placeholder.Arrow",
+   "hole": 3,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "RISKY PLANK: straight north toward the narrow crossing",
+   "decalFile": "h03_route_arrow_plank.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_route_arrow_plank.png",
+     "tex": "rbxassetid://132467328579602",
+     "face": "Top",
+     "on": "Hole3.Decor.route_arrow_plank.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_bridge",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.sign_bridge.Placeholder.SignPost",
+   "hole": 3,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Ranger sign 'Footbridge - the safe way' pointing to the footbridge",
+   "decalFile": "h03_sign_footbridge.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_sign_footbridge.png",
+     "tex": "rbxassetid://78901465650444",
+     "face": "Front",
+     "on": "Hole3.Decor.sign_bridge.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_bridge",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole3.Decor.sign_bridge.Placeholder.SignBoard",
+   "hole": 3,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Ranger sign 'Footbridge - the safe way' pointing to the footbridge",
+   "decalFile": "h03_sign_footbridge.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h03_sign_footbridge.png",
+     "tex": "rbxassetid://78901465650444",
+     "face": "Front",
+     "on": "Hole3.Decor.sign_bridge.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "lip_chevrons",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole15.Decor.lip_chevrons.Placeholder.Arrow",
+   "hole": 15,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    7,
+    0.2,
+    1
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Felt chevrons at the lane lip pointing -Z: the dune face below is one-way (the ball won't come back up)",
+   "decalFile": "h15_lip_chevrons.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h15_lip_chevrons.png",
+     "tex": "rbxassetid://91089251317155",
+     "face": "Top",
+     "on": "Hole15.Decor.lip_chevrons.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "lip_chevrons",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole15.Decor.lip_chevrons.Placeholder.Arrow",
+   "hole": 15,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    2.625
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Felt chevrons at the lane lip pointing -Z: the dune face below is one-way (the ball won't come back up)",
+   "decalFile": "h15_lip_chevrons.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h15_lip_chevrons.png",
+     "tex": "rbxassetid://91089251317155",
+     "face": "Top",
+     "on": "Hole15.Decor.lip_chevrons.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "slope_arrows",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole15.Decor.slope_arrows.Placeholder.Arrow",
+   "hole": 15,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    20,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Faint wind-ripple chevrons printed across the dune felt pointing down the fall line (east-north-east): the reading aid",
+   "decalFile": "h15_slope_arrows.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h15_slope_arrows.png",
+     "tex": "rbxassetid://129059764709956",
+     "face": "Top",
+     "on": "Hole15.Decor.slope_arrows.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "slope_arrows",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole15.Decor.slope_arrows.Placeholder.Arrow",
+   "hole": 15,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    7.5
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Faint wind-ripple chevrons printed across the dune felt pointing down the fall line (east-north-east): the reading aid",
+   "decalFile": "h15_slope_arrows.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h15_slope_arrows.png",
+     "tex": "rbxassetid://129059764709956",
+     "face": "Top",
+     "on": "Hole15.Decor.slope_arrows.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_sink",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.felt_arrow_sink.Placeholder.Arrow",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing at the sinkhole",
+   "decalFile": "h16_felt_arrow_sink.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h16_felt_arrow_sink.png",
+     "tex": "rbxassetid://104339454768598",
+     "face": "Top",
+     "on": "Hole16.Decor.felt_arrow_sink.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_sink",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.felt_arrow_sink.Placeholder.Arrow",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing at the sinkhole",
+   "decalFile": "h16_felt_arrow_sink.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h16_felt_arrow_sink.png",
+     "tex": "rbxassetid://104339454768598",
+     "face": "Top",
+     "on": "Hole16.Decor.felt_arrow_sink.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sinkhole_rim",
+   "part": "Rim",
+   "path": "Workspace.CourseSugarloaf.Hole16.Decor.sinkhole_rim.Placeholder.Rim",
+   "hole": 16,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.3,
+    0.12,
+    0.85
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Crystal-lined sinkhole rim flush with the deck (rock-candy crystals inside the shaft glowing pink), a low rope railing on posts outside the deck rails",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Lintel",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Lintel",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    10,
+    1.2,
+    4
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "arch_gate",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.arch_gate.Placeholder.Post",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    4
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Natural candy-striped sandstone arch spanning the ramp (feet outside the rails at x -13.25 and -4.75, opening 7.5 wide x 10 high), framing the sunset to the west",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_rim",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.sign_rim.Placeholder.SignPost",
+   "hole": 18,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Rim Trail' pointing north along the rim",
+   "decalFile": "h18_sign_rim_trail.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h18_sign_rim_trail.png",
+     "tex": "rbxassetid://130671607077130",
+     "face": "Front",
+     "on": "Hole18.Decor.sign_rim.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_rim",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.sign_rim.Placeholder.SignBoard",
+   "hole": 18,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Rim Trail' pointing north along the rim",
+   "decalFile": "h18_sign_rim_trail.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h18_sign_rim_trail.png",
+     "tex": "rbxassetid://130671607077130",
+     "face": "Front",
+     "on": "Hole18.Decor.sign_rim.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_bank",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.felt_arrow_bank.Placeholder.Arrow",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.975
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal curving right-then-left: 'bank it round the hoodoo'",
+   "decalFile": "h18_felt_arrow_bank.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h18_felt_arrow_bank.png",
+     "tex": "rbxassetid://86154332587382",
+     "face": "Top",
+     "on": "Hole18.Decor.felt_arrow_bank.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_bank",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole18.Decor.felt_arrow_bank.Placeholder.Arrow",
+   "hole": 18,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    2,
+    0.2,
+    2.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal curving right-then-left: 'bank it round the hoodoo'",
+   "decalFile": "h18_felt_arrow_bank.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h18_felt_arrow_bank.png",
+     "tex": "rbxassetid://86154332587382",
+     "face": "Top",
+     "on": "Hole18.Decor.felt_arrow_bank.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Lintel",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Lintel",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    9.5,
+    1.2,
+    1.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "trailhead_arch",
+   "part": "Post",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.trailhead_arch.Placeholder.Post",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    1,
+    1.2
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Candy-striped timber trailhead arch over the lane with a hanging swirl-lollipop sign 'Sugarloaf Canyon - Hole 1'; posts outside the rails at x +-4.25, crossbeam bottom 8 above the felt",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "hitching_post",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.hitching_post.Placeholder.Body",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    2,
+    1
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Hitching post and water trough outside the west rail",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/hitching_post.fbx"
+  },
+  {
+   "name": "hitching_post",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.hitching_post.Placeholder.Roof",
+   "hole": 1,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3.6,
+    0.5,
+    1.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Hitching post and water trough outside the west rail",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/hitching_post.fbx"
+  },
+  {
+   "name": "lollipop_cactus_1",
+   "part": "Lollipop",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.lollipop_cactus_1.Placeholder.Lollipop",
+   "hole": 1,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.3,
+    2.6,
+    2.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Saguaro wearing a swirl lollipop, outside the green's south rail",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "lollipop_cactus_1",
+   "part": "Arm",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.lollipop_cactus_1.Placeholder.Arm",
+   "hole": 1,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.7,
+    2.4,
+    0.7
+   ],
+   "material": "Grass",
+   "collide": false,
+   "represents": "Saguaro wearing a swirl lollipop, outside the green's south rail",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "lollipop_cactus_1",
+   "part": "Cactus",
+   "path": "Workspace.CourseSugarloaf.Hole1.Decor.lollipop_cactus_1.Placeholder.Cactus",
+   "hole": 1,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.2,
+    8.4,
+    1.2
+   ],
+   "material": "Grass",
+   "collide": false,
+   "represents": "Saguaro wearing a swirl lollipop, outside the green's south rail",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "crystal_cue",
+   "part": "Glow",
+   "path": "Workspace.CourseSugarloaf.Hole5.Decor.crystal_cue.Placeholder.Glow",
+   "hole": 5,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.2,
+    2,
+    1.2
+   ],
+   "material": "Neon",
+   "collide": false,
+   "represents": "Glowing pink rock-candy crystal hanging 9.5 studs over the cup from a rope between the slot walls: the visual cue for the hidden flag (decoration only, no collision, 8+ studs above the felt)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/crystal_cue.fbx"
+  },
+  {
+   "name": "outflow_pipe",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.outflow_pipe.Placeholder.Body",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    2.5,
+    2.5,
+    3
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Big riveted outflow pipe mouth on the green's east edge, angled at the cup (teleport exit, splash particles)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/outflow_pipe.fbx"
+  },
+  {
+   "name": "outflow_pipe",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.outflow_pipe.Placeholder.Roof",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3.1,
+    0.5,
+    3.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Big riveted outflow pipe mouth on the green's east edge, angled at the cup (teleport exit, splash particles)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/outflow_pipe.fbx"
+  },
+  {
+   "name": "sign_shore",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.sign_shore.Placeholder.SignPost",
+   "hole": 12,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Shoreline Trail' pointing north along the shore",
+   "decalFile": "h12_sign_shoreline.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_sign_shoreline.png",
+     "tex": "rbxassetid://134938154207517",
+     "face": "Front",
+     "on": "Hole12.Decor.sign_shore.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_shore",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.sign_shore.Placeholder.SignBoard",
+   "hole": 12,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Shoreline Trail' pointing north along the shore",
+   "decalFile": "h12_sign_shoreline.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_sign_shoreline.png",
+     "tex": "rbxassetid://134938154207517",
+     "face": "Front",
+     "on": "Hole12.Decor.sign_shore.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "pier_posts",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.pier_posts.Placeholder.Body",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3.2,
+    1.4,
+    13
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Timber pier on posts (no railings: the open sides and end drop into the reservoir)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/pier_posts.fbx"
+  },
+  {
+   "name": "sign_pier",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.sign_pier.Placeholder.SignPost",
+   "hole": 12,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    2.6,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Intake - shoot the pipe!' at the pier root",
+   "decalFile": "h12_sign_intake.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_sign_intake.png",
+     "tex": "rbxassetid://78028777110381",
+     "face": "Front",
+     "on": "Hole12.Decor.sign_pier.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_pier",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.sign_pier.Placeholder.SignBoard",
+   "hole": 12,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Intake - shoot the pipe!' at the pier root",
+   "decalFile": "h12_sign_intake.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_sign_intake.png",
+     "tex": "rbxassetid://78028777110381",
+     "face": "Front",
+     "on": "Hole12.Decor.sign_pier.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_pier",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.felt_arrow_pier.Placeholder.Arrow",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing -Z onto the pier",
+   "decalFile": "h12_felt_arrow_pier.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_felt_arrow_pier.png",
+     "tex": "rbxassetid://123303838002269",
+     "face": "Top",
+     "on": "Hole12.Decor.felt_arrow_pier.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_pier",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.felt_arrow_pier.Placeholder.Arrow",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing -Z onto the pier",
+   "decalFile": "h12_felt_arrow_pier.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_felt_arrow_pier.png",
+     "tex": "rbxassetid://123303838002269",
+     "face": "Top",
+     "on": "Hole12.Decor.felt_arrow_pier.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_shore",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.felt_arrow_shore.Placeholder.Arrow",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing -Z up the shoreline",
+   "decalFile": "h12_felt_arrow_shore.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_felt_arrow_shore.png",
+     "tex": "rbxassetid://75338689222423",
+     "face": "Top",
+     "on": "Hole12.Decor.felt_arrow_shore.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_shore",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.felt_arrow_shore.Placeholder.Arrow",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing -Z up the shoreline",
+   "decalFile": "h12_felt_arrow_shore.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h12_felt_arrow_shore.png",
+     "tex": "rbxassetid://75338689222423",
+     "face": "Top",
+     "on": "Hole12.Decor.felt_arrow_shore.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "intake_tower",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.intake_tower.Placeholder.Body",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    7,
+    16,
+    7
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Domed peppermint intake tower standing in the water east of the pier (visual), a pipe running under the water from the grate to the outflow on the green",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "intake_tower",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole12.Decor.intake_tower.Placeholder.Roof",
+   "hole": 12,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    7.6,
+    0.5,
+    7.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Domed peppermint intake tower standing in the water east of the pier (visual), a pipe running under the water from the grate to the outflow on the green",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_left",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.felt_arrow_left.Placeholder.Arrow",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing sour-apple felt arrow decal (flush) pointing -Z into the left tunnel",
+   "decalFile": "h02_felt_arrow_short_cut.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_felt_arrow_short_cut.png",
+     "tex": "rbxassetid://82045355627361",
+     "face": "Top",
+     "on": "Hole2.Decor.felt_arrow_left.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_left",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.felt_arrow_left.Placeholder.Arrow",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing sour-apple felt arrow decal (flush) pointing -Z into the left tunnel",
+   "decalFile": "h02_felt_arrow_short_cut.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_felt_arrow_short_cut.png",
+     "tex": "rbxassetid://82045355627361",
+     "face": "Top",
+     "on": "Hole2.Decor.felt_arrow_left.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "ore_carts",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.ore_carts.Placeholder.Roof",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3.6,
+    0.5,
+    6.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Two parked ore carts heaped with rock candy on a short rail spur outside the green and concept pad west edge; visual only, no ball/player collision; fade if occluding camera",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/ore_carts.fbx"
+  },
+  {
+   "name": "ore_carts",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.ore_carts.Placeholder.Body",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    2.5,
+    6
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Two parked ore carts heaped with rock candy on a short rail spur outside the green and concept pad west edge; visual only, no ball/player collision; fade if occluding camera",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/ore_carts.fbx"
+  },
+  {
+   "name": "tunnel_lanterns",
+   "part": "Glow",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.Placeholder.Glow",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.6,
+    0.8,
+    0.6
+   ],
+   "material": "Neon",
+   "collide": false,
+   "represents": "Lanterns on overhead portal-style crossbars every 6 studs; anchor is lantern bottom y=8 (top y=8.8); channel stays open-top",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/tunnel_lanterns.fbx"
+  },
+  {
+   "name": "sign_left",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.sign_left.Placeholder.SignPost",
+   "hole": 2,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Arrow sign 'Short Cut - tight!' pointing into the LEFT tunnel",
+   "decalFile": "h02_sign_short_cut.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_sign_short_cut.png",
+     "tex": "rbxassetid://132295848610548",
+     "face": "Front",
+     "on": "Hole2.Decor.sign_left.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_left",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.sign_left.Placeholder.SignBoard",
+   "hole": 2,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Arrow sign 'Short Cut - tight!' pointing into the LEFT tunnel",
+   "decalFile": "h02_sign_short_cut.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_sign_short_cut.png",
+     "tex": "rbxassetid://132295848610548",
+     "face": "Front",
+     "on": "Hole2.Decor.sign_left.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_mid",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.sign_mid.Placeholder.SignBoard",
+   "hole": 2,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    3,
+    0.8,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Plank sign 'DEAD END - NO GOLD' above the middle portal; sign bottom y=8",
+   "decalFile": "h02_sign_dead_end.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_sign_dead_end.png",
+     "tex": "rbxassetid://140468413273474",
+     "face": "Front",
+     "on": "Hole2.Decor.sign_mid.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_mid",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.sign_mid.Placeholder.SignPost",
+   "hole": 2,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    1,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Plank sign 'DEAD END - NO GOLD' above the middle portal; sign bottom y=8",
+   "decalFile": "h02_sign_dead_end.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_sign_dead_end.png",
+     "tex": "rbxassetid://140468413273474",
+     "face": "Front",
+     "on": "Hole2.Decor.sign_mid.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_right",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.sign_right.Placeholder.SignPost",
+   "hole": 2,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Arrow sign 'Long Haul - safe; firm putt' pointing into the RIGHT tunnel",
+   "decalFile": "h02_sign_long_haul.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_sign_long_haul.png",
+     "tex": "rbxassetid://79477609841941",
+     "face": "Front",
+     "on": "Hole2.Decor.sign_right.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_right",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.sign_right.Placeholder.SignBoard",
+   "hole": 2,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Arrow sign 'Long Haul - safe; firm putt' pointing into the RIGHT tunnel",
+   "decalFile": "h02_sign_long_haul.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_sign_long_haul.png",
+     "tex": "rbxassetid://79477609841941",
+     "face": "Front",
+     "on": "Hole2.Decor.sign_right.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_right",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.felt_arrow_right.Placeholder.Arrow",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing sour-apple felt arrow decal (flush) pointing -Z into the right tunnel",
+   "decalFile": "h02_felt_arrow_long_haul.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_felt_arrow_long_haul.png",
+     "tex": "rbxassetid://136490984306039",
+     "face": "Top",
+     "on": "Hole2.Decor.felt_arrow_right.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_right",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.felt_arrow_right.Placeholder.Arrow",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing sour-apple felt arrow decal (flush) pointing -Z into the right tunnel",
+   "decalFile": "h02_felt_arrow_long_haul.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h02_felt_arrow_long_haul.png",
+     "tex": "rbxassetid://136490984306039",
+     "face": "Top",
+     "on": "Hole2.Decor.felt_arrow_right.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "headframe",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.headframe.Placeholder.Roof",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    8.6,
+    0.5,
+    6.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Candy-striped timber mine headframe (pulley wheel on top) above the middle tunnel; the three tunnel portals are timber-framed openings in a striped rock face along z -16 (left 3 wide, middle 4 wide with a 'DEAD END - NO GOLD' plank sign, right 4 wide). All overhead beams/roof undersides y>=8; headframe legs stay outside the clear middle channel",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "headframe",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole2.Decor.headframe.Placeholder.Body",
+   "hole": 2,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    8,
+    16,
+    6
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Candy-striped timber mine headframe (pulley wheel on top) above the middle tunnel; the three tunnel portals are timber-framed openings in a striped rock face along z -16 (left 3 wide, middle 4 wide with a 'DEAD END - NO GOLD' plank sign, right 4 wide). All overhead beams/roof undersides y>=8; headframe legs stay outside the clear middle channel",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "big_gumdrop_bg",
+   "part": "Gumdrop",
+   "path": "Workspace.CourseSugarloaf.Hole8.Decor.big_gumdrop_bg.Placeholder.Gumdrop",
+   "hole": 8,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    6,
+    5,
+    6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Car-sized gumdrop boulders outside the east rail",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/big_gumdrop_bg.fbx"
+  },
+  {
+   "name": "gnomon",
+   "part": "Gnomon",
+   "path": "Workspace.CourseSugarloaf.Hole17.Decor.gnomon.Placeholder.Gnomon",
+   "hole": 17,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.6,
+    9,
+    3.6
+   ],
+   "material": "Metal",
+   "collide": false,
+   "represents": "Tall candy-striped sundial gnomon (triangular fin, 9 tall) on a solid radius-7.5 sandstone plinth, height 1.2, at the dial centre; hour stones in candy colours on a radius-12.5 ring inside the square perimeter (see hour_stone_* anchors)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "bell_tower",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.bell_tower.Placeholder.Body",
+   "hole": 6,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    9.15,
+    3
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Little timber flood-warning bell tower on the rock between basin and green (rings when the gate closes)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "bell_tower",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.bell_tower.Placeholder.Roof",
+   "hole": 6,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3.6,
+    0.5,
+    3.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Little timber flood-warning bell tower on the rock between basin and green (rings when the gate closes)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_overflow",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.felt_arrow_overflow.Placeholder.Arrow",
+   "hole": 6,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing -Z into the overflow channel",
+   "decalFile": "h06_felt_arrow_overflow.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h06_felt_arrow_overflow.png",
+     "tex": "rbxassetid://84814341457933",
+     "face": "Top",
+     "on": "Hole6.Decor.felt_arrow_overflow.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_overflow",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.felt_arrow_overflow.Placeholder.Arrow",
+   "hole": 6,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing -Z into the overflow channel",
+   "decalFile": "h06_felt_arrow_overflow.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h06_felt_arrow_overflow.png",
+     "tex": "rbxassetid://84814341457933",
+     "face": "Top",
+     "on": "Hole6.Decor.felt_arrow_overflow.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "flood_marks",
+   "part": "Rock",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.flood_marks.Placeholder.Rock",
+   "hole": 6,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.5,
+    3,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "High-water marks and a 'Flash Flood Zone' enamel sign on the basin wall",
+   "decalFile": "h06_flood_marks.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h06_flood_marks.png",
+     "tex": "rbxassetid://98287707564328",
+     "face": "Front",
+     "on": "Hole6.Decor.flood_marks.Placeholder.Rock.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_overflow",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.sign_overflow.Placeholder.SignBoard",
+   "hole": 6,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Painted arrow 'Overflow - the long way round' pointing into the overflow channel",
+   "decalFile": "h06_sign_overflow.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h06_sign_overflow.png",
+     "tex": "rbxassetid://77257179355965",
+     "face": "Front",
+     "on": "Hole6.Decor.sign_overflow.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_overflow",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole6.Decor.sign_overflow.Placeholder.SignPost",
+   "hole": 6,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Painted arrow 'Overflow - the long way round' pointing into the overflow channel",
+   "decalFile": "h06_sign_overflow.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h06_sign_overflow.png",
+     "tex": "rbxassetid://77257179355965",
+     "face": "Front",
+     "on": "Hole6.Decor.sign_overflow.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_2",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_2.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_2",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_2.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_1",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_1.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_1",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_1.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_3",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_3.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_3",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_3.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_deck",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.felt_arrow_deck.Placeholder.Arrow",
+   "hole": 10,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    2.4,
+    0.2,
+    3
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Big glowing 'ONE WAY' felt arrow on the deck pointing into the chute",
+   "decalFile": "h10_felt_arrow_one_way.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h10_felt_arrow_one_way.png",
+     "tex": "rbxassetid://109316462498294",
+     "face": "Top",
+     "on": "Hole10.Decor.felt_arrow_deck.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_deck",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.felt_arrow_deck.Placeholder.Arrow",
+   "hole": 10,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    1.125
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Big glowing 'ONE WAY' felt arrow on the deck pointing into the chute",
+   "decalFile": "h10_felt_arrow_one_way.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h10_felt_arrow_one_way.png",
+     "tex": "rbxassetid://109316462498294",
+     "face": "Top",
+     "on": "Hole10.Decor.felt_arrow_deck.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_4",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_4.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "chevron_4",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole10.Decor.chevron_4.Placeholder.Arrow",
+   "hole": 10,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    0.2,
+    0.9
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt chevron decal on the chute pointing -Z (one-way: the ball won't come back up)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "lantern_cue",
+   "part": "Glow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.lantern_cue.Placeholder.Glow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1,
+    1.5,
+    1
+   ],
+   "material": "Neon",
+   "collide": false,
+   "represents": "Gumdrop-glass lantern hanging 9 studs over the cup from a rope between two hoodoos: the visual cue when the hoodoos hide the flag",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/lantern_cue.fbx"
+  },
+  {
+   "name": "sign_west",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.sign_west.Placeholder.SignBoard",
+   "hole": 13,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Long & easy' pointing into the west corridor",
+   "decalFile": "h13_sign_west.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_sign_west.png",
+     "tex": "rbxassetid://140303880645441",
+     "face": "Front",
+     "on": "Hole13.Decor.sign_west.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_west",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.sign_west.Placeholder.SignPost",
+   "hole": 13,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Long & easy' pointing into the west corridor",
+   "decalFile": "h13_sign_west.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_sign_west.png",
+     "tex": "rbxassetid://140303880645441",
+     "face": "Front",
+     "on": "Hole13.Decor.sign_west.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_west",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.route_arrow_west.Placeholder.Arrow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SAFE WEST: north from foyer into the marked corridor",
+   "decalFile": "h13_route_arrow_west.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_route_arrow_west.png",
+     "tex": "rbxassetid://129854043886070",
+     "face": "Top",
+     "on": "Hole13.Decor.route_arrow_west.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_west",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.route_arrow_west.Placeholder.Arrow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SAFE WEST: north from foyer into the marked corridor",
+   "decalFile": "h13_route_arrow_west.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_route_arrow_west.png",
+     "tex": "rbxassetid://129854043886070",
+     "face": "Top",
+     "on": "Hole13.Decor.route_arrow_west.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_centre",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.sign_centre.Placeholder.SignPost",
+   "hole": 13,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Straight through (mind the hoodoos!)' at the centre corridor",
+   "decalFile": "h13_sign_centre.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_sign_centre.png",
+     "tex": "rbxassetid://101624286616515",
+     "face": "Front",
+     "on": "Hole13.Decor.sign_centre.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_centre",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.sign_centre.Placeholder.SignBoard",
+   "hole": 13,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Straight through (mind the hoodoos!)' at the centre corridor",
+   "decalFile": "h13_sign_centre.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_sign_centre.png",
+     "tex": "rbxassetid://101624286616515",
+     "face": "Front",
+     "on": "Hole13.Decor.sign_centre.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_east",
+   "part": "SignBoard",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.sign_east.Placeholder.SignBoard",
+   "hole": 13,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    1.6,
+    3.2,
+    0.2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Sign 'Scenic route' pointing into the east corridor",
+   "decalFile": "h13_sign_east.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_sign_east.png",
+     "tex": "rbxassetid://135547768972998",
+     "face": "Front",
+     "on": "Hole13.Decor.sign_east.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Front"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "sign_east",
+   "part": "SignPost",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.sign_east.Placeholder.SignPost",
+   "hole": 13,
+   "visible": true,
+   "transparency": 0,
+   "size": [
+    0.2,
+    3.2,
+    0.2
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Sign 'Scenic route' pointing into the east corridor",
+   "decalFile": "h13_sign_east.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_sign_east.png",
+     "tex": "rbxassetid://135547768972998",
+     "face": "Front",
+     "on": "Hole13.Decor.sign_east.Placeholder.SignBoard.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_centre",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.route_arrow_centre.Placeholder.Arrow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SHORT CENTRE: north from foyer into the marked corridor",
+   "decalFile": "h13_route_arrow_centre.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_route_arrow_centre.png",
+     "tex": "rbxassetid://111870680131624",
+     "face": "Top",
+     "on": "Hole13.Decor.route_arrow_centre.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_centre",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.route_arrow_centre.Placeholder.Arrow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SHORT CENTRE: north from foyer into the marked corridor",
+   "decalFile": "h13_route_arrow_centre.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_route_arrow_centre.png",
+     "tex": "rbxassetid://111870680131624",
+     "face": "Top",
+     "on": "Hole13.Decor.route_arrow_centre.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_east",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.route_arrow_east.Placeholder.Arrow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SCENIC EAST: north from foyer into the marked corridor",
+   "decalFile": "h13_route_arrow_east.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_route_arrow_east.png",
+     "tex": "rbxassetid://131569293724014",
+     "face": "Top",
+     "on": "Hole13.Decor.route_arrow_east.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "route_arrow_east",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole13.Decor.route_arrow_east.Placeholder.Arrow",
+   "hole": 13,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "SCENIC EAST: north from foyer into the marked corridor",
+   "decalFile": "h13_route_arrow_east.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h13_route_arrow_east.png",
+     "tex": "rbxassetid://131569293724014",
+     "face": "Top",
+     "on": "Hole13.Decor.route_arrow_east.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Crystal",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Crystal",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.8,
+    0.8
+   ],
+   "material": "Glass",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Crystal",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Crystal",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.8,
+    0.8
+   ],
+   "material": "Glass",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Crystal",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Crystal",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.8,
+    0.8
+   ],
+   "material": "Glass",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Crystal",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Crystal",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.8,
+    0.8
+   ],
+   "material": "Glass",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Crystal",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Crystal",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.8,
+    0.8
+   ],
+   "material": "Glass",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Rock",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Rock",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    14,
+    18
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "geode_wall",
+   "part": "Crystal",
+   "path": "Workspace.CourseSugarloaf.Hole4.Decor.geode_wall.Placeholder.Crystal",
+   "hole": 4,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.8,
+    0.8
+   ],
+   "material": "Glass",
+   "collide": false,
+   "represents": "Giant pink geode cracked open in the west slot wall, glowing",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_lock",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.felt_arrow_lock.Placeholder.Arrow",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.2,
+    2
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing into the lock (with a little 'wait for the gate' clock icon)",
+   "decalFile": "h11_felt_arrow_lock.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h11_felt_arrow_lock.png",
+     "tex": "rbxassetid://99616139650559",
+     "face": "Top",
+     "on": "Hole11.Decor.felt_arrow_lock.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "felt_arrow_lock",
+   "part": "Arrow",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.felt_arrow_lock.Placeholder.Arrow",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.18,
+    0.01,
+    0.75
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Glowing felt arrow decal pointing into the lock (with a little 'wait for the gate' clock icon)",
+   "decalFile": "h11_felt_arrow_lock.png",
+   "decalStatus": "already applied (asset pixel-identical to the PNG)",
+   "decalsOnItem": [
+    {
+     "file": "h11_felt_arrow_lock.png",
+     "tex": "rbxassetid://99616139650559",
+     "face": "Top",
+     "on": "Hole11.Decor.felt_arrow_lock.Placeholder.Arrow.StageZf1Image"
+    }
+   ],
+   "decalFacesOnThisPart": [
+    "Top"
+   ],
+   "replacedBy": null
+  },
+  {
+   "name": "gate_light",
+   "part": "Glow",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.gate_light.Placeholder.Glow",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    1.2,
+    0.4
+   ],
+   "material": "Neon",
+   "collide": false,
+   "represents": "Red/green lock signal lamp on the quay face above the chamber: green while the gate is down (visual timing cue)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/gate_light.fbx"
+  },
+  {
+   "name": "gate_winches",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.gate_winches.Placeholder.Body",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    0.8,
+    2.5,
+    0.8
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Brass winch posts either side of the lock gate (outside the chamber walls)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/gate_winches.fbx"
+  },
+  {
+   "name": "gate_winches",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.gate_winches.Placeholder.Roof",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    1.4,
+    0.5,
+    1.4
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Brass winch posts either side of the lock gate (outside the chamber walls)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/gate_winches.fbx"
+  },
+  {
+   "name": "lock_keeper_hut",
+   "part": "Roof",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.lock_keeper_hut.Placeholder.Roof",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    5.6,
+    0.5,
+    5.6
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Lock-keeper's hut with a brass winch and a striped barber-pole gauge (outside the east rail)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "lock_keeper_hut",
+   "part": "Body",
+   "path": "Workspace.CourseSugarloaf.Hole11.Decor.lock_keeper_hut.Placeholder.Body",
+   "hole": 11,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    5,
+    7,
+    5
+   ],
+   "material": "WoodPlanks",
+   "collide": false,
+   "represents": "Lock-keeper's hut with a brass winch and a striped barber-pole gauge (outside the east rail)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": null
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "GumdropCap",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.GumdropCap",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    4,
+    1.6,
+    4
+   ],
+   "material": "SmoothPlastic",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  },
+  {
+   "name": "island_hoodoo",
+   "part": "Hoodoo",
+   "path": "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo",
+   "hole": 7,
+   "visible": false,
+   "transparency": 1,
+   "size": [
+    3,
+    1,
+    3
+   ],
+   "material": "Sandstone",
+   "collide": false,
+   "represents": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "decalFile": null,
+   "decalStatus": "no decal in the folder for this item",
+   "decalsOnItem": [],
+   "decalFacesOnThisPart": [],
+   "replacedBy": "placeholders_ph1/island_hoodoo.fbx"
+  }
+ ]
+}
