@@ -3,6 +3,9 @@
 local CollectionService = game:GetService("CollectionService")
 local Separation = {}
 local GAP, MINIMUM, EPS = 0.08, 0.2, 0.00001
+-- Stage fx1: felt-to-felt joints sit back this far per edge (joint gap <=0.002), so float32
+-- rounding at large world coordinates can never turn a flush joint into a coplanar overlap.
+local FLUSH = 0.001
 local function hole(p)
  local n=p
  while n and n~=workspace do
@@ -189,6 +192,54 @@ function Separation.Apply(course, scenery)
    table.insert(report.fixes,{name=name(model),hole=r.hole,category="imported-deck-terrain",change="Lifted complete noncolliding static imported model above terrain; material alignment preserved",lift=lift,trigger=name(trigger),partCount=#members})
   end
  end
+-- Stage fx1: visible playing-surface colliders (felt, cup plates, ramps) at their exact collider pose.
+ -- A felt skin edge stays flush (no inset) where one of these continues past it at the same height.
+ local surfaceTops={}
+ for _,s in descendants() do
+  if s:IsA("BasePart") and CollectionService:HasTag(s,"GolfSurface") and (s:GetAttribute("ZF1OriginalTransparency") or s.Transparency)<1 then
+   table.insert(surfaceTops,{cf=s.CFrame,half=s.Size/2,radius=s.Size.Magnitude/2})
+  end
+ end
+ -- Visible non-surface blocks (rails, caps, boards) by 8-stud plan cell. A joint hidden under one
+ -- keeps the outer inset, so the rail above it does not have to move off a now-flush felt top.
+ local covers={}
+ for _,q in descendants() do
+  if q:IsA("Part") and q.Shape==Enum.PartType.Block and not CollectionService:HasTag(q,"GolfSurface") and q.Name~="Base"
+   and (q:GetAttribute("ZF1OriginalTransparency") or q.Transparency)<1 and q:GetAttribute("ZF1VisualClone")==nil then
+   local c=q:GetAttribute("ZF1BaseCF") or q.CFrame
+   local sz=q:GetAttribute("ZF1BaseSize") or q.Size
+   local r=sz.Magnitude/2
+   for i=math.floor((c.X-r)/8),math.floor((c.X+r)/8) do
+    for k=math.floor((c.Z-r)/8),math.floor((c.Z+r)/8) do
+     local key=i..","..k
+     covers[key]=covers[key] or {}
+     table.insert(covers[key],{cf=c,half=sz/2})
+    end
+   end
+  end
+ end
+ local function underBlock(point)
+  for _,q in covers[math.floor(point.X/8)..","..math.floor(point.Z/8)] or {} do
+   local l=q.cf:PointToObjectSpace(point)
+   if math.abs(l.X)<=q.half.X+0.001 and math.abs(l.Z)<=q.half.Z+0.001 and l.Y>=-q.half.Y-0.1 and l.Y<=q.half.Y then return true end
+  end
+  return false
+ end
+ local function feltContinues(baseCF,baseSize,axis,sign)
+  local half=baseSize/2
+  local len=axis==1 and half.Z or half.X
+  for k=0,8 do
+   local t=(len-0.05)*(k/4-1)
+   local point=baseCF:PointToWorldSpace(axis==1 and Vector3.new(sign*(half.X+0.02),half.Y,t) or Vector3.new(t,half.Y,sign*(half.Z+0.02)))
+   for _,s in surfaceTops do
+    if (s.cf.Position-point).Magnitude<=s.radius+0.1 and not (s.cf==baseCF and s.half==half) then
+     local l=s.cf:PointToObjectSpace(point)
+     if math.abs(l.X)<=s.half.X+0.001 and math.abs(l.Z)<=s.half.Z+0.001 and math.abs(l.Y-s.half.Y)<0.06 and not underBlock(point) then return true end
+    end
+   end
+  end
+  return false
+ end
  table.sort(records,function(a,b)
   -- Geometry first; decorative layers conform to it. Stable transform breaks repeated names.
   local ap=a.protectedFelt and -2 or (a.protectedCarrier and -1 or (a.name:find(".Geometry.",1,true) and 0 or 1))
@@ -225,12 +276,38 @@ function Separation.Apply(course, scenery)
    -- this pass cannot alter terrain physics or silently lift the rendered green.
    local lift=0
    local thickness=math.max(baseSize.Y,MINIMUM)
-   p.Size=Vector3.new(math.max(MINIMUM,baseSize.X-2*GAP),thickness,math.max(MINIMUM,baseSize.Z-2*GAP))
-   p.CFrame=baseCF*CFrame.new(0,(baseSize.Y-thickness)/2+lift,0)
+   -- Stage fx1: inset only the outer edges. An edge where another visible playing
+   -- surface continues at the same height stays flush with the collider joint, so
+   -- adjacent felt (and the cup plate) meets edge to edge with no dark seam.
+   local inset={}
+   for _,e in {{1,1},{1,-1},{3,1},{3,-1}} do
+    inset[e[1]*e[2]]=feltContinues(baseCF,baseSize,e[1],e[2]) and FLUSH or GAP
+   end
+   -- A narrow strip regains the minimum width from its insets (outer ones are the large ones), so its
+   -- flush edges stay on the joint instead of the skin re-centring over a neighbour.
+   for _,k in {1,3} do
+    local base=k==1 and baseSize.X or baseSize.Z
+    local total=inset[k]+inset[-k]
+    local deficit=MINIMUM-(base-total)
+    if deficit>0 and total>0 then
+     local keep=1-math.min(1,deficit/total)
+     inset[k]*=keep;inset[-k]*=keep
+    end
+   end
+   if p:IsA("Part") then
+    local sx=math.max(MINIMUM,baseSize.X-inset[1]-inset[-1])
+    local sz=math.max(MINIMUM,baseSize.Z-inset[3]-inset[-3])
+    p.Size=Vector3.new(sx,thickness,sz)
+    p.CFrame=baseCF*CFrame.new((inset[-1]-inset[1])/2,(baseSize.Y-thickness)/2+lift,(inset[-3]-inset[3])/2)
+   else
+    -- CSG felt (cup cut-outs): resizing would scale the cup hole; keep its exact pose.
+    p.Size=baseSize;p.CFrame=baseCF
+   end
    r.protectedTop=originalTop+up*lift
    r.protectedUp=up
-   table.insert(report.protectedFelt,{name=r.name,hole=r.hole,lift=lift,insetEachEdge=GAP})
-   table.insert(report.fixes,{name=r.name,hole=r.hole,category="protected-felt-skin",change="Visual top retained at original collider plane; X/Z edges inset0.08; physical collider unchanged",lift=lift,insetEachEdge=GAP})
+   local insets={inset[-1],inset[1],inset[-3],inset[3]}
+   table.insert(report.protectedFelt,{name=r.name,hole=r.hole,lift=lift,insets=insets})
+   table.insert(report.fixes,{name=r.name,hole=r.hole,category="protected-felt-skin",change="Visual top retained at original collider plane; outer X/Z edges inset 0.08, felt-to-felt edges flush; physical collider unchanged",lift=lift,insets=insets})
   end
  end
  -- Place active Top decals above the FINAL protected felt plane, not the old
@@ -268,6 +345,7 @@ function Separation.Apply(course, scenery)
   local p=r.part
   local startCF,startSize=p.CFrame,p.Size
   local adjustments=0
+  local against={}
   if r.box then
    for iteration=1,24 do
     local conflict=nil
@@ -285,13 +363,14 @@ function Separation.Apply(course, scenery)
           exclusionKeys[k]=true
           table.insert(report.exclusions,{name=r.name,other=other.name,hole=r.hole,category="internal-opposing-face",change="Retained connected solid interface; opposing normals, no shared exterior surface"})
          end
-        else conflict={face=a,other=b};break end
+        else conflict={face=a,other=b,record=other};break end
        end
       end if conflict then break end end
      end
      if conflict then break end
     end
     if not conflict then break end
+    against[conflict.record.name.."|axis"..conflict.face.axis..(conflict.face.sign>0 and "+" or "-")]=true
     p=visual(r)
     if not p:GetAttribute("ZF1BaseCF") then p:SetAttribute("ZF1BaseCF",p.CFrame);p:SetAttribute("ZF1BaseSize",p.Size) end
     local axis=conflict.face.axis
@@ -321,6 +400,9 @@ function Separation.Apply(course, scenery)
       break
      end
      local candidates={}
+     -- Stage fx1: felt overlapping felt is trimmed to meet its edge exactly (no dark seam);
+     -- a GAP is kept only from non-felt layers.
+     local edgeGap=conflict.record.protectedFelt and FLUSH or GAP
      for _,k in {1,3} do
       local direction=k==1 and p.CFrame.RightVector or p.CFrame.ZVector
       local size=dimensions(p.Size)
@@ -329,7 +411,7 @@ function Separation.Apply(course, scenery)
       local bc=b.c:Dot(direction)
       local br=math.abs(b.u:Dot(direction))*b.hu+math.abs(b.v:Dot(direction))*b.hv
       for _,sign in {-1,1} do
-       local amount=sign==1 and (bc+br+GAP-(center-radius)) or ((center+radius)-(bc-br-GAP))
+       local amount=sign==1 and (bc+br+edgeGap-(center-radius)) or ((center+radius)-(bc-br-edgeGap))
        if amount>0 then
         if size[k]-amount>=MINIMUM then
          table.insert(candidates,{k=k,direction=direction,sign=sign,amount=amount,trim=true,cost=amount})
@@ -401,6 +483,19 @@ function Separation.Apply(course, scenery)
     end
     local axes={p.CFrame.RightVector,p.CFrame.UpVector,p.CFrame.ZVector}
     local direction=axes[axis]
+    -- Stage fx1: a felt skin's side face pulls in on that side only. Translating the
+    -- whole skin would reopen its flush felt joint on the opposite edge.
+    if r.protectedFelt and axis~=2 and p:IsA("Part") then
+     local a,b=conflict.face,conflict.other
+     local pull=GAP-(b.c-a.c):Dot(a.n)+0.001
+     local size=dimensions(p.Size)
+     if pull>0 and size[axis]-pull>=MINIMUM then
+      size[axis]-=pull;p.Size=vector(size)
+      p.CFrame-=a.n*pull/2
+      adjustments+=1
+      continue
+     end
+    end
     -- Solve the entire forbidden-plane interval union for BOTH faces on this
     -- axis. Repeated per-face nudges can oscillate between the top and bottom
     -- of a minimum-thickness plate; a global interval solve cannot do that.
@@ -443,7 +538,8 @@ function Separation.Apply(course, scenery)
   end
   if adjustments>0 then
    local delta=p.Position-startCF.Position
-   table.insert(report.fixes,{name=r.name,hole=r.hole,category="parallel-exterior-faces",change="Offset visual faces >=0.08 using a union of forbidden plane intervals; no minimum-thickness oscillation",adjustments=adjustments,translation={delta.X,delta.Y,delta.Z},sizeBefore={startSize.X,startSize.Y,startSize.Z},sizeAfter={p.Size.X,p.Size.Y,p.Size.Z}})
+   local with={} for k in against do table.insert(with,k) end table.sort(with)
+   table.insert(report.fixes,{name=r.name,hole=r.hole,against=with,category="parallel-exterior-faces",change="Offset visual faces >=0.08 using a union of forbidden plane intervals; no minimum-thickness oscillation",adjustments=adjustments,translation={delta.X,delta.Y,delta.Z},sizeBefore={startSize.X,startSize.Y,startSize.Z},sizeAfter={p.Size.X,p.Size.Y,p.Size.Z}})
   end
   if math.min(p.Size.X,p.Size.Y,p.Size.Z)<MINIMUM-0.00001 then table.insert(report.thinAfter,r.name) end
   if r.protectedFelt then

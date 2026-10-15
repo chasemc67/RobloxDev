@@ -513,6 +513,8 @@ function Hole:buildCupPiece(pc, cupLocal)
 	cup:SetAttribute("Zone", pc.def.zone)
 	cup:SetAttribute("decel_scale", pc.def.decel_scale)
 	CollectionService:AddTag(cup, SURFACE_TAG)
+	-- stage fx1: the same felt look as the strips around it (Sugarloaf's tinted FeltNap; CSG drops children)
+	self:slopeFelt(cup, color, pc)
 	cup.Parent = self.geo
 
 	-- white liner (hollow, visual only) + dark bottom
@@ -637,6 +639,12 @@ function Hole:cutNeighbourCup(cupLocal)
 			cut:SetAttribute(k, v)
 		end
 		cut:SetAttribute("CupCut", true)
+		-- stage fx1: SubtractAsync drops children; keep the strip's felt textures
+		for _, d in strip:GetChildren() do
+			if d:IsA("Texture") or d:IsA("Decal") then
+				d:Clone().Parent = cut
+			end
+		end
 		CollectionService:AddTag(cut, SURFACE_TAG)
 		strip:Destroy()
 		cut.Parent = self.geo
@@ -2248,10 +2256,53 @@ end
 --   require(game.ServerStorage.CourseBuilder:Clone()).Build(require(game.ServerStorage.CourseData.SugarloafCanyon:Clone()),
 --     require(game.ServerStorage.CourseData.SugarloafLayout:Clone()), { folder = "CourseSugarloaf", courseId = "sugarloaf_canyon", palette = "sugarloaf" })
 -- Reuse the build finalizer on an existing course without rebuilding its colliders.
+-- Stage fx1: in-place match for places built before the cup felt fix. A CSG cup piece (CupPlate, CupCut felt) gets
+-- the Texture/Decal children of the felt it was cut from (same hole Geometry, same PieceId, same tilt), so the cup area
+-- reads as the same felt. A hidden collider keeps its copies hidden; its ZF1 visual copy shows them. Idempotent.
+function CourseBuilder.MatchCupFelt(course)
+	local report = {}
+	for _, cup in course:GetDescendants() do
+		if not (cup:IsA("PartOperation") and (cup.Name == "CupPlate" or cup:GetAttribute("CupCut"))) then
+			continue
+		end
+		local ref, area
+		for _, p in cup.Parent:GetChildren() do
+			if p:IsA("Part") and p.Name == "Felt" and p:GetAttribute("PieceId") == cup:GetAttribute("PieceId")
+				and p.CFrame.UpVector:Dot(cup.CFrame.UpVector) > 0.9999 and (not area or p.Size.X * p.Size.Z > area) then
+				ref, area = p, p.Size.X * p.Size.Z
+			end
+		end
+		if not ref then
+			continue
+		end
+		local ref2 = cup:FindFirstChild("ZF1VisualReference")
+		local visual = ref2 and ref2.Value
+		for _, d in ref:GetChildren() do
+			if (d:IsA("Texture") or d:IsA("Decal")) and not cup:FindFirstChild(d.Name) then
+				local shown = d:GetAttribute("ZF1OriginalTransparency") or d.Transparency
+				local c = d:Clone()
+				c.Transparency = shown
+				c:SetAttribute("ZF1OriginalTransparency", nil)
+				if visual then
+					c:Clone().Parent = visual
+					c:SetAttribute("ZF1OriginalTransparency", shown)
+					c.Transparency = 1
+				end
+				c.Parent = cup
+				table.insert(report, { cup = cup:GetFullName(), from = ref:GetFullName(), child = d.Name })
+			end
+		end
+	end
+	return report
+end
+
 function CourseBuilder.ApplyVisualSeparation(course)
 	if course.Name == "CourseAurora" then require(game.ServerStorage.AuroraVisualCleanup:Clone()).Apply(course) end
+	local cupFelt = CourseBuilder.MatchCupFelt(course)
 	local scenery = course == workspace:FindFirstChild("Course") and workspace:FindFirstChild("World") or nil
-	return require(game.ServerStorage.VisualSeparation:Clone()).Apply(course, scenery)
+	local report = require(game.ServerStorage.VisualSeparation:Clone()).Apply(course, scenery)
+	report.cupFelt = cupFelt
+	return report
 end
 
 function CourseBuilder.Build(data, layout, opts)
