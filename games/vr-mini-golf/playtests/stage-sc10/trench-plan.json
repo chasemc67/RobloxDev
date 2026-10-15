@@ -1,0 +1,95 @@
+{
+ "definition": "H11/H12 trench = the ~100-stud-deep canyon around the H10-H12 plateau (rim y ~114-116, floor y 15-18), incl. the gorge north of the peppermint dam (x -32..32, z -5300..-5210). Candidates = every Look7Dressing piece with any point at y 110-122 (347). Ground = true render-mesh surface (EditableMesh RaycastLocal) + Terrain, under every hull vertex and contact-ring point.",
+ "candidates": 347,
+ "floatingRing>0.1": 0,
+ "overGorge": [],
+ "partialOverhang>1": [
+  {
+   "i": 1045,
+   "name": "clay_brick_edging_1045",
+   "maxDrop": 1.28,
+   "ringMinGap": 0.0
+  },
+  {
+   "i": 1065,
+   "name": "clay_brick_edging_1065",
+   "maxDrop": 1.08,
+   "ringMinGap": -0.66
+  },
+  {
+   "i": 452,
+   "name": "rock_candy_cluster_v2_452",
+   "maxDrop": 1.07,
+   "ringMinGap": 0.045
+  },
+  {
+   "i": 450,
+   "name": "crystal_cluster_a_v2_450",
+   "maxDrop": 1.58,
+   "ringMinGap": -0.158
+  },
+  {
+   "i": 426,
+   "name": "scrub_a_v2_426",
+   "maxDrop": 2.67,
+   "ringMinGap": -0.709
+  },
+  {
+   "i": 423,
+   "name": "scrub_a_v2_423",
+   "maxDrop": 1.01,
+   "ringMinGap": -0.282
+  },
+  {
+   "i": 429,
+   "name": "gumdrop_shrub_c_v2_429",
+   "maxDrop": 1.18,
+   "ringMinGap": -0.888
+  },
+  {
+   "i": 425,
+   "name": "fallen_rock_scatter_425",
+   "maxDrop": 4.97,
+   "ringMinGap": -0.113
+  },
+  {
+   "i": 1057,
+   "name": "clay_brick_edging_1057",
+   "maxDrop": 1.92,
+   "ringMinGap": -0.135
+  },
+  {
+   "i": 1058,
+   "name": "clay_brick_edging_1058",
+   "maxDrop": 1.02,
+   "ringMinGap": -0.394
+  },
+  {
+   "i": 486,
+   "name": "rock_a_486",
+   "maxDrop": 1.8,
+   "ringMinGap": -1.834
+  },
+  {
+   "i": 461,
+   "name": "boulder_scatter_v2_461",
+   "maxDrop": 1.01,
+   "ringMinGap": -0.094
+  },
+  {
+   "i": 1108,
+   "name": "clay_brick_edging_1108",
+   "maxDrop": 1.11,
+   "ringMinGap": -0.12
+  }
+ ],
+ "grounded": [],
+ "deleted": [],
+ "nonLook7InGorge": [
+  "Kit.cliff_kit.cliffT_w24_h48_p4_1",
+  "Kit.cliff_kit.cliffT_w24_h48_p4_2",
+  "Kit.hero.peppermint_dam.peppermint_dam_part1/2",
+  "WorldMeshes.dam_crest_parapets"
+ ],
+ "action": "none: no Look7Dressing piece in the y 110-122 band floats over the trench (max contact-ring gap 0.068); nothing to ground or delete"
+}

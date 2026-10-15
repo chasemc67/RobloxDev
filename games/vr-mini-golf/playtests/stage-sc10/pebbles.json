@@ -1,0 +1,121 @@
+{
+ "rule": "gap = base vertex y - ground below (ground = Terrain + visible non-dressing parts, excluding h03_dress_props); floating when every base point gap > 0.3",
+ "pebbleMeshPart": "h03_dress_props__Pebble holds 8 pebble components (one merged MeshPart)",
+ "pebbles": [
+  {
+   "label": "world(-37.9,-4658.7)",
+   "component": 24,
+   "obj": "h03_dress_props__Pebble",
+   "n": 12,
+   "centreWorld": [
+    -37.9061009089152,
+    18.01150083417694,
+    -4658.687708218892
+   ],
+   "lowWorld": 17.82972000539303,
+   "base": [
+    [
+     56.884,
+     -0.105,
+     11.189
+    ],
+    [
+     56.706,
+     -0.16,
+     11.576
+    ],
+    [
+     57.137,
+     -0.12,
+     11.576
+    ],
+    [
+     57.461,
+     -0.143,
+     11.274
+    ],
+    [
+     57.25,
+     -0.139,
+     10.985
+    ],
+    [
+     57.084,
+     -0.17,
+     11.314
+    ]
+   ],
+   "gaps": [
+    -0.3293137359619145,
+    -0.37838569641113295,
+    -0.34292518615722756,
+    -0.37748944091796943,
+    -0.3740826263427728,
+    -0.396243972778322
+   ],
+   "minGap": -0.396243972778322,
+   "ground": [
+    "Workspace.CourseSugarloaf.Kit.hole_dressing.h03_ground.h03_ground.h03_ground_s22__RedDirtLight"
+   ],
+   "floating": false
+  },
+  {
+   "label": "world(-41.4,-4660.8)=hole-local(53.66,9.21)",
+   "component": 26,
+   "obj": "h03_dress_props__Pebble",
+   "n": 12,
+   "centreWorld": [
+    -41.344839096069336,
+    18.21072833519429,
+    -4660.790301640828
+   ],
+   "lowWorld": 18.049639999866486,
+   "base": [
+    [
+     53.578,
+     0.095,
+     8.986
+    ],
+    [
+     53.954,
+     0.059,
+     8.92
+    ],
+    [
+     53.569,
+     0.077,
+     9.519
+    ],
+    [
+     53.857,
+     0.107,
+     9.285
+    ],
+    [
+     53.663,
+     0.05,
+     9.207
+    ],
+    [
+     53.341,
+     0.074,
+     9.299
+    ]
+   ],
+   "gaps": [
+    -0.2749245452880871,
+    -0.31091882324218645,
+    0.7856219787597674,
+    -0.262951248168946,
+    -0.31994361877441335,
+    -0.2959531555175765
+   ],
+   "minGap": -0.31994361877441335,
+   "ground": [
+    "Terrain",
+    "Workspace.CourseSugarloaf.Kit.hole_dressing.h03_ground.h03_ground.h03_ground_s22__RedDirtLight"
+   ],
+   "floating": false
+  }
+ ]
+}
