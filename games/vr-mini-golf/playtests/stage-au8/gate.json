@@ -1,0 +1,28 @@
+{
+ "fbx_sha256": {"h18_ramp_lanterns": "1c7b27ca3ed5e05f0cb4a5138afd712599024b81ef386da6b08b1e441baab5e8", "h07_mogul_trim": "74a70da8b025e304c4697fabfe581e18338fc6a1fcc38586c25ebb78adacb00e", "match_manifest": true},
+ "preflight": {"studios": 1, "userId": 1818120139, "placeId": 79649062523043, "placeVersion": 13, "placeRole": "aurora_archipelago", "holes": 18, "workspaceBaseParts": 1851, "otherStageJobs": 0},
+ "inventory_vs_au7_final": {"digest_gameplay": ["aa4ce434", "aa4ce434"], "gameplay_parts": 615, "identical_colliders": true,
+   "non_gameplay_diffs": "4 mover helper parts (H12 paddle_wheel and H14 icicle_bell MoverRoot/MoverBase): only the sign of a zero rotation component (0.0000 vs -0.0000); all other fields identical",
+   "per_hole_digest_equal": "all except Hole12/Hole14 (above); Hole7 0fb10a8a and Hole18 5ff06357 equal au7 final"},
+ "props": {
+  "h18_ramp_lanterns": {"path": "Workspace.CourseAurora.Hole18.Decor.h18_ramp_lanterns", "pivot": [-243.9, 224.9, -265], "yaw": 0,
+   "parts": {"Brass": {"size": [1.898, 6.512, 7.95], "rel": [0.5, 3.413, 0], "tris": 492, "verts": 1250, "mat": "Metal", "mesh": "rbxassetid://136625803952198"},
+             "Glow":  {"size": [0.206, 0.206, 7.206], "rel": [0, 6.185, 0], "tris": 36, "verts": 76, "mat": "Neon", "castShadow": false, "mesh": "rbxassetid://110882093267554"},
+             "Snow":  {"size": [0.51, 0.206, 7.51], "rel": [0, 6.858, 0], "tris": 228, "verts": 636, "mat": "Snow", "mesh": "rbxassetid://90288745132587"},
+             "Timber": {"size": [0.6, 5.168, 7.6], "rel": [0, 3.03, 0], "tris": 36, "verts": 92, "mat": "WoodPlanks", "mesh": "rbxassetid://70803681289768"}},
+   "kit_copy": "ServerStorage.AuroraBatch3Kit.h18_ramp_lanterns, identical meshes/sizes/appearance/flags"},
+  "h07_mogul_trim": {"path": "Workspace.CourseAurora.Hole7.Decor.h07_mogul_trim", "pivot": [365, 112, 308], "yaw": 0,
+   "parts": {"Snow": {"size": [7.4, 0.206, 27.8], "rel": [0, 1.497, 0], "tris": 2240, "verts": 6672, "mat": "Snow", "mesh": "rbxassetid://121545010178539"},
+             "Timber": {"size": [7.4, 1.158, 27.8], "rel": [0, 0.729, 0], "tris": 304, "verts": 805, "mat": "WoodPlanks", "mesh": "rbxassetid://130682920515576"}},
+   "kit_copy": "none (none existed before au7)"},
+  "all_parts_flags": {"CanCollide": false, "CanQuery": false, "CanTouch": false, "Anchored": true, "VisualQueryDisabled": true},
+  "mesh_scale": "EditableMesh bounds / part Size uniform on all axes (~73.67, the importer auto-scale); part Size = FBX true bounds per au7 imported.json specs",
+  "copies_found": ["Workspace.CourseAurora.Hole7.Decor.h07_mogul_trim", "Workspace.CourseAurora.Hole18.Decor.h18_ramp_lanterns", "ServerStorage.AuroraBatch3Kit.h18_ramp_lanterns"],
+  "duplicates_or_old_copies": 0
+ },
+ "visual_separation_probe": {"changedCount": 544, "unresolved": 0, "thinAfter": 0, "invariantFailures": 0, "reconnectedJoints": 99, "colliderInvariantCount": 614,
+   "workspace_parts_changed": 0, "parts_removed": 0, "note": "544 idempotent reapplications (au7 also 544); 0 new fixes. Run in Edit, place not saved."},
+ "result": "NOCHANGE",
+ "studio_quit": "osascript quit, no save prompt, no save/publish in Studio log; no RobloxStudio process",
+ "au_published_only_latest": 13
+}
