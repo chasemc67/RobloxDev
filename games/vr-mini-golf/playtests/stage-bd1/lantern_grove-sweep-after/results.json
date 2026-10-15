@@ -1,0 +1,2344 @@
+{
+  "h1": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h1",
+      "hole": 1,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.003,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              180.5,
+              24.23,
+              143.5
+            ]
+          },
+          {
+            "rimSpeed": 2.99,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              180.5,
+              24.23,
+              143.5
+            ]
+          },
+          {
+            "rimSpeed": 3.003,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              180.5,
+              24.23,
+              143.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.046,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h1-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 83.5,
+                "angleIn": 70.6,
+                "vOut": [
+                  0.3439,
+                  -0.0001,
+                  -3.0061
+                ],
+                "vnOut": 0.344,
+                "tContact": 2.6484,
+                "speedOut": 3.026,
+                "speedIn": 3.265,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.079,
+                "speedRetention": 0.927,
+                "event": "contact",
+                "t": 2.6484,
+                "vtOut": 3.006,
+                "part": "Workspace.Course.Hole1.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.666,
+                "tangentialRetention": 0.976,
+                "shot": "h1-fuzz-1",
+                "vIn": [
+                  -1.0846,
+                  -0.0001,
+                  -3.0793
+                ],
+                "vnIn": -1.085,
+                "restitution": 0.317,
+                "retentionAfter300ms": 0.817,
+                "pos": [
+                  186.586,
+                  24.0798,
+                  162.4572
+                ]
+              }
+            ],
+            "piece": "tee",
+            "maxAlong": 1.98,
+            "distM": 4.079,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.046,
+            "tRest": 6.685,
+            "flags": [],
+            "maxY": 24.099,
+            "distStuds": 13.597,
+            "start": [
+              190,
+              24.0793,
+              170
+            ],
+            "tEnd": 6.735,
+            "tStop": 6.166,
+            "finish": [
+              187.2475,
+              24.0793,
+              156.6849
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h1-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 86.3,
+                "angleIn": 68,
+                "vOut": [
+                  0.7022,
+                  -0.0001,
+                  -5.6392
+                ],
+                "vnOut": 0.371,
+                "tContact": 11.7323,
+                "speedOut": 5.683,
+                "speedIn": 6.117,
+                "normal": [
+                  0.9983,
+                  0,
+                  0.0585
+                ],
+                "type": "event",
+                "vtIn": 5.671,
+                "speedRetention": 0.929,
+                "event": "contact",
+                "t": 11.7323,
+                "vtOut": 5.671,
+                "part": "Workspace.Course.Hole1.Geometry.Wall:rail1",
+                "speedAfter300ms": 5.126,
+                "tangentialRetention": 1,
+                "shot": "h1-fuzz-2",
+                "vIn": [
+                  -1.9585,
+                  -0.0001,
+                  -5.795
+                ],
+                "vnIn": -2.294,
+                "restitution": 0.162,
+                "retentionAfter300ms": 0.838,
+                "pos": [
+                  186.598,
+                  24.0798,
+                  167.7382
+                ]
+              }
+            ],
+            "piece": "tee",
+            "maxAlong": 1.871,
+            "distM": 4.783,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.034,
+            "flags": [],
+            "maxY": 24.103,
+            "distStuds": 15.943,
+            "start": [
+              187.9793,
+              24.0786,
+              170.016
+            ],
+            "tEnd": 7.084,
+            "tStop": 6.532,
+            "finish": [
+              188.0659,
+              24.0793,
+              154.0733
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Lantern Gate",
+      "seconds": 24.7,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h2": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h2",
+      "hole": 2,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.986,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              217.5,
+              24.23,
+              93
+            ]
+          },
+          {
+            "rimSpeed": 2.975,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              217.5,
+              24.23,
+              93
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              217.5,
+              24.23,
+              93
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h2-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  -2.483
+                ],
+                "vnOut": 0,
+                "tContact": 3.1176,
+                "speedOut": 2.483,
+                "speedIn": 2.711,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.557,
+                "speedRetention": 0.916,
+                "event": "contact",
+                "t": 3.1176,
+                "vtOut": 2.483,
+                "part": "Workspace.Course.Hole2.Geometry.Wall:rail3",
+                "speedAfter300ms": 2.172,
+                "tangentialRetention": 0.971,
+                "shot": "h2-fuzz-1",
+                "vIn": [
+                  -0.8992,
+                  -0.0001,
+                  -2.5571
+                ],
+                "vnIn": -0.899,
+                "restitution": 0,
+                "retentionAfter300ms": 0.801,
+                "pos": [
+                  211.0763,
+                  26.0797,
+                  119.0257
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.923,
+            "distM": 4.18,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.683,
+            "flags": [],
+            "maxY": 26.099,
+            "distStuds": 13.932,
+            "start": [
+              215,
+              26.0793,
+              128
+            ],
+            "tEnd": 6.733,
+            "tStop": 6.166,
+            "finish": [
+              211.082,
+              26.0793,
+              114.6297
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h2-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.9,
+                "angleIn": 71.6,
+                "vOut": [
+                  0.7756,
+                  -0.0005,
+                  -5.4195
+                ],
+                "vnOut": 0.776,
+                "tContact": 11.7992,
+                "speedOut": 5.475,
+                "speedIn": 5.861,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.563,
+                "speedRetention": 0.934,
+                "event": "contact",
+                "t": 11.7992,
+                "vtOut": 5.42,
+                "part": "Workspace.Course.Hole2.Geometry.Wall:rail3",
+                "speedAfter300ms": 4.933,
+                "tangentialRetention": 0.974,
+                "shot": "h2-fuzz-2",
+                "vIn": [
+                  -1.8455,
+                  -0.0001,
+                  -5.5628
+                ],
+                "vnIn": -1.845,
+                "restitution": 0.42,
+                "retentionAfter300ms": 0.842,
+                "pos": [
+                  211.086,
+                  26.0798,
+                  125.3301
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 2.133,
+            "distM": 4.676,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.049,
+            "flags": [],
+            "maxY": 26.103,
+            "distStuds": 15.588,
+            "start": [
+              212.6533,
+              26.0792,
+              127.851
+            ],
+            "tEnd": 7.099,
+            "tStop": 6.532,
+            "finish": [
+              212.7372,
+              26.0793,
+              112.2635
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Acorn Ledge",
+      "seconds": 24.7,
+      "stuck": 0,
+      "par": 2,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h3": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h3",
+      "hole": 3,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.987,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              165.5,
+              43.73,
+              9.5
+            ]
+          },
+          {
+            "rimSpeed": 2.976,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              165.5,
+              43.73,
+              9.5
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              165.5,
+              43.73,
+              9.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.067,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h3-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 84.2,
+                "angleIn": 70.6,
+                "vOut": [
+                  0.3044,
+                  -0.0001,
+                  -3.015
+                ],
+                "vnOut": 0.304,
+                "tContact": 2.6151,
+                "speedOut": 3.03,
+                "speedIn": 3.278,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 3.092,
+                "speedRetention": 0.924,
+                "event": "contact",
+                "t": 2.6151,
+                "vtOut": 3.015,
+                "part": "Workspace.Course.Hole3.Geometry.Wall:rail3",
+                "speedAfter300ms": 2.673,
+                "tangentialRetention": 0.975,
+                "shot": "h3-fuzz-1",
+                "vIn": [
+                  -1.0892,
+                  -0.0001,
+                  -3.0921
+                ],
+                "vnIn": -1.089,
+                "restitution": 0.279,
+                "retentionAfter300ms": 0.815,
+                "pos": [
+                  146.5898,
+                  44.0798,
+                  32.4485
+                ]
+              },
+              {
+                "angleOut": 61.3,
+                "angleIn": 31.4,
+                "vOut": [
+                  0.8412,
+                  0.2359,
+                  -1.1751
+                ],
+                "vnOut": -0.695,
+                "tContact": 3.215,
+                "speedOut": 1.445,
+                "speedIn": 2.43,
+                "normal": [
+                  0.4332,
+                  0,
+                  0.9013
+                ],
+                "type": "event",
+                "vtIn": 1.267,
+                "speedRetention": 0.595,
+                "event": "contact",
+                "t": 3.215,
+                "vtOut": 1.267,
+                "part": "Workspace.Course.Hole3.Geometry.Wall:rail3",
+                "speedAfter300ms": 1.243,
+                "tangentialRetention": 1,
+                "shot": "h3-fuzz-1",
+                "vIn": [
+                  0.2441,
+                  -0.0005,
+                  -2.4174
+                ],
+                "vnIn": -2.073,
+                "restitution": 0.335,
+                "retentionAfter300ms": 0.512,
+                "pos": [
+                  146.7776,
+                  44.099,
+                  30.7387
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 2.92,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 5.216,
+            "flags": [],
+            "maxY": 44.115,
+            "distStuds": 9.734,
+            "start": [
+              150,
+              44.0793,
+              40
+            ],
+            "tEnd": 5.266,
+            "tStop": 4.699,
+            "finish": [
+              148.3771,
+              44.0793,
+              30.4024
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h3-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 38.2,
+                "angleIn": 20.8,
+                "vOut": [
+                  -0.0547,
+                  2.3001,
+                  -3.1987
+                ],
+                "vnOut": -2.515,
+                "tContact": 10.498,
+                "speedOut": 3.199,
+                "speedIn": 5.578,
+                "normal": [
+                  0.6314,
+                  0,
+                  0.7754
+                ],
+                "type": "event",
+                "vtIn": 1.977,
+                "speedRetention": 0.574,
+                "event": "contact",
+                "t": 10.498,
+                "vtOut": 1.977,
+                "part": "(no part: landing or slope change)",
+                "speedAfter300ms": 2.22,
+                "tangentialRetention": 1,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  -1.7602,
+                  -0.0001,
+                  -5.2932
+                ],
+                "vnIn": -5.216,
+                "restitution": 0.482,
+                "retentionAfter300ms": 0.398,
+                "pos": [
+                  152.2645,
+                  44.1323,
+                  25.2064
+                ]
+              },
+              {
+                "angleOut": 75.4,
+                "angleIn": 53.8,
+                "vOut": [
+                  1.6941,
+                  -1.6818,
+                  0.4423
+                ],
+                "vnOut": 0.442,
+                "tContact": 10.7647,
+                "speedOut": 1.751,
+                "speedIn": 2.074,
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "type": "event",
+                "vtIn": 1.674,
+                "speedRetention": 0.844,
+                "event": "contact",
+                "t": 10.7647,
+                "vtOut": 1.694,
+                "part": "Workspace.Course.Hole3.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.907,
+                "tangentialRetention": 1.012,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  1.6745,
+                  -0.3185,
+                  -1.2244
+                ],
+                "vnIn": -1.224,
+                "restitution": 0.361,
+                "retentionAfter300ms": 1.401,
+                "pos": [
+                  152.4725,
+                  44.4375,
+                  24.5813
+                ]
+              },
+              {
+                "angleOut": 20.8,
+                "angleIn": 31.4,
+                "vOut": [
+                  2.3092,
+                  -2.403,
+                  1.089
+                ],
+                "vnOut": 2.386,
+                "tContact": 10.8314,
+                "speedOut": 2.553,
+                "speedIn": 1.74,
+                "normal": [
+                  0.6938,
+                  0,
+                  0.7202
+                ],
+                "type": "event",
+                "vtIn": 0.908,
+                "speedRetention": 1.467,
+                "event": "contact",
+                "t": 10.8314,
+                "vtOut": 0.908,
+                "part": "Workspace.Course.Hole3.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.802,
+                "tangentialRetention": 1,
+                "shot": "h3-fuzz-2",
+                "vIn": [
+                  1.6836,
+                  -2.2163,
+                  0.4395
+                ],
+                "vnIn": 1.485,
+                "restitution": 1.607,
+                "retentionAfter300ms": 1.61,
+                "pos": [
+                  152.5866,
+                  44.3244,
+                  24.6142
+                ]
+              }
+            ],
+            "piece": "tunnel",
+            "maxAlong": 0.81,
+            "distM": 1.466,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "cross",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.199,
+            "flags": [],
+            "maxY": 44.45,
+            "distStuds": 4.888,
+            "start": [
+              154.1959,
+              44.0792,
+              30.5885
+            ],
+            "tEnd": 6.249,
+            "tStop": 5.683,
+            "finish": [
+              158.2326,
+              44.0793,
+              27.8321
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Toadstool Row",
+      "seconds": 22.36,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h4": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h4",
+      "hole": 4,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.968,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              187.5,
+              48.33,
+              -54
+            ]
+          },
+          {
+            "rimSpeed": 2.908,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              187.5,
+              48.33,
+              -54
+            ]
+          },
+          {
+            "rimSpeed": 2.968,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              187.5,
+              48.33,
+              -54
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 62.05,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h4-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  -2.4107
+                ],
+                "vnOut": 0,
+                "tContact": 40.815,
+                "speedOut": 2.411,
+                "speedIn": 2.621,
+                "normal": [
+                  1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.471,
+                "speedRetention": 0.92,
+                "event": "contact",
+                "t": 40.8151,
+                "vtOut": 2.411,
+                "part": "Workspace.Course.Hole4.Geometry.Wall:rail1",
+                "speedAfter300ms": 2.11,
+                "tangentialRetention": 0.975,
+                "shot": "h4-fuzz-1",
+                "vIn": [
+                  -0.872,
+                  -0.0001,
+                  -2.4714
+                ],
+                "vnIn": -0.872,
+                "restitution": 0,
+                "retentionAfter300ms": 0.805,
+                "pos": [
+                  181.0788,
+                  48.0796,
+                  -20.9104
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 4.06,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.533,
+            "flags": [],
+            "maxY": 48.098,
+            "distStuds": 13.535,
+            "start": [
+              185,
+              48.0793,
+              -12
+            ],
+            "tEnd": 6.583,
+            "tStop": 6.016,
+            "finish": [
+              181.082,
+              48.0793,
+              -24.9551
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h4-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 84.2,
+                "angleIn": 68.3,
+                "vOut": [
+                  0.8437,
+                  -0.0005,
+                  -5.4206
+                ],
+                "vnOut": 0.558,
+                "tContact": 49.3307,
+                "speedOut": 5.486,
+                "speedIn": 5.872,
+                "normal": [
+                  0.9986,
+                  0,
+                  0.0524
+                ],
+                "type": "event",
+                "vtIn": 5.457,
+                "speedRetention": 0.934,
+                "event": "contact",
+                "t": 49.3307,
+                "vtOut": 5.457,
+                "part": "Workspace.Course.Hole4.Geometry.Wall:rail1",
+                "speedAfter300ms": 4.935,
+                "tangentialRetention": 1,
+                "shot": "h4-fuzz-2",
+                "vIn": [
+                  -1.8782,
+                  -0.0005,
+                  -5.5634
+                ],
+                "vnIn": -2.167,
+                "restitution": 0.258,
+                "retentionAfter300ms": 0.84,
+                "pos": [
+                  181.0719,
+                  48.0797,
+                  -14.9202
+                ]
+              }
+            ],
+            "piece": "plaza",
+            "maxAlong": 1.567,
+            "distM": 4.662,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "plaza",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.834,
+            "flags": [],
+            "maxY": 48.104,
+            "distStuds": 15.541,
+            "start": [
+              182.6533,
+              48.0792,
+              -11.654
+            ],
+            "tEnd": 6.884,
+            "tStop": 6.333,
+            "finish": [
+              182.7467,
+              48.0719,
+              -27.1946
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Spore Spinner",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "spinner",
+          "period": 12,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                186.0907,
+                48.6793,
+                -56.9102
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 6,
+              "blocked": false,
+              "finish": [
+                185.9388,
+                48.6793,
+                -57.0826
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.167
+    }
+  },
+  "h5": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h5",
+      "hole": 5,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.968,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              63,
+              37.73,
+              -111.5
+            ]
+          },
+          {
+            "rimSpeed": 2.804,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              63,
+              37.73,
+              -111.5
+            ]
+          },
+          {
+            "rimSpeed": 2.968,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              63,
+              37.73,
+              -111.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.083,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h5-fuzz-1",
+            "contacts": [],
+            "piece": "shore",
+            "maxAlong": 1.91,
+            "distM": 3.614,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.083,
+            "tRest": 5.884,
+            "flags": [],
+            "maxY": 38.098,
+            "distStuds": 12.047,
+            "start": [
+              100,
+              38.0718,
+              -110
+            ],
+            "tEnd": 5.934,
+            "tStop": 5.365,
+            "finish": [
+              88.9258,
+              38.0719,
+              -105.2583
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h5-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 84.4,
+                "angleIn": 66.2,
+                "vOut": [
+                  -2.5962,
+                  -0.0005,
+                  0
+                ],
+                "vnOut": -0.255,
+                "tContact": 12.7979,
+                "speedOut": 2.596,
+                "speedIn": 2.824,
+                "normal": [
+                  0.0982,
+                  0,
+                  -0.9952
+                ],
+                "type": "event",
+                "vtIn": 2.584,
+                "speedRetention": 0.919,
+                "event": "contact",
+                "t": 12.7979,
+                "vtOut": 2.584,
+                "part": "Workspace.Course.Hole5.Geometry.Wall:rail5",
+                "speedAfter300ms": 2.208,
+                "tangentialRetention": 1,
+                "shot": "h5-fuzz-2",
+                "vIn": [
+                  -2.6831,
+                  -0.0005,
+                  0.8814
+                ],
+                "vnIn": -1.141,
+                "restitution": 0.223,
+                "retentionAfter300ms": 0.782,
+                "pos": [
+                  90.2723,
+                  38.079,
+                  -95.0709
+                ]
+              }
+            ],
+            "piece": "shore",
+            "maxAlong": 1.631,
+            "distM": 4.246,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "shore",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 6.084,
+            "flags": [],
+            "maxY": 38.103,
+            "distStuds": 14.153,
+            "start": [
+              100.2636,
+              38.0718,
+              -98.9162
+            ],
+            "tEnd": 6.134,
+            "tStop": 5.567,
+            "finish": [
+              86.6401,
+              38.0719,
+              -95.082
+            ]
+          }
+        ],
+        "list": []
+      },
+      "name": "Rootbridge Crossing",
+      "seconds": 22.98,
+      "stuck": 0,
+      "par": 3,
+      "cam": "",
+      "nudges": 0
+    }
+  },
+  "h6": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h6",
+      "hole": 6,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.984,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              28.5,
+              29.98,
+              -47.5
+            ]
+          },
+          {
+            "rimSpeed": 2.925,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              28.5,
+              29.98,
+              -47.5
+            ]
+          },
+          {
+            "rimSpeed": 2.934,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              28.5,
+              29.98,
+              -47.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 61.06,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.05,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h6-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 39.6,
+                "angleIn": 25.4,
+                "vOut": [
+                  -2.2896,
+                  -0.0001,
+                  -0.2158
+                ],
+                "vnOut": 1.772,
+                "tContact": 40.6481,
+                "speedOut": 2.3,
+                "speedIn": 3.742,
+                "normal": [
+                  -0.7071,
+                  0,
+                  -0.7071
+                ],
+                "type": "event",
+                "vtIn": 1.603,
+                "speedRetention": 0.615,
+                "event": "contact",
+                "t": 40.6481,
+                "vtOut": 1.466,
+                "part": "Workspace.Course.Hole6.Geometry.Wall:board1",
+                "speedAfter300ms": 1.744,
+                "tangentialRetention": 0.915,
+                "shot": "h6-fuzz-1",
+                "vIn": [
+                  1.2569,
+                  -0.0001,
+                  3.5243
+                ],
+                "vnIn": -3.381,
+                "restitution": 0.524,
+                "retentionAfter300ms": 0.466,
+                "pos": [
+                  47.8099,
+                  30.08,
+                  -64.2906
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.862,
+            "distM": 1.757,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.05,
+            "tRest": 5.116,
+            "flags": [],
+            "maxY": 30.098,
+            "distStuds": 5.857,
+            "start": [
+              45,
+              30.0718,
+              -70
+            ],
+            "tEnd": 5.166,
+            "tStop": 4.583,
+            "finish": [
+              44.8631,
+              30.0793,
+              -64.1444
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h6-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.4,
+                "angleIn": 71.8,
+                "vOut": [
+                  -0.8563,
+                  -0.0001,
+                  5.6392
+                ],
+                "vnOut": 0.856,
+                "tContact": 48.5817,
+                "speedOut": 5.704,
+                "speedIn": 6.1,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.796,
+                "speedRetention": 0.935,
+                "event": "contact",
+                "t": 48.5817,
+                "vtOut": 5.639,
+                "part": "Workspace.Course.Hole6.Geometry.Wall:rail4",
+                "speedAfter300ms": 5.143,
+                "tangentialRetention": 0.973,
+                "shot": "h6-fuzz-2",
+                "vIn": [
+                  1.9009,
+                  -0.0001,
+                  5.7961
+                ],
+                "vnIn": -1.901,
+                "restitution": 0.45,
+                "retentionAfter300ms": 0.843,
+                "pos": [
+                  48.4184,
+                  30.0799,
+                  -67.5866
+                ]
+              },
+              {
+                "angleOut": 72.8,
+                "angleIn": 49.8,
+                "vOut": [
+                  -3.4135,
+                  -0.0001,
+                  1.5995
+                ],
+                "vnOut": 1.112,
+                "tContact": 49.1985,
+                "speedOut": 3.77,
+                "speedIn": 4.717,
+                "normal": [
+                  -0.6726,
+                  0,
+                  -0.74
+                ],
+                "type": "event",
+                "vtIn": 3.602,
+                "speedRetention": 0.799,
+                "event": "contact",
+                "t": 49.1985,
+                "vtOut": 3.602,
+                "part": "Workspace.Course.Hole6.Geometry.Wall:board1",
+                "speedAfter300ms": 3.334,
+                "tangentialRetention": 1,
+                "shot": "h6-fuzz-2",
+                "vIn": [
+                  -0.6166,
+                  -0.0001,
+                  4.6768
+                ],
+                "vnIn": -3.046,
+                "restitution": 0.365,
+                "retentionAfter300ms": 0.707,
+                "pos": [
+                  47.9381,
+                  30.0799,
+                  -64.4398
+                ]
+              }
+            ],
+            "piece": "channel",
+            "maxAlong": 1.409,
+            "distM": 3.418,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "channel",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.046,
+            "tRest": 6.484,
+            "flags": [],
+            "maxY": 30.104,
+            "distStuds": 11.392,
+            "start": [
+              47.0208,
+              30.0793,
+              -70.5113
+            ],
+            "tEnd": 6.534,
+            "tStop": 5.951,
+            "finish": [
+              41.232,
+              30.0793,
+              -60.6994
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Mill Wheel Run",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "millwheel",
+          "period": 12,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "channel",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                27.6075,
+                30.0719,
+                -59.1377
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "channel",
+              "phase": 6,
+              "blocked": false,
+              "finish": [
+                27.257,
+                30.0793,
+                -58.7873
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.166
+    }
+  },
+  "h7": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h7",
+      "hole": 7,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.991,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              42.5,
+              23.33,
+              8.5
+            ]
+          },
+          {
+            "rimSpeed": 2.989,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              42.5,
+              23.33,
+              8.5
+            ]
+          },
+          {
+            "rimSpeed": 2.996,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              42.5,
+              23.33,
+              8.5
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 47.28,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.033,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h7-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  0,
+                  -0.0001,
+                  2.3948
+                ],
+                "vnOut": 0,
+                "tContact": 25.5306,
+                "speedOut": 2.395,
+                "speedIn": 2.613,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 2.465,
+                "speedRetention": 0.916,
+                "event": "contact",
+                "t": 25.5306,
+                "vtOut": 2.395,
+                "part": "Workspace.Course.Hole7.Geometry.Wall:rail3",
+                "speedAfter300ms": 2.107,
+                "tangentialRetention": 0.971,
+                "shot": "h7-fuzz-1",
+                "vIn": [
+                  0.8676,
+                  -0.0001,
+                  2.4653
+                ],
+                "vnIn": -0.868,
+                "restitution": 0,
+                "retentionAfter300ms": 0.806,
+                "pos": [
+                  43.9227,
+                  26.0798,
+                  -19.0523
+                ]
+              }
+            ],
+            "piece": "t1",
+            "maxAlong": 1.98,
+            "distM": 4.075,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "t1",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.699,
+            "flags": [],
+            "maxY": 26.099,
+            "distStuds": 13.583,
+            "start": [
+              40,
+              26.0793,
+              -28
+            ],
+            "tEnd": 6.749,
+            "tStop": 6.181,
+            "finish": [
+              43.918,
+              26.0793,
+              -14.9942
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h7-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 81.2,
+                "angleIn": 71.4,
+                "vOut": [
+                  -0.8464,
+                  -0.0005,
+                  5.4388
+                ],
+                "vnOut": 0.846,
+                "tContact": 34.1306,
+                "speedOut": 5.504,
+                "speedIn": 5.895,
+                "normal": [
+                  -1,
+                  0,
+                  0
+                ],
+                "type": "event",
+                "vtIn": 5.586,
+                "speedRetention": 0.934,
+                "event": "contact",
+                "t": 34.1306,
+                "vtOut": 5.439,
+                "part": "Workspace.Course.Hole7.Geometry.Wall:rail3",
+                "speedAfter300ms": 4.987,
+                "tangentialRetention": 0.974,
+                "shot": "h7-fuzz-2",
+                "vIn": [
+                  1.8826,
+                  -0.0001,
+                  5.586
+                ],
+                "vnIn": -1.883,
+                "restitution": 0.45,
+                "retentionAfter300ms": 0.846,
+                "pos": [
+                  43.9205,
+                  26.0799,
+                  -25.1854
+                ]
+              }
+            ],
+            "piece": "t2",
+            "maxAlong": 1.607,
+            "distM": 4.872,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "t2",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 7.3,
+            "flags": [],
+            "maxY": 26.104,
+            "distStuds": 16.239,
+            "start": [
+              42.3467,
+              26.0792,
+              -28.3461
+            ],
+            "tEnd": 7.35,
+            "tStop": 6.783,
+            "finish": [
+              42.1538,
+              24.8793,
+              -12.1086
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Cascade Steps",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 3,
+      "sweep": [
+        {
+          "mover": "log",
+          "period": 8.870714285714287,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "t2",
+              "phase": 0,
+              "blocked": false,
+              "finish": [
+                33.2542,
+                24.8793,
+                -8.5596
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "t2",
+              "phase": 4.44,
+              "blocked": false,
+              "finish": [
+                35.3935,
+                24.8793,
+                -5.305
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0
+    }
+  },
+  "h8": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h8",
+      "hole": 8,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 2.984,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -14,
+              37.23,
+              13
+            ]
+          },
+          {
+            "rimSpeed": 2.982,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -14,
+              37.23,
+              13
+            ]
+          },
+          {
+            "rimSpeed": 2.995,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -14,
+              37.23,
+              13
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 39.8,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.046,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h8-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 13.3,
+                "angleIn": 8.1,
+                "vOut": [
+                  1.8989,
+                  -0.4581,
+                  8.4111
+                ],
+                "vnOut": 8.39,
+                "tContact": 18.0488,
+                "speedOut": 8.623,
+                "speedIn": 14.161,
+                "normal": [
+                  -0.0109,
+                  0,
+                  0.9999
+                ],
+                "type": "event",
+                "vtIn": 1.991,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 18.0488,
+                "vtOut": 1.991,
+                "part": "Workspace.Course.Hole8.Geometry.Wall:rail18",
+                "speedAfter300ms": 5.777,
+                "tangentialRetention": 1,
+                "shot": "h8-fuzz-1",
+                "vIn": [
+                  2.1435,
+                  -0.0001,
+                  -13.9977
+                ],
+                "vnIn": -14.02,
+                "restitution": 0.598,
+                "retentionAfter300ms": 0.408,
+                "pos": [
+                  -9.6684,
+                  36.0938,
+                  -25.8037
+                ]
+              },
+              {
+                "angleOut": 81.9,
+                "angleIn": 70.6,
+                "vOut": [
+                  -0.4184,
+                  -0.0005,
+                  2.9524
+                ],
+                "vnOut": 0.418,
+                "tContact": 20.0483,
+                "speedOut": 2.982,
+                "speedIn": 3.21,
+                "normal": [
+                  -1,
+                  0,
+                  -0.0002
+                ],
+                "type": "event",
+                "vtIn": 3.028,
+                "speedRetention": 0.929,
+                "event": "contact",
+                "t": 20.0483,
+                "vtOut": 2.952,
+                "part": "Workspace.Course.Hole8.Geometry.Wall:rail4",
+                "speedAfter300ms": 2.648,
+                "tangentialRetention": 0.975,
+                "shot": "h8-fuzz-1",
+                "vIn": [
+                  1.0646,
+                  -0.0001,
+                  3.0286
+                ],
+                "vnIn": -1.065,
+                "restitution": 0.392,
+                "retentionAfter300ms": 0.825,
+                "pos": [
+                  -6.5791,
+                  36.0798,
+                  -16.466
+                ]
+              }
+            ],
+            "piece": "junction",
+            "maxAlong": 1.982,
+            "distM": 3.998,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "junction",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.033,
+            "tRest": 6.75,
+            "flags": [],
+            "maxY": 36.099,
+            "distStuds": 13.328,
+            "start": [
+              -10,
+              36.0793,
+              -24
+            ],
+            "tEnd": 6.8,
+            "tStop": 6.233,
+            "finish": [
+              -7.3642,
+              36.069,
+              -10.9357
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h8-fuzz-2",
+            "contacts": [],
+            "piece": "junction",
+            "maxAlong": 1.025,
+            "distM": 2.205,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "junction",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.046,
+            "tRest": 4.782,
+            "flags": [],
+            "maxY": 37.281,
+            "distStuds": 7.35,
+            "start": [
+              4.5289,
+              36.08,
+              -14.9236
+            ],
+            "tEnd": 4.832,
+            "tStop": 4.249,
+            "finish": [
+              -0.4396,
+              36.0793,
+              -9.507
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Firefly Hollow",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 4,
+      "sweep": [
+        {
+          "mover": "root_door",
+          "period": 5.966666666666667,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "lane",
+              "phase": 0,
+              "blocked": true,
+              "finish": [
+                -10.0056,
+                36.0793,
+                -22.1964
+              ]
+            },
+            {
+              "flags": [
+                {
+                  "type": "event",
+                  "label": "h8-sweep-root_door-1",
+                  "id": "ring",
+                  "t": 12.3487,
+                  "event": "flag",
+                  "shot": "h8-sweep-root_door-1",
+                  "speedOut": 4.088,
+                  "speedIn": 5.84,
+                  "kind": "teleport",
+                  "hole": 8,
+                  "pos": [
+                    -19,
+                    37.59,
+                    23
+                  ]
+                }
+              ],
+              "outcome": "rest",
+              "zone": "green",
+              "phase": 2.98,
+              "blocked": false,
+              "finish": [
+                -15.5576,
+                37.5793,
+                16.1151
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0
+    }
+  },
+  "h9": {
+    "default": {
+      "course": "lantern_grove",
+      "scenario": "h9",
+      "hole": 9,
+      "cupdrop": {
+        "sunk": 3,
+        "pass": true,
+        "tries": [
+          {
+            "rimSpeed": 3.115,
+            "angle": 22.5,
+            "outcome": "cup",
+            "finish": [
+              -91.5546,
+              38.93,
+              -16.492
+            ]
+          },
+          {
+            "rimSpeed": 2.798,
+            "angle": 67.5,
+            "outcome": "cup",
+            "finish": [
+              -91.5546,
+              38.93,
+              -16.492
+            ]
+          },
+          {
+            "rimSpeed": 3.116,
+            "angle": 112.5,
+            "outcome": "cup",
+            "finish": [
+              -91.5546,
+              38.93,
+              -16.492
+            ]
+          }
+        ],
+        "underCup": {
+          "name": "CupPlate",
+          "depth": 0.35
+        },
+        "n": 3
+      },
+      "issues": [],
+      "escapes": 0,
+      "seconds": 64.51,
+      "fuzz": {
+        "nudges": 0,
+        "resets": 0,
+        "escapes": 0,
+        "holed": 0,
+        "timeouts": 0,
+        "maxMovingStillS": 0.083,
+        "hazards": 0,
+        "stuck": 0,
+        "shots": 2,
+        "allShots": [
+          {
+            "v0": 14.735,
+            "speedMps": 4.420364007560522,
+            "label": "h9-fuzz-1",
+            "contacts": [
+              {
+                "angleOut": 12.8,
+                "angleIn": 8.7,
+                "vOut": [
+                  -8.3265,
+                  -0.3216,
+                  -2.2224
+                ],
+                "vnOut": 8.405,
+                "tContact": 42.4146,
+                "speedOut": 8.618,
+                "speedIn": 14.155,
+                "normal": [
+                  -0.8854,
+                  0,
+                  -0.4648
+                ],
+                "type": "event",
+                "vtIn": 2.143,
+                "speedRetention": 0.609,
+                "event": "contact",
+                "t": 42.4146,
+                "vtOut": 1.903,
+                "part": "Workspace.Course.Hole9.Geometry.Wall:rail6",
+                "speedAfter300ms": 5.73,
+                "tangentialRetention": 0.888,
+                "shot": "h9-fuzz-1",
+                "vIn": [
+                  11.3924,
+                  -0.0001,
+                  8.4011
+                ],
+                "vnIn": -13.992,
+                "restitution": 0.601,
+                "retentionAfter300ms": 0.405,
+                "pos": [
+                  -56.1221,
+                  40.0912,
+                  31.8411
+                ]
+              },
+              {
+                "angleOut": 90,
+                "angleIn": 70.6,
+                "vOut": [
+                  -2.393,
+                  -0.0003,
+                  -1.2563
+                ],
+                "vnOut": 0,
+                "tContact": 44.4479,
+                "speedOut": 2.703,
+                "speedIn": 2.92,
+                "normal": [
+                  0.4648,
+                  0,
+                  -0.8854
+                ],
+                "type": "event",
+                "vtIn": 2.754,
+                "speedRetention": 0.926,
+                "event": "contact",
+                "t": 44.4479,
+                "vtOut": 2.703,
+                "part": "Workspace.Course.Hole9.Geometry.Wall:rail5",
+                "speedAfter300ms": 2.304,
+                "tangentialRetention": 0.981,
+                "shot": "h9-fuzz-1",
+                "vIn": [
+                  -2.8897,
+                  -0.0003,
+                  -0.4205
+                ],
+                "vnIn": -0.971,
+                "restitution": 0,
+                "retentionAfter300ms": 0.789,
+                "pos": [
+                  -65.855,
+                  40.079,
+                  30.2312
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 1.921,
+            "distM": 3.596,
+            "outcome": "rest",
+            "speed": 14.735,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.067,
+            "tRest": 5.768,
+            "flags": [],
+            "maxY": 40.098,
+            "distStuds": 11.987,
+            "start": [
+              -57.6,
+              40.0787,
+              30.7
+            ],
+            "tEnd": 5.818,
+            "tStop": 5.267,
+            "finish": [
+              -69.3615,
+              40.0787,
+              28.3855
+            ]
+          },
+          {
+            "v0": 16.353,
+            "speedMps": 4.9060216336982805,
+            "label": "h9-fuzz-2",
+            "contacts": [
+              {
+                "angleOut": 86.7,
+                "angleIn": 81.8,
+                "vOut": [
+                  11.2893,
+                  -0.0003,
+                  5.1184
+                ],
+                "vnOut": 0.716,
+                "tContact": 52.5309,
+                "speedOut": 12.395,
+                "speedIn": 12.739,
+                "normal": [
+                  0.4648,
+                  0,
+                  -0.8854
+                ],
+                "type": "event",
+                "vtIn": -12.608,
+                "speedRetention": 0.973,
+                "event": "contact",
+                "t": 52.5309,
+                "vtOut": -12.375,
+                "part": "Workspace.Course.Hole9.Geometry.Wall:rail5",
+                "speedAfter300ms": 11.319,
+                "tangentialRetention": 0.981,
+                "shot": "h9-fuzz-2",
+                "vIn": [
+                  10.316,
+                  -0.0003,
+                  7.4743
+                ],
+                "vnIn": -1.822,
+                "restitution": 0.393,
+                "retentionAfter300ms": 0.889,
+                "pos": [
+                  -61.94,
+                  40.0799,
+                  32.2674
+                ]
+              },
+              {
+                "angleOut": 4.5,
+                "angleIn": 2.7,
+                "vOut": [
+                  -5.6073,
+                  -0.6885,
+                  -3.4906
+                ],
+                "vnOut": 6.585,
+                "tContact": 52.9626,
+                "speedOut": 6.605,
+                "speedIn": 11.092,
+                "normal": [
+                  -0.8876,
+                  0,
+                  -0.4607
+                ],
+                "type": "event",
+                "vtIn": -0.515,
+                "speedRetention": 0.595,
+                "event": "contact",
+                "t": 52.9626,
+                "vtOut": -0.515,
+                "part": "Workspace.Course.Hole9.Geometry.Wall:rail6",
+                "speedAfter300ms": 4.228,
+                "tangentialRetention": 1,
+                "shot": "h9-fuzz-2",
+                "vIn": [
+                  10.0714,
+                  -0.0003,
+                  4.6468
+                ],
+                "vnIn": -11.08,
+                "restitution": 0.594,
+                "retentionAfter300ms": 0.381,
+                "pos": [
+                  -57.4223,
+                  40.0889,
+                  34.3291
+                ]
+              }
+            ],
+            "piece": "lane",
+            "maxAlong": 15.017,
+            "distM": 1.639,
+            "outcome": "rest",
+            "speed": 16.353,
+            "zone": "lane",
+            "stillExcludedByAutoReset": false,
+            "maxMovingStillS": 0.083,
+            "tRest": 6.133,
+            "flags": [],
+            "maxY": 40.181,
+            "distStuds": 5.465,
+            "start": [
+              -70.0726,
+              40.1811,
+              26.4338
+            ],
+            "tEnd": 6.183,
+            "tStop": 5.632,
+            "finish": [
+              -65.2704,
+              40.0787,
+              29.0422
+            ]
+          }
+        ],
+        "list": []
+      },
+      "cam": "",
+      "name": "Heart of the Grove",
+      "nudges": 0,
+      "stuck": 0,
+      "par": 4,
+      "sweep": [
+        {
+          "mover": "lantern_pendulum",
+          "period": 4,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "corridor",
+              "phase": 0,
+              "blocked": true,
+              "finish": [
+                -79.8368,
+                41.0793,
+                14.5343
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "corridor",
+              "phase": 2,
+              "blocked": false,
+              "finish": [
+                -76.3917,
+                40.6806,
+                8.4122
+              ]
+            }
+          ]
+        },
+        {
+          "mover": "root_gate",
+          "period": 4,
+          "rows": [
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "corridor",
+              "phase": 0,
+              "blocked": true,
+              "finish": [
+                -79.5532,
+                41.0787,
+                12.8837
+              ]
+            },
+            {
+              "flags": [],
+              "outcome": "rest",
+              "zone": "corridor",
+              "phase": 2,
+              "blocked": false,
+              "finish": [
+                -75.5446,
+                40.6797,
+                8.8627
+              ]
+            }
+          ]
+        }
+      ],
+      "clientLag": 0.195
+    }
+  }
+}

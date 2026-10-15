@@ -49,6 +49,22 @@ end
 local function overlaps(a,b)
  return math.abs((b.c-a.c):Dot(a.n))<GAP-0.0005 and projectedOverlap(a,b)
 end
+-- Stage bd1: felt side faces (same normal) that overlap only in a band <= CORNER along the
+-- horizontal: the corner where two felt pieces meet end to end, not a shared exposed side.
+local CORNER=0.25
+-- Only a FLUSH side qualifies (pulling it would open the felt joint on top); an outer, inset
+-- side keeps the normal pull, which just widens its hidden outer inset.
+local function feltJointCorner(r,other,a,b)
+ if not (r.protectedFelt and other.protectedFelt) or a.axis==2 or math.abs(a.n.Y)>0.5 then return false end
+ local side=r.insets and r.insets[a.axis*a.sign]
+ if not side or side>=GAP/2 then return false end
+ local t=a.n:Cross(Vector3.yAxis)
+ if t.Magnitude<0.5 then return false end
+ t=t.Unit
+ local function span(f) local c=f.c:Dot(t) local e=math.abs(f.u:Dot(t))*f.hu+math.abs(f.v:Dot(t))*f.hv return c-e,c+e end
+ local a0,a1=span(a) local b0,b1=span(b)
+ return math.min(a1,b1)-math.max(a0,b0)<=CORNER
+end
 local function name(p) return p:GetFullName() end
 local function key(p)
  local c=p:GetAttribute("ZF1BaseCF") or p.CFrame
@@ -138,7 +154,9 @@ function Separation.Apply(course, scenery)
   if p:IsA("BasePart") and p.CanCollide then
    table.insert(originals,{p=p,cf=p.CFrame,size=p.Size,collide=p.CanCollide,query=p.CanQuery,touch=p.CanTouch,group=p.CollisionGroup,physical=p.CustomPhysicalProperties})
   end
-  if p:IsA("BasePart") and (p.Transparency<1 or decorated(p)) then
+  -- Stage bd1: authored decor meshes (e.g. textured, felt-sunk H10 chevrons) opt out with ZF1KeepPose
+  -- and keep their exact CFrame/Size; colliders never opt out.
+  if p:IsA("BasePart") and (p.Transparency<1 or decorated(p)) and not (p:GetAttribute("ZF1KeepPose") and not p.CanCollide) then
    -- Reapplying starts from the same build baseline rather than accumulating offsets.
    if p:GetAttribute("ZF1BaseCF") then p.CFrame=p:GetAttribute("ZF1BaseCF");p.Size=p:GetAttribute("ZF1BaseSize") end
    table.insert(records,{part=p,name=p:GetAttribute("ZF1SourcePath") or name(p),hole=hole(p),box=exactBox(p),decorated=decorated(p),key=key(p),protectedFelt=(p:GetAttribute("ZF1SourcePath") or name(p)):match("%.Felt$")~=nil,protectedCarrier=topCarrier(p) and not p.CanCollide and (p:GetAttribute("ZF1SourcePath") or name(p)):match("%.Felt$")==nil})
@@ -303,6 +321,7 @@ function Separation.Apply(course, scenery)
     -- CSG felt (cup cut-outs): resizing would scale the cup hole; keep its exact pose.
     p.Size=baseSize;p.CFrame=baseCF
    end
+   r.insets=inset
    r.protectedTop=originalTop+up*lift
    r.protectedUp=up
    local insets={inset[-1],inset[1],inset[-3],inset[3]}
@@ -362,6 +381,15 @@ function Separation.Apply(course, scenery)
          if not exclusionKeys[k] then
           exclusionKeys[k]=true
           table.insert(report.exclusions,{name=r.name,other=other.name,hole=r.hole,category="internal-opposing-face",change="Retained connected solid interface; opposing normals, no shared exterior surface"})
+         end
+        elseif feltJointCorner(r,other,a,b) then
+         -- Stage bd1: two felt skins meeting end to end (flat to ramp) share a side plane only
+         -- in a narrow band at their joint. Pulling the side in would open the flush joint
+         -- to the next felt along that side (a visible dark seam), so keep it.
+         local k="corner:"..tostring(i)..":"..tostring(j)..":"..a.axis..":"..a.sign
+         if not exclusionKeys[k] then
+          exclusionKeys[k]=true
+          table.insert(report.exclusions,{name=r.name,other=other.name,hole=r.hole,category="felt-joint-corner",change="Retained felt side plane shared with an end-to-end felt neighbour only at the joint corner"})
          end
         else conflict={face=a,other=b,record=other};break end
        end

@@ -147,3 +147,9 @@ For all three: give one focused task per run, say whether changes are allowed (`
 - **Chrome can't be scripted with AppleScript here** (error -1743, and don't grant it). Re-run `open -a "Google Chrome" <url>` to reload a Creator Hub page.
 - **Geometry audits: mesh/CSG bounding boxes are not surfaces.** One dressing MeshPart's box can span a whole hole and hide every seam under it. Use exact block Parts as occluders only.
 - **A local `.rbxl` copy is a safe read-only probe.** Open a copy in `/tmp` with `open -a RobloxStudio.app`, run Luau with `GOLF_STUDIO=<file name>`, then `pkill -KILL -x RobloxStudio` (discards; never answer the save prompt).
+
+## Lessons from vr-mini-golf stage bd1
+- **`upload_image` works from a localhost HTTP server.** Copy the PNG into an empty temp dir, run `python3 -m http.server 8765 --bind 127.0.0.1` there, and pass `http://127.0.0.1:8765/<file>.png`. No Asset Manager clicks needed. Byte-identical PNGs still dedupe to the existing id.
+- **3D Importer frame:** the "Studio Default" preset imports at 100× (cm) and turned 180° about Y. Place each MeshPart at `root * CFrame.new(fbx_bounds centre) * CFrame.Angles(0, math.pi, 0)` with `Size` = the `tools/fbx_bounds.py` size (sc10/sc12 method), then verify with `EditableMesh` vertices against the target surface.
+- **Opt-out from VisualSeparation:** a noncolliding part with attribute `ZF1KeepPose=true` is skipped by `VisualSeparation.Apply` (keeps its exact CFrame/Size). Use it for textured decor meshes sunk into the felt.
+- **Team Create "Server did not start [0]"** on EditPlace: click **Retry** in the dialog; the place then opens normally.
