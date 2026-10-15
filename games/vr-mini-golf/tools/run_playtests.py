@@ -48,7 +48,7 @@ class Studio:
         # else the only open Studio
         want = os.environ.get("GOLF_STUDIO")
         if want:
-            match = [s for s in studios if want in s["name"]]
+            match = [s for s in studios if want in (s["name"] or "")]
         else:
             match = [s for s in studios if "placeId: %s" % PLACE_ID in s["name"]] or (studios if len(studios) == 1 else [])
         if not match:

@@ -25,6 +25,10 @@ from fbx_bounds import mesh_bounds, prop_bounds  # noqa: E402
 MODELS = os.path.join(REPO, "assets", "vr-mini-golf", "lantern-grove", "models")
 OVERRIDES = os.path.join(HERE, "props_overrides.json")  # spec changes newer than the manifest (see its note)
 DEFAULT_OUT = os.path.join(GAME_DIR, "src", "ServerStorage", "CourseData", "PropPlacements.luau")
+# (stages lg13/lg14) PropsBuilder builds each rail_lantern light's post under Lights.Light_<id>, so the dressing
+# instance carrying the same light_id is a duplicate (a second post 0.05 lower with its own PointLight). Dropped for
+# these holes; H8's 15 crooks have the same duplication in the place but are not in scope yet.
+DEDUP_RAIL_LIGHT_HOLES = {7}
 
 
 def r3(v):
@@ -98,10 +102,12 @@ def convert():
         pb = prop_bounds(parts)
         out["props"][name].update({"bbox": r3(pb["size"]), "center": r3(pb["center"])})
         applied.append("fbx_refresh: " + name)
+    rail_lights = {l["id"] for l in man.get("lights", []) if l["kind"] == "rail_lantern"}
     for hk, h in man["dressing"]["holes"].items():
         n = int(hk[1:])
         out["dressing"][str(n)] = [{"prop": i["prop"], "pos": r3(i["pos"]), "yaw": round(i.get("yaw", 0), 1),
-                                    "scale": round(i.get("scale", 1), 3), "role": i.get("role")} for i in h["instances"]]
+                                    "scale": round(i.get("scale", 1), 3), "role": i.get("role")} for i in h["instances"]
+                                   if not (n in DEDUP_RAIL_LIGHT_HOLES and i.get("light_id") in rail_lights)]
         out["lights"][str(n)] = [r3(l if isinstance(l, list) else l.get("pos")) for l in h.get("lights", [])]
     # pass-8 PointLights (manifest lights[]). The 3 H9 hanging lanterns carry their light on the lantern's own Neon
     # part (props_overrides.json adds with light_id take range/brightness/colour from here), so only the rail/glow
