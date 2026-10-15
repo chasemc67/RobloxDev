@@ -21,3 +21,23 @@ Oct 15, 2026, about 00:00 to 00:10 PT, Mac Mini, Claude Code (Opus 5.5). One Stu
 SC v103 vs `src`: `ServerStorage/CourseData/AuroraBatch3.luau` (src has the au7 h18 lantern cage update) and `ServerStorage/CourseData/PropPlacements.luau` (SC has 8 extra LG rail lantern entries that lg14 removed from src). See `exports/script-diff.md`.
 
 EXPORT DONE, STUDIO CLOSED
+
+## exp2
+Oct 15, 2026, about 00:12 to 00:27 PT, Mac Mini, Claude Code (Opus 5.5). This finishes the three places exp1 skipped. Each was exported from the File-downloaded copy of its published version, not the cloud place. One Studio at a time, Edit-mode reads only, no edits to place content. Nothing saved or published, no permissions granted, PC not used. `src/` and `tools/` weren't modified.
+
+Steps for each: copy `playtest/playtest-<role>-v<N>.rbxl` to `/tmp/exp2/<role>.rbxl`, run `open -a /Applications/RobloxStudio.app <copy>`, check that `list_roblox_studios` shows exactly one studio named `<role>.rbxl` and read `PlaceRole`, then `GOLF_STUDIO=<role>.rbxl GOLF_EXPORT_DIR=exports/<role>-v<N>/src python3 tools/run_playtests.py export`, write the manifest (same format as SC v103, plus `source`, `studioPlaceId`, `rbxlCopy.openedCopy`/`note`), and quit.
+
+| Place | Source (repo copy, sha256) | Studio read | Result |
+|---|---|---|---|
+| lobby v251 | `playtest-lobby-v251.rbxl` `a0ebd0432bbf701d096e0dd4adf93113c2527b7dc559ec71a7973443963ca241` (870,467 B) | PlaceRole lobby, PlaceId 0, PlaceVersion 0 (local file) | **EXPORTED** `exports/lobby-v251/`: 58 scripts, 1,750,959 B. 376 BaseParts, 320 MeshParts, no terrain cells. |
+| lantern_grove v25 | `playtest-lantern_grove-v25.rbxl` `5f6abe225eb021a2fbd991e867af40991c2b99574134bde2bdb744ec86374ab0` (3,474,151 B) | PlaceRole lantern_grove, 0 / 0 | **EXPORTED** `exports/lantern_grove-v25/`: 59 scripts, 1,759,148 B. 3,785 BaseParts, 2,525 MeshParts, terrain present. |
+| aurora_archipelago v13 | `playtest-aurora_archipelago-v13.rbxl` `c662d2674959315f00c329129e8b33c0b979e0673933424fd1c5cb33a8041352` (1,422,186 B) | PlaceRole aurora_archipelago, 0 / 0 | **EXPORTED** `exports/aurora_archipelago-v13/`: 59 scripts, 1,760,039 B. 1,851 BaseParts, 406 MeshParts, no terrain cells. |
+
+- A local file has no PlaceVersion (it reads 0), so each version comes from the downloaded file's name, backed by the recorded sha256.
+- On the first cold `open -a`, Studio came up on the start page without loading the file. A second `open -a` with the same file loaded it. LG and AU loaded on the first try.
+- On every quit, Studio showed "Save changes to <role>.rbxl?" (Save / Don't Save / Cancel; export's Edit-mode Luau marks the file dirty). It was never answered: the AppleScript quit got "User canceled (-128)", TERM didn't close it, and `pkill -KILL` did, which discards. `pgrep -x RobloxStudio` was empty before each next open and at the end. The `/tmp/exp2` copies and the three repo `.rbxl` files hash the same as before (`shasum -c` OK).
+
+### Drift (details in `exports/script-diff.md`)
+No place matches `src` byte for byte, and no two places match each other. 50 of 59 scripts are identical everywhere. The 9 that drift are `AuroraVisualCleanup` (missing from lobby), `AuroraEffects`, `PropsBuilder`, `VisualSeparation`, `CourseBuilder`, `CourseData/SugarloafCanyon`, `GolfClient/GolfTest`, `CourseData/AuroraBatch3` and `CourseData/PropPlacements`. Each place has its own course's latest data, but older copies of the other courses' data and shared builders. The lobby v251 is oldest (pre-au5/lg13/au6/sc11). Shared client scripts (VRControls, HUD, FrontEnd, BallController…) are identical in all four places.
+
+EXPORT DONE, STUDIO CLOSED

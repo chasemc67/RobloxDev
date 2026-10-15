@@ -1,0 +1,295 @@
+{
+  "placeId": 91438142503824,
+  "version": 25,
+  "role": "lantern_grove",
+  "source": "local downloaded copy",
+  "studioPlaceVersion": 0,
+  "studioPlaceId": 0,
+  "studioPlaceRole": "lantern_grove",
+  "exportTime": "2026-10-15T07:22:41+00:00",
+  "scriptCount": 59,
+  "scriptTotalBytes": 1759148,
+  "scripts": {
+    "ReplicatedFirst/ArrivalScreen.client.luau": {
+      "sha256": "dffc0ea1c86badacdaa8cfc7716036aceaa0d8820bfe8f5b9c879788fdec4f8e",
+      "bytes": 1125
+    },
+    "ReplicatedStorage/Golf/BallGroups.luau": {
+      "sha256": "c9e1dfb3a7dfb182e7ed035d297de96340fa8aa93f765bfc958980375ed8de7f",
+      "bytes": 1657
+    },
+    "ReplicatedStorage/Golf/CameraOcclusion.luau": {
+      "sha256": "68ece909aa582f59128840d6775c59031b7556a3427c6c1351987e60f96a2f22",
+      "bytes": 15546
+    },
+    "ReplicatedStorage/Golf/Config.luau": {
+      "sha256": "e55aba541ef8a212ef79876e5fffa259d58b8daf94234ad1488a87a7b1d09857",
+      "bytes": 11623
+    },
+    "ReplicatedStorage/Golf/Courses.luau": {
+      "sha256": "82ecbe11bc07f1140771711b6acded0afa2160dc8889704fe9a3d7d74052cca7",
+      "bytes": 2481
+    },
+    "ReplicatedStorage/Golf/MoverMath.luau": {
+      "sha256": "626879e717771ba34b923f78a8edc74b0b936ce9b0dde4bf49c7152b93e22924",
+      "bytes": 6987
+    },
+    "ReplicatedStorage/Golf/Places.luau": {
+      "sha256": "4e330d36ea0c5f37f759ace22b521a3c5634bfe4c07e411a81fdda79a1bd958d",
+      "bytes": 1746
+    },
+    "ServerScriptService/GolfServer.server.luau": {
+      "sha256": "c4f6cab0ed1ff4e73873d293f67dc45b820f6e32739b5c4610de19251bb3b159",
+      "bytes": 23605
+    },
+    "ServerScriptService/GolfServer/ClubSetup.luau": {
+      "sha256": "7c5105b067c1eb209df367e1dc8e447c61f4d75438116f3fc7879c5c82540665",
+      "bytes": 4348
+    },
+    "ServerScriptService/GolfServer/GolfTestServer.luau": {
+      "sha256": "5ca22986b0882fadfe1b8aed38ba9de2bf66eae8808b0a6d1d5b6caf3ed560c7",
+      "bytes": 17596
+    },
+    "ServerScriptService/GolfServer/Movers.luau": {
+      "sha256": "e5043f8d9249769c041f76916f770ec0b89373e73bc42c774bc69ced3bb94504",
+      "bytes": 5043
+    },
+    "ServerScriptService/GolfServer/PersonalBest.luau": {
+      "sha256": "684fcf18b3801c47996ec41e39c7ad1f95ef06b2d0283d4aa97cd5fbefc2916b",
+      "bytes": 8137
+    },
+    "ServerScriptService/Leaderboard.luau": {
+      "sha256": "415cddfb844236e60cc503e61e74496ea748a06fe62ed48c4f01cb550f50eee7",
+      "bytes": 3201
+    },
+    "ServerScriptService/LobbyServer.server.luau": {
+      "sha256": "4751766f5f845db11db8a0f76eb6d529c04a4d7648f7416c340f79369641a165",
+      "bytes": 6240
+    },
+    "ServerScriptService/PlaceTeleport.luau": {
+      "sha256": "c8e7f770e6138392f8e74f1578c4e027501b0dd5e20c687fdd7dc2602ccc3d6e",
+      "bytes": 5214
+    },
+    "ServerScriptService/WristPoseLog.server.luau": {
+      "sha256": "09ae5ca73a2e9ad92ec01520813965f6c6bffd9486c583203b79c437f28f40fe",
+      "bytes": 4090
+    },
+    "ServerStorage/AuroraEffects.luau": {
+      "sha256": "a32168bec0e2b618ca98b7db7f2b18c65602b82229c5ee8e0fc67a34f543101d",
+      "bytes": 6658
+    },
+    "ServerStorage/AuroraPropsBuilder.luau": {
+      "sha256": "7b28a311c82460b31008edb6ee1ee23525eab13157d80660ea9504abd451c321",
+      "bytes": 4888
+    },
+    "ServerStorage/AuroraVisualCleanup.luau": {
+      "sha256": "059fb34d5d975a922b90887b814906d1f7caebe16b0623a0fa4ff8b27e10d10d",
+      "bytes": 7423
+    },
+    "ServerStorage/CourseBuilder.luau": {
+      "sha256": "bf58778240542b892819306b0a38df29475c86f9c3b1d879660ac66bce525989",
+      "bytes": 107070
+    },
+    "ServerStorage/CourseData/AuroraArchipelago.luau": {
+      "sha256": "0b052132d286ff33398d868de0a54edd9fdce91ef7cbfff1d84c260527204734",
+      "bytes": 140163
+    },
+    "ServerStorage/CourseData/AuroraBatch3.luau": {
+      "sha256": "98c96fe635cdf4e666ff12e6ca9a447da02e5c7dc7b7fa54297877f6c204b6e3",
+      "bytes": 28684
+    },
+    "ServerStorage/CourseData/AuroraLayout.luau": {
+      "sha256": "99caaf2272994d32768e6e597af99a01181febf12d64aea16abc54c7a019d2fc",
+      "bytes": 963
+    },
+    "ServerStorage/CourseData/LanternGrove.luau": {
+      "sha256": "bdc2fdeddd96f308248a08f375b4268f68d271e08c0a803167474c2d12eebbac",
+      "bytes": 52788
+    },
+    "ServerStorage/CourseData/LobbyLayout.luau": {
+      "sha256": "a646ae378a5686d81ae10a3abc80bb32a028f5b8335c4bcd13ed9a96cf62d6a9",
+      "bytes": 70196
+    },
+    "ServerStorage/CourseData/PropPlacements.luau": {
+      "sha256": "bac36aaaddeb18ab67b7f38b182d548ba98879a8087189aea7d63bb8c4b4f7ad",
+      "bytes": 160069
+    },
+    "ServerStorage/CourseData/SugarloafCanyon.luau": {
+      "sha256": "ceac94849c84e00cb85900af84d6eff3928b4ed2c4eace7cf83e7f3b53bff49c",
+      "bytes": 162370
+    },
+    "ServerStorage/CourseData/SugarloafKit.luau": {
+      "sha256": "e004c401572cb7bfe8a44f05ada59abb4a0da5191d5637b619782585594ea08b",
+      "bytes": 70434
+    },
+    "ServerStorage/CourseData/SugarloafKitFiles1.luau": {
+      "sha256": "fffda1466a1a68afb8bc5ac82b6d67a4c74ee98ad6841a16684cb5069e32feee",
+      "bytes": 120520
+    },
+    "ServerStorage/CourseData/SugarloafKitFiles2.luau": {
+      "sha256": "d03ebabaf5fc1118a0f125e7a3142d6164548aa9604964dd76fa823732a8061c",
+      "bytes": 23466
+    },
+    "ServerStorage/CourseData/SugarloafLayout.luau": {
+      "sha256": "0b3c16be504e5adf38f60f45caad143c3560cee9b788a5606e6d1cad38337457",
+      "bytes": 2303
+    },
+    "ServerStorage/CourseData/WorldLayout.luau": {
+      "sha256": "f740286c168816620351c3a4f6cf09496e4ed6ccb749eade2bd480a9a47f8132",
+      "bytes": 41761
+    },
+    "ServerStorage/CourseData/WorldPieces.luau": {
+      "sha256": "6debfaaadee169916ab58d7f08c08b4b22a53734e96ba659a391235291aa120f",
+      "bytes": 76205
+    },
+    "ServerStorage/LobbyBuilder.luau": {
+      "sha256": "63654df044ce98320a9fae3f927cafff913a0675823ec7eadd2d67920f3146a1",
+      "bytes": 21889
+    },
+    "ServerStorage/PropsBuilder.luau": {
+      "sha256": "d5d7bb28b7268b339a86e044dd40ecdb9449e2d4b1fad3254942b107984b091f",
+      "bytes": 33761
+    },
+    "ServerStorage/SugarloafBuilder.luau": {
+      "sha256": "ef2af008c6ecb4ff657041d11cfc994feba6100e1c47599f297d252656b82d01",
+      "bytes": 22641
+    },
+    "ServerStorage/SugarloafDecals.luau": {
+      "sha256": "d8d3644ddc718ed602f1f82b89467e72d876e3830c0d785bd49b288b0a4ba70a",
+      "bytes": 9200
+    },
+    "ServerStorage/SugarloafHints.luau": {
+      "sha256": "dbba28426a363c7d3023134bc4b40f7e37f79eb326f69509658461116a135277",
+      "bytes": 3543
+    },
+    "ServerStorage/SugarloafOverrides.luau": {
+      "sha256": "63e04c7607fdefa5c1b4a23306e3af52dbcf1214c03a41395de9a9708f843f32",
+      "bytes": 6996
+    },
+    "ServerStorage/SugarloafRailTops.luau": {
+      "sha256": "393482bd5783921e16a8a6038119e7aebbe506d3ac9894e159311855aa0c6501",
+      "bytes": 5894
+    },
+    "ServerStorage/VisualSeparation.luau": {
+      "sha256": "03332e251f6a9975f665904e17c8ff7f3ac66fe45de6e1178657fd3e648d2e7b",
+      "bytes": 24392
+    },
+    "ServerStorage/WorldBuilder.luau": {
+      "sha256": "da748ae943930c59430dd6415affe65a15d7a354b7816379f1cd36a591f3e1e0",
+      "bytes": 50723
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/BallController.luau": {
+      "sha256": "77d5083c2620a3a08554d1d2e4dcde56609880507aab87ade5cc316a10ce8768",
+      "bytes": 35951
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/ClubSetup.luau": {
+      "sha256": "fe72715876a56c616ec1118db1824ca02f0a2e139d40907eb0363f005a870e06",
+      "bytes": 7288
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/CourseLighting.luau": {
+      "sha256": "746919885067bc4ac2710005138ad7ca0704e0a23e4e12de63fe5cb5d72f870f",
+      "bytes": 3711
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/Explore.luau": {
+      "sha256": "5e46f36e67d8a308e8beaa3dc77c5c06dfcfd448b6645b52109b0785e4aa74b6",
+      "bytes": 19262
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/FrontEnd.luau": {
+      "sha256": "661dc94cb5c4535bf72c34b408561afaeb7c4061efa671f26e2ca5534089f53f",
+      "bytes": 44148
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/GolfTest.luau": {
+      "sha256": "9e7873003870d4d4d449c4ee5a478175814118c9b9fbfc77ee375f42f8946d25",
+      "bytes": 117065
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/H9Lighting.luau": {
+      "sha256": "bf13e21292484fdf5d99fcd202006cfc6bb0bae37a6bed82ea644ae08c9cf925",
+      "bytes": 1881
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/HUD.luau": {
+      "sha256": "9cd00f6ecb548807795016080a6c4d79a935321ab035be18a80e72a24f07218e",
+      "bytes": 49223
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/LobbyRoam.luau": {
+      "sha256": "53f113e873a4a4810fb6809672e3ca1b050e7da54bfbaddb7e163a532f58452f",
+      "bytes": 3183
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/TeleportScreen.luau": {
+      "sha256": "dd5a7cbc65d96c0ed87ab76537984ae8bd362f737bfd3a9bf43fa3adce9da324",
+      "bytes": 3482
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/TouchControls.luau": {
+      "sha256": "0b0e693c9cd92f7ff8c65270e3c89856a1b44edc7954bd8c7838ff058a7f093d",
+      "bytes": 12045
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/VRControls.luau": {
+      "sha256": "439c8cc55528af99326c788a96f4f1414684644fe66b4c425fdc99894b68cc54",
+      "bytes": 59586
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/VRPointer.luau": {
+      "sha256": "332da9cfff1bee8ccd8b3dbc36bfa51863b7b6919174a180379498ffeb511dec",
+      "bytes": 13213
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfClient/XRay.luau": {
+      "sha256": "0e16a583a90dbc0a46f4f005f5662287319ef2692c7c1efcfd1d0ec93a3b6955",
+      "bytes": 5632
+    },
+    "StarterPlayer/StarterPlayerScripts/GolfMain.client.luau": {
+      "sha256": "ddd93aa6aa52e57283e925b11972aed4832dcc061227e18b5d427b92640d582b",
+      "bytes": 6078
+    },
+    "StarterPlayer/StarterPlayerScripts/LobbySpin.client.luau": {
+      "sha256": "af883880cb3ae1acd58083b03079a64b046004c9ca664bc0dcb1ad08d7ff0e86",
+      "bytes": 1204
+    },
+    "StarterPlayer/StarterPlayerScripts/SugarloafGondola.client.luau": {
+      "sha256": "0137332d9db6cf4472b59748f1e842cdfe6d33ac51e20cf37c5c45d4ae15641a",
+      "bytes": 2557
+    }
+  },
+  "workspace": {
+    "topLevelChildren": [
+      {
+        "baseParts": 0,
+        "class": "Camera",
+        "name": "Camera"
+      },
+      {
+        "baseParts": 1,
+        "class": "Part",
+        "name": "Baseplate"
+      },
+      {
+        "baseParts": 1,
+        "class": "Terrain",
+        "name": "Terrain"
+      },
+      {
+        "baseParts": 1,
+        "class": "SpawnLocation",
+        "name": "SpawnLocation"
+      },
+      {
+        "baseParts": 1445,
+        "class": "Folder",
+        "name": "World"
+      },
+      {
+        "baseParts": 2337,
+        "class": "Folder",
+        "name": "Course"
+      }
+    ],
+    "totalBaseParts": 3785,
+    "meshParts": 2525,
+    "terrainPresent": true,
+    "terrainCells": 631564
+  },
+  "rbxlCopy": {
+    "path": "games/vr-mini-golf/playtest/playtest-lantern_grove-v25.rbxl",
+    "sha256": "5f6abe225eb021a2fbd991e867af40991c2b99574134bde2bdb744ec86374ab0",
+    "bytes": 3474151,
+    "openedCopy": "/tmp/exp2/lantern_grove.rbxl",
+    "note": "exported from this File-downloaded copy of published v25 (opened as a local file copy, never saved); not from the cloud place"
+  }
+}
