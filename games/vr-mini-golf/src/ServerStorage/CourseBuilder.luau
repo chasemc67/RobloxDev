@@ -414,6 +414,11 @@ end
 -- A plain felt slab (sloped pieces are boxes tilted about the axis perpendicular to `slope.axis`).
 function Hole:buildPiece(pc)
 	local color = self:feltColor(pc)
+	-- stage sc12: an exact hole-local pose for a piece whose tilt a single-axis slope cannot express (H15 lean3 terrace)
+	if pc.def.cframe then
+		self:feltPart("Felt", self.cf * CFrame.new(table.unpack(pc.def.cframe)), Vector3.new(table.unpack(pc.def.part_size)), color, pc)
+		return
+	end
 	local sx, sz = pc.def.size[1], pc.def.size[2]
 	if pc.axis == "x" then
 		sx = math.sqrt(sx * sx + pc.rise * pc.rise)

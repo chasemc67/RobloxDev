@@ -1561,12 +1561,20 @@ local function seamShots()
 	refreshFelt()
 	local n = o.hole or 15
 	local h = hole(n)
-	local A, B = Vector3.new(unpack(o.seamA)), Vector3.new(unpack(o.seamB))
+	-- stage sc12: .seams = {{A={x,y,z}, B={x,y,z}}, ...} measures the crawl against several seam lines (default: seamA-seamB)
+	local segs = {}
+	for _, s in o.seams or { { A = o.seamA, B = o.seamB } } do
+		table.insert(segs, { Vector3.new(unpack(s.A)), Vector3.new(unpack(s.B)) })
+	end
 	local radius = o.radius or 0.6
 	local function seamDist(p: Vector3)
-		local ab, ap = flat(B - A), flat(p - A)
-		local t = math.clamp(ap:Dot(ab) / ab:Dot(ab), 0, 1)
-		return (ap - ab * t).Magnitude
+		local best = math.huge
+		for _, s in segs do
+			local ab, ap = flat(s[2] - s[1]), flat(p - s[1])
+			local t = math.clamp(ap:Dot(ab) / ab:Dot(ab), 0, 1)
+			best = math.min(best, (ap - ab * t).Magnitude)
+		end
+		return best
 	end
 	local rows = {}
 	for i, m in o.shots do
@@ -1581,13 +1589,31 @@ local function seamShots()
 			continue
 		end
 		local active, crawl, minD = false, 0, math.huge
+		local crawlAny, crawlPos, lastMoving = 0, nil, nil
+		-- stage sc12: optional per-shot trace (.trace = true): ball position, speed, felt piece under it, every 0.1 s
+		local traceRows, traceT = {}, 0
+		local traceParams = RaycastParams.new()
+		traceParams.FilterType = Enum.RaycastFilterType.Include
+		traceParams.FilterDescendantsInstances = { h }
 		local conn = RunService.PostSimulation:Connect(function(dt)
 			local b = Ball.ball
 			if Ball.state == "moving" then active = true end
 			if not active or not b or Ball.state ~= "moving" then return end
 			local d = seamDist(b.Position)
 			minD = math.min(minD, d)
-			if d < radius and b.AssemblyLinearVelocity.Magnitude < 0.3 then crawl += dt end
+			lastMoving = b.Position
+			if o.trace and (#traceRows == 0 or os.clock() - traceT >= 0.1) and #traceRows < 300 then
+				traceT = os.clock()
+				local g = workspace:Raycast(b.Position + Vector3.new(0, 0.3, 0), Vector3.new(0, -0.6, 0), traceParams)
+				table.insert(traceRows, { round(b.Position.X, 3), round(b.Position.Y, 3), round(b.Position.Z, 3),
+					round(b.AssemblyLinearVelocity.Magnitude, 3), g and (g.Instance:GetAttribute("PieceId") or g.Instance.Name) or false,
+					g and round(g.Position.Y, 3) or false, Ball.state })
+			end
+			if b.AssemblyLinearVelocity.Magnitude < 0.3 then
+				crawlAny += dt
+				crawlPos = b.Position
+				if d < radius then crawl += dt end
+			end
 		end)
 		local r = shootS("seam-" .. i, Vector3.new(m.dir[1], 0, m.dir[2]), m.speed, { cup = h.Cup, timeout = o.timeout or 26, watchStill = true })
 		conn:Disconnect()
@@ -1601,16 +1627,30 @@ local function seamShots()
 			end
 		end
 		local hops = 0
-		for _, f in r.flags or {} do if f.kind == "unstuck" then hops += 1 end end
+		local wedged, nonrest = false, r.outcome == "timeout" or crawlAny > 2
+		local flagPos = {}
+		for _, f in r.flags or {} do
+			if f.kind == "unstuck" then hops += 1 end
+			if f.kind == "forcedrest" then wedged = true end
+			if f.kind == "stuck-3s" or f.kind == "offsurface" or (f.kind == "autoreset" and f.reason == "timeout") then nonrest = true end
+			table.insert(flagPos, { f.kind .. (f.reason and (":" .. f.reason) or ""), f.pos or f.from })
+		end
 		local row = { shot = i, start = vec(hit.Position), dir = m.dir, speed = m.speed, group = m.group, outcome = r.outcome, finish = r.finish,
 			flags = kinds, minSeamDist = round(minD, 3), finishSeamDist = round(seamDist(fin), 3), crawlNearS = round(crawl, 2), seamHops = hops,
-			stuck = r.outcome == "timeout" or flagged or crawl > 2, tEnd = r.tEnd }
+			stuck = r.outcome == "timeout" or flagged or crawl > 2, tEnd = r.tEnd,
+			wedged = wedged, nonrest = nonrest, crawlAnyS = round(crawlAny, 2), crawlPos = crawlPos and vec(crawlPos),
+			lastMoving = lastMoving and vec(lastMoving), flagPos = flagPos, trace = o.trace and traceRows or nil }
 		table.insert(rows, row)
 		event("seam-row", row)
 	end
-	local stuck = 0
-	for _, x in rows do if x.stuck then stuck += 1 end end
-	return { seamA = o.seamA, seamB = o.seamB, radius = radius, shots = #rows, stuck = stuck, rows = rows }
+	local stuck, wedged, nonrest = 0, 0, 0
+	for _, x in rows do
+		if x.stuck then stuck += 1 end
+		if x.wedged then wedged += 1 end
+		if x.nonrest then nonrest += 1 end
+	end
+	return { seamA = o.seamA, seamB = o.seamB, seams = o.seams, radius = radius, shots = #rows, stuck = stuck, wedged = wedged,
+		nonrest = nonrest, rows = rows }
 end
 
 scenario({
