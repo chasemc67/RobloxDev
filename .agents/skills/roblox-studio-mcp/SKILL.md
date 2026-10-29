@@ -153,3 +153,9 @@ For all three: give one focused task per run, say whether changes are allowed (`
 - **3D Importer frame:** the "Studio Default" preset imports at 100× (cm) and turned 180° about Y. Place each MeshPart at `root * CFrame.new(fbx_bounds centre) * CFrame.Angles(0, math.pi, 0)` with `Size` = the `tools/fbx_bounds.py` size (sc10/sc12 method), then verify with `EditableMesh` vertices against the target surface.
 - **Opt-out from VisualSeparation:** a noncolliding part with attribute `ZF1KeepPose=true` is skipped by `VisualSeparation.Apply` (keeps its exact CFrame/Size). Use it for textured decor meshes sunk into the felt.
 - **Team Create "Server did not start [0]"** on EditPlace: click **Retry** in the dialog; the place then opens normally.
+
+## Lessons from vr-mini-golf stage gg1
+- **EditPlace opens the latest saved version, not the published one.** Check `game.PlaceVersion` against Creator Hub Version History (with "Show published only" off). An unpublished save made after the last publish means the open place may not be the published one. Diff the inventory before you do any work.
+- **Closing a Team Create place saves a new (unpublished) version**, even when nothing was edited (gg1: read-only preflight, then quit, produced LG v38). Say so in the report; it is not a publish.
+- **Quit Studio without keystrokes:** `osascript -e 'tell application id "com.roblox.RobloxStudio" to quit'`. It returned "User canceled (-128)", but Studio still quit; confirm with `pgrep -x RobloxStudio`. This avoids sending ⌘Q to a frontmost Chrome.
+- **Studio in a full-screen Space can't be captured** with `screencapture -l<id>` ("could not create image from window"). Use MCP `screen_capture` for the viewport. Chrome windows capture fine (`tools/gg1_window.py grab "Google Chrome" out.png`).
