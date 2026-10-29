@@ -305,7 +305,11 @@ function HUD.refresh()
 		wrist.par.Text = tostring(par)
 		wrist.stroke.Text = tostring(player:GetAttribute("Strokes") or 0)
 		-- total vs par over the holes finished so far; personal best for the course vs its par
+		-- (stage gg2: on the bonus hole the round hole is the parked one, player attribute Hole)
 		local scores, d, parSum = scoresOf(player), 0, 0
+		if player:GetAttribute("BonusHole") then
+			n = player:GetAttribute("Hole") or n
+		end
 		for i, h in holeList() do
 			local hp = h:GetAttribute("Par") or 0
 			parSum += hp
@@ -1144,7 +1148,7 @@ function HUD.init(isVR, ballController)
 	HUD.setFade = setFade
 	local FADE_OUT = 0.45
 	Remotes.HoleComplete.OnClientEvent:Connect(function(who, holeNum)
-		if who ~= player or holeNum >= #holeList() then
+		if who ~= player or holeNum == #holeList() then -- (no fade after the last hole; the bonus hole 19 fades back)
 			return
 		end
 		task.delay(math.max(0, Config.HoleTransitionTime - FADE_OUT - 0.05), function()
@@ -1183,6 +1187,11 @@ function HUD.init(isVR, ballController)
 	setupAudio()
 	Remotes.HoleComplete.OnClientEvent:Connect(function(who, holeNum, strokes, par, maxed)
 		local name, color = scoreName(strokes, par)
+		-- (stage gg2) the hidden bonus hole
+		local bonus = Courses.bonusHole(Courses.of(player))
+		if bonus and bonus:GetAttribute("HoleNumber") == holeNum and not maxed then
+			name = "Honk!  " .. string.gsub(name, "!+$", "") .. " on the Golden Goose"
+		end
 		if who == player then
 			completedWristHole = holeNum
 			holeOutAudio(strokes, par, maxed)
@@ -1193,7 +1202,8 @@ function HUD.init(isVR, ballController)
 		HUD.refresh()
 	end)
 	Remotes.Notice.OnClientEvent:Connect(function(text, kind)
-		HUD.message(text, kind == "bad" and Color3.fromRGB(255, 120, 100) or Color3.new(1, 1, 1), 2)
+		local color = kind == "bad" and Color3.fromRGB(255, 120, 100) or (kind == "secret" and Color3.fromHex("FFB347") or Color3.new(1, 1, 1))
+		HUD.message(text, color, 2)
 	end)
 	-- (scores, result): result = { course, total, par, best, previousBest, newBest, counted } from GolfServer
 	Remotes.CourseComplete.OnClientEvent:Connect(function(scores, result)

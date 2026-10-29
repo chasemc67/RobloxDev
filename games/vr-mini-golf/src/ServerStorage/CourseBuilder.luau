@@ -236,6 +236,9 @@ end
 
 function Hole:feltColor(pc)
 	local d = pc.def
+	if d.color then
+		return hex(d.color) -- (stage gg2: per-piece felt tint, used only by the bonus goose hole's zones)
+	end
 	if pc.overlay then
 		return P.feltHi
 	elseif d.kind == "tunnel" then
@@ -1954,8 +1957,9 @@ function Hole:buildTee()
 	local at = vis("AimTarget", CFrame.new(aim), Vector3.new(0.2, 0.2, 0.2), Color3.new(1, 1, 1), M.SmoothPlastic, self.model)
 	at.Transparency = 1
 	-- hole sign beside the tee, on the lawn clear of any felt, facing the tee
-	local spot
-	for _, o in { { -5.4, -1 }, { 5.4, -1 }, { -5.4, 2.5 }, { 5.4, 2.5 }, { -2.5, 4.5 }, { 2.5, 4.5 }, { -9, 0 }, { 9, 0 }, { 0, 6 } } do
+	-- (stage gg2: spec tee.sign = {x, z} puts the sign there, e.g. the goose hole, whose tee sits in a 22-wide body)
+	local spot = t.sign and Vector3.new(t.sign[1], self.lawnTopLocal, t.sign[2])
+	for _, o in t.sign and {} or { { -5.4, -1 }, { 5.4, -1 }, { -5.4, 2.5 }, { 5.4, 2.5 }, { -2.5, 4.5 }, { 2.5, 4.5 }, { -9, 0 }, { 9, 0 }, { 0, 6 } } do
 		local x, z = pos.X + o[1], pos.Z + o[2]
 		local clear = true
 		for dx = -1.2, 1.2, 0.6 do
@@ -2160,6 +2164,127 @@ local function buildHole(course, def, layout)
 	self:finish()
 	model.Parent = course
 	return model
+end
+
+------------------------------------------------------------------------------------------------ bonus hole (stage gg2)
+-- A hidden bonus hole (Lantern Grove "Hole 19 - The Golden Goose": ServerStorage.CourseData.LanternGroveBonus, made by
+-- tools/gg2_goose.py) built into an existing course folder beside its holes, which are not touched. The model gets
+-- attribute Bonus = true, so Courses.holes() leaves it out of the round (scorecard, par total, #holes) and
+-- Courses.bonusHole() finds it. GolfServer starts it when a ball on hole 9 reaches the egg (BuildH9Secret).
+--   local CB = require(game.ServerStorage.CourseBuilder:Clone())
+--   local data = require(game.ServerStorage.CourseData.LanternGroveBonus:Clone())
+--   CB.BuildBonus(data); CB.BuildH9Secret(data); CB.ApplyVisualSeparation(workspace.Course)
+local function decorPart(parent, cf, d)
+	local p = vis(d.name, cf * CFrame.new(v3(d.center)) * CFrame.Angles(0, math.rad(d.yaw or 0), 0), v3(d.size),
+		hex(d.color), M[d.material] or M.SmoothPlastic, parent, d.shape == "Ball" and Enum.PartType.Ball or nil)
+	p.CastShadow = false
+	p:SetAttribute("VisualQueryDisabled", true) -- (CameraOcclusion.tagDecor leaves it alone)
+	return p
+end
+
+function CourseBuilder.BuildBonus(data, course)
+	course = course or workspace:FindFirstChild("Course")
+	local def = data.holes[1]
+	local old = course:FindFirstChild("Hole" .. def.number)
+	if old then
+		old:Destroy()
+	end
+	local layout = { holes = { [def.number] = { origin = data.placement.origin, yaw = data.placement.yaw } } }
+	BUILD_COURSE_ID = course:GetAttribute("CourseId")
+	local model = buildHole(course, def, layout)
+	model:SetAttribute("Bonus", true)
+	model:SetAttribute("ZF1DenseFeltJoints", true) -- (VisualSeparation: stair-stepped felt joints, see there)
+	local cf = holeFrame(def, layout)
+	for _, d in def.decor_parts or {} do
+		decorPart(model.Decor, cf, d)
+	end
+	local counts = CourseBuilder.ApplyPhysics(model)
+	counts.parts = #model:GetDescendants()
+	return game:GetService("HttpService"):JSONEncode(counts)
+end
+
+-- The secret way in (data.secret): golden goose footprints on hole 9's felt leading to a glowing golden egg in a
+-- dead-end pocket. Additive and visual only, in Hole<N>/Secret: nothing collides, queries or touches, so no ball path
+-- changes. The egg is a trigger the server watches (GolfServer): EggTrigger (Radius, ReturnWorld, BonusHole).
+function CourseBuilder.BuildH9Secret(data, course)
+	course = course or workspace:FindFirstChild("Course")
+	local s = data.secret
+	local h = course:FindFirstChild("Hole" .. s.hole)
+	local old = h:FindFirstChild("Secret")
+	if old then
+		old:Destroy()
+	end
+	local hcf = CFrame.new(h:GetAttribute("HoleOrigin")) * CFrame.Angles(0, math.rad(h:GetAttribute("HoleYaw") or 0), 0)
+	local m = new("Model", { Name = "Secret" }, h)
+	local feltParams = RaycastParams.new()
+	feltParams.FilterType = Enum.RaycastFilterType.Include
+	feltParams.FilterDescendantsInstances = { h.Geometry }
+	-- the felt top under a hole-local (x, z) (searching down from the spec height + 2)
+	local function surface(x, y, z)
+		local p = hcf:PointToWorldSpace(Vector3.new(x, y + 2, z))
+		local hit = workspace:Raycast(p, Vector3.new(0, -6, 0), feltParams)
+		assert(hit and CollectionService:HasTag(hit.Instance, SURFACE_TAG), string.format("no felt under secret spot %.2f, %.2f", x, z))
+		return hit.Position, hit.Normal
+	end
+	local function frame(x, y, z, yaw)
+		local pos, n = surface(x, y, z)
+		local fwd = hcf:VectorToWorldSpace(Vector3.new(math.sin(math.rad(yaw)), 0, math.cos(math.rad(yaw))))
+		local right = fwd:Cross(n).Unit
+		return CFrame.fromMatrix(pos, right, n) -- (right-handed; -Z = look = fwd projected on the felt)
+	end
+	local function mark(p)
+		p.CastShadow = false
+		p:SetAttribute("VisualQueryDisabled", true)
+		return p
+	end
+	-- footprints: a web 0.09 above the felt (part sunk 0.11 into it), three toes 0.085 above the web (no coplanar tops)
+	local prints = new("Folder", { Name = "Footprints" }, m)
+	local col = hex(s.print_color)
+	for i, fp in s.prints do
+		local f = frame(fp[1], fp[2], fp[3], fp[4]) -- fp[4]: walking direction (hole-local yaw, 180 = toward -Z)
+		local foot = new("Model", { Name = "Print" .. i }, prints)
+		mark(vis("Web", f * CFrame.new(0, 0.09 - 0.1, 0.12), Vector3.new(0.62, 0.2, 0.36), col, M.SmoothPlastic, foot))
+		for k, a in { -32, 0, 32 } do
+			local base = f * CFrame.new((k - 2) * 0.22, 0.175 - 0.1, -0.02)
+			mark(vis("Toe", base * CFrame.Angles(0, math.rad(-a), 0) * CFrame.new(0, 0, -0.3), Vector3.new(0.2, 0.2, 0.62), col, M.SmoothPlastic, foot))
+		end
+	end
+	for i, fe in s.feathers do
+		local f = frame(fe[1], fe[2], fe[3], fe[4])
+		local feather = new("Model", { Name = "Feather" .. i }, m)
+		mark(vis("Vane", f * CFrame.new(0, 0.09 - 0.1, 0), Vector3.new(0.36, 0.2, 1.0), hex(s.feather_color), M.SmoothPlastic, feather))
+		mark(vis("Quill", f * CFrame.new(0, 0.175 - 0.1, -0.15), Vector3.new(0.2, 0.2, 1.3), hex(s.print_color), M.SmoothPlastic, feather))
+	end
+	-- the golden egg in its pocket, a glowing ring at the trigger radius (the teleport entry-ring look) and the trigger
+	local e = s.egg
+	local trig = surface(e.trigger[1], e.trigger[2], e.trigger[3])
+	local eggPos = surface(e.pos[1], e.pos[2], e.pos[3])
+	local egg = mark(vis("GoldenEgg", CFrame.new(eggPos + Vector3.new(0, e.size[2] / 2 - 0.03, 0)), v3(e.size), hex(e.color), M.Neon, m))
+	new("SpecialMesh", { MeshType = Enum.MeshType.Sphere }, egg)
+	local entryRing = new("Model", { Name = "EggRing" }, m)
+	local ringR, lift = e.radius + 0.03, 0.22
+	ring(entryRing, CFrame.new(trig + Vector3.new(0, lift, 0)), ringR, 0.2, P.gold, 16)
+	local glow = mark(vis("Glow", CFrame.new(trig + Vector3.new(0, lift, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+		Vector3.new(0.2, math.max(ringR - 0.18, 0.1) * 2, math.max(ringR - 0.18, 0.1) * 2), P.gold, M.Neon, entryRing, Enum.PartType.Cylinder))
+	glow.Transparency = 0.55
+	new("PointLight", { Color = P.gold, Range = 5, Brightness = 1 }, glow)
+	new("ParticleEmitter", {
+		Color = ColorSequence.new(P.gold),
+		LightEmission = 1,
+		Size = NumberSequence.new(0.1),
+		Lifetime = NumberRange.new(1, 2),
+		Rate = 3,
+		Speed = NumberRange.new(0.3, 0.8),
+		SpreadAngle = Vector2.new(40, 40),
+		Transparency = NumberSequence.new(0.2, 1),
+	}, glow)
+	local marker = vis("EggTrigger", CFrame.new(trig), Vector3.new(0.2, 0.2, 0.2), P.gold, M.SmoothPlastic, m)
+	marker.Transparency = 1
+	marker:SetAttribute("Radius", e.radius)
+	marker:SetAttribute("BonusHole", data.holes[1].number)
+	local back = surface(s.return_pos[1], s.return_pos[2], s.return_pos[3])
+	marker:SetAttribute("ReturnWorld", back + Vector3.new(0, Config.BallRadius + 0.03, 0))
+	return #m:GetDescendants()
 end
 
 ------------------------------------------------------------------------------------------------ physics groups

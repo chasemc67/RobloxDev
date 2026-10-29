@@ -539,7 +539,7 @@ function PropsBuilder.Place(course)
 	local holes = {}
 	for _, h in course:GetChildren() do
 		local n = h:GetAttribute("HoleNumber")
-		if n then
+		if n and not h:GetAttribute("Bonus") then -- (stage gg2: the bonus hole has no props)
 			holes[n] = h
 		end
 	end

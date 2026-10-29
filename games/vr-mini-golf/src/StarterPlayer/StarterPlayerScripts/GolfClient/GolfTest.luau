@@ -1795,7 +1795,7 @@ scenario({
 	end,
 })
 
-for n = 1, 18 do -- (h10-h18: Sugarloaf Canyon only, with opts.course)
+for n = 1, 19 do -- (h10-h18: Sugarloaf Canyon only, with opts.course; h19: Lantern Grove's hidden bonus hole, stage gg2)
 	scenario({
 		name = "h" .. n,
 		desc = "Hole " .. n .. ": intended lines (good/average), HIO line + sweep, rail banks, mover timing sweep, fuzz (escape/stuck)",
@@ -1803,6 +1803,85 @@ for n = 1, 18 do -- (h10-h18: Sugarloaf Canyon only, with opts.course)
 		run = holeScenario(n),
 	})
 end
+
+-- Stage gg2: hole 9's golden egg (the way into the hidden bonus hole 19). The server counts each entry into the egg
+-- trigger on the ball (attribute EggHits); in the harness that only counts unless workspace.GolfTestEggStartsBonus.
+-- GolfTestOpts: .eggShots = {{x, z, aim, speed}} (H9 local spot, aim = atan2(dz, dx) deg, studs/s): deliberate putts;
+-- .eggFuzz = N random H9 shots (the fuzz sweep) and .eggRoutes = N good/average played holes: the accidental hit rate.
+-- .slow19 = N gentle putts (1.5-5 studs/s, any direction) from random hole-19 neck/head/beak felt: stuck spots.
+local function eggHits()
+	return Ball.ball:GetAttribute("EggHits") or 0
+end
+scenario({
+	name = "gg2egg",
+	desc = "H9 golden egg: deliberate putts, accidental rate over fuzz + played routes; H19 slow putts in the corners",
+	seconds = 1500,
+	run = function()
+		refreshFelt()
+		table.clear(issues)
+		local o = opts()
+		local out = { shots = {} }
+		for i, m in o.eggShots or {} do
+			placeL(9, m[1], m[2], m[3] or 0)
+			local h0 = eggHits()
+			local r = shootS("h9-egg-" .. i, aimDir(9, m[4]), m[5], { cup = hole(9).Cup, timeout = 22 })
+			local f = toLocal(9, Ball.ball.Position)
+			table.insert(out.shots, { from = { m[1], m[2] }, aim = m[4], speed = m[5], outcome = r.outcome, egg = eggHits() > h0,
+				finish = { round(f.X), round(f.Z) } })
+		end
+		if o.eggFuzz then
+			local h0 = eggHits()
+			local f = fuzz(9, o.eggFuzz, o.seed)
+			out.fuzz = { shots = f.shots, eggHits = eggHits() - h0, escapes = f.escapes, stuck = f.stuck, timeouts = f.timeouts, holed = f.holed }
+		end
+		if o.eggRoutes then
+			local h0, holes, strokes = eggHits(), 0, 0
+			for k = 1, o.eggRoutes do
+				local r = playHole(9, k % 2 == 0 and "average" or "good")
+				holes += 1
+				strokes += r.strokes
+			end
+			out.routes = { played = holes, strokes = strokes, eggHits = eggHits() - h0 }
+		end
+		if o.slow19 then
+			local n = 19
+			local sp = spec(n)
+			local rng = Random.new(o.seed or 19)
+			local res = { shots = 0, stuck = 0, escapes = 0, timeouts = 0, holed = 0, rests = {}, list = {} }
+			for i = 1, o.slow19 * 10 do
+				if res.shots >= o.slow19 then break end
+				local f = sp.felt[rng:NextInteger(1, #sp.felt)]
+				if f.zone ~= "body" then
+					local hx, hz = f.size[1] / 2 - 0.1, f.size[2] / 2 - 0.1
+					local x, z = f.center[1] + rng:NextNumber(-hx, hx), f.center[3] + rng:NextNumber(-hz, hz)
+					if pcall(placeL, n, x, z, f.center[2] + 0.3) then
+						local ang, v = rng:NextNumber(0, 360), rng:NextNumber(1.5, 5)
+						local r = shootS(string.format("h19-slow-%d", i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
+						if r.outcome ~= "refused" then
+							res.shots += 1
+							local stuck = r.outcome == "timeout"
+							for _, fl in r.flags or {} do
+								if fl.kind == "offsurface" or fl.kind == "forcedrest" or fl.kind == "stuck-3s" then
+									stuck = true
+								end
+							end
+							if r.outcome == "escape" then res.escapes += 1 end
+							if r.outcome == "timeout" then res.timeouts += 1 end
+							if r.outcome == "cup" then res.holed += 1 end
+							if stuck then res.stuck += 1 end
+							if stuck or r.outcome == "escape" or #(r.flags or {}) > 0 then
+								table.insert(res.list, { label = r.label, start = { round(x), round(z) }, aim = round(ang, 1), speed = round(v), outcome = r.outcome, flags = r.flags })
+							end
+						end
+					end
+				end
+			end
+			out.slow19 = res
+		end
+		out.issues = table.clone(issues)
+		return out
+	end,
+})
 
 -- Timing obstacles (H7 log, H8 root door, H9 lantern pendulum): Game Art Bot's intended line through each one
 -- (playtest-log.md Round 7), fired at `count` evenly spaced phases of the mover's cycle as this client sees it.

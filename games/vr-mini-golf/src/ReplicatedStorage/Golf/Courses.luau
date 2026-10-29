@@ -23,17 +23,29 @@ function Courses.folder(id: string?): Instance?
 	return workspace:FindFirstChild(Courses.folderName(id))
 end
 
--- Hole models of a course by number ({ [1] = Hole1, ... }).
+-- Hole models of a course by number ({ [1] = Hole1, ... }). Stage gg2: bonus holes (attribute Bonus, e.g. Lantern
+-- Grove's hidden "Hole 19") are not part of the round, so they are left out: the list stays 1..N and # works.
 function Courses.holes(id: string?)
 	local list = {}
 	local course = Courses.folder(id)
 	for _, h in course and course:GetChildren() or {} do
 		local n = h:GetAttribute("HoleNumber")
-		if n then
+		if n and not h:GetAttribute("Bonus") then
 			list[n] = h
 		end
 	end
 	return list
+end
+
+-- Stage gg2: the course's hidden bonus hole model (attribute Bonus), or nil.
+function Courses.bonusHole(id: string?)
+	local course = Courses.folder(id)
+	for _, h in course and course:GetChildren() or {} do
+		if h:GetAttribute("HoleNumber") and h:GetAttribute("Bonus") then
+			return h
+		end
+	end
+	return nil
 end
 
 -- The course a player is on (player attribute "Course", set by the server).

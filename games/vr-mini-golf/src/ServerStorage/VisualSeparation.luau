@@ -243,11 +243,19 @@ function Separation.Apply(course, scenery)
   end
   return false
  end
- local function feltContinues(baseCF,baseSize,axis,sign)
+ -- Stage gg2: holes whose model has ZF1DenseFeltJoints (the bonus goose hole's stair-stepped felt, whose
+ -- neighbours often share only part of an edge) test every 0.1 stud instead of 9 points; other holes unchanged.
+ local dense={}
+ for _,m in course:GetChildren() do
+  local n=m.Name:match("^Hole(%d+)$")
+  if n and m:GetAttribute("ZF1DenseFeltJoints") then dense[tonumber(n)]=true end
+ end
+ local function feltContinues(baseCF,baseSize,axis,sign,fine)
   local half=baseSize/2
   local len=axis==1 and half.Z or half.X
-  for k=0,8 do
-   local t=(len-0.05)*(k/4-1)
+  local steps=fine and math.max(8,math.ceil(2*len/0.1)) or 8
+  for k=0,steps do
+   local t=(len-0.05)*(2*k/steps-1)
    local point=baseCF:PointToWorldSpace(axis==1 and Vector3.new(sign*(half.X+0.02),half.Y,t) or Vector3.new(t,half.Y,sign*(half.Z+0.02)))
    for _,s in surfaceTops do
     if (s.cf.Position-point).Magnitude<=s.radius+0.1 and not (s.cf==baseCF and s.half==half) then
@@ -299,7 +307,7 @@ function Separation.Apply(course, scenery)
    -- adjacent felt (and the cup plate) meets edge to edge with no dark seam.
    local inset={}
    for _,e in {{1,1},{1,-1},{3,1},{3,-1}} do
-    inset[e[1]*e[2]]=feltContinues(baseCF,baseSize,e[1],e[2]) and FLUSH or GAP
+    inset[e[1]*e[2]]=feltContinues(baseCF,baseSize,e[1],e[2],dense[r.hole]) and FLUSH or GAP
    end
    -- A narrow strip regains the minimum width from its insets (outer ones are the large ones), so its
    -- flush edges stay on the joint instead of the skin re-centring over a neighbour.

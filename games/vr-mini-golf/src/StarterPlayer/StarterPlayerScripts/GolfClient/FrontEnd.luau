@@ -295,6 +295,14 @@ local function buildTitle()
 		button("Play", { Name = "Play", LayoutOrder = 2, Size = UDim2.fromOffset(280, 76) }, row1, function()
 			show("courses")
 		end)
+		if player:GetAttribute("BonusHole") then
+			-- (stage gg2) on the hidden bonus hole: leave it early, back to where the round was parked
+			row1.Size = UDim2.fromOffset(920, 76)
+			button("Back to Hole " .. tostring(player:GetAttribute("Hole") or ""), { Name = "LeaveBonus", LayoutOrder = 3, Size = UDim2.fromOffset(320, 76) }, row1, function()
+				FrontEnd.close()
+				Remotes:WaitForChild("LeaveBonus"):FireServer()
+			end)
+		end
 	else
 		button("Play", { Name = "Play", LayoutOrder = 1, Size = UDim2.fromOffset(340, 76) }, row1, function()
 			show("courses")

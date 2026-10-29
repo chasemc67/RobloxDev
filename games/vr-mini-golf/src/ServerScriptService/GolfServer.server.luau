@@ -56,6 +56,24 @@ local function holesOf(st)
 	return courseHoles[st and st.course or PLACE_COURSE] or holes
 end
 
+-- Stage gg2: this course's hidden bonus hole (Lantern Grove "Hole 19 - The Golden Goose"; CourseBuilder.BuildBonus),
+-- left out of `holes` by Courses.holes. A ball that rolls into the golden egg on hole 9 (Hole9.Secret.EggTrigger)
+-- starts it as a side trip: st.bonus = { strokes, par, returnPos }. Hole 9 stays parked meanwhile (st.hole,
+-- st.strokes and the Scores attribute are never touched), and sinking, max strokes or LeaveBonus puts the ball back
+-- on hole 9 (no penalty). The 9-hole round, scorecard, personal best and leaderboard never see the bonus hole.
+local bonusHole = Courses.bonusHole(PLACE_COURSE)
+local BONUS_NUMBER = bonusHole and bonusHole:GetAttribute("HoleNumber")
+local BONUS_BEST_KEY = PLACE_COURSE .. "_h" .. tostring(BONUS_NUMBER) -- PersonalBest key (never the leaderboard)
+local eggs = {} -- [hole number] = { pos, radius, returnPos }
+if bonusHole then
+	for n, h in holes or {} do
+		local trig = h:FindFirstChild("Secret") and h.Secret:FindFirstChild("EggTrigger")
+		if trig and trig:GetAttribute("BonusHole") == BONUS_NUMBER then
+			eggs[n] = { pos = trig.Position, radius = trig:GetAttribute("Radius"), returnPos = trig:GetAttribute("ReturnWorld") }
+		end
+	end
+end
+
 local ballsFolder = workspace:FindFirstChild("Balls")
 if not ballsFolder then
 	ballsFolder = Instance.new("Folder")
@@ -95,7 +113,27 @@ end
 
 -- st.testHole is only set by the Studio test harness (GolfServer.GolfTestServer).
 local function holeOf(st)
-	return st.testHole or holesOf(st)[st.hole]
+	return st.testHole or (st.bonus and bonusHole) or holesOf(st)[st.hole]
+end
+
+-- the hole number being played (the bonus hole's during a bonus trip) and its strokes
+local function holeNumberOf(st)
+	return st.bonus and BONUS_NUMBER or st.hole
+end
+
+local function strokesOf(st)
+	if st.bonus then
+		return st.bonus.strokes
+	end
+	return st.strokes[st.hole] or 0
+end
+
+local function addStrokes(st, n)
+	if st.bonus then
+		st.bonus.strokes += n
+	else
+		st.strokes[st.hole] = (st.strokes[st.hole] or 0) + n
+	end
 end
 
 local function teePosition(hole)
@@ -116,9 +154,11 @@ end
 
 local function publish(player, st)
 	player:SetAttribute("Hole", st.hole)
-	player:SetAttribute("HoleHoled", st.sunk == true)
-	player:SetAttribute("Strokes", st.strokes[st.hole] or 0)
+	player:SetAttribute("HoleHoled", st.sunk == true and not st.bonus)
+	player:SetAttribute("Strokes", strokesOf(st))
 	player:SetAttribute("Scores", HttpService:JSONEncode(st.strokes))
+	-- (stage gg2) set while on the bonus hole; "Hole" keeps the parked round hole for the scorecard and totals
+	player:SetAttribute("BonusHole", st.bonus and BONUS_NUMBER or nil)
 end
 
 local function placeBall(player, st, pos, reason)
@@ -130,7 +170,7 @@ local function placeBall(player, st, pos, reason)
 		st.resumePos = pos
 		ball.Anchored = true
 		ball.CFrame = CFrame.new(pos)
-		sendTo(Remotes.BallPlaced, player, pos, reason, st.testHole and 0 or st.hole)
+		sendTo(Remotes.BallPlaced, player, pos, reason, st.testHole and 0 or holeNumberOf(st))
 		return
 	end
 	-- the owning client may still send a stale position or two from before the move (e.g. a rewind while the
@@ -146,10 +186,11 @@ local function placeBall(player, st, pos, reason)
 	else
 		ball:SetNetworkOwner(nil)
 	end
-	sendTo(Remotes.BallPlaced, player, pos, reason, st.testHole and 0 or st.hole)
+	sendTo(Remotes.BallPlaced, player, pos, reason, st.testHole and 0 or holeNumberOf(st))
 end
 
 local function startHole(player, st, index)
+	st.bonus = nil -- (a new hole, restart or course pick ends a bonus trip)
 	st.hole = index
 	st.strokes[index] = 0
 	st.sunk = false
@@ -205,8 +246,68 @@ local function scheduleReturn(player, st)
 	end)
 end
 
+-- Stage gg2: back from the bonus hole to the parked round hole, at the egg's return spot (hole 9 strokes unchanged).
+local function exitBonus(player, st)
+	local b = st.bonus
+	if not b then
+		return
+	end
+	st.bonus = nil
+	st.sunk = false
+	st.transitionToken = nil
+	publish(player, st)
+	placeBall(player, st, b.returnPos, "hole")
+end
+
+local function enterBonus(player, st, egg)
+	st.bonus = { strokes = 0, par = bonusHole:GetAttribute("Par"), returnPos = egg.returnPos }
+	st.sunk = false
+	st.resetting = true -- no strokes until the ball is on the goose tee
+	st.ball.Anchored = true
+	st.ball.AssemblyLinearVelocity = Vector3.zero
+	publish(player, st)
+	sendTo(Remotes.Notice, player, "A hidden hole!  Welcome to Hole " .. BONUS_NUMBER, "secret")
+	local token = {}
+	st.transitionToken = token
+	task.delay(1.8, function()
+		if states[player] == st and st.transitionToken == token and st.bonus then
+			placeBall(player, st, teePosition(bonusHole), "hole")
+		end
+	end)
+end
+
+local function finishBonus(player, st, maxed)
+	local strokes = st.bonus.strokes
+	if maxed then
+		strokes = Config.MaxStrokes
+		st.bonus.strokes = strokes
+	else
+		local cup = bonusHole:FindFirstChild("Cup")
+		st.ball.Anchored = true
+		st.ball.CFrame = CFrame.new(cup.Position - Vector3.new(0, Config.CupDepth - Config.BallRadius, 0))
+		if isReal(player) and not TEST_MODE then
+			PersonalBest.recordRound(player, BONUS_BEST_KEY, strokes) -- (player attribute Best_<key>; not the leaderboard)
+		end
+	end
+	publish(player, st)
+	if isReal(player) then
+		Remotes.HoleComplete:FireAllClients(player, BONUS_NUMBER, strokes, st.bonus.par, maxed == true)
+	end
+	local token = {}
+	st.transitionToken = token
+	task.delay(Config.HoleTransitionTime, function()
+		if states[player] == st and st.transitionToken == token then
+			exitBonus(player, st)
+		end
+	end)
+end
+
 local function finishHole(player, st, maxed)
 	st.sunk = true
+	if st.bonus then
+		finishBonus(player, st, maxed)
+		return
+	end
 	if st.testHole then
 		st.roundValid = false
 	end
@@ -261,7 +362,7 @@ end
 
 local function outOfBounds(player, st)
 	st.resetting = true
-	st.strokes[st.hole] = (st.strokes[st.hole] or 0) + Config.PenaltyStrokes
+	addStrokes(st, Config.PenaltyStrokes)
 	publish(player, st)
 	-- the ball's last airborne position tells a hazard (water, rabbit hole) from a ball that escaped the course
 	local hz = hazardAt(holeOf(st), st.ball.Position)
@@ -401,7 +502,7 @@ local function onStroke(player, startPos)
 		startPos = st.ball.Position
 	end
 	st.lastPos = startPos
-	st.strokes[st.hole] = (st.strokes[st.hole] or 0) + 1
+	addStrokes(st, 1)
 	publish(player, st)
 end
 Remotes.Stroke.OnServerEvent:Connect(onStroke)
@@ -411,7 +512,7 @@ Remotes.BallRest.OnServerEvent:Connect(function(player)
 	if not st or st.sunk or st.resetting or st.finished or st.exploring then
 		return
 	end
-	if (st.strokes[st.hole] or 0) >= Config.MaxStrokes then
+	if strokesOf(st) >= Config.MaxStrokes then
 		sendTo(Remotes.Notice, player, "Max strokes reached", "bad")
 		finishHole(player, st, true)
 	end
@@ -428,6 +529,15 @@ Remotes.RequestReset.OnServerEvent:Connect(function(player)
 	end
 	st.lastReset = now
 	placeBall(player, st, st.lastPos, "reset")
+end)
+
+-- Stage gg2: leave the bonus hole early (menu "Back to Hole 9"): straight back to the parked round hole.
+local LeaveBonus = remote("LeaveBonus")
+LeaveBonus.OnServerEvent:Connect(function(player)
+	local st = states[player]
+	if st and st.bonus and not st.exploring and not st.finished then
+		exitBonus(player, st)
+	end
 end)
 
 -- Play again after the round, or (restart == true, from the front-end course picker) restart mid-round.
@@ -621,6 +731,10 @@ if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 		removePlayer = removePlayer,
 		onReady = onReady,
 		onStroke = onStroke,
+		bonusHole = bonusHole, -- (stage gg2) "place" on the bonus hole number plays it as a bonus trip
+		startBonusTest = function(player, st)
+			st.bonus = { strokes = 0, par = bonusHole:GetAttribute("Par"), returnPos = st.lastPos }
+		end,
 	})
 end
 
@@ -659,6 +773,22 @@ RunService.Heartbeat:Connect(function()
 		end
 		local hole = holeOf(st)
 		local pos = st.ball.Position
+		-- (stage gg2) the golden egg on hole 9: entering its trigger starts the bonus hole
+		local egg = not st.bonus and not st.testHole and st.course == PLACE_COURSE and eggs[st.hole]
+		if egg then
+			local inside = Vector3.new(pos.X - egg.pos.X, 0, pos.Z - egg.pos.Z).Magnitude < egg.radius and math.abs(pos.Y - egg.pos.Y) < 1
+			if inside and not st.inEgg then
+				st.inEgg = true
+				-- Studio harness sweeps only count the hits (ball attribute EggHits), unless GolfTestEggStartsBonus is set
+				st.ball:SetAttribute("EggHits", (st.ball:GetAttribute("EggHits") or 0) + 1)
+				if not TEST_MODE or workspace:GetAttribute("GolfTestEggStartsBonus") == true then
+					enterBonus(player, st, egg)
+					continue
+				end
+			elseif not inside then
+				st.inEgg = false
+			end
+		end
 		local cup = hole:FindFirstChild("Cup")
 		local flat = Vector3.new(pos.X - cup.Position.X, 0, pos.Z - cup.Position.Z).Magnitude
 		-- sunk once the whole ball has dropped below the rim

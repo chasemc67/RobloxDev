@@ -72,8 +72,16 @@ function GolfTestServer.init(ctx)
 		end
 		if cmd == "place" then
 			-- args: { hole = 0 (test lane) | 1..9, pos = Vector3 }
+			local bonus = ctx.bonusHole and args.hole == ctx.bonusHole:GetAttribute("HoleNumber")
+			if not bonus then
+				st.bonus = nil
+			end
 			if args.hole == 0 then
 				st.testHole = lane
+			elseif bonus then
+				-- (stage gg2) the hidden bonus hole, played as a bonus trip from the current round hole
+				st.testHole = nil
+				ctx.startBonusTest(player, st)
 			else
 				st.testHole = nil
 				-- (stage w) args.course: play a hole of another course (Sugarloaf Canyon sweeps)
@@ -88,7 +96,11 @@ function GolfTestServer.init(ctx)
 			st.finished = false
 			st.resetting = false
 			st.transitionToken = {} -- cancels any pending "next hole" after a test sink
-			st.strokes[st.hole] = 0
+			if bonus then
+				st.bonus.strokes = 0
+			else
+				st.strokes[st.hole] = 0
+			end
 			ctx.publish(player, st)
 			ctx.placeBall(player, st, args.pos, "test")
 			return true
@@ -98,6 +110,10 @@ function GolfTestServer.init(ctx)
 			-- the hole's spec (tee, cup, cup_from, waypoints, HIO line, movers, teleports) for the client scenarios
 			local data = require(game:GetService("ServerStorage").CourseData[args.course == "aurora_archipelago" and "AuroraArchipelago" or args.course == "sugarloaf_canyon" and "SugarloafCanyon" or "LanternGrove"])
 			local h = data.holes[args.hole]
+			local bonusData = (args.course == nil or args.course == "lantern_grove") and game:GetService("ServerStorage").CourseData:FindFirstChild("LanternGroveBonus")
+			if bonusData and require(bonusData).holes[1].number == args.hole then
+				h = require(bonusData).holes[1] -- (stage gg2: the bonus hole 19)
+			end
 			if not h then
 				return false, "no hole " .. tostring(args.hole)
 			end
