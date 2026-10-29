@@ -1,6 +1,6 @@
-"""Stage gg2 harness sweeps (GolfTestMode): hole 19 (routes, intended lines, cup drop, fuzz) and the H9 golden egg
-(deliberate putts, accidental rate over fuzz + played routes, hole-19 slow putts).
-  PYTHONPATH=tools python3 tools/gg2_sweeps.py OUT_DIR [h19] [egg]
+"""Stage gg2/gg3 harness sweeps (GolfTestMode): bonus hole 10 (routes, intended lines, cup drop, fuzz) and the H9 golden
+egg (deliberate putts, accidental rate over fuzz + played routes, bonus-hole slow putts).
+  PYTHONPATH=tools python3 tools/gg2_sweeps.py OUT_DIR [h10] [egg]
 """
 import json
 import sys
@@ -12,7 +12,7 @@ from run_playtests import Studio, set_edit_attrs, clear_test_attrs, wait_api
 
 out = Path(sys.argv[1])
 out.mkdir(parents=True, exist_ok=True)
-which = sys.argv[2:] or ['h19', 'egg']
+which = sys.argv[2:] or ['h10', 'egg']
 SEED = 20261028
 # deliberate putts at the egg from the heart green where a ball lands after the chamber drop (H9 local x, z, y, aim, speed)
 EGG_SHOTS = [[x, z, -0.7, aim, v] for (x, z) in ((22.0, -42.5), (24.0, -43.0)) for aim in (6, 9, 12) for v in (5.5, 6.5, 7.5)]
@@ -20,10 +20,10 @@ SEARCH = ([[31.3, -46.5, -0.8, a, v] for a in (85, 90, 95) for v in (4, 5, 6, 7)
           [[24.0, -43.0, -0.7, a, v] for a in (20, 30, 40) for v in (7, 8.5, 10)] +
           [[29.6, -47.0, -0.8, a, v] for a in (70, 75, 80) for v in (5, 6, 7)])
 RUNS = {
-    'slow': ('gg2egg', {'course': 'lantern_grove', 'slow19': 45, 'seed': SEED}),
+    'slow': ('gg2egg', {'course': 'lantern_grove', 'slow10': 45, 'seed': SEED}),
     'eggsearch': ('gg2egg', {'course': 'lantern_grove', 'eggShots': SEARCH, 'seed': SEED}),
-    'h19': ('h19', {'course': 'lantern_grove', 'parts': 'routes,intended,cupdrop,fuzz', 'fuzz': 72, 'tries': 5, 'seed': SEED}),
-    'egg': ('gg2egg', {'course': 'lantern_grove', 'eggShots': EGG_SHOTS, 'eggFuzz': 80, 'eggRoutes': 6, 'slow19': 45, 'seed': SEED}),
+    'h10': ('h10', {'course': 'lantern_grove', 'parts': 'routes,intended,cupdrop,fuzz', 'fuzz': 72, 'tries': 5, 'seed': SEED}),
+    'egg': ('gg2egg', {'course': 'lantern_grove', 'eggShots': EGG_SHOTS, 'eggFuzz': 80, 'eggRoutes': 6, 'slow10': 45, 'seed': SEED}),
 }
 
 

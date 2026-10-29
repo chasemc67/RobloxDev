@@ -1985,7 +1985,7 @@ function Hole:buildTee()
 	vis("SignPost", post * CFrame.new(0, 2.3, 0), Vector3.new(0.35, 4.6, 0.35), P.oak, M.Wood, signParent)
 	local board = vis("Sign", post * CFrame.new(0, 4.6, 0), Vector3.new(4.2, 2.4, 0.25), P.bark, M.WoodPlanks, signParent)
 	local gui = new("SurfaceGui", { Face = Enum.NormalId.Front, CanvasSize = Vector2.new(420, 240), LightInfluence = 0 }, board)
-	new("TextLabel", { Size = UDim2.new(1, 0, 0.42, 0), BackgroundTransparency = 1, Text = "HOLE " .. self.def.number, TextScaled = true, Font = Enum.Font.FredokaOne, TextColor3 = P.paper }, gui)
+	new("TextLabel", { Size = UDim2.new(1, 0, 0.42, 0), BackgroundTransparency = 1, Text = (self.def.bonus and "BONUS HOLE " or "HOLE ") .. self.def.number, TextScaled = true, Font = Enum.Font.FredokaOne, TextColor3 = P.paper }, gui)
 	new("TextLabel", { Size = UDim2.new(1, 0, 0.28, 0), Position = UDim2.fromScale(0, 0.42), BackgroundTransparency = 1, Text = self.def.name, TextScaled = true, Font = Enum.Font.FredokaOne, TextColor3 = Color3.new(1, 1, 1) }, gui)
 	new("TextLabel", { Size = UDim2.new(1, 0, 0.26, 0), Position = UDim2.fromScale(0, 0.72), BackgroundTransparency = 1, Text = "PAR " .. self.def.par, TextScaled = true, Font = Enum.Font.FredokaOne, TextColor3 = P.firefly }, gui)
 	lantern(signParent, post * CFrame.new(0, 6.3, 0), 1)
@@ -2167,7 +2167,7 @@ local function buildHole(course, def, layout)
 end
 
 ------------------------------------------------------------------------------------------------ bonus hole (stage gg2)
--- A hidden bonus hole (Lantern Grove "Hole 19 - The Golden Goose": ServerStorage.CourseData.LanternGroveBonus, made by
+-- A hidden bonus hole (Lantern Grove "Bonus Hole 10: The Goose", renumbered from 19 in stage gg3: ServerStorage.CourseData.LanternGroveBonus, made by
 -- tools/gg2_goose.py) built into an existing course folder beside its holes, which are not touched. The model gets
 -- attribute Bonus = true, so Courses.holes() leaves it out of the round (scorecard, par total, #holes) and
 -- Courses.bonusHole() finds it. GolfServer starts it when a ball on hole 9 reaches the egg (BuildH9Secret).
@@ -2185,9 +2185,15 @@ end
 function CourseBuilder.BuildBonus(data, course)
 	course = course or workspace:FindFirstChild("Course")
 	local def = data.holes[1]
+	-- replace only bonus holes (an earlier build, e.g. gg2's Hole19), never a round hole with the same number
 	local old = course:FindFirstChild("Hole" .. def.number)
-	if old then
-		old:Destroy()
+	if old and not old:GetAttribute("Bonus") then
+		error("BuildBonus: " .. old:GetFullName() .. " is a round hole")
+	end
+	for _, h in course:GetChildren() do
+		if h:GetAttribute("Bonus") and h:GetAttribute("HoleNumber") then
+			h:Destroy()
+		end
 	end
 	local layout = { holes = { [def.number] = { origin = data.placement.origin, yaw = data.placement.yaw } } }
 	BUILD_COURSE_ID = course:GetAttribute("CourseId")

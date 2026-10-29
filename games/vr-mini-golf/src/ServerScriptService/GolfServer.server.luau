@@ -56,14 +56,15 @@ local function holesOf(st)
 	return courseHoles[st and st.course or PLACE_COURSE] or holes
 end
 
--- Stage gg2: this course's hidden bonus hole (Lantern Grove "Hole 19 - The Golden Goose"; CourseBuilder.BuildBonus),
+-- Stage gg2: this course's hidden bonus hole (Lantern Grove "Bonus Hole 10: The Goose", renumbered from 19 in gg3;
+-- CourseBuilder.BuildBonus),
 -- left out of `holes` by Courses.holes. A ball that rolls into the golden egg on hole 9 (Hole9.Secret.EggTrigger)
 -- starts it as a side trip: st.bonus = { strokes, par, returnPos }. Hole 9 stays parked meanwhile (st.hole,
 -- st.strokes and the Scores attribute are never touched), and sinking, max strokes or LeaveBonus puts the ball back
 -- on hole 9 (no penalty). The 9-hole round, scorecard, personal best and leaderboard never see the bonus hole.
 local bonusHole = Courses.bonusHole(PLACE_COURSE)
 local BONUS_NUMBER = bonusHole and bonusHole:GetAttribute("HoleNumber")
-local BONUS_BEST_KEY = PLACE_COURSE .. "_h" .. tostring(BONUS_NUMBER) -- PersonalBest key (never the leaderboard)
+local BONUS_BEST_KEY = PLACE_COURSE .. "_h" .. tostring(BONUS_NUMBER) -- PersonalBest key (never the leaderboard; keyed by course)
 local eggs = {} -- [hole number] = { pos, radius, returnPos }
 if bonusHole then
 	for n, h in holes or {} do
@@ -266,7 +267,7 @@ local function enterBonus(player, st, egg)
 	st.ball.Anchored = true
 	st.ball.AssemblyLinearVelocity = Vector3.zero
 	publish(player, st)
-	sendTo(Remotes.Notice, player, "A hidden hole!  Welcome to Hole " .. BONUS_NUMBER, "secret")
+	sendTo(Remotes.Notice, player, "A hidden hole!  Welcome to " .. Courses.holeLabel(bonusHole) .. ": " .. tostring(bonusHole:GetAttribute("HoleName")), "secret")
 	local token = {}
 	st.transitionToken = token
 	task.delay(1.8, function()
@@ -732,6 +733,7 @@ if RunService:IsStudio() and workspace:GetAttribute("GolfTestMode") == true then
 		onReady = onReady,
 		onStroke = onStroke,
 		bonusHole = bonusHole, -- (stage gg2) "place" on the bonus hole number plays it as a bonus trip
+		bonusCourse = PLACE_COURSE, -- (stage gg3) ...only on this course (Sugarloaf's hole 10 is not the goose)
 		startBonusTest = function(player, st)
 			st.bonus = { strokes = 0, par = bonusHole:GetAttribute("Par"), returnPos = st.lastPos }
 		end,

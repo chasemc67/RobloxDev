@@ -1,8 +1,8 @@
-"""Stage gg2 (LG hidden goose hole 19) helpers. Only talks to the Lantern Grove Studio (GOLF_STUDIO=91438142503824).
+"""Stage gg2/gg3 (LG hidden goose "Bonus Hole 10", 19 before gg3) helpers. Only talks to the Lantern Grove Studio (GOLF_STUDIO=91438142503824).
   PYTHONPATH=tools python3 tools/gg2_tool.py push              push the gg2 src files into Studio (Edit)
   PYTHONPATH=tools python3 tools/gg2_tool.py build             CourseBuilder.BuildBonus + BuildH9Secret (Edit)
   PYTHONPATH=tools python3 tools/gg2_tool.py diff A.json B.json OUT.json
-        everything outside the new hole 19 / Hole9.Secret must be identical (all parts, every compared key), the
+        everything outside the bonus hole (Hole10, or gg2's Hole19) / Hole9.Secret must be identical (all parts, every compared key), the
         colliders outside them too; lists the new parts and the new gameplay parts (Hole9.Secret must have none)
 """
 import json
@@ -27,7 +27,7 @@ FILES = [
     'src/StarterPlayer/StarterPlayerScripts/GolfClient/FrontEnd.luau',
     'src/StarterPlayer/StarterPlayerScripts/GolfClient/GolfTest.luau',
 ]
-NEW = ('Workspace.Course.Hole19', 'Workspace.Course.Hole9.Secret')
+NEW = ('Workspace.Course.Hole10', 'Workspace.Course.Hole9.Secret', 'Workspace.Course.Hole19')  # (gg3: Hole19 = gg2's name)
 
 
 def studio():

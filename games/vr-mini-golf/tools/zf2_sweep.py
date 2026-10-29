@@ -9,7 +9,7 @@ set_edit_attrs(s,{'GolfTestMode':True,'SimulateVR':False,'GolfTestOpts':json.dum
 s.start_play();wait_api(s)
 results={}
 try:
- for n in ([int(x) for x in sys.argv[3:]] if len(sys.argv)>3 else range(1,19)):
+ for n in ([int(x) for x in sys.argv[3:]] if len(sys.argv)>3 else range(1,10) if opts['course']=='lantern_grove' else range(1,19)):  # (gg3: LG has 9; its h10 is the bonus hole)
   s.luau('workspace:SetAttribute("GolfTestOpts", '+json.dumps(json.dumps(opts))+')','Client')
   results['h'+str(n)]={'default':run_one(s,'h'+str(n),'',str(out),False,900,None)[0]}
   (out/'results.json').write_text(json.dumps(results,indent=2)+'\n')

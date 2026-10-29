@@ -6,6 +6,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Golf = ReplicatedStorage:WaitForChild("Golf")
 local Config = require(Golf:WaitForChild("Config"))
+local Courses = require(Golf:WaitForChild("Courses"))
 
 local GolfTestServer = {}
 
@@ -72,7 +73,10 @@ function GolfTestServer.init(ctx)
 		end
 		if cmd == "place" then
 			-- args: { hole = 0 (test lane) | 1..9, pos = Vector3 }
-			local bonus = ctx.bonusHole and args.hole == ctx.bonusHole:GetAttribute("HoleNumber")
+			-- (stage gg3) the bonus number (10) is only the bonus on its own course: { course = "sugarloaf_canyon", hole = 10 }
+			-- stays Sugarloaf's hole 10
+			local bonus = ctx.bonusHole and (args.course == nil or args.course == ctx.bonusCourse)
+				and args.hole == ctx.bonusHole:GetAttribute("HoleNumber")
 			if not bonus then
 				st.bonus = nil
 			end
@@ -110,9 +114,10 @@ function GolfTestServer.init(ctx)
 			-- the hole's spec (tee, cup, cup_from, waypoints, HIO line, movers, teleports) for the client scenarios
 			local data = require(game:GetService("ServerStorage").CourseData[args.course == "aurora_archipelago" and "AuroraArchipelago" or args.course == "sugarloaf_canyon" and "SugarloafCanyon" or "LanternGrove"])
 			local h = data.holes[args.hole]
-			local bonusData = (args.course == nil or args.course == "lantern_grove") and game:GetService("ServerStorage").CourseData:FindFirstChild("LanternGroveBonus")
+			-- (stage gg3) the course is the requested one or else this place's, so hole 10 on another place stays its own
+			local bonusData = (args.course or Courses.DEFAULT) == "lantern_grove" and game:GetService("ServerStorage").CourseData:FindFirstChild("LanternGroveBonus")
 			if bonusData and require(bonusData).holes[1].number == args.hole then
-				h = require(bonusData).holes[1] -- (stage gg2: the bonus hole 19)
+				h = require(bonusData).holes[1] -- (stage gg2/gg3: the bonus hole 10)
 			end
 			if not h then
 				return false, "no hole " .. tostring(args.hole)

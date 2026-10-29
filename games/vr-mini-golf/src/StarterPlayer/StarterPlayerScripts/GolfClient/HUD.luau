@@ -289,18 +289,21 @@ function HUD.refresh()
 		return
 	end
 	local n = hole:GetAttribute("HoleNumber")
-	local title = string.format("Hole %d  -  %s", n, hole:GetAttribute("HoleName"))
+	-- (stage gg3) the bonus hole reads "Bonus Hole 10: The Goose"
+	local isBonus = hole:GetAttribute("Bonus") == true
+	local title = isBonus and string.format("%s: %s", Courses.holeLabel(hole), hole:GetAttribute("HoleName"))
+		or string.format("Hole %d  -  %s", n, hole:GetAttribute("HoleName"))
 	local sub = string.format("Par %d   |   Strokes %d", hole:GetAttribute("Par"), player:GetAttribute("Strokes") or 0)
 	if infoTitle then
 		infoTitle.Text = title
 		infoSub.Text = sub
 		if Explore and Explore.active then
-			infoSub.Text = "Exploring  -  your ball waits on hole " .. n
+			infoSub.Text = "Exploring  -  your ball waits on " .. (isBonus and Courses.holeLabel(hole) or "hole " .. n)
 		end
 	end
 	if wrist then
 		local par = hole:GetAttribute("Par") or 0
-		wrist.hole.Text = "HOLE " .. tostring(n)
+		wrist.hole.Text = (isBonus and "BONUS " or "HOLE ") .. tostring(n)
 		wrist.name.Text = hole:GetAttribute("HoleName") or ""
 		wrist.par.Text = tostring(par)
 		wrist.stroke.Text = tostring(player:GetAttribute("Strokes") or 0)
@@ -1148,7 +1151,7 @@ function HUD.init(isVR, ballController)
 	HUD.setFade = setFade
 	local FADE_OUT = 0.45
 	Remotes.HoleComplete.OnClientEvent:Connect(function(who, holeNum)
-		if who ~= player or holeNum == #holeList() then -- (no fade after the last hole; the bonus hole 19 fades back)
+		if who ~= player or holeNum == #holeList() then -- (no fade after the last hole; the bonus hole 10 fades back)
 			return
 		end
 		task.delay(math.max(0, Config.HoleTransitionTime - FADE_OUT - 0.05), function()
@@ -1171,7 +1174,7 @@ function HUD.init(isVR, ballController)
 		end
 		if reason == "hole" then
 			local hole = Ball.getHole()
-			HUD.message(string.format("Hole %d  -  Par %d", hole:GetAttribute("HoleNumber"), hole:GetAttribute("Par")), Color3.fromRGB(255, 230, 120), 2.2)
+			HUD.message(string.format("%s  -  Par %d", Courses.holeLabel(hole), hole:GetAttribute("Par")), Color3.fromRGB(255, 230, 120), 2.2)
 		end
 	end)
 
@@ -1189,15 +1192,16 @@ function HUD.init(isVR, ballController)
 		local name, color = scoreName(strokes, par)
 		-- (stage gg2) the hidden bonus hole
 		local bonus = Courses.bonusHole(Courses.of(player))
-		if bonus and bonus:GetAttribute("HoleNumber") == holeNum and not maxed then
-			name = "Honk!  " .. string.gsub(name, "!+$", "") .. " on the Golden Goose"
+		local isBonus = bonus and bonus:GetAttribute("HoleNumber") == holeNum
+		if isBonus and not maxed then
+			name = "Honk!  " .. string.gsub(name, "!+$", "") .. " on " .. tostring(bonus:GetAttribute("HoleName"))
 		end
 		if who == player then
 			completedWristHole = holeNum
 			holeOutAudio(strokes, par, maxed)
 			HUD.message(maxed and ("Max strokes  -  " .. strokes) or name, color, 3)
 		else
-			HUD.toast(string.format("%s: %s on hole %d", who.DisplayName, maxed and tostring(strokes) or name, holeNum))
+			HUD.toast(string.format("%s: %s on %s", who.DisplayName, maxed and tostring(strokes) or name, isBonus and Courses.holeLabel(bonus) or "hole " .. holeNum))
 		end
 		HUD.refresh()
 	end)

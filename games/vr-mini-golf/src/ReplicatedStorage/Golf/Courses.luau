@@ -24,7 +24,7 @@ function Courses.folder(id: string?): Instance?
 end
 
 -- Hole models of a course by number ({ [1] = Hole1, ... }). Stage gg2: bonus holes (attribute Bonus, e.g. Lantern
--- Grove's hidden "Hole 19") are not part of the round, so they are left out: the list stays 1..N and # works.
+-- Grove's hidden "Bonus Hole 10: The Goose", stage gg3) are not part of the round, so they are left out: the list stays 1..N and # works.
 function Courses.holes(id: string?)
 	local list = {}
 	local course = Courses.folder(id)
@@ -46,6 +46,13 @@ function Courses.bonusHole(id: string?)
 		end
 	end
 	return nil
+end
+
+-- Stage gg3: the label players see for a hole: "Hole 4" or, for a bonus hole, "Bonus Hole 10" (Lantern Grove's
+-- goose; its number is past the round's last hole and only ever shown with the "Bonus" prefix).
+function Courses.holeLabel(h): string
+	local n = h and h:GetAttribute("HoleNumber") or 0
+	return (h and h:GetAttribute("Bonus") and "Bonus Hole " or "Hole ") .. tostring(n)
 end
 
 -- The course a player is on (player attribute "Course", set by the server).

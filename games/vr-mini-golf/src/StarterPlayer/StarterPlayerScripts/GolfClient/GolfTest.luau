@@ -1795,7 +1795,7 @@ scenario({
 	end,
 })
 
-for n = 1, 19 do -- (h10-h18: Sugarloaf Canyon only, with opts.course; h19: Lantern Grove's hidden bonus hole, stage gg2)
+for n = 1, 18 do -- (h10-h18: Sugarloaf Canyon with opts.course; h10 with course lantern_grove: its hidden bonus hole, gg3)
 	scenario({
 		name = "h" .. n,
 		desc = "Hole " .. n .. ": intended lines (good/average), HIO line + sweep, rail banks, mover timing sweep, fuzz (escape/stuck)",
@@ -1804,17 +1804,17 @@ for n = 1, 19 do -- (h10-h18: Sugarloaf Canyon only, with opts.course; h19: Lant
 	})
 end
 
--- Stage gg2: hole 9's golden egg (the way into the hidden bonus hole 19). The server counts each entry into the egg
+-- Stage gg2: hole 9's golden egg (the way into the hidden bonus hole, "Bonus Hole 10" since gg3). The server counts each entry into the egg
 -- trigger on the ball (attribute EggHits); in the harness that only counts unless workspace.GolfTestEggStartsBonus.
 -- GolfTestOpts: .eggShots = {{x, z, aim, speed}} (H9 local spot, aim = atan2(dz, dx) deg, studs/s): deliberate putts;
 -- .eggFuzz = N random H9 shots (the fuzz sweep) and .eggRoutes = N good/average played holes: the accidental hit rate.
--- .slow19 = N gentle putts (1.5-5 studs/s, any direction) from random hole-19 neck/head/beak felt: stuck spots.
+-- .slow10 = N gentle putts (1.5-5 studs/s, any direction) from random bonus hole 10 neck/head/beak felt: stuck spots.
 local function eggHits()
 	return Ball.ball:GetAttribute("EggHits") or 0
 end
 scenario({
 	name = "gg2egg",
-	desc = "H9 golden egg: deliberate putts, accidental rate over fuzz + played routes; H19 slow putts in the corners",
+	desc = "H9 golden egg: deliberate putts, accidental rate over fuzz + played routes; bonus H10 slow putts in the corners",
 	seconds = 1500,
 	run = function()
 		refreshFelt()
@@ -1843,20 +1843,37 @@ scenario({
 			end
 			out.routes = { played = holes, strokes = strokes, eggHits = eggHits() - h0 }
 		end
-		if o.slow19 then
-			local n = 19
+		if o.slow10 then
+			local n = Courses.bonusHole(testCourse() or Courses.DEFAULT):GetAttribute("HoleNumber")
 			local sp = spec(n)
-			local rng = Random.new(o.seed or 19)
+			local rng = Random.new(o.seed or 10)
 			local res = { shots = 0, stuck = 0, escapes = 0, timeouts = 0, holed = 0, rests = {}, list = {} }
-			for i = 1, o.slow19 * 10 do
-				if res.shots >= o.slow19 then break end
+			for i = 1, o.slow10 * 10 do
+				if res.shots >= o.slow10 then break end
 				local f = sp.felt[rng:NextInteger(1, #sp.felt)]
 				if f.zone ~= "body" then
 					local hx, hz = f.size[1] / 2 - 0.1, f.size[2] / 2 - 0.1
 					local x, z = f.center[1] + rng:NextNumber(-hx, hx), f.center[3] + rng:NextNumber(-hz, hz)
-					if pcall(placeL, n, x, z, f.center[2] + 0.3) then
+					-- (stage gg3) the felt cells run on under the rail band, so skip starts where the ball would sit inside a
+					-- rail (a ball can never rest there; the engine pushes it out through the rail's far side)
+					local clear = true
+					local wp = W(n, x, f.center[2], z)
+					local hit = feltHit(wp, wp.Y + 0.6)
+					if hit then
+						local probe = Instance.new("Part")
+						probe.Shape = Enum.PartType.Ball
+						probe.Size = Vector3.one * (2 * G + 0.04)
+						probe.CFrame = CFrame.new(hit.Position + Vector3.new(0, G + 0.03, 0))
+						for _, q in workspace:GetPartsInPart(probe) do
+							if q.CanCollide and not q:IsDescendantOf(Ball.ball.Parent) then
+								clear = false
+							end
+						end
+						probe:Destroy()
+					end
+					if clear and pcall(placeL, n, x, z, f.center[2] + 0.3) then
 						local ang, v = rng:NextNumber(0, 360), rng:NextNumber(1.5, 5)
-						local r = shootS(string.format("h19-slow-%d", i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
+						local r = shootS(string.format("h%d-slow-%d", n, i), aimDir(n, ang), v, { cup = hole(n).Cup, timeout = 26, watchStill = true })
 						if r.outcome ~= "refused" then
 							res.shots += 1
 							local stuck = r.outcome == "timeout"
@@ -1876,7 +1893,7 @@ scenario({
 					end
 				end
 			end
-			out.slow19 = res
+			out.slow10 = res
 		end
 		out.issues = table.clone(issues)
 		return out
