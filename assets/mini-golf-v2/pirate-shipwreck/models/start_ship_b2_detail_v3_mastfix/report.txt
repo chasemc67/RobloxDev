@@ -1,0 +1,29 @@
+START SHIP v3 MAST-COLLIDER FIX (start_ship_b2_detail_v3_mastfix) - report
+Date: 2026-11-05
+Agent/model: Claude Code, model claude-opus-5-5 (Opus 5.5).
+Machine: this Windows PC (Windows-11-10.0.26300-SP0, node chase-pc). Blender 5.2.2 LTS (hash d13f752e3b9c), headless: "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" -b --factory-startup --python-exit-code 1, one process at a time.
+No Studio/node/roblox/git/credentials touched. No art changes, no previews rendered (visuals byte-identical to v3).
+
+SOURCE original_v3.blend (= start_ship_b2_detail_v3/out/start_ship_v3.blend) sha256 87b319a5b6308c1d7d3deaac91b4b4e16b651572ac569a14606a8446442cc92f (read-only)
+DONOR  mast_donor_v3_2.blend sha256 9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333 (COL_Mast_Main vertex positions only; origin matrix identical to source)
+OUTPUT start_ship_v3_mastfix.blend sha256 e5a6f20340ff90cb959d5910206f2b1e3427fe7c491ac32236134e605f4c2979
+
+HARD CHECKS: PASS
+- Visual/ramp/prop meshes byte-identical 28/28; 49405 tris, largest Rigging 7282.
+- Colliders: 190 names exact; other 189 byte-identical 189/189. Anchors exact: True. Materials/images/collections identical: True.
+- COL_Mast_Main: length 157.0000 -> 98.3000; bottom 4 verts identical; cross-section identical; origin matrix identical; vertices == donor: True.
+  top centre Roblox local (10.000, 156.924, 50.988) -> (10.000, 101.097, 32.849) ; world (10.000, 157.524, 50.988) -> (10.000, 101.697, 32.849)
+- FBX re-import: start_ship_b2_visual.fbx 32 obj 49405 tris ok=True; start_ship_b2_col.fbx 190 obj 2280 tris ok=True; RampFlight1_own_origin.fbx 1 obj 300 tris ok=True; RampLanding_own_origin.fbx 1 obj 184 tris ok=True; RampFlight2_own_origin.fbx 1 obj 288 tris ok=True
+
+STEPS (exit code / seconds):
+  mastfix: exit 0, 0s
+  dump_src: exit 0, 1s
+  dump_donor: exit 0, 1s
+  dump_fix: exit 0, 1s
+  export: exit 0, 1s
+  fbx_reimport: exit 0, 1s
+  check: exit 0, 1s
+
+POST-RUN: source sha256 after 87b319a5b6308c1d7d3deaac91b4b4e16b651572ac569a14606a8446442cc92f (unchanged), donor sha256 after 9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333 (unchanged).
+blender.exe processes running at finish: 0
+Total pipeline wall time ~10 s (7 Blender runs, all exit 0).

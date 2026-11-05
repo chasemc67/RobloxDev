@@ -1,0 +1,400 @@
+{
+ "name": "start_ship_b2_detail_v3_mastfix",
+ "based_on": "ORIGINAL v3 release start_ship_b2_detail_v3/out/start_ship_v3.blend (NOT the refined ship)",
+ "source": {
+  "local_copy": "original_v3.blend",
+  "sha256": "87b319a5b6308c1d7d3deaac91b4b4e16b651572ac569a14606a8446442cc92f"
+ },
+ "donor": {
+  "file": "mast_donor_v3_2.blend",
+  "sha256": "9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333",
+  "used": "COL_Mast_Main vertex positions only"
+ },
+ "outputs": {
+  "blend": "start_ship_v3_mastfix.blend",
+  "blend_sha256": "e5a6f20340ff90cb959d5910206f2b1e3427fe7c491ac32236134e605f4c2979",
+  "fbx": [
+   "fbx/RampFlight1_own_origin.fbx",
+   "fbx/RampFlight2_own_origin.fbx",
+   "fbx/RampLanding_own_origin.fbx",
+   "fbx/start_ship_b2_col.fbx",
+   "fbx/start_ship_b2_visual.fbx"
+  ],
+  "fbx_sha256": {
+   "RampFlight1_own_origin.fbx": "03fca6bc44e2c49603189d286ca64c4215e245a92e528ae79bb5cce12c69639f",
+   "RampFlight2_own_origin.fbx": "9c2c04ce30ffeb58a45de6f4afd8f486d9e71428b52162ac1046f5476707df07",
+   "RampLanding_own_origin.fbx": "aafe2e756125ee0df744eacba352458dab95a4ffe742e09df75beafd31d7c055",
+   "start_ship_b2_col.fbx": "c629af1d231e5d721cba1c98ddc5f8a42c3aadafc4a7bbe47d38b8440fc5505c",
+   "start_ship_b2_visual.fbx": "15e07ba1c94ded0edd673a58fee4f5a02aa22f505b78e4022985fc2eded803a9"
+  },
+  "previews": "none new - visuals are byte-identical to v3; use the existing v3 previews"
+ },
+ "units": "1 Blender unit = 1 stud",
+ "frame": "Blender Z up; Roblox local (x,y,z) = (bx, bz, -by); placement unchanged: Roblox worldY = localY + 0.6",
+ "textures": "start_ship_palette.png packed in the blend and embedded in the visual FBX (unchanged)",
+ "export": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1.0,
+  "apply_scale_options": "FBX_SCALE_UNITS",
+  "embed_textures": true,
+  "path_mode": "COPY",
+  "mesh_smooth_type": "FACE",
+  "visual_fbx": "28 meshes (Visual 7 + Ramps 3 + Props 18) + Spawn/Tee1/RampStart/CupRef empties",
+  "col_fbx": "190 COL boxes",
+  "ramps": "RampFlight1/RampLanding/RampFlight2 on their own origin (location zeroed for export only)"
+ },
+ "collections": {
+  "Collision": 190,
+  "Props": 18,
+  "Ramps": 3,
+  "Visual": 11
+ },
+ "meshes": {
+  "DeckCabin": {
+   "tris": 3512,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  },
+  "Dressing": {
+   "tris": 516,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  },
+  "Dressing_Glow": {
+   "tris": 24,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  },
+  "Hull": {
+   "tris": 4835,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  },
+  "Pier": {
+   "tris": 948,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Barnacles": {
+   "tris": 2728,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_BulwarkFrames": {
+   "tris": 2952,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_CabinWindows": {
+   "tris": 976,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Cannons": {
+   "tris": 2328,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_CapRails": {
+   "tris": 2712,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_CargoCluster": {
+   "tris": 2216,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Crab": {
+   "tris": 780,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_DoorLantern": {
+   "tris": 460,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_DoorLantern_Glow": {
+   "tris": 12,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Figurehead": {
+   "tris": 2712,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Flag": {
+   "tris": 760,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_PatchPlanks": {
+   "tris": 2420,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Portholes": {
+   "tris": 1316,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_RopeCoils": {
+   "tris": 1608,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_Seaweed": {
+   "tris": 648,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_SternCurl": {
+   "tris": 2796,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_SternWheel": {
+   "tris": 1640,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "Prop_TreasureChest": {
+   "tris": 2372,
+   "collection": "Props",
+   "status": "byte-identical to v3"
+  },
+  "RampFlight1": {
+   "tris": 300,
+   "collection": "Ramps",
+   "status": "byte-identical to v3"
+  },
+  "RampFlight2": {
+   "tris": 288,
+   "collection": "Ramps",
+   "status": "byte-identical to v3"
+  },
+  "RampLanding": {
+   "tris": 184,
+   "collection": "Ramps",
+   "status": "byte-identical to v3"
+  },
+  "Rigging": {
+   "tris": 7282,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  },
+  "RockBumper": {
+   "tris": 80,
+   "collection": "Visual",
+   "status": "byte-identical to v3"
+  }
+ },
+ "tris": {
+  "total_visual": 49405,
+  "largest": "Rigging",
+  "largest_tris": 7282
+ },
+ "anchors": {
+  "Spawn": {
+   "roblox_local": [
+    -120.0,
+    24.0,
+    2.5
+   ],
+   "roblox_world": [
+    -120.0,
+    24.6,
+    2.5
+   ],
+   "exact_equal_to_v3": true
+  },
+  "Tee1": {
+   "roblox_local": [
+    -120.0,
+    24.399999618530273,
+    37.0
+   ],
+   "roblox_world": [
+    -120.0,
+    24.999999618530275,
+    37.0
+   ],
+   "exact_equal_to_v3": true
+  },
+  "RampStart": {
+   "roblox_local": [
+    -120.0,
+    24.0,
+    62.5
+   ],
+   "roblox_world": [
+    -120.0,
+    24.6,
+    62.5
+   ],
+   "exact_equal_to_v3": true
+  },
+  "CupRef": {
+   "roblox_local": [
+    -175.6999969482422,
+    0.0,
+    212.3704833984375
+   ],
+   "roblox_world": [
+    -175.6999969482422,
+    0.6,
+    212.3704833984375
+   ],
+   "exact_equal_to_v3": true
+  }
+ },
+ "changes": [
+  "COL_Mast_Main: 4 top vertices moved down the 18 deg mast axis; box length 157.0 -> 98.3; bottom, cross-section and origin unchanged. Nothing else changed."
+ ],
+ "collision_delta": {
+  "collider": "COL_Mast_Main",
+  "length_old": 156.99999999825746,
+  "length_new": 98.30000610933682,
+  "top_center_roblox_local_old": [
+   10.0,
+   156.92432403564453,
+   50.98780632019043
+  ],
+  "top_center_roblox_local_new": [
+   10.0,
+   101.0973129272461,
+   32.84850883483887
+  ],
+  "top_center_roblox_world_old": [
+   10.0,
+   157.52432403564453,
+   50.98780632019043
+  ],
+  "top_center_roblox_world_new": [
+   10.0,
+   101.69731292724609,
+   32.84850883483887
+  ],
+  "top_verts_roblox_local_old": [
+   [
+    7.5,
+    156.1517791748047,
+    53.365447998046875
+   ],
+   [
+    7.5,
+    157.69686889648438,
+    48.610164642333984
+   ],
+   [
+    12.5,
+    156.1517791748047,
+    53.365447998046875
+   ],
+   [
+    12.5,
+    157.69686889648438,
+    48.610164642333984
+   ]
+  ],
+  "top_verts_roblox_local_new": [
+   [
+    7.5,
+    100.32476806640625,
+    35.22615051269531
+   ],
+   [
+    7.5,
+    101.86985778808594,
+    30.470867156982422
+   ],
+   [
+    12.5,
+    100.32476806640625,
+    35.22615051269531
+   ],
+   [
+    12.5,
+    101.86985778808594,
+    30.470867156982422
+   ]
+  ],
+  "highest_roblox_world_y_old": 158.29686889648437,
+  "highest_roblox_world_y_new": 102.46985778808593
+ },
+ "hard_checks_pass": true,
+ "fbx_reimport": {
+  "start_ship_b2_visual.fbx": {
+   "objects": 32,
+   "meshes": 28,
+   "empties": [
+    "CupRef",
+    "RampStart",
+    "Spawn",
+    "Tee1"
+   ],
+   "tris": 49405,
+   "names_ok": true,
+   "origins_ok": true,
+   "tris_ok": true,
+   "images": [
+    [
+     "start_ship_palette.png",
+     [
+      256,
+      256
+     ],
+     true
+    ]
+   ]
+  },
+  "start_ship_b2_col.fbx": {
+   "objects": 190,
+   "tris": 2280,
+   "names_ok": true,
+   "origins_ok": true,
+   "tris_ok": true,
+   "mast_world_verts_match_blend": true,
+   "mast_max_world_vertex_diff": 1.239776611328125e-05
+  },
+  "RampFlight1_own_origin.fbx": {
+   "objects": 1,
+   "names_ok": true,
+   "origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "origins_ok": true,
+   "tris": 300,
+   "tris_ok": true
+  },
+  "RampLanding_own_origin.fbx": {
+   "objects": 1,
+   "names_ok": true,
+   "origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "origins_ok": true,
+   "tris": 184,
+   "tris_ok": true
+  },
+  "RampFlight2_own_origin.fbx": {
+   "objects": 1,
+   "names_ok": true,
+   "origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "origins_ok": true,
+   "tris": 288,
+   "tris_ok": true
+  }
+ }
+}
