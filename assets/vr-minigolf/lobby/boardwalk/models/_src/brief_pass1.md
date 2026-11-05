@@ -1,0 +1,42 @@
+# Brief pass 1: Golden Hour Boardwalk lobby props (SRV-137)
+You are on the Windows PC. Workdir = this `models/` folder. Blender 5.2: `C:\Program Files\Blender Foundation\Blender 5.2\blender.exe`. Launch Blender ONLY through `_src\run_blender.ps1 -Script <py> -Log <log>` (it waits for any running Blender). Never run two Blenders. Close Blender when done.
+Log every step with a timestamp to `_src\PROGRESS.md`. Work in checkpoints: after each step append "STEP n DONE" so a relaunch can resume; on start, read PROGRESS.md and skip finished steps.
+
+## Inputs (read first)
+`..\props.md` (source of truth: 22 props, sizes, tris, palette, export), `..\lobby.json` (placements, studs, X east, Z south, Y up, deck top Y=0), `..\concept_pier.png`, `..\concept_arches.png`, `..\layout_boardwalk_v1.png`, `..\..\concept_C_boardwalk.png` (spawn view), `_src\atlas_layout.md`. Reference library: `_src\_lg_ref\` (lglib.py helpers: palette mats, box UVs, tri_count, bbox, bevel, FBX export settings from build_all.py). Copy/adapt into `_src\bwlib.py`; do not import from other course folders.
+
+## Rules
+- 1 unit = 1 stud, Z-up in Blender. FBX: forward -Z, up Y, scale 1.0, apply transforms, embed textures. Blender +Y = Roblox -Z = north. Build every prop at yaw 0 in the orientation lobby.json uses (yaw 0 = north-facing frame). The viewer-facing front of the course board, arches, nameplates, leaderboard (before its -90 yaw) and signpost is the Roblox +Z (south, toward spawn) side = Blender -Y; record `front` per prop in the manifest.
+- Pivot at base centre (bbox centre XY, min Z = 0). Moving part (windmill blades): pivot at hub axle, separate FBX.
+- Decoration only (CanCollide off); give each prop `collision` boxes in manifest (1 box; arches 3: 2 legs + lintel). No mesh collision.
+- Each mesh < 20k tris. One MeshPart per material. Materials: `BW_Atlas` (single shared 1024² atlas `textures\bw_atlas_1024.png`, 8-bit RGB, no metadata) and `BW_Neon` (flat #FFC867, or #9FE6F2 for crystal tips; emissive part as its own mesh object). Backdrop sea stacks: vertex colour only.
+- Bevel chunky edges (2 segments), rounded toy-like shapes, no detail < 0.3 studs. No alpha-blend; alpha cutout at most.
+- Build the atlas procedurally per `atlas_layout.md` (Pillow or Blender image), palette hexes from props.md exactly.
+
+## Props -> files (fbx\bw_<name>.fbx). Target tris per mesh
+deck_plank_a, deck_plank_b (10x1x10) | rail_section (10 long x 3.5) | piling_cluster (2x6x2) | course_board (26x10x2, 3 card slots 6x8 centred at offsetX -8/0/+8, cardCenterY 5.5, 2 side lanterns on BW_Neon, stone footing; 6k) | course_card_plane (6x8 single quad, separate, UV 0-1 so RobloxDevBot can swap card_* art) | leaderboard_wall (14x10x2, 3 parchment panels as flat faces named panel_1..3 for SurfaceGui, brass header; 3k) | signpost (3x7x1, arrows Practice/Leaderboards/Pier, text not modelled; 800) | arch_lantern_grove (16x18x4, opening 10x12, gnarled trunk, leaf blobs, 6 hanging lanterns Neon; 15k) | arch_sugarloaf (8k) | arch_aurora (10k, crystal tips Neon) | arch_nameplate (8x2x0.5; 400) | coming_soon_sign (6x2 hanging; 400) | green_slab (34x0.4x20 + 0.8 rounded bumper rail, 2 cup holes at lobby.json cup positions relative to slab centre; 2k) | windmill (6x10x6 body 3.5k) + windmill_blades (0.5k, pivot = hub) | cup_flag (0.6x5; 200) | tee_mat (2x0.1x2; 20) | shack (16x14x18 W x H x D in its own frame, counter on its front; awning stripes; menu board; merged candy props; 12k) | bench (6x2.5x2; 600) | picnic_table (6x3x6; 900) | barrel (300) | crate (50) | planter (4x2x2; 1k) | umbrella (6x7x6; 700) | lantern_post (1x7x1, Neon glass; 400) | string_lights (10 long span, merged bulbs Neon; 300, scalable along X) | sea_stacks (3k total, vertex colour, far) | lantern_tree_canopy (6k).
+Items 4 (sand) and 12 (portal plane) are RobloxDevBot's: do not model.
+
+## Budget
+Whole lobby ~115k (limit 120k) INCLUDING instances. Derive an instance plan in manifest `instances[]` from lobby.json: deck tiles over walkwayColliders deck_main/deck_pier/path, rail sections along every railings[] entry, pilings every 10 under the pier, benches at pierSeating.seats (facing south = yaw 180) + 3 promenade benches, ~8 lantern posts, string lights, planters/barrels/crates/umbrellas sparing. Compute total = sum(tris x count). If deck/rails blow the ~30k share, REDUCE deck tile tris (e.g. top + sides only ~100 tris, plank gaps in the texture) rather than cutting hero props, and record the decision. Keep <= 40 unique meshes.
+
+## Steps
+1. bwlib.py + make_atlas.py -> textures\bw_atlas_1024.png. STEP 1 DONE.
+2. registry.py + props_*.py + build_all.py: build every prop, export FBX, write manifest.json (per file: bbox studs Roblox axes, tris, materials, pivot, front, motion (blades: axis, rpm 6), collision boxes; instances[]; totals). Build in groups (structure, board/UI, arches, green, social, backdrop), checkpoint each. STEP 2x DONE.
+3. fitcheck.py -> `_src\fitcheck_pass1_validated.txt`: each bbox within 10% of spec size; each mesh < 20k; total <= 120k; pivots at base; board card slots at offsetX/cardCenterY; spawn 10-stud clear radius free of instances; arches opening >= 10x12; nothing in practice-green tee->cup lines taller than the bumper except windmill. Fix until ALL PASS.
+4. Renders (Blender, EEVEE fine; Cycles OptiX ok): per-prop 3/4 view + eye-height 5 studs with a 2x5 reference capsule -> previews\props\<name>.png; `previews\contact_sheet.png` (all props, labelled); `previews\spawn_view.png`: assemble full lobby from instances + lobby.json placements (board, arches, green, shack yaw 90, leaderboard yaw -90, pier seating), camera at Roblox (100, 5, 100) looking north (-Z) i.e. Blender (100, -100, 5) looking +Y, 90° hfov, golden-hour sun #FFB46A low in the west, fog #F2A57E, ocean plane #3E8FB0 at Y=-4, sand. Also `previews\topdown.png`.
+5. README.md (file list, axes, pivots, tris table, instance plan, import notes: scale 1, CanCollide off, Neon parts), `_src\pass1_summary.md`, spec questions for Game Art Bot. Write `_src\pass1_done.flag`. Only end after the flag exists.
+
+## OVERRIDE (supersedes names and instance plan above): match RobloxDevBot's builder
+`_src\builder_Lobby.luau` is the builder's placement list. Export EXACTLY these 29 file names (assetName) and use its instances (positions/yaws) for `manifest.instances[]`, the tri total and the spawn render:
+bw_deck_plank_a (x76), bw_deck_plank_b (x76), bw_railing (x42, = rail_section), bw_pier_piling (x8, = piling_cluster), bw_course_board, bw_leaderboard_wall, bw_signpost, bw_arch_lantern_grove, bw_arch_sugarloaf_canyon, bw_arch_aurora_archipelago, bw_arch_nameplate (x3), bw_coming_soon_sign (x2), bw_practice_green (= green_slab), bw_windmill, bw_windmill_blades, bw_cup_flag (x2), bw_tee_mat (x2), bw_birdie_bites_shack (= shack), bw_bench (x6), bw_picnic_table, bw_barrel, bw_crate, bw_flower_planter (= planter), bw_beach_umbrella (= umbrella), bw_lantern_post (x6), bw_string_lights, bw_lantern_tree_canopy, bw_sea_stacks (~1.8k) + bw_rock_arch (~1.2k) (props.md #21 split in two, 3k combined, vertex colour).
+Extra (not in builder, still export, flag in README): bw_course_card_plane.
+Budget with these counts: deck tiles MUST be <= 100 tris each (152 x 100 = 15.2k) and bw_railing <= 350 (42 x 350 = 14.7k); keep all other props at props.md targets so the lobby lands ~115k (<= 120k). Fitcheck must sum tris x builder counts.
+
+## OVERRIDE 2: no bw_course_card_plane (RobloxDevBot builds the cards)
+Do NOT export bw_course_card_plane. On bw_course_board model 3 flat recessed card faces (one per slot, 6x8 studs each, centres at local X -8/0/+8, Y(up) 5.5, on the south/viewer face, inset ~0.15 studs, flat quad bottom, named card_face_1..3). Record in manifest `course_board.cardFaces[]`: size [w,h], insetDepth, center [x,y,z] in the prop's local Roblox studs (pivot at base centre), normal (+Z). Fitcheck verifies them.
+Defaults confirmed: deck <=100 tris, railing <=350, sea_stacks ~1.8k / rock_arch ~1.2k, viewer side = south (+Z Roblox).
+
+## OVERRIDE 3 (Game Art Bot approved defaults; two art notes)
+- Atlas deck rows: subtle per-plank colour variation (±4-6% value/hue jitter around #B5835A, seeded, a few darker #7A4E2D-leaning boards) so deck_plank_a vs _b tiles don't read as a repeat; make a and b use different UV offsets in that strip.
+- bw_rock_arch is the backdrop hero: give it the cleanest, readable silhouette (clear arch opening, smooth chunky contour, no noisy spikes); sea stacks stay simpler.

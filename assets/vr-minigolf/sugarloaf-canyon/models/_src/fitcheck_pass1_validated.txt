@@ -1,0 +1,7 @@
+Pass 1 world fit check vs FINAL holes.json (18 holes)
+1) Triangle-level (sc_fitcheck.py -> fitcheck_pass1.txt): every world-piece triangle >= 2.0 studs XZ from every footprint pad; min 2.10 (H5 landing_6x4). Walkway overhead >= 8: PASS (min 9.25). RESULT ALL PASS.
+2) holes.json felt/rail inset inside footprint pads (min per hole): H1 0.0, H2 0.5, H3 0.0, H4 0.5, H5 1.5, H6 0.5, H7 0.5, H8 1.5, H9 1.5, H10 0.5, H11 0.5, H12 0.29, H13 0.5, H14 3.5, H15 0.0, H16 1.5, H17 1.32, H18 3.5; outside=0 all holes.
+   Combined lower bound rail->nearest piece = inset + nearest-piece distance:
+   H1 2.2 (boardwalk, floor kit <2 tall, exempt), H2 2.7 (boardwalk, exempt), H3 2.9 (ranger_footbridge deck end, walkway connector -> FLAG, verify in Studio),
+   H4 6.9, H5 3.6, H6 5.9, H7 4.5, H8 10.5, H9 15.2, H10 3.7, H11 3.2, H12 11.6, H13 9.6, H14 14.6, H15 9.8, H16 5.6, H17 6.2, H18 8.5.
+   Rule "nothing >2 tall within 3 of a rail" and "rail strip >=1.5 clear": PASS except the H3 footbridge end (2.9, lower bound; a walkway deck, not dressing).

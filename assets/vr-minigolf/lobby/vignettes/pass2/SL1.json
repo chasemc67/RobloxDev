@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Concept art, elevated three-quarter view from the seaside boardwalk at golden-hour sunset (harbour festival mood, bunting, lanterns, a striped lighthouse far in the background). In the foreground-middle stands the course portal archway from the reference (same design, smaller in frame, glowing opening). Directly BEHIND the arch, clearly visible above and to both sides of it, sits a small fenced-off 3D diorama of the course world on the beach, about 40 wide x 30 deep and up to 2x the arch height, built from a few big chunky low-poly shapes and a few hero props, like a theme-park preview set. The open wooden deck in front of the arch is empty. Whimsical stylized toy-like 3D render, original design, no text, no letters. Diorama: Sugarloaf Canyon. A tall pink and cream striped candy mesa with a red gondola cabin hanging on a cable across it and a pink waterfall pouring into a pool.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/portal_sugarloaf_canyon.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1519,
+    "outputTokens": 1078,
+    "totalTokens": 2597
+  },
+  "cost": 0.043823,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791842332,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1296,
+          "textTokens": 223
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791842300287,
+                "endTime": 1791842332464,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.043823",
+      "marketCost": "0.043823",
+      "surchargeCost": "0",
+      "gatewayCost": "0.043823",
+      "inferenceCost": "0.043823",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.043823",
+      "generationId": "gen_01M4S1ZC9744MAVKM0Y46BR9NX"
+    }
+  },
+  "seconds": 33.1,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/vignettes/SL1.png"
+  ]
+}

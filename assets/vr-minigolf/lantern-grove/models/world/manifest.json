@@ -1,0 +1,9429 @@
+{
+ "section": "Lantern Grove world pieces (pass 3)",
+ "units": "Roblox world studs, +Y up, +X east, -Z north (same as world/world.json and holes.json)",
+ "placement": "For every instance: Model:PivotTo(CFrame.new(pos) * CFrame.Angles(0, math.rad(yaw), 0)); if scale is given use Model:ScaleTo(scale[2]) when the 3 values are equal, otherwise resize each MeshPart (Size and its offset from the pivot multiplied per axis). pos is the piece origin (base centre unless `origin` says otherwise). Every part FBX of a piece shares that origin.",
+ "import_settings": "File > Import 3D, scale unit Stud, keep hierarchy; one MeshPart per material named <part>__<Material>; Anchored, CanCollide/CanQuery/CanTouch false (decoration only), CastShadow false on Neon/Water/Foam/Mist and on far pieces (mountains, far hills, clouds).",
+ "texture_note": "Same textures/ as the props; world pieces use box UVs with tile_studs = prop tile x texture_tile_scale (listed per mesh).",
+ "fbx_export": "same as props: Blender 4.5, unit NONE, axis_forward -Z, axis_up Y, FBX_SCALE_UNITS, embedded PNGs",
+ "fit_check": "see world/fitcheck_world.txt (world_fitcheck.py)",
+ "pieces": [
+  {
+   "id": "hollow_tree_world_shell",
+   "kind": "hero_tree",
+   "world_json_id": "hollow_tree_world_shell",
+   "origin": "trunk base centre [-74, 39.6, 6] (world.json hollow_tree.center); yaw 0",
+   "notes": "Giant hollow trunk shell around H9: outer r 45.84 (flared base), inner r 38.84, 100 tall, hollow up to y+78 under a dome with a 14-radius oculus shaft open through the top. Heartwood Door: 14 wide x 20 high arch at map angle 53.1 deg (splays to 17.5 wide inside). Parts 1-4 = trunk wall sectors (bark outside, warm Heartwood inside), 5 = buttress roots (to r 65.8, trimmed so they never touch H8/H9 felt, walls, walkways or lantern posts), 6 = outer details (door frame + lanterns, glowing windows, bracket fungi, moss), 7 = interior lantern strings / wall lanterns / glowing mushrooms (all far above or outside H9).",
+   "files": [
+    "fbx/hollow_tree_world_shell_part1.fbx",
+    "fbx/hollow_tree_world_shell_part2.fbx",
+    "fbx/hollow_tree_world_shell_part3.fbx",
+    "fbx/hollow_tree_world_shell_part4.fbx",
+    "fbx/hollow_tree_world_shell_part5.fbx",
+    "fbx/hollow_tree_world_shell_part6.fbx",
+    "fbx/hollow_tree_world_shell_part7.fbx",
+    "fbx/hollow_tree_world_shell_part8.fbx"
+   ],
+   "tris": 76952,
+   "max_part_tris": 16660,
+   "bbox_size_studs": [
+    127.85,
+    107.22,
+    124.56
+   ],
+   "bbox_center_from_origin": [
+    1.5,
+    48.08,
+    1.5
+   ],
+   "size_target_world_json": [
+    91.7,
+    100,
+    91.7
+   ],
+   "instances": [
+    {
+     "pos": [
+      -74.0,
+      39.6,
+      6.0
+     ],
+     "yaw": 0.0,
+     "note": "trunk base centre; door at map angle 53.1 deg",
+     "world_json_id": "hollow_tree_world_shell"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/hollow_tree_world_shell_part1.fbx",
+     "role": "trunk wall sector 1 (door: Blender angles -98..-8)",
+     "tris": 7734,
+     "bbox_size_studs": [
+      52.38,
+      105.87,
+      52.42
+     ],
+     "bbox_center_from_origin": [
+      18.45,
+      48.33,
+      28.18
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part1__Heartwood",
+       "material": "Heartwood",
+       "color": "#B9783F",
+       "roblox_material": "Wood",
+       "texture": "textures/heartwood.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2734,
+       "bbox_center_from_origin": [
+        17.76,
+        36.5,
+        22.03
+       ],
+       "size": [
+        47.32,
+        82.2,
+        39.62
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part1__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 5000,
+       "bbox_center_from_origin": [
+        18.45,
+        48.33,
+        28.18
+       ],
+       "size": [
+        52.38,
+        105.87,
+        52.42
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part2.fbx",
+     "role": "trunk wall sector 2 (north: Blender angles -8..82)",
+     "tris": 7845,
+     "bbox_size_studs": [
+      46.97,
+      105.54,
+      54.3
+     ],
+     "bbox_center_from_origin": [
+      25.46,
+      48.17,
+      -20.8
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part2__Heartwood",
+       "material": "Heartwood",
+       "color": "#B9783F",
+       "roblox_material": "Wood",
+       "texture": "textures/heartwood.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2881,
+       "bbox_center_from_origin": [
+        22.03,
+        36.5,
+        -17.76
+       ],
+       "size": [
+        39.61,
+        82.2,
+        47.32
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part2__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 4964,
+       "bbox_center_from_origin": [
+        25.46,
+        48.17,
+        -20.8
+       ],
+       "size": [
+        46.97,
+        105.54,
+        54.3
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part3.fbx",
+     "role": "trunk wall sector 3 (back: Blender angles 82..172)",
+     "tris": 7848,
+     "bbox_size_studs": [
+      61.85,
+      106.13,
+      55.67
+     ],
+     "bbox_center_from_origin": [
+      -24.12,
+      48.46,
+      -29.81
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part3__Heartwood",
+       "material": "Heartwood",
+       "color": "#B9783F",
+       "roblox_material": "Wood",
+       "texture": "textures/heartwood.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2882,
+       "bbox_center_from_origin": [
+        -17.76,
+        36.5,
+        -22.03
+       ],
+       "size": [
+        47.32,
+        82.2,
+        39.62
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part3__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 4966,
+       "bbox_center_from_origin": [
+        -24.12,
+        48.46,
+        -29.81
+       ],
+       "size": [
+        61.85,
+        106.13,
+        55.67
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part4.fbx",
+     "role": "trunk wall sector 4 (south: Blender angles 172..262)",
+     "tris": 7843,
+     "bbox_size_studs": [
+      58.25,
+      106.29,
+      64.27
+     ],
+     "bbox_center_from_origin": [
+      -31.1,
+      48.55,
+      24.91
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part4__Heartwood",
+       "material": "Heartwood",
+       "color": "#B9783F",
+       "roblox_material": "Wood",
+       "texture": "textures/heartwood.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2881,
+       "bbox_center_from_origin": [
+        -22.02,
+        36.5,
+        17.76
+       ],
+       "size": [
+        39.64,
+        82.2,
+        47.32
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part4__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 4962,
+       "bbox_center_from_origin": [
+        -31.1,
+        48.55,
+        24.91
+       ],
+       "size": [
+        58.25,
+        106.29,
+        64.27
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part5.fbx",
+     "role": "buttress roots (flare to r 65.8; trimmed by fit rules so they stay off H8/H9 felt, walls and walkways)",
+     "tris": 6848,
+     "bbox_size_studs": [
+      127.85,
+      32.01,
+      124.56
+     ],
+     "bbox_center_from_origin": [
+      1.5,
+      10.48,
+      1.5
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part5__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 8.0,
+       "transparency": 0,
+       "tris": 380,
+       "bbox_center_from_origin": [
+        0.25,
+        12.71,
+        0.39
+       ],
+       "size": [
+        110.42,
+        6.59,
+        108.69
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part5__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 6468,
+       "bbox_center_from_origin": [
+        1.5,
+        10.48,
+        1.5
+       ],
+       "size": [
+        127.85,
+        32.01,
+        124.56
+       ]
+      }
+     ],
+     "root_angles_blender_deg_and_reach": [
+      [
+       -180.7,
+       61.8
+      ],
+      [
+       -166.3,
+       61.2
+      ],
+      [
+       -148.6,
+       64.6
+      ],
+      [
+       -136.5,
+       60.7
+      ],
+      [
+       -116.4,
+       59.4
+      ],
+      [
+       -106.6,
+       64.5
+      ],
+      [
+       -87.1,
+       62.9
+      ],
+      [
+       3.5,
+       65.2
+      ],
+      [
+       23.3,
+       58.0
+      ],
+      [
+       32.7,
+       64.1
+      ],
+      [
+       53.9,
+       62.7
+      ],
+      [
+       67.2,
+       58.9
+      ],
+      [
+       83.2,
+       60.0
+      ],
+      [
+       97.3,
+       60.0
+      ],
+      [
+       113.7,
+       60.7
+      ],
+      [
+       126.6,
+       61.0
+      ],
+      [
+       147.4,
+       61.5
+      ],
+      [
+       162.1,
+       60.2
+      ],
+      [
+       172.3,
+       59.5
+      ]
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part6.fbx",
+     "role": "outer details: Heartwood Door frame + lanterns, glowing windows, bracket fungi, moss, lantern hooks",
+     "tris": 8748,
+     "bbox_size_studs": [
+      97.01,
+      101.27,
+      96.64
+     ],
+     "bbox_center_from_origin": [
+      0.5,
+      50.13,
+      0.27
+     ],
+     "texture_tile_scale": 1.5,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part6__CapGold",
+       "material": "CapGold",
+       "color": "#F2B632",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1056,
+       "bbox_center_from_origin": [
+        1.0,
+        36.62,
+        1.82
+       ],
+       "size": [
+        89.04,
+        34.94,
+        93.54
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__CapOrange",
+       "material": "CapOrange",
+       "color": "#E8862E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1632,
+       "bbox_center_from_origin": [
+        4.26,
+        35.06,
+        -0.86
+       ],
+       "size": [
+        89.49,
+        50.18,
+        94.0
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 712,
+       "bbox_center_from_origin": [
+        2.61,
+        44.28,
+        1.99
+       ],
+       "size": [
+        89.26,
+        59.42,
+        90.46
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 644,
+       "bbox_center_from_origin": [
+        8.89,
+        21.53,
+        14.61
+       ],
+       "size": [
+        76.41,
+        9.95,
+        64.72
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 720,
+       "bbox_center_from_origin": [
+        -0.16,
+        50.27,
+        -0.21
+       ],
+       "size": [
+        95.7,
+        100.99,
+        95.68
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 1312,
+       "bbox_center_from_origin": [
+        0.41,
+        36.8,
+        0.25
+       ],
+       "size": [
+        85.02,
+        74.6,
+        87.14
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 324,
+       "bbox_center_from_origin": [
+        8.93,
+        19.51,
+        21.35
+       ],
+       "size": [
+        77.65,
+        10.98,
+        52.35
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 324,
+       "bbox_center_from_origin": [
+        14.82,
+        19.01,
+        14.62
+       ],
+       "size": [
+        65.09,
+        9.99,
+        66.1
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 9.0,
+       "transparency": 0,
+       "tris": 1992,
+       "bbox_center_from_origin": [
+        2.5,
+        44.34,
+        1.85
+       ],
+       "size": [
+        89.91,
+        61.27,
+        91.01
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part6__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 32,
+       "bbox_center_from_origin": [
+        30.17,
+        13.51,
+        40.16
+       ],
+       "size": [
+        15.59,
+        0.38,
+        11.76
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part7.fbx",
+     "role": "interior: lantern strings across the hollow (local y 26-50, far above H9), wall lanterns, glowing mushrooms and gold fungi on the inner wall",
+     "tris": 13426,
+     "bbox_size_studs": [
+      80.43,
+      53.45,
+      79.61
+     ],
+     "bbox_center_from_origin": [
+      0.03,
+      26.09,
+      -0.66
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part7__CapGold",
+       "material": "CapGold",
+       "color": "#F2B632",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1280,
+       "bbox_center_from_origin": [
+        0.03,
+        29.08,
+        -7.16
+       ],
+       "size": [
+        80.43,
+        40.1,
+        66.6
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__Cream",
+       "material": "Cream",
+       "color": "#F4E9D2",
+       "roblox_material": "SmoothPlastic",
+       "texture": "textures/plaster.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 780,
+       "bbox_center_from_origin": [
+        0.04,
+        0.66,
+        0.92
+       ],
+       "size": [
+        76.94,
+        2.59,
+        75.63
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1656,
+       "bbox_center_from_origin": [
+        0.16,
+        28.81,
+        0.12
+       ],
+       "size": [
+        74.4,
+        43.83,
+        74.62
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1994,
+       "bbox_center_from_origin": [
+        0.17,
+        30.54,
+        0.13
+       ],
+       "size": [
+        77.91,
+        44.55,
+        78.04
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1820,
+       "bbox_center_from_origin": [
+        0.2,
+        28.89,
+        0.12
+       ],
+       "size": [
+        75.28,
+        44.74,
+        75.46
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 572,
+       "bbox_center_from_origin": [
+        3.47,
+        31.2,
+        6.47
+       ],
+       "size": [
+        52.32,
+        21.5,
+        44.8
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 3452,
+       "bbox_center_from_origin": [
+        -0.78,
+        28.89,
+        0.36
+       ],
+       "size": [
+        76.69,
+        45.18,
+        75.44
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part7__ShroomGlow",
+       "material": "ShroomGlow",
+       "color": "#7FE3D0",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1872,
+       "bbox_center_from_origin": [
+        0.06,
+        1.03,
+        0.9
+       ],
+       "size": [
+        77.75,
+        2.4,
+        76.18
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_world_shell_part8.fbx",
+     "role": "pass 4 interior glow: 18 low lantern clusters (3 lanterns each, glow 5-9 above the floor) on iron brackets along the inner wall + 24 big glowing-mushroom clumps at the wall foot; lights_world = PointLight positions",
+     "tris": 16660,
+     "bbox_size_studs": [
+      78.26,
+      11.55,
+      78.23
+     ],
+     "bbox_center_from_origin": [
+      0.05,
+      4.89,
+      0.05
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_world_shell_part8__Cream",
+       "material": "Cream",
+       "color": "#F4E9D2",
+       "roblox_material": "SmoothPlastic",
+       "texture": "textures/plaster.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 1840,
+       "bbox_center_from_origin": [
+        0.16,
+        0.7,
+        0.07
+       ],
+       "size": [
+        77.23,
+        3.17,
+        77.28
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part8__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1944,
+       "bbox_center_from_origin": [
+        0.05,
+        7.62,
+        0.13
+       ],
+       "size": [
+        75.9,
+        3.11,
+        75.78
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part8__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 2628,
+       "bbox_center_from_origin": [
+        0.06,
+        8.77,
+        0.2
+       ],
+       "size": [
+        78.1,
+        3.8,
+        77.92
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part8__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1716,
+       "bbox_center_from_origin": [
+        0.08,
+        7.74,
+        0.26
+       ],
+       "size": [
+        76.4,
+        3.68,
+        76.01
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part8__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1092,
+       "bbox_center_from_origin": [
+        -0.28,
+        7.61,
+        0.12
+       ],
+       "size": [
+        74.62,
+        3.53,
+        76.25
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part8__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 3024,
+       "bbox_center_from_origin": [
+        0.05,
+        8.11,
+        0.12
+       ],
+       "size": [
+        76.13,
+        4.81,
+        75.96
+       ]
+      },
+      {
+       "mesh": "hollow_tree_world_shell_part8__ShroomGlow",
+       "material": "ShroomGlow",
+       "color": "#7FE3D0",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 4416,
+       "bbox_center_from_origin": [
+        0.05,
+        1.32,
+        0.04
+       ],
+       "size": [
+        78.26,
+        2.69,
+        78.21
+       ]
+      }
+     ],
+     "lights_world": [
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -43.2,
+        47.69,
+        27.64
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -37.83,
+        47.0,
+        16.4
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -36.41,
+        48.22,
+        4.02
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -39.12,
+        47.71,
+        -8.15
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -45.65,
+        47.97,
+        -18.76
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -55.29,
+        47.65,
+        -26.66
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -66.98,
+        47.8,
+        -30.98
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -79.44,
+        47.21,
+        -31.24
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -91.3,
+        46.01,
+        -27.43
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -101.27,
+        46.07,
+        -19.94
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -108.25,
+        46.59,
+        -9.62
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -111.47,
+        48.01,
+        2.42
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -110.58,
+        47.78,
+        14.85
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -105.69,
+        46.5,
+        26.32
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -97.32,
+        47.35,
+        35.55
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -86.39,
+        46.88,
+        41.54
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -74.1,
+        47.87,
+        43.64
+       ]
+      },
+      {
+       "kind": "wall_lantern_cluster",
+       "pos": [
+        -61.81,
+        46.87,
+        41.61
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -40.29,
+        41.02,
+        24.12
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -35.79,
+        41.01,
+        6.13
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -39.96,
+        40.68,
+        -10.79
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -51.12,
+        41.55,
+        -24.23
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -63.89,
+        41.47,
+        -30.76
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -85.85,
+        41.07,
+        -30.09
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -99.11,
+        40.2,
+        -22.78
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -110.74,
+        41.04,
+        -4.53
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -111.85,
+        40.88,
+        10.01
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -103.76,
+        40.99,
+        29.83
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -88.83,
+        40.87,
+        41.03
+       ]
+      },
+      {
+       "kind": "wall_mushroom_clump",
+       "pos": [
+        -76.24,
+        41.22,
+        44.36
+       ]
+      }
+     ],
+     "lights_note": "PointLight positions (world studs): wall_lantern_cluster -> Range 12, Brightness 1.2, #FFB347; wall_mushroom_clump -> Range 9, Brightness 0.8, #7FE3D0. Parent each to an invisible anchored Attachment/Part."
+    }
+   ],
+   "previews": [
+    "previews/hollow_tree_world_shell_34.png",
+    "previews/hollow_tree_world_shell_door.png",
+    "previews/hollow_tree_world_shell_cutaway.png",
+    "previews/hollow_tree_world_shell_top_fit.png"
+   ]
+  },
+  {
+   "id": "hollow_tree_crown",
+   "kind": "hero_tree",
+   "world_json_id": "hollow_tree_crown",
+   "origin": "crown base centre [-74, 139.6, 6] (= trunk base + 100); limbs dip ~4 below it into the trunk top",
+   "notes": "Golden/orange crown: 7 lumpy leaf masses (6 in a ring leaving a ~16-radius light gap over the oculus, 1 high mass west of it), limbs rising from the trunk-top rim, 12 big hanging lanterns under the outer crown.",
+   "files": [
+    "fbx/hollow_tree_crown_part1.fbx",
+    "fbx/hollow_tree_crown_part2.fbx",
+    "fbx/hollow_tree_crown_part3.fbx",
+    "fbx/hollow_tree_crown_part4.fbx",
+    "fbx/hollow_tree_crown_part5.fbx",
+    "fbx/hollow_tree_crown_part6.fbx"
+   ],
+   "tris": 61956,
+   "max_part_tris": 16640,
+   "bbox_size_studs": [
+    176.0,
+    81.0,
+    176.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    37.5,
+    -0.0
+   ],
+   "size_target_world_json": [
+    176,
+    78,
+    176
+   ],
+   "instances": [
+    {
+     "pos": [
+      -74.0,
+      139.6,
+      6.0
+     ],
+     "yaw": 0.0,
+     "note": "crown base centre = trunk base + 100",
+     "world_json_id": "hollow_tree_crown"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/hollow_tree_crown_part1.fbx",
+     "role": "limbs from the trunk top into each leaf mass + 12 big hanging lanterns under the crown",
+     "tris": 5796,
+     "bbox_size_studs": [
+      123.33,
+      51.63,
+      153.8
+     ],
+     "bbox_center_from_origin": [
+      -5.03,
+      22.82,
+      -1.99
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_crown_part1__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 432,
+       "bbox_center_from_origin": [
+        -5.16,
+        7.62,
+        -1.99
+       ],
+       "size": [
+        121.05,
+        6.47,
+        152.02
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part1__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 432,
+       "bbox_center_from_origin": [
+        -5.16,
+        9.67,
+        -1.99
+       ],
+       "size": [
+        120.56,
+        5.79,
+        150.94
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part1__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 696,
+       "bbox_center_from_origin": [
+        -5.16,
+        7.75,
+        -8.81
+       ],
+       "size": [
+        122.89,
+        8.05,
+        117.39
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part1__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 696,
+       "bbox_center_from_origin": [
+        -3.96,
+        8.21,
+        -1.99
+       ],
+       "size": [
+        112.3,
+        6.97,
+        153.61
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part1__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 3348,
+       "bbox_center_from_origin": [
+        -5.03,
+        22.82,
+        -1.99
+       ],
+       "size": [
+        123.33,
+        51.63,
+        153.8
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part1__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 192,
+       "bbox_center_from_origin": [
+        -5.16,
+        5.79,
+        -2.0
+       ],
+       "size": [
+        120.33,
+        5.82,
+        151.11
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_crown_part2.fbx",
+     "role": "leaf masses 1-2 (lower ring)",
+     "tris": 16640,
+     "bbox_size_studs": [
+      84.86,
+      51.97,
+      122.52
+     ],
+     "bbox_center_from_origin": [
+      45.57,
+      33.22,
+      -9.01
+     ],
+     "texture_tile_scale": 4.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_crown_part2__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 7360,
+       "bbox_center_from_origin": [
+        47.99,
+        32.57,
+        -7.26
+       ],
+       "size": [
+        75.95,
+        50.67,
+        119.02
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part2__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 1920,
+       "bbox_center_from_origin": [
+        45.57,
+        45.02,
+        -17.52
+       ],
+       "size": [
+        84.86,
+        28.37,
+        105.51
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part2__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 7360,
+       "bbox_center_from_origin": [
+        42.38,
+        35.97,
+        -11.63
+       ],
+       "size": [
+        74.17,
+        45.86,
+        110.98
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_crown_part3.fbx",
+     "role": "leaf masses 3-4 (lower ring)",
+     "tris": 16640,
+     "bbox_size_studs": [
+      110.93,
+      46.07,
+      94.01
+     ],
+     "bbox_center_from_origin": [
+      -32.53,
+      33.03,
+      -41.0
+     ],
+     "texture_tile_scale": 4.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_crown_part3__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 12480,
+       "bbox_center_from_origin": [
+        -32.53,
+        32.45,
+        -41.82
+       ],
+       "size": [
+        110.93,
+        44.93,
+        92.27
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part3__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 960,
+       "bbox_center_from_origin": [
+        -58.05,
+        47.31,
+        -35.31
+       ],
+       "size": [
+        51.37,
+        17.5,
+        39.85
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part3__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 3200,
+       "bbox_center_from_origin": [
+        -20.8,
+        41.37,
+        -41.0
+       ],
+       "size": [
+        85.61,
+        25.8,
+        94.01
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_crown_part4.fbx",
+     "role": "leaf masses 5-6 (lower ring)",
+     "tris": 16640,
+     "bbox_size_studs": [
+      130.63,
+      50.38,
+      89.51
+     ],
+     "bbox_center_from_origin": [
+      -15.84,
+      31.38,
+      43.25
+     ],
+     "texture_tile_scale": 4.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_crown_part4__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 7680,
+       "bbox_center_from_origin": [
+        -6.1,
+        30.1,
+        48.11
+       ],
+       "size": [
+        103.95,
+        47.82,
+        79.78
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part4__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 960,
+       "bbox_center_from_origin": [
+        -44.01,
+        41.48,
+        16.64
+       ],
+       "size": [
+        40.69,
+        17.41,
+        29.37
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part4__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 8000,
+       "bbox_center_from_origin": [
+        -15.84,
+        31.4,
+        36.7
+       ],
+       "size": [
+        130.63,
+        50.35,
+        76.41
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_crown_part5.fbx",
+     "role": "leaf masses 7-8 (upper tier)",
+     "tris": 4160,
+     "bbox_size_studs": [
+      76.27,
+      48.62,
+      125.79
+     ],
+     "bbox_center_from_origin": [
+      13.54,
+      53.69,
+      -1.79
+     ],
+     "texture_tile_scale": 4.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_crown_part5__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 1840,
+       "bbox_center_from_origin": [
+        12.11,
+        55.59,
+        4.36
+       ],
+       "size": [
+        72.5,
+        44.83,
+        113.48
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part5__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 480,
+       "bbox_center_from_origin": [
+        -3.48,
+        63.49,
+        -0.14
+       ],
+       "size": [
+        42.22,
+        19.66,
+        116.52
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part5__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 1840,
+       "bbox_center_from_origin": [
+        14.65,
+        52.49,
+        -10.81
+       ],
+       "size": [
+        74.06,
+        46.23,
+        107.76
+       ]
+      }
+     ]
+    },
+    {
+     "file": "fbx/hollow_tree_crown_part6.fbx",
+     "role": "leaf masses 9 (upper tier)",
+     "tris": 2080,
+     "bbox_size_studs": [
+      65.86,
+      44.62,
+      75.97
+     ],
+     "bbox_center_from_origin": [
+      -36.96,
+      53.08,
+      -5.8
+     ],
+     "texture_tile_scale": 4.0,
+     "meshes": [
+      {
+       "mesh": "hollow_tree_crown_part6__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 1600,
+       "bbox_center_from_origin": [
+        -37.06,
+        53.08,
+        -5.8
+       ],
+       "size": [
+        65.67,
+        44.62,
+        75.97
+       ]
+      },
+      {
+       "mesh": "hollow_tree_crown_part6__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 24.0,
+       "transparency": 0,
+       "tris": 480,
+       "bbox_center_from_origin": [
+        -36.14,
+        62.28,
+        -2.27
+       ],
+       "size": [
+        64.21,
+        23.32,
+        64.08
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/hollow_tree_crown_34.png"
+   ]
+  },
+  {
+   "id": "sister_tree_nw",
+   "kind": "background",
+   "world_json_id": "sister_tree_nw",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Golden cousin of the hero tree (hollow_tree look: furrowed bark, buttress roots, lumpy masses) with a glowing arched door and windows facing local +Z.",
+   "files": [
+    "fbx/sister_tree_nw.fbx"
+   ],
+   "tris": 19202,
+   "max_part_tris": 19202,
+   "bbox_size_studs": [
+    60.0,
+    90.0,
+    60.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    45.0,
+    -0.0
+   ],
+   "size_target_world_json": [
+    60,
+    90,
+    60
+   ],
+   "instances": [
+    {
+     "pos": [
+      -190.0,
+      32.3,
+      -110.0
+     ],
+     "yaw": 20.0,
+     "note": "world.json y 32.3; y = terrain",
+     "world_json_id": "sister_tree_nw"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/sister_tree_nw.fbx",
+     "role": "whole piece",
+     "tris": 19202,
+     "bbox_size_studs": [
+      60.0,
+      90.0,
+      60.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      45.0,
+      -0.0
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "sister_tree_nw__CapGold",
+       "material": "CapGold",
+       "color": "#F2B632",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 180,
+       "bbox_center_from_origin": [
+        3.63,
+        25.25,
+        -5.64
+       ],
+       "size": [
+        7.83,
+        12.06,
+        7.48
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__CapOrange",
+       "material": "CapOrange",
+       "color": "#E8862E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 180,
+       "bbox_center_from_origin": [
+        2.67,
+        23.68,
+        -0.73
+       ],
+       "size": [
+        11.66,
+        19.88,
+        16.42
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 332,
+       "bbox_center_from_origin": [
+        -5.66,
+        23.66,
+        -3.63
+       ],
+       "size": [
+        21.63,
+        42.86,
+        24.15
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 9040,
+       "bbox_center_from_origin": [
+        0.0,
+        66.76,
+        0.15
+       ],
+       "size": [
+        60.0,
+        46.47,
+        59.7
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 144,
+       "bbox_center_from_origin": [
+        -7.89,
+        46.2,
+        -3.99
+       ],
+       "size": [
+        16.93,
+        0.32,
+        22.87
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2240,
+       "bbox_center_from_origin": [
+        -4.31,
+        68.43,
+        -0.86
+       ],
+       "size": [
+        46.61,
+        42.71,
+        54.7
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 8.0,
+       "transparency": 0,
+       "tris": 488,
+       "bbox_center_from_origin": [
+        0.71,
+        18.13,
+        1.08
+       ],
+       "size": [
+        9.03,
+        31.79,
+        14.48
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 232,
+       "bbox_center_from_origin": [
+        -11.85,
+        44.79,
+        -8.59
+       ],
+       "size": [
+        4.71,
+        1.97,
+        1.81
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 232,
+       "bbox_center_from_origin": [
+        -7.89,
+        44.79,
+        -3.99
+       ],
+       "size": [
+        18.11,
+        1.97,
+        24.23
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 3440,
+       "bbox_center_from_origin": [
+        -1.55,
+        66.38,
+        -1.77
+       ],
+       "size": [
+        42.41,
+        45.95,
+        56.47
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2630,
+       "bbox_center_from_origin": [
+        1.41,
+        31.88,
+        -0.4
+       ],
+       "size": [
+        36.81,
+        63.76,
+        38.7
+       ]
+      },
+      {
+       "mesh": "sister_tree_nw__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 64,
+       "bbox_center_from_origin": [
+        -7.89,
+        43.36,
+        -4.0
+       ],
+       "size": [
+        16.82,
+        0.34,
+        22.98
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/sister_tree_nw_34.png"
+   ]
+  },
+  {
+   "id": "sister_tree_sw",
+   "kind": "background",
+   "world_json_id": "sister_tree_sw",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Red maple giant on the SW hills.",
+   "files": [
+    "fbx/sister_tree_sw.fbx"
+   ],
+   "tris": 16294,
+   "max_part_tris": 16294,
+   "bbox_size_studs": [
+    55.0,
+    80.0,
+    55.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    40.0,
+    -0.0
+   ],
+   "size_target_world_json": [
+    55,
+    80,
+    55
+   ],
+   "instances": [
+    {
+     "pos": [
+      -150.0,
+      15.7,
+      230.0
+     ],
+     "yaw": 51.6,
+     "note": "world.json y 15.7; y = terrain",
+     "world_json_id": "sister_tree_sw"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/sister_tree_sw.fbx",
+     "role": "whole piece",
+     "tris": 16294,
+     "bbox_size_studs": [
+      55.0,
+      80.0,
+      55.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      40.0,
+      -0.0
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "sister_tree_sw__CapGold",
+       "material": "CapGold",
+       "color": "#F2B632",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 60,
+       "bbox_center_from_origin": [
+        -2.42,
+        31.78,
+        -5.85
+       ],
+       "size": [
+        2.87,
+        1.24,
+        3.28
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__CapOrange",
+       "material": "CapOrange",
+       "color": "#E8862E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 300,
+       "bbox_center_from_origin": [
+        -2.76,
+        24.11,
+        -0.25
+       ],
+       "size": [
+        10.18,
+        14.18,
+        16.62
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 108,
+       "bbox_center_from_origin": [
+        6.31,
+        39.73,
+        -3.18
+       ],
+       "size": [
+        9.84,
+        0.7,
+        23.68
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 108,
+       "bbox_center_from_origin": [
+        6.31,
+        41.02,
+        -3.18
+       ],
+       "size": [
+        9.64,
+        0.28,
+        23.19
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 9360,
+       "bbox_center_from_origin": [
+        0.31,
+        58.93,
+        -0.0
+       ],
+       "size": [
+        54.38,
+        42.15,
+        55.0
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 232,
+       "bbox_center_from_origin": [
+        6.31,
+        39.81,
+        -2.15
+       ],
+       "size": [
+        10.65,
+        1.69,
+        22.35
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        8.43,
+        39.81,
+        -14.75
+       ],
+       "size": [
+        1.25,
+        1.69,
+        1.29
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 3520,
+       "bbox_center_from_origin": [
+        -0.18,
+        59.04,
+        -4.86
+       ],
+       "size": [
+        54.65,
+        40.78,
+        45.17
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2442,
+       "bbox_center_from_origin": [
+        -0.84,
+        27.75,
+        0.06
+       ],
+       "size": [
+        33.12,
+        55.49,
+        33.1
+       ]
+      },
+      {
+       "mesh": "sister_tree_sw__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 48,
+       "bbox_center_from_origin": [
+        6.31,
+        38.58,
+        -3.19
+       ],
+       "size": [
+        9.55,
+        0.29,
+        23.28
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/sister_tree_sw_34.png"
+   ]
+  },
+  {
+   "id": "sister_tree_ne",
+   "kind": "background",
+   "world_json_id": "sister_tree_ne",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Squat golden oak giant on the NE shoulder above the village.",
+   "files": [
+    "fbx/sister_tree_ne.fbx"
+   ],
+   "tris": 16542,
+   "max_part_tris": 16542,
+   "bbox_size_studs": [
+    50.0,
+    75.0,
+    50.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    37.5,
+    -0.0
+   ],
+   "size_target_world_json": [
+    50,
+    75,
+    50
+   ],
+   "instances": [
+    {
+     "pos": [
+      260.0,
+      46.7,
+      -150.0
+     ],
+     "yaw": 311.6,
+     "note": "world.json y 46.7; y = terrain",
+     "world_json_id": "sister_tree_ne"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/sister_tree_ne.fbx",
+     "role": "whole piece",
+     "tris": 16542,
+     "bbox_size_studs": [
+      50.0,
+      75.0,
+      50.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      37.5,
+      -0.0
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "sister_tree_ne__CapGold",
+       "material": "CapGold",
+       "color": "#F2B632",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 60,
+       "bbox_center_from_origin": [
+        3.62,
+        25.8,
+        -3.08
+       ],
+       "size": [
+        3.08,
+        1.87,
+        3.24
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__CapOrange",
+       "material": "CapOrange",
+       "color": "#E8862E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 300,
+       "bbox_center_from_origin": [
+        -0.42,
+        17.65,
+        0.89
+       ],
+       "size": [
+        11.35,
+        12.31,
+        12.54
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 108,
+       "bbox_center_from_origin": [
+        10.61,
+        30.32,
+        -6.93
+       ],
+       "size": [
+        5.94,
+        0.9,
+        1.55
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 9360,
+       "bbox_center_from_origin": [
+        1.09,
+        52.1,
+        -0.46
+       ],
+       "size": [
+        47.83,
+        45.81,
+        49.09
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 108,
+       "bbox_center_from_origin": [
+        10.61,
+        32.0,
+        -6.93
+       ],
+       "size": [
+        5.75,
+        0.36,
+        1.12
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 232,
+       "bbox_center_from_origin": [
+        10.17,
+        30.43,
+        -6.93
+       ],
+       "size": [
+        5.83,
+        2.2,
+        2.18
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        13.38,
+        30.43,
+        -6.64
+       ],
+       "size": [
+        1.15,
+        2.2,
+        1.1
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 3520,
+       "bbox_center_from_origin": [
+        -3.13,
+        52.29,
+        0.88
+       ],
+       "size": [
+        43.73,
+        42.03,
+        48.24
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 2690,
+       "bbox_center_from_origin": [
+        1.64,
+        24.74,
+        0.39
+       ],
+       "size": [
+        27.94,
+        49.47,
+        29.16
+       ]
+      },
+      {
+       "mesh": "sister_tree_ne__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 48,
+       "bbox_center_from_origin": [
+        10.61,
+        28.83,
+        -6.94
+       ],
+       "size": [
+        5.67,
+        0.38,
+        1.2
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/sister_tree_ne_34.png"
+   ]
+  },
+  {
+   "id": "grand_falls_curtain",
+   "kind": "waterfall",
+   "world_json_id": "grand_falls_curtain",
+   "origin": "plunge-pool centre at the bottom water level (world.json pos); local +Z = flow direction",
+   "notes": "Grand Falls curtain [114, 77.8, -205] -> [112, 39.0, -199]: translucent Water sheet (thin closed slab), Foam ribbons, plunge foam + Mist puffs, backing slate slab and lip/base rocks. Add a Beam/ParticleEmitter mist at the bottom in Studio.",
+   "files": [
+    "fbx/grand_falls_curtain.fbx"
+   ],
+   "tris": 3102,
+   "max_part_tris": 3102,
+   "bbox_size_studs": [
+    22.13,
+    46.79,
+    15.34
+   ],
+   "bbox_center_from_origin": [
+    0.07,
+    17.34,
+    0.64
+   ],
+   "size_target_world_json": [
+    12,
+    39,
+    6
+   ],
+   "instances": [
+    {
+     "pos": [
+      113.0,
+      39.0,
+      -202.0
+     ],
+     "yaw": -18.4,
+     "note": "Grand Falls: top [114, 77.8, -205] -> bottom [112, 39.0, -199]",
+     "world_json_id": "grand_falls_curtain"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/grand_falls_curtain.fbx",
+     "role": "whole piece",
+     "tris": 3102,
+     "bbox_size_studs": [
+      22.13,
+      46.79,
+      15.34
+     ],
+     "bbox_center_from_origin": [
+      0.07,
+      17.34,
+      0.64
+     ],
+     "texture_tile_scale": 1.5,
+     "meshes": [
+      {
+       "mesh": "grand_falls_curtain__Foam",
+       "material": "Foam",
+       "color": "#E6F6FF",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.2,
+       "tris": 1280,
+       "bbox_center_from_origin": [
+        -0.19,
+        19.19,
+        1.38
+       ],
+       "size": [
+        12.04,
+        39.46,
+        8.98
+       ]
+      },
+      {
+       "mesh": "grand_falls_curtain__Mist",
+       "material": "Mist",
+       "color": "#F3F7F8",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.45,
+       "tris": 500,
+       "bbox_center_from_origin": [
+        -0.98,
+        1.6,
+        5.04
+       ],
+       "size": [
+        9.76,
+        4.26,
+        6.53
+       ]
+      },
+      {
+       "mesh": "grand_falls_curtain__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 100,
+       "bbox_center_from_origin": [
+        0.31,
+        40.12,
+        -4.8
+       ],
+       "size": [
+        19.57,
+        1.24,
+        3.52
+       ]
+      },
+      {
+       "mesh": "grand_falls_curtain__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 9.0,
+       "transparency": 0,
+       "tris": 720,
+       "bbox_center_from_origin": [
+        0.07,
+        16.9,
+        -1.08
+       ],
+       "size": [
+        22.13,
+        45.9,
+        11.91
+       ]
+      },
+      {
+       "mesh": "grand_falls_curtain__Water",
+       "material": "Water",
+       "color": "#4AA3DF",
+       "roblox_material": "Glass",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.4,
+       "tris": 502,
+       "bbox_center_from_origin": [
+        -0.0,
+        19.42,
+        -1.31
+       ],
+       "size": [
+        8.78,
+        38.85,
+        9.72
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/grand_falls_curtain_34.png"
+   ]
+  },
+  {
+   "id": "twin_falls_curtain",
+   "kind": "waterfall",
+   "world_json_id": "twin_falls_curtain",
+   "origin": "plunge-pool centre at the bottom water level (world.json pos); local +Z = flow direction",
+   "notes": "Twin Falls curtain [77.5, 37.0, -90] -> [76, 29.8, -86]: translucent Water sheet (thin closed slab), Foam ribbons, plunge foam + Mist puffs, backing slate slab and lip/base rocks, two strands split by a rock. Add a Beam/ParticleEmitter mist at the bottom in Studio.",
+   "files": [
+    "fbx/twin_falls_curtain.fbx"
+   ],
+   "tris": 3592,
+   "max_part_tris": 3592,
+   "bbox_size_studs": [
+    22.7,
+    12.6,
+    8.55
+   ],
+   "bbox_center_from_origin": [
+    -0.44,
+    2.75,
+    0.4
+   ],
+   "size_target_world_json": [
+    10,
+    7.5,
+    4
+   ],
+   "instances": [
+    {
+     "pos": [
+      76.8,
+      29.8,
+      -88.0
+     ],
+     "yaw": -20.6,
+     "note": "Twin Falls: top [77.5, 37.0, -90] -> bottom [76, 29.8, -86]",
+     "world_json_id": "twin_falls_curtain"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/twin_falls_curtain.fbx",
+     "role": "whole piece",
+     "tris": 3592,
+     "bbox_size_studs": [
+      22.7,
+      12.6,
+      8.55
+     ],
+     "bbox_center_from_origin": [
+      -0.44,
+      2.75,
+      0.4
+     ],
+     "texture_tile_scale": 1.5,
+     "meshes": [
+      {
+       "mesh": "twin_falls_curtain__Foam",
+       "material": "Foam",
+       "color": "#E6F6FF",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.2,
+       "tris": 1496,
+       "bbox_center_from_origin": [
+        -0.23,
+        3.56,
+        0.66
+       ],
+       "size": [
+        10.02,
+        7.61,
+        5.28
+       ]
+      },
+      {
+       "mesh": "twin_falls_curtain__Mist",
+       "material": "Mist",
+       "color": "#F3F7F8",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.45,
+       "tris": 1000,
+       "bbox_center_from_origin": [
+        -0.18,
+        0.75,
+        2.96
+       ],
+       "size": [
+        10.56,
+        2.0,
+        3.38
+       ]
+      },
+      {
+       "mesh": "twin_falls_curtain__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 120,
+       "bbox_center_from_origin": [
+        -0.4,
+        8.28,
+        -1.63
+       ],
+       "size": [
+        19.82,
+        1.55,
+        4.49
+       ]
+      },
+      {
+       "mesh": "twin_falls_curtain__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 9.0,
+       "transparency": 0,
+       "tris": 480,
+       "bbox_center_from_origin": [
+        -0.44,
+        2.28,
+        0.89
+       ],
+       "size": [
+        22.7,
+        11.66,
+        7.55
+       ]
+      },
+      {
+       "mesh": "twin_falls_curtain__Water",
+       "material": "Water",
+       "color": "#4AA3DF",
+       "roblox_material": "Glass",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.4,
+       "tris": 496,
+       "bbox_center_from_origin": [
+        -0.05,
+        3.6,
+        -0.15
+       ],
+       "size": [
+        8.81,
+        7.2,
+        5.0
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/twin_falls_curtain_34.png"
+   ]
+  },
+  {
+   "id": "lantern_falls_curtain",
+   "kind": "waterfall",
+   "world_json_id": "lantern_falls_curtain",
+   "origin": "plunge-pool centre at the bottom water level (world.json pos); local +Z = flow direction",
+   "notes": "Lantern Falls curtain [38, 22.2, 57] -> [36, 9.2, 62]: translucent Water sheet (thin closed slab), Foam ribbons, plunge foam + Mist puffs, backing slate slab and lip/base rocks, lantern posts at the lip and floating lanterns at the base. Add a Beam/ParticleEmitter mist at the bottom in Studio.",
+   "files": [
+    "fbx/lantern_falls_curtain.fbx"
+   ],
+   "tris": 3918,
+   "max_part_tris": 3918,
+   "bbox_size_studs": [
+    21.49,
+    24.88,
+    12.94
+   ],
+   "bbox_center_from_origin": [
+    -0.29,
+    5.61,
+    0.07
+   ],
+   "size_target_world_json": [
+    9,
+    13,
+    4
+   ],
+   "instances": [
+    {
+     "pos": [
+      37.0,
+      9.2,
+      59.5
+     ],
+     "yaw": -21.8,
+     "note": "Lantern Falls: top [38, 22.2, 57] -> bottom [36, 9.2, 62]",
+     "world_json_id": "lantern_falls_curtain"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/lantern_falls_curtain.fbx",
+     "role": "whole piece",
+     "tris": 3918,
+     "bbox_size_studs": [
+      21.49,
+      24.88,
+      12.94
+     ],
+     "bbox_center_from_origin": [
+      -0.29,
+      5.61,
+      0.07
+     ],
+     "texture_tile_scale": 1.5,
+     "meshes": [
+      {
+       "mesh": "lantern_falls_curtain__Foam",
+       "material": "Foam",
+       "color": "#E6F6FF",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.2,
+       "tris": 1000,
+       "bbox_center_from_origin": [
+        0.91,
+        6.32,
+        1.38
+       ],
+       "size": [
+        8.51,
+        13.62,
+        7.89
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 180,
+       "bbox_center_from_origin": [
+        -0.5,
+        8.91,
+        0.76
+       ],
+       "size": [
+        18.25,
+        15.98,
+        6.16
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 72,
+       "bbox_center_from_origin": [
+        0.0,
+        17.52,
+        -2.09
+       ],
+       "size": [
+        13.74,
+        0.19,
+        0.05
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Mist",
+       "material": "Mist",
+       "color": "#F3F7F8",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.45,
+       "tris": 500,
+       "bbox_center_from_origin": [
+        0.39,
+        1.54,
+        3.63
+       ],
+       "size": [
+        11.7,
+        4.09,
+        5.83
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 60,
+       "bbox_center_from_origin": [
+        -0.11,
+        14.39,
+        -4.1
+       ],
+       "size": [
+        18.34,
+        0.96,
+        3.95
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 80,
+       "bbox_center_from_origin": [
+        0.0,
+        15.02,
+        -3.07
+       ],
+       "size": [
+        14.02,
+        6.05,
+        2.15
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        6.76,
+        16.72,
+        -2.09
+       ],
+       "size": [
+        1.13,
+        1.12,
+        1.08
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 464,
+       "bbox_center_from_origin": [
+        -0.5,
+        8.99,
+        0.7
+       ],
+       "size": [
+        18.71,
+        16.58,
+        6.66
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 9.0,
+       "transparency": 0,
+       "tris": 660,
+       "bbox_center_from_origin": [
+        -0.5,
+        9.02,
+        0.69
+       ],
+       "size": [
+        18.76,
+        16.84,
+        6.72
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 9.0,
+       "transparency": 0,
+       "tris": 400,
+       "bbox_center_from_origin": [
+        -0.29,
+        3.52,
+        -0.86
+       ],
+       "size": [
+        21.49,
+        20.71,
+        11.08
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 80,
+       "bbox_center_from_origin": [
+        -0.5,
+        8.24,
+        0.79
+       ],
+       "size": [
+        18.11,
+        15.52,
+        5.91
+       ]
+      },
+      {
+       "mesh": "lantern_falls_curtain__Water",
+       "material": "Water",
+       "color": "#4AA3DF",
+       "roblox_material": "Glass",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0.4,
+       "tris": 306,
+       "bbox_center_from_origin": [
+        -0.0,
+        6.53,
+        -1.33
+       ],
+       "size": [
+        7.81,
+        13.05,
+        8.73
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/lantern_falls_curtain_34.png"
+   ]
+  },
+  {
+   "id": "highland_cliff_kit_a",
+   "kind": "rock",
+   "world_json_id": "highland_cliff_kit",
+   "origin": "base centre of the face (foot of the scarp); front local +Z",
+   "notes": "Highland slate cliff face, style 'strata' (40 x 30 x 14 unscaled), mossy ledges, autumn shrubs on the lip. Front = local +Z. Scale per instance (sy = scarp height / 30, sx = sz = sqrt(sy)).",
+   "files": [
+    "fbx/highland_cliff_kit_a.fbx"
+   ],
+   "tris": 1780,
+   "max_part_tris": 1780,
+   "bbox_size_studs": [
+    43.31,
+    36.59,
+    18.22
+   ],
+   "bbox_center_from_origin": [
+    0.09,
+    18.16,
+    -2.89
+   ],
+   "size_target_world_json": [
+    40,
+    30,
+    14
+   ],
+   "instances": [
+    {
+     "pos": [
+      -96.0,
+      18.85,
+      -229.0
+     ],
+     "yaw": -16.0,
+     "scale": [
+      1.52,
+      2.3,
+      1.52
+     ],
+     "note": "scarp drop 67 (top 87)"
+    },
+    {
+     "pos": [
+      48.0,
+      21.8,
+      -209.0
+     ],
+     "yaw": -11.4,
+     "scale": [
+      1.45,
+      2.11,
+      1.45
+     ],
+     "note": "scarp drop 61 (top 84)"
+    },
+    {
+     "pos": [
+      228.0,
+      20.1,
+      -205.0
+     ],
+     "yaw": -35.3,
+     "scale": [
+      1.55,
+      2.4,
+      1.55
+     ],
+     "note": "scarp drop 71 (top 92)"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/highland_cliff_kit_a.fbx",
+     "role": "whole piece",
+     "tris": 1780,
+     "bbox_size_studs": [
+      43.31,
+      36.59,
+      18.22
+     ],
+     "bbox_center_from_origin": [
+      0.09,
+      18.16,
+      -2.89
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "highland_cliff_kit_a__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 40,
+       "bbox_center_from_origin": [
+        -3.23,
+        30.28,
+        -4.21
+       ],
+       "size": [
+        12.38,
+        3.06,
+        3.32
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_a__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 8.0,
+       "transparency": 0,
+       "tris": 260,
+       "bbox_center_from_origin": [
+        -0.4,
+        22.49,
+        -0.82
+       ],
+       "size": [
+        39.3,
+        27.78,
+        10.2
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_a__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 40,
+       "bbox_center_from_origin": [
+        -7.95,
+        30.02,
+        -4.14
+       ],
+       "size": [
+        13.66,
+        2.96,
+        2.85
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_a__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 1440,
+       "bbox_center_from_origin": [
+        0.09,
+        18.16,
+        -2.89
+       ],
+       "size": [
+        43.31,
+        36.59,
+        18.22
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/highland_cliff_kit_a_34.png"
+   ]
+  },
+  {
+   "id": "highland_cliff_kit_b",
+   "kind": "rock",
+   "world_json_id": "highland_cliff_kit",
+   "origin": "base centre of the face (foot of the scarp); front local +Z",
+   "notes": "Highland slate cliff face, style 'columns' (40 x 30 x 14 unscaled), mossy ledges, autumn shrubs on the lip. Front = local +Z. Scale per instance (sy = scarp height / 30, sx = sz = sqrt(sy)).",
+   "files": [
+    "fbx/highland_cliff_kit_b.fbx"
+   ],
+   "tris": 1000,
+   "max_part_tris": 1000,
+   "bbox_size_studs": [
+    40.8,
+    32.9,
+    14.49
+   ],
+   "bbox_center_from_origin": [
+    0.19,
+    15.83,
+    -1.65
+   ],
+   "size_target_world_json": [
+    40,
+    30,
+    14
+   ],
+   "instances": [
+    {
+     "pos": [
+      -60.0,
+      19.12,
+      -223.0
+     ],
+     "yaw": 11.0,
+     "scale": [
+      1.54,
+      2.38,
+      1.54
+     ],
+     "note": "scarp drop 69 (top 90)"
+    },
+    {
+     "pos": [
+      84.0,
+      37.17,
+      -203.0
+     ],
+     "yaw": -16.7,
+     "scale": [
+      1.28,
+      1.63,
+      1.28
+     ],
+     "note": "scarp drop 46 (top 85)"
+    },
+    {
+     "pos": [
+      264.0,
+      37.85,
+      -193.0
+     ],
+     "yaw": 12.7,
+     "scale": [
+      1.39,
+      1.94,
+      1.39
+     ],
+     "note": "scarp drop 56 (top 95)"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/highland_cliff_kit_b.fbx",
+     "role": "whole piece",
+     "tris": 1000,
+     "bbox_size_studs": [
+      40.8,
+      32.9,
+      14.49
+     ],
+     "bbox_center_from_origin": [
+      0.19,
+      15.83,
+      -1.65
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "highland_cliff_kit_b__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        18.32,
+        30.32,
+        -4.28
+       ],
+       "size": [
+        2.45,
+        1.98,
+        1.91
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_b__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 8.0,
+       "transparency": 0,
+       "tris": 160,
+       "bbox_center_from_origin": [
+        0.63,
+        29.96,
+        -3.1
+       ],
+       "size": [
+        39.9,
+        1.5,
+        5.57
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_b__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        -7.77,
+        30.65,
+        -4.05
+       ],
+       "size": [
+        4.24,
+        3.26,
+        3.76
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_b__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 800,
+       "bbox_center_from_origin": [
+        0.19,
+        14.52,
+        -1.65
+       ],
+       "size": [
+        40.8,
+        30.27,
+        14.49
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/highland_cliff_kit_b_34.png"
+   ]
+  },
+  {
+   "id": "highland_cliff_kit_c",
+   "kind": "rock",
+   "world_json_id": "highland_cliff_kit",
+   "origin": "base centre of the face (foot of the scarp); front local +Z",
+   "notes": "Highland slate cliff face, style 'overhang' (40 x 30 x 14 unscaled), mossy ledges, autumn shrubs on the lip. Front = local +Z. Scale per instance (sy = scarp height / 30, sx = sz = sqrt(sy)).",
+   "files": [
+    "fbx/highland_cliff_kit_c.fbx"
+   ],
+   "tris": 1756,
+   "max_part_tris": 1756,
+   "bbox_size_studs": [
+    43.55,
+    35.82,
+    17.13
+   ],
+   "bbox_center_from_origin": [
+    0.07,
+    17.6,
+    -2.35
+   ],
+   "size_target_world_json": [
+    40,
+    30,
+    14
+   ],
+   "instances": [
+    {
+     "pos": [
+      -24.0,
+      18.43,
+      -223.0
+     ],
+     "yaw": -24.3,
+     "scale": [
+      1.53,
+      2.33,
+      1.53
+     ],
+     "note": "scarp drop 68 (top 87)"
+    },
+    {
+     "pos": [
+      156.0,
+      31.45,
+      -193.0
+     ],
+     "yaw": -33.1,
+     "scale": [
+      1.35,
+      1.82,
+      1.35
+     ],
+     "note": "scarp drop 52 (top 85)"
+    },
+    {
+     "pos": [
+      300.0,
+      44.6,
+      -201.0
+     ],
+     "yaw": -5.8,
+     "scale": [
+      1.4,
+      1.97,
+      1.4
+     ],
+     "note": "scarp drop 57 (top 103)"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/highland_cliff_kit_c.fbx",
+     "role": "whole piece",
+     "tris": 1756,
+     "bbox_size_studs": [
+      43.55,
+      35.82,
+      17.13
+     ],
+     "bbox_center_from_origin": [
+      0.07,
+      17.6,
+      -2.35
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "highland_cliff_kit_c__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 40,
+       "bbox_center_from_origin": [
+        4.84,
+        30.0,
+        -4.32
+       ],
+       "size": [
+        18.55,
+        2.49,
+        2.72
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_c__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        -16.34,
+        30.31,
+        -4.32
+       ],
+       "size": [
+        3.61,
+        3.14,
+        3.19
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_c__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 8.0,
+       "transparency": 0,
+       "tris": 376,
+       "bbox_center_from_origin": [
+        -0.17,
+        17.95,
+        -0.49
+       ],
+       "size": [
+        40.53,
+        25.57,
+        10.9
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_c__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 40,
+       "bbox_center_from_origin": [
+        -2.12,
+        30.27,
+        -4.18
+       ],
+       "size": [
+        12.52,
+        2.91,
+        3.2
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_c__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 1280,
+       "bbox_center_from_origin": [
+        0.07,
+        17.6,
+        -2.35
+       ],
+       "size": [
+        43.55,
+        35.82,
+        17.13
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/highland_cliff_kit_c_34.png"
+   ]
+  },
+  {
+   "id": "highland_cliff_kit_d",
+   "kind": "rock",
+   "world_json_id": "highland_cliff_kit",
+   "origin": "base centre of the face (foot of the scarp); front local +Z",
+   "notes": "Highland slate cliff face, style 'corner' (40 x 30 x 14 unscaled), mossy ledges, autumn shrubs on the lip. Front = local +Z. Scale per instance (sy = scarp height / 30, sx = sz = sqrt(sy)).",
+   "files": [
+    "fbx/highland_cliff_kit_d.fbx"
+   ],
+   "tris": 1820,
+   "max_part_tris": 1820,
+   "bbox_size_studs": [
+    25.63,
+    35.19,
+    25.07
+   ],
+   "bbox_center_from_origin": [
+    3.79,
+    17.05,
+    6.49
+   ],
+   "size_target_world_json": [
+    40,
+    30,
+    14
+   ],
+   "instances": [
+    {
+     "pos": [
+      12.0,
+      16.07,
+      -203.0
+     ],
+     "yaw": -13.9,
+     "scale": [
+      1.52,
+      2.3,
+      1.52
+     ],
+     "note": "scarp drop 67 (top 84)"
+    },
+    {
+     "pos": [
+      192.0,
+      19.3,
+      -209.0
+     ],
+     "yaw": 18.2,
+     "scale": [
+      1.5,
+      2.24,
+      1.5
+     ],
+     "note": "scarp drop 65 (top 86)"
+    },
+    {
+     "pos": [
+      336.0,
+      46.1,
+      -201.0
+     ],
+     "yaw": 11.2,
+     "scale": [
+      1.39,
+      1.94,
+      1.39
+     ],
+     "note": "scarp drop 56 (top 103)"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/highland_cliff_kit_d.fbx",
+     "role": "whole piece",
+     "tris": 1820,
+     "bbox_size_studs": [
+      25.63,
+      35.19,
+      25.07
+     ],
+     "bbox_center_from_origin": [
+      3.79,
+      17.05,
+      6.49
+     ],
+     "texture_tile_scale": 2.0,
+     "meshes": [
+      {
+       "mesh": "highland_cliff_kit_d__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        2.94,
+        30.25,
+        7.44
+       ],
+       "size": [
+        2.61,
+        2.42,
+        2.26
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_d__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 8.0,
+       "transparency": 0,
+       "tris": 160,
+       "bbox_center_from_origin": [
+        2.37,
+        29.91,
+        5.65
+       ],
+       "size": [
+        15.59,
+        1.78,
+        16.21
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_d__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 40,
+       "bbox_center_from_origin": [
+        0.74,
+        29.93,
+        7.94
+       ],
+       "size": [
+        11.27,
+        2.11,
+        7.0
+       ]
+      },
+      {
+       "mesh": "highland_cliff_kit_d__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 1600,
+       "bbox_center_from_origin": [
+        3.79,
+        17.05,
+        6.49
+       ],
+       "size": [
+        25.63,
+        35.19,
+        25.07
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/highland_cliff_kit_d_34.png"
+   ]
+  },
+  {
+   "id": "terrace_rock_faces_a",
+   "kind": "rock",
+   "world_json_id": "terrace_rock_faces",
+   "origin": "base centre (foot of the wall); front local +Z",
+   "notes": "Terrace rock facing, style 'strata' (24 x 12 x 6 unscaled) for the village / mill / root terrace walls and the tree mound. Front = local +Z.",
+   "files": [
+    "fbx/terrace_rock_faces_a.fbx"
+   ],
+   "tris": 1780,
+   "max_part_tris": 1780,
+   "bbox_size_studs": [
+    25.88,
+    13.57,
+    7.15
+   ],
+   "bbox_center_from_origin": [
+    0.12,
+    6.68,
+    -1.35
+   ],
+   "size_target_world_json": [
+    24,
+    12,
+    6
+   ],
+   "instances": [
+    {
+     "pos": [
+      216.42,
+      16.81,
+      -51.77
+     ],
+     "yaw": 126.2,
+     "scale": [
+      1.61,
+      2.58,
+      1.61
+     ],
+     "note": "rock face drop 30"
+    },
+    {
+     "pos": [
+      159.18,
+      18.67,
+      -39.03
+     ],
+     "yaw": -110.0,
+     "scale": [
+      1.57,
+      2.48,
+      1.57
+     ],
+     "note": "rock face drop 28"
+    },
+    {
+     "pos": [
+      216.65,
+      19.99,
+      32.59
+     ],
+     "yaw": 118.0,
+     "scale": [
+      1.43,
+      2.04,
+      1.43
+     ],
+     "note": "rock face drop 23"
+    },
+    {
+     "pos": [
+      -127.97,
+      9.43,
+      68.26
+     ],
+     "yaw": -41.1,
+     "scale": [
+      1.57,
+      2.48,
+      1.57
+     ],
+     "note": "rock face drop 28"
+    },
+    {
+     "pos": [
+      156.42,
+      18.85,
+      -124.23
+     ],
+     "yaw": 53.9,
+     "scale": [
+      1.29,
+      1.65,
+      1.29
+     ],
+     "note": "rock face drop 18"
+    },
+    {
+     "pos": [
+      31.27,
+      19.13,
+      -100.75
+     ],
+     "yaw": -65.4,
+     "scale": [
+      1.3,
+      1.69,
+      1.3
+     ],
+     "note": "rock face drop 19"
+    },
+    {
+     "pos": [
+      118.57,
+      17.67,
+      -83.05
+     ],
+     "yaw": 11.0,
+     "scale": [
+      1.32,
+      1.73,
+      1.32
+     ],
+     "note": "rock face drop 19"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/terrace_rock_faces_a.fbx",
+     "role": "whole piece",
+     "tris": 1780,
+     "bbox_size_studs": [
+      25.88,
+      13.57,
+      7.15
+     ],
+     "bbox_center_from_origin": [
+      0.12,
+      6.68,
+      -1.35
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "terrace_rock_faces_a__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        3.7,
+        12.07,
+        -2.33
+       ],
+       "size": [
+        2.8,
+        2.74,
+        3.25
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_a__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        -9.74,
+        12.55,
+        -2.25
+       ],
+       "size": [
+        2.74,
+        1.84,
+        2.17
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_a__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 280,
+       "bbox_center_from_origin": [
+        0.04,
+        7.79,
+        -0.95
+       ],
+       "size": [
+        24.87,
+        11.24,
+        6.13
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_a__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        8.68,
+        12.09,
+        -2.4
+       ],
+       "size": [
+        3.13,
+        2.3,
+        2.88
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_a__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 1440,
+       "bbox_center_from_origin": [
+        0.12,
+        6.67,
+        -1.35
+       ],
+       "size": [
+        25.88,
+        13.55,
+        7.15
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/terrace_rock_faces_a_34.png"
+   ]
+  },
+  {
+   "id": "terrace_rock_faces_b",
+   "kind": "rock",
+   "world_json_id": "terrace_rock_faces",
+   "origin": "base centre (foot of the wall); front local +Z",
+   "notes": "Terrace rock facing, style 'overhang' (24 x 12 x 6 unscaled) for the village / mill / root terrace walls and the tree mound. Front = local +Z.",
+   "files": [
+    "fbx/terrace_rock_faces_b.fbx"
+   ],
+   "tris": 1776,
+   "max_part_tris": 1776,
+   "bbox_size_studs": [
+    26.21,
+    13.9,
+    7.81
+   ],
+   "bbox_center_from_origin": [
+    0.42,
+    6.77,
+    -0.41
+   ],
+   "size_target_world_json": [
+    24,
+    12,
+    6
+   ],
+   "instances": [
+    {
+     "pos": [
+      203.73,
+      18.46,
+      -76.45
+     ],
+     "yaw": 144.8,
+     "scale": [
+      1.58,
+      2.5,
+      1.58
+     ],
+     "note": "rock face drop 29"
+    },
+    {
+     "pos": [
+      216.82,
+      18.72,
+      -0.98
+     ],
+     "yaw": 70.2,
+     "scale": [
+      1.56,
+      2.43,
+      1.56
+     ],
+     "note": "rock face drop 28"
+    },
+    {
+     "pos": [
+      -8.17,
+      10.23,
+      56.38
+     ],
+     "yaw": 37.6,
+     "scale": [
+      1.57,
+      2.46,
+      1.57
+     ],
+     "note": "rock face drop 28"
+    },
+    {
+     "pos": [
+      -107.32,
+      9.87,
+      80.7
+     ],
+     "yaw": -26.0,
+     "scale": [
+      1.58,
+      2.51,
+      1.58
+     ],
+     "note": "rock face drop 29"
+    },
+    {
+     "pos": [
+      131.02,
+      19.37,
+      25.65
+     ],
+     "yaw": -96.7,
+     "scale": [
+      1.44,
+      2.06,
+      1.44
+     ],
+     "note": "rock face drop 23"
+    },
+    {
+     "pos": [
+      19.23,
+      18.73,
+      -132.85
+     ],
+     "yaw": -67.5,
+     "scale": [
+      1.29,
+      1.66,
+      1.29
+     ],
+     "note": "rock face drop 18"
+    },
+    {
+     "pos": [
+      168.77,
+      21.59,
+      -167.16
+     ],
+     "yaw": 112.8,
+     "scale": [
+      1.17,
+      1.37,
+      1.17
+     ],
+     "note": "rock face drop 15"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/terrace_rock_faces_b.fbx",
+     "role": "whole piece",
+     "tris": 1776,
+     "bbox_size_studs": [
+      26.21,
+      13.9,
+      7.81
+     ],
+     "bbox_center_from_origin": [
+      0.42,
+      6.77,
+      -0.41
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "terrace_rock_faces_b__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        2.03,
+        12.2,
+        -2.19
+       ],
+       "size": [
+        2.96,
+        2.18,
+        2.57
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_b__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 20,
+       "bbox_center_from_origin": [
+        8.21,
+        12.2,
+        -2.39
+       ],
+       "size": [
+        3.18,
+        3.04,
+        3.05
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_b__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 376,
+       "bbox_center_from_origin": [
+        -0.35,
+        7.54,
+        -0.19
+       ],
+       "size": [
+        22.49,
+        12.07,
+        7.36
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_b__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 1360,
+       "bbox_center_from_origin": [
+        0.42,
+        6.62,
+        -0.99
+       ],
+       "size": [
+        26.21,
+        13.6,
+        6.65
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/terrace_rock_faces_b_34.png"
+   ]
+  },
+  {
+   "id": "terrace_rock_faces_c",
+   "kind": "rock",
+   "world_json_id": "terrace_rock_faces",
+   "origin": "base centre (foot of the wall); front local +Z",
+   "notes": "Terrace rock facing, style 'columns' (24 x 12 x 6 unscaled) for the village / mill / root terrace walls and the tree mound. Front = local +Z.",
+   "files": [
+    "fbx/terrace_rock_faces_c.fbx"
+   ],
+   "tris": 920,
+   "max_part_tris": 920,
+   "bbox_size_studs": [
+    24.77,
+    14.0,
+    6.12
+   ],
+   "bbox_center_from_origin": [
+    0.22,
+    6.68,
+    -0.8
+   ],
+   "size_target_world_json": [
+    24,
+    12,
+    6
+   ],
+   "instances": [
+    {
+     "pos": [
+      152.12,
+      17.79,
+      -12.34
+     ],
+     "yaw": -141.2,
+     "scale": [
+      1.58,
+      2.5,
+      1.58
+     ],
+     "note": "rock face drop 29"
+    },
+    {
+     "pos": [
+      220.97,
+      17.0,
+      -25.57
+     ],
+     "yaw": 81.8,
+     "scale": [
+      1.6,
+      2.55,
+      1.6
+     ],
+     "note": "rock face drop 29"
+    },
+    {
+     "pos": [
+      131.01,
+      18.92,
+      1.79
+     ],
+     "yaw": -93.9,
+     "scale": [
+      1.44,
+      2.07,
+      1.44
+     ],
+     "note": "rock face drop 23"
+    },
+    {
+     "pos": [
+      -24.16,
+      9.54,
+      72.37
+     ],
+     "yaw": 37.9,
+     "scale": [
+      1.5,
+      2.25,
+      1.5
+     ],
+     "note": "rock face drop 25"
+    },
+    {
+     "pos": [
+      23.17,
+      16.14,
+      -163.0
+     ],
+     "yaw": -109.5,
+     "scale": [
+      1.34,
+      1.81,
+      1.34
+     ],
+     "note": "rock face drop 20"
+    },
+    {
+     "pos": [
+      168.33,
+      21.25,
+      -144.11
+     ],
+     "yaw": 51.0,
+     "scale": [
+      1.18,
+      1.4,
+      1.18
+     ],
+     "note": "rock face drop 15"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/terrace_rock_faces_c.fbx",
+     "role": "whole piece",
+     "tris": 920,
+     "bbox_size_studs": [
+      24.77,
+      14.0,
+      6.12
+     ],
+     "bbox_center_from_origin": [
+      0.22,
+      6.68,
+      -0.8
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "terrace_rock_faces_c__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 40,
+       "bbox_center_from_origin": [
+        -0.8,
+        12.36,
+        -2.37
+       ],
+       "size": [
+        20.02,
+        2.65,
+        2.79
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_c__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 80,
+       "bbox_center_from_origin": [
+        -0.1,
+        11.91,
+        -1.3
+       ],
+       "size": [
+        21.42,
+        1.29,
+        5.12
+       ]
+      },
+      {
+       "mesh": "terrace_rock_faces_c__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 800,
+       "bbox_center_from_origin": [
+        0.22,
+        5.91,
+        -0.74
+       ],
+       "size": [
+        24.77,
+        12.47,
+        6.01
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/terrace_rock_faces_c_34.png"
+   ]
+  },
+  {
+   "id": "old_lantern_tower",
+   "kind": "background",
+   "world_json_id": "old_lantern_tower",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Ruined octagonal stone tower (NE side broken away), timber loft with a shingle roof and a big amber lantern, glowing slit windows, ivy moss and rubble. Door faces local +Z.",
+   "files": [
+    "fbx/old_lantern_tower.fbx"
+   ],
+   "tris": 7860,
+   "max_part_tris": 7860,
+   "bbox_size_studs": [
+    16.39,
+    38.3,
+    16.22
+   ],
+   "bbox_center_from_origin": [
+    -0.48,
+    18.75,
+    -1.31
+   ],
+   "size_target_world_json": [
+    12,
+    38,
+    12
+   ],
+   "instances": [
+    {
+     "pos": [
+      60.0,
+      83.0,
+      -262.0
+     ],
+     "yaw": 200.0,
+     "world_json_id": "old_lantern_tower"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/old_lantern_tower.fbx",
+     "role": "whole piece",
+     "tris": 7860,
+     "bbox_size_studs": [
+      16.39,
+      38.3,
+      16.22
+     ],
+     "bbox_center_from_origin": [
+      -0.48,
+      18.75,
+      -1.31
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "old_lantern_tower__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 196,
+       "bbox_center_from_origin": [
+        -0.09,
+        18.8,
+        0.12
+       ],
+       "size": [
+        10.45,
+        25.4,
+        11.61
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 36,
+       "bbox_center_from_origin": [
+        0.0,
+        33.33,
+        -0.0
+       ],
+       "size": [
+        0.7,
+        0.61,
+        0.13
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__Limestone",
+       "material": "Limestone",
+       "color": "#B8AFA0",
+       "roblox_material": "Limestone",
+       "texture": "textures/limestone.png",
+       "tile_studs": 2.0,
+       "transparency": 0,
+       "tris": 1800,
+       "bbox_center_from_origin": [
+        -0.0,
+        13.58,
+        -1.43
+       ],
+       "size": [
+        13.0,
+        27.17,
+        15.98
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 200,
+       "bbox_center_from_origin": [
+        0.11,
+        11.82,
+        -0.22
+       ],
+       "size": [
+        12.38,
+        16.93,
+        12.5
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 204,
+       "bbox_center_from_origin": [
+        0.0,
+        17.55,
+        1.17
+       ],
+       "size": [
+        8.0,
+        33.9,
+        10.35
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        0.0,
+        30.58,
+        -0.0
+       ],
+       "size": [
+        3.89,
+        3.85,
+        3.7
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 132,
+       "bbox_center_from_origin": [
+        0.0,
+        30.58,
+        -0.0
+       ],
+       "size": [
+        4.15,
+        4.95,
+        3.95
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__Shingle",
+       "material": "Shingle",
+       "color": "#7A4630",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/shingle.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 12,
+       "bbox_center_from_origin": [
+        0.0,
+        35.9,
+        -0.0
+       ],
+       "size": [
+        9.05,
+        4.0,
+        9.05
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 5148,
+       "bbox_center_from_origin": [
+        -0.48,
+        14.98,
+        -1.24
+       ],
+       "size": [
+        16.39,
+        30.77,
+        16.08
+       ]
+      },
+      {
+       "mesh": "old_lantern_tower__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 16,
+       "bbox_center_from_origin": [
+        0.0,
+        27.77,
+        -0.02
+       ],
+       "size": [
+        0.37,
+        0.66,
+        0.35
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/old_lantern_tower_34.png"
+   ]
+  },
+  {
+   "id": "hill_mushroom_houses",
+   "kind": "background",
+   "world_json_id": "hill_mushroom_houses",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "4 mushroom houses (scaled mushroom_house_medium, red / orange / gold caps) with lit windows, toadstools, a lantern string and path stones.",
+   "files": [
+    "fbx/hill_mushroom_houses.fbx"
+   ],
+   "tris": 16448,
+   "max_part_tris": 16448,
+   "bbox_size_studs": [
+    27.28,
+    20.11,
+    28.71
+   ],
+   "bbox_center_from_origin": [
+    0.14,
+    9.96,
+    -0.09
+   ],
+   "size_target_world_json": [
+    30,
+    25,
+    30
+   ],
+   "instances": [
+    {
+     "pos": [
+      290.0,
+      44.7,
+      -40.0
+     ],
+     "yaw": -100.0,
+     "note": "doors face roughly west toward the village",
+     "world_json_id": "hill_mushroom_houses"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/hill_mushroom_houses.fbx",
+     "role": "whole piece",
+     "tris": 16448,
+     "bbox_size_studs": [
+      27.28,
+      20.11,
+      28.71
+     ],
+     "bbox_center_from_origin": [
+      0.14,
+      9.96,
+      -0.09
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "hill_mushroom_houses__CapGold",
+       "material": "CapGold",
+       "color": "#F2B632",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 374,
+       "bbox_center_from_origin": [
+        -9.0,
+        6.63,
+        7.0
+       ],
+       "size": [
+        8.99,
+        9.24,
+        8.99
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__CapOrange",
+       "material": "CapOrange",
+       "color": "#E8862E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1444,
+       "bbox_center_from_origin": [
+        4.24,
+        8.36,
+        -0.09
+       ],
+       "size": [
+        19.1,
+        14.77,
+        28.71
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Cream",
+       "material": "Cream",
+       "color": "#F4E9D2",
+       "roblox_material": "SmoothPlastic",
+       "texture": "textures/plaster.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 6002,
+       "bbox_center_from_origin": [
+        0.12,
+        10.01,
+        -0.1
+       ],
+       "size": [
+        26.97,
+        20.01,
+        28.51
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 852,
+       "bbox_center_from_origin": [
+        -0.12,
+        6.66,
+        1.02
+       ],
+       "size": [
+        22.98,
+        8.7,
+        19.64
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 724,
+       "bbox_center_from_origin": [
+        -0.42,
+        6.25,
+        0.42
+       ],
+       "size": [
+        11.66,
+        10.43,
+        10.37
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 400,
+       "bbox_center_from_origin": [
+        -0.06,
+        0.32,
+        0.93
+       ],
+       "size": [
+        25.46,
+        0.63,
+        22.44
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 2448,
+       "bbox_center_from_origin": [
+        -0.12,
+        4.26,
+        1.02
+       ],
+       "size": [
+        23.18,
+        8.51,
+        19.91
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 724,
+       "bbox_center_from_origin": [
+        -0.07,
+        6.72,
+        -0.1
+       ],
+       "size": [
+        11.49,
+        9.08,
+        9.96
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 1172,
+       "bbox_center_from_origin": [
+        -1.59,
+        9.83,
+        0.96
+       ],
+       "size": [
+        18.25,
+        19.66,
+        20.43
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Shingle",
+       "material": "Shingle",
+       "color": "#7A4630",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/shingle.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 176,
+       "bbox_center_from_origin": [
+        -0.16,
+        4.51,
+        2.12
+       ],
+       "size": [
+        13.02,
+        3.23,
+        10.29
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__Slate",
+       "material": "Slate",
+       "color": "#6E7480",
+       "roblox_material": "Slate",
+       "texture": "textures/slate_stone.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 528,
+       "bbox_center_from_origin": [
+        -1.64,
+        9.67,
+        0.55
+       ],
+       "size": [
+        17.77,
+        19.54,
+        20.99
+       ]
+      },
+      {
+       "mesh": "hill_mushroom_houses__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 1604,
+       "bbox_center_from_origin": [
+        -0.61,
+        10.43,
+        0.4
+       ],
+       "size": [
+        25.6,
+        18.73,
+        25.99
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/hill_mushroom_houses_34.png"
+   ]
+  },
+  {
+   "id": "mere_dock",
+   "kind": "decor",
+   "world_json_id": "mere_dock",
+   "origin": "water-line reference: deck top at local y 0.86 (world 9.36, water 8)",
+   "notes": "Plank dock on pilings, two lantern posts at the water end (local -X), rope coil and crate. Pilings reach 2.7 below the deck reference.",
+   "files": [
+    "fbx/mere_dock.fbx"
+   ],
+   "tris": 1780,
+   "max_part_tris": 1780,
+   "bbox_size_studs": [
+    14.64,
+    6.3,
+    4.85
+   ],
+   "bbox_center_from_origin": [
+    -0.32,
+    0.2,
+    -0.0
+   ],
+   "size_target_world_json": [
+    14,
+    3,
+    5
+   ],
+   "instances": [
+    {
+     "pos": [
+      80.0,
+      8.5,
+      128.0
+     ],
+     "yaw": 34.1,
+     "note": "deck top = water + 1.25; shore end local +X",
+     "world_json_id": "mere_dock"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/mere_dock.fbx",
+     "role": "whole piece",
+     "tris": 1780,
+     "bbox_size_studs": [
+      14.64,
+      6.3,
+      4.85
+     ],
+     "bbox_center_from_origin": [
+      -0.32,
+      0.2,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "mere_dock__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 72,
+       "bbox_center_from_origin": [
+        -7.3,
+        2.57,
+        -0.0
+       ],
+       "size": [
+        0.22,
+        0.26,
+        4.46
+       ]
+      },
+      {
+       "mesh": "mere_dock__Iron",
+       "material": "Iron",
+       "color": "#3B3A3F",
+       "roblox_material": "Metal",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 72,
+       "bbox_center_from_origin": [
+        -7.3,
+        3.06,
+        -0.0
+       ],
+       "size": [
+        0.13,
+        0.11,
+        4.24
+       ]
+      },
+      {
+       "mesh": "mere_dock__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 884,
+       "bbox_center_from_origin": [
+        -0.2,
+        1.82,
+        -0.0
+       ],
+       "size": [
+        14.4,
+        3.05,
+        4.61
+       ]
+      },
+      {
+       "mesh": "mere_dock__Paper",
+       "material": "Paper",
+       "color": "#F7C873",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        -7.3,
+        2.61,
+        2.1
+       ],
+       "size": [
+        0.64,
+        0.63,
+        0.6
+       ]
+      },
+      {
+       "mesh": "mere_dock__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        -7.3,
+        2.61,
+        -2.1
+       ],
+       "size": [
+        0.64,
+        0.63,
+        0.6
+       ]
+      },
+      {
+       "mesh": "mere_dock__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 488,
+       "bbox_center_from_origin": [
+        -0.66,
+        0.03,
+        -0.0
+       ],
+       "size": [
+        13.96,
+        5.96,
+        4.85
+       ]
+      },
+      {
+       "mesh": "mere_dock__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 32,
+       "bbox_center_from_origin": [
+        -7.3,
+        2.15,
+        -0.01
+       ],
+       "size": [
+        0.11,
+        0.11,
+        4.3
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/mere_dock_34.png"
+   ]
+  },
+  {
+   "id": "mere_lantern_boat",
+   "kind": "decor",
+   "world_json_id": "mere_lantern_boats",
+   "origin": "waterline centre",
+   "notes": "Tiny paper boat carrying a paper lantern (Glow core). 8 instances drifting on Lantern Mere.",
+   "files": [
+    "fbx/mere_lantern_boat.fbx"
+   ],
+   "tris": 380,
+   "max_part_tris": 380,
+   "bbox_size_studs": [
+    2.9,
+    1.87,
+    6.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    0.79,
+    -0.0
+   ],
+   "size_target_world_json": [
+    6,
+    3,
+    3
+   ],
+   "instances": [
+    {
+     "pos": [
+      70.81,
+      8.0,
+      140.04
+     ],
+     "yaw": 45.5,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      28.63,
+      8.0,
+      157.89
+     ],
+     "yaw": 89.1,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      5.57,
+      8.0,
+      163.31
+     ],
+     "yaw": 231.1,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      -12.18,
+      8.0,
+      163.44
+     ],
+     "yaw": 178.2,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      -37.62,
+      8.0,
+      152.11
+     ],
+     "yaw": 32.2,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      -3.24,
+      8.0,
+      138.1
+     ],
+     "yaw": 96.0,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      10.94,
+      8.0,
+      111.01
+     ],
+     "yaw": 136.5,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    },
+    {
+     "pos": [
+      30.01,
+      8.0,
+      129.57
+     ],
+     "yaw": 357.0,
+     "note": "waterline; tween slowly",
+     "world_json_id": "mere_lantern_boats"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/mere_lantern_boat.fbx",
+     "role": "whole piece",
+     "tris": 380,
+     "bbox_size_studs": [
+      2.9,
+      1.87,
+      6.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      0.79,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "mere_lantern_boat__Cream",
+       "material": "Cream",
+       "color": "#F4E9D2",
+       "roblox_material": "SmoothPlastic",
+       "texture": "textures/plaster.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 68,
+       "bbox_center_from_origin": [
+        0.0,
+        0.53,
+        -0.0
+       ],
+       "size": [
+        2.9,
+        1.35,
+        6.0
+       ]
+      },
+      {
+       "mesh": "mere_lantern_boat__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 36,
+       "bbox_center_from_origin": [
+        -0.0,
+        0.86,
+        0.0
+       ],
+       "size": [
+        0.4,
+        0.46,
+        0.46
+       ]
+      },
+      {
+       "mesh": "mere_lantern_boat__Oak",
+       "material": "Oak",
+       "color": "#8A5A33",
+       "roblox_material": "WoodPlanks",
+       "texture": "textures/oak_wood.png",
+       "tile_studs": 4.0,
+       "transparency": 0,
+       "tris": 12,
+       "bbox_center_from_origin": [
+        0.0,
+        0.05,
+        -0.0
+       ],
+       "size": [
+        1.0,
+        0.15,
+        1.0
+       ]
+      },
+      {
+       "mesh": "mere_lantern_boat__PaperOrange",
+       "material": "PaperOrange",
+       "color": "#F08A3C",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        0.0,
+        0.92,
+        -0.0
+       ],
+       "size": [
+        1.13,
+        1.28,
+        1.08
+       ]
+      },
+      {
+       "mesh": "mere_lantern_boat__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 132,
+       "bbox_center_from_origin": [
+        0.0,
+        0.92,
+        -0.0
+       ],
+       "size": [
+        1.21,
+        1.6,
+        1.15
+       ]
+      },
+      {
+       "mesh": "mere_lantern_boat__ToadRed",
+       "material": "ToadRed",
+       "color": "#D8392B",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 16,
+       "bbox_center_from_origin": [
+        0.0,
+        0.02,
+        -0.01
+       ],
+       "size": [
+        0.15,
+        0.19,
+        0.14
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/mere_lantern_boat_34.png"
+   ]
+  },
+  {
+   "id": "sky_lantern",
+   "kind": "sky",
+   "world_json_id": "sky_lanterns",
+   "origin": "bottom centre",
+   "notes": "Pass 4: small round paper sky lantern 1.1 x 1.35 x 1.1, glowing washi texture (SkyPaper = textures/paper_glow.png, self-lit) with a Glow flame at the open bottom. 24 instances around the crown (drift upward).",
+   "files": [
+    "fbx/sky_lantern.fbx"
+   ],
+   "tris": 250,
+   "max_part_tris": 250,
+   "bbox_size_studs": [
+    1.1,
+    1.37,
+    1.1
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    0.67,
+    -0.0
+   ],
+   "size_target_world_json": [
+    1.5,
+    2,
+    1.5
+   ],
+   "instances": [
+    {
+     "pos": [
+      -20.25,
+      242.6,
+      125.22
+     ],
+     "yaw": 359.4,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      49.19,
+      175.23,
+      86.13
+     ],
+     "yaw": 272.8,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -97.89,
+      169.67,
+      -141.54
+     ],
+     "yaw": 275.7,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      86.14,
+      207.38,
+      -6.19
+     ],
+     "yaw": 41.6,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -85.38,
+      217.2,
+      -160.68
+     ],
+     "yaw": 159.9,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      69.43,
+      189.6,
+      90.97
+     ],
+     "yaw": 273.8,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -96.72,
+      259.62,
+      49.33
+     ],
+     "yaw": 109.9,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      24.68,
+      220.47,
+      -71.85
+     ],
+     "yaw": 332.9,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      73.33,
+      191.1,
+      74.89
+     ],
+     "yaw": 34.9,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -21.01,
+      236.47,
+      -108.19
+     ],
+     "yaw": 357.1,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -76.81,
+      261.76,
+      -55.91
+     ],
+     "yaw": 332.9,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      2.17,
+      162.17,
+      116.99
+     ],
+     "yaw": 51.5,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      70.93,
+      212.34,
+      -18.12
+     ],
+     "yaw": 47.3,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -58.01,
+      215.71,
+      -163.06
+     ],
+     "yaw": 191.6,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -83.92,
+      181.54,
+      149.83
+     ],
+     "yaw": 231.8,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -52.64,
+      234.33,
+      -67.93
+     ],
+     "yaw": 145.3,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -74.52,
+      210.96,
+      164.21
+     ],
+     "yaw": 66.8,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      17.74,
+      224.67,
+      -86.7
+     ],
+     "yaw": 89.6,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -173.13,
+      198.27,
+      37.61
+     ],
+     "yaw": 112.5,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      75.25,
+      208.33,
+      41.8
+     ],
+     "yaw": 356.1,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -197.59,
+      242.49,
+      -24.76
+     ],
+     "yaw": 207.5,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -50.7,
+      203.24,
+      131.59
+     ],
+     "yaw": 109.1,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      29.11,
+      188.2,
+      -62.02
+     ],
+     "yaw": 287.4,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    },
+    {
+     "pos": [
+      -76.48,
+      233.34,
+      37.97
+     ],
+     "yaw": 195.6,
+     "note": "drift up slowly",
+     "world_json_id": "sky_lanterns"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/sky_lantern.fbx",
+     "role": "whole piece",
+     "tris": 250,
+     "bbox_size_studs": [
+      1.1,
+      1.37,
+      1.1
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      0.67,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "sky_lantern__Glow",
+       "material": "Glow",
+       "color": "#FFB347",
+       "roblox_material": "Neon",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 36,
+       "bbox_center_from_origin": [
+        -0.0,
+        0.18,
+        -0.0
+       ],
+       "size": [
+        0.23,
+        0.26,
+        0.26
+       ]
+      },
+      {
+       "mesh": "sky_lantern__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 6.0,
+       "transparency": 0,
+       "tris": 72,
+       "bbox_center_from_origin": [
+        0.0,
+        0.01,
+        -0.0
+       ],
+       "size": [
+        0.78,
+        0.05,
+        0.78
+       ]
+      },
+      {
+       "mesh": "sky_lantern__SkyPaper",
+       "material": "SkyPaper",
+       "color": "#F6A04A",
+       "roblox_material": "SmoothPlastic",
+       "texture": "textures/paper_glow.png",
+       "tile_studs": 1.3,
+       "transparency": 0,
+       "tris": 142,
+       "bbox_center_from_origin": [
+        0.0,
+        0.68,
+        -0.0
+       ],
+       "size": [
+        1.1,
+        1.35,
+        1.1
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/sky_lantern_34.png"
+   ]
+  },
+  {
+   "id": "cloud_card_a",
+   "kind": "sky",
+   "world_json_id": "cloud_banks",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Golden cumulus card (13 sunlit puffs + 7 peach underside puffs), 600 x 120 x 200. Faces the play area.",
+   "files": [
+    "fbx/cloud_card_a.fbx"
+   ],
+   "tris": 3388,
+   "max_part_tris": 3388,
+   "bbox_size_studs": [
+    600.0,
+    120.0,
+    200.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    60.0,
+    -0.0
+   ],
+   "size_target_world_json": [
+    600,
+    120,
+    200
+   ],
+   "instances": [
+    {
+     "pos": [
+      366.29,
+      584.17,
+      1968.69
+     ],
+     "yaw": -170.6,
+     "scale": [
+      1.13,
+      1.13,
+      1.13
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    },
+    {
+     "pos": [
+      -1138.31,
+      675.22,
+      1832.2
+     ],
+     "yaw": 147.3,
+     "scale": [
+      1.14,
+      1.14,
+      1.14
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    },
+    {
+     "pos": [
+      -65.74,
+      564.01,
+      2298.99
+     ],
+     "yaw": 177.4,
+     "scale": [
+      0.93,
+      0.93,
+      0.93
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    },
+    {
+     "pos": [
+      1765.88,
+      570.05,
+      -662.24
+     ],
+     "yaw": -69.0,
+     "scale": [
+      1.02,
+      1.02,
+      1.02
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/cloud_card_a.fbx",
+     "role": "whole piece",
+     "tris": 3388,
+     "bbox_size_studs": [
+      600.0,
+      120.0,
+      200.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      60.0,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "cloud_card_a__Cloud",
+       "material": "Cloud",
+       "color": "#FFE6BE",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 2548,
+       "bbox_center_from_origin": [
+        -5.43,
+        60.0,
+        -0.0
+       ],
+       "size": [
+        589.13,
+        120.0,
+        200.0
+       ]
+      },
+      {
+       "mesh": "cloud_card_a__CloudShade",
+       "material": "CloudShade",
+       "color": "#E9B7A4",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 840,
+       "bbox_center_from_origin": [
+        72.54,
+        31.91,
+        -27.26
+       ],
+       "size": [
+        454.92,
+        38.12,
+        124.4
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/cloud_card_a_34.png"
+   ]
+  },
+  {
+   "id": "cloud_card_b",
+   "kind": "sky",
+   "world_json_id": "cloud_banks",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Cumulus card variant.",
+   "files": [
+    "fbx/cloud_card_b.fbx"
+   ],
+   "tris": 3388,
+   "max_part_tris": 3388,
+   "bbox_size_studs": [
+    520.0,
+    140.0,
+    180.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    70.0,
+    -0.0
+   ],
+   "size_target_world_json": [
+    600,
+    120,
+    200
+   ],
+   "instances": [
+    {
+     "pos": [
+      -227.94,
+      695.26,
+      2068.46
+     ],
+     "yaw": 172.6,
+     "scale": [
+      1.04,
+      1.04,
+      1.04
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    },
+    {
+     "pos": [
+      -1936.24,
+      560.44,
+      1315.98
+     ],
+     "yaw": 123.7,
+     "scale": [
+      1.13,
+      1.13,
+      1.13
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    },
+    {
+     "pos": [
+      1220.76,
+      686.89,
+      -1935.49
+     ],
+     "yaw": -31.4,
+     "scale": [
+      0.88,
+      0.88,
+      0.88
+     ],
+     "note": "faces the play area",
+     "world_json_id": "cloud_banks"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/cloud_card_b.fbx",
+     "role": "whole piece",
+     "tris": 3388,
+     "bbox_size_studs": [
+      520.0,
+      140.0,
+      180.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      70.0,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "cloud_card_b__Cloud",
+       "material": "Cloud",
+       "color": "#FFE6BE",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 2548,
+       "bbox_center_from_origin": [
+        -24.74,
+        70.0,
+        -0.0
+       ],
+       "size": [
+        470.52,
+        140.0,
+        180.0
+       ]
+      },
+      {
+       "mesh": "cloud_card_b__CloudShade",
+       "material": "CloudShade",
+       "color": "#E9B7A4",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 840,
+       "bbox_center_from_origin": [
+        11.58,
+        28.55,
+        -0.73
+       ],
+       "size": [
+        496.84,
+        35.56,
+        98.1
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/cloud_card_b_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_a_gold_orange",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant a (4 round crowns), colour mix gold+orange, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_a_gold_orange.fbx"
+   ],
+   "tris": 2812,
+   "max_part_tris": 2812,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      392.0,
+      55.8,
+      -1.2
+     ],
+     "yaw": 163.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_01"
+    },
+    {
+     "pos": [
+      390.6,
+      54.7,
+      125.3
+     ],
+     "yaw": 347.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_04"
+    },
+    {
+     "pos": [
+      121.1,
+      45.3,
+      351.8
+     ],
+     "yaw": 151.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_13"
+    },
+    {
+     "pos": [
+      -265.7,
+      51.9,
+      285.2
+     ],
+     "yaw": 15.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_22"
+    },
+    {
+     "pos": [
+      -312.0,
+      66.2,
+      36.5
+     ],
+     "yaw": 327.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_28"
+    },
+    {
+     "pos": [
+      -226.2,
+      114.6,
+      -318.8
+     ],
+     "yaw": 191.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_37"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_a_gold_orange.fbx",
+     "role": "whole piece",
+     "tris": 2812,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_a_gold_orange__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1900,
+       "bbox_center_from_origin": [
+        -2.82,
+        19.9,
+        -0.0
+       ],
+       "size": [
+        34.36,
+        39.4,
+        40.0
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_gold_orange__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 760,
+       "bbox_center_from_origin": [
+        2.62,
+        22.6,
+        0.98
+       ],
+       "size": [
+        34.76,
+        44.8,
+        33.89
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_gold_orange__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 152,
+       "bbox_center_from_origin": [
+        0.76,
+        14.28,
+        -0.38
+       ],
+       "size": [
+        22.35,
+        34.56,
+        20.73
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_a_gold_orange_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_a_red_orange",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant a (4 round crowns), colour mix red+orange, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_a_red_orange.fbx"
+   ],
+   "tris": 2812,
+   "max_part_tris": 2812,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      245.9,
+      41.0,
+      341.2
+     ],
+     "yaw": 11.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_10"
+    },
+    {
+     "pos": [
+      -301.9,
+      54.1,
+      -202.6
+     ],
+     "yaw": 201.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_34"
+    },
+    {
+     "pos": [
+      -83.4,
+      103.1,
+      -350.7
+     ],
+     "yaw": 252.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_40"
+    },
+    {
+     "pos": [
+      166.1,
+      78.3,
+      -350.5
+     ],
+     "yaw": 137.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_46"
+    },
+    {
+     "pos": [
+      309.0,
+      122.1,
+      -317.1
+     ],
+     "yaw": 159.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_49"
+    },
+    {
+     "pos": [
+      379.5,
+      43.5,
+      -213.4
+     ],
+     "yaw": 92.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_52"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_a_red_orange.fbx",
+     "role": "whole piece",
+     "tris": 2812,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_a_red_orange__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1900,
+       "bbox_center_from_origin": [
+        -2.82,
+        19.9,
+        -0.0
+       ],
+       "size": [
+        34.36,
+        39.4,
+        40.0
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_red_orange__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 760,
+       "bbox_center_from_origin": [
+        2.62,
+        22.6,
+        0.98
+       ],
+       "size": [
+        34.76,
+        44.8,
+        33.89
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_red_orange__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 152,
+       "bbox_center_from_origin": [
+        0.76,
+        14.28,
+        -0.38
+       ],
+       "size": [
+        22.35,
+        34.56,
+        20.73
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_a_red_orange_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_a_red_gold",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant a (4 round crowns), colour mix red+gold, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_a_red_gold.fbx"
+   ],
+   "tris": 2812,
+   "max_part_tris": 2812,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      364.1,
+      37.8,
+      256.3
+     ],
+     "yaw": 187.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_07"
+    },
+    {
+     "pos": [
+      -306.4,
+      63.1,
+      175.6
+     ],
+     "yaw": 6.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_25"
+    },
+    {
+     "pos": [
+      -311.8,
+      43.4,
+      -78.3
+     ],
+     "yaw": 39.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_31"
+    },
+    {
+     "pos": [
+      45.8,
+      112.6,
+      -352.0
+     ],
+     "yaw": 286.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_43"
+    },
+    {
+     "pos": [
+      391.8,
+      46.3,
+      -80.3
+     ],
+     "yaw": 118.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_55"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_a_red_gold.fbx",
+     "role": "whole piece",
+     "tris": 2812,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_a_red_gold__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 760,
+       "bbox_center_from_origin": [
+        2.62,
+        22.6,
+        0.98
+       ],
+       "size": [
+        34.76,
+        44.8,
+        33.89
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_red_gold__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1900,
+       "bbox_center_from_origin": [
+        -2.82,
+        19.9,
+        -0.0
+       ],
+       "size": [
+        34.36,
+        39.4,
+        40.0
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_red_gold__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 152,
+       "bbox_center_from_origin": [
+        0.76,
+        14.28,
+        -0.38
+       ],
+       "size": [
+        22.35,
+        34.56,
+        20.73
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_a_red_gold_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_a_gold_green",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant a (4 round crowns), colour mix gold+green, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_a_gold_green.fbx"
+   ],
+   "tris": 2812,
+   "max_part_tris": 2812,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      9.4,
+      40.1,
+      352.0
+     ],
+     "yaw": 4.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_16"
+    },
+    {
+     "pos": [
+      -125.0,
+      30.6,
+      347.7
+     ],
+     "yaw": 42.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_19"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_a_gold_green.fbx",
+     "role": "whole piece",
+     "tris": 2812,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_a_gold_green__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1900,
+       "bbox_center_from_origin": [
+        -2.82,
+        19.9,
+        -0.0
+       ],
+       "size": [
+        34.36,
+        39.4,
+        40.0
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_gold_green__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 760,
+       "bbox_center_from_origin": [
+        2.62,
+        22.6,
+        0.98
+       ],
+       "size": [
+        34.76,
+        44.8,
+        33.89
+       ]
+      },
+      {
+       "mesh": "treeline_clump_a_gold_green__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 152,
+       "bbox_center_from_origin": [
+        0.76,
+        14.28,
+        -0.38
+       ],
+       "size": [
+        22.35,
+        34.56,
+        20.73
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_a_gold_green_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_b_gold_orange",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant b (6 mixed + a spire), colour mix gold+orange, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_b_gold_orange.fbx"
+   ],
+   "tris": 3848,
+   "max_part_tris": 3848,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      392.0,
+      53.0,
+      31.8
+     ],
+     "yaw": 227.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_02"
+    },
+    {
+     "pos": [
+      387.0,
+      43.7,
+      170.8
+     ],
+     "yaw": 21.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_05"
+    },
+    {
+     "pos": [
+      -48.0,
+      34.3,
+      351.7
+     ],
+     "yaw": 246.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_17"
+    },
+    {
+     "pos": [
+      -312.0,
+      64.3,
+      -5.5
+     ],
+     "yaw": 266.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_29"
+    },
+    {
+     "pos": [
+      387.0,
+      47.1,
+      -171.1
+     ],
+     "yaw": 244.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_53"
+    },
+    {
+     "pos": [
+      392.0,
+      54.1,
+      -47.2
+     ],
+     "yaw": 289.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_56"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_b_gold_orange.fbx",
+     "role": "whole piece",
+     "tris": 3848,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_b_gold_orange__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 2300,
+       "bbox_center_from_origin": [
+        0.0,
+        22.45,
+        0.19
+       ],
+       "size": [
+        40.0,
+        45.11,
+        39.61
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_gold_orange__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1320,
+       "bbox_center_from_origin": [
+        -0.02,
+        20.7,
+        -0.88
+       ],
+       "size": [
+        31.77,
+        41.63,
+        38.24
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_gold_orange__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 228,
+       "bbox_center_from_origin": [
+        0.25,
+        17.21,
+        -0.8
+       ],
+       "size": [
+        25.72,
+        40.42,
+        25.91
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_b_gold_orange_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_b_red_orange",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant b (6 mixed + a spire), colour mix red+orange, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_b_red_orange.fbx"
+   ],
+   "tris": 3848,
+   "max_part_tris": 3848,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      210.1,
+      43.0,
+      347.1
+     ],
+     "yaw": 139.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_11"
+    },
+    {
+     "pos": [
+      -286.2,
+      112.5,
+      -252.0
+     ],
+     "yaw": 270.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_35"
+    },
+    {
+     "pos": [
+      210.4,
+      114.8,
+      -347.1
+     ],
+     "yaw": 33.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_47"
+    },
+    {
+     "pos": [
+      336.4,
+      110.2,
+      -295.6
+     ],
+     "yaw": 112.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_50"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_b_red_orange.fbx",
+     "role": "whole piece",
+     "tris": 3848,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_b_red_orange__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 2300,
+       "bbox_center_from_origin": [
+        0.0,
+        22.45,
+        0.19
+       ],
+       "size": [
+        40.0,
+        45.11,
+        39.61
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_red_orange__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1320,
+       "bbox_center_from_origin": [
+        -0.02,
+        20.7,
+        -0.88
+       ],
+       "size": [
+        31.77,
+        41.63,
+        38.24
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_red_orange__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 228,
+       "bbox_center_from_origin": [
+        0.25,
+        17.21,
+        -0.8
+       ],
+       "size": [
+        25.72,
+        40.42,
+        25.91
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_b_red_orange_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_b_red_gold",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant b (6 mixed + a spire), colour mix red+gold, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_b_red_gold.fbx"
+   ],
+   "tris": 3848,
+   "max_part_tris": 3848,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      336.0,
+      37.8,
+      296.0
+     ],
+     "yaw": 165.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_08"
+    },
+    {
+     "pos": [
+      72.7,
+      45.9,
+      352.0
+     ],
+     "yaw": 121.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_14"
+    },
+    {
+     "pos": [
+      -187.2,
+      42.8,
+      335.6
+     ],
+     "yaw": 97.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_20"
+    },
+    {
+     "pos": [
+      -279.3,
+      50.6,
+      265.3
+     ],
+     "yaw": 3.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_23"
+    },
+    {
+     "pos": [
+      -184.9,
+      111.1,
+      -336.3
+     ],
+     "yaw": 321.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_38"
+    },
+    {
+     "pos": [
+      -52.7,
+      101.2,
+      -351.6
+     ],
+     "yaw": 174.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_41"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_b_red_gold.fbx",
+     "role": "whole piece",
+     "tris": 3848,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_b_red_gold__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1320,
+       "bbox_center_from_origin": [
+        -0.02,
+        20.7,
+        -0.88
+       ],
+       "size": [
+        31.77,
+        41.63,
+        38.24
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_red_gold__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 2300,
+       "bbox_center_from_origin": [
+        0.0,
+        22.45,
+        0.19
+       ],
+       "size": [
+        40.0,
+        45.11,
+        39.61
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_red_gold__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 228,
+       "bbox_center_from_origin": [
+        0.25,
+        17.21,
+        -0.8
+       ],
+       "size": [
+        25.72,
+        40.42,
+        25.91
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_b_red_gold_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_b_gold_green",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant b (6 mixed + a spire), colour mix gold+green, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_b_gold_green.fbx"
+   ],
+   "tris": 3848,
+   "max_part_tris": 3848,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      -310.5,
+      52.4,
+      126.2
+     ],
+     "yaw": 46.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_26"
+    },
+    {
+     "pos": [
+      -311.0,
+      48.1,
+      -115.7
+     ],
+     "yaw": 93.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_32"
+    },
+    {
+     "pos": [
+      76.0,
+      108.1,
+      -352.0
+     ],
+     "yaw": 324.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_44"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_b_gold_green.fbx",
+     "role": "whole piece",
+     "tris": 3848,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_b_gold_green__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 2300,
+       "bbox_center_from_origin": [
+        0.0,
+        22.45,
+        0.19
+       ],
+       "size": [
+        40.0,
+        45.11,
+        39.61
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_gold_green__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 1320,
+       "bbox_center_from_origin": [
+        -0.02,
+        20.7,
+        -0.88
+       ],
+       "size": [
+        31.77,
+        41.63,
+        38.24
+       ]
+      },
+      {
+       "mesh": "treeline_clump_b_gold_green__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 228,
+       "bbox_center_from_origin": [
+        0.25,
+        17.21,
+        -0.8
+       ],
+       "size": [
+        25.72,
+        40.42,
+        25.91
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_b_gold_green_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_c_gold_orange",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant c (5 tall layered), colour mix gold+orange, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_c_gold_orange.fbx"
+   ],
+   "tris": 1890,
+   "max_part_tris": 1890,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      -81.3,
+      30.8,
+      350.8
+     ],
+     "yaw": 355.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_18"
+    },
+    {
+     "pos": [
+      -311.8,
+      58.9,
+      71.8
+     ],
+     "yaw": 312.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_27"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_c_gold_orange.fbx",
+     "role": "whole piece",
+     "tris": 1890,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_c_gold_orange__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1100,
+       "bbox_center_from_origin": [
+        0.0,
+        20.26,
+        1.52
+       ],
+       "size": [
+        40.0,
+        40.6,
+        36.97
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_gold_orange__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 600,
+       "bbox_center_from_origin": [
+        0.08,
+        22.48,
+        -2.39
+       ],
+       "size": [
+        37.81,
+        45.04,
+        35.23
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_gold_orange__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 190,
+       "bbox_center_from_origin": [
+        0.26,
+        16.83,
+        -0.04
+       ],
+       "size": [
+        27.76,
+        39.66,
+        23.77
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_c_gold_orange_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_c_red_orange",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant c (5 tall layered), colour mix red+orange, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_c_red_orange.fbx"
+   ],
+   "tris": 1890,
+   "max_part_tris": 1890,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      391.9,
+      61.1,
+      69.9
+     ],
+     "yaw": 51.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_03"
+    },
+    {
+     "pos": [
+      153.4,
+      45.0,
+      351.0
+     ],
+     "yaw": 77.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_12"
+    },
+    {
+     "pos": [
+      44.1,
+      43.5,
+      352.0
+     ],
+     "yaw": 273.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_15"
+    },
+    {
+     "pos": [
+      -301.7,
+      61.0,
+      203.8
+     ],
+     "yaw": 26.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_24"
+    },
+    {
+     "pos": [
+      -312.0,
+      52.8,
+      -44.3
+     ],
+     "yaw": 318.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_30"
+    },
+    {
+     "pos": [
+      -308.0,
+      55.7,
+      -161.5
+     ],
+     "yaw": 335.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_33"
+    },
+    {
+     "pos": [
+      -260.6,
+      114.5,
+      -291.1
+     ],
+     "yaw": 90.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_36"
+    },
+    {
+     "pos": [
+      -122.9,
+      107.1,
+      -347.9
+     ],
+     "yaw": 212.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_39"
+    },
+    {
+     "pos": [
+      131.8,
+      103.0,
+      -351.6
+     ],
+     "yaw": 311.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_45"
+    },
+    {
+     "pos": [
+      363.1,
+      102.9,
+      -258.4
+     ],
+     "yaw": 345.0,
+     "scale": [
+      1.0,
+      0.89,
+      1.0
+     ],
+     "world_json_id": "treeline_51"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_c_red_orange.fbx",
+     "role": "whole piece",
+     "tris": 1890,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_c_red_orange__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1100,
+       "bbox_center_from_origin": [
+        0.0,
+        20.26,
+        1.52
+       ],
+       "size": [
+        40.0,
+        40.6,
+        36.97
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_red_orange__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 600,
+       "bbox_center_from_origin": [
+        0.08,
+        22.48,
+        -2.39
+       ],
+       "size": [
+        37.81,
+        45.04,
+        35.23
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_red_orange__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 190,
+       "bbox_center_from_origin": [
+        0.26,
+        16.83,
+        -0.04
+       ],
+       "size": [
+        27.76,
+        39.66,
+        23.77
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_c_red_orange_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_c_red_gold",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant c (5 tall layered), colour mix red+gold, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_c_red_gold.fbx"
+   ],
+   "tris": 1890,
+   "max_part_tris": 1890,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      376.5,
+      41.2,
+      224.1
+     ],
+     "yaw": 280.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_06"
+    },
+    {
+     "pos": [
+      300.3,
+      36.5,
+      322.1
+     ],
+     "yaw": 255.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_09"
+    },
+    {
+     "pos": [
+      -4.2,
+      101.0,
+      -352.0
+     ],
+     "yaw": 27.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_42"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_c_red_gold.fbx",
+     "role": "whole piece",
+     "tris": 1890,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_c_red_gold__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 600,
+       "bbox_center_from_origin": [
+        0.08,
+        22.48,
+        -2.39
+       ],
+       "size": [
+        37.81,
+        45.04,
+        35.23
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_red_gold__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1100,
+       "bbox_center_from_origin": [
+        0.0,
+        20.26,
+        1.52
+       ],
+       "size": [
+        40.0,
+        40.6,
+        36.97
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_red_gold__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 190,
+       "bbox_center_from_origin": [
+        0.26,
+        16.83,
+        -0.04
+       ],
+       "size": [
+        27.76,
+        39.66,
+        23.77
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_c_red_gold_34.png"
+   ]
+  },
+  {
+   "id": "treeline_clump_c_gold_green",
+   "kind": "tree_line",
+   "world_json_id": "tree_line",
+   "origin": "base centre; trunks reach 3 below",
+   "notes": "Tree-line clump variant c (5 tall layered), colour mix gold+green, 40 x 45 x 40 unscaled (scale y to the world.json size).",
+   "files": [
+    "fbx/treeline_clump_c_gold_green.fbx"
+   ],
+   "tris": 1890,
+   "max_part_tris": 1890,
+   "bbox_size_studs": [
+    40.0,
+    48.0,
+    40.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    21.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      -230.6,
+      51.6,
+      316.1
+     ],
+     "yaw": 76.0,
+     "scale": [
+      1.0,
+      0.78,
+      1.0
+     ],
+     "world_json_id": "treeline_21"
+    },
+    {
+     "pos": [
+      267.3,
+      125.4,
+      -335.6
+     ],
+     "yaw": 262.0,
+     "scale": [
+      1.0,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "treeline_48"
+    },
+    {
+     "pos": [
+      390.7,
+      40.3,
+      -122.2
+     ],
+     "yaw": 238.0,
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "world_json_id": "treeline_54"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/treeline_clump_c_gold_green.fbx",
+     "role": "whole piece",
+     "tris": 1890,
+     "bbox_size_studs": [
+      40.0,
+      48.0,
+      40.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      21.0,
+      -0.0
+     ],
+     "texture_tile_scale": 3.0,
+     "meshes": [
+      {
+       "mesh": "treeline_clump_c_gold_green__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 1100,
+       "bbox_center_from_origin": [
+        0.0,
+        20.26,
+        1.52
+       ],
+       "size": [
+        40.0,
+        40.6,
+        36.97
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_gold_green__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 12.0,
+       "transparency": 0,
+       "tris": 600,
+       "bbox_center_from_origin": [
+        0.08,
+        22.48,
+        -2.39
+       ],
+       "size": [
+        37.81,
+        45.04,
+        35.23
+       ]
+      },
+      {
+       "mesh": "treeline_clump_c_gold_green__RootBark",
+       "material": "RootBark",
+       "color": "#5B3A22",
+       "roblox_material": "Wood",
+       "texture": "textures/root_bark.png",
+       "tile_studs": 18.0,
+       "transparency": 0,
+       "tris": 190,
+       "bbox_center_from_origin": [
+        0.26,
+        16.83,
+        -0.04
+       ],
+       "size": [
+        27.76,
+        39.66,
+        23.77
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/treeline_clump_c_gold_green_34.png"
+   ]
+  },
+  {
+   "id": "far_hill_a",
+   "kind": "far_hill",
+   "world_json_id": "far_hills",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Far forested hill impostor shell (single dome), 280 x 100 x 160 unscaled, open bottom, autumn patches + canopy bumps. Long axis local X.",
+   "files": [
+    "fbx/far_hill_a.fbx"
+   ],
+   "tris": 13008,
+   "max_part_tris": 13008,
+   "bbox_size_studs": [
+    280.0,
+    100.0,
+    160.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    50.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      603.0,
+      10.0,
+      37.0
+     ],
+     "yaw": 86.2,
+     "scale": [
+      1.06,
+      1.06,
+      1.0
+     ],
+     "world_json_id": "far_hill_01"
+    },
+    {
+     "pos": [
+      504.0,
+      10.0,
+      386.0
+     ],
+     "yaw": 50.3,
+     "scale": [
+      0.88,
+      1.12,
+      1.0
+     ],
+     "world_json_id": "far_hill_03"
+    },
+    {
+     "pos": [
+      157.0,
+      10.0,
+      592.0
+     ],
+     "yaw": 11.1,
+     "scale": [
+      0.86,
+      0.98,
+      1.0
+     ],
+     "world_json_id": "far_hill_05"
+    },
+    {
+     "pos": [
+      -207.0,
+      10.0,
+      500.0
+     ],
+     "yaw": -26.3,
+     "scale": [
+      0.97,
+      1.22,
+      1.0
+     ],
+     "world_json_id": "far_hill_07"
+    },
+    {
+     "pos": [
+      -558.0,
+      10.0,
+      181.0
+     ],
+     "yaw": -73.2,
+     "scale": [
+      0.94,
+      0.95,
+      1.0
+     ],
+     "world_json_id": "far_hill_09"
+    },
+    {
+     "pos": [
+      -492.0,
+      10.0,
+      -160.0
+     ],
+     "yaw": -106.8,
+     "scale": [
+      0.93,
+      0.99,
+      1.0
+     ],
+     "world_json_id": "far_hill_11"
+    },
+    {
+     "pos": [
+      -268.0,
+      10.0,
+      -506.0
+     ],
+     "yaw": -148.7,
+     "scale": [
+      1.13,
+      1.11,
+      1.0
+     ],
+     "world_json_id": "far_hill_13"
+    },
+    {
+     "pos": [
+      189.0,
+      10.0,
+      -598.0
+     ],
+     "yaw": -194.0,
+     "scale": [
+      1.11,
+      1.18,
+      1.0
+     ],
+     "world_json_id": "far_hill_15"
+    },
+    {
+     "pos": [
+      424.0,
+      10.0,
+      -376.0
+     ],
+     "yaw": -225.6,
+     "scale": [
+      0.92,
+      0.8,
+      1.0
+     ],
+     "world_json_id": "far_hill_17"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/far_hill_a.fbx",
+     "role": "whole piece",
+     "tris": 13008,
+     "bbox_size_studs": [
+      280.0,
+      100.0,
+      160.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      50.0,
+      -0.0
+     ],
+     "texture_tile_scale": 8.0,
+     "meshes": [
+      {
+       "mesh": "far_hill_a__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 48.0,
+       "transparency": 0,
+       "tris": 5600,
+       "bbox_center_from_origin": [
+        1.2,
+        55.62,
+        7.95
+       ],
+       "size": [
+        267.46,
+        87.44,
+        134.03
+       ]
+      },
+      {
+       "mesh": "far_hill_a__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 48.0,
+       "transparency": 0,
+       "tris": 2416,
+       "bbox_center_from_origin": [
+        1.86,
+        47.72,
+        -2.91
+       ],
+       "size": [
+        276.29,
+        95.44,
+        154.18
+       ]
+      },
+      {
+       "mesh": "far_hill_a__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 32.0,
+       "transparency": 0,
+       "tris": 2240,
+       "bbox_center_from_origin": [
+        -4.29,
+        64.7,
+        4.49
+       ],
+       "size": [
+        235.54,
+        70.6,
+        126.82
+       ]
+      },
+      {
+       "mesh": "far_hill_a__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 48.0,
+       "transparency": 0,
+       "tris": 2752,
+       "bbox_center_from_origin": [
+        0.0,
+        49.97,
+        -0.0
+       ],
+       "size": [
+        280.0,
+        99.94,
+        160.0
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/far_hill_a_34.png"
+   ]
+  },
+  {
+   "id": "far_hill_b",
+   "kind": "far_hill",
+   "world_json_id": "far_hills",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Far forested hill impostor shell (double hump), 280 x 100 x 160 unscaled, open bottom, autumn patches + canopy bumps. Long axis local X.",
+   "files": [
+    "fbx/far_hill_b.fbx"
+   ],
+   "tris": 12048,
+   "max_part_tris": 12048,
+   "bbox_size_studs": [
+    280.0,
+    100.0,
+    160.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    50.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      582.0,
+      10.0,
+      206.0
+     ],
+     "yaw": 69.2,
+     "scale": [
+      1.1,
+      1.27,
+      1.0
+     ],
+     "world_json_id": "far_hill_02"
+    },
+    {
+     "pos": [
+      345.0,
+      10.0,
+      562.0
+     ],
+     "yaw": 28.5,
+     "scale": [
+      1.09,
+      0.87,
+      1.0
+     ],
+     "world_json_id": "far_hill_04"
+    },
+    {
+     "pos": [
+      -23.0,
+      10.0,
+      539.0
+     ],
+     "yaw": -6.7,
+     "scale": [
+      0.88,
+      1.16,
+      1.0
+     ],
+     "world_json_id": "far_hill_06"
+    },
+    {
+     "pos": [
+      -375.0,
+      10.0,
+      404.0
+     ],
+     "yaw": -45.8,
+     "scale": [
+      1.01,
+      1.23,
+      1.0
+     ],
+     "world_json_id": "far_hill_08"
+    },
+    {
+     "pos": [
+      -587.0,
+      10.0,
+      15.0
+     ],
+     "yaw": -88.6,
+     "scale": [
+      1.13,
+      0.79,
+      1.0
+     ],
+     "world_json_id": "far_hill_10"
+    },
+    {
+     "pos": [
+      -383.0,
+      10.0,
+      -366.0
+     ],
+     "yaw": -130.9,
+     "scale": [
+      0.86,
+      0.95,
+      1.0
+     ],
+     "world_json_id": "far_hill_12"
+    },
+    {
+     "pos": [
+      -62.0,
+      10.0,
+      -589.0
+     ],
+     "yaw": -170.2,
+     "scale": [
+      1.05,
+      0.73,
+      1.0
+     ],
+     "world_json_id": "far_hill_14"
+    },
+    {
+     "pos": [
+      318.0,
+      10.0,
+      -502.0
+     ],
+     "yaw": -208.9,
+     "scale": [
+      0.89,
+      1.08,
+      1.0
+     ],
+     "world_json_id": "far_hill_16"
+    },
+    {
+     "pos": [
+      538.0,
+      10.0,
+      -197.0
+     ],
+     "yaw": -248.4,
+     "scale": [
+      0.86,
+      0.79,
+      1.0
+     ],
+     "world_json_id": "far_hill_18"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/far_hill_b.fbx",
+     "role": "whole piece",
+     "tris": 12048,
+     "bbox_size_studs": [
+      280.0,
+      100.0,
+      160.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      50.0,
+      -0.0
+     ],
+     "texture_tile_scale": 8.0,
+     "meshes": [
+      {
+       "mesh": "far_hill_b__Gold",
+       "material": "Gold",
+       "color": "#F2B632",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_gold.png",
+       "tile_studs": 48.0,
+       "transparency": 0,
+       "tris": 4320,
+       "bbox_center_from_origin": [
+        -1.6,
+        46.86,
+        5.95
+       ],
+       "size": [
+        243.74,
+        90.24,
+        136.73
+       ]
+      },
+      {
+       "mesh": "far_hill_b__MapleRed",
+       "material": "MapleRed",
+       "color": "#D2452A",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_red.png",
+       "tile_studs": 48.0,
+       "transparency": 0,
+       "tris": 2656,
+       "bbox_center_from_origin": [
+        6.1,
+        50.0,
+        -7.87
+       ],
+       "size": [
+        267.8,
+        100.0,
+        144.25
+       ]
+      },
+      {
+       "mesh": "far_hill_b__Moss",
+       "material": "Moss",
+       "color": "#7A9A3A",
+       "roblox_material": "Grass",
+       "texture": "textures/moss.png",
+       "tile_studs": 32.0,
+       "transparency": 0,
+       "tris": 2480,
+       "bbox_center_from_origin": [
+        -3.26,
+        50.0,
+        7.7
+       ],
+       "size": [
+        239.92,
+        91.7,
+        136.58
+       ]
+      },
+      {
+       "mesh": "far_hill_b__Pumpkin",
+       "material": "Pumpkin",
+       "color": "#E8862E",
+       "roblox_material": "Grass",
+       "texture": "textures/foliage_orange.png",
+       "tile_studs": 48.0,
+       "transparency": 0,
+       "tris": 2592,
+       "bbox_center_from_origin": [
+        0.0,
+        48.14,
+        -0.0
+       ],
+       "size": [
+        280.0,
+        92.5,
+        160.0
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/far_hill_b_34.png"
+   ]
+  },
+  {
+   "id": "mountain_a",
+   "kind": "mountain",
+   "world_json_id": "mountains",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Low-poly distant mountain silhouette (pass 4 colours): foot = horizon haze #EDC6A8 (fades into the sky), hazy peach slopes, dusty mauve ridges, warm-white snowcaps; 500 x 320 x 300 unscaled. Long axis local X.",
+   "files": [
+    "fbx/mountain_a.fbx"
+   ],
+   "tris": 440,
+   "max_part_tris": 440,
+   "bbox_size_studs": [
+    500.0,
+    320.0,
+    300.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    160.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      1249.0,
+      0.0,
+      -60.0
+     ],
+     "yaw": 92.8,
+     "scale": [
+      0.88,
+      0.76,
+      1.1
+     ],
+     "world_json_id": "mountain_01"
+    },
+    {
+     "pos": [
+      148.0,
+      0.0,
+      1397.0
+     ],
+     "yaw": 4.4,
+     "scale": [
+      1.16,
+      0.77,
+      1.03
+     ],
+     "world_json_id": "mountain_04"
+    },
+    {
+     "pos": [
+      -1258.0,
+      0.0,
+      -50.0
+     ],
+     "yaw": -92.2,
+     "scale": [
+      0.88,
+      1.21,
+      0.86
+     ],
+     "world_json_id": "mountain_07"
+    },
+    {
+     "pos": [
+      68.0,
+      0.0,
+      -1360.0
+     ],
+     "yaw": -181.2,
+     "scale": [
+      1.25,
+      1.39,
+      0.98
+     ],
+     "world_json_id": "mountain_10"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/mountain_a.fbx",
+     "role": "whole piece",
+     "tris": 440,
+     "bbox_size_studs": [
+      500.0,
+      320.0,
+      300.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      160.0,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "mountain_a__MountainFoot",
+       "material": "MountainFoot",
+       "color": "#EDC6A8",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 163,
+       "bbox_center_from_origin": [
+        0.0,
+        61.74,
+        -0.0
+       ],
+       "size": [
+        500.0,
+        123.47,
+        300.0
+       ]
+      },
+      {
+       "mesh": "mountain_a__MountainMauve",
+       "material": "MountainMauve",
+       "color": "#AE8890",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 124,
+       "bbox_center_from_origin": [
+        2.17,
+        180.55,
+        0.57
+       ],
+       "size": [
+        318.05,
+        185.94,
+        247.33
+       ]
+      },
+      {
+       "mesh": "mountain_a__MountainPeach",
+       "material": "MountainPeach",
+       "color": "#D8A38E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 129,
+       "bbox_center_from_origin": [
+        1.31,
+        93.33,
+        -0.0
+       ],
+       "size": [
+        413.06,
+        186.65,
+        300.0
+       ]
+      },
+      {
+       "mesh": "mountain_a__MountainSnow",
+       "material": "MountainSnow",
+       "color": "#F8EDE6",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 24,
+       "bbox_center_from_origin": [
+        -0.53,
+        261.6,
+        -14.19
+       ],
+       "size": [
+        185.47,
+        116.8,
+        151.48
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/mountain_a_34.png"
+   ]
+  },
+  {
+   "id": "mountain_b",
+   "kind": "mountain",
+   "world_json_id": "mountains",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Low-poly distant mountain silhouette (pass 4 colours): foot = horizon haze #EDC6A8 (fades into the sky), hazy peach slopes, dusty mauve ridges, warm-white snowcaps; 500 x 320 x 300 unscaled. Long axis local X.",
+   "files": [
+    "fbx/mountain_b.fbx"
+   ],
+   "tris": 440,
+   "max_part_tris": 440,
+   "bbox_size_studs": [
+    500.0,
+    320.0,
+    300.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    160.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      1077.0,
+      0.0,
+      548.0
+     ],
+     "yaw": 62.1,
+     "scale": [
+      0.86,
+      0.7,
+      1.05
+     ],
+     "world_json_id": "mountain_02"
+    },
+    {
+     "pos": [
+      -673.0,
+      0.0,
+      926.0
+     ],
+     "yaw": -37.6,
+     "scale": [
+      1.0,
+      1.07,
+      0.91
+     ],
+     "world_json_id": "mountain_05"
+    },
+    {
+     "pos": [
+      -1246.0,
+      0.0,
+      -608.0
+     ],
+     "yaw": -115.3,
+     "scale": [
+      1.02,
+      1.14,
+      1.13
+     ],
+     "world_json_id": "mountain_08"
+    },
+    {
+     "pos": [
+      772.0,
+      0.0,
+      -947.0
+     ],
+     "yaw": -217.7,
+     "scale": [
+      1.26,
+      1.18,
+      0.91
+     ],
+     "world_json_id": "mountain_11"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/mountain_b.fbx",
+     "role": "whole piece",
+     "tris": 440,
+     "bbox_size_studs": [
+      500.0,
+      320.0,
+      300.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      160.0,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "mountain_b__MountainFoot",
+       "material": "MountainFoot",
+       "color": "#EDC6A8",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 143,
+       "bbox_center_from_origin": [
+        0.0,
+        66.26,
+        -0.0
+       ],
+       "size": [
+        500.0,
+        132.51,
+        300.0
+       ]
+      },
+      {
+       "mesh": "mountain_b__MountainMauve",
+       "material": "MountainMauve",
+       "color": "#AE8890",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 104,
+       "bbox_center_from_origin": [
+        -0.42,
+        188.6,
+        0.32
+       ],
+       "size": [
+        323.79,
+        201.12,
+        244.61
+       ]
+      },
+      {
+       "mesh": "mountain_b__MountainPeach",
+       "material": "MountainPeach",
+       "color": "#D8A38E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 176,
+       "bbox_center_from_origin": [
+        -10.15,
+        96.79,
+        -0.0
+       ],
+       "size": [
+        435.68,
+        193.59,
+        300.0
+       ]
+      },
+      {
+       "mesh": "mountain_b__MountainSnow",
+       "material": "MountainSnow",
+       "color": "#F8EDE6",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 17,
+       "bbox_center_from_origin": [
+        0.34,
+        268.24,
+        -0.45
+       ],
+       "size": [
+        50.16,
+        103.51,
+        172.62
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/mountain_b_34.png"
+   ]
+  },
+  {
+   "id": "mountain_c",
+   "kind": "mountain",
+   "world_json_id": "mountains",
+   "origin": "base centre (pos = world base centre)",
+   "notes": "Low-poly distant mountain silhouette (pass 4 colours): foot = horizon haze #EDC6A8 (fades into the sky), hazy peach slopes, dusty mauve ridges, warm-white snowcaps; 500 x 320 x 300 unscaled. Long axis local X.",
+   "files": [
+    "fbx/mountain_c.fbx"
+   ],
+   "tris": 440,
+   "max_part_tris": 440,
+   "bbox_size_studs": [
+    500.0,
+    320.0,
+    300.0
+   ],
+   "bbox_center_from_origin": [
+    0.0,
+    160.0,
+    -0.0
+   ],
+   "size_target_world_json": null,
+   "instances": [
+    {
+     "pos": [
+      752.0,
+      0.0,
+      949.0
+     ],
+     "yaw": 36.9,
+     "scale": [
+      1.3,
+      0.69,
+      0.9
+     ],
+     "world_json_id": "mountain_03"
+    },
+    {
+     "pos": [
+      -989.0,
+      0.0,
+      751.0
+     ],
+     "yaw": -53.9,
+     "scale": [
+      0.94,
+      1.16,
+      1.12
+     ],
+     "world_json_id": "mountain_06"
+    },
+    {
+     "pos": [
+      -609.0,
+      0.0,
+      -1091.0
+     ],
+     "yaw": -149.3,
+     "scale": [
+      1.23,
+      1.29,
+      0.96
+     ],
+     "world_json_id": "mountain_09"
+    },
+    {
+     "pos": [
+      1048.0,
+      0.0,
+      -586.0
+     ],
+     "yaw": -239.8,
+     "scale": [
+      1.27,
+      1.04,
+      1.12
+     ],
+     "world_json_id": "mountain_12"
+    }
+   ],
+   "parts": [
+    {
+     "file": "fbx/mountain_c.fbx",
+     "role": "whole piece",
+     "tris": 440,
+     "bbox_size_studs": [
+      500.0,
+      320.0,
+      300.0
+     ],
+     "bbox_center_from_origin": [
+      0.0,
+      160.0,
+      -0.0
+     ],
+     "texture_tile_scale": 1.0,
+     "meshes": [
+      {
+       "mesh": "mountain_c__MountainFoot",
+       "material": "MountainFoot",
+       "color": "#EDC6A8",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 138,
+       "bbox_center_from_origin": [
+        0.0,
+        74.94,
+        -0.0
+       ],
+       "size": [
+        500.0,
+        149.87,
+        300.0
+       ]
+      },
+      {
+       "mesh": "mountain_c__MountainMauve",
+       "material": "MountainMauve",
+       "color": "#AE8890",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 116,
+       "bbox_center_from_origin": [
+        11.34,
+        199.48,
+        3.31
+       ],
+       "size": [
+        346.23,
+        234.27,
+        241.57
+       ]
+      },
+      {
+       "mesh": "mountain_c__MountainPeach",
+       "material": "MountainPeach",
+       "color": "#D8A38E",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 172,
+       "bbox_center_from_origin": [
+        21.09,
+        102.13,
+        -0.0
+       ],
+       "size": [
+        457.82,
+        204.26,
+        300.0
+       ]
+      },
+      {
+       "mesh": "mountain_c__MountainSnow",
+       "material": "MountainSnow",
+       "color": "#F8EDE6",
+       "roblox_material": "SmoothPlastic",
+       "texture": null,
+       "tile_studs": null,
+       "transparency": 0,
+       "tris": 14,
+       "bbox_center_from_origin": [
+        36.24,
+        268.49,
+        -2.41
+       ],
+       "size": [
+        69.83,
+        103.03,
+        121.89
+       ]
+      }
+     ]
+    }
+   ],
+   "previews": [
+    "previews/mountain_c_34.png"
+   ]
+  }
+ ]
+}

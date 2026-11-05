@@ -1,0 +1,10 @@
+| Hole | Mover | Check | Min clearance | Nearest | Target | OK |
+|---|---|---|---|---|---|---|
+| H5 | geyser_column | vs rails/walls (full cycle, 2001 samples) | 0.150 | upper_rail8 | >= 0.15 | yes |
+| H11 | ice_floe | vs rails/walls (full cycle, 2001 samples) | 0.150 | rail5__cut0 | >= 0.15 | yes |
+| H17 | aurora_span | vs rails/walls (full cycle, 1 samples) | 0.150 | pier_s_rail6 | >= 0.15 | yes |
+| H12 | paddle_wheel | lowest corner over felt (7201 angles) | 0.060 | felt | >= 0.06, < 0.16 | yes |
+| H14 | icicle_bell | lowest corner over felt (7201 angles; foot at rest 0.062, bell min 0.257) | 0.061 | felt | >= 0.06, < 0.16 | yes |
+  H5 geyser_column: walls {'upper_rail8': 0.15, 'upper_rail12': 0.15}; felt (info) felt:basin -2.198
+  H11 ice_floe: walls {'rail5__cut0': 0.15, 'berg18__cut0': 0.15, 'pocket_w19': 0.152, 'pocket_w21': 0.152}; felt (info) felt:neck -0.000
+  H17 aurora_span: walls {'pier_s_rail6': 0.15, 'pier_s_rail7': 0.15, 'pier_n_rail8': 0.15, 'pier_n_rail9': 0.15}; felt (info) felt:pier_s 0.000

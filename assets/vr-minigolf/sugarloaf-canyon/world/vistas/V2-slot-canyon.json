@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Stylized whimsical VR mini golf game world concept art, first-person view from standing VR eye height (1.6 m), same art style and palette as the reference: candy-striped pink and cream sandstone mesas, sunset glow, lollipop-topped cacti, pink and amber rock-candy crystals, smooth low-poly toon shading, original design, no text, no logos. Inside a narrow glowing slot canyon with swirling striped walls lit by orange sunbeams from above, a putting green curves through the slot with crystal bumpers, a lantern-lit path continues ahead",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_sugarloafcanyon_color_clean.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1152,
+    "outputTokens": 1078,
+    "totalTokens": 2230
+  },
+  "cost": 0.041172,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791757244,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1024,
+          "textTokens": 128
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791757218900,
+                "endTime": 1791757245106,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.041172",
+      "marketCost": "0.041172",
+      "surchargeCost": "0",
+      "gatewayCost": "0.041172",
+      "inferenceCost": "0.041172",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.041172",
+      "generationId": "gen_01M4PGTX18GFYM8C7Y2WEST3T2"
+    }
+  },
+  "seconds": 27.2,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V2-slot-canyon.png"
+  ]
+}

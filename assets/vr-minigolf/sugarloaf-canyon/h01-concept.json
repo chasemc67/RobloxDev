@@ -1,0 +1,52 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Stylized Roblox-friendly VR mini golf concept, first-person view from a standing player's eye height (5.5 studs) on the tee mat, 16:9. Reference image 1 is the exact top-down layout of THIS hole (tee at the start marker, cup at the flag, red dashed line = ace line): match its fairway shape, turns, obstacles and their positions faithfully, seen in perspective from the tee. Reference image 2 is an existing vista of this course: match its art style, palette, lighting and materials exactly. Palette: putting felt #4FA83D (raised #86C24A, shaded #3B7F35), sandstone strata banded watermelon pink #E8736B and cream taffy #F6E3C8, warm golden low sunset light, lilac haze, clear turquoise water. The putting surface is green felt made only of flat or evenly sloped straight planar segments with simple block rails; no bumpy organic greens. Clear readable path from tee to the red-flag cup. No text, no people, no UI, no layout lines. Hole 1: Trailhead Gate (Par 2). Landmark: A candy-striped timber **trailhead arch** spans the lane with a swirl-lollipop sign; at the far end a big pink-and-cream striped **boulder** sits in the back-left corner of the green, its flat south-east face turned 45° to the lane. Scene: First-person VR view from a mini golf tee at eye height on a sandy canyon floor: a straight emerald felt lane with pink sandstone rails runs under a candy-striped timber trailhead arch hung with a giant swirl lollipop sign, toward a huge pink-and-cream striped boulder in the far left corner and a green that opens to the right with a red flag. Old Sugarloaf, a striped dome, on the skyline. Style: candy-striped sunset desert canyon, pink and cream banded sandstone, rock-candy crystals, lollipop saguaros, warm golden low sun from the west, lilac haze, chunky whimsical Roblox-friendly shapes, no text.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/h01-layout.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V1-hub-tee1.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 1563,
+    "inputTokenDetails": {
+      "noCacheTokens": 1563,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1419,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 299
+    },
+    "totalTokens": 2982,
+    "raw": {
+      "thoughtsTokenCount": 299,
+      "promptTokenCount": 1563,
+      "candidatesTokenCount": 1120,
+      "totalTokenCount": 2982,
+      "trafficType": "ON_DEMAND",
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 443
+        },
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ]
+    }
+  },
+  "cost": 0.141114,
+  "warnings": [],
+  "seconds": 59,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/h01-concept.png"
+  ]
+}

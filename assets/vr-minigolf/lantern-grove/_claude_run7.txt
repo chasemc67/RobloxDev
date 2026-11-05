@@ -1,0 +1,68 @@
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+The fix is to change the H9 pendulum's swing from ±13° to **±11°**. Nothing else on the pendulum moves, and no new mesh work is needed. I expect Studio to block about **44% (roughly 21/48)**, against 31% now.
+
+**Why widening didn't help.** The sim's "blocks" are really two different things:
+- **Stops:** the ball hits the foot's north face, the one square to the shot line, and bounces straight back.
+- **Kicks:** a side face of the foot, or a dipping corner of the lantern body, throws the ball sideways. Studio carries many of these on through.
+
+Studio fits "all stops plus about 36% of kicks" across both measurements: 22.4 predicted vs 23/72 measured. So the only reliable lever is how long that square face sits over the shot line, and a smaller swing does that (22% of the cycle, up from 18%).
+
+I first tried modelling the carry as friction, but it made the sim block *more*, so I took it back out of `sim.py`.
+
+**Chosen change (H9 only)**
+- **Swing:** angle(t) = **11°**·sin(360°·t/4 s). Period 4 s, phase 0 and hinge (21.2, 8.996, -38.5) are unchanged.
+- **Lantern body collider:** 1.6×1.8×1.6, yaw 30, centre (0, -7.0, 0) below the hinge. Unchanged.
+- **Foot collider:** 1.0×0.4×1.6, yaw 0, centre (0, -7.759, 0), which is what Studio v131 already has. Its bottom is 0.037 above the felt at rest and at least 0.021 over the whole swing (all 8 corners of both colliders checked).
+- **Sweep:** shrinks to x 18.62–23.78 (was 18.36–24.04), so every beam, rail and lantern clearance holds or grows.
+- At the ends of the swing the lantern still clears the ball on the shot line by at least 0.15.
+
+**Variants tried** ("Est" = expected Studio rate at 7.75, from the 24 | 80-phase runs)
+
+| Variant | Blocked at 7.75 (24 \| 80 phases) | Est | Traps | Change needed |
+|---|---|---|---|---|
+| v131 as built (±13°) | 12/24 \| 36/80 | 39% \| 34% | 0 | — |
+| ±12° | 12 \| 39 | 39% \| 37% | **1** | amplitude |
+| ±11.5° / ±11.25° | 12 \| 40 / 14 \| 41 | 39% / 45% \| 39% | 0 | amplitude |
+| **±11° (chosen)** | **15 \| 44** | **49% \| 42%** | **0** | **amplitude** |
+| ±10.5° / ±10° | 15 \| 47 / 14 \| 49 | 46–49% | 0 | amplitude |
+| ±9° / ±8° | 17 \| 59 / 16 \| 58 | 61–64% | 0 / **2** | amplitude (too hard) |
+| period 3 / 5 / 6 s | 13 \| 39 / 11 \| 34 / 11 \| 36 | 33–41% | 0 | period |
+| ±11° with 5 s / 3.5 s | 14 \| 42 / 14 \| 44 | 41–48% | **1** / 0 | both |
+| hinge x 21.8 / 21.5 / 20.9 / 20.6 | 11 \| 39 / 9 \| 36 / 11 \| 36 / 7 \| 29 | 24–42% | 0 | hinge, beam, mesh |
+| wide paddle 1.6×0.4×1.6 (1.0 tall: identical) | 10 \| 38 | 34% \| 40% | 0 | collider + bigger plinth |
+| wide paddle + ±11° | 15 \| 44 | 52% \| 47% | 0 | collider, plinth, amplitude |
+| thin paddles (0.4–0.6 deep) | 9 \| 30–31 | ~27% | 0–1 | collider + mesh |
+| second pendulum 2 studs north (phase 180° / 90°) | 18 \| 59 / 16 \| 49 | 54–59% | 0 | new lantern + beam |
+
+**Sim blocked on the Studio line at ±11°**
+
+| Speed (studs/s) | 24 phases | 80 phases |
+|---|---|---|
+| 7 | 14/24 (58%) | 48/80 (60%) |
+| **7.75** | **15/24 (62%)** | **44/80 (55%)** |
+| 8.5 | 11/24 (46%) | 36/80 (45%) |
+| 9 | 9/24 (38%) | 32/80 (40%) |
+
+At 7.75 the sim sits a bit above your 50–55% aim (55% at 80 phases, 62% at 24). The Studio-calibrated estimate is what put it mid-target; ±11.5° hits 50% raw but only about 39% in Studio.
+
+**Traps and soft-locks:** none. There were 0 traps at every speed and phase count, and 0 soft-locks in 100,000 fuzz shots on each of H7, H8 and H9. H7 and H8 are unchanged. H9's intended line goes from 11/24 blocked (+1 deflected) to 14/24. The ace line through the Lantern Knot never meets the pendulum (0/24, still holes 75%).
+
+**H9 stats (2000 plays per skill)**
+
+| | Good avg | Average avg | Skill gap | Caps (good / average) |
+|---|---|---|---|---|
+| v131 as built | 3.82 | 4.22 | 0.40 | 0.1% / 0.4% |
+| **±11°** | **3.90** | **4.28** | **0.38** | 0.2% / 0.8% |
+
+All targets are met. The average golfer's cap rate (0.8%) is the closest to its 1% limit. Course total goes to 25.56 good and 32.20 average.
+
+**For RobloxDevBot:** set the H9 pendulum amplitude to 11°. Leave the period, phase, hinge, body collider and foot as built in v131. If the foot was built at 0.9, make it 1.0×0.4×1.6, yaw 0, centred 7.759 below the hinge. Retest with GolfTest `BLOCK_LINES` (48 phases at 7.75): expect about 19–23/48 blocked and 0 traps.
+
+**For 3D Model Bot: no mesh change.** The base plinth just needs to match the 1.0×0.4×1.6 foot:
+- turned -30° relative to the lantern body (yaw 0 in the course);
+- bottom 0.059 below the body's bottom;
+- it sticks out up to 0.14 past the body's faces.
+
+If it was made to the Round 9 size of 0.9, lengthen it to 1.0 along the swing.
+
+**Files updated:** `holes.json` (rebuilt from `tools/build_holes.py`), the new `tools/sweep_r10.py`, Round 10 in `playtest-log.md`, `h09-notes.md`, `props.md`, `h09-layout.png` and both sheets. Results are in `tools/out/*r10*`. I also rebuilt `tools/out/sim-latest.json` (holes 1–8 from Round 9 plus the new H9), because Round 9 had left it without the ace lines the timing check needs. `build_holes.py` also gained a `h9_pend2` setting used only for the second-pendulum sweep; the build ignores it.

@@ -1,0 +1,71 @@
+{
+ "name": "bw_portal_surface_aurora_archipelago",
+ "group": "arches",
+ "fbx": "fbx/bw_portal_surface_aurora_archipelago.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Intentional portal quad; exempt from decorative opening/trigger clearance. UV 0-1; runtime animated texture.",
+ "pivot": "local origin (0,0,0), shared arch base centre",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  10.0,
+  12.0,
+  0.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  6.0,
+  1.5
+ ],
+ "bbox_min_roblox": [
+  -5.0,
+  0.0,
+  1.5
+ ],
+ "bbox_max_roblox": [
+  5.0,
+  12.0,
+  1.5
+ ],
+ "target_size_studs": [
+  10,
+  12,
+  0
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  null
+ ],
+ "triangles": 2,
+ "tris_max": 2,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_portal_surface_aurora_archipelago__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    10.0,
+    12.0,
+    0.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    6.0,
+    1.5
+   ]
+  }
+ ],
+ "collision": [],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

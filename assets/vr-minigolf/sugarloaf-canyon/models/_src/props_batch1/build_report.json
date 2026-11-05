@@ -1,0 +1,251 @@
+{
+ "parts": [
+  {
+   "id": "h06_sluice_gate",
+   "fbx": "fbx/h06_sluice_gate.fbx",
+   "tris": 296,
+   "max_mesh_tris": 96,
+   "meshes": [
+    {
+     "mesh": "h06_sluice_gate__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 96
+    },
+    {
+     "mesh": "h06_sluice_gate__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 84
+    },
+    {
+     "mesh": "h06_sluice_gate__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 96
+    },
+    {
+     "mesh": "h06_sluice_gate__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 20
+    }
+   ],
+   "hole": "h06",
+   "pivot_local": [
+    0,
+    0.0,
+    -28.0
+   ],
+   "motion": "slide x, range [-7,0], see holes.json h06.sluice_gate"
+  },
+  {
+   "id": "h09_windpump_rotor",
+   "fbx": "fbx/h09_windpump_rotor.fbx",
+   "tris": 3248,
+   "max_mesh_tris": 1696,
+   "meshes": [
+    {
+     "mesh": "h09_windpump_rotor__Brass",
+     "material": "Brass",
+     "color": "#C9973A",
+     "roblox_material": "Metal",
+     "tris": 44
+    },
+    {
+     "mesh": "h09_windpump_rotor__Bubblegum",
+     "material": "Bubblegum",
+     "color": "#F78FB3",
+     "roblox_material": "SmoothPlastic",
+     "tris": 1496
+    },
+    {
+     "mesh": "h09_windpump_rotor__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 12
+    },
+    {
+     "mesh": "h09_windpump_rotor__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 1696
+    }
+   ],
+   "hole": "h09",
+   "pivot_local": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "motion": "rotate about +z at 20 deg/s, continuous (18 s period)"
+  },
+  {
+   "id": "h11_lock_gate",
+   "fbx": "fbx/h11_lock_gate.fbx",
+   "tris": 228,
+   "max_mesh_tris": 72,
+   "meshes": [
+    {
+     "mesh": "h11_lock_gate__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 72
+    },
+    {
+     "mesh": "h11_lock_gate__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 72
+    },
+    {
+     "mesh": "h11_lock_gate__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 72
+    },
+    {
+     "mesh": "h11_lock_gate__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 12
+    }
+   ],
+   "hole": "h11",
+   "pivot_local": [
+    0,
+    0.0,
+    -21.25
+   ],
+   "motion": "slide y, range [-1.3,0] (single flat leaf per Game Art Bot)"
+  },
+  {
+   "id": "h14_ore_bucket",
+   "fbx": "fbx/h14_ore_bucket.fbx",
+   "tris": 712,
+   "max_mesh_tris": 284,
+   "meshes": [
+    {
+     "mesh": "h14_ore_bucket__Brass",
+     "material": "Brass",
+     "color": "#C9973A",
+     "roblox_material": "Metal",
+     "tris": 284
+    },
+    {
+     "mesh": "h14_ore_bucket__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 52
+    },
+    {
+     "mesh": "h14_ore_bucket__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 132
+    },
+    {
+     "mesh": "h14_ore_bucket__OreAmber",
+     "material": "OreAmber",
+     "color": "#FFB347",
+     "roblox_material": "SmoothPlastic",
+     "tris": 24
+    },
+    {
+     "mesh": "h14_ore_bucket__OrePink",
+     "material": "OrePink",
+     "color": "#FF6FA8",
+     "roblox_material": "SmoothPlastic",
+     "tris": 24
+    },
+    {
+     "mesh": "h14_ore_bucket__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 132
+    },
+    {
+     "mesh": "h14_ore_bucket__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 64
+    }
+   ],
+   "hole": "h14",
+   "pivot_local": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "motion": "swing about +z, amplitude 9 deg, period 4 s, sinusoidal"
+  },
+  {
+   "id": "h17_shadow_arms",
+   "fbx": "fbx/h17_shadow_arms.fbx",
+   "tris": 128,
+   "max_mesh_tris": 80,
+   "meshes": [
+    {
+     "mesh": "h17_shadow_arms__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 48
+    },
+    {
+     "mesh": "h17_shadow_arms__Slate",
+     "material": "Slate",
+     "color": "#5E5A66",
+     "roblox_material": "Slate",
+     "tris": 80
+    }
+   ],
+   "hole": "h17",
+   "pivot_local": [
+    0.0,
+    0.0,
+    -36.0
+   ],
+   "motion": "rotate about +y at 12 deg/s, continuous"
+  },
+  {
+   "id": "flag",
+   "fbx": "fbx/flag.fbx",
+   "tris": 48,
+   "max_mesh_tris": 36,
+   "meshes": [
+    {
+     "mesh": "flag__FlagRed",
+     "material": "FlagRed",
+     "color": "#E03C31",
+     "roblox_material": "Fabric",
+     "tris": 12
+    },
+    {
+     "mesh": "flag__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 36
+    }
+   ],
+   "hole": "all",
+   "pivot_local": "cup.flag base (cup position)",
+   "motion": "static, visual only, no collision"
+  }
+ ]
+}

@@ -1,0 +1,102 @@
+{
+ "name": "bw_lantern_post",
+ "group": "social",
+ "fbx": "fbx/bw_lantern_post.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Wooden post, brass lantern housing, Neon glass (own MeshPart). Good PointLight host.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  1.0,
+  7.05,
+  1.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  3.525,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -0.5,
+  0.0,
+  -0.5
+ ],
+ "bbox_max_roblox": [
+  0.5,
+  7.05,
+  0.5
+ ],
+ "target_size_studs": [
+  1,
+  7,
+  1
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.007,
+  1.0
+ ],
+ "triangles": 224,
+ "tris_max": 400,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_lantern_post__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 212,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    1.0,
+    7.05,
+    1.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    3.525,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "bw_lantern_post__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 12,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    0.65,
+    0.85,
+    0.65
+   ],
+   "center_from_pivot": [
+    0.0,
+    6.025,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    3.525,
+    -0.0
+   ],
+   "size": [
+    1.0,
+    7.05,
+    1.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

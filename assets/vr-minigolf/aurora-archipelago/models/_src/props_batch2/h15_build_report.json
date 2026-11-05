@@ -1,0 +1,112 @@
+{
+  "id": "h15_great_frozen_falls",
+  "hole": 15,
+  "fbx": "fbx/props_batch2/h15_great_frozen_falls.fbx",
+  "tris": 3664,
+  "max_mesh_tris": 2068,
+  "meshes": [
+    {
+      "mesh": "h15_great_frozen_falls__Ice",
+      "material": "Ice",
+      "colour": "#8FE3FF",
+      "color": "#8FE3FF",
+      "roblox_material": "Glass",
+      "transparency": 0.3,
+      "tris": 1596
+    },
+    {
+      "mesh": "h15_great_frozen_falls__IceCore",
+      "material": "IceCore",
+      "colour": "#BFF6FF",
+      "color": "#BFF6FF",
+      "roblox_material": "Neon",
+      "transparency": 0,
+      "tris": 2068
+    }
+  ],
+  "pivot_hole_local": [
+    8.0,
+    -146.0,
+    -64.0
+  ],
+  "anchor_local": [
+    8.0,
+    -146.0,
+    -64.0
+  ],
+  "yaw_local": 0,
+  "world_offset": [
+    12.0,
+    182.0,
+    -334.0
+  ],
+  "world_yaw": 0,
+  "pivot_world": [
+    20.0,
+    36.0,
+    -398.0
+  ],
+  "placement_yaw": 0,
+  "motion": null,
+  "notes": [
+    "World waterfall top/bottom supersede 26x40x8 view-cue envelope; 26x146x8 actual bounds. Sheet taper, bulging tiers and vertical flutes retained. Tileable 20-stud cadence, final six-stud section. Foot ends at cloud deck y36; cloud obscuration supplied by world, no invented cloud mesh."
+  ],
+  "can_collide": false,
+  "can_query": false,
+  "can_touch": false,
+  "streaming": "Persistent",
+  "primary_part": "base-centre root (builder creates PrimaryPart)",
+  "bbox_asset_local": [
+    [
+      -13.0,
+      0,
+      -4.0
+    ],
+    [
+      13.0,
+      146.0,
+      4.0
+    ]
+  ],
+  "bbox_hole_local": [
+    [
+      -5.0,
+      -146.0,
+      -68.0
+    ],
+    [
+      21.0,
+      0.0,
+      -60.0
+    ]
+  ],
+  "bbox_world": [
+    [
+      7.0,
+      36.0,
+      -402.0
+    ],
+    [
+      33.0,
+      182.0,
+      -394.0
+    ]
+  ],
+  "dimensions": [
+    26.0,
+    146.0,
+    8.0
+  ],
+  "lights": [],
+  "placement_source": "world/world.json waterfalls: Great Frozen Falls",
+  "source_top": [
+    20,
+    182,
+    -398
+  ],
+  "source_bottom": [
+    20.0,
+    36.0,
+    -398.0
+  ]
+}

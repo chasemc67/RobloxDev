@@ -1,0 +1,92 @@
+{
+ "name": "bw_windmill",
+ "group": "green",
+ "fbx": "fbx/bw_windmill.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Octagonal plank tower on a stone plinth with a ball tunnel (2 W x 1.2 H) running north-south, striped roof. Blade hub (pivot of bw_windmill_blades) at local (0, 7.0, +3.3).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  6.0,
+  10.0,
+  6.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  5.0,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -3.0,
+  0.0,
+  -3.0
+ ],
+ "bbox_max_roblox": [
+  3.0,
+  10.0,
+  3.0
+ ],
+ "target_size_studs": [
+  6,
+  10,
+  6
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 622,
+ "tris_max": 3500,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_windmill__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 622,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    10.0,
+    6.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    5.0,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    5.0,
+    -0.0
+   ],
+   "size": [
+    6.0,
+    10.0,
+    6.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false,
+ "blade_hub": {
+  "local": [
+   0.0,
+   7.0,
+   3.3
+  ],
+  "note": "bw_windmill_blades pivot goes here: world = windmill pivot + (0, 7.0, 3.3) = (150, 7.4, 67.3) for the builder placement"
+ }
+}

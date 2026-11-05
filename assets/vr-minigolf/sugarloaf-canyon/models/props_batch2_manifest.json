@@ -1,0 +1,464 @@
+{
+ "batch": "sugarloaf props batch2 (H1-H6 landmarks)",
+ "date": "2026-10-12",
+ "fitcheck": "fitcheck_props_batch2.txt (ALL PASS)",
+ "parts": [
+  {
+   "id": "h01_trailhead_arch",
+   "fbx": "fbx/props_batch2/h01_trailhead_arch.fbx",
+   "hole": "h01",
+   "pivot_hole_local": [
+    0,
+    0,
+    -12
+   ],
+   "pivot_world": [
+    60.0,
+    18.0,
+    458.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope": [
+    9.5,
+    10,
+    1.2
+   ],
+   "report": {
+    "id": "h01_trailhead_arch",
+    "hole": "h01",
+    "fbx": "fbx/props_batch2/h01_trailhead_arch.fbx",
+    "anchor_local": [
+     0,
+     0,
+     -12
+    ],
+    "envelope": [
+     9.5,
+     10,
+     1.2
+    ],
+    "tris": 276,
+    "max_mesh_tris": 120,
+    "meshes": [
+     {
+      "mesh": "h01_trailhead_arch__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 120
+     },
+     {
+      "mesh": "h01_trailhead_arch__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 60
+     },
+     {
+      "mesh": "h01_trailhead_arch__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 48
+     },
+     {
+      "mesh": "h01_trailhead_arch__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 48
+     }
+    ],
+    "notes": [
+     "Sign is mounted ON the beam face (y 8.7..9.8), not hung below: props.md needs >= 8 overhead clearance and the beam bottom is the 8-stud line. Posts 0.6 (anchor occluders), not 1.2 (sheet): 1.2 posts cannot fit outside the rails inside the 9.5 envelope."
+    ]
+   },
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h02_headframe",
+   "fbx": "fbx/props_batch2/h02_headframe.fbx",
+   "hole": "h02",
+   "pivot_hole_local": [
+    1.0,
+    0,
+    -22
+   ],
+   "pivot_world": [
+    101.0,
+    18.0,
+    388.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope": [
+    8,
+    16,
+    6
+   ],
+   "report": {
+    "id": "h02_headframe",
+    "hole": "h02",
+    "fbx": "fbx/props_batch2/h02_headframe.fbx",
+    "anchor_local": [
+     1.0,
+     0,
+     -22
+    ],
+    "envelope": [
+     8,
+     16,
+     6
+    ],
+    "tris": 472,
+    "max_mesh_tris": 164,
+    "meshes": [
+     {
+      "mesh": "h02_headframe__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 164
+     },
+     {
+      "mesh": "h02_headframe__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 96
+     },
+     {
+      "mesh": "h02_headframe__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 92
+     },
+     {
+      "mesh": "h02_headframe__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 120
+     }
+    ],
+    "notes": [
+     "Open lattice (Game Art Bot). Legs are vertical outside the middle channel up to y 8.2, and the A-frame converges above y 8, so no member enters the channel below 8 (the sheet A-frame legs would cross it). Left legs sit 0.05-0.1 off rock16; envelope x -3..5 is off-centre to the channel."
+    ]
+   },
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h03_ranger_station",
+   "fbx": "fbx/props_batch2/h03_ranger_station.fbx",
+   "hole": "h03",
+   "pivot_hole_local": [
+    -19,
+    0,
+    -20
+   ],
+   "pivot_world": [
+    -75.0,
+    18.0,
+    311.0
+   ],
+   "yaw_deg": -90.0,
+   "envelope": [
+    10,
+    18,
+    10
+   ],
+   "report": {
+    "id": "h03_ranger_station",
+    "hole": "h03",
+    "fbx": "fbx/props_batch2/h03_ranger_station.fbx",
+    "anchor_local": [
+     -19,
+     0,
+     -20
+    ],
+    "envelope": [
+     10,
+     18,
+     10
+    ],
+    "tris": 398,
+    "max_mesh_tris": 252,
+    "meshes": [
+     {
+      "mesh": "h03_ranger_station__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 60
+     },
+     {
+      "mesh": "h03_ranger_station__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 26
+     },
+     {
+      "mesh": "h03_ranger_station__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 252
+     },
+     {
+      "mesh": "h03_ranger_station__Window",
+      "material": "Window",
+      "color": "#9FD8E8",
+      "roblox_material": "Glass",
+      "tris": 60
+     }
+    ],
+    "notes": []
+   },
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h04_geode_wall",
+   "fbx": "fbx/props_batch2/h04_geode_wall.fbx",
+   "hole": "h04",
+   "pivot_hole_local": [
+    -9,
+    0,
+    -20
+   ],
+   "pivot_world": [
+    220.0,
+    18.0,
+    321.0
+   ],
+   "yaw_deg": -90.0,
+   "envelope": [
+    3,
+    14,
+    18
+   ],
+   "report": {
+    "id": "h04_geode_wall",
+    "hole": "h04",
+    "fbx": "fbx/props_batch2/h04_geode_wall.fbx",
+    "anchor_local": [
+     -9,
+     0,
+     -20
+    ],
+    "envelope": [
+     3,
+     14,
+     18
+    ],
+    "tris": 336,
+    "max_mesh_tris": 188,
+    "meshes": [
+     {
+      "mesh": "h04_geode_wall__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 36
+     },
+     {
+      "mesh": "h04_geode_wall__CrystalGlow",
+      "material": "CrystalGlow",
+      "color": "#FF6FA8",
+      "roblox_material": "Neon",
+      "tris": 188
+     },
+     {
+      "mesh": "h04_geode_wall__GeodeRim",
+      "material": "GeodeRim",
+      "color": "#C8463F",
+      "roblox_material": "Rock",
+      "tris": 76
+     },
+     {
+      "mesh": "h04_geode_wall__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 36
+     }
+    ],
+    "notes": []
+   },
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h05_echo_walls",
+   "fbx": "fbx/props_batch2/h05_echo_walls.fbx",
+   "hole": "h05",
+   "pivot_hole_local": [
+    3,
+    0,
+    -22
+   ],
+   "pivot_world": [
+    283.0,
+    22.0,
+    304.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope": [
+    16,
+    44,
+    46
+   ],
+   "report": {
+    "id": "h05_echo_walls",
+    "hole": "h05",
+    "fbx": "fbx/props_batch2/h05_echo_walls.fbx",
+    "anchor_local": [
+     3,
+     0,
+     -22
+    ],
+    "envelope": [
+     16,
+     44,
+     46
+    ],
+    "tris": 572,
+    "max_mesh_tris": 308,
+    "meshes": [
+     {
+      "mesh": "h05_echo_walls__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 264
+     },
+     {
+      "mesh": "h05_echo_walls__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 308
+     }
+    ],
+    "notes": [
+     "Footprint = plate area outside the pipe rails (channel from holes.json plate_visible), 0.15 clear of every rail face, inside the envelope. Wall bases sit on the plate felt (y 0) outside the reachable channel."
+    ]
+   },
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h06_bell_tower",
+   "fbx": "fbx/props_batch2/h06_bell_tower.fbx",
+   "hole": "h06",
+   "pivot_hole_local": [
+    -9,
+    0,
+    -30
+   ],
+   "pivot_world": [
+    271.0,
+    26.0,
+    225.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope": [
+    3,
+    9,
+    3
+   ],
+   "report": {
+    "id": "h06_bell_tower",
+    "hole": "h06",
+    "fbx": "fbx/props_batch2/h06_bell_tower.fbx",
+    "anchor_local": [
+     -9,
+     0,
+     -30
+    ],
+    "envelope": [
+     3,
+     9,
+     3
+    ],
+    "tris": 210,
+    "max_mesh_tris": 96,
+    "meshes": [
+     {
+      "mesh": "h06_bell_tower__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 96
+     },
+     {
+      "mesh": "h06_bell_tower__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 12
+     },
+     {
+      "mesh": "h06_bell_tower__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "h06_bell_tower__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 6
+     },
+     {
+      "mesh": "h06_bell_tower__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 72
+     }
+    ],
+    "notes": [
+     "Footprint trimmed to z -31.5..-29.12 (2.38 deep): the 3x3 envelope overlaps pocket_w21 (z -28.97..-28.47) by 0.47; kept 0.15 clear."
+    ]
+   },
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  }
+ ]
+}

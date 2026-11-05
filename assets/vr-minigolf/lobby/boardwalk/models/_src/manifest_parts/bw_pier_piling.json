@@ -1,0 +1,84 @@
+{
+ "name": "bw_pier_piling",
+ "group": "structure",
+ "fbx": "fbx/bw_pier_piling.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Cluster of 3 weathered posts lashed with rope; top at local Y=6 (builder base Y=-6 -> top flush with deck underside region).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  2.02,
+  6.0,
+  1.921
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  3.0,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -1.01,
+  0.0,
+  -0.961
+ ],
+ "bbox_max_roblox": [
+  1.01,
+  6.0,
+  0.961
+ ],
+ "target_size_studs": [
+  2,
+  6,
+  2
+ ],
+ "size_ratio_vs_target": [
+  1.01,
+  1.0,
+  0.961
+ ],
+ "triangles": 232,
+ "tris_max": 250,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_pier_piling__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 232,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.02,
+    6.0,
+    1.921
+   ],
+   "center_from_pivot": [
+    0.0,
+    3.0,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    3.0,
+    -0.0
+   ],
+   "size": [
+    2.02,
+    6.0,
+    1.921
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

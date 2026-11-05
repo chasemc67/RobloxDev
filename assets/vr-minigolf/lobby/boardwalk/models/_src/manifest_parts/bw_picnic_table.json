@@ -1,0 +1,84 @@
+{
+ "name": "bw_picnic_table",
+ "group": "social",
+ "fbx": "fbx/bw_picnic_table.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Table top 6x2.6 at Y 3, two attached bench planks, A-frame legs.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.115
+ ],
+ "bbox_size_studs": [
+  6.0,
+  2.885,
+  6.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.443,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -3.0,
+  0.0,
+  -3.0
+ ],
+ "bbox_max_roblox": [
+  3.0,
+  2.885,
+  3.0
+ ],
+ "target_size_studs": [
+  6,
+  3,
+  6
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  0.962,
+  1.0
+ ],
+ "triangles": 588,
+ "tris_max": 900,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_picnic_table__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 588,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    2.885,
+    6.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.443,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.443,
+    -0.0
+   ],
+   "size": [
+    6.0,
+    2.885,
+    6.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

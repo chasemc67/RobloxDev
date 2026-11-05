@@ -1,0 +1,2007 @@
+{
+ "source": "in/holes.json",
+ "source_abs": "C:\\Users\\chase\\sc_movers5\\in\\holes.json",
+ "source_round": "p9b",
+ "source_sha256": "57c1162513139bcbbd9de286cb18a7fb1d9d74fa25b6e0b934f834ac5b6a29bc",
+ "secondary_source": "in/p9-report.md (H9/H14/H7/H17 tables)",
+ "generated": "2026-10-11T23:12:09.957397-07:00",
+ "conventions": {
+  "units": "studs",
+  "axes": "Roblox hole-local, +Y up, play toward -Z; Blender = (x,-z,y)",
+  "fbx": "forward -Z, up Y, scale 1, embedded textures",
+  "tris_per_mesh_max": 20000,
+  "clearance_rules": {
+   "general": 0.05,
+   "mover_vs_static_prop": 0.15,
+   "design_override": "0.06 accepted for the H9 and H14 BLOCKING collision surfaces only (Game Art Bot); H9 visual tip .02 art-only"
+  },
+  "warning_bands": {
+   "colors": {
+    "LipRed": "#B83A35",
+    "LipCream": "#FFF0C9"
+   },
+   "rule": "moving parts only"
+  }
+ },
+ "rebuilt_props": [
+  "h07_teleport_pads",
+  "h07_teleport_pad_exit",
+  "h07_island_respawn_stone",
+  "h09_windpump_vanes_collision",
+  "h14_ore_bucket",
+  "h14_ore_bucket_foot_collision",
+  "h17_hour_stone_XII",
+  "h17_hour_stone_I",
+  "h17_hour_stone_III",
+  "h17_hour_stone_IV",
+  "h17_hour_stone_VII",
+  "h17_hour_stone_VIII",
+  "h17_hour_stone_IX",
+  "h17_hour_stone_X",
+  "h17_hour_stone_XI"
+ ],
+ "h07": {
+  "player_teleport_points": {
+   "value": [
+    {
+     "id": "bridge1_entry",
+     "position": [
+      0.0,
+      0,
+      -25
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "lane",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, one stud back from the bridge-1 end; paired crossing is optional."
+    },
+    {
+     "id": "bridge1_island",
+     "position": [
+      4.5,
+      0,
+      -38.5
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "island",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, on island felt just east of the bridge-1 landing, clear of the respawn stone (p9: moved from [0,0,-38]); paired crossing is optional."
+    },
+    {
+     "id": "bridge2_island",
+     "position": [
+      3.8,
+      0,
+      -44.0
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "island",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, one stud back from the bridge-2 end; paired crossing is optional."
+    },
+    {
+     "id": "bridge2_exit",
+     "position": [
+      5.15,
+      0,
+      -59
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "green",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, on green felt at the bridge-2 exit, east of the cup (west edge .15 outside the cup rim; p9: moved from x 3.8); paired crossing is optional."
+    }
+   ],
+   "src": "holes[6].player_teleport_points"
+  },
+  "cup": {
+   "value": {
+    "position": [
+     3.0,
+     0.0,
+     -60.0
+    ],
+    "radius": 0.5,
+    "flag": {
+     "pole_height": 7.5,
+     "pole_diameter": 0.15,
+     "banner_size": [
+      2.0,
+      1.2,
+      0.05
+     ],
+     "banner_color": "#e03c31",
+     "top": [
+      3.0,
+      7.5,
+      -60.0
+     ],
+     "collision": false
+    }
+   },
+   "src": "holes[6].cup"
+  },
+  "exit_pad_west_edge_to_cup_rim": {
+   "value": 0.15,
+   "src": "derived: pad x 5.15 - 1.5 vs cup x 3.0 + r 0.5"
+  },
+  "island_respawn_stone": {
+   "value": {
+    "name": "island_respawn_stone",
+    "position": [
+     0,
+     0,
+     -38.5
+    ],
+    "notes": "Glowing marker stone flush in the island felt at the bridge-1 landing: where a ball that falls into the gap reappears",
+    "approx_size": [
+     0.8,
+     0.02,
+     0.8
+    ]
+   },
+   "src": "holes[6].decoration_anchors[island_respawn_stone]"
+  },
+  "respawn_point": {
+   "value": [
+    0.0,
+    0.0,
+    -38.5
+   ],
+   "src": "holes[6].hazards[taffy_gap].respawn"
+  },
+  "island_pad_to_stone_gap_x": {
+   "value": 2.6,
+   "src": "derived: pad x 4.5 - 1.5 vs stone half 0.4"
+  }
+ },
+ "h09_windpump_vanes": {
+  "pivot": {
+   "value": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "src": "holes[8].moving_parts[windpump].pivot"
+  },
+  "axis": {
+   "value": [
+    0,
+    0,
+    1
+   ],
+   "src": ".axis"
+  },
+  "speed_deg_s": {
+   "value": 20.0,
+   "src": ".speed"
+  },
+  "period_s": {
+   "value": 18.0,
+   "src": "360/speed"
+  },
+  "phase": {
+   "value": 0.0,
+   "src": ".phase"
+  },
+  "visual_radial": {
+   "value": [
+    0.6,
+    4.1
+   ],
+   "src": "holes[8].moving_parts[windpump].visual \"visual radius 0.6..4.1\" (kept from pass 4)"
+  },
+  "visual_tip_felt_clearance": {
+   "value": 0.02,
+   "src": "pivot y 4.12 - 4.1 (art only, no collision)"
+  },
+  "visual_note": {
+   "value": "4 lollipop vanes, width 2.4, visual radius 0.6..4.1; collision strips radius 0.6..4.06, circular clipped tips built from 12 strips; axle y=4.12; collision tip clearance 0.06 (p9b: 0.15 tip clearance cannot block a 0.16-tall ball; 0.06 is the highest clearance that stays in the 35-50% stop band). Visual tip may extend to r 4.1 (0.020 above the felt) past the collider",
+   "src": "holes[8].moving_parts[windpump].visual"
+  }
+ },
+ "h09_windpump_vanes_collision": {
+  "pivot": {
+   "value": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "src": "holes[8].moving_parts[windpump].pivot"
+  },
+  "strips": {
+   "value": [
+    {
+     "center": [
+      -1.1,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.7000000000000001,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.5,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.30000000000000004,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.09999999999999996,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.09999999999999999,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.30000000000000016,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.4999999999999999,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.6999999999999998,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      1.0999999999999996,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -1.1,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.7000000000000001,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.5,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.30000000000000004,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.09999999999999996,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.09999999999999999,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.30000000000000016,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.4999999999999999,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.6999999999999998,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      1.0999999999999996,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -1.1,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.7000000000000001,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.5,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.30000000000000004,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.09999999999999996,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.09999999999999999,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.30000000000000016,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.4999999999999999,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.6999999999999998,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      1.0999999999999996,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -1.1,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.7000000000000001,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.5,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.30000000000000004,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.09999999999999996,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.09999999999999999,
+      -2.327535449751742,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4550708995034847,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.30000000000000016,
+      -2.320123758585102,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.4402475171702043,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.4999999999999999,
+      -2.307710138441304,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.415420276882608,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.6999999999999998,
+      -2.2902009948746382,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.3804019897492767,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.9,
+      -2.2674602918483515,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.334920583696703,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      1.0999999999999996,
+      -2.2393039988614474,
+      0
+     ],
+     "size": [
+      0.19999999999999998,
+      3.2786079977228946,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    }
+   ],
+   "src": "holes[8].moving_parts[windpump].blockers (48 = 12 x roll 0/90/180/270)"
+  },
+  "strip_count": {
+   "value": 48,
+   "src": "len(blockers)"
+  },
+  "vane_width": {
+   "value": 2.4,
+   "src": "blockers x extent"
+  },
+  "strip_width": {
+   "value": 0.2,
+   "src": "blockers size.x"
+  },
+  "depth": {
+   "value": 0.4,
+   "src": "blockers size.z"
+  },
+  "radial_inner": {
+   "value": 0.6,
+   "src": "blockers center.y+size.y/2"
+  },
+  "outer_radius": {
+   "value": 4.06,
+   "src": "blocker outer corners"
+  },
+  "tip_felt_clearance": {
+   "value": 0.06,
+   "src": "pivot y - outer radius (p9-report: 0.06)"
+  },
+  "manifest": {
+   "value": "collision-only: Transparency 1, CanCollide true, CollisionFidelity PreciseConvexDecomposition; visual h09_windpump_vanes CanCollide false",
+   "src": "brief_pass5 item 3"
+  }
+ },
+ "h14_ore_bucket": {
+  "pivot": {
+   "value": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "src": "holes[13].moving_parts[ore_bucket].pivot"
+  },
+  "axis": {
+   "value": [
+    0,
+    0,
+    1
+   ],
+   "src": ".axis"
+  },
+  "amplitude_deg": {
+   "value": 9.0,
+   "src": ".amplitude_deg"
+  },
+  "period_s": {
+   "value": 4.0,
+   "src": ".period_s"
+  },
+  "formula": {
+   "value": "angle = 9*sin(2*pi*t/4) deg about +Z through hinge",
+   "src": "unchanged"
+  },
+  "bucket_blocker": {
+   "value": {
+    "center": [
+     0,
+     -9.0,
+     0
+    ],
+    "size": [
+     2.1,
+     2.0,
+     1.8
+    ],
+    "yaw": 0.0
+   },
+   "src": "holes[13].moving_parts[ore_bucket].blockers[0]"
+  },
+  "skid_visual": {
+   "value": "Iron skid x -1.05..1.05, z +-0.075, top y -9.95 (inside bucket); underside piecewise-linear through the strip boundaries at max(adjacent strip bottoms), so never below a strip; outer ends raised 0.03 above the outer strip bottoms (chamfered corners)",
+   "src": "brief_pass5 item 4 + p9-report skid note"
+  },
+  "visual_note": {
+   "value": "Ore bucket (2.1x2x1.8) on a 9-stud hanger from the cableway trestle, swinging east-west across the lane; blockers 2..15 = invisible collider foot 2.1 wide x 0.15 deep in 14 yaw-0 strips (north/south faces square to the shot line) under the bucket. Centre strips (|x| <= 0.9) hang low on an arc of radius 10.290 about the hinge (0.06 min clearance, 0.0613 at rest) so they block the ball; the outer strips are chamfered to an arc of radius 10.200: outer corners 0.15 above the felt at every angle of the +-9 deg swing (bucket bottom 0.35); the bucket mesh gets a matching base skid plate",
+   "src": "holes[13].moving_parts[ore_bucket].visual"
+  }
+ },
+ "h14_ore_bucket_foot_collision": {
+  "pivot": {
+   "value": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "src": "holes[13].moving_parts[ore_bucket].pivot"
+  },
+  "strips": {
+   "value": [
+    {
+     "center": [
+      -0.975,
+      -10.0103,
+      0
+     ],
+     "size": [
+      0.15,
+      0.2706,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      -0.825,
+      -10.0627,
+      0
+     ],
+     "size": [
+      0.15,
+      0.3754,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      -0.675,
+      -10.0687,
+      0
+     ],
+     "size": [
+      0.15,
+      0.3874,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      -0.525,
+      -10.0736,
+      0
+     ],
+     "size": [
+      0.15,
+      0.3973,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      -0.375,
+      -10.0775,
+      0
+     ],
+     "size": [
+      0.15,
+      0.405,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      -0.225,
+      -10.0802,
+      0
+     ],
+     "size": [
+      0.15,
+      0.4104,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      -0.075,
+      -10.0819,
+      0
+     ],
+     "size": [
+      0.15,
+      0.4137,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.075,
+      -10.0819,
+      0
+     ],
+     "size": [
+      0.15,
+      0.4137,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.225,
+      -10.0802,
+      0
+     ],
+     "size": [
+      0.15,
+      0.4104,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.375,
+      -10.0775,
+      0
+     ],
+     "size": [
+      0.15,
+      0.405,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.525,
+      -10.0736,
+      0
+     ],
+     "size": [
+      0.15,
+      0.3973,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.675,
+      -10.0687,
+      0
+     ],
+     "size": [
+      0.15,
+      0.3874,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.825,
+      -10.0627,
+      0
+     ],
+     "size": [
+      0.15,
+      0.3754,
+      0.15
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.975,
+      -10.0103,
+      0
+     ],
+     "size": [
+      0.15,
+      0.2706,
+      0.15
+     ],
+     "yaw": 0.0
+    }
+   ],
+   "src": "holes[13].moving_parts[ore_bucket].blockers[1..14] == p9-report Foot strip boxes table"
+  },
+  "strip_count": {
+   "value": 14,
+   "src": "len(blockers)-1"
+  },
+  "strip_size_xz": {
+   "value": [
+    0.15,
+    0.15
+   ],
+   "src": "blockers size x/z"
+  },
+  "strip_top_local_y": {
+   "value": [
+    -9.87505,
+    -9.875,
+    -9.87495
+   ],
+   "src": "derived"
+  },
+  "strip_bottom_local_y": {
+   "value": [
+    -10.1456,
+    -10.2504,
+    -10.2624,
+    -10.27225,
+    -10.28,
+    -10.2854,
+    -10.28875,
+    -10.28875,
+    -10.2854,
+    -10.28,
+    -10.27225,
+    -10.2624,
+    -10.2504,
+    -10.1456
+   ],
+   "src": "derived"
+  },
+  "expected": {
+   "value": {
+    "centre_min": 0.06,
+    "centre_rest": 0.0613,
+    "outer_corner_min": 0.1502,
+    "outer_rest": 0.2044
+   },
+   "src": "p9-report H14"
+  }
+ },
+ "h17_hour_stones": {
+  "ring": {
+   "value": {
+    "ring_center": [
+     0.0,
+     0,
+     -36.0
+    ],
+    "ring_radius": 12.5,
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "note": "XII toward local -Z, clockwise seen from above (III toward +X). Centre y = half-height .4 (stone sits on the felt, top .8)."
+   },
+   "src": "holes[16].hour_stones"
+  },
+  "stones": {
+   "value": [
+    {
+     "hour": "XII",
+     "center": [
+      0.0,
+      0.4,
+      -48.5
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": true,
+     "ball_collision": true,
+     "rail_mounted": true,
+     "note": "Footprint reaches .1 over the rail inner face: rail-mounted solid stone, collision on (static bumper block)"
+    },
+    {
+     "hour": "I",
+     "center": [
+      6.25,
+      0.4,
+      -46.8253
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": false,
+     "ball_collision": false,
+     "rail_mounted": false
+    },
+    {
+     "hour": "II",
+     "center": [
+      10.8253,
+      0.4,
+      -42.25
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": false,
+     "dropped": "footprint covers the cup [10.1,0,-43]"
+    },
+    {
+     "hour": "III",
+     "center": [
+      12.5,
+      0.4,
+      -36.0
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": true,
+     "ball_collision": true,
+     "rail_mounted": true,
+     "note": "Footprint reaches .1 over the rail inner face: rail-mounted solid stone, collision on (static bumper block)"
+    },
+    {
+     "hour": "IV",
+     "center": [
+      10.8253,
+      0.4,
+      -29.75
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": false,
+     "ball_collision": false,
+     "rail_mounted": false
+    },
+    {
+     "hour": "V",
+     "center": [
+      6.25,
+      0.4,
+      -25.1747
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": false,
+     "dropped": "the good golfer's planned tee line and the ace line roll through it"
+    },
+    {
+     "hour": "VI",
+     "center": [
+      0.0,
+      0.4,
+      -23.5
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": false,
+     "dropped": "centre of the 15-wide lane mouth, the only approach into the dial"
+    },
+    {
+     "hour": "VII",
+     "center": [
+      -6.25,
+      0.4,
+      -25.1747
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": false,
+     "ball_collision": false,
+     "rail_mounted": false
+    },
+    {
+     "hour": "VIII",
+     "center": [
+      -10.8253,
+      0.4,
+      -29.75
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": false,
+     "ball_collision": false,
+     "rail_mounted": false
+    },
+    {
+     "hour": "IX",
+     "center": [
+      -12.5,
+      0.4,
+      -36.0
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": true,
+     "ball_collision": true,
+     "rail_mounted": true,
+     "note": "Footprint reaches .1 over the rail inner face: rail-mounted solid stone, collision on (static bumper block)"
+    },
+    {
+     "hour": "X",
+     "center": [
+      -10.8253,
+      0.4,
+      -42.25
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": false,
+     "ball_collision": false,
+     "rail_mounted": false
+    },
+    {
+     "hour": "XI",
+     "center": [
+      -6.25,
+      0.4,
+      -46.8253
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "placed": true,
+     "collidable": false,
+     "ball_collision": false,
+     "rail_mounted": false
+    }
+   ],
+   "src": "holes[16].hour_stones.stones (placed + dropped)"
+  },
+  "rail_walls": {
+   "value": [
+    {
+     "id": "hour_stone_XII",
+     "center": [
+      0.0,
+      0.4,
+      -48.5
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "yaw": 0.0,
+     "kind": "bumper",
+     "hour_stone": "XII"
+    },
+    {
+     "id": "hour_stone_III",
+     "center": [
+      12.5,
+      0.4,
+      -36.0
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "yaw": 0.0,
+     "kind": "bumper",
+     "hour_stone": "III"
+    },
+    {
+     "id": "hour_stone_IX",
+     "center": [
+      -12.5,
+      0.4,
+      -36.0
+     ],
+     "size": [
+      1.2,
+      0.8,
+      1.2
+     ],
+     "yaw": 0.0,
+     "kind": "bumper",
+     "hour_stone": "IX"
+    }
+   ],
+   "src": "holes[16].walls hour_stone_*"
+  },
+  "pivot_rule": {
+   "value": "base centre = [cx, centre_y - 0.4 (=0, felt), cz]",
+   "src": "brief_pass5 item 2"
+  },
+  "numerals": {
+   "value": "raised relief .02 on top (body y 0..0.78, numerals 0.78..0.80, all inside the exact 1.2x0.8x1.2 box), glyph up = radially outward (readable from the dial centre)",
+   "src": "holes.json anchor notes: roman numeral on top"
+  },
+  "arm_blockers": {
+   "value": [
+    {
+     "center": [
+      9.85,
+      0.45,
+      0.0
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.0,
+      0.45,
+      -9.85
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 90.0
+    },
+    {
+     "center": [
+      -9.85,
+      0.45,
+      -0.0
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 180.0
+    },
+    {
+     "center": [
+      -0.0,
+      0.45,
+      9.85
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 270.0
+    }
+   ],
+   "src": "holes[16].moving_parts[shadow_arm].blockers"
+  },
+  "arm_to_rail_stone_gap": {
+   "value": 0.26,
+   "src": "p9-report H17"
+  }
+ },
+ "registry": [
+  {
+   "id": "h14_ore_bucket",
+   "hole": 13,
+   "pivot": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "moving": true,
+   "kind": "swing",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "amplitude": 9.0,
+   "period": 4.0,
+   "phase": 0.0,
+   "source": "holes[13].moving_parts[ore_bucket]"
+  },
+  {
+   "id": "h07_teleport_pads",
+   "hole": 6,
+   "pivot": [
+    0.0,
+    0,
+    -25
+   ],
+   "moving": false,
+   "kind": "static",
+   "instances": [
+    {
+     "id": "bridge1_entry",
+     "pivot": [
+      0.0,
+      0,
+      -25
+     ],
+     "yaw": 0
+    },
+    {
+     "id": "bridge1_island",
+     "pivot": [
+      4.5,
+      0,
+      -38.5
+     ],
+     "yaw": 0
+    },
+    {
+     "id": "bridge2_island",
+     "pivot": [
+      3.8,
+      0,
+      -44.0
+     ],
+     "yaw": 0
+    }
+   ],
+   "source": "holes[6].player_teleport_points (p9: bridge1_island moved to [4.5,0,-38.5])"
+  },
+  {
+   "id": "h07_teleport_pad_exit",
+   "hole": 6,
+   "pivot": [
+    5.15,
+    0,
+    -59
+   ],
+   "moving": false,
+   "kind": "static",
+   "instances": [
+    {
+     "id": "bridge2_exit",
+     "pivot": [
+      5.15,
+      0,
+      -59
+     ],
+     "yaw": 0
+    }
+   ],
+   "source": "holes[6].player_teleport_points[bridge2_exit] (p9: moved east to x 5.15, west edge .15 outside the cup rim; pass 5: full pad, cup notch removed)"
+  },
+  {
+   "id": "h09_windpump_vanes_collision",
+   "hole": 8,
+   "pivot": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "moving": true,
+   "kind": "rotate",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "speed": 20.0,
+   "phase": 0.0,
+   "collision_only": true,
+   "source": "holes[8].moving_parts[windpump].blockers (48 = 4 vanes x 12 strips, outer r 4.06)"
+  },
+  {
+   "id": "h14_ore_bucket_foot_collision",
+   "hole": 13,
+   "pivot": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "moving": true,
+   "kind": "swing",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "amplitude": 9.0,
+   "period": 4.0,
+   "phase": 0.0,
+   "collision_only": true,
+   "source": "holes[13].moving_parts[ore_bucket].blockers[1..14] (14 foot strips; p9-report H14 table)"
+  },
+  {
+   "id": "h07_island_respawn_stone",
+   "hole": 6,
+   "pivot": [
+    0,
+    0,
+    -38.5
+   ],
+   "moving": false,
+   "kind": "static",
+   "realizes_anchor": "island_respawn_stone",
+   "size": [
+    0.8,
+    0.02,
+    0.8
+   ],
+   "source": "holes[6].decoration_anchors[island_respawn_stone] (+ hazards[taffy_gap].respawn)"
+  },
+  {
+   "id": "h17_hour_stone_XII",
+   "hole": 16,
+   "pivot": [
+    0.0,
+    0.0,
+    -48.5
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "XII",
+   "box": {
+    "center": [
+     0.0,
+     0.4,
+     -48.5
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": true,
+   "realizes": [
+    "hour_stone_XII"
+   ],
+   "realizes_anchor": "hour_stone_XII",
+   "source": "holes[16].hour_stones.stones[XII]"
+  },
+  {
+   "id": "h17_hour_stone_I",
+   "hole": 16,
+   "pivot": [
+    6.25,
+    0.0,
+    -46.8253
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "I",
+   "box": {
+    "center": [
+     6.25,
+     0.4,
+     -46.8253
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": false,
+   "realizes": [],
+   "realizes_anchor": "hour_stone_I",
+   "source": "holes[16].hour_stones.stones[I]"
+  },
+  {
+   "id": "h17_hour_stone_III",
+   "hole": 16,
+   "pivot": [
+    12.5,
+    0.0,
+    -36.0
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "III",
+   "box": {
+    "center": [
+     12.5,
+     0.4,
+     -36.0
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": true,
+   "realizes": [
+    "hour_stone_III"
+   ],
+   "realizes_anchor": "hour_stone_III",
+   "source": "holes[16].hour_stones.stones[III]"
+  },
+  {
+   "id": "h17_hour_stone_IV",
+   "hole": 16,
+   "pivot": [
+    10.8253,
+    0.0,
+    -29.75
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "IV",
+   "box": {
+    "center": [
+     10.8253,
+     0.4,
+     -29.75
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": false,
+   "realizes": [],
+   "realizes_anchor": "hour_stone_IV",
+   "source": "holes[16].hour_stones.stones[IV]"
+  },
+  {
+   "id": "h17_hour_stone_VII",
+   "hole": 16,
+   "pivot": [
+    -6.25,
+    0.0,
+    -25.1747
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "VII",
+   "box": {
+    "center": [
+     -6.25,
+     0.4,
+     -25.1747
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": false,
+   "realizes": [],
+   "realizes_anchor": "hour_stone_VII",
+   "source": "holes[16].hour_stones.stones[VII]"
+  },
+  {
+   "id": "h17_hour_stone_VIII",
+   "hole": 16,
+   "pivot": [
+    -10.8253,
+    0.0,
+    -29.75
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "VIII",
+   "box": {
+    "center": [
+     -10.8253,
+     0.4,
+     -29.75
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": false,
+   "realizes": [],
+   "realizes_anchor": "hour_stone_VIII",
+   "source": "holes[16].hour_stones.stones[VIII]"
+  },
+  {
+   "id": "h17_hour_stone_IX",
+   "hole": 16,
+   "pivot": [
+    -12.5,
+    0.0,
+    -36.0
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "IX",
+   "box": {
+    "center": [
+     -12.5,
+     0.4,
+     -36.0
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": true,
+   "realizes": [
+    "hour_stone_IX"
+   ],
+   "realizes_anchor": "hour_stone_IX",
+   "source": "holes[16].hour_stones.stones[IX]"
+  },
+  {
+   "id": "h17_hour_stone_X",
+   "hole": 16,
+   "pivot": [
+    -10.8253,
+    0.0,
+    -42.25
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "X",
+   "box": {
+    "center": [
+     -10.8253,
+     0.4,
+     -42.25
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": false,
+   "realizes": [],
+   "realizes_anchor": "hour_stone_X",
+   "source": "holes[16].hour_stones.stones[X]"
+  },
+  {
+   "id": "h17_hour_stone_XI",
+   "hole": 16,
+   "pivot": [
+    -6.25,
+    0.0,
+    -46.8253
+   ],
+   "moving": false,
+   "kind": "static",
+   "hour": "XI",
+   "box": {
+    "center": [
+     -6.25,
+     0.4,
+     -46.8253
+    ],
+    "size": [
+     1.2,
+     0.8,
+     1.2
+    ],
+    "yaw": 0
+   },
+   "collidable": false,
+   "realizes": [],
+   "realizes_anchor": "hour_stone_XI",
+   "source": "holes[16].hour_stones.stones[XI]"
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "name": "bw_practice_green",
+ "group": "green",
+ "fbx": "fbx/bw_practice_green.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Turf slab 34x0.4x20 (top Y 0.4) with a rounded wooden bumper rail 0.8 above the turf, chunky corner posts, 2 cup holes (r 0.5, 0.35 deep) at the lobby.json cup positions.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  34.0,
+  1.2,
+  20.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  0.6,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -17.0,
+  0.0,
+  -10.0
+ ],
+ "bbox_max_roblox": [
+  17.0,
+  1.2,
+  10.0
+ ],
+ "target_size_studs": [
+  34,
+  1.2,
+  20
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 576,
+ "tris_max": 2000,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_practice_green__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 576,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    34.0,
+    1.2,
+    20.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    0.6,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    0.6,
+    -0.0
+   ],
+   "size": [
+    34.0,
+    1.2,
+    20.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false,
+ "cups": [
+  {
+   "center": [
+    13.0,
+    0.4,
+    -5.0
+   ],
+   "radius": 0.5,
+   "depth": 0.35,
+   "world": [
+    158.0,
+    0.4,
+    60.0
+   ]
+  },
+  {
+   "center": [
+    5.0,
+    0.4,
+    -7.0
+   ],
+   "radius": 0.5,
+   "depth": 0.35,
+   "world": [
+    150.0,
+    0.4,
+    58.0
+   ]
+  }
+ ],
+ "turf_top_y": 0.4,
+ "bumper_top_y": 1.2,
+ "size_note": "34 x 0.4 x 20 slab; bumper rail (inside the footprint) rises 0.8 above the turf -> bbox Y 1.2"
+}

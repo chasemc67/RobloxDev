@@ -1,0 +1,33 @@
+I've written both files. `props.md` is 11,583 bytes (`wc -c`), under the 15 KB limit, and `props-full.md` is 138,482 bytes. Every number comes straight from holes.json and world.json; neither file was changed, nor were tools or the other courses.
+
+**What I did:** a script, `_work/gen_props.py`, reads the two JSON files and writes `props-full.md`. I wrote `props.md` by hand from its output. Nothing was posted, no images were made and Codex wasn't used.
+
+**Prop counts (props-full.md)**
+| Item | Count |
+|---|---|
+| Moving meshes (H5 geyser, H11 floe, H12 paddle wheel, H13 carousel, H14 bell, H17 aurora span) | 6, pivots and axes exactly as in holes.json, plus world positions and every blocker box |
+| Teleport and lift visuals (H5 geyser lift, H9 conch) | 2 |
+| Decoration anchors across the 18 holes | 132, of which 18 are landmarks |
+| Static hero props | 22 (18 hole landmarks plus Starfrost Spire, Halo Arch, the geyser cone and Ice-Arch Isle) |
+| Plinth / collider-skin rows | 32 (bumpers, the H13 hub, tall walls, H11 slot cuts, floating decks, drops) |
+| World backdrop pieces | 217 (60 pines: 27 full meshes, 33 cards) |
+| Other world pieces | 6 waterfalls, 4 lifts + gondola, 3 bridges, Lantern Stair, 8 teleport pads, 89 lantern posts |
+| Set-dressing kits | 16 rows; 3,460 studs of rail to dress |
+
+**props.md:** a short P1/P2/P3 list. It has the 6 movers, a table of all 18 landmarks with placements and cups, the reusable kits, the plinths, and short P2 and P3 lists.
+
+**Triangle budgets:** the near-field estimates run from 17.5k (H4) to 33.1k (H7), all under the 34k cap. To stay under, I set my own per-prop targets: rail 25 tris per stud, palm 600, coral 450, snowpuff 500. If the modeler goes over those, the Reef and Lagoon holes (H5–H8) will exceed 34k first.
+
+**Mismatches you should know about** (listed in §13 of `props-full.md`):
+- **Halo Arch:** holes.json puts it at world z -284, 4 deep; world.json says z -292, 8 deep. I told the modeler to use holes.json, because the flag line-of-sight check was run against it.
+- **Steamwhistle Geyser:** there are two records 32.7 studs apart: the H5 cone (6×7×6) and the world.json cone (14×10×14). I suggested one mesh used twice. You need to decide which one does the 60-stud steam puff.
+- **Views, not props:** the Great Frozen Falls and Glimmer Islet positions in the hole files don't match world.json. I treated the hole entries as viewing references and placed the meshes from world.json.
+- **Out-of-date mover numbers:** the "starting spec" mover table in course.md is older than holes.json; I used holes.json throughout.
+- **Shape conflicts:**
+  - The H5 platform is described as hexagonal but its collider is a 3×3 square. I specified square contact faces with the hex look only on the top and trim.
+  - The H11 floe is 0.636 thick in holes.json, not the 0.6 in its description; I used 0.636.
+
+Files are in `assets/vr-minigolf/aurora-archipelago/`:
+- props.md
+- props-full.md
+- _work/gen_props.py

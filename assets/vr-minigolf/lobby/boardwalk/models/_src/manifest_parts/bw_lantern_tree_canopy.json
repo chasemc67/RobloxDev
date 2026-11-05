@@ -1,0 +1,102 @@
+{
+ "name": "bw_lantern_tree_canopy",
+ "group": "backdrop",
+ "fbx": "fbx/bw_lantern_tree_canopy.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Three chunky autumn lantern trees (trunks included, base at Y 0) with 8 Neon lanterns. Builder places it at Y 10 (base) which floats it: see README spec question (should be Y 0 / sand).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.338,
+  -0.084,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  23.113,
+  15.009,
+  19.032
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  7.504,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -11.557,
+  0.0,
+  -9.516
+ ],
+ "bbox_max_roblox": [
+  11.557,
+  15.009,
+  9.516
+ ],
+ "target_size_studs": [
+  24,
+  16,
+  20
+ ],
+ "size_ratio_vs_target": [
+  0.963,
+  0.938,
+  0.952
+ ],
+ "triangles": 5600,
+ "tris_max": 6000,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_lantern_tree_canopy__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 4992,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    23.113,
+    15.009,
+    19.032
+   ],
+   "center_from_pivot": [
+    0.0,
+    7.504,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "bw_lantern_tree_canopy__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 608,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    20.8,
+    5.75,
+    17.6
+   ],
+   "center_from_pivot": [
+    -0.038,
+    8.445,
+    0.384
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    7.504,
+    -0.0
+   ],
+   "size": [
+    23.113,
+    15.009,
+    19.032
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

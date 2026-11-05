@@ -1,0 +1,5161 @@
+{
+  "pass": "2g-walls",
+  "units": "1 Blender unit = 1 stud",
+  "axes": "Blender (x,-Roblox z,Roblox y); FBX forward -Z up Y, scale 1",
+  "world_placement_notes": "FBXs contain world positions. Mesh origins at shared chunk base/centre; import at origin, do not add hole offsets again. world.json transforms applied to holes. Pass 2g-walls (Round 4 'walls', playtest-log.md): holes.fbx wall boxes + rail caps of H11 rail5/berg18 __cut1/__cut2/__cut3 (floe-slot lintel underside 1.17 -> 1.27) and H12 rail1/rail2/rail3/hull13/hull14/hull18 (icebreaker stern wall line z -18 -> -18.01, local hole coords) moved to the Round 4 holes.json; felt, colours and every other file unchanged. Pass 2g: rail snow caps of all 18 holes (holes.fbx object holes__Snow -> holes__SnowRailCap) on their own material SnowRailCap #EEF3F7 (copy of the shared terrain Snow #EEF4FF: base colour only; terrain/connections/props Snow unchanged); geometry unchanged; lighting unchanged. Pass 2g (H3 apron): the H3 part of the course surround (course_apron_00 quads owned by H3, 2490 tris) split into course_apron_00__SnowCourseH3 with material SnowCourseH3 #EEF3F7 (copy of SnowCourse, base colour only). Pass 2g (felt): Felt #3EA886 -> #36997A on all 18 holes (holes__Felt, base colour only; FeltBank #308369 unchanged). Pass 2e: course surround SnowCourse #C9D6E0 = course_apron_00..02.fbx (holes 1-6 / 7-12 / 13-18): decoration mesh draped 0.1 above the terrain Snow in a 5-7 stud band outside every hole's felt+rail footprint (terrain FBXs unchanged); felt_banks.fbx FeltBank #308369 (Felt x 0.78): visual 0.3-stud bank outside every exposed felt edge (under/outside rails, never inside the felt rectangles, never above the felt top). Both decoration only: CanCollide false, CanQuery/CanTouch false; apron CastShadow false. Pass 2d: Felt #3EA886 (2c: #45B892, 2b: #4FC29E; only holes.fbx re-exported). Pass 2b: Timber #8A5A3C, CloudSea gradient #8A86B8 (top) -> #2E4E66 (below) with low emission (vertex colour island_glow = emission mask near islands). Emission (CrystalGlow #9FE6F2, Glow #FFB060, CloudSea), cloud-sea gradient, felt sheen, sky gradient and bloom must be recreated in Roblox. Pass 2: cloud sea mean y -30 (pass 1 deck y 36); undersides_XX_YY hang below the matching terrain_XX_YY chunks and share their pivots; roots = rock stalactites under documented underside anchors + glowing crystal drips. Static placeholder geometry; no gameplay logic.",
+  "files": [
+    {
+      "file": "terrain_02_00.fbx",
+      "objects": [
+        {
+          "name": "terrain_02_00__Snow",
+          "tris": 384,
+          "material": "Snow",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -576.0
+          ]
+        },
+        {
+          "name": "terrain_02_00__Rock",
+          "tris": 258,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -576.0
+          ]
+        }
+      ],
+      "total_tris": 642,
+      "bbox_roblox_studs": {
+        "min": [
+          -320.5280456542969,
+          184.39833068847656,
+          -541.5584106445312
+        ],
+        "max": [
+          -258.38616943359375,
+          203.0304412841797,
+          -490.4443664550781
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -240,
+        30,
+        -576
+      ]
+    },
+    {
+      "file": "undersides_02_00.fbx",
+      "objects": [
+        {
+          "name": "undersides_02_00__Rock",
+          "tris": 298,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -576.0
+          ]
+        }
+      ],
+      "total_tris": 298,
+      "bbox_roblox_studs": {
+        "min": [
+          -319.6280517578125,
+          106.87523651123047,
+          -540.658447265625
+        ],
+        "max": [
+          -259.28619384765625,
+          194.7722930908203,
+          -491.08074951171875
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -240,
+        30,
+        -576
+      ]
+    },
+    {
+      "file": "terrain_00_00.fbx",
+      "objects": [
+        {
+          "name": "terrain_00_00__Snow",
+          "tris": 198,
+          "material": "Snow",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -576.0
+          ]
+        },
+        {
+          "name": "terrain_00_00__Rock",
+          "tris": 216,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -576.0
+          ]
+        }
+      ],
+      "total_tris": 414,
+      "bbox_roblox_studs": {
+        "min": [
+          -577.5496826171875,
+          61.49029541015625,
+          -529.89453125
+        ],
+        "max": [
+          -538.0245361328125,
+          79.76654052734375,
+          -490.01220703125
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -576
+      ]
+    },
+    {
+      "file": "undersides_00_00.fbx",
+      "objects": [
+        {
+          "name": "undersides_00_00__Rock",
+          "tris": 126,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -576.0
+          ]
+        }
+      ],
+      "total_tris": 126,
+      "bbox_roblox_studs": {
+        "min": [
+          -576.6144409179688,
+          17.19378089904785,
+          -528.9658813476562
+        ],
+        "max": [
+          -538.9244995117188,
+          70.78561401367188,
+          -490.9122009277344
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -576
+      ]
+    },
+    {
+      "file": "terrain_02_01.fbx",
+      "objects": [
+        {
+          "name": "terrain_02_01__Snow",
+          "tris": 558,
+          "material": "Snow",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_02_01__Rock",
+          "tris": 390,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_02_01__Salt",
+          "tris": 12,
+          "material": "Salt",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 960,
+      "bbox_roblox_studs": {
+        "min": [
+          -313.5556335449219,
+          187.0261993408203,
+          -492.0
+        ],
+        "max": [
+          -155.5933380126953,
+          223.16319274902344,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        -240,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "undersides_02_01.fbx",
+      "objects": [
+        {
+          "name": "undersides_02_01__Rock",
+          "tris": 440,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 440,
+      "bbox_roblox_studs": {
+        "min": [
+          -312.91925048828125,
+          109.50975036621094,
+          -492.0
+        ],
+        "max": [
+          -156.0,
+          213.93911743164062,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -240,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "terrain_04_01.fbx",
+      "objects": [
+        {
+          "name": "terrain_04_01__Snow",
+          "tris": 1048,
+          "material": "Snow",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_04_01__Rock",
+          "tris": 476,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_04_01__Glacier",
+          "tris": 46,
+          "material": "Glacier",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_04_01__Slate",
+          "tris": 20,
+          "material": "Slate",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_04_01__Salt",
+          "tris": 48,
+          "material": "Salt",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_04_01__Cobblestone",
+          "tris": 6,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 1644,
+      "bbox_roblox_studs": {
+        "min": [
+          11.946372985839844,
+          163.43397521972656,
+          -427.7171630859375
+        ],
+        "max": [
+          125.55563354492188,
+          192.64820861816406,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Glacier",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        96,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "undersides_04_01.fbx",
+      "objects": [
+        {
+          "name": "undersides_04_01__Rock",
+          "tris": 1044,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 1044,
+      "bbox_roblox_studs": {
+        "min": [
+          12.0,
+          12.0,
+          -427.08074951171875
+        ],
+        "max": [
+          124.91923522949219,
+          173.6202850341797,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        96,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "terrain_03_01.fbx",
+      "objects": [
+        {
+          "name": "terrain_03_01__Snow",
+          "tris": 1228,
+          "material": "Snow",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_03_01__Rock",
+          "tris": 636,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_03_01__Glacier",
+          "tris": 76,
+          "material": "Glacier",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_03_01__Slate",
+          "tris": 22,
+          "material": "Slate",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_03_01__Salt",
+          "tris": 114,
+          "material": "Salt",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_03_01__Cobblestone",
+          "tris": 72,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 2148,
+      "bbox_roblox_studs": {
+        "min": [
+          -156.4066619873047,
+          163.2872772216797,
+          -425.3824462890625
+        ],
+        "max": [
+          12.053627014160156,
+          227.15953063964844,
+          -322.4443664550781
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Glacier",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -72,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "undersides_03_01.fbx",
+      "objects": [
+        {
+          "name": "undersides_03_01__Rock",
+          "tris": 1348,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 1348,
+      "bbox_roblox_studs": {
+        "min": [
+          -156.0,
+          38.981056213378906,
+          -424.4824523925781
+        ],
+        "max": [
+          12.0,
+          213.30252075195312,
+          -323.08074951171875
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -72,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "terrain_00_01.fbx",
+      "objects": [
+        {
+          "name": "terrain_00_01__Snow",
+          "tris": 24,
+          "material": "Snow",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_00_01__Rock",
+          "tris": 42,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 66,
+      "bbox_roblox_studs": {
+        "min": [
+          -537.5556640625,
+          83.85986328125,
+          -329.978759765625
+        ],
+        "max": [
+          -514.4443359375,
+          100.128173828125,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "undersides_00_01.fbx",
+      "objects": [
+        {
+          "name": "undersides_00_01__Rock",
+          "tris": 10,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 10,
+      "bbox_roblox_studs": {
+        "min": [
+          -536.9192504882812,
+          66.33438873291016,
+          -329.0787658691406
+        ],
+        "max": [
+          -515.0807495117188,
+          91.76664733886719,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "terrain_06_01.fbx",
+      "objects": [
+        {
+          "name": "terrain_06_01__Snow",
+          "tris": 12,
+          "material": "Snow",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -408.0
+          ]
+        },
+        {
+          "name": "terrain_06_01__Rock",
+          "tris": 24,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 36,
+      "bbox_roblox_studs": {
+        "min": [
+          462.4443664550781,
+          59.23233413696289,
+          -328.5052185058594
+        ],
+        "max": [
+          473.5556335449219,
+          76.84138488769531,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        432,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "undersides_06_01.fbx",
+      "objects": [
+        {
+          "name": "undersides_06_01__Rock",
+          "tris": 4,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -408.0
+          ]
+        }
+      ],
+      "total_tris": 4,
+      "bbox_roblox_studs": {
+        "min": [
+          463.08074951171875,
+          48.93737030029297,
+          -327.5387878417969
+        ],
+        "max": [
+          472.91925048828125,
+          64.19670867919922,
+          -324.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        432,
+        30,
+        -408
+      ]
+    },
+    {
+      "file": "terrain_00_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_00_02__Rock",
+          "tris": 538,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_00_02__Snow",
+          "tris": 520,
+          "material": "Snow",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_00_02__Slate",
+          "tris": 22,
+          "material": "Slate",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 1080,
+      "bbox_roblox_studs": {
+        "min": [
+          -618.0068359375,
+          53.95138931274414,
+          -325.87542724609375
+        ],
+        "max": [
+          -498.24627685546875,
+          108.92652893066406,
+          -155.59364318847656
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_00_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_00_02__Rock",
+          "tris": 432,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 432,
+      "bbox_roblox_studs": {
+        "min": [
+          -617.057373046875,
+          12.964149475097656,
+          -324.91925048828125
+        ],
+        "max": [
+          -499.1462707519531,
+          91.76664733886719,
+          -156.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_02_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_02_02__Snow",
+          "tris": 1876,
+          "material": "Snow",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_02_02__Rock",
+          "tris": 704,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_02_02__Salt",
+          "tris": 492,
+          "material": "Salt",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_02_02__Cobblestone",
+          "tris": 148,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 3220,
+      "bbox_roblox_studs": {
+        "min": [
+          -325.5556335449219,
+          203.22996520996094,
+          -325.5556335449219
+        ],
+        "max": [
+          -155.51913452148438,
+          222.5635223388672,
+          -191.60275268554688
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        -240,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_02_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_02_02__Rock",
+          "tris": 2292,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 2292,
+      "bbox_roblox_studs": {
+        "min": [
+          -324.91925048828125,
+          61.593467712402344,
+          -324.91925048828125
+        ],
+        "max": [
+          -156.0,
+          213.21603393554688,
+          -192.5027618408203
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -240,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_03_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_03_02__Salt",
+          "tris": 92,
+          "material": "Salt",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_03_02__Snow",
+          "tris": 1066,
+          "material": "Snow",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_03_02__Cobblestone",
+          "tris": 112,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_03_02__Rock",
+          "tris": 582,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 1852,
+      "bbox_roblox_studs": {
+        "min": [
+          -156.48086547851562,
+          148.1008758544922,
+          -324.5097351074219
+        ],
+        "max": [
+          12.055084228515625,
+          222.6184539794922,
+          -199.58059692382812
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        -72,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_03_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_03_02__Rock",
+          "tris": 1076,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 1076,
+      "bbox_roblox_studs": {
+        "min": [
+          -156.0,
+          72.32825469970703,
+          -324.0
+        ],
+        "max": [
+          12.0,
+          213.55812072753906,
+          -200.4805908203125
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -72,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_04_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_04_02__Cobblestone",
+          "tris": 82,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_04_02__Snow",
+          "tris": 2146,
+          "material": "Snow",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_04_02__Rock",
+          "tris": 1024,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_04_02__Salt",
+          "tris": 436,
+          "material": "Salt",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 3688,
+      "bbox_roblox_studs": {
+        "min": [
+          10.444366455078125,
+          147.0928192138672,
+          -325.7132263183594
+        ],
+        "max": [
+          181.9532928466797,
+          187.9652099609375,
+          -154.016357421875
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        96,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_04_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_04_02__Rock",
+          "tris": 2328,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 2328,
+      "bbox_roblox_studs": {
+        "min": [
+          11.080764770507812,
+          13.22964859008789,
+          -324.91925048828125
+        ],
+        "max": [
+          181.05328369140625,
+          173.5548553466797,
+          -154.91636657714844
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        96,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_06_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_06_02__Snow",
+          "tris": 790,
+          "material": "Snow",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_06_02__Rock",
+          "tris": 756,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 1546,
+      "bbox_roblox_studs": {
+        "min": [
+          398.24066162109375,
+          32.22951126098633,
+          -325.8481750488281
+        ],
+        "max": [
+          517.8851318359375,
+          156.8139190673828,
+          -162.01219177246094
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        432,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_06_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_06_02__Rock",
+          "tris": 538,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 538,
+      "bbox_roblox_studs": {
+        "min": [
+          399.1406555175781,
+          12.0,
+          -324.91925048828125
+        ],
+        "max": [
+          516.985107421875,
+          148.07046508789062,
+          -162.9121856689453
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        432,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_01_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_01_02__Snow",
+          "tris": 128,
+          "material": "Snow",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_01_02__Rock",
+          "tris": 132,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 260,
+      "bbox_roblox_studs": {
+        "min": [
+          -341.6138000488281,
+          203.47119140625,
+          -280.7195129394531
+        ],
+        "max": [
+          -323.92767333984375,
+          222.04623413085938,
+          -222.2816619873047
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -408,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_01_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_01_02__Rock",
+          "tris": 84,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 84,
+      "bbox_roblox_studs": {
+        "min": [
+          -340.71380615234375,
+          161.62286376953125,
+          -279.6912536621094
+        ],
+        "max": [
+          -324.0,
+          213.04136657714844,
+          -223.0807647705078
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -408,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_05_02.fbx",
+      "objects": [
+        {
+          "name": "terrain_05_02__Snow",
+          "tris": 472,
+          "material": "Snow",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -240.0
+          ]
+        },
+        {
+          "name": "terrain_05_02__Rock",
+          "tris": 372,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 844,
+      "bbox_roblox_studs": {
+        "min": [
+          218.44195556640625,
+          85.73259735107422,
+          -261.94305419921875
+        ],
+        "max": [
+          281.3959045410156,
+          104.54108428955078,
+          -196.0578155517578
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        264,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "undersides_05_02.fbx",
+      "objects": [
+        {
+          "name": "undersides_05_02__Rock",
+          "tris": 348,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -240.0
+          ]
+        }
+      ],
+      "total_tris": 348,
+      "bbox_roblox_studs": {
+        "min": [
+          219.34194946289062,
+          14.807780265808105,
+          -261.0430603027344
+        ],
+        "max": [
+          280.49591064453125,
+          95.6630859375,
+          -196.9192352294922
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        264,
+        30,
+        -240
+      ]
+    },
+    {
+      "file": "terrain_00_03.fbx",
+      "objects": [
+        {
+          "name": "terrain_00_03__Snow",
+          "tris": 262,
+          "material": "Snow",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_00_03__Rock",
+          "tris": 198,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_00_03__Slate",
+          "tris": 2,
+          "material": "Slate",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 462,
+      "bbox_roblox_studs": {
+        "min": [
+          -618.0068359375,
+          53.39455795288086,
+          -156.40635681152344
+        ],
+        "max": [
+          -550.1220092773438,
+          90.69351959228516,
+          -122.09857940673828
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "undersides_00_03.fbx",
+      "objects": [
+        {
+          "name": "undersides_00_03__Rock",
+          "tris": 206,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 206,
+      "bbox_roblox_studs": {
+        "min": [
+          -617.057373046875,
+          12.964149475097656,
+          -156.0
+        ],
+        "max": [
+          -551.1783447265625,
+          62.57821273803711,
+          -122.99858093261719
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -576,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "terrain_07_03.fbx",
+      "objects": [
+        {
+          "name": "terrain_07_03__Snow",
+          "tris": 230,
+          "material": "Snow",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_07_03__Rock",
+          "tris": 344,
+          "material": "Rock",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_07_03__Slate",
+          "tris": 6,
+          "material": "Slate",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 580,
+      "bbox_roblox_studs": {
+        "min": [
+          516.0,
+          103.36308288574219,
+          -119.71715545654297
+        ],
+        "max": [
+          573.5484008789062,
+          148.38230895996094,
+          12.0
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        600,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "undersides_07_03.fbx",
+      "objects": [
+        {
+          "name": "undersides_07_03__Rock",
+          "tris": 196,
+          "material": "Rock",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 196,
+      "bbox_roblox_studs": {
+        "min": [
+          516.0,
+          51.72293472290039,
+          -119.08076477050781
+        ],
+        "max": [
+          572.6483764648438,
+          133.4276123046875,
+          12.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        600,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "terrain_03_03.fbx",
+      "objects": [
+        {
+          "name": "terrain_03_03__Snow",
+          "tris": 1010,
+          "material": "Snow",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_03_03__Rock",
+          "tris": 438,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_03_03__Slate",
+          "tris": 36,
+          "material": "Slate",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 1484,
+      "bbox_roblox_studs": {
+        "min": [
+          -69.05992889404297,
+          82.23444366455078,
+          -108.68517303466797
+        ],
+        "max": [
+          13.555633544921875,
+          118.91966247558594,
+          13.589691162109375
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -72,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "undersides_03_03.fbx",
+      "objects": [
+        {
+          "name": "undersides_03_03__Rock",
+          "tris": 1004,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 1004,
+      "bbox_roblox_studs": {
+        "min": [
+          -68.15992736816406,
+          12.0,
+          -107.7851791381836
+        ],
+        "max": [
+          12.919235229492188,
+          92.15719604492188,
+          12.919235229492188
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -72,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "terrain_04_03.fbx",
+      "objects": [
+        {
+          "name": "terrain_04_03__Snow",
+          "tris": 654,
+          "material": "Snow",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_04_03__Rock",
+          "tris": 332,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_04_03__Slate",
+          "tris": 10,
+          "material": "Slate",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 996,
+      "bbox_roblox_studs": {
+        "min": [
+          12.0,
+          82.3569107055664,
+          -105.55563354492188
+        ],
+        "max": [
+          65.99776458740234,
+          120.0732421875,
+          13.555633544921875
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        96,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "undersides_04_03.fbx",
+      "objects": [
+        {
+          "name": "undersides_04_03__Rock",
+          "tris": 612,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 612,
+      "bbox_roblox_studs": {
+        "min": [
+          12.0,
+          19.407257080078125,
+          -104.91923522949219
+        ],
+        "max": [
+          65.09776306152344,
+          91.85498809814453,
+          12.919235229492188
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        96,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "terrain_05_03.fbx",
+      "objects": [
+        {
+          "name": "terrain_05_03__Snow",
+          "tris": 1252,
+          "material": "Snow",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_05_03__Rock",
+          "tris": 648,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_05_03__Cobblestone",
+          "tris": 46,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_05_03__Salt",
+          "tris": 96,
+          "material": "Salt",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_05_03__Slate",
+          "tris": 6,
+          "material": "Slate",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 2048,
+      "bbox_roblox_studs": {
+        "min": [
+          221.97726440429688,
+          127.46619415283203,
+          -104.9194564819336
+        ],
+        "max": [
+          348.3929138183594,
+          182.19271850585938,
+          13.555633544921875
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        264,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "undersides_05_03.fbx",
+      "objects": [
+        {
+          "name": "undersides_05_03__Rock",
+          "tris": 1208,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 1208,
+      "bbox_roblox_studs": {
+        "min": [
+          222.9178466796875,
+          60.758663177490234,
+          -104.01945495605469
+        ],
+        "max": [
+          348.0,
+          173.15260314941406,
+          12.919235229492188
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        264,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "terrain_06_03.fbx",
+      "objects": [
+        {
+          "name": "terrain_06_03__Snow",
+          "tris": 1514,
+          "material": "Snow",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_06_03__Rock",
+          "tris": 528,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_06_03__Salt",
+          "tris": 182,
+          "material": "Salt",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_06_03__Cobblestone",
+          "tris": 42,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_06_03__Slate",
+          "tris": 54,
+          "material": "Slate",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        },
+        {
+          "name": "terrain_06_03__Ice",
+          "tris": 64,
+          "material": "Ice",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 2384,
+      "bbox_roblox_studs": {
+        "min": [
+          347.6070861816406,
+          127.41341400146484,
+          -106.02812194824219
+        ],
+        "max": [
+          517.7847900390625,
+          168.00640869140625,
+          12.0
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Ice",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        432,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "undersides_06_03.fbx",
+      "objects": [
+        {
+          "name": "undersides_06_03__Rock",
+          "tris": 1808,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            -72.0
+          ]
+        }
+      ],
+      "total_tris": 1808,
+      "bbox_roblox_studs": {
+        "min": [
+          348.0,
+          38.24991226196289,
+          -104.92889404296875
+        ],
+        "max": [
+          516.9192504882812,
+          137.66665649414062,
+          12.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        432,
+        30,
+        -72
+      ]
+    },
+    {
+      "file": "terrain_03_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_03_04__Snow",
+          "tris": 100,
+          "material": "Snow",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_03_04__Rock",
+          "tris": 96,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 196,
+      "bbox_roblox_studs": {
+        "min": [
+          -41.555633544921875,
+          84.15437316894531,
+          12.0
+        ],
+        "max": [
+          12.315361022949219,
+          100.63172149658203,
+          25.843353271484375
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -72,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_03_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_03_04__Rock",
+          "tris": 68,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 68,
+      "bbox_roblox_studs": {
+        "min": [
+          -40.91923904418945,
+          65.74945068359375,
+          12.0
+        ],
+        "max": [
+          12.0,
+          92.31257629394531,
+          24.94335174560547
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -72,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_04_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_04_04__Snow",
+          "tris": 42,
+          "material": "Snow",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_04_04__Rock",
+          "tris": 62,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 104,
+      "bbox_roblox_studs": {
+        "min": [
+          11.684638977050781,
+          82.63341522216797,
+          12.0
+        ],
+        "max": [
+          41.555633544921875,
+          110.78965759277344,
+          25.384231567382812
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        96,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_04_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_04_04__Rock",
+          "tris": 24,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 24,
+      "bbox_roblox_studs": {
+        "min": [
+          12.0,
+          67.85028839111328,
+          12.0
+        ],
+        "max": [
+          40.91923904418945,
+          90.9109878540039,
+          24.484237670898438
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        96,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_05_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_05_04__Snow",
+          "tris": 596,
+          "material": "Snow",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_05_04__Rock",
+          "tris": 530,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_05_04__Slate",
+          "tris": 10,
+          "material": "Slate",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 1136,
+      "bbox_roblox_studs": {
+        "min": [
+          214.11582946777344,
+          58.37971496582031,
+          12.0
+        ],
+        "max": [
+          349.75634765625,
+          146.46829223632812,
+          165.67735290527344
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        264,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_05_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_05_04__Rock",
+          "tris": 504,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 504,
+      "bbox_roblox_studs": {
+        "min": [
+          215.0158233642578,
+          12.681587219238281,
+          12.0
+        ],
+        "max": [
+          348.91925048828125,
+          137.53038024902344,
+          164.68540954589844
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        264,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_06_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_06_04__Snow",
+          "tris": 1404,
+          "material": "Snow",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_06_04__Salt",
+          "tris": 304,
+          "material": "Salt",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_06_04__Ice",
+          "tris": 42,
+          "material": "Ice",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_06_04__Rock",
+          "tris": 598,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_06_04__Slate",
+          "tris": 4,
+          "material": "Slate",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_06_04__Cobblestone",
+          "tris": 32,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 2384,
+      "bbox_roblox_studs": {
+        "min": [
+          348.0,
+          93.71489715576172,
+          12.0
+        ],
+        "max": [
+          516.0,
+          159.58343505859375,
+          180.4868621826172
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Ice",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        432,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_06_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_06_04__Rock",
+          "tris": 1624,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 1624,
+      "bbox_roblox_studs": {
+        "min": [
+          348.0,
+          41.69256591796875,
+          12.0
+        ],
+        "max": [
+          516.0,
+          137.53038024902344,
+          180.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        432,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_07_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_07_04__Snow",
+          "tris": 898,
+          "material": "Snow",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_07_04__Rock",
+          "tris": 464,
+          "material": "Rock",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_07_04__Cobblestone",
+          "tris": 50,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_07_04__Salt",
+          "tris": 108,
+          "material": "Salt",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 1520,
+      "bbox_roblox_studs": {
+        "min": [
+          513.6730346679688,
+          93.56982421875,
+          10.369461059570312
+        ],
+        "max": [
+          584.9202270507812,
+          146.42251586914062,
+          180.0
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        600,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_07_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_07_04__Rock",
+          "tris": 920,
+          "material": "Rock",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 920,
+      "bbox_roblox_studs": {
+        "min": [
+          515.0807495117188,
+          36.327308654785156,
+          11.080764770507812
+        ],
+        "max": [
+          584.0202026367188,
+          137.47079467773438,
+          180.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        600,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_00_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_00_04__Snow",
+          "tris": 250,
+          "material": "Snow",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_00_04__Rock",
+          "tris": 170,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 420,
+      "bbox_roblox_studs": {
+        "min": [
+          -553.4352416992188,
+          56.153106689453125,
+          146.0117645263672
+        ],
+        "max": [
+          -490.3343811035156,
+          87.51659393310547,
+          180.0199737548828
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -576,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_00_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_00_04__Rock",
+          "tris": 204,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 204,
+      "bbox_roblox_studs": {
+        "min": [
+          -552.3256225585938,
+          14.372642517089844,
+          146.9199981689453
+        ],
+        "max": [
+          -491.08074951171875,
+          66.28557586669922,
+          180.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -576,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_01_04.fbx",
+      "objects": [
+        {
+          "name": "terrain_01_04__Snow",
+          "tris": 22,
+          "material": "Snow",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            96.0
+          ]
+        },
+        {
+          "name": "terrain_01_04__Rock",
+          "tris": 40,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 62,
+      "bbox_roblox_studs": {
+        "min": [
+          -492.0,
+          56.32051086425781,
+          162.44436645507812
+        ],
+        "max": [
+          -482.2880554199219,
+          81.19020080566406,
+          180.16592407226562
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -408,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "undersides_01_04.fbx",
+      "objects": [
+        {
+          "name": "undersides_01_04__Rock",
+          "tris": 14,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            96.0
+          ]
+        }
+      ],
+      "total_tris": 14,
+      "bbox_roblox_studs": {
+        "min": [
+          -492.0,
+          47.67324447631836,
+          163.0807647705078
+        ],
+        "max": [
+          -483.18804931640625,
+          65.79490661621094,
+          180.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -408,
+        30,
+        96
+      ]
+    },
+    {
+      "file": "terrain_00_05.fbx",
+      "objects": [
+        {
+          "name": "terrain_00_05__Snow",
+          "tris": 546,
+          "material": "Snow",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_00_05__Rock",
+          "tris": 590,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_00_05__Slate",
+          "tris": 8,
+          "material": "Slate",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 1144,
+      "bbox_roblox_studs": {
+        "min": [
+          -580.8367309570312,
+          55.72261047363281,
+          179.9800262451172
+        ],
+        "max": [
+          -490.1944885253906,
+          240.4852294921875,
+          305.55670166015625
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -576,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "undersides_00_05.fbx",
+      "objects": [
+        {
+          "name": "undersides_00_05__Rock",
+          "tris": 496,
+          "material": "Rock",
+          "pivot_roblox": [
+            -576.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 496,
+      "bbox_roblox_studs": {
+        "min": [
+          -579.9367065429688,
+          12.0,
+          180.0
+        ],
+        "max": [
+          -491.08074951171875,
+          218.1493682861328,
+          304.6567077636719
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -576,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "terrain_01_05.fbx",
+      "objects": [
+        {
+          "name": "terrain_01_05__Snow",
+          "tris": 24,
+          "material": "Snow",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_01_05__Slate",
+          "tris": 2,
+          "material": "Slate",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_01_05__Rock",
+          "tris": 58,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 84,
+      "bbox_roblox_studs": {
+        "min": [
+          -492.0,
+          56.65770721435547,
+          179.83407592773438
+        ],
+        "max": [
+          -483.3035583496094,
+          87.58525848388672,
+          205.55563354492188
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -408,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "undersides_01_05.fbx",
+      "objects": [
+        {
+          "name": "undersides_01_05__Rock",
+          "tris": 20,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 20,
+      "bbox_roblox_studs": {
+        "min": [
+          -492.0,
+          44.76485824584961,
+          180.0
+        ],
+        "max": [
+          -484.20355224609375,
+          65.17518615722656,
+          204.9192352294922
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -408,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "terrain_06_05.fbx",
+      "objects": [
+        {
+          "name": "terrain_06_05__Snow",
+          "tris": 2162,
+          "material": "Snow",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_06_05__Rock",
+          "tris": 918,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_06_05__Salt",
+          "tris": 402,
+          "material": "Salt",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_06_05__Cobblestone",
+          "tris": 78,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 3560,
+      "bbox_roblox_studs": {
+        "min": [
+          347.75726318359375,
+          92.71690368652344,
+          179.5131378173828
+        ],
+        "max": [
+          517.5556640625,
+          112.67566680908203,
+          349.5556335449219
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        432,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "undersides_06_05.fbx",
+      "objects": [
+        {
+          "name": "undersides_06_05__Rock",
+          "tris": 2336,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 2336,
+      "bbox_roblox_studs": {
+        "min": [
+          348.0,
+          48.50172805786133,
+          180.0
+        ],
+        "max": [
+          516.9192504882812,
+          103.66327667236328,
+          348.91925048828125
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        432,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "terrain_07_05.fbx",
+      "objects": [
+        {
+          "name": "terrain_07_05__Salt",
+          "tris": 252,
+          "material": "Salt",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_07_05__Snow",
+          "tris": 484,
+          "material": "Snow",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_07_05__Rock",
+          "tris": 324,
+          "material": "Rock",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_07_05__Cobblestone",
+          "tris": 18,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 1078,
+      "bbox_roblox_studs": {
+        "min": [
+          516.0,
+          93.33280181884766,
+          178.44436645507812
+        ],
+        "max": [
+          583.7171630859375,
+          112.52918243408203,
+          277.5556335449219
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        600,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "undersides_07_05.fbx",
+      "objects": [
+        {
+          "name": "undersides_07_05__Rock",
+          "tris": 646,
+          "material": "Rock",
+          "pivot_roblox": [
+            600.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 646,
+      "bbox_roblox_studs": {
+        "min": [
+          516.0,
+          40.63222122192383,
+          179.0807647705078
+        ],
+        "max": [
+          583.0807495117188,
+          103.06015014648438,
+          276.91925048828125
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        600,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "terrain_05_05.fbx",
+      "objects": [
+        {
+          "name": "terrain_05_05__Snow",
+          "tris": 978,
+          "material": "Snow",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            264.0
+          ]
+        },
+        {
+          "name": "terrain_05_05__Rock",
+          "tris": 672,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 1650,
+      "bbox_roblox_studs": {
+        "min": [
+          218.25233459472656,
+          41.62704849243164,
+          246.12979125976562
+        ],
+        "max": [
+          348.24273681640625,
+          112.57038116455078,
+          349.5556335449219
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        264,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "undersides_05_05.fbx",
+      "objects": [
+        {
+          "name": "undersides_05_05__Rock",
+          "tris": 754,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            264.0
+          ]
+        }
+      ],
+      "total_tris": 754,
+      "bbox_roblox_studs": {
+        "min": [
+          219.15234375,
+          12.0,
+          247.086181640625
+        ],
+        "max": [
+          348.0,
+          103.1739273071289,
+          348.91925048828125
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        264,
+        30,
+        264
+      ]
+    },
+    {
+      "file": "terrain_05_06.fbx",
+      "objects": [
+        {
+          "name": "terrain_05_06__Snow",
+          "tris": 2308,
+          "material": "Snow",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_05_06__Rock",
+          "tris": 554,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_05_06__Cobblestone",
+          "tris": 116,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_05_06__Slate",
+          "tris": 32,
+          "material": "Slate",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_05_06__Salt",
+          "tris": 592,
+          "material": "Salt",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_05_06__Sand",
+          "tris": 90,
+          "material": "Sand",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_05_06__Water",
+          "tris": 214,
+          "material": "Water",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 3906,
+      "bbox_roblox_studs": {
+        "min": [
+          179.47933959960938,
+          64.78887176513672,
+          346.324951171875
+        ],
+        "max": [
+          348.1568298339844,
+          112.59784698486328,
+          517.8855590820312
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Sand",
+        "Slate",
+        "Snow",
+        "Water"
+      ],
+      "pivot": [
+        264,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "undersides_05_06.fbx",
+      "objects": [
+        {
+          "name": "undersides_05_06__Rock",
+          "tris": 3202,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 3202,
+      "bbox_roblox_studs": {
+        "min": [
+          180.0,
+          12.0,
+          347.08074951171875
+        ],
+        "max": [
+          348.0,
+          102.23039245605469,
+          516.9192504882812
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        264,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "terrain_06_06.fbx",
+      "objects": [
+        {
+          "name": "terrain_06_06__Cobblestone",
+          "tris": 10,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_06_06__Snow",
+          "tris": 722,
+          "material": "Snow",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_06_06__Rock",
+          "tris": 460,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_06_06__Slate",
+          "tris": 2,
+          "material": "Slate",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_06_06__Sand",
+          "tris": 26,
+          "material": "Sand",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_06_06__Water",
+          "tris": 70,
+          "material": "Water",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 1290,
+      "bbox_roblox_studs": {
+        "min": [
+          346.43798828125,
+          64.82439422607422,
+          348.0
+        ],
+        "max": [
+          405.6481018066406,
+          112.51087188720703,
+          505.88568115234375
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Sand",
+        "Slate",
+        "Snow",
+        "Water"
+      ],
+      "pivot": [
+        432,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "undersides_06_06.fbx",
+      "objects": [
+        {
+          "name": "undersides_06_06__Rock",
+          "tris": 682,
+          "material": "Rock",
+          "pivot_roblox": [
+            432.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 682,
+      "bbox_roblox_studs": {
+        "min": [
+          347.08074951171875,
+          27.626659393310547,
+          348.0
+        ],
+        "max": [
+          404.91925048828125,
+          103.13921356201172,
+          504.98565673828125
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        432,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "terrain_03_06.fbx",
+      "objects": [
+        {
+          "name": "terrain_03_06__Snow",
+          "tris": 1840,
+          "material": "Snow",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_03_06__Rock",
+          "tris": 934,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_03_06__Salt",
+          "tris": 340,
+          "material": "Salt",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_03_06__Cobblestone",
+          "tris": 58,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 3172,
+      "bbox_roblox_studs": {
+        "min": [
+          -157.677734375,
+          41.58796310424805,
+          378.9396667480469
+        ],
+        "max": [
+          12.363189697265625,
+          72.93202209472656,
+          517.5556640625
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        -72,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "undersides_03_06.fbx",
+      "objects": [
+        {
+          "name": "undersides_03_06__Rock",
+          "tris": 1948,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 1948,
+      "bbox_roblox_studs": {
+        "min": [
+          -156.9192352294922,
+          12.0,
+          379.8396911621094
+        ],
+        "max": [
+          12.0,
+          51.522705078125,
+          516.9192504882812
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -72,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "terrain_04_06.fbx",
+      "objects": [
+        {
+          "name": "terrain_04_06__Snow",
+          "tris": 1242,
+          "material": "Snow",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_04_06__Rock",
+          "tris": 968,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_04_06__Salt",
+          "tris": 68,
+          "material": "Salt",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_04_06__Slate",
+          "tris": 2,
+          "material": "Slate",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_04_06__Cobblestone",
+          "tris": 108,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 2388,
+      "bbox_roblox_studs": {
+        "min": [
+          11.636810302734375,
+          41.19216537475586,
+          379.95745849609375
+        ],
+        "max": [
+          180.52066040039062,
+          84.68299102783203,
+          505.9400634765625
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        96,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "undersides_04_06.fbx",
+      "objects": [
+        {
+          "name": "undersides_04_06__Rock",
+          "tris": 1140,
+          "material": "Rock",
+          "pivot_roblox": [
+            96.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 1140,
+      "bbox_roblox_studs": {
+        "min": [
+          12.0,
+          20.517162322998047,
+          380.85748291015625
+        ],
+        "max": [
+          180.0,
+          75.1756362915039,
+          505.0400695800781
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        96,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "terrain_02_06.fbx",
+      "objects": [
+        {
+          "name": "terrain_02_06__Snow",
+          "tris": 492,
+          "material": "Snow",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_02_06__Rock",
+          "tris": 412,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_02_06__Slate",
+          "tris": 6,
+          "material": "Slate",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_02_06__Salt",
+          "tris": 6,
+          "material": "Salt",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 916,
+      "bbox_roblox_studs": {
+        "min": [
+          -325.60455322265625,
+          41.546749114990234,
+          390.7392578125
+        ],
+        "max": [
+          -156.0,
+          170.40054321289062,
+          516.0
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -240,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "undersides_02_06.fbx",
+      "objects": [
+        {
+          "name": "undersides_02_06__Rock",
+          "tris": 388,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 388,
+      "bbox_roblox_studs": {
+        "min": [
+          -324.91925048828125,
+          21.496938705444336,
+          391.6392822265625
+        ],
+        "max": [
+          -156.0,
+          162.23240661621094,
+          516.0
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -240,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "terrain_01_06.fbx",
+      "objects": [
+        {
+          "name": "terrain_01_06__Snow",
+          "tris": 404,
+          "material": "Snow",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            432.0
+          ]
+        },
+        {
+          "name": "terrain_01_06__Rock",
+          "tris": 384,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 788,
+      "bbox_roblox_studs": {
+        "min": [
+          -464.8362121582031,
+          135.06161499023438,
+          394.4443664550781
+        ],
+        "max": [
+          -323.9934997558594,
+          170.04348754882812,
+          477.3222961425781
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        -408,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "undersides_01_06.fbx",
+      "objects": [
+        {
+          "name": "undersides_01_06__Rock",
+          "tris": 276,
+          "material": "Rock",
+          "pivot_roblox": [
+            -408.0,
+            30.0,
+            432.0
+          ]
+        }
+      ],
+      "total_tris": 276,
+      "bbox_roblox_studs": {
+        "min": [
+          -463.93621826171875,
+          78.53507232666016,
+          395.08074951171875
+        ],
+        "max": [
+          -324.0,
+          161.34927368164062,
+          476.42230224609375
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -408,
+        30,
+        432
+      ]
+    },
+    {
+      "file": "terrain_02_07.fbx",
+      "objects": [
+        {
+          "name": "terrain_02_07__Snow",
+          "tris": 1096,
+          "material": "Snow",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_02_07__Rock",
+          "tris": 406,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_02_07__Salt",
+          "tris": 18,
+          "material": "Salt",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_02_07__Cobblestone",
+          "tris": 62,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            600.0
+          ]
+        }
+      ],
+      "total_tris": 1582,
+      "bbox_roblox_studs": {
+        "min": [
+          -237.6083526611328,
+          41.8809928894043,
+          514.2232666015625
+        ],
+        "max": [
+          -156.0,
+          72.86335754394531,
+          633.6781005859375
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Snow"
+      ],
+      "pivot": [
+        -240,
+        30,
+        600
+      ]
+    },
+    {
+      "file": "undersides_02_07.fbx",
+      "objects": [
+        {
+          "name": "undersides_02_07__Rock",
+          "tris": 1046,
+          "material": "Rock",
+          "pivot_roblox": [
+            -240.0,
+            30.0,
+            600.0
+          ]
+        }
+      ],
+      "total_tris": 1046,
+      "bbox_roblox_studs": {
+        "min": [
+          -236.70834350585938,
+          12.839014053344727,
+          515.0807495117188
+        ],
+        "max": [
+          -156.0,
+          51.79317855834961,
+          632.778076171875
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -240,
+        30,
+        600
+      ]
+    },
+    {
+      "file": "terrain_03_07.fbx",
+      "objects": [
+        {
+          "name": "terrain_03_07__Salt",
+          "tris": 72,
+          "material": "Salt",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_03_07__Snow",
+          "tris": 1234,
+          "material": "Snow",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_03_07__Rock",
+          "tris": 532,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_03_07__Cobblestone",
+          "tris": 10,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_03_07__Slate",
+          "tris": 6,
+          "material": "Slate",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            600.0
+          ]
+        }
+      ],
+      "total_tris": 1854,
+      "bbox_roblox_studs": {
+        "min": [
+          -157.55563354492188,
+          41.20478057861328,
+          516.0
+        ],
+        "max": [
+          -38.444366455078125,
+          79.63835906982422,
+          643.7171630859375
+        ]
+      },
+      "materials": [
+        "Cobblestone",
+        "Rock",
+        "Salt",
+        "Slate",
+        "Snow"
+      ],
+      "pivot": [
+        -72,
+        30,
+        600
+      ]
+    },
+    {
+      "file": "undersides_03_07.fbx",
+      "objects": [
+        {
+          "name": "undersides_03_07__Rock",
+          "tris": 1182,
+          "material": "Rock",
+          "pivot_roblox": [
+            -72.0,
+            30.0,
+            600.0
+          ]
+        }
+      ],
+      "total_tris": 1182,
+      "bbox_roblox_studs": {
+        "min": [
+          -156.9192352294922,
+          12.842937469482422,
+          516.0
+        ],
+        "max": [
+          -39.08076095581055,
+          51.23689651489258,
+          643.0807495117188
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        -72,
+        30,
+        600
+      ]
+    },
+    {
+      "file": "terrain_05_07.fbx",
+      "objects": [
+        {
+          "name": "terrain_05_07__Snow",
+          "tris": 72,
+          "material": "Snow",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            600.0
+          ]
+        },
+        {
+          "name": "terrain_05_07__Rock",
+          "tris": 114,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            600.0
+          ]
+        }
+      ],
+      "total_tris": 186,
+      "bbox_roblox_studs": {
+        "min": [
+          202.43601989746094,
+          65.5240478515625,
+          516.0
+        ],
+        "max": [
+          257.5556335449219,
+          84.53192901611328,
+          529.882568359375
+        ]
+      },
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "pivot": [
+        264,
+        30,
+        600
+      ]
+    },
+    {
+      "file": "undersides_05_07.fbx",
+      "objects": [
+        {
+          "name": "undersides_05_07__Rock",
+          "tris": 34,
+          "material": "Rock",
+          "pivot_roblox": [
+            264.0,
+            30.0,
+            600.0
+          ]
+        }
+      ],
+      "total_tris": 34,
+      "bbox_roblox_studs": {
+        "min": [
+          203.0807647705078,
+          60.512229919433594,
+          516.0
+        ],
+        "max": [
+          256.91925048828125,
+          75.15817260742188,
+          528.9825439453125
+        ]
+      },
+      "materials": [
+        "Rock"
+      ],
+      "pivot": [
+        264,
+        30,
+        600
+      ]
+    },
+    {
+      "file": "roots.fbx",
+      "objects": [
+        {
+          "name": "roots__Rock",
+          "tris": 2080,
+          "material": "Rock",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "roots__CrystalGlow",
+          "tris": 3560,
+          "material": "CrystalGlow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 5640,
+      "bbox_roblox_studs": {
+        "min": [
+          -601.1201171875,
+          10.0,
+          -521.0576782226562
+        ],
+        "max": [
+          561.416259765625,
+          210.8325653076172,
+          593.3807983398438
+        ]
+      },
+      "materials": [
+        "CrystalGlow",
+        "Rock"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "holes.fbx",
+      "objects": [
+        {
+          "name": "holes__Felt",
+          "tris": 1212,
+          "material": "Felt",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__Timber",
+          "tris": 3744,
+          "material": "Timber",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__SnowRailCap",
+          "tris": 3744,
+          "material": "SnowRailCap",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__Ink",
+          "tris": 1080,
+          "material": "Ink",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__Brass",
+          "tris": 1368,
+          "material": "Brass",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__Flag",
+          "tris": 216,
+          "material": "Flag",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__CrystalGlow",
+          "tris": 2880,
+          "material": "CrystalGlow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "holes__Ice",
+          "tris": 12,
+          "material": "Ice",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 14256,
+      "bbox_roblox_studs": {
+        "min": [
+          -253.05999755859375,
+          59.5,
+          -374.05999755859375
+        ],
+        "max": [
+          549.5599975585938,
+          230.3000030517578,
+          547.5599975585938
+        ]
+      },
+      "materials": [
+        "Brass",
+        "CrystalGlow",
+        "Felt",
+        "Flag",
+        "Ice",
+        "Ink",
+        "SnowRailCap",
+        "Timber"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rail_snow_cap": {
+        "object": "holes__SnowRailCap",
+        "material": "SnowRailCap",
+        "colour": "#EEF3F7",
+        "note": "pass 2g: rail snow caps (all 18 holes) own material, copy of Snow with base colour only"
+      },
+      "felt": {
+        "object": "holes__Felt",
+        "material": "Felt",
+        "colour": "#36997A",
+        "note": "pass 2g: felt recoloured #3EA886 -> #36997A (base colour only)"
+      },
+      "walls_round4": {
+        "note": "Round 4 'walls': H11 rail5/berg18 floe-slot lintel underside 1.17 -> 1.27 (__cut1 bottom; __cut2/__cut3 tops and their snow caps +0.10); H12 stern wall line z -18 -> -18.01 (rail2/hull13 moved -0.01, rail3/hull18/rail1/hull14 ends follow, caps follow). Only these box corners moved; felt and everything else identical to 2g.",
+        "moved_boxes": {
+          "Timber": [
+            {
+              "hole": 11,
+              "wall": "rail5__cut1",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "rail5__cut2",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "rail5__cut3",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "berg18__cut1",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "berg18__cut2",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "berg18__cut3",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "rail1",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "rail2",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "rail3",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "hull13",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "hull14",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "hull18",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            }
+          ],
+          "SnowRailCap": [
+            {
+              "hole": 11,
+              "wall": "rail5__cut2",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "rail5__cut3",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "berg18__cut2",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 11,
+              "wall": "berg18__cut3",
+              "max_move": 0.1,
+              "axes_moved": [
+                "z"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "rail1",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "rail2",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "rail3",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "hull13",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "hull14",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            },
+            {
+              "hole": 12,
+              "wall": "hull18",
+              "max_move": 0.01,
+              "axes_moved": [
+                "x"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "connections.fbx",
+      "objects": [
+        {
+          "name": "connections__Cobblestone",
+          "tris": 1248,
+          "material": "Cobblestone",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__CrystalGlow",
+          "tris": 1584,
+          "material": "CrystalGlow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Timber",
+          "tris": 2448,
+          "material": "Timber",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Snow",
+          "tris": 432,
+          "material": "Snow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Ice",
+          "tris": 84,
+          "material": "Ice",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Mint",
+          "tris": 108,
+          "material": "Mint",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Brass",
+          "tris": 60,
+          "material": "Brass",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Water",
+          "tris": 76,
+          "material": "Water",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "connections__Glacier",
+          "tris": 60,
+          "material": "Glacier",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 6100,
+      "bbox_roblox_studs": {
+        "min": [
+          -288.0,
+          -28.2706298828125,
+          -411.0
+        ],
+        "max": [
+          580.0,
+          230.5,
+          606.5440063476562
+        ]
+      },
+      "materials": [
+        "Brass",
+        "Cobblestone",
+        "CrystalGlow",
+        "Glacier",
+        "Ice",
+        "Mint",
+        "Snow",
+        "Timber",
+        "Water"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "props_00.fbx",
+      "objects": [
+        {
+          "name": "props__Timber",
+          "tris": 3580,
+          "material": "Timber",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Glow",
+          "tris": 1068,
+          "material": "Glow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Brass",
+          "tris": 1500,
+          "material": "Brass",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Snow",
+          "tris": 7212,
+          "material": "Snow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Pine",
+          "tris": 6192,
+          "material": "Pine",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 19552,
+      "bbox_roblox_studs": {
+        "min": [
+          -603.52001953125,
+          59.599998474121094,
+          -523.4400024414062
+        ],
+        "max": [
+          560.5999755859375,
+          246.63999938964844,
+          617.0
+        ]
+      },
+      "materials": [
+        "Brass",
+        "Glow",
+        "Pine",
+        "Snow",
+        "Timber"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "props_01.fbx",
+      "objects": [
+        {
+          "name": "props__CrystalGlow",
+          "tris": 6000,
+          "material": "CrystalGlow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Pink",
+          "tris": 1760,
+          "material": "Pink",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Mint",
+          "tris": 1760,
+          "material": "Mint",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Violet",
+          "tris": 880,
+          "material": "Violet",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "props__Ink",
+          "tris": 1008,
+          "material": "Ink",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 11408,
+      "bbox_roblox_studs": {
+        "min": [
+          -505.32000732421875,
+          59.5,
+          -522.1041259765625
+        ],
+        "max": [
+          561.0,
+          235.03102111816406,
+          580.8615112304688
+        ]
+      },
+      "materials": [
+        "CrystalGlow",
+        "Ink",
+        "Mint",
+        "Pink",
+        "Violet"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "spire.fbx",
+      "objects": [
+        {
+          "name": "spire__Mint",
+          "tris": 40,
+          "material": "Mint",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "spire__Violet",
+          "tris": 280,
+          "material": "Violet",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "spire__CrystalGlow",
+          "tris": 280,
+          "material": "CrystalGlow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "spire__Ice",
+          "tris": 192,
+          "material": "Ice",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 792,
+      "bbox_roblox_studs": {
+        "min": [
+          -260.0,
+          100.0,
+          -294.5
+        ],
+        "max": [
+          77.27806854248047,
+          340.0,
+          39.38703536987305
+        ]
+      },
+      "materials": [
+        "CrystalGlow",
+        "Ice",
+        "Mint",
+        "Violet"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "backdrop.fbx",
+      "objects": [
+        {
+          "name": "backdrop__Haze",
+          "tris": 896,
+          "material": "Haze",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "backdrop__Snow",
+          "tris": 896,
+          "material": "Snow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 1792,
+      "bbox_roblox_studs": {
+        "min": [
+          -1322.1778564453125,
+          -2.324979305267334,
+          -1495.94580078125
+        ],
+        "max": [
+          1431.6009521484375,
+          206.96908569335938,
+          1403.527099609375
+        ]
+      },
+      "materials": [
+        "Haze",
+        "Snow"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "cloudsea_00.fbx",
+      "objects": [
+        {
+          "name": "cloudsea__CloudSea",
+          "tris": 18000,
+          "material": "CloudSea",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 18000,
+      "bbox_roblox_studs": {
+        "min": [
+          -6130.3935546875,
+          -51.06485366821289,
+          -6130.3935546875
+        ],
+        "max": [
+          6130.3935546875,
+          21.084671020507812,
+          6130.3935546875
+        ]
+      },
+      "materials": [
+        "CloudSea"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "cloudsea_01.fbx",
+      "objects": [
+        {
+          "name": "cloudsea__CloudSea_1",
+          "tris": 10296,
+          "material": "CloudSea",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 10296,
+      "bbox_roblox_studs": {
+        "min": [
+          -2572.97265625,
+          -55.45906448364258,
+          -2801.71875
+        ],
+        "max": [
+          1893.3663330078125,
+          25.0,
+          1982.704345703125
+        ]
+      },
+      "materials": [
+        "CloudSea"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "sky.fbx",
+      "objects": [
+        {
+          "name": "sky__AuroraMint",
+          "tris": 720,
+          "material": "AuroraMint",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "sky__AuroraViolet",
+          "tris": 480,
+          "material": "AuroraViolet",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "sky__Snow",
+          "tris": 48,
+          "material": "Snow",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "sky__Ice",
+          "tris": 360,
+          "material": "Ice",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 1608,
+      "bbox_roblox_studs": {
+        "min": [
+          -2148.458251953125,
+          480.00067138671875,
+          -1896.4737548828125
+        ],
+        "max": [
+          2194.813232421875,
+          1775.5916748046875,
+          2078.650146484375
+        ]
+      },
+      "materials": [
+        "AuroraMint",
+        "AuroraViolet",
+        "Ice",
+        "Snow"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "course_apron_00.fbx",
+      "objects": [
+        {
+          "name": "course_apron_00__SnowCourse",
+          "tris": 11303,
+          "material": "SnowCourse",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "name": "course_apron_00__SnowCourseH3",
+          "tris": 2490,
+          "material": "SnowCourseH3",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 13793,
+      "bbox_roblox_studs": {
+        "min": [
+          -161.0,
+          59.54975509643555,
+          400.0
+        ],
+        "max": [
+          327.0,
+          88.05183410644531,
+          554.0
+        ]
+      },
+      "materials": [
+        "SnowCourse",
+        "SnowCourseH3"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "decoration": true,
+      "can_collide": false,
+      "cast_shadow": false,
+      "colour": {
+        "SnowCourse": "#C9D6E0",
+        "SnowCourseH3": "#EEF3F7"
+      },
+      "h3_band": {
+        "object": "course_apron_00__SnowCourseH3",
+        "material": "SnowCourseH3",
+        "colour": "#EEF3F7",
+        "tris": 2490,
+        "rule": "apron quads owned by H3 (nearest felt/wall footprint, same rule as the 2e build)"
+      }
+    },
+    {
+      "file": "course_apron_01.fbx",
+      "objects": [
+        {
+          "name": "course_apron_01__SnowCourse",
+          "tris": 15173,
+          "material": "SnowCourse",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 15173,
+      "bbox_roblox_studs": {
+        "min": [
+          315.0,
+          111.92024230957031,
+          -79.0
+        ],
+        "max": [
+          556.0,
+          146.4679718017578,
+          339.0
+        ]
+      },
+      "materials": [
+        "SnowCourse"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "decoration": true,
+      "can_collide": false,
+      "cast_shadow": false,
+      "colour": "#C9D6E0"
+    },
+    {
+      "file": "course_apron_02.fbx",
+      "objects": [
+        {
+          "name": "course_apron_02__SnowCourse",
+          "tris": 13042,
+          "material": "SnowCourse",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 13042,
+      "bbox_roblox_studs": {
+        "min": [
+          -260.0,
+          178.0518341064453,
+          -380.0
+        ],
+        "max": [
+          140.0,
+          222.5380401611328,
+          -220.0
+        ]
+      },
+      "materials": [
+        "SnowCourse"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "decoration": true,
+      "can_collide": false,
+      "cast_shadow": false,
+      "colour": "#C9D6E0"
+    },
+    {
+      "file": "felt_banks.fbx",
+      "objects": [
+        {
+          "name": "felt_banks__FeltBank",
+          "tris": 2512,
+          "material": "FeltBank",
+          "pivot_roblox": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        }
+      ],
+      "total_tris": 2512,
+      "bbox_roblox_studs": {
+        "min": [
+          -253.6199951171875,
+          59.52000045776367,
+          -371.5
+        ],
+        "max": [
+          550.0999755859375,
+          222.4199981689453,
+          548.1199951171875
+        ]
+      },
+      "materials": [
+        "FeltBank"
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "decoration": true,
+      "can_collide": false,
+      "cast_shadow": true,
+      "colour": "#308369"
+    }
+  ]
+}

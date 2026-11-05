@@ -1,0 +1,79 @@
+Sibling courses are untouched: their latest files are from before this run started, and every write in my tools goes to `aurora-archipelago/world/`.
+
+## Aurora Archipelago: Phase 1 done, world validator CLEAN
+
+All five deliverables are written, and the validator reports **CLEAN with 0 warnings** after 8 iterations, each logged in `world/validation.md` with a "Changes:" note. I looked at `world-map.png` and the labels don't collide: they're placed automatically and never overlap each other or a footprint, with leader lines when pushed out. Nothing was posted or sent, and no image generator was used.
+
+- **World size:** 1320 x 1320 studs (396 m square). Far islands go out to about 960 studs, distant silhouettes to 1600 and the sky to 2600.
+- **Zone heights:** the islands climb anticlockwise round the landmark.
+
+  | Zone | Holes | Height (y) |
+  |---|---|---|
+  | Lanternfall Landing | H1–H3 | 60 |
+  | Steamwhistle Lagoons | H4–H6 | 84 |
+  | Candyfrost Reef | H7–H9 | 112 |
+  | Driftfloe Shelf | H10–H12 | 146 |
+  | Icefall Terraces | H13–H15 | 182 |
+  | Skylight Summit | H16–H18 | 222 |
+
+- **Cloud floor:** y 0 and not walkable. No terrain below y 30, the cloud deck is at y 36 and the respawn plane at y 40.
+- **Landmark:** the Starfrost Spire, a giant aurora-crystal spire on its own island at (0, −40). It's 240 studs tall with its tip at y 340, and the tip is visible from all 18 tees.
+- **Walk total:** 1904 studs (571 m) from spawn to the H18 cup, against a target under 3000. On top of that:
+  - four slow lifts, 3 studs/s, +138 in total;
+  - the Lantern Stair (+24);
+  - three railed bridges: Glimmer Ice, Coral Ice, and the 135-stud Aurora Skybridge;
+  - a gondola back down to spawn (−162).
+- **Moon:** low in the south-west (bearing 220, elevation 14). No tee plays within 45° of it; the closest is 50° off.
+- **VR comfort:**
+  - every felt and walkway sample has at least 8 studs of head room;
+  - railings go on every walkway side where a drop is within 5.5 studs of the edge (stricter than the recipe's 2.5), and every bridge is railed on both sides;
+  - every pad keeps at least 11 studs of snow between it and a cliff edge;
+  - the two holes that cross open sky (H3, H17) have player-only guard walls;
+  - there's a teleport pad at every zone hub and a next-tee pad behind every tee.
+
+| # | Hole | Par | Gimmick |
+|---|---|---|---|
+| 1 | Lantern Quay | 2 | Bank shot off a snow-capped boulder |
+| 2 | Snowpuff Burrows | 3 | Tunnel choice (three snow burrows) |
+| 3 | Glimmer Crossing | 3 | Rail-less glowing plank or safe railed bridge over open sky |
+| 4 | Glissade | 3 | Low-friction ice felt |
+| 5 | Geyser Hop | 3 | Geyser lift (mover: vertical lift with pauses) |
+| 6 | Palm Lagoon | 3 | Side-slope green beside a hot-spring pool |
+| 7 | Mogul Meadow | 3 | Rolling dips (snow moguls) |
+| 8 | Coral Pinball | 3 | Coral-ice bumper field |
+| 9 | Conch Shortcut | 4 | Conch-shell teleport or the long route |
+| 10 | Bobsled Bend | 3 | Half-pipe |
+| 11 | Floe Drift | 3 | Drifting ice floe (mover: slide with pauses) |
+| 12 | Icebreaker Wheel | 3 | Paddle wheel (mover: vertical rotor) |
+| 13 | Snowpuff Carousel | 3 | Carousel arms (mover: horizontal sweeper) |
+| 14 | Bell Buoy | 3 | Icicle bell (mover: pendulum) |
+| 15 | Frozen Falls | 2 | Drop off a frozen waterfall lip |
+| 16 | Moonwell | 2 | Funnel bowl |
+| 17 | Aurora Bridge | 3 | Timed light bridge (mover: fades in and out) |
+| 18 | Halo Arch | 4 | Finale: ramp up to a raised green under an ice arch |
+
+Total par is **53** (27 out, 26 back). The six movers each use a different motion type, and `course.md` says to run timing checks at 96+ phases.
+
+Three things the next phase needs to know:
+- **Ice felt on H4 is a new surface.** Its friction has to be measured in Studio and added to the sim before H4 can be tuned. I suggested starting at 0.35× normal deceleration.
+- **One validator rule is a judgement call.** The lagoon-rim check now treats the outlet channel's banks as part of the runoff mouth, because that water drains into the runoff. It's noted in `validation.md`.
+- **`build_world.py` doesn't read holes.json yet.** It will need the reference course's hook to pick up the real cup positions once that file exists.
+
+Files are in `aurora-archipelago/`:
+- course.md
+- world/
+  - world.json
+  - README.md
+  - validation.md
+  - heightmap.png
+  - heightmap-8bit.png
+  - materials-map.png
+  - terrain-4stud.json
+  - world-map.png
+  - world-map-base.png
+  - vistas/prompts.json
+  - tools/
+    - worldlib.py
+    - build_world.py
+    - validate.py
+    - make_maps.py

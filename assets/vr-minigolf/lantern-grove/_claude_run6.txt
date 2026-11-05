@@ -1,0 +1,62 @@
+I've made the change, but the new foot no longer fits inside the lantern's visible footprint, so 3D Model Bot needs to add a base plinth. No foot that fits inside the current footprint could reach ~45% blocked.
+
+**New foot (H9 only; hinge (21.2, 8.996, -38.5), ±13° and 4 s unchanged)**
+- **Size [x along the swing, y, z across]:** [0.9, 0.4, 1.6]. Round 8 was [0.8, 0.4, 1.6].
+- **Yaw:** 0, square to the swing plane, which is -30° relative to the lantern body. Round 8 was 30.
+- **Centre offset from the hinge** (hanging straight down): (0, -7.762, 0). Round 8 was -7.741.
+- **Bottom clearance:** 0.034 at rest (Round 8: 0.055), which is 0.062 below the lantern's visible bottom (0.096). Minimum over the whole swing is 0.021, checked on all 8 corners of both colliders.
+
+**Variants tried** (Studio line at 7.75 studs/s; all have clearance ≥ 0.02; full table in the log)
+
+| Foot | Yaw | Rest gap | Blocked, 24 phases | Blocked, 80 phases | Traps | Fits footprint? |
+|---|---|---|---|---|---|---|
+| 0.8, 0.4, 1.6 (Round 8) | 30 | 0.056 | 10 | 32 | 0 | yes |
+| 1.0 / 1.2 / 1.4 / 1.6 wide | 30 | 0.063–0.095 | 10 → 6 | 32 → 22 | 0 | yes |
+| 2.0–2.4 deep | 30 | 0.058–0.085 | 8–10 | 28–35 | 1–2 | no |
+| Slimmer, or taller (y 0.6) | 30 | 0.039–0.056 | 9–10 | 29–32 | 0 | yes |
+| 0.8, 0.4, 1.38 (largest yaw-0 that fits) | 0 | 0.032 | 10 | 34 | 0 | yes |
+| 0.8, 0.4, 2.0 | 0 | 0.032 | 11 | 37 | 0 | no |
+| **0.9, 0.4, 1.6 (chosen)** | **0** | **0.034** | **11** | **36** | **0** | **no** |
+| 1.0, 0.4, 1.6 | 0 | 0.037 | 12 | 36 | 0 | no |
+
+Widening along the swing makes things worse. A longer box has to hang higher to clear the felt mid-swing, so it meets the ball (centre 0.08 above the felt) above its middle and lets it through. Turning the foot to yaw 0 lets it sit lower, which is what raises the block rate.
+
+**Blocked on the Studio line, before → after**
+
+| Speed (studs/s) | 24 phases | 80 phases |
+|---|---|---|
+| 7 | 11 → 12/24 (50%) | 36 → 40/80 (50%) |
+| **7.75** | **10 → 11/24 (46%)** | **32 → 36/80 (45%)** |
+| 8.5 | 9 → 10/24 (42%) | 27 → 33/80 (41%) |
+| 9 | 9 → 10/24 (42%) | 26 → 30/80 (38%) |
+
+The phases are now spread evenly over one 4 s period; the old test used 20 phases at 0–4.75 s.
+
+**Traps and soft-locks:** 0 traps at every speed and phase count. In the timing check (all movers), H7 and H8 are unchanged and H9's intended line went from 10/24 blocked (+2 deflected) to 11/24 (+1 deflected). The 100k-shot fuzz found 0 soft-locks on H7, H8 and H9.
+
+**H9 stats (2000 plays per skill)**
+
+| | Good avg | Average avg | Skill gap | Caps (good / average) |
+|---|---|---|---|---|
+| Round 8 | 3.74 | 4.13 | 0.39 | 0.1% / 0.2% |
+| Round 9 | 3.81 | 4.21 | 0.40 | 0.1% / 0.4% |
+
+All targets are still met. The ace line through the Lantern Knot never meets the pendulum.
+
+**Mesh fit: no.** Seen from above, the foot's corners stick out up to 0.12 past two faces of the 1.6×1.6 lantern body (turned 30°). For 3D Model Bot:
+- **Preferred:** add a base plinth to the lantern mesh, 0.9 × 0.4 × 1.6, turned -30° relative to the body, centred under it, with its bottom 0.062 below the body's bottom.
+- **Alternative:** widen the lantern's bottom 0.4 to a 1.84 × 1.84 square at the same 30° and extend it 0.062 lower. This also covers the foot, but leaves some visible base with no collider behind it.
+
+Without one of these, the invisible foot would stop balls just outside the visible lantern.
+
+From the Round 8 calibration (sim 42% vs Studio 33% with the old foot), I expect about 38–40% in Studio, the low end of your 38–50% target. If it comes in under 38%, the next step is [1.0, 0.4, 1.6] at yaw 0 (12/24 and 36/80 in the sim, 0 traps; the plinth would stick out 0.14).
+
+**Files and tool changes**
+- `holes.json` is rebuilt from `tools/build_holes.py`, which has a new foot-yaw setting. The foot's rest gap now rounds up with a 0.001 margin; the Round 8 rounding could give 0.0199.
+- Round 9 is logged in `playtest-log.md`, and `props.md` and `h09-notes.md` have the new foot specs (the notes text is updated in `tools/write_notes.py`).
+- `h09-layout.png` is re-rendered and `make_sheets.py` has been run.
+- `tools/timing_check.py --studio-h9` has a new `--phases N` option, and there's a new `tools/sweep_r9.py`.
+- Sweep runs can now each use their own scratch file, so they run in parallel. My first parallel batch shared one scratch file, and I threw those results out.
+- Results are in `tools/out/` (`*-r9-*`); I merged H9's new sim result into `sim-latest.json`.
+
+I didn't rerun `world/tools/validate.py` because the felt, walls, cup and tee didn't change.

@@ -1,0 +1,30 @@
+{
+ "generated": "2026-10-14",
+ "props": {
+  "h5_respawn_stone": {
+   "fbx": "fbx/fix_zfight3/h5_respawn_stone.fbx",
+   "sha256": "ae5c52179daae586b8f7d2a2a085d63b29eeda25567677c762ab970b7a97f877",
+   "tris": 1490,
+   "parts": [
+    {
+     "object": "h5_respawn_stone__ShroomGlow",
+     "mats": [
+      "ShroomGlow"
+     ],
+     "tris": 188
+    },
+    {
+     "object": "h5_respawn_stone__Slate",
+     "mats": [
+      "Slate"
+     ],
+     "tris": 1302
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "design": "one solid Slate mesh r.395: 0.206 floor (y.156-.362) + pocket wall r.189-.395 up to y.654; ShroomGlow dot r.103 y.448-.648 in the pocket, 0.086 clear below and around, top 0.006 under rim. Top view solid. Moss dropped (a MeshPart takes one material; a separate Moss part needs a slot). Overall height 0.498: a sealed pocket with 0.2 floor + 0.086 + 0.2 dot cannot fit in 0.206."
+  }
+ }
+}

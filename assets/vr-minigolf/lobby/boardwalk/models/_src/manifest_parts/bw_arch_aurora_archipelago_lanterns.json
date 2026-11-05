@@ -1,0 +1,89 @@
+{
+ "name": "bw_arch_aurora_archipelago_lanterns",
+ "group": "arches",
+ "fbx": "fbx/bw_arch_aurora_archipelago_lanterns.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Separate merged lantern set; same base-centre frame as arch.",
+ "pivot": "local origin (0,0,0), shared arch base centre",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  13.951,
+  3.0,
+  0.9
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  11.1,
+  1.55
+ ],
+ "bbox_min_roblox": [
+  -6.976,
+  9.6,
+  1.1
+ ],
+ "bbox_max_roblox": [
+  6.976,
+  12.6,
+  2.0
+ ],
+ "target_size_studs": [
+  16,
+  18,
+  4
+ ],
+ "size_ratio_vs_target": [
+  0.872,
+  0.167,
+  0.225
+ ],
+ "triangles": 504,
+ "tris_max": 1500,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_arch_aurora_archipelago_lanterns__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 432,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    13.951,
+    3.0,
+    0.9
+   ],
+   "center_from_pivot": [
+    0.0,
+    11.1,
+    1.55
+   ]
+  },
+  {
+   "mesh": "bw_arch_aurora_archipelago_lanterns__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 72,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    13.723,
+    1.0,
+    0.76
+   ],
+   "center_from_pivot": [
+    0.0,
+    11.2,
+    1.6
+   ]
+  }
+ ],
+ "collision": [],
+ "motion": "Shared arch base pivot (0,0,0); pulse +/-15% at 0.5Hz; optional sway +/-3deg around listed cord anchors.",
+ "scalable": null,
+ "can_collide": false
+}

@@ -1,0 +1,51 @@
+Lantern Grove is now one continuous world. All five deliverables are written and run from the scripts in `world/tools/`, and the validator passes clean. `../holes.json` was only read, never changed.
+
+**World size:** the terrain is 800 × 800 studs (240 × 240 m), with heights from 4 to 146. Rim hills and an autumn tree line hide the terrain edge. Beyond that, 18 far forest hills sit about 530–640 studs out and 12 distant mountains about 1150–1550 out, plus clouds, sky lanterns and the sun placed so the giant tree is backlit from the first holes.
+
+**Where each hole sits.** Holes are placed with `{origin, yaw_deg}`. The local x/z is rotated about +Y (`x' = lx·cos + lz·sin`, `z' = −lx·sin + lz·cos`), then shifted by origin; in Roblox that's `CFrame.new(origin) * CFrame.Angles(0, rad(yaw), 0)`.
+
+| Hole | Height (y) | Yaw | Surroundings |
+|---|---|---|---|
+| H1 | 24 | 0 | Sunny meadow (south-east), spawn just south; lake and giant tree to the west |
+| H2 | 26 | 0 | Acorn Knoll, a low rise below the village cliffs |
+| H3 | 44 | 0 | Mushroom Village lower terrace, rock-faced |
+| H4 | 48 | 0 | Village upper terrace, the highest hole |
+| H5 | 38 | 90 | Upper valley; its water hazard is the stream itself (both at 37.0); Grand Falls 90 studs north |
+| H6 | 30 | 180 | Mill terrace on the west bank below Twin Falls, fed by a mill flume |
+| H7 | 26 → 23.6 | 180 | Beside the three-step cascade; its pool is the stream (both at 23.0) |
+| H8 | 36 | 180 | Among the giant tree's roots, 8.7 studs from the trunk |
+| H9 | 40 | 62.3 | Inside the trunk |
+
+**The giant tree** is placed from H9's footprint: interior radius 38.8 (5 studs of walking room around the hole), outer radius 45.8 (about 27 m across), about 173 studs tall. You enter by the Heartwood Door on its south-east side.
+
+**Validation:** 7 iterations are logged in `validation.md`; the last 5 are clean.
+- **Early failures:**
+  - Hole pads were overwriting the graded walkways.
+  - The lake's bank slope was cutting terrain 60+ studs away.
+  - One walkway started 2.4 studs above H7's green.
+  - Two routes crossed their own holes.
+  - One stair leg was too short for its climb.
+- **Hole spacing:** no footprints overlap; the closest pair is H6–H7 at 11 studs (minimum 4).
+- **Felt and water:** all felt is on or above terrain, with nothing submerged, and the water hazards match the stream level where they meet it.
+- **Walkways:** every grade is 10% or less, step rise is 0.8 or less, flights are at most 10 steps with landings between, and no walkway runs through water or the trunk except at the doorway.
+- **Tree visibility:** the tree is visible over the terrain from all 8 outdoor tees. H9's tee is inside the trunk, so that check passes automatically (you look up the hollow).
+
+**Total walk** from H1's cup to H9's tee is **630 studs (189 m)**, well under the 1,500 target. The spawn walk to H1 adds 47.
+
+Things you should know before building:
+- **The existing tree model is too small.** `hollow_tree.fbx` (about 49 × 57 × 59) can't contain H9. The README lists a new world-scale trunk shell and crown for 3D Model Bot; the old model can be reused as a background tree.
+- **Terrain import mapping is unconfirmed.** The importer settings for the heightmap (size 800 × 140 × 800, centre (40, 70, 0)) and the material colours (Roblox's default terrain colours) still need checking in Studio. For that reason I also exported `terrain-4stud.json` (heights, water and material on Roblox's 4-stud grid), which a script can build from exactly. The README recommends that route.
+- **Clear terrain over the felt.** Smoothed terrain voxels can poke through felt, so the job list says to clear terrain over each felt piece after placing the holes.
+
+Besides the five you asked for, there are a few extra outputs: `heightmap-8bit.png`, `materials-legend.png`, `terrain-4stud.json`, and the scenery list inside `world.json`. To regenerate everything after an edit: `python3 tools/build_world.py && python3 tools/validate.py "note" && python3 tools/make_maps.py && python3 tools/write_readme.py`.
+
+Separately, several claude.ai connectors (Canva, Linear, Notion, PostHog, Stripe, Supabase, Vercel, LegalZoom) need authorizing in your claude.ai connector settings before they can be used; none were needed here.
+
+Files are in `world/`:
+- `world.json`
+- `heightmap.png`
+- `materials-map.png`
+- `world-map.png`
+- `world-map-base.png`
+- `README.md`
+- `validation.md`

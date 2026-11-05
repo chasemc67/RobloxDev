@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Concept art, VR eye-height view from the warm wooden seaside boardwalk at golden-hour sunset (harbour festival: bunting, lanterns, a red-cream striped lighthouse at one side). In the midground is the row of three themed portal arches along the promenade (autumn lantern-tree arch, striped pink sandstone arch, purple ice-crystal arch). Far beyond them, across a wide open stretch of sand and sea, is one large distant BACKDROP zone, a theme-park scale set piece seen from far away, made of a few big simple chunky low-poly shapes and 2-3 hero pieces, no small detail, silhouette-readable in the sunset haze. Whimsical stylized toy-like 3D render, original design, no text. Backdrop zone: Aurora Archipelago, three big floating snow-capped rock islands hovering over sea mist with frozen waterfalls and glowing crystals.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/options/A_hero.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1492,
+    "outputTokens": 1078,
+    "totalTokens": 2570
+  },
+  "cost": 0.043688,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791842407,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1296,
+          "textTokens": 196
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791842381810,
+                "endTime": 1791842407549,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.043688",
+      "marketCost": "0.043688",
+      "surchargeCost": "0",
+      "gatewayCost": "0.043688",
+      "inferenceCost": "0.043688",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.043688",
+      "generationId": "gen_01M4S21VXC86EWRYEDTEVHEQDT"
+    }
+  },
+  "seconds": 27,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/vignettes/AU2.png"
+  ]
+}

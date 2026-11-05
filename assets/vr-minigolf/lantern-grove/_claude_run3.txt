@@ -1,0 +1,67 @@
+All Round 5 notes are applied and the full sim (2000 plays per skill per hole) now meets every target. Every hole has a skill gap of at least 0.37, average players stay within par+1.5, stroke-cap hits are at most 0.9%, and aces are rare: 0.7–8.5% for good players, 0–1.3% for average. The only flag left is a known H7 edge case (below). It took two rounds: Round 5 fixed everything, and Round 6 re-tuned H8 so average players do better. Both are in `playtest-log.md` with before/after tables, every change and its reason, and the variants I rejected. The capture speed in `sim.py` is 5.33 studs/s as you said, and all physics constants are unchanged.
+
+## Changes per hole
+- **All holes:** a flag on every cup (7.5-stud pole, 8 on H9, no collision) with a `cup_flag` anchor. There is a new line-of-sight check from tee eye height to the flag top. H1 and H2 are now clearly visible (+3.8 and +1.8 studs of clearance), and 8 of 9 holes are visible. H3 stays blocked by its mushroom house: the S-bend runs through it, so that's by design.
+- **H2:** arrow signs at both chutes ("Bold Line" with a rabbit icon / "Safe Line") and glowing arrow decals on the felt. No geometry change.
+- **H4:** spinner slowed to 30°/s with padded arms. The arms are shortened from 4.5 to 3.0, which leaves 3.9-stud side gaps: a reliable par route, about one stroke longer than timing the spinner. Slowing the spinner alone changed nothing.
+- **H5:** a ball that falls in the stream now respawns at the bridge entry (+1 stroke). This is added to the hazard schema and the sim. The bridge is already 1.8 wide, wider than the ~1.5 the bot asked for, so I kept it.
+- **H7:** the log now travels ±7, stopping 0.5 short of each rail, as specified and simulated. The lower gap is narrowed from 3.5 to 2.5 studs, and the cup moved to (−2.5, −36.5). The skill gap was 0.13 because the sloped green delivered every tee shot close to the old cup.
+- **H8:**
+  - Ring radius is now 0.55, and the long route is about 9 studs shorter (the flat run before the climb is gone).
+  - A banked plane on the alcove back wall feeds misses back out.
+  - The root door slides ±3.5 into wall pockets. At ±2.5 it blocked the ring about 67% of the time and caused most good-player caps.
+  - The exit ring is now at (9, 1.5, −47), the cup at (4, 1.5, −37), and the exit speed factor is 0.7.
+  - Exit check: at every exit speed up to 8.5 the ball either stops 1–4 studs short or drops in. Nothing passes the cup, so no backstop is needed.
+- **H9:**
+  - The rotating bar is replaced by a swinging lantern pendulum: hinge (22, 8.96, −38.5), ±35°, 4 s period, 1.6×1.8×1.0 bob.
+  - The course's first rolling dip now runs through the trunk tunnel. A dip across the chamber capped 27–60% of plays.
+  - Root gate travel is 0–1.8, so it's open about 70% of the time.
+  - Cup moved to (26, −52), and the Lantern Knot text now matches its real position.
+
+## Final stats (Round 4 → final)
+| Hole | Par | Good avg | Average avg | Skill gap | Capped (good / avg) |
+|---|---|---|---|---|---|
+| H1 | 2 | 2.02 | 2.45 | 0.43 | 0 / 0 |
+| H2 | 2 | 2.01 | 2.63 | 0.62 | 0 / 0 |
+| H3 | 3 | 2.79 | 3.81 | 1.02 | 0.4 / 0.4% |
+| H4 | 3 | 3.84 → **3.15** | 4.09 → **3.73** | 0.25 → **0.58** | 1.7/2.5 → **0/0.7%** |
+| H5 | 3 | 2.49 → 2.46 | 3.79 | 1.33 | 0 / 0 |
+| H6 | 3 | 3.18 → 3.15 | 3.63 → 3.62 | 0.47 | 0.9 / 0% |
+| H7 | 3 | 2.74 → **2.90** | 2.87 → **3.27** | 0.13 → **0.37** | 0.1 / 0.3% |
+| H8 | 4 | 3.30 → **3.17** | 4.95 → **4.50** | 1.33 | 4.0/4.2 → **0.8/0.1%** |
+| H9 | 4 | 3.50 → **3.74** | 4.02 → **4.12** | 0.38 | 0.9/1.6 → **0.1/0.4%** |
+| Total | 27 | 25.87 → 25.39 | 32.25 → 31.93 | | |
+
+On H8, average players now make par or better in 56% of plays (31% before). Fuzz testing found 0 escapes, the validator reports 0 errors, and all 11 physics tests pass.
+
+**Known issue:** on H7, 3 in 2000 average plays time out. A ball sitting exactly in the log's track gets batted against the rail over and over (Round 4 had 1 in 2000). Roblox physics noise will almost always knock it loose, but RobloxDevBot should add a stroke timeout (e.g. 20 s) as a safety net.
+
+## New and changed props (full specs in `props.md`)
+- **New:** flags ×9, H2 chute signs and arrow decals, H9 pendulum lantern and its root beam, H8 alcove bank cladding, H5 respawn marker stone, H4 side-gap lantern posts, H9 tunnel dip trim.
+- **Changed:** H4 carousel bar (6 across, 30°/s), H8 ring (0.55) and exit ring position, H8 door travel ±3.5 with pockets, H7 log travel ±7, H9 gate travel 0–1.8.
+- **Removed:** H9 lantern bar and its post.
+
+## What RobloxDevBot must rebuild
+- **All holes:** flags (no collision).
+- **H4:** spinner arms and speed.
+- **H5:** respawn logic in the hazard script, plus the marker stone.
+- **H7:** log range, lower-gap rails, cup position, gap lanterns.
+- **H8 (big):** upper level shifted 9 studs toward the tee, new alcove bank felt, ring radius, exit position and direction, speed factor 0.7, door travel, cup.
+- **H9:** tunnel felt split into two sloped pieces, bar and post removed, pendulum added (needs a swing script), gate travel, cup, knot exit direction.
+- **World:** re-import the terrain (pads changed), plus the H7→H8 and H8→H9 walkways and their lanterns, which were re-anchored to the moved cups.
+
+## Files changed
+- **Geometry:** `holes.json`, rebuilt from `tools/build_holes.py`.
+- **Tools:** `sim.py`, `geom.py`, `render_layout.py`, `write_notes.py`, `debug_plays.py`, `test_physics.py`, plus new `teleport_check.py` and `sweep_r5.py`.
+- **Docs and renders:** all nine `hNN-layout.png`, `course-map.png`, all nine `hNN-notes.md`, `props.md`, `playtest-log.md`.
+- **Snapshots:** `tools/out/holes-r5-start/r5a/r5b.json`, `sim-r5-base/r5a/r5b.json`, and pre-round backups in `tools/out/r5/`.
+- **World:** `world.json`, regenerated maps, `terrain-4stud.json` and `README.md`. `world/validation.md` iteration 8 is **CLEAN**, with a total walk of 641 studs.
+
+The workspace isn't a git repo, so nothing was committed. `holes_layouts_sheet.jpg` is now out of date, and I couldn't find a script that generates it.
+
+## Concept art redo candidates
+- **H9** (pendulum replaces the bar, dip in the tunnel, cup moved) and **H8** (shorter layout, moved exit ring, alcove bank): major changes.
+- **H4** (smaller carousel): moderate.
+- **H7** and **H2:** minor. All existing concept art also lacks the new tall flags.
+
+These connectors need authorizing in your claude.ai connector settings before they can be used: Canva, LegalZoom, Linear, Notion, PostHog, Stripe, Supabase and Vercel.

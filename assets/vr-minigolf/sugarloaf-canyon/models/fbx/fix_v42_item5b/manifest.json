@@ -1,0 +1,119 @@
+{
+ "generated": "2026-10-14 Playtest v42 item 5b (Game Art Bot: plant the slabs)",
+ "h03_dress_props": {
+  "fbx": "fbx/fix_v42_item5b/h03_dress_props.fbx",
+  "replaces": "fbx/fix_zfight/h03_dress_props.fbx",
+  "supersedes": "fbx/fix_v42_item5/h03_dress_props.fbx",
+  "sha256": "5c69adc79cf38b1dce9afb97c358df08008f2cbb94f63389292c09f7a27b3f9f",
+  "tris": 1966,
+  "parts": [
+   {
+    "object": "h03_dress_props__CandyAmber",
+    "mats": [
+     "CandyAmber"
+    ],
+    "tris": 314
+   },
+   {
+    "object": "h03_dress_props__CandyPink",
+    "mats": [
+     "CandyPink"
+    ],
+    "tris": 524
+   },
+   {
+    "object": "h03_dress_props__GumLime",
+    "mats": [
+     "GumLime"
+    ],
+    "tris": 72
+   },
+   {
+    "object": "h03_dress_props__Pebble",
+    "mats": [
+     "Pebble"
+    ],
+    "tris": 160
+   },
+   {
+    "object": "h03_dress_props__Strata",
+    "mats": [
+     "Strata"
+    ],
+    "tris": 740
+   },
+   {
+    "object": "h03_dress_props__TimberWeathered",
+    "mats": [
+     "TimberWeathered"
+    ],
+    "tris": 156
+   }
+  ],
+  "pivot_world": [
+   -95.0,
+   18.0,
+   330.0
+  ],
+  "yaw_deg": 0,
+  "placement": "unchanged",
+  "collision": false,
+  "query": false,
+  "touch": false,
+  "materials": "original source materials and colours kept (rebuilt on the fix_zfight FBX via build.py)",
+  "change": "3 flat Strata slabs (were hidden 0.02-0.06 under the ground) moved up so each bottom is 0.10 below the lowest ground point under it and the top is 0.20-0.42 above the ground; slab heights 0.30-0.52 already >=0.2 so no thickening needed. All other geometry unchanged from fix_zfight.",
+  "slabs": [
+   {
+    "centre": [
+     -6.67,
+     -0.01,
+     -8.03
+    ],
+    "height": 0.301,
+    "surf_min": 0.2,
+    "surf_max": 0.2,
+    "bottom_below_surface_min": 0.1,
+    "top_above_surface_max": 0.201,
+    "moved_y": 0.261
+   },
+   {
+    "centre": [
+     55.69,
+     0.04,
+     9.27
+    ],
+    "height": 0.519,
+    "surf_min": 0.369,
+    "surf_max": 0.37,
+    "bottom_below_surface_min": 0.1,
+    "top_above_surface_max": 0.417,
+    "moved_y": 0.441
+   },
+   {
+    "centre": [
+     72.41,
+     -0.02,
+     -7.97
+    ],
+    "height": 0.309,
+    "surf_min": 0.198,
+    "surf_max": 0.199,
+    "bottom_below_surface_min": 0.1,
+    "top_above_surface_max": 0.208,
+    "moved_y": 0.272
+   }
+  ],
+  "checks_reimport": {
+   "tris": 1966,
+   "min_thickness": 0.205,
+   "thin_parts": 0,
+   "intersecting_pairs": 0,
+   "stacked_lt_0.08": 0,
+   "min_gap": 0.086,
+   "coplanar_tri_pairs": 0,
+   "felt": 0.9587,
+   "rail": 0.4025,
+   "coplanar_vs_h03_ground_fit030": 0
+  }
+ }
+}

@@ -1,0 +1,42 @@
+from pathlib import Path
+s=Path('out/src');p=s/'gen_pass5.py';t=p.read_text();t=t.replace("    box(p,'SandBlock',(0,(sy-RELIEF)/2,0),(sx,sy-RELIEF,sz))", """    if e['collidable']:
+        box(p,'SandBlock',(0,(sy-RELIEF)/2,0),(sx,sy-RELIEF,sz))
+    else:
+        # Only the inward vertical corner is chamfered; the other corners retain the exact box.
+        ix=-1 if e['pivot'][0]>0 else 1
+        iz=-1 if e['pivot'][2]>-36 else 1
+        ring=[(-sx/2,-sz/2),(sx/2,-sz/2),(sx/2,sz/2),(-sx/2,sz/2)]
+        poly=[]
+        for j,v in enumerate(ring):
+            if v==(ix*sx/2,iz*sz/2):
+                prev=ring[j-1];nxt=ring[(j+1)%4]
+                for q in (prev,nxt):
+                    dx=q[0]-v[0];dz=q[1]-v[1];d=math.hypot(dx,dz)
+                    poly.append((v[0]+.48*dx/d,v[1]+.48*dz/d))
+            else:poly.append(v)
+        ext(p,'SandBlock',poly,'y',0,sy-RELIEF)""");p.write_text(t)
+p=s/'fitcheck_pass5.py';t=p.read_text();t=t.replace("    own=[box_poly", "    own=[box_poly",1)
+needle='    best={};insts='
+t=t.replace(needle,"""    if e['id'] in ('h07_teleport_pads','h07_teleport_pad_exit'):
+        own += [box_poly([pt['position'][0],pt['size'][1]/2,pt['position'][2]],pt['size']) for pt in h['player_teleport_points']]
+    best={};insts=""")
+t=t.replace("if not se['collidable'] and g>=-TOL and g>=dg-1e-4:","if False and not se['collidable'] and g>=-TOL and g>=dg-1e-4:")
+t=t.replace("    rep['h14_ore_bucket']=dict(body_samples", """    # Addendum permits skid vertices above the underside inside the bucket footprint.
+    above=np.zeros(len(skidv),bool)
+    for b in foot:
+        x,y,z=b['center'];sx,sy,sz=b['size']
+        above |= (np.abs(skidv[:,0]-x)<=sx/2+1e-5)&(np.abs(skidv[:,2])<=.9+1e-5)&(skidv[:,1]>=y-sy/2-1e-5)&(skidv[:,1]<=-9.95+1e-5)
+    rep['h14_ore_bucket']=dict(body_samples""")
+t=t.replace("visual_within_exact_boxes=bool(inside(skidv,fpoly,1e-5).all()) and min(devs)>=-1e-6", "visual_within_exact_boxes=bool((inside(skidv,fpoly,1e-5)|above).all()) and min(devs)>=-1e-6")
+needle="        s=e['box']['size']\n        rep[e['id']]=dict(boxcov"
+t=t.replace(needle,"        s=e['box']['size']\n        rep[e['id']]=dict(boxcov")
+needle="\ndef _sweep_min"
+t=t.replace(needle,"""        if not e['collidable']:
+            pts=box_samples([0,(s[1]-.02)/2,0],[s[0],s[1]-.02,s[2]],n=(17,5,17))
+            ix=-1 if e['pivot'][0]>0 else 1;iz=-1 if e['pivot'][2]>-36 else 1
+            pts=pts[ix*pts[:,0]+iz*pts[:,2]<=s[0]/2+s[2]/2-.48+1e-6]
+            rep[e['id']].update(samples=len(pts),covered=int(inside(pts,_rest(e['id'])).sum()),note='inward vertical corner chamfer .48 inside exact box; base-centre pivot')
+
+def _sweep_min""");t=t.replace('Decorative hour stones (collision OFF) vs the arm sweep: HOLES.JSON INHERITED when the visual gap equals the exact holes.json box-vs-blocker gap (both meshes verified inside their exact boxes).','Decorative hour stones: inward visual corner chamfer must clear sweep by >=.15; exact box gap .041 is a Spec question.')
+p.write_text(t)
+p=s/'verify_exports_pass5.py';p.write_text((s/'verify_exports_pass4.py').read_text().replace('pass4','pass5').replace('pass-4','pass-5'))

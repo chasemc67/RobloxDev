@@ -1,0 +1,642 @@
+{
+ "batch": "sugarloaf props batch3 (H7-H12 landmarks)",
+ "date": "2026-10-12",
+ "fitcheck": "fitcheck_props_batch3.txt (ALL PASS)",
+ "pivot_rule": "pivot_world = R_y(world_yaw)*pivot_hole_local + world_offset; place with CFrame.new(pivot_world)*CFrame.Angles(0, rad(yaw_deg), 0)",
+ "parts": [
+  {
+   "id": "h07_rope_bridges",
+   "fbx": "fbx/props_batch3/h07_rope_bridges.fbx",
+   "hole": "h07",
+   "pivot_hole_local": [
+    0,
+    0,
+    -42
+   ],
+   "pivot_world": [
+    340.0,
+    70.0,
+    108.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope_props_md": [
+    8,
+    4,
+    32
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -4,
+      0,
+      -58
+     ],
+     [
+      4,
+      4,
+      -26
+     ]
+    ],
+    [
+     [
+      0.85,
+      0,
+      -58
+     ],
+     [
+      6.75,
+      4,
+      -45.7
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h07_rope_bridges",
+    "hole": "h07",
+    "fbx": "fbx/props_batch3/h07_rope_bridges.fbx",
+    "anchor_local": [
+     0,
+     0,
+     -42
+    ],
+    "envelope": [
+     8,
+     4,
+     32
+    ],
+    "tris": 1440,
+    "max_mesh_tris": 1152,
+    "meshes": [
+     {
+      "mesh": "h07_rope_bridges__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 144
+     },
+     {
+      "mesh": "h07_rope_bridges__Rope",
+      "material": "Rope",
+      "color": "#C9A86A",
+      "roblox_material": "Fabric",
+      "tris": 1152
+     },
+     {
+      "mesh": "h07_rope_bridges__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 144
+     }
+    ],
+    "notes": [
+     "Decks are the flat holes.json felt (Game Art Bot): sag is only in the visual hand ropes (0.3 / 0.25). Parapets + skirts are holes.json walls; this mesh adds rope posts 0.1 outside the parapet outer faces. Bridge 2 (x 1.3..6.3, holes.json) runs past the centred props.md envelope (x -4..4); its east posts sit at x 6.55, so the envelope is extended to x 6.75 over bridge 2 only."
+    ]
+   },
+   "notes": [
+    "Decks are the flat holes.json felt (Game Art Bot): sag is only in the visual hand ropes (0.3 / 0.25). Parapets + skirts are holes.json walls; this mesh adds rope posts 0.1 outside the parapet outer faces. Bridge 2 (x 1.3..6.3, holes.json) runs past the centred props.md envelope (x -4..4); its east posts sit at x 6.55, so the envelope is extended to x 6.75 over bridge 2 only."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h08_gumdrops",
+   "fbx": "fbx/props_batch3/h08_gumdrops.fbx",
+   "hole": "h08",
+   "pivot_hole_local": [
+    0,
+    0,
+    -50.0
+   ],
+   "pivot_world": [
+    360.0,
+    70.0,
+    5.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope_props_md": [
+    2.4,
+    2.4,
+    2.4
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      0.30000000000000004,
+      0,
+      -52.2
+     ],
+     [
+      2.7,
+      2.4,
+      -49.8
+     ]
+    ],
+    [
+     [
+      -4.7,
+      0,
+      -55.2
+     ],
+     [
+      -2.3,
+      2.4,
+      -52.8
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h08_gumdrops",
+    "hole": "h08",
+    "fbx": "fbx/props_batch3/h08_gumdrops.fbx",
+    "anchor_local": [
+     0,
+     0,
+     -50.0
+    ],
+    "envelope": [
+     2.4,
+     2.4,
+     2.4
+    ],
+    "tris": 348,
+    "max_mesh_tris": 126,
+    "meshes": [
+     {
+      "mesh": "h08_gumdrops__Cherry",
+      "material": "Cherry",
+      "color": "#E8304A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 126
+     },
+     {
+      "mesh": "h08_gumdrops__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 126
+     },
+     {
+      "mesh": "h08_gumdrops__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 96
+     }
+    ],
+    "notes": [
+     "props.md envelope 2.4 cube is per gumdrop (the anchor [0,0,-50] sits between the two bumpers): applied around each holes.json gumdrop collider. Two bumpers = cherry + lime (lemon not used: only two colliders). Visual inside the collider footprint; dome above the 1.5 collider top to 2.3."
+    ]
+   },
+   "notes": [
+    "props.md envelope 2.4 cube is per gumdrop (the anchor [0,0,-50] sits between the two bumpers): applied around each holes.json gumdrop collider. Two bumpers = cherry + lime (lemon not used: only two colliders). Visual inside the collider footprint; dome above the 1.5 collider top to 2.3."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h09_pump_house",
+   "fbx": "fbx/props_batch3/h09_pump_house.fbx",
+   "hole": "h09",
+   "pivot_hole_local": [
+    -3,
+    0,
+    -21
+   ],
+   "pivot_world": [
+    351.0,
+    70.0,
+    -113.0
+   ],
+   "yaw_deg": -90.0,
+   "envelope_props_md": [
+    16,
+    8,
+    6
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -6.0,
+      0,
+      -24
+     ],
+     [
+      8.0,
+      8,
+      -18
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h09_pump_house",
+    "hole": "h09",
+    "fbx": "fbx/props_batch3/h09_pump_house.fbx",
+    "anchor_local": [
+     -3,
+     0,
+     -21
+    ],
+    "envelope": [
+     16,
+     8,
+     6
+    ],
+    "tris": 844,
+    "max_mesh_tris": 316,
+    "meshes": [
+     {
+      "mesh": "h09_pump_house__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 96
+     },
+     {
+      "mesh": "h09_pump_house__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 144
+     },
+     {
+      "mesh": "h09_pump_house__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 80
+     },
+     {
+      "mesh": "h09_pump_house__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 316
+     },
+     {
+      "mesh": "h09_pump_house__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 100
+     },
+     {
+      "mesh": "h09_pump_house__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 60
+     },
+     {
+      "mesh": "h09_pump_house__Window",
+      "material": "Window",
+      "color": "#9FD8E8",
+      "roblox_material": "Glass",
+      "tris": 48
+     }
+    ],
+    "notes": [
+     "rev1: white/bubblegum candy trim blocks along the south roof eave (on the roof, z -18.11..-18.61, top <= 6.3, behind the rotor sweep), candy-striped stack r 0.35 at x 5.6 to 7.97 with iron cap, iron mushroom vent with brass cap at x -4 to 7.42; all inside the 8-tall occluder envelope.",
+     "Built to the two holes.json occluders (x -6..8) rather than the props.md envelope (16 wide centred at x -3 -> -11..5, which would cut the east half that the anchor note and occluder put at x 1.2..8). Tunnel x -1.2..1.2 is covered (portal 3 tall): the 8-overhead rule is waived for the tunnel felt by design. Body sits on the 1.0-tall rock walls from y 1.1; lean-to roof 6 (south) -> 8 (north); bearing stops at z -18.05, behind the rotor sweep."
+    ]
+   },
+   "notes": [
+    "rev1: white/bubblegum candy trim blocks along the south roof eave (on the roof, z -18.11..-18.61, top <= 6.3, behind the rotor sweep), candy-striped stack r 0.35 at x 5.6 to 7.97 with iron cap, iron mushroom vent with brass cap at x -4 to 7.42; all inside the 8-tall occluder envelope.",
+    "Built to the two holes.json occluders (x -6..8) rather than the props.md envelope (16 wide centred at x -3 -> -11..5, which would cut the east half that the anchor note and occluder put at x 1.2..8). Tunnel x -1.2..1.2 is covered (portal 3 tall): the 8-overhead rule is waived for the tunnel felt by design. Body sits on the 1.0-tall rock walls from y 1.1; lean-to roof 6 (south) -> 8 (north); bearing stops at z -18.05, behind the rotor sweep."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h10_sluice_flume",
+   "fbx": "fbx/props_batch3/h10_sluice_flume.fbx",
+   "hole": "h10",
+   "pivot_hole_local": [
+    0,
+    -1.8,
+    -22.0
+   ],
+   "pivot_world": [
+    290.0,
+    114.2,
+    -278.0
+   ],
+   "yaw_deg": 180.0,
+   "envelope_props_md": [
+    5,
+    4,
+    16
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -2.5,
+      -1.8,
+      -30.0
+     ],
+     [
+      2.5,
+      2.2,
+      -14.0
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h10_sluice_flume",
+    "hole": "h10",
+    "fbx": "fbx/props_batch3/h10_sluice_flume.fbx",
+    "anchor_local": [
+     0,
+     -1.8,
+     -22.0
+    ],
+    "envelope": [
+     5,
+     4,
+     16
+    ],
+    "tris": 648,
+    "max_mesh_tris": 240,
+    "meshes": [
+     {
+      "mesh": "h10_sluice_flume__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 192
+     },
+     {
+      "mesh": "h10_sluice_flume__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 192
+     },
+     {
+      "mesh": "h10_sluice_flume__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 240
+     },
+     {
+      "mesh": "h10_sluice_flume__Water",
+      "material": "Water",
+      "color": "#3FD0C9",
+      "roblox_material": "Glass",
+      "tris": 24
+     }
+    ],
+    "notes": [
+     "Open-top casing outside the holes.json chute rails (x +-2.1..2.45), cap over the 1.0 rail top from y 1.1; nothing spans the chute (8-overhead rule), so the top/bottom gate frames are striped posts without a lintel. Water runnel sits on the caps beside the felt. Casing ends at z -14.6 (rail2/rail12) and -29.95 (basin felt)."
+    ]
+   },
+   "notes": [
+    "Open-top casing outside the holes.json chute rails (x +-2.1..2.45), cap over the 1.0 rail top from y 1.1; nothing spans the chute (8-overhead rule), so the top/bottom gate frames are striped posts without a lintel. Water runnel sits on the caps beside the felt. Casing ends at z -14.6 (rail2/rail12) and -29.95 (basin felt)."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h11_lock_keeper_hut",
+   "fbx": "fbx/props_batch3/h11_lock_keeper_hut.fbx",
+   "hole": "h11",
+   "pivot_hole_local": [
+    9,
+    0,
+    -10
+   ],
+   "pivot_world": [
+    159.0,
+    116.0,
+    -262.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope_props_md": [
+    5,
+    7,
+    5
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      6.5,
+      0,
+      -12.5
+     ],
+     [
+      11.5,
+      7,
+      -7.5
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h11_lock_keeper_hut",
+    "hole": "h11",
+    "fbx": "fbx/props_batch3/h11_lock_keeper_hut.fbx",
+    "anchor_local": [
+     9,
+     0,
+     -10
+    ],
+    "envelope": [
+     5,
+     7,
+     5
+    ],
+    "tris": 546,
+    "max_mesh_tris": 200,
+    "meshes": [
+     {
+      "mesh": "h11_lock_keeper_hut__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 72
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__Brick",
+      "material": "Brick",
+      "color": "#A8483A",
+      "roblox_material": "Brick",
+      "tris": 12
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 14
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 24
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 176
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 200
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 24
+     },
+     {
+      "mesh": "h11_lock_keeper_hut__Window",
+      "material": "Window",
+      "color": "#9FD8E8",
+      "roblox_material": "Glass",
+      "tris": 24
+     }
+    ],
+    "notes": [
+     "Gable ridge along z (front view triangle), overhang 0.35 west / 0.35 east (west eave stays at x 6.55 over rail9 outer face 6.5, 1.6 above its top). Chimney to 7.0, door + winch + barber-pole gauge on the south (tee) face."
+    ]
+   },
+   "notes": [
+    "Gable ridge along z (front view triangle), overhang 0.35 west / 0.35 east (west eave stays at x 6.55 over rail9 outer face 6.5, 1.6 above its top). Chimney to 7.0, door + winch + barber-pole gauge on the south (tee) face."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h12_intake_tower",
+   "fbx": "fbx/props_batch3/h12_intake_tower.fbx",
+   "hole": "h12",
+   "pivot_hole_local": [
+    6,
+    -1.2,
+    -38
+   ],
+   "pivot_world": [
+    -162.0,
+    114.8,
+    -264.0
+   ],
+   "yaw_deg": -90.0,
+   "envelope_props_md": [
+    7,
+    16,
+    7
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      2.5,
+      -1.2,
+      -41.5
+     ],
+     [
+      9.5,
+      14.8,
+      -34.5
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h12_intake_tower",
+    "hole": "h12",
+    "fbx": "fbx/props_batch3/h12_intake_tower.fbx",
+    "anchor_local": [
+     6,
+     -1.2,
+     -38
+    ],
+    "envelope": [
+     7,
+     16,
+     7
+    ],
+    "tris": 1242,
+    "max_mesh_tris": 492,
+    "meshes": [
+     {
+      "mesh": "h12_intake_tower__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 140
+     },
+     {
+      "mesh": "h12_intake_tower__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 492
+     },
+     {
+      "mesh": "h12_intake_tower__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 442
+     },
+     {
+      "mesh": "h12_intake_tower__Window",
+      "material": "Window",
+      "color": "#9FD8E8",
+      "roblox_material": "Glass",
+      "tris": 168
+     }
+    ],
+    "notes": [
+     "Round tapered tower r 3.1 -> 2.75 (d 6.2 at base, inside the d7 envelope and the 6x6 occluder footprint corners aside), peppermint bands, one window band (y 7..8.6), iron cornice, low peppermint-swirl dome to 14.75 (no spire). Base at y -1.2 (anchor, under the water surface)."
+    ]
+   },
+   "notes": [
+    "Round tapered tower r 3.1 -> 2.75 (d 6.2 at base, inside the d7 envelope and the 6x6 occluder footprint corners aside), peppermint bands, one window band (y 7..8.6), iron cornice, low peppermint-swirl dome to 14.75 (no spire). Base at y -1.2 (anchor, under the water surface)."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  }
+ ],
+ "revisions": [
+  "rev1 2026-10-12: h09_pump_house candy roof-eave trim + striped stack + mushroom vent (Game Art Bot). rev0 backup in _src/props_batch3/_backup_rev0_20261012/"
+ ]
+}

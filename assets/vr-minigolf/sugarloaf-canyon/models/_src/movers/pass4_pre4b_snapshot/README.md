@@ -1,0 +1,1 @@
+SRV-132 pass 4: see movers_pass4_summary.md. Source of truth in/holes.json (p8). 18 exports (H6, H11 p8 retune, H7/H9/H14/H17 movers and comfort pieces, dam crest), validated certificate fitcheck_movers_pass4_validated.txt, 10.7 s H11 motion.lua, FINAL Cycles OptiX previews in previews/cycles/pass4.

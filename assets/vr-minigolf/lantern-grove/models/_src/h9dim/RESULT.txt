@@ -1,0 +1,5 @@
+OK (with preview caveat) - 14/14 *_h9dim.fbx written; report: all dims_match=true, all "dimmed" non-empty (Glow / Firefly / ShroomGlow).
+Script fix (h9dim.py rename loop): iterate list(bpy.data.objects) and skip names already containing _h9dim. In Blender 5.2, renaming while iterating re-sorted bpy.data, so names were renamed many times and hashed (e.g. tee_sign_h09_h9dim_h9dim..._3607ec9), which made dims_match false. No other API fixes were needed (EEVEE/compositor ran fine).
+Verified by reimporting the exported FBX: Glow base/emission sRGB x0.7 (lin 1.0->0.448), strength 4.0->2.8; Firefly 8->5.6; ShroomGlow 6->4.2. Other materials unchanged.
+Preview_raw.png exists. glowing_mushrooms is visibly dimmer in the bottom row (mean -11%). The lantern props look the same in both rows (mean ratio ~1.00): their Glow mesh sits inside the opaque, undimmed Paper shell, so the dim can't be seen in this render.
+Log: C:\lg_h9dim\blender.log. Nothing outside C:\lg_h9dim was touched; one Blender run at a time.

@@ -1,0 +1,272 @@
+{
+ "h16_sinkhole_rim": {
+  "tris": 852,
+  "parts": [
+   {
+    "object": "h16_sinkhole_rim__CrystalAmber",
+    "mats": [
+     "CrystalAmber"
+    ],
+    "tris": 48
+   },
+   {
+    "object": "h16_sinkhole_rim__CrystalPink",
+    "mats": [
+     "CrystalPink"
+    ],
+    "tris": 48
+   },
+   {
+    "object": "h16_sinkhole_rim__GeodeRim",
+    "mats": [
+     "GeodeRim"
+    ],
+    "tris": 32
+   },
+   {
+    "object": "h16_sinkhole_rim__PepRed",
+    "mats": [
+     "PepRed"
+    ],
+    "tris": 72
+   },
+   {
+    "object": "h16_sinkhole_rim__Rope",
+    "mats": [
+     "Rope"
+    ],
+    "tris": 580
+   },
+   {
+    "object": "h16_sinkhole_rim__Timber",
+    "mats": [
+     "Timber"
+    ],
+    "tris": 72
+   }
+  ],
+  "pivot_hole_local": [
+   0.0,
+   0,
+   -16.2
+  ],
+  "pivot_world": [
+   -300.0,
+   190.0,
+   128.2
+  ],
+  "yaw_deg": 180.0,
+  "placement": "unchanged (holes.json h16 sinkhole_rim anchor)",
+  "sources": {
+   "crystals": "fbx/props_batch4/h16_sinkhole_rim.fbx __CrystalGlow (the 12 crystals in Studio, geometry unchanged)",
+   "rest": "fbx/fix_zfight6/h16_sinkhole_rim.fbx (approved GeodeRim frame, PepRed, Rope, Timber, unchanged)"
+  },
+  "materials": {
+   "CrystalPink": {
+    "color": "#FF6FA8",
+    "roblox_material": "Neon",
+    "crystals": "6 larger (0.45 wide) at 0,90,145,215,235,305 deg"
+   },
+   "CrystalAmber": {
+    "color": "#FFB347",
+    "roblox_material": "Neon",
+    "crystals": "6 smaller (0.35 wide) at 35,55,125,180,270,325 deg"
+   },
+   "GeodeRim": "Rock #C8463F (not Neon)",
+   "PepRed": "SmoothPlastic #D9343A",
+   "Rope": "Fabric #C9A86A",
+   "Timber": "WoodPlanks #8A5A33"
+  },
+  "color_split_rationale": "No explicit per-crystal spec found: h16-notes says crystals glow pink; course.md palette has Rock candy #FF6FA8 + Rock candy 2 amber #FFB347; concept shows pink-dominant crystals with amber accents -> big crystals pink, small crystals amber.",
+  "collision": false,
+  "query": false,
+  "touch": false,
+  "fbx": "fbx/h16_rim_2slot_c/h16_sinkhole_rim.fbx",
+  "sha256": "92dc60ceb01270c2ba1ffeb8f759da1da31942ed078cec101c0488dbc6b09549",
+  "variant_of": "fbx/h16_rim_2slot_b/h16_sinkhole_rim.fbx (untouched)",
+  "change": "All 12 crystals pushed radially outward (0.22-0.70) so no crystal vertex is inside plan radius 1.10 of the hole centre (min 1.110). Outside r 1.10 the felt deck (opening |x|,|z|<1.2, felt y 0..-0.4) is above them, so all were lowered to top y -0.556 (>=0.15 under the felt underside). Crystal shapes, sizes, colours and the 6 pink / 6 amber split are unchanged. Frame, rope, posts and PepRed are byte-identical geometry to 2slot_b; frame bottom (rim height) is 0.167.",
+  "materials_fbx_check": {
+   "CrystalPink": "diffuse 1.000,0.435,0.659 = #FF6FA8 (Neon in Studio)",
+   "CrystalAmber": "diffuse 1.000,0.702,0.278 = #FFB347 (Neon in Studio)",
+   "GeodeRim": "frame slot GeodeRim, diffuse 0.784,0.275,0.247 = #C8463F -> Studio material Rock, NOT Neon"
+  },
+  "per_crystal": [
+   {
+    "mat": "CrystalAmber",
+    "angle": 124.7,
+    "outward": 0.22,
+    "dy": -0.591,
+    "rmin": 1.11,
+    "y": [
+     -0.939,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": 55.3,
+    "outward": 0.22,
+    "dy": -0.591,
+    "rmin": 1.11,
+    "y": [
+     -0.939,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": -90.0,
+    "outward": 0.434,
+    "dy": -0.591,
+    "rmin": 1.11,
+    "y": [
+     -0.939,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": -34.7,
+    "outward": 0.22,
+    "dy": -0.591,
+    "rmin": 1.11,
+    "y": [
+     -0.939,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": 34.7,
+    "outward": 0.22,
+    "dy": -0.591,
+    "rmin": 1.11,
+    "y": [
+     -0.939,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": 180.0,
+    "outward": 0.434,
+    "dy": -0.591,
+    "rmin": 1.11,
+    "y": [
+     -0.939,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": 90.0,
+    "outward": 0.546,
+    "dy": -0.652,
+    "rmin": 1.11,
+    "y": [
+     -1.054,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": -124.7,
+    "outward": 0.32,
+    "dy": -0.652,
+    "rmin": 1.11,
+    "y": [
+     -1.054,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": -55.3,
+    "outward": 0.32,
+    "dy": -0.602,
+    "rmin": 1.11,
+    "y": [
+     -1.054,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": 0.0,
+    "outward": 0.546,
+    "dy": -0.652,
+    "rmin": 1.11,
+    "y": [
+     -1.054,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": -145.3,
+    "outward": 0.7,
+    "dy": -0.552,
+    "rmin": 1.11,
+    "y": [
+     -1.054,
+     -0.556
+    ]
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": 145.3,
+    "outward": 0.32,
+    "dy": -0.602,
+    "rmin": 1.11,
+    "y": [
+     -1.054,
+     -0.556
+    ]
+   }
+  ],
+  "min_crystal_plan_radius": 1.11,
+  "checks_reimport": {
+   "all": {
+    "tris": 852,
+    "verts": 554,
+    "parts": 65,
+    "min_thickness": 0.206,
+    "thin_parts": 0,
+    "intersecting_pairs": 0,
+    "stacked_lt_0.08": 0,
+    "min_gap": 0.086,
+    "coplanar_tri_pairs": 0,
+    "rail": 0.16,
+    "felt": 0.156
+   },
+   "crystals_only": {
+    "min_thickness": 0.2121,
+    "thin_parts": 0,
+    "felt": 0.156,
+    "rail": 2.4595,
+    "min_gap": 0.1398,
+    "intersecting_pairs": 0,
+    "coplanar_tri_pairs": 0
+   },
+   "crystal_count": 12,
+   "min_crystal_plan_radius": 1.11,
+   "gap_crystal_frame": 0.723,
+   "gap_crystal_posts": 5.971,
+   "gap_post_frame": 5.623,
+   "frame_rope_posts_unchanged_vs_b": true,
+   "frame_bottom_y": 0.167,
+   "silhouette_vs_b": {
+    "front": 0.5784,
+    "side": 0.8318,
+    "top": 0.8244,
+    "bbox_delta_max": 0.552
+   }
+  },
+  "previews": [
+   "preview_topdown.png",
+   "preview_close.png",
+   "preview_wide.png",
+   "silhouette_sheet_b_vs_c.png"
+  ]
+ }
+}

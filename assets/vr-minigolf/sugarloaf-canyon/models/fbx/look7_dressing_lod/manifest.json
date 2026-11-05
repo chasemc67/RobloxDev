@@ -1,0 +1,189 @@
+{
+ "generated": "2026-10-14",
+ "purpose": "v49 item 3: low-detail versions for Look7 dressing instances >~60 studs from the tee",
+ "sheet": "silhouettes_src_vs_lod.png",
+ "rules": "same pivot (FBX origin untouched), same material slots, every part watertight-as-source, thickness>=0.2, part gaps>=0.083, 0 coplanar, bottoms keep source sink depth, collision off",
+ "props": {
+  "gumdrop_shrub_a_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/gumdrop_shrub_a_v2_lod.fbx",
+   "sha256": "e66a66ebf1abb263fa1fe279a409c80df451be815e4b2a1efd6a80ded6e8d1cc",
+   "source": "fbx/look7_dressing/gumdrop_shrub_a_v2.fbx",
+   "tris_source": 1738,
+   "tris_lod": 770,
+   "ratio": 0.443,
+   "min_thickness": 0.202,
+   "min_gap": 0.087,
+   "coplanar": 0,
+   "slots": [
+    "GumCherry",
+    "GumLemon",
+    "GumLime",
+    "Scrub"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "lollipop_cactus_a_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/lollipop_cactus_a_v2_lod.fbx",
+   "sha256": "e043b1394552c77c0c07411bbe3b993bf6c0795e21bf7b687d27b168aa765c18",
+   "source": "fbx/look7_dressing/lollipop_cactus_a_v2.fbx",
+   "tris_source": 2604,
+   "tris_lod": 1679,
+   "ratio": 0.645,
+   "min_thickness": 0.2,
+   "min_gap": 0.086,
+   "coplanar": 0,
+   "slots": [
+    "Bubblegum",
+    "Cactus",
+    "GumCherry",
+    "GumLemon",
+    "GumLime",
+    "MintWhite"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "gumdrop_shrub_c_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/gumdrop_shrub_c_v2_lod.fbx",
+   "sha256": "08c25d48f7f456fef6f81408867dc05e06be3897cc461c5244215f5c9401c2a1",
+   "source": "fbx/look7_dressing/gumdrop_shrub_c_v2.fbx",
+   "tris_source": 916,
+   "tris_lod": 304,
+   "ratio": 0.332,
+   "min_thickness": 0.228,
+   "min_gap": 0.095,
+   "coplanar": 0,
+   "slots": [
+    "GumCherry",
+    "GumLemon",
+    "GumLime",
+    "Scrub"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "barrel_b_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/barrel_b_v2_lod.fbx",
+   "sha256": "6a2e33fb018b621c168231eede37f01fbb963dce3cb0482c773dcf64ccce2e30",
+   "source": "fbx/look7_dressing/barrel_b_v2.fbx",
+   "tris_source": 1570,
+   "tris_lod": 1138,
+   "ratio": 0.725,
+   "min_thickness": 0.202,
+   "min_gap": 0.086,
+   "coplanar": 0,
+   "slots": [
+    "Brass",
+    "Bubblegum",
+    "GumCherry",
+    "GumLemon",
+    "GumLime",
+    "Iron",
+    "Timber",
+    "TimberWeathered"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "scrub_a_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/scrub_a_v2_lod.fbx",
+   "sha256": "1a24475bc9fd159ea21477aa322ac4220c17ce18ddbc0248d6936ad93a36f782",
+   "source": "fbx/look7_dressing/scrub_a_v2.fbx",
+   "tris_source": 352,
+   "tris_lod": 108,
+   "ratio": 0.307,
+   "min_thickness": 0.593,
+   "min_gap": 0.103,
+   "coplanar": 0,
+   "slots": [
+    "Scrub"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "rock_candy_cluster_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/rock_candy_cluster_v2_lod.fbx",
+   "sha256": "c52b3a4b8755288e1d1ca05a95652ca2efc9aa8a23f1284ced0aa2189b33f35c",
+   "source": "fbx/look7_dressing/rock_candy_cluster_v2.fbx",
+   "tris_source": 770,
+   "tris_lod": 270,
+   "ratio": 0.351,
+   "min_thickness": 0.252,
+   "min_gap": 0.088,
+   "coplanar": 0,
+   "slots": [
+    "CandyAmber",
+    "CandyCore",
+    "CandyPink",
+    "Strata"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "crystal_cluster_a_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/crystal_cluster_a_v2_lod.fbx",
+   "sha256": "cd558c2c6abb55130864bea304e58013701ab0d2552e46893b0046fd05b2807b",
+   "source": "fbx/look7_dressing/crystal_cluster_a_v2.fbx",
+   "tris_source": 838,
+   "tris_lod": 294,
+   "ratio": 0.351,
+   "min_thickness": 0.285,
+   "min_gap": 0.087,
+   "coplanar": 0,
+   "slots": [
+    "CandyAmber",
+    "CandyCore",
+    "CandyPink",
+    "Strata"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "crystal_cluster_b_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/crystal_cluster_b_v2_lod.fbx",
+   "sha256": "a000be4a908ea8405ce571735b3918aabe1d644dfbbe2166c6d8ab53ab7705e2",
+   "source": "fbx/look7_dressing/crystal_cluster_b_v2.fbx",
+   "tris_source": 1110,
+   "tris_lod": 458,
+   "ratio": 0.413,
+   "min_thickness": 0.38,
+   "min_gap": 0.086,
+   "coplanar": 0,
+   "slots": [
+    "CandyAmber",
+    "CandyCore",
+    "CandyPink",
+    "Strata"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  },
+  "barrel_a_v2_lod": {
+   "fbx": "fbx/look7_dressing_lod/barrel_a_v2_lod.fbx",
+   "sha256": "9ff1aa4ab7413d0f506b780e5207c30f7a35babe614683022329b8e23fcf3d9e",
+   "source": "fbx/look7_dressing/barrel_a_v2.fbx",
+   "tris_source": 358,
+   "tris_lod": 294,
+   "ratio": 0.821,
+   "min_thickness": 0.206,
+   "min_gap": 0.086,
+   "coplanar": 0,
+   "slots": [
+    "Brass",
+    "Iron",
+    "Timber",
+    "TimberWeathered"
+   ],
+   "reimport_tris_match": true,
+   "collision": false
+  }
+ },
+ "h1_tee_estimate_M": {
+  "v49fix_no_lod": 1.35,
+  "v49fix_with_lod": 1.11,
+  "with_lod_plus_thin60": 1.077,
+  "target": 0.9,
+  "met": false
+ }
+}

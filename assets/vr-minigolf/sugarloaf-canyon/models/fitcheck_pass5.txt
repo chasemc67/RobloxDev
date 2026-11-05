@@ -1,0 +1,54 @@
+Sugarloaf Canyon pass 5 fit check vs holes.json @ 0.15 studs  (2026-10-12 09:54)
+holes.json: 18 holes (source of truth; world_offset/world_yaw, world = R_y(yaw)*local + offset)
+layout.json: 820 instances + 2 gondola cabin sweeps; 1049406 triangles tested (tri cache verified against manifest tris + bbox for all placed pieces; gondola_cable/cabin freshly cached)
+
+[1] hole play volumes (felt+column, walls/bumpers, cup+flag, tee, drops, hazards, moving sweeps, teleports)
+  PASS H1  Trailhead Gate            13 volumes; nearest geometry none within 1 stud
+  PASS H2  Mine-Cart Junction        35 volumes; nearest geometry none within 1 stud
+  PASS H3  Ranger's Riverbend        23 volumes; nearest geometry none within 1 stud
+  PASS H4  Crystal Corridor          15 volumes; nearest geometry none within 1 stud
+  PASS H5  Echo Slot                 38 volumes; nearest geometry none within 1 stud
+  PASS H6  Flash Flood              465 volumes; nearest geometry none within 1 stud
+  PASS H7  Rope Bridge Run           28 volumes; nearest geometry none within 1 stud
+  PASS H8  Gumdrop Gulch             43 volumes; nearest geometry none within 1 stud
+  PASS H9  Lollipop Windmill      17356 volumes; nearest geometry none within 1 stud
+  PASS H10 Sluice Chute              22 volumes; nearest geometry none within 1 stud
+  PASS H11 Floodgate Lock           356 volumes; nearest geometry none within 1 stud
+  PASS H12 Intake Tower              27 volumes; nearest geometry none within 1 stud
+  PASS H13 Hoodoo Maze               32 volumes; nearest geometry none within 1 stud
+  PASS H14 Ore Bucket Swing        1113 volumes; nearest geometry none within 1 stud
+  PASS H15 Sugar Dune                21 volumes; nearest geometry none within 1 stud
+  PASS H16 Sinkhole Drop             20 volumes; nearest geometry none within 1 stud
+  PASS H17 Sundial                 1509 volumes; nearest geometry none within 1 stud
+  PASS H18 Sunset Arch               33 volumes; nearest geometry none within 1 stud
+
+[A] hole footprints (sc_fitcheck rule): every triangle >= 2.0 studs (XZ) from every world.json footprint_bbox. Gondola line (cable, tower, cabin sweep): triangles whose lowest point is more than 8 studs above the hole's tee/origin y are overflight (judged by the 3D play-column test in [1]) and listed as INFO.
+  PASS H1  Trailhead Gate       nearest ground piece walk_boardwalk_6x12 at 2.24  [INFO gondola_cable overflight 12 tris, lowest 36.5 above origin y; gondola_cabin(sweep) overflight 2592 tris, lowest 31.5 above origin y]
+  PASS H2  Mine-Cart Junction   nearest ground piece walk_boardwalk_6x12 at 2.17
+  PASS H3  Ranger's Riverbend   nearest ground piece ranger_footbridge at 2.90
+  PASS H4  Crystal Corridor     nearest ground piece narrows_crystals at 6.40
+  PASS H5  Echo Slot            nearest ground piece landing_6x4 at 2.10
+  PASS H6  Flash Flood          nearest ground piece landing_6x4 at 5.42
+  PASS H7  Rope Bridge Run      nearest ground piece cliff_w24_h24_p0 at 3.97
+  PASS H8  Gumdrop Gulch        nearest ground piece cacti_taffy_north at 9.04
+  PASS H9  Lollipop Windmill    nearest ground piece scatter_taffy_mesa at 13.66
+  PASS H10 Sluice Chute         nearest ground piece landing_6x4 at 3.16
+  PASS H11 Floodgate Lock       nearest ground piece cliff_w24_h48_p2 at 2.65
+  PASS H12 Intake Tower         nearest ground piece scatter_dam at 11.35
+  PASS H13 Hoodoo Maze          nearest ground piece scatter_hoodoo_garden at 9.10
+  PASS H14 Ore Bucket Swing     nearest ground piece hoodoos_mid at 11.11
+  PASS H15 Sugar Dune           nearest ground piece scatter_hoodoo_garden at 9.75
+  PASS H16 Sinkhole Drop        nearest ground piece landing_6x4 at 4.11
+  PASS H17 Sundial              nearest ground piece scatter_crown at 4.86  [INFO gondola_cable overflight 84 tris, lowest 14.5 above origin y; gondola_cabin(sweep) overflight 16984 tris, lowest 9.5 above origin y; gondola_cabin(sweep) overflight 22790 tris, lowest 8.9 above origin y]
+  PASS H18 Sunset Arch          nearest ground piece cliff_w24_h48_p5 at 5.01
+
+[B] walkways: nothing between walk y + 0.5 and walk y + 8.0 over the full walkway width (floor kit exempt; last 6.0 studs before a lift/gondola boarding point exempt), incl. gondola cable + cabin sweep
+  FAIL p_h11_h12 seg 4 (walk): railing_12#38@[93.0, 116.0, -311.2] (36 tris, lowest -0.20)
+  FAIL p_h11_h12 seg 5 (walk): railing_12#38@[93.0, 116.0, -311.2] (240 tris, lowest -0.20); railing_12#39@[79.5, 116.0, -310.5] (244 tris, lowest -0.20); railing_12#40@[66.0, 116.0, -309.7] (244 tris, lowest -0.20); railing_12#41@[52.5, 116.0, -309.0] (240 tris, lowest -0.20)
+  FAIL p_h11_h12 seg 6 (dam_crest): peppermint_dam#2@[0.0, 17.0, -305.0] (16 tris, lowest +0.00); railing_12#41@[52.5, 116.0, -309.0] (36 tris, lowest -0.20); railing_12#42@[-52.9, 116.0, -308.4] (8 tris, lowest -0.20)
+  FAIL p_h11_h12 seg 7 (walk): railing_12#42@[-52.9, 116.0, -308.4] (240 tris, lowest -0.20); railing_12#43@[-66.4, 116.0, -307.9] (244 tris, lowest -0.20); railing_12#44@[-79.9, 116.0, -307.4] (244 tris, lowest -0.20); railing_12#45@[-93.4, 116.0, -306.9] (242 tris, lowest -0.20)
+  FAIL p_h11_h12 seg 8 (walk): railing_12#45@[-93.4, 116.0, -306.9] (8 tris, lowest -0.20)
+  FAIL p_h18_hub seg 3 (walk): gondola_cable#818@[130.4, 25.6, 542.8] (12 tris, lowest +7.45); gondola_cabin SWEEP up_line (726 positions, yaw 53.53) (2239 tris, lowest +2.92); gondola_cabin SWEEP down_line (726 positions, yaw 233.53) (2179 tris, lowest +2.92)
+  FAIL: 77 walkway segments checked, 6 with intrusions; lowest overhead geometry 8.01 studs (gondola_cabin(sweep) over p_h18_hub seg 3)
+
+RESULT: 6 FAIL  (6s)

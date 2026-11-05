@@ -1,0 +1,84 @@
+{
+ "name": "bw_tee_mat",
+ "group": "green",
+ "fbx": "fbx/bw_tee_mat.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Flat fringe-green mat 2x0.1x2 (12 tris).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  2.0,
+  0.1,
+  2.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  0.05,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -1.0,
+  0.0,
+  -1.0
+ ],
+ "bbox_max_roblox": [
+  1.0,
+  0.1,
+  1.0
+ ],
+ "target_size_studs": [
+  2,
+  0.1,
+  2
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 12,
+ "tris_max": 20,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_tee_mat__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 12,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.0,
+    0.1,
+    2.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    0.05,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    0.05,
+    -0.0
+   ],
+   "size": [
+    2.0,
+    0.1,
+    2.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

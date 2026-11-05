@@ -1,0 +1,76 @@
+{
+ "parts": [
+  {
+   "id": "h09_pump_house",
+   "hole": "h09",
+   "fbx": "fbx/props_batch3/h09_pump_house.fbx",
+   "anchor_local": [
+    -3,
+    0,
+    -21
+   ],
+   "envelope": [
+    16,
+    8,
+    6
+   ],
+   "tris": 844,
+   "max_mesh_tris": 316,
+   "meshes": [
+    {
+     "mesh": "h09_pump_house__Brass",
+     "material": "Brass",
+     "color": "#C9973A",
+     "roblox_material": "Metal",
+     "tris": 96
+    },
+    {
+     "mesh": "h09_pump_house__Bubblegum",
+     "material": "Bubblegum",
+     "color": "#F78FB3",
+     "roblox_material": "SmoothPlastic",
+     "tris": 144
+    },
+    {
+     "mesh": "h09_pump_house__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 80
+    },
+    {
+     "mesh": "h09_pump_house__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 316
+    },
+    {
+     "mesh": "h09_pump_house__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 100
+    },
+    {
+     "mesh": "h09_pump_house__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 60
+    },
+    {
+     "mesh": "h09_pump_house__Window",
+     "material": "Window",
+     "color": "#9FD8E8",
+     "roblox_material": "Glass",
+     "tris": 48
+    }
+   ],
+   "notes": [
+    "rev1: white/bubblegum candy trim blocks along the south roof eave (on the roof, z -18.11..-18.61, top <= 6.3, behind the rotor sweep), candy-striped stack r 0.35 at x 5.6 to 7.97 with iron cap, iron mushroom vent with brass cap at x -4 to 7.42; all inside the 8-tall occluder envelope.",
+    "Built to the two holes.json occluders (x -6..8) rather than the props.md envelope (16 wide centred at x -3 -> -11..5, which would cut the east half that the anchor note and occluder put at x 1.2..8). Tunnel x -1.2..1.2 is covered (portal 3 tall): the 8-overhead rule is waived for the tunnel felt by design. Body sits on the 1.0-tall rock walls from y 1.1; lean-to roof 6 (south) -> 8 (north); bearing stops at z -18.05, behind the rotor sweep."
+   ]
+  }
+ ]
+}

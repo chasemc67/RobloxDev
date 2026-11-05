@@ -1,0 +1,7 @@
+#!/bin/bash
+# usage: run.sh hNN [suffix] [extra]
+cd /workspace/RobloxDev/assets/vr-minigolf/aurora-archipelago
+h=$1; s=${2:-}; extra=${3:-}
+g=$(python3 -c "import json;d=json.load(open('holes.json'));hs=d['holes'] if isinstance(d,dict) else d;h=[x for x in hs if x['id']=='$h'][0];print(h['name']+': '+h['gimmick'])")
+P="Paint-over of image 1, a grey/green 3D blockout render seen from the tee at VR eye height. KEEP THE GEOMETRY AND CAMERA EXACTLY: same camera angle, horizon line, lane, rails, green, cup position, every wall and the moving part in the same place, size and silhouette. Do not add, remove, move or resize any course element; do not add obstacles on the playing surface. Only restyle surfaces, lighting and the sky/background. Hole $g. Style: Aurora Archipelago, cosy stylized low-poly night snow globe: snow-felt putting surface in soft mint-green felt with snow edges, warm timber and brass rails, red moving part repainted as the themed mechanism in timber, brass and glowing ice (keep its exact shape), pink sweep volume and cup ring removed and replaced by clean felt, tall flag in the cup. Background: floating slate-violet rock islands with snow caps, glowing ice crystals, frozen waterfalls, green and violet aurora ribbons overhead in a deep twilight sky, soft lilac cloud sea below, brass lanterns. Image 2 is the style reference only, not the layout. $extra"
+/workspace/gameart/tools/gen-image.mjs --ref previews/blockout/${h}_tee.png --ref ${h}-concept.png --long 1536 --prompt "$P" --out paintover/${h}_paint${s}.png

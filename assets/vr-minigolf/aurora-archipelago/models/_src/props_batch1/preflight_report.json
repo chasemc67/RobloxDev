@@ -1,0 +1,49 @@
+﻿{
+  "source_md5": "20c4e3f92f8100bfb9da07732e622199",
+  "h05_steamwhistle_geyser": {
+    "status": "FAIL",
+    "anchor": [
+      -10.5,
+      4.0,
+      -33.0
+    ],
+    "upper_felt_x": [
+      -12.5,
+      12.5
+    ],
+    "upper_felt_z": [
+      -55.5,
+      -28.0
+    ],
+    "forbidden_y_open_interval": [
+      4,
+      12
+    ],
+    "occluder_x": [
+      -13.0,
+      -8.0
+    ],
+    "occluder_z": [
+      -35.5,
+      -30.5
+    ],
+    "occluder_y": [
+      4,
+      11
+    ],
+    "occluder_felt_overlap_xz": [
+      4.5,
+      5.0
+    ],
+    "reason": "Required static cone occupies upper felt head-clearance volume."
+  },
+  "h01_snow_boulder": {
+    "status": "FAIL",
+    "nearest_other_wall": "rail1",
+    "exact_footprint_west_x": -3.4213203435596427,
+    "clearance_studs": 0.07867965644035735,
+    "required_studs": 0.1,
+    "reason": "Exact collider-covering base cannot meet clearance from another rail."
+  },
+  "all_pass": false
+}

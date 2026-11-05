@@ -1,0 +1,62 @@
+Both walls are fixed. H11 floe-to-wall is now 0.150 and H12 wheel-to-wall is 0.060 through the full motion. Sim, timing and physics tests all pass, and nothing in `models/` was touched.
+
+**Why `check_clearance.py` missed them, and the fix:** the fitcheck measures the modelled meshes, but our check only measured the colliders.
+- **H11:** the floe colliders are 1.0 tall, but the floe mesh (with snow and the snowpuff) reaches 1.12. The lintel above the slot starts at 1.17, so the real gap is 0.05. The check now also tests the floe extended up to 1.12 against every wall, including the cut pieces of the split rails.
+- **H12:** the paddles sit 0.05 from the stern walls at every angle, and the check never compared the wheel to walls. It does now, over a full turn, with a 0.06 target. The report also gives the floe offset or wheel angle at each minimum.
+
+**Clearances before → after** (from `tools/out/clearance-prewalls.txt` and `clearance-walls.txt`):
+
+| Hole | Measured against | Before | After | Target |
+|---|---|---|---|---|
+| H11 floe mesh (top 1.12) | lintels `rail5__cut1`, `berg18__cut1` | **0.050** | **0.150** | ≥ 0.15 |
+| H11 floe collider | sill `__cut0`, pocket walls | 0.150 / 0.152 | 0.150 / 0.152 | ≥ 0.15 |
+| H12 paddle_wheel | `rail2`, `rail3`, `hull13`, `hull18` | **0.050** | **0.060** | ≥ 0.06 |
+| H5, H17 walls; H12, H14 felt | unchanged | 0.150, 0.150, 0.060, 0.061 | same | |
+
+**Wall positions, old → new** (centre [x, y, z] / size):
+
+*H11: the slot's lintel underside goes from y 1.17 to 1.27 in `rail5` and `berg18`*
+- `rail5__cut1` [-3.25, 1.785, -30] / height 1.23 → [-3.25, 1.835, -30] / 1.13
+- `berg18__cut1` [3.25, 1.785, -30] / 1.23 → [3.25, 1.835, -30] / 1.13
+- `rail5__cut2`, `berg18__cut2` (at z -31.235) and `rail5__cut3`, `berg18__cut3` (at z -26.765): y 0.51 → 0.56, height 1.32 → 1.42
+
+Only the part above the ball changed; a 0.16 ball on the felt never gets near y 1.17.
+
+*H12: the stern wall line moves from z -18 to -18.01*
+- `rail2` [-2.85, 0.25, -18.25] → z -18.26
+- `hull13` [4.6, 0.25, -18.25] → z -18.26
+- `rail3` [-1.45, 0.25, -21] / length 6 → z -21.005 / 5.99
+- `hull18` [1.45, 0.25, -21] / length 6 → z -21.005 / 5.99
+- `rail1` [-4.25, 0.25, -8] / length 21 → z -8.005 / 21.01 (moves with the shared corner)
+- `hull14` [7.75, 0.25, -26] / length 16 → z -26.005 / 15.99 (moves with the shared corner)
+
+The felt is unchanged. The new 0.01 strip between the felt edge and the wall is much narrower than the ball (radius 0.08), so nothing can enter it.
+
+Diffing against the snapshot (`tools/out/holes-clear-prewalls.json`) confirms nothing else in `holes.json` changed, and it parses (18 holes).
+
+**Block rates** (intended line, Studio estimate, 96 phases):
+- **H11:** 45.8%, same as before.
+- **H12:** 37.5%, same as before.
+- **Timing fuzz** (100k shots each): 0 traps, soft-locks, escapes, timeouts or pinned balls.
+- **Ace lines** (for info): 43.8% and 20.8% blocked.
+
+**Sim results** (2000 plays per skill, 60k fuzz):
+
+| Hole | Good avg / hole-in-one | Average avg / hole-in-one | Ace search hits | Validator / fuzz escapes | Summary |
+|---|---|---|---|---|---|
+| H11 | 2.83 / 3.4% (was 2.83 / 3.4%) | 3.84 / 0% (was 3.84) | 190 (was 190) | 0 / 0 | OK |
+| H12 | 2.81 / 3.5% (was 2.80 / 3.5%) | 4.28 / 0% (was 4.27) | 172 (was 172) | 0 / 0 | OK |
+
+`test_physics.py` passes. The previous round's fuzz was 100k, so the "before" numbers aren't from the same fuzz size.
+
+**Other files updated:**
+- `h11-layout.png`, `h12-layout.png` and both notes files. The notes only changed in the lintel number and the H12 play stats.
+- `props.md` / `props-full.md`: only the changed numbers.
+- `playtest-log.md`: Round 4 is appended with the before/after tables and builder and modeler actions.
+- `tools/README.md`: one line about the new checks.
+
+**For 3D Model Bot:**
+- **H11:** the floe mesh top must stay at or below 1.12 to keep the 0.15 gap. Their fitcheck still assumes a lintel at 1.17 and needs updating to 1.27.
+- **H12:** the icebreaker stern faces move to z -18.01.
+
+Nothing has been committed.

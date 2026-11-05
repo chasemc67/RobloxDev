@@ -1,0 +1,136 @@
+{
+ "name": "bw_birdie_bites_shack",
+ "group": "social",
+ "fbx": "fbx/bw_birdie_bites_shack.fbx",
+ "front": "-Z (Roblox, north) = Blender +Y",
+ "notes": "Built in its own frame: W 16 (X) x H 14 x D 18 (Z). Counter, striped awning, menu board and candy props are on the local -Z (north) side so that yaw 90 puts the counter on the WEST (lobby.json counterFaces). Candy props are merged into the BW_Atlas mesh; 2 Neon lanterns flank the window.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.1,
+  0.013
+ ],
+ "bbox_size_studs": [
+  16.0,
+  14.217,
+  17.8
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  7.109,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -8.0,
+  0.0,
+  -8.9
+ ],
+ "bbox_max_roblox": [
+  8.0,
+  14.217,
+  8.9
+ ],
+ "target_size_studs": [
+  16,
+  14,
+  18
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.016,
+  0.989
+ ],
+ "triangles": 3754,
+ "tris_max": 12000,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_birdie_bites_shack__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 3694,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    16.0,
+    14.217,
+    17.8
+   ],
+   "center_from_pivot": [
+    0.0,
+    7.109,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "bw_birdie_bites_shack__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 56,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    12.1,
+    0.8,
+    0.7
+   ],
+   "center_from_pivot": [
+    0.0,
+    6.863,
+    -5.75
+   ]
+  },
+  {
+   "mesh": "menu_face",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    1.8,
+    2.5,
+    0.35
+   ],
+   "center_from_pivot": [
+    -6.4,
+    2.613,
+    -8.045
+   ]
+  },
+  {
+   "mesh": "sign_face",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    7.8,
+    1.5,
+    0.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    10.613,
+    -5.4
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    7.109,
+    -0.0
+   ],
+   "size": [
+    16.0,
+    14.217,
+    17.8
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

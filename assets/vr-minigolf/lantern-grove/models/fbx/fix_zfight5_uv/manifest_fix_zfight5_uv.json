@@ -1,0 +1,39 @@
+{
+ "generated": "2026-10-15 ~11:40 PT",
+ "status": "NEW - UV pass on fix_zfight4 (approval of fix_zfight4 itself was unconfirmed in the notes)",
+ "built_on": "Windows PC, Blender 5.2 headless via Claude Code (claude-opus-5-5), schtask 3dmb_lg_j3 (deleted); script /workspace/sc/ph4/uv_disc.py",
+ "props": {
+  "h5_respawn_stone": {
+   "fbx": "fbx/fix_zfight5_uv/h5_respawn_stone.fbx",
+   "sha256": "6c3f8936886f41661868096677dbc0837d18d5224945b67f2441061c09a052a4",
+   "source": {
+    "fbx": "fbx/fix_zfight4/h5_respawn_stone.fbx (untouched)",
+    "sha256": "9d68ec0d6dcf240001856c17c6310843dd5cf04ca5591fa86018350ef095f48e",
+    "had_uvs": false
+   },
+   "tris": 384,
+   "verts": 194,
+   "objects": [
+    "h5_respawn_stone__Slate (slots Slate, ShroomGlow, Moss - unchanged)"
+   ],
+   "geometry": "identical to fix_zfight4 (max vertex deviation 0.0, same face material indices); disc r 0.395, y 0.156-0.362 (0.206 thick, felt clearance 0.156, rail 1.354)",
+   "uv": {
+    "layer": "UVMap",
+    "top": "planar plan projection: u=0.5+x/0.79, v=0.5-z/0.79 (image top = -Z / north), disc fills the whole 0-1 square so the round art lands exactly on the disc; max error vs planar 7e-8",
+    "bottom": "same plan projection",
+    "rim": "48 side faces map to a radial band at r 0.47-0.49 of the image (inside the opaque disc edge, slate/moss colours)",
+    "range": "0..1 both axes"
+   },
+   "texture": "h05_disc_color.png (1024x1024, copy alongside; embedded in the FBX and wired to all 3 slots). In Studio set MeshPart.TextureID (or a SurfaceAppearance ColorMap) to h05_disc_color; optional glow: h05_disc_glow_mask.png in textures/h05_disc/",
+   "pivot": "centre, bottom 0.156 above the felt top (unchanged)",
+   "target_cframe": "H5 hole-local (0, 0, -13.5) yaw 0 = holes.json stream respawn point; LG holes.json H5 world_offset (96, -1, -10) -> world (96, -1, -23.5) (same placement as the current stone)",
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "previews": [
+    "preview_h5_respawn_stone_top.png",
+    "preview_h5_respawn_stone_close.png"
+   ]
+  }
+ }
+}

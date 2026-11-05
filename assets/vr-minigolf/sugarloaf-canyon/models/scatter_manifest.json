@@ -1,0 +1,862 @@
+{
+ "set": "scatter",
+ "date": "2026-10-12",
+ "fitcheck": "fitcheck_scatter.txt (ALL PASS)",
+ "source": "props.md Transport and scatter sizes + P3 rules",
+ "instances": "hand/procedural placement outside all collision and camera clearances; randomize scale 0.8-1.25 and yaw",
+ "parts": [
+  {
+   "id": "cactus_a",
+   "fbx": "fbx/scatter/cactus_a.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "cactus_a",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/cactus_a.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 152,
+    "max_mesh_tris": 48,
+    "meshes": [
+     {
+      "mesh": "cactus_a__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 28
+     },
+     {
+      "mesh": "cactus_a__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 48
+     },
+     {
+      "mesh": "cactus_a__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 48
+     },
+     {
+      "mesh": "cactus_a__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 28
+     }
+    ],
+    "notes": [
+     "Lollipop cactus, H 8.0 (x0.8..1.25 -> 6.4..10.0; spec 6-10), disc 3.0 dia"
+    ]
+   },
+   "notes": [
+    "Lollipop cactus, H 8.0 (x0.8..1.25 -> 6.4..10.0; spec 6-10), disc 3.0 dia"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "cactus_b",
+   "fbx": "fbx/scatter/cactus_b.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "cactus_b",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/cactus_b.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 248,
+    "max_mesh_tris": 92,
+    "meshes": [
+     {
+      "mesh": "cactus_b__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 92
+     },
+     {
+      "mesh": "cactus_b__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 52
+     },
+     {
+      "mesh": "cactus_b__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 76
+     },
+     {
+      "mesh": "cactus_b__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 28
+     }
+    ],
+    "notes": [
+     "Lollipop cactus, H 7.6 (x0.8..1.25 -> 6.1..9.5; spec 6-10), disc 3.0 dia"
+    ]
+   },
+   "notes": [
+    "Lollipop cactus, H 7.6 (x0.8..1.25 -> 6.1..9.5; spec 6-10), disc 3.0 dia"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "cactus_c",
+   "fbx": "fbx/scatter/cactus_c.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "cactus_c",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/cactus_c.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 248,
+    "max_mesh_tris": 92,
+    "meshes": [
+     {
+      "mesh": "cactus_c__Lemon",
+      "material": "Lemon",
+      "color": "#FFD84A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 92
+     },
+     {
+      "mesh": "cactus_c__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 52
+     },
+     {
+      "mesh": "cactus_c__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 28
+     },
+     {
+      "mesh": "cactus_c__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 48
+     },
+     {
+      "mesh": "cactus_c__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 28
+     }
+    ],
+    "notes": [
+     "Lollipop cactus, H 8.0 (x0.8..1.25 -> 6.4..10.0; spec 6-10), disc 3.0 dia"
+    ]
+   },
+   "notes": [
+    "Lollipop cactus, H 8.0 (x0.8..1.25 -> 6.4..10.0; spec 6-10), disc 3.0 dia"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "gumdrop_a",
+   "fbx": "fbx/scatter/gumdrop_a.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "gumdrop_a",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/gumdrop_a.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 206,
+    "max_mesh_tris": 142,
+    "meshes": [
+     {
+      "mesh": "gumdrop_a__Cherry",
+      "material": "Cherry",
+      "color": "#E8304A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 142
+     },
+     {
+      "mesh": "gumdrop_a__Sugar",
+      "material": "Sugar",
+      "color": "#FFF1F4",
+      "roblox_material": "Sand",
+      "tris": 64
+     }
+    ],
+    "notes": [
+     "Gumdrop, 2.0 dia (x0.8..1.25 -> 1.60..2.50; spec 1.5-3)"
+    ]
+   },
+   "notes": [
+    "Gumdrop, 2.0 dia (x0.8..1.25 -> 1.60..2.50; spec 1.5-3)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "gumdrop_b",
+   "fbx": "fbx/scatter/gumdrop_b.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "gumdrop_b",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/gumdrop_b.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 206,
+    "max_mesh_tris": 142,
+    "meshes": [
+     {
+      "mesh": "gumdrop_b__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 142
+     },
+     {
+      "mesh": "gumdrop_b__Sugar",
+      "material": "Sugar",
+      "color": "#FFF1F4",
+      "roblox_material": "Sand",
+      "tris": 64
+     }
+    ],
+    "notes": [
+     "Gumdrop, 2.2 dia (x0.8..1.25 -> 1.76..2.75; spec 1.5-3)"
+    ]
+   },
+   "notes": [
+    "Gumdrop, 2.2 dia (x0.8..1.25 -> 1.76..2.75; spec 1.5-3)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "gumdrop_c",
+   "fbx": "fbx/scatter/gumdrop_c.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "gumdrop_c",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/gumdrop_c.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 206,
+    "max_mesh_tris": 142,
+    "meshes": [
+     {
+      "mesh": "gumdrop_c__Lemon",
+      "material": "Lemon",
+      "color": "#FFD84A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 142
+     },
+     {
+      "mesh": "gumdrop_c__Sugar",
+      "material": "Sugar",
+      "color": "#FFF1F4",
+      "roblox_material": "Sand",
+      "tris": 64
+     }
+    ],
+    "notes": [
+     "Gumdrop, 2.3 dia (x0.8..1.25 -> 1.84..2.88; spec 1.5-3)"
+    ]
+   },
+   "notes": [
+    "Gumdrop, 2.3 dia (x0.8..1.25 -> 1.84..2.88; spec 1.5-3)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "ore_a",
+   "fbx": "fbx/scatter/ore_a.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "ore_a",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/ore_a.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 188,
+    "max_mesh_tris": 80,
+    "meshes": [
+     {
+      "mesh": "ore_a__CrystalGlow",
+      "material": "CrystalGlow",
+      "color": "#FF6FA8",
+      "roblox_material": "Neon",
+      "tris": 80
+     },
+     {
+      "mesh": "ore_a__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 36
+     },
+     {
+      "mesh": "ore_a__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 72
+     }
+    ],
+    "notes": [
+     "Ore cluster, 2.6 wide (x0.8..1.25 -> 2.08..3.25; spec 2-4)"
+    ]
+   },
+   "notes": [
+    "Ore cluster, 2.6 wide (x0.8..1.25 -> 2.08..3.25; spec 2-4)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "ore_b",
+   "fbx": "fbx/scatter/ore_b.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "ore_b",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/ore_b.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 188,
+    "max_mesh_tris": 80,
+    "meshes": [
+     {
+      "mesh": "ore_b__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 36
+     },
+     {
+      "mesh": "ore_b__Lemon",
+      "material": "Lemon",
+      "color": "#FFD84A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 80
+     },
+     {
+      "mesh": "ore_b__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 72
+     }
+    ],
+    "notes": [
+     "Ore cluster, 3.0 wide (x0.8..1.25 -> 2.40..3.75; spec 2-4)"
+    ]
+   },
+   "notes": [
+    "Ore cluster, 3.0 wide (x0.8..1.25 -> 2.40..3.75; spec 2-4)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "ore_c",
+   "fbx": "fbx/scatter/ore_c.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "ore_c",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/ore_c.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 188,
+    "max_mesh_tris": 80,
+    "meshes": [
+     {
+      "mesh": "ore_c__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 36
+     },
+     {
+      "mesh": "ore_c__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 72
+     },
+     {
+      "mesh": "ore_c__Violet",
+      "material": "Violet",
+      "color": "#B07CFF",
+      "roblox_material": "Neon",
+      "tris": 80
+     }
+    ],
+    "notes": [
+     "Ore cluster, 3.2 wide (x0.8..1.25 -> 2.56..4.00; spec 2-4)"
+    ]
+   },
+   "notes": [
+    "Ore cluster, 3.2 wide (x0.8..1.25 -> 2.56..4.00; spec 2-4)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "crystal_a",
+   "fbx": "fbx/scatter/crystal_a.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "crystal_a",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/crystal_a.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 144,
+    "max_mesh_tris": 66,
+    "meshes": [
+     {
+      "mesh": "crystal_a__CrystalGlow",
+      "material": "CrystalGlow",
+      "color": "#FF6FA8",
+      "roblox_material": "Neon",
+      "tris": 66
+     },
+     {
+      "mesh": "crystal_a__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 66
+     },
+     {
+      "mesh": "crystal_a__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 12
+     }
+    ],
+    "notes": [
+     "Rock-candy crystal spire cluster, tallest 2.6 (x0.8..1.25 -> 2.08..3.25; spec 2-5)"
+    ]
+   },
+   "notes": [
+    "Rock-candy crystal spire cluster, tallest 2.6 (x0.8..1.25 -> 2.08..3.25; spec 2-5)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "crystal_b",
+   "fbx": "fbx/scatter/crystal_b.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "crystal_b",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/crystal_b.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 144,
+    "max_mesh_tris": 66,
+    "meshes": [
+     {
+      "mesh": "crystal_b__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 66
+     },
+     {
+      "mesh": "crystal_b__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 12
+     },
+     {
+      "mesh": "crystal_b__Violet",
+      "material": "Violet",
+      "color": "#B07CFF",
+      "roblox_material": "Neon",
+      "tris": 66
+     }
+    ],
+    "notes": [
+     "Rock-candy crystal spire cluster, tallest 3.4 (x0.8..1.25 -> 2.72..4.25; spec 2-5)"
+    ]
+   },
+   "notes": [
+    "Rock-candy crystal spire cluster, tallest 3.4 (x0.8..1.25 -> 2.72..4.25; spec 2-5)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "crystal_c",
+   "fbx": "fbx/scatter/crystal_c.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "crystal_c",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/crystal_c.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 144,
+    "max_mesh_tris": 66,
+    "meshes": [
+     {
+      "mesh": "crystal_c__CrystalGlow",
+      "material": "CrystalGlow",
+      "color": "#FF6FA8",
+      "roblox_material": "Neon",
+      "tris": 66
+     },
+     {
+      "mesh": "crystal_c__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 66
+     },
+     {
+      "mesh": "crystal_c__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 12
+     }
+    ],
+    "notes": [
+     "Rock-candy crystal spire cluster, tallest 4.0 (x0.8..1.25 -> 3.20..5.00; spec 2-5)"
+    ]
+   },
+   "notes": [
+    "Rock-candy crystal spire cluster, tallest 4.0 (x0.8..1.25 -> 3.20..5.00; spec 2-5)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "hoodoo_a",
+   "fbx": "fbx/scatter/hoodoo_a.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "hoodoo_a",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/hoodoo_a.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 282,
+    "max_mesh_tris": 88,
+    "meshes": [
+     {
+      "mesh": "hoodoo_a__Cherry",
+      "material": "Cherry",
+      "color": "#E8304A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 78
+     },
+     {
+      "mesh": "hoodoo_a__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 60
+     },
+     {
+      "mesh": "hoodoo_a__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 56
+     },
+     {
+      "mesh": "hoodoo_a__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 88
+     }
+    ],
+    "notes": [
+     "Striped hoodoo, H 10.0 x W 3.8 (x0.8..1.25 -> H 8.0..12.5, W 3.04..4.75; spec 8-20 x 3-6)"
+    ]
+   },
+   "notes": [
+    "Striped hoodoo, H 10.0 x W 3.8 (x0.8..1.25 -> H 8.0..12.5, W 3.04..4.75; spec 8-20 x 3-6)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "hoodoo_b",
+   "fbx": "fbx/scatter/hoodoo_b.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "hoodoo_b",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/hoodoo_b.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 282,
+    "max_mesh_tris": 88,
+    "meshes": [
+     {
+      "mesh": "hoodoo_b__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 60
+     },
+     {
+      "mesh": "hoodoo_b__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 78
+     },
+     {
+      "mesh": "hoodoo_b__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 56
+     },
+     {
+      "mesh": "hoodoo_b__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 88
+     }
+    ],
+    "notes": [
+     "Striped hoodoo, H 13.0 x W 4.2 (x0.8..1.25 -> H 10.4..16.2, W 3.36..5.25; spec 8-20 x 3-6)"
+    ]
+   },
+   "notes": [
+    "Striped hoodoo, H 13.0 x W 4.2 (x0.8..1.25 -> H 10.4..16.2, W 3.36..5.25; spec 8-20 x 3-6)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "hoodoo_c",
+   "fbx": "fbx/scatter/hoodoo_c.fbx",
+   "pivot": "base centre",
+   "envelope_props_md": null,
+   "report": {
+    "id": "hoodoo_c",
+    "hole": "scatter",
+    "fbx": "fbx/scatter/hoodoo_c.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": null,
+    "tris": 282,
+    "max_mesh_tris": 88,
+    "meshes": [
+     {
+      "mesh": "hoodoo_c__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 78
+     },
+     {
+      "mesh": "hoodoo_c__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 60
+     },
+     {
+      "mesh": "hoodoo_c__Strata",
+      "material": "Strata",
+      "color": "#C8643C",
+      "roblox_material": "Sandstone",
+      "tris": 56
+     },
+     {
+      "mesh": "hoodoo_c__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 88
+     }
+    ],
+    "notes": [
+     "Striped hoodoo, H 16.0 x W 4.6 (x0.8..1.25 -> H 12.8..20.0, W 3.68..5.75; spec 8-20 x 3-6)"
+    ]
+   },
+   "notes": [
+    "Striped hoodoo, H 16.0 x W 4.6 (x0.8..1.25 -> H 12.8..20.0, W 3.68..5.75; spec 8-20 x 3-6)"
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,11047 @@
+{
+ "lobby": "Golden Hour Boardwalk - pass10 explicit geometry",
+ "units": "studs; 1 Blender unit = 1 stud; all sizes/positions in Roblox axes (X east, Y up, Z south)",
+ "axes": {
+  "blender": "Z-up; Blender +Y = Roblox -Z (north); Blender -Y = Roblox +Z (south)",
+  "fbx": "axis_forward -Z, axis_up Y, scale 1.0, transforms applied (identity objects)",
+  "yaw": "deg about +Y (CFrame.Angles(0, rad(yaw), 0)); props are built at yaw 0 in the lobby.json frame"
+ },
+ "fbx_export": {
+  "blender": "5.2.2 LTS",
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1.0,
+  "apply_scale_options": "FBX_SCALE_UNITS",
+  "bake_space_transform": true,
+  "embed_textures": true,
+  "path_mode": "COPY",
+  "mesh_smooth_type": "FACE",
+  "object_types": [
+   "MESH"
+  ]
+ },
+ "materials": {
+  "BW_Atlas": {
+   "texture": "textures/bw_atlas_1024.png",
+   "note": "shared 1024x1024 atlas, all opaque parts"
+  },
+  "BW_Neon": {
+   "color": "#FFC867 (bw_arch_aurora_archipelago: #9FE6F2 crystal tips)",
+   "roblox_material": "Neon",
+   "note": "emissive parts, own MeshPart, flat colour, no texture"
+  },
+  "BW_Backdrop": {
+   "note": "vertex colour only (bw_sea_stacks, bw_rock_arch); no texture"
+  },
+  "Glow_Crystal": {
+   "Material": "Neon",
+   "roblox_material": "Neon",
+   "vertex_colour_attribute": "Col",
+   "colors": [
+    "#F59AC8",
+    "#FFF1A8"
+   ],
+   "preview_emission_strength": 0.2,
+   "note": "Neon in Roblox, keep Brightness low / or use SmoothPlastic + slight glow if Neon blows out"
+  },
+  "Glow_Tips": {
+   "roblox_material": "Neon",
+   "color": "#9FE6F2",
+   "note": "Aurora crown tips, separate material mesh",
+   "Material": "Neon",
+   "Color": "#9FE6F2",
+   "preview_emission_strength": 1.5
+  },
+  "BW_Crown_Crystal": {
+   "vertex_colour_attribute": "Col",
+   "gradient": [
+    "#7A4FD0",
+    "#8FE3EE"
+   ]
+  },
+  "BW_Bark_VC": {
+   "vertex_colour_attribute": "Col",
+   "colors": [
+    "#6B4429",
+    "#4A2F1A"
+   ]
+  },
+  "BW_Rock_VC": {
+   "vertex_colour_attribute": "Col",
+   "colors": [
+    "#3A3550",
+    "#4B4566",
+    "#EEF3F7"
+   ]
+  }
+ },
+ "import_notes": [
+  "Import each FBX at scale 1.0 (1 unit = 1 stud).",
+  "Anchored=true, CanCollide=false, CanQuery=false, CanTouch=false on every MeshPart; gameplay collision = the collision[] boxes (invisible Parts) or lobby.json colliders.",
+  "BW_Neon MeshParts: Material=Neon, Color from parts[].color.",
+  "Each FBX = one mesh per material (+ named faces: card_face_1..3, panel_1..3, plate_face) sharing the prop pivot."
+ ],
+ "builder_source": "_src/builder_Lobby.luau (generated from lobby.json sha1 2c8ac9133299)",
+ "props": [
+  {
+   "name": "bw_arch_aurora_archipelago",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_aurora_archipelago.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass3 layered concept-directed portal; fixed base frame and collision, clear opening. Separate hinge-pivot lantern exports.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    16.0,
+    18.0,
+    4.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    9.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -8.0,
+    0.0,
+    -2.0
+   ],
+   "bbox_max_roblox": [
+    8.0,
+    18.0,
+    2.0
+   ],
+   "target_size_studs": [
+    16,
+    18,
+    4
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 8170,
+   "tris_max": 10000,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_aurora_archipelago__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 370,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      16.0,
+      6.2,
+      1.586
+     ],
+     "center_from_pivot": [
+      0.0,
+      3.1,
+      1.207
+     ]
+    },
+    {
+     "mesh": "bw_arch_aurora_archipelago__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 7404,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      16.0,
+      17.871,
+      4.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      8.935,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_aurora_archipelago__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 396,
+     "color": "#9FE6F2",
+     "roblox_material": "Neon",
+     "size": [
+      16.0,
+      13.444,
+      3.986
+     ],
+     "center_from_pivot": [
+      0.0,
+      11.278,
+      -0.007
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "leg_west",
+     "center": [
+      -6.5,
+      9.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0,
+      4.0
+     ]
+    },
+    {
+     "name": "leg_east",
+     "center": [
+      6.5,
+      9.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0,
+      4.0
+     ]
+    },
+    {
+     "name": "lintel",
+     "center": [
+      0.0,
+      14.0,
+      0.0
+     ],
+     "size": [
+      10.0,
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "opening_clear": {
+    "width": 10.08,
+    "height": 12.325,
+    "required": [
+     10,
+     12
+    ],
+    "note": "clear rectangle centred on X=0 from the deck up, full depth"
+   },
+   "portal_plane": {
+    "center": [
+     0,
+     6.0,
+     0
+    ],
+    "size": [
+     10,
+     12
+    ],
+    "note": "RobloxDevBot's portal quad goes here"
+   },
+   "nameplate_mount": {
+    "center": [
+     0,
+     14.0,
+     2.3
+    ],
+    "note": "builder: nameplate base at Y 14, Z +2.3; arch front face at local Z <= +2.0 behind it"
+   },
+   "portal_trigger": {
+    "name": "PortalTrigger_aurora_archipelago",
+    "center": [
+     0,
+     5,
+     0
+    ],
+    "size": [
+     10,
+     10,
+     3
+    ],
+    "modelled": false,
+    "CanCollide": false,
+    "CanQuery": false,
+    "Transparency": 1
+   },
+   "attach_points": {
+    "nameplate_center": [
+     0,
+     14.5,
+     2.25
+    ],
+    "coming_soon_sign_center": [
+     0,
+     12.7,
+     2.25
+    ],
+    "rope_loop_anchors": [
+     [
+      -2,
+      13.5,
+      2.25
+     ],
+     [
+      2,
+      13.5,
+      2.25
+     ]
+    ],
+    "apron_origin": [
+     0,
+     0,
+     4
+    ],
+    "lantern_cord_anchors": [
+     [
+      -6.8,
+      6.2,
+      1.25
+     ],
+     [
+      6.8,
+      6.2,
+      1.25
+     ]
+    ]
+   },
+   "portal_surface": {
+    "asset": "bw_portal_surface_aurora_archipelago",
+    "center": [
+     0,
+     6,
+     1.5
+    ],
+    "size": [
+     10,
+     12
+    ],
+    "UV": [
+     0,
+     0,
+     1,
+     1
+    ]
+   },
+   "motion_notes": "Each lantern has its own hinge origin; place at its arch-local anchor. Surface and Neon animation controlled at runtime. Snowpuff retains arch-base pivot.",
+   "clearance_exemptions": [
+    "Portal quad is intentionally inside opening/trigger; noncolliding runtime display.",
+    "Apron separate floor strip: top Y=0, placed Z=4 outside arch envelope.",
+    "Reused nameplate/sign attach forward of envelope; coming-soon sign bottom Y=11.7, Z=2.25 outside arch depth and trigger."
+   ],
+   "moving_parts": [
+    {
+     "asset": "bw_arch_aurora_archipelago_lantern_01",
+     "anchor_position_arch_local": [
+      -6.8,
+      6.2,
+      1.25
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_aurora_archipelago_lantern_02",
+     "anchor_position_arch_local": [
+      6.8,
+      6.2,
+      1.25
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    }
+   ],
+   "builder_count": 1,
+   "tris_x_count": 8170,
+   "scenery_assets": [
+    "bw_scn_aurora_rocks_w",
+    "bw_scn_aurora_rocks_e",
+    "bw_scn_aurora_crown"
+   ],
+   "snowpuff_position_arch_local": [
+    -6.5,
+    0,
+    1.25
+   ],
+   "snowpuff_asset_origin_arch_local": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "bw_arch_aurora_archipelago_lantern_01",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_aurora_archipelago_lantern_01.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.951,
+    2.2,
+    0.78
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.1,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.476,
+    -2.2,
+    -0.39
+   ],
+   "bbox_max_roblox": [
+    0.476,
+    0.0,
+    0.39
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.951,
+    0.957,
+    0.78
+   ],
+   "triangles": 144,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_aurora_archipelago_lantern_01__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.951,
+      2.2,
+      0.78
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.1,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_aurora_archipelago_lantern_01__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 36,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.723,
+      1.0,
+      0.593
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.4,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    -6.8,
+    6.2,
+    1.25
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 144
+  },
+  {
+   "name": "bw_arch_aurora_archipelago_lantern_02",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_aurora_archipelago_lantern_02.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.951,
+    2.2,
+    0.78
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.1,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.476,
+    -2.2,
+    -0.39
+   ],
+   "bbox_max_roblox": [
+    0.476,
+    0.0,
+    0.39
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.951,
+    0.957,
+    0.78
+   ],
+   "triangles": 144,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_aurora_archipelago_lantern_02__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.951,
+      2.2,
+      0.78
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.1,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_aurora_archipelago_lantern_02__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 36,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.723,
+      1.0,
+      0.593
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.4,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    6.8,
+    6.2,
+    1.25
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 144
+  },
+  {
+   "name": "bw_arch_aurora_archipelago_snowpuff",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_aurora_archipelago_snowpuff.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Snowpuff on left leg, all geometry outside opening.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    1.617,
+    3.0,
+    1.45
+   ],
+   "bbox_center_from_pivot": [
+    -6.5,
+    1.5,
+    1.275
+   ],
+   "bbox_min_roblox": [
+    -7.308,
+    0.0,
+    0.55
+   ],
+   "bbox_max_roblox": [
+    -5.692,
+    3.0,
+    2.0
+   ],
+   "target_size_studs": [
+    3,
+    3,
+    2
+   ],
+   "size_ratio_vs_target": [
+    0.539,
+    1.0,
+    0.725
+   ],
+   "triangles": 514,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_aurora_archipelago_snowpuff__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 514,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      1.617,
+      3.0,
+      1.45
+     ],
+     "center_from_pivot": [
+      -6.5,
+      1.5,
+      1.275
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Arch base pivot; idle body bob <=0.1 studs, no locomotion.",
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 514
+  },
+  {
+   "name": "bw_arch_lantern_grove",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass3 layered concept-directed portal; fixed base frame and collision, clear opening. Separate hinge-pivot lantern exports.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    16.0,
+    18.0,
+    4.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    9.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -8.0,
+    0.0,
+    -2.0
+   ],
+   "bbox_max_roblox": [
+    8.0,
+    18.0,
+    2.0
+   ],
+   "target_size_studs": [
+    16,
+    18,
+    4
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 13252,
+   "tris_max": 15000,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 8532,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      16.0,
+      17.899,
+      3.859
+     ],
+     "center_from_pivot": [
+      0.0,
+      8.95,
+      -0.07
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 4720,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      16.0,
+      18.0,
+      2.956
+     ],
+     "center_from_pivot": [
+      0.0,
+      9.0,
+      0.522
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "leg_west",
+     "center": [
+      -6.5,
+      9.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0,
+      4.0
+     ]
+    },
+    {
+     "name": "leg_east",
+     "center": [
+      6.5,
+      9.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0,
+      4.0
+     ]
+    },
+    {
+     "name": "lintel",
+     "center": [
+      0.0,
+      14.0,
+      0.0
+     ],
+     "size": [
+      10.0,
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "opening_clear": {
+    "width": 10.179,
+    "height": 12.17,
+    "required": [
+     10,
+     12
+    ],
+    "note": "clear rectangle centred on X=0 from the deck up, full depth"
+   },
+   "portal_plane": {
+    "center": [
+     0,
+     6.0,
+     0
+    ],
+    "size": [
+     10,
+     12
+    ],
+    "note": "RobloxDevBot's portal quad goes here"
+   },
+   "nameplate_mount": {
+    "center": [
+     0,
+     14.0,
+     2.3
+    ],
+    "note": "builder: nameplate base at Y 14, Z +2.3; arch front face at local Z <= +2.0 behind it"
+   },
+   "portal_trigger": {
+    "name": "PortalTrigger_lantern_grove",
+    "center": [
+     0,
+     5,
+     0
+    ],
+    "size": [
+     10,
+     10,
+     3
+    ],
+    "modelled": false,
+    "CanCollide": false,
+    "CanQuery": false,
+    "Transparency": 1
+   },
+   "attach_points": {
+    "nameplate_center": [
+     0,
+     14.5,
+     2.25
+    ],
+    "coming_soon_sign_center": [
+     0,
+     12.7,
+     2.25
+    ],
+    "rope_loop_anchors": [
+     [
+      -2,
+      13.5,
+      2.25
+     ],
+     [
+      2,
+      13.5,
+      2.25
+     ]
+    ],
+    "apron_origin": [
+     0,
+     0,
+     4
+    ],
+    "lantern_cord_anchors": [
+     [
+      -8.2,
+      21.3,
+      2.3
+     ],
+     [
+      8.2,
+      21.3,
+      2.3
+     ],
+     [
+      -6,
+      22.3,
+      2.3
+     ],
+     [
+      6,
+      22.3,
+      2.3
+     ],
+     [
+      -3.5,
+      23.3,
+      2.3
+     ],
+     [
+      3.5,
+      23.3,
+      2.3
+     ]
+    ]
+   },
+   "portal_surface": {
+    "asset": "bw_portal_surface_lantern_grove",
+    "center": [
+     0,
+     6,
+     1.5
+    ],
+    "size": [
+     10,
+     12
+    ],
+    "UV": [
+     0,
+     0,
+     1,
+     1
+    ]
+   },
+   "motion_notes": "Each lantern has its own hinge origin; place at its arch-local anchor. Surface and Neon animation controlled at runtime. Snowpuff retains arch-base pivot.",
+   "clearance_exemptions": [
+    "Portal quad is intentionally inside opening/trigger; noncolliding runtime display.",
+    "Apron separate floor strip: top Y=0, placed Z=4 outside arch envelope.",
+    "Reused nameplate/sign attach forward of envelope; coming-soon sign bottom Y=11.7, Z=2.25 outside arch depth and trigger."
+   ],
+   "moving_parts": [
+    {
+     "asset": "bw_arch_lantern_grove_lantern_01",
+     "anchor_position_arch_local": [
+      -8.2,
+      21.3,
+      2.3
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_lantern_grove_lantern_02",
+     "anchor_position_arch_local": [
+      8.2,
+      21.3,
+      2.3
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_lantern_grove_lantern_03",
+     "anchor_position_arch_local": [
+      -6,
+      22.3,
+      2.3
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_lantern_grove_lantern_04",
+     "anchor_position_arch_local": [
+      6,
+      22.3,
+      2.3
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_lantern_grove_lantern_05",
+     "anchor_position_arch_local": [
+      -3.5,
+      23.3,
+      2.3
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_lantern_grove_lantern_06",
+     "anchor_position_arch_local": [
+      3.5,
+      23.3,
+      2.3
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    }
+   ],
+   "builder_count": 1,
+   "tris_x_count": 13252,
+   "scenery_assets": [
+    "bw_scn_lantern_grove_trunk_w",
+    "bw_scn_lantern_grove_planter_w",
+    "bw_scn_lantern_grove_trunk_e",
+    "bw_scn_lantern_grove_planter_e"
+   ]
+  },
+  {
+   "name": "bw_arch_lantern_grove_lantern_01",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove_lantern_01.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.9,
+    2.03,
+    0.9
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.015,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.45,
+    -2.03,
+    -0.45
+   ],
+   "bbox_max_roblox": [
+    0.45,
+    0.0,
+    0.45
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.9,
+    0.883,
+    0.9
+   ],
+   "triangles": 148,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_01__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 72,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.765,
+      2.03,
+      0.765
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.015,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_01__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 76,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.9,
+      1.0,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.28,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    -8.2,
+    21.3,
+    2.3
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 148
+  },
+  {
+   "name": "bw_arch_lantern_grove_lantern_02",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove_lantern_02.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.9,
+    2.03,
+    0.9
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.015,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.45,
+    -2.03,
+    -0.45
+   ],
+   "bbox_max_roblox": [
+    0.45,
+    0.0,
+    0.45
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.9,
+    0.883,
+    0.9
+   ],
+   "triangles": 148,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_02__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 72,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.765,
+      2.03,
+      0.765
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.015,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_02__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 76,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.9,
+      1.0,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.28,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    8.2,
+    21.3,
+    2.3
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 148
+  },
+  {
+   "name": "bw_arch_lantern_grove_lantern_03",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove_lantern_03.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.9,
+    2.03,
+    0.9
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.015,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.45,
+    -2.03,
+    -0.45
+   ],
+   "bbox_max_roblox": [
+    0.45,
+    0.0,
+    0.45
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.9,
+    0.883,
+    0.9
+   ],
+   "triangles": 148,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_03__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 72,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.765,
+      2.03,
+      0.765
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.015,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_03__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 76,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.9,
+      1.0,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.28,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    -6,
+    22.3,
+    2.3
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 148
+  },
+  {
+   "name": "bw_arch_lantern_grove_lantern_04",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove_lantern_04.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.9,
+    2.03,
+    0.9
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.015,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.45,
+    -2.03,
+    -0.45
+   ],
+   "bbox_max_roblox": [
+    0.45,
+    0.0,
+    0.45
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.9,
+    0.883,
+    0.9
+   ],
+   "triangles": 148,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_04__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 72,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.765,
+      2.03,
+      0.765
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.015,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_04__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 76,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.9,
+      1.0,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.28,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    6,
+    22.3,
+    2.3
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 148
+  },
+  {
+   "name": "bw_arch_lantern_grove_lantern_05",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove_lantern_05.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.9,
+    2.03,
+    0.9
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.015,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.45,
+    -2.03,
+    -0.45
+   ],
+   "bbox_max_roblox": [
+    0.45,
+    0.0,
+    0.45
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.9,
+    0.883,
+    0.9
+   ],
+   "triangles": 148,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_05__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 72,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.765,
+      2.03,
+      0.765
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.015,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_05__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 76,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.9,
+      1.0,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.28,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    -3.5,
+    23.3,
+    2.3
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 148
+  },
+  {
+   "name": "bw_arch_lantern_grove_lantern_06",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_lantern_grove_lantern_06.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.9,
+    2.03,
+    0.9
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.015,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.45,
+    -2.03,
+    -0.45
+   ],
+   "bbox_max_roblox": [
+    0.45,
+    0.0,
+    0.45
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.9,
+    0.883,
+    0.9
+   ],
+   "triangles": 148,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_06__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 72,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.765,
+      2.03,
+      0.765
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.015,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_lantern_grove_lantern_06__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 76,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.9,
+      1.0,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.28,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    3.5,
+    23.3,
+    2.3
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 148
+  },
+  {
+   "name": "bw_arch_nameplate",
+   "group": "board",
+   "fbx": "fbx/bw_arch_nameplate.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Brass plate with parchment face plate_face (+Z) for the course name SurfaceGui. Sits on the arch lintel front (builder Y 14, Z +2.3 from the arch centre).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    8.0,
+    2.0,
+    0.5
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -4.0,
+    0.0,
+    -0.25
+   ],
+   "bbox_max_roblox": [
+    4.0,
+    2.0,
+    0.25
+   ],
+   "target_size_studs": [
+    8,
+    2,
+    0.5
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 176,
+   "tris_max": 400,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_nameplate__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 174,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      8.0,
+      2.0,
+      0.5
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.0,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "plate_face",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      7.2,
+      1.5,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.0,
+      0.25
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "size": [
+      8.0,
+      2.0,
+      0.5
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 3,
+   "tris_x_count": 528
+  },
+  {
+   "name": "bw_arch_sugarloaf_canyon",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_sugarloaf_canyon.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass3 layered concept-directed portal; fixed base frame and collision, clear opening. Separate hinge-pivot lantern exports.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    15.977,
+    18.0,
+    3.487
+   ],
+   "bbox_center_from_pivot": [
+    0.011,
+    9.0,
+    0.191
+   ],
+   "bbox_min_roblox": [
+    -7.977,
+    0.0,
+    -1.553
+   ],
+   "bbox_max_roblox": [
+    8.0,
+    18.0,
+    1.934
+   ],
+   "target_size_studs": [
+    16,
+    18,
+    4
+   ],
+   "size_ratio_vs_target": [
+    0.999,
+    1.0,
+    0.872
+   ],
+   "triangles": 7084,
+   "tris_max": 8000,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_sugarloaf_canyon__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 300,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.551,
+      2.15,
+      0.46
+     ],
+     "center_from_pivot": [
+      -6.4,
+      2.975,
+      1.38
+     ]
+    },
+    {
+     "mesh": "bw_arch_sugarloaf_canyon__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 6544,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      15.977,
+      18.0,
+      3.487
+     ],
+     "center_from_pivot": [
+      0.011,
+      9.0,
+      0.191
+     ]
+    },
+    {
+     "mesh": "bw_arch_sugarloaf_canyon__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 240,
+     "color": "#F6A6C8",
+     "roblox_material": "Neon",
+     "size": [
+      15.526,
+      16.711,
+      0.915
+     ],
+     "center_from_pivot": [
+      0.0,
+      9.644,
+      1.477
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "leg_west",
+     "center": [
+      -6.5,
+      9.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0,
+      4.0
+     ]
+    },
+    {
+     "name": "leg_east",
+     "center": [
+      6.5,
+      9.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0,
+      4.0
+     ]
+    },
+    {
+     "name": "lintel",
+     "center": [
+      0.0,
+      14.0,
+      0.0
+     ],
+     "size": [
+      10.0,
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "opening_clear": {
+    "width": 10.08,
+    "height": 12.4,
+    "required": [
+     10,
+     12
+    ],
+    "note": "clear rectangle centred on X=0 from the deck up, full depth"
+   },
+   "portal_plane": {
+    "center": [
+     0,
+     6.0,
+     0
+    ],
+    "size": [
+     10,
+     12
+    ],
+    "note": "RobloxDevBot's portal quad goes here"
+   },
+   "nameplate_mount": {
+    "center": [
+     0,
+     14.0,
+     2.3
+    ],
+    "note": "builder: nameplate base at Y 14, Z +2.3; arch front face at local Z <= +2.0 behind it"
+   },
+   "portal_trigger": {
+    "name": "PortalTrigger_sugarloaf_canyon",
+    "center": [
+     0,
+     5,
+     0
+    ],
+    "size": [
+     10,
+     10,
+     3
+    ],
+    "modelled": false,
+    "CanCollide": false,
+    "CanQuery": false,
+    "Transparency": 1
+   },
+   "attach_points": {
+    "nameplate_center": [
+     0,
+     14.5,
+     2.25
+    ],
+    "coming_soon_sign_center": [
+     0,
+     12.7,
+     2.25
+    ],
+    "rope_loop_anchors": [
+     [
+      -2,
+      13.5,
+      2.25
+     ],
+     [
+      2,
+      13.5,
+      2.25
+     ]
+    ],
+    "apron_origin": [
+     0,
+     0,
+     4
+    ],
+    "lantern_cord_anchors": [
+     [
+      -6.5,
+      12.6,
+      1.6
+     ],
+     [
+      6.5,
+      12.6,
+      1.6
+     ]
+    ]
+   },
+   "portal_surface": {
+    "asset": "bw_portal_surface_sugarloaf_canyon",
+    "center": [
+     0,
+     6,
+     1.5
+    ],
+    "size": [
+     10,
+     12
+    ],
+    "UV": [
+     0,
+     0,
+     1,
+     1
+    ]
+   },
+   "motion_notes": "Each lantern has its own hinge origin; place at its arch-local anchor. Surface and Neon animation controlled at runtime. Snowpuff retains arch-base pivot.",
+   "clearance_exemptions": [
+    "Portal quad is intentionally inside opening/trigger; noncolliding runtime display.",
+    "Apron separate floor strip: top Y=0, placed Z=4 outside arch envelope.",
+    "Reused nameplate/sign attach forward of envelope; coming-soon sign bottom Y=11.7, Z=2.25 outside arch depth and trigger."
+   ],
+   "moving_parts": [
+    {
+     "asset": "bw_arch_sugarloaf_canyon_lantern_01",
+     "anchor_position_arch_local": [
+      -6.5,
+      12.6,
+      1.6
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    },
+    {
+     "asset": "bw_arch_sugarloaf_canyon_lantern_02",
+     "anchor_position_arch_local": [
+      6.5,
+      12.6,
+      1.6
+     ],
+     "swing_axis": [
+      0,
+      0,
+      1
+     ],
+     "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+    }
+   ],
+   "builder_count": 1,
+   "tris_x_count": 7084,
+   "scenery_assets": [
+    "bw_scn_sugarloaf_tower_w",
+    "bw_scn_sugarloaf_crystals_w",
+    "bw_scn_sugarloaf_tower_e",
+    "bw_scn_sugarloaf_crystals_e",
+    "bw_scn_sugarloaf_lollipop_cactus"
+   ]
+  },
+  {
+   "name": "bw_arch_sugarloaf_canyon_lantern_01",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_sugarloaf_canyon_lantern_01.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.951,
+    2.2,
+    0.78
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.1,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.476,
+    -2.2,
+    -0.39
+   ],
+   "bbox_max_roblox": [
+    0.476,
+    0.0,
+    0.39
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.951,
+    0.957,
+    0.78
+   ],
+   "triangles": 144,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_sugarloaf_canyon_lantern_01__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.951,
+      2.2,
+      0.78
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.1,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_sugarloaf_canyon_lantern_01__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 36,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.723,
+      1.0,
+      0.593
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.4,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    -6.5,
+    12.6,
+    1.6
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 144
+  },
+  {
+   "name": "bw_arch_sugarloaf_canyon_lantern_02",
+   "group": "arches",
+   "fbx": "fbx/bw_arch_sugarloaf_canyon_lantern_02.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+   "pivot": "cord anchor / swing hinge at local origin",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    0.951,
+    2.2,
+    0.78
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -1.1,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.476,
+    -2.2,
+    -0.39
+   ],
+   "bbox_max_roblox": [
+    0.476,
+    0.0,
+    0.39
+   ],
+   "target_size_studs": [
+    1,
+    2.3,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.951,
+    0.957,
+    0.78
+   ],
+   "triangles": 144,
+   "tris_max": 1500,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_arch_sugarloaf_canyon_lantern_02__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.951,
+      2.2,
+      0.78
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.1,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_arch_sugarloaf_canyon_lantern_02__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 36,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.723,
+      1.0,
+      0.593
+     ],
+     "center_from_pivot": [
+      0.0,
+      -1.4,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": "Independent hinge sway +/-3deg around local Z",
+   "scalable": null,
+   "can_collide": false,
+   "anchor_position_arch_local": [
+    6.5,
+    12.6,
+    1.6
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz.",
+   "builder_count": 1,
+   "tris_x_count": 144
+  },
+  {
+   "name": "bw_barrel",
+   "group": "social",
+   "fbx": "fbx/bw_barrel.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Bulged barrel, 2 brass hoops.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    2.0,
+    2.995,
+    2.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.498,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.0,
+    0.0,
+    -1.0
+   ],
+   "bbox_max_roblox": [
+    1.0,
+    2.995,
+    1.0
+   ],
+   "target_size_studs": [
+    2,
+    3,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    0.998,
+    1.0
+   ],
+   "triangles": 212,
+   "tris_max": 300,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_barrel__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 212,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.0,
+      2.995,
+      2.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.498,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.498,
+      -0.0
+     ],
+     "size": [
+      2.0,
+      2.995,
+      2.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 212
+  },
+  {
+   "name": "bw_beach_umbrella",
+   "group": "social",
+   "fbx": "fbx/bw_beach_umbrella.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Red/cream striped canopy (16 panels), weighted base.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    6.0,
+    7.15,
+    6.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    3.575,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.0,
+    0.0,
+    -3.0
+   ],
+   "bbox_max_roblox": [
+    3.0,
+    7.15,
+    3.0
+   ],
+   "target_size_studs": [
+    6,
+    7,
+    6
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.021,
+    1.0
+   ],
+   "triangles": 334,
+   "tris_max": 700,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_beach_umbrella__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 334,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      7.15,
+      6.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      3.575,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      3.575,
+      -0.0
+     ],
+     "size": [
+      6.0,
+      7.15,
+      6.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 334
+  },
+  {
+   "name": "bw_bench",
+   "group": "social",
+   "fbx": "fbx/bw_bench.fbx",
+   "front": "-Z (Roblox, north) = Blender +Y",
+   "notes": "Sitter faces local -Z (north) at yaw 0 (lobby.json frame); builder yaw 180 turns the pier and promenade benches to face south (sunset).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    0.025,
+    0.0
+   ],
+   "bbox_size_studs": [
+    6.0,
+    2.5,
+    2.05
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.25,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.0,
+    0.0,
+    -1.025
+   ],
+   "bbox_max_roblox": [
+    3.0,
+    2.5,
+    1.025
+   ],
+   "target_size_studs": [
+    6,
+    2.5,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.025
+   ],
+   "triangles": 300,
+   "tris_max": 600,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_bench__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 300,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      2.5,
+      2.05
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.25,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.25,
+      -0.0
+     ],
+     "size": [
+      6.0,
+      2.5,
+      2.05
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 6,
+   "tris_x_count": 1800
+  },
+  {
+   "name": "bw_birdie_bites_shack",
+   "group": "social",
+   "fbx": "fbx/bw_birdie_bites_shack.fbx",
+   "front": "-Z (Roblox, north) = Blender +Y",
+   "notes": "Built in its own frame: W 16 (X) x H 14 x D 18 (Z). Counter, striped awning, menu board and candy props are on the local -Z (north) side so that yaw 90 puts the counter on the WEST (lobby.json counterFaces). Candy props are merged into the BW_Atlas mesh; 2 Neon lanterns flank the window.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.1,
+    0.013
+   ],
+   "bbox_size_studs": [
+    16.0,
+    14.217,
+    17.8
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    7.109,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -8.0,
+    0.0,
+    -8.9
+   ],
+   "bbox_max_roblox": [
+    8.0,
+    14.217,
+    8.9
+   ],
+   "target_size_studs": [
+    16,
+    14,
+    18
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.016,
+    0.989
+   ],
+   "triangles": 3754,
+   "tris_max": 12000,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_birdie_bites_shack__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 3694,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      16.0,
+      14.217,
+      17.8
+     ],
+     "center_from_pivot": [
+      0.0,
+      7.109,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_birdie_bites_shack__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 56,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      12.1,
+      0.8,
+      0.7
+     ],
+     "center_from_pivot": [
+      0.0,
+      6.863,
+      -5.75
+     ]
+    },
+    {
+     "mesh": "menu_face",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      1.8,
+      2.5,
+      0.35
+     ],
+     "center_from_pivot": [
+      -6.4,
+      2.613,
+      -8.045
+     ]
+    },
+    {
+     "mesh": "sign_face",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      7.8,
+      1.5,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      10.613,
+      -5.4
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      7.109,
+      -0.0
+     ],
+     "size": [
+      16.0,
+      14.217,
+      17.8
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 3754
+  },
+  {
+   "name": "bw_coming_soon_sign",
+   "group": "board",
+   "fbx": "fbx/bw_coming_soon_sign.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Hanging wooden sign with parchment face plate_face (+Z) for 'Coming soon' text; two rope rings on top.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    6.0,
+    2.0,
+    0.5
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.0,
+    0.0,
+    -0.25
+   ],
+   "bbox_max_roblox": [
+    3.0,
+    2.0,
+    0.25
+   ],
+   "target_size_studs": [
+    6,
+    2,
+    0.5
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 184,
+   "tris_max": 400,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_coming_soon_sign__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 182,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      2.0,
+      0.5
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.0,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "plate_face",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      5.2,
+      0.9,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.65,
+      0.25
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "size": [
+      6.0,
+      2.0,
+      0.5
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 2,
+   "tris_x_count": 368
+  },
+  {
+   "name": "bw_course_board",
+   "group": "board",
+   "fbx": "fbx/bw_course_board.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Course-select board: stone footing, wooden posts with Neon lanterns, brass frame, 3 recessed card faces card_face_1..3 (6x8, centres X -8/0/+8, Y 5.5, inset 0.15). Lantern hats reach Y 10.8.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    26.0,
+    10.75,
+    2.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    5.375,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -13.0,
+    0.0,
+    -1.0
+   ],
+   "bbox_max_roblox": [
+    13.0,
+    10.75,
+    1.0
+   ],
+   "target_size_studs": [
+    26,
+    10,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.075,
+    1.0
+   ],
+   "triangles": 1606,
+   "tris_max": 6000,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_course_board__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 1544,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      26.0,
+      10.75,
+      2.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      5.375,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_course_board__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 56,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      25.3,
+      0.95,
+      0.9
+     ],
+     "center_from_pivot": [
+      0.0,
+      9.725,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "card_face_1",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      8.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      -8.0,
+      5.5,
+      0.85
+     ]
+    },
+    {
+     "mesh": "card_face_2",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      8.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      5.5,
+      0.85
+     ]
+    },
+    {
+     "mesh": "card_face_3",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      8.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      8.0,
+      5.5,
+      0.85
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      5.375,
+      -0.0
+     ],
+     "size": [
+      26.0,
+      10.75,
+      2.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "cardFaces": [
+    {
+     "name": "card_face_1",
+     "courseIndex": 1,
+     "size": [
+      6.0,
+      8.0
+     ],
+     "insetDepth": 0.15,
+     "center": [
+      -8.0,
+      5.5,
+      0.85
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "note": "flat quad (2 tris), BW_Atlas parchment UVs; RobloxDevBot puts card art on it (SurfaceGui/Decal on the +Z face)"
+    },
+    {
+     "name": "card_face_2",
+     "courseIndex": 2,
+     "size": [
+      6.0,
+      8.0
+     ],
+     "insetDepth": 0.15,
+     "center": [
+      0.0,
+      5.5,
+      0.85
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "note": "flat quad (2 tris), BW_Atlas parchment UVs; RobloxDevBot puts card art on it (SurfaceGui/Decal on the +Z face)"
+    },
+    {
+     "name": "card_face_3",
+     "courseIndex": 3,
+     "size": [
+      6.0,
+      8.0
+     ],
+     "insetDepth": 0.15,
+     "center": [
+      8.0,
+      5.5,
+      0.85
+     ],
+     "normal": [
+      0,
+      0,
+      1
+     ],
+     "note": "flat quad (2 tris), BW_Atlas parchment UVs; RobloxDevBot puts card art on it (SurfaceGui/Decal on the +Z face)"
+    }
+   ],
+   "cardFaces_note": "center = local Roblox studs from the pivot (base centre). Front frame surface at local z=+1.0; faces recessed 0.15 -> z=+0.85, normal +Z (south, toward spawn).",
+   "builder_count": 1,
+   "tris_x_count": 1606
+  },
+  {
+   "name": "bw_crate",
+   "group": "social",
+   "fbx": "fbx/bw_crate.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Chamfered plank crate (44 tris).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.0,
+    0.0,
+    -1.0
+   ],
+   "bbox_max_roblox": [
+    1.0,
+    2.0,
+    1.0
+   ],
+   "target_size_studs": [
+    2,
+    2,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 44,
+   "tris_max": 50,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_crate__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 44,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.0,
+      2.0,
+      2.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.0,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "size": [
+      2.0,
+      2.0,
+      2.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 44
+  },
+  {
+   "name": "bw_cup_flag",
+   "group": "green",
+   "fbx": "fbx/bw_cup_flag.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Pole on the pivot axis with a red banner hanging from a T-crossbar and a cup-liner collar ring at the base (0.6 dia). Place the pivot on the cup centre at turf level.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    0.6,
+    5.0,
+    0.6
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    2.5,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.3,
+    0.0,
+    -0.3
+   ],
+   "bbox_max_roblox": [
+    0.3,
+    5.0,
+    0.3
+   ],
+   "target_size_studs": [
+    0.6,
+    5,
+    0.6
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 140,
+   "tris_max": 200,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_cup_flag__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 140,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      0.6,
+      5.0,
+      0.6
+     ],
+     "center_from_pivot": [
+      0.0,
+      2.5,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      2.5,
+      -0.0
+     ],
+     "size": [
+      0.6,
+      5.0,
+      0.6
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 2,
+   "tris_x_count": 280
+  },
+  {
+   "name": "bw_deck_plank_a",
+   "group": "structure",
+   "fbx": "fbx/bw_deck_plank_a.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Deck tile variant A (atlas deck strip U 0.0-0.5). Top + sides only; plank gaps are in the texture.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    0.5,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -5.0,
+    0.0,
+    -5.0
+   ],
+   "bbox_max_roblox": [
+    5.0,
+    1.0,
+    5.0
+   ],
+   "target_size_studs": [
+    10,
+    1,
+    10
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 10,
+   "tris_max": 100,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_deck_plank_a__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 10,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      10.0,
+      1.0,
+      10.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.5,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      0.5,
+      -0.0
+     ],
+     "size": [
+      10.0,
+      1.0,
+      10.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": "xz",
+   "can_collide": false,
+   "builder_count": 76,
+   "tris_x_count": 760
+  },
+  {
+   "name": "bw_deck_plank_b",
+   "group": "structure",
+   "fbx": "fbx/bw_deck_plank_b.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Deck tile variant B (atlas deck strip U 0.5-1.0, different board joints/tints than A).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    0.5,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -5.0,
+    0.0,
+    -5.0
+   ],
+   "bbox_max_roblox": [
+    5.0,
+    1.0,
+    5.0
+   ],
+   "target_size_studs": [
+    10,
+    1,
+    10
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 10,
+   "tris_max": 100,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_deck_plank_b__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 10,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      10.0,
+      1.0,
+      10.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.5,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      0.5,
+      -0.0
+     ],
+     "size": [
+      10.0,
+      1.0,
+      10.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": "xz",
+   "can_collide": false,
+   "builder_count": 76,
+   "tris_x_count": 760
+  },
+  {
+   "name": "bw_flower_planter",
+   "group": "social",
+   "fbx": "fbx/bw_flower_planter.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Plank box with leafy mound and chunky blossoms in leaf/awning palette colours.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    4.0,
+    2.0,
+    2.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -2.0,
+    0.0,
+    -1.0
+   ],
+   "bbox_max_roblox": [
+    2.0,
+    2.0,
+    1.0
+   ],
+   "target_size_studs": [
+    4,
+    2,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 756,
+   "tris_max": 1000,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_flower_planter__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 756,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      4.0,
+      2.0,
+      2.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.0,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.0,
+      -0.0
+     ],
+     "size": [
+      4.0,
+      2.0,
+      2.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 756
+  },
+  {
+   "name": "bw_lantern_post",
+   "group": "social",
+   "fbx": "fbx/bw_lantern_post.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Wooden post, brass lantern housing, Neon glass (own MeshPart). Good PointLight host.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    1.0,
+    7.05,
+    1.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    3.525,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -0.5,
+    0.0,
+    -0.5
+   ],
+   "bbox_max_roblox": [
+    0.5,
+    7.05,
+    0.5
+   ],
+   "target_size_studs": [
+    1,
+    7,
+    1
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.007,
+    1.0
+   ],
+   "triangles": 224,
+   "tris_max": 400,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_lantern_post__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 212,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      1.0,
+      7.05,
+      1.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      3.525,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_lantern_post__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 12,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      0.65,
+      0.85,
+      0.65
+     ],
+     "center_from_pivot": [
+      0.0,
+      6.025,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      3.525,
+      -0.0
+     ],
+     "size": [
+      1.0,
+      7.05,
+      1.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 6,
+   "tris_x_count": 1344
+  },
+  {
+   "name": "bw_lantern_tree_canopy",
+   "group": "backdrop",
+   "fbx": "fbx/bw_lantern_tree_canopy.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Three chunky autumn lantern trees (trunks included, base at Y 0) with 8 Neon lanterns. Builder places it at Y 10 (base) which floats it: see README spec question (should be Y 0 / sand).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.338,
+    -0.084,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    23.113,
+    15.009,
+    19.032
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    7.504,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -11.557,
+    0.0,
+    -9.516
+   ],
+   "bbox_max_roblox": [
+    11.557,
+    15.009,
+    9.516
+   ],
+   "target_size_studs": [
+    24,
+    16,
+    20
+   ],
+   "size_ratio_vs_target": [
+    0.963,
+    0.938,
+    0.952
+   ],
+   "triangles": 5600,
+   "tris_max": 6000,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_lantern_tree_canopy__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 4992,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      23.113,
+      15.009,
+      19.032
+     ],
+     "center_from_pivot": [
+      0.0,
+      7.504,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_lantern_tree_canopy__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 608,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      20.8,
+      5.75,
+      17.6
+     ],
+     "center_from_pivot": [
+      -0.038,
+      8.445,
+      0.384
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      7.504,
+      -0.0
+     ],
+     "size": [
+      23.113,
+      15.009,
+      19.032
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 5600
+  },
+  {
+   "name": "bw_leaderboard_wall",
+   "group": "board",
+   "fbx": "fbx/bw_leaderboard_wall.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Parchment panels panel_1..3 (left->right seen from the front) on the +Z face for SurfaceGui. The back (-Z) carries matching decorative parchment panels so the wall reads from both sides (see README: yaw).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    14.0,
+    9.999,
+    2.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    4.999,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -7.0,
+    0.0,
+    -1.0
+   ],
+   "bbox_max_roblox": [
+    7.0,
+    9.999,
+    1.0
+   ],
+   "target_size_studs": [
+    14,
+    10,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 1736,
+   "tris_max": 3000,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_leaderboard_wall__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 1730,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      14.0,
+      9.999,
+      2.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      4.999,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "panel_1",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      3.4,
+      6.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      -3.8,
+      4.7,
+      0.65
+     ]
+    },
+    {
+     "mesh": "panel_2",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      3.4,
+      6.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      4.7,
+      0.65
+     ]
+    },
+    {
+     "mesh": "panel_3",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      3.4,
+      6.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      3.8,
+      4.7,
+      0.65
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      4.999,
+      -0.0
+     ],
+     "size": [
+      14.0,
+      9.999,
+      2.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 1736
+  },
+  {
+   "name": "bw_picnic_table",
+   "group": "social",
+   "fbx": "fbx/bw_picnic_table.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Table top 6x2.6 at Y 3, two attached bench planks, A-frame legs.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.115
+   ],
+   "bbox_size_studs": [
+    6.0,
+    2.885,
+    6.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.443,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.0,
+    0.0,
+    -3.0
+   ],
+   "bbox_max_roblox": [
+    3.0,
+    2.885,
+    3.0
+   ],
+   "target_size_studs": [
+    6,
+    3,
+    6
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    0.962,
+    1.0
+   ],
+   "triangles": 588,
+   "tris_max": 900,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_picnic_table__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 588,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      2.885,
+      6.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.443,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.443,
+      -0.0
+     ],
+     "size": [
+      6.0,
+      2.885,
+      6.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 588
+  },
+  {
+   "name": "bw_pier_piling",
+   "group": "structure",
+   "fbx": "fbx/bw_pier_piling.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Cluster of 3 weathered posts lashed with rope; top at local Y=6 (builder base Y=-6 -> top flush with deck underside region).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    2.02,
+    6.0,
+    1.921
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    3.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.01,
+    0.0,
+    -0.961
+   ],
+   "bbox_max_roblox": [
+    1.01,
+    6.0,
+    0.961
+   ],
+   "target_size_studs": [
+    2,
+    6,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.01,
+    1.0,
+    0.961
+   ],
+   "triangles": 232,
+   "tris_max": 250,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_pier_piling__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 232,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.02,
+      6.0,
+      1.921
+     ],
+     "center_from_pivot": [
+      0.0,
+      3.0,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      3.0,
+      -0.0
+     ],
+     "size": [
+      2.02,
+      6.0,
+      1.921
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 8,
+   "tris_x_count": 1856
+  },
+  {
+   "name": "bw_portal_apron",
+   "group": "arches",
+   "fbx": "fbx/bw_portal_apron.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Place at (0,0,4) in arch-local Roblox axes. Top Y=0, no step; separate floor exempt from envelope and opening volume.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    12.0,
+    0.1,
+    4.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    -0.05,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -6.0,
+    -0.1,
+    -2.0
+   ],
+   "bbox_max_roblox": [
+    6.0,
+    0.0,
+    2.0
+   ],
+   "target_size_studs": [
+    12,
+    0.1,
+    4
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 12,
+   "tris_max": 100,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_portal_apron__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 12,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      12.0,
+      0.1,
+      4.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      -0.05,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 3,
+   "tris_x_count": 36
+  },
+  {
+   "name": "bw_portal_surface_aurora_archipelago",
+   "group": "arches",
+   "fbx": "fbx/bw_portal_surface_aurora_archipelago.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Intentional portal quad; exempt from decorative opening/trigger clearance. UV 0-1; runtime animated texture.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    10.0,
+    12.0,
+    0.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    6.0,
+    1.5
+   ],
+   "bbox_min_roblox": [
+    -5.0,
+    0.0,
+    1.5
+   ],
+   "bbox_max_roblox": [
+    5.0,
+    12.0,
+    1.5
+   ],
+   "target_size_studs": [
+    10,
+    12,
+    0
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    null
+   ],
+   "triangles": 2,
+   "tris_max": 2,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_portal_surface_aurora_archipelago__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      10.0,
+      12.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      6.0,
+      1.5
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 2
+  },
+  {
+   "name": "bw_portal_surface_lantern_grove",
+   "group": "arches",
+   "fbx": "fbx/bw_portal_surface_lantern_grove.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Intentional portal quad; exempt from decorative opening/trigger clearance. UV 0-1; runtime animated texture.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    10.0,
+    12.0,
+    0.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    6.0,
+    1.5
+   ],
+   "bbox_min_roblox": [
+    -5.0,
+    0.0,
+    1.5
+   ],
+   "bbox_max_roblox": [
+    5.0,
+    12.0,
+    1.5
+   ],
+   "target_size_studs": [
+    10,
+    12,
+    0
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    null
+   ],
+   "triangles": 2,
+   "tris_max": 2,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_portal_surface_lantern_grove__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      10.0,
+      12.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      6.0,
+      1.5
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 2
+  },
+  {
+   "name": "bw_portal_surface_sugarloaf_canyon",
+   "group": "arches",
+   "fbx": "fbx/bw_portal_surface_sugarloaf_canyon.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Intentional portal quad; exempt from decorative opening/trigger clearance. UV 0-1; runtime animated texture.",
+   "pivot": "local origin (0,0,0), shared arch base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    10.0,
+    12.0,
+    0.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    6.0,
+    1.5
+   ],
+   "bbox_min_roblox": [
+    -5.0,
+    0.0,
+    1.5
+   ],
+   "bbox_max_roblox": [
+    5.0,
+    12.0,
+    1.5
+   ],
+   "target_size_studs": [
+    10,
+    12,
+    0
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    null
+   ],
+   "triangles": 2,
+   "tris_max": 2,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_portal_surface_sugarloaf_canyon__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      10.0,
+      12.0,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      6.0,
+      1.5
+     ]
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 2
+  },
+  {
+   "name": "bw_practice_green",
+   "group": "green",
+   "fbx": "fbx/bw_practice_green.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Turf slab 34x0.4x20 (top Y 0.4) with a rounded wooden bumper rail 0.8 above the turf, chunky corner posts, 2 cup holes (r 0.5, 0.35 deep) at the lobby.json cup positions.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    34.0,
+    1.2,
+    20.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    0.6,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -17.0,
+    0.0,
+    -10.0
+   ],
+   "bbox_max_roblox": [
+    17.0,
+    1.2,
+    10.0
+   ],
+   "target_size_studs": [
+    34,
+    1.2,
+    20
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 576,
+   "tris_max": 2000,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_practice_green__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 576,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      34.0,
+      1.2,
+      20.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.6,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      0.6,
+      -0.0
+     ],
+     "size": [
+      34.0,
+      1.2,
+      20.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "cups": [
+    {
+     "center": [
+      13.0,
+      0.4,
+      -5.0
+     ],
+     "radius": 0.5,
+     "depth": 0.35,
+     "world": [
+      158.0,
+      0.4,
+      60.0
+     ]
+    },
+    {
+     "center": [
+      5.0,
+      0.4,
+      -7.0
+     ],
+     "radius": 0.5,
+     "depth": 0.35,
+     "world": [
+      150.0,
+      0.4,
+      58.0
+     ]
+    }
+   ],
+   "turf_top_y": 0.4,
+   "bumper_top_y": 1.2,
+   "size_note": "34 x 0.4 x 20 slab; bumper rail (inside the footprint) rises 0.8 above the turf -> bbox Y 1.2",
+   "builder_count": 1,
+   "tris_x_count": 576
+  },
+  {
+   "name": "bw_railing",
+   "group": "structure",
+   "fbx": "fbx/bw_railing.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "One 10-stud section: post at the section centre, continuous handrail, rope swag dipping at the section ends so consecutive sections read as one railing. Scale X for the 8-stud pier ends.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    10.011,
+    3.5,
+    0.6
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.75,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -5.006,
+    0.0,
+    -0.3
+   ],
+   "bbox_max_roblox": [
+    5.006,
+    3.5,
+    0.3
+   ],
+   "target_size_studs": [
+    10,
+    3.5,
+    0.6
+   ],
+   "size_ratio_vs_target": [
+    1.001,
+    1.0,
+    1.0
+   ],
+   "triangles": 222,
+   "tris_max": 350,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_railing__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 222,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      10.011,
+      3.5,
+      0.6
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.75,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      1.75,
+      -0.0
+     ],
+     "size": [
+      10.011,
+      3.5,
+      0.6
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": "x",
+   "can_collide": false,
+   "builder_count": 42,
+   "tris_x_count": 9324
+  },
+  {
+   "name": "bw_rock_arch",
+   "group": "backdrop",
+   "fbx": "fbx/bw_rock_arch.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Backdrop hero: one clean, chunky sandstone arch (clear ~12.6 x 15 opening), smooth superellipse section swept along an elliptical centreline, warm vertex-colour bands. Base at the waterline.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.009,
+    0.021,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    31.677,
+    23.74,
+    10.023
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    11.87,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -15.839,
+    0.0,
+    -5.012
+   ],
+   "bbox_max_roblox": [
+    15.839,
+    23.74,
+    5.012
+   ],
+   "target_size_studs": [
+    30,
+    24,
+    10
+   ],
+   "size_ratio_vs_target": [
+    1.056,
+    0.989,
+    1.002
+   ],
+   "triangles": 1164,
+   "tris_max": 1200,
+   "materials": [
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_rock_arch__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 1164,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      31.677,
+      23.74,
+      10.023
+     ],
+     "center_from_pivot": [
+      0.0,
+      11.87,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      11.87,
+      -0.0
+     ],
+     "size": [
+      31.677,
+      23.74,
+      10.023
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 1164
+  },
+  {
+   "name": "bw_scn_aurora_crown",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_aurora_crown.fbx",
+   "front": "south (+Z)",
+   "notes": "Exact supplied six-crystal 12-sided beveled flat-facet crown; no geometry edits.",
+   "pivot": "shared arch base centre",
+   "pivot_position_arch_local": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "pivot_recenter_applied": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    20.235854148864746,
+    15.177665710449219,
+    4.751482129096985
+   ],
+   "bbox_center_from_pivot": [
+    0.42974424362182617,
+    19.41116714477539,
+    -0.6000000834465027
+   ],
+   "bbox_min_roblox": [
+    -9.688182830810547,
+    11.822334289550781,
+    -2.975741147994995
+   ],
+   "bbox_max_roblox": [
+    10.5476713180542,
+    27.0,
+    1.7757409811019897
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "triangles": 1532,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Crown_Crystal",
+    "Glow_Tips"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_aurora_crown__Glow_Tips",
+     "material": "Glow_Tips",
+     "tris": 441,
+     "size": [
+      20.235854148864746,
+      11.2528715133667,
+      3.856072187423706
+     ],
+     "center_from_pivot": [
+      0.42974424362182617,
+      21.373563766479492,
+      -0.6000000238418579
+     ],
+     "color": "#9FE6F2",
+     "roblox_material": "Neon"
+    },
+    {
+     "mesh": "bw_scn_aurora_crown__BW_Crown_Crystal",
+     "material": "BW_Crown_Crystal",
+     "tris": 1091,
+     "size": [
+      20.235854148864746,
+      12.712465286254883,
+      4.751482129096985
+     ],
+     "center_from_pivot": [
+      0.42974424362182617,
+      18.178565979003906,
+      -0.6000000834465027
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "course": "aurora_archipelago",
+   "decoration_only": true,
+   "main_crystal_count": 6,
+   "crystal_table": [
+    [
+     14.215972566400431,
+     2.4,
+     3.0,
+     13.0,
+     0.6,
+     10.0,
+     0.0
+    ],
+    [
+     9.477315044266954,
+     1.9,
+     -3.4,
+     13.0,
+     0.5,
+     -15.0,
+     15.0
+    ],
+    [
+     9.477315044266954,
+     1.8,
+     6.6,
+     12.5,
+     0.4,
+     20.0,
+     30.0
+    ],
+    [
+     5.265175024592752,
+     1.4,
+     -6.9,
+     12.4,
+     0.2,
+     -25.0,
+     8.0
+    ],
+    [
+     5.265175024592752,
+     1.3,
+     -0.4,
+     14.6,
+     -0.2,
+     -12.0,
+     22.0
+    ],
+    [
+     5.265175024592752,
+     1.4,
+     5.0,
+     14.4,
+     1.1,
+     25.0,
+     40.0
+    ]
+   ],
+   "vertex_colour_attribute": "Col",
+   "gradient_hex": [
+    "#7A4FD0",
+    "#8FE3EE"
+   ],
+   "preview_glow_strength": 1.5,
+   "neon_material": "Glow_Tips",
+   "builder_count": 1,
+   "tris_x_count": 1532,
+   "tallest_tip_Z": 27.0,
+   "source_sha256": "9bafab8ac5cd6facb30bb25edb892156cfce57b362034d32102af07ac30910ec",
+   "sides": 12,
+   "crystal_nudges": [],
+   "glow_tip_split": "source face-centre top20% assignment",
+   "source": "pass9_geo.py",
+   "flat_normals": true
+  },
+  {
+   "name": "bw_scn_aurora_rocks_e",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_aurora_rocks_e.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Exact supplied taller ten-rock snowy mound; two collision boxes follow front outer and rear bounds, clear A/B and snowpuff.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    9.990278244018555,
+    0.0,
+    -0.3225419521331787
+   ],
+   "bbox_size_studs": [
+    6.9356794357299805,
+    6.5944318771362305,
+    8.101617813110352
+   ],
+   "bbox_center_from_pivot": [
+    4.76837158203125e-07,
+    3.2972159385681152,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.467839241027832,
+    0.0,
+    -4.050808906555176
+   ],
+   "bbox_max_roblox": [
+    3.4678401947021484,
+    6.5944318771362305,
+    4.050808906555176
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 800,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Rock_VC"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_aurora_rocks_e__BW_Rock_VC",
+     "material": "BW_Rock_VC",
+     "tris": 800,
+     "size": [
+      6.9356794357299805,
+      6.5944318771362305,
+      8.101617813110352
+     ],
+     "center_from_pivot": [
+      4.76837158203125e-07,
+      3.2972159385681152,
+      -0.0
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    }
+   ],
+   "collision": [
+    {
+     "name": "front_outer",
+     "center": [
+      0.8606729507446289,
+      2.799999952316284,
+      2.3366753101348876
+     ],
+     "size": [
+      5.214334487915039,
+      5.599999904632568,
+      3.428266716003418
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "rear_mound",
+     "center": [
+      -0.05255556106567383,
+      3.2972159385681152,
+      -1.719133358001709
+     ],
+     "size": [
+      6.830567359924316,
+      6.5944318771362305,
+      4.663350620269775
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    9.990278244018555,
+    0.0,
+    -0.3225419521331787
+   ],
+   "course": "aurora_archipelago",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 800,
+   "source": "pass10_geo.py",
+   "source_sha256": "f6feec4b4afdb7d2ec27926dfceba143ad6ec0eff77283865b4698bddf9a21a2"
+  },
+  {
+   "name": "bw_scn_aurora_rocks_w",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_aurora_rocks_w.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Exact supplied taller ten-rock snowy mound; two collision boxes follow front outer and rear bounds, clear A/B and snowpuff.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    -10.043851852416992,
+    0.0,
+    -0.27302086353302
+   ],
+   "bbox_size_studs": [
+    6.742580413818359,
+    6.664601802825928,
+    8.268512725830078
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    3.332300901412964,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.3712902069091797,
+    0.0,
+    -4.134256362915039
+   ],
+   "bbox_max_roblox": [
+    3.3712902069091797,
+    6.664601802825928,
+    4.134256362915039
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 800,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Rock_VC"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_aurora_rocks_w__BW_Rock_VC",
+     "material": "BW_Rock_VC",
+     "tris": 800,
+     "size": [
+      6.742580413818359,
+      6.664601802825928,
+      8.268512725830078
+     ],
+     "center_from_pivot": [
+      0.0,
+      3.332300901412964,
+      -0.0
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    }
+   ],
+   "collision": [
+    {
+     "name": "front_outer",
+     "center": [
+      -0.5890421867370605,
+      2.799999952316284,
+      2.3536385536193847
+     ],
+     "size": [
+      5.486847877502441,
+      5.599999904632568,
+      3.5612353801727297
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "rear_mound",
+     "center": [
+      0.0,
+      3.332300901412964,
+      -1.7856176900863647
+     ],
+     "size": [
+      6.742580413818359,
+      6.664601802825928,
+      4.69727710723877
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    -10.043851852416992,
+    0.0,
+    -0.27302086353302
+   ],
+   "course": "aurora_archipelago",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 800,
+   "source": "pass10_geo.py",
+   "source_sha256": "f6feec4b4afdb7d2ec27926dfceba143ad6ec0eff77283865b4698bddf9a21a2"
+  },
+  {
+   "name": "bw_scn_lantern_grove_planter_e",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_lantern_grove_planter_e.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass5 standalone toy scenery; place at pivot_position_arch_local relative to parent arch; invisible collision boxes only.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    3.348,
+    3.17,
+    1.85
+   ],
+   "bbox_center_from_pivot": [
+    -0.0,
+    1.585,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.674,
+    0.0,
+    -0.925
+   ],
+   "bbox_max_roblox": [
+    1.674,
+    3.17,
+    0.925
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 2244,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_lantern_grove_planter_e__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.852,
+      0.35,
+      1.5
+     ],
+     "center_from_pivot": [
+      -0.0,
+      1.7,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_scn_lantern_grove_planter_e__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 2136,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      3.348,
+      3.17,
+      1.85
+     ],
+     "center_from_pivot": [
+      -0.0,
+      1.585,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "stone_front",
+     "center": [
+      -3.8146972691777137e-07,
+      0.8,
+      -0.3999999999999999
+     ],
+     "size": [
+      3,
+      1.6,
+      0.8
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "stone_back",
+     "center": [
+      -3.8146972691777137e-07,
+      0.8,
+      0.3999999999999999
+     ],
+     "size": [
+      3,
+      1.6,
+      0.8
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    8.6,
+    0.0,
+    1.5
+   ],
+   "course": "lantern_grove",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 2244
+  },
+  {
+   "name": "bw_scn_lantern_grove_planter_w",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_lantern_grove_planter_w.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass5 standalone toy scenery; place at pivot_position_arch_local relative to parent arch; invisible collision boxes only.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    3.348,
+    3.17,
+    1.85
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    1.585,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.674,
+    0.0,
+    -0.925
+   ],
+   "bbox_max_roblox": [
+    1.674,
+    3.17,
+    0.925
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 2244,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_lantern_grove_planter_w__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.852,
+      0.35,
+      1.5
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.7,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_scn_lantern_grove_planter_w__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 2136,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      3.348,
+      3.17,
+      1.85
+     ],
+     "center_from_pivot": [
+      0.0,
+      1.585,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "stone_front",
+     "center": [
+      3.8146972691777137e-07,
+      0.8,
+      -0.3999999999999999
+     ],
+     "size": [
+      3,
+      1.6,
+      0.8
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "stone_back",
+     "center": [
+      3.8146972691777137e-07,
+      0.8,
+      0.3999999999999999
+     ],
+     "size": [
+      3,
+      1.6,
+      0.8
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    -8.6,
+    0.0,
+    1.5
+   ],
+   "course": "lantern_grove",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 2244
+  },
+  {
+   "name": "bw_scn_lantern_grove_trunk_e",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_lantern_grove_trunk_e.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Exact supplied three-strand 250degree trunk plus byte-equivalent pass8 canopy geometry; old bark and inset removed. Two centreline collision boxes. Lanterns unchanged; all cords contact canopy.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    4.402430534362793,
+    0.0,
+    -0.2254016399383545
+   ],
+   "bbox_size_studs": [
+    13.99513864517212,
+    28.16717529296875,
+    9.524736404418945
+   ],
+   "bbox_center_from_pivot": [
+    -2.384185791015625e-07,
+    14.083587646484375,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -6.997569561004639,
+    0.0,
+    -4.762368202209473
+   ],
+   "bbox_max_roblox": [
+    6.9975690841674805,
+    28.16717529296875,
+    4.762368202209473
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 2246,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Backdrop",
+    "BW_Bark_VC"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_lantern_grove_trunk_e__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 960,
+     "size": [
+      13.955278873443604,
+      15.979730606079102,
+      9.524736404418945
+     ],
+     "center_from_pivot": [
+      -0.019930124282836914,
+      20.177310943603516,
+      -0.0
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    },
+    {
+     "mesh": "bw_scn_lantern_grove_trunk_e__BW_Bark_VC",
+     "material": "BW_Bark_VC",
+     "tris": 1286,
+     "size": [
+      7.439253568649292,
+      21.0,
+      6.034146547317505
+     ],
+     "center_from_pivot": [
+      3.277942180633545,
+      10.5,
+      0.05425751209259033
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    }
+   ],
+   "collision": [
+    {
+     "name": "lower_trunk",
+     "center": [
+      3.9975694656372074,
+      6.5,
+      0.2254016399383545
+     ],
+     "size": [
+      2.6,
+      13,
+      2.6
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "curl",
+     "center": [
+      2.1975694656372067,
+      17.0,
+      0.2254016399383545
+     ],
+     "size": [
+      3.6,
+      8,
+      2.0
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    4.402430534362793,
+    0.0,
+    -0.2254016399383545
+   ],
+   "course": "lantern_grove",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 2246,
+   "source": "pass9_geo.py",
+   "source_sha256": "9bafab8ac5cd6facb30bb25edb892156cfce57b362034d32102af07ac30910ec"
+  },
+  {
+   "name": "bw_scn_lantern_grove_trunk_w",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_lantern_grove_trunk_w.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Exact supplied three-strand 250degree trunk plus byte-equivalent pass8 canopy geometry; old bark and inset removed. Two centreline collision boxes. Lanterns unchanged; all cords contact canopy.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    -4.399800777435303,
+    0.0,
+    -0.2254016399383545
+   ],
+   "bbox_size_studs": [
+    14.234307289123535,
+    28.16717529296875,
+    9.524736404418945
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    14.083587646484375,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -7.117153644561768,
+    0.0,
+    -4.762368202209473
+   ],
+   "bbox_max_roblox": [
+    7.117153644561768,
+    28.16717529296875,
+    4.762368202209473
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 2246,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Backdrop",
+    "BW_Bark_VC"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_lantern_grove_trunk_w__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 960,
+     "size": [
+      13.916707038879395,
+      15.979730606079102,
+      9.524736404418945
+     ],
+     "center_from_pivot": [
+      0.1588001251220703,
+      20.177310943603516,
+      -0.0
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    },
+    {
+     "mesh": "bw_scn_lantern_grove_trunk_w__BW_Bark_VC",
+     "material": "BW_Bark_VC",
+     "tris": 1286,
+     "size": [
+      7.71011757850647,
+      21.0,
+      6.034146547317505
+     ],
+     "center_from_pivot": [
+      -3.2620949745178223,
+      10.5,
+      0.05425751209259033
+     ],
+     "color": null,
+     "roblox_material": "SmoothPlastic"
+    }
+   ],
+   "collision": [
+    {
+     "name": "lower_trunk",
+     "center": [
+      -4.000199222564698,
+      6.5,
+      0.2254016399383545
+     ],
+     "size": [
+      2.6,
+      13,
+      2.6
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "curl",
+     "center": [
+      -2.200199222564697,
+      17.0,
+      0.2254016399383545
+     ],
+     "size": [
+      3.6,
+      8,
+      2.0
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    -4.399800777435303,
+    0.0,
+    -0.2254016399383545
+   ],
+   "course": "lantern_grove",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 2246,
+   "source": "pass9_geo.py",
+   "source_sha256": "9bafab8ac5cd6facb30bb25edb892156cfce57b362034d32102af07ac30910ec"
+  },
+  {
+   "name": "bw_scn_sugarloaf_crystals_e",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_sugarloaf_crystals_e.fbx",
+   "front": "south (+Z)",
+   "notes": "Exact supplied pass10 geometry; tighter base candy clusters; Glow_Crystal emission0.2 from Col.",
+   "pivot": "base centre",
+   "pivot_position_arch_local": [
+    12.178655624389648,
+    -0.39292359352111816,
+    1.0633513927459717
+   ],
+   "bbox_size_studs": [
+    9.791197776794434,
+    15.039304733276367,
+    5.6961541175842285
+   ],
+   "bbox_center_from_pivot": [
+    4.76837158203125e-07,
+    7.519652366638184,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -4.895598411560059,
+    0.0,
+    -2.8480770587921143
+   ],
+   "bbox_max_roblox": [
+    4.895599365234375,
+    15.039304733276367,
+    2.8480770587921143
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "triangles": 506,
+   "tris_max": 19999,
+   "materials": [
+    "Glow_Crystal"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_sugarloaf_crystals_e__Glow_Crystal",
+     "material": "Glow_Crystal",
+     "tris": 506,
+     "size": [
+      9.791197776794434,
+      15.039304733276367,
+      5.6961541175842285
+     ],
+     "center_from_pivot": [
+      4.76837158203125e-07,
+      7.519652366638184,
+      -0.0
+     ],
+     "color": null,
+     "roblox_material": "Neon"
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "course": "sugarloaf_canyon",
+   "decoration_only": true,
+   "cluster_recipe": [
+    {
+     "n": 7,
+     "size": 2.0
+    },
+    {
+     "n": 5,
+     "size": 1.4
+    },
+    {
+     "n": 6,
+     "size": 1.2
+    },
+    {
+     "n": 5,
+     "size": 0.9
+    }
+   ],
+   "builder_count": 1,
+   "tris_x_count": 506,
+   "neon_material": "Glow_Crystal",
+   "pivot_recenter_applied": [
+    12.178655624389648,
+    -0.39292359352111816,
+    1.0633513927459717
+   ],
+   "source": "pass10_geo.py",
+   "source_sha256": "f6feec4b4afdb7d2ec27926dfceba143ad6ec0eff77283865b4698bddf9a21a2",
+   "preview_emission_strength": 1.5
+  },
+  {
+   "name": "bw_scn_sugarloaf_crystals_w",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_sugarloaf_crystals_w.fbx",
+   "front": "south (+Z)",
+   "notes": "Exact supplied pass10 geometry; tighter base candy clusters; Glow_Crystal emission0.2 from Col.",
+   "pivot": "base centre",
+   "pivot_position_arch_local": [
+    -12.083368301391602,
+    -0.36414700746536255,
+    0.7401732206344604
+   ],
+   "bbox_size_studs": [
+    9.453708171844482,
+    15.195901870727539,
+    5.628182411193848
+   ],
+   "bbox_center_from_pivot": [
+    -2.384185791015625e-07,
+    7.5979509353637695,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -4.72685432434082,
+    0.0,
+    -2.814091205596924
+   ],
+   "bbox_max_roblox": [
+    4.726853847503662,
+    15.195901870727539,
+    2.814091205596924
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "triangles": 506,
+   "tris_max": 19999,
+   "materials": [
+    "Glow_Crystal"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_sugarloaf_crystals_w__Glow_Crystal",
+     "material": "Glow_Crystal",
+     "tris": 506,
+     "size": [
+      9.453708171844482,
+      15.195901870727539,
+      5.628182411193848
+     ],
+     "center_from_pivot": [
+      -2.384185791015625e-07,
+      7.5979509353637695,
+      -0.0
+     ],
+     "color": null,
+     "roblox_material": "Neon"
+    }
+   ],
+   "collision": [],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "course": "sugarloaf_canyon",
+   "decoration_only": true,
+   "cluster_recipe": [
+    {
+     "n": 7,
+     "size": 2.0
+    },
+    {
+     "n": 5,
+     "size": 1.4
+    },
+    {
+     "n": 6,
+     "size": 1.2
+    },
+    {
+     "n": 5,
+     "size": 0.9
+    }
+   ],
+   "builder_count": 1,
+   "tris_x_count": 506,
+   "neon_material": "Glow_Crystal",
+   "pivot_recenter_applied": [
+    -12.083368301391602,
+    -0.36414700746536255,
+    0.7401732206344604
+   ],
+   "source": "pass10_geo.py",
+   "source_sha256": "f6feec4b4afdb7d2ec27926dfceba143ad6ec0eff77283865b4698bddf9a21a2",
+   "preview_emission_strength": 1.5
+  },
+  {
+   "name": "bw_scn_sugarloaf_lollipop_cactus",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_sugarloaf_lollipop_cactus.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass5 standalone toy scenery; place at pivot_position_arch_local relative to parent arch; invisible collision boxes only.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    8.32,
+    15.743,
+    2.738
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    7.871,
+    0.0
+   ],
+   "bbox_min_roblox": [
+    -4.16,
+    0.0,
+    -1.369
+   ],
+   "bbox_max_roblox": [
+    4.16,
+    15.743,
+    1.369
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 5156,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_sugarloaf_lollipop_cactus__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 300,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      8.32,
+      7.012,
+      0.37
+     ],
+     "center_from_pivot": [
+      0.0,
+      9.13,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_scn_sugarloaf_lollipop_cactus__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 4856,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.63,
+      15.743,
+      2.738
+     ],
+     "center_from_pivot": [
+      0.0,
+      7.871,
+      0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "stem",
+     "center": [
+      0.0,
+      6.0,
+      -0.764419436454773
+     ],
+     "size": [
+      2.5,
+      12,
+      2.5
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "stone_base",
+     "center": [
+      0.0,
+      0.25,
+      -0.764419436454773
+     ],
+     "size": [
+      4.8,
+      0.5,
+      3
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    -15.0,
+    0.0,
+    0.7644
+   ],
+   "course": "sugarloaf_canyon",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 5156
+  },
+  {
+   "name": "bw_scn_sugarloaf_tower_e",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_sugarloaf_tower_e.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass5 standalone toy scenery; place at pivot_position_arch_local relative to parent arch; invisible collision boxes only.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    9.283,
+    27.689,
+    4.181
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    13.845,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -4.642,
+    0.0,
+    -2.09
+   ],
+   "bbox_max_roblox": [
+    4.642,
+    27.689,
+    2.09
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 9832,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_sugarloaf_tower_e__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      1.0,
+      0.5,
+      0.8
+     ],
+     "center_from_pivot": [
+      2.112,
+      0.25,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_scn_sugarloaf_tower_e__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 9724,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      9.283,
+      27.689,
+      4.181
+     ],
+     "center_from_pivot": [
+      0.0,
+      13.845,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "tower_0",
+     "center": [
+      1.494936264770507,
+      3.5,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "tower_1",
+     "center": [
+      0.34881076477050676,
+      10.0,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "tower_2",
+     "center": [
+      -0.7973147352294934,
+      16.5,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "tower_3",
+     "center": [
+      -1.9434402352294935,
+      23.0,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    8.0879,
+    0.0,
+    -0.0
+   ],
+   "course": "sugarloaf_canyon",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 9832
+  },
+  {
+   "name": "bw_scn_sugarloaf_tower_w",
+   "group": "scenery",
+   "fbx": "fbx/bw_scn_sugarloaf_tower_w.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Pass5 standalone toy scenery; place at pivot_position_arch_local relative to parent arch; invisible collision boxes only.",
+   "pivot": "base centre",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    9.283,
+    27.689,
+    4.181
+   ],
+   "bbox_center_from_pivot": [
+    -0.0,
+    13.845,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -4.642,
+    0.0,
+    -2.09
+   ],
+   "bbox_max_roblox": [
+    4.642,
+    27.689,
+    2.09
+   ],
+   "target_size_studs": [
+    0,
+    0,
+    0
+   ],
+   "size_ratio_vs_target": [
+    null,
+    null,
+    null
+   ],
+   "triangles": 9832,
+   "tris_max": 19999,
+   "materials": [
+    "BW_Atlas",
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_scn_sugarloaf_tower_w__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 108,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      1.0,
+      0.5,
+      0.8
+     ],
+     "center_from_pivot": [
+      -2.112,
+      0.25,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_scn_sugarloaf_tower_w__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 9724,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      9.283,
+      27.689,
+      4.181
+     ],
+     "center_from_pivot": [
+      -0.0,
+      13.845,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "name": "tower_0",
+     "center": [
+      -1.494936264770507,
+      3.5,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "tower_1",
+     "center": [
+      -0.34881076477050676,
+      10.0,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "tower_2",
+     "center": [
+      0.7973147352294934,
+      16.5,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    },
+    {
+     "name": "tower_3",
+     "center": [
+      1.9434402352294935,
+      23.0,
+      0.0
+     ],
+     "size": [
+      2.8,
+      6.5,
+      3.2
+     ],
+     "CanCollide": true
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "pivot_position_arch_local": [
+    -8.0879,
+    0.0,
+    -0.0
+   ],
+   "course": "sugarloaf_canyon",
+   "collision_frame": "FBX pivot-local Roblox axes",
+   "decoration_only": true,
+   "foliage_can_collide": false,
+   "crystals_can_collide": false,
+   "clearance_rule": "Zone A X[-5,5] Y[0,12] Z[-12,4]; zone B X[-11,11] Y[0,18] Z[4,34]; no triangle intersection; above Y18 allowed.",
+   "material_policy": "Opaque vertex colour + shared atlas; separate Neon; no real lights",
+   "builder_count": 1,
+   "tris_x_count": 9832
+  },
+  {
+   "name": "bw_sea_stacks",
+   "group": "backdrop",
+   "fbx": "fbx/bw_sea_stacks.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Four simple weathered stacks (grey stone, warm tops), vertex colour only; deliberately plainer than bw_rock_arch.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    0.069,
+    -0.113,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    29.722,
+    22.018,
+    10.88
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    11.009,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -14.861,
+    0.0,
+    -5.44
+   ],
+   "bbox_max_roblox": [
+    14.861,
+    22.018,
+    5.44
+   ],
+   "target_size_studs": [
+    30,
+    22,
+    12
+   ],
+   "size_ratio_vs_target": [
+    0.991,
+    1.001,
+    0.907
+   ],
+   "triangles": 1088,
+   "tris_max": 1800,
+   "materials": [
+    "BW_Backdrop"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_sea_stacks__BW_Backdrop",
+     "material": "BW_Backdrop",
+     "tris": 1088,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      29.722,
+      22.018,
+      10.88
+     ],
+     "center_from_pivot": [
+      0.0,
+      11.009,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      11.009,
+      -0.0
+     ],
+     "size": [
+      29.722,
+      22.018,
+      10.88
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 1088
+  },
+  {
+   "name": "bw_signpost",
+   "group": "board",
+   "fbx": "fbx/bw_signpost.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Arrows (top->bottom): Practice (->east/+X), Leaderboards (<-west/-X), Pier (->east/+X). Text is not modelled: arrow_face_1..3 are parchment faces for SurfaceGui text on the +Z side.",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    0.028,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    2.919,
+    7.0,
+    1.055
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    3.5,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.46,
+    0.0,
+    -0.528
+   ],
+   "bbox_max_roblox": [
+    1.46,
+    7.0,
+    0.528
+   ],
+   "target_size_studs": [
+    3,
+    7,
+    1
+   ],
+   "size_ratio_vs_target": [
+    0.973,
+    1.0,
+    1.055
+   ],
+   "triangles": 390,
+   "tris_max": 800,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_signpost__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 384,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.919,
+      7.0,
+      1.05
+     ],
+     "center_from_pivot": [
+      0.0,
+      3.5,
+      -0.002
+     ]
+    },
+    {
+     "mesh": "arrow_face_1",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.05,
+      0.56,
+      0.0
+     ],
+     "center_from_pivot": [
+      -0.175,
+      5.6,
+      0.528
+     ]
+    },
+    {
+     "mesh": "arrow_face_2",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.05,
+      0.56,
+      0.0
+     ],
+     "center_from_pivot": [
+      0.175,
+      4.5,
+      0.528
+     ]
+    },
+    {
+     "mesh": "arrow_face_3",
+     "material": "BW_Atlas",
+     "tris": 2,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.05,
+      0.56,
+      0.0
+     ],
+     "center_from_pivot": [
+      -0.175,
+      3.4,
+      0.528
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      3.5,
+      -0.0
+     ],
+     "size": [
+      2.919,
+      7.0,
+      1.055
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 390
+  },
+  {
+   "name": "bw_string_lights",
+   "group": "social",
+   "fbx": "fbx/bw_string_lights.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "24-stud span (ends at local X +-12, at the top of the bbox), cable with a gentle 0.6-stud parabolic sag and 12 Neon bulbs hung directly below; scale X for other spans (12-24).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.004
+   ],
+   "bbox_size_studs": [
+    24.011,
+    1.126,
+    0.466
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    0.563,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -12.005,
+    0.0,
+    -0.233
+   ],
+   "bbox_max_roblox": [
+    12.005,
+    1.126,
+    0.233
+   ],
+   "target_size_studs": [
+    24,
+    1.1,
+    0.5
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.023,
+    0.932
+   ],
+   "triangles": 384,
+   "tris_max": 400,
+   "materials": [
+    "BW_Atlas",
+    "BW_Neon"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_string_lights__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 96,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      24.011,
+      0.72,
+      0.12
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.766,
+      -0.0
+     ]
+    },
+    {
+     "mesh": "bw_string_lights__BW_Neon",
+     "material": "BW_Neon",
+     "tris": 288,
+     "color": "#FFC867",
+     "roblox_material": "Neon",
+     "size": [
+      22.345,
+      0.96,
+      0.466
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.48,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      0.563,
+      -0.0
+     ],
+     "size": [
+      24.011,
+      1.126,
+      0.466
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": "x",
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 384
+  },
+  {
+   "name": "bw_tee_mat",
+   "group": "green",
+   "fbx": "fbx/bw_tee_mat.fbx",
+   "front": "none (symmetric / tiling)",
+   "notes": "Flat fringe-green mat 2x0.1x2 (12 tris).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    2.0,
+    0.1,
+    2.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    0.05,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -1.0,
+    0.0,
+    -1.0
+   ],
+   "bbox_max_roblox": [
+    1.0,
+    0.1,
+    1.0
+   ],
+   "target_size_studs": [
+    2,
+    0.1,
+    2
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 12,
+   "tris_max": 20,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_tee_mat__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 12,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      2.0,
+      0.1,
+      2.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      0.05,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      0.05,
+      -0.0
+     ],
+     "size": [
+      2.0,
+      0.1,
+      2.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 2,
+   "tris_x_count": 24
+  },
+  {
+   "name": "bw_windmill",
+   "group": "green",
+   "fbx": "fbx/bw_windmill.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "Octagonal plank tower on a stone plinth with a ball tunnel (2 W x 1.2 H) running north-south, striped roof. Blade hub (pivot of bw_windmill_blades) at local (0, 7.0, +3.3).",
+   "pivot": "base centre: bbox centre X/Z, min Y = 0",
+   "pivot_recenter_applied": [
+    -0.0,
+    -0.0,
+    -0.0
+   ],
+   "bbox_size_studs": [
+    6.0,
+    10.0,
+    6.0
+   ],
+   "bbox_center_from_pivot": [
+    0.0,
+    5.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.0,
+    0.0,
+    -3.0
+   ],
+   "bbox_max_roblox": [
+    3.0,
+    10.0,
+    3.0
+   ],
+   "target_size_studs": [
+    6,
+    10,
+    6
+   ],
+   "size_ratio_vs_target": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "triangles": 622,
+   "tris_max": 3500,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_windmill__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 622,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      6.0,
+      10.0,
+      6.0
+     ],
+     "center_from_pivot": [
+      0.0,
+      5.0,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0.0,
+      5.0,
+      -0.0
+     ],
+     "size": [
+      6.0,
+      10.0,
+      6.0
+     ]
+    }
+   ],
+   "motion": null,
+   "scalable": null,
+   "can_collide": false,
+   "blade_hub": {
+    "local": [
+     0.0,
+     7.0,
+     3.3
+    ],
+    "note": "bw_windmill_blades pivot goes here: world = windmill pivot + (0, 7.0, 3.3) = (150, 7.4, 67.3) for the builder placement"
+   },
+   "builder_count": 1,
+   "tris_x_count": 622
+  },
+  {
+   "name": "bw_windmill_blades",
+   "group": "green",
+   "fbx": "fbx/bw_windmill_blades.fbx",
+   "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+   "notes": "4 lattice sails; pivot = hub centre (geometry spans +-4 around it, not base-centred).",
+   "pivot": "hub axle centre (rotation axis through local origin)",
+   "pivot_recenter_applied": [
+    0,
+    0,
+    0
+   ],
+   "bbox_size_studs": [
+    7.873,
+    7.873,
+    0.5
+   ],
+   "bbox_center_from_pivot": [
+    -0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -3.937,
+    -3.937,
+    -0.25
+   ],
+   "bbox_max_roblox": [
+    3.937,
+    3.937,
+    0.25
+   ],
+   "target_size_studs": [
+    8,
+    8,
+    0.5
+   ],
+   "size_ratio_vs_target": [
+    0.984,
+    0.984,
+    1.0
+   ],
+   "triangles": 404,
+   "tris_max": 500,
+   "materials": [
+    "BW_Atlas"
+   ],
+   "parts": [
+    {
+     "mesh": "bw_windmill_blades__BW_Atlas",
+     "material": "BW_Atlas",
+     "tris": 404,
+     "color": null,
+     "roblox_material": "SmoothPlastic",
+     "size": [
+      7.873,
+      7.873,
+      0.5
+     ],
+     "center_from_pivot": [
+      -0.0,
+      0.0,
+      -0.0
+     ]
+    }
+   ],
+   "collision": [
+    {
+     "center": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      8,
+      8,
+      0.5
+     ]
+    }
+   ],
+   "motion": {
+    "type": "rotate",
+    "axis_roblox": [
+     0,
+     0,
+     1
+    ],
+    "rpm": 6,
+    "pivot": "local origin = hub centre",
+    "note": "spin about the local Z axis (north-south), 6 rpm; place pivot at windmill hub"
+   },
+   "scalable": null,
+   "can_collide": false,
+   "builder_count": 1,
+   "tris_x_count": 404
+  }
+ ],
+ "instances": [
+  {
+   "id": "bw_deck_plank_a_001",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    15.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_002",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    15.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_003",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    15.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_004",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    15.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_005",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    15.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_006",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    15.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_007",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    15.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_008",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    25.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_009",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    25.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_010",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    25.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_011",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    25.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_012",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    25.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_013",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    25.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_014",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    25.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_015",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    35.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_016",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    35.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_017",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    35.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_018",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    35.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_019",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    35.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_020",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    35.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_021",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    35.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_022",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    45.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_023",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    45.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_024",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    45.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_025",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    45.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_026",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    45.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_027",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    45.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_028",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    45.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_029",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    55.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_030",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    55.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_031",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    55.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_032",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    55.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_033",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    55.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_034",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    55.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_035",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    55.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_036",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    65.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_037",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    65.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_038",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    65.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_039",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    65.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_040",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    65.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_041",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    65.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_042",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    65.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_043",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    75.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_044",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    75.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_045",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    75.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_046",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    75.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_047",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    75.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_048",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    75.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_049",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    75.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_050",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    85.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_051",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    85.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_052",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    85.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_053",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    85.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_054",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    85.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_055",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    85.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_056",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    85.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_057",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    95.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_058",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    95.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_059",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    95.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_060",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    95.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_061",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    95.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_062",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    95.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_063",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    95.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_064",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    105.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_065",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    105.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_066",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    105.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_067",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    105.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_068",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    105.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_069",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    105.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_070",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    105.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_071",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    115.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_072",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    115.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_073",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    115.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_074",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    115.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_075",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    115.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_076",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    115.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_077",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    115.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_078",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    125.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_079",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    125.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_080",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    125.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_081",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    125.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_082",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    125.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_083",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    125.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_084",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    125.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_085",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    135.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_086",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    135.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_087",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    135.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_088",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    135.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_089",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    135.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_090",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    135.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_091",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    135.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_092",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    145.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_093",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    145.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_094",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    145.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_095",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    145.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_096",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    145.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_097",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    145.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_098",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    145.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_099",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    155.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_100",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    155.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_101",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    155.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_102",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    155.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_103",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    155.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_104",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    155.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_105",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    155.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_106",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    165.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_107",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    165.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_108",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    165.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_109",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    165.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_110",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    165.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_111",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    165.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_112",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    165.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_113",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    175.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_114",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    175.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_115",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    175.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_116",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    175.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_117",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    175.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_118",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    175.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_119",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    175.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_120",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    185.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_121",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    185.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_122",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    185.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_123",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    185.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_124",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    185.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_125",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    185.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_126",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    185.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_127",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    195.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_128",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    195.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_129",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    195.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_130",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    195.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_131",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    195.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_132",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    195.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_133",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    195.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_134",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    205.0,
+    -1.0,
+    45.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_135",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    205.0,
+    -1.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_136",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    205.0,
+    -1.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_137",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    205.0,
+    -1.0,
+    75.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_138",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    205.0,
+    -1.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_139",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    205.0,
+    -1.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_140",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    205.0,
+    -1.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_141",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    155.0,
+    -1.0,
+    115.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_142",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    155.0,
+    -1.0,
+    125.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_143",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    155.0,
+    -1.0,
+    135.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_144",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    155.0,
+    -1.0,
+    144.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    8.0
+   ],
+   "solid": false,
+   "scale": [
+    1.0,
+    1,
+    0.8
+   ]
+  },
+  {
+   "id": "bw_deck_plank_b_145",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    165.0,
+    -1.0,
+    115.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_146",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    165.0,
+    -1.0,
+    125.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_147",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    165.0,
+    -1.0,
+    135.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_148",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    165.0,
+    -1.0,
+    144.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    8.0
+   ],
+   "solid": false,
+   "scale": [
+    1.0,
+    1,
+    0.8
+   ]
+  },
+  {
+   "id": "bw_deck_plank_a_149",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    175.0,
+    -1.0,
+    115.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_150",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    175.0,
+    -1.0,
+    125.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_a_151",
+   "asset": "bw_deck_plank_a",
+   "position": [
+    175.0,
+    -1.0,
+    135.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_deck_plank_b_152",
+   "asset": "bw_deck_plank_b",
+   "position": [
+    175.0,
+    -1.0,
+    144.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    1.0,
+    8.0
+   ],
+   "solid": false,
+   "scale": [
+    1.0,
+    1,
+    0.8
+   ]
+  },
+  {
+   "id": "bw_railing_153",
+   "asset": "bw_railing",
+   "position": [
+    15.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_154",
+   "asset": "bw_railing",
+   "position": [
+    25.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_155",
+   "asset": "bw_railing",
+   "position": [
+    35.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_156",
+   "asset": "bw_railing",
+   "position": [
+    45.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_157",
+   "asset": "bw_railing",
+   "position": [
+    55.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_158",
+   "asset": "bw_railing",
+   "position": [
+    65.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_159",
+   "asset": "bw_railing",
+   "position": [
+    75.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_160",
+   "asset": "bw_railing",
+   "position": [
+    85.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_161",
+   "asset": "bw_railing",
+   "position": [
+    95.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_162",
+   "asset": "bw_railing",
+   "position": [
+    105.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_163",
+   "asset": "bw_railing",
+   "position": [
+    115.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_164",
+   "asset": "bw_railing",
+   "position": [
+    125.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_165",
+   "asset": "bw_railing",
+   "position": [
+    135.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_166",
+   "asset": "bw_railing",
+   "position": [
+    145.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_167",
+   "asset": "bw_railing",
+   "position": [
+    185.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_168",
+   "asset": "bw_railing",
+   "position": [
+    195.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_169",
+   "asset": "bw_railing",
+   "position": [
+    205.0,
+    0.0,
+    110.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_170",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    45.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_171",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    55.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_172",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    65.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_173",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    75.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_174",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    85.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_175",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    95.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_176",
+   "asset": "bw_railing",
+   "position": [
+    10.0,
+    0.0,
+    105.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_177",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    45.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_178",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    55.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_179",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    65.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_180",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    75.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_181",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    85.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_182",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    95.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_183",
+   "asset": "bw_railing",
+   "position": [
+    210.0,
+    0.0,
+    105.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_184",
+   "asset": "bw_railing",
+   "position": [
+    150.0,
+    0.0,
+    115.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_185",
+   "asset": "bw_railing",
+   "position": [
+    150.0,
+    0.0,
+    125.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_186",
+   "asset": "bw_railing",
+   "position": [
+    150.0,
+    0.0,
+    135.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_187",
+   "asset": "bw_railing",
+   "position": [
+    150.0,
+    0.0,
+    144.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    8.0,
+    3.5,
+    0.6
+   ],
+   "solid": false,
+   "scale": [
+    0.8,
+    1,
+    1
+   ]
+  },
+  {
+   "id": "bw_railing_188",
+   "asset": "bw_railing",
+   "position": [
+    180.0,
+    0.0,
+    115.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_189",
+   "asset": "bw_railing",
+   "position": [
+    180.0,
+    0.0,
+    125.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_190",
+   "asset": "bw_railing",
+   "position": [
+    180.0,
+    0.0,
+    135.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_191",
+   "asset": "bw_railing",
+   "position": [
+    180.0,
+    0.0,
+    144.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    8.0,
+    3.5,
+    0.6
+   ],
+   "solid": false,
+   "scale": [
+    0.8,
+    1,
+    1
+   ]
+  },
+  {
+   "id": "bw_railing_192",
+   "asset": "bw_railing",
+   "position": [
+    155.0,
+    0.0,
+    148.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_193",
+   "asset": "bw_railing",
+   "position": [
+    165.0,
+    0.0,
+    148.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_railing_194",
+   "asset": "bw_railing",
+   "position": [
+    175.0,
+    0.0,
+    148.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    10.0,
+    3.5,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_195",
+   "asset": "bw_pier_piling",
+   "position": [
+    152.0,
+    -6.0,
+    115.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_196",
+   "asset": "bw_pier_piling",
+   "position": [
+    152.0,
+    -6.0,
+    125.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_197",
+   "asset": "bw_pier_piling",
+   "position": [
+    152.0,
+    -6.0,
+    135.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_198",
+   "asset": "bw_pier_piling",
+   "position": [
+    152.0,
+    -6.0,
+    145.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_199",
+   "asset": "bw_pier_piling",
+   "position": [
+    178.0,
+    -6.0,
+    115.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_200",
+   "asset": "bw_pier_piling",
+   "position": [
+    178.0,
+    -6.0,
+    125.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_201",
+   "asset": "bw_pier_piling",
+   "position": [
+    178.0,
+    -6.0,
+    135.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_pier_piling_202",
+   "asset": "bw_pier_piling",
+   "position": [
+    178.0,
+    -6.0,
+    145.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    6.0,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "course_board",
+   "asset": "bw_course_board",
+   "position": [
+    100.0,
+    0.0,
+    85.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    26.0,
+    10.0,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "leaderboard_wall",
+   "asset": "bw_leaderboard_wall",
+   "position": [
+    25.0,
+    0.0,
+    65.0
+   ],
+   "yaw": -90.0,
+   "size": [
+    14.0,
+    10.0,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_signpost_205",
+   "asset": "bw_signpost",
+   "position": [
+    120.0,
+    0.0,
+    88.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    3.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "arch_lantern_grove",
+   "asset": "bw_arch_lantern_grove",
+   "position": [
+    45.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    16.0,
+    18.0,
+    4.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_arch_nameplate_207",
+   "asset": "bw_arch_nameplate",
+   "position": [
+    45.0,
+    14.0,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": [
+    8.0,
+    2.0,
+    0.5
+   ],
+   "solid": false
+  },
+  {
+   "id": "arch_sugarloaf_canyon",
+   "asset": "bw_arch_sugarloaf_canyon",
+   "position": [
+    110.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    16.0,
+    18.0,
+    4.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_arch_nameplate_209",
+   "asset": "bw_arch_nameplate",
+   "position": [
+    110.0,
+    14.0,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": [
+    8.0,
+    2.0,
+    0.5
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_coming_soon_sign_210",
+   "asset": "bw_coming_soon_sign",
+   "position": [
+    110.0,
+    11.0,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": [
+    6.0,
+    2.0,
+    0.5
+   ],
+   "solid": false
+  },
+  {
+   "id": "arch_aurora_archipelago",
+   "asset": "bw_arch_aurora_archipelago",
+   "position": [
+    175.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    16.0,
+    18.0,
+    4.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_arch_nameplate_212",
+   "asset": "bw_arch_nameplate",
+   "position": [
+    175.0,
+    14.0,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": [
+    8.0,
+    2.0,
+    0.5
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_coming_soon_sign_213",
+   "asset": "bw_coming_soon_sign",
+   "position": [
+    175.0,
+    11.0,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": [
+    6.0,
+    2.0,
+    0.5
+   ],
+   "solid": false
+  },
+  {
+   "id": "practice_green",
+   "asset": "bw_practice_green",
+   "position": [
+    145.0,
+    0.0,
+    65.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    34.0,
+    0.4,
+    20.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_windmill_215",
+   "asset": "bw_windmill",
+   "position": [
+    150.0,
+    0.4,
+    64.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    6.0,
+    10.0,
+    6.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_windmill_blades_216",
+   "asset": "bw_windmill_blades",
+   "position": [
+    150.0,
+    3.4,
+    67.3
+   ],
+   "yaw": 0.0,
+   "size": [
+    8.0,
+    8.0,
+    0.5
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_cup_flag_217",
+   "asset": "bw_cup_flag",
+   "position": [
+    158.0,
+    0.4,
+    60.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    0.6,
+    5.0,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_tee_mat_218",
+   "asset": "bw_tee_mat",
+   "position": [
+    132.0,
+    0.4,
+    70.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    0.1,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_cup_flag_219",
+   "asset": "bw_cup_flag",
+   "position": [
+    150.0,
+    0.4,
+    58.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    0.6,
+    5.0,
+    0.6
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_tee_mat_220",
+   "asset": "bw_tee_mat",
+   "position": [
+    140.0,
+    0.4,
+    72.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    0.1,
+    2.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "birdie_bites_shack",
+   "asset": "bw_birdie_bites_shack",
+   "position": [
+    195.0,
+    0.0,
+    80.0
+   ],
+   "yaw": 90.0,
+   "size": [
+    16.0,
+    14.0,
+    18.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_bench_222",
+   "asset": "bw_bench",
+   "position": [
+    158.0,
+    0.0,
+    130.0
+   ],
+   "yaw": 180.0,
+   "size": [
+    6.0,
+    2.5,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_bench_223",
+   "asset": "bw_bench",
+   "position": [
+    172.0,
+    0.0,
+    130.0
+   ],
+   "yaw": 180.0,
+   "size": [
+    6.0,
+    2.5,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_bench_224",
+   "asset": "bw_bench",
+   "position": [
+    158.0,
+    0.0,
+    140.0
+   ],
+   "yaw": 180.0,
+   "size": [
+    6.0,
+    2.5,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_bench_225",
+   "asset": "bw_bench",
+   "position": [
+    172.0,
+    0.0,
+    140.0
+   ],
+   "yaw": 180.0,
+   "size": [
+    6.0,
+    2.5,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_bench_226",
+   "asset": "bw_bench",
+   "position": [
+    37.0,
+    0.0,
+    95.0
+   ],
+   "yaw": 180.0,
+   "size": [
+    6.0,
+    2.5,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_bench_227",
+   "asset": "bw_bench",
+   "position": [
+    53.0,
+    0.0,
+    95.0
+   ],
+   "yaw": 180.0,
+   "size": [
+    6.0,
+    2.5,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_picnic_table_228",
+   "asset": "bw_picnic_table",
+   "position": [
+    185.0,
+    0.0,
+    100.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    6.0,
+    3.0,
+    6.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_barrel_229",
+   "asset": "bw_barrel",
+   "position": [
+    205.0,
+    0.0,
+    95.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    3.0,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_crate_230",
+   "asset": "bw_crate",
+   "position": [
+    205.0,
+    0.0,
+    99.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_flower_planter_231",
+   "asset": "bw_flower_planter",
+   "position": [
+    35.0,
+    0.0,
+    103.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    4.0,
+    2.0,
+    2.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_beach_umbrella_232",
+   "asset": "bw_beach_umbrella",
+   "position": [
+    195.0,
+    0.0,
+    101.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    6.0,
+    7.0,
+    6.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_string_lights_233",
+   "asset": "bw_string_lights",
+   "position": [
+    165.0,
+    7.0,
+    145.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    20.0,
+    0.5,
+    0.5
+   ],
+   "solid": false,
+   "scale": [
+    0.8333,
+    1,
+    1
+   ]
+  },
+  {
+   "id": "bw_sea_stacks_234",
+   "asset": "bw_sea_stacks",
+   "position": [
+    70.0,
+    -4.0,
+    210.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    30.0,
+    22.0,
+    12.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_rock_arch_235",
+   "asset": "bw_rock_arch",
+   "position": [
+    125.0,
+    -4.0,
+    230.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    30.0,
+    24.0,
+    10.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_lantern_tree_canopy_236",
+   "asset": "bw_lantern_tree_canopy",
+   "position": [
+    12.0,
+    10.0,
+    12.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    24.0,
+    16.0,
+    20.0
+   ],
+   "solid": false
+  },
+  {
+   "id": "bw_lantern_post_237",
+   "asset": "bw_lantern_post",
+   "position": [
+    20.0,
+    0.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    1.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_lantern_post_238",
+   "asset": "bw_lantern_post",
+   "position": [
+    80.0,
+    0.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    1.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_lantern_post_239",
+   "asset": "bw_lantern_post",
+   "position": [
+    140.0,
+    0.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    1.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_lantern_post_240",
+   "asset": "bw_lantern_post",
+   "position": [
+    205.0,
+    0.0,
+    105.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    1.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_lantern_post_241",
+   "asset": "bw_lantern_post",
+   "position": [
+    153.0,
+    0.0,
+    145.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    1.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "bw_lantern_post_242",
+   "asset": "bw_lantern_post",
+   "position": [
+    177.0,
+    0.0,
+    145.0
+   ],
+   "yaw": 0.0,
+   "size": [
+    1.0,
+    7.0,
+    1.0
+   ],
+   "solid": true
+  },
+  {
+   "id": "arch_lantern_grove__bw_portal_surface_lantern_grove",
+   "asset": "bw_portal_surface_lantern_grove",
+   "position": [
+    45.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_portal_apron",
+   "asset": "bw_portal_apron",
+   "position": [
+    45.0,
+    0.0,
+    36.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_arch_lantern_grove_lantern_01",
+   "asset": "bw_arch_lantern_grove_lantern_01",
+   "position": [
+    36.8,
+    21.3,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_arch_lantern_grove_lantern_02",
+   "asset": "bw_arch_lantern_grove_lantern_02",
+   "position": [
+    53.2,
+    21.3,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_arch_lantern_grove_lantern_03",
+   "asset": "bw_arch_lantern_grove_lantern_03",
+   "position": [
+    39.0,
+    22.3,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_arch_lantern_grove_lantern_04",
+   "asset": "bw_arch_lantern_grove_lantern_04",
+   "position": [
+    51.0,
+    22.3,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_arch_lantern_grove_lantern_05",
+   "asset": "bw_arch_lantern_grove_lantern_05",
+   "position": [
+    41.5,
+    23.3,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_lantern_grove__bw_arch_lantern_grove_lantern_06",
+   "asset": "bw_arch_lantern_grove_lantern_06",
+   "position": [
+    48.5,
+    23.3,
+    34.3
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_lantern_grove"
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_portal_surface_sugarloaf_canyon",
+   "asset": "bw_portal_surface_sugarloaf_canyon",
+   "position": [
+    110.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_sugarloaf_canyon"
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_portal_apron",
+   "asset": "bw_portal_apron",
+   "position": [
+    110.0,
+    0.0,
+    36.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_sugarloaf_canyon"
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_arch_sugarloaf_canyon_lantern_01",
+   "asset": "bw_arch_sugarloaf_canyon_lantern_01",
+   "position": [
+    103.5,
+    12.6,
+    33.6
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_sugarloaf_canyon"
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_arch_sugarloaf_canyon_lantern_02",
+   "asset": "bw_arch_sugarloaf_canyon_lantern_02",
+   "position": [
+    116.5,
+    12.6,
+    33.6
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_sugarloaf_canyon"
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_portal_surface_aurora_archipelago",
+   "asset": "bw_portal_surface_aurora_archipelago",
+   "position": [
+    175.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_aurora_archipelago"
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_portal_apron",
+   "asset": "bw_portal_apron",
+   "position": [
+    175.0,
+    0.0,
+    36.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_aurora_archipelago"
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_arch_aurora_archipelago_lantern_01",
+   "asset": "bw_arch_aurora_archipelago_lantern_01",
+   "position": [
+    168.2,
+    6.2,
+    33.25
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_aurora_archipelago"
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_arch_aurora_archipelago_lantern_02",
+   "asset": "bw_arch_aurora_archipelago_lantern_02",
+   "position": [
+    181.8,
+    6.2,
+    33.25
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_aurora_archipelago"
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_arch_aurora_archipelago_snowpuff",
+   "asset": "bw_arch_aurora_archipelago_snowpuff",
+   "position": [
+    175.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "size": null,
+   "solid": false,
+   "parent_id": "arch_aurora_archipelago"
+  },
+  {
+   "id": "arch_lantern_grove__bw_scn_lantern_grove_planter_e",
+   "asset": "bw_scn_lantern_grove_planter_e",
+   "position": [
+    53.6,
+    0.0,
+    33.5
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_lantern_grove",
+   "solid": false
+  },
+  {
+   "id": "arch_lantern_grove__bw_scn_lantern_grove_planter_w",
+   "asset": "bw_scn_lantern_grove_planter_w",
+   "position": [
+    36.4,
+    0.0,
+    33.5
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_lantern_grove",
+   "solid": false
+  },
+  {
+   "id": "arch_lantern_grove__bw_scn_lantern_grove_trunk_e",
+   "asset": "bw_scn_lantern_grove_trunk_e",
+   "position": [
+    49.40243053436279,
+    0.0,
+    31.774598360061646
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_lantern_grove",
+   "solid": false
+  },
+  {
+   "id": "arch_lantern_grove__bw_scn_lantern_grove_trunk_w",
+   "asset": "bw_scn_lantern_grove_trunk_w",
+   "position": [
+    40.6001992225647,
+    0.0,
+    31.774598360061646
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_lantern_grove",
+   "solid": false
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_scn_sugarloaf_crystals_e",
+   "asset": "bw_scn_sugarloaf_crystals_e",
+   "position": [
+    122.17865562438965,
+    -0.39292359352111816,
+    33.06335139274597
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_sugarloaf_canyon",
+   "solid": false
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_scn_sugarloaf_crystals_w",
+   "asset": "bw_scn_sugarloaf_crystals_w",
+   "position": [
+    97.9166316986084,
+    -0.36414700746536255,
+    32.74017322063446
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_sugarloaf_canyon",
+   "solid": false
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_scn_sugarloaf_lollipop_cactus",
+   "asset": "bw_scn_sugarloaf_lollipop_cactus",
+   "position": [
+    95.0,
+    0.0,
+    32.7644
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_sugarloaf_canyon",
+   "solid": false
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_scn_sugarloaf_tower_e",
+   "asset": "bw_scn_sugarloaf_tower_e",
+   "position": [
+    118.0879,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_sugarloaf_canyon",
+   "solid": false
+  },
+  {
+   "id": "arch_sugarloaf_canyon__bw_scn_sugarloaf_tower_w",
+   "asset": "bw_scn_sugarloaf_tower_w",
+   "position": [
+    101.9121,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_sugarloaf_canyon",
+   "solid": false
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_scn_aurora_crown",
+   "asset": "bw_scn_aurora_crown",
+   "position": [
+    175.0,
+    0.0,
+    32.0
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_aurora_archipelago",
+   "solid": false
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_scn_aurora_rocks_e",
+   "asset": "bw_scn_aurora_rocks_e",
+   "position": [
+    184.99027824401855,
+    0.0,
+    31.67745804786682
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_aurora_archipelago",
+   "solid": false
+  },
+  {
+   "id": "arch_aurora_archipelago__bw_scn_aurora_rocks_w",
+   "asset": "bw_scn_aurora_rocks_w",
+   "position": [
+    164.956148147583,
+    0.0,
+    31.72697913646698
+   ],
+   "yaw": 0.0,
+   "parent_id": "arch_aurora_archipelago",
+   "solid": false
+  }
+ ],
+ "totals": {
+  "unique_meshes": 56,
+  "instances": 271,
+  "tris_total": 104772,
+  "tris_limit": 120000,
+  "tris_target": 115000,
+  "missing_assets": []
+ },
+ "pass8_clearance": {
+  "zone_A": {
+   "min": [
+    -5,
+    0,
+    -12
+   ],
+   "max": [
+    5,
+    12,
+    4
+   ]
+  },
+  "zone_B": {
+   "min": [
+    -11,
+    0,
+    4
+   ],
+   "max": [
+    11,
+    18,
+    34
+   ]
+  },
+  "above_y18_allowed": true
+ },
+ "pass8_preview": {
+  "view_transform": "Standard",
+  "world_strength": 0.9,
+  "large_soft_key_size": 30,
+  "Glow_Tips_emission": 1.5
+ },
+ "pass9_clearance": {
+  "zone_A": {
+   "min": [
+    -5,
+    0,
+    -12
+   ],
+   "max": [
+    5,
+    12,
+    4
+   ]
+  },
+  "zone_B": {
+   "min": [
+    -11,
+    0,
+    4
+   ],
+   "max": [
+    11,
+    18,
+    34
+   ]
+  },
+  "above_y18_allowed": true
+ },
+ "pass9_preview": {
+  "view_transform": "Standard",
+  "world_strength": 0.9,
+  "Glow_emission": 1.5,
+  "vertex_colour_attribute": "Col"
+ },
+ "pass10_clearance": {
+  "zone_A": {
+   "min": [
+    -5,
+    0,
+    -12
+   ],
+   "max": [
+    5,
+    12,
+    4
+   ]
+  },
+  "zone_B": {
+   "min": [
+    -11,
+    0,
+    4
+   ],
+   "max": [
+    11,
+    18,
+    34
+   ]
+  },
+  "above_y18_allowed": true
+ },
+ "pass10_preview": {
+  "view_transform": "Standard",
+  "world_strength": 0.9,
+  "Glow_Tips_emission": 1.5,
+  "Glow_Crystal_emission": 0.2,
+  "vertex_colour_attribute": "Col",
+  "engine": "BLENDER_EEVEE"
+ }
+}

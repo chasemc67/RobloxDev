@@ -1,0 +1,75 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Stylized whimsical VR mini golf game world concept art, first-person view from standing VR eye height on the 18th tee atop the highest mesa (Sugarloaf Crown), same art style and palette as the references: candy-striped pink and cream sandstone, lollipop cacti, pink and amber rock-candy crystals, toon shading. The grand finale hole: a putting green banks off a curved stone wall, then a ramp leads up and under a huge natural sandstone arch framing the setting sun, a glowing geode cave shortcut to one side and a railed rim route around the edge, flag and cup beyond the arch; the whole canyon world, river and reservoir dam far below, dome-shaped mesa landmark nearby. Original design, no text, no logos.",
+  "aspect": "16:9",
+  "refs": [
+    "../../RobloxDev/assets/vr-minigolf/sugarloaf-canyon/../store/ui/card_soon_sugarloafcanyon_color_clean.png",
+    "../../RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V3-rope-bridge-mesa.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 2498,
+    "outputTokens": 1078,
+    "totalTokens": 3576
+  },
+  "cost": 0.05179,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791760209,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 2320,
+          "textTokens": 178
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791760180433,
+                "endTime": 1791760209944,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.05179",
+      "marketCost": "0.05179",
+      "surchargeCost": "0",
+      "gatewayCost": "0.05179",
+      "inferenceCost": "0.05179",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.05179",
+      "generationId": "gen_01M4PKN93JZK4MPKM7GAJ4ZHFW"
+    }
+  },
+  "seconds": 30.4,
+  "files": [
+    "../../RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V4-sunset-arch.png"
+  ]
+}

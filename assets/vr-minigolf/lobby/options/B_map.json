@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Top-down orthographic dressing map, illustrated game-design plan of a 220x150 rectangular seaside mini golf boardwalk lobby (deck planks, ocean along the north edge, beach behind three portal arches on the north side, practice green with windmill SE, snack shack, spawn at the south-centre). Clean readable plan view, prop clusters drawn as small icons, colour coded zones, no text labels, no letters. Follow the reference layout. Option B Golf-Ball Fountain Carnival: centerpiece a giant animated fountain where water arcs spout a giant spinning golf ball on top, surrounded by a small carousel of golf-ball horses and a ring of colourful striped carnival tents and popcorn carts; string lights, pennant flags, balloons; time of day blue-hour dusk with glowing neon-warm lights; leaderboard is a carnival marquee board with bulb border lights. Mark the fountain at plaza centre.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/boardwalk/layout_boardwalk_v1.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1689,
+    "outputTokens": 1078,
+    "totalTokens": 2767
+  },
+  "cost": 0.045273,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791828915,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1496,
+          "textTokens": 193
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791828881622,
+                "endTime": 1791828916099,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.045273",
+      "marketCost": "0.045273",
+      "surchargeCost": "0",
+      "gatewayCost": "0.045273",
+      "inferenceCost": "0.045273",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.045273",
+      "generationId": "gen_01M4RN5TKK393RQ6Y8QKA1Y4GP"
+    }
+  },
+  "seconds": 36.6,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/options/B_map.png"
+  ]
+}

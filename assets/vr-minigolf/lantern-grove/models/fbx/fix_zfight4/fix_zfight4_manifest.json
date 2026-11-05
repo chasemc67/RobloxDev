@@ -1,0 +1,31 @@
+{
+ "generated": "2026-10-14",
+ "props": {
+  "h5_respawn_stone": {
+   "fbx": "fbx/fix_zfight4/h5_respawn_stone.fbx",
+   "sha256": "9d68ec0d6dcf240001856c17c6310843dd5cf04ca5591fa86018350ef095f48e",
+   "tris": 384,
+   "parts": [
+    {
+     "object": "h5_respawn_stone__Slate",
+     "material_slots": [
+      "Slate",
+      "ShroomGlow",
+      "Moss"
+     ],
+     "tris": 384,
+     "tris_per_slot": {
+      "Slate": 336,
+      "ShroomGlow": 24,
+      "Moss": 24
+     }
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "design": "one closed flat disc r.395, 0.206 thick (y.156-.362), no recess. Top faces zoned: ShroomGlow centre r.103 (24 tris), Moss sector 225-315 deg r.189-.395 (24 tris), Slate elsewhere incl. sides/bottom.",
+   "multi_material_note": "Exported as ONE mesh with 3 material slots (Slate, ShroomGlow, Moss) and per-face material indices. A Roblox MeshPart import renders a single Material/Color per MeshPart: in Studio either keep it as one MeshPart (zones show only via a SurfaceAppearance/texture) or let the importer split by material slot, which yields 3 coplanar-adjacent pieces sharing edges (no overlap)."
+  }
+ }
+}

@@ -1,0 +1,2402 @@
+{
+  "course": "aurora-archipelago",
+  "batch": "fix_overlap",
+  "validation_stage": "fresh FBX reimport, true 3D signed clearance",
+  "all_pass": true,
+  "source_md5": "fb913741b5dd4812b6d2318e258bcc46",
+  "parts": [
+    {
+      "id": "h06_respawn_stone",
+      "hole": 6,
+      "fbx": "fbx/props_fix_overlap/h06_respawn_stone.fbx",
+      "tris": 12,
+      "max_mesh_tris": 12,
+      "meshes": [
+        {
+          "mesh": "h06_respawn_stone__Lime",
+          "material": "Lime",
+          "colour": "#D8FF6A",
+          "color": "#D8FF6A",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 12
+        }
+      ],
+      "pivot_hole_local": [
+        5.5,
+        -0.1303,
+        -36.25
+      ],
+      "anchor_local": [
+        5.5,
+        -0.1303,
+        -36.25
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        305.0,
+        84.0,
+        478.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        310.5,
+        83.8697,
+        441.75
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Flush sloped stone follows exact shelf_e top, extending below anchor by .029 studs; thickness is below felt."
+      ],
+      "override_boxes": [
+        {
+          "center": [
+            5.5,
+            -0.1403,
+            -36.25
+          ],
+          "size": [
+            0.8,
+            0.06,
+            0.8
+          ],
+          "reason": "Flush sloped stone follows exact shelf_e top, extending below anchor by .029 studs; thickness is below felt."
+        }
+      ],
+      "can_collide": false,
+      "can_query": false,
+      "can_touch": false,
+      "bbox_asset_local": [
+        [
+          -0.4000000059604645,
+          0.14417333900928497,
+          -0.40000003576278687
+        ],
+        [
+          0.4000000059604645,
+          0.17576025426387787,
+          0.4000000059604645
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          5.0999999940395355,
+          0.013873339009284974,
+          -36.65000003576279
+        ],
+        [
+          5.9000000059604645,
+          0.04546025426387787,
+          -35.849999994039536
+        ]
+      ],
+      "bbox": [
+        [
+          -0.4000000059604645,
+          0.14417333900928497,
+          -0.40000003576278687
+        ],
+        [
+          0.4000000059604645,
+          0.17576025426387787,
+          0.4000000059604645
+        ]
+      ],
+      "dimensions": [
+        0.800000011920929,
+        0.031586915254592896,
+        0.8000000417232513
+      ],
+      "lights": [],
+      "fitcheck": {
+        "head_room_min_over_felt": -0.02300000052501757,
+        "head_room_over_felt": {
+          "shelf_e": -0.02300000052501757
+        },
+        "ball_path_vertical_clearance": null,
+        "id": "h06_respawn_stone",
+        "hole": 6,
+        "status": "PASS",
+        "total_tris": 12,
+        "material_tris": {
+          "Lime": 12
+        },
+        "min_rail_clearance": 8.5999995470047,
+        "nearest_rail": "rail5",
+        "min_felt_clearance": 8.5999995470047,
+        "nearest_felt": "cup_pad",
+        "head_room_hits": 0,
+        "sightline_hits": 0,
+        "sweep": null,
+        "failures": [],
+        "heavy": false
+      },
+      "source_fbx": "models/fbx/props_batch3/h06_respawn_stone.fbx",
+      "source_sha256": "20ecf8abf5108772dd4fd9df6eea420ae1a4fe8ee1839f4c746330868727a5c4",
+      "lane_validation": null,
+      "before": {
+        "rail": {
+          "id": "rail5",
+          "clearance": 8.599999994039536,
+          "triangle": 0,
+          "mesh_point": [
+            5.9000000059604645,
+            -0.15914339913725853,
+            -36.650000005960464
+          ],
+          "solid_point": [
+            14.5,
+            -0.15914339913725853,
+            -36.650000005960464
+          ]
+        },
+        "felt": {
+          "id": "shelf_e",
+          "clearance": -0.02299765377029747,
+          "triangle": 0,
+          "mesh_point": [
+            5.633333335320155,
+            -0.15528113301893076,
+            -36.38333333532015
+          ],
+          "solid_point": [
+            2.5,
+            -0.28690000000000004,
+            -35.75
+          ]
+        }
+      },
+      "after": {
+        "rail": {
+          "id": "rail5",
+          "clearance": 8.599999994039536,
+          "triangle": 0,
+          "mesh_point": [
+            5.9000000059604645,
+            0.013873339009284974,
+            -36.650000005960464
+          ],
+          "solid_point": [
+            14.5,
+            0.013873339009284974,
+            -36.650000005960464
+          ]
+        },
+        "felt": {
+          "id": "shelf_e",
+          "clearance": 0.15000093990234778,
+          "triangle": 0,
+          "mesh_point": [
+            5.0999999940395355,
+            0.02546000511646271,
+            -36.650000005960464
+          ],
+          "solid_point": [
+            5.097827708251546,
+            -0.12452520464117656,
+            -36.650000005960464
+          ]
+        }
+      },
+      "lift_y": 0.17301679751835766,
+      "pass_fitcheck": true
+    },
+    {
+      "id": "h18_crystal_chute",
+      "hole": 18,
+      "fbx": "fbx/props_fix_overlap/h18_crystal_chute.fbx",
+      "tris": 1093,
+      "max_mesh_tris": 192,
+      "meshes": [
+        {
+          "mesh": "h18_crystal_chute__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 877
+        },
+        {
+          "mesh": "h18_crystal_chute__IceCore",
+          "material": "IceCore",
+          "colour": "#BFF6FF",
+          "color": "#BFF6FF",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 216
+        }
+      ],
+      "pivot_hole_local": [
+        -6.5,
+        0.25,
+        -33.0
+      ],
+      "anchor_local": [
+        -6.5,
+        0.25,
+        -33.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        -235.0,
+        222.0,
+        -232.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        -241.5,
+        222.25,
+        -265.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Exact rail9/divider meet rail8/rail10 at zero-clearance structural joins. Extend ice skin asset to the complete connected H18 source rail/backing network so every joined collider is an explicitly owned exact skin; no blanket adjacent-rail exception. Full source network overrides chute-only approximate envelope; 1.6 chute opening unchanged."
+      ],
+      "override_boxes": [
+        {
+          "center": [
+            0,
+            1.2,
+            -29
+          ],
+          "size": [
+            36,
+            3.4,
+            64
+          ],
+          "reason": "Exact rail9/divider meet rail8/rail10 at zero-clearance structural joins. Extend ice skin asset to the complete connected H18 source rail/backing network so every joined collider is an explicitly owned exact skin; no blanket adjacent-rail exception. Full source network overrides chute-only approximate envelope; 1.6 chute opening unchanged."
+        }
+      ],
+      "can_collide": false,
+      "can_query": false,
+      "can_touch": false,
+      "bbox_asset_local": [
+        [
+          -11.920040130615234,
+          -0.7500006556510925,
+          -27.920040130615234
+        ],
+        [
+          24.920040130615234,
+          3.0700442790985107,
+          35.920040130615234
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -18.420040130615234,
+          -0.5000006556510925,
+          -60.920040130615234
+        ],
+        [
+          18.420040130615234,
+          3.3200442790985107,
+          2.9200401306152344
+        ]
+      ],
+      "bbox": [
+        [
+          -11.920040130615234,
+          -0.7500006556510925,
+          -27.920040130615234
+        ],
+        [
+          24.920040130615234,
+          3.0700442790985107,
+          35.920040130615234
+        ]
+      ],
+      "dimensions": [
+        36.84008026123047,
+        3.8200449347496033,
+        63.84008026123047
+      ],
+      "lights": [],
+      "fitcheck": {
+        "head_room_min_over_felt": -1.7000000000000002,
+        "head_room_over_felt": {
+          "lane": -0.5,
+          "plaza_w": -0.5,
+          "plaza": -0.5,
+          "ramp": -1.0,
+          "green": -1.0,
+          "crystal_bank_ne": -1.7000000000000002,
+          "crystal_bank_sw": -1.7000000000000002
+        },
+        "ball_path_vertical_clearance": null,
+        "id": "h18_crystal_chute",
+        "hole": 18,
+        "status": "PASS",
+        "total_tris": 384,
+        "material_tris": {
+          "Ice": 192,
+          "IceCore": 192
+        },
+        "min_rail_clearance": 0,
+        "nearest_rail": "all source rails explicitly skinned",
+        "min_felt_clearance": 0,
+        "nearest_felt": "contact/flush/source skin",
+        "head_room_hits": 0,
+        "sightline_hits": 0,
+        "sweep": null,
+        "failures": [],
+        "heavy": false
+      },
+      "source_fbx": "models/fbx/props_batch3/h18_crystal_chute.fbx",
+      "source_sha256": "38cbfbcfed29b3a6decb8a40756cef4f28318438c6e94775717a637a70c30108",
+      "lane_validation": {
+        "width": 1.6,
+        "vertices_inside": 0,
+        "faces_crossing": 0
+      },
+      "before": {
+        "rail": {
+          "id": "chute_divider",
+          "clearance": -1.750000238418579,
+          "triangle": 352,
+          "mesh_point": [
+            -8.161666631698608,
+            1.5683338741461437,
+            -29.75000015894572
+          ],
+          "solid_point": [
+            -8.4,
+            1.2,
+            -33.0
+          ]
+        },
+        "felt": {
+          "id": "crystal_bank_sw",
+          "clearance": -1.0607092734701027,
+          "triangle": 23,
+          "mesh_point": [
+            -8.666666666666666,
+            0.6333361466725668,
+            -16.0
+          ],
+          "solid_point": [
+            -10.3243,
+            0.4,
+            -21.5757
+          ]
+        }
+      },
+      "after": {
+        "rail": {
+          "id": "crystal_bank_sw_backing",
+          "clearance": 0.30001951175983205,
+          "triangle": 74,
+          "mesh_point": [
+            -5.92840576171875,
+            -0.49999791383743286,
+            -15.199960708618164
+          ],
+          "solid_point": [
+            -5.716259930465095,
+            -0.49999791383743286,
+            -15.412106539871818
+          ]
+        },
+        "felt": {
+          "id": "crystal_bank_ne",
+          "clearance": 0.15001997520950613,
+          "triangle": 652,
+          "mesh_point": [
+            4.8815460205078125,
+            0.6546763479709625,
+            -20.24512767791748
+          ],
+          "solid_point": [
+            4.775465878723733,
+            0.6546763479709625,
+            -20.35120781970156
+          ]
+        }
+      },
+      "lift_y": 0.0,
+      "pass_fitcheck": true
+    },
+    {
+      "id": "h02_lintel_left",
+      "hole": 2,
+      "fbx": "fbx/props_fix_overlap/h02_lintel_left.fbx",
+      "tris": 1149,
+      "max_mesh_tris": 545,
+      "meshes": [
+        {
+          "mesh": "h02_lintel_left__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 368
+        },
+        {
+          "mesh": "h02_lintel_left__IceCore",
+          "material": "IceCore",
+          "colour": "#BFF6FF",
+          "color": "#BFF6FF",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 36
+        },
+        {
+          "mesh": "h02_lintel_left__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 188
+        },
+        {
+          "mesh": "h02_lintel_left__Canvas",
+          "material": "Canvas",
+          "colour": "#7A5CC8",
+          "color": "#7A5CC8",
+          "roblox_material": "Fabric",
+          "transparency": 0,
+          "tris": 12
+        },
+        {
+          "mesh": "h02_lintel_left__Basalt",
+          "material": "Basalt",
+          "colour": "#3A3550",
+          "color": "#3A3550",
+          "roblox_material": "Basalt",
+          "transparency": 0,
+          "tris": 545
+        }
+      ],
+      "pivot_hole_local": [
+        -9.5,
+        8.0,
+        -16.0
+      ],
+      "anchor_local": [
+        -9.5,
+        8.0,
+        -16.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        -115.0,
+        60.0,
+        480.0
+      ],
+      "world_yaw": -90.0,
+      "pivot_world": [
+        -99.0,
+        68.0,
+        470.5
+      ],
+      "placement_yaw": -90.0,
+      "motion": null,
+      "notes": [
+        "Basalt pillars included in lintel asset, outside clear burrow width, start y2.51 above drift/rail tops. Middle underside y8.04 preserves slope headroom.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "lights": [],
+      "bbox_asset_local": [
+        [
+          -3.55,
+          -5.49,
+          -0.975
+        ],
+        [
+          2.6,
+          1.2,
+          0.6
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -13.05,
+          2.51,
+          -16.975
+        ],
+        [
+          -6.9,
+          9.2,
+          -15.4
+        ]
+      ],
+      "bbox": [
+        [
+          -3.55,
+          -5.49,
+          -0.975
+        ],
+        [
+          2.6,
+          1.2,
+          0.6
+        ]
+      ],
+      "dimensions": [
+        6.15,
+        6.69,
+        1.575
+      ],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "0fc79cb6e70457812623be8b543bbb3878409a7f0fe072f6fca1e3b5ae85552e",
+      "replaces_approved": "fbx/props_batch1/h02_lintel_left.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 644,
+          "verts": 338,
+          "parts": 8,
+          "intersecting_pairs": 3,
+          "stacked_lt_0.08": 5,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 3,
+          "min_thickness": 0.02,
+          "rail": 0.11,
+          "felt": 2.5524
+        },
+        "after": {
+          "tris": 1149,
+          "verts": 591,
+          "parts": 8,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.206,
+          "min_gap": 0.086,
+          "rail": 0.156,
+          "felt": 2.5943
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9949,
+          "side": 0.9862,
+          "top": 0.9738,
+          "bbox_delta_max": 0.088
+        },
+        "note": "Rebuilt as separate non-touching parts: opaque parts pocketed 0.086 around decor, inner parts inset 0.086 inside transparent Ice, thin parts thickened to 0.206."
+      }
+    },
+    {
+      "id": "h02_lintel_mid",
+      "hole": 2,
+      "fbx": "fbx/props_fix_overlap/h02_lintel_mid.fbx",
+      "tris": 1136,
+      "max_mesh_tris": 582,
+      "meshes": [
+        {
+          "mesh": "h02_lintel_mid__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 322
+        },
+        {
+          "mesh": "h02_lintel_mid__IceCore",
+          "material": "IceCore",
+          "colour": "#BFF6FF",
+          "color": "#BFF6FF",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 32
+        },
+        {
+          "mesh": "h02_lintel_mid__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 188
+        },
+        {
+          "mesh": "h02_lintel_mid__Canvas",
+          "material": "Canvas",
+          "colour": "#7A5CC8",
+          "color": "#7A5CC8",
+          "roblox_material": "Fabric",
+          "transparency": 0,
+          "tris": 12
+        },
+        {
+          "mesh": "h02_lintel_mid__Basalt",
+          "material": "Basalt",
+          "colour": "#3A3550",
+          "color": "#3A3550",
+          "roblox_material": "Basalt",
+          "transparency": 0,
+          "tris": 582
+        }
+      ],
+      "pivot_hole_local": [
+        0.0,
+        8.0,
+        -16.0
+      ],
+      "anchor_local": [
+        0.0,
+        8.0,
+        -16.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        -115.0,
+        60.0,
+        480.0
+      ],
+      "world_yaw": -90.0,
+      "pivot_world": [
+        -99.0,
+        68.0,
+        480.0
+      ],
+      "placement_yaw": -90.0,
+      "motion": null,
+      "notes": [
+        "Basalt pillars included in lintel asset, outside clear burrow width, start y2.51 above drift/rail tops. Middle underside y8.04 preserves slope headroom.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "lights": [],
+      "bbox_asset_local": [
+        [
+          -3.0,
+          -5.49,
+          -0.975
+        ],
+        [
+          3.0,
+          1.2,
+          0.6
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -3.0,
+          2.51,
+          -16.975
+        ],
+        [
+          3.0,
+          9.2,
+          -15.4
+        ]
+      ],
+      "bbox": [
+        [
+          -3.0,
+          -5.49,
+          -0.975
+        ],
+        [
+          3.0,
+          1.2,
+          0.6
+        ]
+      ],
+      "dimensions": [
+        6.0,
+        6.69,
+        1.575
+      ],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "49ec7003c1579da858b83c1ab4f8b5622f906d4a48f295230b29e8bcb9e73468",
+      "replaces_approved": "fbx/props_batch1/h02_lintel_mid.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 644,
+          "verts": 338,
+          "parts": 8,
+          "intersecting_pairs": 3,
+          "stacked_lt_0.08": 5,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 3,
+          "min_thickness": 0.02,
+          "rail": 0.11,
+          "felt": 2.5233
+        },
+        "after": {
+          "tris": 1136,
+          "verts": 584,
+          "parts": 8,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.206,
+          "min_gap": 0.086,
+          "rail": 0.156,
+          "felt": 2.5463
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9934,
+          "side": 0.9835,
+          "top": 0.974,
+          "bbox_delta_max": 0.088
+        },
+        "note": "Rebuilt as separate non-touching parts: opaque parts pocketed 0.086 around decor, inner parts inset 0.086 inside transparent Ice, thin parts thickened to 0.206."
+      }
+    },
+    {
+      "id": "h02_lintel_right",
+      "hole": 2,
+      "fbx": "fbx/props_fix_overlap/h02_lintel_right.fbx",
+      "tris": 1102,
+      "max_mesh_tris": 554,
+      "meshes": [
+        {
+          "mesh": "h02_lintel_right__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 316
+        },
+        {
+          "mesh": "h02_lintel_right__IceCore",
+          "material": "IceCore",
+          "colour": "#BFF6FF",
+          "color": "#BFF6FF",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 32
+        },
+        {
+          "mesh": "h02_lintel_right__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 188
+        },
+        {
+          "mesh": "h02_lintel_right__Canvas",
+          "material": "Canvas",
+          "colour": "#7A5CC8",
+          "color": "#7A5CC8",
+          "roblox_material": "Fabric",
+          "transparency": 0,
+          "tris": 12
+        },
+        {
+          "mesh": "h02_lintel_right__Basalt",
+          "material": "Basalt",
+          "colour": "#3A3550",
+          "color": "#3A3550",
+          "roblox_material": "Basalt",
+          "transparency": 0,
+          "tris": 554
+        }
+      ],
+      "pivot_hole_local": [
+        9.0,
+        8.0,
+        -16.0
+      ],
+      "anchor_local": [
+        9.0,
+        8.0,
+        -16.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        -115.0,
+        60.0,
+        480.0
+      ],
+      "world_yaw": -90.0,
+      "pivot_world": [
+        -99.0,
+        68.0,
+        489.0
+      ],
+      "placement_yaw": -90.0,
+      "motion": null,
+      "notes": [
+        "Basalt pillars included in lintel asset, outside clear burrow width, start y2.51 above drift/rail tops. Middle underside y8.04 preserves slope headroom.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "lights": [],
+      "bbox_asset_local": [
+        [
+          -3.15,
+          -5.49,
+          -0.975
+        ],
+        [
+          3.1,
+          1.2,
+          0.6
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          5.85,
+          2.51,
+          -16.975
+        ],
+        [
+          12.1,
+          9.2,
+          -15.4
+        ]
+      ],
+      "bbox": [
+        [
+          -3.15,
+          -5.49,
+          -0.975
+        ],
+        [
+          3.1,
+          1.2,
+          0.6
+        ]
+      ],
+      "dimensions": [
+        6.25,
+        6.69,
+        1.575
+      ],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "fe36b0b5a4593eeaaaede27eb1553099c3edf14310f96012c107723854d8791d",
+      "replaces_approved": "fbx/props_batch1/h02_lintel_right.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 644,
+          "verts": 338,
+          "parts": 8,
+          "intersecting_pairs": 3,
+          "stacked_lt_0.08": 5,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 3,
+          "min_thickness": 0.02,
+          "rail": 0.11,
+          "felt": 2.5524
+        },
+        "after": {
+          "tris": 1102,
+          "verts": 567,
+          "parts": 8,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.206,
+          "min_gap": 0.086,
+          "rail": 0.156,
+          "felt": 2.5943
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9942,
+          "side": 0.9841,
+          "top": 0.9743,
+          "bbox_delta_max": 0.088
+        },
+        "note": "Rebuilt as separate non-touching parts: opaque parts pocketed 0.086 around decor, inner parts inset 0.086 inside transparent Ice, thin parts thickened to 0.206."
+      }
+    },
+    {
+      "id": "h02_rookery_drift",
+      "hole": 2,
+      "fbx": "fbx/props_fix_overlap/h02_rookery_drift.fbx",
+      "tris": 1009,
+      "max_mesh_tris": 633,
+      "meshes": [
+        {
+          "mesh": "h02_rookery_drift__SnowShadow",
+          "material": "SnowShadow",
+          "colour": "#C9C3EC",
+          "color": "#C9C3EC",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 633
+        },
+        {
+          "mesh": "h02_rookery_drift__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 376
+        }
+      ],
+      "pivot_hole_local": [
+        0.0,
+        0,
+        -22
+      ],
+      "anchor_local": [
+        0.0,
+        0,
+        -22
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        -115.0,
+        60.0,
+        480.0
+      ],
+      "world_yaw": -90.0,
+      "pivot_world": [
+        -93.0,
+        60.0,
+        480.0
+      ],
+      "placement_yaw": -90.0,
+      "motion": null,
+      "notes": [
+        "Rounded rectangular masses cut around open burrows; full 24x26 drift silhouette conflicts with reachable felt and source occluders, so envelope is represented by source walls plus inset dressing.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "lights": [],
+      "bbox_asset_local": [
+        [
+          -7.39,
+          0.0,
+          -9.89
+        ],
+        [
+          6.39,
+          5.0,
+          5.39
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -7.39,
+          0.0,
+          -31.89
+        ],
+        [
+          6.39,
+          5.0,
+          -16.61
+        ]
+      ],
+      "bbox": [
+        [
+          -7.39,
+          0.0,
+          -9.89
+        ],
+        [
+          6.39,
+          5.0,
+          5.39
+        ]
+      ],
+      "dimensions": [
+        13.78,
+        5.0,
+        15.280000000000001
+      ],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "6963d86bdb0ea1da102cda85fb16c9eb7f173de8d19b4157724e1f2f712c519d",
+      "replaces_approved": "fbx/props_batch1/h02_rookery_drift.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 752,
+          "verts": 384,
+          "parts": 4,
+          "intersecting_pairs": 2,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 2.6,
+          "rail": 0.11,
+          "felt": 0.7355
+        },
+        "after": {
+          "tris": 1009,
+          "verts": 513,
+          "parts": 4,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 2.6,
+          "min_gap": 0.086,
+          "rail": 0.156,
+          "felt": 0.7355
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.996,
+          "side": 0.9986,
+          "top": 0.999,
+          "bbox_delta_max": 0.0
+        },
+        "note": "Rebuilt as separate non-touching parts: opaque parts pocketed 0.086 around decor, inner parts inset 0.086 inside transparent Ice, thin parts thickened to 0.206."
+      }
+    },
+    {
+      "id": "h10_bobsled_hut",
+      "hole": 10,
+      "fbx": "fbx/props_fix_overlap/h10_bobsled_hut.fbx",
+      "tris": 856,
+      "max_mesh_tris": 432,
+      "meshes": [
+        {
+          "mesh": "h10_bobsled_hut__Canvas",
+          "material": "Canvas",
+          "colour": "#7A5CC8",
+          "color": "#7A5CC8",
+          "roblox_material": "Fabric",
+          "transparency": 0,
+          "tris": 168
+        },
+        {
+          "mesh": "h10_bobsled_hut__Timber",
+          "material": "Timber",
+          "colour": "#8A5A3C",
+          "color": "#8A5A3C",
+          "roblox_material": "WoodPlanks",
+          "transparency": 0,
+          "tris": 432
+        },
+        {
+          "mesh": "h10_bobsled_hut__Glow",
+          "material": "Glow",
+          "colour": "#FFB861",
+          "color": "#FFB861",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 24
+        },
+        {
+          "mesh": "h10_bobsled_hut__Brass",
+          "material": "Brass",
+          "colour": "#C9A04A",
+          "color": "#C9A04A",
+          "roblox_material": "Metal",
+          "transparency": 0,
+          "tris": 128
+        },
+        {
+          "mesh": "h10_bobsled_hut__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 76
+        },
+        {
+          "mesh": "h10_bobsled_hut__HullTeal",
+          "material": "HullTeal",
+          "colour": "#2F5D7A",
+          "color": "#2F5D7A",
+          "roblox_material": "WoodPlanks",
+          "transparency": 0,
+          "tris": 28
+        }
+      ],
+      "pivot_hole_local": [
+        -7.5,
+        0,
+        -6
+      ],
+      "anchor_local": [
+        -7.5,
+        0,
+        -6
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        510.0,
+        146.0,
+        60.0
+      ],
+      "world_yaw": 90.0,
+      "pivot_world": [
+        504.0,
+        146.0,
+        67.5
+      ],
+      "placement_yaw": 90.0,
+      "motion": null,
+      "notes": [
+        "Violet canvas and timber replace prohibited static red/cream.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.875,
+          0.0,
+          -2.0
+        ],
+        [
+          1.875,
+          7.0,
+          2.35
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -9.375,
+          0.0,
+          -8.0
+        ],
+        [
+          -5.625,
+          7.0,
+          -3.65
+        ]
+      ],
+      "bbox": [
+        [
+          -1.875,
+          0.0,
+          -2.0
+        ],
+        [
+          1.875,
+          7.0,
+          2.35
+        ]
+      ],
+      "dimensions": [
+        3.75,
+        7.0,
+        4.35
+      ],
+      "lights": [],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "54d1885aa312396486f4214e1afe47339bf25c18b190a817f00f1959b86961e7",
+      "replaces_approved": "fbx/props_batch2/h10_bobsled_hut.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 344,
+          "verts": 206,
+          "parts": 17,
+          "intersecting_pairs": 28,
+          "stacked_lt_0.08": 19,
+          "coplanar_tri_pairs": 36,
+          "thin_parts": 12,
+          "min_thickness": 0.036,
+          "rail": 0.125,
+          "felt": 0.625
+        },
+        "after": {
+          "tris": 856,
+          "verts": 458,
+          "parts": 14,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.2,
+          "min_gap": 0.083,
+          "rail": 0.156,
+          "felt": 0.656
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9888,
+          "side": 0.9933,
+          "top": 0.995,
+          "bbox_delta_max": 0.0
+        },
+        "note": "Roof lantern rebuilt as stacked plate/glow/cap/snow with 0.086 gaps (rods removed); sled runners rebuilt as 0.2 boxes; body/roof/door pocketed 0.086 around decor."
+      }
+    },
+    {
+      "id": "h15_lip_ice",
+      "hole": 15,
+      "fbx": "fbx/props_fix_overlap/h15_lip_ice.fbx",
+      "tris": 160,
+      "max_mesh_tris": 160,
+      "meshes": [
+        {
+          "mesh": "h15_lip_ice__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 160
+        }
+      ],
+      "pivot_hole_local": [
+        0,
+        -3.85,
+        -19.6
+      ],
+      "anchor_local": [
+        0,
+        -3.85,
+        -19.6
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        12.0,
+        182.0,
+        -334.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        12.0,
+        178.15,
+        -353.6
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -3.35,
+          0,
+          -0.25
+        ],
+        [
+          3.35,
+          3.45,
+          0.25
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -3.35,
+          -3.85,
+          -19.85
+        ],
+        [
+          3.35,
+          -0.3999999999999999,
+          -19.35
+        ]
+      ],
+      "bbox": [
+        [
+          -3.35,
+          0,
+          -0.25
+        ],
+        [
+          3.35,
+          3.45,
+          0.25
+        ]
+      ],
+      "dimensions": [
+        6.7,
+        3.45,
+        0.5
+      ],
+      "lights": [],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "7f12e495065e10bb62ae415cb0bf71123261d55583724d7f34a96da51bfbaaa9",
+      "replaces_approved": "fbx/props_batch2/h15_lip_ice.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 68,
+          "verts": 36,
+          "parts": 3,
+          "intersecting_pairs": 3,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 2,
+          "min_thickness": 0.0,
+          "rail": 0.15,
+          "felt": -0.0
+        },
+        "after": {
+          "tris": 160,
+          "verts": 82,
+          "parts": 1,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.5,
+          "min_gap": null,
+          "rail": 0.156,
+          "felt": 0.156
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9478,
+          "side": 0.9191,
+          "top": 0.9286,
+          "bbox_delta_max": 0.156
+        },
+        "note": "Built from approved FBX (round2 file was open/non-manifold); two zero-volume duplicate side quads removed; bottom trimmed for 0.15 felt clearance."
+      }
+    },
+    {
+      "id": "h10_snow_walls_e",
+      "hole": 10,
+      "fbx": "fbx/props_fix_overlap/h10_snow_walls_e.fbx",
+      "tris": 494,
+      "max_mesh_tris": 306,
+      "meshes": [
+        {
+          "mesh": "h10_snow_walls_e__SnowShadow",
+          "material": "SnowShadow",
+          "colour": "#C9C3EC",
+          "color": "#C9C3EC",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 306
+        },
+        {
+          "mesh": "h10_snow_walls_e__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 188
+        }
+      ],
+      "pivot_hole_local": [
+        11.4,
+        0,
+        -16.175
+      ],
+      "anchor_local": [
+        11.4,
+        0,
+        -16.175
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        510.0,
+        146.0,
+        60.0
+      ],
+      "world_yaw": 90.0,
+      "pivot_world": [
+        493.825,
+        146.0,
+        48.599999999999994
+      ],
+      "placement_yaw": 90.0,
+      "motion": null,
+      "notes": [
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -0.75,
+          0,
+          -18.675
+        ],
+        [
+          0.75,
+          4,
+          18.675
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          10.65,
+          0,
+          -34.85
+        ],
+        [
+          12.15,
+          4,
+          2.5
+        ]
+      ],
+      "bbox": [
+        [
+          -0.75,
+          0,
+          -18.675
+        ],
+        [
+          0.75,
+          4,
+          18.675
+        ]
+      ],
+      "dimensions": [
+        1.5,
+        4,
+        37.35
+      ],
+      "lights": [],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "4ff80701ef5380dfcbc9e02b50189ffcc221e289adff05158568764496c73c37",
+      "replaces_approved": "fbx/props_batch2/h10_snow_walls_e.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 376,
+          "verts": 192,
+          "parts": 2,
+          "intersecting_pairs": 1,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 44,
+          "thin_parts": 0,
+          "min_thickness": 0.64,
+          "rail": 0.15,
+          "felt": 0.7486
+        },
+        "after": {
+          "tris": 494,
+          "verts": 251,
+          "parts": 2,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.64,
+          "min_gap": 0.086,
+          "rail": 0.156,
+          "felt": 0.7486
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9844,
+          "side": 0.9986,
+          "top": 1.0,
+          "bbox_delta_max": 0.006
+        },
+        "note": "Rebuilt as separate non-touching parts: opaque parts pocketed 0.086 around decor, inner parts inset 0.086 inside transparent Ice, thin parts thickened to 0.206."
+      }
+    },
+    {
+      "id": "h10_snow_walls_w",
+      "hole": 10,
+      "fbx": "fbx/props_fix_overlap/h10_snow_walls_w.fbx",
+      "tris": 504,
+      "max_mesh_tris": 316,
+      "meshes": [
+        {
+          "mesh": "h10_snow_walls_w__SnowShadow",
+          "material": "SnowShadow",
+          "colour": "#C9C3EC",
+          "color": "#C9C3EC",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 316
+        },
+        {
+          "mesh": "h10_snow_walls_w__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 188
+        }
+      ],
+      "pivot_hole_local": [
+        -6.4,
+        0,
+        -23.0
+      ],
+      "anchor_local": [
+        -6.4,
+        0,
+        -23.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        510.0,
+        146.0,
+        60.0
+      ],
+      "world_yaw": 90.0,
+      "pivot_world": [
+        487.0,
+        146.0,
+        66.4
+      ],
+      "placement_yaw": 90.0,
+      "motion": null,
+      "notes": [
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -0.75,
+          0,
+          -14.35
+        ],
+        [
+          0.75,
+          4,
+          14.35
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -7.15,
+          0,
+          -37.35
+        ],
+        [
+          -5.65,
+          4,
+          -8.65
+        ]
+      ],
+      "bbox": [
+        [
+          -0.75,
+          0,
+          -14.35
+        ],
+        [
+          0.75,
+          4,
+          14.35
+        ]
+      ],
+      "dimensions": [
+        1.5,
+        4,
+        28.7
+      ],
+      "lights": [],
+      "can_query": false,
+      "can_touch": false,
+      "sha256": "d2d18ef7d43cf75429cc53258ccd62f3093b96854878dc8d1158898dd92239eb",
+      "replaces_approved": "fbx/props_batch2/h10_snow_walls_w.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 376,
+          "verts": 192,
+          "parts": 2,
+          "intersecting_pairs": 1,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 40,
+          "thin_parts": 0,
+          "min_thickness": 0.64,
+          "rail": 0.15,
+          "felt": 0.7486
+        },
+        "after": {
+          "tris": 504,
+          "verts": 256,
+          "parts": 2,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.64,
+          "min_gap": 0.086,
+          "rail": 0.156,
+          "felt": 0.7486
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9835,
+          "side": 0.9985,
+          "top": 0.9974,
+          "bbox_delta_max": 0.006
+        },
+        "note": "Rebuilt as separate non-touching parts: opaque parts pocketed 0.086 around decor, inner parts inset 0.086 inside transparent Ice, thin parts thickened to 0.206."
+      }
+    },
+    {
+      "id": "h15_great_frozen_falls",
+      "hole": 15,
+      "fbx": "fbx/props_fix_overlap/h15_great_frozen_falls.fbx",
+      "tris": 2740,
+      "max_mesh_tris": 1596,
+      "meshes": [
+        {
+          "mesh": "h15_great_frozen_falls__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 1596
+        },
+        {
+          "mesh": "h15_great_frozen_falls__IceCore",
+          "material": "IceCore",
+          "colour": "#BFF6FF",
+          "color": "#BFF6FF",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 1144
+        }
+      ],
+      "pivot_hole_local": [
+        8.0,
+        -146.0,
+        -64.0
+      ],
+      "anchor_local": [
+        8.0,
+        -146.0,
+        -64.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        12.0,
+        182.0,
+        -334.0
+      ],
+      "world_yaw": 0,
+      "pivot_world": [
+        20.0,
+        36.0,
+        -398.0
+      ],
+      "placement_yaw": 0,
+      "motion": null,
+      "notes": [
+        "World waterfall top/bottom supersede 26x40x8 view-cue envelope; 26x146x8 actual bounds. Sheet taper, bulging tiers and vertical flutes retained. Tileable 20-stud cadence, final six-stud section. Foot ends at cloud deck y36; cloud obscuration supplied by world, no invented cloud mesh.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "can_collide": false,
+      "can_query": false,
+      "can_touch": false,
+      "streaming": "Persistent",
+      "primary_part": "base-centre root (builder creates PrimaryPart)",
+      "bbox_asset_local": [
+        [
+          -13.0,
+          0,
+          -4.0
+        ],
+        [
+          13.0,
+          146.0,
+          4.0
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -5.0,
+          -146.0,
+          -68.0
+        ],
+        [
+          21.0,
+          0.0,
+          -60.0
+        ]
+      ],
+      "bbox_world": [
+        [
+          7.0,
+          36.0,
+          -402.0
+        ],
+        [
+          33.0,
+          182.0,
+          -394.0
+        ]
+      ],
+      "dimensions": [
+        26.0,
+        146.0,
+        8.0
+      ],
+      "lights": [],
+      "placement_source": "world/world.json waterfalls: Great Frozen Falls",
+      "source_top": [
+        20,
+        182,
+        -398
+      ],
+      "source_bottom": [
+        20.0,
+        36.0,
+        -398.0
+      ],
+      "sha256": "4c3ac6a4daf1d47c59ecb546de7f59638d7e6db6cce387759439e3208c79fc2e",
+      "replaces_approved": "fbx/props_batch2/h15_great_frozen_falls.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 3664,
+          "verts": 1856,
+          "parts": 12,
+          "intersecting_pairs": 11,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 88,
+          "thin_parts": 0,
+          "min_thickness": 0.26,
+          "rail": 21.1623,
+          "felt": 21.6681
+        },
+        "after": {
+          "tris": 2740,
+          "verts": 1394,
+          "parts": 12,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.26,
+          "min_gap": 0.0999,
+          "rail": 21.1623,
+          "felt": 21.6681
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 1.0,
+          "side": 1.0,
+          "top": 1.0,
+          "bbox_delta_max": 0.0
+        },
+        "note": "IceCore ribbons re-lofted on 9 rings (104 tris each), clipped 0.12 from top/bottom and pushed >=0.12 inside the Ice shell; total under 3k tris."
+      }
+    },
+    {
+      "id": "h18_ramp_lanterns",
+      "hole": 18,
+      "fbx": "fbx/props_fix_overlap/h18_ramp_lanterns.fbx",
+      "tris": 648,
+      "max_mesh_tris": 348,
+      "meshes": [
+        {
+          "mesh": "h18_ramp_lanterns__Brass",
+          "material": "Brass",
+          "colour": "#C9A04A",
+          "color": "#C9A04A",
+          "roblox_material": "Metal",
+          "transparency": 0,
+          "tris": 348
+        },
+        {
+          "mesh": "h18_ramp_lanterns__Timber",
+          "material": "Timber",
+          "colour": "#8A5A3C",
+          "color": "#8A5A3C",
+          "roblox_material": "WoodPlanks",
+          "transparency": 0,
+          "tris": 36
+        },
+        {
+          "mesh": "h18_ramp_lanterns__Glow",
+          "material": "Glow",
+          "colour": "#FFB861",
+          "color": "#FFB861",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 36
+        },
+        {
+          "mesh": "h18_ramp_lanterns__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 228
+        }
+      ],
+      "pivot_hole_local": [
+        -8.9,
+        2.9,
+        -33.0
+      ],
+      "anchor_local": [
+        -8.9,
+        2.9,
+        -33.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        -235.0,
+        222.0,
+        -232.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        -243.9,
+        224.9,
+        -265.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Separate 1.9-wide foot caps inset .15 from both felt edges, plate bottom .22 above divider top; downward lips terminate .15 above divider top to respect rail gap. North/south downward lips shield gap from tee eye; 5.5-tall timber posts, Glow heads, brass caps. Pivot unchanged.",
+        "Aurora fix_overlap round 3 rebuild (2026-10-14)."
+      ],
+      "override_boxes": [
+        {
+          "center": [
+            -8.4,
+            6.3,
+            -33.0
+          ],
+          "size": [
+            1.9,
+            6.8,
+            10
+          ],
+          "reason": "Separate 1.9-wide foot caps inset .15 from both felt edges, plate bottom .22 above divider top; downward lips terminate .15 above divider top to respect rail gap. North/south downward lips shield gap from tee eye; 5.5-tall timber posts, Glow heads, brass caps. Pivot unchanged."
+        }
+      ],
+      "can_collide": false,
+      "can_query": false,
+      "can_touch": false,
+      "bbox_asset_local": [
+        [
+          -0.44899999999999995,
+          0.1500000000000002,
+          -3.975000000000001
+        ],
+        [
+          1.4489999999999998,
+          6.6,
+          3.975000000000001
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -9.349,
+          3.0500000000000003,
+          -36.975
+        ],
+        [
+          -7.4510000000000005,
+          9.5,
+          -29.025
+        ]
+      ],
+      "bbox": [
+        [
+          -0.44899999999999995,
+          0.1500000000000002,
+          -3.975000000000001
+        ],
+        [
+          1.4489999999999998,
+          6.6,
+          3.975000000000001
+        ]
+      ],
+      "dimensions": [
+        1.8979999999999997,
+        6.449999999999999,
+        7.950000000000002
+      ],
+      "lights": [],
+      "fitcheck": {
+        "head_room_min_over_felt": "none over felt",
+        "head_room_over_felt": {},
+        "ball_path_vertical_clearance": null,
+        "id": "h18_ramp_lanterns",
+        "hole": 18,
+        "status": "PASS",
+        "total_tris": 816,
+        "material_tris": {
+          "Brass": 516,
+          "Timber": 36,
+          "Glow": 36,
+          "Snow": 228
+        },
+        "min_rail_clearance": 0.14999955892562866,
+        "nearest_rail": "chute_divider",
+        "min_felt_clearance": 0.15099942684173584,
+        "nearest_felt": "chute",
+        "head_room_hits": 0,
+        "sightline_hits": 0,
+        "sweep": null,
+        "failures": [],
+        "heavy": false
+      },
+      "sha256": "8d97d27bd553d8c0af47922a91fe867d2714a1b9abc228b6b8aba050f5872e1b",
+      "replaces_approved": "fbx/props_batch3/h18_ramp_lanterns.fbx",
+      "fix_overlap_round3": {
+        "rule": "separate closed parts; gaps>=0.08; parts>=0.2 thick (OBB); true-mesh clearance>=0.15 to felt and rails; <3000 tris; no coplanar overlap",
+        "validation": "fresh FBX reimport in Blender 5.2 (3dmb_aa3_dump1); exact island gaps via FCL; signed triangle/box clearance",
+        "before_approved": {
+          "tris": 816,
+          "verts": 480,
+          "parts": 36,
+          "intersecting_pairs": 30,
+          "stacked_lt_0.08": 48,
+          "coplanar_tri_pairs": 96,
+          "thin_parts": 30,
+          "min_thickness": 0.03,
+          "rail": 0.15,
+          "felt": 2.6024
+        },
+        "after": {
+          "tris": 648,
+          "verts": 360,
+          "parts": 18,
+          "intersecting_pairs": 0,
+          "stacked_lt_0.08": 0,
+          "coplanar_tri_pairs": 0,
+          "thin_parts": 0,
+          "min_thickness": 0.2,
+          "min_gap": 0.083,
+          "rail": 0.157,
+          "felt": 2.6094
+        },
+        "silhouette_iou_vs_approved": {
+          "front": 0.9097,
+          "side": 0.913,
+          "top": 1.0,
+          "bbox_delta_max": 0.361
+        },
+        "note": "Rebuilt from boxes: post, base plate, head plate, glow, cap and snow cap stacked with 0.086 gaps; four 0.07 cage rods removed (cannot be 0.2 thick without hitting the glow); lantern top ~0.36 higher."
+      }
+    }
+  ],
+  "skipped": [],
+  "axes": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+  },
+  "unchanged_assets": [
+    {
+      "id": "h04_ice_channel_edge",
+      "hole": 4,
+      "fbx": "fbx/props_batch3/h04_ice_channel_edge.fbx",
+      "tris": 48,
+      "max_mesh_tris": 24,
+      "meshes": [
+        {
+          "mesh": "h04_ice_channel_edge__Ice",
+          "material": "Ice",
+          "colour": "#8FE3FF",
+          "color": "#8FE3FF",
+          "roblox_material": "Glass",
+          "transparency": 0.3,
+          "tris": 24
+        },
+        {
+          "mesh": "h04_ice_channel_edge__IceCore",
+          "material": "IceCore",
+          "colour": "#BFF6FF",
+          "color": "#BFF6FF",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 24
+        }
+      ],
+      "pivot_hole_local": [
+        0.0,
+        0.0,
+        -24.0
+      ],
+      "anchor_local": [
+        0.0,
+        0.0,
+        -24.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        185.0,
+        84.0,
+        470.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        185.0,
+        84.0,
+        446.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "no change needed (true mesh clearance already >= threshold)"
+      ],
+      "override_boxes": [
+        {
+          "center": [
+            0,
+            0.6,
+            -23.7
+          ],
+          "size": [
+            10.1,
+            1.2,
+            30.9
+          ],
+          "reason": "Ice edges .175 outside slide rails; north termination avoids green cross rail. Pivot = ice_sheen."
+        }
+      ],
+      "can_collide": false,
+      "can_query": false,
+      "can_touch": false,
+      "bbox_asset_local": [
+        [
+          -5.0249999999999995,
+          0.09999999999999998,
+          -15.149999999999999
+        ],
+        [
+          5.0249999999999995,
+          0.9,
+          15.75
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -5.0249999999999995,
+          0.09999999999999998,
+          -39.15
+        ],
+        [
+          5.0249999999999995,
+          0.9,
+          -8.25
+        ]
+      ],
+      "bbox": [
+        [
+          -5.0249999999999995,
+          0.09999999999999998,
+          -15.149999999999999
+        ],
+        [
+          5.0249999999999995,
+          0.9,
+          15.75
+        ]
+      ],
+      "dimensions": [
+        10.049999999999999,
+        0.8,
+        30.9
+      ],
+      "lights": [],
+      "fitcheck": {
+        "head_room_min_over_felt": "none over felt",
+        "head_room_over_felt": {},
+        "ball_path_vertical_clearance": null,
+        "id": "h04_ice_channel_edge",
+        "hole": 4,
+        "status": "PASS",
+        "total_tris": 48,
+        "material_tris": {
+          "Ice": 24,
+          "IceCore": 24
+        },
+        "min_rail_clearance": 0.17499998211860657,
+        "nearest_rail": "rail2",
+        "min_felt_clearance": 0.6749995052814484,
+        "nearest_felt": "ice",
+        "head_room_hits": 0,
+        "sightline_hits": 0,
+        "sweep": null,
+        "failures": [],
+        "heavy": false
+      },
+      "source_fbx": "models/fbx/props_batch3/h04_ice_channel_edge.fbx",
+      "source_sha256": "2253ba02f2536dae8fd3a26b0af0e578d37ed0f546eb6c483b76ce0e3f1e0c41",
+      "before": {
+        "rail": {
+          "id": "rail2",
+          "clearance": 0.1750001907348615,
+          "triangle": 0,
+          "mesh_point": [
+            -4.675000190734863,
+            0.10000256448984146,
+            -8.25
+          ],
+          "solid_point": [
+            -4.500000000000002,
+            0.10000256448984146,
+            -8.25
+          ]
+        },
+        "felt": {
+          "id": "ice",
+          "clearance": 0.6750001907348633,
+          "triangle": 0,
+          "mesh_point": [
+            -4.675000190734863,
+            0.09999753534793854,
+            -39.14999961853027
+          ],
+          "solid_point": [
+            -4.0,
+            0.09999753534793854,
+            -39.14999961853027
+          ]
+        }
+      },
+      "after": {
+        "rail": {
+          "id": "rail2",
+          "clearance": 0.1750001907348615,
+          "triangle": 0,
+          "mesh_point": [
+            -4.675000190734863,
+            0.10000256448984146,
+            -8.25
+          ],
+          "solid_point": [
+            -4.500000000000002,
+            0.10000256448984146,
+            -8.25
+          ]
+        },
+        "felt": {
+          "id": "ice",
+          "clearance": 0.6750001907348633,
+          "triangle": 0,
+          "mesh_point": [
+            -4.675000190734863,
+            0.09999753534793854,
+            -39.14999961853027
+          ],
+          "solid_point": [
+            -4.0,
+            0.09999753534793854,
+            -39.14999961853027
+          ]
+        }
+      },
+      "exported": false
+    },
+    {
+      "id": "h14_rail_bollards",
+      "hole": 14,
+      "fbx": "fbx/props_batch3/h14_rail_bollards.fbx",
+      "tris": 480,
+      "max_mesh_tris": 336,
+      "meshes": [
+        {
+          "mesh": "h14_rail_bollards__Timber",
+          "material": "Timber",
+          "colour": "#8A5A3C",
+          "color": "#8A5A3C",
+          "roblox_material": "WoodPlanks",
+          "transparency": 0,
+          "tris": 72
+        },
+        {
+          "mesh": "h14_rail_bollards__Brass",
+          "material": "Brass",
+          "colour": "#C9A04A",
+          "color": "#C9A04A",
+          "roblox_material": "Metal",
+          "transparency": 0,
+          "tris": 72
+        },
+        {
+          "mesh": "h14_rail_bollards__Snow",
+          "material": "Snow",
+          "colour": "#F4F6FF",
+          "color": "#F4F6FF",
+          "roblox_material": "Snow",
+          "transparency": 0,
+          "tris": 336
+        }
+      ],
+      "pivot_hole_local": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "anchor_local": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        85.0,
+        182.0,
+        -300.0
+      ],
+      "world_yaw": 90.0,
+      "pivot_world": [
+        85.0,
+        182.0,
+        -300.0
+      ],
+      "placement_yaw": 90.0,
+      "motion": null,
+      "notes": [
+        "no change needed (true mesh clearance already >= threshold)"
+      ],
+      "override_boxes": [
+        {
+          "center": [
+            0,
+            1.4,
+            -21
+          ],
+          "size": [
+            12,
+            2.8,
+            18
+          ],
+          "reason": "NEW six bollards outside lane rails, >=.35 gap; documented hole-origin tee pivot [0,0,0]."
+        }
+      ],
+      "can_collide": false,
+      "can_query": false,
+      "can_touch": false,
+      "bbox_asset_local": [
+        [
+          -5.75,
+          0.0,
+          -29.42
+        ],
+        [
+          5.75,
+          2.75,
+          -12.58
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -5.75,
+          0.0,
+          -29.42
+        ],
+        [
+          5.75,
+          2.75,
+          -12.58
+        ]
+      ],
+      "bbox": [
+        [
+          -5.75,
+          0.0,
+          -29.42
+        ],
+        [
+          5.75,
+          2.75,
+          -12.58
+        ]
+      ],
+      "dimensions": [
+        11.5,
+        2.75,
+        16.840000000000003
+      ],
+      "lights": [],
+      "fitcheck": {
+        "head_room_min_over_felt": "none over felt",
+        "head_room_over_felt": {},
+        "ball_path_vertical_clearance": null,
+        "id": "h14_rail_bollards",
+        "hole": 14,
+        "status": "PASS",
+        "total_tris": 480,
+        "material_tris": {
+          "Timber": 72,
+          "Brass": 72,
+          "Snow": 336
+        },
+        "min_rail_clearance": 0.40000006556510925,
+        "nearest_rail": "rail1",
+        "min_felt_clearance": 0.8499994874000549,
+        "nearest_felt": "lane",
+        "head_room_hits": 0,
+        "sightline_hits": 0,
+        "sweep": null,
+        "failures": [],
+        "heavy": false
+      },
+      "source_fbx": "models/fbx/props_batch3/h14_rail_bollards.fbx",
+      "source_sha256": "2ba7752f018f3ac2efba2285ae564b4c318c9c47e7c6d022e80dd9510f21e344",
+      "before": {
+        "rail": {
+          "id": "rail1",
+          "clearance": 0.40000009536743164,
+          "triangle": 408,
+          "mesh_point": [
+            -4.900000095367432,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ],
+          "solid_point": [
+            -4.5,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ]
+        },
+        "felt": {
+          "id": "lane",
+          "clearance": 0.9000000953674316,
+          "triangle": 408,
+          "mesh_point": [
+            -4.900000095367432,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ],
+          "solid_point": [
+            -4.0,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ]
+        }
+      },
+      "after": {
+        "rail": {
+          "id": "rail1",
+          "clearance": 0.40000009536743164,
+          "triangle": 408,
+          "mesh_point": [
+            -4.900000095367432,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ],
+          "solid_point": [
+            -4.5,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ]
+        },
+        "felt": {
+          "id": "lane",
+          "clearance": 0.9000000953674316,
+          "triangle": 408,
+          "mesh_point": [
+            -4.900000095367432,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ],
+          "solid_point": [
+            -4.0,
+            -2.183137212341535e-06,
+            -13.399999618530273
+          ]
+        }
+      },
+      "exported": false
+    }
+  ]
+}

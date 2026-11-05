@@ -1,0 +1,3401 @@
+{
+  "all_pass": false,
+  "minimum": {
+    "prop": "h06_sluice_gate",
+    "obstacle": "rock18",
+    "clearance": -0.5000255107879639,
+    "time": 0.0,
+    "offset": 0,
+    "tilt": 0,
+    "location": [
+      3.200000047683716,
+      0.019999980926513672,
+      -28.100000003973644
+    ],
+    "kind": "rail/wall",
+    "residual_cut": false,
+    "status": "FAIL"
+  },
+  "cuts": [
+    {
+      "prop": "h06_sluice_gate",
+      "obstacle": "rail5",
+      "min": [
+        -10.56,
+        -0.04,
+        -28.38
+      ],
+      "max": [
+        3.56,
+        1.08,
+        -27.62
+      ]
+    },
+    {
+      "prop": "h11_lock_gate",
+      "obstacle": "rail4",
+      "min": [
+        -1.86,
+        -1.36,
+        -21.58
+      ],
+      "max": [
+        1.86,
+        1.26,
+        -20.92
+      ]
+    },
+    {
+      "prop": "h11_lock_gate",
+      "obstacle": "rail8",
+      "min": [
+        -1.86,
+        -1.36,
+        -21.58
+      ],
+      "max": [
+        1.86,
+        1.26,
+        -20.92
+      ]
+    },
+    {
+      "prop": "h11_lock_gate",
+      "obstacle": "felt_lock",
+      "min": [
+        -1.86,
+        -1.36,
+        -21.58
+      ],
+      "max": [
+        1.86,
+        1.26,
+        -20.92
+      ]
+    },
+    {
+      "prop": "h11_lock_lift",
+      "obstacle": "felt_lock",
+      "min": [
+        -1.66,
+        -0.21,
+        -25.06
+      ],
+      "max": [
+        1.66,
+        4.36,
+        -20.94
+      ]
+    },
+    {
+      "prop": "h11_lock_lift",
+      "obstacle": "rail6",
+      "min": [
+        -1.66,
+        -0.21,
+        -25.06
+      ],
+      "max": [
+        1.66,
+        4.36,
+        -24.44
+      ]
+    },
+    {
+      "prop": "h11_lock_lift",
+      "obstacle": "quay_rail20",
+      "min": [
+        -1.66,
+        -0.21,
+        -25.06
+      ],
+      "max": [
+        1.66,
+        4.36,
+        -24.44
+      ]
+    },
+    {
+      "prop": "h11_lock_lift",
+      "obstacle": "felt_quay",
+      "min": [
+        -1.66,
+        3.79,
+        -25.06
+      ],
+      "max": [
+        1.66,
+        4.36,
+        -24.94
+      ]
+    }
+  ],
+  "results": {
+    "h06_sluice_gate": {
+      "pairs": {
+        "rail1": {
+          "clearance": 9.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail2": {
+          "clearance": 9.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail3": {
+          "clearance": 1.1820000112056732,
+          "time": 3.3935620499788226,
+          "offset": -6.580686149936469,
+          "tilt": 0,
+          "location": [
+            -9.830686149936469,
+            0.6699999769528707,
+            -27.688000013430912
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail4": {
+          "clearance": 1.1800000071525572,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail5": {
+          "clearance": 0.05999998092651368,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "rail/wall",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "rail6": {
+          "clearance": 5.182000011205672,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            0.6499999761581421,
+            0.6699999769528707,
+            -28.311999986569088
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail7": {
+          "clearance": 5.182000011205673,
+          "time": 2.6138924184667514,
+          "offset": -4.241677255400254,
+          "tilt": 0,
+          "location": [
+            -6.841677398451401,
+            0.6699999769528707,
+            -28.305999984343845
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail8": {
+          "clearance": 21.682000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.6000001430511475,
+            0.6699999769528707,
+            -28.305999984343845
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail9": {
+          "clearance": 7.499974489212036,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.300008535385132,
+            0.6866666475931803,
+            -28.200008471806843
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail10": {
+          "clearance": 9.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail11": {
+          "clearance": 9.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail12": {
+          "clearance": 29.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock13": {
+          "clearance": 1.1800000071525576,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            2.3350000381469727,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock14": {
+          "clearance": 3.999974489212037,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.300008535385132,
+            0.6866666475931803,
+            -28.200008471806843
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock15": {
+          "clearance": 18.182000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.6000001430511475,
+            0.6699999769528707,
+            -28.305999984343845
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock16": {
+          "clearance": 5.182000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.2999999523162842,
+            0.6699999769528707,
+            -28.305999984343845
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock17": {
+          "clearance": 5.182000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.383333444595337,
+            0.6699999769528707,
+            -28.317999988794327
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock18": {
+          "clearance": -0.5000255107879639,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.200000047683716,
+            0.019999980926513672,
+            -28.100000003973644
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "FAIL"
+        },
+        "felt_lane": {
+          "clearance": 9.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_basin": {
+          "clearance": 1.6800000071525574,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_neck": {
+          "clearance": 0.01949998092651367,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.0666666825612385,
+            0.353333314259847,
+            -28.300016939640045
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "CONTACT APPROVED"
+        },
+        "felt_spill": {
+          "clearance": 1.6820000112056732,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.383333444595337,
+            0.6699999769528707,
+            -28.317999988794327
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_overflow": {
+          "clearance": 4.499974489212036,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.400017023086548,
+            0.353333314259847,
+            -28.100000003973644
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_crossover": {
+          "clearance": 18.682000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.6000001430511475,
+            0.3699999849001567,
+            -28.311999986569088
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_green": {
+          "clearance": 5.682000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.383333444595337,
+            0.6699999769528707,
+            -28.317999988794327
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "cup": {
+          "clearance": 16.182000011205673,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.6000001430511475,
+            0.3699999849001567,
+            -28.311999986569088
+          ],
+          "kind": "cup",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "tee": {
+          "clearance": 26.680000007152557,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.4650001525878906,
+            0.6733333369096121,
+            -27.686666667461395
+          ],
+          "kind": "tee",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_0": {
+          "clearance": 1.1999742984771729,
+          "time": 3.533502753070733,
+          "offset": -7,
+          "tilt": 0,
+          "location": [
+            -10.300008535385132,
+            0.6866666475931803,
+            -27.799991528193157
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_1": {
+          "clearance": 0.05997443199157715,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.300008535385132,
+            0.6866666475931803,
+            -28.200008471806843
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_2": {
+          "clearance": 6.980000019073486,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_3": {
+          "clearance": 1.3299999237060547,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_4": {
+          "clearance": 1.7999999523162842,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_5": {
+          "clearance": 1.9249999523162842,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_6": {
+          "clearance": 2.3406920433044434,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_7": {
+          "clearance": 2.3406920433044434,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_8": {
+          "clearance": 1.9249999523162842,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_9": {
+          "clearance": 1.509307861328125,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.300008535385132,
+            0.6866666475931803,
+            -27.799991528193157
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_10": {
+          "clearance": 1.509307861328125,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_11": {
+          "clearance": 1.4549999237060547,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h06_sluice_frame_12": {
+          "clearance": 1.4549999237060547,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.200000047683716,
+            0.6866666475931803,
+            -27.899999996026356
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        }
+      },
+      "raw_whitelist": {
+        "rail5": {
+          "clearance": -1.5199999809265137,
+          "time": 1.6443032613299449,
+          "offset": -1.3329097839898347,
+          "tilt": 0,
+          "location": [
+            -2.3995764665510735,
+            0.6866666475931803,
+            -28.300025403499603
+          ]
+        }
+      }
+    },
+    "h06_sluice_frame": {
+      "pairs": {
+        "rail1": {
+          "clearance": 9.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -27.356666664282482
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail2": {
+          "clearance": 9.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -27.356666664282482
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail3": {
+          "clearance": 0.8100000023841858,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -27.356666664282482
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail4": {
+          "clearance": 0.8100000023841856,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.5,
+            2.574999968210856,
+            -27.403333326180775
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail5": {
+          "clearance": 0.07499990463256845,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -5.833333333333333,
+            2.5249999364217124,
+            -28.689999997615814
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail6": {
+          "clearance": 4.639999985694885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -4.577038923899333,
+            3.1754328409830728,
+            -28.71333332856496
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail7": {
+          "clearance": 4.810000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -28.596666673819225
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail8": {
+          "clearance": 21.139999985694885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -4.577038923899333,
+            3.1754328409830728,
+            -28.71333332856496
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail9": {
+          "clearance": 6.840000152587891,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            4.143333117167155,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail10": {
+          "clearance": 9.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.5,
+            2.574999968210856,
+            -27.403333326180775
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail11": {
+          "clearance": 9.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.5,
+            2.574999968210856,
+            -27.403333326180775
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail12": {
+          "clearance": 29.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -27.356666664282482
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock13": {
+          "clearance": 1.199999988079071,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            4.143333117167155,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock14": {
+          "clearance": 3.3400001525878915,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            4.143333117167155,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock15": {
+          "clearance": 17.639999985694885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -4.577038923899333,
+            3.1754328409830728,
+            -28.71333332856496
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock16": {
+          "clearance": 5.199999988079071,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.576666514078776,
+            0.016666730244954426,
+            -28.28333334128062
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock17": {
+          "clearance": 5.199999988079071,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.576666514078776,
+            0.016666730244954426,
+            -28.28333334128062
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rock18": {
+          "clearance": 0.059999942779541016,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.576666514078776,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_lane": {
+          "clearance": 9.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -27.356666664282482
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_basin": {
+          "clearance": 1.699999988079071,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -12.28333314259847,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_neck": {
+          "clearance": 0.559999942779541,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.576666514078776,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_spill": {
+          "clearance": 1.699999988079071,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.576666514078776,
+            0.016666730244954426,
+            -28.28333334128062
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_overflow": {
+          "clearance": 3.8400001525878906,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            4.143333117167155,
+            0.016666730244954426,
+            -27.71666665871938
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_crossover": {
+          "clearance": 18.139999985694885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -4.577038923899333,
+            3.1754328409830728,
+            -28.71333332856496
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_green": {
+          "clearance": 5.139999985694885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -4.577038923899333,
+            3.1754328409830728,
+            -28.71333332856496
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "cup": {
+          "clearance": 15.639999985694885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -4.577038923899333,
+            3.1754328409830728,
+            -28.71333332856496
+          ],
+          "kind": "cup",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "tee": {
+          "clearance": 26.310000002384186,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -10.5,
+            2.574999968210856,
+            -27.356666664282482
+          ],
+          "kind": "tee",
+          "residual_cut": false,
+          "status": "PASS"
+        }
+      },
+      "raw_whitelist": {}
+    },
+    "h11_lock_gate": {
+      "pairs": {
+        "rail1": {
+          "clearance": 6.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail2": {
+          "clearance": 6.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail3": {
+          "clearance": 4.200000047683716,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.519999929269155,
+            -20.98799999554952
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail4": {
+          "clearance": 0.0599999523162843,
+          "time": 6.15,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            0.8000000317891439,
+            -21.166666666666668
+          ],
+          "kind": "rail/wall",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "rail5": {
+          "clearance": -0.19999995231628437,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "FAIL"
+        },
+        "rail6": {
+          "clearance": 3.48199999332428,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail7": {
+          "clearance": -0.1999999523162841,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.400000015894572,
+            -0.519999929269155,
+            -21.51800000667572
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "FAIL"
+        },
+        "rail8": {
+          "clearance": 0.0599999523162843,
+          "time": 6.15,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            0.8000000317891439,
+            -21.5
+          ],
+          "kind": "rail/wall",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "rail9": {
+          "clearance": 4.200000047683716,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.400000015894572,
+            -0.519999929269155,
+            -21.51800000667572
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail10": {
+          "clearance": 6.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail11": {
+          "clearance": 6.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail12": {
+          "clearance": 22.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail13": {
+          "clearance": 3.599999952316284,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail14": {
+          "clearance": 7.98199999332428,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail15": {
+          "clearance": 9.200000047683714,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail16": {
+          "clearance": 30.48199999332428,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail17": {
+          "clearance": 9.200000047683716,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.400000015894572,
+            -0.519999929269155,
+            -21.51800000667572
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail18": {
+          "clearance": 7.98199999332428,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail19": {
+          "clearance": 3.599999952316284,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            -0.4999999682108562,
+            -21.5
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail20": {
+          "clearance": 2.98199999332428,
+          "time": 5.84,
+          "offset": -0.6200000000000003,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            0.1600000707308448,
+            -21.50600000222524
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "funnel_w_backing": {
+          "clearance": 2.707120587919172,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.519999929269155,
+            -20.98799999554952
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "funnel_e_backing": {
+          "clearance": 2.7071205879191726,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.7999999523162842,
+            -0.519999929269155,
+            -20.99399999777476
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_lane": {
+          "clearance": 6.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2400000095367432,
+            -0.519999929269155,
+            -20.99333334962527
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_approach": {
+          "clearance": -0.019999980926513672,
+          "time": 5.59,
+          "offset": -1.1200000000000003,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.3399999292691552,
+            -20.986666684349377
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "FAIL"
+        },
+        "felt_lock": {
+          "clearance": 0.06199999332427808,
+          "time": 5.55,
+          "offset": -1.2000000000000004,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.41999992926915525,
+            -21.50600000222524
+          ],
+          "kind": "felt",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "felt_quay": {
+          "clearance": 3.48199999332428,
+          "time": 6.04,
+          "offset": -0.21999999999999997,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            0.5600000707308451,
+            -21.50600000222524
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_green": {
+          "clearance": 8.48199999332428,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_funnel_w": {
+          "clearance": 2.357120587919174,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.400000015894572,
+            -0.519999929269155,
+            -20.98199999332428
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_funnel_e": {
+          "clearance": 2.3571205879191743,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.7999999523162842,
+            -0.519999929269155,
+            -20.99399999777476
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "cup": {
+          "clearance": 20.98199999332428,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "cup",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "tee": {
+          "clearance": 19.980000019073486,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "tee",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_0": {
+          "clearance": 1.0,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_1": {
+          "clearance": 3.1299999523162834,
+          "time": 5.985,
+          "offset": -0.3299999999999994,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            0.47000003178914446,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_2": {
+          "clearance": 3.9700001811981194,
+          "time": 5.82,
+          "offset": -0.6599999999999995,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            0.1400000317891444,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_3": {
+          "clearance": 2.9199999523162843,
+          "time": 6.09,
+          "offset": -0.12000000000000033,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            0.6800000317891435,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_4": {
+          "clearance": 3.31000018119812,
+          "time": 6.15,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            0.8000000317891439,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_5": {
+          "clearance": 1.0,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.400000015894572,
+            -0.519999929269155,
+            -21.51800000667572
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_6": {
+          "clearance": 3.1299999523162834,
+          "time": 5.985,
+          "offset": -0.3299999999999994,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            0.47000003178914446,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_7": {
+          "clearance": 3.9700001811981194,
+          "time": 5.82,
+          "offset": -0.6599999999999995,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            0.1400000317891444,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_8": {
+          "clearance": 2.9199999523162843,
+          "time": 6.09,
+          "offset": -0.12000000000000033,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            0.6800000317891435,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_9": {
+          "clearance": 3.31000018119812,
+          "time": 6.15,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            0.8000000317891439,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_10": {
+          "clearance": 1.2819999903440475,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_11": {
+          "clearance": 1.6619999706745148,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_12": {
+          "clearance": 1.7219999730587006,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_13": {
+          "clearance": 1.7899999916553497,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_14": {
+          "clearance": 2.160692024230957,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_15": {
+          "clearance": 2.160692024230957,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_16": {
+          "clearance": 1.7899999916553497,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_17": {
+          "clearance": 1.7719999849796295,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_18": {
+          "clearance": 1.7719999849796295,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_19": {
+          "clearance": 1.2819999903440475,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.400000015894572,
+            -0.519999929269155,
+            -21.51800000667572
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_20": {
+          "clearance": 1.6619999706745148,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_21": {
+          "clearance": 1.7219999730587006,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_22": {
+          "clearance": 1.7899999916553497,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            -0.4999999682108562,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_23": {
+          "clearance": 2.160692024230957,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            -0.4999999682108562,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_24": {
+          "clearance": 2.160692024230957,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            -0.4999999682108562,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_25": {
+          "clearance": 1.7899999916553497,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -0.5999999841054281,
+            -0.4999999682108562,
+            -21.5
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_26": {
+          "clearance": 1.7719999849796295,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.2000000476837158,
+            -0.519999929269155,
+            -21.50600000222524
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_27": {
+          "clearance": 1.7719999849796295,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.400000015894572,
+            -0.519999929269155,
+            -21.51800000667572
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_28": {
+          "clearance": 0.28999996185302734,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_29": {
+          "clearance": 0.49000000953674316,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.3599998950958252,
+            -0.519999929269155,
+            -20.986666684349377
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_30": {
+          "clearance": 4.500000047683716,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_31": {
+          "clearance": 5.190000104904175,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_32": {
+          "clearance": 4.629999685287475,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        }
+      },
+      "raw_whitelist": {
+        "rail4": {
+          "clearance": -0.19999995231628453,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            -1.7999999523162842,
+            -0.4999999682108562,
+            -21.166666666666668
+          ]
+        },
+        "rail8": {
+          "clearance": -0.19999995231628453,
+          "time": 0.0,
+          "offset": -1.3,
+          "tilt": 0,
+          "location": [
+            1.7999999523162842,
+            -0.4999999682108562,
+            -21.333333333333332
+          ]
+        },
+        "felt_lock": {
+          "clearance": -0.5180000066757202,
+          "time": 5.84,
+          "offset": -0.6200000000000003,
+          "tilt": 0,
+          "location": [
+            -1.0000000198682149,
+            0.1600000707308448,
+            -21.51800000667572
+          ]
+        }
+      }
+    },
+    "h11_lock_lift": {
+      "pairs": {
+        "rail1": {
+          "clearance": 7.579999923706055,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail2": {
+          "clearance": 7.576712097603924,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            -1.600000023841858,
+            4.093119179712875,
+            -21.720940812942356
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail3": {
+          "clearance": 4.399999976158143,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.167500019073486
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail4": {
+          "clearance": 0.07999992370605452,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail5": {
+          "clearance": -2.3841858015627437e-08,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "FAIL"
+        },
+        "rail6": {
+          "clearance": 0.0599999761581419,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.667500019073486
+          ],
+          "kind": "rail/wall",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "rail7": {
+          "clearance": -2.3841857821338408e-08,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            -0.050000001986821495,
+            -24.49749994277954
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "FAIL"
+        },
+        "rail8": {
+          "clearance": 0.07999992370605485,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5500000715255737,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail9": {
+          "clearance": 4.399999976158142,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            -0.050000001986821495,
+            -24.49749994277954
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail10": {
+          "clearance": 7.576712097603924,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            -1.600000023841858,
+            4.093119179712875,
+            -21.720940812942356
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail11": {
+          "clearance": 7.579999923706055,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail12": {
+          "clearance": 23.576712097603924,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            -1.600000023841858,
+            4.093119179712875,
+            -21.720940812942356
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail13": {
+          "clearance": 0.39999997615814176,
+          "time": 7.055,
+          "offset": 3.1099999999999994,
+          "tilt": 0,
+          "location": [
+            -1.5666667222976685,
+            3.059999998013178,
+            -24.50250005722046
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail14": {
+          "clearance": 4.499999999999999,
+          "time": 6.640000000000001,
+          "offset": 2.280000000000001,
+          "tilt": 0,
+          "location": [
+            1.5499999523162842,
+            2.188333336313567,
+            -24.983333349227905
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail15": {
+          "clearance": 9.39999997615814,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.167500019073486
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail16": {
+          "clearance": 27.0,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.5499999523162842,
+            -0.09166666368643443,
+            -24.96666669845581
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail17": {
+          "clearance": 9.399999976158142,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            -0.050000001986821495,
+            -24.49749994277954
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail18": {
+          "clearance": 4.5,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.5166666507720947,
+            -0.09166666368643443,
+            -25.0
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail19": {
+          "clearance": 0.3999999761581421,
+          "time": 7.055,
+          "offset": 3.1099999999999994,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            3.059999998013178,
+            -24.49749994277954
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail20": {
+          "clearance": 0.05999997615814212,
+          "time": 7.2250000000000005,
+          "offset": 3.450000000000001,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            3.3999999980131794,
+            -24.167500019073486
+          ],
+          "kind": "rail/wall",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "funnel_w_backing": {
+          "clearance": 3.269066855370121,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            -1.600000023841858,
+            4.093119179712875,
+            -21.720940812942356
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "funnel_e_backing": {
+          "clearance": 3.2690668553701214,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            1.600000023841858,
+            4.043166766648852,
+            -21.71875984348743
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_lane": {
+          "clearance": 7.576712097603924,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            -1.600000023841858,
+            4.093119179712875,
+            -21.720940812942356
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_approach": {
+          "clearance": 0.5799999237060547,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_quay": {
+          "clearance": 0.05999997615814212,
+          "time": 7.47,
+          "offset": 3.9399999999999995,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            3.889999998013178,
+            -24.667500019073486
+          ],
+          "kind": "felt",
+          "residual_cut": true,
+          "status": "PASS"
+        },
+        "felt_green": {
+          "clearance": 5.0,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.5499999523162842,
+            -0.09166666368643443,
+            -24.96666669845581
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_funnel_w": {
+          "clearance": 2.9190669857206153,
+          "time": 7.705,
+          "offset": 3.853333333333334,
+          "tilt": 2.5333333333333408,
+          "location": [
+            -1.600000023841858,
+            3.9483601764859255,
+            -21.72099554240346
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_funnel_e": {
+          "clearance": 2.919066855370123,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            1.5833333730697632,
+            4.099225895053321,
+            -21.581074036513787
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "cup": {
+          "clearance": 17.5,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.5499999523162842,
+            -0.09166666368643443,
+            -24.96666669845581
+          ],
+          "kind": "cup",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "tee": {
+          "clearance": 20.576712097603924,
+          "time": 7.5,
+          "offset": 4,
+          "tilt": 2.5,
+          "location": [
+            -1.600000023841858,
+            4.093119179712875,
+            -21.720940812942356
+          ],
+          "kind": "tee",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_0": {
+          "clearance": 1.1999999284744263,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_1": {
+          "clearance": 1.2599998712539673,
+          "time": 7.140000000000001,
+          "offset": 3.280000000000001,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            3.2299999980131795,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_2": {
+          "clearance": 1.1799999475479126,
+          "time": 7.215,
+          "offset": 3.4299999999999997,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            3.379999998013178,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_3": {
+          "clearance": 1.2599998712539673,
+          "time": 7.140000000000001,
+          "offset": 3.280000000000001,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            3.2299999980131795,
+            -23.167499999205273
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_4": {
+          "clearance": 1.1799999475479126,
+          "time": 7.215,
+          "offset": 3.4299999999999997,
+          "tilt": 0,
+          "location": [
+            -1.5666667222976685,
+            3.379999998013178,
+            -23.002499997615814
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_5": {
+          "clearance": 1.1999999284744263,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            -0.050000001986821495,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_6": {
+          "clearance": 1.2599998712539673,
+          "time": 7.140000000000001,
+          "offset": 3.280000000000001,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            3.2299999980131795,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_7": {
+          "clearance": 1.1799999475479126,
+          "time": 7.215,
+          "offset": 3.4299999999999997,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            3.379999998013178,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_8": {
+          "clearance": 1.2599998712539673,
+          "time": 7.140000000000001,
+          "offset": 3.280000000000001,
+          "tilt": 0,
+          "location": [
+            1.600000023841858,
+            3.2299999980131795,
+            -23.332500000794727
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_9": {
+          "clearance": 1.1799999475479126,
+          "time": 7.215,
+          "offset": 3.4299999999999997,
+          "tilt": 0,
+          "location": [
+            1.600000023841858,
+            3.379999998013178,
+            -23.332500000794727
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_10": {
+          "clearance": 1.1999999284744263,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_11": {
+          "clearance": 0.7499998807907104,
+          "time": 5.66,
+          "offset": 0.3200000000000003,
+          "tilt": 0,
+          "location": [
+            -1.5666667222976685,
+            0.2699999980131788,
+            -24.00250005722046
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_12": {
+          "clearance": 1.21999990940094,
+          "time": 5.79,
+          "offset": 0.5800000000000001,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            0.5299999980131785,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_13": {
+          "clearance": 0.8649998903274536,
+          "time": 5.925,
+          "offset": 0.8499999999999996,
+          "tilt": 0,
+          "location": [
+            -1.5666667222976685,
+            0.7999999980131781,
+            -24.00250005722046
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_14": {
+          "clearance": 1.1049998998641968,
+          "time": 6.095,
+          "offset": 1.1899999999999995,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            1.139999998013178,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_15": {
+          "clearance": 1.584999918937683,
+          "time": 5.86,
+          "offset": 0.7200000000000006,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            0.6699999980131791,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_16": {
+          "clearance": 1.8249999284744263,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_17": {
+          "clearance": 1.584999918937683,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_18": {
+          "clearance": 1.1049998998641968,
+          "time": 5.82,
+          "offset": 0.6400000000000006,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            0.589999998013179,
+            -24.167500019073486
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_19": {
+          "clearance": 1.1999999284744263,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.600000023841858,
+            -0.050000001986821495,
+            -24.332499980926514
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_20": {
+          "clearance": 0.7499998807907104,
+          "time": 5.66,
+          "offset": 0.3200000000000003,
+          "tilt": 0,
+          "location": [
+            1.600000023841858,
+            0.2699999980131788,
+            -24.332499980926514
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_21": {
+          "clearance": 1.21999990940094,
+          "time": 5.79,
+          "offset": 0.5800000000000001,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            0.5299999980131785,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_22": {
+          "clearance": 1.8249999284744263,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            -0.050000001986821495,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_23": {
+          "clearance": 1.584999918937683,
+          "time": 5.86,
+          "offset": 0.7200000000000006,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            0.6699999980131791,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_24": {
+          "clearance": 1.1049998998641968,
+          "time": 6.095,
+          "offset": 1.1899999999999995,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            1.139999998013178,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_25": {
+          "clearance": 0.8649998903274536,
+          "time": 5.925,
+          "offset": 0.8499999999999996,
+          "tilt": 0,
+          "location": [
+            1.600000023841858,
+            0.7999999980131781,
+            -24.332499980926514
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_26": {
+          "clearance": 1.1049998998641968,
+          "time": 5.82,
+          "offset": 0.6400000000000006,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            0.589999998013179,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_27": {
+          "clearance": 1.584999918937683,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            1.5666667222976685,
+            -0.050000001986821495,
+            -24.49749994277954
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_28": {
+          "clearance": 0.8899998664855957,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_29": {
+          "clearance": 1.0899999141693115,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.600000023841858,
+            -0.050000001986821495,
+            -21.71999994913737
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_30": {
+          "clearance": 0.39982570019157393,
+          "time": 7.65,
+          "offset": 4.0,
+          "tilt": 4.0,
+          "location": [
+            -0.5333333412806193,
+            3.9502961906808847,
+            -24.99401820896748
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_31": {
+          "clearance": 1.0549475205399705,
+          "time": 7.65,
+          "offset": 4.0,
+          "tilt": 4.0,
+          "location": [
+            -0.5333333412806193,
+            3.985174427552947,
+            -24.495236183837566
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "h11_lock_chamber_32": {
+          "clearance": 0.5298253377953337,
+          "time": 7.65,
+          "offset": 4.0,
+          "tilt": 4.0,
+          "location": [
+            -0.5333333412806193,
+            3.9502961906808847,
+            -24.99401820896748
+          ],
+          "kind": "static base",
+          "residual_cut": false,
+          "status": "PASS"
+        }
+      },
+      "raw_whitelist": {
+        "rail6": {
+          "clearance": -8.326672684688674e-17,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.5499999523162842,
+            -0.09166666368643443,
+            -24.96666669845581
+          ]
+        },
+        "quay_rail20": {
+          "clearance": -0.4975060327932789,
+          "time": 7.65,
+          "offset": 4.0,
+          "tilt": 4.0,
+          "location": [
+            1.5500000715255737,
+            3.9733158216944493,
+            -24.664822148489833
+          ]
+        },
+        "felt_lock": {
+          "clearance": -0.0705000059604644,
+          "time": 5.54,
+          "offset": 0.08000000000000007,
+          "tilt": 0,
+          "location": [
+            -0.5333333412806193,
+            -0.020000003973642915,
+            -24.50250005722046
+          ]
+        },
+        "felt_quay": {
+          "clearance": 0.002493967206721237,
+          "time": 7.65,
+          "offset": 4.0,
+          "tilt": 4.0,
+          "location": [
+            -1.600000023841858,
+            3.9733158216944493,
+            -24.664822148489833
+          ]
+        }
+      }
+    },
+    "h11_lock_chamber": {
+      "pairs": {
+        "rail1": {
+          "clearance": 6.4100000858306885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail2": {
+          "clearance": 6.4100000858306885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail3": {
+          "clearance": 2.3499999046325692,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.635234514872233,
+            1.5878451665242512,
+            -23.226666669050854
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail4": {
+          "clearance": 0.10000002384185785,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.180000066757202,
+            0.019999980926513672,
+            -21.62000000476837
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail5": {
+          "clearance": 0.24999990463256827,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.364765485127767,
+            1.8121549288431804,
+            -23.226666664083798
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail6": {
+          "clearance": 0.6999999523162841,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.819999933242798,
+            0.009999990463256836,
+            -23.456666668256123
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail7": {
+          "clearance": 0.24999990463256827,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            2.364765485127767,
+            1.5878451665242512,
+            -23.226666669050854
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail8": {
+          "clearance": 0.10000002384185797,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            2.819999933242798,
+            0.019999980926513672,
+            -21.62000000476837
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail9": {
+          "clearance": 2.3499999046325684,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.635234514872233,
+            1.8121549288431804,
+            -23.226666664083798
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail10": {
+          "clearance": 6.4100000858306885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail11": {
+          "clearance": 6.4100000858306885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "rail12": {
+          "clearance": 22.41000008583069,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail13": {
+          "clearance": 0.2999999523162845,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -2.799999952316284,
+            2.6566666762034097,
+            -23.456666668256123
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail14": {
+          "clearance": 3.9499998092651367,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            0.373333344856898,
+            4.426666736602783,
+            -25.52333339055379
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail15": {
+          "clearance": 7.349999904632567,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.0,
+            1.7000000476837158,
+            -23.180000002185505
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail16": {
+          "clearance": 26.449999809265137,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.373333344856898,
+            4.426666736602783,
+            -25.52333339055379
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail17": {
+          "clearance": 7.349999904632568,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.6426173051198325,
+            1.6439226071039836,
+            -23.226666669050854
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail18": {
+          "clearance": 3.9499998092651367,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.373333344856898,
+            4.426666736602783,
+            -25.52333339055379
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail19": {
+          "clearance": 0.2999999523162842,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            2.819999933242798,
+            3.990000009536743,
+            -23.456666668256123
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "quay_rail20": {
+          "clearance": 0.11450004577636719,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            0.04662827650705973,
+            4.695763111114502,
+            -25.120843251546223
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "funnel_w_backing": {
+          "clearance": 2.17537622238063,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.180000066757202,
+            0.019999980926513672,
+            -21.62000000476837
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "funnel_e_backing": {
+          "clearance": 2.1753762223806303,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.180000066757202,
+            0.019999980926513672,
+            -21.62000000476837
+          ],
+          "kind": "rail/wall",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_lane": {
+          "clearance": 6.4100000858306885,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_approach": {
+          "clearance": -0.0005,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.636666774749756
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "CONTACT APPROVED"
+        },
+        "felt_lock": {
+          "clearance": 0.309999942779541,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.6500000158945719,
+            -0.4666666587193807,
+            -20.69000005722046
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_quay": {
+          "clearance": 0.39950009536743164,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.373333344856898,
+            4.426666736602783,
+            -25.276666800181072
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_green": {
+          "clearance": 4.449999809265137,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.373333344856898,
+            4.426666736602783,
+            -25.52333339055379
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_funnel_w": {
+          "clearance": 1.825376222380632,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -3.180000066757202,
+            0.019999980926513672,
+            -21.62000000476837
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "felt_funnel_e": {
+          "clearance": 1.825376222380632,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            3.180000066757202,
+            0.019999980926513672,
+            -21.62000000476837
+          ],
+          "kind": "felt",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "cup": {
+          "clearance": 16.949999809265137,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -0.373333344856898,
+            4.426666736602783,
+            -25.52333339055379
+          ],
+          "kind": "cup",
+          "residual_cut": false,
+          "status": "PASS"
+        },
+        "tee": {
+          "clearance": 19.41000008583069,
+          "time": 0.0,
+          "offset": 0,
+          "tilt": 0,
+          "location": [
+            -1.9500000476837158,
+            -0.4666666587193807,
+            -20.43666672706604
+          ],
+          "kind": "tee",
+          "residual_cut": false,
+          "status": "PASS"
+        }
+      },
+      "raw_whitelist": {}
+    }
+  }
+}

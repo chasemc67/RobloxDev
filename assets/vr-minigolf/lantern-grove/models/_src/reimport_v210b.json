@@ -1,0 +1,2859 @@
+{
+ "note": "v210b re-import of every FBX in fbx/ (Blender 5.2.2 LTS, forward -Z up Y, scale 1; coordinates converted to Roblox x, y, z = Blender x, z, -y)",
+ "files": {
+  "bank_backing_stone.fbx": {
+   "roots": [
+    "bank_backing_stone"
+   ],
+   "tris": 880,
+   "images": 1,
+   "bbox_size": [
+    0.6,
+    2.2,
+    12.232
+   ],
+   "bbox_center": [
+    0.0,
+    1.12,
+    -0.0
+   ],
+   "parts": {
+    "bank_backing_stone__Limestone": {
+     "tris": 880,
+     "materials": [
+      {
+       "name": "Limestone",
+       "base_color": "#B8AFA0",
+       "emission": 0.0,
+       "textures": [
+        "limestone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.6,
+      2.2,
+      12.232
+     ],
+     "bbox_center": [
+      0.0,
+      1.12,
+      -0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "bank_backing_stone__Limestone": {
+     "color": "#B8AFA0",
+     "roblox_material": "Limestone",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": true,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "dressing_h03_a.fbx": {
+   "roots": [
+    "dressing_h03_a"
+   ],
+   "tris": 18744,
+   "images": 10,
+   "bbox_size": [
+    42.551,
+    19.256,
+    66.528
+   ],
+   "bbox_center": [
+    6.801,
+    8.559,
+    -23.602
+   ],
+   "parts": {
+    "dressing_h03_a__BirchBark": {
+     "tris": 392,
+     "materials": [
+      {
+       "name": "BirchBark",
+       "base_color": "#E9E2D3",
+       "emission": 0.0,
+       "textures": [
+        "birch_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      8.506,
+      10.745,
+      6.131
+     ],
+     "bbox_center": [
+      14.783,
+      8.357,
+      -51.293
+     ]
+    },
+    "dressing_h03_a__Cream": {
+     "tris": 558,
+     "materials": [
+      {
+       "name": "Cream",
+       "base_color": "#F4E9D2",
+       "emission": 0.0,
+       "textures": [
+        "plaster.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.999,
+      1.075,
+      1.124
+     ],
+     "bbox_center": [
+      11.389,
+      0.071,
+      -19.057
+     ]
+    },
+    "dressing_h03_a__Glow": {
+     "tris": 756,
+     "materials": [
+      {
+       "name": "Glow",
+       "base_color": "#FFB347",
+       "emission": 4.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      35.785,
+      6.164,
+      30.554
+     ],
+     "bbox_center": [
+      9.969,
+      5.641,
+      -14.797
+     ]
+    },
+    "dressing_h03_a__Gold": {
+     "tris": 2216,
+     "materials": [
+      {
+       "name": "Gold",
+       "base_color": "#F2B632",
+       "emission": 0.0,
+       "textures": [
+        "foliage_gold.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      28.034,
+      18.339,
+      54.058
+     ],
+     "bbox_center": [
+      7.336,
+      8.113,
+      -29.837
+     ]
+    },
+    "dressing_h03_a__Ink": {
+     "tris": 216,
+     "materials": [
+      {
+       "name": "Ink",
+       "base_color": "#2B1D14",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      6.423,
+      6.667,
+      3.753
+     ],
+     "bbox_center": [
+      14.575,
+      7.836,
+      -51.592
+     ]
+    },
+    "dressing_h03_a__Iron": {
+     "tris": 1044,
+     "materials": [
+      {
+       "name": "Iron",
+       "base_color": "#3B3A3F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      37.606,
+      6.11,
+      31.907
+     ],
+     "bbox_center": [
+      8.933,
+      6.231,
+      -15.629
+     ]
+    },
+    "dressing_h03_a__MapleRed": {
+     "tris": 3080,
+     "materials": [
+      {
+       "name": "MapleRed",
+       "base_color": "#D2452A",
+       "emission": 0.0,
+       "textures": [
+        "foliage_red.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      37.237,
+      16.573,
+      27.702
+     ],
+     "bbox_center": [
+      4.144,
+      7.34,
+      -6.363
+     ]
+    },
+    "dressing_h03_a__Moss": {
+     "tris": 1576,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      30.653,
+      1.897,
+      33.266
+     ],
+     "bbox_center": [
+      6.847,
+      0.423,
+      -14.058
+     ]
+    },
+    "dressing_h03_a__Oak": {
+     "tris": 168,
+     "materials": [
+      {
+       "name": "Oak",
+       "base_color": "#8A5A33",
+       "emission": 0.0,
+       "textures": [
+        "oak_wood.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      20.34,
+      10.031,
+      27.552
+     ],
+     "bbox_center": [
+      0.0,
+      4.534,
+      -18.106
+     ]
+    },
+    "dressing_h03_a__Paper": {
+     "tris": 828,
+     "materials": [
+      {
+       "name": "Paper",
+       "base_color": "#F7C873",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      36.123,
+      6.635,
+      30.542
+     ],
+     "bbox_center": [
+      9.991,
+      5.706,
+      -14.555
+     ]
+    },
+    "dressing_h03_a__PaperOrange": {
+     "tris": 776,
+     "materials": [
+      {
+       "name": "PaperOrange",
+       "base_color": "#F08A3C",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      34.167,
+      6.635,
+      30.918
+     ],
+     "bbox_center": [
+      10.969,
+      5.706,
+      -14.843
+     ]
+    },
+    "dressing_h03_a__Pumpkin": {
+     "tris": 2732,
+     "materials": [
+      {
+       "name": "Pumpkin",
+       "base_color": "#E8862E",
+       "emission": 0.0,
+       "textures": [
+        "foliage_orange.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      35.035,
+      19.256,
+      65.645
+     ],
+     "bbox_center": [
+      4.813,
+      8.559,
+      -23.161
+     ]
+    },
+    "dressing_h03_a__RootBark": {
+     "tris": 3536,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      40.727,
+      12.345,
+      38.72
+     ],
+     "bbox_center": [
+      7.713,
+      5.15,
+      -12.143
+     ]
+    },
+    "dressing_h03_a__Shingle": {
+     "tris": 48,
+     "materials": [
+      {
+       "name": "Shingle",
+       "base_color": "#7A4630",
+       "emission": 0.0,
+       "textures": [
+        "shingle.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      20.481,
+      4.331,
+      27.693
+     ],
+     "bbox_center": [
+      0.0,
+      7.684,
+      -18.106
+     ]
+    },
+    "dressing_h03_a__Slate": {
+     "tris": 264,
+     "materials": [
+      {
+       "name": "Slate",
+       "base_color": "#6E7480",
+       "emission": 0.0,
+       "textures": [
+        "slate_stone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      38.292,
+      0.362,
+      27.812
+     ],
+     "bbox_center": [
+      8.846,
+      -0.331,
+      -18.106
+     ]
+    },
+    "dressing_h03_a__ToadRed": {
+     "tris": 554,
+     "materials": [
+      {
+       "name": "ToadRed",
+       "base_color": "#D8392B",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      32.907,
+      8.173,
+      30.364
+     ],
+     "bbox_center": [
+      11.323,
+      3.939,
+      -14.824
+     ]
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "part_tris_eq_manifest": true
+   },
+   "changed_in_v210b": true,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "dressing_h08_a.fbx": {
+   "roots": [
+    "dressing_h08_a"
+   ],
+   "tris": 14572,
+   "images": 9,
+   "bbox_size": [
+    40.772,
+    19.29,
+    81.558
+   ],
+   "bbox_center": [
+    -4.478,
+    9.081,
+    -38.246
+   ],
+   "parts": {
+    "dressing_h08_a__Cream": {
+     "tris": 228,
+     "materials": [
+      {
+       "name": "Cream",
+       "base_color": "#F4E9D2",
+       "emission": 0.0,
+       "textures": [
+        "plaster.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      25.407,
+      1.501,
+      28.128
+     ],
+     "bbox_center": [
+      3.016,
+      0.369,
+      -14.696
+     ]
+    },
+    "dressing_h08_a__Firefly": {
+     "tris": 1152,
+     "materials": [
+      {
+       "name": "Firefly",
+       "base_color": "#D8FF6A",
+       "emission": 8.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.183,
+      4.709,
+      29.21
+     ],
+     "bbox_center": [
+      3.164,
+      2.197,
+      -13.911
+     ]
+    },
+    "dressing_h08_a__Glow": {
+     "tris": 1224,
+     "materials": [
+      {
+       "name": "Glow",
+       "base_color": "#FFB347",
+       "emission": 4.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      33.13,
+      7.423,
+      62.351
+     ],
+     "bbox_center": [
+      -6.291,
+      5.646,
+      -28.803
+     ]
+    },
+    "dressing_h08_a__Gold": {
+     "tris": 240,
+     "materials": [
+      {
+       "name": "Gold",
+       "base_color": "#F2B632",
+       "emission": 0.0,
+       "textures": [
+        "foliage_gold.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      7.598,
+      5.555,
+      12.46
+     ],
+     "bbox_center": [
+      9.135,
+      10.068,
+      -72.795
+     ]
+    },
+    "dressing_h08_a__Iron": {
+     "tris": 1584,
+     "materials": [
+      {
+       "name": "Iron",
+       "base_color": "#3B3A3F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      34.192,
+      8.526,
+      62.15
+     ],
+     "bbox_center": [
+      -5.717,
+      5.9,
+      -28.805
+     ]
+    },
+    "dressing_h08_a__MapleRed": {
+     "tris": 1200,
+     "materials": [
+      {
+       "name": "MapleRed",
+       "base_color": "#D2452A",
+       "emission": 0.0,
+       "textures": [
+        "foliage_red.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      12.894,
+      11.273,
+      18.356
+     ],
+     "bbox_center": [
+      5.463,
+      13.09,
+      -66.995
+     ]
+    },
+    "dressing_h08_a__Moss": {
+     "tris": 200,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      26.707,
+      0.835,
+      28.835
+     ],
+     "bbox_center": [
+      2.544,
+      0.044,
+      -14.524
+     ]
+    },
+    "dressing_h08_a__Oak": {
+     "tris": 856,
+     "materials": [
+      {
+       "name": "Oak",
+       "base_color": "#8A5A33",
+       "emission": 0.0,
+       "textures": [
+        "oak_wood.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      36.543,
+      10.999,
+      62.403
+     ],
+     "bbox_center": [
+      -6.593,
+      4.935,
+      -28.831
+     ]
+    },
+    "dressing_h08_a__Paper": {
+     "tris": 1376,
+     "materials": [
+      {
+       "name": "Paper",
+       "base_color": "#F7C873",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      33.514,
+      4.78,
+      62.663
+     ],
+     "bbox_center": [
+      -6.255,
+      7.161,
+      -28.798
+     ]
+    },
+    "dressing_h08_a__PaperOrange": {
+     "tris": 776,
+     "materials": [
+      {
+       "name": "PaperOrange",
+       "base_color": "#F08A3C",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      14.511,
+      7.537,
+      30.107
+     ],
+     "bbox_center": [
+      2.65,
+      5.53,
+      -45.076
+     ]
+    },
+    "dressing_h08_a__Pumpkin": {
+     "tris": 560,
+     "materials": [
+      {
+       "name": "Pumpkin",
+       "base_color": "#E8862E",
+       "emission": 0.0,
+       "textures": [
+        "foliage_orange.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      13.998,
+      10.943,
+      20.805
+     ],
+     "bbox_center": [
+      8.067,
+      12.226,
+      -68.033
+     ]
+    },
+    "dressing_h08_a__RootBark": {
+     "tris": 3806,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      36.476,
+      14.755,
+      79.384
+     ],
+     "bbox_center": [
+      -4.697,
+      6.836,
+      -37.252
+     ]
+    },
+    "dressing_h08_a__Shingle": {
+     "tris": 48,
+     "materials": [
+      {
+       "name": "Shingle",
+       "base_color": "#7A4630",
+       "emission": 0.0,
+       "textures": [
+        "shingle.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      20.481,
+      2.086,
+      6.252
+     ],
+     "bbox_center": [
+      1.509,
+      9.692,
+      -56.978
+     ]
+    },
+    "dressing_h08_a__ShroomGlow": {
+     "tris": 874,
+     "materials": [
+      {
+       "name": "ShroomGlow",
+       "base_color": "#7FE3D0",
+       "emission": 6.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      25.736,
+      1.365,
+      28.405
+     ],
+     "bbox_center": [
+      3.04,
+      0.693,
+      -14.639
+     ]
+    },
+    "dressing_h08_a__Slate": {
+     "tris": 352,
+     "materials": [
+      {
+       "name": "Slate",
+       "base_color": "#6E7480",
+       "emission": 0.0,
+       "textures": [
+        "slate_stone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      20.6,
+      2.873,
+      30.186
+     ],
+     "bbox_center": [
+      1.509,
+      1.871,
+      -45.07
+     ]
+    },
+    "dressing_h08_a__ToadRed": {
+     "tris": 96,
+     "materials": [
+      {
+       "name": "ToadRed",
+       "base_color": "#D8392B",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      12.181,
+      4.242,
+      29.406
+     ],
+     "bbox_center": [
+      4.116,
+      3.707,
+      -44.954
+     ]
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "part_tris_eq_manifest": true
+   },
+   "changed_in_v210b": true,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "dressing_h09_a.fbx": {
+   "roots": [
+    "dressing_h09_a"
+   ],
+   "tris": 17932,
+   "images": 8,
+   "bbox_size": [
+    57.688,
+    17.574,
+    48.487
+   ],
+   "bbox_center": [
+    8.281,
+    7.496,
+    -38.379
+   ],
+   "parts": {
+    "dressing_h09_a__Cream": {
+     "tris": 5704,
+     "materials": [
+      {
+       "name": "Cream",
+       "base_color": "#F4E9D2",
+       "emission": 0.0,
+       "textures": [
+        "plaster.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      57.138,
+      4.055,
+      48.257
+     ],
+     "bbox_center": [
+      8.542,
+      0.822,
+      -38.467
+     ]
+    },
+    "dressing_h09_a__Firefly": {
+     "tris": 784,
+     "materials": [
+      {
+       "name": "Firefly",
+       "base_color": "#D8FF6A",
+       "emission": 8.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      49.773,
+      1.453,
+      47.541
+     ],
+     "bbox_center": [
+      4.91,
+      -0.011,
+      -38.113
+     ]
+    },
+    "dressing_h09_a__Glow": {
+     "tris": 252,
+     "materials": [
+      {
+       "name": "Glow",
+       "base_color": "#FFB347",
+       "emission": 4.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.287,
+      8.162,
+      35.625
+     ],
+     "bbox_center": [
+      17.334,
+      4.204,
+      -37.995
+     ]
+    },
+    "dressing_h09_a__Gold": {
+     "tris": 968,
+     "materials": [
+      {
+       "name": "Gold",
+       "base_color": "#F2B632",
+       "emission": 0.0,
+       "textures": [
+        "foliage_gold.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      21.754,
+      2.603,
+      36.185
+     ],
+     "bbox_center": [
+      -6.194,
+      0.023,
+      -40.373
+     ]
+    },
+    "dressing_h09_a__Iron": {
+     "tris": 300,
+     "materials": [
+      {
+       "name": "Iron",
+       "base_color": "#3B3A3F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.601,
+      16.458,
+      35.934
+     ],
+     "bbox_center": [
+      17.361,
+      8.054,
+      -38.028
+     ]
+    },
+    "dressing_h09_a__MapleRed": {
+     "tris": 160,
+     "materials": [
+      {
+       "name": "MapleRed",
+       "base_color": "#D2452A",
+       "emission": 0.0,
+       "textures": [
+        "foliage_red.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      1.865,
+      1.442,
+      2.178
+     ],
+     "bbox_center": [
+      5.581,
+      -0.396,
+      -58.5
+     ]
+    },
+    "dressing_h09_a__Moss": {
+     "tris": 1588,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      50.985,
+      2.885,
+      47.824
+     ],
+     "bbox_center": [
+      4.929,
+      0.245,
+      -38.048
+     ]
+    },
+    "dressing_h09_a__Oak": {
+     "tris": 176,
+     "materials": [
+      {
+       "name": "Oak",
+       "base_color": "#8A5A33",
+       "emission": 0.0,
+       "textures": [
+        "oak_wood.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.272,
+      2.19,
+      35.605
+     ],
+     "bbox_center": [
+      17.336,
+      0.045,
+      -38.002
+     ]
+    },
+    "dressing_h09_a__Paper": {
+     "tris": 348,
+     "materials": [
+      {
+       "name": "Paper",
+       "base_color": "#F7C873",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      11.129,
+      1.119,
+      6.074
+     ],
+     "bbox_center": [
+      23.5,
+      8.111,
+      -49.0
+     ]
+    },
+    "dressing_h09_a__PaperOrange": {
+     "tris": 464,
+     "materials": [
+      {
+       "name": "PaperOrange",
+       "base_color": "#F08A3C",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.629,
+      1.93,
+      35.956
+     ],
+     "bbox_center": [
+      17.331,
+      0.915,
+      -37.997
+     ]
+    },
+    "dressing_h09_a__Pumpkin": {
+     "tris": 800,
+     "materials": [
+      {
+       "name": "Pumpkin",
+       "base_color": "#E8862E",
+       "emission": 0.0,
+       "textures": [
+        "foliage_orange.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      22.918,
+      2.106,
+      36.14
+     ],
+     "bbox_center": [
+      -5.077,
+      -0.238,
+      -40.809
+     ]
+    },
+    "dressing_h09_a__RootBark": {
+     "tris": 924,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.669,
+      8.96,
+      35.996
+     ],
+     "bbox_center": [
+      17.331,
+      4.35,
+      -37.997
+     ]
+    },
+    "dressing_h09_a__ShroomGlow": {
+     "tris": 1442,
+     "materials": [
+      {
+       "name": "ShroomGlow",
+       "base_color": "#7FE3D0",
+       "emission": 6.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      50.54,
+      1.47,
+      47.85
+     ],
+     "bbox_center": [
+      5.034,
+      -0.1,
+      -38.087
+     ]
+    },
+    "dressing_h09_a__Slate": {
+     "tris": 176,
+     "materials": [
+      {
+       "name": "Slate",
+       "base_color": "#6E7480",
+       "emission": 0.0,
+       "textures": [
+        "slate_stone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.662,
+      1.49,
+      35.995
+     ],
+     "bbox_center": [
+      17.353,
+      -0.505,
+      -38.02
+     ]
+    },
+    "dressing_h09_a__ToadRed": {
+     "tris": 3846,
+     "materials": [
+      {
+       "name": "ToadRed",
+       "base_color": "#D8392B",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      48.262,
+      8.248,
+      42.379
+     ],
+     "bbox_center": [
+      12.995,
+      3.268,
+      -41.433
+     ]
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "part_tris_eq_manifest": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "dressing_h09_a_h9dim.fbx": {
+   "roots": [
+    "dressing_h09_a_h9dim"
+   ],
+   "tris": 17932,
+   "images": 8,
+   "bbox_size": [
+    57.688,
+    17.574,
+    48.487
+   ],
+   "bbox_center": [
+    8.281,
+    7.496,
+    -38.379
+   ],
+   "parts": {
+    "dressing_h09_a_h9dim__Cream": {
+     "tris": 5704,
+     "materials": [
+      {
+       "name": "Cream",
+       "base_color": "#F4E9D2",
+       "emission": 0.0,
+       "textures": [
+        "plaster.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      57.138,
+      4.055,
+      48.257
+     ],
+     "bbox_center": [
+      8.542,
+      0.822,
+      -38.467
+     ]
+    },
+    "dressing_h09_a_h9dim__Firefly": {
+     "tris": 784,
+     "materials": [
+      {
+       "name": "Firefly",
+       "base_color": "#97B34A",
+       "emission": 5.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      49.773,
+      1.453,
+      47.541
+     ],
+     "bbox_center": [
+      4.91,
+      -0.011,
+      -38.113
+     ]
+    },
+    "dressing_h09_a_h9dim__Glow": {
+     "tris": 252,
+     "materials": [
+      {
+       "name": "Glow",
+       "base_color": "#B37D32",
+       "emission": 2.8,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.287,
+      8.162,
+      35.625
+     ],
+     "bbox_center": [
+      17.334,
+      4.204,
+      -37.995
+     ]
+    },
+    "dressing_h09_a_h9dim__Gold": {
+     "tris": 968,
+     "materials": [
+      {
+       "name": "Gold",
+       "base_color": "#F2B632",
+       "emission": 0.0,
+       "textures": [
+        "foliage_gold.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      21.754,
+      2.603,
+      36.185
+     ],
+     "bbox_center": [
+      -6.194,
+      0.023,
+      -40.373
+     ]
+    },
+    "dressing_h09_a_h9dim__Iron": {
+     "tris": 300,
+     "materials": [
+      {
+       "name": "Iron",
+       "base_color": "#3B3A3F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.601,
+      16.458,
+      35.934
+     ],
+     "bbox_center": [
+      17.361,
+      8.054,
+      -38.028
+     ]
+    },
+    "dressing_h09_a_h9dim__MapleRed": {
+     "tris": 160,
+     "materials": [
+      {
+       "name": "MapleRed",
+       "base_color": "#D2452A",
+       "emission": 0.0,
+       "textures": [
+        "foliage_red.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      1.865,
+      1.442,
+      2.178
+     ],
+     "bbox_center": [
+      5.581,
+      -0.396,
+      -58.5
+     ]
+    },
+    "dressing_h09_a_h9dim__Moss": {
+     "tris": 1588,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      50.985,
+      2.885,
+      47.824
+     ],
+     "bbox_center": [
+      4.929,
+      0.245,
+      -38.048
+     ]
+    },
+    "dressing_h09_a_h9dim__Oak": {
+     "tris": 176,
+     "materials": [
+      {
+       "name": "Oak",
+       "base_color": "#8A5A33",
+       "emission": 0.0,
+       "textures": [
+        "oak_wood.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.272,
+      2.19,
+      35.605
+     ],
+     "bbox_center": [
+      17.336,
+      0.045,
+      -38.002
+     ]
+    },
+    "dressing_h09_a_h9dim__Paper": {
+     "tris": 348,
+     "materials": [
+      {
+       "name": "Paper",
+       "base_color": "#F7C873",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      11.129,
+      1.119,
+      6.074
+     ],
+     "bbox_center": [
+      23.5,
+      8.111,
+      -49.0
+     ]
+    },
+    "dressing_h09_a_h9dim__PaperOrange": {
+     "tris": 464,
+     "materials": [
+      {
+       "name": "PaperOrange",
+       "base_color": "#F08A3C",
+       "emission": 0.6,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.629,
+      1.93,
+      35.956
+     ],
+     "bbox_center": [
+      17.331,
+      0.915,
+      -37.997
+     ]
+    },
+    "dressing_h09_a_h9dim__Pumpkin": {
+     "tris": 800,
+     "materials": [
+      {
+       "name": "Pumpkin",
+       "base_color": "#E8862E",
+       "emission": 0.0,
+       "textures": [
+        "foliage_orange.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      22.918,
+      2.106,
+      36.14
+     ],
+     "bbox_center": [
+      -5.077,
+      -0.239,
+      -40.809
+     ]
+    },
+    "dressing_h09_a_h9dim__RootBark": {
+     "tris": 924,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.669,
+      8.96,
+      35.996
+     ],
+     "bbox_center": [
+      17.331,
+      4.35,
+      -37.997
+     ]
+    },
+    "dressing_h09_a_h9dim__ShroomGlow": {
+     "tris": 1442,
+     "materials": [
+      {
+       "name": "ShroomGlow",
+       "base_color": "#599F92",
+       "emission": 4.2,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      50.54,
+      1.47,
+      47.85
+     ],
+     "bbox_center": [
+      5.034,
+      -0.1,
+      -38.087
+     ]
+    },
+    "dressing_h09_a_h9dim__Slate": {
+     "tris": 176,
+     "materials": [
+      {
+       "name": "Slate",
+       "base_color": "#6E7480",
+       "emission": 0.0,
+       "textures": [
+        "slate_stone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      24.662,
+      1.49,
+      35.995
+     ],
+     "bbox_center": [
+      17.353,
+      -0.505,
+      -38.02
+     ]
+    },
+    "dressing_h09_a_h9dim__ToadRed": {
+     "tris": 3846,
+     "materials": [
+      {
+       "name": "ToadRed",
+       "base_color": "#D8392B",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      48.262,
+      8.248,
+      42.379
+     ],
+     "bbox_center": [
+      12.995,
+      3.268,
+      -41.433
+     ]
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": null,
+    "part_tris_eq_manifest": null
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "h8_alcove_bank_cladding.fbx": {
+   "roots": [
+    "h8_alcove_bank_cladding"
+   ],
+   "tris": 296,
+   "images": 1,
+   "bbox_size": [
+    1.3,
+    0.58,
+    7.0
+   ],
+   "bbox_center": [
+    0.0,
+    0.23,
+    -0.0
+   ],
+   "parts": {
+    "h8_alcove_bank_cladding__Limestone": {
+     "tris": 296,
+     "materials": [
+      {
+       "name": "Limestone",
+       "base_color": "#B8AFA0",
+       "emission": 0.0,
+       "textures": [
+        "limestone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      1.3,
+      0.58,
+      7.0
+     ],
+     "bbox_center": [
+      0.0,
+      0.23,
+      -0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "h8_alcove_bank_cladding__Limestone": {
+     "color": "#B8AFA0",
+     "roblox_material": "Limestone",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": true,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "h8_door_pocket.fbx": {
+   "roots": [
+    "h8_door_pocket"
+   ],
+   "tris": 416,
+   "images": 3,
+   "bbox_size": [
+    2.03,
+    2.135,
+    2.663
+   ],
+   "bbox_center": [
+    0.007,
+    0.888,
+    -1.148
+   ],
+   "parts": {
+    "h8_door_pocket__Cream": {
+     "tris": 20,
+     "materials": [
+      {
+       "name": "Cream",
+       "base_color": "#F4E9D2",
+       "emission": 0.0,
+       "textures": [
+        "plaster.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.121,
+      0.2,
+      0.1
+     ],
+     "bbox_center": [
+      0.868,
+      1.72,
+      -0.15
+     ]
+    },
+    "h8_door_pocket__Moss": {
+     "tris": 48,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      1.68,
+      0.3,
+      2.43
+     ],
+     "bbox_center": [
+      0.0,
+      1.79,
+      -1.113
+     ]
+    },
+    "h8_door_pocket__RootBark": {
+     "tris": 300,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      2.019,
+      2.135,
+      2.663
+     ],
+     "bbox_center": [
+      0.001,
+      0.888,
+      -1.148
+     ]
+    },
+    "h8_door_pocket__ShroomGlow": {
+     "tris": 48,
+     "materials": [
+      {
+       "name": "ShroomGlow",
+       "base_color": "#7FE3D0",
+       "emission": 6.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.308,
+      0.121,
+      0.22
+     ],
+     "bbox_center": [
+      0.868,
+      1.84,
+      -0.15
+     ]
+    }
+   },
+   "manifest_parts": {
+    "h8_door_pocket__Cream": {
+     "color": "#F4E9D2",
+     "roblox_material": "SmoothPlastic",
+     "reflectance": null
+    },
+    "h8_door_pocket__Moss": {
+     "color": "#7A9A3A",
+     "roblox_material": "Grass",
+     "reflectance": null
+    },
+    "h8_door_pocket__RootBark": {
+     "color": "#5B3A22",
+     "roblox_material": "Wood",
+     "reflectance": null
+    },
+    "h8_door_pocket__ShroomGlow": {
+     "color": "#7FE3D0",
+     "roblox_material": "Neon",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "h8_root_door.fbx": {
+   "roots": [
+    "h8_root_door"
+   ],
+   "tris": 544,
+   "images": 2,
+   "bbox_size": [
+    0.814,
+    1.034,
+    3.638
+   ],
+   "bbox_center": [
+    0.001,
+    0.488,
+    0.019
+   ],
+   "parts": {
+    "h8_root_door__Iron": {
+     "tris": 24,
+     "materials": [
+      {
+       "name": "Iron",
+       "base_color": "#3B3A3F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.4,
+      0.64,
+      3.58
+     ],
+     "bbox_center": [
+      0.0,
+      0.49,
+      -0.0
+     ]
+    },
+    "h8_root_door__Moss": {
+     "tris": 48,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.66,
+      0.09,
+      1.2
+     ],
+     "bbox_center": [
+      0.0,
+      0.96,
+      -0.6
+     ]
+    },
+    "h8_root_door__MoveCream": {
+     "tris": 88,
+     "materials": [
+      {
+       "name": "MoveCream",
+       "base_color": "#FFF2D8",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.36,
+      0.96,
+      2.36
+     ],
+     "bbox_center": [
+      0.0,
+      0.48,
+      -0.4
+     ]
+    },
+    "h8_root_door__MoveRed": {
+     "tris": 88,
+     "materials": [
+      {
+       "name": "MoveRed",
+       "base_color": "#D3362A",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.36,
+      0.96,
+      2.36
+     ],
+     "bbox_center": [
+      0.0,
+      0.48,
+      0.4
+     ]
+    },
+    "h8_root_door__RootBark": {
+     "tris": 296,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.814,
+      1.029,
+      3.638
+     ],
+     "bbox_center": [
+      0.001,
+      0.485,
+      0.019
+     ]
+    }
+   },
+   "manifest_parts": {
+    "h8_root_door__Iron": {
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "reflectance": null
+    },
+    "h8_root_door__Moss": {
+     "color": "#7A9A3A",
+     "roblox_material": "Grass",
+     "reflectance": null
+    },
+    "h8_root_door__MoveCream": {
+     "color": "#FFF2D8",
+     "roblox_material": "SmoothPlastic",
+     "reflectance": null
+    },
+    "h8_root_door__MoveRed": {
+     "color": "#D3362A",
+     "roblox_material": "SmoothPlastic",
+     "reflectance": null
+    },
+    "h8_root_door__RootBark": {
+     "color": "#5B3A22",
+     "roblox_material": "Wood",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "h9_bank_lip.fbx": {
+   "roots": [
+    "h9_bank_lip"
+   ],
+   "tris": 12,
+   "images": 0,
+   "bbox_size": [
+    0.05,
+    0.05,
+    6.689
+   ],
+   "bbox_center": [
+    -0.224,
+    1.225,
+    0.0
+   ],
+   "parts": {
+    "h9_bank_lip__BankLip": {
+     "tris": 12,
+     "materials": [
+      {
+       "name": "BankLip",
+       "base_color": "#6CC79F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.05,
+      0.05,
+      6.689
+     ],
+     "bbox_center": [
+      -0.224,
+      1.225,
+      0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "h9_bank_lip__BankLip": {
+     "color": "#6CC79F",
+     "roblox_material": "SmoothPlastic",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": true,
+   "pass": true
+  },
+  "rail_end_post_h9.fbx": {
+   "roots": [
+    "rail_end_post_h9"
+   ],
+   "tris": 116,
+   "images": 1,
+   "bbox_size": [
+    0.72,
+    1.16,
+    0.72
+   ],
+   "bbox_center": [
+    0.0,
+    0.58,
+    -0.0
+   ],
+   "parts": {
+    "rail_end_post_h9__Limestone": {
+     "tris": 116,
+     "materials": [
+      {
+       "name": "Limestone",
+       "base_color": "#B8AFA0",
+       "emission": 0.0,
+       "textures": [
+        "limestone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.72,
+      1.16,
+      0.72
+     ],
+     "bbox_center": [
+      0.0,
+      0.58,
+      -0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "rail_end_post_h9__Limestone": {
+     "color": "#B8AFA0",
+     "roblox_material": "Limestone",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": true,
+   "pass": true
+  },
+  "rail_straight_2_h9.fbx": {
+   "roots": [
+    "rail_straight_2_h9"
+   ],
+   "tris": 88,
+   "images": 0,
+   "bbox_size": [
+    0.56,
+    1.0,
+    2.0
+   ],
+   "bbox_center": [
+    0.0,
+    0.5,
+    -0.0
+   ],
+   "parts": {
+    "rail_straight_2_h9__OakDeep": {
+     "tris": 88,
+     "materials": [
+      {
+       "name": "OakDeep",
+       "base_color": "#7A4E32",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.56,
+      1.0,
+      2.0
+     ],
+     "bbox_center": [
+      0.0,
+      0.5,
+      -0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "rail_straight_2_h9__OakDeep": {
+     "color": "#7A4E32",
+     "roblox_material": "WoodPlanks",
+     "reflectance": 0.0
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": true,
+   "pass": true
+  },
+  "rail_straight_4_h9.fbx": {
+   "roots": [
+    "rail_straight_4_h9"
+   ],
+   "tris": 132,
+   "images": 0,
+   "bbox_size": [
+    0.56,
+    1.0,
+    4.0
+   ],
+   "bbox_center": [
+    0.0,
+    0.5,
+    -0.0
+   ],
+   "parts": {
+    "rail_straight_4_h9__OakDeep": {
+     "tris": 132,
+     "materials": [
+      {
+       "name": "OakDeep",
+       "base_color": "#7A4E32",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.56,
+      1.0,
+      4.0
+     ],
+     "bbox_center": [
+      0.0,
+      0.5,
+      -0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "rail_straight_4_h9__OakDeep": {
+     "color": "#7A4E32",
+     "roblox_material": "WoodPlanks",
+     "reflectance": 0.0
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": true,
+   "pass": true
+  },
+  "stream_bank_rocks.fbx": {
+   "roots": [
+    "stream_bank_rocks"
+   ],
+   "tris": 300,
+   "images": 3,
+   "bbox_size": [
+    1.678,
+    1.242,
+    4.504
+   ],
+   "bbox_center": [
+    -0.085,
+    0.621,
+    -0.07
+   ],
+   "parts": {
+    "stream_bank_rocks__Limestone": {
+     "tris": 80,
+     "materials": [
+      {
+       "name": "Limestone",
+       "base_color": "#B8AFA0",
+       "emission": 0.0,
+       "textures": [
+        "limestone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.794,
+      0.468,
+      4.264
+     ],
+     "bbox_center": [
+      -0.375,
+      0.684,
+      -0.19
+     ]
+    },
+    "stream_bank_rocks__Moss": {
+     "tris": 80,
+     "materials": [
+      {
+       "name": "Moss",
+       "base_color": "#7A9A3A",
+       "emission": 0.0,
+       "textures": [
+        "moss.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.893,
+      0.292,
+      3.699
+     ],
+     "bbox_center": [
+      -0.477,
+      1.096,
+      -0.013
+     ]
+    },
+    "stream_bank_rocks__Slate": {
+     "tris": 140,
+     "materials": [
+      {
+       "name": "Slate",
+       "base_color": "#6E7480",
+       "emission": 0.0,
+       "textures": [
+        "slate_stone.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.974,
+      0.586,
+      4.291
+     ],
+     "bbox_center": [
+      0.267,
+      0.293,
+      0.036
+     ]
+    }
+   },
+   "manifest_parts": {
+    "stream_bank_rocks__Limestone": {
+     "color": "#B8AFA0",
+     "roblox_material": "Limestone",
+     "reflectance": null
+    },
+    "stream_bank_rocks__Moss": {
+     "color": "#7A9A3A",
+     "roblox_material": "Grass",
+     "reflectance": null
+    },
+    "stream_bank_rocks__Slate": {
+     "color": "#6E7480",
+     "roblox_material": "Slate",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": false,
+   "pass": true
+  },
+  "timber_deflector_board.fbx": {
+   "roots": [
+    "timber_deflector_board"
+   ],
+   "tris": 400,
+   "images": 1,
+   "bbox_size": [
+    0.52,
+    1.0,
+    10.0
+   ],
+   "bbox_center": [
+    0.0,
+    0.5,
+    -0.0
+   ],
+   "parts": {
+    "timber_deflector_board__Iron": {
+     "tris": 48,
+     "materials": [
+      {
+       "name": "Iron",
+       "base_color": "#3B3A3F",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.52,
+      0.12,
+      9.4
+     ],
+     "bbox_center": [
+      0.0,
+      0.78,
+      -0.0
+     ]
+    },
+    "timber_deflector_board__OakDeep": {
+     "tris": 132,
+     "materials": [
+      {
+       "name": "OakDeep",
+       "base_color": "#7A4E32",
+       "emission": 0.0,
+       "textures": []
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.42,
+      0.96,
+      10.0
+     ],
+     "bbox_center": [
+      0.0,
+      0.5,
+      -0.0
+     ]
+    },
+    "timber_deflector_board__RootBark": {
+     "tris": 220,
+     "materials": [
+      {
+       "name": "RootBark",
+       "base_color": "#5B3A22",
+       "emission": 0.0,
+       "textures": [
+        "root_bark.png"
+       ]
+      }
+     ],
+     "origin": [
+      0.0,
+      0.0,
+      -0.0
+     ],
+     "bbox_size": [
+      0.5,
+      1.0,
+      10.0
+     ],
+     "bbox_center": [
+      0.0,
+      0.5,
+      -0.0
+     ]
+    }
+   },
+   "manifest_parts": {
+    "timber_deflector_board__Iron": {
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "reflectance": null
+    },
+    "timber_deflector_board__OakDeep": {
+     "color": "#7A4E32",
+     "roblox_material": "WoodPlanks",
+     "reflectance": 0.0
+    },
+    "timber_deflector_board__RootBark": {
+     "color": "#5B3A22",
+     "roblox_material": "Wood",
+     "reflectance": null
+    }
+   },
+   "checks": {
+    "tris_lt_20k": true,
+    "tris_eq_manifest": true,
+    "bbox_eq_manifest": true,
+    "parts_eq_manifest": true,
+    "one_material_per_part": true,
+    "material_colour_eq_manifest": true,
+    "part_tris_eq_manifest": true,
+    "origins_at_prop_origin": true,
+    "single_root_named_prop": true
+   },
+   "changed_in_v210b": false,
+   "new_in_v210b": false,
+   "pass": true
+  }
+ },
+ "h8_door_pocket_placed": {
+  "world_bbox_hole_local": [
+   [
+    3.728,
+    -0.18,
+    -7.933
+   ],
+   [
+    5.758,
+    1.955,
+    -5.27
+   ]
+  ],
+  "rail17_inner_face_x": 3.5,
+  "rail17_outer_face_x": 4.0,
+  "verts_west_of_rail17_outer_face": 89,
+  "max_overlap_into_rail17": 0.272,
+  "reaches_lane_felt": false,
+  "z_range_of_overlap": [
+   -7.932,
+   -5.27
+  ],
+  "rail16": {
+   "id": "rail16",
+   "center": [
+    6.5,
+    1.7,
+    -7.75
+   ],
+   "size": [
+    0.5,
+    4.4,
+    6.0
+   ],
+   "yaw": -90.0
+  }
+ },
+ "all_pass": true,
+ "lip_no_glow": true
+}

@@ -1,0 +1,288 @@
+{
+ "name": "bw_arch_sugarloaf_canyon",
+ "group": "arches",
+ "fbx": "fbx/bw_arch_sugarloaf_canyon.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Pass3 layered concept-directed portal; fixed base frame and collision, clear opening. Separate hinge-pivot lantern exports.",
+ "pivot": "local origin (0,0,0), shared arch base centre",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  15.977,
+  18.0,
+  3.487
+ ],
+ "bbox_center_from_pivot": [
+  0.011,
+  9.0,
+  0.191
+ ],
+ "bbox_min_roblox": [
+  -7.977,
+  0.0,
+  -1.553
+ ],
+ "bbox_max_roblox": [
+  8.0,
+  18.0,
+  1.934
+ ],
+ "target_size_studs": [
+  16,
+  18,
+  4
+ ],
+ "size_ratio_vs_target": [
+  0.999,
+  1.0,
+  0.872
+ ],
+ "triangles": 7084,
+ "tris_max": 8000,
+ "materials": [
+  "BW_Atlas",
+  "BW_Backdrop",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_arch_sugarloaf_canyon__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 300,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.551,
+    2.15,
+    0.46
+   ],
+   "center_from_pivot": [
+    -6.4,
+    2.975,
+    1.38
+   ]
+  },
+  {
+   "mesh": "bw_arch_sugarloaf_canyon__BW_Backdrop",
+   "material": "BW_Backdrop",
+   "tris": 6544,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    15.977,
+    18.0,
+    3.487
+   ],
+   "center_from_pivot": [
+    0.011,
+    9.0,
+    0.191
+   ]
+  },
+  {
+   "mesh": "bw_arch_sugarloaf_canyon__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 240,
+   "color": "#F6A6C8",
+   "roblox_material": "Neon",
+   "size": [
+    15.526,
+    16.711,
+    0.915
+   ],
+   "center_from_pivot": [
+    0.0,
+    9.644,
+    1.477
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "name": "leg_west",
+   "center": [
+    -6.5,
+    9.0,
+    0.0
+   ],
+   "size": [
+    3.0,
+    18.0,
+    4.0
+   ]
+  },
+  {
+   "name": "leg_east",
+   "center": [
+    6.5,
+    9.0,
+    0.0
+   ],
+   "size": [
+    3.0,
+    18.0,
+    4.0
+   ]
+  },
+  {
+   "name": "lintel",
+   "center": [
+    0.0,
+    14.0,
+    0.0
+   ],
+   "size": [
+    10.0,
+    4.0,
+    4.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false,
+ "opening_clear": {
+  "width": 10.08,
+  "height": 12.4,
+  "required": [
+   10,
+   12
+  ],
+  "note": "clear rectangle centred on X=0 from the deck up, full depth"
+ },
+ "portal_plane": {
+  "center": [
+   0,
+   6.0,
+   0
+  ],
+  "size": [
+   10,
+   12
+  ],
+  "note": "RobloxDevBot's portal quad goes here"
+ },
+ "nameplate_mount": {
+  "center": [
+   0,
+   14.0,
+   2.3
+  ],
+  "note": "builder: nameplate base at Y 14, Z +2.3; arch front face at local Z <= +2.0 behind it"
+ },
+ "portal_trigger": {
+  "name": "PortalTrigger_sugarloaf_canyon",
+  "center": [
+   0,
+   5,
+   0
+  ],
+  "size": [
+   10,
+   10,
+   3
+  ],
+  "modelled": false,
+  "CanCollide": false,
+  "CanQuery": false,
+  "Transparency": 1
+ },
+ "attach_points": {
+  "nameplate_center": [
+   0,
+   14.5,
+   2.25
+  ],
+  "coming_soon_sign_center": [
+   0,
+   12.7,
+   2.25
+  ],
+  "rope_loop_anchors": [
+   [
+    -2,
+    13.5,
+    2.25
+   ],
+   [
+    2,
+    13.5,
+    2.25
+   ]
+  ],
+  "apron_origin": [
+   0,
+   0,
+   4
+  ],
+  "lantern_cord_anchors": [
+   [
+    -6.5,
+    12.6,
+    1.6
+   ],
+   [
+    6.5,
+    12.6,
+    1.6
+   ]
+  ]
+ },
+ "portal_surface": {
+  "asset": "bw_portal_surface_sugarloaf_canyon",
+  "center": [
+   0,
+   6,
+   1.5
+  ],
+  "size": [
+   10,
+   12
+  ],
+  "UV": [
+   0,
+   0,
+   1,
+   1
+  ]
+ },
+ "motion_notes": "Each lantern has its own hinge origin; place at its arch-local anchor. Surface and Neon animation controlled at runtime. Snowpuff retains arch-base pivot.",
+ "clearance_exemptions": [
+  "Portal quad is intentionally inside opening/trigger; noncolliding runtime display.",
+  "Apron separate floor strip: top Y=0, placed Z=4 outside arch envelope.",
+  "Reused nameplate/sign attach forward of envelope; coming-soon sign bottom Y=11.7, Z=2.25 outside arch depth and trigger."
+ ],
+ "moving_parts": [
+  {
+   "asset": "bw_arch_sugarloaf_canyon_lantern_01",
+   "anchor_position_arch_local": [
+    -6.5,
+    12.6,
+    1.6
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+  },
+  {
+   "asset": "bw_arch_sugarloaf_canyon_lantern_02",
+   "anchor_position_arch_local": [
+    6.5,
+    12.6,
+    1.6
+   ],
+   "swing_axis": [
+    0,
+    0,
+    1
+   ],
+   "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+  }
+ ]
+}

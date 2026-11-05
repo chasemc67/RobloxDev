@@ -1,0 +1,2632 @@
+{
+ "source": "in\\holes.json",
+ "source_round": "p8",
+ "source_sha256": "f13a1ede238ad7809216c1e73af9010cedf76169f313dc27ae8cb16a5ae5a6bb",
+ "generated": "2026-10-11T21:00:53.671365-07:00",
+ "conventions": {
+  "units": "studs",
+  "axes": "Roblox hole-local, +Y up, play toward -Z; Blender = (x,-z,y)",
+  "fbx": "forward -Z, up Y, scale 1, embedded textures",
+  "warning_bands": {
+   "colors": {
+    "LipRed": "#B83A35",
+    "LipCream": "#FFF0C9"
+   },
+   "band": 0.6,
+   "source": "holes[10].moving_parts[quay_lip].appearance (H11 pattern)",
+   "rule": "moving parts only"
+  }
+ },
+ "h09_windpump_vanes": {
+  "pivot": {
+   "value": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "src": "holes[8].moving_parts[windpump].pivot"
+  },
+  "axis": {
+   "value": [
+    0,
+    0,
+    1
+   ],
+   "src": "holes[8].moving_parts[windpump].axis"
+  },
+  "speed_deg_s": {
+   "value": 20.0,
+   "src": "holes[8].moving_parts[windpump].speed"
+  },
+  "phase": {
+   "value": 0.0,
+   "src": "holes[8].moving_parts[windpump].phase"
+  },
+  "vane_width": {
+   "value": 2.4,
+   "src": "holes[8].moving_parts[windpump].blockers (6 strips x 0.4)"
+  },
+  "radial_inner": {
+   "value": 0.6,
+   "src": "blockers center.y+size.y/2"
+  },
+  "tip_radius": {
+   "value": 4.1,
+   "src": "blocker outer corners (inscribed circle r 4.1, visual note)"
+  },
+  "depth": {
+   "value": 0.4,
+   "src": "blockers size.z"
+  },
+  "strips": {
+   "value": [
+    {
+     "center": [
+      -1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.6000000000000001,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -0.20000000000000004,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.19999999999999998,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      0.5999999999999999,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 0.0
+    },
+    {
+     "center": [
+      -1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.6000000000000001,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -0.20000000000000004,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.19999999999999998,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      0.5999999999999999,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 90.0
+    },
+    {
+     "center": [
+      -1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.6000000000000001,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -0.20000000000000004,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.19999999999999998,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      0.5999999999999999,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 180.0
+    },
+    {
+     "center": [
+      -1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.6000000000000001,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      -0.20000000000000004,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.19999999999999998,
+      -2.3402205763103163,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.480441152620633,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      0.5999999999999999,
+      -2.31059692628831,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.42119385257662,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    },
+    {
+     "center": [
+      1.0,
+      -2.260229578391266,
+      0
+     ],
+     "size": [
+      0.39999999999999997,
+      3.3204591567825315,
+      0.4
+     ],
+     "yaw": 0.0,
+     "roll": 270.0
+    }
+   ],
+   "src": "holes[8].moving_parts[windpump].blockers (24 = 6 x roll 0/90/180/270)"
+  },
+  "felt_clearance_design": {
+   "value": 0.02,
+   "src": "holes[8].moving_parts[windpump].visual \"clearance .02\""
+  },
+  "visual_note": {
+   "value": "4 lollipop vanes, width 2.4, radius .6..4.1, circular clipped tips built from 6 strips; axle y=4.12; clearance .02",
+   "src": "holes[8].moving_parts[windpump].visual"
+  }
+ },
+ "h09_windpump_hub": {
+  "pivot": {
+   "value": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "src": "holes[8].moving_parts[windpump].pivot / anchors[windpump_wheel]"
+  },
+  "pump_house": {
+   "value": {
+    "name": "pump_house",
+    "position": [
+     -3,
+     0,
+     -21
+    ],
+    "notes": "Timber pump house (the rock 'house' block x 1.2..8 plus a matching west half) with the windpump tower on its roof; the tunnel through it is 2.4 wide, 6 long",
+    "landmark": true,
+    "approx_size": [
+     16,
+     8,
+     6
+    ],
+    "occluders": [
+     {
+      "center": [
+       -3.6,
+       4,
+       -21
+      ],
+      "size": [
+       4.8,
+       8,
+       6
+      ],
+      "yaw": 0.0
+     },
+     {
+      "center": [
+       4.6,
+       4,
+       -21
+      ],
+      "size": [
+       6.8,
+       8,
+       6
+      ],
+      "yaw": 0.0
+     }
+    ]
+   },
+   "src": "holes[8].decoration_anchors[pump_house]"
+  },
+  "tunnel_felt": {
+   "value": {
+    "id": "pump_tunnel",
+    "zone": "tunnel",
+    "center": [
+     0.0,
+     0.0,
+     -21.0
+    ],
+    "size": [
+     2.4,
+     6
+    ],
+    "yaw": 0.0,
+    "slope": null,
+    "tunnel": true,
+    "kind": "tunnel"
+   },
+   "src": "holes[8].felt[pump_tunnel]"
+  },
+  "vane_sweep_clearance_min": {
+   "value": 0.15,
+   "src": "brief_pass4 item 1"
+  }
+ },
+ "h14_ore_bucket": {
+  "pivot": {
+   "value": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "src": "holes[13].moving_parts[ore_bucket].pivot"
+  },
+  "axis": {
+   "value": [
+    0,
+    0,
+    1
+   ],
+   "src": "holes[13].moving_parts[ore_bucket].axis"
+  },
+  "amplitude_deg": {
+   "value": 9.0,
+   "src": "holes[13].moving_parts[ore_bucket].amplitude_deg"
+  },
+  "period_s": {
+   "value": 4.0,
+   "src": "holes[13].moving_parts[ore_bucket].period_s"
+  },
+  "formula": {
+   "value": "angle = 9*sin(2*pi*t/4) deg about +Z through hinge",
+   "src": "brief_pass4 item 2 / holes amplitude+period+phase 0"
+  },
+  "bucket_blocker": {
+   "value": {
+    "center": [
+     0,
+     -9.0,
+     0
+    ],
+    "size": [
+     2.1,
+     2.0,
+     1.8
+    ],
+    "yaw": 0.0
+   },
+   "src": "holes[13].moving_parts[ore_bucket].blockers[0]"
+  },
+  "foot_blocker": {
+   "value": {
+    "center": [
+     0,
+     -10.075,
+     0
+    ],
+    "size": [
+     2.1,
+     0.4,
+     0.15
+    ],
+    "yaw": 0.0
+   },
+   "src": "holes[13].moving_parts[ore_bucket].blockers[1]"
+  },
+  "foot_visual": {
+   "value": "SHOWN: dark Iron skid 2.1 x 0.4 x 0.15 envelope with rivets; bottom edge is an arc r=10.275 about the hinge (same 0.075 felt gap as the collider at rest, never lower in swing)",
+   "src": "Game Art Bot answer 8:22 PM PT"
+  },
+  "visual_note": {
+   "value": "Ore bucket (2.1x2x1.8) on a 9-stud hanger from the cableway trestle, swinging east-west across the lane; blocker 2 = invisible collider foot 2.1x0.4x0.15 (yaw 0, its north/south faces square to the shot line) under the bucket, bottom 0.075 above the felt at rest (bucket bottom 0.35); the bucket mesh gets a matching base skid plate",
+   "src": "holes[13].moving_parts[ore_bucket].visual"
+  }
+ },
+ "h14_cableway_trestle": {
+  "anchor": {
+   "value": {
+    "name": "cableway_trestle",
+    "position": [
+     0,
+     0,
+     -24.0
+    ],
+    "notes": "Timber cableway trestle (legs outside the rails at x +-5, beam at y 10.35) with the ore-bucket hanger; the main ore cableway continues overhead to the Hoodoo Garden",
+    "landmark": true,
+    "approx_size": [
+     10,
+     11.35,
+     1.5
+    ],
+    "occluders": [
+     {
+      "center": [
+       -5.0,
+       5.175,
+       -24.0
+      ],
+      "size": [
+       0.8,
+       10.35,
+       0.8
+      ],
+      "yaw": 0.0
+     },
+     {
+      "center": [
+       5.0,
+       5.175,
+       -24.0
+      ],
+      "size": [
+       0.8,
+       10.35,
+       0.8
+      ],
+      "yaw": 0.0
+     },
+     {
+      "center": [
+       0,
+       10.85,
+       -24.0
+      ],
+      "size": [
+       10,
+       1.0,
+       1.0
+      ],
+      "yaw": 0.0
+     }
+    ]
+   },
+   "src": "holes[13].decoration_anchors[cableway_trestle] (legs x +-5 outside rails, beam y 10.35..11.35)"
+  },
+  "rails": {
+   "value": [
+    {
+     "id": "rail1",
+     "center": [
+      -4.25,
+      0.25,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      32.5
+     ],
+     "yaw": 180.0
+    },
+    {
+     "id": "rail9",
+     "center": [
+      4.25,
+      0.25,
+      -13.75
+     ],
+     "size": [
+      0.5,
+      1.5,
+      32.5
+     ],
+     "yaw": 0.0
+    }
+   ],
+   "src": "holes[13].walls rail1/rail9"
+  },
+  "existing_world_trestle": {
+   "value": "sc/sugarloaf-canyon/models cableway_trestle = world backdrop 6x30x6 (world.json backdrop.pieces cableway_trestles), not the H14 hole trestle",
+   "src": "models/manifest.json + props-full.md line 90"
+  }
+ },
+ "h17_shadow_arms": {
+  "pivot": {
+   "value": [
+    0.0,
+    0.0,
+    -36.0
+   ],
+   "src": "holes[16].moving_parts[shadow_arm].pivot"
+  },
+  "axis": {
+   "value": [
+    0,
+    1,
+    0
+   ],
+   "src": "holes[16].moving_parts[shadow_arm].axis"
+  },
+  "speed_deg_s": {
+   "value": 12.0,
+   "src": "holes[16].moving_parts[shadow_arm].speed"
+  },
+  "blockers": {
+   "value": [
+    {
+     "center": [
+      9.85,
+      0.45,
+      0.0
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      0.0,
+      0.45,
+      -9.85
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 90.0
+    },
+    {
+     "center": [
+      -9.85,
+      0.45,
+      -0.0
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 180.0
+    },
+    {
+     "center": [
+      -0.0,
+      0.45,
+      9.85
+     ],
+     "size": [
+      3.3,
+      0.9,
+      3.6
+     ],
+     "yaw": 270.0
+    }
+   ],
+   "src": "holes[16].moving_parts[shadow_arm].blockers (r 8.2..11.5, 3.6 wide, 0.9 tall)"
+  },
+  "visual_bottom_y": {
+   "value": 0.051,
+   "src": "derived: >=0.05 felt clearance (blocker bottom is y 0 = felt)"
+  }
+ },
+ "h17_plinth": {
+  "rest_exclusion": {
+   "value": {
+    "center": [
+     0,
+     0,
+     -36
+    ],
+    "radius": 7.0,
+    "physical_plinth_radius": 7.5,
+    "method": "48 solid circumscribed sandstone strips; balls cannot occupy the central disk"
+   },
+   "src": "holes[16].rest_exclusion"
+  },
+  "strips": {
+   "value": [
+    {
+     "id": "gnomon_plinth_00",
+     "center": [
+      0,
+      0.35,
+      -43.3438
+     ],
+     "size": [
+      4.2848,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_01",
+     "center": [
+      0,
+      0.35,
+      -43.0312
+     ],
+     "size": [
+      5.9948,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_02",
+     "center": [
+      0,
+      0.35,
+      -42.7188
+     ],
+     "size": [
+      7.2618,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_03",
+     "center": [
+      0,
+      0.35,
+      -42.4062
+     ],
+     "size": [
+      8.2916,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_04",
+     "center": [
+      0,
+      0.35,
+      -42.0938
+     ],
+     "size": [
+      9.1643,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_05",
+     "center": [
+      0,
+      0.35,
+      -41.7812
+     ],
+     "size": [
+      9.9216,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_06",
+     "center": [
+      0,
+      0.35,
+      -41.4688
+     ],
+     "size": [
+      10.5882,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_07",
+     "center": [
+      0,
+      0.35,
+      -41.1562
+     ],
+     "size": [
+      11.1803,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_08",
+     "center": [
+      0,
+      0.35,
+      -40.8438
+     ],
+     "size": [
+      11.7094,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_09",
+     "center": [
+      0,
+      0.35,
+      -40.5312
+     ],
+     "size": [
+      12.1835,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_10",
+     "center": [
+      0,
+      0.35,
+      -40.2188
+     ],
+     "size": [
+      12.6089,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_11",
+     "center": [
+      0,
+      0.35,
+      -39.9062
+     ],
+     "size": [
+      12.9904,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_12",
+     "center": [
+      0,
+      0.35,
+      -39.5938
+     ],
+     "size": [
+      13.3317,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_13",
+     "center": [
+      0,
+      0.35,
+      -39.2812
+     ],
+     "size": [
+      13.6359,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_14",
+     "center": [
+      0,
+      0.35,
+      -38.9688
+     ],
+     "size": [
+      13.9054,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_15",
+     "center": [
+      0,
+      0.35,
+      -38.6562
+     ],
+     "size": [
+      14.1421,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_16",
+     "center": [
+      0,
+      0.35,
+      -38.3438
+     ],
+     "size": [
+      14.3478,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_17",
+     "center": [
+      0,
+      0.35,
+      -38.0312
+     ],
+     "size": [
+      14.5237,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_18",
+     "center": [
+      0,
+      0.35,
+      -37.7188
+     ],
+     "size": [
+      14.6709,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_19",
+     "center": [
+      0,
+      0.35,
+      -37.4062
+     ],
+     "size": [
+      14.7902,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_20",
+     "center": [
+      0,
+      0.35,
+      -37.0938
+     ],
+     "size": [
+      14.8824,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_21",
+     "center": [
+      0,
+      0.35,
+      -36.7812
+     ],
+     "size": [
+      14.9478,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_22",
+     "center": [
+      0,
+      0.35,
+      -36.4688
+     ],
+     "size": [
+      14.987,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_23",
+     "center": [
+      0,
+      0.35,
+      -36.1562
+     ],
+     "size": [
+      15.0,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_24",
+     "center": [
+      0,
+      0.35,
+      -35.8438
+     ],
+     "size": [
+      15.0,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_25",
+     "center": [
+      0,
+      0.35,
+      -35.5312
+     ],
+     "size": [
+      14.987,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_26",
+     "center": [
+      0,
+      0.35,
+      -35.2188
+     ],
+     "size": [
+      14.9478,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_27",
+     "center": [
+      0,
+      0.35,
+      -34.9062
+     ],
+     "size": [
+      14.8824,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_28",
+     "center": [
+      0,
+      0.35,
+      -34.5938
+     ],
+     "size": [
+      14.7902,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_29",
+     "center": [
+      0,
+      0.35,
+      -34.2812
+     ],
+     "size": [
+      14.6709,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_30",
+     "center": [
+      0,
+      0.35,
+      -33.9688
+     ],
+     "size": [
+      14.5237,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_31",
+     "center": [
+      0,
+      0.35,
+      -33.6562
+     ],
+     "size": [
+      14.3478,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_32",
+     "center": [
+      0,
+      0.35,
+      -33.3438
+     ],
+     "size": [
+      14.1421,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_33",
+     "center": [
+      0,
+      0.35,
+      -33.0312
+     ],
+     "size": [
+      13.9054,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_34",
+     "center": [
+      0,
+      0.35,
+      -32.7188
+     ],
+     "size": [
+      13.6359,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_35",
+     "center": [
+      0,
+      0.35,
+      -32.4062
+     ],
+     "size": [
+      13.3317,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_36",
+     "center": [
+      0,
+      0.35,
+      -32.0938
+     ],
+     "size": [
+      12.9904,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_37",
+     "center": [
+      0,
+      0.35,
+      -31.7812
+     ],
+     "size": [
+      12.6089,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_38",
+     "center": [
+      0,
+      0.35,
+      -31.4688
+     ],
+     "size": [
+      12.1835,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_39",
+     "center": [
+      0,
+      0.35,
+      -31.1562
+     ],
+     "size": [
+      11.7094,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_40",
+     "center": [
+      0,
+      0.35,
+      -30.8438
+     ],
+     "size": [
+      11.1803,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_41",
+     "center": [
+      0,
+      0.35,
+      -30.5312
+     ],
+     "size": [
+      10.5882,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_42",
+     "center": [
+      0,
+      0.35,
+      -30.2188
+     ],
+     "size": [
+      9.9216,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_43",
+     "center": [
+      0,
+      0.35,
+      -29.9062
+     ],
+     "size": [
+      9.1643,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_44",
+     "center": [
+      0,
+      0.35,
+      -29.5938
+     ],
+     "size": [
+      8.2916,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_45",
+     "center": [
+      0,
+      0.35,
+      -29.2812
+     ],
+     "size": [
+      7.2618,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_46",
+     "center": [
+      0,
+      0.35,
+      -28.9688
+     ],
+     "size": [
+      5.9948,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    },
+    {
+     "id": "gnomon_plinth_47",
+     "center": [
+      0,
+      0.35,
+      -28.6562
+     ],
+     "size": [
+      4.2848,
+      1.7,
+      0.3125
+     ],
+     "yaw": 0.0,
+     "kind": "bumper"
+    }
+   ],
+   "src": "holes[16].walls gnomon_plinth_00..47"
+  },
+  "gnomon": {
+   "value": {
+    "name": "gnomon",
+    "position": [
+     0.0,
+     0,
+     -36.0
+    ],
+    "notes": "Tall candy-striped sundial gnomon (triangular fin, 9 tall) on a solid radius-7.5 sandstone plinth, height 1.2, at the dial centre; hour stones in candy colours mark an octagonal motif inside the square perimeter",
+    "landmark": true,
+    "approx_size": [
+     1.6,
+     9,
+     6
+    ],
+    "occluders": [
+     {
+      "center": [
+       0.0,
+       3.5,
+       -36.0
+      ],
+      "size": [
+       1.2,
+       7,
+       1.2
+      ],
+      "yaw": 0.0
+     }
+    ]
+   },
+   "src": "holes[16].decoration_anchors[gnomon]"
+  },
+  "plinth_anchor": {
+   "value": {
+    "name": "gnomon_plinth",
+    "position": [
+     0,
+     0,
+     -36
+    ],
+    "notes": "Solid sandstone central plinth: 48 circumscribed box strips enclose radius 7.5; top y=1.2; no walkable or playable surface on top; keeps every ball outside the seven-stud rest exclusion",
+    "approx_size": [
+     15.0,
+     1.2,
+     15.0
+    ]
+   },
+   "src": "holes[16].decoration_anchors[gnomon_plinth] (top y 1.2)"
+  }
+ },
+ "h07": {
+  "vr_comfort": {
+   "value": {
+    "boxes": [
+     {
+      "id": "rope_rail6",
+      "center": [
+       -2.25,
+       1.5,
+       -31.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       11.0
+      ],
+      "yaw": 180.0,
+      "role": "solid_parapet",
+      "solid": true,
+      "collidable": true,
+      "collision_source": "walls"
+     },
+     {
+      "id": "rope_rail7",
+      "center": [
+       2.25,
+       1.5,
+       -31.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       11.0
+      ],
+      "yaw": 0.0,
+      "role": "solid_parapet",
+      "solid": true,
+      "collidable": true,
+      "collision_source": "walls"
+     },
+     {
+      "id": "rope_rail12",
+      "center": [
+       1.55,
+       1.5,
+       -51.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       13.0
+      ],
+      "yaw": 180.0,
+      "role": "solid_parapet",
+      "solid": true,
+      "collidable": true,
+      "collision_source": "walls"
+     },
+     {
+      "id": "rope_rail13",
+      "center": [
+       6.05,
+       1.5,
+       -51.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       13.0
+      ],
+      "yaw": 0.0,
+      "role": "solid_parapet",
+      "solid": true,
+      "collidable": true,
+      "collision_source": "walls"
+     },
+     {
+      "id": "bridge1_skirt_west",
+      "center": [
+       -2.25,
+       -2.0,
+       -31.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       11.0
+      ],
+      "yaw": 0,
+      "role": "solid_side_skirt",
+      "solid": true,
+      "collidable": false,
+      "ball_collision": false
+     },
+     {
+      "id": "bridge1_skirt_east",
+      "center": [
+       2.25,
+       -2.0,
+       -31.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       11.0
+      ],
+      "yaw": 0,
+      "role": "solid_side_skirt",
+      "solid": true,
+      "collidable": false,
+      "ball_collision": false
+     },
+     {
+      "id": "bridge2_skirt_west",
+      "center": [
+       1.55,
+       -2.0,
+       -51.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       13.0
+      ],
+      "yaw": 0,
+      "role": "solid_side_skirt",
+      "solid": true,
+      "collidable": false,
+      "ball_collision": false
+     },
+     {
+      "id": "bridge2_skirt_east",
+      "center": [
+       6.05,
+       -2.0,
+       -51.5
+      ],
+      "size": [
+       0.5,
+       4.0,
+       13.0
+      ],
+      "yaw": 0,
+      "role": "solid_side_skirt",
+      "solid": true,
+      "collidable": false,
+      "ball_collision": false
+     },
+     {
+      "id": "gap_comfort_floor",
+      "center": [
+       0,
+       -4.25,
+       -42
+      ],
+      "size": [
+       30,
+       0.5,
+       32
+      ],
+      "yaw": 0,
+      "role": "opaque_gap_floor",
+      "solid": true,
+      "collidable": false,
+      "ball_collision": false,
+      "note": "Visual top y=-4. Original taffy_gap ball hazard at -30 and island respawn are unchanged."
+     }
+    ],
+    "note": "Opaque side skirts meet solid parapets at deck height. Player teleport points never transport the ball. The shallow visual floor/mist hide the deep chasm; ball hazard/respawn semantics remain unchanged.",
+    "mist": {
+     "id": "gap_mist",
+     "center": [
+      0,
+      -3.5,
+      -42
+     ],
+     "size": [
+      30,
+      1,
+      32
+     ],
+     "yaw": 0,
+     "collidable": false,
+     "ball_collision": false
+    }
+   },
+   "src": "holes[6].vr_comfort"
+  },
+  "player_teleport_points": {
+   "value": [
+    {
+     "id": "bridge1_entry",
+     "position": [
+      0.0,
+      0,
+      -25
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "lane",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, one stud back from bridge end; paired crossing is optional."
+    },
+    {
+     "id": "bridge1_island",
+     "position": [
+      0.0,
+      0,
+      -38.0
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "island",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, one stud back from bridge end; paired crossing is optional."
+    },
+    {
+     "id": "bridge2_island",
+     "position": [
+      3.8,
+      0,
+      -44.0
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "island",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, one stud back from bridge end; paired crossing is optional."
+    },
+    {
+     "id": "bridge2_exit",
+     "position": [
+      3.8,
+      0,
+      -59
+     ],
+     "size": [
+      3,
+      0.02,
+      2
+     ],
+     "yaw": 0,
+     "support_felt": "green",
+     "player_only": true,
+     "ball_teleport": false,
+     "optional": true,
+     "note": "Flush player teleport marker on solid felt, one stud back from bridge end; paired crossing is optional."
+    }
+   ],
+   "src": "holes[6].player_teleport_points"
+  },
+  "pad_colour": {
+   "value": "#D8FF6A sour-apple lime (PadLime) + #2F5D3A centre (PadCore)",
+   "src": "course.md palette \"Teleport pads\"; approved Game Art Bot 8:22 PM PT"
+  },
+  "rope_bridges_anchor": {
+   "value": {
+    "name": "rope_bridges",
+    "position": [
+     0,
+     0,
+     -42
+    ],
+    "notes": "Two flat-felt bridges with solid 3.5-stud sandstone parapets, rope trim, opaque side skirts and optional endpoint player teleports",
+    "landmark": true,
+    "approx_size": [
+     8,
+     4,
+     32
+    ]
+   },
+   "src": "holes[6].decoration_anchors[rope_bridges] (export pivot [0,0,-42])"
+  },
+  "gap_view_anchor": {
+   "value": {
+    "name": "gap_view",
+    "position": [
+     0,
+     -4.25,
+     -42
+    ],
+    "notes": "Opaque sandstone comfort floor and mist hide the 30-stud gap; the original pit respawn remains authoritative for balls",
+    "approx_size": [
+     30,
+     0.5,
+     32
+    ]
+   },
+   "src": "holes[6].decoration_anchors[gap_view] (export pivot [0,-4.25,-42])"
+  }
+ },
+ "dam_crest_parapets": {
+  "value": {
+   "deck": {
+    "center": [
+     0,
+     115.7,
+     -305
+    ],
+    "size": [
+     92,
+     0.6,
+     8
+    ]
+   },
+   "parapets": [
+    {
+     "center": [
+      0,
+      117.75,
+      -309.3
+     ],
+     "size": [
+      92,
+      3.5,
+      0.6
+     ]
+    },
+    {
+     "center": [
+      0,
+      117.75,
+      -300.7
+     ],
+     "size": [
+      92,
+      3.5,
+      0.6
+     ]
+    }
+   ],
+   "skirts": [
+    {
+     "center": [
+      0,
+      112,
+      -309.3
+     ],
+     "size": [
+      92,
+      8,
+      0.6
+     ]
+    },
+    {
+     "center": [
+      0,
+      112,
+      -300.7
+     ],
+     "size": [
+      92,
+      8,
+      0.6
+     ]
+    }
+   ]
+  },
+  "pivot": {
+   "value": [
+    0,
+    115.7,
+    -305
+   ],
+   "src": "deck centre, confirmed Game Art Bot 8:22 PM PT"
+  },
+  "src": "brief_pass4 + p7-report \"VR comfort / world handoff\" line 1741 + course.md line 197 (WORLD coords). holes.json has no world dam record; ~/sc/sugarloaf-canyon/world/world.json (older copy) has crest path y 116 from x -46..46 at z -305, consistent with deck top 116.0"
+ },
+ "h11_p8": {
+  "cycle_s": {
+   "value": 10.7,
+   "src": "holes[10].moving_parts[*].period_s"
+  },
+  "lock_gate": {
+   "value": {
+    "pivot": [
+     0,
+     0.0,
+     -21.25
+    ],
+    "range": [
+     -1.3,
+     0.0
+    ],
+    "speed": 4.333333333333334,
+    "dwell": [
+     {
+      "at": -1.3,
+      "s": 5.5
+     },
+     {
+      "at": 0.0,
+      "s": 4.6
+     }
+    ],
+    "windows": {
+     "open": [
+      0,
+      5.5
+     ],
+     "rise": [
+      5.5,
+      5.8
+     ],
+     "closed": [
+      5.8,
+      10.4
+     ],
+     "lower": [
+      10.4,
+      10.7
+     ]
+    }
+   },
+   "src": "holes[10].moving_parts[lock_gate] + p8-report Final H11 timing"
+  },
+  "lock_lift_deck": {
+   "value": {
+    "pivot": [
+     0,
+     0,
+     -25
+    ],
+    "schedule": {
+     "rise": [
+      6.1,
+      7.1
+     ],
+     "release": [
+      7.1,
+      9.1
+     ],
+     "return_": [
+      9.1,
+      10.1
+     ],
+     "height": 4,
+     "tilt_deg": 0
+    },
+    "blockers": [
+     {
+      "center": [
+       0,
+       -0.075,
+       1.675
+      ],
+      "size": [
+       3.2,
+       0.15,
+       3.35
+      ],
+      "yaw": 0
+     }
+    ],
+    "speed": 4.0
+   },
+   "src": "holes[10].moving_parts[lock_lift_deck]"
+  },
+  "quay_lip": {
+   "value": {
+    "pivot": [
+     0,
+     4.25,
+     -25.45
+    ],
+    "blockers": [
+     {
+      "center": [
+       0,
+       0,
+       0
+      ],
+      "size": [
+       3.6,
+       1.5,
+       0.2
+      ],
+      "yaw": 0
+     }
+    ],
+    "schedule": {
+     "flush": [
+      7.0,
+      9.2
+     ]
+    },
+    "speed": 10,
+    "export_pivot": [
+     0,
+     3.5,
+     -25.45
+    ],
+    "transitions": {
+     "sink": [
+      6.9,
+      7.0
+     ],
+     "rise": [
+      9.2,
+      9.3
+     ]
+    }
+   },
+   "src": "holes[10].moving_parts[quay_lip] (+ speed-10 transitions outside the flush window, p8-report engine requirement)"
+  },
+  "release": {
+   "value": "clamp(entry*0.5,1.5,7) toward -Z from [0,4,-27] during 7.10-9.10",
+   "src": "holes[10].teleports[lock_lift] + p8-report"
+  },
+  "geometry_changes": {
+   "value": "lane 11 wide (x+-5.5, z 2..-6); 12-wide approach from z -6; quay 4.4 wide with 0.4 side pockets",
+   "src": "p8-report option 3; holes[10].felt/walls"
+  },
+  "collision_cuts": {
+   "value": [
+    {
+     "mover": "lock_gate",
+     "targets": [
+      "rail4",
+      "rail5",
+      "rail7",
+      "rail8",
+      "approach"
+     ],
+     "min": [
+      -1.95,
+      -1.45,
+      -21.65
+     ],
+     "max": [
+      1.95,
+      1.35,
+      -20.85
+     ],
+     "clearance": 0.15
+    },
+    {
+     "mover": "lock_lift_deck",
+     "targets": [
+      "rail4",
+      "rail5",
+      "rail6",
+      "rail7",
+      "rail8",
+      "quay_rail20",
+      "quay",
+      "approach"
+     ],
+     "min": [
+      -1.75,
+      -0.3,
+      -25.15
+     ],
+     "max": [
+      1.75,
+      4.43,
+      -20.85
+     ],
+     "clearance": 0.15
+    },
+    {
+     "mover": "quay_lip",
+     "targets": [
+      "quay_rail20"
+     ],
+     "min": [
+      -1.95,
+      3.35,
+      -25.15
+     ],
+     "max": [
+      1.95,
+      5.15,
+      -24.35
+     ],
+     "clearance": 0.15
+    },
+    {
+     "mover": "quay_lip",
+     "targets": [
+      "quay",
+      "rail4",
+      "rail5",
+      "rail6",
+      "rail7",
+      "rail8"
+     ],
+     "min": [
+      -1.95,
+      2.35,
+      -25.7
+     ],
+     "max": [
+      1.95,
+      5.15,
+      -25.2
+     ],
+     "clearance": 0.15
+    },
+    {
+     "mover": "quay_lip",
+     "targets": [
+      "rail5",
+      "rail7"
+     ],
+     "min": [
+      -1.95,
+      2.35,
+      -25.2
+     ],
+     "max": [
+      1.95,
+      5.15,
+      -25.0
+     ],
+     "clearance": 0.15
+    }
+   ],
+   "src": "holes[10].collision_cuts"
+  }
+ },
+ "h06": {
+  "sluice_gate": {
+   "value": {
+    "id": "sluice_gate",
+    "type": "slide",
+    "pivot": [
+     0,
+     0.0,
+     -28.0
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "speed": 3.0,
+    "speed_units": "studs/s",
+    "range": [
+     -7.0,
+     0.0
+    ],
+    "phase": 0.0,
+    "blockers": [
+     {
+      "center": [
+       0,
+       0.5,
+       0
+      ],
+      "size": [
+       6.4,
+       1.0,
+       0.636
+      ],
+      "yaw": 0.0
+     },
+     {
+      "center": [
+       -3.2,
+       0.5,
+       0
+      ],
+      "size": [
+       0.4243,
+       1.0,
+       0.4243
+      ],
+      "yaw": 45.0
+     },
+     {
+      "center": [
+       3.2,
+       0.5,
+       0
+      ],
+      "size": [
+       0.4243,
+       1.0,
+       0.4243
+      ],
+      "yaw": 45.0
+     }
+    ],
+    "visual": "Timber sluice gate board 7 long, 0.6 thick, 1.0 tall (pointed 45-degree ends) on a hidden rail across the neck; closed = centred on the neck (offset 0), open = slid 7 west into a pocket in the slot wall",
+    "dwell": [
+     {
+      "at": 0.0,
+      "s": 1.2
+     },
+     {
+      "at": -7.0,
+      "s": 2.0
+     }
+    ],
+    "period_s": 7.8667
+   },
+   "src": "holes[5].moving_parts[sluice_gate]"
+  },
+  "collision_cuts": {
+   "value": [
+    {
+     "mover": "sluice_gate",
+     "targets": [
+      "rail5",
+      "rock18"
+     ],
+     "min": [
+      -10.68,
+      -0.15,
+      -28.47
+     ],
+     "max": [
+      3.68,
+      1.17,
+      -27.53
+     ],
+     "clearance": 0.15
+    }
+   ],
+   "src": "holes[5].collision_cuts"
+  }
+ },
+ "registry": [
+  {
+   "id": "h06_sluice_gate",
+   "hole": 5,
+   "pivot": [
+    0,
+    0.0,
+    -28.0
+   ],
+   "moving": true,
+   "kind": "slide",
+   "axis": [
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "id": "h06_sluice_frame",
+   "hole": 5,
+   "pivot": [
+    0,
+    0,
+    -28
+   ],
+   "moving": false,
+   "kind": "static"
+  },
+  {
+   "id": "h11_lock_gate",
+   "hole": 10,
+   "pivot": [
+    0,
+    0.0,
+    -21.25
+   ],
+   "moving": true,
+   "kind": "slide",
+   "axis": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": "h11_lock_lift",
+   "hole": 10,
+   "pivot": [
+    0,
+    0,
+    -25
+   ],
+   "moving": true,
+   "kind": "slide",
+   "axis": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "id": "h11_lock_chamber",
+   "hole": 10,
+   "pivot": [
+    0,
+    0,
+    -23
+   ],
+   "moving": false,
+   "kind": "static"
+  },
+  {
+   "id": "h11_quay_lip",
+   "hole": 10,
+   "pivot": [
+    0,
+    3.5,
+    -25.45
+   ],
+   "moving": true,
+   "kind": "slide",
+   "axis": [
+    0,
+    1,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "depth": 0.2,
+    "height": 1.5,
+    "position": [
+     0,
+     3.5,
+     -25.45
+    ]
+   }
+  },
+  {
+   "id": "h09_windpump_vanes",
+   "hole": 8,
+   "pivot": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "moving": true,
+   "kind": "rotate",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "speed": 20.0,
+   "phase": 0.0,
+   "source": "holes[8].moving_parts[windpump]"
+  },
+  {
+   "id": "h09_windpump_hub",
+   "hole": 8,
+   "pivot": [
+    0,
+    4.12,
+    -17.75
+   ],
+   "moving": false,
+   "kind": "static",
+   "source": "holes[8] windpump pivot / decoration_anchors pump_house"
+  },
+  {
+   "id": "h14_ore_bucket",
+   "hole": 13,
+   "pivot": [
+    0.0,
+    10.35,
+    -24.0
+   ],
+   "moving": true,
+   "kind": "swing",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "amplitude": 9.0,
+   "period": 4.0,
+   "phase": 0.0,
+   "source": "holes[13].moving_parts[ore_bucket]"
+  },
+  {
+   "id": "h14_cableway_trestle",
+   "hole": 13,
+   "pivot": [
+    0,
+    0,
+    -24.0
+   ],
+   "moving": false,
+   "kind": "static",
+   "realizes_anchor": "cableway_trestle",
+   "source": "holes[13].decoration_anchors[cableway_trestle]"
+  },
+  {
+   "id": "h17_shadow_arms",
+   "hole": 16,
+   "pivot": [
+    0.0,
+    0.0,
+    -36.0
+   ],
+   "moving": true,
+   "kind": "rotate",
+   "axis": [
+    0,
+    1,
+    0
+   ],
+   "speed": 12.0,
+   "phase": 0.0,
+   "source": "holes[16].moving_parts[shadow_arm]"
+  },
+  {
+   "id": "h17_plinth",
+   "hole": 16,
+   "pivot": [
+    0,
+    0,
+    -36
+   ],
+   "moving": false,
+   "kind": "static",
+   "realizes": [
+    "gnomon_plinth_00",
+    "gnomon_plinth_01",
+    "gnomon_plinth_02",
+    "gnomon_plinth_03",
+    "gnomon_plinth_04",
+    "gnomon_plinth_05",
+    "gnomon_plinth_06",
+    "gnomon_plinth_07",
+    "gnomon_plinth_08",
+    "gnomon_plinth_09",
+    "gnomon_plinth_10",
+    "gnomon_plinth_11",
+    "gnomon_plinth_12",
+    "gnomon_plinth_13",
+    "gnomon_plinth_14",
+    "gnomon_plinth_15",
+    "gnomon_plinth_16",
+    "gnomon_plinth_17",
+    "gnomon_plinth_18",
+    "gnomon_plinth_19",
+    "gnomon_plinth_20",
+    "gnomon_plinth_21",
+    "gnomon_plinth_22",
+    "gnomon_plinth_23",
+    "gnomon_plinth_24",
+    "gnomon_plinth_25",
+    "gnomon_plinth_26",
+    "gnomon_plinth_27",
+    "gnomon_plinth_28",
+    "gnomon_plinth_29",
+    "gnomon_plinth_30",
+    "gnomon_plinth_31",
+    "gnomon_plinth_32",
+    "gnomon_plinth_33",
+    "gnomon_plinth_34",
+    "gnomon_plinth_35",
+    "gnomon_plinth_36",
+    "gnomon_plinth_37",
+    "gnomon_plinth_38",
+    "gnomon_plinth_39",
+    "gnomon_plinth_40",
+    "gnomon_plinth_41",
+    "gnomon_plinth_42",
+    "gnomon_plinth_43",
+    "gnomon_plinth_44",
+    "gnomon_plinth_45",
+    "gnomon_plinth_46",
+    "gnomon_plinth_47"
+   ],
+   "realizes_anchor": "gnomon",
+   "source": "holes[16].rest_exclusion + walls gnomon_plinth_* + anchor gnomon"
+  },
+  {
+   "id": "h07_bridge_parapets",
+   "hole": 6,
+   "pivot": [
+    0,
+    0,
+    -42
+   ],
+   "moving": false,
+   "kind": "static",
+   "realizes": [
+    "rope_rail6",
+    "rope_rail7",
+    "rope_rail12",
+    "rope_rail13"
+   ],
+   "source": "holes[6].vr_comfort.boxes solid_parapet"
+  },
+  {
+   "id": "h07_bridge_skirts",
+   "hole": 6,
+   "pivot": [
+    0,
+    0,
+    -42
+   ],
+   "moving": false,
+   "kind": "static",
+   "realizes_vr": [
+    "bridge1_skirt_west",
+    "bridge1_skirt_east",
+    "bridge2_skirt_west",
+    "bridge2_skirt_east"
+   ],
+   "source": "holes[6].vr_comfort.boxes solid_side_skirt"
+  },
+  {
+   "id": "h07_gap_floor_mist",
+   "hole": 6,
+   "pivot": [
+    0,
+    -4.25,
+    -42
+   ],
+   "moving": false,
+   "kind": "static",
+   "realizes_vr": [
+    "gap_comfort_floor",
+    "gap_mist"
+   ],
+   "source": "holes[6].vr_comfort gap_comfort_floor + mist"
+  },
+  {
+   "id": "h07_teleport_pads",
+   "hole": 6,
+   "pivot": [
+    0.0,
+    0,
+    -25
+   ],
+   "moving": false,
+   "kind": "static",
+   "instances": [
+    {
+     "id": "bridge1_entry",
+     "pivot": [
+      0.0,
+      0,
+      -25
+     ],
+     "yaw": 0
+    },
+    {
+     "id": "bridge1_island",
+     "pivot": [
+      0.0,
+      0,
+      -38.0
+     ],
+     "yaw": 0
+    },
+    {
+     "id": "bridge2_island",
+     "pivot": [
+      3.8,
+      0,
+      -44.0
+     ],
+     "yaw": 0
+    },
+    {
+     "id": "bridge2_exit",
+     "pivot": [
+      3.8,
+      0,
+      -59
+     ],
+     "yaw": 0
+    }
+   ],
+   "source": "holes[6].player_teleport_points"
+  },
+  {
+   "id": "dam_crest_parapets",
+   "hole": null,
+   "pivot": [
+    0,
+    115.7,
+    -305
+   ],
+   "moving": false,
+   "kind": "static",
+   "world": true,
+   "source": "p7-report VR comfort / world handoff; course.md dam crest (world coords)"
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+menu_frame_9slice.png (256x256) from Game Art Bot. Use instead of any code-only fix: ImageLabel ScaleType=Slice, SliceCenter=Rect.new(32,32,224,224), SliceScale=0.35; inset menu content by at least 32*SliceScale (~11.2) px on all sides. Replace all other border layers (UIStroke / extra frame images) so there is exactly one frame.

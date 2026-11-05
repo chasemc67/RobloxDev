@@ -1,0 +1,2778 @@
+{
+  "course": "aurora-archipelago",
+  "batch": "1_polish",
+  "parts": [
+    {
+      "id": "h07_coral_w1",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_w1.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_w1__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_w1__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -6.5,
+        0,
+        -11
+      ],
+      "anchor_local": [
+        -6.5,
+        0,
+        -11
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        358.5,
+        112.0,
+        319.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 5 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 2.25 x 1.8, coral height 4.5 above y0.",
+        "Rev4: 5 separate flattened fan lobes; upper crown gaps 0.0842; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 2.25 x 1.8. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 2.250000:3.253010 = 0.691667. Height 4.5; width 2.25; depth envelope 1.8. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.250000, height 2.025000, W:H 1.111111; depth 1.8, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 8 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.125,
+          0.0,
+          -0.9
+        ],
+        [
+          1.125,
+          4.275,
+          0.8296326229016094
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -7.625,
+          0.0,
+          -11.9
+        ],
+        [
+          -5.375,
+          4.275,
+          -10.17036737709839
+        ]
+      ],
+      "bbox": [
+        [
+          -1.125,
+          0.0,
+          -0.9
+        ],
+        [
+          1.125,
+          4.275,
+          0.8296326229016094
+        ]
+      ],
+      "dimensions": [
+        2.25,
+        4.275,
+        1.7296326229016095
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_w1",
+        "height": 4.5,
+        "crown_width": 2.25,
+        "crown_height": 2.0250000000000004,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.250000, height 2.025000, W:H 1.111111; depth 1.8, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_w1",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 8,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.19999999999999998,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.19999999999999996,
+          0.2,
+          0.19999999999999998
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 1.3749994337558746,
+        "nearest_felt": "mogul1",
+        "id": "h07_coral_w1",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 1.5437223017215729,
+        "nearest_rail": "rail2",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_w2",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_w2.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_w2__CoralOrange",
+          "material": "CoralOrange",
+          "colour": "#FFA552",
+          "color": "#FFA552",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_w2__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -9,
+        0,
+        -18
+      ],
+      "anchor_local": [
+        -9,
+        0,
+        -18
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        356.0,
+        112.0,
+        312.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 3 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 3 x 2.4, coral height 6 above y0.",
+        "Rev4: 3 separate flattened fan lobes; upper crown gaps 0.1919; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 3 x 2.4. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 3.000000:4.306350 = 0.696646. Height 6; width 3; depth envelope 2.4. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 3.000000, height 2.700000, W:H 1.111111; depth 2.4, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 3 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.5,
+          0.0,
+          -1.2000000000000002
+        ],
+        [
+          1.5,
+          5.7,
+          1.1061804295777393
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -10.5,
+          0.0,
+          -19.2
+        ],
+        [
+          -7.5,
+          5.7,
+          -16.89381957042226
+        ]
+      ],
+      "bbox": [
+        [
+          -1.5,
+          0.0,
+          -1.2000000000000002
+        ],
+        [
+          1.5,
+          5.7,
+          1.1061804295777393
+        ]
+      ],
+      "dimensions": [
+        3.0,
+        5.7,
+        2.3061804295777395
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_w2",
+        "height": 6.0,
+        "crown_width": 3.0,
+        "crown_height": 2.7,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 3.000000, height 2.700000, W:H 1.111111; depth 2.4, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_w2",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 3,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.2,
+          0.20000000000000007,
+          0.19999999999999996,
+          0.19999999999999996,
+          0.19999999999999996,
+          0.2,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 3.4999996423721313,
+        "nearest_felt": "mogul2",
+        "id": "h07_coral_w2",
+        "status": "PASS",
+        "tris": {
+          "CoralOrange": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 3.0015558004379272,
+        "nearest_rail": "rail3",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_w3",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_w3.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_w3__CoralMint",
+          "material": "CoralMint",
+          "colour": "#6FFFD2",
+          "color": "#6FFFD2",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_w3__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -6,
+        0,
+        -24.5
+      ],
+      "anchor_local": [
+        -6,
+        0,
+        -24.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        359.0,
+        112.0,
+        305.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 4 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.75 x 1.4, coral height 3.5 above y0.",
+        "Rev4: 4 separate flattened fan lobes; upper crown gaps 0.0826; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.75 x 1.4. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.750000:2.548800 = 0.686598. Height 3.5; width 1.75; depth envelope 1.4. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.750000, height 1.575000, W:H 1.111111; depth 1.4, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 4 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -0.875,
+          0.0,
+          -0.7000000000000001
+        ],
+        [
+          0.875,
+          3.325,
+          0.6452710174938583
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -6.875,
+          0.0,
+          -25.2
+        ],
+        [
+          -5.125,
+          3.325,
+          -23.854728982506142
+        ]
+      ],
+      "bbox": [
+        [
+          -0.875,
+          0.0,
+          -0.7000000000000001
+        ],
+        [
+          0.875,
+          3.325,
+          0.6452710174938583
+        ]
+      ],
+      "dimensions": [
+        1.75,
+        3.325,
+        1.3452710174938582
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_w3",
+        "height": 3.5,
+        "crown_width": 1.75,
+        "crown_height": 1.5750000000000002,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.750000, height 1.575000, W:H 1.111111; depth 1.4, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_w3",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 4,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.2,
+          0.2,
+          0.19999999999999996,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.2,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 1.1249996721744537,
+        "nearest_felt": "mogul5",
+        "id": "h07_coral_w3",
+        "status": "PASS",
+        "tris": {
+          "CoralMint": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 0.8859716355800629,
+        "nearest_rail": "rail6",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_w4",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_w4.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_w4__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_w4__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -10,
+        0,
+        -30
+      ],
+      "anchor_local": [
+        -10,
+        0,
+        -30
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        355.0,
+        112.0,
+        300.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 5 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 2.75 x 2.2, coral height 5.5 above y0.",
+        "Rev4: 5 separate flattened fan lobes; upper crown gaps 0.1029; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 2.75 x 2.2. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 2.750000:3.955470 = 0.695240. Height 5.5; width 2.75; depth envelope 2.2. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.750000, height 2.475000, W:H 1.111111; depth 2.2, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 5 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.375,
+          0.0,
+          -1.1
+        ],
+        [
+          1.375,
+          5.225,
+          1.01400502541044
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -11.375,
+          0.0,
+          -31.1
+        ],
+        [
+          -8.625,
+          5.225,
+          -28.98599497458956
+        ]
+      ],
+      "bbox": [
+        [
+          -1.375,
+          0.0,
+          -1.1
+        ],
+        [
+          1.375,
+          5.225,
+          1.01400502541044
+        ]
+      ],
+      "dimensions": [
+        2.75,
+        5.225,
+        2.11400502541044
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_w4",
+        "height": 5.5,
+        "crown_width": 2.75,
+        "crown_height": 2.4749999999999996,
+        "crown_ratio": 1.1111111111111112,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.750000, height 2.475000, W:H 1.111111; depth 2.2, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_w4",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 5,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.20000000000000004,
+          0.2,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.2,
+          0.20000000000000007,
+          0.20000000000000004,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 4.624999314546585,
+        "nearest_felt": "mogul5",
+        "id": "h07_coral_w4",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 4.124999791383743,
+        "nearest_rail": "rail7",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_w5",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_w5.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_w5__CoralOrange",
+          "material": "CoralOrange",
+          "colour": "#FFA552",
+          "color": "#FFA552",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_w5__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -7,
+        0,
+        -35
+      ],
+      "anchor_local": [
+        -7,
+        0,
+        -35
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        358.0,
+        112.0,
+        295.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 3 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 2 x 1.6, coral height 4 above y0.",
+        "Rev4: 3 separate flattened fan lobes; upper crown gaps 0.1279; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 2 x 1.6. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 2.000000:2.901220 = 0.689365. Height 4; width 2; depth envelope 1.6. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.000000, height 1.800000, W:H 1.111111; depth 1.6, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 6 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.0,
+          0.0,
+          -0.8000000000000002
+        ],
+        [
+          1.0,
+          3.8,
+          0.7374572187477675
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -8.0,
+          0.0,
+          -35.8
+        ],
+        [
+          -6.0,
+          3.8,
+          -34.262542781252236
+        ]
+      ],
+      "bbox": [
+        [
+          -1.0,
+          0.0,
+          -0.8000000000000002
+        ],
+        [
+          1.0,
+          3.8,
+          0.7374572187477675
+        ]
+      ],
+      "dimensions": [
+        2.0,
+        3.8,
+        1.5374572187477678
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_w5",
+        "height": 4.0,
+        "crown_width": 2.0,
+        "crown_height": 1.7999999999999998,
+        "crown_ratio": 1.1111111111111112,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.000000, height 1.800000, W:H 1.111111; depth 1.6, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_w5",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 6,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.2,
+          0.19999999999999996,
+          0.2,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.2,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 1.9999995827674866,
+        "nearest_felt": "mogul8",
+        "id": "h07_coral_w5",
+        "status": "PASS",
+        "tris": {
+          "CoralOrange": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 1.499999314546585,
+        "nearest_rail": "rail9",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_e6",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_e6.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_e6__CoralMint",
+          "material": "CoralMint",
+          "colour": "#6FFFD2",
+          "color": "#6FFFD2",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_e6__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        7,
+        0,
+        -13.5
+      ],
+      "anchor_local": [
+        7,
+        0,
+        -13.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        372.0,
+        112.0,
+        316.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 4 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 2 x 1.6, coral height 4 above y0.",
+        "Rev4: 4 separate flattened fan lobes; upper crown gaps 0.0944; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 2 x 1.6. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 2.000000:2.901220 = 0.689365. Height 4; width 2; depth envelope 1.6. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.000000, height 1.800000, W:H 1.111111; depth 1.6, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 7 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.0,
+          0.0,
+          -0.8000000000000002
+        ],
+        [
+          1.0,
+          3.8,
+          0.7374572187477675
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          6.0,
+          0.0,
+          -14.3
+        ],
+        [
+          8.0,
+          3.8,
+          -12.762542781252233
+        ]
+      ],
+      "bbox": [
+        [
+          -1.0,
+          0.0,
+          -0.8000000000000002
+        ],
+        [
+          1.0,
+          3.8,
+          0.7374572187477675
+        ]
+      ],
+      "dimensions": [
+        2.0,
+        3.8,
+        1.5374572187477678
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_e6",
+        "height": 4.0,
+        "crown_width": 2.0,
+        "crown_height": 1.7999999999999998,
+        "crown_ratio": 1.1111111111111112,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.000000, height 1.800000, W:H 1.111111; depth 1.6, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_e6",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 7,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.2,
+          0.19999999999999996,
+          0.2,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.2,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 1.9999995827674866,
+        "nearest_felt": "mogul2",
+        "id": "h07_coral_e6",
+        "status": "PASS",
+        "tris": {
+          "CoralMint": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 1.499999314546585,
+        "nearest_rail": "rail22",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_e7",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_e7.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_e7__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_e7__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        9.5,
+        0,
+        -20.5
+      ],
+      "anchor_local": [
+        9.5,
+        0,
+        -20.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        374.5,
+        112.0,
+        309.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 5 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 2.75 x 2.2, coral height 5.5 above y0.",
+        "Rev4: 5 separate flattened fan lobes; upper crown gaps 0.1029; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 2.75 x 2.2. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 2.750000:3.955470 = 0.695240. Height 5.5; width 2.75; depth envelope 2.2. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.750000, height 2.475000, W:H 1.111111; depth 2.2, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 8 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.375,
+          0.0,
+          -1.1
+        ],
+        [
+          1.375,
+          5.225,
+          1.01400502541044
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          8.125,
+          0.0,
+          -21.6
+        ],
+        [
+          10.875,
+          5.225,
+          -19.48599497458956
+        ]
+      ],
+      "bbox": [
+        [
+          -1.375,
+          0.0,
+          -1.1
+        ],
+        [
+          1.375,
+          5.225,
+          1.01400502541044
+        ]
+      ],
+      "dimensions": [
+        2.75,
+        5.225,
+        2.11400502541044
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_e7",
+        "height": 5.5,
+        "crown_width": 2.75,
+        "crown_height": 2.4749999999999996,
+        "crown_ratio": 1.1111111111111112,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.750000, height 2.475000, W:H 1.111111; depth 2.2, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_e7",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 8,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.20000000000000004,
+          0.2,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.2,
+          0.20000000000000007,
+          0.20000000000000004,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 4.124999791383743,
+        "nearest_felt": "mogul3",
+        "id": "h07_coral_e7",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 3.624999523162842,
+        "nearest_rail": "rail20",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_e8",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_e8.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_e8__CoralOrange",
+          "material": "CoralOrange",
+          "colour": "#FFA552",
+          "color": "#FFA552",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_e8__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        6,
+        0,
+        -26
+      ],
+      "anchor_local": [
+        6,
+        0,
+        -26
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        371.0,
+        112.0,
+        304.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 3 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.5 x 1.2, coral height 3 above y0.",
+        "Rev4: 3 separate flattened fan lobes; upper crown gaps 0.0959; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.5 x 1.2. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.500000:2.195340 = 0.683265. Height 3; width 1.5; depth envelope 1.2. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.500000, height 1.350000, W:H 1.111111; depth 1.2, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 3 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -0.7105771134428825,
+          0.0,
+          -0.6000000000000001
+        ],
+        [
+          0.7105771134428825,
+          2.8500000000000005,
+          0.5530956133210952
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          5.289422886557118,
+          0.0,
+          -26.6
+        ],
+        [
+          6.710577113442882,
+          2.8500000000000005,
+          -25.446904386678906
+        ]
+      ],
+      "bbox": [
+        [
+          -0.7105771134428825,
+          0.0,
+          -0.6000000000000001
+        ],
+        [
+          0.7105771134428825,
+          2.8500000000000005,
+          0.5530956133210952
+        ]
+      ],
+      "dimensions": [
+        1.421154226885765,
+        2.8500000000000005,
+        1.1530956133210952
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_e8",
+        "height": 3.0,
+        "crown_width": 1.5,
+        "crown_height": 1.3500000000000005,
+        "crown_ratio": 1.1111111111111107,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.500000, height 1.350000, W:H 1.111111; depth 1.2, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_e8",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 3,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.20000000000000004,
+          0.2,
+          0.2,
+          0.2,
+          0.20000000000000007,
+          0.2,
+          0.20000000000000004
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 1.2894228100776672,
+        "nearest_felt": "mogul5",
+        "id": "h07_coral_e8",
+        "status": "PASS",
+        "tris": {
+          "CoralOrange": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 0.7894225418567657,
+        "nearest_rail": "rail19",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_e9",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_e9.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_e9__CoralMint",
+          "material": "CoralMint",
+          "colour": "#6FFFD2",
+          "color": "#6FFFD2",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_e9__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        8.5,
+        0,
+        -31.5
+      ],
+      "anchor_local": [
+        8.5,
+        0,
+        -31.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        373.5,
+        112.0,
+        298.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 4 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 3 x 2.4, coral height 6 above y0.",
+        "Rev4: 4 separate flattened fan lobes; upper crown gaps 0.1416; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 3 x 2.4. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 3.000000:4.306350 = 0.696646. Height 6; width 3; depth envelope 2.4. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 3.000000, height 2.700000, W:H 1.111111; depth 2.4, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 4 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.5,
+          0.0,
+          -1.2000000000000002
+        ],
+        [
+          1.5,
+          5.7,
+          1.1061804295777393
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          7.0,
+          0.0,
+          -32.7
+        ],
+        [
+          10.0,
+          5.7,
+          -30.39381957042226
+        ]
+      ],
+      "bbox": [
+        [
+          -1.5,
+          0.0,
+          -1.2000000000000002
+        ],
+        [
+          1.5,
+          5.7,
+          1.1061804295777393
+        ]
+      ],
+      "dimensions": [
+        3.0,
+        5.7,
+        2.3061804295777395
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_e9",
+        "height": 6.0,
+        "crown_width": 3.0,
+        "crown_height": 2.7,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 3.000000, height 2.700000, W:H 1.111111; depth 2.4, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_e9",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 4,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.2,
+          0.20000000000000007,
+          0.19999999999999996,
+          0.19999999999999996,
+          0.19999999999999996,
+          0.2,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 2.99999937415123,
+        "nearest_felt": "mogul6",
+        "id": "h07_coral_e9",
+        "status": "PASS",
+        "tris": {
+          "CoralMint": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 2.697765827178955,
+        "nearest_rail": "rail17",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h07_coral_e10",
+      "hole": 7,
+      "fbx": "fbx/props_batch1_polish/h07_coral_e10.fbx",
+      "tris": 888,
+      "max_mesh_tris": 696,
+      "meshes": [
+        {
+          "mesh": "h07_coral_e10__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 696
+        },
+        {
+          "mesh": "h07_coral_e10__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        6.5,
+        0,
+        -35.5
+      ],
+      "anchor_local": [
+        6.5,
+        0,
+        -35.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        365.0,
+        112.0,
+        330.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        371.5,
+        112.0,
+        294.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 3 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 2.25 x 1.8, coral height 4.5 above y0.",
+        "Rev4: 3 separate flattened fan lobes; upper crown gaps 0.1439; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 2.25 x 1.8. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 2.250000:3.253010 = 0.691667. Height 4.5; width 2.25; depth envelope 1.8. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.250000, height 2.025000, W:H 1.111111; depth 1.8, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 5 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.125,
+          0.0,
+          -0.9
+        ],
+        [
+          1.125,
+          4.275,
+          0.8296326229016094
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          5.375,
+          0.0,
+          -36.4
+        ],
+        [
+          7.625,
+          4.275,
+          -34.670367377098394
+        ]
+      ],
+      "bbox": [
+        [
+          -1.125,
+          0.0,
+          -0.9
+        ],
+        [
+          1.125,
+          4.275,
+          0.8296326229016094
+        ]
+      ],
+      "dimensions": [
+        2.25,
+        4.275,
+        1.7296326229016095
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h07_coral_e10",
+        "height": 4.5,
+        "crown_width": 2.25,
+        "crown_height": 2.0250000000000004,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 2.250000, height 2.025000, W:H 1.111111; depth 1.8, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h07_coral_e10",
+        "old_tris": 844,
+        "new_tris": 888,
+        "lean_degrees": 5,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.19999999999999998,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.19999999999999996,
+          0.2,
+          0.19999999999999998
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 7,
+        "min_felt_clearance": 1.3749994337558746,
+        "nearest_felt": "mogul8",
+        "id": "h07_coral_e10",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 696,
+          "AuroraMint": 192
+        },
+        "total_tris": 888,
+        "min_rail_clearance": 1.5276074409484863,
+        "nearest_rail": "rail17",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_giant_coral",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_giant_coral.fbx",
+      "tris": 2676,
+      "max_mesh_tris": 2484,
+      "meshes": [
+        {
+          "mesh": "h08_giant_coral__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 2484
+        },
+        {
+          "mesh": "h08_giant_coral__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -10.5,
+        0,
+        -18
+      ],
+      "anchor_local": [
+        -10.5,
+        0,
+        -18
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        419.5,
+        112.0,
+        282.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 5 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 4 x 4, coral height 14 above y0. Crown depth/width limited minimally to source occluder/authorized footprint (ratio 0.571429); height retained.",
+        "Rev4: 5 separate flattened fan lobes; upper crown gaps 0.1497; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 4 x 4. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 4.000000:9.877230 = 0.404972. Height 14; width 4; depth envelope 4. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Giant width limited to exact 4-stud occluder (requested 7). Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 4.000000, height 6.300000, W:H 0.634921; depth 4, top 0.95H. No rail-driven crown shrink. Giant crown width capped at exact 4-stud occluder; tall narrow exception.",
+        "Giant coral rev7: short bare trunk to ~3.2 studs, three offset stacked lumpy domes (big low-left, medium mid-right, small top-left), each a core dome + 5 shoulder lumps + top lump, 9 neon cores. Overall 4.000 W x 9.300 H x 4.000 D; exact 4-stud occluder cap retained.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 7 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -2.0,
+          0.0,
+          -2.0
+        ],
+        [
+          2.0,
+          9.3,
+          2.0
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -12.5,
+          0.0,
+          -20.0
+        ],
+        [
+          -8.5,
+          9.3,
+          -16.0
+        ]
+      ],
+      "bbox": [
+        [
+          -2.0,
+          0.0,
+          -2.0
+        ],
+        [
+          2.0,
+          9.3,
+          2.0
+        ]
+      ],
+      "dimensions": [
+        4.0,
+        9.3,
+        4.0
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_giant_coral",
+        "height": 14,
+        "crown_width": 4.0,
+        "crown_height": 6.300000000000001,
+        "crown_ratio": 0.6349206349206349,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 4.000000, height 6.300000, W:H 0.634921; depth 4, top 0.95H. No rail-driven crown shrink. Giant crown width capped at exact 4-stud occluder; tall narrow exception."
+      },
+      "giant_coral_rev7": {
+        "id": "h08_giant_coral",
+        "width": 4.0,
+        "height": 9.3,
+        "depth": 4.0,
+        "trunk_top": 3.2,
+        "domes": 3,
+        "neon_cores": 9,
+        "tris": 2376,
+        "notes": "Giant coral rev7: short bare trunk to ~3.2 studs, three offset stacked lumpy domes (big low-left, medium mid-right, small top-left), each a core dome + 5 shoulder lumps + top lump, 9 neon cores. Overall 4.000 W x 9.300 H x 4.000 D; exact 4-stud occluder cap retained."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_giant_coral",
+        "old_tris": 2376,
+        "new_tris": 2676,
+        "lean_degrees": 7,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.2,
+          0.19999999999999996,
+          0.19999999999999996,
+          0.19999999999999998,
+          0.19999999999999996,
+          0.20000000000000007,
+          0.20000000000000007,
+          0.2
+        ],
+        "retained_dome_components": 21
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": 2.499999850988388,
+        "nearest_felt": "reef_a",
+        "id": "h08_giant_coral",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 2484,
+          "AuroraMint": 192
+        },
+        "total_tris": 2676,
+        "min_rail_clearance": 2.9500000178813934,
+        "nearest_rail": "rail1",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_1",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_1.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_1__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_1__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -2.0,
+        0,
+        -10.0
+      ],
+      "anchor_local": [
+        -2.0,
+        0,
+        -10.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        428.0,
+        112.0,
+        290.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 4 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.96, coral height 2.4 above y1.6.",
+        "Rev4: 4 separate flattened fan lobes; upper crown gaps 0.0567; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.96. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.96. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.96, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 8 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.27279,
+          0.0,
+          -1.27279
+        ],
+        [
+          1.27279,
+          3.88,
+          1.27279
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -3.27279,
+          0.0,
+          -11.27279
+        ],
+        [
+          -0.7272099999999999,
+          3.88,
+          -8.72721
+        ]
+      ],
+      "bbox": [
+        [
+          -1.27279,
+          0.0,
+          -1.27279
+        ],
+        [
+          1.27279,
+          3.88,
+          1.27279
+        ]
+      ],
+      "dimensions": [
+        2.54558,
+        3.88,
+        2.54558
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_1",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.96, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_1",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 8,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.16812167415904367,
+          0.2,
+          0.16736267129224244,
+          0.18446592303362258,
+          0.2,
+          0.16736267129224244,
+          0.16812167415904367,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_1",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 2.7272097766399384,
+        "nearest_rail": "rail1",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral1"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_2",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_2.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_2__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_2__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        3.0,
+        0,
+        -15.5
+      ],
+      "anchor_local": [
+        3.0,
+        0,
+        -15.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        433.0,
+        112.0,
+        284.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 5 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.8, coral height 2.4 above y1.6. Crown depth/width limited minimally to source occluder/authorized footprint (ratio 0.833333); height retained.",
+        "Rev4: 5 separate flattened fan lobes; upper crown gaps 0.0449; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.8. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.8. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Narrow skin depth limited to prior 0.8-stud envelope. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 3 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.26977,
+          0.0,
+          -1.09787
+        ],
+        [
+          1.26977,
+          3.88,
+          1.09787
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          1.73023,
+          0.0,
+          -16.59787
+        ],
+        [
+          4.26977,
+          3.88,
+          -14.40213
+        ]
+      ],
+      "bbox": [
+        [
+          -1.26977,
+          0.0,
+          -1.09787
+        ],
+        [
+          1.26977,
+          3.88,
+          1.09787
+        ]
+      ],
+      "dimensions": [
+        2.53954,
+        3.88,
+        2.19574
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_2",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_2",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 3,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.20000000000000004,
+          0.2,
+          0.2,
+          0.19999999999999998,
+          0.1489664408822607,
+          0.2,
+          0.20000000000000004,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_2",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 1.7302297055721283,
+        "nearest_rail": "rail7",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral2"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_3",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_3.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_3__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_3__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -3.2,
+        0,
+        -20.5
+      ],
+      "anchor_local": [
+        -3.2,
+        0,
+        -20.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        426.8,
+        112.0,
+        279.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 3 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.8, coral height 2.4 above y1.6. Crown depth/width limited minimally to source occluder/authorized footprint (ratio 0.833333); height retained.",
+        "Rev4: 3 separate flattened fan lobes; upper crown gaps 0.0767; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.8. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.8. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Narrow skin depth limited to prior 0.8-stud envelope. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 4 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.26977,
+          0.0,
+          -1.09787
+        ],
+        [
+          1.26977,
+          3.88,
+          1.09787
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -4.4697700000000005,
+          0.0,
+          -21.59787
+        ],
+        [
+          -1.9302300000000001,
+          3.88,
+          -19.40213
+        ]
+      ],
+      "bbox": [
+        [
+          -1.26977,
+          0.0,
+          -1.09787
+        ],
+        [
+          1.26977,
+          3.88,
+          1.09787
+        ]
+      ],
+      "dimensions": [
+        2.53954,
+        3.88,
+        2.19574
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_3",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_3",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 4,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.1730147384497486,
+          0.17100196752702598,
+          0.13310145846476026,
+          0.15320645499231642,
+          0.2,
+          0.13310145846476026,
+          0.1730147384497486,
+          0.17100196752702598
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_3",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 1.5302293002605438,
+        "nearest_rail": "rail1",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral3"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_4",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_4.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_4__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_4__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        1.5,
+        0,
+        -25.0
+      ],
+      "anchor_local": [
+        1.5,
+        0,
+        -25.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        431.5,
+        112.0,
+        275.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 4 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.96, coral height 2.4 above y1.6.",
+        "Rev4: 4 separate flattened fan lobes; upper crown gaps 0.0567; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.96. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.96. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.96, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 5 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.27279,
+          0.0,
+          -1.27279
+        ],
+        [
+          1.27279,
+          3.88,
+          1.27279
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          0.2272099999999999,
+          0.0,
+          -26.27279
+        ],
+        [
+          2.77279,
+          3.88,
+          -23.72721
+        ]
+      ],
+      "bbox": [
+        [
+          -1.27279,
+          0.0,
+          -1.27279
+        ],
+        [
+          1.27279,
+          3.88,
+          1.27279
+        ]
+      ],
+      "dimensions": [
+        2.54558,
+        3.88,
+        2.54558
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_4",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.96, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_4",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 5,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.16812167415904367,
+          0.2,
+          0.16736267129224244,
+          0.18446592303362258,
+          0.2,
+          0.16736267129224244,
+          0.16812167415904367,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_4",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 3.22720929980278,
+        "nearest_rail": "rail7",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral4"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_5",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_5.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_5__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_5__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        -1.5,
+        0,
+        -30.5
+      ],
+      "anchor_local": [
+        -1.5,
+        0,
+        -30.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        428.5,
+        112.0,
+        269.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 5 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.8, coral height 2.4 above y1.6. Crown depth/width limited minimally to source occluder/authorized footprint (ratio 0.833333); height retained.",
+        "Rev4: 5 separate flattened fan lobes; upper crown gaps 0.0449; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.8. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.8. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Narrow skin depth limited to prior 0.8-stud envelope. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 6 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -0.98301,
+          0.0,
+          -1.20263
+        ],
+        [
+          0.98301,
+          3.88,
+          1.20263
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          -2.48301,
+          0.0,
+          -31.70263
+        ],
+        [
+          -0.51699,
+          3.88,
+          -29.29737
+        ]
+      ],
+      "bbox": [
+        [
+          -0.98301,
+          0.0,
+          -1.20263
+        ],
+        [
+          0.98301,
+          3.88,
+          1.20263
+        ]
+      ],
+      "dimensions": [
+        1.96602,
+        3.88,
+        2.40526
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_5",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_5",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 6,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.14229794094571901,
+          0.20000000000000004,
+          0.19999999999999998,
+          0.19999999999999998,
+          0.19999999999999998,
+          0.2,
+          0.14229794094571901,
+          0.20000000000000004
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_5",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 3.5169899463653564,
+        "nearest_rail": "rail1",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral5"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_6",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_6.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_6__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_6__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        3.5,
+        0,
+        -34.5
+      ],
+      "anchor_local": [
+        3.5,
+        0,
+        -34.5
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        433.5,
+        112.0,
+        265.5
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 3 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.8, coral height 2.4 above y1.6. Crown depth/width limited minimally to source occluder/authorized footprint (ratio 0.833333); height retained.",
+        "Rev4: 3 separate flattened fan lobes; upper crown gaps 0.0767; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.8. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.8. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Narrow skin depth limited to prior 0.8-stud envelope. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 7 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.11603,
+          0.0,
+          -0.93301
+        ],
+        [
+          1.11603,
+          3.88,
+          0.93301
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          2.3839699999999997,
+          0.0,
+          -35.43301
+        ],
+        [
+          4.61603,
+          3.88,
+          -33.56699
+        ]
+      ],
+      "bbox": [
+        [
+          -1.11603,
+          0.0,
+          -0.93301
+        ],
+        [
+          1.11603,
+          3.88,
+          0.93301
+        ]
+      ],
+      "dimensions": [
+        2.23206,
+        3.88,
+        1.86602
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_6",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.8, top 0.95H. No rail-driven crown shrink. Skin depth minimally limited to existing 0.8-stud envelope."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_6",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 7,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.19999999999999998,
+          0.2,
+          0.2,
+          0.2,
+          0.15119304223800156,
+          0.2,
+          0.19999999999999998,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_6",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 1.383969932794571,
+        "nearest_rail": "rail7",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral6"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    },
+    {
+      "id": "h08_coral_7",
+      "hole": 8,
+      "fbx": "fbx/props_batch1_polish/h08_coral_7.fbx",
+      "tris": 900,
+      "max_mesh_tris": 708,
+      "meshes": [
+        {
+          "mesh": "h08_coral_7__CoralPink",
+          "material": "CoralPink",
+          "colour": "#FF6FB5",
+          "color": "#FF6FB5",
+          "roblox_material": "SmoothPlastic",
+          "transparency": 0,
+          "tris": 708
+        },
+        {
+          "mesh": "h08_coral_7__AuroraMint",
+          "material": "AuroraMint",
+          "colour": "#5CFFB0",
+          "color": "#5CFFB0",
+          "roblox_material": "Neon",
+          "transparency": 0,
+          "tris": 192
+        }
+      ],
+      "pivot_hole_local": [
+        2.0,
+        0,
+        -45.0
+      ],
+      "anchor_local": [
+        2.0,
+        0,
+        -45.0
+      ],
+      "yaw_local": 0,
+      "world_offset": [
+        430.0,
+        112.0,
+        300.0
+      ],
+      "world_yaw": 0.0,
+      "pivot_world": [
+        432.0,
+        112.0,
+        255.0
+      ],
+      "placement_yaw": 0.0,
+      "motion": null,
+      "notes": [
+        "Coral rev3: 4 flattened fans, three branch stages after short 0.3H trunk of thickness 0.15H; overlapping swollen rounded crown and mint neon tip cores. Crown 1.2 x 0.96, coral height 2.4 above y1.6.",
+        "Rev4: 4 separate flattened fan lobes; upper crown gaps 0.0567; rounded neon tips; trunk 0.15H to 0.10H at split 0.3H. Crown 1.2 x 0.96. Prior footprint limits retained; collider base exact.",
+        "Coral rev5: 3 straight flat paddle lobes, 6 rounded neon tips, one central upright lobe; split 0.3H, trunk diameters 0.15H -> 0.10H. Crown W:H 1.200000:1.768620 = 0.678495. Height 2.4; width 1.2; depth envelope 0.96. Upper fork/tip cluster concentrated at 0.63H..H. Initial splay nominal 35..55 degrees; long risers necessarily steeper to retain H and 0.5H width. No rail-driven splay reduction. Crown height measured from actual branch vertices, including paddle cross-sections below the split plane.",
+        "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.96, top 0.95H. No rail-driven crown shrink.",
+        "Polish: retained rev6/rev7 lumpy crown and exact base; 8 degree leaning thin trunk, paired fork branches, eight rounded AuroraMint Neon gap cores. Giant retains three stacked domes and 4-stud cap."
+      ],
+      "can_collide": false,
+      "bbox_asset_local": [
+        [
+          -1.13137,
+          0.0,
+          -1.13137
+        ],
+        [
+          1.13137,
+          3.88,
+          1.13137
+        ]
+      ],
+      "bbox_hole_local": [
+        [
+          0.86863,
+          0.0,
+          -46.13137
+        ],
+        [
+          3.13137,
+          3.88,
+          -43.86863
+        ]
+      ],
+      "bbox": [
+        [
+          -1.13137,
+          0.0,
+          -1.13137
+        ],
+        [
+          1.13137,
+          3.88,
+          1.13137
+        ]
+      ],
+      "dimensions": [
+        2.26274,
+        3.88,
+        2.26274
+      ],
+      "lights": [],
+      "coral_rev6": {
+        "id": "h08_coral_7",
+        "height": 2.4,
+        "crown_width": 1.2,
+        "crown_height": 1.08,
+        "crown_ratio": 1.111111111111111,
+        "lobes": 3,
+        "tips": 6,
+        "notes": "Coral rev6: bare tapering trunk to 0.5H, three flat forked paddles (nominal 0.7 wide / 0.18 thick before envelope normalization), six BIG overlapping rounded tips and neon cores. Measured crown width 1.200000, height 1.080000, W:H 1.111111; depth 0.96, top 0.95H. No rail-driven crown shrink."
+      },
+      "override_boxes": [],
+      "can_query": false,
+      "can_touch": false,
+      "polish": {
+        "id": "h08_coral_7",
+        "old_tris": 856,
+        "new_tris": 900,
+        "lean_degrees": 8,
+        "glow_cores": 8,
+        "core_proud_studs": [
+          0.16812167415904367,
+          0.2,
+          0.16736267129224244,
+          0.18446592303362258,
+          0.2,
+          0.16736267129224244,
+          0.16812167415904367,
+          0.2
+        ],
+        "retained_dome_components": 6
+      },
+      "fitcheck": {
+        "hole": 8,
+        "min_felt_clearance": null,
+        "nearest_felt": "source skin/mover",
+        "id": "h08_coral_7",
+        "status": "PASS",
+        "tris": {
+          "CoralPink": 708,
+          "AuroraMint": 192
+        },
+        "total_tris": 900,
+        "min_rail_clearance": 5.868629366159439,
+        "nearest_rail": "rail6",
+        "felt_head_triangle_hits": 0,
+        "skin_ids": [
+          "coral7"
+        ],
+        "skin_footprint_tolerance": 0.001,
+        "sweep": null,
+        "failures": []
+      },
+      "export_status": "validated Blender export"
+    }
+  ],
+  "skipped": [],
+  "axes": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+  },
+  "validation_stage": "Blender actual triangles",
+  "source_md5": "fb913741b5dd4812b6d2318e258bcc46",
+  "all_pass": true,
+  "note": "Polish variants only; approved originals unchanged in props_batch1/"
+}

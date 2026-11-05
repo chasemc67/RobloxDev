@@ -1,0 +1,116 @@
+{
+ "h16_sinkhole_rim": {
+  "fbx": "fbx/h16_rim_2slot/h16_sinkhole_rim.fbx",
+  "sha256": "099c50857fe71ffb57b2c1d953b620667d8de3a7927095b294dbd4fccc9190d2",
+  "tris": 852,
+  "parts": [
+   {
+    "object": "h16_sinkhole_rim__CrystalAmber",
+    "mats": [
+     "CrystalAmber"
+    ],
+    "tris": 48
+   },
+   {
+    "object": "h16_sinkhole_rim__CrystalPink",
+    "mats": [
+     "CrystalPink"
+    ],
+    "tris": 48
+   },
+   {
+    "object": "h16_sinkhole_rim__GeodeRim",
+    "mats": [
+     "GeodeRim"
+    ],
+    "tris": 32
+   },
+   {
+    "object": "h16_sinkhole_rim__PepRed",
+    "mats": [
+     "PepRed"
+    ],
+    "tris": 72
+   },
+   {
+    "object": "h16_sinkhole_rim__Rope",
+    "mats": [
+     "Rope"
+    ],
+    "tris": 580
+   },
+   {
+    "object": "h16_sinkhole_rim__Timber",
+    "mats": [
+     "Timber"
+    ],
+    "tris": 72
+   }
+  ],
+  "pivot_hole_local": [
+   0.0,
+   0,
+   -16.2
+  ],
+  "pivot_world": [
+   -300.0,
+   190.0,
+   128.2
+  ],
+  "yaw_deg": 180.0,
+  "placement": "unchanged (holes.json h16 sinkhole_rim anchor)",
+  "sources": {
+   "crystals": "fbx/props_batch4/h16_sinkhole_rim.fbx __CrystalGlow (the 12 crystals in Studio, geometry unchanged)",
+   "rest": "fbx/fix_zfight6/h16_sinkhole_rim.fbx (approved GeodeRim frame, PepRed, Rope, Timber, unchanged)"
+  },
+  "materials": {
+   "CrystalPink": {
+    "color": "#FF6FA8",
+    "roblox_material": "Neon",
+    "crystals": "6 large (0.26 wide) at 0,90,145,215,235,305 deg"
+   },
+   "CrystalAmber": {
+    "color": "#FFB347",
+    "roblox_material": "Neon",
+    "crystals": "6 small (0.20 wide) at 35,55,125,180,270,325 deg"
+   },
+   "GeodeRim": "Rock #C8463F",
+   "PepRed": "SmoothPlastic #D9343A",
+   "Rope": "Fabric #C9A86A",
+   "Timber": "WoodPlanks #8A5A33"
+  },
+  "color_split_rationale": "No explicit per-crystal spec found: h16-notes says crystals glow pink; course.md palette has Rock candy #FF6FA8 + Rock candy 2 amber #FFB347; concept shows pink-dominant crystals with amber accents -> big crystals pink, small crystals amber.",
+  "checks_reimport": {
+   "all": {
+    "tris": 852,
+    "min_thickness": 0.1218,
+    "thin_parts": 12,
+    "intersecting_pairs": 0,
+    "stacked_lt_0.08": 0,
+    "min_gap": 0.086,
+    "coplanar_tri_pairs": 0,
+    "felt": 0.0599,
+    "rail": 0.16
+   },
+   "crystals_only": {
+    "min_thickness": 0.1218,
+    "thin_parts": 12,
+    "felt": 0.0599,
+    "rail": 2.86,
+    "min_gap": 0.2546,
+    "intersecting_pairs": 0,
+    "coplanar_tri_pairs": 0
+   },
+   "rest_only": {
+    "min_thickness": 0.206,
+    "thin_parts": 0,
+    "felt": 0.167,
+    "rail": 0.16
+   }
+  },
+  "collision": false,
+  "query": false,
+  "touch": false,
+  "warning": "Crystal geometry is the original batch-4 geometry as requested: 12 octahedra are 0.12-0.29 thick (below the 0.2 rule) and come within 0.06 of the felt (below the 0.15 rule). That is likely why fix_zfight* dropped them; a thickened/raised variant would be needed to meet the anti-flashing rules."
+ }
+}

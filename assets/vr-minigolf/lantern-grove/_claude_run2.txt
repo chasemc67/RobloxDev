@@ -1,0 +1,37 @@
+The Lantern Grove course is finished on the real game physics. Every target is met in the final run (Round 4, 2000 plays per skill per hole): total par 27, good-player aces 0.7–8.5% on every hole, every good average within par −0.7…+1, and no broken, impossible, trivial or too-hard flags. The geometry validator found 0 errors, a random-shot test found 0 escapes (60k shots per hole), and the physics tests pass.
+
+**Physics.** The real values are constants in `tools/sim.py` and a `physics` block in `holes.json`, and all meter conversions now use 0.3 m per stud. I set the max putt speed to 19.78 studs/s (5.9 m/s), which rolls 60 studs (18 m) on flat felt. That's the longest single shot the course needs: the H6 and H9 ace lines run about 45 studs plus a climb and two deflections. Longer routes, like H8's ~95-stud long way round, are meant to take several shots.
+
+**Final stats**
+
+| # | Hole | Par | Gimmick | Good avg | Good aces | Average avg |
+|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | Ramp + 45° deflector, cup tucked behind a corner | 2.02 | 0.7% | 2.45 |
+| 2 | Acorn Ledge | 2 | Drop through one of two chutes, rabbit-hole pit | 2.01 | 8.5% | 2.63 |
+| 3 | Toadstool Row | 3 | Two steep banked corners + tunnel through a mushroom stem | 2.79 | 2.6% | 3.81 |
+| 4 | Spore Spinner | 3 | Rotating 2-arm bar + ramp to a raised green | 3.84 | 1.8% | 4.09 |
+| 5 | Rootbridge Crossing | 3 | Rail-less root bridge (risky) or covered bridge (safe) over water | 2.49 | 2.2% | 3.79 |
+| 6 | Mill Wheel Run | 3 | Paddle wheel across the channel, deflector boards, water hazard | 3.18 | 8.0% | 3.63 |
+| 7 | Cascade Steps | 3 | Two drops, sliding log, waterfall pool | 2.74 | 2.1% | 2.87 |
+| 8 | Firefly Hollow | 4 | Teleport ring behind a sliding door, or the long route | 3.30 | 5.7% | 4.95 |
+| 9 | Heart of the Grove | 4 | Ramp, bank, rising root gate, tunnel, lantern bar, drop, secret teleport knot | 3.50 | 3.2% | 4.02 |
+| | **Total** | **27** | | **25.87** | | **32.25** |
+
+**One golfer-model change to know about.** Under the real physics, good players never aced most holes, because the AI only plays safe planned routes. From Round 3 on, good golfers go for the hole's best-found ace line on 30% of tee shots. Each attempt carries ±1.5° aim and ±8% power error on top of normal stroke noise, to model hitting a remembered line. I set this once and didn't tune it per hole. The Round 3 and 4 ace rates depend on it; with it switched off, those rates would be much lower.
+
+**Changes per round** (the earlier old-physics rounds r1–r4 are summarised briefly in `playtest-log.md`):
+- **Round 1** (old geometry, real physics): no ace for good players on six holes, and no ace line at all on H3 and H6. H6 was too hard (4.70). H8's ring was a free birdie (3.13). Average players aced H9 9.3% of the time through the secret knot.
+- **Round 2:** compacted H3 and H6, lined the H5 tee up with the root bridge, added a sliding door in front of the H8 ring, and tightened the H9 knot. The sim now treats a ball resting against a rail on a slope as stopped (this fixed the H7 timeouts). H3 then became too easy and H2 aced too often.
+- **Round 3:** added the ace-attempt model and moved cups and a bumper stool. This exposed ace lines a good player could repeat: H1 21%, H2 33%, H9 23%.
+- **Round 4:**
+  - H1's cup moved off the deflector's exit line.
+  - H2 was lengthened by about 4 studs.
+  - H6's cup was nudged.
+  - H8's ring was shrunk.
+  - H9's knot moved out of the rail corner onto open floor, with its exit aimed at the cup.
+
+**Remaining warning:** one timeout in 2000 average-player plays on H7, most likely the sliding log pinning a ball against a rail.
+
+All hole layouts and the course map are re-rendered from the final `holes.json`. `course.md`, `props.md` and the nine hole notes (each with a "## Concept prompt" section) are written. The first attempt at the Round 4 run on the old physics was killed by the system (likely memory). I made the search lighter and the sim save after every hole, and every run since has completed.
+
+Everything is in `assets/vr-minigolf/lantern-grove/`. Start with `playtest-log.md`; geometry is edited in `tools/build_holes.py`, which regenerates `holes.json`. The per-hole files are `hNN-layout.png` and `hNN-notes.md`, alongside `course-map.png`, `course.md` and `props.md`.

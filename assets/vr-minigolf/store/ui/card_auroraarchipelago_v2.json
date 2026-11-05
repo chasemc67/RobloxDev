@@ -1,0 +1,76 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Square 1024x1024 VR mini golf COURSE SELECT CARD. CRITICAL FRAMING: copy the first reference's camera exactly, high-angle bird's-eye overview looking DOWN into the course world from above, not an eye-level landscape. Soft atmospheric haze, dark-to-cool empty top-centre sky reserved for a title logo, gentle vignette, no text, no logos, no Coming Soon badge, no UI. Subject (palette and landmarks from the second and third references): Aurora Archipelago, snowy floating islands above a sea of clouds at night, green and violet aurora ribbons, bright green putting greens winding across islands with tiny red flags, faceted pale-blue crystal rails and ice chutes, warm amber lanterns on posts, a glowing faceted crystal halo arch on the highest island, a small light bridge glowing mint between two islands, small round penguin-puffin snow figures as tiny accents. Cool night grading with warm lantern accents, smooth stylized toy-like 3D look matching the Lantern Grove card's finish.",
+  "aspect": "1:1",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_lanterngrove_v2.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_auroraarchipelago_color_clean.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/aurora-archipelago/h18-concept.png"
+  ],
+  "mode": "generateImage",
+  "size": "1024x1024",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 3326,
+    "outputTokens": 1756,
+    "totalTokens": 5082
+  },
+  "cost": 0.07855,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791950089,
+          "size": "1024x1024",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 3080,
+          "textTokens": 246
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791950039239,
+                "endTime": 1791950089343,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.07855",
+      "marketCost": "0.07855",
+      "surchargeCost": "0",
+      "gatewayCost": "0.07855",
+      "inferenceCost": "0.07855",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.07855",
+      "generationId": "gen_01M4W8Q9DKBNAC67EY1TWF1MFZ"
+    }
+  },
+  "seconds": 52.1,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_auroraarchipelago_v2.png"
+  ]
+}

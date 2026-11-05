@@ -1,0 +1,71 @@
+{
+ "name": "bw_portal_apron",
+ "group": "arches",
+ "fbx": "fbx/bw_portal_apron.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Place at (0,0,4) in arch-local Roblox axes. Top Y=0, no step; separate floor exempt from envelope and opening volume.",
+ "pivot": "local origin (0,0,0), shared arch base centre",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  12.0,
+  0.1,
+  4.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  -0.05,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -6.0,
+  -0.1,
+  -2.0
+ ],
+ "bbox_max_roblox": [
+  6.0,
+  0.0,
+  2.0
+ ],
+ "target_size_studs": [
+  12,
+  0.1,
+  4
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 12,
+ "tris_max": 100,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_portal_apron__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 12,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    12.0,
+    0.1,
+    4.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    -0.05,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

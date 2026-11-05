@@ -1,0 +1,21 @@
+Pass 5 FBX re-import check (2026-10-12 09:50, Blender 5.2.2 LTS); clean factory scene per file, default FBX importer (forward -Z, up Y), Roblox bbox = Blender (x, z, -y).
+
+PASS fbx/gondola_cable.fbx
+  root empty: ['gondola_cable'] (ok True)
+  meshes: ['gondola_cable__Iron', 'gondola_cable__Licorice', 'gondola_cable__MintWhite', 'gondola_cable__PepRed', 'gondola_cable__SandBlock'] (names match manifest True)
+  materials: ['Iron', 'Licorice', 'MintWhite', 'PepRed', 'SandBlock'] (ok True)
+  tris: 2012 vs built 2012 (ok True); per mesh gondola_cable__Iron=928, gondola_cable__Licorice=928, gondola_cable__MintWhite=60, gondola_cable__PepRed=72, gondola_cable__SandBlock=24
+  world scale of every mesh = 1 (ok True); max mesh tris 928 < 20000
+  Roblox bbox size [553.545, 199.949, 419.997] vs built [553.54, 199.95, 420.0]; centre from pivot [-274.405, 99.825, -206.799] vs built [-274.41, 99.83, -206.8] (axes/scale ok True)
+  images referenced/embedded: ['concrete_red.png (packed from FBX)', 'concrete_white.png (packed from FBX)', 'sandstone_block.png (packed from FBX)']
+
+PASS fbx/gondola_cabin.fbx
+  root empty: ['gondola_cabin'] (ok True)
+  meshes: ['gondola_cabin__GumLemon', 'gondola_cabin__Iron_hanger', 'gondola_cabin__Licorice', 'gondola_cabin__MintWhite', 'gondola_cabin__PepRed', 'gondola_cabin__PepRed_hanger', 'gondola_cabin__Window'] (names match manifest True)
+  materials: ['GumLemon', 'Iron', 'Licorice', 'MintWhite', 'PepRed', 'PepRed', 'Window'] (ok True)
+  tris: 512 vs built 512 (ok True); per mesh gondola_cabin__GumLemon=24, gondola_cabin__Iron_hanger=84, gondola_cabin__Licorice=72, gondola_cabin__MintWhite=180, gondola_cabin__PepRed=112, gondola_cabin__PepRed_hanger=12, gondola_cabin__Window=28
+  world scale of every mesh = 1 (ok True); max mesh tris 180 < 20000
+  Roblox bbox size [5.46, 6.945, 6.3] vs built [5.46, 6.95, 6.3]; centre from pivot [0.0, -2.928, 0.0] vs built [0.0, -2.93, -0.0] (axes/scale ok True)
+  images referenced/embedded: ['concrete_red.png (packed from FBX)', 'concrete_white.png (packed from FBX)']
+
+RESULT: ALL PASS

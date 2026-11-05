@@ -1,0 +1,3709 @@
+{
+ "course": "Aurora Archipelago",
+ "source": "holes.json",
+ "units": "1 Blender unit = 1 stud, Z-up in Blender; FBX axis_forward -Z, axis_up Y, scale 1.0 (Roblox Y-up). Blender +Y = Roblox -Z.",
+ "placement": "All meshes are in WORLD coordinates (hole frame already applied). Place the FBX root at CFrame.new(0,0,0). Hole root CFrame = CFrame.new(world_offset) * CFrame.Angles(0, rad(world_yaw), 0).",
+ "colour_key": {
+  "felt": [
+   0.2,
+   0.62,
+   0.25,
+   1
+  ],
+  "ice": [
+   0.55,
+   0.85,
+   0.95,
+   1
+  ],
+  "bank": [
+   0.12,
+   0.45,
+   0.18,
+   1
+  ],
+  "rail": [
+   0.85,
+   0.85,
+   0.8,
+   1
+  ],
+  "obstacle": [
+   0.95,
+   0.55,
+   0.1,
+   1
+  ],
+  "moving": [
+   0.9,
+   0.1,
+   0.1,
+   1
+  ],
+  "toggle": [
+   0.85,
+   0.2,
+   0.75,
+   1
+  ],
+  "cup": [
+   0.02,
+   0.02,
+   0.02,
+   1
+  ],
+  "flag": [
+   0.88,
+   0.24,
+   0.19,
+   1
+  ],
+  "tee": [
+   0.98,
+   0.85,
+   0.1,
+   1
+  ],
+  "teleport": [
+   0.5,
+   0.2,
+   0.9,
+   0.6
+  ],
+  "water": [
+   0.1,
+   0.35,
+   0.9,
+   0.45
+  ],
+  "pit": [
+   0.1,
+   0.1,
+   0.15,
+   0.35
+  ],
+  "clearance": [
+   1.0,
+   0.25,
+   0.85,
+   0.22
+  ],
+  "guard": [
+   1,
+   1,
+   1,
+   0.18
+  ],
+  "cupclear": [
+   1.0,
+   0.95,
+   0.2,
+   0.25
+  ]
+ },
+ "holes": [
+  {
+   "id": "h01",
+   "name": "Lantern Quay",
+   "par": 2,
+   "gimmick": "Bank shot: a snow-capped boulder's 45-degree face turns the ball east onto an offset green",
+   "world_offset": [
+    -150.0,
+    60.0,
+    545.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(-150, 60, 545) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    -150.0,
+    60.0,
+    545.0
+   ],
+   "cup_world": [
+    -144.0,
+    60.0,
+    514.5
+   ],
+   "objects": [
+    {
+     "name": "h01_felt",
+     "category": "felt",
+     "tris": 24,
+     "bbox_roblox_world": [
+      [
+       -153.5,
+       59.6,
+       507.0
+      ],
+      [
+       -141.5,
+       60.0,
+       547.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h01_rail",
+     "category": "rail",
+     "tris": 72,
+     "bbox_roblox_world": [
+      [
+       -154.0,
+       59.5,
+       506.5
+      ],
+      [
+       -141.0,
+       61.0,
+       547.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h01_obstacle",
+     "category": "obstacle",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -153.421,
+       59.5,
+       507.079
+      ],
+      [
+       -149.179,
+       62.5,
+       511.321
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h01_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       -144.5,
+       60.005,
+       514.0
+      ],
+      [
+       -143.5,
+       60.035,
+       515.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h01_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       -144.075,
+       60.0,
+       514.425
+      ],
+      [
+       -142.0,
+       67.5,
+       514.575
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h01_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       -146.2,
+       60.04,
+       512.3
+      ],
+      [
+       -141.8,
+       60.06,
+       516.7
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h01_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -150.75,
+       60.0,
+       544.25
+      ],
+      [
+       -149.25,
+       60.04,
+       545.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 376
+  },
+  {
+   "id": "h02",
+   "name": "Snowpuff Burrows",
+   "par": 3,
+   "gimmick": "Tunnel choice: three snow burrows - short and tight (left), a dead end that rolls the ball back (middle), long and safe (right)",
+   "world_offset": [
+    -115.0,
+    60.0,
+    480.0
+   ],
+   "world_yaw": -90.0,
+   "hole_root_cframe": "CFrame.new(-115, 60, 480) * CFrame.Angles(0, math.rad(-90), 0)",
+   "tee_world": [
+    -115.0,
+    60.0,
+    480.0
+   ],
+   "cup_world": [
+    -69.0,
+    60.0,
+    469.0
+   ],
+   "objects": [
+    {
+     "name": "h02_felt",
+     "category": "felt",
+     "tris": 84,
+     "bbox_roblox_world": [
+      [
+       -117.0,
+       59.6,
+       468.0
+      ],
+      [
+       -64.0,
+       60.6,
+       492.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h02_rail",
+     "category": "rail",
+     "tris": 288,
+     "bbox_roblox_world": [
+      [
+       -117.5,
+       59.5,
+       467.5
+      ],
+      [
+       -63.5,
+       62.4,
+       492.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h02_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       -69.5,
+       60.005,
+       468.5
+      ],
+      [
+       -68.5,
+       60.035,
+       469.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h02_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       -69.075,
+       60.0,
+       468.925
+      ],
+      [
+       -68.925,
+       67.5,
+       471.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h02_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       -71.2,
+       60.04,
+       466.8
+      ],
+      [
+       -66.8,
+       60.06,
+       471.2
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h02_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -115.75,
+       60.0,
+       479.25
+      ],
+      [
+       -114.25,
+       60.04,
+       480.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 640
+  },
+  {
+   "id": "h03",
+   "name": "Glimmer Crossing",
+   "par": 3,
+   "gimmick": "Rail-less glowing ice plank straight over the open-sky Glimmer Gap (risky) or the railed ice bridge to the right (safe); a ball in the gap respawns at the plank entry (+1)",
+   "world_offset": [
+    -40.0,
+    60.0,
+    470.0
+   ],
+   "world_yaw": -45.0,
+   "hole_root_cframe": "CFrame.new(-40, 60, 470) * CFrame.Angles(0, math.rad(-45), 0)",
+   "tee_world": [
+    -40.0,
+    60.0,
+    470.0
+   ],
+   "cup_world": [
+    -1.463,
+    60.0,
+    430.048
+   ],
+   "objects": [
+    {
+     "name": "h03_felt",
+     "category": "felt",
+     "tris": 48,
+     "bbox_roblox_world": [
+      [
+       -47.071,
+       59.6,
+       415.199
+      ],
+      [
+       14.801,
+       60.0,
+       477.071
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_rail",
+     "category": "rail",
+     "tris": 144,
+     "bbox_roblox_world": [
+      [
+       -47.778,
+       59.5,
+       414.492
+      ],
+      [
+       15.508,
+       61.0,
+       477.778
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_hazard_glimmer_gap",
+     "category": "pit",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -32.222,
+       29.9,
+       425.452
+      ],
+      [
+       4.548,
+       30.0,
+       462.222
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       -1.963,
+       60.005,
+       429.548
+      ],
+      [
+       -0.963,
+       60.035,
+       430.548
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       -1.538,
+       60.0,
+       429.973
+      ],
+      [
+       -0.031,
+       67.5,
+       431.48
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       -3.663,
+       60.04,
+       427.848
+      ],
+      [
+       0.737,
+       60.06,
+       432.248
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -41.061,
+       60.0,
+       468.939
+      ],
+      [
+       -38.939,
+       60.04,
+       471.061
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h03_player_guards",
+     "category": "guard",
+     "tris": 48,
+     "bbox_roblox_world": [
+      [
+       -32.505,
+       60.0,
+       425.169
+      ],
+      [
+       4.831,
+       64.0,
+       462.505
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 520
+  },
+  {
+   "id": "h04",
+   "name": "Glissade",
+   "par": 3,
+   "gimmick": "Ice felt: a glassy low-friction strip where the ball barely slows; pace control into a snow-felt green",
+   "world_offset": [
+    185.0,
+    84.0,
+    470.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(185, 84, 470) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    185.0,
+    84.0,
+    470.0
+   ],
+   "cup_world": [
+    194.0,
+    84.6,
+    416.0
+   ],
+   "objects": [
+    {
+     "name": "h04_felt",
+     "category": "felt",
+     "tris": 24,
+     "bbox_roblox_world": [
+      [
+       181.0,
+       83.6,
+       412.5
+      ],
+      [
+       196.5,
+       84.6,
+       472.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h04_ice",
+     "category": "ice",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       181.0,
+       83.6,
+       430.0
+      ],
+      [
+       189.0,
+       84.6,
+       462.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h04_rail",
+     "category": "rail",
+     "tris": 108,
+     "bbox_roblox_world": [
+      [
+       180.5,
+       83.5,
+       412.0
+      ],
+      [
+       197.0,
+       85.6,
+       472.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h04_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       193.5,
+       84.605,
+       415.5
+      ],
+      [
+       194.5,
+       84.635,
+       416.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h04_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       193.925,
+       84.6,
+       415.925
+      ],
+      [
+       196.0,
+       92.1,
+       416.075
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h04_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       191.8,
+       84.64,
+       413.8
+      ],
+      [
+       196.2,
+       84.66,
+       418.2
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h04_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       184.25,
+       84.0,
+       469.25
+      ],
+      [
+       185.75,
+       84.04,
+       470.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 412
+  },
+  {
+   "id": "h05",
+   "name": "Geyser Hop",
+   "par": 3,
+   "gimmick": "Geyser lift: a basalt platform rides a steam column up 4 studs to the upper green, pauses, and sinks back; roll on while it is down",
+   "world_offset": [
+    215.0,
+    84.0,
+    420.0
+   ],
+   "world_yaw": -90.0,
+   "hole_root_cframe": "CFrame.new(215, 84, 420) * CFrame.Angles(0, math.rad(-90), 0)",
+   "tee_world": [
+    215.0,
+    84.0,
+    420.0
+   ],
+   "cup_world": [
+    260.0,
+    88.0,
+    416.0
+   ],
+   "objects": [
+    {
+     "name": "h05_felt",
+     "category": "felt",
+     "tris": 36,
+     "bbox_roblox_world": [
+      [
+       213.0,
+       83.6,
+       407.5
+      ],
+      [
+       270.5,
+       88.0,
+       432.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_rail",
+     "category": "rail",
+     "tris": 144,
+     "bbox_roblox_world": [
+      [
+       212.5,
+       83.5,
+       407.0
+      ],
+      [
+       271.0,
+       89.0,
+       433.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       259.5,
+       88.005,
+       415.5
+      ],
+      [
+       260.5,
+       88.035,
+       416.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       259.925,
+       88.0,
+       415.925
+      ],
+      [
+       260.075,
+       95.5,
+       418.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       257.8,
+       88.04,
+       413.8
+      ],
+      [
+       262.2,
+       88.06,
+       418.2
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       214.25,
+       84.0,
+       419.25
+      ],
+      [
+       215.75,
+       84.04,
+       420.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_teleport_geyser_lift",
+     "category": "teleport",
+     "tris": 56,
+     "bbox_roblox_world": [
+      [
+       240.0,
+       84.01,
+       418.5
+      ],
+      [
+       245.0,
+       88.12,
+       421.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h05_moving_geyser_column",
+     "category": "moving",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       240.0,
+       80.0,
+       418.5
+      ],
+      [
+       243.0,
+       84.0,
+       421.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      241.5,
+      84.0,
+      420.0
+     ]
+    },
+    {
+     "name": "h05_clearance_geyser_column",
+     "category": "clearance",
+     "tris": 12
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "geyser_column",
+     "type": "slide",
+     "mesh": "h05_moving_geyser_column",
+     "sweep_volume": "h05_clearance_geyser_column",
+     "pivot_local": [
+      0.0,
+      0.0,
+      -26.5
+     ],
+     "pivot_world": [
+      241.5,
+      84.0,
+      420.0
+     ],
+     "axis_local": [
+      0,
+      1,
+      0
+     ],
+     "axis_world": [
+      0.0,
+      1,
+      0.0
+     ],
+     "pivot_cframe": "CFrame.new(241.5, 84, 420) * CFrame.Angles(0, math.rad(-90), 0)",
+     "speed": 2.0,
+     "speed_units": "studs/s",
+     "range": [
+      0.0,
+      4.0
+     ],
+     "amplitude_deg": null,
+     "phase": 0.0,
+     "period_s": 13.5,
+     "dwell": [
+      {
+       "at": 0.0,
+       "s": 8.0
+      },
+      {
+       "at": 4.0,
+       "s": 1.5
+      }
+     ],
+     "mesh_pose": "blockers at t=0 pose (phase); mesh origin = pivot; motion per holes.json",
+     "sweep_note": "convex hull of sampled blocker poses over the full range (swing/rotate hulls overstate the true swept band slightly)"
+    }
+   ],
+   "tris_total": 528
+  },
+  {
+   "id": "h06",
+   "name": "Palm Lagoon",
+   "par": 3,
+   "gimmick": "Side-slope green: a snow-felt shelf tilted toward a turquoise hot-spring pool (hazard; misses respawn beside it)",
+   "world_offset": [
+    305.0,
+    84.0,
+    478.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(305, 84, 478) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    305.0,
+    84.0,
+    478.0
+   ],
+   "cup_world": [
+    305.0,
+    84.0,
+    424.0
+   ],
+   "objects": [
+    {
+     "name": "h06_felt",
+     "category": "felt",
+     "tris": 60,
+     "bbox_roblox_world": [
+      [
+       290.5,
+       83.39,
+       418.5
+      ],
+      [
+       319.5,
+       84.21,
+       480.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h06_rail",
+     "category": "rail",
+     "tris": 96,
+     "bbox_roblox_world": [
+      [
+       290.0,
+       83.29,
+       418.0
+      ],
+      [
+       320.0,
+       85.21,
+       480.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h06_hazard_kettle_pool",
+     "category": "water",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       313.5,
+       83.09,
+       432.0
+      ],
+      [
+       319.5,
+       83.19,
+       454.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h06_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       304.5,
+       84.005,
+       423.5
+      ],
+      [
+       305.5,
+       84.035,
+       424.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h06_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       304.925,
+       84.0,
+       423.925
+      ],
+      [
+       307.0,
+       91.5,
+       424.075
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h06_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       302.8,
+       84.04,
+       421.8
+      ],
+      [
+       307.2,
+       84.06,
+       426.2
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h06_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       304.25,
+       84.0,
+       477.25
+      ],
+      [
+       305.75,
+       84.04,
+       478.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 436
+  },
+  {
+   "id": "h07",
+   "name": "Mogul Meadow",
+   "par": 3,
+   "gimmick": "Rolling dips: four snow moguls built from opposing planar slopes; pace the ball over the humps",
+   "world_offset": [
+    365.0,
+    112.0,
+    330.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(365, 112, 330) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    365.0,
+    112.0,
+    330.0
+   ],
+   "cup_world": [
+    371.0,
+    112.0,
+    277.0
+   ],
+   "objects": [
+    {
+     "name": "h07_felt",
+     "category": "felt",
+     "tris": 132,
+     "bbox_roblox_world": [
+      [
+       355.0,
+       111.2,
+       274.5
+      ],
+      [
+       375.0,
+       112.6,
+       332.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h07_rail",
+     "category": "rail",
+     "tris": 312,
+     "bbox_roblox_world": [
+      [
+       354.5,
+       111.1,
+       274.0
+      ],
+      [
+       375.5,
+       113.6,
+       332.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h07_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       370.5,
+       112.005,
+       276.5
+      ],
+      [
+       371.5,
+       112.035,
+       277.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h07_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       370.925,
+       112.0,
+       276.925
+      ],
+      [
+       373.0,
+       119.5,
+       277.075
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h07_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       368.8,
+       112.04,
+       274.8
+      ],
+      [
+       373.2,
+       112.06,
+       279.2
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h07_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       364.25,
+       112.0,
+       329.25
+      ],
+      [
+       365.75,
+       112.04,
+       330.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 712
+  },
+  {
+   "id": "h08",
+   "name": "Coral Pinball",
+   "par": 3,
+   "gimmick": "Bumper field: static flat-faced coral-ice bumpers at set angles bounce the ball down the reef toward the cup",
+   "world_offset": [
+    430.0,
+    112.0,
+    300.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(430, 112, 300) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    430.0,
+    112.0,
+    300.0
+   ],
+   "cup_world": [
+    426.5,
+    112.0,
+    251.5
+   ],
+   "objects": [
+    {
+     "name": "h08_felt",
+     "category": "felt",
+     "tris": 36,
+     "bbox_roblox_world": [
+      [
+       417.5,
+       111.6,
+       246.5
+      ],
+      [
+       442.5,
+       112.0,
+       302.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h08_rail",
+     "category": "rail",
+     "tris": 96,
+     "bbox_roblox_world": [
+      [
+       417.0,
+       111.5,
+       246.0
+      ],
+      [
+       443.0,
+       113.0,
+       302.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h08_obstacle",
+     "category": "obstacle",
+     "tris": 84,
+     "bbox_roblox_world": [
+      [
+       425.53,
+       111.5,
+       253.869
+      ],
+      [
+       434.616,
+       113.6,
+       291.273
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h08_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       426.0,
+       112.005,
+       251.0
+      ],
+      [
+       427.0,
+       112.035,
+       252.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h08_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       426.425,
+       112.0,
+       251.425
+      ],
+      [
+       428.5,
+       119.5,
+       251.575
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h08_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       424.3,
+       112.04,
+       249.3
+      ],
+      [
+       428.7,
+       112.06,
+       253.7
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h08_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       429.25,
+       112.0,
+       299.25
+      ],
+      [
+       430.75,
+       112.04,
+       300.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 484
+  },
+  {
+   "id": "h09",
+   "name": "Conch Shortcut",
+   "par": 4,
+   "gimmick": "Teleport: sink the ball into a giant coral-ice conch at the end of a rail-less reef spit and it shoots out of a second shell by the green, or play the long reef route round the lagoon",
+   "world_offset": [
+    535.0,
+    112.0,
+    230.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(535, 112, 230) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    535.0,
+    112.0,
+    230.0
+   ],
+   "cup_world": [
+    537.0,
+    112.0,
+    166.0
+   ],
+   "objects": [
+    {
+     "name": "h09_felt",
+     "category": "felt",
+     "tris": 60,
+     "bbox_roblox_world": [
+      [
+       519.0,
+       111.6,
+       160.0
+      ],
+      [
+       549.0,
+       112.0,
+       232.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_bank",
+     "category": "bank",
+     "tris": 24,
+     "bbox_roblox_world": [
+      [
+       518.71,
+       111.6,
+       159.41
+      ],
+      [
+       523.741,
+       113.2,
+       216.29
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_rail",
+     "category": "rail",
+     "tris": 156,
+     "bbox_roblox_world": [
+      [
+       518.286,
+       111.5,
+       158.986
+      ],
+      [
+       549.5,
+       114.4,
+       232.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_hazard_reef_lagoon",
+     "category": "water",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       524.0,
+       110.7,
+       174.0
+      ],
+      [
+       549.0,
+       110.8,
+       208.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       536.5,
+       112.005,
+       165.5
+      ],
+      [
+       537.5,
+       112.035,
+       166.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       536.925,
+       112.0,
+       165.925
+      ],
+      [
+       539.0,
+       119.5,
+       166.075
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       534.8,
+       112.04,
+       163.8
+      ],
+      [
+       539.2,
+       112.06,
+       168.2
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       534.25,
+       112.0,
+       229.25
+      ],
+      [
+       535.75,
+       112.04,
+       230.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h09_teleport_conch",
+     "category": "teleport",
+     "tris": 104,
+     "bbox_roblox_world": [
+      [
+       534.7,
+       112.02,
+       162.6
+      ],
+      [
+       546.4,
+       112.12,
+       197.3
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 624
+  },
+  {
+   "id": "h10",
+   "name": "Bobsled Bend",
+   "par": 3,
+   "gimmick": "Half-pipe: an S-bend bobsled channel with banked felt walls; ride high to carry the bend",
+   "world_offset": [
+    510.0,
+    146.0,
+    60.0
+   ],
+   "world_yaw": 90.0,
+   "hole_root_cframe": "CFrame.new(510, 146, 60) * CFrame.Angles(0, math.rad(90), 0)",
+   "tee_world": [
+    510.0,
+    146.0,
+    60.0
+   ],
+   "cup_world": [
+    468.0,
+    146.0,
+    60.5
+   ],
+   "objects": [
+    {
+     "name": "h10_felt",
+     "category": "felt",
+     "tris": 48,
+     "bbox_roblox_world": [
+      [
+       460.0,
+       145.6,
+       50.0
+      ],
+      [
+       512.0,
+       146.0,
+       67.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h10_bank",
+     "category": "bank",
+     "tris": 120,
+     "bbox_roblox_world": [
+      [
+       472.0,
+       145.6,
+       50.5
+      ],
+      [
+       512.0,
+       146.3,
+       64.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h10_rail",
+     "category": "rail",
+     "tris": 240,
+     "bbox_roblox_world": [
+      [
+       459.5,
+       145.5,
+       49.5
+      ],
+      [
+       512.5,
+       147.3,
+       67.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h10_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       467.5,
+       146.005,
+       60.0
+      ],
+      [
+       468.5,
+       146.035,
+       61.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h10_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       467.925,
+       146.0,
+       58.5
+      ],
+      [
+       468.075,
+       153.5,
+       60.575
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h10_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       465.8,
+       146.04,
+       58.3
+      ],
+      [
+       470.2,
+       146.06,
+       62.7
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h10_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       509.25,
+       146.0,
+       59.25
+      ],
+      [
+       510.75,
+       146.04,
+       60.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 676
+  },
+  {
+   "id": "h11",
+   "name": "Floe Drift",
+   "par": 3,
+   "gimmick": "Drifting ice floe: a flat floe slides across the neck, pauses, and drifts back (slide with dwell; pointed 45-degree ends); the side channel is the safe way round",
+   "world_offset": [
+    410.0,
+    146.0,
+    40.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(410, 146, 40) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    410.0,
+    146.0,
+    40.0
+   ],
+   "cup_world": [
+    406.0,
+    146.0,
+    -5.0
+   ],
+   "objects": [
+    {
+     "name": "h11_felt",
+     "category": "felt",
+     "tris": 96,
+     "bbox_roblox_world": [
+      [
+       399.0,
+       145.45,
+       -10.0
+      ],
+      [
+       421.0,
+       146.0,
+       42.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h11_rail",
+     "category": "rail",
+     "tris": 360,
+     "bbox_roblox_world": [
+      [
+       398.5,
+       145.35,
+       -10.5
+      ],
+      [
+       421.5,
+       148.55,
+       42.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h11_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       405.5,
+       146.005,
+       -5.5
+      ],
+      [
+       406.5,
+       146.035,
+       -4.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h11_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       405.925,
+       146.0,
+       -5.075
+      ],
+      [
+       408.0,
+       153.5,
+       -4.925
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h11_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       403.8,
+       146.04,
+       -7.2
+      ],
+      [
+       408.2,
+       146.06,
+       -2.8
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h11_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       409.25,
+       146.0,
+       39.25
+      ],
+      [
+       410.75,
+       146.04,
+       40.75
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h11_moving_ice_floe",
+     "category": "moving",
+     "tris": 36,
+     "bbox_roblox_world": [
+      [
+       406.5,
+       146.0,
+       11.682
+      ],
+      [
+       413.5,
+       147.0,
+       12.318
+      ]
+     ],
+     "pivot_roblox_world": [
+      410.0,
+      146.0,
+      12.0
+     ]
+    },
+    {
+     "name": "h11_clearance_ice_floe",
+     "category": "clearance",
+     "tris": 20
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "ice_floe",
+     "type": "slide",
+     "mesh": "h11_moving_ice_floe",
+     "sweep_volume": "h11_clearance_ice_floe",
+     "pivot_local": [
+      0,
+      0.0,
+      -28.0
+     ],
+     "pivot_world": [
+      410.0,
+      146.0,
+      12.0
+     ],
+     "axis_local": [
+      1,
+      0,
+      0
+     ],
+     "axis_world": [
+      1.0,
+      0,
+      0.0
+     ],
+     "pivot_cframe": "CFrame.new(410, 146, 12) * CFrame.Angles(0, math.rad(0), 0)",
+     "speed": 3.0,
+     "speed_units": "studs/s",
+     "range": [
+      -7.0,
+      0.0
+     ],
+     "amplitude_deg": null,
+     "phase": 0.0,
+     "period_s": 7.8667,
+     "dwell": [
+      {
+       "at": 0.0,
+       "s": 1.2
+      },
+      {
+       "at": -7.0,
+       "s": 2.0
+      }
+     ],
+     "mesh_pose": "blockers at t=0 pose (phase); mesh origin = pivot; motion per holes.json",
+     "sweep_note": "convex hull of sampled blocker poses over the full range (swing/rotate hulls overstate the true swept band slightly)"
+    }
+   ],
+   "tris_total": 780
+  },
+  {
+   "id": "h12",
+   "name": "Icebreaker Wheel",
+   "par": 3,
+   "gimmick": "Vertical rotor: the icebreaker's paddle wheel turns across the channel on a horizontal axle; the signed bypass is the safe way",
+   "world_offset": [
+    370.0,
+    146.0,
+    -60.0
+   ],
+   "world_yaw": 90.0,
+   "hole_root_cframe": "CFrame.new(370, 146, -60) * CFrame.Angles(0, math.rad(90), 0)",
+   "tee_world": [
+    370.0,
+    146.0,
+    -60.0
+   ],
+   "cup_world": [
+    328.0,
+    146.0,
+    -58.5
+   ],
+   "objects": [
+    {
+     "name": "h12_felt",
+     "category": "felt",
+     "tris": 72,
+     "bbox_roblox_world": [
+      [
+       322.0,
+       145.6,
+       -71.0
+      ],
+      [
+       372.0,
+       146.0,
+       -51.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h12_rail",
+     "category": "rail",
+     "tris": 216,
+     "bbox_roblox_world": [
+      [
+       321.5,
+       145.5,
+       -71.5
+      ],
+      [
+       372.5,
+       147.0,
+       -50.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h12_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       327.5,
+       146.005,
+       -59.0
+      ],
+      [
+       328.5,
+       146.035,
+       -58.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h12_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       327.925,
+       146.0,
+       -60.5
+      ],
+      [
+       328.075,
+       153.5,
+       -58.425
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h12_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       325.8,
+       146.04,
+       -60.7
+      ],
+      [
+       330.2,
+       146.06,
+       -56.3
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h12_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       369.25,
+       146.0,
+       -60.75
+      ],
+      [
+       370.75,
+       146.04,
+       -59.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h12_moving_paddle_wheel",
+     "category": "moving",
+     "tris": 288,
+     "bbox_roblox_world": [
+      [
+       352.05,
+       146.08,
+       -64.08
+      ],
+      [
+       352.45,
+       154.24,
+       -55.92
+      ]
+     ],
+     "pivot_roblox_world": [
+      352.25,
+      150.16,
+      -60.0
+     ]
+    },
+    {
+     "name": "h12_clearance_paddle_wheel",
+     "category": "clearance",
+     "tris": 1660
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "paddle_wheel",
+     "type": "rotate",
+     "mesh": "h12_moving_paddle_wheel",
+     "sweep_volume": "h12_clearance_paddle_wheel",
+     "pivot_local": [
+      0,
+      4.16,
+      -17.75
+     ],
+     "pivot_world": [
+      352.25,
+      150.16,
+      -60.0
+     ],
+     "axis_local": [
+      0,
+      0,
+      1
+     ],
+     "axis_world": [
+      1.0,
+      0,
+      0.0
+     ],
+     "pivot_cframe": "CFrame.new(352.25, 150.16, -60) * CFrame.Angles(0, math.rad(90), 0)",
+     "speed": 30.0,
+     "speed_units": "deg/s",
+     "range": null,
+     "amplitude_deg": null,
+     "phase": 0.0,
+     "period_s": null,
+     "dwell": null,
+     "mesh_pose": "blockers at t=0 pose (phase); mesh origin = pivot; motion per holes.json",
+     "sweep_note": "convex hull of sampled blocker poses over the full range (swing/rotate hulls overstate the true swept band slightly)"
+    }
+   ],
+   "tris_total": 2504
+  },
+  {
+   "id": "h13",
+   "name": "Snowpuff Carousel",
+   "par": 3,
+   "gimmick": "Horizontal sweeper: a carousel of snowpuff sleds sweeps four arms round a solid central hub on a square green",
+   "world_offset": [
+    120.0,
+    182.0,
+    -230.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(120, 182, -230) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    120.0,
+    182.0,
+    -230.0
+   ],
+   "cup_world": [
+    130.1,
+    182.0,
+    -276.0
+   ],
+   "objects": [
+    {
+     "name": "h13_felt",
+     "category": "felt",
+     "tris": 24,
+     "bbox_roblox_world": [
+      [
+       107.0,
+       181.6,
+       -279.0
+      ],
+      [
+       133.0,
+       182.0,
+       -228.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_rail",
+     "category": "rail",
+     "tris": 96,
+     "bbox_roblox_world": [
+      [
+       106.5,
+       181.5,
+       -279.5
+      ],
+      [
+       133.5,
+       183.0,
+       -227.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_obstacle",
+     "category": "obstacle",
+     "tris": 576,
+     "bbox_roblox_world": [
+      [
+       112.5,
+       181.5,
+       -273.5
+      ],
+      [
+       127.5,
+       183.2,
+       -258.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       129.6,
+       182.005,
+       -276.5
+      ],
+      [
+       130.6,
+       182.035,
+       -275.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       130.025,
+       182.0,
+       -276.075
+      ],
+      [
+       132.1,
+       189.5,
+       -275.925
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       127.9,
+       182.04,
+       -278.2
+      ],
+      [
+       132.3,
+       182.06,
+       -273.8
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       119.25,
+       182.0,
+       -230.75
+      ],
+      [
+       120.75,
+       182.04,
+       -229.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h13_moving_carousel_arms",
+     "category": "moving",
+     "tris": 48,
+     "bbox_roblox_world": [
+      [
+       108.5,
+       182.0,
+       -277.5
+      ],
+      [
+       131.5,
+       182.9,
+       -254.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      120.0,
+      182.0,
+      -266.0
+     ]
+    },
+    {
+     "name": "h13_clearance_carousel_arms",
+     "category": "clearance",
+     "tris": 572
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "carousel_arms",
+     "type": "rotate",
+     "mesh": "h13_moving_carousel_arms",
+     "sweep_volume": "h13_clearance_carousel_arms",
+     "pivot_local": [
+      0.0,
+      0.0,
+      -36.0
+     ],
+     "pivot_world": [
+      120.0,
+      182.0,
+      -266.0
+     ],
+     "axis_local": [
+      0,
+      1,
+      0
+     ],
+     "axis_world": [
+      0.0,
+      1,
+      0.0
+     ],
+     "pivot_cframe": "CFrame.new(120, 182, -266) * CFrame.Angles(0, math.rad(0), 0)",
+     "speed": 15.0,
+     "speed_units": "deg/s",
+     "range": null,
+     "amplitude_deg": null,
+     "phase": 0.0,
+     "period_s": null,
+     "dwell": null,
+     "mesh_pose": "blockers at t=0 pose (phase); mesh origin = pivot; motion per holes.json",
+     "sweep_note": "convex hull of sampled blocker poses over the full range (swing/rotate hulls overstate the true swept band slightly)"
+    }
+   ],
+   "tris_total": 1584
+  },
+  {
+   "id": "h14",
+   "name": "Bell Buoy",
+   "par": 3,
+   "gimmick": "Pendulum: a brass icicle bell swings across the lane from a timber gantry, before a ramp up to a raised green",
+   "world_offset": [
+    85.0,
+    182.0,
+    -300.0
+   ],
+   "world_yaw": 90.0,
+   "hole_root_cframe": "CFrame.new(85, 182, -300) * CFrame.Angles(0, math.rad(90), 0)",
+   "tee_world": [
+    85.0,
+    182.0,
+    -300.0
+   ],
+   "cup_world": [
+    41.0,
+    182.8,
+    -301.0
+   ],
+   "objects": [
+    {
+     "name": "h14_felt",
+     "category": "felt",
+     "tris": 48,
+     "bbox_roblox_world": [
+      [
+       37.0,
+       181.6,
+       -308.0
+      ],
+      [
+       87.0,
+       182.8,
+       -292.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h14_rail",
+     "category": "rail",
+     "tris": 120,
+     "bbox_roblox_world": [
+      [
+       36.5,
+       181.5,
+       -308.5
+      ],
+      [
+       87.5,
+       183.8,
+       -291.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h14_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       40.5,
+       182.805,
+       -301.5
+      ],
+      [
+       41.5,
+       182.835,
+       -300.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h14_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       40.925,
+       182.8,
+       -303.0
+      ],
+      [
+       41.075,
+       190.3,
+       -300.925
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h14_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       38.8,
+       182.84,
+       -303.2
+      ],
+      [
+       43.2,
+       182.86,
+       -298.8
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h14_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       84.25,
+       182.0,
+       -300.75
+      ],
+      [
+       85.75,
+       182.04,
+       -299.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h14_moving_icicle_bell",
+     "category": "moving",
+     "tris": 120,
+     "bbox_roblox_world": [
+      [
+       59.634,
+       182.062,
+       -301.366
+      ],
+      [
+       62.366,
+       184.35,
+       -298.634
+      ]
+     ],
+     "pivot_roblox_world": [
+      61.0,
+      192.35,
+      -300.0
+     ]
+    },
+    {
+     "name": "h14_clearance_icicle_bell",
+     "category": "clearance",
+     "tris": 544
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "icicle_bell",
+     "type": "swing",
+     "mesh": "h14_moving_icicle_bell",
+     "sweep_volume": "h14_clearance_icicle_bell",
+     "pivot_local": [
+      0.0,
+      10.35,
+      -24.0
+     ],
+     "pivot_world": [
+      61.0,
+      192.35,
+      -300.0
+     ],
+     "axis_local": [
+      0,
+      0,
+      1
+     ],
+     "axis_world": [
+      1.0,
+      0,
+      0.0
+     ],
+     "pivot_cframe": "CFrame.new(61, 192.35, -300) * CFrame.Angles(0, math.rad(90), 0)",
+     "speed": 14.1372,
+     "speed_units": "deg/s (peak, at the bottom of the swing)",
+     "range": [
+      -9.0,
+      9.0
+     ],
+     "amplitude_deg": 9.0,
+     "phase": 0.0,
+     "period_s": 4.0,
+     "dwell": null,
+     "mesh_pose": "blockers at t=0 pose (phase); mesh origin = pivot; motion per holes.json",
+     "sweep_note": "convex hull of sampled blocker poses over the full range (swing/rotate hulls overstate the true swept band slightly)"
+    }
+   ],
+   "tris_total": 1100
+  },
+  {
+   "id": "h15",
+   "name": "Frozen Falls",
+   "par": 2,
+   "gimmick": "Drop between levels: putt over the lip of a frozen waterfall and fall 4 studs into a basin green",
+   "world_offset": [
+    12.0,
+    182.0,
+    -334.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(12, 182, -334) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    12.0,
+    182.0,
+    -334.0
+   ],
+   "cup_world": [
+    15.5,
+    178.0,
+    -365.0
+   ],
+   "objects": [
+    {
+     "name": "h15_felt",
+     "category": "felt",
+     "tris": 36,
+     "bbox_roblox_world": [
+      [
+       2.5,
+       177.6,
+       -373.5
+      ],
+      [
+       21.5,
+       182.0,
+       -332.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h15_rail",
+     "category": "rail",
+     "tris": 120,
+     "bbox_roblox_world": [
+      [
+       2.0,
+       177.5,
+       -374.0
+      ],
+      [
+       22.0,
+       183.0,
+       -331.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h15_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       15.0,
+       178.005,
+       -365.5
+      ],
+      [
+       16.0,
+       178.035,
+       -364.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h15_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       15.425,
+       178.0,
+       -365.075
+      ],
+      [
+       17.5,
+       185.5,
+       -364.925
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h15_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       13.3,
+       178.04,
+       -367.2
+      ],
+      [
+       17.7,
+       178.06,
+       -362.8
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h15_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       11.25,
+       182.0,
+       -334.75
+      ],
+      [
+       12.75,
+       182.04,
+       -333.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h15_player_guards",
+     "category": "guard",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       8.0,
+       182.0,
+       -353.95
+      ],
+      [
+       16.0,
+       185.5,
+       -353.65
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 436
+  },
+  {
+   "id": "h16",
+   "name": "Moonwell",
+   "par": 2,
+   "gimmick": "Funnel: a moonstone well bowl gathers the ball into its spout, with the cup set off the funnel's exit line",
+   "world_offset": [
+    -110.0,
+    222.0,
+    -300.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(-110, 222, -300) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    -110.0,
+    222.0,
+    -300.0
+   ],
+   "cup_world": [
+    -106.8,
+    221.2,
+    -335.5
+   ],
+   "objects": [
+    {
+     "name": "h16_felt",
+     "category": "felt",
+     "tris": 60,
+     "bbox_roblox_world": [
+      [
+       -119.5,
+       220.8,
+       -339.5
+      ],
+      [
+       -100.5,
+       222.0,
+       -298.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h16_rail",
+     "category": "rail",
+     "tris": 120,
+     "bbox_roblox_world": [
+      [
+       -120.0,
+       220.7,
+       -340.0
+      ],
+      [
+       -100.0,
+       223.0,
+       -297.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h16_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       -107.3,
+       221.205,
+       -336.0
+      ],
+      [
+       -106.3,
+       221.235,
+       -335.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h16_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       -106.875,
+       221.2,
+       -335.575
+      ],
+      [
+       -104.8,
+       228.7,
+       -335.425
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h16_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       -109.0,
+       221.24,
+       -337.7
+      ],
+      [
+       -104.6,
+       221.26,
+       -333.3
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h16_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -110.75,
+       222.0,
+       -300.75
+      ],
+      [
+       -109.25,
+       222.04,
+       -299.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 448
+  },
+  {
+   "id": "h17",
+   "name": "Aurora Bridge",
+   "par": 3,
+   "gimmick": "Timed light bridge: an aurora ribbon span fades in, holds solid, then dims away; or take the fixed ice bridge the long way; misses respawn at the gap edge (+1)",
+   "world_offset": [
+    -165.0,
+    222.0,
+    -262.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(-165, 222, -262) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    -165.0,
+    222.0,
+    -262.0
+   ],
+   "cup_world": [
+    -162.8,
+    222.0,
+    -318.0
+   ],
+   "objects": [
+    {
+     "name": "h17_felt",
+     "category": "felt",
+     "tris": 72,
+     "bbox_roblox_world": [
+      [
+       -173.0,
+       221.6,
+       -325.5
+      ],
+      [
+       -157.0,
+       222.0,
+       -260.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_toggle",
+     "category": "toggle",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -166.5,
+       221.6,
+       -295.0
+      ],
+      [
+       -163.5,
+       222.0,
+       -287.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_rail",
+     "category": "rail",
+     "tris": 192,
+     "bbox_roblox_world": [
+      [
+       -173.5,
+       221.5,
+       -326.0
+      ],
+      [
+       -156.5,
+       223.0,
+       -259.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_hazard_aurora_gap",
+     "category": "pit",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -178.0,
+       191.9,
+       -304.0
+      ],
+      [
+       -152.0,
+       192.0,
+       -278.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       -163.3,
+       222.005,
+       -318.5
+      ],
+      [
+       -162.3,
+       222.035,
+       -317.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       -162.875,
+       222.0,
+       -318.075
+      ],
+      [
+       -160.8,
+       229.5,
+       -317.925
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       -165.0,
+       222.04,
+       -320.2
+      ],
+      [
+       -160.6,
+       222.06,
+       -315.8
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -165.75,
+       222.0,
+       -262.75
+      ],
+      [
+       -164.25,
+       222.04,
+       -261.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h17_player_guards",
+     "category": "guard",
+     "tris": 48,
+     "bbox_roblox_world": [
+      [
+       -178.0,
+       222.0,
+       -304.4
+      ],
+      [
+       -152.0,
+       226.0,
+       -277.6
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [
+    {
+     "id": "aurora_span",
+     "type": "toggle",
+     "felt_ids": [
+      "light_span"
+     ],
+     "period_s": 9.0,
+     "solid_window": [
+      0.6,
+      6.6
+     ],
+     "note": "felt piece(s) ['light_span'] are in mesh h17_toggle (magenta); no separate blockers"
+    }
+   ],
+   "tris_total": 604
+  },
+  {
+   "id": "h18",
+   "name": "Halo Arch",
+   "par": 4,
+   "gimmick": "Finale: read two crystal banks round the plaza, climb the ramp onto the raised green under the Halo Arch",
+   "world_offset": [
+    -235.0,
+    222.0,
+    -232.0
+   ],
+   "world_yaw": 0.0,
+   "hole_root_cframe": "CFrame.new(-235, 222, -232) * CFrame.Angles(0, math.rad(0), 0)",
+   "tee_world": [
+    -235.0,
+    222.0,
+    -232.0
+   ],
+   "cup_world": [
+    -239.0,
+    222.8,
+    -278.0
+   ],
+   "objects": [
+    {
+     "name": "h18_felt",
+     "category": "felt",
+     "tris": 72,
+     "bbox_roblox_world": [
+      [
+       -252.5,
+       221.6,
+       -292.0
+      ],
+      [
+       -217.5,
+       222.8,
+       -230.0
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h18_bank",
+     "category": "bank",
+     "tris": 24,
+     "bbox_roblox_world": [
+      [
+       -251.961,
+       221.6,
+       -261.061
+      ],
+      [
+       -229.939,
+       223.2,
+       -246.939
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h18_rail",
+     "category": "rail",
+     "tris": 192,
+     "bbox_roblox_world": [
+      [
+       -253.0,
+       221.5,
+       -292.5
+      ],
+      [
+       -217.0,
+       225.2,
+       -229.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h18_cup",
+     "category": "cup",
+     "tris": 92,
+     "bbox_roblox_world": [
+      [
+       -239.5,
+       222.805,
+       -278.5
+      ],
+      [
+       -238.5,
+       222.835,
+       -277.5
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h18_flag",
+     "category": "flag",
+     "tris": 40,
+     "bbox_roblox_world": [
+      [
+       -239.075,
+       222.8,
+       -278.075
+      ],
+      [
+       -237.0,
+       230.3,
+       -277.925
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h18_cup_clearance",
+     "category": "cupclear",
+     "tris": 124,
+     "bbox_roblox_world": [
+      [
+       -241.2,
+       222.84,
+       -280.2
+      ],
+      [
+       -236.8,
+       222.86,
+       -275.8
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "h18_tee",
+     "category": "tee",
+     "tris": 12,
+     "bbox_roblox_world": [
+      [
+       -235.75,
+       222.0,
+       -232.75
+      ],
+      [
+       -234.25,
+       222.04,
+       -231.25
+      ]
+     ],
+     "pivot_roblox_world": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "moving_parts": [],
+   "tris_total": 556
+  }
+ ],
+ "tris_total": 13420,
+ "max_mesh_tris": 1660,
+ "meshes": 135,
+ "oddities": [],
+ "over_20k": [],
+ "fbx": "blockout_aurora.fbx"
+}

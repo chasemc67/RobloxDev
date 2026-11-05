@@ -1,0 +1,720 @@
+{
+ "big_gumdrop_bg": {
+  "file": "big_gumdrop_bg.fbx",
+  "tris": 448,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 8,
+   "wo": [
+    360.0,
+    70.0,
+    55.0
+   ],
+   "yaw": 0.0,
+   "name": "big_gumdrop_bg",
+   "position": [
+    11,
+    0,
+    -18
+   ],
+   "notes": "Car-sized gumdrop boulders outside the east rail",
+   "approx_size": [
+    6,
+    5,
+    6
+   ],
+   "occluders": [
+    {
+     "center": [
+      11,
+      2.5,
+      -18
+     ],
+     "size": [
+      5,
+      5,
+      5
+     ],
+     "yaw": 0.0
+    }
+   ]
+  },
+  "placement": {
+   "pos": [
+    371.0,
+    70.0,
+    37.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[7].decoration_anchors big_gumdrop_bg"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole8.Decor.big_gumdrop_bg.Placeholder.Gumdrop"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "GumCherry",
+   "GumLemon"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "crystal_cue": {
+  "file": "crystal_cue.fbx",
+  "tris": 60,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 5,
+   "wo": [
+    280.0,
+    22.0,
+    326.0
+   ],
+   "yaw": 0.0,
+   "name": "crystal_cue",
+   "position": [
+    -0.5,
+    9.5,
+    -42.0
+   ],
+   "notes": "Glowing pink rock-candy crystal hanging 9.5 studs over the cup from a rope between the slot walls: the visual cue for the hidden flag (decoration only, no collision, 8+ studs above the felt)",
+   "approx_size": [
+    1.2,
+    2,
+    1.2
+   ]
+  },
+  "placement": {
+   "pos": [
+    279.5,
+    31.5,
+    284.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[4].decoration_anchors crystal_cue"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole5.Decor.crystal_cue.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonPink"
+  ],
+  "materials": [
+   "NeonPink",
+   "Rope"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Set Material=Neon in Studio for Neon* slots"
+ },
+ "gate_light": {
+  "file": "gate_light.fbx",
+  "tris": 140,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 11,
+   "wo": [
+    150.0,
+    116.0,
+    -252.0
+   ],
+   "yaw": 0.0,
+   "name": "gate_light",
+   "position": [
+    0,
+    5.0,
+    -25.4
+   ],
+   "notes": "Red/green lock signal lamp on the quay face above the chamber: green while the gate is down (visual timing cue)",
+   "approx_size": [
+    0.8,
+    1.2,
+    0.4
+   ]
+  },
+  "placement": {
+   "pos": [
+    150.0,
+    121.0,
+    -277.4
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[10].decoration_anchors gate_light"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole11.Decor.gate_light.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonGreen",
+   "NeonRed"
+  ],
+  "materials": [
+   "Iron",
+   "NeonGreen",
+   "NeonRed"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Set Material=Neon in Studio for Neon* slots"
+ },
+ "gate_winches": {
+  "file": "gate_winches.fbx",
+  "tris": 176,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 11,
+   "wo": [
+    150.0,
+    116.0,
+    -252.0
+   ],
+   "yaw": 0.0,
+   "name": "gate_winches",
+   "position": [
+    -3.0,
+    0,
+    -23.0
+   ],
+   "notes": "Brass winch posts either side of the lock gate (outside the chamber walls)",
+   "approx_size": [
+    0.8,
+    2.5,
+    0.8
+   ],
+   "occluders": [
+    {
+     "center": [
+      -3.0,
+      1.25,
+      -23.0
+     ],
+     "size": [
+      0.8,
+      2.5,
+      0.8
+     ],
+     "yaw": 0.0
+    },
+    {
+     "center": [
+      3.0,
+      1.25,
+      -23.0
+     ],
+     "size": [
+      0.8,
+      2.5,
+      0.8
+     ],
+     "yaw": 0.0
+    }
+   ]
+  },
+  "placement": {
+   "pos": [
+    147.0,
+    116.0,
+    -275.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[10].decoration_anchors gate_winches"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole11.Decor.gate_winches.Placeholder.Body",
+   "Workspace.CourseSugarloaf.Hole11.Decor.gate_winches.Placeholder.Roof"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "Brass",
+   "Iron"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "hitching_post": {
+  "file": "hitching_post.fbx",
+  "tris": 60,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 1,
+   "wo": [
+    60.0,
+    18.0,
+    470.0
+   ],
+   "yaw": 0.0,
+   "name": "hitching_post",
+   "position": [
+    -6,
+    0,
+    -4
+   ],
+   "notes": "Hitching post and water trough outside the west rail",
+   "approx_size": [
+    3,
+    2,
+    1
+   ]
+  },
+  "placement": {
+   "pos": [
+    54.0,
+    18.0,
+    466.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[0].decoration_anchors hitching_post"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole1.Decor.hitching_post.Placeholder.Body",
+   "Workspace.CourseSugarloaf.Hole1.Decor.hitching_post.Placeholder.Roof"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "Timber",
+   "Water"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "island_hoodoo": {
+  "file": "island_hoodoo.fbx",
+  "tris": 560,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 7,
+   "wo": [
+    340.0,
+    70.0,
+    150.0
+   ],
+   "yaw": 0.0,
+   "name": "island_hoodoo",
+   "position": [
+    -6.5,
+    0,
+    -41
+   ],
+   "notes": "Striped hoodoo with a gumdrop cap on the island's west end (outside the play line; decoration only)",
+   "approx_size": [
+    3,
+    12,
+    3
+   ],
+   "occluders": [
+    {
+     "center": [
+      -6.5,
+      6,
+      -41
+     ],
+     "size": [
+      2.4,
+      12,
+      2.4
+     ],
+     "yaw": 0.0
+    }
+   ]
+  },
+  "placement": {
+   "pos": [
+    333.5,
+    70.0,
+    109.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[6].decoration_anchors island_hoodoo"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.GumdropCap",
+   "Workspace.CourseSugarloaf.Hole7.Decor.island_hoodoo.Placeholder.Hoodoo"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "GumLime",
+   "MintWhite",
+   "SandstoneRed"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "lantern_cue": {
+  "file": "lantern_cue.fbx",
+  "tris": 108,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 13,
+   "wo": [
+    -300.0,
+    150.0,
+    -290.0
+   ],
+   "yaw": 180.0,
+   "name": "lantern_cue",
+   "position": [
+    0.5,
+    9.0,
+    -51.0
+   ],
+   "notes": "Gumdrop-glass lantern hanging 9 studs over the cup from a rope between two hoodoos: the visual cue when the hoodoos hide the flag",
+   "approx_size": [
+    1.0,
+    1.5,
+    1.0
+   ]
+  },
+  "placement": {
+   "pos": [
+    -300.5,
+    159.0,
+    -239.0
+   ],
+   "yaw": 180.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[12].decoration_anchors lantern_cue"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole13.Decor.lantern_cue.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonGumdrop"
+  ],
+  "materials": [
+   "Iron",
+   "NeonGumdrop",
+   "Rope"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Set Material=Neon in Studio for Neon* slots"
+ },
+ "ore_carts": {
+  "file": "ore_carts.fbx",
+  "tris": 584,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 2,
+   "wo": [
+    100.0,
+    18.0,
+    410.0
+   ],
+   "yaw": 0.0,
+   "name": "ore_carts",
+   "position": [
+    -14.5,
+    0,
+    -42
+   ],
+   "notes": "Two parked ore carts heaped with rock candy on a short rail spur outside the green and concept pad west edge; visual only, no ball/player collision; fade if occluding camera",
+   "approx_size": [
+    3,
+    2.5,
+    6
+   ],
+   "collidable": false,
+   "ball_collision": false,
+   "player_collision": false
+  },
+  "placement": {
+   "pos": [
+    85.5,
+    18.0,
+    368.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[1].decoration_anchors ore_carts"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole2.Decor.ore_carts.Placeholder.Body",
+   "Workspace.CourseSugarloaf.Hole2.Decor.ore_carts.Placeholder.Roof"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "Iron",
+   "RockCandyLilac",
+   "RockCandyPink",
+   "RustIron"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "outflow_pipe": {
+  "file": "outflow_pipe.fbx",
+  "tris": 384,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 12,
+   "wo": [
+    -200.0,
+    116.0,
+    -270.0
+   ],
+   "yaw": -90.0,
+   "name": "outflow_pipe",
+   "position": [
+    11.0,
+    0.0,
+    -61.0
+   ],
+   "notes": "Big riveted outflow pipe mouth on the green's east edge, angled at the cup (teleport exit, splash particles)",
+   "approx_size": [
+    2.5,
+    2.5,
+    3
+   ]
+  },
+  "placement": {
+   "pos": [
+    -139.0,
+    116.0,
+    -259.0
+   ],
+   "yaw": -90.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[11].decoration_anchors outflow_pipe"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole12.Decor.outflow_pipe.Placeholder.Body",
+   "Workspace.CourseSugarloaf.Hole12.Decor.outflow_pipe.Placeholder.Roof"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "Brass",
+   "RivetIron"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "pier_posts": {
+  "file": "pier_posts.fbx",
+  "tris": 144,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 12,
+   "wo": [
+    -200.0,
+    116.0,
+    -270.0
+   ],
+   "yaw": -90.0,
+   "name": "pier_posts",
+   "position": [
+    0,
+    -1.2,
+    -28
+   ],
+   "notes": "Timber pier on posts (no railings: the open sides and end drop into the reservoir)",
+   "approx_size": [
+    3.2,
+    1.4,
+    13
+   ]
+  },
+  "placement": {
+   "pos": [
+    -172.0,
+    114.8,
+    -270.0
+   ],
+   "yaw": -90.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[11].decoration_anchors pier_posts"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole12.Decor.pier_posts.Placeholder.Body"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "TimberWeathered"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "plank_respawn_stone": {
+  "file": "plank_respawn_stone.fbx",
+  "tris": 160,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 3,
+   "wo": [
+    -95.0,
+    18.0,
+    330.0
+   ],
+   "yaw": -90.0,
+   "name": "plank_respawn_stone",
+   "position": [
+    0,
+    0,
+    -28.5
+   ],
+   "notes": "Glowing turquoise marker stone set flush in the felt at the plank entry: where a ball that falls in the river reappears",
+   "approx_size": [
+    0.8,
+    0.02,
+    0.8
+   ]
+  },
+  "placement": {
+   "pos": [
+    -66.5,
+    18.0,
+    330.0
+   ],
+   "yaw": -90.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[2].decoration_anchors plank_respawn_stone"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole3.Decor.plank_respawn_stone.Placeholder.RespawnStone"
+  ],
+  "neon_parts": [
+   "NeonTurquoise"
+  ],
+  "materials": [
+   "NeonTurquoise",
+   "Slate"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Set Material=Neon in Studio for Neon* slots"
+ },
+ "river_rocks": {
+  "file": "river_rocks.fbx",
+  "tris": 436,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 3,
+   "wo": [
+    -95.0,
+    18.0,
+    330.0
+   ],
+   "yaw": -90.0,
+   "name": "river_rocks",
+   "position": [
+    5,
+    -1.5,
+    -41
+   ],
+   "notes": "Turquoise river with foam, stepping stones and a sunken canoe downstream",
+   "approx_size": [
+    6,
+    1,
+    8
+   ]
+  },
+  "placement": {
+   "pos": [
+    -54.0,
+    16.5,
+    335.0
+   ],
+   "yaw": -90.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[2].decoration_anchors river_rocks"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole3.Decor.river_rocks.Placeholder.Rock"
+  ],
+  "neon_parts": [],
+  "materials": [
+   "RiverStone",
+   "RiverStoneMoss"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": ""
+ },
+ "tunnel_lanterns": {
+  "file": "tunnel_lanterns.fbx",
+  "tris": 96,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 2,
+   "wo": [
+    100.0,
+    18.0,
+    410.0
+   ],
+   "yaw": 0.0,
+   "name": "tunnel_lanterns",
+   "position": [
+    9,
+    8,
+    -32
+   ],
+   "notes": "Lanterns on overhead portal-style crossbars every 6 studs; anchor is lantern bottom y=8 (top y=8.8); channel stays open-top",
+   "approx_size": [
+    0.6,
+    0.8,
+    0.6
+   ]
+  },
+  "placement": {
+   "pos": [
+    109.0,
+    26.0,
+    378.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[1].decoration_anchors tunnel_lanterns"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonAmber"
+  ],
+  "materials": [
+   "Iron",
+   "NeonAmber"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Set Material=Neon in Studio for Neon* slots"
+ }
+}

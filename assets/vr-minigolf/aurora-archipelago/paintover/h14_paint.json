@@ -1,0 +1,75 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Paint-over of image 1, a grey/green 3D blockout render seen from the tee at VR eye height. KEEP THE GEOMETRY AND CAMERA EXACTLY: same camera angle, horizon line, lane, rails, green, cup position, every wall and the moving part in the same place, size and silhouette. Do not add, remove, move or resize any course element; do not add obstacles on the playing surface. Only restyle surfaces, lighting and the sky/background. Hole Bell Buoy: Pendulum: a brass icicle bell swings across the lane from a timber gantry, before a ramp up to a raised green. Style: Aurora Archipelago, cosy stylized low-poly night snow globe: snow-felt putting surface in soft mint-green felt with snow edges, warm timber and brass rails, red moving part repainted as the themed mechanism in timber, brass and glowing ice (keep its exact shape), pink sweep volume and cup ring removed and replaced by clean felt, tall flag in the cup. Background: floating slate-violet rock islands with snow caps, glowing ice crystals, frozen waterfalls, green and violet aurora ribbons overhead in a deep twilight sky, soft lilac cloud sea below, brass lanterns. Image 2 is the style reference only, not the layout. The red/pink moving part MUST stay clearly visible at its exact position and outline. The pink cube is the brass icicle bell: paint a big brass bell with icicles at exactly the cube's position and size, hanging from a thin timber gantry beam above it across the lane; erase the grey sweep volume.",
+  "aspect": "16:9",
+  "refs": [
+    "previews/blockout/h14_tee.png",
+    "h14-concept.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 2306,
+    "outputTokens": 1078,
+    "totalTokens": 3384
+  },
+  "cost": 0.049726,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791856054,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1952,
+          "textTokens": 354
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791856024362,
+                "endTime": 1791856054649,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.049726",
+      "marketCost": "0.049726",
+      "surchargeCost": "0",
+      "gatewayCost": "0.049726",
+      "inferenceCost": "0.049726",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.049726",
+      "generationId": "gen_01M4SF26QZRQBPQNC8EM8P4770"
+    }
+  },
+  "seconds": 31.2,
+  "files": [
+    "paintover/h14_paint_v2.png"
+  ]
+}

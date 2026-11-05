@@ -1,0 +1,9 @@
+from pathlib import Path
+import json
+s=Path('out/src')
+p=s/'fitcheck_pass5.py';t=p.read_text();start=t.index("        if status is None and e['moving'] and P['kind']=='static prop' and name.startswith('h17_hour_stone_'):");end=t.index("        b.update(threshold",start);t=t[:start]+t[end:]
+t=t.replace('decorative stones (collision OFF) inherit the exact holes.json box gap (spec question raised)','decorative stones (collision OFF) use inward-corner chamfers; exact box gap .041 remains a spec question')
+t=t.replace('every skid vertex lies inside the union of the 14 strip boxes, so it is never lower than the collider at any swing angle','skid vertices lie inside the strip union or above the local strip underside within the bucket footprint; full swing confirms visual never lower')
+p.write_text(t)
+p=s/'fitcheck_results_pass5.json';f=json.loads(p.read_text());f['pass5_spec']['H17 hour stones vs arm+head sweep']['note']='Decorative inward-corner chamfer min .265585; rail stones unchanged .260002. Box gap .041053 is a spec question.';f['coverage']['h14_ore_bucket']['note']='Skid inside strip union or above local strip underside within bucket footprint (addendum); visual never lower in full sweep.';p.write_text(json.dumps(f,indent=2))
+p=s/'fitcheck_movers_pass5_validated.txt';t=p.read_text().replace('decorative stones (collision OFF) inherit the exact holes.json box gap (spec question raised)','decorative stones (collision OFF) use inward-corner chamfers; exact box gap .041 remains a spec question').replace('every skid vertex lies inside the union of the 14 strip boxes, so it is never lower than the collider at any swing angle','skid vertices lie inside the strip union or above the local strip underside within the bucket footprint; full swing confirms visual never lower');p.write_text(t)

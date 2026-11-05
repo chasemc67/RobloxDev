@@ -1,0 +1,19 @@
+# Aurora overlap fixes (workspace C:\Users\chase\aa_fix\aurora-archipelago, holes.json MD5 fb913741b5dd4812b6d2318e258bcc46)
+The approved/imported versions are models/fbx/props_batch1|2|3 (NOT the _polish folders). They MUST NOT be written: add a SHA256 guard over models/fbx/props_batch*, models/*manifest*.json and models/fitcheck_*.txt, and exit 1 on any change.
+Look at the existing generators/fitchecks in models/_src/props_batch{1,2,3}/ (gen_*.py, build_*.py, fitcheck_*.py, parts.json) for coordinate conventions (hole-local, world = R_y(yaw)*local + offset, Blender +Y = Roblox -Z, FBX -Z forward, Y up, root empty at pivot, mesh per material <id>__<Mat>).
+
+## A. True 3D clearance tool (plain Python + numpy, no Blender): models/_src/fix_overlap/clearance.py
+For an asset, load its triangles in hole-local Roblox coordinates. Use the reimported geometry cached by a Blender step, or read the FBX via a Blender export to npy; your choice, but it must be the real exported mesh. Compute the true minimum 3D distance from the mesh triangles to each rail box and to each felt/green/play-surface solid in holes.json for that hole, with penetration = negative (signed). Do NOT exempt "skins" or anything else. Report the nearest rail and the nearest felt with values.
+
+## B. Measure BEFORE for: h04_ice_channel_edge, h06_respawn_stone, h14_rail_bollards, h18_crystal_chute (the rail skin part), plus the sanity list: h02_lintel_left/mid/right, h02_rookery_drift, h05_cliff_face_e/w, h09_conch_entry, h10_bobsled_hut, h10_snow_walls_w, h11_fishing_hut, h11_floe_frame_e, h12_icebreaker, h14_bell_gantry, h15_lip_ice, h18_halo_arch, h04/h06/h14/h18_snowpuffs (the approved props_batch3 versions). Write models/_src/fix_overlap/clearance_before.json and a table.
+
+## C. Fix ONLY the 4 assets (keep the look, tris < 3000, same pivot/anchor, collision/query/touch off):
+- h14_rail_bollards: >= 0.30 from rails (and >= 0.15 from felt).
+- h18_crystal_chute rail skin: >= 0.30 from rails (>= 0.15 felt). Change only the skin geometry; minimal inset/trim.
+- h04_ice_channel_edge (the approved 48-tri version from props_batch3): >= 0.15 from rails and felt.
+- h06_respawn_stone: >= 0.15 from felt and rails. It MUST stay flat on the ground, with NO tilt and NO rescale: only translate it straight up (Y) by the minimum amount so it no longer cuts the felt (+0.15), and record the lift. If lifting alone can't clear a rail, report it rather than altering it.
+Prefer minimal vertex insets/trims over rebuilding. Export to models/fbx/props_fix_overlap/<id>.fbx only, with manifest models/props_fix_overlap_manifest.json (same schema as the source batch manifests, with fbx paths in the new folder, before/after min clearances, the lift for the respawn stone, and source fbx path + sha256). Do a fresh-scene FBX re-import check -> models/_src/fix_overlap/fbx_validation.json. Fitcheck -> models/fitcheck_props_fix_overlap.txt with per-asset before/after min rail and felt clearance, tris and PASS/FAIL against the thresholds above.
+Previews -> models/previews/props_fix_overlap/<id>_34.png. Silhouette sheet -> silhouettes/sheet08-overlap-fixes.png: per asset, before and after renders CLOSE on the worst contact with the rail/felt drawn in a contrasting colour, labelled with before/after clearance.
+
+## D. Runner models/_src/fix_overlap/run_fix.ps1: ONE Blender job (blender -b --factory-startup -P models/_src/fix_overlap/fix_blender.py) via the existing pattern in C:\Users\chase\aa_polish\aurora-archipelago\models\_src\run_blender.ps1 (copy it here if useful). It does geometry extraction, before measures, fixes, export, re-import and renders. Then python steps: clearance after, fitcheck, manifest, sheet. Writes models/_src/fix_overlap/done_fix.flag "exit N" and logs build_fix.log; non-zero on any failure.
+Syntax checks only. Do NOT launch Blender. Summarize in models/_src/fix_overlap/summary.md.

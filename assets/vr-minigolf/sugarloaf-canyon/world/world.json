@@ -1,0 +1,7472 @@
+{
+ "name": "Sugarloaf Canyon - world layout",
+ "version": "0.1-concept",
+ "units": "studs (1 stud = 0.3 m), +Y up, map view +X east/right, -Z north/up. Same axes as Lantern Grove holes.json/world.json.",
+ "bounds": {
+  "x": [
+   -640.0,
+   640.0
+  ],
+  "z": [
+   -640.0,
+   640.0
+  ],
+  "size": [
+   1280.0,
+   1280.0
+  ],
+  "y_range": [
+   0.0,
+   260.0
+  ],
+  "note": "Terrain extent. Backdrop meshes sit outside it."
+ },
+ "placement_convention": {
+  "apply": "For every (future) holes.json element of hole N: rotate its LOCAL x/z about +Y by placement.yaw_deg, then translate by placement.origin. x' = lx*cos(yaw) + lz*sin(yaw) + origin.x ; z' = -lx*sin(yaw) + lz*cos(yaw) + origin.z ; y' = ly + origin.y. Piece yaw_world = piece.yaw + yaw_deg. Positive yaw = counter-clockwise in the map view: yaw 0 plays north, 90 west, 180 south, -90 east. The local origin is the tee; play is toward local -Z.",
+  "roblox": "holeRoot = CFrame.new(origin) * CFrame.Angles(0, math.rad(yaw_deg), 0); partCFrame = holeRoot * localCFrame. Axes rotate only.",
+  "concept_footprint": "Until holes.json exists each hole is concept.pads: flat boxes in the local frame (x range, z range, y offset from origin.y). The future hole geometry (felt + rails + props within 2 studs) must stay inside them. concept.spans = local z ranges where the hole bridges a gap or river and the ground is not flattened."
+ },
+ "sun": {
+  "bearing_deg": 277.0,
+  "elevation_deg": 25.0,
+  "clock_time": 16.3,
+  "note": "IN-GAME golden hour. ClockTime is approximate: calibrate geographic latitude/time in Studio to bearing 277, elevation 25. No tee plays within 45 deg of this bearing."
+ },
+ "hero_render_sun": {
+  "bearing_deg": 277.0,
+  "elevation_deg": 2.0,
+  "hero_render_only": true,
+  "arch_bearing_deg": 277.0,
+  "arch_elevation_range_deg": [
+   -12.0,
+   1.0
+  ],
+  "alignment_warning": "Requested +2 deg is 1 deg ABOVE the arch top (+1), not inside the opening. Use only for hero renders; never override game lighting."
+ },
+ "spawn": {
+  "pos": [
+   75.0,
+   18.0,
+   505.0
+  ],
+  "look_at": [
+   60.0,
+   18.0,
+   470.0
+  ],
+  "note": "SpawnLocation in Junction Plaza facing north to H1; Old Sugarloaf on the skyline"
+ },
+ "zones": [
+  {
+   "name": "Sugarloaf Junction",
+   "holes": [
+    1,
+    2,
+    3
+   ],
+   "ground_y": 18.0,
+   "note": "Canyon-floor frontier town, river, ranger station"
+  },
+  {
+   "name": "Rock Candy Narrows",
+   "holes": [
+    4,
+    5,
+    6
+   ],
+   "ground_y": [
+    18.0,
+    26.0
+   ],
+   "note": "Slot canyon cut into Taffy Mesa"
+  },
+  {
+   "name": "Taffy Mesa",
+   "holes": [
+    7,
+    8,
+    9
+   ],
+   "ground_y": 70.0,
+   "note": "First mesa top; rope bridges over slots"
+  },
+  {
+   "name": "Sugarloaf Dam",
+   "holes": [
+    10,
+    11,
+    12
+   ],
+   "ground_y": 116.0,
+   "note": "Reservoir Bench, Peppermint Dam, reservoir"
+  },
+  {
+   "name": "Hoodoo Garden",
+   "holes": [
+    13,
+    14,
+    15
+   ],
+   "ground_y": 150.0,
+   "note": "Third tier, hoodoo spires and sugar dunes"
+  },
+  {
+   "name": "Sugarloaf Crown",
+   "holes": [
+    16,
+    17,
+    18
+   ],
+   "ground_y": 190.0,
+   "note": "Top tier finale, Sunset Arch, gondola home"
+  }
+ ],
+ "holes": [
+  {
+   "number": 1,
+   "id": "h01_trailhead_gate",
+   "name": "Trailhead Gate",
+   "par": 2,
+   "zone": "Sugarloaf Junction",
+   "status": "specced",
+   "holes_json": "holes.json holes[0] (h01)",
+   "gimmick": "Bank shot: a striped boulder's 45-degree face turns the ball east onto an offset green",
+   "landmark": "Candy-striped trailhead arch with a hanging lollipop sign",
+   "placement": {
+    "origin": [
+     60.0,
+     18.0,
+     470.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -9.0,
+       9.0
+      ],
+      "z": [
+       -40,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     6.0,
+     0.0,
+     -30.5
+    ],
+    "size": [
+     18,
+     46
+    ]
+   },
+   "tee_world": [
+    60.0,
+    18.0,
+    470.0
+   ],
+   "cup_world_approx": [
+    66.0,
+    18.0,
+    439.5
+   ],
+   "surroundings": "Canyon floor at Sugarloaf Junction (y 18); boardwalk town to the east, Old Sugarloaf dome rising on the northern skyline",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     51.0,
+     69.0
+    ],
+    "z": [
+     430.0,
+     476.0
+    ]
+   }
+  },
+  {
+   "number": 2,
+   "id": "h02_mine_cart_junction",
+   "name": "Mine-Cart Junction",
+   "par": 3,
+   "zone": "Sugarloaf Junction",
+   "status": "specced",
+   "holes_json": "holes.json holes[1] (h02)",
+   "gimmick": "Tunnel choice: open-top 3-wide shortcut (left), gentle dead end (middle), shorter forgiving long haul (right)",
+   "landmark": "Mine-head with ore carts and a candy-striped headframe",
+   "placement": {
+    "origin": [
+     100.0,
+     18.0,
+     410.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -13.0,
+       13.0
+      ],
+      "z": [
+       -52,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     -11.0,
+     0.0,
+     -46.0
+    ],
+    "size": [
+     26,
+     58
+    ]
+   },
+   "tee_world": [
+    100.0,
+    18.0,
+    410.0
+   ],
+   "cup_world_approx": [
+    89.0,
+    18.0,
+    364.0
+   ],
+   "surroundings": "Junction mine-head against a rock outcrop; Taffy Mesa's striped cliffs 80 studs east",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     87.0,
+     113.0
+    ],
+    "z": [
+     358.0,
+     416.0
+    ]
+   }
+  },
+  {
+   "number": 3,
+   "id": "h03_rangers_riverbend",
+   "name": "Ranger's Riverbend",
+   "par": 3,
+   "zone": "Sugarloaf Junction",
+   "status": "specced",
+   "holes_json": "holes.json holes[2] (h03)",
+   "gimmick": "River crossing: a rail-less log plank straight over the river (risky) or the railed ranger footbridge (safe); a ball in the river respawns at the plank entry",
+   "landmark": "Ranger station with a fire-lookout cupola on the west bank",
+   "placement": {
+    "origin": [
+     -95.0,
+     18.0,
+     330.0
+    ],
+    "yaw_deg": -90.0
+   },
+   "play_bearing_deg": 90.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -13.0,
+       13.0
+      ],
+      "z": [
+       -70,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [
+     {
+      "z": [
+       -58,
+       -26
+      ],
+      "over": "Sugarloaf River"
+     }
+    ],
+    "cup_local": [
+     1.0,
+     0.0,
+     -55.5
+    ],
+    "size": [
+     26,
+     76
+    ]
+   },
+   "tee_world": [
+    -95.0,
+    18.0,
+    330.0
+   ],
+   "cup_world_approx": [
+    -39.5,
+    18.0,
+    331.0
+   ],
+   "surroundings": "Both banks of the Sugarloaf River; ranger station and lookout cupola on the west bank, West Ledge cliffs behind",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -101.0,
+     -25.0
+    ],
+    "z": [
+     317.0,
+     343.0
+    ]
+   }
+  },
+  {
+   "number": 4,
+   "id": "h04_crystal_corridor",
+   "name": "Crystal Corridor",
+   "par": 3,
+   "zone": "Rock Candy Narrows",
+   "status": "specced",
+   "holes_json": "holes.json holes[3] (h04)",
+   "gimmick": "Pinball crystals: static flat-faced rock-candy bumpers bounce the ball down the slot",
+   "landmark": "Giant pink rock-candy geode wall",
+   "placement": {
+    "origin": [
+     200.0,
+     18.0,
+     330.0
+    ],
+    "yaw_deg": -90.0
+   },
+   "play_bearing_deg": 90.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -10.0,
+       10.0
+      ],
+      "z": [
+       -42,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     4.5,
+     0.0,
+     -39.0
+    ],
+    "size": [
+     20,
+     48
+    ]
+   },
+   "tee_world": [
+    200.0,
+    18.0,
+    330.0
+   ],
+   "cup_world_approx": [
+    239.0,
+    18.0,
+    334.5
+   ],
+   "surroundings": "Mouth of the Rock Candy Narrows: 52-stud slot walls, rock-candy crystals in the walls",
+   "enclosed": true,
+   "footprint_bbox": {
+    "x": [
+     194.0,
+     242.0
+    ],
+    "z": [
+     320.0,
+     340.0
+    ]
+   }
+  },
+  {
+   "number": 5,
+   "id": "h05_echo_slot",
+   "name": "Echo Slot",
+   "par": 3,
+   "zone": "Rock Candy Narrows",
+   "status": "specced",
+   "holes_json": "holes.json holes[4] (h05)",
+   "gimmick": "Half-pipe: an S-bend U-channel with banked felt walls; ride high to carry the bend",
+   "landmark": "Smooth wave-carved slot walls in pink and cream bands",
+   "placement": {
+    "origin": [
+     280.0,
+     22.0,
+     326.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -12.0,
+       12.0
+      ],
+      "z": [
+       -58,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     -0.5,
+     0.0,
+     -42.0
+    ],
+    "size": [
+     24,
+     64
+    ]
+   },
+   "tee_world": [
+    280.0,
+    22.0,
+    326.0
+   ],
+   "cup_world_approx": [
+    279.5,
+    22.0,
+    284.0
+   ],
+   "surroundings": "Deep in the Narrows at the slot's bend; only a ribbon of sunset sky overhead",
+   "enclosed": true,
+   "footprint_bbox": {
+    "x": [
+     268.0,
+     292.0
+    ],
+    "z": [
+     268.0,
+     332.0
+    ]
+   }
+  },
+  {
+   "number": 6,
+   "id": "h06_flash_flood",
+   "name": "Flash Flood",
+   "par": 3,
+   "zone": "Rock Candy Narrows",
+   "status": "specced",
+   "holes_json": "holes.json holes[5] (h06)",
+   "gimmick": "Timing gate: a sluice gate slides across the slot neck, pauses closed, then opens (slide with dwell); the overflow channel is the safe way round",
+   "landmark": "Old sluice gate and flood-warning bell tower",
+   "placement": {
+    "origin": [
+     280.0,
+     26.0,
+     255.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -12.0,
+       12.0
+      ],
+      "z": [
+       -58,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     -4.0,
+     0.0,
+     -45.0
+    ],
+    "size": [
+     24,
+     64
+    ]
+   },
+   "tee_world": [
+    280.0,
+    26.0,
+    255.0
+   ],
+   "cup_world_approx": [
+    276.0,
+    26.0,
+    210.0
+   ],
+   "surroundings": "Upper Narrows below the slot head; the Rock Candy Lift cage hangs on the wall",
+   "enclosed": true,
+   "footprint_bbox": {
+    "x": [
+     268.0,
+     292.0
+    ],
+    "z": [
+     197.0,
+     261.0
+    ]
+   }
+  },
+  {
+   "number": 7,
+   "id": "h07_rope_bridge_run",
+   "name": "Rope Bridge Run",
+   "par": 4,
+   "zone": "Taffy Mesa",
+   "status": "specced",
+   "holes_json": "holes.json holes[6] (h07)",
+   "gimmick": "Rope-bridge spans: two railed rope bridges over Taffy Gap with an island between whose ends are open to the gap; a fall respawns at the island",
+   "landmark": "Taffy Gap with two sagging rope bridges",
+   "placement": {
+    "origin": [
+     340.0,
+     70.0,
+     150.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -15.0,
+       15.0
+      ],
+      "z": [
+       -72,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [
+     {
+      "z": [
+       -58,
+       -26
+      ],
+      "over": "Taffy Gap"
+     }
+    ],
+    "cup_local": [
+     3.0,
+     0.0,
+     -60.0
+    ],
+    "size": [
+     30,
+     78
+    ]
+   },
+   "tee_world": [
+    340.0,
+    70.0,
+    150.0
+   ],
+   "cup_world_approx": [
+    343.0,
+    70.0,
+    90.0
+   ],
+   "surroundings": "Taffy Mesa top (y 70), crossing Taffy Gap; Old Sugarloaf and the dam in view",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     325.0,
+     355.0
+    ],
+    "z": [
+     78.0,
+     156.0
+    ]
+   }
+  },
+  {
+   "number": 8,
+   "id": "h08_gumdrop_gulch",
+   "name": "Gumdrop Gulch",
+   "par": 3,
+   "zone": "Taffy Mesa",
+   "status": "specced",
+   "holes_json": "holes.json holes[7] (h08)",
+   "gimmick": "Rolling dips: gumdrop humps and hollows made of opposing planar slopes; pace the ball through",
+   "landmark": "Giant gumdrop boulders in candy colours",
+   "placement": {
+    "origin": [
+     360.0,
+     70.0,
+     55.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -13.0,
+       13.0
+      ],
+      "z": [
+       -60,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     5.0,
+     0.0,
+     -55.0
+    ],
+    "size": [
+     26,
+     66
+    ]
+   },
+   "tee_world": [
+    360.0,
+    70.0,
+    55.0
+   ],
+   "cup_world_approx": [
+    365.0,
+    70.0,
+    0.0
+   ],
+   "surroundings": "Open mesa top among gumdrop boulders, Butterscotch Butte to the east",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     347.0,
+     373.0
+    ],
+    "z": [
+     -5.0,
+     61.0
+    ]
+   }
+  },
+  {
+   "number": 9,
+   "id": "h09_lollipop_windmill",
+   "name": "Lollipop Windmill",
+   "par": 3,
+   "zone": "Taffy Mesa",
+   "status": "specced",
+   "holes_json": "holes.json holes[8] (h09)",
+   "gimmick": "Vertical rotor: a windpump's lollipop vanes turn across the tunnel mouth; the bypass round the pump house is the safe way",
+   "landmark": "Windpump with lollipop vanes and a water tank",
+   "placement": {
+    "origin": [
+     330.0,
+     70.0,
+     -110.0
+    ],
+    "yaw_deg": -90.0
+   },
+   "play_bearing_deg": 90.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -13.0,
+       13.0
+      ],
+      "z": [
+       -54,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     -1.5,
+     0.0,
+     -42.0
+    ],
+    "size": [
+     26,
+     60
+    ]
+   },
+   "tee_world": [
+    330.0,
+    70.0,
+    -110.0
+   ],
+   "cup_world_approx": [
+    372.0,
+    70.0,
+    -111.5
+   ],
+   "surroundings": "North end of Taffy Mesa by Licorice Slot; the Reservoir Bench cliff rises 46 studs to the north",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     324.0,
+     384.0
+    ],
+    "z": [
+     -123.0,
+     -97.0
+    ]
+   }
+  },
+  {
+   "number": 10,
+   "id": "h10_sluice_chute",
+   "name": "Sluice Chute",
+   "par": 2,
+   "zone": "Sugarloaf Dam",
+   "status": "specced",
+   "holes_json": "holes.json holes[9] (h10)",
+   "gimmick": "One-way slope: a steep sluice chute drops 3.6 studs into a basin green; felt arrows and chevrons show it is one-way",
+   "landmark": "Timber sluice flume with peppermint-striped gates",
+   "placement": {
+    "origin": [
+     290.0,
+     116.0,
+     -300.0
+    ],
+    "yaw_deg": 180.0
+   },
+   "play_bearing_deg": 180.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "upper",
+      "x": [
+       -10.0,
+       10.0
+      ],
+      "z": [
+       -22,
+       6
+      ],
+      "y": 0.0
+     },
+     {
+      "id": "lower",
+      "x": [
+       -10.0,
+       10.0
+      ],
+      "z": [
+       -44,
+       -22
+      ],
+      "y": -3.6
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     7.0,
+     -3.6,
+     -33.5
+    ],
+    "size": [
+     20,
+     50
+    ]
+   },
+   "tee_world": [
+    290.0,
+    116.0,
+    -300.0
+   ],
+   "cup_world_approx": [
+    283.0,
+    112.4,
+    -266.5
+   ],
+   "surroundings": "East end of the Reservoir Bench (y 116), looking south over the whole canyon",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     280.0,
+     300.0
+    ],
+    "z": [
+     -306.0,
+     -256.0
+    ]
+   }
+  },
+  {
+   "number": 11,
+   "id": "h11_floodgate_lock",
+   "name": "Floodgate Lock",
+   "par": 3,
+   "zone": "Sugarloaf Dam",
+   "status": "specced",
+   "holes_json": "holes.json holes[10] (h11)",
+   "gimmick": "Ball elevator: a canal-lock platform lifts the ball 4 studs and comes back down; roll in while the lock gate is down",
+   "landmark": "Canal lock with brass winches and a lock-keeper's hut",
+   "placement": {
+    "origin": [
+     150.0,
+     116.0,
+     -252.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "lower",
+      "x": [
+       -13.0,
+       13.0
+      ],
+      "z": [
+       -26,
+       6
+      ],
+      "y": 0.0
+     },
+     {
+      "id": "upper",
+      "x": [
+       -13.0,
+       13.0
+      ],
+      "z": [
+       -54,
+       -26
+      ],
+      "y": 4.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     0.0,
+     4.0,
+     -43.0
+    ],
+    "size": [
+     26,
+     60
+    ]
+   },
+   "tee_world": [
+    150.0,
+    116.0,
+    -252.0
+   ],
+   "cup_world_approx": [
+    150.0,
+    120.0,
+    -295.0
+   ],
+   "surroundings": "Reservoir shore east of the dam; lock gates and the reservoir behind the green",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     137.0,
+     163.0
+    ],
+    "z": [
+     -306.0,
+     -246.0
+    ]
+   }
+  },
+  {
+   "number": 12,
+   "id": "h12_intake_tower",
+   "name": "Intake Tower",
+   "par": 4,
+   "zone": "Sugarloaf Dam",
+   "status": "specced",
+   "holes_json": "holes.json holes[11] (h12)",
+   "gimmick": "Pipe teleport: sink the ball in the intake grate at the end of a rail-less pier and it shoots out of an outflow pipe by the green, or play the long shoreline route",
+   "landmark": "Domed intake tower standing in the reservoir",
+   "placement": {
+    "origin": [
+     -200.0,
+     116.0,
+     -270.0
+    ],
+    "yaw_deg": -90.0
+   },
+   "play_bearing_deg": 90.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -17.0,
+       17.0
+      ],
+      "z": [
+       -66,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     2.0,
+     0.0,
+     -58.0
+    ],
+    "size": [
+     34,
+     72
+    ]
+   },
+   "tee_world": [
+    -200.0,
+    116.0,
+    -270.0
+   ],
+   "cup_world_approx": [
+    -142.0,
+    116.0,
+    -268.0
+   ],
+   "surroundings": "West shore beyond the dam; intake tower stands in the reservoir to the north-east",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -206.0,
+     -134.0
+    ],
+    "z": [
+     -287.0,
+     -253.0
+    ]
+   }
+  },
+  {
+   "number": 13,
+   "id": "h13_hoodoo_maze",
+   "name": "Hoodoo Maze",
+   "par": 3,
+   "zone": "Hoodoo Garden",
+   "status": "specced",
+   "holes_json": "holes.json holes[12] (h13)",
+   "gimmick": "Pillar maze: hoodoo pillars and striped rock make three corridors of different length and risk",
+   "landmark": "Cluster of striped hoodoo spires with balanced gumdrop caps",
+   "placement": {
+    "origin": [
+     -300.0,
+     150.0,
+     -290.0
+    ],
+    "yaw_deg": 180.0
+   },
+   "play_bearing_deg": 180.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -15.0,
+       15.0
+      ],
+      "z": [
+       -56,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     0.5,
+     0.0,
+     -51.0
+    ],
+    "size": [
+     30,
+     62
+    ]
+   },
+   "tee_world": [
+    -300.0,
+    150.0,
+    -290.0
+   ],
+   "cup_world_approx": [
+    -300.5,
+    150.0,
+    -239.0
+   ],
+   "surroundings": "Hoodoo Bench (y 150) among striped hoodoo spires, Fizzwater Falls to the north",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -315.0,
+     -285.0
+    ],
+    "z": [
+     -296.0,
+     -234.0
+    ]
+   }
+  },
+  {
+   "number": 14,
+   "id": "h14_ore_bucket_swing",
+   "name": "Ore Bucket Swing",
+   "par": 3,
+   "zone": "Hoodoo Garden",
+   "status": "specced",
+   "holes_json": "holes.json holes[13] (h14)",
+   "gimmick": "Pendulum: an ore bucket swings from a cableway trestle across the lane, before a ramp up to the raised loading-dock green",
+   "landmark": "Cableway trestle with a swinging ore bucket",
+   "placement": {
+    "origin": [
+     -300.0,
+     150.0,
+     -200.0
+    ],
+    "yaw_deg": 180.0
+   },
+   "play_bearing_deg": 180.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -12.0,
+       12.0
+      ],
+      "z": [
+       -54,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     1.0,
+     0.8,
+     -44.0
+    ],
+    "size": [
+     24,
+     60
+    ]
+   },
+   "tee_world": [
+    -300.0,
+    150.0,
+    -200.0
+   ],
+   "cup_world_approx": [
+    -301.0,
+    150.8,
+    -156.0
+   ],
+   "surroundings": "Hoodoo Bench, under the old cableway that once carried ore buckets to the dam",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -312.0,
+     -288.0
+    ],
+    "z": [
+     -206.0,
+     -146.0
+    ]
+   }
+  },
+  {
+   "number": 15,
+   "id": "h15_sugar_dune",
+   "name": "Sugar Dune",
+   "par": 3,
+   "zone": "Hoodoo Garden",
+   "status": "specced",
+   "holes_json": "holes.json holes[14] (h15)",
+   "gimmick": "Side-slope reading: a long dune face tilted across the line, dropping to a two-tier green",
+   "landmark": "Powdered-sugar dune with sand-sled tracks",
+   "placement": {
+    "origin": [
+     -300.0,
+     150.0,
+     -115.0
+    ],
+    "yaw_deg": 180.0
+   },
+   "play_bearing_deg": 180.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -18.0,
+       18.0
+      ],
+      "z": [
+       -66,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     6.0,
+     -4.6,
+     -57.0
+    ],
+    "size": [
+     36,
+     72
+    ]
+   },
+   "tee_world": [
+    -300.0,
+    150.0,
+    -115.0
+   ],
+   "cup_world_approx": [
+    -306.0,
+    145.4,
+    -58.0
+   ],
+   "surroundings": "Powdered-sugar dunes at the south end of the Hoodoo Bench; Sugarloaf Crown's north face ahead",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -318.0,
+     -282.0
+    ],
+    "z": [
+     -121.0,
+     -49.0
+    ]
+   }
+  },
+  {
+   "number": 16,
+   "id": "h16_sinkhole_drop",
+   "name": "Sinkhole Drop",
+   "par": 2,
+   "zone": "Sugarloaf Crown",
+   "status": "specced",
+   "holes_json": "holes.json holes[15] (h16)",
+   "gimmick": "Drop between levels: putt into a sinkhole in the upper deck and fall 3.6 studs into a funnel bowl",
+   "landmark": "Crystal-lined sinkhole with a rope railing",
+   "placement": {
+    "origin": [
+     -300.0,
+     190.0,
+     112.0
+    ],
+    "yaw_deg": 180.0
+   },
+   "play_bearing_deg": 180.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "upper",
+      "x": [
+       -10.0,
+       10.0
+      ],
+      "z": [
+       -22,
+       6
+      ],
+      "y": 0.0
+     },
+     {
+      "id": "lower",
+      "x": [
+       -10.0,
+       10.0
+      ],
+      "z": [
+       -44,
+       -22
+      ],
+      "y": -3.6
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     1.8,
+     -3.6,
+     -38.5
+    ],
+    "size": [
+     20,
+     50
+    ]
+   },
+   "tee_world": [
+    -300.0,
+    190.0,
+    112.0
+   ],
+   "cup_world_approx": [
+    -301.8,
+    186.4,
+    150.5
+   ],
+   "surroundings": "Top of Sugarloaf Crown (y 190), the highest ground in the world",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -310.0,
+     -290.0
+    ],
+    "z": [
+     106.0,
+     156.0
+    ]
+   }
+  },
+  {
+   "number": 17,
+   "id": "h17_sundial",
+   "name": "Sundial",
+   "par": 3,
+   "zone": "Sugarloaf Crown",
+   "status": "specced",
+   "holes_json": "holes.json holes[16] (h17)",
+   "gimmick": "Four timed shadow arms sweep around a solid central plinth on a square green",
+   "landmark": "Giant stone sundial with candy-coloured hour stones",
+   "placement": {
+    "origin": [
+     -345.0,
+     190.0,
+     232.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -15.0,
+       15.0
+      ],
+      "z": [
+       -56,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     10.1,
+     0.0,
+     -43.0
+    ],
+    "size": [
+     30,
+     62
+    ]
+   },
+   "tee_world": [
+    -345.0,
+    190.0,
+    232.0
+   ],
+   "cup_world_approx": [
+    -334.9,
+    190.0,
+    189.0
+   ],
+   "surroundings": "Crown summit plateau; panorama over every zone",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -360.0,
+     -330.0
+    ],
+    "z": [
+     176.0,
+     238.0
+    ]
+   }
+  },
+  {
+   "number": 18,
+   "id": "h18_sunset_arch",
+   "name": "Sunset Arch",
+   "par": 4,
+   "zone": "Sugarloaf Crown",
+   "status": "specced",
+   "holes_json": "holes.json holes[17] (h18)",
+   "gimmick": "Finale: bank round a hoodoo, ramp up under the arch, then a geode-shortcut teleport or the rim route to a cliff-edge green",
+   "landmark": "Sunset Arch, a natural candy-striped stone arch on the west rim",
+   "placement": {
+    "origin": [
+     -420.0,
+     190.0,
+     236.0
+    ],
+    "yaw_deg": 0.0
+   },
+   "play_bearing_deg": 0.0,
+   "concept": {
+    "pads": [
+     {
+      "id": "pad",
+      "x": [
+       -18.0,
+       18.0
+      ],
+      "z": [
+       -76,
+       6
+      ],
+      "y": 0.0
+     }
+    ],
+    "spans": [],
+    "cup_local": [
+     8.0,
+     0.8,
+     -64.0
+    ],
+    "size": [
+     36,
+     82
+    ]
+   },
+   "tee_world": [
+    -420.0,
+    190.0,
+    236.0
+   ],
+   "cup_world_approx": [
+    -412.0,
+    190.8,
+    172.0
+   ],
+   "surroundings": "West rim of the Crown with Sunset Arch framing the setting sun beside the green",
+   "enclosed": false,
+   "footprint_bbox": {
+    "x": [
+     -438.0,
+     -402.0
+    ],
+    "z": [
+     160.0,
+     242.0
+    ]
+   }
+  }
+ ],
+ "terrain": {
+  "method": "Deterministic heightfield h(x,z) (tools/worldlib.py height_at), evaluated in order: (1) base: h = base.height + sum(amp*sin(2*pi*x/wx+px)*sin(2*pi*z/wz+pz)). (2) regions in list order. 'set': w = 1-smoothstep(d/falloff), d = distance outside the shape (0 inside); h += (height-h)*w. 'hill': h += peak*cos^2(pi/2*q), q = elliptical radius/radii < 1. 'superellipse_dome': within radius use exact base+height*sqrt(max(0,1-(r/radius)^exponent)); detail noise is suppressed on this feature. 'slot': along the polyline [x,z,floor,width] (linear between vertices) h = min(h, h + (floor-h)*(1-smoothstep((d-width/2)/wall))). (3) rim: q = superellipse radius; t = smoothstep((q-start)/(full-start)); h = max(h, height*(1+variation*sin(lobes*atan2+phase))*t + (1-t)*h); then detail_noise. (4) pads: every concept pad box flattened to its y, blended back over `falloff` beyond `margin`; inside a declared span h = min(natural, pad). (5) paths: within width/2+1 of a graded segment h = profile (stairs: profile - stair_bed_drop), blended over `shoulder`; segments on_hole/bridge/lift/gondola/dam_crest don't grade. (5b) pad clamp: pad boxes (outside spans) = pad y. (6) water: h = min(h, stream/lake carve profile); stream bank: level + bank_slope*(d - width/2) out to bank_reach, lake: beach then bank_slope out to bank_reach (no carve beyond). smoothstep(t) = t^2(3-2t), t clamped to [0,1].",
+  "base": {
+   "height": 18.0,
+   "noise": [
+    {
+     "amp": 0.5,
+     "wx": 97.0,
+     "wz": 131.0,
+     "phase": [
+      0.3,
+      1.1
+     ]
+    },
+    {
+     "amp": 0.3,
+     "wx": 41.0,
+     "wz": 53.0,
+     "phase": [
+      2.0,
+      0.4
+     ]
+    }
+   ],
+   "detail_noise": [
+    {
+     "amp": 0.25,
+     "wx": 37.0,
+     "wz": -53.0,
+     "phase": [
+      0.5,
+      1.7
+     ]
+    },
+    {
+     "amp": 0.4,
+     "wx": 113.0,
+     "wz": 89.0,
+     "phase": [
+      2.4,
+      0.2
+     ]
+    }
+   ]
+  },
+  "regions": [
+   {
+    "id": "west_ledge",
+    "op": "set",
+    "height": 70.0,
+    "falloff": 4.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "polygon",
+     "points": [
+      [
+       -800.0,
+       -240.0
+      ],
+      [
+       -140.0,
+       -240.0
+      ],
+      [
+       -150.0,
+       -140.0
+      ],
+      [
+       -135.0,
+       -40.0
+      ],
+      [
+       -150.0,
+       60.0
+      ],
+      [
+       -140.0,
+       160.0
+      ],
+      [
+       -155.0,
+       260.0
+      ],
+      [
+       -145.0,
+       360.0
+      ],
+      [
+       -165.0,
+       460.0
+      ],
+      [
+       -150.0,
+       560.0
+      ],
+      [
+       -170.0,
+       800.0
+      ],
+      [
+       -800.0,
+       800.0
+      ]
+     ]
+    },
+    "material": "sandstone ledge, pink/cream strata on the cliff"
+   },
+   {
+    "id": "taffy_mesa",
+    "op": "set",
+    "height": 70.0,
+    "falloff": 4.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "polygon",
+     "points": [
+      [
+       175.0,
+       -240.0
+      ],
+      [
+       200.0,
+       -150.0
+      ],
+      [
+       185.0,
+       -60.0
+      ],
+      [
+       195.0,
+       40.0
+      ],
+      [
+       190.0,
+       140.0
+      ],
+      [
+       205.0,
+       240.0
+      ],
+      [
+       190.0,
+       330.0
+      ],
+      [
+       200.0,
+       420.0
+      ],
+      [
+       220.0,
+       520.0
+      ],
+      [
+       260.0,
+       800.0
+      ],
+      [
+       800.0,
+       800.0
+      ],
+      [
+       800.0,
+       -240.0
+      ]
+     ]
+    },
+    "material": "sandstone mesa top (sand, scrub); striped cliff faces"
+   },
+   {
+    "id": "butterscotch_butte",
+    "op": "set",
+    "height": 104.0,
+    "falloff": 5.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "ellipse",
+     "center": [
+      520.0,
+      140.0
+     ],
+     "radii": [
+      80.0,
+      64.0
+     ]
+    },
+    "material": "second tier on Taffy Mesa"
+   },
+   {
+    "id": "gumball_butte",
+    "op": "set",
+    "height": 96.0,
+    "falloff": 5.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "ellipse",
+     "center": [
+      560.0,
+      -150.0
+     ],
+     "radii": [
+      56.0,
+      46.0
+     ]
+    },
+    "material": "second tier on Taffy Mesa"
+   },
+   {
+    "id": "reservoir_bench",
+    "op": "set",
+    "height": 116.0,
+    "falloff": 4.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "polygon",
+     "points": [
+      [
+       800.0,
+       -800.0
+      ],
+      [
+       -800.0,
+       -800.0
+      ],
+      [
+       -800.0,
+       -231.2
+      ],
+      [
+       -780.0,
+       -239.3
+      ],
+      [
+       -760.0,
+       -241.1
+      ],
+      [
+       -740.0,
+       -235.1
+      ],
+      [
+       -720.0,
+       -232.1
+      ],
+      [
+       -700.0,
+       -234.5
+      ],
+      [
+       -680.0,
+       -232.7
+      ],
+      [
+       -660.0,
+       -225.0
+      ],
+      [
+       -640.0,
+       -222.4
+      ],
+      [
+       -620.0,
+       -228.5
+      ],
+      [
+       -600.0,
+       -232.8
+      ],
+      [
+       -580.0,
+       -230.8
+      ],
+      [
+       -560.0,
+       -231.5
+      ],
+      [
+       -540.0,
+       -238.6
+      ],
+      [
+       -520.0,
+       -241.8
+      ],
+      [
+       -500.0,
+       -235.9
+      ],
+      [
+       -480.0,
+       -230.5
+      ],
+      [
+       -460.0,
+       -231.9
+      ],
+      [
+       -440.0,
+       -232.2
+      ],
+      [
+       -420.0,
+       -225.9
+      ],
+      [
+       -400.0,
+       -222.1
+      ],
+      [
+       -380.0,
+       -227.7
+      ],
+      [
+       -360.0,
+       -234.2
+      ],
+      [
+       -340.0,
+       -233.5
+      ],
+      [
+       -320.0,
+       -232.2
+      ],
+      [
+       -300.0,
+       -237.5
+      ],
+      [
+       -280.0,
+       -241.7
+      ],
+      [
+       -260.0,
+       -236.7
+      ],
+      [
+       -240.0,
+       -229.3
+      ],
+      [
+       -220.0,
+       -229.2
+      ],
+      [
+       -200.0,
+       -231.3
+      ],
+      [
+       -180.0,
+       -227.2
+      ],
+      [
+       -160.0,
+       -222.6
+      ],
+      [
+       -140.0,
+       -227.1
+      ],
+      [
+       -120.0,
+       -235.1
+      ],
+      [
+       -100.0,
+       -236.1
+      ],
+      [
+       -80.0,
+       -233.4
+      ],
+      [
+       -60.0,
+       -236.2
+      ],
+      [
+       -44.0,
+       -232.0
+      ],
+      [
+       -40.0,
+       -305.0
+      ],
+      [
+       40.0,
+       -305.0
+      ],
+      [
+       44.0,
+       -232.0
+      ],
+      [
+       60.0,
+       -228.5
+      ],
+      [
+       80.0,
+       -224.0
+      ],
+      [
+       100.0,
+       -226.8
+      ],
+      [
+       120.0,
+       -235.5
+      ],
+      [
+       140.0,
+       -238.5
+      ],
+      [
+       160.0,
+       -234.9
+      ],
+      [
+       180.0,
+       -234.9
+      ],
+      [
+       200.0,
+       -239.1
+      ],
+      [
+       220.0,
+       -237.2
+      ],
+      [
+       240.0,
+       -228.5
+      ],
+      [
+       260.0,
+       -224.6
+      ],
+      [
+       280.0,
+       -228.3
+      ],
+      [
+       300.0,
+       -229.7
+      ],
+      [
+       320.0,
+       -225.9
+      ],
+      [
+       340.0,
+       -227.0
+      ],
+      [
+       360.0,
+       -235.4
+      ],
+      [
+       380.0,
+       -240.2
+      ],
+      [
+       400.0,
+       -236.5
+      ],
+      [
+       420.0,
+       -233.8
+      ],
+      [
+       440.0,
+       -236.9
+      ],
+      [
+       460.0,
+       -236.7
+      ],
+      [
+       480.0,
+       -228.7
+      ],
+      [
+       500.0,
+       -223.2
+      ],
+      [
+       520.0,
+       -226.7
+      ],
+      [
+       540.0,
+       -230.6
+      ],
+      [
+       560.0,
+       -228.4
+      ],
+      [
+       580.0,
+       -227.8
+      ],
+      [
+       600.0,
+       -235.0
+      ],
+      [
+       620.0,
+       -241.2
+      ],
+      [
+       640.0,
+       -238.1
+      ],
+      [
+       660.0,
+       -233.1
+      ],
+      [
+       680.0,
+       -234.3
+      ],
+      [
+       700.0,
+       -235.5
+      ],
+      [
+       720.0,
+       -229.2
+      ],
+      [
+       740.0,
+       -222.6
+      ],
+      [
+       760.0,
+       -225.1
+      ],
+      [
+       780.0,
+       -231.1
+      ],
+      [
+       800.0,
+       -231.0
+      ]
+     ]
+    },
+    "material": "bench top; notch at x -44..44 holds Peppermint Dam"
+   },
+   {
+    "id": "hoodoo_bench",
+    "op": "set",
+    "height": 150.0,
+    "falloff": 4.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "polygon",
+     "points": [
+      [
+       -800.0,
+       -800.0
+      ],
+      [
+       -240.0,
+       -800.0
+      ],
+      [
+       -238.0,
+       -420.0
+      ],
+      [
+       -242.0,
+       -320.0
+      ],
+      [
+       -238.0,
+       -240.0
+      ],
+      [
+       -244.0,
+       -140.0
+      ],
+      [
+       -240.0,
+       -40.0
+      ],
+      [
+       -246.0,
+       95.0
+      ],
+      [
+       -800.0,
+       95.0
+      ]
+     ]
+    },
+    "material": "third tier: hoodoo garden, powdered-sugar dunes"
+   },
+   {
+    "id": "sugarloaf_crown",
+    "op": "set",
+    "height": 190.0,
+    "falloff": 4.0,
+    "edge": "cliff",
+    "shape": {
+     "type": "ellipse",
+     "center": [
+      -370.0,
+      165.0
+     ],
+     "radii": [
+      125.0,
+      105.0
+     ]
+    },
+    "material": "top tier: Sugarloaf Crown"
+   },
+   {
+    "id": "old_sugarloaf",
+    "op": "superellipse_dome",
+    "type": "superellipse_dome",
+    "center": [
+     80.0,
+     18.0,
+     -130.0
+    ],
+    "radius": 72.0,
+    "formula": "y = 18 + 110*sqrt(max(0, 1-(r/72)^4))",
+    "params": {
+     "base": 18,
+     "height": 110,
+     "radius": 72,
+     "exponent": 4
+    },
+    "material": "rock",
+    "note": "Addendum 5: exact superellipse dome, base y18, summit y128; r is horizontal distance from (80,-130)."
+   },
+   {
+    "id": "floor_knoll_s",
+    "op": "hill",
+    "center": [
+     220.0,
+     640.0
+    ],
+    "radii": [
+     90.0,
+     50.0
+    ],
+    "peak": 8.0,
+    "material": "sand"
+   },
+   {
+    "id": "floor_knoll_w",
+    "op": "hill",
+    "center": [
+     -110.0,
+     560.0
+    ],
+    "radii": [
+     40.0,
+     30.0
+    ],
+    "peak": 5.0,
+    "material": "sand"
+   },
+   {
+    "id": "rock_candy_narrows",
+    "op": "slot",
+    "wall": 3.0,
+    "note": "Slot canyon cut into Taffy Mesa: holes H4-H6. points = [x, z, floor y, width]",
+    "points": [
+     [
+      150,
+      330,
+      18.0,
+      44
+     ],
+     [
+      248,
+      330,
+      18.0,
+      44
+     ],
+     [
+      280,
+      330,
+      22,
+      48
+     ],
+     [
+      280,
+      266,
+      22,
+      44
+     ],
+     [
+      280,
+      258,
+      26,
+      44
+     ],
+     [
+      280,
+      150,
+      26,
+      44
+     ]
+    ]
+   },
+   {
+    "id": "taffy_gap",
+    "op": "slot",
+    "wall": 3.0,
+    "note": "Dead-end slot under H7's rope bridges",
+    "points": [
+     [
+      300,
+      108,
+      40,
+      22
+     ],
+     [
+      420,
+      100,
+      40,
+      22
+     ],
+     [
+      520,
+      60,
+      42,
+      24
+     ]
+    ]
+   },
+   {
+    "id": "licorice_slot",
+    "op": "slot",
+    "wall": 3.0,
+    "note": "Slot carrying Licorice Creek west to Licorice Falls",
+    "points": [
+     [
+      180,
+      -45,
+      46,
+      22
+     ],
+     [
+      300,
+      -48,
+      47,
+      22
+     ],
+     [
+      420,
+      -60,
+      47.5,
+      22
+     ],
+     [
+      540,
+      -100,
+      48,
+      22
+     ]
+    ]
+   }
+  ],
+  "rim": {
+   "center": [
+    0.0,
+    0.0
+   ],
+   "half_size": [
+    640.0,
+    640.0
+   ],
+   "exponent": 4.0,
+   "start": 0.86,
+   "full": 0.99,
+   "height": 150.0,
+   "variation": 0.3,
+   "lobes": 7.0,
+   "phase": 0.4,
+   "note": "Outer canyon walls hide the terrain edge"
+  },
+  "path_grading": {
+   "shoulder": 4.0,
+   "stair_bed_drop": 0.6
+  },
+  "pads": {
+   "rule": "Concept pads are flat at their y (felt is built on top later). margin 3 then blend over falloff.",
+   "margin": 3.0,
+   "falloff": 8.0
+  },
+  "strata": {
+   "band": 6.0,
+   "colors": [
+    "#E8736B",
+    "#F6E3C8",
+    "#D9534F",
+    "#F2B48A",
+    "#C8463F",
+    "#FBEAD6"
+   ],
+   "note": "Visual only: cliff faces are painted in horizontal bands by world y (band height 6 studs), candy-stripe sandstone"
+  }
+ },
+ "streams": [
+  {
+   "name": "Sugarloaf River",
+   "points": [
+    {
+     "x": 0.0,
+     "z": -298.0,
+     "level": 16.8,
+     "width": 22.0
+    },
+    {
+     "x": 0.0,
+     "z": -270.0,
+     "level": 16.7,
+     "width": 16.0
+    },
+    {
+     "x": -5.0,
+     "z": -200.0,
+     "level": 16.5,
+     "width": 14.0
+    },
+    {
+     "x": -20.0,
+     "z": -100.0,
+     "level": 16.2,
+     "width": 14.0
+    },
+    {
+     "x": -35.0,
+     "z": 0.0,
+     "level": 15.9,
+     "width": 16.0
+    },
+    {
+     "x": -50.0,
+     "z": 100.0,
+     "level": 15.6,
+     "width": 16.0
+    },
+    {
+     "x": -55.0,
+     "z": 200.0,
+     "level": 15.3,
+     "width": 18.0
+    },
+    {
+     "x": -52.0,
+     "z": 300.0,
+     "level": 15.0,
+     "width": 18.0
+    },
+    {
+     "x": -60.0,
+     "z": 400.0,
+     "level": 14.7,
+     "width": 18.0
+    },
+    {
+     "x": -80.0,
+     "z": 500.0,
+     "level": 14.4,
+     "width": 20.0
+    },
+    {
+     "x": -100.0,
+     "z": 700.0,
+     "level": 14.0,
+     "width": 20.0
+    }
+   ],
+   "depth": 3.0,
+   "bank_slope": 0.8,
+   "bank_reach": 10.0,
+   "note": "From the Peppermint Dam plunge pool south through the canyon floor past the town"
+  },
+  {
+   "name": "Licorice Creek",
+   "points": [
+    {
+     "x": 540.0,
+     "z": -100.0,
+     "level": 46.5,
+     "width": 6.0
+    },
+    {
+     "x": 420.0,
+     "z": -60.0,
+     "level": 46.0,
+     "width": 6.0
+    },
+    {
+     "x": 300.0,
+     "z": -48.0,
+     "level": 45.5,
+     "width": 7.0
+    },
+    {
+     "x": 192.0,
+     "z": -45.0,
+     "level": 45.0,
+     "width": 7.0
+    },
+    {
+     "x": 178.0,
+     "z": -44.0,
+     "level": 16.5,
+     "width": 12.0
+    },
+    {
+     "x": 120.0,
+     "z": -40.0,
+     "level": 16.3,
+     "width": 8.0
+    },
+    {
+     "x": 40.0,
+     "z": -35.0,
+     "level": 16.1,
+     "width": 8.0
+    },
+    {
+     "x": -29.0,
+     "z": -32.0,
+     "level": 16.0,
+     "width": 8.0
+    }
+   ],
+   "depth": 2.0,
+   "bank_slope": 0.8,
+   "bank_reach": 10.0,
+   "note": "Runs west in Licorice Slot, drops off Taffy Mesa as Licorice Falls, joins the river"
+  },
+  {
+   "name": "Fizzwater Creek",
+   "points": [
+    {
+     "x": -470.0,
+     "z": -430.0,
+     "level": 148.6,
+     "width": 6.0
+    },
+    {
+     "x": -330.0,
+     "z": -420.0,
+     "level": 148.3,
+     "width": 7.0
+    },
+    {
+     "x": -248.0,
+     "z": -416.0,
+     "level": 148.0,
+     "width": 8.0
+    },
+    {
+     "x": -236.0,
+     "z": -416.0,
+     "level": 113.6,
+     "width": 12.0
+    },
+    {
+     "x": -205.0,
+     "z": -417.0,
+     "level": 109.0,
+     "width": 10.0
+    },
+    {
+     "x": -180.0,
+     "z": -418.0,
+     "level": 108.0,
+     "width": 10.0
+    }
+   ],
+   "depth": 2.0,
+   "bank_slope": 0.8,
+   "bank_reach": 10.0,
+   "note": "Crosses the Hoodoo Bench, drops as Fizzwater Falls onto the Reservoir Bench, feeds the reservoir"
+  }
+ ],
+ "lakes": [
+  {
+   "name": "Sugarloaf Reservoir",
+   "center": [
+    0.0,
+    -425.0
+   ],
+   "radii": [
+    190.0,
+    112.0
+   ],
+   "level": 108.0,
+   "depth": 8.0,
+   "beach_width": 4.0,
+   "beach_slope": 0.3,
+   "bank_slope": 1.0,
+   "bank_reach": 12.0,
+   "note": "Ellipse. Fill Water to y 108. Held at its south tip by Peppermint Dam."
+  }
+ ],
+ "dam": {
+  "name": "Peppermint Dam",
+  "crest_y": 118.0,
+  "x": [
+   -44.0,
+   44.0
+  ],
+  "z_center": -305.0,
+  "thickness": 10.0,
+  "base_y": 17.0,
+  "spillway": {
+   "x": [
+    -10.0,
+    10.0
+   ],
+   "lip_y": 108.0
+  },
+  "note": "Arched concrete dam with peppermint stripes across the notch in the bench. Crest walkway (path p_h11_h12) at y 116 with solid 3.5-stud parapets and 8-stud side skirts. Spillway in the middle drops into the gorge (Spillway Falls).",
+  "crest_walk": {
+   "path": "p_h11_h12",
+   "clear_width": 8.0,
+   "length": 92.0,
+   "surface_y": 116.0,
+   "boxes": [
+    {
+     "id": "crest_deck",
+     "center": [
+      0,
+      115.7,
+      -305
+     ],
+     "size": [
+      92,
+      0.6,
+      8
+     ],
+     "yaw_deg": 0,
+     "collidable": true
+    },
+    {
+     "id": "crest_landing_east",
+     "center": [
+      46,
+      115.7,
+      -305
+     ],
+     "size": [
+      8,
+      0.6,
+      8
+     ],
+     "yaw_deg": 0,
+     "collidable": true
+    },
+    {
+     "id": "crest_landing_west",
+     "center": [
+      -46,
+      115.7,
+      -305
+     ],
+     "size": [
+      8,
+      0.6,
+      8
+     ],
+     "yaw_deg": 0,
+     "collidable": true
+    },
+    {
+     "id": "crest_parapet_north",
+     "center": [
+      0,
+      117.75,
+      -309.3
+     ],
+     "size": [
+      92,
+      3.5,
+      0.6
+     ],
+     "yaw_deg": 0,
+     "collidable": true,
+     "solid": true
+    },
+    {
+     "id": "crest_parapet_south",
+     "center": [
+      0,
+      117.75,
+      -300.7
+     ],
+     "size": [
+      92,
+      3.5,
+      0.6
+     ],
+     "yaw_deg": 0,
+     "collidable": true,
+     "solid": true
+    },
+    {
+     "id": "crest_skirt_north",
+     "center": [
+      0,
+      112,
+      -309.3
+     ],
+     "size": [
+      92,
+      8,
+      0.6
+     ],
+     "yaw_deg": 0,
+     "collidable": true,
+     "solid": true
+    },
+    {
+     "id": "crest_skirt_south",
+     "center": [
+      0,
+      112,
+      -300.7
+     ],
+     "size": [
+      92,
+      8,
+      0.6
+     ],
+     "yaw_deg": 0,
+     "collidable": true,
+     "solid": true
+    }
+   ],
+   "teleport_points": [
+    "tp_dam_crest_east",
+    "tp_dam_crest_west"
+   ],
+   "note": "All boxes are visible peppermint-striped solids. Skirts meet parapets at deck surface; eight clear studs between parapets."
+  }
+ },
+ "waterfalls": [
+  {
+   "name": "Licorice Falls",
+   "stream": "Licorice Creek",
+   "top": [
+    192,
+    45.0,
+    -45
+   ],
+   "bottom": [
+    178,
+    16.5,
+    -44
+   ],
+   "drop": 28.5,
+   "width": 7.0
+  },
+  {
+   "name": "Fizzwater Falls",
+   "stream": "Fizzwater Creek",
+   "top": [
+    -248,
+    148.0,
+    -416
+   ],
+   "bottom": [
+    -236,
+    113.6,
+    -416
+   ],
+   "drop": 34.4,
+   "width": 8.0
+  },
+  {
+   "name": "Fizzwater Cascade",
+   "stream": "Fizzwater Creek",
+   "top": [
+    -236,
+    113.6,
+    -416
+   ],
+   "bottom": [
+    -205,
+    109.0,
+    -417
+   ],
+   "drop": 4.6,
+   "width": 10.0
+  },
+  {
+   "name": "Spillway Falls",
+   "stream": "Peppermint Dam",
+   "top": [
+    0.0,
+    108.0,
+    -309.0
+   ],
+   "bottom": [
+    0.0,
+    16.8,
+    -298.0
+   ],
+   "drop": 91.2,
+   "width": 20.0,
+   "note": "Spillway sheet down the dam face into the river's plunge pool"
+  }
+ ],
+ "paths": [
+  {
+   "id": "p_spawn_h1",
+   "name": "Junction Walk",
+   "from_hole": null,
+   "to_hole": 1,
+   "width": 8.0,
+   "segments": [
+    {
+     "type": "walk",
+     "start": [
+      75.0,
+      18.0,
+      505.0
+     ],
+     "end": [
+      60.0,
+      18.0,
+      484.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      60.0,
+      18.0,
+      484.0
+     ],
+     "end": [
+      60.0,
+      18.0,
+      479.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      60.0,
+      18.0,
+      479.0
+     ],
+     "end": [
+      60.0,
+      18.0,
+      470.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 39.8,
+   "note": "Junction Plaza (spawn) north to H1, under the trailhead arch view"
+  },
+  {
+   "id": "p_h1_h2",
+   "name": "Boardwalk",
+   "from_hole": 1,
+   "to_hole": 2,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      66.0,
+      18.0,
+      439.5
+     ],
+     "end": [
+      74.0,
+      18.0,
+      438.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      74.0,
+      18.0,
+      438.0
+     ],
+     "end": [
+      80.0,
+      18.0,
+      424.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      80.0,
+      18.0,
+      424.0
+     ],
+     "end": [
+      100.0,
+      18.0,
+      419.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      100.0,
+      18.0,
+      419.0
+     ],
+     "end": [
+      100.0,
+      18.0,
+      410.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 53.0,
+   "note": "Plank boardwalk past the general store"
+  },
+  {
+   "id": "p_h2_h3",
+   "name": "Ranger Footbridge",
+   "from_hole": 2,
+   "to_hole": 3,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      89.0,
+      18.0,
+      364.0
+     ],
+     "end": [
+      84.0,
+      18.0,
+      366.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      84.0,
+      18.0,
+      366.0
+     ],
+     "end": [
+      60.0,
+      18.0,
+      350.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      60.0,
+      18.0,
+      350.0
+     ],
+     "end": [
+      -30.0,
+      18.0,
+      350.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "bridge",
+     "start": [
+      -30.0,
+      18.0,
+      350.0
+     ],
+     "end": [
+      -84.0,
+      18.0,
+      350.0
+     ],
+     "grade": 0.0,
+     "name": "Ranger Footbridge",
+     "rails": [
+      "left",
+      "right"
+     ]
+    },
+    {
+     "type": "walk",
+     "start": [
+      -84.0,
+      18.0,
+      350.0
+     ],
+     "end": [
+      -108.0,
+      18.0,
+      345.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -108.0,
+      18.0,
+      345.0
+     ],
+     "end": [
+      -104.0,
+      18.0,
+      330.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -104.0,
+      18.0,
+      330.0
+     ],
+     "end": [
+      -95.0,
+      18.0,
+      330.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 227.3,
+   "note": "West across the Sugarloaf River on the railed ranger footbridge to the ranger station"
+  },
+  {
+   "id": "p_h3_h4",
+   "name": "Narrows Trail",
+   "from_hole": 3,
+   "to_hole": 4,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -39.5,
+      18.0,
+      331.0
+     ],
+     "end": [
+      -19.0,
+      18.0,
+      330.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -19.0,
+      18.0,
+      330.0
+     ],
+     "end": [
+      0.0,
+      18.0,
+      312.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      0.0,
+      18.0,
+      312.0
+     ],
+     "end": [
+      150.0,
+      18.0,
+      312.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      150.0,
+      18.0,
+      312.0
+     ],
+     "end": [
+      172.0,
+      18.0,
+      320.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      172.0,
+      18.0,
+      320.0
+     ],
+     "end": [
+      191.0,
+      18.0,
+      330.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      191.0,
+      18.0,
+      330.0
+     ],
+     "end": [
+      200.0,
+      18.0,
+      330.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 250.6,
+   "note": "East across the canyon floor into the mouth of the Rock Candy Narrows slot canyon"
+  },
+  {
+   "id": "p_h4_h5",
+   "name": "Geode Steps",
+   "from_hole": 4,
+   "to_hole": 5,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      239.0,
+      18.0,
+      334.5
+     ],
+     "end": [
+      246.0,
+      18.0,
+      330.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      246.0,
+      18.0,
+      330.0
+     ],
+     "end": [
+      250.0,
+      18.0,
+      344.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "landing",
+     "start": [
+      250.0,
+      18.0,
+      344.0
+     ],
+     "end": [
+      253.25,
+      18.0,
+      344.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "stairs",
+     "start": [
+      253.25,
+      18.0,
+      344.0
+     ],
+     "end": [
+      260.75,
+      22.0,
+      344.0
+     ],
+     "steps": 5,
+     "rise": 0.8,
+     "tread": 1.5
+    },
+    {
+     "type": "landing",
+     "start": [
+      260.75,
+      22.0,
+      344.0
+     ],
+     "end": [
+      264.0,
+      22.0,
+      344.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      264.0,
+      22.0,
+      344.0
+     ],
+     "end": [
+      280.0,
+      22.0,
+      340.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      280.0,
+      22.0,
+      340.0
+     ],
+     "end": [
+      280.0,
+      22.0,
+      335.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      280.0,
+      22.0,
+      335.0
+     ],
+     "end": [
+      280.0,
+      22.0,
+      326.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 68.4,
+   "note": ""
+  },
+  {
+   "id": "p_h5_h6",
+   "name": "Slot Steps",
+   "from_hole": 5,
+   "to_hole": 6,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      279.5,
+      22.0,
+      284.0
+     ],
+     "end": [
+      296.0,
+      22.0,
+      278.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      296.0,
+      22.0,
+      278.0
+     ],
+     "end": [
+      297.0,
+      22.0,
+      276.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "landing",
+     "start": [
+      297.0,
+      22.0,
+      276.0
+     ],
+     "end": [
+      297.0,
+      22.0,
+      274.75
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "stairs",
+     "start": [
+      297.0,
+      22.0,
+      274.75
+     ],
+     "end": [
+      297.0,
+      26.0,
+      267.25
+     ],
+     "steps": 5,
+     "rise": 0.8,
+     "tread": 1.5
+    },
+    {
+     "type": "landing",
+     "start": [
+      297.0,
+      26.0,
+      267.25
+     ],
+     "end": [
+      297.0,
+      26.0,
+      266.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      297.0,
+      26.0,
+      266.0
+     ],
+     "end": [
+      280.0,
+      26.0,
+      264.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      280.0,
+      26.0,
+      264.0
+     ],
+     "end": [
+      280.0,
+      26.0,
+      255.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 56.9,
+   "note": ""
+  },
+  {
+   "id": "p_h6_h7",
+   "name": "Rock Candy Lift",
+   "from_hole": 6,
+   "to_hole": 7,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      276.0,
+      26.0,
+      210.0
+     ],
+     "end": [
+      280.0,
+      26.0,
+      192.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      280.0,
+      26.0,
+      192.0
+     ],
+     "end": [
+      298.0,
+      26.0,
+      178.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "lift",
+     "start": [
+      298.0,
+      26.0,
+      178.0
+     ],
+     "end": [
+      314.0,
+      70.0,
+      178.0
+     ],
+     "grade": 2.75,
+     "name": "Rock Candy Lift",
+     "rise": 44.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      314.0,
+      70.0,
+      178.0
+     ],
+     "end": [
+      330.0,
+      70.0,
+      166.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      330.0,
+      70.0,
+      166.0
+     ],
+     "end": [
+      340.0,
+      70.0,
+      159.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      340.0,
+      70.0,
+      159.0
+     ],
+     "end": [
+      340.0,
+      70.0,
+      150.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 129.3,
+   "note": "Mine-cage lift up the slot wall (+44) onto Taffy Mesa"
+  },
+  {
+   "id": "p_h7_h8",
+   "name": "Gap Rim Trail",
+   "from_hole": 7,
+   "to_hole": 8,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      343.0,
+      70.0,
+      90.0
+     ],
+     "end": [
+      322.0,
+      70.0,
+      86.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      322.0,
+      70.0,
+      86.0
+     ],
+     "end": [
+      322.0,
+      70.0,
+      68.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      322.0,
+      70.0,
+      68.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      68.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      360.0,
+      70.0,
+      68.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      64.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      360.0,
+      70.0,
+      64.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      55.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 90.4,
+   "note": ""
+  },
+  {
+   "id": "p_h8_h9",
+   "name": "Licorice Rope Bridge",
+   "from_hole": 8,
+   "to_hole": 9,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      365.0,
+      70.0,
+      0.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      -8.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      360.0,
+      70.0,
+      -8.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      -26.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "bridge",
+     "start": [
+      360.0,
+      70.0,
+      -26.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      -80.0
+     ],
+     "grade": 0.0,
+     "name": "Licorice Rope Bridge",
+     "rails": [
+      "left",
+      "right"
+     ]
+    },
+    {
+     "type": "walk",
+     "start": [
+      360.0,
+      70.0,
+      -80.0
+     ],
+     "end": [
+      360.0,
+      70.0,
+      -88.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      360.0,
+      70.0,
+      -88.0
+     ],
+     "end": [
+      316.0,
+      70.0,
+      -88.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      316.0,
+      70.0,
+      -88.0
+     ],
+     "end": [
+      321.0,
+      70.0,
+      -110.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      321.0,
+      70.0,
+      -110.0
+     ],
+     "end": [
+      330.0,
+      70.0,
+      -110.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 165.0,
+   "note": "Rope bridge over Licorice Slot and its creek"
+  },
+  {
+   "id": "p_h9_h10",
+   "name": "Taffy Cliff Lift",
+   "from_hole": 9,
+   "to_hole": 10,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      372.0,
+      70.0,
+      -111.5
+     ],
+     "end": [
+      390.0,
+      70.0,
+      -110.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      390.0,
+      70.0,
+      -110.0
+     ],
+     "end": [
+      400.0,
+      70.0,
+      -130.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      400.0,
+      70.0,
+      -130.0
+     ],
+     "end": [
+      400.0,
+      70.0,
+      -218.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "lift",
+     "start": [
+      400.0,
+      70.0,
+      -218.0
+     ],
+     "end": [
+      400.0,
+      116.0,
+      -246.0
+     ],
+     "grade": 1.6429,
+     "name": "Taffy Cliff Lift",
+     "rise": 46.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      400.0,
+      116.0,
+      -246.0
+     ],
+     "end": [
+      330.0,
+      116.0,
+      -312.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      330.0,
+      116.0,
+      -312.0
+     ],
+     "end": [
+      290.0,
+      116.0,
+      -309.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      290.0,
+      116.0,
+      -309.0
+     ],
+     "end": [
+      290.0,
+      116.0,
+      -300.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 327.6,
+   "note": "Cliff elevator (+46) from Taffy Mesa up to the Reservoir Bench"
+  },
+  {
+   "id": "p_h10_h11",
+   "name": "Bench Rim Walk",
+   "from_hole": 10,
+   "to_hole": 11,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      283.0,
+      112.4,
+      -266.5
+     ],
+     "end": [
+      290.0,
+      112.4,
+      -250.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "landing",
+     "start": [
+      290.0,
+      112.4,
+      -250.0
+     ],
+     "end": [
+      284.66,
+      112.4,
+      -248.81
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "stairs",
+     "start": [
+      284.66,
+      112.4,
+      -248.81
+     ],
+     "end": [
+      277.34,
+      116.0,
+      -247.19
+     ],
+     "steps": 5,
+     "rise": 0.72,
+     "tread": 1.5
+    },
+    {
+     "type": "landing",
+     "start": [
+      277.34,
+      116.0,
+      -247.19
+     ],
+     "end": [
+      272.0,
+      116.0,
+      -246.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      272.0,
+      116.0,
+      -246.0
+     ],
+     "end": [
+      170.0,
+      116.0,
+      -243.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      170.0,
+      116.0,
+      -243.0
+     ],
+     "end": [
+      150.0,
+      116.0,
+      -243.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      150.0,
+      116.0,
+      -243.0
+     ],
+     "end": [
+      150.0,
+      116.0,
+      -252.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 168.2,
+   "note": ""
+  },
+  {
+   "id": "p_h11_h12",
+   "name": "Dam Crest Walk",
+   "from_hole": 11,
+   "to_hole": 12,
+   "width": 8.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      150.0,
+      120.0,
+      -295.0
+     ],
+     "end": [
+      150.0,
+      120.0,
+      -312.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "landing",
+     "start": [
+      150.0,
+      120.0,
+      -312.0
+     ],
+     "end": [
+      142.75,
+      120.0,
+      -312.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "stairs",
+     "start": [
+      142.75,
+      120.0,
+      -312.0
+     ],
+     "end": [
+      135.25,
+      116.0,
+      -312.0
+     ],
+     "steps": 5,
+     "rise": -0.8,
+     "tread": 1.5
+    },
+    {
+     "type": "landing",
+     "start": [
+      135.25,
+      116.0,
+      -312.0
+     ],
+     "end": [
+      128.0,
+      116.0,
+      -312.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      128.0,
+      116.0,
+      -312.0
+     ],
+     "end": [
+      100.0,
+      116.0,
+      -308.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      100.0,
+      116.0,
+      -308.0
+     ],
+     "end": [
+      46.0,
+      116.0,
+      -305.0
+     ],
+     "grade": 0.0,
+     "rails": [
+      "right"
+     ]
+    },
+    {
+     "type": "dam_crest",
+     "start": [
+      46.0,
+      116.0,
+      -305.0
+     ],
+     "end": [
+      -46.0,
+      116.0,
+      -305.0
+     ],
+     "grade": 0.0,
+     "name": "Peppermint Dam crest",
+     "rails": [
+      "left",
+      "right"
+     ]
+    },
+    {
+     "type": "walk",
+     "start": [
+      -46.0,
+      116.0,
+      -305.0
+     ],
+     "end": [
+      -100.0,
+      116.0,
+      -303.0
+     ],
+     "grade": 0.0,
+     "rails": [
+      "right"
+     ]
+    },
+    {
+     "type": "walk",
+     "start": [
+      -100.0,
+      116.0,
+      -303.0
+     ],
+     "end": [
+      -214.0,
+      116.0,
+      -298.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -214.0,
+      116.0,
+      -298.0
+     ],
+     "end": [
+      -214.0,
+      116.0,
+      -278.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -214.0,
+      116.0,
+      -278.0
+     ],
+     "end": [
+      -209.0,
+      116.0,
+      -270.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -209.0,
+      116.0,
+      -270.0
+     ],
+     "end": [
+      -200.0,
+      116.0,
+      -270.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 420.9,
+   "note": "Across the crest of Peppermint Dam: reservoir on the right, spillway falls and the gorge on the left"
+  },
+  {
+   "id": "p_h12_h13",
+   "name": "Gumdrop Lift",
+   "from_hole": 12,
+   "to_hole": 13,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -142.0,
+      116.0,
+      -268.0
+     ],
+     "end": [
+      -142.0,
+      116.0,
+      -248.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -142.0,
+      116.0,
+      -248.0
+     ],
+     "end": [
+      -224.0,
+      116.0,
+      -246.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "lift",
+     "start": [
+      -224.0,
+      116.0,
+      -246.0
+     ],
+     "end": [
+      -254.0,
+      150.0,
+      -246.0
+     ],
+     "grade": 1.1333,
+     "name": "Gumdrop Lift",
+     "rise": 34.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -254.0,
+      150.0,
+      -246.0
+     ],
+     "end": [
+      -264.0,
+      150.0,
+      -306.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -264.0,
+      150.0,
+      -306.0
+     ],
+     "end": [
+      -290.0,
+      150.0,
+      -304.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -290.0,
+      150.0,
+      -304.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -299.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -300.0,
+      150.0,
+      -299.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -290.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 254.5,
+   "note": "Lift (+34) up onto the Hoodoo Bench"
+  },
+  {
+   "id": "p_h13_h14",
+   "name": "Hoodoo Lane",
+   "from_hole": 13,
+   "to_hole": 14,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -300.5,
+      150.0,
+      -239.0
+     ],
+     "end": [
+      -280.0,
+      150.0,
+      -242.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -280.0,
+      150.0,
+      -242.0
+     ],
+     "end": [
+      -278.0,
+      150.0,
+      -212.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -278.0,
+      150.0,
+      -212.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -209.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -300.0,
+      150.0,
+      -209.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -200.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 82.0,
+   "note": ""
+  },
+  {
+   "id": "p_h14_h15",
+   "name": "Cableway Walk",
+   "from_hole": 14,
+   "to_hole": 15,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -301.0,
+      150.8,
+      -156.0
+     ],
+     "end": [
+      -282.0,
+      150.0,
+      -154.0
+     ],
+     "grade": -0.0419
+    },
+    {
+     "type": "walk",
+     "start": [
+      -282.0,
+      150.0,
+      -154.0
+     ],
+     "end": [
+      -278.0,
+      150.0,
+      -128.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -278.0,
+      150.0,
+      -128.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -124.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -300.0,
+      150.0,
+      -124.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -115.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 76.8,
+   "note": ""
+  },
+  {
+   "id": "p_h15_h16",
+   "name": "Crown Lift",
+   "from_hole": 15,
+   "to_hole": 16,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -306.0,
+      145.4,
+      -58.0
+     ],
+     "end": [
+      -300.0,
+      145.4,
+      -44.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "landing",
+     "start": [
+      -300.0,
+      145.4,
+      -44.0
+     ],
+     "end": [
+      -300.0,
+      145.4,
+      -39.5
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "stairs",
+     "start": [
+      -300.0,
+      145.4,
+      -39.5
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -30.5
+     ],
+     "steps": 6,
+     "rise": 0.767,
+     "tread": 1.5
+    },
+    {
+     "type": "landing",
+     "start": [
+      -300.0,
+      150.0,
+      -30.5
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      -26.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -300.0,
+      150.0,
+      -26.0
+     ],
+     "end": [
+      -300.0,
+      150.0,
+      66.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "lift",
+     "start": [
+      -300.0,
+      150.0,
+      66.0
+     ],
+     "end": [
+      -300.0,
+      190.0,
+      92.0
+     ],
+     "grade": 1.5385,
+     "name": "Crown Lift",
+     "rise": 40.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -300.0,
+      190.0,
+      92.0
+     ],
+     "end": [
+      -300.0,
+      190.0,
+      103.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -300.0,
+      190.0,
+      103.0
+     ],
+     "end": [
+      -300.0,
+      190.0,
+      112.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 194.0,
+   "note": "Lift (+40) up the north face of Sugarloaf Crown"
+  },
+  {
+   "id": "p_h16_h17",
+   "name": "Crown Steps",
+   "from_hole": 16,
+   "to_hole": 17,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -301.8,
+      186.4,
+      150.5
+     ],
+     "end": [
+      -300.0,
+      186.4,
+      162.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "landing",
+     "start": [
+      -300.0,
+      186.4,
+      162.0
+     ],
+     "end": [
+      -303.56,
+      186.4,
+      166.15
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "stairs",
+     "start": [
+      -303.56,
+      186.4,
+      166.15
+     ],
+     "end": [
+      -308.44,
+      190.0,
+      171.85
+     ],
+     "steps": 5,
+     "rise": 0.72,
+     "tread": 1.5
+    },
+    {
+     "type": "landing",
+     "start": [
+      -308.44,
+      190.0,
+      171.85
+     ],
+     "end": [
+      -312.0,
+      190.0,
+      176.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -312.0,
+      190.0,
+      176.0
+     ],
+     "end": [
+      -320.0,
+      190.0,
+      244.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -320.0,
+      190.0,
+      244.0
+     ],
+     "end": [
+      -345.0,
+      190.0,
+      241.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -345.0,
+      190.0,
+      241.0
+     ],
+     "end": [
+      -345.0,
+      190.0,
+      232.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 133.5,
+   "note": ""
+  },
+  {
+   "id": "p_h17_h18",
+   "name": "Rim Walk",
+   "from_hole": 17,
+   "to_hole": 18,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -334.9,
+      190.0,
+      189.0
+     ],
+     "end": [
+      -366.0,
+      190.0,
+      184.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -366.0,
+      190.0,
+      184.0
+     ],
+     "end": [
+      -382.0,
+      190.0,
+      190.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -382.0,
+      190.0,
+      190.0
+     ],
+     "end": [
+      -382.0,
+      190.0,
+      250.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "walk",
+     "start": [
+      -382.0,
+      190.0,
+      250.0
+     ],
+     "end": [
+      -420.0,
+      190.0,
+      245.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "on_hole",
+     "start": [
+      -420.0,
+      190.0,
+      245.0
+     ],
+     "end": [
+      -420.0,
+      190.0,
+      236.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 155.9,
+   "note": ""
+  },
+  {
+   "id": "p_h18_hub",
+   "name": "Sunset Gondola",
+   "from_hole": 18,
+   "to_hole": null,
+   "width": 6.0,
+   "segments": [
+    {
+     "type": "on_hole",
+     "start": [
+      -412.0,
+      190.8,
+      172.0
+     ],
+     "end": [
+      -420.0,
+      190.0,
+      154.0
+     ],
+     "grade": -0.0406
+    },
+    {
+     "type": "walk",
+     "start": [
+      -420.0,
+      190.0,
+      154.0
+     ],
+     "end": [
+      -420.0,
+      190.0,
+      136.0
+     ],
+     "grade": 0.0
+    },
+    {
+     "type": "gondola",
+     "start": [
+      -420.0,
+      190.0,
+      136.0
+     ],
+     "end": [
+      130.0,
+      18.0,
+      540.0
+     ],
+     "grade": -0.252,
+     "name": "Sunset Gondola"
+    },
+    {
+     "type": "walk",
+     "start": [
+      130.0,
+      18.0,
+      540.0
+     ],
+     "end": [
+      84.0,
+      18.0,
+      514.0
+     ],
+     "grade": 0.0
+    }
+   ],
+   "length": 90.6,
+   "note": "From Sunset Point a slow gondola glides back down to Junction Plaza (seated, enclosed cabin, ~3 min)"
+  }
+ ],
+ "path_rules": {
+  "max_ramp_grade": 0.1,
+  "max_step_rise": 1.0,
+  "design_step_rise": 0.8,
+  "tread": 1.5,
+  "max_steps_per_flight": 10,
+  "landing_length": 4.0,
+  "min_width": 5.0,
+  "max_lift_rise": 60.0,
+  "max_lift_offset": 30.0,
+  "rail_drop": 4.0,
+  "segment_types": "on_hole (across the hole's own area), walk (<1% grade), ramp (<=10%), stairs (flight: steps x rise, tread), landing (flat), bridge (rope/plank bridge, railed), dam_crest (railed walkway on the dam), lift (vertical cage lift: start/end = boarding points), gondola (cable car)",
+  "rails": "seg.rails = ['left'|'right'...]: sides that need a railing because the ground drops > rail_drop studs within 2.5 studs of the walkway edge (left/right relative to walking direction). Bridges and dam crest: both."
+ },
+ "lifts": [
+  {
+   "name": "Rock Candy Lift",
+   "type": "lift",
+   "path": "p_h6_h7",
+   "bottom": [
+    298.0,
+    26.0,
+    178.0
+   ],
+   "top": [
+    314.0,
+    70.0,
+    178.0
+   ],
+   "rise": 44.0,
+   "speed_studs_s": 4.0,
+   "note": "Open-sided mine-cage lift, constant 4 studs/s (1.2 m/s), no acceleration jolts; railings all round; the player stands still. Teleport alternative at both ends."
+  },
+  {
+   "name": "Taffy Cliff Lift",
+   "type": "lift",
+   "path": "p_h9_h10",
+   "bottom": [
+    400.0,
+    70.0,
+    -218.0
+   ],
+   "top": [
+    400.0,
+    116.0,
+    -246.0
+   ],
+   "rise": 46.0,
+   "speed_studs_s": 4.0,
+   "note": "Open-sided mine-cage lift, constant 4 studs/s (1.2 m/s), no acceleration jolts; railings all round; the player stands still. Teleport alternative at both ends."
+  },
+  {
+   "name": "Gumdrop Lift",
+   "type": "lift",
+   "path": "p_h12_h13",
+   "bottom": [
+    -224.0,
+    116.0,
+    -246.0
+   ],
+   "top": [
+    -254.0,
+    150.0,
+    -246.0
+   ],
+   "rise": 34.0,
+   "speed_studs_s": 4.0,
+   "note": "Open-sided mine-cage lift, constant 4 studs/s (1.2 m/s), no acceleration jolts; railings all round; the player stands still. Teleport alternative at both ends."
+  },
+  {
+   "name": "Crown Lift",
+   "type": "lift",
+   "path": "p_h15_h16",
+   "bottom": [
+    -300.0,
+    150.0,
+    66.0
+   ],
+   "top": [
+    -300.0,
+    190.0,
+    92.0
+   ],
+   "rise": 40.0,
+   "speed_studs_s": 4.0,
+   "note": "Open-sided mine-cage lift, constant 4 studs/s (1.2 m/s), no acceleration jolts; railings all round; the player stands still. Teleport alternative at both ends."
+  },
+  {
+   "name": "Sunset Gondola",
+   "type": "gondola",
+   "path": "p_h18_hub",
+   "bottom": [
+    130.0,
+    18.0,
+    540.0
+   ],
+   "top": [
+    -420.0,
+    190.0,
+    136.0
+   ],
+   "rise": 172.0,
+   "speed_studs_s": 6.0,
+   "note": "Seated enclosed gondola cabin, 6 studs/s, straight cable; skip-able by teleport"
+  }
+ ],
+ "teleport_points": [
+  {
+   "id": "tp_junction",
+   "name": "Junction Plaza",
+   "pos": [
+    86,
+    18.0,
+    510
+   ],
+   "zone": "Sugarloaf Junction"
+  },
+  {
+   "id": "tp_narrows",
+   "name": "Narrows Mouth",
+   "pos": [
+    160,
+    18.0,
+    322
+   ],
+   "zone": "Rock Candy Narrows"
+  },
+  {
+   "id": "tp_taffy",
+   "name": "Taffy Lift Top",
+   "pos": [
+    322,
+    70.0,
+    184
+   ],
+   "zone": "Taffy Mesa"
+  },
+  {
+   "id": "tp_dam",
+   "name": "Dam East Overlook",
+   "pos": [
+    64,
+    116.0,
+    -296
+   ],
+   "zone": "Sugarloaf Dam"
+  },
+  {
+   "id": "tp_dam_crest_east",
+   "name": "Dam crest east end",
+   "pos": [
+    46,
+    116.0,
+    -305
+   ],
+   "size": [
+    4,
+    0.1,
+    4
+   ],
+   "support_box": "crest_landing_east",
+   "zone": "Sugarloaf Dam"
+  },
+  {
+   "id": "tp_dam_crest_west",
+   "name": "Dam crest west end",
+   "pos": [
+    -46,
+    116.0,
+    -305
+   ],
+   "size": [
+    4,
+    0.1,
+    4
+   ],
+   "support_box": "crest_landing_west",
+   "zone": "Sugarloaf Dam"
+  },
+  {
+   "id": "tp_hoodoo",
+   "name": "Hoodoo Lift Top",
+   "pos": [
+    -262,
+    150.0,
+    -236
+   ],
+   "zone": "Hoodoo Garden"
+  },
+  {
+   "id": "tp_crown",
+   "name": "Crown Lift Top",
+   "pos": [
+    -290,
+    190.0,
+    96
+   ],
+   "zone": "Sugarloaf Crown"
+  }
+ ],
+ "pois": [
+  {
+   "id": "junction_plaza",
+   "name": "Junction Plaza",
+   "pos": [
+    75.0,
+    18.0,
+    505.0
+   ],
+   "radius": 14.0,
+   "kind": "plaza",
+   "note": "Spawn and hub: course board, gondola arrival, teleport kiosk, saloon-style clubhouse"
+  },
+  {
+   "id": "general_store",
+   "name": "Junction General Store",
+   "pos": [
+    150.0,
+    18.0,
+    455.0
+   ],
+   "kind": "landmark",
+   "note": "Boardwalk storefronts, candy barrels"
+  },
+  {
+   "id": "mine-head",
+   "name": "Mine-head",
+   "pos": [
+    134.0,
+    18.3,
+    392.0
+   ],
+   "kind": "landmark",
+   "note": "East of H2: candy-striped headframe, winding house and ore cart; ground sampled from terrain."
+  },
+  {
+   "id": "water_tower",
+   "name": "Candy-striped Water Tower",
+   "pos": [
+    14.0,
+    18.0,
+    440.0
+   ],
+   "kind": "landmark"
+  },
+  {
+   "id": "ranger_station",
+   "name": "Ranger Station",
+   "pos": [
+    -75.0,
+    18.0,
+    311.0
+   ],
+   "radius": 10.0,
+   "kind": "landmark",
+   "note": "Locator only: instantiate the hole anchor once; no separate world mesh.",
+   "source": "holes.json H3.decoration_anchors[ranger_station]",
+   "size": [
+    10,
+    18,
+    10
+   ],
+   "instantiate": false
+  },
+  {
+   "id": "narrows_mouth",
+   "name": "Narrows Mouth",
+   "pos": [
+    165.0,
+    18.0,
+    340.0
+   ],
+   "kind": "viewpoint",
+   "note": "Entrance to the slot canyon, crystal arch"
+  },
+  {
+   "id": "taffy_overlook",
+   "name": "Taffy Gap Overlook",
+   "pos": [
+    300.0,
+    70.0,
+    70.0
+   ],
+   "kind": "viewpoint"
+  },
+  {
+   "id": "old_sugarloaf",
+   "name": "Old Sugarloaf",
+   "pos": [
+    80.0,
+    18.0,
+    -130.0
+   ],
+   "kind": "landmark",
+   "note": "Free-standing striped dome, base y18 and summit y128; superellipse terrain feature"
+  },
+  {
+   "id": "dam",
+   "name": "Peppermint Dam",
+   "pos": [
+    0.0,
+    116.0,
+    -305.0
+   ],
+   "kind": "landmark"
+  },
+  {
+   "id": "intake_tower",
+   "name": "Intake Tower",
+   "pos": [
+    -162.0,
+    114.8,
+    -264.0
+   ],
+   "kind": "landmark",
+   "note": "Locator only: instantiate the hole anchor once; no separate world mesh.",
+   "source": "holes.json H12.decoration_anchors[intake_tower]",
+   "size": [
+    7,
+    16,
+    7
+   ],
+   "instantiate": false
+  },
+  {
+   "id": "hoodoo_garden",
+   "name": "Hoodoo Garden",
+   "pos": [
+    -380.0,
+    150.0,
+    -200.0
+   ],
+   "kind": "decor",
+   "note": "Dense cluster of hoodoo spires west of H13-H15"
+  },
+  {
+   "id": "sunset_point",
+   "name": "Sunset Point",
+   "pos": [
+    -420.0,
+    190.0,
+    136.0
+   ],
+   "radius": 8.0,
+   "kind": "viewpoint",
+   "note": "Gondola top station; course finish board"
+  },
+  {
+   "id": "sunset_arch",
+   "name": "Sunset Arch",
+   "pos": [
+    -478.0,
+    190.0,
+    205.0
+   ],
+   "kind": "landmark",
+   "note": "Natural arch on the Crown's west rim beside H18; frames the setting sun from the H18 green"
+  }
+ ],
+ "heightmap": {
+  "file": "heightmap.png",
+  "stud_per_px": 1.0,
+  "y_min": 0.0,
+  "y_max": 260.0,
+  "bit_depth": 16,
+  "mapping": "pixel (i=col, j=row) centre -> x = bounds.x[0] + (i+0.5), z = bounds.z[0] + (j+0.5) (row 0 = north edge); y = gray/65535*260"
+ },
+ "backdrop": {
+  "rings": [
+   {
+    "id": "canyon_rim",
+    "name": "Outer canyon walls (terrain rim)",
+    "note": "Rim rises to y ~150-200 at the terrain edge, striped cliffs"
+   },
+   {
+    "id": "butte_spires",
+    "name": "Butte spires",
+    "radius": [
+     720,
+     900
+    ],
+    "count": 10
+   },
+   {
+    "id": "far_mesas",
+    "name": "Distant mesas",
+    "radius": [
+     1000,
+     1500
+    ],
+    "count": 14,
+    "color": "lilac #B49AC9 -> peach #F2B48A with height haze"
+   },
+   {
+    "id": "sky",
+    "name": "Sunset sky",
+    "radius": [
+     1800,
+     2400
+    ],
+    "note": "In-game sun at bearing 277 / elevation 25, pink-orange cloud streaks, balloons"
+   }
+  ],
+  "pieces": [
+   {
+    "id": "far_mesa_01",
+    "kind": "distant_mesa",
+    "pos": [
+     1391,
+     0,
+     69
+    ],
+    "size": [
+     456,
+     151,
+     259
+    ],
+    "yaw_deg": 87.2,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_02",
+    "kind": "distant_mesa",
+    "pos": [
+     953,
+     0,
+     635
+    ],
+    "size": [
+     344,
+     136,
+     239
+    ],
+    "yaw_deg": 56.3,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_03",
+    "kind": "distant_mesa",
+    "pos": [
+     749,
+     0,
+     851
+    ],
+    "size": [
+     332,
+     140,
+     247
+    ],
+    "yaw_deg": 41.3,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_04",
+    "kind": "distant_mesa",
+    "pos": [
+     224,
+     0,
+     1078
+    ],
+    "size": [
+     321,
+     132,
+     281
+    ],
+    "yaw_deg": 11.7,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_05",
+    "kind": "distant_mesa",
+    "pos": [
+     -263,
+     0,
+     1341
+    ],
+    "size": [
+     541,
+     176,
+     215
+    ],
+    "yaw_deg": -11.1,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_06",
+    "kind": "distant_mesa",
+    "pos": [
+     -926,
+     0,
+     1020
+    ],
+    "size": [
+     419,
+     267,
+     245
+    ],
+    "yaw_deg": -42.2,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_07",
+    "kind": "distant_mesa",
+    "pos": [
+     -1339,
+     0,
+     463
+    ],
+    "size": [
+     538,
+     328,
+     235
+    ],
+    "yaw_deg": -70.9,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_08",
+    "kind": "distant_mesa",
+    "pos": [
+     -1366,
+     0,
+     -17
+    ],
+    "size": [
+     540,
+     303,
+     221
+    ],
+    "yaw_deg": -90.7,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_09",
+    "kind": "distant_mesa",
+    "pos": [
+     -931,
+     0,
+     -490
+    ],
+    "size": [
+     512,
+     262,
+     268
+    ],
+    "yaw_deg": -117.7,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_10",
+    "kind": "distant_mesa",
+    "pos": [
+     -666,
+     0,
+     -825
+    ],
+    "size": [
+     444,
+     250,
+     255
+    ],
+    "yaw_deg": -141.1,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_11",
+    "kind": "distant_mesa",
+    "pos": [
+     -163,
+     0,
+     -1424
+    ],
+    "size": [
+     567,
+     153,
+     204
+    ],
+    "yaw_deg": -173.5,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_12",
+    "kind": "distant_mesa",
+    "pos": [
+     200,
+     0,
+     -1038
+    ],
+    "size": [
+     512,
+     136,
+     219
+    ],
+    "yaw_deg": -190.9,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_13",
+    "kind": "distant_mesa",
+    "pos": [
+     691,
+     0,
+     -983
+    ],
+    "size": [
+     521,
+     148,
+     245
+    ],
+    "yaw_deg": -215.1,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "far_mesa_14",
+    "kind": "distant_mesa",
+    "pos": [
+     942,
+     0,
+     -398
+    ],
+    "size": [
+     363,
+     161,
+     313
+    ],
+    "yaw_deg": -247.1,
+    "note": "Flat-topped striped mesa silhouette; hazed lilac to peach"
+   },
+   {
+    "id": "butte_spire_01",
+    "kind": "butte_spire",
+    "pos": [
+     725,
+     0,
+     -102
+    ],
+    "size": [
+     80,
+     222,
+     51
+    ],
+    "yaw_deg": 157,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_02",
+    "kind": "butte_spire",
+    "pos": [
+     627,
+     0,
+     384
+    ],
+    "size": [
+     60,
+     181,
+     78
+    ],
+    "yaw_deg": 40,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_03",
+    "kind": "butte_spire",
+    "pos": [
+     236,
+     0,
+     846
+    ],
+    "size": [
+     91,
+     157,
+     89
+    ],
+    "yaw_deg": 228,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_04",
+    "kind": "butte_spire",
+    "pos": [
+     -112,
+     0,
+     781
+    ],
+    "size": [
+     89,
+     255,
+     106
+    ],
+    "yaw_deg": 205,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_05",
+    "kind": "butte_spire",
+    "pos": [
+     -738,
+     0,
+     502
+    ],
+    "size": [
+     63,
+     206,
+     54
+    ],
+    "yaw_deg": 279,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_06",
+    "kind": "butte_spire",
+    "pos": [
+     -757,
+     0,
+     -41
+    ],
+    "size": [
+     62,
+     208,
+     95
+    ],
+    "yaw_deg": 49,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_07",
+    "kind": "butte_spire",
+    "pos": [
+     -685,
+     0,
+     -436
+    ],
+    "size": [
+     66,
+     247,
+     94
+    ],
+    "yaw_deg": 344,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_08",
+    "kind": "butte_spire",
+    "pos": [
+     -221,
+     0,
+     -813
+    ],
+    "size": [
+     67,
+     206,
+     76
+    ],
+    "yaw_deg": 172,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_09",
+    "kind": "butte_spire",
+    "pos": [
+     140,
+     0,
+     -862
+    ],
+    "size": [
+     59,
+     200,
+     106
+    ],
+    "yaw_deg": 185,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "butte_spire_10",
+    "kind": "butte_spire",
+    "pos": [
+     673,
+     0,
+     -367
+    ],
+    "size": [
+     78,
+     192,
+     69
+    ],
+    "yaw_deg": 133,
+    "note": "Tall striped butte/spire just outside the canyon rim"
+   },
+   {
+    "id": "far_arch_west",
+    "kind": "far_arch",
+    "pos": [
+     -1250.0,
+     0.0,
+     60.0
+    ],
+    "size": [
+     420,
+     300,
+     80
+    ],
+    "note": "Huge natural arch on the western horizon; hero sun is horizontally aligned at bearing 277; requested elevation +2 is 1 degree above the opening top"
+   },
+   {
+    "id": "sugarloaf_twins",
+    "kind": "far_butte",
+    "pos": [
+     -900.0,
+     0.0,
+     -700.0
+    ],
+    "size": [
+     260,
+     380,
+     260
+    ],
+    "note": "Two rounded sugarloaf domes far to the north-west"
+   },
+   {
+    "id": "hot_air_balloons",
+    "kind": "sky",
+    "pos": [
+     0.0,
+     320.0,
+     0.0
+    ],
+    "size": [
+     24,
+     30,
+     24
+    ],
+    "note": "6 candy-striped hot-air balloons drifting slowly on loops r 500-900, y 260-420"
+   },
+   {
+    "id": "sun_disc",
+    "kind": "sky",
+    "pos": [
+     -2382.11,
+     1119.14,
+     -292.49
+    ],
+    "size": [
+     260,
+     260,
+     1
+    ],
+    "note": "In-game sun direction bearing 277, elevation 25; orient sky disc to camera. Hero lighting uses separate hero_render_sun."
+   },
+   {
+    "id": "cloud_streaks",
+    "kind": "sky",
+    "pos": [
+     0.0,
+     700.0,
+     0.0
+    ],
+    "size": [
+     800,
+     60,
+     200
+    ],
+    "note": "8 long pink-orange cloud streaks at r 1800-2400"
+   },
+   {
+    "id": "old_sugarloaf_dome",
+    "kind": "hero_landmark",
+    "pos": [
+     80.0,
+     18.0,
+     -130.0
+    ],
+    "size": [
+     144,
+     110,
+     144
+    ],
+    "note": "Mesh dressing over the terrain dome: candy-striped strata bands, a lone lollipop cactus on top"
+   },
+   {
+    "id": "peppermint_dam",
+    "kind": "hero_structure",
+    "pos": [
+     0.0,
+     17.0,
+     -305.0
+    ],
+    "size": [
+     88,
+     101,
+     10
+    ],
+    "note": "Curved dam with red/white stripes, crest walkway + railings, spillway slot 20 wide"
+   },
+   {
+    "id": "junction_town",
+    "kind": "building_set",
+    "pos": [
+     150.0,
+     17.8,
+     455.0
+    ],
+    "size": [
+     30,
+     14,
+     80
+    ],
+    "note": "Row of 5 false-front shops (candy store, saloon-clubhouse, assay office)"
+   },
+   {
+    "id": "mine-head",
+    "kind": "building",
+    "pos": [
+     134.0,
+     18.3,
+     392.0
+    ],
+    "size": [
+     14,
+     18,
+     12
+    ],
+    "note": "Candy-striped mine headframe and winding house east of H2"
+   },
+   {
+    "id": "water_tower",
+    "kind": "building",
+    "pos": [
+     14.0,
+     17.7,
+     440.0
+    ],
+    "size": [
+     10,
+     30,
+     10
+    ],
+    "note": "Candy-striped water tower"
+   },
+   {
+    "id": "gondola_top_station",
+    "kind": "structure",
+    "pos": [
+     -420.0,
+     190.1,
+     128.0
+    ],
+    "size": [
+     16,
+     14,
+     12
+    ],
+    "note": "Sunset Gondola top station"
+   },
+   {
+    "id": "gondola_bottom_station",
+    "kind": "structure",
+    "pos": [
+     132.0,
+     18.0,
+     544.0
+    ],
+    "size": [
+     16,
+     14,
+     12
+    ],
+    "note": "Sunset Gondola bottom station"
+   },
+   {
+    "id": "sunset_arch",
+    "kind": "hero_landmark",
+    "pos": [
+     -478.0,
+     190.4,
+     205.0
+    ],
+    "size": [
+     16,
+     46,
+     50
+    ],
+    "note": "Natural arch on the Crown's west rim, opening 30 wide x 34 high, faces west"
+   },
+   {
+    "id": "cableway_trestles",
+    "kind": "structure",
+    "pos": [
+     -330.0,
+     150.0,
+     -200.0
+    ],
+    "size": [
+     6,
+     30,
+     6
+    ],
+    "note": "3 old ore-cableway trestles across the Hoodoo Bench (H14 theme), one per 60 studs"
+   },
+   {
+    "id": "hoodoo_spire_01",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -404.2,
+     150.2,
+     -17.5
+    ],
+    "size": [
+     11.8,
+     20.1,
+     11.8
+    ],
+    "yaw_deg": 240,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_02",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -382.5,
+     150.1,
+     -227.6
+    ],
+    "size": [
+     6.2,
+     26.0,
+     6.2
+    ],
+    "yaw_deg": 114,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_03",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -424.6,
+     150.0,
+     -139.2
+    ],
+    "size": [
+     8.2,
+     24.5,
+     8.2
+    ],
+    "yaw_deg": 99,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_04",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -265.9,
+     150.2,
+     -238.0
+    ],
+    "size": [
+     11.8,
+     21.6,
+     11.8
+    ],
+    "yaw_deg": 239,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_05",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -375.8,
+     150.2,
+     -82.2
+    ],
+    "size": [
+     9.1,
+     37.2,
+     9.1
+    ],
+    "yaw_deg": 212,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_06",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -507.9,
+     150.2,
+     -95.5
+    ],
+    "size": [
+     9.7,
+     23.4,
+     9.7
+    ],
+    "yaw_deg": 263,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_07",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -444.8,
+     150.0,
+     -141.2
+    ],
+    "size": [
+     8.7,
+     19.6,
+     8.7
+    ],
+    "yaw_deg": 162,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_08",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -377.7,
+     150.0,
+     -146.4
+    ],
+    "size": [
+     8.1,
+     35.3,
+     8.1
+    ],
+    "yaw_deg": 244,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_09",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -452.8,
+     150.0,
+     -260.3
+    ],
+    "size": [
+     11.6,
+     22.9,
+     11.6
+    ],
+    "yaw_deg": 161,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_10",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -441.0,
+     150.0,
+     -144.2
+    ],
+    "size": [
+     10.8,
+     20.7,
+     10.8
+    ],
+    "yaw_deg": 69,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_11",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -503.4,
+     150.2,
+     -368.3
+    ],
+    "size": [
+     9.1,
+     28.8,
+     9.1
+    ],
+    "yaw_deg": 340,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_12",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -402.2,
+     149.8,
+     -172.5
+    ],
+    "size": [
+     6.2,
+     23.0,
+     6.2
+    ],
+    "yaw_deg": 111,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_13",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -456.6,
+     149.8,
+     -43.9
+    ],
+    "size": [
+     8.5,
+     21.0,
+     8.5
+    ],
+    "yaw_deg": 192,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_14",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -479.4,
+     150.2,
+     -338.8
+    ],
+    "size": [
+     9.6,
+     19.9,
+     9.6
+    ],
+    "yaw_deg": 272,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_15",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -405.9,
+     150.0,
+     -398.5
+    ],
+    "size": [
+     10.0,
+     39.2,
+     10.0
+    ],
+    "yaw_deg": 266,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_16",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -393.6,
+     149.8,
+     -66.8
+    ],
+    "size": [
+     8.4,
+     39.3,
+     8.4
+    ],
+    "yaw_deg": 152,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_17",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -514.3,
+     150.3,
+     -383.4
+    ],
+    "size": [
+     8.6,
+     18.4,
+     8.6
+    ],
+    "yaw_deg": 220,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_18",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -261.4,
+     150.1,
+     27.2
+    ],
+    "size": [
+     11.9,
+     23.5,
+     11.9
+    ],
+    "yaw_deg": 65,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_19",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -501.7,
+     149.9,
+     26.1
+    ],
+    "size": [
+     6.2,
+     19.6,
+     6.2
+    ],
+    "yaw_deg": 240,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_20",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -273.6,
+     149.8,
+     -168.3
+    ],
+    "size": [
+     6.4,
+     18.8,
+     6.4
+    ],
+    "yaw_deg": 295,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_21",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -341.0,
+     149.9,
+     -277.9
+    ],
+    "size": [
+     11.9,
+     24.2,
+     11.9
+    ],
+    "yaw_deg": 53,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_22",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -268.8,
+     150.2,
+     -402.7
+    ],
+    "size": [
+     8.2,
+     22.0,
+     8.2
+    ],
+    "yaw_deg": 230,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_23",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -392.9,
+     150.1,
+     -306.5
+    ],
+    "size": [
+     9.8,
+     20.4,
+     9.8
+    ],
+    "yaw_deg": 354,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_24",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -316.3,
+     149.8,
+     -327.7
+    ],
+    "size": [
+     9.6,
+     24.0,
+     9.6
+    ],
+    "yaw_deg": 207,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_25",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -438.0,
+     150.1,
+     -327.0
+    ],
+    "size": [
+     8.9,
+     19.6,
+     8.9
+    ],
+    "yaw_deg": 357,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_26",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -315.2,
+     149.8,
+     -318.6
+    ],
+    "size": [
+     9.6,
+     21.9,
+     9.6
+    ],
+    "yaw_deg": 60,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_27",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -420.4,
+     150.0,
+     -79.2
+    ],
+    "size": [
+     6.4,
+     38.6,
+     6.4
+    ],
+    "yaw_deg": 90,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_28",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -477.3,
+     149.6,
+     -191.1
+    ],
+    "size": [
+     11.4,
+     27.1,
+     11.4
+    ],
+    "yaw_deg": 193,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_29",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -263.4,
+     150.1,
+     -171.7
+    ],
+    "size": [
+     8.1,
+     22.2,
+     8.1
+    ],
+    "yaw_deg": 188,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_30",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -355.9,
+     150.1,
+     -139.8
+    ],
+    "size": [
+     7.2,
+     18.3,
+     7.2
+    ],
+    "yaw_deg": 348,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_31",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -340.9,
+     149.8,
+     -16.1
+    ],
+    "size": [
+     11.0,
+     27.4,
+     11.0
+    ],
+    "yaw_deg": 67,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_32",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -269.5,
+     149.9,
+     9.3
+    ],
+    "size": [
+     6.4,
+     31.9,
+     6.4
+    ],
+    "yaw_deg": 180,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_33",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -513.7,
+     149.9,
+     -151.3
+    ],
+    "size": [
+     9.9,
+     27.8,
+     9.9
+    ],
+    "yaw_deg": 92,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "hoodoo_spire_34",
+    "kind": "hoodoo_spire",
+    "pos": [
+     -317.7,
+     149.8,
+     15.7
+    ],
+    "size": [
+     8.3,
+     30.6,
+     8.3
+    ],
+    "yaw_deg": 34,
+    "note": "Striped hoodoo spire with a gumdrop cap"
+   },
+   {
+    "id": "rock_candy_crystal_01",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     182.4,
+     17.8,
+     157.2
+    ],
+    "size": [
+     4.4,
+     6.3,
+     4.4
+    ],
+    "yaw_deg": 143,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_02",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     173.0,
+     17.4,
+     279.9
+    ],
+    "size": [
+     3.6,
+     9.4,
+     3.6
+    ],
+    "yaw_deg": 158,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_03",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     290.9,
+     26.0,
+     167.1
+    ],
+    "size": [
+     4.1,
+     8.0,
+     4.1
+    ],
+    "yaw_deg": 187,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_04",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     174.5,
+     18.3,
+     201.9
+    ],
+    "size": [
+     3.3,
+     9.7,
+     3.3
+    ],
+    "yaw_deg": 123,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_05",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     190.3,
+     18.2,
+     201.1
+    ],
+    "size": [
+     6.6,
+     13.6,
+     6.6
+    ],
+    "yaw_deg": 98,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_06",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     187.8,
+     17.9,
+     283.7
+    ],
+    "size": [
+     6.4,
+     6.0,
+     6.4
+    ],
+    "yaw_deg": 159,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_07",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     174.3,
+     18.0,
+     215.1
+    ],
+    "size": [
+     5.3,
+     11.4,
+     5.3
+    ],
+    "yaw_deg": 99,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_08",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     235.7,
+     18.0,
+     310.0
+    ],
+    "size": [
+     6.2,
+     8.8,
+     6.2
+    ],
+    "yaw_deg": 286,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_09",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     268.4,
+     26.5,
+     163.4
+    ],
+    "size": [
+     3.5,
+     12.4,
+     3.5
+    ],
+    "yaw_deg": 277,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_10",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     190.1,
+     18.1,
+     308.1
+    ],
+    "size": [
+     3.6,
+     12.7,
+     3.6
+    ],
+    "yaw_deg": 335,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_11",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     282.7,
+     26.0,
+     173.1
+    ],
+    "size": [
+     4.9,
+     10.8,
+     4.9
+    ],
+    "yaw_deg": 274,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_12",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     277.0,
+     26.1,
+     167.4
+    ],
+    "size": [
+     4.7,
+     10.6,
+     4.7
+    ],
+    "yaw_deg": 323,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_13",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     289.0,
+     22.2,
+     347.1
+    ],
+    "size": [
+     3.3,
+     6.8,
+     3.3
+    ],
+    "yaw_deg": 113,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_14",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     292.2,
+     26.0,
+     163.0
+    ],
+    "size": [
+     3.1,
+     7.2,
+     3.1
+    ],
+    "yaw_deg": 318,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_15",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     271.2,
+     25.8,
+     180.1
+    ],
+    "size": [
+     6.7,
+     6.1,
+     6.7
+    ],
+    "yaw_deg": 333,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "rock_candy_crystal_16",
+    "kind": "rock_candy_crystal",
+    "pos": [
+     290.1,
+     26.1,
+     151.3
+    ],
+    "size": [
+     5.7,
+     7.0,
+     5.7
+    ],
+    "yaw_deg": 175,
+    "note": "Pink/amber rock-candy crystal cluster at the slot walls"
+   },
+   {
+    "id": "cactus_70_01",
+    "kind": "lollipop_cactus",
+    "pos": [
+     365.5,
+     69.8,
+     194.5
+    ],
+    "size": [
+     4.2,
+     9.7,
+     4.2
+    ],
+    "yaw_deg": 33,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_02",
+    "kind": "lollipop_cactus",
+    "pos": [
+     484.5,
+     70.4,
+     -200.8
+    ],
+    "size": [
+     5.3,
+     10.2,
+     5.3
+    ],
+    "yaw_deg": 39,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_03",
+    "kind": "lollipop_cactus",
+    "pos": [
+     309.0,
+     70.0,
+     394.0
+    ],
+    "size": [
+     4.6,
+     14.0,
+     4.6
+    ],
+    "yaw_deg": 202,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_04",
+    "kind": "lollipop_cactus",
+    "pos": [
+     425.0,
+     70.4,
+     20.6
+    ],
+    "size": [
+     5.1,
+     15.0,
+     5.1
+    ],
+    "yaw_deg": 32,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_05",
+    "kind": "lollipop_cactus",
+    "pos": [
+     398.6,
+     70.1,
+     181.5
+    ],
+    "size": [
+     4.0,
+     10.3,
+     4.0
+    ],
+    "yaw_deg": 72,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_06",
+    "kind": "lollipop_cactus",
+    "pos": [
+     471.5,
+     70.3,
+     339.3
+    ],
+    "size": [
+     5.3,
+     11.3,
+     5.3
+    ],
+    "yaw_deg": 288,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_07",
+    "kind": "lollipop_cactus",
+    "pos": [
+     531.7,
+     70.3,
+     351.4
+    ],
+    "size": [
+     4.1,
+     9.5,
+     4.1
+    ],
+    "yaw_deg": 297,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_08",
+    "kind": "lollipop_cactus",
+    "pos": [
+     424.4,
+     69.7,
+     69.2
+    ],
+    "size": [
+     4.4,
+     15.6,
+     4.4
+    ],
+    "yaw_deg": 136,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_09",
+    "kind": "lollipop_cactus",
+    "pos": [
+     370.8,
+     70.2,
+     255.6
+    ],
+    "size": [
+     4.3,
+     10.4,
+     4.3
+    ],
+    "yaw_deg": 42,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_10",
+    "kind": "lollipop_cactus",
+    "pos": [
+     337.8,
+     70.0,
+     190.5
+    ],
+    "size": [
+     5.6,
+     9.0,
+     5.6
+    ],
+    "yaw_deg": 45,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_11",
+    "kind": "lollipop_cactus",
+    "pos": [
+     261.5,
+     69.8,
+     101.5
+    ],
+    "size": [
+     5.8,
+     15.9,
+     5.8
+    ],
+    "yaw_deg": 170,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_12",
+    "kind": "lollipop_cactus",
+    "pos": [
+     461.9,
+     69.8,
+     53.6
+    ],
+    "size": [
+     4.6,
+     13.1,
+     4.6
+    ],
+    "yaw_deg": 133,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_13",
+    "kind": "lollipop_cactus",
+    "pos": [
+     543.7,
+     70.8,
+     310.2
+    ],
+    "size": [
+     4.6,
+     10.4,
+     4.6
+    ],
+    "yaw_deg": 115,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_14",
+    "kind": "lollipop_cactus",
+    "pos": [
+     341.2,
+     69.9,
+     452.5
+    ],
+    "size": [
+     4.2,
+     12.8,
+     4.2
+    ],
+    "yaw_deg": 76,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_15",
+    "kind": "lollipop_cactus",
+    "pos": [
+     420.1,
+     70.3,
+     367.1
+    ],
+    "size": [
+     4.9,
+     9.7,
+     4.9
+    ],
+    "yaw_deg": 214,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_16",
+    "kind": "lollipop_cactus",
+    "pos": [
+     336.1,
+     69.5,
+     241.3
+    ],
+    "size": [
+     5.5,
+     10.6,
+     5.5
+    ],
+    "yaw_deg": 194,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_17",
+    "kind": "lollipop_cactus",
+    "pos": [
+     434.8,
+     70.4,
+     198.2
+    ],
+    "size": [
+     4.6,
+     9.7,
+     4.6
+    ],
+    "yaw_deg": 307,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_18",
+    "kind": "lollipop_cactus",
+    "pos": [
+     275.3,
+     70.3,
+     -110.8
+    ],
+    "size": [
+     4.0,
+     15.5,
+     4.0
+    ],
+    "yaw_deg": 87,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_19",
+    "kind": "lollipop_cactus",
+    "pos": [
+     483.4,
+     70.4,
+     50.4
+    ],
+    "size": [
+     5.3,
+     12.6,
+     5.3
+    ],
+    "yaw_deg": 104,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_20",
+    "kind": "lollipop_cactus",
+    "pos": [
+     359.1,
+     70.1,
+     519.7
+    ],
+    "size": [
+     5.4,
+     9.1,
+     5.4
+    ],
+    "yaw_deg": 302,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_21",
+    "kind": "lollipop_cactus",
+    "pos": [
+     372.5,
+     70.3,
+     -217.3
+    ],
+    "size": [
+     5.1,
+     14.7,
+     5.1
+    ],
+    "yaw_deg": 216,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_22",
+    "kind": "lollipop_cactus",
+    "pos": [
+     316.3,
+     69.8,
+     242.3
+    ],
+    "size": [
+     4.2,
+     8.7,
+     4.2
+    ],
+    "yaw_deg": 22,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_23",
+    "kind": "lollipop_cactus",
+    "pos": [
+     420.9,
+     70.0,
+     221.8
+    ],
+    "size": [
+     4.8,
+     13.0,
+     4.8
+    ],
+    "yaw_deg": 77,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_24",
+    "kind": "lollipop_cactus",
+    "pos": [
+     454.2,
+     69.7,
+     -132.8
+    ],
+    "size": [
+     6.0,
+     8.6,
+     6.0
+    ],
+    "yaw_deg": 262,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_25",
+    "kind": "lollipop_cactus",
+    "pos": [
+     235.8,
+     70.0,
+     176.5
+    ],
+    "size": [
+     5.8,
+     13.0,
+     5.8
+    ],
+    "yaw_deg": 79,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_26",
+    "kind": "lollipop_cactus",
+    "pos": [
+     409.5,
+     70.1,
+     308.3
+    ],
+    "size": [
+     4.8,
+     12.3,
+     4.8
+    ],
+    "yaw_deg": 193,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_27",
+    "kind": "lollipop_cactus",
+    "pos": [
+     384.5,
+     69.9,
+     1.7
+    ],
+    "size": [
+     5.4,
+     16.0,
+     5.4
+    ],
+    "yaw_deg": 101,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_28",
+    "kind": "lollipop_cactus",
+    "pos": [
+     469.9,
+     70.0,
+     19.6
+    ],
+    "size": [
+     4.9,
+     12.1,
+     4.9
+    ],
+    "yaw_deg": 177,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_29",
+    "kind": "lollipop_cactus",
+    "pos": [
+     413.5,
+     69.9,
+     228.3
+    ],
+    "size": [
+     5.1,
+     14.7,
+     5.1
+    ],
+    "yaw_deg": 322,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_30",
+    "kind": "lollipop_cactus",
+    "pos": [
+     324.6,
+     69.8,
+     339.5
+    ],
+    "size": [
+     4.3,
+     10.2,
+     4.3
+    ],
+    "yaw_deg": 129,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_31",
+    "kind": "lollipop_cactus",
+    "pos": [
+     328.0,
+     70.1,
+     213.6
+    ],
+    "size": [
+     4.9,
+     9.4,
+     4.9
+    ],
+    "yaw_deg": 260,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_32",
+    "kind": "lollipop_cactus",
+    "pos": [
+     409.3,
+     69.9,
+     409.2
+    ],
+    "size": [
+     4.2,
+     15.4,
+     4.2
+    ],
+    "yaw_deg": 156,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_33",
+    "kind": "lollipop_cactus",
+    "pos": [
+     481.2,
+     70.1,
+     223.4
+    ],
+    "size": [
+     5.9,
+     15.7,
+     5.9
+    ],
+    "yaw_deg": 191,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_34",
+    "kind": "lollipop_cactus",
+    "pos": [
+     365.7,
+     70.1,
+     -215.5
+    ],
+    "size": [
+     4.2,
+     9.4,
+     4.2
+    ],
+    "yaw_deg": 282,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_35",
+    "kind": "lollipop_cactus",
+    "pos": [
+     252.5,
+     70.0,
+     -98.7
+    ],
+    "size": [
+     4.8,
+     15.6,
+     4.8
+    ],
+    "yaw_deg": 118,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_36",
+    "kind": "lollipop_cactus",
+    "pos": [
+     415.8,
+     70.1,
+     222.6
+    ],
+    "size": [
+     4.0,
+     10.3,
+     4.0
+    ],
+    "yaw_deg": 55,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_37",
+    "kind": "lollipop_cactus",
+    "pos": [
+     305.5,
+     70.0,
+     26.8
+    ],
+    "size": [
+     4.8,
+     11.6,
+     4.8
+    ],
+    "yaw_deg": 165,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_38",
+    "kind": "lollipop_cactus",
+    "pos": [
+     276.5,
+     69.9,
+     -88.0
+    ],
+    "size": [
+     4.0,
+     14.7,
+     4.0
+    ],
+    "yaw_deg": 190,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_39",
+    "kind": "lollipop_cactus",
+    "pos": [
+     293.7,
+     70.0,
+     122.6
+    ],
+    "size": [
+     4.0,
+     14.9,
+     4.0
+    ],
+    "yaw_deg": 307,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_70_40",
+    "kind": "lollipop_cactus",
+    "pos": [
+     327.7,
+     70.3,
+     376.6
+    ],
+    "size": [
+     5.5,
+     10.7,
+     5.5
+    ],
+    "yaw_deg": 209,
+    "note": "Saguaro-style cactus topped with swirl lollipops and gumball fruit"
+   },
+   {
+    "id": "cactus_18_01",
+    "kind": "lollipop_cactus",
+    "pos": [
+     175.4,
+     18.2,
+     551.7
+    ],
+    "size": [
+     5.3,
+     12.3,
+     5.3
+    ],
+    "yaw_deg": 55,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_02",
+    "kind": "lollipop_cactus",
+    "pos": [
+     84.3,
+     17.8,
+     497.6
+    ],
+    "size": [
+     4.9,
+     9.7,
+     4.9
+    ],
+    "yaw_deg": 110,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_03",
+    "kind": "lollipop_cactus",
+    "pos": [
+     24.0,
+     18.8,
+     510.4
+    ],
+    "size": [
+     5.6,
+     9.9,
+     5.6
+    ],
+    "yaw_deg": 359,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_04",
+    "kind": "lollipop_cactus",
+    "pos": [
+     49.0,
+     18.1,
+     408.4
+    ],
+    "size": [
+     4.7,
+     11.7,
+     4.7
+    ],
+    "yaw_deg": 345,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_05",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -11.5,
+     18.3,
+     475.0
+    ],
+    "size": [
+     4.9,
+     8.8,
+     4.9
+    ],
+    "yaw_deg": 2,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_06",
+    "kind": "lollipop_cactus",
+    "pos": [
+     138.9,
+     18.5,
+     399.5
+    ],
+    "size": [
+     5.5,
+     13.0,
+     5.5
+    ],
+    "yaw_deg": 308,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_07",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -116.7,
+     17.8,
+     502.0
+    ],
+    "size": [
+     4.0,
+     8.7,
+     4.0
+    ],
+    "yaw_deg": 98,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_08",
+    "kind": "lollipop_cactus",
+    "pos": [
+     28.1,
+     17.2,
+     468.7
+    ],
+    "size": [
+     4.3,
+     10.7,
+     4.3
+    ],
+    "yaw_deg": 246,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_09",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -13.9,
+     18.1,
+     546.1
+    ],
+    "size": [
+     4.6,
+     12.7,
+     4.6
+    ],
+    "yaw_deg": 251,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_10",
+    "kind": "lollipop_cactus",
+    "pos": [
+     31.8,
+     17.2,
+     460.9
+    ],
+    "size": [
+     4.6,
+     9.3,
+     4.6
+    ],
+    "yaw_deg": 6,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_11",
+    "kind": "lollipop_cactus",
+    "pos": [
+     43.8,
+     18.1,
+     555.1
+    ],
+    "size": [
+     4.8,
+     10.9,
+     4.8
+    ],
+    "yaw_deg": 338,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_12",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -28.7,
+     18.6,
+     480.8
+    ],
+    "size": [
+     5.8,
+     12.6,
+     5.8
+    ],
+    "yaw_deg": 58,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_13",
+    "kind": "lollipop_cactus",
+    "pos": [
+     9.7,
+     18.2,
+     514.7
+    ],
+    "size": [
+     4.5,
+     12.7,
+     4.5
+    ],
+    "yaw_deg": 292,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_14",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -107.6,
+     18.0,
+     521.8
+    ],
+    "size": [
+     4.0,
+     11.0,
+     4.0
+    ],
+    "yaw_deg": 3,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_15",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -107.2,
+     18.0,
+     518.6
+    ],
+    "size": [
+     4.5,
+     10.5,
+     4.5
+    ],
+    "yaw_deg": 256,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_16",
+    "kind": "lollipop_cactus",
+    "pos": [
+     55.9,
+     17.8,
+     552.6
+    ],
+    "size": [
+     5.6,
+     9.1,
+     5.6
+    ],
+    "yaw_deg": 101,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_17",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -51.8,
+     18.1,
+     435.7
+    ],
+    "size": [
+     4.2,
+     10.8,
+     4.2
+    ],
+    "yaw_deg": 89,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_18_18",
+    "kind": "lollipop_cactus",
+    "pos": [
+     10.3,
+     18.0,
+     507.5
+    ],
+    "size": [
+     5.4,
+     11.2,
+     5.4
+    ],
+    "yaw_deg": 169,
+    "note": "Cactus on the canyon floor"
+   },
+   {
+    "id": "cactus_190_01",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -431.2,
+     190.0,
+     139.7
+    ],
+    "size": [
+     6.0,
+     9.0,
+     6.0
+    ],
+    "yaw_deg": 297,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_02",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -286.2,
+     190.1,
+     238.2
+    ],
+    "size": [
+     5.9,
+     12.2,
+     5.9
+    ],
+    "yaw_deg": 51,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_03",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -364.3,
+     189.6,
+     136.3
+    ],
+    "size": [
+     5.7,
+     10.1,
+     5.7
+    ],
+    "yaw_deg": 200,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_04",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -278.6,
+     190.1,
+     160.4
+    ],
+    "size": [
+     5.3,
+     10.2,
+     5.3
+    ],
+    "yaw_deg": 274,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_05",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -288.8,
+     189.8,
+     94.2
+    ],
+    "size": [
+     4.9,
+     13.8,
+     4.9
+    ],
+    "yaw_deg": 357,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_06",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -364.6,
+     190.6,
+     108.6
+    ],
+    "size": [
+     4.3,
+     13.5,
+     4.3
+    ],
+    "yaw_deg": 232,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_07",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -449.3,
+     189.9,
+     243.4
+    ],
+    "size": [
+     4.1,
+     10.0,
+     4.1
+    ],
+    "yaw_deg": 257,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_08",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -477.1,
+     189.9,
+     179.6
+    ],
+    "size": [
+     5.1,
+     12.4,
+     5.1
+    ],
+    "yaw_deg": 150,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_09",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -364.5,
+     190.0,
+     167.4
+    ],
+    "size": [
+     4.4,
+     12.2,
+     4.4
+    ],
+    "yaw_deg": 128,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_10",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -456.4,
+     189.9,
+     237.8
+    ],
+    "size": [
+     5.3,
+     9.4,
+     5.3
+    ],
+    "yaw_deg": 112,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_11",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -261.9,
+     190.0,
+     131.0
+    ],
+    "size": [
+     4.6,
+     11.7,
+     4.6
+    ],
+    "yaw_deg": 147,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_12",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -480.0,
+     190.0,
+     182.6
+    ],
+    "size": [
+     5.5,
+     13.3,
+     5.5
+    ],
+    "yaw_deg": 29,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_13",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -453.8,
+     190.2,
+     124.8
+    ],
+    "size": [
+     4.3,
+     8.4,
+     4.3
+    ],
+    "yaw_deg": 128,
+    "note": "Cactus on the Crown"
+   },
+   {
+    "id": "cactus_190_14",
+    "kind": "lollipop_cactus",
+    "pos": [
+     -356.4,
+     189.6,
+     249.6
+    ],
+    "size": [
+     4.2,
+     8.7,
+     4.2
+    ],
+    "yaw_deg": 180,
+    "note": "Cactus on the Crown"
+   }
+  ]
+ }
+}

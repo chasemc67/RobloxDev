@@ -1,0 +1,101 @@
+{
+ "name": "bw_coming_soon_sign",
+ "group": "board",
+ "fbx": "fbx/bw_coming_soon_sign.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Hanging wooden sign with parchment face plate_face (+Z) for 'Coming soon' text; two rope rings on top.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  6.0,
+  2.0,
+  0.5
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.0,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -3.0,
+  0.0,
+  -0.25
+ ],
+ "bbox_max_roblox": [
+  3.0,
+  2.0,
+  0.25
+ ],
+ "target_size_studs": [
+  6,
+  2,
+  0.5
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 184,
+ "tris_max": 400,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_coming_soon_sign__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 182,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    2.0,
+    0.5
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "plate_face",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    5.2,
+    0.9,
+    0.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    0.65,
+    0.25
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "size": [
+    6.0,
+    2.0,
+    0.5
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

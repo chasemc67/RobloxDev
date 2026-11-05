@@ -1,0 +1,1 @@
+SRV-132 pass 5 p9b complete. See movers_pass5_summary.md and movers_manifest.json. Full fitcheck ALL PASS; all FBX exports round-trip verified. motion.lua unchanged; new colliders reuse windpump/oreBucket. Final Cycles OptiX previews: out/previews/cycles/pass5/contact_sheet_pass5.png. Spec questions: decorative source box gap .041 and inherited H7 pad/rail junction.

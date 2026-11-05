@@ -1,0 +1,55 @@
+# Lantern Grove v210 fitcheck (ALL PASS, 42 checks) - Blender 5.2.2 LTS; holes.json C:/Users/chase/aurora_p2/jobs_in/lantern-grove/holes.json (sha256 6005ba1b4d1dd02f)
+# NOT RUN here (inputs not in the v210 job): fitcheck.py pass 4/5 world-dressing sections and fitcheck_pass6-10
+# sections that need world/world.json, terrain, world_occ or FBX not shipped (dressing H1-H7, pendulum, bracer,
+# ...). The 2 H9 props keep their exact geometry (C3), so only colour changed for them; the H8 pocket mesh grew
+# (C1) - world keep-out sets that include it were not re-run here.
+# door <-> pocket sweep: min 0.2100 at slide offset 4.0000 (pre-v210 0.0640)
+
+# A. fitcheck.py sections 1-6 (generator-only rules)
+PASS  H3 tunnel opening 7 wide x 3 high clear  (rays at |z|<=3.45, y<=2.0, crown y=2.9)
+PASS  H3 tunnel side walls at |z|=3.7 and roof above 3.1  
+PASS  H3 tunnel depth 5 (stem |x|<=2.5 below y 2.9)  max |x| 2.50
+PASS  H1 torii posts outside rails  min |x| below y2 = 4.070
+PASS  H5 root bridge never rises above the felt (no rails)  max height over felt -0.119
+PASS  H5 root bridge deck >= 2.2 wide  3.32
+PASS  H5 covered bridge interior clear |x|<3.0 (felt 5 + rails) up to 3.2 above felt  
+PASS  H7 log inside its holes.json blockers (5.2x0.8x0.8 + 0.5657x0.8x0.5657 + 0.5657x0.8x0.5657; pointed ends)  0 verts outside; x -2.99..2.99
+PASS  H9 portcullis within blocker 0.8x1.4x7.4  (-0.37, -3.75, -0.31)..(0.36, 3.75, 1.08)
+PASS  H8 root door inside its holes.json blocker 0.7x1x3.6  0 verts outside; z -1.80..1.84
+PASS  H4 carousel (pass 6, padded 2.3 arms): below y=1 everything inside the arm blockers (|x|<=3.0, |z|<=0.35)  max |x| 3.000, max |z| 0.350
+PASS  H9 pendulum bob inside its holes.json blockers (1.6x1.8x1.6 yaw 30 + 1x0.4x1.6 yaw 0), body centred 7 below the hinge  0 verts outside; body max |x| 0.833, bottom -7.959
+PASS  H9 pendulum chain slim (|x|, |z| <= 0.2 between hinge and bob)  723 verts
+PASS  H6 wheel: only the 2 paddle boards reach r>2.15 over the felt  0 stray verts
+PASS  H6 wheel radius <= 3.6  
+PASS  H6 axle reaches the mill wall (course z=-1 -> local +7.5 = Blender y -7.5)  axle end y=-7.80
+PASS  H9 chamber/heart rail corners inside the trunk cavity  
+PASS  H9 corridor tunnel through the trunk wall is open (felt+1, felt+3.5)  
+
+# pass 6: holes.json v2 (flags, new props, changed moving parts, H9 lantern bar -> pendulum)
+# B. fitcheck_pass6.py section 3 + tee sightline (hole-local)
+PASS  H8 root door (0..4) never touches its pockets; every end that crosses a junction rail line slides INTO a pocket  0 clashing tris, 1 pockets for 1 crossing ends, ends hidden [np.True_]
+PASS  H8 entry ring: glow disc radius == trigger radius 0.45 and the ring's bottom gap clears the whole trigger width (+ ball)  disc r 0.450, ring verts in the gap 0
+PASS  H8 exit ring at the v2 teleport exit (9, 1.5, -47), local +Z along the exit dir  pos [9.0, 1.5, -47.0] yaw -26.57
+PASS  H8 alcove bank cladding lies ON the banked plane (<= 0.03 above it) and inside its footprint x 7.7..9, z -15..-8  max above plane 0.030, inside True
+PASS  tee eye (+5.5) -> flag top not blocked by any hero prop (incl. all pass-6 props) on H1-H2, H4-H9  H3 blocked by design (mushroom_house_large_tunnel)
+
+# C. v210: H8 door pocket (X x1.4, +0.17, 0.05 deeper) + H9 timber OakDeep #7A4E32 Reflectance 0
+PASS  v210 h8_door_pocket FBX == pre-v210 FBX x1.4 in X about the origin, +0.17 Y, -0.05 local Z (every vertex, every part)  max dev Cream 7.5e-08, Moss 2.4e-07, RootBark 2.7e-07, ShroomGlow 1.2e-07
+PASS  v210 h8_door_pocket manifest: placement + origin unchanged; bbox X 1.4x, Y/Z sizes same, centre +0.17 Y / -0.05 Z (local) / X same  size [1.45, 2.135, 2.663] -> [2.03, 2.135, 2.663], centre shift [0.002, 0.17, -0.05]
+PASS  v210 'deeper' = away from the door: pocket yaw 180 sits on the +Z side of the door pivot, so local -Z = world +Z = the door's opening direction (axis +Z)  pocket pos [4.75, 0.0, -7.75] yaw 180
+PASS  v210 h8_door_pocket still reaches below the felt (no gap under the raised walls)  min y -0.180
+PASS  v210 H8 root door <-> h8_door_pocket mesh clearance >= 0.187 over the whole slide [0, 4] (401 offsets at 0.01 + 41 at 0.0005 around the minimum; 0.005 edge sampling both ways)  min 0.2100 at offset 4.0000 (door [4.45, 0.226, -5.7] -> pocket [4.45, 0.226, -5.49])
+PASS  negative test flagged: pre-v210 pocket (clearance < 0.187)  min 0.0640 at offset 2.5460
+PASS  negative test flagged: pocket moved 0.05 toward the door instead of away (clearance < 0.187)  min 0.1100 at offset 4.0000
+PASS  v210 timber_deflector_board: oak timber part = timber_deflector_board__OakDeep, colour #7A4E32 (manifest + FBX material), Roblox Reflectance 0, no __Oak part left  manifest [('timber_deflector_board__OakDeep', '#7A4E32', 0.0)], FBX #7A4E32
+PASS  v210 timber_deflector_board: geometry unchanged (every part incl. the timber == pre-v210 FBX)  Iron 0.0e+00, OakDeep 0.0e+00, RootBark 0.0e+00
+PASS  v210 timber_deflector_board: non-timber parts keep their colour/material (manifest + FBX)  Iron #3B3A3F, RootBark #5B3A22
+PASS  v210 bank_backing_stone: oak timber part = bank_backing_stone__OakDeep, colour #7A4E32 (manifest + FBX material), Roblox Reflectance 0, no __Oak part left  manifest [('bank_backing_stone__OakDeep', '#7A4E32', 0.0)], FBX #7A4E32
+PASS  v210 bank_backing_stone: geometry unchanged (every part incl. the timber == pre-v210 FBX)  Limestone 0.0e+00, Moss 0.0e+00, OakDeep 0.0e+00
+PASS  v210 bank_backing_stone: non-timber parts keep their colour/material (manifest + FBX) - stone faces stay Limestone #B8AFA0 in their own part  Limestone #B8AFA0, Moss #7A9A3A
+PASS  negative test flagged: the pre-v210 timber_deflector_board FBX fails the colour rule (__Oak #8A5A33)  old __Oak #8A5A33
+PASS  v210 changed FBX < 20k tris and manifest triangles == FBX  {'h8_door_pocket': (416, 416), 'timber_deflector_board': (400, 400), 'bank_backing_stone': (940, 940)}
+PASS  v210 every other manifest prop entry identical to pre-v210 (incl. h8_root_door, rail kit, H9 props)  119 entries compared; differ: []
+PASS  v210 manifest top-level blocks preserved (dressing, world, lights, emissive, h9_emissive_dim, ...); textures block only gains OakDeep as untextured  changed [], textures ({'OakDeep'}, {})
+PASS  v210 unchanged FBX byte-identical to the shipped ones (door, H8/H9 dressing)  dressing_h08_a.fbx same, dressing_h09_a.fbx same, dressing_h09_a_h9dim.fbx same, h8_root_door.fbx same
+PASS  v210 holes.json read only (rail16 / banks untouched): rail16 still centre (6.5, 1.7, -7.75) size 0.5x4.4x6  sha256 6005ba1b4d1dd02f

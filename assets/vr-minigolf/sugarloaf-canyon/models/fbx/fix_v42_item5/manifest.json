@@ -1,0 +1,114 @@
+{
+ "generated": "2026-10-14 Playtest v42 item 5",
+ "h03_dress_props": {
+  "fbx": "fbx/fix_v42_item5/h03_dress_props.fbx",
+  "replaces": "fbx/fix_zfight/h03_dress_props.fbx",
+  "sha256": "2b0cd87784be4c59457ae4defd816ede4ac5bce8603026acff62ddf505c6dbfc",
+  "tris": 1966,
+  "parts": [
+   {
+    "object": "h03_dress_props__CandyAmber",
+    "mats": [
+     "CandyAmber"
+    ],
+    "tris": 314
+   },
+   {
+    "object": "h03_dress_props__CandyPink",
+    "mats": [
+     "CandyPink"
+    ],
+    "tris": 524
+   },
+   {
+    "object": "h03_dress_props__GumLime",
+    "mats": [
+     "GumLime"
+    ],
+    "tris": 72
+   },
+   {
+    "object": "h03_dress_props__Pebble",
+    "mats": [
+     "Pebble"
+    ],
+    "tris": 160
+   },
+   {
+    "object": "h03_dress_props__Strata",
+    "mats": [
+     "Strata"
+    ],
+    "tris": 740
+   },
+   {
+    "object": "h03_dress_props__TimberWeathered",
+    "mats": [
+     "TimberWeathered"
+    ],
+    "tris": 156
+   }
+  ],
+  "pivot_world": [
+   -95.0,
+   18.0,
+   330.0
+  ],
+  "yaw_deg": 0,
+  "placement": "unchanged",
+  "collision": false,
+  "query": false,
+  "touch": false,
+  "change": "3 flat Strata slabs whose tops sat 0.024-0.063 BELOW the ground surface (hidden, depth-fighting from below) lifted 0.14-0.18 so tops are 0.12 above the ground, like the neighbouring pebbles. Everything else byte-for-byte geometry from fix_zfight.",
+  "lifted": [
+   {
+    "material": "Strata",
+    "centre": [
+     -6.67,
+     -0.01,
+     -8.03
+    ],
+    "top_rel_before": -0.061,
+    "lift": 0.181
+   },
+   {
+    "material": "Strata",
+    "centre": [
+     55.69,
+     0.04,
+     9.27
+    ],
+    "top_rel_before": -0.024,
+    "lift": 0.144
+   },
+   {
+    "material": "Strata",
+    "centre": [
+     72.41,
+     -0.02,
+     -7.97
+    ],
+    "top_rel_before": -0.063,
+    "lift": 0.183
+   }
+  ],
+  "finding": "Playtest 1.26 is an OBB estimate. Real triangles: the 12 Strata boulders have bases buried 0.55-0.69 with 0.7-1.7 above ground (intentional sunk bases, 0 coplanar with ground); pebbles 0.36-0.45 buried with tops 0.09-0.14 above (fine).",
+  "checks_reimport": {
+   "tris": 1966,
+   "min_thickness": 0.205,
+   "thin_parts": 0,
+   "intersecting_pairs": 0,
+   "stacked_lt_0.08": 0,
+   "min_gap": 0.086,
+   "coplanar_tri_pairs": 0,
+   "felt": 0.9029,
+   "rail": 0.4025,
+   "coplanar_vs_h03_ground_fit030": 0
+  }
+ },
+ "ranger_station": {
+  "fbx_in_use": "fbx/fix_zfight/ranger_station.fbx (world bbox x min -132.415 matches the Studio record at -132.414)",
+  "revision": "none needed",
+  "finding": "Licorice and MintWhite triangles: min gap 0.086, 0 coplanar tri pairs. Both have -X faces in the plane x=-132.415, but those faces are 1.83 studs apart with 0 overlapping area, so nothing is flush. The 39.5 sq-stud record is the OBB proxy (both bounding boxes end on the same plane). The original fbx/ranger_station.fbx did overlap (gap -1.0, 42 coplanar pairs) and is superseded."
+ }
+}

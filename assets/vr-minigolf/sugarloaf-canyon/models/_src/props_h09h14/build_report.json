@@ -1,0 +1,118 @@
+{
+ "parts": [
+  {
+   "id": "h09_water_tank",
+   "hole": "h09",
+   "fbx": "fbx/props_h09h14/h09_water_tank.fbx",
+   "anchor_local": [
+    -11.65,
+    0,
+    -40.0
+   ],
+   "envelope": [
+    4,
+    8,
+    4
+   ],
+   "tris": 1192,
+   "max_mesh_tris": 564,
+   "meshes": [
+    {
+     "mesh": "h09_water_tank__Brass",
+     "material": "Brass",
+     "color": "#C9973A",
+     "roblox_material": "Metal",
+     "tris": 208
+    },
+    {
+     "mesh": "h09_water_tank__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 564
+    },
+    {
+     "mesh": "h09_water_tank__RockCandyLilac",
+     "material": "RockCandyLilac",
+     "color": "#B49AC9",
+     "roblox_material": "Glass",
+     "tris": 64
+    },
+    {
+     "mesh": "h09_water_tank__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 248
+    },
+    {
+     "mesh": "h09_water_tank__TimberWeathered",
+     "material": "TimberWeathered",
+     "color": "#9C7B5C",
+     "roblox_material": "WoodPlanks",
+     "tris": 108
+    }
+   ],
+   "notes": [
+    "Splayed tank tower inside the specified box. Two open RockCandyLilac sleeves follow the barrel bulge at radius +0.02, with 0.25-stud margins from hoop centers; iron hoops remain proud. Outlet points +Z; roof covers the tank."
+   ]
+  },
+  {
+   "id": "h14_loading_dock",
+   "hole": "h14",
+   "fbx": "fbx/props_h09h14/h14_loading_dock.fbx",
+   "anchor_local": [
+    0,
+    0,
+    -33
+   ],
+   "envelope": [
+    8,
+    1,
+    6
+   ],
+   "tris": 1688,
+   "max_mesh_tris": 564,
+   "meshes": [
+    {
+     "mesh": "h14_loading_dock__Bubblegum",
+     "material": "Bubblegum",
+     "color": "#F78FB3",
+     "roblox_material": "SmoothPlastic",
+     "tris": 176
+    },
+    {
+     "mesh": "h14_loading_dock__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 504
+    },
+    {
+     "mesh": "h14_loading_dock__RockCandyLilac",
+     "material": "RockCandyLilac",
+     "color": "#B49AC9",
+     "roblox_material": "Glass",
+     "tris": 204
+    },
+    {
+     "mesh": "h14_loading_dock__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 240
+    },
+    {
+     "mesh": "h14_loading_dock__TimberWeathered",
+     "material": "TimberWeathered",
+     "color": "#9C7B5C",
+     "roblox_material": "WoodPlanks",
+     "tris": 564
+    }
+   ],
+   "notes": [
+    "Dock retains its west-of-ramp position and unchanged crates and frame. One broad rounded lilac mound fills the first crate, rising to 3.30 (1.12 above its rim). Lilac lobes drape 0.40 studs past its +X and +Z faces, with four fallen chunks on the deck. Eight fat pointed hexagonal Bubblegum crystals lean outward 18-38 degrees, including two on the draped sides; ore stays below 3.9 with at least 0.25 clearance from the beam bottom. Two 4.6-stud Timber corner posts carry a top cross beam and two knee braces; iron feet and caps are closed boxes."
+   ]
+  }
+ ]
+}

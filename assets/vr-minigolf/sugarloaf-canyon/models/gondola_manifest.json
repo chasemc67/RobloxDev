@@ -1,0 +1,107 @@
+{
+ "set": "gondola",
+ "date": "2026-10-12",
+ "fitcheck": "fitcheck_gondola.txt (ALL PASS)",
+ "source": "props.md Transport and scatter sizes",
+ "instances": "Sunset Gondola cable [-420,190,136] -> [130,18,540]; cabin hangs at the grip, cable along local Z",
+ "parts": [
+  {
+   "id": "gondola_cabin",
+   "fbx": "fbx/gondola/gondola_cabin.fbx",
+   "pivot": "cable grip (cabin base at y -12); cable runs along +-Z",
+   "envelope_props_md": [
+    8,
+    12,
+    6
+   ],
+   "report": {
+    "id": "gondola_cabin",
+    "hole": "gondola",
+    "fbx": "fbx/gondola/gondola_cabin.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": [
+     8,
+     12,
+     6
+    ],
+    "tris": 540,
+    "max_mesh_tris": 156,
+    "meshes": [
+     {
+      "mesh": "gondola_cabin__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 60
+     },
+     {
+      "mesh": "gondola_cabin__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "gondola_cabin__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 48
+     },
+     {
+      "mesh": "gondola_cabin__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 36
+     },
+     {
+      "mesh": "gondola_cabin__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 120
+     },
+     {
+      "mesh": "gondola_cabin__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 156
+     },
+     {
+      "mesh": "gondola_cabin__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 48
+     },
+     {
+      "mesh": "gondola_cabin__Window",
+      "material": "Window",
+      "color": "#9FD8E8",
+      "roblox_material": "Glass",
+      "tris": 48
+     }
+    ],
+    "notes": [
+     "Enclosed seated cabin (x = width 8, z = depth 6); cabin base 12 below the grip, roof 4 below it; inner 7x5 with clear height 7 (floor top 0.5, ceiling 7.5 above the base); two facing benches 1.5 deep (seat 1.8) along the long walls; glazing 3.2..6.5 on all four sides with candy-striped corner posts; door on +X end; hanger arm 0.5 square from the roof to the grip clamp."
+    ]
+   },
+   "notes": [
+    "Enclosed seated cabin (x = width 8, z = depth 6); cabin base 12 below the grip, roof 4 below it; inner 7x5 with clear height 7 (floor top 0.5, ceiling 7.5 above the base); two facing benches 1.5 deep (seat 1.8) along the long walls; glazing 3.2..6.5 on all four sides with candy-striped corner posts; door on +X end; hanger arm 0.5 square from the roof to the grip clamp."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,259 @@
+{
+  "pass": "2g-walls",
+  "notes": {
+    "caps": "Pass 2g: rail snow caps of all 18 holes (holes.fbx object holes__Snow -> holes__SnowRailCap) on their own material SnowRailCap #EEF3F7 (copy of the shared terrain Snow #EEF4FF: base colour only; terrain/connections/props Snow unchanged); geometry unchanged; lighting unchanged.",
+    "h3apron": "Pass 2g (H3 apron): the H3 part of the course surround (course_apron_00 quads owned by H3, 2490 tris) split into course_apron_00__SnowCourseH3 with material SnowCourseH3 #EEF3F7 (copy of SnowCourse, base colour only).",
+    "felt": "Pass 2g (felt): Felt #3EA886 -> #36997A on all 18 holes (holes__Felt, base colour only; FeltBank #308369 unchanged).",
+    "walls": "Pass 2g-walls (Round 4 'walls', playtest-log.md): holes.fbx wall boxes + rail caps of H11 rail5/berg18 __cut1/__cut2/__cut3 (floe-slot lintel underside 1.17 -> 1.27) and H12 rail1/rail2/rail3/hull13/hull14/hull18 (icebreaker stern wall line z -18 -> -18.01, local hole coords) moved to the Round 4 holes.json; felt, colours and every other file unchanged."
+  },
+  "rail_snow_cap": "#EEF3F7",
+  "rail_cap_object": "holes__SnowRailCap",
+  "rail_cap_tris": 3744,
+  "shared_snow_users_unchanged": [
+    "backdrop__Snow",
+    "connections__Snow",
+    "props__Snow",
+    "sky__Snow",
+    "terrain_00_00__Snow",
+    "terrain_00_01__Snow",
+    "terrain_00_02__Snow",
+    "terrain_00_03__Snow",
+    "terrain_00_04__Snow",
+    "terrain_00_05__Snow",
+    "terrain_01_02__Snow",
+    "terrain_01_04__Snow",
+    "terrain_01_05__Snow",
+    "terrain_01_06__Snow",
+    "terrain_02_00__Snow",
+    "terrain_02_01__Snow",
+    "terrain_02_02__Snow",
+    "terrain_02_06__Snow",
+    "terrain_02_07__Snow",
+    "terrain_03_01__Snow",
+    "terrain_03_02__Snow",
+    "terrain_03_03__Snow",
+    "terrain_03_04__Snow",
+    "terrain_03_06__Snow",
+    "terrain_03_07__Snow",
+    "terrain_04_01__Snow",
+    "terrain_04_02__Snow",
+    "terrain_04_03__Snow",
+    "terrain_04_04__Snow",
+    "terrain_04_06__Snow",
+    "terrain_05_02__Snow",
+    "terrain_05_03__Snow",
+    "terrain_05_04__Snow",
+    "terrain_05_05__Snow",
+    "terrain_05_06__Snow",
+    "terrain_05_07__Snow",
+    "terrain_06_01__Snow",
+    "terrain_06_02__Snow",
+    "terrain_06_03__Snow",
+    "terrain_06_04__Snow",
+    "terrain_06_05__Snow",
+    "terrain_06_06__Snow",
+    "terrain_07_03__Snow",
+    "terrain_07_04__Snow",
+    "terrain_07_05__Snow"
+  ],
+  "h3_apron": {
+    "colour": "#EEF3F7",
+    "tris": 2490,
+    "rest_tris": 11303,
+    "owner_tri_counts": {
+      "1": 1583,
+      "2": 2564,
+      "3": 2490,
+      "4": 2150,
+      "5": 2122,
+      "6": 2884
+    }
+  },
+  "felt": "#36997A",
+  "felt_previous": "#3EA886",
+  "felt_users": [
+    "holes__Felt"
+  ],
+  "walls_moved_boxes": {
+    "Timber": [
+      {
+        "hole": 11,
+        "wall": "rail5__cut1",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "rail5__cut2",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "rail5__cut3",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "berg18__cut1",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "berg18__cut2",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "berg18__cut3",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "rail1",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "rail2",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "rail3",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "hull13",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "hull14",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "hull18",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      }
+    ],
+    "SnowRailCap": [
+      {
+        "hole": 11,
+        "wall": "rail5__cut2",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "rail5__cut3",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "berg18__cut2",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 11,
+        "wall": "berg18__cut3",
+        "max_move": 0.1,
+        "axes_moved": [
+          "z"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "rail1",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "rail2",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "rail3",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "hull13",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "hull14",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      },
+      {
+        "hole": 12,
+        "wall": "hull18",
+        "max_move": 0.01,
+        "axes_moved": [
+          "x"
+        ]
+      }
+    ]
+  }
+}

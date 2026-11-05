@@ -1,0 +1,74 @@
+Sugarloaf Canyon world fit check (pass 2): 818 instances, 303458 placed triangles
+world.json 0.1-concept; layout 818 instances; clusters 14
+
+[1] hole footprints: every triangle >= 2.0 studs (XZ) from every footprint_bbox
+  PASS H1  Trailhead Gate       nearest piece walk_boardwalk_6x12 at 2.2
+  PASS H2  Mine-Cart Junction   nearest piece walk_boardwalk_6x12 at 2.2
+  PASS H3  Ranger's Riverbend   nearest piece ranger_footbridge at 2.9
+  PASS H4  Crystal Corridor     nearest piece narrows_crystals at 6.4
+  PASS H5  Echo Slot            nearest piece landing_6x4 at 2.1
+  PASS H6  Flash Flood          nearest piece landing_6x4 at 5.4
+  PASS H7  Rope Bridge Run      nearest piece cliff_w24_h24_p0 at 4.0
+  PASS H8  Gumdrop Gulch        nearest piece cacti_taffy_north at 9.0
+  PASS H9  Lollipop Windmill    nearest piece scatter_taffy_mesa at 13.7
+  PASS H10 Sluice Chute         nearest piece landing_6x4 at 3.2
+  PASS H11 Floodgate Lock       nearest piece cliff_w24_h48_p2 at 2.7
+  PASS H12 Intake Tower         nearest piece scatter_dam at 11.3
+  PASS H13 Hoodoo Maze          nearest piece scatter_hoodoo_garden at 9.1
+  PASS H14 Ore Bucket Swing     nearest piece hoodoos_mid at 11.1
+  PASS H15 Sugar Dune           nearest piece scatter_hoodoo_garden at 9.8
+  PASS H16 Sinkhole Drop        nearest piece landing_6x4 at 4.1
+  PASS H17 Sundial              nearest piece scatter_crown at 4.9
+  PASS H18 Sunset Arch          nearest piece cliff_w24_h48_p5 at 5.0
+  closest approach overall: 2.10 studs (H5, landing_6x4)
+
+[2] walkways: nothing between walk y + 0.5 and walk y + 8.0 over the full walkway width (floor kit stair_flight_5, landing_6x4, walk_boardwalk_6x12, walk_boardwalk_8x12 exempt)
+  boarding areas (last 6.0 studs before a lift/gondola boarding point, inside the ride structure) exempt on: p_h6_h7 seg 1, p_h6_h7 seg 3, p_h9_h10 seg 2, p_h9_h10 seg 4, p_h12_h13 seg 1, p_h12_h13 seg 3, p_h15_h16 seg 1, p_h15_h16 seg 3, p_h18_hub seg 1, p_h18_hub seg 3
+  PASS: 74 walkway segments checked, 0 with intrusions
+  lowest overhead geometry above a walkway: 9.25 studs (licorice_rope_bridge over p_h8_h9 seg 1)
+
+[3] Quest budget (info): placed triangles whose centroid lies within R of each hole footprint centre
+  hole                         <=60    <=150    <=300
+  H1  Trailhead Gate           3944    21347    67490
+  H2  Mine-Cart Junction       4195    27965    81106
+  H3  Ranger's Riverbend       2924    14742    73513
+  H4  Crystal Corridor        13433    39758    81439
+  H5  Echo Slot               12471    41731    81917
+  H6  Flash Flood             11834    43357    89970
+  H7  Rope Bridge Run          2535    29223    89753
+  H8  Gumdrop Gulch            2022    23613    90787
+  H9  Lollipop Windmill        3344    22965    76625
+  H10 Sluice Chute             1545    15327    60395
+  H11 Floodgate Lock           5169    23445    63094
+  H12 Intake Tower             4044    28594    69250
+  H13 Hoodoo Maze              2463    19806    59126
+  H14 Ore Bucket Swing         2308    22712    72587
+  H15 Sugar Dune                319    20689    82800
+  H16 Sinkhole Drop            8368    34772    90407
+  H17 Sundial                  1895    42621    82772
+  H18 Sunset Arch              5947    37197    74704
+  far cards + sky: 2598 tris total (CastShadow off)
+  sun-in-far-arch from the Crown (eye [-370.0, 196.0, 165.0]): arch opening bearing 276.8 +- 8.4 deg, elevation -12.5..0.9 deg; sun bearing 277.0 elev -3.0 -> INSIDE
+
+[4] scatter sightlines: final holes.json transforms; tee+5 -> cup+7.5 and cup+1; 1.5-stud corridor
+  PASS H1: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H2: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H3: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H4: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H5: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H6: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H7: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H8: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H9: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H10: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H11: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H12: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H13: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H14: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H15: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H16: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H17: 0 exported triangle bounds intersect either corridor; removed members 0
+  PASS H18: 0 exported triangle bounds intersect either corridor; removed members 0
+[5] rim visibility: 80/80 stretches covered; 363 observer samples; no outer rim cliff kit; CastShadow off
+
+RESULT: ALL PASS

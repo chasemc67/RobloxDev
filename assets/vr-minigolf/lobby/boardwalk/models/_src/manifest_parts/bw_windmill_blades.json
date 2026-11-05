@@ -1,0 +1,94 @@
+{
+ "name": "bw_windmill_blades",
+ "group": "green",
+ "fbx": "fbx/bw_windmill_blades.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "4 lattice sails; pivot = hub centre (geometry spans +-4 around it, not base-centred).",
+ "pivot": "hub axle centre (rotation axis through local origin)",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  7.873,
+  7.873,
+  0.5
+ ],
+ "bbox_center_from_pivot": [
+  -0.0,
+  0.0,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -3.937,
+  -3.937,
+  -0.25
+ ],
+ "bbox_max_roblox": [
+  3.937,
+  3.937,
+  0.25
+ ],
+ "target_size_studs": [
+  8,
+  8,
+  0.5
+ ],
+ "size_ratio_vs_target": [
+  0.984,
+  0.984,
+  1.0
+ ],
+ "triangles": 404,
+ "tris_max": 500,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_windmill_blades__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 404,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    7.873,
+    7.873,
+    0.5
+   ],
+   "center_from_pivot": [
+    -0.0,
+    0.0,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "size": [
+    8,
+    8,
+    0.5
+   ]
+  }
+ ],
+ "motion": {
+  "type": "rotate",
+  "axis_roblox": [
+   0,
+   0,
+   1
+  ],
+  "rpm": 6,
+  "pivot": "local origin = hub centre",
+  "note": "spin about the local Z axis (north-south), 6 rpm; place pivot at windmill hub"
+ },
+ "scalable": null,
+ "can_collide": false
+}

@@ -1,0 +1,38 @@
+PASS triangle budget 14126 / 15000
+MESH SL1_root 12 tris
+MESH SL1_mesas 10208 tris
+MESH SL1_shore 284 tris
+MESH SL1_cable_pylons 76 tris
+MESH SL1_cascade 98 tris
+MESH SL1_gondola_cabin 48 tris
+MESH SL1_crystals_neon 240 tris
+MESH SL1_spires 3160 tris
+PASS unchanged placement_cframe 
+PASS unchanged position 
+PASS unchanged offset_from_arch 
+PASS unchanged arch_position 
+PASS unchanged yaw_deg 
+PASS unchanged baked_scale 
+PASS unchanged primary_part 
+PASS unchanged front 
+PASS unchanged motion 
+PASS unchanged cable_local_unscaled 
+PASS unchanged cabin_centre_local_unscaled 
+PASS unchanged neon_parts 
+PASS mesh names 
+PASS fixed mesh SL1_root 
+PASS fixed mesh SL1_shore 
+PASS fixed mesh SL1_cable_pylons 
+PASS fixed mesh SL1_cascade 
+PASS fixed mesh SL1_gondola_cabin 
+PASS fixed mesh SL1_crystals_neon 
+PASS pylon footprints [{'centre': [-30, 0], 'before': 47.4, 'after': 47.400001525878906, 'footprint_samples': [47.400004069010414, 47.400004069010414, 47.400004069010414, 47.400004069010414, 47.400004069010414]}, {'centre': [26, 4], 'before': 55.4, 'after': 55.400001525878906, 'footprint_samples': [55.40000915527344, 55.3999989827474, 55.40000915527344, 55.3999989827474, 55.40000915527344]}]
+PASS bbox X (-314.06, 345.32) allowed (-366.073, 409.993)
+PASS bbox Y (-11.74, 272.86) allowed (-39.914, 298.174)
+PASS bbox Z (-232.89, 162.09) allowed (-272.388, 201.58800000000002)
+PASS spires outside cable corridor conservative face clearance >= 110.942 scaled studs; closest vertex 173.785
+PASS spire count and dimensions 
+PASS far scenery flags 
+PASS FBX reimport 
+PASS approved SHA256 guard 
+all_pass=True

@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Same seaside mini golf boardwalk lobby at golden hour as the reference image, same warm cartoon chunky Roblox-friendly style, brass, parchment, lanterns, string lights. No people, no UI. View from the end of the wooden pier looking back at the boardwalk: pier benches and lantern posts in the foreground, the Birdie Bites snack shack with a striped awning, the windmill practice green and three themed arches (lantern grove tree arch, sandstone canyon arch, purple crystal aurora arch) in the distance, calm ocean, setting sun.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/concept_C_boardwalk.png"
+  ],
+  "mode": "generateImage",
+  "size": "2048x1152",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1636,
+    "outputTokens": 1413,
+    "totalTokens": 3049
+  },
+  "cost": 0.055094,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791771946,
+          "size": "2048x1152",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1508,
+          "textTokens": 128
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791771919049,
+                "endTime": 1791771947023,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.055094",
+      "marketCost": "0.055094",
+      "surchargeCost": "0",
+      "gatewayCost": "0.055094",
+      "inferenceCost": "0.055094",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.055094",
+      "generationId": "gen_01M4PYVGFSH7BA56K3TFY2XS11"
+    }
+  },
+  "seconds": 29.8,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/boardwalk/concept_pier.png"
+  ]
+}

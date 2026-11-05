@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Concept art, single course portal archway on a warm painted wooden seaside boardwalk at golden hour, whimsical stylized toy-like 3D render, chunky rounded beveled shapes, original design, front three-quarter view, arch about 16 wide 18 tall with a 10x12 inner opening filled by a softly glowing swirling portal surface, brass-and-parchment nameplate on the lintel left blank (no text, no letters), rope railings and brass trim, sunset sea behind. Match the reference boardwalk style. Theme Sugarloaf Canyon: two striped sandstone towers banded #D9714A and #F0C9A0 with a stone lintel, rock-candy crystals growing on them, a small lollipop saguaro beside, sunset pink-orange portal swirl.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/boardwalk/concept_arches.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1685,
+    "outputTokens": 1078,
+    "totalTokens": 2763
+  },
+  "cost": 0.045289,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791822951,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1508,
+          "textTokens": 177
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791822921003,
+                "endTime": 1791822951491,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.045289",
+      "marketCost": "0.045289",
+      "surchargeCost": "0",
+      "gatewayCost": "0.045289",
+      "inferenceCost": "0.045289",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.045289",
+      "generationId": "gen_01M4RFFZ196TWS6QK0H4G3HFM0"
+    }
+  },
+  "seconds": 31.6,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/portal_sugarloaf_canyon.png"
+  ]
+}

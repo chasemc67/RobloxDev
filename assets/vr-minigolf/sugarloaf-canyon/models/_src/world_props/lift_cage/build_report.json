@@ -1,0 +1,62 @@
+{
+ "parts": [
+  {
+   "id": "lift_cage",
+   "hole": "lift_cage",
+   "fbx": "fbx/lift_cage/lift_cage.fbx",
+   "anchor_local": [
+    0,
+    0,
+    0
+   ],
+   "envelope": [
+    7,
+    9.5,
+    7
+   ],
+   "tris": 1128,
+   "max_mesh_tris": 600,
+   "meshes": [
+    {
+     "mesh": "lift_cage__Brass",
+     "material": "Brass",
+     "color": "#C9973A",
+     "roblox_material": "Metal",
+     "tris": 60
+    },
+    {
+     "mesh": "lift_cage__Iron",
+     "material": "Iron",
+     "color": "#3B3A3F",
+     "roblox_material": "Metal",
+     "tris": 600
+    },
+    {
+     "mesh": "lift_cage__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 192
+    },
+    {
+     "mesh": "lift_cage__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 264
+    },
+    {
+     "mesh": "lift_cage__Timber",
+     "material": "Timber",
+     "color": "#8A5A33",
+     "roblox_material": "WoodPlanks",
+     "tris": 12
+    }
+   ],
+   "notes": [
+    "Shared mesh for all 4 lift routes. Floor slab y -0.5..0, roof frame y 8..9 (clear 8), candy-striped 0.4 corner posts, 0.15 lattice bars at 1.0 on three sides and beside the 4-wide opening on -Z (turn the cage so -Z faces the landing), brass waist rail at 3.5, hoist eye on the roof.",
+    "Opening header sits in the roof band (y 7.7..8.0 under the roof frame) -> clear height in the doorway is 7.7; the 8 clear height holds inside the cage."
+   ]
+  }
+ ]
+}

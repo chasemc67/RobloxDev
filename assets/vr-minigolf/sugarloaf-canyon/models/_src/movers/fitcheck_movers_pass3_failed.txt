@@ -1,0 +1,749 @@
+SRV-132 PASS 3: source raw overlaps and required Studio/holes-collision cuts
+SAT signed lower bounds, triangle versus OBB; primitive static AABBs conservative.
+dt <= .005 s, translation <= .015 stud; tilt <= .134 degree; explicit top sweep <= .25 degree.
+holes_rev.json APPROVED COLLISION CUT SET: exact pairs and cut volumes below. Residual obstacle geometry must clear >=.05.
+CONTACT exceptions: static felt contact overlap <=.001; H6 gate lifted .02 (felt epsilon .0005).
+REQUIRED CUT h06_sluice_gate / rail5__cut0: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rail5__cut1: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rail5__cut2: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rail5__cut3: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rock18__cut0: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rock18__cut1: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rock18__cut2: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h06_sluice_gate / rock18__cut3: min=[-10.68, -0.15, -28.47] max=[3.68, 1.17, -27.53]
+REQUIRED CUT h11_lock_gate / rail4__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail4__cut1__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut1__cut0__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut1__cut0__cut2__cut2: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut1__cut1__cut0__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut1__cut2__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut2__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut2__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail5__cut2__cut2: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut1__cut0__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut1__cut0__cut2__cut2: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut1__cut1__cut0__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut1__cut2__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut2__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut2__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail7__cut2__cut2: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail8__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / rail8__cut1__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / felt_approach__cut0: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / felt_approach__cut1: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_gate / felt_approach__cut2: min=[-1.95, -1.45, -21.65] max=[1.95, 1.35, -20.85]
+REQUIRED CUT h11_lock_lift / rail4__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail4__cut1__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut1__cut0__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut1__cut0__cut2__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut1__cut1__cut0__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut1__cut2__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut2__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut2__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail5__cut2__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut0__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut0__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut0__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut1__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut1__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut1__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut3__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail6__cut3__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut1__cut0__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut1__cut0__cut2__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut1__cut1__cut0__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut1__cut2__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut2__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut2__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail7__cut2__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail8__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / rail8__cut1__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / quay_rail20__cut0__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / quay_rail20__cut1__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut0__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut0__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut0__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut1__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut1__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut1__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut2__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_quay__cut2__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_approach__cut0: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_approach__cut1: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_lock_lift / felt_approach__cut2: min=[-1.75, -0.3, -25.15] max=[1.75, 4.43, -20.85]
+REQUIRED CUT h11_quay_lip / quay_rail20__cut0__cut0: min=[-1.95, 3.35, -25.15] max=[1.95, 5.15, -24.35]
+REQUIRED CUT h11_quay_lip / quay_rail20__cut1__cut0: min=[-1.95, 3.35, -25.15] max=[1.95, 5.15, -24.35]
+REQUIRED CUT h11_quay_lip / felt_quay__cut0__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut0__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut0__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut1__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut1__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut1__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut2__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / felt_quay__cut2__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail4__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail4__cut1__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail5__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut1__cut0__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut1__cut0__cut2__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut1__cut1__cut0__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut1__cut2__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut2__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut2__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail5__cut2__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail6__cut0__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut0__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut0__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut1__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut1__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut1__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut3__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail6__cut3__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail7__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut1__cut0__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut1__cut0__cut2__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut1__cut1__cut0__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut1__cut2__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut2__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut2__cut1: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail7__cut2__cut2: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.0]
+REQUIRED CUT h11_quay_lip / rail8__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+REQUIRED CUT h11_quay_lip / rail8__cut1__cut0: min=[-1.95, 2.35, -25.7] max=[1.95, 5.15, -25.2]
+
+h06_sluice_gate
+PASS rail1 {"clearance": 9.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail2 {"clearance": 9.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail3 {"clearance": 1.1820000112056732, "time": 3.3935620499788226, "offset": -6.580686149936469, "tilt": 0, "location": [-9.830686149936469, 0.6699999769528707, -27.688000013430912], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4 {"clearance": 1.1800000071525572, "time": 3.4035578144853873, "offset": -6.610673443456163, "tilt": 0, "location": [-9.075673596044053, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut0 {"clearance": 0.1699999809265137, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1 {"clearance": 0.15000001907348626, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2 {"clearance": 0.15200001120567252, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.25, 0.6699999769528707, -28.305999984343845], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut3 {"clearance": 0.1500000071525568, "time": 1.329436679373147, "offset": -0.38831003811944087, "tilt": 0, "location": [-2.8533101907073313, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6 {"clearance": 5.182000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.6000001430511475, 0.6699999769528707, -28.305999984343845], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7 {"clearance": 5.182000011205673, "time": 2.6138924184667514, "offset": -4.241677255400254, "tilt": 0, "location": [-6.841677398451401, 0.6699999769528707, -28.305999984343845], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail8 {"clearance": 21.682000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.6000001430511475, 0.6699999769528707, -28.305999984343845], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail9 {"clearance": 7.499974489212036, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.300008535385132, 0.6866666475931803, -28.2000169356664], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail10 {"clearance": 9.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail11 {"clearance": 9.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail12 {"clearance": 29.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock13 {"clearance": 1.1800000071525572, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.3350000381469727, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock14 {"clearance": 3.9999744892120352, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.300008535385132, 0.6866666475931803, -28.2000169356664], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock15 {"clearance": 18.182000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.6000001430511475, 0.6699999769528707, -28.305999984343845], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock16 {"clearance": 5.182000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.2999999523162842, 0.6699999769528707, -28.305999984343845], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock17 {"clearance": 5.182000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.9500000476837158, 0.6699999769528707, -28.311999986569088], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock18__cut0 {"clearance": 0.1699999809265137, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.0666666825612385, 0.353333314259847, -28.317999988794327], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rock18__cut1 {"clearance": 0.15000001907348626, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0666666825612385, 0.6866666475931803, -28.317999988794327], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rock18__cut2 {"clearance": 0.15200001120567252, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.816666603088379, 0.6699999769528707, -28.317999988794327], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rock18__cut3 {"clearance": 0.15200001120567264, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.25, 0.6699999769528707, -27.694000015656155], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS pocket_w19 {"clearance": 0.15000000715255596, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_w20 {"clearance": 0.17997448921203585, "time": 3.533502753070733, "offset": -7, "tilt": 0, "location": [-10.300008535385132, 0.6866666475931803, -27.7999830643336], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_w21 {"clearance": 0.15200001120567175, "time": 1.349428208386277, "offset": -0.44828462515883105, "tilt": 0, "location": [-1.5149513077200698, 0.6866666475931803, -28.317999988794327], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_e22 {"clearance": 0.15200001120567208, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.816666603088379, 0.6699999769528707, -28.317999988794327], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_e23 {"clearance": 0.1799744892120363, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.300008535385132, 0.6866666475931803, -28.2000169356664], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_e24 {"clearance": 0.1500000071525563, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.4650001525878906, 0.6733333369096121, -27.693333327770233], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS felt_lane {"clearance": 9.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_basin {"clearance": 1.6800000071525574, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "felt", "residual_cut": false, "status": "PASS"}
+CONTACT APPROVED felt_neck {"clearance": 0.01949998092651367, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.0666666825612385, 0.353333314259847, -28.317999988794327], "kind": "felt", "residual_cut": false, "status": "CONTACT APPROVED"}
+PASS felt_spill {"clearance": 1.6820000112056732, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.383333444595337, 0.6699999769528707, -28.317999988794327], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_overflow {"clearance": 4.499974489212036, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.400017023086548, 0.353333314259847, -28.100008467833202], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_crossover {"clearance": 18.682000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.6000001430511475, 0.3699999849001567, -28.311999986569088], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_green {"clearance": 5.682000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.383333444595337, 0.6699999769528707, -28.317999988794327], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_pocket_floor {"clearance": 0.16949998092651367, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS cup {"clearance": 16.182000011205673, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.6000001430511475, 0.3699999849001567, -28.311999986569088], "kind": "cup", "residual_cut": false, "status": "PASS"}
+PASS tee {"clearance": 26.680000007152557, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "tee", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_0 {"clearance": 1.1999742984771729, "time": 3.533502753070733, "offset": -7, "tilt": 0, "location": [-10.300008535385132, 0.6866666475931803, -27.7999830643336], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_1 {"clearance": 1.5800001621246338, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0666666825612385, 0.6866666475931803, -28.317999988794327], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_2 {"clearance": 6.980000019073486, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_3 {"clearance": 1.6299998760223389, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_4 {"clearance": 2.0999999046325684, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_5 {"clearance": 2.2249999046325684, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_6 {"clearance": 2.6406922340393066, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_7 {"clearance": 2.6406922340393066, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_8 {"clearance": 2.2249999046325684, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_9 {"clearance": 1.8093078136444092, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_10 {"clearance": 1.8093078136444092, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_11 {"clearance": 1.6549999713897705, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h06_sluice_frame_12 {"clearance": 1.6549999713897705, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226], "kind": "static base", "residual_cut": false, "status": "PASS"}
+DESIGNED APERTURE / REPLACEMENT rail5__cut0 raw={"clearance": 0.1699999809265137, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1 raw={"clearance": 0.15000001907348626, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.200000047683716, 0.6866666475931803, -27.894000003735226]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2 raw={"clearance": 0.15200001120567252, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.25, 0.6699999769528707, -28.305999984343845]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut3 raw={"clearance": 0.1500000071525568, "time": 1.329436679373147, "offset": -0.38831003811944087, "tilt": 0, "location": [-2.8533101907073313, 0.6733333369096121, -27.686666667461395]}
+DESIGNED APERTURE / REPLACEMENT rock18__cut0 raw={"clearance": 0.1699999809265137, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.0666666825612385, 0.353333314259847, -28.317999988794327]}
+DESIGNED APERTURE / REPLACEMENT rock18__cut1 raw={"clearance": 0.15000001907348626, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0666666825612385, 0.6866666475931803, -28.317999988794327]}
+DESIGNED APERTURE / REPLACEMENT rock18__cut2 raw={"clearance": 0.15200001120567252, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.816666603088379, 0.6699999769528707, -28.317999988794327]}
+DESIGNED APERTURE / REPLACEMENT rock18__cut3 raw={"clearance": 0.15200001120567264, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.25, 0.6699999769528707, -27.694000015656155]}
+Mesh budget PASS
+
+h06_sluice_frame
+PASS rail1 {"clearance": 9.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail2 {"clearance": 9.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail3 {"clearance": 0.8100000023841858, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4 {"clearance": 0.8100000023841856, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut0 {"clearance": 2.800000095367432, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.6560773849487305, 2.6573828061421714, -28.62666666507721], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut1 {"clearance": 0.27499995231628427, "time": 0.0, "offset": 0, "tilt": 0, "location": [-5.833333333333333, 2.724999984105428, -28.689999997615814], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut2 {"clearance": 1.4800000953674317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.6560773849487305, 2.6573828061421714, -28.62666666507721], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut3 {"clearance": 1.4800000953674317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.764410654703776, 2.686410586039225, -28.5799999833107], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6 {"clearance": 4.639999985694885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.577038923899333, 3.475432793299357, -28.71333332856496], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7 {"clearance": 4.810000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -28.596666673819225], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail8 {"clearance": 21.139999985694885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.577038923899333, 3.475432793299357, -28.71333332856496], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail9 {"clearance": 6.71999979019165, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.2633334795633955, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail10 {"clearance": 9.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.5, 2.775000015894572, -27.403333326180775], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail11 {"clearance": 9.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.5, 2.775000015894572, -27.403333326180775], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail12 {"clearance": 29.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock13 {"clearance": 1.199999988079071, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.2633334795633955, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock14 {"clearance": 3.2199997901916495, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.2633334795633955, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock15 {"clearance": 17.639999985694885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.577038923899333, 3.475432793299357, -28.71333332856496], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock16 {"clearance": 5.199999988079071, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -28.28333334128062], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock17 {"clearance": 5.199999988079071, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -28.28333334128062], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock18__cut0 {"clearance": 2.750000143051148, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock18__cut1 {"clearance": 0.2049999237060547, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.071666717529297, 2.6083335081736245, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock18__cut2 {"clearance": 1.4300001430511475, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rock18__cut3 {"clearance": 1.4300001430511475, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_w19 {"clearance": 0.12499995231628414, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_w20 {"clearance": 0.1799999999999996, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.724999984105428, -28.643333335717518], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_w21 {"clearance": 0.1000000953674316, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.487844944000244, 2.6647655169169107, -28.62666666507721], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_e22 {"clearance": 0.16999998807906985, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.271666844685872, 4.741666952768962, -28.28333334128062], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_e23 {"clearance": 0.050000143051147417, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS pocket_e24 {"clearance": 0.16999998807906985, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.071666717529297, 6.858333667119344, -27.69999998807907], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS felt_lane {"clearance": 9.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_basin {"clearance": 1.699999988079071, "time": 0.0, "offset": 0, "tilt": 0, "location": [-12.28333314259847, 0.016666730244954426, -27.71666665871938], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_neck {"clearance": 2.5995001430511473, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_spill {"clearance": 2.5995001430511473, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_overflow {"clearance": 3.7199997901916504, "time": 0.0, "offset": 0, "tilt": 0, "location": [4.2633334795633955, 4.741666952768962, -27.708333323399227], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_crossover {"clearance": 18.139999985694885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.577038923899333, 3.475432793299357, -28.71333332856496], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_green {"clearance": 5.139999985694885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.577038923899333, 3.475432793299357, -28.71333332856496], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_pocket_floor {"clearance": 1.019999809265137, "time": 0.0, "offset": 0, "tilt": 0, "location": [-11.71666685740153, 0.016666730244954426, -27.71666665871938], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS cup {"clearance": 15.639999985694885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-4.577038923899333, 3.475432793299357, -28.71333332856496], "kind": "cup", "residual_cut": false, "status": "PASS"}
+PASS tee {"clearance": 26.310000002384186, "time": 0.0, "offset": 0, "tilt": 0, "location": [-10.5, 2.775000015894572, -27.356666664282482], "kind": "tee", "residual_cut": false, "status": "PASS"}
+Mesh budget PASS
+
+h11_lock_gate
+PASS rail1 {"clearance": 6.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail2 {"clearance": 6.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail3 {"clearance": 4.200000047683715, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4__cut0 {"clearance": 0.15000004768371555, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail4__cut1__cut0 {"clearance": 0.14999995231628416, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut0 {"clearance": 0.15000004768371572, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut0__cut1 {"clearance": 0.14999995231628427, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut0__cut2__cut2 {"clearance": 1.1499999523162843, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut1__cut0__cut1 {"clearance": 3.229999952316284, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut2__cut0 {"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+FAIL rail5__cut2__cut0 {"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "FAIL"}
+FAIL rail5__cut2__cut1 {"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.8799999634424847, -21.51200000445048], "kind": "rail/wall", "residual_cut": true, "status": "FAIL"}
+PASS rail5__cut2__cut2 {"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut0 {"clearance": 3.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut0__cut1 {"clearance": 3.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut0__cut2 {"clearance": 3.481999993324281, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut1__cut0 {"clearance": 3.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut1__cut1 {"clearance": 3.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut1__cut2 {"clearance": 3.481999993324281, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut2 {"clearance": 3.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.8799999634424847, -21.51200000445048], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut3__cut0 {"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut3__cut1 {"clearance": 3.6319999933242806, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut0 {"clearance": 0.15000004768371572, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut0__cut1 {"clearance": 0.14999995231628427, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut0__cut2__cut2 {"clearance": 1.1499999523162843, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut1__cut0__cut1 {"clearance": 3.229999952316284, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut2__cut0 {"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+FAIL rail7__cut2__cut0 {"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": true, "status": "FAIL"}
+FAIL rail7__cut2__cut1 {"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": true, "status": "FAIL"}
+PASS rail7__cut2__cut2 {"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail8__cut0 {"clearance": 0.15000004768371555, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail8__cut1__cut0 {"clearance": 0.14999995231628416, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail9 {"clearance": 4.200000047683716, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail10 {"clearance": 6.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail11 {"clearance": 6.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail12 {"clearance": 22.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail13 {"clearance": 3.599999952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail14 {"clearance": 7.98199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail15 {"clearance": 9.200000047683718, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail16 {"clearance": 30.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail17 {"clearance": 9.200000047683716, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail18 {"clearance": 7.98199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail19 {"clearance": 3.599999952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail20__cut0__cut0 {"clearance": 3.599999952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail20__cut1__cut0 {"clearance": 3.599999952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS funnel_w_backing {"clearance": 0.9751332380808433, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS funnel_e_backing {"clearance": 0.9751332380808437, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_-1 {"clearance": 0.1319999933242805, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [-1.400000015894572, -0.48999992926915376, -20.98199999332428], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_1 {"clearance": 0.1319999933242805, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [1.7999999523162842, -0.48999992926915376, -20.99399999777476], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_-1 {"clearance": 4.099999952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_1 {"clearance": 4.099999952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS felt_lane {"clearance": 6.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2400000095367432, -0.519999929269155, -20.99333334962527], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut0 {"clearance": 0.150000047683716, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_approach__cut1 {"clearance": 0.150000047683716, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.7999999523162842, -0.4999999682108562, -21.333333333333332], "kind": "felt", "residual_cut": true, "status": "PASS"}
+FAIL felt_approach__cut2 {"clearance": 0.1300000190734858, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [-1.2400000095367432, -0.48999992926915376, -20.99333334962527], "kind": "felt", "residual_cut": true, "status": "FAIL"}
+PASS felt_quay__cut0__cut0 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut0__cut1 {"clearance": 4.181999993324281, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut0__cut2 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut1__cut0 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut1__cut1 {"clearance": 4.181999993324281, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut1__cut2 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut2__cut0 {"clearance": 4.181999993324281, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut2__cut1 {"clearance": 3.6319999933242806, "time": 5.115, "offset": -0.7699999999999989, "tilt": 0, "location": [-1.2000000476837158, 0.010000070730846225, -21.50600000222524], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_green {"clearance": 8.48199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_w {"clearance": 0.552952622275138, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.400000015894572, -0.519999929269155, -20.98199999332428], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_e {"clearance": 0.552952622275138, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.7999999523162842, -0.519999929269155, -20.99399999777476], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_-1_-21.0 {"clearance": 0.13727348470923245, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [-1.400000015894572, -0.48999992926915376, -20.98199999332428], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_1_-21.0 {"clearance": 0.13727348470923245, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [1.7999999523162842, -0.48999992926915376, -20.99399999777476], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.55 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.55 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.35 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.35 {"clearance": 4.099499952316284, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS cup {"clearance": 20.98199999332428, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "cup", "residual_cut": false, "status": "PASS"}
+PASS tee {"clearance": 19.980000019073486, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "tee", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_0 {"clearance": 1.0, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_1 {"clearance": 3.1299999523162834, "time": 5.335, "offset": -0.3299999999999994, "tilt": 0, "location": [-1.7999999523162842, 0.47000003178914446, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_2 {"clearance": 3.9700001811981194, "time": 5.17, "offset": -0.6599999999999995, "tilt": 0, "location": [-1.7999999523162842, 0.1400000317891444, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_3 {"clearance": 2.9199999523162825, "time": 5.44, "offset": -0.11999999999999855, "tilt": 0, "location": [-1.7999999523162842, 0.6800000317891453, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_4 {"clearance": 3.31000018119812, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_5 {"clearance": 1.0, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_6 {"clearance": 3.1299999523162834, "time": 5.335, "offset": -0.3299999999999994, "tilt": 0, "location": [-0.5999999841054281, 0.47000003178914446, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_7 {"clearance": 3.9700001811981194, "time": 5.17, "offset": -0.6599999999999995, "tilt": 0, "location": [-0.5999999841054281, 0.1400000317891444, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_8 {"clearance": 2.9199999523162825, "time": 5.44, "offset": -0.11999999999999855, "tilt": 0, "location": [-0.5999999841054281, 0.6800000317891453, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_9 {"clearance": 3.31000018119812, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_10 {"clearance": 1.2819999903440475, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_11 {"clearance": 1.6619999706745148, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_12 {"clearance": 1.7219999730587006, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_13 {"clearance": 1.7899999916553497, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_14 {"clearance": 2.160692024230957, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_15 {"clearance": 2.160692024230957, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_16 {"clearance": 1.7899999916553497, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_17 {"clearance": 1.7719999849796295, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_18 {"clearance": 1.7719999849796295, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_19 {"clearance": 1.2819999903440475, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_20 {"clearance": 1.6619999706745148, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_21 {"clearance": 1.7219999730587006, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_22 {"clearance": 1.7899999916553497, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_23 {"clearance": 2.160692024230957, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_24 {"clearance": 2.160692024230957, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_25 {"clearance": 1.7899999916553497, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-0.5999999841054281, -0.4999999682108562, -21.5], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_26 {"clearance": 1.7719999849796295, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.2000000476837158, -0.519999929269155, -21.50600000222524], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_27 {"clearance": 1.7719999849796295, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_28 {"clearance": 0.28999996185302734, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_29 {"clearance": 0.49000000953674316, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.3599998950958252, -0.519999929269155, -20.986666684349377], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_30 {"clearance": 5.400000143051147, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_31 {"clearance": 6.089999723434448, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_32 {"clearance": 5.529999780654907, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668], "kind": "static base", "residual_cut": false, "status": "PASS"}
+DESIGNED APERTURE / REPLACEMENT rail4__cut0 raw={"clearance": 0.15000004768371555, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail4__cut1__cut0 raw={"clearance": 0.14999995231628416, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut0 raw={"clearance": 0.15000004768371572, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut0__cut1 raw={"clearance": 0.14999995231628427, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut0__cut2__cut2 raw={"clearance": 1.1499999523162843, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut1__cut0__cut1 raw={"clearance": 3.229999952316284, "time": 5.5, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 0.8000000317891439, -21.166666666666668]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut2__cut0 raw={"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut0 raw={"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut1 raw={"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.8799999634424847, -21.51200000445048]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut2 raw={"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut0 raw={"clearance": 0.15000004768371572, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut0__cut1 raw={"clearance": 0.14999995231628427, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut0__cut2__cut2 raw={"clearance": 1.1499999523162843, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut1__cut0__cut1 raw={"clearance": 3.229999952316284, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut2__cut0 raw={"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut0 raw={"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut1 raw={"clearance": 0.13199999332427903, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut2 raw={"clearance": 3.6319999933242793, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.2000000476837158, -0.519999929269155, -21.50600000222524]}
+DESIGNED APERTURE / REPLACEMENT rail8__cut0 raw={"clearance": 0.15000004768371555, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.400000015894572, -0.519999929269155, -21.51800000667572]}
+DESIGNED APERTURE / REPLACEMENT rail8__cut1__cut0 raw={"clearance": 0.14999995231628416, "time": 5.5, "offset": 0, "tilt": 0, "location": [-0.5999999841054281, 0.8000000317891439, -21.5]}
+DESIGNED APERTURE / REPLACEMENT felt_approach__cut0 raw={"clearance": 0.150000047683716, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [-1.7999999523162842, -0.4999999682108562, -21.166666666666668]}
+DESIGNED APERTURE / REPLACEMENT felt_approach__cut1 raw={"clearance": 0.150000047683716, "time": 0.0, "offset": -1.3, "tilt": 0, "location": [1.7999999523162842, -0.4999999682108562, -21.333333333333332]}
+DESIGNED APERTURE / REPLACEMENT felt_approach__cut2 raw={"clearance": 0.1300000190734858, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [-1.2400000095367432, -0.48999992926915376, -20.99333334962527]}
+Mesh budget PASS
+
+h11_lock_lift
+PASS rail1 {"clearance": 7.650000095367432, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail2 {"clearance": 7.646644040745674, "time": 7.595, "offset": 4, "tilt": 2.533333333333327, "location": [-1.0, 4.0954688452447705, -21.711005404568255], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail3 {"clearance": 4.399999976158141, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4__cut0 {"clearance": 0.3500000953674314, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -21.710000038146973], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail4__cut1__cut0 {"clearance": 0.15000009536743172, "time": 6.115, "offset": 1.2300000000000004, "tilt": 0, "location": [-1.1999999284744263, 1.179999998013179, -21.65000009536743], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut0 {"clearance": 0.349999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut0__cut1 {"clearance": 0.14999997615814217, "time": 6.105, "offset": 1.2100000000000009, "tilt": 0, "location": [-1.600000023841858, 1.1599999980131794, -23.819999913374584], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut0__cut2__cut2 {"clearance": 0.14999997615814217, "time": 6.605, "offset": 2.210000000000001, "tilt": 0, "location": [-1.600000023841858, 2.159999998013179, -23.819999913374584], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut1__cut0__cut1 {"clearance": 0.19631581960967542, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [-1.5999999046325684, 4.179620591462201, -21.714526488873428], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut2__cut0 {"clearance": 0.1499999999999993, "time": 6.11, "offset": 1.2200000000000006, "tilt": 0, "location": [-1.5999999046325684, 1.1699999980131792, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2__cut0 {"clearance": 0.14999997615814217, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2__cut1 {"clearance": 0.14999999403953554, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2__cut2 {"clearance": 0.1499999999999993, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut0 {"clearance": 0.35000009536743154, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut1 {"clearance": 0.15000009536743172, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut2 {"clearance": 0.15000009536743172, "time": 6.6000000000000005, "offset": 2.200000000000001, "tilt": 0, "location": [-1.5999999046325684, 2.1499999980131794, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut1__cut0 {"clearance": 0.349999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut1__cut1 {"clearance": 0.14999997615814217, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut1__cut2 {"clearance": 0.14999997615814217, "time": 6.63, "offset": 2.26, "tilt": 0, "location": [1.4666666587193806, 2.209999998013178, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut2 {"clearance": 0.14999999403953554, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.10000000397364299, -24.939999997615814], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut3__cut0 {"clearance": 0.1499999999999993, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut3__cut1 {"clearance": 0.15000000000000072, "time": 6.6000000000000005, "offset": 2.200000000000001, "tilt": 0, "location": [-1.0, 2.1499999980131794, -24.87999999523163], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut0 {"clearance": 0.349999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut0__cut1 {"clearance": 0.14999997615814217, "time": 6.105, "offset": 1.2100000000000009, "tilt": 0, "location": [1.4666666587193806, 1.1599999980131794, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut0__cut2__cut2 {"clearance": 0.14999997615814217, "time": 6.605, "offset": 2.210000000000001, "tilt": 0, "location": [1.4666666587193806, 2.159999998013179, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut1__cut0__cut1 {"clearance": 0.19631581960967542, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [1.600000023841858, 4.175435207029051, -21.774380274807942], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut2__cut0 {"clearance": 0.1499999999999993, "time": 6.11, "offset": 1.2200000000000006, "tilt": 0, "location": [1.4666666587193806, 1.1699999980131792, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut2__cut0 {"clearance": 0.14999997615814217, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut2__cut1 {"clearance": 0.14999999403953554, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.5333333412806194, -0.10000000397364299, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut2__cut2 {"clearance": 0.1499999999999993, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail8__cut0 {"clearance": 0.3499999761581418, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -21.829999923706055], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail8__cut1__cut0 {"clearance": 0.15000009536743164, "time": 6.115, "offset": 1.2300000000000004, "tilt": 0, "location": [1.600000023841858, 1.179999998013179, -21.769999980926514], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail9 {"clearance": 4.399999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail10 {"clearance": 7.646644040745674, "time": 7.595, "offset": 4, "tilt": 2.533333333333327, "location": [-1.0, 4.0954688452447705, -21.711005404568255], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail11 {"clearance": 7.650000095367432, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail12 {"clearance": 23.646644040745674, "time": 7.595, "offset": 4, "tilt": 2.533333333333327, "location": [-1.0, 4.0954688452447705, -21.711005404568255], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail13 {"clearance": 0.3999999761581424, "time": 7.055, "offset": 3.1099999999999994, "tilt": 0, "location": [-1.600000023841858, 3.059999998013178, -23.819999913374584], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail14 {"clearance": 4.5, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail15 {"clearance": 9.399999976158144, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail16 {"clearance": 27.0, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail17 {"clearance": 9.399999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail18 {"clearance": 4.499999999999999, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail19 {"clearance": 0.3999999761581421, "time": 7.055, "offset": 3.1099999999999994, "tilt": 0, "location": [1.4666666587193806, 3.059999998013178, -25.0], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail20__cut0__cut0 {"clearance": 0.34999997615814216, "time": 7.115, "offset": 3.2300000000000004, "tilt": 0, "location": [-1.600000023841858, 3.179999998013179, -23.819999913374584], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS quay_rail20__cut1__cut0 {"clearance": 0.34999997615814216, "time": 7.115, "offset": 3.2300000000000004, "tilt": 0, "location": [1.4666666587193806, 3.179999998013179, -25.0], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS funnel_w_backing {"clearance": 0.4787441778841496, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.4799999793370564, -0.050000001986821495, -22.420000076293945], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS funnel_e_backing {"clearance": 0.47874417788415, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.5400000015894573, -0.050000001986821495, -22.420000076293945], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_-1 {"clearance": 0.8000000953674323, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_1 {"clearance": 0.8000000953674323, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.399999976158142, -0.050000001986821495, -21.710000038146973], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_-1 {"clearance": 0.15000009536743172, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [-1.5999999046325684, 3.799999998013178, -24.87999999523163], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_1 {"clearance": 0.14999997615814217, "time": 7.44, "offset": 3.880000000000001, "tilt": 0, "location": [1.4666666587193806, 3.829999998013179, -25.0], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS felt_lane {"clearance": 7.646644040745674, "time": 7.595, "offset": 4, "tilt": 2.533333333333327, "location": [-1.0, 4.0954688452447705, -21.711005404568255], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut0 {"clearance": 0.6500000953674316, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -21.710000038146973], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_approach__cut1 {"clearance": 0.6500000953674316, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.399999976158142, -0.050000001986821495, -21.710000038146973], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_approach__cut2 {"clearance": 0.8000000953674311, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut0__cut0 {"clearance": 0.3500000953674317, "time": 7.325, "offset": 3.6500000000000004, "tilt": 0, "location": [-1.5999999046325684, 3.5999999980131787, -24.87999999523163], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut0__cut1 {"clearance": 0.7000000000000015, "time": 7.38, "offset": 3.76, "tilt": 0, "location": [-1.5999999046325684, 3.709999998013178, -24.87999999523163], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut0__cut2 {"clearance": 0.15000009536743172, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [-1.5999999046325684, 3.799999998013178, -24.87999999523163], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut1__cut0 {"clearance": 0.34999997615814216, "time": 7.325, "offset": 3.6500000000000004, "tilt": 0, "location": [1.4666666587193806, 3.5999999980131787, -25.0], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut1__cut1 {"clearance": 0.7000000000000015, "time": 7.38, "offset": 3.76, "tilt": 0, "location": [1.399999976158142, 3.709999998013178, -24.87999999523163], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut1__cut2 {"clearance": 0.14999997615814217, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [1.4666666587193806, 3.799999998013178, -25.0], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut2__cut0 {"clearance": 0.7000000000000015, "time": 7.15, "offset": 3.3000000000000007, "tilt": 0, "location": [-1.0, 3.249999998013179, -24.87999999523163], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut2__cut1 {"clearance": 0.15000000000000072, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [-1.0, 3.799999998013178, -24.87999999523163], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_green {"clearance": 5.0, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_w {"clearance": 1.1667214142179447, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -21.710000038146973], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_e {"clearance": 1.1667213299242474, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.600000023841858, -0.050000001986821495, -21.769999980926514], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_-1_-21.0 {"clearance": 0.7510422766520393, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -21.710000038146973], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_1_-21.0 {"clearance": 0.7510421923583422, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.600000023841858, -0.050000001986821495, -21.769999980926514], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.55 {"clearance": 0.6803315310984274, "time": 7.26, "offset": 3.5199999999999996, "tilt": 0, "location": [-1.5999999046325684, 3.469999998013178, -24.87999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.55 {"clearance": 0.6803314468047303, "time": 7.26, "offset": 3.5199999999999996, "tilt": 0, "location": [1.4666666587193806, 3.469999998013178, -25.0], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.35 {"clearance": 0.1894999999999995, "time": 7.405, "offset": 3.8100000000000005, "tilt": 0, "location": [-1.5999999046325684, 3.759999998013179, -24.87999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.35 {"clearance": 0.1894999999999995, "time": 7.405, "offset": 3.8100000000000005, "tilt": 0, "location": [1.4666666587193806, 3.759999998013179, -25.0], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS cup {"clearance": 17.5, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163], "kind": "cup", "residual_cut": false, "status": "PASS"}
+PASS tee {"clearance": 20.646644040745674, "time": 7.595, "offset": 4, "tilt": 2.533333333333327, "location": [-1.0, 4.0954688452447705, -21.711005404568255], "kind": "tee", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_0 {"clearance": 1.1999999284744263, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_1 {"clearance": 1.2599998712539673, "time": 7.140000000000001, "offset": 3.280000000000001, "tilt": 0, "location": [-1.600000023841858, 3.2299999980131795, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_2 {"clearance": 1.1799999475479126, "time": 7.215, "offset": 3.4299999999999997, "tilt": 0, "location": [-1.600000023841858, 3.379999998013178, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_3 {"clearance": 1.2599998712539673, "time": 7.140000000000001, "offset": 3.280000000000001, "tilt": 0, "location": [-1.600000023841858, 3.2299999980131795, -22.620000044504803], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_4 {"clearance": 1.1799999475479126, "time": 7.215, "offset": 3.4299999999999997, "tilt": 0, "location": [-1.600000023841858, 3.379999998013178, -22.620000044504803], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_5 {"clearance": 1.1999999284744263, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_6 {"clearance": 1.2599998712539673, "time": 7.140000000000001, "offset": 3.280000000000001, "tilt": 0, "location": [1.4666666587193806, 3.2299999980131795, -25.0], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_7 {"clearance": 1.1799999475479126, "time": 7.215, "offset": 3.4299999999999997, "tilt": 0, "location": [1.4666666587193806, 3.379999998013178, -25.0], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_8 {"clearance": 1.2599998712539673, "time": 7.140000000000001, "offset": 3.280000000000001, "tilt": 0, "location": [1.4666666587193806, 3.2299999980131795, -21.829999923706055], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_9 {"clearance": 1.1799999475479126, "time": 7.215, "offset": 3.4299999999999997, "tilt": 0, "location": [1.4666666587193806, 3.379999998013178, -21.829999923706055], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_10 {"clearance": 1.1999999284744263, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_11 {"clearance": 0.7499998807907104, "time": 5.66, "offset": 0.3200000000000003, "tilt": 0, "location": [-1.4799999793370564, 0.2699999980131788, -23.619999885559082], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_12 {"clearance": 1.21999990940094, "time": 5.79, "offset": 0.5800000000000001, "tilt": 0, "location": [-1.600000023841858, 0.5299999980131785, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_13 {"clearance": 0.8649998903274536, "time": 5.925, "offset": 0.8499999999999996, "tilt": 0, "location": [-1.600000023841858, 0.7999999980131781, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_14 {"clearance": 1.1049998998641968, "time": 6.095, "offset": 1.1899999999999995, "tilt": 0, "location": [-1.600000023841858, 1.139999998013178, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_15 {"clearance": 1.584999918937683, "time": 5.86, "offset": 0.7200000000000006, "tilt": 0, "location": [-1.600000023841858, 0.6699999980131791, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_16 {"clearance": 1.8249999284744263, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_17 {"clearance": 1.584999918937683, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_18 {"clearance": 1.1049998998641968, "time": 5.82, "offset": 0.6400000000000006, "tilt": 0, "location": [-1.600000023841858, 0.589999998013179, -23.819999913374584], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_19 {"clearance": 1.1999999284744263, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -21.829999923706055], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_20 {"clearance": 0.7499998807907104, "time": 5.66, "offset": 0.3200000000000003, "tilt": 0, "location": [1.600000023841858, 0.2699999980131788, -24.019999941190083], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_21 {"clearance": 1.21999990940094, "time": 5.79, "offset": 0.5800000000000001, "tilt": 0, "location": [1.4799999793370564, 0.5299999980131785, -24.219999969005585], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_22 {"clearance": 1.8249999284744263, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_23 {"clearance": 1.584999918937683, "time": 5.86, "offset": 0.7200000000000006, "tilt": 0, "location": [1.600000023841858, 0.6699999980131791, -24.939999997615814], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_24 {"clearance": 1.1049998998641968, "time": 6.095, "offset": 1.1899999999999995, "tilt": 0, "location": [1.4799999793370564, 1.139999998013178, -24.219999969005585], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_25 {"clearance": 0.8649998903274536, "time": 5.925, "offset": 0.8499999999999996, "tilt": 0, "location": [1.4799999793370564, 0.7999999980131781, -24.219999969005585], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_26 {"clearance": 1.1049998998641968, "time": 5.82, "offset": 0.6400000000000006, "tilt": 0, "location": [1.4799999793370564, 0.589999998013179, -24.219999969005585], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_27 {"clearance": 1.584999918937683, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.600000023841858, -0.050000001986821495, -24.939999997615814], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_28 {"clearance": 0.9600000381469727, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_29 {"clearance": 1.1600000858306885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_30 {"clearance": 1.2874440249619834, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [-0.5999999841054281, 3.962677961277907, -24.816950639992296], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_31 {"clearance": 1.9355897194356855, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [-1.5400000015894573, 4.004531847187505, -24.21841218605262], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_32 {"clearance": 1.4174436625657432, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [0.600000003973643, 3.962677961277907, -24.816950639992296], "kind": "static base", "residual_cut": false, "status": "PASS"}
+DESIGNED APERTURE / REPLACEMENT rail4__cut0 raw={"clearance": 0.3500000953674314, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -21.710000038146973]}
+DESIGNED APERTURE / REPLACEMENT rail4__cut1__cut0 raw={"clearance": 0.15000009536743172, "time": 6.1000000000000005, "offset": 1.200000000000001, "tilt": 0, "location": [-1.1999999284744263, 1.1499999980131796, -21.65000009536743]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut0 raw={"clearance": 0.349999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut0__cut1 raw={"clearance": 0.14999997615814217, "time": 6.105, "offset": 1.2100000000000009, "tilt": 0, "location": [-1.600000023841858, 1.1599999980131794, -23.819999913374584]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut0__cut2__cut2 raw={"clearance": 0.14999997615814217, "time": 6.605, "offset": 2.210000000000001, "tilt": 0, "location": [-1.600000023841858, 2.159999998013179, -23.819999913374584]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut1__cut0__cut1 raw={"clearance": 0.19631581960967542, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [-1.5999999046325684, 4.179620591462201, -21.714526488873428]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut2__cut0 raw={"clearance": 0.1499999999999993, "time": 6.1000000000000005, "offset": 1.200000000000001, "tilt": 0, "location": [-1.5999999046325684, 1.1499999980131796, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut0 raw={"clearance": 0.14999997615814217, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut1 raw={"clearance": 0.14999999403953554, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.600000023841858, -0.050000001986821495, -23.819999913374584]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut2 raw={"clearance": 0.1499999999999993, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut0__cut0 raw={"clearance": 0.35000009536743154, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut0__cut1 raw={"clearance": 0.15000009536743172, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut0__cut2 raw={"clearance": 0.15000009536743172, "time": 6.6000000000000005, "offset": 2.200000000000001, "tilt": 0, "location": [-1.5999999046325684, 2.1499999980131794, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut1__cut0 raw={"clearance": 0.349999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut1__cut1 raw={"clearance": 0.14999997615814217, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut1__cut2 raw={"clearance": 0.14999997615814217, "time": 6.605, "offset": 2.210000000000001, "tilt": 0, "location": [1.4666666587193806, 2.159999998013179, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut2 raw={"clearance": 0.14999999403953554, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.10000000397364299, -24.939999997615814]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut3__cut0 raw={"clearance": 0.1499999999999993, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut3__cut1 raw={"clearance": 0.15000000000000072, "time": 6.6000000000000005, "offset": 2.200000000000001, "tilt": 0, "location": [-1.0, 2.1499999980131794, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut0 raw={"clearance": 0.349999976158142, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut0__cut1 raw={"clearance": 0.14999997615814217, "time": 6.105, "offset": 1.2100000000000009, "tilt": 0, "location": [1.4666666587193806, 1.1599999980131794, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut0__cut2__cut2 raw={"clearance": 0.14999997615814217, "time": 6.605, "offset": 2.210000000000001, "tilt": 0, "location": [1.4666666587193806, 2.159999998013179, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut1__cut0__cut1 raw={"clearance": 0.19631581960967542, "time": 7.65, "offset": 4.0, "tilt": 4.0, "location": [1.600000023841858, 4.175435207029051, -21.774380274807942]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut2__cut0 raw={"clearance": 0.1499999999999993, "time": 6.1000000000000005, "offset": 1.200000000000001, "tilt": 0, "location": [1.4666666587193806, 1.1499999980131796, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut0 raw={"clearance": 0.14999997615814217, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut1 raw={"clearance": 0.14999999403953554, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.5333333412806194, -0.10000000397364299, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut2 raw={"clearance": 0.1499999999999993, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -25.0]}
+DESIGNED APERTURE / REPLACEMENT rail8__cut0 raw={"clearance": 0.3499999761581418, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.4666666587193806, -0.050000001986821495, -21.829999923706055]}
+DESIGNED APERTURE / REPLACEMENT rail8__cut1__cut0 raw={"clearance": 0.15000009536743164, "time": 6.1000000000000005, "offset": 1.200000000000001, "tilt": 0, "location": [1.600000023841858, 1.1499999980131796, -21.769999980926514]}
+DESIGNED APERTURE / REPLACEMENT quay_rail20__cut0__cut0 raw={"clearance": 0.34999997615814216, "time": 7.08, "offset": 3.16, "tilt": 0, "location": [-1.600000023841858, 3.1099999980131785, -23.819999913374584]}
+DESIGNED APERTURE / REPLACEMENT quay_rail20__cut1__cut0 raw={"clearance": 0.34999997615814216, "time": 7.08, "offset": 3.16, "tilt": 0, "location": [1.4666666587193806, 3.1099999980131785, -25.0]}
+DESIGNED APERTURE / REPLACEMENT felt_approach__cut0 raw={"clearance": 0.6500000953674316, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.5999999046325684, -0.050000001986821495, -21.710000038146973]}
+DESIGNED APERTURE / REPLACEMENT felt_approach__cut1 raw={"clearance": 0.6500000953674316, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.399999976158142, -0.050000001986821495, -21.710000038146973]}
+DESIGNED APERTURE / REPLACEMENT felt_approach__cut2 raw={"clearance": 0.8000000953674311, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0, -0.050000001986821495, -21.710000038146973]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut0__cut0 raw={"clearance": 0.3500000953674317, "time": 7.325, "offset": 3.6500000000000004, "tilt": 0, "location": [-1.5999999046325684, 3.5999999980131787, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut0__cut1 raw={"clearance": 0.7000000000000015, "time": 7.15, "offset": 3.3000000000000007, "tilt": 0, "location": [-1.5999999046325684, 3.249999998013179, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut0__cut2 raw={"clearance": 0.15000009536743172, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [-1.5999999046325684, 3.799999998013178, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut1__cut0 raw={"clearance": 0.34999997615814216, "time": 7.325, "offset": 3.6500000000000004, "tilt": 0, "location": [1.4666666587193806, 3.5999999980131787, -25.0]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut1__cut1 raw={"clearance": 0.7000000000000015, "time": 7.15, "offset": 3.3000000000000007, "tilt": 0, "location": [1.399999976158142, 3.249999998013179, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut1__cut2 raw={"clearance": 0.14999997615814217, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [1.4666666587193806, 3.799999998013178, -25.0]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut2__cut0 raw={"clearance": 0.7000000000000015, "time": 7.15, "offset": 3.3000000000000007, "tilt": 0, "location": [-1.0, 3.249999998013179, -24.87999999523163]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut2__cut1 raw={"clearance": 0.15000000000000072, "time": 7.425, "offset": 3.8499999999999996, "tilt": 0, "location": [-1.0, 3.799999998013178, -24.87999999523163]}
+Mesh budget PASS
+
+h11_lock_chamber
+PASS rail1 {"clearance": 6.4100000858306885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail2 {"clearance": 6.4100000858306885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail3 {"clearance": 2.3499999046325675, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.635234514872233, 1.5878451665242512, -23.226666669050854], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4__cut0 {"clearance": 0.10000002384185791, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.180000066757202, 0.019999980926513672, -21.62000000476837], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4__cut1__cut0 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.809999942779541, 2.6566666762034097, -21.62000000476837], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut0 {"clearance": 0.24999990463256844, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.364765485127767, 1.8121549288431804, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut1__cut0__cut1 {"clearance": 0.3999999046325683, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.364765485127767, 1.8121549288431804, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut1__cut0__cut2__cut2 {"clearance": 0.4817676305770875, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.364765485127767, 1.8121549288431804, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut1__cut1__cut0__cut1 {"clearance": 1.0299999713897705, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799649635950724, 4.563333511352539, -24.173333366711933], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut1__cut2__cut0 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut2__cut0 {"clearance": 0.3999999046325683, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.364765485127767, 1.8121549288431804, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut2__cut1 {"clearance": 0.9599999427795403, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.9333333174387614, -20.663333415985107], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail5__cut2__cut2 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.819999933242798, 0.009999990463256836, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut0__cut0 {"clearance": 0.6999999523162843, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.819999933242798, 0.009999990463256836, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut0__cut1 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.819999933242798, 0.009999990463256836, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut0__cut2 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut1__cut0 {"clearance": 0.6999999523162843, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 1.34333332379659, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut1__cut1 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 1.34333332379659, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut1__cut2 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 1.34333332379659, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut2 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.819999933242798, 0.009999990463256836, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut3__cut0 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.819999933242798, 0.009999990463256836, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail6__cut3__cut1 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut0 {"clearance": 0.24999990463256844, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.364765485127767, 1.5878451665242512, -23.226666669050854], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut1__cut0__cut1 {"clearance": 0.3999999046325683, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.364765485127767, 1.5878451665242512, -23.226666669050854], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut1__cut0__cut2__cut2 {"clearance": 0.4817676305770875, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.3573826948801675, 1.756077488263448, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut1__cut1__cut0__cut1 {"clearance": 1.0299999713897705, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799649635950724, 4.563333511352539, -24.026666680971783], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut1__cut2__cut0 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 1.34333332379659, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut2__cut0 {"clearance": 0.3999999046325683, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.3573826948801675, 1.756077488263448, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut2__cut1 {"clearance": 0.9599999427795403, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.549999992052714, -0.4666666587193807, -20.69000005722046], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail7__cut2__cut2 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 1.34333332379659, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail8__cut0 {"clearance": 0.10000002384185791, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.819999933242798, 0.019999980926513672, -21.62000000476837], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail8__cut1__cut0 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.809999942779541, 1.34333332379659, -21.62000000476837], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail9 {"clearance": 2.3499999046325684, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.635234514872233, 1.8121549288431804, -23.226666664083798], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail10 {"clearance": 6.4100000858306885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail11 {"clearance": 6.4100000858306885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail12 {"clearance": 22.41000008583069, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail13 {"clearance": 0.29999995231628385, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail14 {"clearance": 3.349999904632569, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.373333344856898, 5.326666831970215, -26.12333329518636], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail15 {"clearance": 7.34999990463257, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.0, 1.7000000476837158, -23.180000002185505], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail16 {"clearance": 25.84999990463257, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.373333344856898, 5.326666831970215, -26.12333329518636], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail17 {"clearance": 7.349999904632568, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.6426173051198325, 1.6439226071039836, -23.226666669050854], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail18 {"clearance": 3.349999904632568, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.373333344856898, 5.326666831970215, -26.12333329518636], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail19 {"clearance": 0.2999999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.819999933242798, 3.990000009536743, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail20__cut0__cut0 {"clearance": 0.29999995231628407, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail20__cut1__cut0 {"clearance": 0.29999995231628407, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.819999933242798, 3.990000009536743, -23.456666668256123], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+FAIL funnel_w_backing {"clearance": -0.6888305054935973, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 1.34333332379659, -22.543333331743877], "kind": "rail/wall", "residual_cut": false, "status": "FAIL"}
+FAIL funnel_e_backing {"clearance": -0.6888305054935975, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 2.6566666762034097, -22.543333331743877], "kind": "rail/wall", "residual_cut": false, "status": "FAIL"}
+PASS gate_approach_guide_-1 {"clearance": 0.100000023841858, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.636666774749756], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_1 {"clearance": 0.100000023841858, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.549999992052714, -0.4666666587193807, -20.69000005722046], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_-1 {"clearance": 0.8299999713897704, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.7898248036702475, 4.563333511352539, -24.06333335240682], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_1 {"clearance": 0.8299999713897704, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799649635950724, 4.563333511352539, -24.026666680971783], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS felt_lane {"clearance": 6.4100000858306885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut0 {"clearance": 0.3000000238418581, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.636666774749756], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut1 {"clearance": 0.3000000238418581, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.549999992052714, -0.4666666587193807, -20.69000005722046], "kind": "felt", "residual_cut": false, "status": "PASS"}
+CONTACT APPROVED felt_approach__cut2 {"clearance": -0.0005, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.636666774749756], "kind": "felt", "residual_cut": false, "status": "CONTACT APPROVED"}
+PASS felt_quay__cut0__cut0 {"clearance": 0.7999999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut0__cut1 {"clearance": 1.3000000238418594, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.180000066757202, 3.9800000190734863, -24.37999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut0__cut2 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut1__cut0 {"clearance": 0.7999999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.819999933242798, 3.990000009536743, -23.456666668256123], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut1__cut1 {"clearance": 1.3000000238418594, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.180000066757202, 3.9800000190734863, -24.37999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut1__cut2 {"clearance": 0.8499999523162841, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.819999933242798, 3.990000009536743, -23.456666668256123], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut2__cut0 {"clearance": 1.2995001907348633, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.373333344856898, 5.326666831970215, -25.87666670481364], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut2__cut1 {"clearance": 1.0499999523162842, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.799999952316284, 2.6566666762034097, -23.456666668256123], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_green {"clearance": 3.8499999046325684, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.373333344856898, 5.326666831970215, -26.12333329518636], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_w {"clearance": 0.05143248351156515, "time": 0.0, "offset": 0, "tilt": 0, "location": [-3.056666692097982, 0.019999980926513672, -21.610000014305115], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_e {"clearance": 0.05143248351156471, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.943333307902018, 0.019999980926513672, -21.610000014305115], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_-1_-21.0 {"clearance": 0.12526909574357764, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.636666774749756], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_1_-21.0 {"clearance": 0.1252690957435777, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.549999992052714, -0.4666666587193807, -20.69000005722046], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.55 {"clearance": 1.3395001525878907, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.373333344856898, 6.086666742960612, -25.863333304723103], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.55 {"clearance": 1.3395001525878907, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.3866666754086812, 5.713333447774251, -26.12333329518636], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.35 {"clearance": 1.1000700118865774, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.819999933242798, 3.9800000190734863, -24.37999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.35 {"clearance": 1.1000700118865774, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.819999933242798, 3.9800000190734863, -24.37999999523163], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS cup {"clearance": 16.34999990463257, "time": 0.0, "offset": 0, "tilt": 0, "location": [-0.373333344856898, 5.326666831970215, -26.12333329518636], "kind": "cup", "residual_cut": false, "status": "PASS"}
+PASS tee {"clearance": 19.41000008583069, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.649999976158142, -0.4666666587193807, -20.43666672706604], "kind": "tee", "residual_cut": false, "status": "PASS"}
+Mesh budget PASS
+
+h11_quay_lip
+PASS rail1 {"clearance": 11.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail2 {"clearance": 11.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail3 {"clearance": 4.200000047683715, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail4__cut0 {"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail4__cut1__cut0 {"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut0 {"clearance": 0.15000004768371572, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut0__cut1 {"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut0__cut2__cut2 {"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut1__cut0__cut1 {"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut1__cut2__cut0 {"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2__cut0 {"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2__cut1 {"clearance": 2.8, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail5__cut2__cut2 {"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut0 {"clearance": 0.15000004768371572, "time": 7.495, "offset": -0.9499999999999975, "tilt": 0, "location": [-1.7999999523162842, 3.5500000000000025, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut1 {"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut0__cut2 {"clearance": 0.1499999985098821, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut1__cut0 {"clearance": 0.15000004768371572, "time": 7.495, "offset": -0.9499999999999975, "tilt": 0, "location": [1.7999999523162842, 3.5500000000000025, -25.483333333830036], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut1__cut1 {"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.0, -25.550000001490115], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut1__cut2 {"clearance": 0.1499999985098821, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.5, -25.349999998509883], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut2 {"clearance": 2.8, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut3__cut0 {"clearance": 0.15000000000000013, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail6__cut3__cut1 {"clearance": 0.14999999850988247, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut0 {"clearance": 0.15000004768371572, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut0__cut1 {"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.0, -25.550000001490115], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut0__cut2__cut2 {"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut1__cut0__cut1 {"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut1__cut2__cut0 {"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.0, -25.550000001490115], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut2__cut0 {"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [0.6000000238418579, 3.5, -25.483333333830036], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut2__cut1 {"clearance": 2.8, "time": 7.5, "offset": -1, "tilt": 0, "location": [-0.5999999642372131, 3.5, -25.483333333830036], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail7__cut2__cut2 {"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [0.6000000238418579, 3.5, -25.483333333830036], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail8__cut0 {"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail8__cut1__cut0 {"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS rail9 {"clearance": 4.200000047683716, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.5, -25.483333333830036], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail10 {"clearance": 11.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail11 {"clearance": 11.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS rail12 {"clearance": 27.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail13 {"clearance": 0.20000004768371604, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail14 {"clearance": 3.9499999985098846, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail15 {"clearance": 9.200000047683718, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail16 {"clearance": 26.449999998509885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail17 {"clearance": 9.200000047683716, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.400000015894572, 4.5, -25.550000001490115], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail18 {"clearance": 3.9499999985098837, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail19 {"clearance": 0.20000004768371582, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.400000015894572, 4.5, -25.550000001490115], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_rail20__cut0__cut0 {"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS quay_rail20__cut1__cut0 {"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.5, -25.483333333830036], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+PASS funnel_w_backing {"clearance": 2.1415950461647535, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS funnel_e_backing {"clearance": 2.2541638819028256, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_-1 {"clearance": 4.4999999985098835, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS gate_approach_guide_1 {"clearance": 4.4999999985098835, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_-1 {"clearance": 0.2999999985098839, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS quay_shoulder_1 {"clearance": 0.2999999985098839, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.5, -25.483333333830036], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PASS felt_lane {"clearance": 11.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut0 {"clearance": 4.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut1 {"clearance": 4.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_approach__cut2 {"clearance": 4.499999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_quay__cut0__cut0 {"clearance": 0.15000004768371591, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut0__cut1 {"clearance": 0.1499999985098861, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.0, -25.483333333830036], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut0__cut2 {"clearance": 0.1499999985098821, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut1__cut0 {"clearance": 0.15000004768371591, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut1__cut1 {"clearance": 0.1499999985098861, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut1__cut2 {"clearance": 0.1499999985098821, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut2__cut0 {"clearance": 0.1499999985098861, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.0, -25.483333333830036], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_quay__cut2__cut1 {"clearance": 0.14999999850988247, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": true, "status": "PASS"}
+PASS felt_green {"clearance": 4.449999998509885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.0, -25.483333333830036], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_w {"clearance": 3.6415950461647526, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_funnel_e {"clearance": 3.8014324581795913, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 3.5, -25.483333333830036], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_-1_-21.0 {"clearance": 3.4995, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_gate_corner_1_-21.0 {"clearance": 3.5401527349266404, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.55 {"clearance": 0.15000141043736714, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.0, -25.483333333830036], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.55 {"clearance": 0.15000141043736714, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_-1_-25.35 {"clearance": 0.15000141043736714, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS felt_lip_corner_1_-25.35 {"clearance": 0.15000141043736714, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "felt", "residual_cut": false, "status": "PASS"}
+PASS cup {"clearance": 16.949999998509885, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "cup", "residual_cut": false, "status": "PASS"}
+PASS tee {"clearance": 24.349999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "tee", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_0 {"clearance": 1.0, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_1 {"clearance": 1.10999998897314, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_2 {"clearance": 1.0299999460577958, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_3 {"clearance": 3.310000036656856, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_4 {"clearance": 3.2299999937415116, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_5 {"clearance": 1.0, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_6 {"clearance": 1.10999998897314, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_7 {"clearance": 1.0299999460577958, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_8 {"clearance": 3.310000036656856, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.0, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_9 {"clearance": 3.2299999937415116, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.0, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_10 {"clearance": 2.149999995529651, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_11 {"clearance": 2.029999975860118, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_12 {"clearance": 1.889999990165233, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_13 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_14 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_15 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_16 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_17 {"clearance": 2.1606922149658203, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_18 {"clearance": 2.1606922149658203, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_19 {"clearance": 2.149999995529651, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_20 {"clearance": 2.029999975860118, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.40000001589457196, 4.5, -25.349999998509883], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_21 {"clearance": 1.889999990165233, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_22 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.5, -25.349999998509883], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_23 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.5, -25.349999998509883], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_24 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_25 {"clearance": 1.9400000020861619, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.40000001589457196, 4.5, -25.349999998509883], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_26 {"clearance": 2.1606922149658203, "time": 0.0, "offset": 0, "tilt": 0, "location": [0.40000001589457196, 4.5, -25.349999998509883], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_27 {"clearance": 2.1606922149658203, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_28 {"clearance": 4.659999941289424, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_29 {"clearance": 4.85999998897314, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_30 {"clearance": 0.3000001907348633, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0000000198682149, 4.5, -25.550000001490115], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_31 {"clearance": 0.9899997711181641, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0000000198682149, 4.5, -25.550000001490115], "kind": "static base", "residual_cut": false, "status": "PASS"}
+PASS h11_lock_chamber_32 {"clearance": 0.42999982833862305, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.0000000198682149, 4.5, -25.550000001490115], "kind": "static base", "residual_cut": false, "status": "PASS"}
+DESIGNED APERTURE / REPLACEMENT rail4__cut0 raw={"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail4__cut1__cut0 raw={"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut0 raw={"clearance": 0.15000004768371572, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut0__cut1 raw={"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut0__cut2__cut2 raw={"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut1__cut0__cut1 raw={"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut1__cut2__cut0 raw={"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut0 raw={"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut1 raw={"clearance": 2.8, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail5__cut2__cut2 raw={"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut0__cut0 raw={"clearance": 0.15000004768371572, "time": 7.495, "offset": -0.9499999999999975, "tilt": 0, "location": [-1.7999999523162842, 3.5500000000000025, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut0__cut1 raw={"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut0__cut2 raw={"clearance": 0.14999999850988174, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut1__cut0 raw={"clearance": 0.15000004768371572, "time": 7.495, "offset": -0.9499999999999975, "tilt": 0, "location": [1.7999999523162842, 3.5500000000000025, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut1__cut1 raw={"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.0, -25.550000001490115]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut1__cut2 raw={"clearance": 0.14999999850988174, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.5, -25.349999998509883]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut2 raw={"clearance": 2.8, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut3__cut0 raw={"clearance": 0.15000000000000013, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail6__cut3__cut1 raw={"clearance": 0.14999999850988247, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.2000000476837158, 3.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut0 raw={"clearance": 0.15000004768371572, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut0__cut1 raw={"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.0, -25.550000001490115]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut0__cut2__cut2 raw={"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut1__cut0__cut1 raw={"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut1__cut2__cut0 raw={"clearance": 0.1499999999999999, "time": 7.5, "offset": -1, "tilt": 0, "location": [1.599999984105428, 3.0, -25.550000001490115]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut0 raw={"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [0.6000000238418579, 3.5, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut1 raw={"clearance": 2.8, "time": 7.5, "offset": -1, "tilt": 0, "location": [-0.5999999642372131, 3.5, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT rail7__cut2__cut2 raw={"clearance": 1.1500000000000001, "time": 7.5, "offset": -1, "tilt": 0, "location": [0.6000000238418579, 3.5, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT rail8__cut0 raw={"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT rail8__cut1__cut0 raw={"clearance": 3.849999998509883, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT quay_rail20__cut0__cut0 raw={"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT quay_rail20__cut1__cut0 raw={"clearance": 0.34999999850988317, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.5, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut0__cut0 raw={"clearance": 0.15000004768371591, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut0__cut1 raw={"clearance": 0.1499999985098861, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.0, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut0__cut2 raw={"clearance": 0.14999999850988174, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.7999999523162842, 4.5, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut1__cut0 raw={"clearance": 0.15000004768371591, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut1__cut1 raw={"clearance": 0.1499999985098861, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.599999984105428, 4.0, -25.550000001490115]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut1__cut2 raw={"clearance": 0.14999999850988174, "time": 0.0, "offset": 0, "tilt": 0, "location": [1.7999999523162842, 4.0, -25.41666666616996]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut2__cut0 raw={"clearance": 0.1499999985098861, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.0, -25.483333333830036]}
+DESIGNED APERTURE / REPLACEMENT felt_quay__cut2__cut1 raw={"clearance": 0.14999999850988247, "time": 0.0, "offset": 0, "tilt": 0, "location": [-1.2000000476837158, 4.5, -25.41666666616996]}
+Mesh budget PASS
+MOVING PAIR h11_lock_gate / h11_lock_lift {"clearance": 0.13200008869171143, "time": 0.0, "offset": -1.3, "tilt": 0, "other_offset": 0, "other_tilt": 0, "component": 2, "location_other_pivot_local": [-1.2000000476837158, -0.519999929269155, 3.49399999777476], "kind": "moving pair", "residual_cut": false, "status": "PASS"}
+MOVING PAIR h11_quay_lip / h11_lock_lift {"clearance": 0.3340410307019577, "time": 7.67, "offset": -0.8000000000000043, "tilt": 0, "other_offset": 3.9466666666666677, "other_tilt": 3.466666666666678, "component": 1, "location_other_pivot_local": [-1.0000000198682149, 0.282095892051889, -0.46713038549904146], "kind": "moving pair", "residual_cut": false, "status": "PASS"}
+MOVING PAIR h11_quay_lip / h11_lock_gate {"clearance": 3.831999991834163, "time": 0.0, "offset": 0, "tilt": 0, "other_offset": -1.3, "other_tilt": 0, "component": 1, "location_other_pivot_local": [-1.2000000476837158, 5.8, -4.16666666616996], "kind": "moving pair", "residual_cut": false, "status": "PASS"}
+PROP MIN h06_sluice_gate {"obstacle": "pocket_w19", "clearance": 0.15000000715255596, "time": 0.0, "offset": 0, "tilt": 0, "location": [-2.4650001525878906, 0.6733333369096121, -27.686666667461395], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PROP MIN h06_sluice_frame {"obstacle": "pocket_e23", "clearance": 0.050000143051147417, "time": 0.0, "offset": 0, "tilt": 0, "location": [3.696666638056437, 2.616666873296102, -27.71666665871938], "kind": "rail/wall", "residual_cut": false, "status": "PASS"}
+PROP MIN h11_lock_gate {"obstacle": "felt_approach__cut2", "clearance": 0.1300000190734858, "time": 4.865, "offset": -1.269999999999999, "tilt": 0, "location": [-1.2400000095367432, -0.48999992926915376, -20.99333334962527], "kind": "felt", "residual_cut": true, "status": "FAIL"}
+PROP MIN h11_lock_lift {"obstacle": "h11_lock_gate", "clearance": 0.13200008869171143, "time": 0.0, "offset": -1.3, "tilt": 0, "other_offset": 0, "other_tilt": 0, "component": 2, "location_other_pivot_local": [-1.2000000476837158, -0.519999929269155, 3.49399999777476], "kind": "moving pair", "residual_cut": false, "status": "PASS", "location_note": "location expressed in h11_lock_lift rest frame"}
+PROP MIN h11_lock_chamber {"obstacle": "funnel_e_backing", "clearance": -0.6888305054935975, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 2.6566666762034097, -22.543333331743877], "kind": "rail/wall", "residual_cut": false, "status": "FAIL"}
+PROP MIN h11_quay_lip {"obstacle": "rail6__cut0__cut2", "clearance": 0.1499999985098821, "time": 7.5, "offset": -1, "tilt": 0, "location": [-1.7999999523162842, 3.5, -25.41666666616996], "kind": "rail/wall", "residual_cut": true, "status": "PASS"}
+
+TIMING PASS: rise 5.50–7.50; tilt/release 7.50–7.65; return 7.65–9.15; gate begins lowering 9.95; fully down 10.60; .80 s margin after return.
+MIN NON-EXEMPT {"prop": "h11_lock_chamber", "obstacle": "funnel_e_backing", "clearance": -0.6888305054935975, "time": 0.0, "offset": 0, "tilt": 0, "location": [2.799999952316284, 2.6566666762034097, -22.543333331743877], "kind": "rail/wall", "residual_cut": false, "status": "FAIL"}
+ALL PASS: NO
+Validation is conditional on implementing the listed Studio/holes collision cuts and removing static lock felt. Uncut source still has the raw intersections listed above.

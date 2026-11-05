@@ -1,0 +1,24 @@
+All requested clearances now meet target and every pass criterion holds, but two of the changes needed more than the literal request, and another session was editing `models/` while I worked.
+
+**Clearance, before → after** (`tools/check_clearance.py`, now in place):
+
+| | Before | After | Target |
+|---|---|---|---|
+| H5 geyser column vs upper rails | 0.000 | 0.150 | ≥ 0.15 |
+| H11 ice floe vs rails/pocket walls | 0.150 | 0.150 (already passed, unchanged) | ≥ 0.15 |
+| H17 light span vs pier rails | 0.000 | 0.150 | ≥ 0.15 |
+| H12 lowest paddle edge | 0.020 | 0.060 | ≥ 0.06 |
+| H14 foot, lowest corner over the whole swing | 0.021 (0.075 at rest) | 0.061 (0.062 at rest) | ≥ 0.06 |
+
+**Where I went beyond the request:**
+- **H5:** trimming the rail ends to x ±1.65 wasn't enough on its own. Balls crossing the cliff edge diagonally at the shaft corners missed the lift and fell into the basin (461 of 100k upper-green shots, 0 before). The fix makes the lift's drop-in area 0.15 wider each side, for balls arriving from the upper green only. That needed a 3-line change in `tools/sim.py`, outside `build_holes.py`. Leaks are back to 0, and boarding from the basin is unchanged.
+- **H14:** with the flat 2.1-wide foot, "0.06 at rest" and "every corner ≥ 0.06 at every angle" can't both be true, because the end corners dip 0.053 mid-swing. Raising the flat foot to 0.115 to fix that meant it no longer blocked: under the sim's pendulum rule the ball rolls under anything above its centre, so intended-line blocking fell from 45.8% to 10.4%. The fix keeps the same outer size but builds the foot from 9 strips whose undersides follow an arc around the hinge, the way H12's paddle tips already do. It now sits 0.062 over the felt at the centre, never below 0.061, and blocks 46.9%. The bell body gap stays 0.35.
+- **H17:** the trimmed pier rails leave a 0.15 notch that opens onto the same gap as the span's unrailed edge. Firing 40k shots at it gave no escapes and no balls stuck.
+
+**Results:** `test_physics.py` passes. On H5, H11, H12, H14 and H17: the sim's validator and fuzz found nothing, there were 0 escapes or timeouts in the plays, and `summarize` marks all five OK. The 96-phase timing check had 0 traps and 0 soft-locks in 100k fuzz per mover. Intended-line blocking: H5 41.7 → 41.7%, H11 45.8 → 45.8%, H12 41.7 → 37.5%, H14 45.8 → 46.9%, H17 41.7 → 41.7%. The 120-phase check was not re-run.
+
+I regenerated the five layout PNGs and notes, updated only the changed numbers in props.md / props-full.md, and added the Round 3 section to playtest-log.md with the clearance table, stats and builder/modeler action lists.
+
+**`models/` was rebuilt by another session:** a second Claude process (`claude -p`) rebuilt about 35 files there between 02:06 and 02:10. It read holes.json while I was partway through the H14 changes, so the icicle bell and paddle wheel FBX files may reflect in-between geometry. Those files should be regenerated from the final holes.json. I didn't touch them.
+
+**Diff:** 17 files changed (holes.json; `tools/build_holes.py`, `tools/sim.py`, `tools/README.md`; H5/H11/H12/H14/H17 layout PNGs and notes; props.md, props-full.md, playtest-log.md) plus the new `tools/check_clearance.py`. holes.json differs from `tools/out/holes-p2-preclear.json` only in H5 (rails, lift), H12 (wheel height), H14 (foot), H17 (rails) and the schema text.

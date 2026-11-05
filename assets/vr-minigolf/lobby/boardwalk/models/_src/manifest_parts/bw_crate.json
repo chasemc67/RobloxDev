@@ -1,0 +1,84 @@
+{
+ "name": "bw_crate",
+ "group": "social",
+ "fbx": "fbx/bw_crate.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Chamfered plank crate (44 tris).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  2.0,
+  2.0,
+  2.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.0,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -1.0,
+  0.0,
+  -1.0
+ ],
+ "bbox_max_roblox": [
+  1.0,
+  2.0,
+  1.0
+ ],
+ "target_size_studs": [
+  2,
+  2,
+  2
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 44,
+ "tris_max": 50,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_crate__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 44,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "size": [
+    2.0,
+    2.0,
+    2.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

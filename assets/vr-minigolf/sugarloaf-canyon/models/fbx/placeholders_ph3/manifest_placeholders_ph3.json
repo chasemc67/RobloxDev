@@ -1,0 +1,61 @@
+{
+ "generated": "2026-10-15 ~11:10 PT",
+ "status": "APPROVED (Chase: approved once fixed, no review needed)",
+ "supersedes": "fbx/placeholders_ph2/lollipop_cactus_1.fbx (left untouched)",
+ "built_on": "Windows PC, Blender 5.2 headless via Claude Code (claude-opus-5-5), schtask 3dmb_sc_j1 (deleted); geometry /workspace/sc/ph4/gen1.py",
+ "props": {
+  "lollipop_cactus_1": {
+   "fbx": "fbx/placeholders_ph3/lollipop_cactus_1.fbx",
+   "sha256": "f6781bd9d7fa50512cd22f9c362483e67f056f7fc2a30ac7f4d0aa290f39f697",
+   "tris": 2212,
+   "tris_per_object": {
+    "lollipop_cactus_1__Bubblegum": 620,
+    "lollipop_cactus_1__Cactus": 1276,
+    "lollipop_cactus_1__Cream": 288,
+    "lollipop_cactus_1__MintWhite": 28
+   },
+   "pivot": "base centre at ground level (mesh bottom y -0.1 = sunk 0.1)",
+   "target_cframe": "CFrame.new(66, 18.2, -4548), yaw 0 (unchanged from placeholders_ph2)",
+   "materials": {
+    "Cactus": "#3E8E41",
+    "Bubblegum": "#F78FB3",
+    "Cream": "#F6E3C8 (cream taffy)",
+    "MintWhite": "#F2F7F0 (stick only)"
+   },
+   "changes": [
+    "stick extended down to y 7.504: sunk 0.30 into the crown (crown top 7.804); top still 0.086 below the disc",
+    "middle candy ring (was MintWhite, read gray) replaced by 6 spiral-cut swirl sectors alternating Bubblegum/Cream, 0.30 thick, 0.086 gaps; centre and outer rings Bubblegum 0.36 thick"
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "checks_reimport": {
+    "min_thickness": 0.222,
+    "min_gap": 0.086,
+    "coplanar": 0,
+    "bounds": [
+     [
+      -0.62,
+      -0.1,
+      -1.48
+     ],
+     [
+      1.67,
+      11.576,
+      1.3
+     ]
+    ],
+    "felt_3d": 1.883,
+    "rail_3d": 1.38,
+    "felt_plan": 1.88,
+    "rail_plan": 1.38
+   },
+   "note": "stick intentionally overlaps the Cactus crown (0.3 sink); no coplanar faces",
+   "previews": [
+    "preview_lollipop_cactus_1_close.png",
+    "preview_lollipop_cactus_1_front.png",
+    "preview_lollipop_cactus_1_crown.png"
+   ]
+  }
+ }
+}

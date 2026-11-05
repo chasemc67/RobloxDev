@@ -1,0 +1,163 @@
+{
+ "tunnel_lanterns": {
+  "file": "tunnel_lanterns.fbx",
+  "tris": 132,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 2,
+   "wo": [
+    100.0,
+    18.0,
+    410.0
+   ],
+   "yaw": 0.0,
+   "name": "tunnel_lanterns",
+   "position": [
+    9,
+    8,
+    -32
+   ],
+   "notes": "Lanterns on overhead portal-style crossbars every 6 studs; anchor is lantern bottom y=8 (top y=8.8); channel stays open-top",
+   "approx_size": [
+    0.6,
+    0.8,
+    0.6
+   ]
+  },
+  "placement": {
+   "pos": [
+    109.0,
+    26.0,
+    378.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[1].decoration_anchors tunnel_lanterns"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonAmber"
+  ],
+  "materials": [
+   "Iron",
+   "NeonAmber"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Set Material=Neon in Studio for NeonAmber. Lantern hangs from an iron rod + crossbar arm (local +x, 2.8 studs) to a wall plate at local x 2.82-3.03 (east tunnel side, over rail9 line). Single lantern at the anchor; duplicate every 6 studs along the tunnel in Studio.",
+  "sha256": "eed3abbdfc880f06a5655c48cde7bdb900da1d8127a80243df16803f228fc16d",
+  "replaces": "fbx/placeholders_ph1/tunnel_lanterns.fbx"
+ },
+ "tunnel_lanterns_post": {
+  "file": "tunnel_lanterns_post.fbx",
+  "tris": 132,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 2,
+   "wo": [
+    100.0,
+    18.0,
+    410.0
+   ],
+   "yaw": 0.0,
+   "name": "tunnel_lanterns",
+   "position": [
+    9,
+    8,
+    -32
+   ],
+   "notes": "Lanterns on overhead portal-style crossbars every 6 studs; anchor is lantern bottom y=8 (top y=8.8); channel stays open-top",
+   "approx_size": [
+    0.6,
+    0.8,
+    0.6
+   ]
+  },
+  "placement": {
+   "pos": [
+    109.0,
+    26.0,
+    378.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[1].decoration_anchors tunnel_lanterns"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonAmber"
+  ],
+  "materials": [
+   "Iron",
+   "NeonAmber"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Variant: wall plate replaced by a 0.206x0.3 iron post from the crossbar end (local x 2.82-3.03) down to the tunnel ground (h02 ground top world y 18.37 at this spot; post bottom 0.086 above). Rail9 clearance 0.32, felt 0.94. Set Material=Neon for NeonAmber.",
+  "sha256": "d1c8e4f5444b51e5bccabe6536881d497aebb4e3f218f098b05acd31f9404c8b",
+  "replaces": "fbx/placeholders_ph1/tunnel_lanterns.fbx",
+  "variant_of": "tunnel_lanterns.fbx"
+ },
+ "tunnel_lanterns_post2": {
+  "file": "tunnel_lanterns_post2.fbx",
+  "tris": 132,
+  "reimport_tris_match": true,
+  "anchor": {
+   "hole": 2,
+   "wo": [
+    100.0,
+    18.0,
+    410.0
+   ],
+   "yaw": 0.0,
+   "name": "tunnel_lanterns",
+   "position": [
+    9,
+    8,
+    -32
+   ],
+   "notes": "Lanterns on overhead portal-style crossbars every 6 studs; anchor is lantern bottom y=8 (top y=8.8); channel stays open-top",
+   "approx_size": [
+    0.6,
+    0.8,
+    0.6
+   ]
+  },
+  "placement": {
+   "pos": [
+    109.0,
+    26.0,
+    378.0
+   ],
+   "yaw": 0.0,
+   "scale": 1.0,
+   "hole": 0,
+   "source": "holes.json holes[1].decoration_anchors tunnel_lanterns"
+  },
+  "instance_paths": [
+   "Workspace.CourseSugarloaf.Hole2.Decor.tunnel_lanterns.Placeholder.Glow"
+  ],
+  "neon_parts": [
+   "NeonAmber"
+  ],
+  "materials": [
+   "Iron",
+   "NeonAmber"
+  ],
+  "CanCollide": false,
+  "CanQuery": false,
+  "CanTouch": false,
+  "note": "Variant of _post: only the post extended, bottom at world y 18.27 (0.1 below the h02 tunnel ground surface, 18.37) so its sides pierce the ground; no coplanar faces with the ground. Rest unchanged. Set Material=Neon for NeonAmber.",
+  "sha256": "9dcfaab78ad85c5bd8dea3bfc30a86d612178de44d9fbc5f23509e721291c3a3",
+  "replaces": "fbx/placeholders_ph1/tunnel_lanterns.fbx",
+  "variant_of": "tunnel_lanterns_post.fbx"
+ }
+}

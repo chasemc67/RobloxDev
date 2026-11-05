@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Stylized whimsical VR mini golf game world concept art, first-person view from standing VR eye height (1.6 m), same art style and palette as the reference: candy-striped pink and cream sandstone mesas, sunset glow, lollipop-topped cacti, pink and amber rock-candy crystals, smooth low-poly toon shading, original design, no text, no logos. Standing at the start of a long wooden rope bridge with sturdy railings spanning a deep canyon between two tall mesa tops, a putting green waits on the far mesa, river far below, sunset sky",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_sugarloafcanyon_color_clean.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1154,
+    "outputTokens": 1078,
+    "totalTokens": 2232
+  },
+  "cost": 0.041182,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791757245,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1024,
+          "textTokens": 130
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791757219256,
+                "endTime": 1791757246004,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.041182",
+      "marketCost": "0.041182",
+      "surchargeCost": "0",
+      "gatewayCost": "0.041182",
+      "inferenceCost": "0.041182",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.041182",
+      "generationId": "gen_01M4PGTWVX854H6EQN6ZFJMHNM"
+    }
+  },
+  "seconds": 27.9,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V3-rope-bridge-mesa.png"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+ "name": "bw_railing",
+ "group": "structure",
+ "fbx": "fbx/bw_railing.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "One 10-stud section: post at the section centre, continuous handrail, rope swag dipping at the section ends so consecutive sections read as one railing. Scale X for the 8-stud pier ends.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  10.011,
+  3.5,
+  0.6
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.75,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -5.006,
+  0.0,
+  -0.3
+ ],
+ "bbox_max_roblox": [
+  5.006,
+  3.5,
+  0.3
+ ],
+ "target_size_studs": [
+  10,
+  3.5,
+  0.6
+ ],
+ "size_ratio_vs_target": [
+  1.001,
+  1.0,
+  1.0
+ ],
+ "triangles": 222,
+ "tris_max": 350,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_railing__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 222,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    10.011,
+    3.5,
+    0.6
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.75,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.75,
+    -0.0
+   ],
+   "size": [
+    10.011,
+    3.5,
+    0.6
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": "x",
+ "can_collide": false
+}

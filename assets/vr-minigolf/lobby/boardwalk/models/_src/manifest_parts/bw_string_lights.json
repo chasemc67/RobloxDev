@@ -1,0 +1,102 @@
+{
+ "name": "bw_string_lights",
+ "group": "social",
+ "fbx": "fbx/bw_string_lights.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "24-stud span (ends at local X +-12, at the top of the bbox), cable with a gentle 0.6-stud parabolic sag and 12 Neon bulbs hung directly below; scale X for other spans (12-24).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.004
+ ],
+ "bbox_size_studs": [
+  24.011,
+  1.126,
+  0.466
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  0.563,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -12.005,
+  0.0,
+  -0.233
+ ],
+ "bbox_max_roblox": [
+  12.005,
+  1.126,
+  0.233
+ ],
+ "target_size_studs": [
+  24,
+  1.1,
+  0.5
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.023,
+  0.932
+ ],
+ "triangles": 384,
+ "tris_max": 400,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_string_lights__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 96,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    24.011,
+    0.72,
+    0.12
+   ],
+   "center_from_pivot": [
+    0.0,
+    0.766,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "bw_string_lights__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 288,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    22.345,
+    0.96,
+    0.466
+   ],
+   "center_from_pivot": [
+    0.0,
+    0.48,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    0.563,
+    -0.0
+   ],
+   "size": [
+    24.011,
+    1.126,
+    0.466
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": "x",
+ "can_collide": false
+}

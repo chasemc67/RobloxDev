@@ -1,0 +1,23 @@
+Cup clearance check (2026-10-12 PT). Horizontal (XZ) clear radius from each holes.json cup centre to the nearest triangle of hNN_ground / hNN_dress_props / hNN_dress_plants (re-imported in Blender 5.2 on the PC, geometry within +-6 studs of cup height; all 18 cups tested against all 54 meshes). Required >= 1.5 (target 1.8). '>=10' = nothing within 10.
+
+PASS h01 cup [66.0, 18.0, 439.5]  min clear 4.93  (ground 4.93, props >=10, plants >=10)
+PASS h02 cup [89.0, 18.0, 364.0]  min clear 3.429  (ground 3.429, props 6.529, plants >=10)
+PASS h03 cup [-39.5, 18.0, 331.0]  min clear 7.7  (ground 7.7, props 7.904, plants >=10)
+PASS h04 cup [239.0, 18.0, 334.5]  min clear 2.2  (ground 2.2, props >=10, plants no file)
+PASS h05 cup [279.5, 22.0, 284.0]  min clear 7.2  (ground 7.2, props 9.72, plants >=10)
+PASS h06 cup [276.0, 26.0, 210.0]  min clear 6.2  (ground 6.2, props 7.985, plants 9.418)
+PASS h07 cup [343.0, 70.0, 90.0]  min clear 7.7  (ground 7.7, props >=10, plants >=10)
+PASS h08 cup [365.0, 70.0, 0.0]  min clear 4.214  (ground 4.214, props >=10, plants >=10)
+PASS h09 cup [372.0, 70.0, -111.5]  min clear 7.262  (ground 7.262, props 8.875, plants >=10)
+PASS h10 cup [283.0, 112.4, -266.5]  min clear 2.717  (ground 2.717, props >=10, plants >=10)
+PASS h11 cup [150.0, 120.0, -295.0]  min clear >=10  (ground >=10, props >=10, plants >=10)
+PASS h12 cup [-142.0, 116.0, -268.0]  min clear 6.7  (ground 6.7, props 7.678, plants >=10)
+PASS h13 cup [-300.5, 150.0, -239.0]  min clear 3.7  (ground 3.7, props 5.327, plants 8.198)
+PASS h14 cup [-301.0, 150.8, -156.0]  min clear 4.7  (ground 4.7, props >=10, plants >=10)
+PASS h15 cup [-306.0, 145.4, -58.0]  min clear >=10  (ground >=10, props >=10, plants >=10)
+PASS h16 cup [-301.8, 186.4, 150.5]  min clear 4.4  (ground 4.4, props >=10, plants >=10)
+PASS h17 cup [-334.9, 190.0, 189.0]  min clear 3.6  (ground 3.6, props >=10, plants >=10)
+PASS h18 cup [-412.0, 190.8, 172.0]  min clear 6.7  (ground 6.7, props 9.674, plants >=10)
+
+No cross-hole hits: no hole's ground/dress mesh comes within 10 studs of another hole's cup.
+Result: all 18 cups clear by >= 2.2 studs; no geometry cut, FBX unchanged (md5 in _src/ground_md5_cupclear.txt).

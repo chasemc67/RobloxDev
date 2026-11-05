@@ -1,0 +1,603 @@
+{
+ "batch": "sugarloaf props batch4 (H13-H18 landmarks)",
+ "date": "2026-10-12",
+ "fitcheck": "fitcheck_props_batch4.txt (ALL PASS)",
+ "pivot_rule": "pivot_world = R_y(world_yaw)*pivot_hole_local + world_offset; place with CFrame.new(pivot_world)*CFrame.Angles(0, rad(yaw_deg), 0)",
+ "parts": [
+  {
+   "id": "h13_maze_rock",
+   "fbx": "fbx/props_batch4/h13_maze_rock.fbx",
+   "hole": "h13",
+   "pivot_hole_local": [
+    -5.5,
+    0,
+    -28
+   ],
+   "pivot_world": [
+    -294.5,
+    150.0,
+    -262.0
+   ],
+   "yaw_deg": 180.0,
+   "envelope_props_md": [
+    7,
+    4,
+    24
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -9.0,
+      0,
+      -40.0
+     ],
+     [
+      -2.0,
+      4,
+      -16.0
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h13_maze_rock",
+    "hole": "h13",
+    "fbx": "fbx/props_batch4/h13_maze_rock.fbx",
+    "anchor_local": [
+     -5.5,
+     0,
+     -28
+    ],
+    "envelope": [
+     7,
+     4,
+     24
+    ],
+    "tris": 720,
+    "max_mesh_tris": 192,
+    "meshes": [
+     {
+      "mesh": "h13_maze_rock__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 124
+     },
+     {
+      "mesh": "h13_maze_rock__Cherry",
+      "material": "Cherry",
+      "color": "#E8304A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 124
+     },
+     {
+      "mesh": "h13_maze_rock__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 156
+     },
+     {
+      "mesh": "h13_maze_rock__Lime",
+      "material": "Lime",
+      "color": "#7ED957",
+      "roblox_material": "SmoothPlastic",
+      "tris": 124
+     },
+     {
+      "mesh": "h13_maze_rock__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 192
+     }
+    ],
+    "notes": [
+     "Banded sandstone spine (watermelon/cream bands, chamfered top to 2.75) filling the holes.json rock island inside rock_w9..w12, 0.1 off their inner faces; six striped hoodoo stubs with gumdrop caps along it, cap tops 3.7..3.95 (inside the 4.0 envelope). Nothing overhangs a corridor; the 1.0-tall collider rails are the course build."
+    ]
+   },
+   "notes": [
+    "Banded sandstone spine (watermelon/cream bands, chamfered top to 2.75) filling the holes.json rock island inside rock_w9..w12, 0.1 off their inner faces; six striped hoodoo stubs with gumdrop caps along it, cap tops 3.7..3.95 (inside the 4.0 envelope). Nothing overhangs a corridor; the 1.0-tall collider rails are the course build."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h14_cableway_trestle",
+   "fbx": "fbx/props_batch4/h14_cableway_trestle.fbx",
+   "hole": "h14",
+   "pivot_hole_local": [
+    0,
+    0,
+    -24.0
+   ],
+   "pivot_world": [
+    -300.0,
+    150.0,
+    -176.0
+   ],
+   "yaw_deg": 180.0,
+   "envelope_props_md": [
+    10,
+    11.35,
+    1.5
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -5.0,
+      0,
+      -24.75
+     ],
+     [
+      5.0,
+      11.35,
+      -23.25
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h14_cableway_trestle",
+    "hole": "h14",
+    "fbx": "fbx/props_batch4/h14_cableway_trestle.fbx",
+    "anchor_local": [
+     0,
+     0,
+     -24.0
+    ],
+    "envelope": [
+     10,
+     11.35,
+     1.5
+    ],
+    "tris": 224,
+    "max_mesh_tris": 92,
+    "meshes": [
+     {
+      "mesh": "h14_cableway_trestle__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 92
+     },
+     {
+      "mesh": "h14_cableway_trestle__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 48
+     },
+     {
+      "mesh": "h14_cableway_trestle__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "h14_cableway_trestle__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 60
+     }
+    ],
+    "notes": [
+     "Two splayed timber A-legs (foot centre x +-4.81, top +-4.5) standing 0.11 outside rail1/rail9, beam = the holes.json beam occluder y 10.35..11.35 with peppermint end caps, knee braces above y 8.4, iron hinge cheeks + brass pin on the beam faces. Nothing below the beam inside x +-2.7: the ore-bucket swing (+-9 deg on a 9 hanger, batch 1) stays clear. The overhead main cableway is world kit, not part of this mesh."
+    ]
+   },
+   "notes": [
+    "Two splayed timber A-legs (foot centre x +-4.81, top +-4.5) standing 0.11 outside rail1/rail9, beam = the holes.json beam occluder y 10.35..11.35 with peppermint end caps, knee braces above y 8.4, iron hinge cheeks + brass pin on the beam faces. Nothing below the beam inside x +-2.7: the ore-bucket swing (+-9 deg on a 9 hanger, batch 1) stays clear. The overhead main cableway is world kit, not part of this mesh."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h15_sugar_dune",
+   "fbx": "fbx/props_batch4/h15_sugar_dune.fbx",
+   "hole": "h15",
+   "pivot_hole_local": [
+    0.0,
+    -2.2,
+    -24.0
+   ],
+   "pivot_world": [
+    -300.0,
+    147.8,
+    -91.0
+   ],
+   "yaw_deg": 180.0,
+   "envelope_props_md": [
+    30,
+    6,
+    34
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -18.5,
+      -2.2,
+      -41
+     ],
+     [
+      18.5,
+      3.8,
+      -7
+     ]
+    ],
+    [
+     [
+      0,
+      -3.6,
+      -41
+     ],
+     [
+      18.5,
+      3.8,
+      -7
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h15_sugar_dune",
+    "hole": "h15",
+    "fbx": "fbx/props_batch4/h15_sugar_dune.fbx",
+    "anchor_local": [
+     0.0,
+     -2.2,
+     -24.0
+    ],
+    "envelope": [
+     30,
+     6,
+     34
+    ],
+    "tris": 668,
+    "max_mesh_tris": 608,
+    "meshes": [
+     {
+      "mesh": "h15_sugar_dune__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "h15_sugar_dune__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 36
+     },
+     {
+      "mesh": "h15_sugar_dune__Sugar",
+      "material": "Sugar",
+      "color": "#FFF1F4",
+      "roblox_material": "Sand",
+      "tris": 608
+     }
+    ],
+    "notes": [
+     "Powdered-sugar drifts outside the holes.json dune rails (felt plane = holes.json): west drift 0.12 outside dune_rail1, rev1: taller rounded half-dome drifts (west crest ~2.4..3.3, east up to ~-0.4 over its -3.45 base), ends tapered over 3 studs, (dune-local v -7.0..10.0), east drift outside dune_rail2 (v 0.0..9.0), both trimmed automatically where they would leave the envelope (widened from x +-15 to +-18.5: the 30-wide props.md box centred on the anchor cuts the drifts, while the holes.json dune rails/green run to x +-17.75), touch a rail (<0.12) or reach felt. East drift sits on the low east side (felt edge y -3.4), so its base runs to y -3.45, below the props.md envelope bottom (-2.2): envelope extended to y -3.6 on the east half only. Striped sled (4 stripes + curled nose) propped on the west drift shoulder. Sled tracks / wind ripples are felt decals (slope_arrows anchor), not mesh."
+    ]
+   },
+   "notes": [
+    "Powdered-sugar drifts outside the holes.json dune rails (felt plane = holes.json): west drift 0.12 outside dune_rail1, rev1: taller rounded half-dome drifts (west crest ~2.4..3.3, east up to ~-0.4 over its -3.45 base), ends tapered over 3 studs, (dune-local v -7.0..10.0), east drift outside dune_rail2 (v 0.0..9.0), both trimmed automatically where they would leave the envelope (widened from x +-15 to +-18.5: the 30-wide props.md box centred on the anchor cuts the drifts, while the holes.json dune rails/green run to x +-17.75), touch a rail (<0.12) or reach felt. East drift sits on the low east side (felt edge y -3.4), so its base runs to y -3.45, below the props.md envelope bottom (-2.2): envelope extended to y -3.6 on the east half only. Striped sled (4 stripes + curled nose) propped on the west drift shoulder. Sled tracks / wind ripples are felt decals (slope_arrows anchor), not mesh."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h16_sinkhole_rim",
+   "fbx": "fbx/props_batch4/h16_sinkhole_rim.fbx",
+   "hole": "h16",
+   "pivot_hole_local": [
+    0.0,
+    0,
+    -16.2
+   ],
+   "pivot_world": [
+    -300.0,
+    190.0,
+    128.2
+   ],
+   "yaw_deg": 180.0,
+   "envelope_props_md": [
+    3.4,
+    0.3,
+    3.4
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -1.7,
+      -0.3,
+      -17.9
+     ],
+     [
+      1.7,
+      0.3,
+      -14.5
+     ]
+    ],
+    [
+     [
+      -4.95,
+      0,
+      -10.6
+     ],
+     [
+      -4.55,
+      2.0,
+      -0.6
+     ]
+    ],
+    [
+     [
+      4.55,
+      0,
+      -10.6
+     ],
+     [
+      4.95,
+      2.0,
+      -0.6
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h16_sinkhole_rim",
+    "hole": "h16",
+    "fbx": "fbx/props_batch4/h16_sinkhole_rim.fbx",
+    "anchor_local": [
+     0.0,
+     0,
+     -16.2
+    ],
+    "envelope": [
+     3.4,
+     0.3,
+     3.4
+    ],
+    "tris": 768,
+    "max_mesh_tris": 480,
+    "meshes": [
+     {
+      "mesh": "h16_sinkhole_rim__CrystalGlow",
+      "material": "CrystalGlow",
+      "color": "#FF6FA8",
+      "roblox_material": "Neon",
+      "tris": 96
+     },
+     {
+      "mesh": "h16_sinkhole_rim__GeodeRim",
+      "material": "GeodeRim",
+      "color": "#C8463F",
+      "roblox_material": "Rock",
+      "tris": 48
+     },
+     {
+      "mesh": "h16_sinkhole_rim__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 72
+     },
+     {
+      "mesh": "h16_sinkhole_rim__Rope",
+      "material": "Rope",
+      "color": "#C9A86A",
+      "roblox_material": "Fabric",
+      "tris": 480
+     },
+     {
+      "mesh": "h16_sinkhole_rim__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 72
+     }
+    ],
+    "notes": [
+     "The rim is flush: a 0.12-thick crystal-rock collar lining the 2.4 x 2.4 felt opening, y -0.3..0 (inside the deck slab), with 12 glowing rock-candy crystals on its inner face (visual opening ~1.9). Nothing sits on the deck felt. Collar is over the bowl felt but inside the deck-slab band (the holes.json deck already covers that bowl end), so the 8-overhead rule treats it as deck. Envelope y extended to -0.3 for the flush collar. Rope railing on 3 posts each side, 0.1 outside deck_rail1/3, only south of the bowl (z -0.8..-10.4) so nothing hangs over bowl felt; envelope extended for these."
+    ]
+   },
+   "notes": [
+    "The rim is flush: a 0.12-thick crystal-rock collar lining the 2.4 x 2.4 felt opening, y -0.3..0 (inside the deck slab), with 12 glowing rock-candy crystals on its inner face (visual opening ~1.9). Nothing sits on the deck felt. Collar is over the bowl felt but inside the deck-slab band (the holes.json deck already covers that bowl end), so the 8-overhead rule treats it as deck. Envelope y extended to -0.3 for the flush collar. Rope railing on 3 posts each side, 0.1 outside deck_rail1/3, only south of the bowl (z -0.8..-10.4) so nothing hangs over bowl felt; envelope extended for these."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h17_gnomon",
+   "fbx": "fbx/props_batch4/h17_gnomon.fbx",
+   "hole": "h17",
+   "pivot_hole_local": [
+    0.0,
+    0,
+    -36.0
+   ],
+   "pivot_world": [
+    -345.0,
+    190.0,
+    196.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope_props_md": [
+    1.6,
+    9,
+    6
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -0.8,
+      0,
+      -39.0
+     ],
+     [
+      0.8,
+      9,
+      -33.0
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h17_gnomon",
+    "hole": "h17",
+    "fbx": "fbx/props_batch4/h17_gnomon.fbx",
+    "anchor_local": [
+     0.0,
+     0,
+     -36.0
+    ],
+    "envelope": [
+     1.6,
+     9,
+     6
+    ],
+    "tris": 116,
+    "max_mesh_tris": 48,
+    "meshes": [
+     {
+      "mesh": "h17_gnomon__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 24
+     },
+     {
+      "mesh": "h17_gnomon__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 44
+     },
+     {
+      "mesh": "h17_gnomon__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 48
+     }
+    ],
+    "notes": [
+     "Right-triangle blade 1.0 thick (vertical edge north at z -39, toe south at z -33), 8 candy stripes, from a brass base plate floating 0.1 over the holes.json plinth top (1.2) to 9.0. Felt under the solid r 7.5 plinth is unreachable, so it is not treated as reachable felt; the shadow-arm annulus r 8.2..11.5 is untouched."
+    ]
+   },
+   "notes": [
+    "Right-triangle blade 1.0 thick (vertical edge north at z -39, toe south at z -33), 8 candy stripes, from a brass base plate floating 0.1 over the holes.json plinth top (1.2) to 9.0. Felt under the solid r 7.5 plinth is unreachable, so it is not treated as reachable felt; the shadow-arm annulus r 8.2..11.5 is untouched."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  },
+  {
+   "id": "h18_arch_gate",
+   "fbx": "fbx/props_batch4/h18_arch_gate.fbx",
+   "hole": "h18",
+   "pivot_hole_local": [
+    -9,
+    0,
+    -26
+   ],
+   "pivot_world": [
+    -429.0,
+    190.0,
+    210.0
+   ],
+   "yaw_deg": 0.0,
+   "envelope_props_md": [
+    10,
+    13,
+    4
+   ],
+   "envelope_boxes_used": [
+    [
+     [
+      -14.0,
+      0,
+      -28.0
+     ],
+     [
+      -4.0,
+      13,
+      -24.0
+     ]
+    ]
+   ],
+   "report": {
+    "id": "h18_arch_gate",
+    "hole": "h18",
+    "fbx": "fbx/props_batch4/h18_arch_gate.fbx",
+    "anchor_local": [
+     -9,
+     0,
+     -26
+    ],
+    "envelope": [
+     10,
+     13,
+     4
+    ],
+    "tris": 264,
+    "max_mesh_tris": 132,
+    "meshes": [
+     {
+      "mesh": "h18_arch_gate__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 132
+     },
+     {
+      "mesh": "h18_arch_gate__Watermelon",
+      "material": "Watermelon",
+      "color": "#E8736B",
+      "roblox_material": "Sandstone",
+      "tris": 132
+     }
+    ],
+    "notes": [
+     "Natural arch, legs x -14..-12.6 and -5.4..-4.0 (0.1 outside rail3 / rail11, 1.4 wide instead of the 2.2 the sheet suggests: the rails leave no more room inside the 10 envelope), depth 3.2 (z -27.6..-24.4). Opening 7.2 wide, straight to 8.6 then elliptical to the crown underside 10.6; underside over the ramp felt (x -12..-6) is >= 9.7, i.e. >= 9.3 above the felt (>= 8 required). Outer crown 13.0. 24 alternating watermelon/cream stripe segments."
+    ]
+   },
+   "notes": [
+    "Natural arch, legs x -14..-12.6 and -5.4..-4.0 (0.1 outside rail3 / rail11, 1.4 wide instead of the 2.2 the sheet suggests: the rails leave no more room inside the 10 envelope), depth 3.2 (z -27.6..-24.4). Opening 7.2 wide, straight to 8.6 then elliptical to the crown underside 10.6; underside over the ramp felt (x -12..-6) is >= 9.7, i.e. >= 9.3 above the felt (>= 8 required). Outer crown 13.0. 24 alternating watermelon/cream stripe segments."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  }
+ ],
+ "revisions": [
+  "rev1 2026-10-12: h15_sugar_dune drifts taller and rounded (272 -> 668 tris), refit ALL PASS. rev0 backup in _src/props_batch4/_backup_rev0_20261012/"
+ ]
+}

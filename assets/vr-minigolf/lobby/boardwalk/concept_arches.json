@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Same seaside mini golf boardwalk lobby at golden hour as the reference image, same warm cartoon chunky Roblox-friendly style, brass, parchment, lanterns, string lights. No people, no UI. Close-up at eye height of the three themed archway portals side by side at the north end of the boardwalk: a left arch of a gnarled lantern tree with a warm glowing portal labelled LANTERN GROVE, a center arch of striped red sandstone with a dimmed portal and a COMING SOON parchment sign labelled SUGARLOAF CANYON, a right arch of purple ice crystals with a dimmed aurora portal and a COMING SOON sign labelled AURORA ARCHIPELAGO, brass plaques, a lantern on each side.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/concept_C_boardwalk.png"
+  ],
+  "mode": "generateImage",
+  "size": "2048x1152",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1677,
+    "outputTokens": 1413,
+    "totalTokens": 3090
+  },
+  "cost": 0.055299,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791771951,
+          "size": "2048x1152",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1508,
+          "textTokens": 169
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791771919048,
+                "endTime": 1791771951924,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.055299",
+      "marketCost": "0.055299",
+      "surchargeCost": "0",
+      "gatewayCost": "0.055299",
+      "inferenceCost": "0.055299",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.055299",
+      "generationId": "gen_01M4PYVGG1E5JNNBX0E3553RQY"
+    }
+  },
+  "seconds": 34.3,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/boardwalk/concept_arches.png"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+ "name": "bw_rock_arch",
+ "group": "backdrop",
+ "fbx": "fbx/bw_rock_arch.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Backdrop hero: one clean, chunky sandstone arch (clear ~12.6 x 15 opening), smooth superellipse section swept along an elliptical centreline, warm vertex-colour bands. Base at the waterline.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.009,
+  0.021,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  31.677,
+  23.74,
+  10.023
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  11.87,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -15.839,
+  0.0,
+  -5.012
+ ],
+ "bbox_max_roblox": [
+  15.839,
+  23.74,
+  5.012
+ ],
+ "target_size_studs": [
+  30,
+  24,
+  10
+ ],
+ "size_ratio_vs_target": [
+  1.056,
+  0.989,
+  1.002
+ ],
+ "triangles": 1164,
+ "tris_max": 1200,
+ "materials": [
+  "BW_Backdrop"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_rock_arch__BW_Backdrop",
+   "material": "BW_Backdrop",
+   "tris": 1164,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    31.677,
+    23.74,
+    10.023
+   ],
+   "center_from_pivot": [
+    0.0,
+    11.87,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    11.87,
+    -0.0
+   ],
+   "size": [
+    31.677,
+    23.74,
+    10.023
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

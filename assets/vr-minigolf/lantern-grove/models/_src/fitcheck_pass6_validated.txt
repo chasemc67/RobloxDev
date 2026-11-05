@@ -1,0 +1,174 @@
+PASS  H3 tunnel opening 7 wide x 3 high clear  (rays at |z|<=3.45, y<=2.0, crown y=2.9)
+PASS  H3 tunnel side walls at |z|=3.7 and roof above 3.1  
+PASS  H3 tunnel depth 5 (stem |x|<=2.5 below y 2.9)  max |x| 2.50
+PASS  H1 torii posts outside rails  min |x| below y2 = 4.070
+PASS  H5 root bridge never rises above the felt (no rails)  max height over felt -0.119
+PASS  H5 root bridge deck >= 2.2 wide  3.32
+PASS  H5 covered bridge interior clear |x|<3.0 (felt 5 + rails) up to 3.2 above felt  
+PASS  H7 log within blocker 5x0.8x0.8 (+0.4 above pivot)  (-2.55, -0.46, 0.0)..(2.55, 0.4, 0.8)
+PASS  H9 portcullis within blocker 0.8x1.4x7.4  (-0.37, -3.75, -0.31)..(0.36, 3.75, 1.08)
+PASS  H8 root door within blocker 0.7x1x3.2  (-0.4, -1.65, -0.03)..(0.39, 1.61, 1.0)
+PASS  H4 carousel (pass 6, padded 2.3 arms): below y=1 everything inside the arm blockers (|x|<=3.0, |z|<=0.35)  max |x| 3.000, max |z| 0.350
+PASS  H9 pendulum bob inside its blocker 1.6x1.8x1.0 centred 7.0 below the hinge (x<=0.8, z<=0.5, y -7.9..-6.1)  max |x| 0.800, max |z| 0.496, bottom -7.900
+PASS  H9 pendulum chain slim (|x|, |z| <= 0.2 between hinge and bob)  729 verts
+PASS  H6 wheel: only the 2 paddle boards reach r>2.15 over the felt  0 stray verts
+PASS  H6 wheel radius <= 3.6  
+PASS  H6 axle reaches the mill wall (course z=-1 -> local +7.5 = Blender y -7.5)  axle end y=-7.80
+PASS  H9 chamber/heart rail corners inside the trunk cavity  
+PASS  H9 corridor tunnel through the trunk wall is open (felt+1, felt+3.5)  
+PASS  pass-4 world dressing present for all 9 holes (world_pos/world_yaw/terrain_y on every instance)  287 instances
+  keep-out boxes: 782; world occupancy grids: 105
+PASS  H1 dressing FBX groups re-imported: 2 files, 16860 tris, each < 20k, counts match  manifest 16860
+PASS  H1 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H1 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H1 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H1 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.61
+PASS  H1 anything over felt is >= 6.5 above it  nothing overhangs felt
+PASS  H1 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H1 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  48 instances
+PASS  H1 lights[] and lights_world[] match  8 lights
+PASS  H2 dressing FBX groups re-imported: 2 files, 18354 tris, each < 20k, counts match  manifest 18354
+PASS  H2 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H2 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H2 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H2 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.54
+PASS  H2 anything over felt is >= 6.5 above it  min height over felt 6.55
+PASS  H2 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H2 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  42 instances
+PASS  H2 lights[] and lights_world[] match  15 lights
+PASS  H3 dressing FBX groups re-imported: 2 files, 18920 tris, each < 20k, counts match  manifest 18920
+PASS  H3 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H3 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H3 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H3 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.36
+PASS  H3 anything over felt is >= 6.5 above it  min height over felt 7.45
+PASS  H3 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H3 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  43 instances
+PASS  H3 lights[] and lights_world[] match  21 lights
+PASS  H4 dressing FBX groups re-imported: 2 files, 16862 tris, each < 20k, counts match  manifest 16862
+PASS  H4 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H4 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H4 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H4 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.28
+PASS  H4 anything over felt is >= 6.5 above it  min height over felt 8.07
+PASS  H4 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H4 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  37 instances
+PASS  H4 lights[] and lights_world[] match  10 lights
+PASS  H5 dressing FBX groups re-imported: 3 files, 19406 tris, each < 20k, counts match  manifest 19406
+PASS  H5 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H5 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H5 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H5 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.40
+PASS  H5 anything over felt is >= 6.5 above it  min height over felt 7.96
+PASS  H5 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H5 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  34 instances
+PASS  H5 lights[] and lights_world[] match  14 lights
+PASS  H6 dressing FBX groups re-imported: 2 files, 10792 tris, each < 20k, counts match  manifest 10792
+PASS  H6 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H6 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H6 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H6 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.82
+PASS  H6 anything over felt is >= 6.5 above it  min height over felt 8.13
+PASS  H6 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H6 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  19 instances
+PASS  H6 lights[] and lights_world[] match  8 lights
+PASS  H7 dressing FBX groups re-imported: 1 files, 12402 tris, each < 20k, counts match  manifest 12402
+PASS  H7 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H7 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H7 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H7 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.72
+PASS  H7 anything over felt is >= 6.5 above it  min height over felt 8.95
+PASS  H7 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H7 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  25 instances
+PASS  H7 lights[] and lights_world[] match  6 lights
+PASS  H8 dressing FBX groups re-imported: 1 files, 13504 tris, each < 20k, counts match  manifest 13504
+PASS  H8 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H8 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H8 hollow-tree rule (outside trunk r + 1)  0 verts
+PASS  H8 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.26
+PASS  H8 anything over felt is >= 6.5 above it  nothing overhangs felt
+PASS  H8 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H8 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  13 instances
+PASS  H8 lights[] and lights_world[] match  21 lights
+PASS  H9 dressing FBX groups re-imported: 1 files, 16936 tris, each < 20k, counts match  manifest 16936
+PASS  H9 no dressing triangle inside any keep-out (holes, walkways/stairs/landings, posts, plazas, flume)  exact SAT vs 782 boxes
+PASS  H9 no dressing geometry inside world pieces (tree shell/roots, falls, cliff kits, rock faces, ...)  occupancy clear
+PASS  H9 hollow-tree rule (inside the hollow, r < inner - 0.3)  0 verts
+PASS  H9 low geometry >= 1.25 from every felt edge (all holes, world placement)  min gap 1.27
+PASS  H9 anything over felt is >= 6.5 above it  nothing overhangs felt
+PASS  H9 hole-local pos/yaw == world_pos/world_yaw via world.json placement  
+PASS  H9 every instance grounded on terrain-4stud (spread <= 1.5 small / 3 trees / 3.5 cards, no water)  26 instances
+PASS  H9 lights[] and lights_world[] match  4 lights
+PASS  card clumps >= 32 studs from every hole's felt  76 cards
+PASS  no card clumps in the protected vista sightlines (H1 tee -> tree, Lookout Rock, Root Stair)  
+PASS  negative test flagged: card in the H1 tee -> tree sightline  
+PASS  H1 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  32308 (before pass 4: 247140)
+PASS  H2 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  33998 (before pass 4: 243748)
+PASS  H3 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  32204 (before pass 4: 218208)
+PASS  H4 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  33536 (before pass 4: 249190)
+PASS  H5 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  27114 (before pass 4: 187348)
+PASS  H6 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  32348 (before pass 4: 323026)
+PASS  H7 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  33954 (before pass 4: 355798)
+PASS  H8 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  33802 (before pass 4: 451262)
+PASS  H9 near-field dressing tris (any hole, within 60 studs of felt) <= 34000  27162 (before pass 4: 297518)
+PASS  negative test flagged: box on H1 felt  
+PASS  negative test flagged: box in the H6 mill-wheel sweep  
+PASS  negative test flagged: box on a stair flight  
+PASS  negative test flagged: box at a lantern post  
+PASS  negative test flagged: point in the trunk wall (occupancy)  
+PASS  negative test flagged: point in the trunk wall (tree rule)  
+PASS  negative test flagged: instance in Lantern Mere  
+PASS  negative test flagged: tree on a cliff edge (spread)  
+PASS  H1 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H2 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H3 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H4 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H5 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H6 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H7 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H8 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+PASS  H9 every tall dressing prop (> 2 high) >= 3 studs from all rails (footprint + geometry below base + 5)  
+  tall dressing props checked: 82
+PASS  negative test flagged: tall tree 2 studs outside an H3 rail  
+PASS  negative test flagged: lantern hook pair 2 studs outside an H3 rail  
+PASS  short prop (cup_lantern_stake, 1.92 tall) at the same spot is allowed  
+PASS  H8 spot_lights pool over root_door, cup (local == world, clear of keep-outs + world pieces, within 0.7 x range)  2 spots
+PASS  H8 glowing cup_lantern_stake at cup (within 9 studs; pass 6: was 7)  {'cup': 2}, max dist 8.75
+PASS  H9 spot_lights pool over root_gate, lantern_pendulum, cup (local == world, clear of keep-outs + world pieces, within 0.7 x range)  7 spots
+PASS  H9 glowing cup_lantern_stake at cup + root_gate (within 9 studs; pass 6: was 7)  {'cup': 2, 'root_gate': 2}, max dist 5.25
+PASS  negative test flagged: a light host 2 studs above the H8 moving part (inside the play clearance)  
+PASS  moving parts use MoveRed + MoveCream (H4 arms, H6 paddles, H7 log, H8 door, H9 gate + pendulum)  
+PASS  hole skins: H6 mill rail variant, H8/H9 bright felt + cream trim rails (FBX + texture present)  
+
+# pass 6: holes.json v2 (flags, new props, changed moving parts, H9 lantern bar -> pendulum)
+PASS  removed: h9_lantern_bar + h9_lantern_post_static (no manifest entry, no FBX)  
+PASS  removed: no light tied to the H9 lantern bar (spot_lights)  
+PASS  H4 spinner: manifest motion == holes.json v2 (rotate 30.0 range None, pivot [0, 0, -21])  
+PASS  H6 millwheel: manifest motion == holes.json v2 (rotate 30.0 range None, pivot [7.5, 3.6, -8.5])  
+PASS  H7 log: manifest motion == holes.json v2 (slide 5.0 range [-7.0, 7.0], pivot [0, -1.2, -20.5])  
+PASS  H8 root_door: manifest motion == holes.json v2 (slide 2.0 range [-3.5, 3.5], pivot [4.75, 0.0, -11.5])  
+PASS  H9 root_gate: manifest motion == holes.json v2 (slide 0.9 range [0.0, 1.8], pivot [6, 1.0, -25.5])  
+PASS  H9 lantern_pendulum: manifest motion == holes.json v2 (swing +-35.0 deg, 4.0 s, pivot [22.0, 8.96, -38.5])  
+PASS  H7 log: at full travel (+-7) the mesh end stays short of the rail line x = +-10 (0.5 by design)  mesh end |x| 9.545 (blocker end 9.50)
+PASS  H9 pendulum bob bottom 0.06 above the chamber felt at rest (holes.json: blocker bottom 7.9 below the hinge)  gap 0.060
+PASS  H9 pendulum swing envelope (bob + chain, +-35 deg, grown 0.25) clear of ALL dressing (exact, re-imported FBX)  142 swept boxes
+PASS  H9 pendulum swing envelope clear of every H9 hero prop (beam/legs, heart lanterns, well rim, arch, knots)  {}
+PASS  H9 pendulum spot light present and outside the swing envelope  [22.0, 8.96, -36.5]
+PASS  H8 root door (+-3.5) never touches its pockets; at both ends it slides past the rail line INTO a pocket  0 clashing tris, ends hidden [True, True]
+PASS  H8 entry ring: glow disc radius == trigger radius 0.55 and the ring's bottom gap clears the whole trigger width (+ ball)  disc r 0.550, ring verts in the gap 0
+PASS  H8 exit ring at the v2 teleport exit (9, 1.5, -47), local +Z along the exit dir  pos [9.0, 1.5, -47.0] yaw -26.57
+PASS  H8 alcove bank cladding lies ON the banked plane (<= 0.03 above it) and inside its footprint x 7.7..9, z -15..-8  max above plane 0.030, inside True
+PASS  9 cup flags: at the cup, pole top == holes.json cup.flag.top, pole/banner sizes, banner faces the tee, collision false (placement + holes.json + notes), dressing keep-out  
+PASS  manifest decoration rule covers the flags (CanCollide=false on every MeshPart)  
+PASS  tee eye (+5.5) -> flag top not blocked by any hero prop (incl. all pass-6 props) on H1-H2, H4-H9  H3 blocked by design (mushroom_house_large_tunnel)
+PASS  H9 trunk tunnel arch top <= y 6 (holes.json LOS note: keep the buttress top <= 6)  top y 5.685
+PASS  flush props: H2 felt arrow decals <= 0.01 and the H5 respawn stone <= 0.02 above the felt, fully on felt, stone at holes.json respawn  
+PASS  H4 side-gap lantern posts stand on the plaza rail tops (x = +-7.25, z -17)  
+PASS  H2 chute signs: whole sign >= 0.5 from the felt and >= 0.1 outside every wall  
+PASS  H9 tunnel dip trim: every vertex on the tunnel rails' footprint (never over the felt)  max off-rail 0.000
+PASS  H9 pendulum root beam: legs (geometry below y 4) stay off the felt (>= 0.3) and outside every rail (>= 0.1)  min felt 0.86, min rail 0.36
+PASS  H7 gap lantern posts at the v2 gap rail ends (x 3.75 / 6.75, holes.json step_lanterns)  [3.75, 6.75]
+PASS  H7 dressing richer than pass 5 (13 3D props) and still within the near-field budget  3D 13 -> 25, near-field 33954
+PASS  every prop FBX < 20k tris  max 6536
+
+ALL PASS

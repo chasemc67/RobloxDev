@@ -1,0 +1,44 @@
+Hero tree fit vs H8/H9 (holes.json transformed with world.json placements) and walkways p_h7_h8/p_h8_h9
+keep-out boxes: 194 hole elements, 19 walkway segments, 12 lantern posts
+
+PASS  hollow_tree_world_shell_part1.fbx: 7734 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part2.fbx: 7845 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part3.fbx: 7848 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part4.fbx: 7843 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part5.fbx: 6848 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part6.fbx: 8748 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part7.fbx: 13426 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_world_shell_part8.fbx: 16660 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_crown_part1.fbx: 5796 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_crown_part2.fbx: 16640 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_crown_part3.fbx: 16640 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_crown_part4.fbx: 16640 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_crown_part5.fbx: 4160 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  hollow_tree_crown_part6.fbx: 2080 tris, no triangle inside any H8/H9/walkway/post keep-out
+PASS  inner wall (lowest 8 studs, outside the door bore) r >= H9 footprint r + 4.5  (inner wall min r 39.15, H9 felt+walls max r 33.84, walking room 5.31)
+PASS  Heartwood Door: 30 rays along p_h8_h9 (15.6 studs from [-44.7, 39.6, 45.1] through the arch to [-54.1, 39.6, 32.6], 7 wide, up to 11 high) are unobstructed
+PASS  door opening at the outer face ~14 wide x ~20 high  (free width 14.00 at 1 above the floor, free height 20.00 at the centreline)
+PASS  negative test flagged: triangle on H9 lane felt  (H9:felt:lane)
+PASS  negative test flagged: triangle in the lantern-bar sweep  (H9:felt:chamber, sweep:lantern_bar)
+PASS  negative test flagged: triangle in the door corridor at 9 studs  (path:p_h8_h9:6:walk)
+
+PASS  grand_falls_curtain x1: clear of every hole, walkway and lantern post
+PASS  highland_cliff_kit_a x3: clear of every hole, walkway and lantern post
+PASS  highland_cliff_kit_b x3: clear of every hole, walkway and lantern post
+PASS  highland_cliff_kit_c x3: clear of every hole, walkway and lantern post
+PASS  highland_cliff_kit_d x3: clear of every hole, walkway and lantern post
+PASS  hill_mushroom_houses x1: clear of every hole, walkway and lantern post
+PASS  lantern_falls_curtain x1: clear of every hole, walkway and lantern post
+PASS  mere_dock x1: clear of every hole, walkway and lantern post
+PASS  old_lantern_tower x1: clear of every hole, walkway and lantern post
+PASS  sister_tree_ne x1: clear of every hole, walkway and lantern post
+PASS  sister_tree_nw x1: clear of every hole, walkway and lantern post
+PASS  sister_tree_sw x1: clear of every hole, walkway and lantern post
+PASS  terrace_rock_faces_a x7: clear of every hole, walkway and lantern post
+PASS  terrace_rock_faces_b x7: clear of every hole, walkway and lantern post
+PASS  terrace_rock_faces_c x6: clear of every hole, walkway and lantern post
+PASS  twin_falls_curtain x1: clear of every hole, walkway and lantern post
+
+PASS  all 51 world FBX files < 20k tris
+
+ALL PASS

@@ -1,0 +1,414 @@
+[
+  {
+    "id": "h06_respawn_stone",
+    "hole": 6,
+    "fbx": "fbx/props_fix_overlap/h06_respawn_stone.fbx",
+    "tris": 12,
+    "max_mesh_tris": 12,
+    "meshes": [
+      {
+        "mesh": "h06_respawn_stone__Lime",
+        "material": "Lime",
+        "colour": "#D8FF6A",
+        "color": "#D8FF6A",
+        "roblox_material": "Neon",
+        "transparency": 0,
+        "tris": 12
+      }
+    ],
+    "pivot_hole_local": [
+      5.5,
+      -0.1303,
+      -36.25
+    ],
+    "anchor_local": [
+      5.5,
+      -0.1303,
+      -36.25
+    ],
+    "yaw_local": 0,
+    "world_offset": [
+      305.0,
+      84.0,
+      478.0
+    ],
+    "world_yaw": 0.0,
+    "pivot_world": [
+      310.5,
+      83.8697,
+      441.75
+    ],
+    "placement_yaw": 0.0,
+    "motion": null,
+    "notes": [
+      "Flush sloped stone follows exact shelf_e top, extending below anchor by .029 studs; thickness is below felt."
+    ],
+    "override_boxes": [
+      {
+        "center": [
+          5.5,
+          -0.1403,
+          -36.25
+        ],
+        "size": [
+          0.8,
+          0.06,
+          0.8
+        ],
+        "reason": "Flush sloped stone follows exact shelf_e top, extending below anchor by .029 studs; thickness is below felt."
+      }
+    ],
+    "can_collide": false,
+    "can_query": false,
+    "can_touch": false,
+    "bbox_asset_local": [
+      [
+        -0.4000000059604645,
+        0.14417333900928497,
+        -0.40000003576278687
+      ],
+      [
+        0.4000000059604645,
+        0.17576025426387787,
+        0.4000000059604645
+      ]
+    ],
+    "bbox_hole_local": [
+      [
+        5.0999999940395355,
+        0.013873339009284974,
+        -36.65000003576279
+      ],
+      [
+        5.9000000059604645,
+        0.04546025426387787,
+        -35.849999994039536
+      ]
+    ],
+    "bbox": [
+      [
+        -0.4000000059604645,
+        0.14417333900928497,
+        -0.40000003576278687
+      ],
+      [
+        0.4000000059604645,
+        0.17576025426387787,
+        0.4000000059604645
+      ]
+    ],
+    "dimensions": [
+      0.800000011920929,
+      0.031586915254592896,
+      0.8000000417232513
+    ],
+    "lights": [],
+    "fitcheck": {
+      "head_room_min_over_felt": -0.02300000052501757,
+      "head_room_over_felt": {
+        "shelf_e": -0.02300000052501757
+      },
+      "ball_path_vertical_clearance": null,
+      "id": "h06_respawn_stone",
+      "hole": 6,
+      "status": "PASS",
+      "total_tris": 12,
+      "material_tris": {
+        "Lime": 12
+      },
+      "min_rail_clearance": 8.5999995470047,
+      "nearest_rail": "rail5",
+      "min_felt_clearance": 8.5999995470047,
+      "nearest_felt": "cup_pad",
+      "head_room_hits": 0,
+      "sightline_hits": 0,
+      "sweep": null,
+      "failures": [],
+      "heavy": false
+    },
+    "source_fbx": "models/fbx/props_batch3/h06_respawn_stone.fbx",
+    "source_sha256": "20ecf8abf5108772dd4fd9df6eea420ae1a4fe8ee1839f4c746330868727a5c4",
+    "lane_validation": null,
+    "before": {
+      "rail": {
+        "id": "rail5",
+        "clearance": 8.599999994039536,
+        "triangle": 0,
+        "mesh_point": [
+          5.9000000059604645,
+          -0.15914339913725853,
+          -36.650000005960464
+        ],
+        "solid_point": [
+          14.5,
+          -0.15914339913725853,
+          -36.650000005960464
+        ]
+      },
+      "felt": {
+        "id": "shelf_e",
+        "clearance": -0.02299765377029747,
+        "triangle": 0,
+        "mesh_point": [
+          5.633333335320155,
+          -0.15528113301893076,
+          -36.38333333532015
+        ],
+        "solid_point": [
+          2.5,
+          -0.28690000000000004,
+          -35.75
+        ]
+      }
+    },
+    "after": {
+      "rail": {
+        "id": "rail5",
+        "clearance": 8.599999994039536,
+        "triangle": 0,
+        "mesh_point": [
+          5.9000000059604645,
+          0.013873339009284974,
+          -36.650000005960464
+        ],
+        "solid_point": [
+          14.5,
+          0.013873339009284974,
+          -36.650000005960464
+        ]
+      },
+      "felt": {
+        "id": "shelf_e",
+        "clearance": 0.15000093990234775,
+        "triangle": 0,
+        "mesh_point": [
+          5.0999999940395355,
+          0.02546000511646271,
+          -36.650000005960464
+        ],
+        "solid_point": [
+          5.097827708251546,
+          -0.12452520464117653,
+          -36.650000005960464
+        ]
+      }
+    },
+    "lift_y": 0.17301679751835766
+  },
+  {
+    "id": "h18_crystal_chute",
+    "hole": 18,
+    "fbx": "fbx/props_fix_overlap/h18_crystal_chute.fbx",
+    "tris": 1093,
+    "max_mesh_tris": 192,
+    "meshes": [
+      {
+        "mesh": "h18_crystal_chute__Ice",
+        "material": "Ice",
+        "colour": "#8FE3FF",
+        "color": "#8FE3FF",
+        "roblox_material": "Glass",
+        "transparency": 0.3,
+        "tris": 877
+      },
+      {
+        "mesh": "h18_crystal_chute__IceCore",
+        "material": "IceCore",
+        "colour": "#BFF6FF",
+        "color": "#BFF6FF",
+        "roblox_material": "Neon",
+        "transparency": 0,
+        "tris": 216
+      }
+    ],
+    "pivot_hole_local": [
+      -6.5,
+      0.25,
+      -33.0
+    ],
+    "anchor_local": [
+      -6.5,
+      0.25,
+      -33.0
+    ],
+    "yaw_local": 0,
+    "world_offset": [
+      -235.0,
+      222.0,
+      -232.0
+    ],
+    "world_yaw": 0.0,
+    "pivot_world": [
+      -241.5,
+      222.25,
+      -265.0
+    ],
+    "placement_yaw": 0.0,
+    "motion": null,
+    "notes": [
+      "Exact rail9/divider meet rail8/rail10 at zero-clearance structural joins. Extend ice skin asset to the complete connected H18 source rail/backing network so every joined collider is an explicitly owned exact skin; no blanket adjacent-rail exception. Full source network overrides chute-only approximate envelope; 1.6 chute opening unchanged."
+    ],
+    "override_boxes": [
+      {
+        "center": [
+          0,
+          1.2,
+          -29
+        ],
+        "size": [
+          36,
+          3.4,
+          64
+        ],
+        "reason": "Exact rail9/divider meet rail8/rail10 at zero-clearance structural joins. Extend ice skin asset to the complete connected H18 source rail/backing network so every joined collider is an explicitly owned exact skin; no blanket adjacent-rail exception. Full source network overrides chute-only approximate envelope; 1.6 chute opening unchanged."
+      }
+    ],
+    "can_collide": false,
+    "can_query": false,
+    "can_touch": false,
+    "bbox_asset_local": [
+      [
+        -11.920040130615234,
+        -0.7500006556510925,
+        -27.920040130615234
+      ],
+      [
+        24.920040130615234,
+        3.0700442790985107,
+        35.920040130615234
+      ]
+    ],
+    "bbox_hole_local": [
+      [
+        -18.420040130615234,
+        -0.5000006556510925,
+        -60.920040130615234
+      ],
+      [
+        18.420040130615234,
+        3.3200442790985107,
+        2.9200401306152344
+      ]
+    ],
+    "bbox": [
+      [
+        -11.920040130615234,
+        -0.7500006556510925,
+        -27.920040130615234
+      ],
+      [
+        24.920040130615234,
+        3.0700442790985107,
+        35.920040130615234
+      ]
+    ],
+    "dimensions": [
+      36.84008026123047,
+      3.8200449347496033,
+      63.84008026123047
+    ],
+    "lights": [],
+    "fitcheck": {
+      "head_room_min_over_felt": -1.7000000000000002,
+      "head_room_over_felt": {
+        "lane": -0.5,
+        "plaza_w": -0.5,
+        "plaza": -0.5,
+        "ramp": -1.0,
+        "green": -1.0,
+        "crystal_bank_ne": -1.7000000000000002,
+        "crystal_bank_sw": -1.7000000000000002
+      },
+      "ball_path_vertical_clearance": null,
+      "id": "h18_crystal_chute",
+      "hole": 18,
+      "status": "PASS",
+      "total_tris": 384,
+      "material_tris": {
+        "Ice": 192,
+        "IceCore": 192
+      },
+      "min_rail_clearance": 0,
+      "nearest_rail": "all source rails explicitly skinned",
+      "min_felt_clearance": 0,
+      "nearest_felt": "contact/flush/source skin",
+      "head_room_hits": 0,
+      "sightline_hits": 0,
+      "sweep": null,
+      "failures": [],
+      "heavy": false
+    },
+    "source_fbx": "models/fbx/props_batch3/h18_crystal_chute.fbx",
+    "source_sha256": "38cbfbcfed29b3a6decb8a40756cef4f28318438c6e94775717a637a70c30108",
+    "lane_validation": {
+      "width": 1.6,
+      "vertices_inside": 0,
+      "faces_crossing": 0
+    },
+    "before": {
+      "rail": {
+        "id": "chute_divider",
+        "clearance": -1.750000238418579,
+        "triangle": 352,
+        "mesh_point": [
+          -8.161666631698608,
+          1.5683338741461437,
+          -29.75000015894572
+        ],
+        "solid_point": [
+          -8.4,
+          1.2,
+          -33.0
+        ]
+      },
+      "felt": {
+        "id": "crystal_bank_sw",
+        "clearance": -1.0607092734701027,
+        "triangle": 23,
+        "mesh_point": [
+          -8.666666666666666,
+          0.6333361466725668,
+          -16.0
+        ],
+        "solid_point": [
+          -10.3243,
+          0.4,
+          -21.5757
+        ]
+      }
+    },
+    "after": {
+      "rail": {
+        "id": "crystal_bank_sw_backing",
+        "clearance": 0.30001951175983393,
+        "triangle": 74,
+        "mesh_point": [
+          -5.92840576171875,
+          -0.49999791383743286,
+          -15.199960708618164
+        ],
+        "solid_point": [
+          -5.716259930465094,
+          -0.49999791383743286,
+          -15.41210653987182
+        ]
+      },
+      "felt": {
+        "id": "crystal_bank_ne",
+        "clearance": 0.15001997520950613,
+        "triangle": 652,
+        "mesh_point": [
+          4.8815460205078125,
+          0.6546763479709625,
+          -20.24512767791748
+        ],
+        "solid_point": [
+          4.775465878723733,
+          0.6546763479709625,
+          -20.35120781970156
+        ]
+      }
+    },
+    "lift_y": 0.0
+  }
+]

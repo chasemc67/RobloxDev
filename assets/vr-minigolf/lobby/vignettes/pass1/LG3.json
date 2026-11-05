@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Concept art, VR eye-height view from the seaside boardwalk deck about 24 studs in front of a single course portal archway at golden-hour sunset (harbour festival mood, warm bunting and lantern light, lighthouse festival). Through and around the arch, sitting BEHIND the arch only, is a small 3D preview diorama of the course world, about 40 wide 30 deep and under 40 tall, built from a few big chunky low-poly shapes and a few hero props. The deck in front of the arch is clear and open. Whimsical stylized toy-like 3D render, original design, no text, no letters. Keep the arch exactly like the reference. Course: Lantern Grove autumn fairy forest. Option: a winding felt mini golf lane on a wooden bridge over a small stream leading back to a lantern-lit stone gate and waterfall, deep layered depth with a leaf canopy framing the sides.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/portal_lantern_grove.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1501,
+    "outputTokens": 1078,
+    "totalTokens": 2579
+  },
+  "cost": 0.043733,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791842270,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1296,
+          "textTokens": 205
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791842245827,
+                "endTime": 1791842270886,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.043733",
+      "marketCost": "0.043733",
+      "surchargeCost": "0",
+      "gatewayCost": "0.043733",
+      "inferenceCost": "0.043733",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.043733",
+      "generationId": "gen_01M4S1XQ1EJN43JDPF7DKMABSV"
+    }
+  },
+  "seconds": 26,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/vignettes/LG3.png"
+  ]
+}

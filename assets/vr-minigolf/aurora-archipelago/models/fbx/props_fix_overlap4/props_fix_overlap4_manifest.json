@@ -1,0 +1,44 @@
+{
+ "props": {
+  "h18_ramp_lanterns": {
+   "fbx": "fbx/props_fix_overlap4/h18_ramp_lanterns.fbx",
+   "replaces": "fbx/props_fix_overlap/h18_ramp_lanterns.fbx",
+   "sha256": "1c7b27ca3ed5e05f0cb4a5138afd712599024b81ef386da6b08b1e441baab5e8",
+   "tris": 792,
+   "parts": [
+    {
+     "object": "h18_ramp_lanterns__Brass",
+     "mats": [
+      "Brass"
+     ],
+     "tris": 492
+    },
+    {
+     "object": "h18_ramp_lanterns__Glow",
+     "mats": [
+      "Glow"
+     ],
+     "tris": 36
+    },
+    {
+     "object": "h18_ramp_lanterns__Snow",
+     "mats": [
+      "Snow"
+     ],
+     "tris": 228
+    },
+    {
+     "object": "h18_ramp_lanterns__Timber",
+     "mats": [
+      "Timber"
+     ],
+     "tris": 36
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "note": "lantern cage rebuilt: per lantern 4 Brass corner bars 0.206 x 0.206 (y 5.986-6.384), 0.086 from the Glow cube (0.206), base plate and roof; Glow is the Neon part; posts/roofs/snow unchanged from props_fix_overlap"
+  }
+ }
+}

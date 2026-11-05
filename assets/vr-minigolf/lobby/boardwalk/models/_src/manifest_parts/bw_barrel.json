@@ -1,0 +1,84 @@
+{
+ "name": "bw_barrel",
+ "group": "social",
+ "fbx": "fbx/bw_barrel.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Bulged barrel, 2 brass hoops.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  2.0,
+  2.995,
+  2.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.498,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -1.0,
+  0.0,
+  -1.0
+ ],
+ "bbox_max_roblox": [
+  1.0,
+  2.995,
+  1.0
+ ],
+ "target_size_studs": [
+  2,
+  3,
+  2
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  0.998,
+  1.0
+ ],
+ "triangles": 212,
+ "tris_max": 300,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_barrel__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 212,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.0,
+    2.995,
+    2.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.498,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.498,
+    -0.0
+   ],
+   "size": [
+    2.0,
+    2.995,
+    2.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

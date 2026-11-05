@@ -1,0 +1,266 @@
+{
+  "course": "sugarloaf_canyon",
+  "fbx": "fbx_pass5/bd_sl1_sugarloaf_canyon_pass5.fbx",
+  "tris": 10966,
+  "placement_cframe": "CFrame.new(225.1, -4, -750.8) * CFrame.Angles(0, math.rad(-8.36), 0)",
+  "position": [
+    225.1,
+    -4,
+    -750.8
+  ],
+  "offset_from_arch": [
+    115.1,
+    -4,
+    -782.8
+  ],
+  "arch_position": [
+    110,
+    0,
+    32
+  ],
+  "meshes": [
+    {
+      "name": "SL1_root",
+      "tris": 12,
+      "material": "BD_VC",
+      "neon_hex": null,
+      "bbox": {
+        "min": [
+          -0.5,
+          -0.5,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "size": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "SL1_mesas",
+      "tris": 10208,
+      "material": "BD_VC",
+      "neon_hex": null,
+      "bbox": {
+        "min": [
+          -301.4,
+          -9.0,
+          -228.85
+        ],
+        "max": [
+          345.32,
+          272.86,
+          130.18
+        ],
+        "size": [
+          646.73,
+          281.86,
+          359.03
+        ]
+      }
+    },
+    {
+      "name": "SL1_shore",
+      "tris": 284,
+      "material": "BD_VC",
+      "neon_hex": null,
+      "bbox": {
+        "min": [
+          -156.64,
+          -11.74,
+          -232.89
+        ],
+        "max": [
+          240.19,
+          7.42,
+          162.09
+        ],
+        "size": [
+          396.84,
+          19.15,
+          394.98
+        ]
+      }
+    },
+    {
+      "name": "SL1_cable_pylons",
+      "tris": 76,
+      "material": "BD_VC",
+      "neon_hex": null,
+      "bbox": {
+        "min": [
+          -100.5,
+          142.2,
+          -15.6
+        ],
+        "max": [
+          88.5,
+          198.9,
+          3.6
+        ],
+        "size": [
+          189.0,
+          56.7,
+          19.2
+        ]
+      }
+    },
+    {
+      "name": "SL1_cascade",
+      "tris": 98,
+      "material": "BD_VC",
+      "neon_hex": null,
+      "bbox": {
+        "min": [
+          111.61,
+          -5.1,
+          -7.44
+        ],
+        "max": [
+          187.88,
+          265.95,
+          84.74
+        ],
+        "size": [
+          76.27,
+          271.05,
+          92.18
+        ]
+      }
+    },
+    {
+      "name": "SL1_gondola_cabin",
+      "tris": 48,
+      "material": "BD_VC",
+      "neon_hex": null,
+      "bbox": {
+        "min": [
+          -19.5,
+          155.7,
+          -16.5
+        ],
+        "max": [
+          7.5,
+          185.1,
+          4.5
+        ],
+        "size": [
+          27.0,
+          29.4,
+          21.0
+        ]
+      }
+    },
+    {
+      "name": "SL1_crystals_neon",
+      "tris": 240,
+      "material": "BD_Neon_Crystal",
+      "neon_hex": "#F59AC8",
+      "bbox": {
+        "min": [
+          -158.67,
+          0.05,
+          45.69
+        ],
+        "max": [
+          169.2,
+          33.2,
+          113.4
+        ],
+        "size": [
+          327.87,
+          33.15,
+          67.71
+        ]
+      }
+    }
+  ],
+  "neon_parts": {
+    "SL1_crystals_neon": "#F59AC8"
+  },
+  "motion": "SL1_gondola_cabin: tween along cable_local_unscaled a->b times baked_scale (Blender local x,y,z -> Roblox local (x, z, -y)), then apply the zone CFrame",
+  "primary_part": "SL1_root",
+  "bbox": {
+    "min": [
+      -301.4,
+      -11.74,
+      -232.89
+    ],
+    "max": [
+      345.32,
+      272.86,
+      162.09
+    ],
+    "size": [
+      646.73,
+      284.59,
+      394.98
+    ]
+  },
+  "yaw_deg": -8.36,
+  "range_from_spawn": 860,
+  "baked_scale": 3.0,
+  "front": "local +Z faces spawn after the yaw",
+  "cable_local_unscaled": {
+    "a": [
+      -30.0,
+      0.0,
+      57.400001525878906
+    ],
+    "b": [
+      26.0,
+      4.0,
+      65.4000015258789
+    ]
+  },
+  "cabin_centre_local_unscaled": [
+    -2.0,
+    2.0,
+    54.900001525878906
+  ],
+  "pass": 5,
+  "decoration": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanQuery": false,
+    "CanTouch": false
+  },
+  "pylon_top_heights_unscaled": [
+    {
+      "centre": [
+        -30,
+        0
+      ],
+      "before": 47.4,
+      "after": 47.400001525878906,
+      "footprint_samples": [
+        47.400004069010414,
+        47.400004069010414,
+        47.400004069010414,
+        47.400004069010414,
+        47.400004069010414
+      ]
+    },
+    {
+      "centre": [
+        26,
+        4
+      ],
+      "before": 55.4,
+      "after": 55.400001525878906,
+      "footprint_samples": [
+        55.40000915527344,
+        55.3999989827474,
+        55.40000915527344,
+        55.3999989827474,
+        55.40000915527344
+      ]
+    }
+  ]
+}

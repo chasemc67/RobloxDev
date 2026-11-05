@@ -1,0 +1,3 @@
+from pathlib import Path
+p=Path('models/_src/props_batch1/gen_batch1.py');s=p.read_text().replace('flatten=1,n=6','flatten=1,n=5').replace('math.tau*i/6','math.tau*i/5').replace('for i in range(6)] for sc,yy','for i in range(5)] for sc,yy');p.write_text(s)
+p=Path('models/_src/props_batch1/fitcheck_batch1.py');s=p.read_text().replace('def triangles(p):','CACHE=json.loads((S/"triangles.json").read_text()) if (S/"triangles.json").exists() else None\ndef triangles(p):').replace("if (S/'triangles.json').exists():return np.array(json.loads((S/'triangles.json').read_text())[p['id']])+p['anchor']","if CACHE is not None:return np.array(CACHE[p['id']])+p['anchor']");p.write_text(s)

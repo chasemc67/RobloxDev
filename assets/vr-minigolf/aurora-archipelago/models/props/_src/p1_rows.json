@@ -1,0 +1,723 @@
+[
+ {
+  "hole": 1,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[6, 0, -30.5]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 1,
+  "name": "harbour_lantern (LANDMARK)",
+  "size": "[0.9, 9, 0.9]",
+  "base": "[-6, 0, -24]",
+  "notes": "Brass lantern (on a 9-stud warm-timber post, PointLight #FFB861, range 14, brightness 0.8) beside the west rail where the lane meets the green: the hole's landmark. A big ship's lantern (1.2 x 1.6) hangs from a driftwood post with frosted rope; it never overhangs the felt [occluders [-6, 4, -24]/[0.35, 8, 0.35]/yaw 0]"
+ },
+ {
+  "hole": 1,
+  "name": "snow_boulder",
+  "size": "[4.4, 5, 4.4]",
+  "base": "[-1.3, 0, -35.8]",
+  "notes": "Chunky slate-violet boulder with a thick rounded snow cap dressing the 3x3 bumper turned 45 deg; its flat south-east face is the bank (a faint aurora-mint glow line marks it). Visual may rise to 5 studs but must cover the collider exactly at felt level [occluders [-1.3, 2.5, -35.8]/[3, 5, 3]/yaw 45]"
+ },
+ {
+  "hole": 1,
+  "name": "bank_arrow",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0, -22]",
+  "notes": "Glowing mint felt arrow decal curving right: 'bank it off the boulder'"
+ },
+ {
+  "hole": 2,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-11, 0, -46]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 2,
+  "name": "rookery_drift (LANDMARK)",
+  "size": "[24, 5, 26]",
+  "base": "[0, 0, -22]",
+  "notes": "The Snowpuff Rookery: a long rounded snow drift (2.4-high colliders are the burrow walls) along z -16..-42 with three round burrow mouths at z -16 (left 3 wide 'Short & tight', middle 4 wide 'Dead end - it rolls back!', right 4 wide 'Long way round'). The burrows are OPEN-TOPPED snow cuts; only a frosted ice-arch lintel spans each mouth (underside y 8). Drift dressing stays below y 5 so the flag shows over it [occluders [-5, 2.5, -24]/[6, 5, 16]/yaw 0; [5, 2.5, -22]/[4, 5, 12]/yaw 0]"
+ },
+ {
+  "hole": 2,
+  "name": "lintel_left",
+  "size": "[5, 1.2, 1.2]",
+  "base": "[-9.5, 8, -16]",
+  "notes": "Frosted ice-arch lintel over the 'Short & tight' burrow mouth with a painted plank sign; underside exactly y 8 (VR head clearance), legs outside the clear burrow width"
+ },
+ {
+  "hole": 2,
+  "name": "lintel_mid",
+  "size": "[5, 1.2, 1.2]",
+  "base": "[0, 8, -16]",
+  "notes": "Frosted ice-arch lintel over the 'Dead end - it rolls back!' burrow mouth with a painted plank sign; underside exactly y 8 (VR head clearance), legs outside the clear burrow width"
+ },
+ {
+  "hole": 2,
+  "name": "lintel_right",
+  "size": "[5, 1.2, 1.2]",
+  "base": "[9, 8, -16]",
+  "notes": "Frosted ice-arch lintel over the 'Long way round' burrow mouth with a painted plank sign; underside exactly y 8 (VR head clearance), legs outside the clear burrow width"
+ },
+ {
+  "hole": 2,
+  "name": "sign_left",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[-12.6, 0, -12]",
+  "notes": "Arrow sign 'Short & tight!' pointing into the LEFT burrow [facing [0.3, -1]; occluders [-12.6, 1.6, -12]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 2,
+  "name": "sign_right",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[12.6, 0, -12]",
+  "notes": "Arrow sign 'Long way round - firm putt' pointing into the RIGHT burrow [facing [-0.3, -1]; occluders [12.6, 1.6, -12]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 2,
+  "name": "felt_arrow_left",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[-9.5, 0, -14]",
+  "notes": "Glowing mint felt arrow decal (flush) pointing -Z into the left burrow"
+ },
+ {
+  "hole": 2,
+  "name": "felt_arrow_right",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[9, 0, -14]",
+  "notes": "Glowing mint felt arrow decal (flush) pointing -Z into the right burrow"
+ },
+ {
+  "hole": 2,
+  "name": "felt_rollback_mid",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0.3, -22]",
+  "notes": "Faint felt chevrons in the middle burrow pointing back +Z (its floor rises 0.6: the ball rolls back)"
+ },
+ {
+  "hole": 2,
+  "name": "lantern_cue",
+  "size": "[0.9, 1.2, 0.9]",
+  "base": "[-11, 9, -46]",
+  "notes": "Brass lantern (PointLight #FFB861, range 14, brightness 0.8) hanging 9 studs over the cup from a rope between two frosted pines: the visual cue when the drift hides the flag (no collision, 9 above the felt)"
+ },
+ {
+  "hole": 3,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-1, 0, -55.5]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 3,
+  "name": "ice_plank",
+  "size": "[2.4, 0.8, 26]",
+  "base": "[0, 0, -37]",
+  "notes": "Rail-less glowing ice plank, felt on top, 2 wide, 26 long straight over the gap; translucent glacier-cyan with a crystal-core neon strip down each edge"
+ },
+ {
+  "hole": 3,
+  "name": "ice_bridge",
+  "size": "[5, 2, 26]",
+  "base": "[6, 0, -37]",
+  "notes": "Railed ice bridge: glass deck under the felt, chunky snow-capped timber ball rails"
+ },
+ {
+  "hole": 3,
+  "name": "plank_respawn_stone",
+  "size": "[0.8, 0.02, 0.8]",
+  "base": "[0, 0, -22.5]",
+  "notes": "Glowing aurora-lime marker stone set flush in the felt at the plank entry: where a ball that falls into the gap reappears"
+ },
+ {
+  "hole": 3,
+  "name": "sign_plank",
+  "size": "[1.6, 2.6, 0.2]",
+  "base": "[-2.2, 0, -21.5]",
+  "notes": "Sign 'Ice plank - no rails!' with a falling-ball icon beside the plank entry [facing [0, -1]; occluders [-2.2, 1.3, -21.5]/[0.25, 2.6, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 3,
+  "name": "sign_bridge",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[8.6, 0, -19]",
+  "notes": "Lantern sign 'Ice bridge - the safe way' pointing to the railed bridge [facing [-0.4, -1]; occluders [8.6, 1.6, -19]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 3,
+  "name": "route_arrow_plank",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0, -20]",
+  "notes": "RISKY PLANK: straight north toward the narrow crossing [facing [0, -1]]"
+ },
+ {
+  "hole": 3,
+  "name": "route_arrow_bridge",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[6, 0, -20]",
+  "notes": "SAFE BRIDGE: north along the railed crossing [facing [0, -1]]"
+ },
+ {
+  "hole": 4,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[9, 0.6, -54]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 4,
+  "name": "ice_sheen",
+  "size": "[8, 0.02, 32]",
+  "base": "[0, 0, -24]",
+  "notes": "Glassy ice felt #9FE3F2 (Glass look: Transparency 0.15, Reflectance 0.15) over the collider; chevron frost lines every 4 studs; the strip is 8 wide and 32 long"
+ },
+ {
+  "hole": 4,
+  "name": "ice_warning",
+  "size": "[3, 0.01, 1.2]",
+  "base": "[0, 0, -7]",
+  "notes": "Felt decal at the ice edge: a snowflake and three chevrons 'ICE - gentle!'"
+ },
+ {
+  "hole": 5,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-4, 4, -45]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 5,
+  "name": "steamwhistle_geyser (LANDMARK)",
+  "size": "[6, 7, 6]",
+  "base": "[-10.5, 4, -33]",
+  "notes": "Steamwhistle Geyser: a 6-wide basalt cone outside the upper green's west rail; its steam column puffs to 60 studs every 20 s and whistles (visual only). A brass pressure gauge on the platform's side shows the cycle [occluders [-10.5, 7.5, -33]/[5, 7, 5]/yaw 0]"
+ },
+ {
+  "hole": 5,
+  "name": "geyser_platform",
+  "size": "[3, 4, 3]",
+  "base": "[0, 0, -26.5]",
+  "notes": "Moving mesh: hexagonal basalt platform (top 3x3, pivot = platform top centre at offset 0) riding a translucent steam column; a shallow steam-vent dimple in the top holds the ball. Visual must cover the collider box exactly"
+ },
+ {
+  "hole": 5,
+  "name": "cliff_face",
+  "size": "[16, 4, 1]",
+  "base": "[0, 0, -28]",
+  "notes": "Basalt cliff face between the tiers (4 high) with frost streaks; the shaft behind the platform is lined with brass rivets"
+ },
+ {
+  "hole": 5,
+  "name": "signal_lamp",
+  "size": "[0.6, 1, 0.4]",
+  "base": "[3, 4.5, -28.3]",
+  "notes": "Green/amber steam lamp on the cliff face: green while the platform is flush (boarding window), amber while it rides"
+ },
+ {
+  "hole": 5,
+  "name": "geyser_arrow",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0, -18]",
+  "notes": "Glowing felt arrow decal pointing at the platform, with a little 'wait for the green lamp' icon"
+ },
+ {
+  "hole": 6,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[0, 0, -54]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 6,
+  "name": "kettle_pool (LANDMARK)",
+  "size": "[6, 1, 22]",
+  "base": "[11.5, -0.81, -35]",
+  "notes": "Turquoise hot-spring pool #2FD6C8 set into the shelf's low east edge (6 x 22), steam curling off it, basalt rim on its far (east) side under the rail; a ball that rolls in bubbles back up on the respawn stone beside it"
+ },
+ {
+  "hole": 6,
+  "name": "pool_respawn_stone",
+  "size": "[0.8, 0.02, 0.8]",
+  "base": "[5.5, -0.08, -35]",
+  "notes": "Warm basalt marker stone flush in the felt beside the pool: where a pooled ball reappears"
+ },
+ {
+  "hole": 6,
+  "name": "slope_ripples",
+  "size": "[20, 0.01, 2]",
+  "base": "[0, 0, -36]",
+  "notes": "Faint wind-ripple chevrons printed across the shelf felt pointing east (down the fall line toward the pool): the reading aid"
+ },
+ {
+  "hole": 7,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[6, 0, -53]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 7,
+  "name": "mogul_trim",
+  "size": "[9, 0.4, 28]",
+  "base": "[0, 0, -22]",
+  "notes": "Snow-capped timber rail trim following the 4 moguls (felt humps rise to +0.6 and dip to -0.4); thick rounded snow on the hump crests"
+ },
+ {
+  "hole": 8,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-3.5, 0, -48.5]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 8,
+  "name": "coral_1",
+  "size": "[2.2, 4, 2.2]",
+  "base": "[-2, 0, -10]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral1 (1.8x1.8, yaw 45); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [-2, 2, -10]/[1.44, 4, 1.44]/yaw 45]"
+ },
+ {
+  "hole": 8,
+  "name": "coral_2",
+  "size": "[2.8, 4, 1.4]",
+  "base": "[3, 0, -15.5]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral2 (2.4x1, yaw -35); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [3, 2, -15.5]/[1.92, 4, 0.8]/yaw -35]"
+ },
+ {
+  "hole": 8,
+  "name": "coral_3",
+  "size": "[2.8, 4, 1.4]",
+  "base": "[-3.2, 0, -20.5]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral3 (2.4x1, yaw 35); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [-3.2, 2, -20.5]/[1.92, 4, 0.8]/yaw 35]"
+ },
+ {
+  "hole": 8,
+  "name": "coral_4",
+  "size": "[2.2, 4, 2.2]",
+  "base": "[1.5, 0, -25]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral4 (1.8x1.8, yaw 45); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [1.5, 2, -25]/[1.44, 4, 1.44]/yaw 45]"
+ },
+ {
+  "hole": 8,
+  "name": "coral_5",
+  "size": "[2.6, 4, 1.4]",
+  "base": "[-1.5, 0, -30.5]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral5 (2.2x1, yaw 60); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [-1.5, 2, -30.5]/[1.76, 4, 0.8]/yaw 60]"
+ },
+ {
+  "hole": 8,
+  "name": "coral_6",
+  "size": "[2.4, 4, 1.4]",
+  "base": "[3.5, 0, -34.5]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral6 (2x1, yaw -30); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [3.5, 2, -34.5]/[1.6, 4, 0.8]/yaw -30]"
+ },
+ {
+  "hole": 8,
+  "name": "coral_7",
+  "size": "[2, 4, 2]",
+  "base": "[2, 0, -45]",
+  "notes": "Coral-ice branch cluster (candy colours, neon core) dressing bumper coral7 (1.6x1.6, yaw 45); the collider is its flat-faced base (bumper restitution 0.65), branches rise to ~4 studs and never overhang the felt beyond the base [occluders [2, 2, -45]/[1.28, 4, 1.28]/yaw 45]"
+ },
+ {
+  "hole": 8,
+  "name": "giant_coral (LANDMARK)",
+  "size": "[7, 14, 7]",
+  "base": "[-10.5, 0, -18]",
+  "notes": "Giant coral-ice tree (bubblegum and tangerine, glowing) outside the west rail: the hole's landmark [occluders [-10.5, 7, -18]/[4, 14, 4]/yaw 0]"
+ },
+ {
+  "hole": 9,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[2, 0, -64]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 9,
+  "name": "conch_entry (LANDMARK)",
+  "size": "[5, 4.5, 5]",
+  "base": "[0, 0, -34]",
+  "notes": "Giant spiral conch of candy coral-ice (pink/cream, glowing lip) lying at the end of the spit with its mouth over the ring: the ball rolls in. Shell body stays behind the ring and below 5 studs over the spit end [occluders [0, 2.6, -36.5]/[4, 4, 3]/yaw 0]"
+ },
+ {
+  "hole": 9,
+  "name": "conch_exit",
+  "size": "[4, 4, 4]",
+  "base": "[11, 0, -67]",
+  "notes": "Twin conch on the green's east edge, mouth turned toward the cup (teleport exit, a puff of sparkle) [occluders [12.5, 2, -68]/[2.5, 4, 2.5]/yaw 0]"
+ },
+ {
+  "hole": 9,
+  "name": "reef_lagoon",
+  "size": "[25, 1, 34]",
+  "base": "[1.5, -1.2, -39]",
+  "notes": "Shallow turquoise reef lagoon with glowing coral-ice heads under the water (hazard: +1, back to the stroke start)"
+ },
+ {
+  "hole": 9,
+  "name": "sign_spit",
+  "size": "[1.6, 2.6, 0.2]",
+  "base": "[2.2, 0, -20]",
+  "notes": "Sign 'Conch express - shoot the shell!' at the spit root [facing [0, -1]; occluders [2.2, 1.3, -20]/[0.25, 2.6, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 9,
+  "name": "sign_route",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[-16.6, 0, -24]",
+  "notes": "Sign 'Reef Walk - the long way' pointing north along the reef route [facing [0.3, -1]; occluders [-16.6, 1.6, -24]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 9,
+  "name": "felt_arrow_spit",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0, -20]",
+  "notes": "Glowing felt arrow decal pointing -Z onto the spit"
+ },
+ {
+  "hole": 9,
+  "name": "felt_arrow_route",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[-13.5, 0, -24]",
+  "notes": "Glowing felt arrow decal pointing -Z up the reef route"
+ },
+ {
+  "hole": 10,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-0.5, 0, -42]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 10,
+  "name": "bobsled_hut (LANDMARK)",
+  "size": "[5, 7, 5]",
+  "base": "[-7.5, 0, -6]",
+  "notes": "Striped red-and-cream bobsled start hut with brass bells and a parked toy bobsled, outside the run's west wall: the landmark [occluders [-7.5, 3.5, -6]/[4, 7, 4]/yaw 0]"
+ },
+ {
+  "hole": 10,
+  "name": "snow_walls",
+  "size": "[16, 4, 46]",
+  "base": "[3, 0, -22]",
+  "notes": "Rounded packed-snow bobsled walls hugging the run outside the rails (dressing up to 4 studs, ice-blue glaze on the inside faces); kept low so the flag stays visible [occluders [3.5, 1.5, -24]/[6, 3, 8]/yaw 0]"
+ },
+ {
+  "hole": 10,
+  "name": "run_lip",
+  "size": "[1, 0.4, 46]",
+  "base": "[3, 0.3, -22]",
+  "notes": "Rounded ice lip on top of both run rails following the S (felt banks 1.5 wide rise 0.3)"
+ },
+ {
+  "hole": 11,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-4, 0, -45]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 11,
+  "name": "ice_floe",
+  "size": "[7, 1.2, 0.6]",
+  "base": "[0, 0, -28]",
+  "notes": "Moving mesh: a chunky ice floe (glacier cyan, snow on top, a little snowpuff riding it) with pointed ends, pivot = floe centre at offset 0; must cover the collider exactly"
+ },
+ {
+  "hole": 11,
+  "name": "fishing_hut (LANDMARK)",
+  "size": "[3, 6, 3]",
+  "base": "[-9, 0, -30]",
+  "notes": "Snowpuff ice-fishing hut (striped canvas, stove-pipe chimney puffing) on the berg between pond and green: the landmark [occluders [-9, 3, -30]/[3, 6, 3]/yaw 0]"
+ },
+ {
+  "hole": 11,
+  "name": "sign_channel",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[11.6, 0, -21]",
+  "notes": "Painted arrow 'Side channel - the long way round' pointing into the channel [facing [-0.3, -1]; occluders [11.6, 1.6, -21]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 11,
+  "name": "felt_arrow_channel",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[9.5, 0, -23.5]",
+  "notes": "Glowing felt arrow decal pointing -Z into the side channel"
+ },
+ {
+  "hole": 12,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-1.5, 0, -42]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 12,
+  "name": "icebreaker (LANDMARK)",
+  "size": "[16, 8, 6]",
+  "base": "[-3, 0, -21]",
+  "notes": "Beached toy icebreaker (red hull, cream deckhouse, red funnel puffing steam) straddling the channel; the 'hull' block x 1.2..8 plus a matching west half; the paddle wheel turns in a 2.4-wide slot through its stern [occluders [-3.6, 3, -21]/[4.8, 6, 6]/yaw 0; [4.6, 3, -21]/[6.8, 6, 6]/yaw 0]"
+ },
+ {
+  "hole": 12,
+  "name": "paddle_wheel",
+  "size": "[8.2, 8.2, 0.4]",
+  "base": "[0, 4.12, -17.75]",
+  "notes": "Moving mesh: red-and-cream paddle wheel (pivot = hub, axis +Z), 4 broad timber paddles radius 4.1"
+ },
+ {
+  "hole": 12,
+  "name": "sign_bypass",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[11.6, 0, -13]",
+  "notes": "Arrow sign 'Round the stern - no paddles' pointing into the bypass [facing [-0.3, -1]; occluders [11.6, 1.6, -13]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 12,
+  "name": "felt_arrow_bypass",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[9.5, 0, -20]",
+  "notes": "Glowing felt arrow decal pointing -Z into the bypass"
+ },
+ {
+  "hole": 13,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[10.1, 0, -46]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 13,
+  "name": "safe_east_wait",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[8, 0, -27]",
+  "notes": "Safe-route waiting marker outside the arm sweep: play here first, then time the short east-side putt"
+ },
+ {
+  "hole": 13,
+  "name": "carousel_canopy (LANDMARK)",
+  "size": "[16, 12, 16]",
+  "base": "[0, 0, -36]",
+  "notes": "Brass-and-ice carousel: a striped canopy on a central brass pole, topped by a snowpuff weathervane. Canopy underside y 9 (>= 8 over the felt), pole inside the hub; the solid r 7.5 round base (collider 1.2 high) is the hub [occluders [0, 3.5, -36]/[1.2, 7, 1.2]/yaw 0]"
+ },
+ {
+  "hole": 13,
+  "name": "hub_base",
+  "size": "[15, 1.2, 15]",
+  "base": "[0, 0, -36]",
+  "notes": "Solid round carousel base: 48 circumscribed box strips enclose r 7.5; top y 1.2; not a playing surface"
+ },
+ {
+  "hole": 13,
+  "name": "carousel_arms",
+  "size": "[23, 0.9, 3.6]",
+  "base": "[0, 0, -36]",
+  "notes": "Moving mesh (pivot = hub centre, axis +Y): four sled-runner arms with snowpuffs riding little sleds; mesh covers the collider boxes exactly"
+ },
+ {
+  "hole": 14,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[1, 0.8, -44]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 14,
+  "name": "bell_gantry (LANDMARK)",
+  "size": "[10, 11.35, 1.5]",
+  "base": "[0, 0, -24]",
+  "notes": "Timber bell gantry hung with icicles (legs outside the rails at x +-5, beam at y 10.35); the icicles hang from the beam only, >= 8 above the felt [occluders [-5, 5.175, -24]/[0.8, 10.35, 0.8]/yaw 0; [5, 5.175, -24]/[0.8, 10.35, 0.8]/yaw 0; [0, 10.85, -24]/[10, 1, 1]/yaw 0]"
+ },
+ {
+  "hole": 14,
+  "name": "icicle_bell",
+  "size": "[2, 2, 2]",
+  "base": "[0, 1.35, -24]",
+  "notes": "Moving mesh: brass bell with an icicle fringe (pivot at the hinge [0.0, 10.35, -24.0]); base skid plate matches the collider foot; it rings softly at each end of its swing"
+ },
+ {
+  "hole": 14,
+  "name": "safe_side_sign",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[-5, 0, -9]",
+  "notes": "SAFE SIDE: hug a rail past the bell. CENTRE: wait for the swing. [facing [0, -1]; occluders [-5, 1.6, -9]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 14,
+  "name": "timing_arrow",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0, -16]",
+  "notes": "CENTRE: wait until the bell swings clear"
+ },
+ {
+  "hole": 15,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[3.5, -4, -31]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 15,
+  "name": "great_frozen_falls (LANDMARK)",
+  "size": "[26, 40, 8]",
+  "base": "[13.5, -4, -30]",
+  "notes": "The Great Frozen Falls: a 26-wide frozen cascade pouring off the terrace edge east of the basin into the cloud sea (world.json waterfall); the hole's lip is a little frozen-fall of its own"
+ },
+ {
+  "hole": 15,
+  "name": "lip_ice",
+  "size": "[7, 4, 1]",
+  "base": "[0, -2, -20]",
+  "notes": "Frozen-fall lip: glassy icicle curtain down the 4-stud step under the lane's open end (visual skirt from felt to basin)"
+ },
+ {
+  "hole": 15,
+  "name": "chevron_1",
+  "size": "[2.4, 0.01, 1.2]",
+  "base": "[0, 0, -12]",
+  "notes": "Glowing felt chevron pointing -Z: one-way drop ahead (the ball won't come back up)"
+ },
+ {
+  "hole": 15,
+  "name": "chevron_2",
+  "size": "[2.4, 0.01, 1.2]",
+  "base": "[0, 0, -16]",
+  "notes": "Glowing felt chevron pointing -Z: one-way drop ahead (the ball won't come back up)"
+ },
+ {
+  "hole": 16,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[3.2, -0.8, -35.5]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 16,
+  "name": "moonwell (LANDMARK)",
+  "size": "[20, 2, 18]",
+  "base": "[0, -0.8, -21]",
+  "notes": "Moonstone well: pale pearl stone coping round the funnel, the two felt slopes dressed as worn moonstone flags with silver inlay, glowing ice-crystal clusters on the rim (outside the rails), a spout carved like a crescent moon at the exit [occluders [-10.8, 1, -22]/[1.5, 2, 10]/yaw 0; [10.8, 1, -22]/[1.5, 2, 10]/yaw 0]"
+ },
+ {
+  "hole": 17,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[2.2, 0, -56]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 17,
+  "name": "aurora_ribbon (LANDMARK)",
+  "size": "[3, 60, 8]",
+  "base": "[0, 0, -29]",
+  "notes": "An aurora ribbon pours down out of the sky (Neon, mint #5CFFB0 -> violet #B07CFF) and pools into the light span; it brightens as the span fades in and frays into sparkles as it dims. Ribbon above y 10 only"
+ },
+ {
+  "hole": 17,
+  "name": "crystal_piers",
+  "size": "[4, 1.5, 26]",
+  "base": "[0, 0, -29]",
+  "notes": "Two glowing crystal piers (3 wide, 9 long each) with frosted ice rails, reaching out from both rims toward each other"
+ },
+ {
+  "hole": 17,
+  "name": "ice_bridge",
+  "size": "[5, 2, 26]",
+  "base": "[6, 0, -29]",
+  "notes": "Fixed railed ice bridge (glass deck, snow-capped timber ball rails)"
+ },
+ {
+  "hole": 17,
+  "name": "span_respawn_stone",
+  "size": "[0.8, 0.02, 0.8]",
+  "base": "[0, 0, -14.5]",
+  "notes": "Glowing aurora-lime marker stone flush in the felt at the light-route entry: where a ball that falls into the gap reappears"
+ },
+ {
+  "hole": 17,
+  "name": "span_lamp",
+  "size": "[0.6, 2.4, 0.6]",
+  "base": "[-2.4, 0, -15]",
+  "notes": "Crystal timing lamp beside the pier mouth: glows mint while the span is solid, violet while it fades, dark while it is gone (visual cue)"
+ },
+ {
+  "hole": 17,
+  "name": "sign_light",
+  "size": "[1.6, 2.6, 0.2]",
+  "base": "[-2.6, 0, -13]",
+  "notes": "Sign 'Aurora span - wait for the glow!' beside the light route [facing [0, -1]; occluders [-2.6, 1.3, -13]/[0.25, 2.6, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 17,
+  "name": "sign_bridge",
+  "size": "[1.8, 3.2, 0.25]",
+  "base": "[8.6, 0, -11]",
+  "notes": "Lantern sign 'Ice bridge - the long, safe way' pointing to the fixed bridge [facing [-0.4, -1]; occluders [8.6, 1.6, -11]/[0.25, 3.2, 0.25]/yaw 0]"
+ },
+ {
+  "hole": 17,
+  "name": "route_arrow_light",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[0, 0, -12]",
+  "notes": "LIGHT SPAN: straight north (timed) [facing [0, -1]]"
+ },
+ {
+  "hole": 17,
+  "name": "route_arrow_bridge",
+  "size": "[1.4, 0.01, 2]",
+  "base": "[6, 0, -12]",
+  "notes": "ICE BRIDGE: north along the railed crossing [facing [0, -1]]"
+ },
+ {
+  "hole": 18,
+  "name": "cup_flag",
+  "size": "[2, 7.5, 0.15]",
+  "base": "[-4, 0.8, -46]",
+  "notes": "Flag: 7.5-stud pole (0.15 dia) in the cup, 2.0x1.2 banner at the top, turns to face the tee; no collision"
+ },
+ {
+  "hole": 18,
+  "name": "halo_arch (LANDMARK)",
+  "size": "[46, 34, 4]",
+  "base": "[0, 0.8, -52]",
+  "notes": "Halo Arch: a translucent glowing ice arch (Glass 0.3 + crystal-core neon) 46 wide and 34 tall spanning the green east-west; its feet stand outside the footprint at x +-23 (world dressing), clear opening 18 high, so nothing is lower than 18 over the felt; it frames the aurora to the north [occluders [-23, 17, -52]/[4, 34, 4]/yaw 0; [23, 17, -52]/[4, 34, 4]/yaw 0; [0, 26.8, -52]/[46, 16, 4]/yaw 0]"
+ },
+ {
+  "hole": 18,
+  "name": "crystal_bank_ne_deco",
+  "size": "[9, 4, 2]",
+  "base": "[0, 0, -26]",
+  "notes": "Faceted ice-crystal wall dressing the 45-degree banked felt and its backing rail (crystal clusters 3-5 tall behind the rail, glowing cyan); the banked felt itself is frosted glass-green"
+ },
+ {
+  "hole": 18,
+  "name": "crystal_bank_sw_deco",
+  "size": "[9, 4, 2]",
+  "base": "[-11.5, 0, -22]",
+  "notes": "Faceted ice-crystal wall dressing the 45-degree banked felt and its backing rail (crystal clusters 3-5 tall behind the rail, glowing cyan); the banked felt itself is frosted glass-green"
+ },
+ {
+  "hole": 18,
+  "name": "felt_arrow_bank",
+  "size": "[2, 0.01, 2.6]",
+  "base": "[0, 0, -10]",
+  "notes": "Glowing felt arrow decal: 'off the crystals, round and up'"
+ },
+ {
+  "hole": 18,
+  "name": "crystal_chute",
+  "size": "[3.6, 3, 10]",
+  "base": "[-6.5, 0.4, -33]",
+  "notes": "The Halo Run: a narrow 1.6-wide crystal chute (rails dressed as glowing ice-crystal walls) straight up through the plaza's north wall onto the green: the risky shortcut / ace line"
+ },
+ {
+  "hole": 18,
+  "name": "ramp_chevrons",
+  "size": "[6, 0.01, 2]",
+  "base": "[-13.5, 0.4, -33]",
+  "notes": "Felt chevrons up the ramp pointing -Z"
+ }
+]

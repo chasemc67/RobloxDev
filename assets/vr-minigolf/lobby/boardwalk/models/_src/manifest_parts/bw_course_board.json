@@ -1,0 +1,216 @@
+{
+ "name": "bw_course_board",
+ "group": "board",
+ "fbx": "fbx/bw_course_board.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Course-select board: stone footing, wooden posts with Neon lanterns, brass frame, 3 recessed card faces card_face_1..3 (6x8, centres X -8/0/+8, Y 5.5, inset 0.15). Lantern hats reach Y 10.8.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  26.0,
+  10.75,
+  2.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  5.375,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -13.0,
+  0.0,
+  -1.0
+ ],
+ "bbox_max_roblox": [
+  13.0,
+  10.75,
+  1.0
+ ],
+ "target_size_studs": [
+  26,
+  10,
+  2
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.075,
+  1.0
+ ],
+ "triangles": 1606,
+ "tris_max": 6000,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_course_board__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 1544,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    26.0,
+    10.75,
+    2.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    5.375,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "bw_course_board__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 56,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    25.3,
+    0.95,
+    0.9
+   ],
+   "center_from_pivot": [
+    0.0,
+    9.725,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "card_face_1",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    8.0,
+    0.0
+   ],
+   "center_from_pivot": [
+    -8.0,
+    5.5,
+    0.85
+   ]
+  },
+  {
+   "mesh": "card_face_2",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    8.0,
+    0.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    5.5,
+    0.85
+   ]
+  },
+  {
+   "mesh": "card_face_3",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    8.0,
+    0.0
+   ],
+   "center_from_pivot": [
+    8.0,
+    5.5,
+    0.85
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    5.375,
+    -0.0
+   ],
+   "size": [
+    26.0,
+    10.75,
+    2.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false,
+ "cardFaces": [
+  {
+   "name": "card_face_1",
+   "courseIndex": 1,
+   "size": [
+    6.0,
+    8.0
+   ],
+   "insetDepth": 0.15,
+   "center": [
+    -8.0,
+    5.5,
+    0.85
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "note": "flat quad (2 tris), BW_Atlas parchment UVs; RobloxDevBot puts card art on it (SurfaceGui/Decal on the +Z face)"
+  },
+  {
+   "name": "card_face_2",
+   "courseIndex": 2,
+   "size": [
+    6.0,
+    8.0
+   ],
+   "insetDepth": 0.15,
+   "center": [
+    0.0,
+    5.5,
+    0.85
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "note": "flat quad (2 tris), BW_Atlas parchment UVs; RobloxDevBot puts card art on it (SurfaceGui/Decal on the +Z face)"
+  },
+  {
+   "name": "card_face_3",
+   "courseIndex": 3,
+   "size": [
+    6.0,
+    8.0
+   ],
+   "insetDepth": 0.15,
+   "center": [
+    8.0,
+    5.5,
+    0.85
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "note": "flat quad (2 tris), BW_Atlas parchment UVs; RobloxDevBot puts card art on it (SurfaceGui/Decal on the +Z face)"
+  }
+ ],
+ "cardFaces_note": "center = local Roblox studs from the pivot (base centre). Front frame surface at local z=+1.0; faces recessed 0.15 -> z=+0.85, normal +Z (south, toward spawn)."
+}

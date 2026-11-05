@@ -1,0 +1,24 @@
+{
+ "generated": "2026-10-14",
+ "props": {
+  "h07_mogul_trim": {
+   "fbx": "fbx/props_fix_overlap3/h07_mogul_trim.fbx",
+   "sha256": "74a70da8b025e304c4697fabfe581e18338fc6a1fcc38586c25ebb78adacb00e",
+   "tris": 2544,
+   "parts": [
+    {
+     "object": "h07_mogul_trim__Snow",
+     "tris": 2240
+    },
+    {
+     "object": "h07_mogul_trim__Timber",
+     "tris": 304
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "design": "trim was a skin over rails (Timber = rail boxes). Pulled in 0.80 toward the lane so 0.30 clear of rails; Snow cap top kept at y1.6 with same mogul profile, now 0.206 thick; Timber 0.206 wall under cap, cut 0.156 above mogul felt; snow decimated 25%"
+  }
+ }
+}

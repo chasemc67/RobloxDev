@@ -1,0 +1,235 @@
+Golden Hour Boardwalk pass 1 fitcheck  2026-10-11 21:25:53  (Blender 5.2.2 LTS)
+Every FBX re-imported (axis_forward -Z, axis_up Y, scale 1) and measured in Roblox axes.
+
+[PASS] FBX set = the 29 builder names exactly (29 files) :: missing=[] extra=[]
+[PASS] no bw_course_card_plane exported (OVERRIDE 2)
+[PASS] builder_Lobby.luau assets == exported set :: builder-only=[]
+[PASS] unique meshes <= 40 (29)
+[PASS] atlas textures/bw_atlas_1024.png is 1024x1024 8-bit RGB with no metadata chunks :: 1024x1024 depth 8 colortype 2 extra chunks []
+
+prop                           count   tris    max tris x n  size (Roblox X,Y,Z) vs target
+bw_deck_plank_a                   76     10    100      760  [10.00, 1.00, 10.00] vs [10, 1, 10]
+[PASS] bw_deck_plank_a: bbox within 10% of spec
+[PASS] bw_deck_plank_a: every mesh < 20k tris :: max 10
+[PASS] bw_deck_plank_a: tris 10 <= budget 100 (OVERRIDE hard limit)
+[PASS] bw_deck_plank_a: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_deck_plank_a: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_deck_plank_a: objects sit at the prop origin (transforms applied)
+bw_deck_plank_b                   76     10    100      760  [10.00, 1.00, 10.00] vs [10, 1, 10]
+[PASS] bw_deck_plank_b: bbox within 10% of spec
+[PASS] bw_deck_plank_b: every mesh < 20k tris :: max 10
+[PASS] bw_deck_plank_b: tris 10 <= budget 100 (OVERRIDE hard limit)
+[PASS] bw_deck_plank_b: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_deck_plank_b: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_deck_plank_b: objects sit at the prop origin (transforms applied)
+bw_railing                        42    222    350     9324  [10.01, 3.50, 0.60] vs [10, 3.5, 0.6]
+[PASS] bw_railing: bbox within 10% of spec
+[PASS] bw_railing: every mesh < 20k tris :: max 222
+[PASS] bw_railing: tris 222 <= budget 350 (OVERRIDE hard limit)
+[PASS] bw_railing: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_railing: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_railing: objects sit at the prop origin (transforms applied)
+bw_pier_piling                     8    232    250     1856  [2.02, 6.00, 1.92] vs [2, 6, 2]
+[PASS] bw_pier_piling: bbox within 10% of spec
+[PASS] bw_pier_piling: every mesh < 20k tris :: max 232
+[PASS] bw_pier_piling: tris 232 <= budget 250
+[PASS] bw_pier_piling: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_pier_piling: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_pier_piling: objects sit at the prop origin (transforms applied)
+bw_course_board                    1   1606   6000     1606  [26.00, 10.75, 2.00] vs [26, 10, 2]
+[PASS] bw_course_board: bbox within 10% of spec
+[PASS] bw_course_board: every mesh < 20k tris :: max 1544
+[PASS] bw_course_board: tris 1606 <= budget 6000
+[PASS] bw_course_board: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_course_board: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_course_board: objects sit at the prop origin (transforms applied)
+[PASS] course_board card_face_1: 6x8 at X -8, Y 5.5, +Z normal, inset 0.15, matches manifest cardFaces :: centre [-8.0, 5.5, 0.85] size [6.0, 8.0, 0.0] inset 0.150 tris 2
+[PASS] course_board card_face_2: 6x8 at X +0, Y 5.5, +Z normal, inset 0.15, matches manifest cardFaces :: centre [0.0, 5.5, 0.85] size [6.0, 8.0, 0.0] inset 0.150 tris 2
+[PASS] course_board card_face_3: 6x8 at X +8, Y 5.5, +Z normal, inset 0.15, matches manifest cardFaces :: centre [8.0, 5.5, 0.85] size [6.0, 8.0, 0.0] inset 0.150 tris 2
+bw_leaderboard_wall                1   1736   3000     1736  [14.00, 10.00, 2.00] vs [14, 10, 2]
+[PASS] bw_leaderboard_wall: bbox within 10% of spec
+[PASS] bw_leaderboard_wall: every mesh < 20k tris :: max 1730
+[PASS] bw_leaderboard_wall: tris 1736 <= budget 3000
+[PASS] bw_leaderboard_wall: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_leaderboard_wall: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_leaderboard_wall: objects sit at the prop origin (transforms applied)
+[PASS] leaderboard panel_1..3 faces exist
+bw_signpost                        1    390    800      390  [2.92, 7.00, 1.05] vs [3, 7, 1]
+[PASS] bw_signpost: bbox within 10% of spec
+[PASS] bw_signpost: every mesh < 20k tris :: max 384
+[PASS] bw_signpost: tris 390 <= budget 800
+[PASS] bw_signpost: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_signpost: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_signpost: objects sit at the prop origin (transforms applied)
+bw_arch_lantern_grove              1   9456  15000     9456  [16.00, 17.93, 3.89] vs [16, 18, 4]
+[PASS] bw_arch_lantern_grove: bbox within 10% of spec
+[PASS] bw_arch_lantern_grove: every mesh < 20k tris :: max 9000
+[PASS] bw_arch_lantern_grove: tris 9456 <= budget 15000
+[PASS] bw_arch_lantern_grove: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_arch_lantern_grove: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_arch_lantern_grove: objects sit at the prop origin (transforms applied)
+[PASS] bw_arch_lantern_grove: clear opening >= 10 x 12 :: 10.18 wide x 12.42 tall
+bw_arch_sugarloaf_canyon           1   1356   8000     1356  [16.00, 18.00, 4.00] vs [16, 18, 4]
+[PASS] bw_arch_sugarloaf_canyon: bbox within 10% of spec
+[PASS] bw_arch_sugarloaf_canyon: every mesh < 20k tris :: max 1356
+[PASS] bw_arch_sugarloaf_canyon: tris 1356 <= budget 8000
+[PASS] bw_arch_sugarloaf_canyon: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_arch_sugarloaf_canyon: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_arch_sugarloaf_canyon: objects sit at the prop origin (transforms applied)
+[PASS] bw_arch_sugarloaf_canyon: clear opening >= 10 x 12 :: 10.08 wide x 12.20 tall
+bw_arch_aurora_archipelago         1   1678  10000     1678  [16.00, 17.87, 4.00] vs [16, 18, 4]
+[PASS] bw_arch_aurora_archipelago: bbox within 10% of spec
+[PASS] bw_arch_aurora_archipelago: every mesh < 20k tris :: max 1498
+[PASS] bw_arch_aurora_archipelago: tris 1678 <= budget 10000
+[PASS] bw_arch_aurora_archipelago: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_arch_aurora_archipelago: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_arch_aurora_archipelago: objects sit at the prop origin (transforms applied)
+[PASS] bw_arch_aurora_archipelago: clear opening >= 10 x 12 :: 10.12 wide x 12.36 tall
+bw_arch_nameplate                  3    176    400      528  [8.00, 2.00, 0.50] vs [8, 2, 0.5]
+[PASS] bw_arch_nameplate: bbox within 10% of spec
+[PASS] bw_arch_nameplate: every mesh < 20k tris :: max 174
+[PASS] bw_arch_nameplate: tris 176 <= budget 400
+[PASS] bw_arch_nameplate: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_arch_nameplate: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_arch_nameplate: objects sit at the prop origin (transforms applied)
+bw_coming_soon_sign                2    184    400      368  [6.00, 2.00, 0.50] vs [6, 2, 0.5]
+[PASS] bw_coming_soon_sign: bbox within 10% of spec
+[PASS] bw_coming_soon_sign: every mesh < 20k tris :: max 182
+[PASS] bw_coming_soon_sign: tris 184 <= budget 400
+[PASS] bw_coming_soon_sign: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_coming_soon_sign: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_coming_soon_sign: objects sit at the prop origin (transforms applied)
+bw_practice_green                  1    576   2000      576  [34.00, 1.20, 20.00] vs [34, 1.2, 20]
+[PASS] bw_practice_green: bbox within 10% of spec
+[PASS] bw_practice_green: every mesh < 20k tris :: max 576
+[PASS] bw_practice_green: tris 576 <= budget 2000
+[PASS] bw_practice_green: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_practice_green: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_practice_green: objects sit at the prop origin (transforms applied)
+bw_windmill                        1    622   3500      622  [6.00, 10.00, 6.00] vs [6, 10, 6]
+[PASS] bw_windmill: bbox within 10% of spec
+[PASS] bw_windmill: every mesh < 20k tris :: max 622
+[PASS] bw_windmill: tris 622 <= budget 3500
+[PASS] bw_windmill: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_windmill: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_windmill: objects sit at the prop origin (transforms applied)
+bw_windmill_blades                 1    404    500      404  [7.87, 7.87, 0.50] vs [8, 8, 0.5]
+[PASS] bw_windmill_blades: bbox within 10% of spec
+[PASS] bw_windmill_blades: every mesh < 20k tris :: max 404
+[PASS] bw_windmill_blades: tris 404 <= budget 500
+[PASS] bw_windmill_blades: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_windmill_blades: pivot at hub (bbox centred on origin) :: centre [-0.0, 0.0, 0.0]
+[PASS] bw_windmill_blades: objects sit at the prop origin (transforms applied)
+[PASS] windmill_blades motion recorded (axis, 6 rpm)
+bw_cup_flag                        2    140    200      280  [0.60, 5.00, 0.60] vs [0.6, 5, 0.6]
+[PASS] bw_cup_flag: bbox within 10% of spec
+[PASS] bw_cup_flag: every mesh < 20k tris :: max 140
+[PASS] bw_cup_flag: tris 140 <= budget 200
+[PASS] bw_cup_flag: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_cup_flag: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_cup_flag: objects sit at the prop origin (transforms applied)
+bw_tee_mat                         2     12     20       24  [2.00, 0.10, 2.00] vs [2, 0.1, 2]
+[PASS] bw_tee_mat: bbox within 10% of spec
+[PASS] bw_tee_mat: every mesh < 20k tris :: max 12
+[PASS] bw_tee_mat: tris 12 <= budget 20
+[PASS] bw_tee_mat: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_tee_mat: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_tee_mat: objects sit at the prop origin (transforms applied)
+bw_birdie_bites_shack              1   3754  12000     3754  [16.00, 14.22, 17.80] vs [16, 14, 18]
+[PASS] bw_birdie_bites_shack: bbox within 10% of spec
+[PASS] bw_birdie_bites_shack: every mesh < 20k tris :: max 3694
+[PASS] bw_birdie_bites_shack: tris 3754 <= budget 12000
+[PASS] bw_birdie_bites_shack: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_birdie_bites_shack: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_birdie_bites_shack: objects sit at the prop origin (transforms applied)
+bw_bench                           6    300    600     1800  [6.00, 2.50, 2.05] vs [6, 2.5, 2]
+[PASS] bw_bench: bbox within 10% of spec
+[PASS] bw_bench: every mesh < 20k tris :: max 300
+[PASS] bw_bench: tris 300 <= budget 600
+[PASS] bw_bench: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_bench: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_bench: objects sit at the prop origin (transforms applied)
+bw_picnic_table                    1    588    900      588  [6.00, 2.89, 6.00] vs [6, 3, 6]
+[PASS] bw_picnic_table: bbox within 10% of spec
+[PASS] bw_picnic_table: every mesh < 20k tris :: max 588
+[PASS] bw_picnic_table: tris 588 <= budget 900
+[PASS] bw_picnic_table: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_picnic_table: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_picnic_table: objects sit at the prop origin (transforms applied)
+bw_barrel                          1    212    300      212  [2.00, 3.00, 2.00] vs [2, 3, 2]
+[PASS] bw_barrel: bbox within 10% of spec
+[PASS] bw_barrel: every mesh < 20k tris :: max 212
+[PASS] bw_barrel: tris 212 <= budget 300
+[PASS] bw_barrel: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_barrel: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_barrel: objects sit at the prop origin (transforms applied)
+bw_crate                           1     44     50       44  [2.00, 2.00, 2.00] vs [2, 2, 2]
+[PASS] bw_crate: bbox within 10% of spec
+[PASS] bw_crate: every mesh < 20k tris :: max 44
+[PASS] bw_crate: tris 44 <= budget 50
+[PASS] bw_crate: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_crate: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_crate: objects sit at the prop origin (transforms applied)
+bw_flower_planter                  1    756   1000      756  [4.00, 2.00, 2.00] vs [4, 2, 2]
+[PASS] bw_flower_planter: bbox within 10% of spec
+[PASS] bw_flower_planter: every mesh < 20k tris :: max 756
+[PASS] bw_flower_planter: tris 756 <= budget 1000
+[PASS] bw_flower_planter: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_flower_planter: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_flower_planter: objects sit at the prop origin (transforms applied)
+bw_beach_umbrella                  1    334    700      334  [6.00, 7.15, 6.00] vs [6, 7, 6]
+[PASS] bw_beach_umbrella: bbox within 10% of spec
+[PASS] bw_beach_umbrella: every mesh < 20k tris :: max 334
+[PASS] bw_beach_umbrella: tris 334 <= budget 700
+[PASS] bw_beach_umbrella: materials ['BW_Atlas'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_beach_umbrella: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_beach_umbrella: objects sit at the prop origin (transforms applied)
+bw_lantern_post                    6    224    400     1344  [1.00, 7.05, 1.00] vs [1, 7, 1]
+[PASS] bw_lantern_post: bbox within 10% of spec
+[PASS] bw_lantern_post: every mesh < 20k tris :: max 212
+[PASS] bw_lantern_post: tris 224 <= budget 400
+[PASS] bw_lantern_post: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_lantern_post: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_lantern_post: objects sit at the prop origin (transforms applied)
+bw_string_lights                   1    248    300      248  [20.00, 0.53, 0.47] vs [20, 0.5, 0.5]
+[PASS] bw_string_lights: bbox within 10% of spec
+[PASS] bw_string_lights: every mesh < 20k tris :: max 240
+[PASS] bw_string_lights: tris 248 <= budget 300
+[PASS] bw_string_lights: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_string_lights: pivot at base centre :: centre X 0.000 Z -0.000 minY 0.000
+[PASS] bw_string_lights: objects sit at the prop origin (transforms applied)
+bw_lantern_tree_canopy             1   5600   6000     5600  [23.11, 15.01, 19.03] vs [24, 16, 20]
+[PASS] bw_lantern_tree_canopy: bbox within 10% of spec
+[PASS] bw_lantern_tree_canopy: every mesh < 20k tris :: max 4992
+[PASS] bw_lantern_tree_canopy: tris 5600 <= budget 6000
+[PASS] bw_lantern_tree_canopy: materials ['BW_Atlas', 'BW_Neon'] within ['BW_Atlas', 'BW_Neon']
+[PASS] bw_lantern_tree_canopy: pivot at base centre :: centre X 0.000 Z -0.000 minY -0.000
+[PASS] bw_lantern_tree_canopy: objects sit at the prop origin (transforms applied)
+bw_sea_stacks                      1   1088   1800     1088  [29.72, 22.02, 10.88] vs [30, 22, 12]
+[PASS] bw_sea_stacks: bbox within 10% of spec
+[PASS] bw_sea_stacks: every mesh < 20k tris :: max 1088
+[PASS] bw_sea_stacks: tris 1088 <= budget 1800
+[PASS] bw_sea_stacks: materials ['BW_Backdrop'] within ['BW_Backdrop']
+[PASS] bw_sea_stacks: vertex colours present (vertex colour only, no texture)
+[PASS] bw_sea_stacks: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_sea_stacks: objects sit at the prop origin (transforms applied)
+bw_rock_arch                       1   1164   1200     1164  [31.68, 23.74, 10.02] vs [30, 24, 10]
+[PASS] bw_rock_arch: bbox within 10% of spec
+[PASS] bw_rock_arch: every mesh < 20k tris :: max 1164
+[PASS] bw_rock_arch: tris 1164 <= budget 1200
+[PASS] bw_rock_arch: materials ['BW_Backdrop'] within ['BW_Backdrop']
+[PASS] bw_rock_arch: vertex colours present (vertex colour only, no texture)
+[PASS] bw_rock_arch: pivot at base centre :: centre X 0.000 Z 0.000 minY -0.000
+[PASS] bw_rock_arch: objects sit at the prop origin (transforms applied)
+
+[PASS] lobby total tris (tris x builder count) 48656 <= 120000 :: target ~115k; margin 71344
+       deck tiles 1520 tris (<= 15200), railing 9324 tris (<= 14700)
+[PASS] deck/rail instance shares within OVERRIDE budget
+
+[PASS] spawn (100, 0, 100) 10-stud clear radius free of instances (deck floor tiles excluded)
+       note: lobby.json puts the south deck edge (rail_south_w centre line Z=110) exactly 10 studs from spawn; the mandatory edge railing's inner face is at 9.7 studs: [('bw_railing_161', 9.7), ('bw_railing_162', 9.7)]. Railings are a lobby.json comfort requirement, not placed props; flagged as a spec question.
+[PASS] practice-green tee->cup lines: nothing taller than the bumper (Y 1.2) within 0.5 studs except the windmill (+blades) and each hole's own cup flag
+       windmill footprint distance to hole 1 line: 0.00 (exempt obstacle)
+       leaderboard: panel_1..3 on local +Z; builder yaw -90 turns them to face west (lobby.json says faces east). Back carries decorative twin panels; see README spec question.
+
+RESULT: ALL PASS  (234 lines, 1s)

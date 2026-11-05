@@ -1,0 +1,551 @@
+{
+ "h16_sinkhole_rim": {
+  "tris": 852,
+  "parts": [
+   {
+    "object": "h16_sinkhole_rim__CrystalAmber",
+    "mats": [
+     "CrystalAmber"
+    ],
+    "tris": 48
+   },
+   {
+    "object": "h16_sinkhole_rim__CrystalPink",
+    "mats": [
+     "CrystalPink"
+    ],
+    "tris": 48
+   },
+   {
+    "object": "h16_sinkhole_rim__GeodeRim",
+    "mats": [
+     "GeodeRim"
+    ],
+    "tris": 32
+   },
+   {
+    "object": "h16_sinkhole_rim__PepRed",
+    "mats": [
+     "PepRed"
+    ],
+    "tris": 72
+   },
+   {
+    "object": "h16_sinkhole_rim__Rope",
+    "mats": [
+     "Rope"
+    ],
+    "tris": 580
+   },
+   {
+    "object": "h16_sinkhole_rim__Timber",
+    "mats": [
+     "Timber"
+    ],
+    "tris": 72
+   }
+  ],
+  "pivot_hole_local": [
+   0.0,
+   0,
+   -16.2
+  ],
+  "pivot_world": [
+   -300.0,
+   190.0,
+   128.2
+  ],
+  "yaw_deg": 180.0,
+  "placement": "unchanged (holes.json h16 sinkhole_rim anchor)",
+  "sources": {
+   "crystals": "fbx/props_batch4/h16_sinkhole_rim.fbx __CrystalGlow (the 12 crystals in Studio, geometry unchanged)",
+   "rest": "fbx/fix_zfight6/h16_sinkhole_rim.fbx (approved GeodeRim frame, PepRed, Rope, Timber, unchanged)"
+  },
+  "materials": {
+   "CrystalPink": {
+    "color": "#FF6FA8",
+    "roblox_material": "Neon",
+    "crystals": "6 larger (0.45 wide) at 0,90,145,215,235,305 deg"
+   },
+   "CrystalAmber": {
+    "color": "#FFB347",
+    "roblox_material": "Neon",
+    "crystals": "6 smaller (0.35 wide) at 35,55,125,180,270,325 deg"
+   },
+   "GeodeRim": "Rock #C8463F (not Neon)",
+   "PepRed": "SmoothPlastic #D9343A",
+   "Rope": "Fabric #C9A86A",
+   "Timber": "WoodPlanks #8A5A33"
+  },
+  "color_split_rationale": "No explicit per-crystal spec found: h16-notes says crystals glow pink; course.md palette has Rock candy #FF6FA8 + Rock candy 2 amber #FFB347; concept shows pink-dominant crystals with amber accents -> big crystals pink, small crystals amber.",
+  "collision": false,
+  "query": false,
+  "touch": false,
+  "fbx": "fbx/h16_rim_2slot_d/h16_sinkhole_rim.fbx",
+  "sha256": "023218683dd914178255c03249c5ee7252513d77a9841ee553efffd2cb359a54",
+  "variant_of": "fbx/h16_rim_2slot_b/h16_sinkhole_rim.fbx (b and c untouched)",
+  "change": "Crystals stay at their 2slot_b plan positions (0.000 centre shift). Every crystal that rose above the ball plane (felt top y 0) was scaled vertically to top y -0.086 (>=0.08 below the ball). Pink: vertical scale about its own base, 0.63-0.84. Amber: vertical 0.82, with the base moved 0.068 lower (-0.348 -> -0.416) so it keeps 0.2 thickness. Four pinks were also scaled in plan about their own centre (0.91-0.94) to keep >=0.086 to neighbours. Count, colours, frame, rope and posts are unchanged; rim height 0.167.",
+  "materials_fbx_check": {
+   "CrystalPink": "diffuse 1.000,0.435,0.659 = #FF6FA8 (Neon in Studio)",
+   "CrystalAmber": "diffuse 1.000,0.702,0.278 = #FFB347 (Neon in Studio)",
+   "GeodeRim": "frame slot GeodeRim, diffuse 0.784,0.275,0.247 = #C8463F, Studio material Rock, not Neon"
+  },
+  "per_crystal_ops": [
+   {
+    "mat": "CrystalAmber",
+    "angle": 124.7,
+    "y_scale": 0.862,
+    "y": [
+     -0.348,
+     -0.086
+    ],
+    "extents": [
+     0.348,
+     0.33,
+     0.348
+    ],
+    "thick": 0.203,
+    "plan_rmin": 0.891,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": 55.3,
+    "y_scale": 0.862,
+    "y": [
+     -0.348,
+     -0.086
+    ],
+    "extents": [
+     0.348,
+     0.33,
+     0.348
+    ],
+    "thick": 0.203,
+    "plan_rmin": 0.891,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": -90.0,
+    "y_scale": 0.862,
+    "y": [
+     -0.348,
+     -0.086
+    ],
+    "extents": [
+     0.348,
+     0.33,
+     0.348
+    ],
+    "thick": 0.203,
+    "plan_rmin": 0.676,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": -34.7,
+    "y_scale": 0.862,
+    "y": [
+     -0.348,
+     -0.086
+    ],
+    "extents": [
+     0.348,
+     0.33,
+     0.348
+    ],
+    "thick": 0.203,
+    "plan_rmin": 0.891,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": 34.7,
+    "y_scale": 0.862,
+    "y": [
+     -0.348,
+     -0.086
+    ],
+    "extents": [
+     0.348,
+     0.33,
+     0.348
+    ],
+    "thick": 0.203,
+    "plan_rmin": 0.891,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalAmber",
+    "angle": 180.0,
+    "y_scale": 0.862,
+    "y": [
+     -0.348,
+     -0.086
+    ],
+    "extents": [
+     0.348,
+     0.33,
+     0.348
+    ],
+    "thick": 0.203,
+    "plan_rmin": 0.676,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": 90.0,
+    "y_scale": 0.634,
+    "y": [
+     -0.402,
+     -0.086
+    ],
+    "extents": [
+     0.452,
+     0.316,
+     0.452
+    ],
+    "thick": 0.234,
+    "plan_rmin": 0.564,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": -124.7,
+    "y_scale": 0.634,
+    "y": [
+     -0.402,
+     -0.086
+    ],
+    "extents": [
+     0.452,
+     0.316,
+     0.452
+    ],
+    "thick": 0.234,
+    "plan_rmin": 0.793,
+    "plan_scale": 0.941
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": -55.3,
+    "y_scale": 0.735,
+    "y": [
+     -0.452,
+     -0.086
+    ],
+    "extents": [
+     0.452,
+     0.366,
+     0.452
+    ],
+    "thick": 0.25,
+    "plan_rmin": 0.793,
+    "plan_scale": 0.913
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": 0.0,
+    "y_scale": 0.634,
+    "y": [
+     -0.402,
+     -0.086
+    ],
+    "extents": [
+     0.452,
+     0.316,
+     0.452
+    ],
+    "thick": 0.234,
+    "plan_rmin": 0.564,
+    "plan_scale": 1.0
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": -145.3,
+    "y_scale": 0.835,
+    "y": [
+     -0.502,
+     -0.086
+    ],
+    "extents": [
+     0.452,
+     0.416,
+     0.452
+    ],
+    "thick": 0.261,
+    "plan_rmin": 0.423,
+    "plan_scale": 0.941
+   },
+   {
+    "mat": "CrystalPink",
+    "angle": 145.3,
+    "y_scale": 0.735,
+    "y": [
+     -0.452,
+     -0.086
+    ],
+    "extents": [
+     0.452,
+     0.366,
+     0.452
+    ],
+    "thick": 0.25,
+    "plan_rmin": 0.793,
+    "plan_scale": 0.913
+   }
+  ],
+  "checks_reimport": {
+   "all": {
+    "tris": 852,
+    "verts": 554,
+    "parts": 65,
+    "min_thickness": 0.2032,
+    "thin_parts": 0,
+    "intersecting_pairs": 0,
+    "stacked_lt_0.08": 0,
+    "min_gap": 0.086,
+    "coplanar_tri_pairs": 0,
+    "rail": 0.16,
+    "felt": 0.167
+   },
+   "crystals_only": {
+    "min_thickness": 0.2032,
+    "thin_parts": 0,
+    "felt": 0.1758,
+    "rail": 2.9759,
+    "min_gap": 0.0894,
+    "intersecting_pairs": 0,
+    "coplanar_tri_pairs": 0
+   },
+   "crystal_count": 12,
+   "crystal_top_max_y": -0.086,
+   "felt_top_y": 0.0,
+   "clear_below_ball_plane": 0.086,
+   "max_plan_centre_shift_vs_b": 0.0,
+   "gap_crystal_frame": 0.294,
+   "gap_crystal_posts": 6.173,
+   "frame_rope_posts_unchanged_vs_b": true,
+   "frame_bottom_y": 0.167,
+   "silhouette_vs_b": {
+    "front": 0.8993,
+    "side": 0.9654,
+    "top": 0.9979,
+    "bbox_delta_max": 0.0
+   },
+   "per_crystal": [
+    {
+     "centre": [
+      -0.586,
+      -0.258,
+      0.846
+     ],
+     "y": [
+      -0.416,
+      -0.086
+     ],
+     "extents": [
+      0.348,
+      0.33,
+      0.348
+     ],
+     "thick": 0.203
+    },
+    {
+     "centre": [
+      0.586,
+      -0.258,
+      0.846
+     ],
+     "y": [
+      -0.416,
+      -0.086
+     ],
+     "extents": [
+      0.348,
+      0.33,
+      0.348
+     ],
+     "thick": 0.203
+    },
+    {
+     "centre": [
+      0.0,
+      -0.258,
+      -0.85
+     ],
+     "y": [
+      -0.416,
+      -0.086
+     ],
+     "extents": [
+      0.348,
+      0.33,
+      0.348
+     ],
+     "thick": 0.203
+    },
+    {
+     "centre": [
+      0.846,
+      -0.258,
+      -0.586
+     ],
+     "y": [
+      -0.416,
+      -0.086
+     ],
+     "extents": [
+      0.348,
+      0.33,
+      0.348
+     ],
+     "thick": 0.203
+    },
+    {
+     "centre": [
+      0.846,
+      -0.258,
+      0.586
+     ],
+     "y": [
+      -0.416,
+      -0.086
+     ],
+     "extents": [
+      0.348,
+      0.33,
+      0.348
+     ],
+     "thick": 0.203
+    },
+    {
+     "centre": [
+      -0.85,
+      -0.258,
+      0.0
+     ],
+     "y": [
+      -0.416,
+      -0.086
+     ],
+     "extents": [
+      0.348,
+      0.33,
+      0.348
+     ],
+     "thick": 0.203
+    },
+    {
+     "centre": [
+      0.0,
+      -0.251,
+      0.79
+     ],
+     "y": [
+      -0.402,
+      -0.086
+     ],
+     "extents": [
+      0.452,
+      0.316,
+      0.452
+     ],
+     "thick": 0.234
+    },
+    {
+     "centre": [
+      -0.552,
+      -0.251,
+      -0.796
+     ],
+     "y": [
+      -0.402,
+      -0.086
+     ],
+     "extents": [
+      0.426,
+      0.316,
+      0.426
+     ],
+     "thick": 0.227
+    },
+    {
+     "centre": [
+      0.552,
+      -0.277,
+      -0.796
+     ],
+     "y": [
+      -0.452,
+      -0.086
+     ],
+     "extents": [
+      0.413,
+      0.366,
+      0.413
+     ],
+     "thick": 0.236
+    },
+    {
+     "centre": [
+      0.79,
+      -0.251,
+      0.0
+     ],
+     "y": [
+      -0.402,
+      -0.086
+     ],
+     "extents": [
+      0.452,
+      0.316,
+      0.452
+     ],
+     "thick": 0.234
+    },
+    {
+     "centre": [
+      -0.484,
+      -0.302,
+      -0.335
+     ],
+     "y": [
+      -0.502,
+      -0.086
+     ],
+     "extents": [
+      0.426,
+      0.416,
+      0.426
+     ],
+     "thick": 0.251
+    },
+    {
+     "centre": [
+      -0.796,
+      -0.277,
+      0.552
+     ],
+     "y": [
+      -0.452,
+      -0.086
+     ],
+     "extents": [
+      0.413,
+      0.366,
+      0.413
+     ],
+     "thick": 0.236
+    }
+   ]
+  },
+  "previews": [
+   "preview_topdown.png",
+   "preview_close.png",
+   "preview_wide.png",
+   "silhouette_sheet_b_vs_d.png"
+  ]
+ }
+}

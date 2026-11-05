@@ -1,0 +1,86 @@
+# Lantern Grove v210b fitcheck (ALL PASS, 59 checks) - Blender 5.2.2 LTS; holes.json C:/Users/chase/aurora_p2/jobs_in/lantern-grove/holes.json (sha256 6005ba1b4d1dd02f)
+# Latest suite = fitcheck_v210.py A + B + C1-C2 re-run unchanged, then the v210b section D. v210 C3/C4 are
+# superseded by D (bank_backing_stone is no longer OakDeep-capped; the manifest gained v210b entries).
+# NOT RUN here (inputs not in this job): fitcheck.py pass 4/5 world-dressing sections and the fitcheck_pass6-10
+# sections that need world/world.json, terrain, world_occ or the ~100 FBX not shipped.
+# Rail kit is placed in Studio (not in the manifest): D7 models it from holes.json with both documented rules.
+# door <-> pocket sweep (v210 C2, unchanged pocket): min 0.2100 at slide offset 4.0000
+
+# A. fitcheck.py sections 1-6 (generator-only rules)
+PASS  H3 tunnel opening 7 wide x 3 high clear  (rays at |z|<=3.45, y<=2.0, crown y=2.9)
+PASS  H3 tunnel side walls at |z|=3.7 and roof above 3.1  
+PASS  H3 tunnel depth 5 (stem |x|<=2.5 below y 2.9)  max |x| 2.50
+PASS  H1 torii posts outside rails  min |x| below y2 = 4.070
+PASS  H5 root bridge never rises above the felt (no rails)  max height over felt -0.119
+PASS  H5 root bridge deck >= 2.2 wide  3.32
+PASS  H5 covered bridge interior clear |x|<3.0 (felt 5 + rails) up to 3.2 above felt  
+PASS  H7 log inside its holes.json blockers (5.2x0.8x0.8 + 0.5657x0.8x0.5657 + 0.5657x0.8x0.5657; pointed ends)  0 verts outside; x -2.99..2.99
+PASS  H9 portcullis within blocker 0.8x1.4x7.4  (-0.37, -3.75, -0.31)..(0.36, 3.75, 1.08)
+PASS  H8 root door inside its holes.json blocker 0.7x1x3.6  0 verts outside; z -1.80..1.84
+PASS  H4 carousel (pass 6, padded 2.3 arms): below y=1 everything inside the arm blockers (|x|<=3.0, |z|<=0.35)  max |x| 3.000, max |z| 0.350
+PASS  H9 pendulum bob inside its holes.json blockers (1.6x1.8x1.6 yaw 30 + 1x0.4x1.6 yaw 0), body centred 7 below the hinge  0 verts outside; body max |x| 0.833, bottom -7.959
+PASS  H9 pendulum chain slim (|x|, |z| <= 0.2 between hinge and bob)  723 verts
+PASS  H6 wheel: only the 2 paddle boards reach r>2.15 over the felt  0 stray verts
+PASS  H6 wheel radius <= 3.6  
+PASS  H6 axle reaches the mill wall (course z=-1 -> local +7.5 = Blender y -7.5)  axle end y=-7.80
+PASS  H9 chamber/heart rail corners inside the trunk cavity  
+PASS  H9 corridor tunnel through the trunk wall is open (felt+1, felt+3.5)  
+
+# pass 6: holes.json v2 (flags, new props, changed moving parts, H9 lantern bar -> pendulum)
+# B. fitcheck_pass6.py section 3 + tee sightline (hole-local)
+PASS  H8 root door (0..4) never touches its pockets; every end that crosses a junction rail line slides INTO a pocket  0 clashing tris, 1 pockets for 1 crossing ends, ends hidden [np.True_]
+PASS  H8 entry ring: glow disc radius == trigger radius 0.45 and the ring's bottom gap clears the whole trigger width (+ ball)  disc r 0.450, ring verts in the gap 0
+PASS  H8 exit ring at the v2 teleport exit (9, 1.5, -47), local +Z along the exit dir  pos [9.0, 1.5, -47.0] yaw -26.57
+PASS  H8 alcove bank cladding lies ON the banked plane (<= 0.03 above it) and inside its footprint x 7.7..9, z -15..-8  max above plane 0.020, inside True
+PASS  tee eye (+5.5) -> flag top not blocked by any hero prop (incl. all pass-6 props) on H1-H2, H4-H9  H3 blocked by design (mushroom_house_large_tunnel)
+
+# C. v210: H8 door pocket (X x1.4, +0.17, 0.05 deeper) + H9 timber OakDeep #7A4E32 Reflectance 0
+PASS  v210 h8_door_pocket FBX == pre-v210 FBX x1.4 in X about the origin, +0.17 Y, -0.05 local Z (every vertex, every part)  max dev Cream 7.5e-08, Moss 2.4e-07, RootBark 2.7e-07, ShroomGlow 1.2e-07
+PASS  v210 h8_door_pocket manifest: placement + origin unchanged; bbox X 1.4x, Y/Z sizes same, centre +0.17 Y / -0.05 Z (local) / X same  size [1.45, 2.135, 2.663] -> [2.03, 2.135, 2.663], centre shift [0.002, 0.17, -0.05]
+PASS  v210 'deeper' = away from the door: pocket yaw 180 sits on the +Z side of the door pivot, so local -Z = world +Z = the door's opening direction (axis +Z)  pocket pos [4.75, 0.0, -7.75] yaw 180
+PASS  v210 h8_door_pocket still reaches below the felt (no gap under the raised walls)  min y -0.180
+PASS  v210 H8 root door <-> h8_door_pocket mesh clearance >= 0.187 over the whole slide [0, 4] (401 offsets at 0.01 + 41 at 0.0005 around the minimum; 0.005 edge sampling both ways)  min 0.2100 at offset 4.0000 (door [4.45, 0.226, -5.7] -> pocket [4.45, 0.226, -5.49])
+PASS  negative test flagged: pre-v210 pocket (clearance < 0.187)  min 0.0640 at offset 2.5460
+PASS  negative test flagged: pocket moved 0.05 toward the door instead of away (clearance < 0.187)  min 0.1100 at offset 4.0000
+
+# D. v210b: bank backings stone (H3/H8/H9), H8 alcove cladding stone, H9 oak rails + limestone posts, H9 bank lip #6CC79F
+PASS  v210b bank_backing_stone renders stone only: one part __Limestone #B8AFA0 (manifest + FBX material), no OakDeep / Oak / Moss part  FBX parts [('bank_backing_stone__Limestone', '#B8AFA0')]
+PASS  negative test flagged: the pre-v210b bank_backing_stone fails the stone-only rule (__OakDeep cap #7A4E32 + __Moss)  old parts [('bank_backing_stone__Limestone', '#B8AFA0'), ('bank_backing_stone__Moss', '#7A9A3A'), ('bank_backing_stone__OakDeep', '#7A4E32')]
+PASS  v210b bank_backing_stone stone blocks unchanged (every pre-v210b __Limestone vertex is in the new part)  max dev 0.0e+00
+PASS  v210b backing cap (stone) encloses a rail-kit cap laid on the same *_backing wall line (RAIL_NOTE: base = bank top 1.2, 0.56 x 0.28, wall length 12.1924) by >= 0.02 on every side (was a duplicate oak cap 0.005 under the old cap top)  cap x -0.300..0.300 y 1.900..2.220 z -6.1162..6.1162; margins x 0.0200, y 0.0200, z 0.0200
+PASS  v210b removed moss was invisible: every pre-v210b __Moss vertex lies inside the old cap (removal changes no visible pixel; the cap is now stone)  36/36 vertices inside
+PASS  v210b backing felt-facing stone faces unchanged at |x| 0.24 (0.01 behind the felt edge at 0.25 on both sides: the felt is on -X for H3 bank1/H8/H9 and +X for H3 bank2); cap overhang starts >= 0.5 above the bank top (ball r 0.08)  blocks |x| max 0.2400, cap bottom 1.900 = bank top + 0.70
+PASS  v210b every H3/H8/H9 *_backing wall has exactly one bank_backing_stone placement on it (centre x/z, yaw, base y = bank low edge)  H3 bank1_backing ok; H3 bank2_backing ok; H8 bank1_backing ok; H8 bank2_backing ok; H9 bank1_backing ok
+PASS  negative test flagged: pre-v210b placements (H8 bank2_backing at z -49.7753, 9 studs from its wall)  H8 bank2_backing OFF (dz -9.00)
+PASS  v210b h8_alcove_bank_cladding renders stone only: one part __Limestone #B8AFA0 (manifest + FBX), was __RootBark #5B3A22 + __Moss  new [('h8_alcove_bank_cladding__Limestone', '#B8AFA0')], old [('h8_alcove_bank_cladding__Moss', '#7A9A3A'), ('h8_alcove_bank_cladding__RootBark', '#5B3A22')]
+PASS  v210b h8_alcove_bank_cladding skin geometry unchanged (== pre-v210b __RootBark, every vertex)  max dev 0.0e+00, 296 tris
+PASS  v210b H9 rails: rail_straight_4_h9 / _2_h9 tops + faces one part __OakDeep #7A4E32 WoodPlanks Reflectance 0 (manifest + FBX), same geometry as the trim kit  rail_straight_4_h9: [('OakDeep', '#7A4E32', 0.0)] geometry==trim True; rail_straight_2_h9: [('OakDeep', '#7A4E32', 0.0)] geometry==trim True
+PASS  v210b H9 end posts: rail_end_post_h9 one part __Limestone #B8AFA0 (the only limestone on the H9 rails)  [('rail_end_post_h9__Limestone', '#B8AFA0')]
+PASS  v210b hole_skins.H9 -> rail_*_h9: block + cap OakDeep #7A4E32 Reflectance 0, post Limestone #B8AFA0; no limestone on any H9 rail piece; trim kit now H8 only (H8 skin unchanged)  H9 rail_straight_4_h9/rail_straight_2_h9/rail_end_post_h9 block #7A4E32 cap #7A4E32 post #B8AFA0; trim holes [['H8'], ['H8'], ['H8']]
+PASS  v210b H9 timber_deflector_board keeps the v210 result (manifest entry identical: planks __OakDeep #7A4E32 Reflectance 0)  
+PASS  v210b h9_bank_lip: separate MeshPart h9_bank_lip__BankLip, colour #6CC79F (manifest + FBX), SmoothPlastic (not Neon), emission 0 (lglib + FBX), transparency 0, 0.05 x 0.05 section  FBX colour #6CC79F, FBX emission {'h9_bank_lip__BankLip': 0.0}, size [0.05, 0.05, 6.689]
+PASS  v210b h9_bank_lip visual only: manifest collision rule CanCollide/CanQuery/CanTouch false (no holes.json geometry), no PointLight / lights entry  
+PASS  v210b one lip per H9 bank, placed in its backing's frame (== the bank_backing_stone placement)  banks ['bank1'], lips [{'hole': 'H9', 'pos': [-1.2753, 1.0, -26.7753], 'yaw': 135.0, 'note': 'bank1 top edge (bank1_backing frame)'}]
+PASS  v210b h9_bank_lip entirely outside the playable felt (holes.json): every vertex + 0.01 surface sample lies in the bank1_backing wall footprint, behind the bank1 felt's high edge, on no playable felt (felt rects minus walls minus the area behind *_backing walls), in no rail wall; bottom at the bank top edge  6936 points: in wall True, min gap behind felt edge 0.0010, on playable felt 0, rails [], y 2.200..2.250 (bank top 2.2)
+PASS  negative test flagged: the lip moved 0.01 toward the felt is on the playable felt  2324 points on felt
+PASS  v210b h9_bank_lip shows: its felt-facing face is in front of the backing's stone face (>= 0.008, no z-fight) and it runs the bank's top edge between the rails  proud 0.0089, length 6.689 (bank 10.3924, clipped at rail5/rail4 faces)
+PASS  v210b coplanar-overlap (z-fight) check, every changed / new FBX: 0 overlapping same-facing coplanar face pairs (plane tol 0.006, area > 1e-05)  bank_backing_stone 0 -> 0; dressing_h03_a 8 -> 0; dressing_h08_a 8 -> 0; h8_alcove_bank_cladding 6 -> 0; h9_bank_lip - -> 0; rail_end_post_h9 - -> 0; rail_straight_2_h9 - -> 0; rail_straight_4_h9 - -> 0
+PASS  v210b unchanged FBX are byte-identical to the shipped ones (so their coplanar counts are unchanged)  dressing_h09_a 0; dressing_h09_a_h9dim 0; h8_door_pocket 12; h8_root_door 0; stream_bank_rocks 0; timber_deflector_board 32
+PASS  v210b dressing_h03_a / dressing_h08_a: only the duplicate oak faces removed (each a flat, down-facing lantern-pole post bottom lying on its slate footing's bottom face); every other polygon, UV, material, image and transform identical to the shipped FBX; 0 coplanar pairs left  dressing_h03_a: removed {'dressing_h03_a__Oak': {'triangles': 8, 'polygons': 4}}, coplanar 8 -> 0, polygons identical True; dressing_h08_a: removed {'dressing_h08_a__Oak': {'triangles': 8, 'polygons': 4}}, coplanar 8 -> 0, polygons identical True
+PASS  v210b assembled H3/H8/H9 (documented rail kit on the rail* walls, RAIL_NOTE + assembly heights; H9 = new oak kit + lip): 0 coplanar overlaps between a backing / the lip and any rail piece, and no backing stone under its own timber any more  stone under own oak cap (within 0.01) before 35.632 -> after 0.000 stud^2; coplanar before 0 -> after 0
+PASS  v210b duplicate cap gone: a rail kit laid on a *_backing wall line (RAIL_NOTE base = bank top) no longer has a cap face coplanar with the backing (its cap is enclosed by the stone cap)  rail-kit cap vs backing coplanar pairs before H3/bank1_backing 12, H3/bank2_backing 12, H8/bank1_backing 12, H8/bank2_backing 12, H9/bank1_backing 12 -> after 0, 0, 0, 0, 0
+NOTE  S2 H3 bank1_backing: rail kit on the backing line (rail_straight_4): coplanar with backing 156 -> 144, stone inside/under timber 4.280 -> 0.000 stud^2. The rest are its 0.48 blocks on the backing's own faces: remove rail-kit pieces from *_backing walls (manifest v210b.roblox).
+NOTE  S2 H3 bank2_backing: rail kit on the backing line (rail_straight_4): coplanar with backing 156 -> 144, stone inside/under timber 4.280 -> 0.000 stud^2. The rest are its 0.48 blocks on the backing's own faces: remove rail-kit pieces from *_backing walls (manifest v210b.roblox).
+NOTE  S2 H8 bank1_backing: rail kit on the backing line (rail_straight_4_trim): coplanar with backing 156 -> 144, stone inside/under timber 3.563 -> 0.000 stud^2. The rest are its 0.48 blocks on the backing's own faces: remove rail-kit pieces from *_backing walls (manifest v210b.roblox).
+NOTE  S2 H8 bank2_backing: rail kit on the backing line (rail_straight_4_trim): coplanar with backing 156 -> 144, stone inside/under timber 3.563 -> 0.000 stud^2. The rest are its 0.48 blocks on the backing's own faces: remove rail-kit pieces from *_backing walls (manifest v210b.roblox).
+NOTE  S2 H9 bank1_backing: rail kit on the backing line (rail_straight_4_h9): coplanar with backing 156 -> 144, stone inside/under timber 12.514 -> 8.819 stud^2. The rest are its 0.48 blocks on the backing's own faces: remove rail-kit pieces from *_backing walls (manifest v210b.roblox).
+NOTE  S1 H3 bank1_backing assembly: rails ['rail3', 'rail4'] cross the backing at 45 deg (T-junction footprint 1.127 stud^2 where the rail passes through the stone; expected, not coplanar)
+NOTE  S1 H3 bank1_backing note: rails ['rail3', 'rail4'] cross the backing at 45 deg (T-junction footprint 1.856 stud^2 where the rail passes through the stone; expected, not coplanar)
+NOTE  S1 H3 bank2_backing assembly: rails ['rail11', 'rail12'] cross the backing at 45 deg (T-junction footprint 1.127 stud^2 where the rail passes through the stone; expected, not coplanar)
+NOTE  S1 H3 bank2_backing note: rails ['rail11', 'rail12'] cross the backing at 45 deg (T-junction footprint 1.895 stud^2 where the rail passes through the stone; expected, not coplanar)
+NOTE  S1 H9 bank1_backing assembly: rails ['rail4', 'rail5'] cross the backing at 45 deg (T-junction footprint 2.387 stud^2 where the rail passes through the stone; expected, not coplanar)
+NOTE  S1 H9 bank1_backing note: rails ['rail4', 'rail5'] cross the backing at 45 deg (T-junction footprint 1.651 stud^2 where the rail passes through the stone; expected, not coplanar)
+PASS  v210b manifest: only bank_backing_stone, h8_alcove_bank_cladding and the trim kit's holes/notes changed; 4 new entries; every other prop entry identical to pre-v210b  117 entries compared; differ: []
+PASS  v210b manifest top-level blocks preserved (world, lights, emissive, h9_emissive_dim, v210, ...; dressing except the H3/H8 near-field fbx[] triangle counts); textures only gains BankLip as untextured; hole_skins only H9 changed  changed [], textures +{'BankLip'}
+PASS  v210b changed / new FBX < 20k tris and manifest triangles == FBX  {'bank_backing_stone': (880, 880), 'h8_alcove_bank_cladding': (296, 296), 'rail_straight_4_h9': (132, 132), 'rail_straight_2_h9': (88, 88), 'rail_end_post_h9': (116, 116), 'h9_bank_lip': (12, 12), 'dressing_h03_a': (18744, 18744), 'dressing_h08_a': (14572, 14572)}
+PASS  v210b holes.json read only: same sha256 as v210; rail16 + banks untouched; mover speeds unchanged (Studio's job)  sha256 6005ba1b4d1dd02f (v210 6005ba1b4d1dd02f); banks 6; speeds {'H8:root_door': 3.0, 'H9:root_gate': 0.9, 'H9:lantern_pendulum': 17.2788}

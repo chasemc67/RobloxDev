@@ -1,0 +1,135 @@
+{
+ "name": "bw_signpost",
+ "group": "board",
+ "fbx": "fbx/bw_signpost.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Arrows (top->bottom): Practice (->east/+X), Leaderboards (<-west/-X), Pier (->east/+X). Text is not modelled: arrow_face_1..3 are parchment faces for SurfaceGui text on the +Z side.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  0.028,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  2.919,
+  7.0,
+  1.055
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  3.5,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -1.46,
+  0.0,
+  -0.528
+ ],
+ "bbox_max_roblox": [
+  1.46,
+  7.0,
+  0.528
+ ],
+ "target_size_studs": [
+  3,
+  7,
+  1
+ ],
+ "size_ratio_vs_target": [
+  0.973,
+  1.0,
+  1.055
+ ],
+ "triangles": 390,
+ "tris_max": 800,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_signpost__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 384,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.919,
+    7.0,
+    1.05
+   ],
+   "center_from_pivot": [
+    0.0,
+    3.5,
+    -0.002
+   ]
+  },
+  {
+   "mesh": "arrow_face_1",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.05,
+    0.56,
+    0.0
+   ],
+   "center_from_pivot": [
+    -0.175,
+    5.6,
+    0.528
+   ]
+  },
+  {
+   "mesh": "arrow_face_2",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.05,
+    0.56,
+    0.0
+   ],
+   "center_from_pivot": [
+    0.175,
+    4.5,
+    0.528
+   ]
+  },
+  {
+   "mesh": "arrow_face_3",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    2.05,
+    0.56,
+    0.0
+   ],
+   "center_from_pivot": [
+    -0.175,
+    3.4,
+    0.528
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    3.5,
+    -0.0
+   ],
+   "size": [
+    2.919,
+    7.0,
+    1.055
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

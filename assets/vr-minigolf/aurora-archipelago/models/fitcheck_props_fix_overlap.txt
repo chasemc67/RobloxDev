@@ -1,0 +1,19 @@
+Aurora overlap fixes: real freshly imported FBX triangles; signed 3D clearance; no exemptions.
+
+h06_respawn_stone: rail 8.600000 -> 8.600000 (>= 0.15); felt -0.022998 -> 0.150001 (>= .15); tris 12; lift 0.173017; PASS
+h18_crystal_chute: rail -1.750000 -> 0.300020 (>= 0.30); felt -1.060709 -> 0.150020 (>= .15); tris 1093; lift 0.000000; PASS
+h04_ice_channel_edge: no change needed (true mesh clearance already >= threshold); before = after: rail 0.175000; felt 0.675000; PASS
+h14_rail_bollards: no change needed (true mesh clearance already >= threshold); before = after: rail 0.400000; felt 0.900000; PASS
+
+Aurora fix_overlap round 3 (2026-10-14 PT): rebuild as separate non-touching thick parts. Measured on fresh Blender 5.2 reimport of the exported FBX.
+asset: tris before->after | intersecting pairs | gaps<0.08 | coplanar overlaps | thin(<0.2) parts | min gap | rail | felt | silhouette IoU front/side/top | result
+h02_lintel_left: 644->1149 | 3->0 | 5->0 | 0->0 | 3->0 | 0.086 | 0.11->0.156 | 2.5524->2.5943 | 0.9949/0.9862/0.9738 | PASS
+h02_lintel_mid: 644->1136 | 3->0 | 5->0 | 0->0 | 3->0 | 0.086 | 0.11->0.156 | 2.5233->2.5463 | 0.9934/0.9835/0.974 | PASS
+h02_lintel_right: 644->1102 | 3->0 | 5->0 | 0->0 | 3->0 | 0.086 | 0.11->0.156 | 2.5524->2.5943 | 0.9942/0.9841/0.9743 | PASS
+h02_rookery_drift: 752->1009 | 2->0 | 0->0 | 0->0 | 0->0 | 0.086 | 0.11->0.156 | 0.7355->0.7355 | 0.996/0.9986/0.999 | PASS
+h10_bobsled_hut: 344->856 | 28->0 | 19->0 | 36->0 | 12->0 | 0.083 | 0.125->0.156 | 0.625->0.656 | 0.9888/0.9933/0.995 | PASS
+h15_lip_ice: 68->160 | 3->0 | 0->0 | 0->0 | 2->0 | None | 0.15->0.156 | -0.0->0.156 | 0.9478/0.9191/0.9286 | PASS
+h10_snow_walls_e: 376->494 | 1->0 | 0->0 | 44->0 | 0->0 | 0.086 | 0.15->0.156 | 0.7486->0.7486 | 0.9844/0.9986/1.0 | PASS
+h10_snow_walls_w: 376->504 | 1->0 | 0->0 | 40->0 | 0->0 | 0.086 | 0.15->0.156 | 0.7486->0.7486 | 0.9835/0.9985/0.9974 | PASS
+h15_great_frozen_falls: 3664->2740 | 11->0 | 0->0 | 88->0 | 0->0 | 0.0999 | 21.1623->21.1623 | 21.6681->21.6681 | 1.0/1.0/1.0 | PASS
+h18_ramp_lanterns: 816->648 | 30->0 | 48->0 | 96->0 | 30->0 | 0.083 | 0.15->0.157 | 2.6024->2.6094 | 0.9097/0.913/1.0 | PASS

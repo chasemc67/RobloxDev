@@ -1,0 +1,38 @@
+{
+ "generated": "2026-10-14",
+ "props": {
+  "h5_respawn_stone": {
+   "fbx": "fbx/fix_zfight2/h5_respawn_stone.fbx",
+   "sha256": "d2ba94325c5264e46c1c17d2573c7db3a4bd11fef9afdec47bc7e17f3cf3a124",
+   "tris": 856,
+   "parts": [
+    {
+     "object": "h5_respawn_stone__Moss",
+     "mats": [
+      "Moss"
+     ],
+     "tris": 164
+    },
+    {
+     "object": "h5_respawn_stone__ShroomGlow",
+     "mats": [
+      "ShroomGlow"
+     ],
+     "tris": 188
+    },
+    {
+     "object": "h5_respawn_stone__Slate",
+     "mats": [
+      "Slate"
+     ],
+     "tris": 504
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "design": "flat 0.206 disc at y .156-.362: ShroomGlow centre dot r.103, Slate annulus r.189-.395, Moss sector with 0.086 radial gaps; original thin glow ring not reproducible at 0.2 width",
+   "approved_entry": null
+  }
+ }
+}

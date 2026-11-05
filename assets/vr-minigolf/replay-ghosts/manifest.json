@@ -1,0 +1,127 @@
+{
+  "set": "Bug-recorder replay ghosts (Lantern Grove VR mini golf)",
+  "units": "studs; 1 Blender unit = 1 stud (1 stud = 0.28 m)",
+  "axes": "Roblox Y-up; FBX axis_forward -Z, axis_up Y, transforms applied (identity objects)",
+  "material": {
+    "name": "GhostCyan",
+    "color": "#9FE6F2",
+    "opaque": true,
+    "note": "set Transparency in Roblox"
+  },
+  "assets": [
+    {
+      "name": "ghost_head",
+      "fbx": "fbx/ghost_head.fbx",
+      "tris": 288,
+      "dims_studs": [
+        0.8,
+        1.0,
+        0.9
+      ],
+      "bbox_min_roblox": [
+        -0.4,
+        -0.5,
+        -0.45
+      ],
+      "bbox_max_roblox": [
+        0.4,
+        0.5,
+        0.45
+      ],
+      "pivot": "centre of the head (bbox centre)",
+      "orientation": "front = Roblox -Z (look direction)"
+    },
+    {
+      "name": "ghost_hand_left",
+      "fbx": "fbx/ghost_hand_left.fbx",
+      "tris": 296,
+      "dims_studs": [
+        0.215,
+        0.34,
+        0.48
+      ],
+      "bbox_min_roblox": [
+        -0.097,
+        -0.17,
+        -0.28
+      ],
+      "bbox_max_roblox": [
+        0.118,
+        0.17,
+        0.2
+      ],
+      "pivot": "grip centre (centre of the closed mitt, where a club grip sits)",
+      "orientation": "fingers = Roblox -Z, thumb +Y, palm faces +X (toward body centre)"
+    },
+    {
+      "name": "ghost_hand_right",
+      "fbx": "fbx/ghost_hand_right.fbx",
+      "tris": 296,
+      "dims_studs": [
+        0.215,
+        0.34,
+        0.48
+      ],
+      "bbox_min_roblox": [
+        -0.118,
+        -0.17,
+        -0.28
+      ],
+      "bbox_max_roblox": [
+        0.097,
+        0.17,
+        0.2
+      ],
+      "pivot": "grip centre (centre of the closed mitt, where a club grip sits)",
+      "orientation": "fingers = Roblox -Z, thumb +Y, palm faces -X (toward body centre)"
+    },
+    {
+      "name": "ghost_club",
+      "fbx": "fbx/ghost_club.fbx",
+      "tris": 164,
+      "dims_studs": [
+        0.4,
+        3.05,
+        0.11
+      ],
+      "bbox_min_roblox": [
+        -0.12,
+        -3.05,
+        -0.055
+      ],
+      "bbox_max_roblox": [
+        0.28,
+        0.0,
+        0.055
+      ],
+      "pivot": "grip end (top of the grip, on the shaft axis)",
+      "orientation": "shaft = Roblox -Y, toe +X, face normal -Z"
+    },
+    {
+      "name": "ghost_ball",
+      "fbx": "fbx/ghost_ball.fbx",
+      "tris": 288,
+      "dims_studs": [
+        0.16,
+        0.16,
+        0.16
+      ],
+      "bbox_min_roblox": [
+        -0.08,
+        -0.08,
+        -0.08
+      ],
+      "bbox_max_roblox": [
+        0.08,
+        0.08,
+        0.08
+      ],
+      "pivot": "centre",
+      "orientation": "n/a"
+    }
+  ],
+  "notes": [
+    "ghost_club: no putter entry exists in lantern-grove/models/manifest.json; sized as a standard 34 in putter (3.05 studs grip end to sole). Scale on Y if the in-game putter differs.",
+    "ghost_ball: radius 0.08 stud from lantern-grove/holes.json ball_radius."
+  ]
+}

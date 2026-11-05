@@ -1,0 +1,451 @@
+{
+ "name": "Golden Hour Boardwalk Lobby",
+ "option": "C",
+ "version": 1,
+ "units": "studs",
+ "axes": {
+  "x": "east",
+  "y": "up",
+  "z": "south (north = -Z)",
+  "yaw": "deg about +Y, 0 faces north (-Z)",
+  "origin": "NW corner of bounds, deck top at Y=0",
+  "position": "center of box"
+ },
+ "bounds": {
+  "min": [
+   0,
+   -30,
+   0
+  ],
+  "max": [
+   220,
+   60,
+   150
+  ],
+  "killPlaneY": -25,
+  "note": "Ocean plane at Y=-4 outside deck; invisible walls along bounds 40 tall"
+ },
+ "spawn": {
+  "position": [
+   100,
+   0,
+   100
+  ],
+  "yaw": 0,
+  "radius": 5,
+  "note": "SpawnLocation top at Y=0; VR head ~Y 5. Faces course board 15 studs north. Keep 10-stud clear radius."
+ },
+ "courseSelectBoard": {
+  "id": "course_board",
+  "position": [
+   100,
+   0,
+   85
+  ],
+  "size": [
+   26,
+   10,
+   2
+  ],
+  "yaw": 0,
+  "cardCenterY": 5.5,
+  "cards": [
+   {
+    "courseId": "lantern_grove",
+    "name": "Lantern Grove",
+    "state": "live",
+    "offsetX": -8
+   },
+   {
+    "courseId": "sugarloaf_canyon",
+    "name": "Sugarloaf Canyon",
+    "state": "coming_soon",
+    "offsetX": 0
+   },
+   {
+    "courseId": "aurora_archipelago",
+    "name": "Aurora Archipelago",
+    "state": "coming_soon",
+    "offsetX": 8
+   }
+  ],
+  "interaction": "laser-point or touch card; 6x8 stud cards, front faces south (+Z) toward spawn"
+ },
+ "portals": [
+  {
+   "id": "arch_lantern_grove",
+   "position": [
+    45,
+    0,
+    32
+   ],
+   "size": [
+    16,
+    18,
+    4
+   ],
+   "yaw": 0,
+   "courseId": "lantern_grove",
+   "state": "live",
+   "triggerSize": [
+    10,
+    10,
+    3
+   ],
+   "theme": "gnarled lantern tree"
+  },
+  {
+   "id": "arch_sugarloaf_canyon",
+   "position": [
+    110,
+    0,
+    32
+   ],
+   "size": [
+    16,
+    18,
+    4
+   ],
+   "yaw": 0,
+   "courseId": "sugarloaf_canyon",
+   "state": "coming_soon",
+   "triggerSize": [
+    10,
+    10,
+    3
+   ],
+   "theme": "striped red sandstone"
+  },
+  {
+   "id": "arch_aurora_archipelago",
+   "position": [
+    175,
+    0,
+    32
+   ],
+   "size": [
+    16,
+    18,
+    4
+   ],
+   "yaw": 0,
+   "courseId": "aurora_archipelago",
+   "state": "coming_soon",
+   "triggerSize": [
+    10,
+    10,
+    3
+   ],
+   "theme": "purple ice crystal"
+  }
+ ],
+ "practiceGreen": {
+  "id": "practice_green",
+  "position": [
+   145,
+   0,
+   65
+  ],
+  "size": [
+   34,
+   0.4,
+   20
+  ],
+  "yaw": 0,
+  "holes": [
+   {
+    "tee": [
+     132,
+     0.4,
+     70
+    ],
+    "cup": [
+     158,
+     0.4,
+     60
+    ]
+   },
+   {
+    "tee": [
+     140,
+     0.4,
+     72
+    ],
+    "cup": [
+     150,
+     0.4,
+     58
+    ],
+    "obstacle": "windmill at [150,0,64]"
+   }
+  ],
+  "border": "0.8 tall wooden bumper rail"
+ },
+ "shack": {
+  "id": "birdie_bites_shack",
+  "position": [
+   195,
+   0,
+   80
+  ],
+  "size": [
+   18,
+   14,
+   16
+  ],
+  "yaw": 90,
+  "counterFaces": "west",
+  "note": "Decor + emote spot; no shop"
+ },
+ "pierSeating": {
+  "id": "pier_seating",
+  "position": [
+   165,
+   0,
+   135
+  ],
+  "size": [
+   22,
+   1,
+   14
+  ],
+  "yaw": 0,
+  "seats": [
+   [
+    158,
+    0,
+    130
+   ],
+   [
+    172,
+    0,
+    130
+   ],
+   [
+    158,
+    0,
+    140
+   ],
+   [
+    172,
+    0,
+    140
+   ]
+  ],
+  "note": "4 benches facing south to sunset"
+ },
+ "socialBenches": {
+  "id": "promenade_benches",
+  "position": [
+   45,
+   0,
+   95
+  ],
+  "size": [
+   24,
+   1,
+   10
+  ],
+  "yaw": 0
+ },
+ "leaderboardWall": {
+  "id": "leaderboard_wall",
+  "position": [
+   25,
+   0,
+   65
+  ],
+  "size": [
+   2,
+   10,
+   14
+  ],
+  "yaw": -90,
+  "faces": "east",
+  "panels": [
+   "Lantern Grove best",
+   "Daily",
+   "Weekly"
+  ]
+ },
+ "walkwayColliders": [
+  {
+   "id": "deck_main",
+   "position": [
+    110,
+    -0.5,
+    75
+   ],
+   "size": [
+    200,
+    1,
+    70
+   ],
+   "yaw": 0,
+   "note": "main promenade deck 10..210 x 40..110"
+  },
+  {
+   "id": "deck_pier",
+   "position": [
+    165,
+    -0.5,
+    129
+   ],
+   "size": [
+    30,
+    1,
+    38
+   ],
+   "yaw": 0,
+   "note": "pier 150..180 x 110..148"
+  },
+  {
+   "id": "path_spawn_to_arches",
+   "position": [
+    100,
+    -0.5,
+    55
+   ],
+   "size": [
+    10,
+    1,
+    30
+   ],
+   "yaw": 0
+  },
+  {
+   "id": "sand_strip",
+   "position": [
+    110,
+    -0.6,
+    20
+   ],
+   "size": [
+    220,
+    1,
+    40
+   ],
+   "yaw": 0,
+   "note": "beach behind arches, walkable"
+  }
+ ],
+ "railings": [
+  {
+   "id": "rail_south_w",
+   "position": [
+    80,
+    1.75,
+    110
+   ],
+   "size": [
+    140,
+    3.5,
+    0.6
+   ],
+   "yaw": 0,
+   "note": "south deck edge 10..150"
+  },
+  {
+   "id": "rail_south_e",
+   "position": [
+    195,
+    1.75,
+    110
+   ],
+   "size": [
+    30,
+    3.5,
+    0.6
+   ],
+   "yaw": 0
+  },
+  {
+   "id": "rail_west",
+   "position": [
+    10,
+    1.75,
+    75
+   ],
+   "size": [
+    0.6,
+    3.5,
+    70
+   ],
+   "yaw": 0
+  },
+  {
+   "id": "rail_east",
+   "position": [
+    210,
+    1.75,
+    75
+   ],
+   "size": [
+    0.6,
+    3.5,
+    70
+   ],
+   "yaw": 0
+  },
+  {
+   "id": "rail_pier_w",
+   "position": [
+    150,
+    1.75,
+    129
+   ],
+   "size": [
+    0.6,
+    3.5,
+    38
+   ],
+   "yaw": 0
+  },
+  {
+   "id": "rail_pier_e",
+   "position": [
+    180,
+    1.75,
+    129
+   ],
+   "size": [
+    0.6,
+    3.5,
+    38
+   ],
+   "yaw": 0
+  },
+  {
+   "id": "rail_pier_s",
+   "position": [
+    165,
+    1.75,
+    148
+   ],
+   "size": [
+    30,
+    3.5,
+    0.6
+   ],
+   "yaw": 0
+  }
+ ],
+ "lighting": {
+  "clockTime": 18.3,
+  "ambient": "#7A5A6E",
+  "outdoorAmbient": "#C99A7A",
+  "sunColor": "#FFB46A",
+  "fog": {
+   "color": "#F2A57E",
+   "start": 180,
+   "end": 420
+  }
+ },
+ "comfort": [
+  "spawn faces board, no forced turn",
+  "all walk surfaces flat Y=0 except green (+0.4)",
+  "paths >= 8 studs",
+  "railings 3.5 tall on every water edge",
+  "portals: walk-in trigger + 0.4s fade, no camera motion"
+ ]
+}

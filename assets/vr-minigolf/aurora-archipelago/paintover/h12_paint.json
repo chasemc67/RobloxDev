@@ -1,0 +1,75 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Paint-over of image 1, a grey/green 3D blockout render seen from the tee at VR eye height. KEEP THE GEOMETRY AND CAMERA EXACTLY: same camera angle, horizon line, lane, rails, green, cup position, every wall and the moving part in the same place, size and silhouette. Do not add, remove, move or resize any course element; do not add obstacles on the playing surface. Only restyle surfaces, lighting and the sky/background. Hole Icebreaker Wheel: Vertical rotor: the icebreaker's paddle wheel turns across the channel on a horizontal axle; the signed bypass is the safe way. Style: Aurora Archipelago, cosy stylized low-poly night snow globe: snow-felt putting surface in soft mint-green felt with snow edges, warm timber and brass rails, red moving part repainted as the themed mechanism in timber, brass and glowing ice (keep its exact shape), pink sweep volume and cup ring removed and replaced by clean felt, tall flag in the cup. Background: floating slate-violet rock islands with snow caps, glowing ice crystals, frozen waterfalls, green and violet aurora ribbons overhead in a deep twilight sky, soft lilac cloud sea below, brass lanterns. Image 2 is the style reference only, not the layout. The red/pink moving part MUST stay clearly visible at its exact position and outline. The red cross is the icebreaker paddle wheel on a horizontal axle: paint the four arms as timber paddles with brass bands at exactly the red cross shape and size, with an axle hub; erase the pink circle entirely (show sky and background through it, no ring, no disc).",
+  "aspect": "16:9",
+  "refs": [
+    "previews/blockout/h12_tee.png",
+    "h12-concept.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 2316,
+    "outputTokens": 1078,
+    "totalTokens": 3394
+  },
+  "cost": 0.049776,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791856054,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1952,
+          "textTokens": 364
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791856024219,
+                "endTime": 1791856054383,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.049776",
+      "marketCost": "0.049776",
+      "surchargeCost": "0",
+      "gatewayCost": "0.049776",
+      "inferenceCost": "0.049776",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.049776",
+      "generationId": "gen_01M4SF26KGD65THP7ZHMJ5X1RM"
+    }
+  },
+  "seconds": 31,
+  "files": [
+    "paintover/h12_paint_v2.png"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+ "name": "bw_bench",
+ "group": "social",
+ "fbx": "fbx/bw_bench.fbx",
+ "front": "-Z (Roblox, north) = Blender +Y",
+ "notes": "Sitter faces local -Z (north) at yaw 0 (lobby.json frame); builder yaw 180 turns the pier and promenade benches to face south (sunset).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  0.025,
+  0.0
+ ],
+ "bbox_size_studs": [
+  6.0,
+  2.5,
+  2.05
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.25,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -3.0,
+  0.0,
+  -1.025
+ ],
+ "bbox_max_roblox": [
+  3.0,
+  2.5,
+  1.025
+ ],
+ "target_size_studs": [
+  6,
+  2.5,
+  2
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.025
+ ],
+ "triangles": 300,
+ "tris_max": 600,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_bench__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 300,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    6.0,
+    2.5,
+    2.05
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.25,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.25,
+    -0.0
+   ],
+   "size": [
+    6.0,
+    2.5,
+    2.05
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

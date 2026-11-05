@@ -1,0 +1,753 @@
+{
+ "name": "VR Mini Golf lobby far-backdrop zones (LG2 / SL1 / AU2)",
+ "generated": "2026-10-12, Blender 5.2 on the Windows PC, explicit bpy (_src/build_backdrops.py)",
+ "units": "studs; 1 Blender unit = 1 stud; positions/sizes in Roblox axes (X east, Y up, Z south)",
+ "fbx_export": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1.0,
+  "apply_scale_options": "FBX_SCALE_UNITS",
+  "bake_space_transform": true,
+  "transforms": "identity; all meshes in one FBX share the zone pivot",
+  "vertex_colours": "Col (sRGB), no textures"
+ },
+ "pivot": "zone base centre at sea level; scale is baked into the mesh (import at 1.0); apply placement_cframe including the yaw",
+ "decoration": "Anchored=true, CanCollide=false, CanQuery=false, CanTouch=false, CastShadow optional; no collision meshes; <zone>_root Transparency=1",
+ "clearance_check": "zones are 750-800 studs past the arches, on the sightline from spawn (100,5,100) through each arch centre; ~500 studs of open sea between neighbouring zones; no portal-arch copies inside any zone",
+ "materials": {
+  "BD_VC": "vertex colour only -> SmoothPlastic, Color white, use the FBX vertex colours",
+  "BD_Neon_": "Material=Neon, Color = neon_hex"
+ },
+ "zones": {
+  "LG2": {
+   "course": "lantern_grove",
+   "fbx": "fbx/bd_lg2_lantern_grove.fbx",
+   "tris": 8072,
+   "placement_cframe": "CFrame.new(-415.7, -4, -537.6) * CFrame.Angles(0, math.rad(38.97), 0)",
+   "position": [
+    -415.7,
+    -4,
+    -537.6
+   ],
+   "offset_from_arch": [
+    -460.7,
+    -4,
+    -569.6
+   ],
+   "arch_position": [
+    45,
+    0,
+    32
+   ],
+   "meshes": [
+    {
+     "name": "LG2_root",
+     "tris": 12,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -0.5,
+       -0.5,
+       -0.5
+      ],
+      "max": [
+       0.5,
+       0.5,
+       0.5
+      ],
+      "size": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     }
+    },
+    {
+     "name": "LG2_island",
+     "tris": 1708,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -120.62,
+       -20.59,
+       -106.11
+      ],
+      "max": [
+       126.42,
+       29.02,
+       107.21
+      ],
+      "size": [
+       247.04,
+       49.61,
+       213.32
+      ]
+     }
+    },
+    {
+     "name": "LG2_tree_trunk",
+     "tris": 1536,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -77.47,
+       18.81,
+       -65.73
+      ],
+      "max": [
+       72.78,
+       147.85,
+       68.58
+      ],
+      "size": [
+       150.25,
+       129.03,
+       134.32
+      ]
+     }
+    },
+    {
+     "name": "LG2_tree_canopy",
+     "tris": 2880,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -126.61,
+       128.07,
+       -104.91
+      ],
+      "max": [
+       129.73,
+       213.0,
+       105.95
+      ],
+      "size": [
+       256.35,
+       84.94,
+       210.86
+      ]
+     }
+    },
+    {
+     "name": "LG2_filler_trees",
+     "tris": 696,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -124.97,
+       22.4,
+       -64.66
+      ],
+      "max": [
+       123.87,
+       75.81,
+       -6.05
+      ],
+      "size": [
+       248.84,
+       53.41,
+       58.6
+      ]
+     }
+    },
+    {
+     "name": "LG2_lantern_caps",
+     "tris": 680,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -111.85,
+       96.23,
+       -96.98
+      ],
+      "max": [
+       108.36,
+       142.4,
+       94.84
+      ],
+      "size": [
+       220.22,
+       46.17,
+       191.82
+      ]
+     }
+    },
+    {
+     "name": "LG2_lanterns_neon",
+     "tris": 560,
+     "material": "BD_Neon_Lantern",
+     "neon_hex": "#FFC867",
+     "bbox": {
+      "min": [
+       -113.45,
+       100.07,
+       -98.03
+      ],
+      "max": [
+       109.96,
+       123.39,
+       95.89
+      ],
+      "size": [
+       223.42,
+       23.32,
+       193.92
+      ]
+     }
+    }
+   ],
+   "neon_parts": {
+    "LG2_lanterns_neon": "#FFC867"
+   },
+   "motion": "LG2_lanterns_neon: optional slow brightness pulse / PointLight host (keep lobby total ~8 PointLights)",
+   "primary_part": "LG2_root",
+   "bbox": {
+    "min": [
+     -126.61,
+     -20.59,
+     -106.11
+    ],
+    "max": [
+     129.73,
+     213.0,
+     107.21
+    ],
+    "size": [
+     256.35,
+     233.6,
+     213.32
+    ]
+   },
+   "yaw_deg": 38.97,
+   "range_from_spawn": 820,
+   "baked_scale": 3.2,
+   "front": "local +Z faces spawn after the yaw"
+  },
+  "SL1": {
+   "course": "sugarloaf_canyon",
+   "fbx": "fbx/bd_sl1_sugarloaf_canyon.fbx",
+   "tris": 11042,
+   "placement_cframe": "CFrame.new(225.1, -4, -750.8) * CFrame.Angles(0, math.rad(-8.36), 0)",
+   "position": [
+    225.1,
+    -4,
+    -750.8
+   ],
+   "offset_from_arch": [
+    115.1,
+    -4,
+    -782.8
+   ],
+   "arch_position": [
+    110,
+    0,
+    32
+   ],
+   "meshes": [
+    {
+     "name": "SL1_root",
+     "tris": 12,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -0.5,
+       -0.5,
+       -0.5
+      ],
+      "max": [
+       0.5,
+       0.5,
+       0.5
+      ],
+      "size": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     }
+    },
+    {
+     "name": "SL1_mesas",
+     "tris": 10284,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -301.4,
+       -9.0,
+       -230.52
+      ],
+      "max": [
+       345.32,
+       270.0,
+       135.99
+      ],
+      "size": [
+       646.73,
+       279.0,
+       366.51
+      ]
+     }
+    },
+    {
+     "name": "SL1_shore",
+     "tris": 284,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -156.64,
+       -11.74,
+       -232.89
+      ],
+      "max": [
+       240.19,
+       7.42,
+       162.09
+      ],
+      "size": [
+       396.84,
+       19.15,
+       394.98
+      ]
+     }
+    },
+    {
+     "name": "SL1_cable_pylons",
+     "tris": 76,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -100.5,
+       142.2,
+       -15.6
+      ],
+      "max": [
+       88.5,
+       198.9,
+       3.6
+      ],
+      "size": [
+       189.0,
+       56.7,
+       19.2
+      ]
+     }
+    },
+    {
+     "name": "SL1_cascade",
+     "tris": 98,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       111.61,
+       -5.1,
+       -7.44
+      ],
+      "max": [
+       187.88,
+       265.95,
+       84.74
+      ],
+      "size": [
+       76.27,
+       271.05,
+       92.18
+      ]
+     }
+    },
+    {
+     "name": "SL1_gondola_cabin",
+     "tris": 48,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -19.5,
+       155.7,
+       -16.5
+      ],
+      "max": [
+       7.5,
+       185.1,
+       4.5
+      ],
+      "size": [
+       27.0,
+       29.4,
+       21.0
+      ]
+     }
+    },
+    {
+     "name": "SL1_crystals_neon",
+     "tris": 240,
+     "material": "BD_Neon_Crystal",
+     "neon_hex": "#F59AC8",
+     "bbox": {
+      "min": [
+       -158.67,
+       0.05,
+       45.69
+      ],
+      "max": [
+       169.2,
+       33.2,
+       113.4
+      ],
+      "size": [
+       327.87,
+       33.15,
+       67.71
+      ]
+     }
+    }
+   ],
+   "neon_parts": {
+    "SL1_crystals_neon": "#F59AC8"
+   },
+   "motion": "SL1_gondola_cabin: tween along cable_local_unscaled a->b times baked_scale (Blender local x,y,z -> Roblox local (x, z, -y)), then apply the zone CFrame",
+   "primary_part": "SL1_root",
+   "bbox": {
+    "min": [
+     -301.4,
+     -11.74,
+     -232.89
+    ],
+    "max": [
+     345.32,
+     270.0,
+     162.09
+    ],
+    "size": [
+     646.73,
+     281.74,
+     394.98
+    ]
+   },
+   "yaw_deg": -8.36,
+   "range_from_spawn": 860,
+   "baked_scale": 3.0,
+   "front": "local +Z faces spawn after the yaw",
+   "cable_local_unscaled": {
+    "a": [
+     -30.0,
+     0.0,
+     57.400001525878906
+    ],
+    "b": [
+     26.0,
+     4.0,
+     65.4000015258789
+    ]
+   },
+   "cabin_centre_local_unscaled": [
+    -2.0,
+    2.0,
+    54.900001525878906
+   ],
+   "pass": "pass 3 (SL1 only): true mesas (flared talus bases, tapered uneven sides, flat green tops, uneven sloped strata); tall hero mesa off-centre right (local 68,18; top 90 before scaling = 270 studs); pale cascade down the hero mesa west-front flank, clear of the portal pillar; gondola/cable/pylons unchanged; SL1_mesa_tops merged into SL1_mesas"
+  },
+  "AU2": {
+   "course": "aurora_archipelago",
+   "fbx": "fbx/bd_au2_aurora_archipelago.fbx",
+   "tris": 4040,
+   "placement_cframe": "CFrame.new(707.5, -4, -450.8) * CFrame.Angles(0, math.rad(-47.8), 0)",
+   "position": [
+    707.5,
+    -4,
+    -450.8
+   ],
+   "offset_from_arch": [
+    532.5,
+    -4,
+    -482.8
+   ],
+   "arch_position": [
+    175,
+    0,
+    32
+   ],
+   "meshes": [
+    {
+     "name": "AU2_root",
+     "tris": 12,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -0.5,
+       -0.5,
+       -0.5
+      ],
+      "max": [
+       0.5,
+       0.5,
+       0.5
+      ],
+      "size": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     }
+    },
+    {
+     "name": "AU2_island_main",
+     "tris": 1660,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -66.63,
+       33.19,
+       -66.92
+      ],
+      "max": [
+       67.86,
+       183.48,
+       67.32
+      ],
+      "size": [
+       134.49,
+       150.3,
+       134.24
+      ]
+     }
+    },
+    {
+     "name": "AU2_crystals_main_neon",
+     "tris": 248,
+     "material": "BD_Neon_Ice",
+     "neon_hex": "#9FE6F2",
+     "bbox": {
+      "min": [
+       -39.87,
+       63.07,
+       -24.41
+      ],
+      "max": [
+       34.8,
+       281.62,
+       71.64
+      ],
+      "size": [
+       74.67,
+       218.55,
+       96.05
+      ]
+     }
+    },
+    {
+     "name": "AU2_island_left",
+     "tris": 700,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -167.98,
+       36.47,
+       -78.32
+      ],
+      "max": [
+       -86.84,
+       129.84,
+       1.39
+      ],
+      "size": [
+       81.14,
+       93.37,
+       79.71
+      ]
+     }
+    },
+    {
+     "name": "AU2_crystals_left_neon",
+     "tris": 140,
+     "material": "BD_Neon_Ice",
+     "neon_hex": "#9FE6F2",
+     "bbox": {
+      "min": [
+       -138.29,
+       67.98,
+       -52.88
+      ],
+      "max": [
+       -109.35,
+       154.88,
+       5.48
+      ],
+      "size": [
+       28.94,
+       86.9,
+       58.36
+      ]
+     }
+    },
+    {
+     "name": "AU2_island_right",
+     "tris": 700,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       77.74,
+       45.67,
+       -37.68
+      ],
+      "max": [
+       165.29,
+       143.64,
+       51.07
+      ],
+      "size": [
+       87.56,
+       97.98,
+       88.74
+      ]
+     }
+    },
+    {
+     "name": "AU2_crystals_right_neon",
+     "tris": 140,
+     "material": "BD_Neon_Ice",
+     "neon_hex": "#9FE6F2",
+     "bbox": {
+      "min": [
+       109.13,
+       76.94,
+       -8.47
+      ],
+      "max": [
+       135.4,
+       168.32,
+       53.16
+      ],
+      "size": [
+       26.27,
+       91.38,
+       61.63
+      ]
+     }
+    },
+    {
+     "name": "AU2_crystals_amethyst_neon",
+     "tris": 120,
+     "material": "BD_Neon_Amethyst",
+     "neon_hex": "#B07CF0",
+     "bbox": {
+      "min": [
+       -35.88,
+       134.24,
+       -27.42
+      ],
+      "max": [
+       149.71,
+       185.6,
+       42.59
+      ],
+      "size": [
+       185.59,
+       51.36,
+       70.01
+      ]
+     }
+    },
+    {
+     "name": "AU2_drift_rocks",
+     "tris": 320,
+     "material": "BD_VC",
+     "neon_hex": null,
+     "bbox": {
+      "min": [
+       -194.57,
+       51.15,
+       -55.39
+      ],
+      "max": [
+       202.2,
+       97.16,
+       49.73
+      ],
+      "size": [
+       396.77,
+       46.02,
+       105.12
+      ]
+     }
+    }
+   ],
+   "neon_parts": {
+    "AU2_crystals_main_neon": "#9FE6F2",
+    "AU2_crystals_left_neon": "#9FE6F2",
+    "AU2_crystals_right_neon": "#9FE6F2",
+    "AU2_crystals_amethyst_neon": "#B07CF0"
+   },
+   "islands": {
+    "main": {
+     "centre_local_unscaled": [
+      0,
+      0,
+      50
+     ]
+    },
+    "left": {
+     "centre_local_unscaled": [
+      -40,
+      12,
+      36
+     ]
+    },
+    "right": {
+     "centre_local_unscaled": [
+      38,
+      -2,
+      40
+     ]
+    }
+   },
+   "motion": "bob each AU2_island_<n> with AU2_crystals_<n>_neon (that mesh includes its frozen falls), +-4 studs, 6-9 s, phases offset",
+   "primary_part": "AU2_root",
+   "bbox": {
+    "min": [
+     -194.57,
+     -0.5,
+     -78.32
+    ],
+    "max": [
+     202.2,
+     281.62,
+     71.64
+    ],
+    "size": [
+     396.77,
+     282.12,
+     149.96
+    ]
+   },
+   "yaw_deg": -47.8,
+   "range_from_spawn": 820,
+   "baked_scale": 3.2,
+   "front": "local +Z faces spawn after the yaw"
+  }
+ },
+ "totals": {
+  "LG2": 8072,
+  "SL1": 11042,
+  "AU2": 4040,
+  "all": 23154
+ },
+ "model_structure": "One Model per zone. PrimaryPart = <zone>_root (1x1x1 cube centred on the base-centre pivot; Transparency=1, no collision). ModelStreamingMode=Persistent (RobloxDevBot).",
+ "haze": "Only a light sky tint is baked: up to 10% toward #F2A57E above world Y 30. Real haze comes from the lobby Atmosphere, so do not add more.",
+ "pass": "pass 2 (Game Art Bot fixes): zones moved to the horizon, scaled up, re-shaped. Pass 1 is in _backup_pass1/",
+ "streaming_and_render": "Lobby sea and Atmosphere must reach ~1000 studs; ModelStreamingMode=Persistent so far zones never stream out"
+}

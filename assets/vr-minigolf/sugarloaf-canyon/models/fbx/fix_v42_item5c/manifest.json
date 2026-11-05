@@ -1,0 +1,245 @@
+{
+ "generated": "2026-10-14 Playtest v42 item 5c (off-tile H3 props)",
+ "h03_dress_props": {
+  "fbx": "fbx/fix_v42_item5c/h03_dress_props.fbx",
+  "based_on": "fbx/fix_v42_item5b/h03_dress_props.fbx (approved; materials/colours carried from it)",
+  "sha256": "2b7089a6a8e2997784d0a0d533970c0c22ede679bb0e35a4d866e22364022d50",
+  "tris": 1966,
+  "parts": [
+   {
+    "object": "h03_dress_props__CandyAmber",
+    "mats": [
+     "CandyAmber"
+    ],
+    "tris": 314
+   },
+   {
+    "object": "h03_dress_props__CandyPink",
+    "mats": [
+     "CandyPink"
+    ],
+    "tris": 524
+   },
+   {
+    "object": "h03_dress_props__GumLime",
+    "mats": [
+     "GumLime"
+    ],
+    "tris": 72
+   },
+   {
+    "object": "h03_dress_props__Pebble",
+    "mats": [
+     "Pebble"
+    ],
+    "tris": 160
+   },
+   {
+    "object": "h03_dress_props__Strata",
+    "mats": [
+     "Strata"
+    ],
+    "tris": 740
+   },
+   {
+    "object": "h03_dress_props__TimberWeathered",
+    "mats": [
+     "TimberWeathered"
+    ],
+    "tris": 156
+   }
+  ],
+  "pivot_world": [
+   -95.0,
+   18.0,
+   330.0
+  ],
+  "yaw_deg": 0,
+  "placement": "unchanged",
+  "collision": false,
+  "query": false,
+  "touch": false,
+  "method": "Props grouped into 14 clusters (meshes within 0.2 of each other). Ground-tile coverage tested by down-rays over each cluster footprint against the 12 fbx/fit030 h03_ground tiles. Clusters with >=10% of footprint off-tile, or none at all, moved to the nearest spot (0.5-stud spiral, <=14) where the whole footprint is on tile (ground variation <=0.3), base sunk like the others (original sink 0.32-0.55), top >=0.08 above ground, gap >=0.086 to all other props, 0 coplanar with tiles, felt>=0.167 rail>=0.317. None had to be deleted. Clusters at 2-4% off-tile (edge rounding) left as is.",
+  "changes": [
+   {
+    "group": 1,
+    "mats": [
+     "CandyAmber",
+     "CandyPink",
+     "Strata",
+     "TimberWeathered"
+    ],
+    "centre": [
+     55.77,
+     0.67,
+     12.11
+    ],
+    "state": "off-tile",
+    "off_tile": "225/309",
+    "height": 3.85,
+    "action": "moved",
+    "dv": [
+     13.491,
+     0.0,
+     0.502
+    ],
+    "dist": 13.5,
+    "sink": 0.406,
+    "ground_ptp": 0.067
+   },
+   {
+    "group": 2,
+    "mats": [
+     "CandyAmber",
+     "CandyPink",
+     "Strata"
+    ],
+    "centre": [
+     28.98,
+     0.33,
+     -25.08
+    ],
+    "state": "no-tile",
+    "off_tile": "85/85",
+    "height": 3.99,
+    "action": "moved",
+    "dv": [
+     -4.595,
+     0.223,
+     1.972
+    ],
+    "dist": 5.0,
+    "sink": 0.55,
+    "ground_ptp": 0.096
+   },
+   {
+    "group": 4,
+    "mats": [
+     "Pebble"
+    ],
+    "centre": [
+     56.59,
+     0.01,
+     11.31
+    ],
+    "state": "off-tile",
+    "off_tile": "3/7",
+    "height": 0.49,
+    "action": "moved",
+    "dv": [
+     0.5,
+     0.002,
+     0.0
+    ],
+    "dist": 0.5,
+    "sink": 0.37,
+    "ground_ptp": 0.0
+   },
+   {
+    "group": 5,
+    "mats": [
+     "Pebble"
+    ],
+    "centre": [
+     51.44,
+     -0.76,
+     13.22
+    ],
+    "state": "no-tile",
+    "off_tile": "7/7",
+    "height": 0.48,
+    "action": "moved",
+    "dv": [
+     5.5,
+     0.802,
+     0.0
+    ],
+    "dist": 5.5,
+    "sink": 0.36,
+    "ground_ptp": 0.0
+   },
+   {
+    "group": 6,
+    "mats": [
+     "Pebble"
+    ],
+    "centre": [
+     52.54,
+     -0.8,
+     11.99
+    ],
+    "state": "no-tile",
+    "off_tile": "4/4",
+    "height": 0.44,
+    "action": "moved",
+    "dv": [
+     1.119,
+     1.012,
+     -2.784
+    ],
+    "dist": 3.0,
+    "sink": 0.32,
+    "ground_ptp": 0.0
+   },
+   {
+    "group": 7,
+    "mats": [
+     "Pebble"
+    ],
+    "centre": [
+     58.05,
+     0.05,
+     10.16
+    ],
+    "state": "off-tile",
+    "off_tile": "5/7",
+    "height": 0.55,
+    "action": "moved",
+    "dv": [
+     0.0,
+     -0.058,
+     1.0
+    ],
+    "dist": 1.0,
+    "sink": 0.43,
+    "ground_ptp": 0.016
+   },
+   {
+    "group": 11,
+    "mats": [
+     "Strata"
+    ],
+    "centre": [
+     53.23,
+     -0.75,
+     13.03
+    ],
+    "state": "no-tile",
+    "off_tile": "36/36",
+    "height": 0.77,
+    "action": "moved",
+    "dv": [
+     4.247,
+     0.612,
+     1.486
+    ],
+    "dist": 4.5,
+    "sink": 0.55,
+    "ground_ptp": 0.002
+   }
+  ],
+  "floating_found": 0,
+  "checks_reimport": {
+   "tris": 1966,
+   "min_thickness": 0.205,
+   "thin_parts": 0,
+   "intersecting_pairs": 0,
+   "stacked_lt_0.08": 0,
+   "min_gap": 0.086,
+   "coplanar_tri_pairs": 0,
+   "felt": 0.9229,
+   "rail": 0.421,
+   "coplanar_vs_h03_ground_fit030": 0
+  }
+ }
+}

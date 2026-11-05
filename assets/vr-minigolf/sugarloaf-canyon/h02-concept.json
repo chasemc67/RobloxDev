@@ -1,0 +1,52 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Stylized Roblox-friendly VR mini golf concept, first-person view from a standing player's eye height (5.5 studs) on the tee mat, 16:9. Reference image 1 is the exact top-down layout of THIS hole (tee at the start marker, cup at the flag, red dashed line = ace line): match its fairway shape, turns, obstacles and their positions faithfully, seen in perspective from the tee. Reference image 2 is an existing vista of this course: match its art style, palette, lighting and materials exactly. Palette: putting felt #4FA83D (raised #86C24A, shaded #3B7F35), sandstone strata banded watermelon pink #E8736B and cream taffy #F6E3C8, warm golden low sunset light, lilac haze, clear turquoise water. The putting surface is green felt made only of flat or evenly sloped straight planar segments with simple block rails; no bumpy organic greens. Clear readable path from tee to the red-flag cup. No text, no people, no UI, no layout lines. Hole 2: Mine-Cart Junction (Par 3). Landmark: Candy-striped mine headframe and three portals: open-top left shortcut 3 studs wide, gentle middle dead end, and right route 26 studs long. Scene: Eye-height VR view of a candy-striped mine with three timber portals, an open-top shortcut on the left, a gentle dead-end route and lanterns high above the right route; clear view of the ball. Style: candy-striped sunset desert canyon, pink and cream banded sandstone, rock-candy crystals, lollipop saguaros, warm golden low sun from the west, lilac haze, chunky whimsical Roblox-friendly shapes, no text.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/h02-layout.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V1-hub-tee1.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 1496,
+    "inputTokenDetails": {
+      "noCacheTokens": 1496,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1406,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 286
+    },
+    "totalTokens": 2902,
+    "raw": {
+      "thoughtsTokenCount": 286,
+      "promptTokenCount": 1496,
+      "candidatesTokenCount": 1120,
+      "totalTokenCount": 2902,
+      "trafficType": "ON_DEMAND",
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 376
+        },
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ]
+    }
+  },
+  "cost": 0.140824,
+  "warnings": [],
+  "seconds": 32.6,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/h02-concept.png"
+  ]
+}

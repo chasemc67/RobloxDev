@@ -1,0 +1,47 @@
+{
+ "parts": [
+  {
+   "id": "h15_sugar_dune",
+   "hole": "h15",
+   "fbx": "fbx/props_batch4/h15_sugar_dune.fbx",
+   "anchor_local": [
+    0.0,
+    -2.2,
+    -24.0
+   ],
+   "envelope": [
+    30,
+    6,
+    34
+   ],
+   "tris": 668,
+   "max_mesh_tris": 608,
+   "meshes": [
+    {
+     "mesh": "h15_sugar_dune__MintWhite",
+     "material": "MintWhite",
+     "color": "#FFF8F0",
+     "roblox_material": "SmoothPlastic",
+     "tris": 24
+    },
+    {
+     "mesh": "h15_sugar_dune__PepRed",
+     "material": "PepRed",
+     "color": "#D9343A",
+     "roblox_material": "SmoothPlastic",
+     "tris": 36
+    },
+    {
+     "mesh": "h15_sugar_dune__Sugar",
+     "material": "Sugar",
+     "color": "#FFF1F4",
+     "roblox_material": "Sand",
+     "tris": 608
+    }
+   ],
+   "notes": [
+    "Powdered-sugar drifts outside the holes.json dune rails (felt plane = holes.json): west drift 0.12 outside dune_rail1, rev1: taller rounded half-dome drifts (west crest ~2.4..3.3, east up to ~-0.4 over its -3.45 base), ends tapered over 3 studs, (dune-local v -7.0..10.0), east drift outside dune_rail2 (v 0.0..9.0), both trimmed automatically where they would leave the envelope (widened from x +-15 to +-18.5: the 30-wide props.md box centred on the anchor cuts the drifts, while the holes.json dune rails/green run to x +-17.75), touch a rail (<0.12) or reach felt. East drift sits on the low east side (felt edge y -3.4), so its base runs to y -3.45, below the props.md envelope bottom (-2.2): envelope extended to y -3.6 on the east half only. Striped sled (4 stripes + curled nose) propped on the west drift shoulder. Sled tracks / wind ripples are felt decals (slope_arrows anchor), not mesh."
+   ]
+  }
+ ]
+}

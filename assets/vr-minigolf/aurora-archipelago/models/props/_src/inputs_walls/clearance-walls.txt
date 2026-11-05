@@ -1,0 +1,14 @@
+| Hole | Mover | Check | Min clearance | Nearest | Target | OK |
+|---|---|---|---|---|---|---|
+| H5 | geyser_column | collider vs rails/walls (full cycle, 2001 samples; at t 9.756 s, +3.51 studs) | 0.150 | upper_rail8 | >= 0.15 | yes |
+| H11 | ice_floe | collider vs rails/walls (full cycle, 2001 samples; at t 0.000 s, +0.00 studs) | 0.150 | rail5__cut0 | >= 0.15 | yes |
+| H11 | ice_floe | visual top 1.12 vs rails/walls (full cycle, 2001 samples; at t 0.000 s, +0.00 studs) | 0.150 | rail5__cut1 | >= 0.15 | yes |
+| H12 | paddle_wheel | collider vs rails/walls (full cycle, 2001 samples; at t 4.444 s, +133.31 deg) | 0.060 | rail3 | >= 0.06 | yes |
+| H17 | aurora_span | collider vs rails/walls (full cycle, 1 samples; at t 0.600 s) | 0.150 | pier_s_rail6 | >= 0.15 | yes |
+| H12 | paddle_wheel | lowest corner over felt (7201 angles) | 0.060 | felt | >= 0.06, < 0.16 | yes |
+| H14 | icicle_bell | lowest corner over felt (7201 angles; foot at rest 0.062, bell min 0.257) | 0.061 | felt | >= 0.06, < 0.16 | yes |
+  H5 geyser_column (collider): walls {'upper_rail8': 0.15, 'upper_rail12': 0.15}; felt (info) felt:basin -2.198
+  H11 ice_floe (collider): walls {'rail5__cut0': 0.15, 'berg18__cut0': 0.15, 'pocket_w19': 0.152, 'pocket_w21': 0.152}; felt (info) felt:neck -0.000
+  H11 ice_floe (visual top 1.12): walls {'rail5__cut1': 0.15, 'berg18__cut1': 0.15, 'rail5__cut0': 0.15, 'berg18__cut0': 0.15}; felt (info) felt:neck -0.000
+  H12 paddle_wheel (collider): walls {'rail3': 0.06, 'hull18': 0.06, 'rail2': 0.06, 'hull13': 0.06}; felt (info) felt:approach 0.060
+  H17 aurora_span (collider): walls {'pier_s_rail6': 0.15, 'pier_s_rail7': 0.15, 'pier_n_rail8': 0.15, 'pier_n_rail9': 0.15}; felt (info) felt:pier_s 0.000

@@ -1,0 +1,576 @@
+Pass 6 FBX re-import check (2026-10-12 11:50): every new/changed pass-6 FBX re-imported into a clean factory Blender 5.2 scene with the default FBX importer (forward -Z, up Y); checks: single root Empty named after the file, MeshPart names <part>__<Material> match the build, material per mesh, world scale 1, tri count = built, Roblox bbox size + centre-from-pivot = built (0.02), every mesh < 20k tris; embedded textures listed. Source: _cache/reimport_pass6_<run>.json (latest run per file).
+
+STEP 1 (gondola tower recolour on the unchanged pass-5 line, before step 1b):
+  pass 5: tris 2012 bbox [553.54, 199.95, 420.0] centre [-274.41, 99.83, -206.8]
+  recolour: tris 2012 bbox [553.54, 199.95, 420.0] centre [-274.41, 99.83, -206.8]; re-import tris 2012 -> IDENTICAL geometry
+
+PASS fbx/gondola_station_bottom.fbx  [reimport_pass6_gondola]
+  root ['gondola_station_bottom'] | meshes 7 (names ok True, materials ok True) | tris 2205 = built 2205 | max mesh 744 | scale ok True
+  bbox [22.0, 21.2, 15.2] centre [2.8, 10.3, -1.4] vs built [22.0, 21.2, 15.2] / [2.8, 10.3, -1.4] (ok True)
+  images: concrete_red.png (packed), concrete_white.png (packed), sandstone_block.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/gondola_cable.fbx  [reimport_pass6_gondola]
+  root ['gondola_cable'] | meshes 8 (names ok True, materials ok True) | tris 2012 = built 2012 | max mesh 928 | scale ok True
+  bbox [553.545, 192.75, 419.997] centre [-274.405, 96.225, -206.799] vs built [553.54, 192.75, 420.0] / [-274.41, 96.23, -206.8] (ok True)
+  images: concrete_red.png (packed), concrete_white.png (packed), sandstone_block.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/trading_post_deck.fbx  [reimport_pass6_dress2]
+  root ['trading_post_deck'] | meshes 17 (names ok True, materials ok True) | tris 3840 = built 3840 | max mesh 840 | scale ok True
+  bbox [22.0, 8.55, 11.825] centre [0.0, 4.125, -0.912] vs built [22.0, 8.55, 11.82] / [0.0, 4.12, -0.91] (ok True)
+  images: concrete_red.png (packed), concrete_white.png (packed), rope.png (packed), sandstone_block.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/barrel_a.fbx  [reimport_pass6_kit2]
+  root ['barrel_a'] | meshes 4 (names ok True, materials ok True) | tris 252 = built 252 | max mesh 96 | scale ok True
+  bbox [1.6, 2.02, 1.595] centre [0.0, 1.01, 0.037] vs built [1.6, 2.02, 1.59] / [0.0, 1.01, 0.04] (ok True)
+  images: timber.png (packed), timber_weathered.png (packed)
+PASS fbx/barrel_b.fbx  [reimport_pass6_kit2]
+  root ['barrel_b'] | meshes 8 (names ok True, materials ok True) | tris 624 = built 624 | max mesh 128 | scale ok True
+  bbox [1.6, 2.171, 1.595] centre [0.0, 1.085, 0.037] vs built [1.6, 2.17, 1.59] / [0.0, 1.09, 0.04] (ok True)
+  images: timber.png (packed), timber_weathered.png (packed)
+PASS fbx/lantern_post.fbx  [reimport_pass6_kit2]
+  root ['lantern_post'] | meshes 7 (names ok True, materials ok True) | tris 244 = built 244 | max mesh 108 | scale ok True
+  bbox [0.9, 5.9, 1.954] centre [0.0, 2.85, -0.527] vs built [0.9, 5.9, 1.95] / [0.0, 2.85, -0.53] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), timber_weathered.png (packed)
+PASS fbx/lantern_hanging.fbx  [reimport_pass6_kit2]
+  root ['lantern_hanging'] | meshes 4 (names ok True, materials ok True) | tris 156 = built 156 | max mesh 108 | scale ok True
+  bbox [0.62, 1.275, 0.64] centre [0.0, 0.772, -0.0] vs built [0.62, 1.27, 0.64] / [0.0, 0.77, -0.0] (ok True)
+PASS fbx/lollipop_cactus_cluster.fbx  [reimport_pass6_kit2]
+  root ['lollipop_cactus_cluster'] | meshes 6 (names ok True, materials ok True) | tris 696 = built 696 | max mesh 308 | scale ok True
+  bbox [4.011, 7.02, 3.038] centre [0.103, 3.21, 0.079] vs built [4.01, 7.02, 3.04] / [0.1, 3.21, 0.08] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/rock_candy_cluster.fbx  [reimport_pass6_kit2]
+  root ['rock_candy_cluster'] | meshes 4 (names ok True, materials ok True) | tris 264 = built 264 | max mesh 102 | scale ok True
+  bbox [3.088, 3.9, 2.806] centre [0.103, 1.8, 0.211] vs built [3.09, 3.9, 2.81] / [0.1, 1.8, 0.21] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/gumdrop_shrub_a.fbx  [reimport_pass6_kit2]
+  root ['gumdrop_shrub_a'] | meshes 4 (names ok True, materials ok True) | tris 592 = built 592 | max mesh 320 | scale ok True
+  bbox [1.972, 1.474, 1.817] centre [-0.035, 0.587, 0.151] vs built [1.97, 1.47, 1.82] / [-0.03, 0.59, 0.15] (ok True)
+PASS fbx/gumdrop_shrub_b.fbx  [reimport_pass6_kit2]
+  root ['gumdrop_shrub_b'] | meshes 3 (names ok True, materials ok True) | tris 356 = built 356 | max mesh 160 | scale ok True
+  bbox [2.155, 2.077, 1.898] centre [0.155, 0.888, -0.005] vs built [2.15, 2.08, 1.9] / [0.16, 0.89, -0.01] (ok True)
+  images: cactus.png (packed)
+PASS fbx/gumdrop_shrub_c.fbx  [reimport_pass6_kit2]
+  root ['gumdrop_shrub_c'] | meshes 4 (names ok True, materials ok True) | tris 456 = built 456 | max mesh 320 | scale ok True
+  bbox [2.912, 1.088, 2.011] centre [0.002, 0.394, -0.288] vs built [2.91, 1.09, 2.01] / [0.0, 0.39, -0.29] (ok True)
+PASS fbx/boulder_scatter.fbx  [reimport_pass6_kit2]
+  root ['boulder_scatter'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [5.059, 2.06, 3.061] centre [0.365, 0.73, 0.122] vs built [5.06, 2.06, 3.06] / [0.36, 0.73, 0.12] (ok True)
+  images: strata.png (packed)
+PASS fbx/fallen_rock_scatter.fbx  [reimport_pass6_kit2]
+  root ['fallen_rock_scatter'] | meshes 2 (names ok True, materials ok True) | tris 100 = built 100 | max mesh 60 | scale ok True
+  bbox [3.171, 0.854, 2.494] centre [0.059, 0.307, 0.235] vs built [3.17, 0.85, 2.49] / [0.06, 0.31, 0.23] (ok True)
+  images: strata.png (packed)
+PASS fbx/red_dirt_patch_a.fbx  [reimport_pass6_kit2]
+  root ['red_dirt_patch_a'] | meshes 2 (names ok True, materials ok True) | tris 36 = built 36 | max mesh 24 | scale ok True
+  bbox [5.842, 0.03, 6.214] centre [0.031, 0.045, 0.291] vs built [5.84, 0.03, 6.21] / [0.03, 0.04, 0.29] (ok True)
+  images: red_dirt.png (packed), red_dirt_light.png (packed)
+PASS fbx/red_dirt_patch_b.fbx  [reimport_pass6_kit2]
+  root ['red_dirt_patch_b'] | meshes 2 (names ok True, materials ok True) | tris 36 = built 36 | max mesh 24 | scale ok True
+  bbox [8.326, 0.03, 8.386] centre [0.064, 0.045, 0.154] vs built [8.33, 0.03, 8.39] / [0.06, 0.04, 0.15] (ok True)
+  images: red_dirt.png (packed), red_dirt_light.png (packed)
+PASS fbx/pebble_scatter.fbx  [reimport_pass6_kit2]
+  root ['pebble_scatter'] | meshes 2 (names ok True, materials ok True) | tris 80 = built 80 | max mesh 48 | scale ok True
+  bbox [2.416, 0.297, 2.621] centre [0.213, 0.109, 0.087] vs built [2.42, 0.3, 2.62] / [0.21, 0.11, 0.09] (ok True)
+  images: strata.png (packed)
+PASS fbx/clay_brick_edging.fbx  [reimport_pass6_kit2]
+  root ['clay_brick_edging'] | meshes 1 (names ok True, materials ok True) | tris 120 = built 120 | max mesh 120 | scale ok True
+  bbox [0.7, 0.45, 8.0] centre [0.0, 0.225, 0.375] vs built [0.7, 0.45, 8.0] / [0.0, 0.22, 0.38] (ok True)
+  images: clay_brick.png (packed)
+PASS fbx/h01_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h01_dress_props'] | meshes 17 (names ok True, materials ok True) | tris 1928 = built 1928 | max mesh 400 | scale ok True
+  bbox [17.087, 6.383, 50.006] centre [3.85, 2.866, -20.82] vs built [17.09, 6.38, 50.01] / [3.85, 2.87, -20.82] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h01_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h01_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 640 | scale ok True
+  bbox [11.423, 7.652, 48.523] centre [5.677, 3.147, -24.361] vs built [11.42, 7.65, 48.52] / [5.68, 3.15, -24.36] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h01_ground.fbx  [reimport_pass6_dress2]
+  root ['h01_ground'] | meshes 5 (names ok True, materials ok True) | tris 3458 = built 3458 | max mesh 1400 | scale ok True
+  bbox [69.885, 1.844, 94.148] centre [1.378, 0.104, -18.558] vs built [69.88, 1.84, 94.15] / [1.38, 0.1, -18.56] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h02_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h02_dress_props'] | meshes 17 (names ok True, materials ok True) | tris 4708 = built 4708 | max mesh 1740 | scale ok True
+  bbox [40.748, 6.116, 68.304] centre [2.108, 2.64, -24.205] vs built [40.75, 6.12, 68.3] / [2.11, 2.64, -24.21] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h02_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h02_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 5656 = built 5656 | max mesh 1920 | scale ok True
+  bbox [40.406, 7.508, 70.813] centre [1.072, 3.393, -25.354] vs built [40.41, 7.51, 70.81] / [1.07, 3.39, -25.35] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h02_ground.fbx  [reimport_pass6_dress2]
+  root ['h02_ground'] | meshes 5 (names ok True, materials ok True) | tris 5884 = built 5884 | max mesh 3520 | scale ok True
+  bbox [76.163, 1.597, 106.203] centre [0.517, 0.063, -24.531] vs built [76.16, 1.6, 106.2] / [0.52, 0.06, -24.53] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h03_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h03_dress_props'] | meshes 13 (names ok True, materials ok True) | tris 2944 = built 2944 | max mesh 920 | scale ok True
+  bbox [91.14, 4.606, 44.697] centre [35.48, 1.341, -7.755] vs built [91.14, 4.61, 44.7] / [35.48, 1.34, -7.76] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h03_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h03_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 2896 = built 2896 | max mesh 960 | scale ok True
+  bbox [83.202, 7.612, 27.447] centre [34.95, 2.985, -17.591] vs built [83.2, 7.61, 27.45] / [34.95, 2.99, -17.59] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h03_ground.fbx  [reimport_pass6_dress2]
+  root ['h03_ground'] | meshes 5 (names ok True, materials ok True) | tris 4048 = built 4048 | max mesh 1920 | scale ok True
+  bbox [126.911, 2.05, 73.07] centre [34.953, -0.219, -3.097] vs built [126.91, 2.05, 73.07] / [34.95, -0.22, -3.1] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h04_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h04_dress_props'] | meshes 13 (names ok True, materials ok True) | tris 1104 = built 1104 | max mesh 300 | scale ok True
+  bbox [8.214, 5.896, 7.011] centre [-7.434, 2.721, 7.125] vs built [8.21, 5.9, 7.01] / [-7.43, 2.72, 7.13] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h04_ground.fbx  [reimport_pass6_dress2]
+  root ['h04_ground'] | meshes 5 (names ok True, materials ok True) | tris 3294 = built 3294 | max mesh 1480 | scale ok True
+  bbox [88.002, 2.204, 47.524] centre [14.602, 1.022, 0.285] vs built [88.0, 2.2, 47.52] / [14.6, 1.02, 0.29] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h05_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h05_dress_props'] | meshes 13 (names ok True, materials ok True) | tris 4960 = built 4960 | max mesh 1880 | scale ok True
+  bbox [33.19, 6.909, 69.113] centre [1.306, 3.096, -22.565] vs built [33.19, 6.91, 69.11] / [1.31, 3.1, -22.57] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h05_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h05_dress_plants'] | meshes 4 (names ok True, materials ok True) | tris 1824 = built 1824 | max mesh 1280 | scale ok True
+  bbox [29.945, 1.161, 45.021] centre [1.379, 0.37, -32.466] vs built [29.95, 1.16, 45.02] / [1.38, 0.37, -32.47] (ok True)
+PASS fbx/h05_ground.fbx  [reimport_pass6_dress2]
+  root ['h05_ground'] | meshes 5 (names ok True, materials ok True) | tris 3524 = built 3524 | max mesh 1880 | scale ok True
+  bbox [39.282, 1.793, 76.098] centre [0.034, -0.361, -15.547] vs built [39.28, 1.79, 76.1] / [0.03, -0.36, -15.55] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h06_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h06_dress_props'] | meshes 13 (names ok True, materials ok True) | tris 3628 = built 3628 | max mesh 1100 | scale ok True
+  bbox [39.263, 6.877, 65.35] centre [1.072, 3.066, -27.296] vs built [39.26, 6.88, 65.35] / [1.07, 3.07, -27.3] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h06_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h06_dress_plants'] | meshes 4 (names ok True, materials ok True) | tris 1824 = built 1824 | max mesh 1280 | scale ok True
+  bbox [38.376, 1.202, 23.297] centre [-0.197, 0.408, -43.266] vs built [38.38, 1.2, 23.3] / [-0.2, 0.41, -43.27] (ok True)
+PASS fbx/h06_ground.fbx  [reimport_pass6_dress2]
+  root ['h06_ground'] | meshes 5 (names ok True, materials ok True) | tris 4164 = built 4164 | max mesh 2480 | scale ok True
+  bbox [37.256, 0.749, 84.477] centre [-0.979, 0.051, -32.819] vs built [37.26, 0.75, 84.48] / [-0.98, 0.05, -32.82] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h07_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h07_dress_props'] | meshes 14 (names ok True, materials ok True) | tris 1400 = built 1400 | max mesh 264 | scale ok True
+  bbox [13.044, 6.391, 86.944] centre [1.125, 2.821, -34.066] vs built [13.04, 6.39, 86.94] / [1.12, 2.82, -34.07] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h07_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h07_dress_plants'] | meshes 6 (names ok True, materials ok True) | tris 2588 = built 2588 | max mesh 1440 | scale ok True
+  bbox [13.02, 2.156, 87.335] centre [3.184, 0.86, -33.697] vs built [13.02, 2.16, 87.34] / [3.18, 0.86, -33.7] (ok True)
+  images: cactus.png (packed)
+PASS fbx/h07_ground.fbx  [reimport_pass6_dress2]
+  root ['h07_ground'] | meshes 5 (names ok True, materials ok True) | tris 3590 = built 3590 | max mesh 1680 | scale ok True
+  bbox [66.852, 1.762, 126.073] centre [-0.966, -0.267, -33.596] vs built [66.85, 1.76, 126.07] / [-0.97, -0.27, -33.6] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h08_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h08_dress_props'] | meshes 14 (names ok True, materials ok True) | tris 1772 = built 1772 | max mesh 256 | scale ok True
+  bbox [23.484, 6.777, 44.214] centre [0.686, 3.023, -20.732] vs built [23.48, 6.78, 44.21] / [0.69, 3.02, -20.73] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h08_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h08_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 2236 = built 2236 | max mesh 800 | scale ok True
+  bbox [27.618, 6.887, 45.549] centre [-2.241, 3.099, -20.225] vs built [27.62, 6.89, 45.55] / [-2.24, 3.1, -20.22] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h08_ground.fbx  [reimport_pass6_dress2]
+  root ['h08_ground'] | meshes 5 (names ok True, materials ok True) | tris 4446 = built 4446 | max mesh 2160 | scale ok True
+  bbox [75.821, 0.969, 108.588] centre [1.512, 0.187, -31.294] vs built [75.82, 0.97, 108.59] / [1.51, 0.19, -31.29] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h09_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h09_dress_props'] | meshes 14 (names ok True, materials ok True) | tris 2172 = built 2172 | max mesh 780 | scale ok True
+  bbox [64.601, 6.966, 26.525] centre [28.662, 3.097, 4.873] vs built [64.6, 6.97, 26.52] / [28.66, 3.1, 4.87] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h09_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h09_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 5620 = built 5620 | max mesh 2400 | scale ok True
+  bbox [58.146, 7.947, 29.28] centre [26.055, 3.584, 3.853] vs built [58.15, 7.95, 29.28] / [26.05, 3.58, 3.85] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h09_ground.fbx  [reimport_pass6_dress2]
+  root ['h09_ground'] | meshes 5 (names ok True, materials ok True) | tris 4826 = built 4826 | max mesh 2520 | scale ok True
+  bbox [102.704, 0.957, 72.787] centre [23.953, 0.072, 2.236] vs built [102.7, 0.96, 72.79] / [23.95, 0.07, 2.24] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h10_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h10_dress_props'] | meshes 17 (names ok True, materials ok True) | tris 2460 = built 2460 | max mesh 420 | scale ok True
+  bbox [25.939, 9.355, 52.692] centre [1.83, 0.858, 22.138] vs built [25.94, 9.35, 52.69] / [1.83, 0.86, 22.14] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h10_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h10_dress_plants'] | meshes 4 (names ok True, materials ok True) | tris 456 = built 456 | max mesh 320 | scale ok True
+  bbox [2.887, 1.23, 2.87] centre [7.79, -3.205, 46.993] vs built [2.89, 1.23, 2.87] / [7.79, -3.2, 46.99] (ok True)
+PASS fbx/h10_ground.fbx  [reimport_pass6_dress2]
+  root ['h10_ground'] | meshes 5 (names ok True, materials ok True) | tris 3446 = built 3446 | max mesh 1520 | scale ok True
+  bbox [72.215, 4.468, 96.724] centre [0.762, -1.46, 21.281] vs built [72.22, 4.47, 96.72] / [0.76, -1.46, 21.28] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h11_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h11_dress_props'] | meshes 17 (names ok True, materials ok True) | tris 3780 = built 3780 | max mesh 1420 | scale ok True
+  bbox [35.148, 7.707, 52.508] centre [0.273, 3.517, -22.164] vs built [35.15, 7.71, 52.51] / [0.27, 3.52, -22.16] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h11_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h11_dress_plants'] | meshes 4 (names ok True, materials ok True) | tris 1824 = built 1824 | max mesh 1280 | scale ok True
+  bbox [33.024, 4.42, 29.392] centre [2.23, 1.994, -28.311] vs built [33.02, 4.42, 29.39] / [2.23, 1.99, -28.31] (ok True)
+PASS fbx/h11_ground.fbx  [reimport_pass6_dress2]
+  root ['h11_ground'] | meshes 5 (names ok True, materials ok True) | tris 3744 = built 3744 | max mesh 1880 | scale ok True
+  bbox [79.025, 4.631, 87.081] centre [-0.052, 2.054, -31.616] vs built [79.02, 4.63, 87.08] / [-0.05, 2.05, -31.62] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h12_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h12_dress_props'] | meshes 17 (names ok True, materials ok True) | tris 5180 = built 5180 | max mesh 2100 | scale ok True
+  bbox [77.585, 6.342, 39.052] centre [35.243, 2.724, -5.774] vs built [77.58, 6.34, 39.05] / [35.24, 2.72, -5.77] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h12_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h12_dress_plants'] | meshes 4 (names ok True, materials ok True) | tris 2736 = built 2736 | max mesh 1920 | scale ok True
+  bbox [55.8, 1.323, 29.984] centre [46.137, 0.331, -6.86] vs built [55.8, 1.32, 29.98] / [46.14, 0.33, -6.86] (ok True)
+PASS fbx/h12_ground.fbx  [reimport_pass6_dress2]
+  root ['h12_ground'] | meshes 5 (names ok True, materials ok True) | tris 5364 = built 5364 | max mesh 2940 | scale ok True
+  bbox [124.196, 0.961, 83.213] centre [30.533, 0.3, -1.979] vs built [124.2, 0.96, 83.21] / [30.53, 0.3, -1.98] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h13_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h13_dress_props'] | meshes 13 (names ok True, materials ok True) | tris 3276 = built 3276 | max mesh 1340 | scale ok True
+  bbox [50.026, 7.223, 73.865] centre [2.274, 3.003, 27.312] vs built [50.03, 7.22, 73.86] / [2.27, 3.0, 27.31] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h13_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h13_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 4812 = built 4812 | max mesh 1440 | scale ok True
+  bbox [50.145, 7.764, 68.697] centre [-1.312, 3.336, 27.461] vs built [50.14, 7.76, 68.7] / [-1.31, 3.34, 27.46] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h13_ground.fbx  [reimport_pass6_dress2]
+  root ['h13_ground'] | meshes 5 (names ok True, materials ok True) | tris 6382 = built 6382 | max mesh 3880 | scale ok True
+  bbox [85.093, 0.784, 105.149] centre [-0.091, 0.229, 24.493] vs built [85.09, 0.78, 105.15] / [-0.09, 0.23, 24.49] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h14_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h14_dress_props'] | meshes 10 (names ok True, materials ok True) | tris 596 = built 596 | max mesh 192 | scale ok True
+  bbox [5.661, 6.612, 7.617] centre [-9.465, 3.123, 0.737] vs built [5.66, 6.61, 7.62] / [-9.46, 3.12, 0.74] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h14_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h14_dress_plants'] | meshes 3 (names ok True, materials ok True) | tris 712 = built 712 | max mesh 320 | scale ok True
+  bbox [4.126, 2.015, 5.469] centre [-8.566, 0.812, -1.572] vs built [4.13, 2.02, 5.47] / [-8.57, 0.81, -1.57] (ok True)
+  images: cactus.png (packed)
+PASS fbx/h14_ground.fbx  [reimport_pass6_dress2]
+  root ['h14_ground'] | meshes 5 (names ok True, materials ok True) | tris 3948 = built 3948 | max mesh 1820 | scale ok True
+  bbox [69.546, 0.677, 88.291] centre [1.145, 0.196, 24.497] vs built [69.55, 0.68, 88.29] / [1.15, 0.2, 24.5] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h15_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h15_dress_props'] | meshes 13 (names ok True, materials ok True) | tris 1240 = built 1240 | max mesh 440 | scale ok True
+  bbox [28.04, 5.909, 80.56] centre [2.63, 2.569, 34.477] vs built [28.04, 5.91, 80.56] / [2.63, 2.57, 34.48] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h15_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h15_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 1644 = built 1644 | max mesh 480 | scale ok True
+  bbox [29.884, 6.486, 79.201] centre [4.644, 2.917, 34.65] vs built [29.88, 6.49, 79.2] / [4.64, 2.92, 34.65] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h15_ground.fbx  [reimport_pass6_dress2]
+  root ['h15_ground'] | meshes 5 (names ok True, materials ok True) | tris 2926 = built 2926 | max mesh 736 | scale ok True
+  bbox [90.843, 0.989, 109.187] centre [-0.018, 0.265, 33.945] vs built [90.84, 0.99, 109.19] / [-0.02, 0.27, 33.95] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h16_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h16_dress_props'] | meshes 14 (names ok True, materials ok True) | tris 1600 = built 1600 | max mesh 360 | scale ok True
+  bbox [29.079, 9.058, 36.769] centre [0.141, 0.763, 11.404] vs built [29.08, 9.06, 36.77] / [0.14, 0.76, 11.4] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h16_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h16_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 3052 = built 3052 | max mesh 800 | scale ok True
+  bbox [28.802, 10.999, 38.115] centre [-1.159, 1.681, 7.261] vs built [28.8, 11.0, 38.11] / [-1.16, 1.68, 7.26] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h16_ground.fbx  [reimport_pass6_dress2]
+  root ['h16_ground'] | meshes 5 (names ok True, materials ok True) | tris 2912 = built 2912 | max mesh 1060 | scale ok True
+  bbox [69.852, 4.332, 90.663] centre [-1.416, -1.514, 17.273] vs built [69.85, 4.33, 90.66] / [-1.42, -1.51, 17.27] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h17_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h17_dress_props'] | meshes 10 (names ok True, materials ok True) | tris 1004 = built 1004 | max mesh 300 | scale ok True
+  bbox [15.545, 2.399, 49.968] centre [-12.49, 0.848, -17.701] vs built [15.54, 2.4, 49.97] / [-12.49, 0.85, -17.7] (ok True)
+  images: strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h17_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h17_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 2340 = built 2340 | max mesh 676 | scale ok True
+  bbox [17.087, 7.483, 47.615] centre [-12.474, 3.372, -13.8] vs built [17.09, 7.48, 47.61] / [-12.47, 3.37, -13.8] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h17_ground.fbx  [reimport_pass6_dress2]
+  root ['h17_ground'] | meshes 5 (names ok True, materials ok True) | tris 4402 = built 4402 | max mesh 2160 | scale ok True
+  bbox [75.836, 1.08, 97.215] centre [1.542, 0.2, -22.041] vs built [75.84, 1.08, 97.22] / [1.54, 0.2, -22.04] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/h18_dress_props.fbx  [reimport_pass6_dress2]
+  root ['h18_dress_props'] | meshes 14 (names ok True, materials ok True) | tris 2540 = built 2540 | max mesh 1140 | scale ok True
+  bbox [39.536, 6.113, 79.583] centre [-3.717, 2.664, -37.168] vs built [39.54, 6.11, 79.58] / [-3.72, 2.66, -37.17] (ok True)
+  images: rope.png (packed), sandstone_block.png (packed), strata.png (packed), timber.png (packed), timber_weathered.png (packed)
+PASS fbx/h18_dress_plants.fbx  [reimport_pass6_dress2]
+  root ['h18_dress_plants'] | meshes 7 (names ok True, materials ok True) | tris 6800 = built 6800 | max mesh 1900 | scale ok True
+  bbox [39.15, 7.855, 83.976] centre [-5.187, 3.542, -36.794] vs built [39.15, 7.86, 83.98] / [-5.19, 3.54, -36.79] (ok True)
+  images: cactus.png (packed), concrete_white.png (packed)
+PASS fbx/h18_ground.fbx  [reimport_pass6_dress2]
+  root ['h18_ground'] | meshes 5 (names ok True, materials ok True) | tris 5492 = built 5492 | max mesh 2900 | scale ok True
+  bbox [81.943, 1.123, 123.517] centre [-1.374, 0.217, -36.398] vs built [81.94, 1.12, 123.52] / [-1.37, 0.22, -36.4] (ok True)
+  images: clay_brick.png (packed), red_dirt.png (packed), red_dirt_light.png (packed), strata.png (packed)
+PASS fbx/cliff_w24_h12_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h12_p3'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h24_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h24_p3'] | meshes 1 (names ok True, materials ok True) | tris 492 = built 492 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h48_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h48_p3'] | meshes 1 (names ok True, materials ok True) | tris 648 = built 648 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h48_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h48_p3'] | meshes 1 (names ok True, materials ok True) | tris 804 = built 804 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/slotT_w24_h24_p4.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h24_p4'] | meshes 4 (names ok True, materials ok True) | tris 894 = built 894 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.887] centre [0.0, 12.0, 2.556] vs built [24.0, 24.0, 10.89] / [0.0, 12.0, 2.56] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h48_p4.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h48_p4'] | meshes 4 (names ok True, materials ok True) | tris 1588 = built 1588 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.74] centre [0.0, 24.0, 2.63] vs built [24.0, 48.0, 10.74] / [0.0, 24.0, 2.63] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/rim_silhouette.fbx  [reimport_pass6_cliffs]
+  root ['rim_silhouette'] | meshes 1 (names ok True, materials ok True) | tris 60 = built 60 | max mesh 60 | scale ok True
+  bbox [64.1, 28.0, 0.0] centre [-0.05, 14.0, -0.0] vs built [64.1, 28.0, 0.0] / [-0.05, 14.0, -0.0] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h6_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h6_p0'] | meshes 1 (names ok True, materials ok True) | tris 104 = built 104 | max mesh 104 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h6_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h6_p0'] | meshes 1 (names ok True, materials ok True) | tris 260 = built 260 | max mesh 260 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h6_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h6_p1'] | meshes 1 (names ok True, materials ok True) | tris 104 = built 104 | max mesh 104 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h6_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h6_p1'] | meshes 1 (names ok True, materials ok True) | tris 260 = built 260 | max mesh 260 | scale ok True
+  bbox [24.0, 6.0, 9.661] centre [0.0, 3.0, 3.169] vs built [24.0, 6.0, 9.66] / [0.0, 3.0, 3.17] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h6_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h6_p2'] | meshes 1 (names ok True, materials ok True) | tris 104 = built 104 | max mesh 104 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h6_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h6_p2'] | meshes 1 (names ok True, materials ok True) | tris 260 = built 260 | max mesh 260 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h6_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h6_p3'] | meshes 1 (names ok True, materials ok True) | tris 104 = built 104 | max mesh 104 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h6_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h6_p3'] | meshes 1 (names ok True, materials ok True) | tris 260 = built 260 | max mesh 260 | scale ok True
+  bbox [24.0, 6.0, 10.008] centre [0.0, 3.0, 2.996] vs built [24.0, 6.0, 10.01] / [0.0, 3.0, 3.0] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h6_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h6_p4'] | meshes 1 (names ok True, materials ok True) | tris 104 = built 104 | max mesh 104 | scale ok True
+  bbox [24.0, 6.0, 10.254] centre [0.0, 3.0, 2.873] vs built [24.0, 6.0, 10.25] / [0.0, 3.0, 2.87] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h6_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h6_p4'] | meshes 1 (names ok True, materials ok True) | tris 260 = built 260 | max mesh 260 | scale ok True
+  bbox [24.0, 6.0, 10.22] centre [0.0, 3.0, 2.89] vs built [24.0, 6.0, 10.22] / [0.0, 3.0, 2.89] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h6_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h6_p5'] | meshes 1 (names ok True, materials ok True) | tris 104 = built 104 | max mesh 104 | scale ok True
+  bbox [24.0, 6.0, 10.5] centre [0.0, 3.0, 2.75] vs built [24.0, 6.0, 10.5] / [0.0, 3.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h6_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h6_p5'] | meshes 1 (names ok True, materials ok True) | tris 260 = built 260 | max mesh 260 | scale ok True
+  bbox [24.0, 6.0, 9.87] centre [0.0, 3.0, 3.065] vs built [24.0, 6.0, 9.87] / [0.0, 3.0, 3.06] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h12_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h12_p0'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h12_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h12_p0'] | meshes 1 (names ok True, materials ok True) | tris 312 = built 312 | max mesh 312 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h12_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h12_p1'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h12_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h12_p1'] | meshes 1 (names ok True, materials ok True) | tris 312 = built 312 | max mesh 312 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h12_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h12_p2'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h12_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h12_p2'] | meshes 1 (names ok True, materials ok True) | tris 312 = built 312 | max mesh 312 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h12_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h12_p3'] | meshes 1 (names ok True, materials ok True) | tris 312 = built 312 | max mesh 312 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h12_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h12_p4'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h12_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h12_p4'] | meshes 1 (names ok True, materials ok True) | tris 312 = built 312 | max mesh 312 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h12_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h12_p5'] | meshes 1 (names ok True, materials ok True) | tris 180 = built 180 | max mesh 180 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h12_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h12_p5'] | meshes 1 (names ok True, materials ok True) | tris 312 = built 312 | max mesh 312 | scale ok True
+  bbox [24.0, 12.0, 10.5] centre [0.0, 6.0, 2.75] vs built [24.0, 12.0, 10.5] / [0.0, 6.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h24_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h24_p0'] | meshes 1 (names ok True, materials ok True) | tris 336 = built 336 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h24_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h24_p0'] | meshes 1 (names ok True, materials ok True) | tris 492 = built 492 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h24_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h24_p1'] | meshes 1 (names ok True, materials ok True) | tris 336 = built 336 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h24_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h24_p1'] | meshes 1 (names ok True, materials ok True) | tris 492 = built 492 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h24_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h24_p2'] | meshes 1 (names ok True, materials ok True) | tris 336 = built 336 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h24_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h24_p2'] | meshes 1 (names ok True, materials ok True) | tris 492 = built 492 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.497] centre [0.0, 12.0, 2.751] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h24_p3.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h24_p3'] | meshes 1 (names ok True, materials ok True) | tris 336 = built 336 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h24_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h24_p4'] | meshes 1 (names ok True, materials ok True) | tris 336 = built 336 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h24_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h24_p4'] | meshes 1 (names ok True, materials ok True) | tris 492 = built 492 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h24_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h24_p5'] | meshes 1 (names ok True, materials ok True) | tris 336 = built 336 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h24_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h24_p5'] | meshes 1 (names ok True, materials ok True) | tris 492 = built 492 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h48_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h48_p0'] | meshes 1 (names ok True, materials ok True) | tris 648 = built 648 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h48_p0.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h48_p0'] | meshes 1 (names ok True, materials ok True) | tris 804 = built 804 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h48_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h48_p1'] | meshes 1 (names ok True, materials ok True) | tris 648 = built 648 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h48_p1.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h48_p1'] | meshes 1 (names ok True, materials ok True) | tris 804 = built 804 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h48_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h48_p2'] | meshes 1 (names ok True, materials ok True) | tris 648 = built 648 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h48_p2.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h48_p2'] | meshes 1 (names ok True, materials ok True) | tris 804 = built 804 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h48_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h48_p4'] | meshes 1 (names ok True, materials ok True) | tris 648 = built 648 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h48_p4.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h48_p4'] | meshes 1 (names ok True, materials ok True) | tris 804 = built 804 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliff_w24_h48_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliff_w24_h48_p5'] | meshes 1 (names ok True, materials ok True) | tris 648 = built 648 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/cliffT_w24_h48_p5.fbx  [reimport_pass6_cliffs]
+  root ['cliffT_w24_h48_p5'] | meshes 1 (names ok True, materials ok True) | tris 804 = built 804 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: strata.png (packed)
+PASS fbx/slot_w24_h24_p0.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h24_p0'] | meshes 4 (names ok True, materials ok True) | tris 738 = built 738 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.758] centre [0.0, 12.0, 2.621] vs built [24.0, 24.0, 10.76] / [0.0, 12.0, 2.62] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h24_p0.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h24_p0'] | meshes 4 (names ok True, materials ok True) | tris 894 = built 894 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.585] centre [0.0, 12.0, 2.708] vs built [24.0, 24.0, 10.58] / [0.0, 12.0, 2.71] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h24_p1.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h24_p1'] | meshes 4 (names ok True, materials ok True) | tris 738 = built 738 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.968] centre [0.0, 12.0, 2.516] vs built [24.0, 24.0, 10.97] / [0.0, 12.0, 2.52] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h24_p1.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h24_p1'] | meshes 4 (names ok True, materials ok True) | tris 894 = built 894 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.819] centre [0.0, 12.0, 2.591] vs built [24.0, 24.0, 10.82] / [0.0, 12.0, 2.59] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h24_p2.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h24_p2'] | meshes 4 (names ok True, materials ok True) | tris 738 = built 738 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.956] centre [0.0, 12.0, 2.522] vs built [24.0, 24.0, 10.96] / [0.0, 12.0, 2.52] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h24_p2.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h24_p2'] | meshes 4 (names ok True, materials ok True) | tris 894 = built 894 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h24_p3.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h24_p3'] | meshes 4 (names ok True, materials ok True) | tris 738 = built 738 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.532] centre [0.0, 12.0, 2.734] vs built [24.0, 24.0, 10.53] / [0.0, 12.0, 2.73] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h24_p3.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h24_p3'] | meshes 4 (names ok True, materials ok True) | tris 894 = built 894 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.92] centre [0.0, 12.0, 2.54] vs built [24.0, 24.0, 10.92] / [0.0, 12.0, 2.54] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h24_p4.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h24_p4'] | meshes 4 (names ok True, materials ok True) | tris 738 = built 738 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.946] centre [0.0, 12.0, 2.527] vs built [24.0, 24.0, 10.95] / [0.0, 12.0, 2.53] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h24_p5.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h24_p5'] | meshes 4 (names ok True, materials ok True) | tris 738 = built 738 | max mesh 336 | scale ok True
+  bbox [24.0, 24.0, 10.872] centre [0.0, 12.0, 2.564] vs built [24.0, 24.0, 10.87] / [0.0, 12.0, 2.56] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h24_p5.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h24_p5'] | meshes 4 (names ok True, materials ok True) | tris 894 = built 894 | max mesh 492 | scale ok True
+  bbox [24.0, 24.0, 10.5] centre [0.0, 12.0, 2.75] vs built [24.0, 24.0, 10.5] / [0.0, 12.0, 2.75] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h48_p0.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h48_p0'] | meshes 4 (names ok True, materials ok True) | tris 1588 = built 1588 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.97] centre [0.0, 24.0, 2.515] vs built [24.0, 48.0, 10.97] / [0.0, 24.0, 2.52] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h48_p0.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h48_p0'] | meshes 4 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.986] centre [0.0, 24.0, 2.507] vs built [24.0, 48.0, 10.99] / [0.0, 24.0, 2.51] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h48_p1.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h48_p1'] | meshes 4 (names ok True, materials ok True) | tris 1588 = built 1588 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.967] centre [0.0, 24.0, 2.517] vs built [24.0, 48.0, 10.97] / [0.0, 24.0, 2.52] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h48_p1.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h48_p1'] | meshes 4 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.654] centre [0.0, 24.0, 2.673] vs built [24.0, 48.0, 10.65] / [0.0, 24.0, 2.67] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h48_p2.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h48_p2'] | meshes 4 (names ok True, materials ok True) | tris 1588 = built 1588 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.888] centre [0.0, 24.0, 2.556] vs built [24.0, 48.0, 10.89] / [0.0, 24.0, 2.56] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h48_p2.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h48_p2'] | meshes 4 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.714] centre [0.0, 24.0, 2.643] vs built [24.0, 48.0, 10.71] / [0.0, 24.0, 2.64] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h48_p3.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h48_p3'] | meshes 4 (names ok True, materials ok True) | tris 1588 = built 1588 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 10.819] centre [0.0, 24.0, 2.591] vs built [24.0, 48.0, 10.82] / [0.0, 24.0, 2.59] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h48_p3.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h48_p3'] | meshes 4 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.739] centre [0.0, 24.0, 2.63] vs built [24.0, 48.0, 10.74] / [0.0, 24.0, 2.63] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h48_p4.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h48_p4'] | meshes 4 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.9] centre [0.0, 24.0, 2.55] vs built [24.0, 48.0, 10.9] / [0.0, 24.0, 2.55] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slot_w24_h48_p5.fbx  [reimport_pass6_cliffs]
+  root ['slot_w24_h48_p5'] | meshes 4 (names ok True, materials ok True) | tris 1588 = built 1588 | max mesh 648 | scale ok True
+  bbox [24.0, 48.0, 11.02] centre [0.0, 24.0, 2.49] vs built [24.0, 48.0, 11.02] / [0.0, 24.0, 2.49] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+PASS fbx/slotT_w24_h48_p5.fbx  [reimport_pass6_cliffs]
+  root ['slotT_w24_h48_p5'] | meshes 4 (names ok True, materials ok True) | tris 1744 = built 1744 | max mesh 804 | scale ok True
+  bbox [24.0, 48.0, 10.5] centre [0.0, 24.0, 2.75] vs built [24.0, 48.0, 10.5] / [0.0, 24.0, 2.75] (ok True)
+  images: crystal_amber.png (packed), crystal_pink.png (packed), strata.png (packed)
+
+RESULT: ALL PASS (144 FBX files)

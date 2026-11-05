@@ -1,0 +1,247 @@
+# Stage e report: Playtest round 2 fixes (v79 -> next publish)
+
+2026-10-10, 18:05–19:00 PT.
+
+**Version: NOT PUBLISHED. Live is still v79; Studio has the changes but they are NOT saved.**
+- Save and publish both need a click in Studio's File menu.
+- The only route for that, Codex computer use, is over its usage limit until 2026-10-17 00:03.
+- This session can't send input to Studio. Both routes fail:
+  - `osascript` UI scripting: "not allowed assistive access";
+  - Quartz key events: `CGPreflightPostEventAccess` = False, so Cmd+S never reached Studio (no "Saved new changes" in the Studio log).
+
+To finish, do one of:
+- In Studio: **File > Save to Roblox**, then **File > Publish to Roblox**.
+- Grant Accessibility to the process that runs the stage scripts, then rerun the save/publish step.
+- Run `tools/codex_ui.sh` after Oct 17.
+
+If Studio closes before that, nothing is lost. All changes are in `src/` (this commit), and `python3 tools/run_playtests.py push <files>` restores them:
+- `src/ReplicatedStorage/Golf/CameraOcclusion.luau`
+- `GolfServer.server.luau`
+- `TouchControls.luau`
+- `GolfTest.luau`
+- `Explore.luau`
+
+Studio is in Edit mode, one window, with GolfTestMode false.
+
+## What changed
+1. **H8 camera clipping (camera occlusion).**
+   - **Cause.** All 1,767 decor parts are built with CanQuery off, so the putting camera's raycast never saw the H8 root-arch beams or foliage. The test "follow" camera had no occlusion check at all.
+   - **New module `ReplicatedStorage.Golf.CameraOcclusion`.** At startup, GolfServer puts the visible, non-colliding decor in collision group `GolfDecor` with CanQuery on: 1,893 parts.
+     - This skips parts under 1 stud, see-through parts and the far mountains, hills and clouds.
+     - `GolfDecor` only "collides" with `GolfCamera`, the group the camera casts use. Ball, club, player, harness and server raycasts all still ignore decor, and decor still never collides.
+   - **Camera behaviour.** A 0.25-stud spherecast runs from the ball to the camera, ignoring felt, balls, the character and see-through parts. The camera is pulled in front of the first hit. When that would leave it closer than 1.5 studs (ball against a rail, under a beam), the camera swings up toward top-down instead.
+   - **Where it's used:** the desktop/phone putting camera (TouchControls), the harness follow camera (GolfTest) and the Explore follow camera (Roblox's own camera can't see the decor either).
+   - **Check across all 9 holes.** Felt points every 3 studs × 8 view directions, ~5,500 spots, counting cameras that end up inside geometry:
+     - before: 343;
+     - after: 15. These are 13 on H6, test follow camera only (ball pressed against a board), and 2 on H8 putting camera.
+     - Per hole after: H1–H5, H7 and H9 have 0.
+   - **H8 frames.** 30 frames, follow and putting cameras, 6 putts through the ring and arch. No black or clipped frames.
+2. **Explore spawn points.**
+   - Teleports now pick the stand spot by scoring the base point and rings 4 and 6 studs out. A spot scores well when:
+     - the camera has room behind (12.5 studs, ±15°);
+     - the view ahead is clear;
+     - the character isn't inside a mesh;
+     - it isn't in tall Terrain grass if that can be avoided.
+   - After a teleport the camera is set to a fixed 20° down along the facing, re-applied for 0.4 s. It's never pitched up at a high subject; that pitch is what put the phone camera in the Grand Falls grass.
+   - Results, phone emulation:
+     - **Lantern Mere** moved 4 studs (176,118 → 178.8,120.8). No trunk in view.
+     - **H9 tee** moved 4 studs away from the trunk wall. The course and arches are visible, but the camera only gets 7.4 studs of room inside the tree (was 3.5), so it frames tighter than elsewhere.
+     - **Grand Falls** keeps its spot: it's the only sand there and the view is now clear. The fix was the camera pitch.
+     - All other 11 destinations: full 12.5-stud camera, nothing in the way.
+3. **Explore message on phone.** "Explore! No ball, no score" is now the small top-centre toast. It fades after 3 s and clears the info panel and the Sprint/Fly buttons (`stage-e/ui/phone_explore_toast.png`).
+4. **Smoke test: stroke → Explore → back.** `smoke` now takes one real putt (`BallController.hit` through the Studio-only `GolfExploreDebug` hook), runs the Explore round trip and asserts strokes == 1 and the ball within 0.1 stud.
+   - Desktop: PASS, ball moved 0.007.
+   - iPhone 17 Pro: PASS, ball moved 0.000.
+   - 0 errors or warnings on either.
+5. **Contact log part names.** Contacts are now logged with `GetFullName()` (+ `:WallId` / `:MoverId`).
+   - The cast uses the ball's collision group, so movers are found, with a nearest-part fallback.
+   - The putt itself is no longer logged as a contact; that was most of the "?".
+   - Velocity jumps with no part nearby are labelled `(no part: landing or slope change)`.
+   - Sweep: 0 of 185 contacts are "?" (Playtest Bot saw 30–50%).
+
+**Asset fixes:** nothing has landed in `assets/` since v79: no file newer than 16:52, and v79 already used those. That covers the H9 canopy lights, the H7/H8 rail lanterns and the H1 treeline card re-upload, so I skipped them. The H1 `treeline_card_gold` texture (139226561598751) is still on 3D Model Bot.
+
+## Tests
+- **Sweep:** 90 random shots, 10 per hole, seed 79 (`playtests/lantern-v1/stage-e/sweep-e`, `sweep-e2`):
+  - 0 escapes, 0 stuck, 0 auto-resets, 0 timeouts, 0 nudges, 0 console errors or warnings;
+  - 6 hazard drops (expected): H5 4, H6 1, H7 1;
+  - 3 holed.
+- **Smoke:** desktop and phone PASS (`stage-e/smoke/`).
+- **UI shots:** desktop and iPhone 17 Pro, 11 each (`stage-e/ui/`): golf HUD, scorecard, Explore toast, menu, fly, Grand Falls, Lantern Mere, H5, H9, Hollow Tree, back to golf. Nothing covers the HUD.
+
+---
+
+# Stage g report: VR club flip + H7/H8/H9 Round 7 re-import (2026-10-10, 18:54–19:50 PT)
+
+**Version: NOT PUBLISHED, NOT SAVED. Live is still v79.** Codex is over its usage limit until 2026-10-17 00:03 (`logs/codex-publish-g.log`), and this session still can't send input to Studio (`CGPreflightPostEventAccess` = 0). Studio is in Edit mode, one window, holding stage e + g unsaved; `src/` has everything. To finish: in Studio, **File > Save to Roblox**, then **File > Publish to Roblox**. The next version will be the first one with stage e and stage g.
+
+## 1. VR club direction flip (Chase, v79)
+- `Config.VRClubFlip = true` (new, default). `VRControls.defaultClubMount` adds 180° about hand X (base pitch `90 - VRClubGripPitch` instead of `-90 - VRClubGripPitch`) and negates yaw. The shaft is now **+Y raked 35° toward -Z, the exact negation** of the v12–v79 vector. It starts `VRClubButtOffset` (0.25) along the shaft, i.e. on the top side of the handle. `VRClubFlip = false` restores the old mount.
+- Putter face: RightVector (face normal) is hand +X before and after, so the face is unchanged (`faceDotRight` 1 → 1). Only the unused toe vector flips. Left-hand mirroring still applies to yaw/roll.
+- Debug proxy (`GolfTest` club overlay): an orange cap marks the end the shaft leaves (top when flipped) plus a grey link from the handle top to the shaft start. Grip-mount poses aim the shaft at the ball, so the flipped shots show the controller held top-down with the shaft leaving its top. `clubpose` takes `hand` ("left"/"right") and `flip`; `clubviz` now uses MCP screen_capture and shoots flip off/on for both hands.
+- Screenshots: `playtests/club-flip/{before,after}_{right,left}_{side,front,side_close}.png` + `clubpose.json`:
+
+| | before R | after R | before L | after L |
+|---|---|---|---|---|
+| shaft vs handle-bottom axis | 0° | 180° | 0° | 180° |
+| shaft vs intended end (bottom / top) | 0° | 0° | 0° | 0° |
+| shaft start gap | 0 | 0 | 0 | 0 |
+| face · golfer right | 1 | 1 | 1 | 1 |
+| head bottom above plane | 0.011 | 0.011 | 0.011 | 0.011 |
+
+0 console errors/warnings. Not verified in a headset; that's Chase's next VR check.
+
+## 2. H7/H8/H9 Round 7 re-import (one regenerate step: `holes_to_lua.py --push --build`)
+- **Dwell:** new `ReplicatedStorage.Golf.MoverMath` (shared by GolfServer.Movers, CourseBuilder, GolfTest) implements the `dwell` slide profile: end stops pause once per visit, interior stops pause on both passes, and t=0 is the start of the pause at `phase`. Period includes the pauses (log 9.357 s, door 6.667 s, as in holes.json `period_s`). When CourseBuilder clamps a range for rail clearance, dwell stops at the ends move with it (H7 log +6 → +5.98).
+- H7 log 6 long, pointed ends (3 blockers), ±6 at 3.5 studs/s, dwell 1.0 s W / 1.5 s E. H8 door 3.6, 0..4 at 3 studs/s, dwell 1.8 s shut / 2.2 s open; ring radius 0.45. H9 pendulum bob 1.6×1.8×1.6 yaw 30, ±30°, 5 s, hinge y 8.996.
+- **Do the colliders move?** Yes. Each mover is an unanchored assembly: invisible `Blocker` parts (CanCollide true, group GolfMover, which collides with GolfBall) welded to a MoverRoot and driven by a motorised Prismatic/Hinge constraint. The server phase-locks it to the spec every physics step. The visual meshes are welded on with CanCollide false. Nothing was only a visual.
+- **Block rate**: `run blockrate` fires Game Art Bot's intended lines (playtest-log Round 7) at 20 evenly spaced phases. blocked = touched the Blocker and never crossed its line (`playtests/lantern-v1/stage-g/blockrate`):
+
+| Hole | mover | blocked | touched | sim (touched, 24 phases) |
+|---|---|---|---|---|
+| H7 | log | **11/20 = 55%** | 55% | 45.8% |
+| H8 | root door | **10/20 = 50%** | 50% | 50% |
+| H9 | lantern pendulum | **1/20 = 5%** | 25% | 37.5% (5 blocked + 4 deflected) |
+
+  0 traps, 0 timeouts, 0 errors. H7/H8 block in-engine roughly as the sim says (H7 a bit high). **H9 is below target.** The bob bottom hangs 0.096 above the felt and the ball is 0.16 tall, so the face only meets the top 0.064 of the ball. In-engine most touches glance off the top and the ball rolls under. For Game Art Bot: lower the bob ~0.05 (collision box only) or make it taller at the bottom if H9 should really block.
+- Mover meshes (3D Model Bot pass 8, still the Round 6 sizes) are stretched to the new blockers via `tools/props_overrides.json`: log ×1.179 X, door ×1.106 Z, pendulum yaw 30 + ×1.613 Z. The log mesh keeps flat ends; the pointed end blockers are 0.4 longer visually. 3D Model Bot should re-export these.
+
+## 3. Art
+- **Cards:** `card_gold_v2.png` / `card_red_v2.png` are byte-identical to v1. Re-uploading them returned the asset ids already in use (gold 119241826373121, red 79137228052052), so the v2 art is already what's in the game. 139226561598751 fails to load (AssetFetchStatus.Failure) and nothing references it.
+- **PointLights from `models/manifest.json` lights[]** (new `pointLights` in PropPlacements, built into `Decor/Props/Lights`):
+  - H7: 8 amber rail lanterns (range 10, brightness 1.2) on the lower tiers.
+  - H8: 15 rail lanterns, plus 12 mushroom/firefly glows (brightness 1.4–1.6, range 8).
+  - The rail_lantern_stake/crook meshes aren't imported (that needs the 3D Importer via Codex), so each rail light gets a stand-in: an oak stake with a `lantern_small` on top.
+- **H9:** 3 amber hanging lanterns at the holes.json `amber_lantern_1..3` spots (`lantern_medium` scaled to 1.2×1.8×1.2, bottom y 7.2, chain to y 16, PointLight 255/169/87, range 16, brightness 2.5, no collision). They replace the heart lantern cluster + string (`playtests/lantern-v1/stage-g/shots/h9_amber_lanterns.jpg`). The manifest's own H9 hanging-lantern lights (corridor/chamber spots) are superseded by these.
+- The regenerate also picked up 3D Model Bot's newer manifest dressing (18:36). Instances of props not imported yet are skipped (H8: 21 of 37).
+
+## Tests
+- Sweep H7–H9, 20 random shots each (seed 80, `stage-g/sweep-g`): 0 escapes, 0 stuck, 0 auto-resets, 0 nudges, 0 console errors.
+- Smoke (desktop): PASS, 0 errors/warnings, stroke → Explore → back ok.
+- clubviz: 0 errors.
+
+---
+
+# Stage h report: pass 8 refit, lights, rail16 notch, H9 collider check, game page screenshots (2026-10-10, 19:42–20:35 PT)
+
+**Version: NOT PUBLISHED, NOT SAVED. Live is still v79.** Save/Publish is still blocked: Codex is over its usage limit until 2026-10-17 00:03, and this session has no input permission (`CGPreflightPostEventAccess` False). Studio is in Edit mode, one window, holding stage e + g + h unsaved; `src/` has everything. To finish: **File > Save to Roblox**, then **File > Publish to Roblox**.
+
+## 1. Pass 8 FBX: NOT imported (no route); stage-g meshes kept and refit
+- The 3D Importer needs Codex computer use (limit). Studio-side alternatives all failed:
+  - `AssetImportService` isn't reachable from MCP Luau (nil).
+  - `AssetService:CreateAssetAsync` returns "not available yet".
+  - An EditableMesh MeshPart wouldn't survive Save to Roblox.
+  - No Open Cloud key is configured (skill: ask Chase first).
+- So `h7_floating_log`, `h8_root_door` and `h9_lantern_pendulum` stay as the stage-g library meshes, stretched to the Round-7 blockers via `tools/props_overrides.json`. The colliders are unchanged; the H9 collider is verified below.
+- `h9_pendulum_root_beam` stays at the hinge (y 8.996). `rail_lantern_*` and `lantern_large_hanging` are still not in the library.
+- **To do when Codex is back:** import `h7_floating_log`, `h8_root_door`, `h8_door_pocket`, `h9_lantern_pendulum`, `h9_pendulum_root_beam`, `firefly_ring_entry`, `lantern_large_hanging`, `rail_lantern_stake` and `rail_lantern_crook`. Then drop the three stretch overrides and run `holes_to_lua.py --push --build`. PropsBuilder already uses the real meshes when they're in `ServerStorage.LanternGroveProps`.
+
+## 2. Lights (manifest lights[], data-driven)
+- **All 38 manifest lights are placed.**
+  - 23 rail lanterns (amber 255/169/87, Range 10, Brightness 1.2).
+  - 12 H8 glows: 5 firefly_glow_low #D8FF6A at 8/1.6, and 7 shroom_glow #7FE3D0 at 8/1.4.
+  - 3 H9 hanging lanterns at Range 16, Brightness 3, on the lantern's own Neon glow core at hole-local y 8.06. `props_overrides.json` adds now carry `light_id`, and `props_to_lua.py` fills in range/brightness/colour from manifest lights[].
+- **H8 glow x2:** the two `H8_firefly_swarm_*_firefly_glow` spot lights (manifest `spot_lights`) are now built at Brightness 3.5, Range 14. They were never built before.
+- **H9 hanging lanterns:** now the library `lantern_large` at 0.85, which is the same lantern as `lantern_large_hanging` (1.2 x 1.8 x 1.15). Origin is at hole-local y 7.29, so the bottom is at 7.2, and a chain runs to y 16 in place of the FBX cord. This replaces the stage-g `lantern_medium` stand-ins.
+- **Rail-lantern stand-ins fixed:**
+  - Stage g built them at light height, so the H8 ones floated ~5.6 studs over the ground.
+  - Each one now stands on the ground at its manifest dressing instance (`base`/`yaw` via `light_id`), with `lantern_small` centred on the light point.
+  - Stakes are a stake; crooks are a 6.5-tall post with an arm out to the lantern.
+- **Ring glow disc r 0.45:** CourseBuilder's part-built glow disc at the H8 ring trigger is 0.9 across, i.e. r 0.45. The old ring mesh has no disc of its own.
+- Workspace PointLights: 192 → 193. All lights have no shadows. 0 decor parts collide or touch.
+
+## 3. Removals / notch
+- `heart_lantern_cluster` isn't placed: the manifest dropped it, and its stale override is gone. Only the south `h8_door_pocket` is placed now (z -7.75); the old north pocket is gone.
+- **rail16 notch:** `RAIL_NOTCHES[8].rail16 = x 4.2..5.3`. The rail kit's cut is now square to a sloped rail and measured low on the body: the gap is x 4.22..5.32 at the bottom and 4.03..5.13 at the cap. The door spans x 4.4..5.1. The collision wall is untouched (as for H6).
+
+## 4. Tests (all after the rebuild)
+
+| Hole | mover | intended-line shots | blocked | touched | stage g |
+|---|---|---|---|---|---|
+| H7 | log | 20 | **10 = 50%** | 50% | 55% |
+| H8 | root door | 20 | **10 = 50%** | 50% | 50% |
+| H9 | lantern pendulum | 20 | **2 = 10%** | 25% | 5% |
+
+(`playtests/lantern-v1/stage-h/blockrate-h7|h8|h9`, 0 errors)
+
+- **Random sweep, 20 shots per hole, seed 81** (`stage-h/sweep-h7|h8|h9`): 0 escapes, 0 stuck, 0 auto-resets, 0 timeouts, 0 console errors/warnings.
+  - H7 had 1 hazard drop and 1 `seam` hop. The hop is the existing parked-ball slope kick, not a stuck ball.
+- **Smoke (desktop):** PASS, 0 errors/warnings, stroke → Explore → back OK.
+
+## 7. H9 pendulum: the collider is right; the block rate is still low
+- **Verified in Play on the server.**
+  - `Mover_lantern_pendulum` has a single CanCollide `Blocker` (group GolfMover), 1.6 x 1.8 x 1.6, at yaw **30.00°** relative to the hole.
+  - It swings **±30.0°** with a **5.0 s** period about axis world (0.885, 0, 0.465) = hole +Z. Measured: 30.0°, then -29.7°, 2.5 s apart.
+  - Its centre stays exactly 7.000 from the hinge.
+  - Hinge world **(-81.461, 48.996, -6.675)** = hole-local (22, 8.996, -38.5). The H9 frame is origin (-57.6, 40, 30.7), yaw 62.3.
+  - The felt under the hinge is at world y 41.0. The bob bottom is 41.096 at the bottom of the swing. The yawed box's lowest corner dips to 41.02–41.03 at about ±5–10°. The ball is r 0.08, so its top is at 41.16.
+  - Nothing to fix; it matches holes.json Round 7.
+- **Shot line used** (GolfTest `BLOCK_LINES`): from hole-local (18.5, y 1.0, -25.0), i.e. world (-71.135, 41.08, 2.699).
+  - Aim 281.2° (`aimDir`: local dir = (cos a, sin a) in x/z, i.e. (0.194, -0.981)), speed 7.75 studs/s.
+  - Phases 0, 0.25 … 4.75 s.
+- **In-engine,** the ball reaches the swing line (z -38.5) at **x ≈ 21.18** (0.82 west of the hinge), **2.5–2.9 s after the hit**, at only **2.7–3.2 studs/s**, slowed by the 0.5 + 0.25v decel.
+  - Touches happen only in two windows near the bottom of the swing (phases 4.75–0.25 and 2.25–2.5).
+  - Most other phases cross under a raised bob.
+  - Blocked 2/20, touched 5/20; 3 touches were deflections that still crossed.
+- **For Game Art Bot:** if the sim gets 37.5%, compare its arrival time and speed at z -38.5 (engine: ~2.6 s, ~3 studs/s, x 21.18).
+  - To raise the rate: lower the bob ~0.05 so it doesn't lift clear so soon, widen it along the swing, or shorten the chain so the low window lasts longer.
+
+## 5. Game page screenshots: `games/vr-mini-golf/marketing/screens/`
+- 8 PNGs at 1920x1080, no UI: `01_h1_red_gate`, `02_h4_spinner`, `03_h5_water`, `04_h8_firefly_ring`, `05_h9_lanterns`, `06_grove_dusk` (ClockTime 18.3, restored to 17.1), `07_explore_lookout` (Lookout Rock), `08_explore_hollow_tree`. Plus `extra_explore_welcome_plaza`.
+- `older/`: the two best earlier stills (stage-c `h2_chutes`, `h9_heart`, 1914x596).
+- **How they're made:** the Studio viewport is only 1469x789 and can't be resized without UI input, so each still is 4 Edit-mode MCP `screen_capture` tiles.
+  - The tiles share one camera point and use a narrow FOV with yaw/pitch offsets.
+  - They're reprojected exactly (pure rotation = homography) onto a 1920x1080 camera with feathered seams.
+  - Script: `tools/marketing/tiled.py shots.json OUT RAW [names]`.
+  - Edit mode shows no player UI. The movers are at their rest poses.
+
+---
+
+# Stage i report: follow-ups 7-10 (2026-10-10, ~20:30 PT): all blocked, no Studio changes
+
+**Version: NOT PUBLISHED, NOT SAVED. Live is still v79.** The last Save to Roblox in the Studio log was 2026-10-11 00:14 UTC (17:14 PT), before stages e, g and h. Studio has one window in Edit mode, holding stages e+g+h unsaved. `src/` is current. To finish: **File > Save to Roblox**, then **File > Publish to Roblox**.
+
+**What this session can't do:**
+- No Open Cloud API key in the env or the repo.
+- No Claude computer-use or browser tools: no `mcp__computer-use__*`, `Claude_Browser` or `claude-in-chrome`. Only the Studio MCP is available.
+- Codex is over its usage limit until 2026-10-17 00:03.
+
+**Items:**
+- **7. H9 pendulum collider:** already done in stage h (see section 7 above). The collider is the 1.6x1.8x1.6 bob at yaw 30, swinging ±30°/5 s about the hinge at world (-81.461, 48.996, -6.675). Block rate 10%. The shot line and arrival time/speed are written up for Game Art Bot. Not re-run, since nothing changed.
+- **8. Game page:** NOT done. It needs a publish first (blocked), and there's no API key and no browser/computer use. Nothing was uploaded.
+  - Ready to upload: `assets/vr-mini-golf/store/icon.png`, then `thumb1.png`, `thumb2.png`, `thumb3.png`, then `marketing/screens/` `02_h4_spinner`, `03_h5_water`, `04_h8_firefly_ring`, `05_h9_lanterns`, `06_grove_dusk`.
+  - Draft description: *"Welcome to Lantern Grove, a 9-hole autumn mini golf course lit by lanterns and fireflies. Putt Walkabout-style in VR with a real swing, or play on phone (drag to aim, release to putt) or desktop (mouse aim and power). Dodge swinging lanterns, sliding logs and root doors, then switch to Explore mode and wander the grove: falls, lookout rock and the hollow tree."*
+- **9 + 10. Mesh imports:** NOT done, because there's no importer route. Still missing, all FBX in `lantern-grove/models/fbx/`:
+  - `h7_floating_log`, `h8_root_door` and `h9_lantern_pendulum` (Round 7 size, scale 1).
+  - `h8_door_pocket`, `h9_pendulum_root_beam`, `firefly_ring_entry`, `lantern_large_hanging`, `rail_lantern_stake` and `rail_lantern_crook`.
+  - The 21 skipped H8 decor meshes.
+- **Stretch overrides kept on purpose.** Removing them before the import would shrink the old library meshes below their colliders. After the import:
+  - Delete the 3 `props_overrides.json` placements whose `why` says "(Round 7)": the H7 log x1.179, the H8 door z1.106, and the H9 bob z1.613. The H9 entry also sets pos y 8.996 and yaw 30. The manifest pivots already match, so the plain manifest placement is right.
+  - Pivots per manifest: log bottom centre H7 [0,-1.2,-20.5], door base centre H8 [4.75,0,-11.5] (closed), pendulum hinge H9 [22,8.996,-38.5].
+  - Then run `tools/holes_to_lua.py --push --build` and re-run the H9 block rate.
+- **Tests:** not re-run. No Studio or src changes this stage, so the stage h sweep stands: 0 escapes, 0 stuck, 0 resets, 0 errors.
+
+---
+
+# Stage j report (2026-10-10): saved prior stages, imported replacement props
+
+## Preservation and publishing
+- Used Roblox_Studio MCP `list_roblox_studios` first: exactly one Studio, place **87725688219952**, universe **10769274294**, MetavrseBuilder. Kept that window open.
+- Before editing: File > Save to Roblox succeeded at **2026-10-11 04:18:25 UTC**, then File > Publish to Roblox succeeded at **04:18:41 UTC**. Studio log confirms both actions. Version History confirms this preserved build as **v102** (later marked Previously Published).
+
+## Mesh imports and rebuild
+- Imported 13 original FBXs with Studio's 3D Importer, Stud units / scale 1: `h7_floating_log`, `h8_root_door`, `h9_lantern_pendulum`, `h8_door_pocket`, `h9_pendulum_root_beam`, `firefly_ring_entry`, `lantern_large_hanging`, `rail_lantern_stake`, `rail_lantern_crook`, `glow_root_arch`, `firefly_cluster_low`, `glow_shroom_patch`, `firefly_swarm`. Temporary staging copies are byte-identical to the source FBXs.
+- Registered with the existing `PropsBuilder.PrepareLibrary(sources)` in `ServerStorage.LanternGroveProps`: **13 models / 56 mesh parts**, **0 unknown materials**, **0 scale corrections**. Importer rotations normalized by the existing pipeline. Mesh asset IDs, source paths, and SHA-256 hashes: `logs/stages/j-imports.json`.
+- The handoff's “21 skipped H8 decor meshes” were repeated placements, not 21 unique FBXs. Current pre-import audit: 29 missing placements across five types (2 glow_root_arch, 5 firefly_cluster_low, 5 glow_shroom_patch, 15 rail_lantern_crook, 2 firefly_swarm). After rebuild: **37 H8 dressing placements, no skipped H8 props**.
+- Removed exactly the three `(Round 7)` stretch entries in `tools/props_overrides.json`. Retained the obsolete H9 lantern-string removal. Replaced the three H9 lantern_large stand-ins with the newly imported lantern_large_hanging at scale 1, preserving bottom y 7.2 and manifest light settings.
+- Ran `props_to_lua.py --push` and `holes_to_lua.py --push --build`. Terrain clearance: **zero intrusions on all 9 holes**. Runtime H7–H9 decor: **zero colliding/touching parts**.
+
+## Tests and final publish
+- Random sweep (seed 82): **20 shots each on H7/H8/H9**, zero escapes, stuck balls, resets, timeouts, nudges, or console warnings/errors. H7: two expected hazard drops and one holed shot. Raw evidence: `playtests/lantern-v1/stage-j/sweep/`.
+- Desktop smoke: **PASS** stroke → Explore → back; strokes 1 → 1, ball moved 0.000, zero server/client warnings/errors. Evidence: `playtests/lantern-v1/stage-j/smoke/desktop.log`.
+- Final File > Save to Roblox: **04:33:56 UTC**; File > Publish to Roblox: **04:34:09 UTC**. Version History visually confirms **v105 Published**, **v102 Previously Published**. Save/publish log evidence: `logs/stages/j-publish.log`.
+- Left exactly one Studio connected in Edit mode; GolfTestMode and SimulateVR false. Visually checked rebuilt H8 in the viewport.
+
+## Game page
+- Blocked at Creator Dashboard: Chrome is signed in as **MetavrsePlumber**, not MetavrseBuilder, and displays an **Updated Agreements** modal effective November 1, 2026. Asked Chase to switch accounts and handle the agreement. Did not accept terms or edit the Plumber experience.
+- Icon, eight ordered thumbnails, and description remain pending. Access/privacy settings untouched.

@@ -1,0 +1,154 @@
+{
+ "generated": "2026-10-14 (v69 visible placeholders)",
+ "built_on": "Windows PC, Blender 5.2 headless, run by Claude Code via schtask 3dmb_sc_ph3; geometry generated on the box (/workspace/sc/ph3/gen.py)",
+ "rules": "<3k tris, collision/query/touch off, bases sunk 0.1 below ground, thickness>=0.2, gaps>=0.08, 0 coplanar, nothing on felt, >=1 stud plan distance to rails",
+ "props": {
+  "lollipop_cactus_1": {
+   "fbx": "fbx/placeholders_ph2/lollipop_cactus_1.fbx",
+   "sha256": "3e76128c550757383ccff14558351ef46f41a9bf5cd01c69d3f2dc9d3754fca4",
+   "tris": 1860,
+   "objects": {
+    "lollipop_cactus_1__Bubblegum": 332,
+    "lollipop_cactus_1__Cactus": 1276,
+    "lollipop_cactus_1__MintWhite": 252
+   },
+   "pivot": "base centre at ground level (local y 0 = ground; mesh bottom y -0.1 = sunk 0.1)",
+   "materials": {
+    "Bubblegum": "#F78FB3",
+    "Cactus": "#3E8E41",
+    "MintWhite": "#F2F7F0 (build value; palette mint white #FFF8F0)"
+   },
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "checks_reimport": {
+    "tris": 1860,
+    "parts": 5,
+    "min_thickness": 0.222,
+    "min_gap": 0.085,
+    "intersecting": 0,
+    "coplanar": 0,
+    "bounds": [
+     [
+      -0.62,
+      -0.1,
+      -1.48
+     ],
+     [
+      1.67,
+      11.576,
+      1.3
+     ]
+    ],
+    "objects": {
+     "lollipop_cactus_1__Bubblegum": 332,
+     "lollipop_cactus_1__Cactus": 1276,
+     "lollipop_cactus_1__MintWhite": 252
+    }
+   },
+   "placement_checks": {
+    "felt_3d": 1.883,
+    "rail_3d": 1.38,
+    "rail_plan": 1.38,
+    "felt_plan": 1.88,
+    "look7_within_4": [],
+    "world_bounds": [
+     [
+      65.38,
+      18.1,
+      450.52
+     ],
+     [
+      67.67,
+      29.776,
+      453.3
+     ]
+    ]
+   },
+   "previews": [
+    "preview_lollipop_cactus_1_close.png",
+    "preview_lollipop_cactus_1_front.png",
+    "preview_silhouette_sheet_h01_cactus_h06_floodrock.png"
+   ],
+   "replaces": "Workspace.CourseSugarloaf.Hole1.Decor.lollipop_cactus_1.Placeholder (Cactus, Arm, Lollipop parts)",
+   "placeholder_parts": {
+    "Cactus": "pos (66, 22.2, -4548) size 1.2x8.4x1.2",
+    "Arm": "pos (66.9, 23.4, -4548) size 0.7x2.4x0.7",
+    "Lollipop": "pos (66, 27.6, -4548) cylinder 0.3x2.6x2.6"
+   },
+   "target_cframe": "CFrame.new(66, 18.2, -4548) (yaw 0; holes.json H1 anchor [6,0,-18] + world_offset; ground y 18.2 from fit030 tiles)",
+   "design": "Ribbed saguaro: trunk 1.24 wide, 7.8 tall, east elbow arm and a shorter north arm. A mint-white stick (0.24) rises 0.086 above the trunk cap. Swirl lollipop disc r1.3 faces +-X (fairway): Bubblegum centre and outer ring, MintWhite middle ring (0.30 vs 0.36 thick so the faces are not coplanar), 0.086 radial gaps. Total height 11.58."
+  },
+  "flood_marks_rock": {
+   "fbx": "fbx/placeholders_ph2/flood_marks_rock.fbx",
+   "sha256": "b6eadc7d85b7ebbcbbc4481dc2f2b055eb1ff7d150e2443ebefaa1e30862753b",
+   "tris": 128,
+   "objects": {
+    "flood_marks_rock__Strata": 92,
+    "flood_marks_rock__WaterMark": 36
+   },
+   "pivot": "base centre at ground level (local y 0 = ground; mesh bottom y -0.1 = sunk 0.1)",
+   "materials": {
+    "Strata": "#BD6B4F (shared Strata material)",
+    "WaterMark": "#3FB7C9 (canyon turquoise)"
+   },
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "checks_reimport": {
+    "tris": 128,
+    "parts": 4,
+    "min_thickness": 0.226,
+    "min_gap": 0.086,
+    "intersecting": 0,
+    "coplanar": 0,
+    "bounds": [
+     [
+      -0.604,
+      -0.1,
+      -1.596
+     ],
+     [
+      0.732,
+      3.939,
+      1.51
+     ]
+    ],
+    "objects": {
+     "flood_marks_rock__Strata": 92,
+     "flood_marks_rock__WaterMark": 36
+    }
+   },
+   "placement_checks": {
+    "felt_3d": 2.082,
+    "rail_3d": 1.268,
+    "rail_plan": 1.268,
+    "felt_plan": 1.768,
+    "look7_within_4": [],
+    "world_bounds": [
+     [
+      265.896,
+      26.1,
+      231.404
+     ],
+     [
+      267.232,
+      30.139,
+      234.51
+     ]
+    ]
+   },
+   "previews": [
+    "preview_flood_marks_rock_close.png",
+    "preview_flood_marks_rock_front.png",
+    "preview_silhouette_sheet_h01_cactus_h06_floodrock.png"
+   ],
+   "replaces": "Workspace.CourseSugarloaf.Hole6.Decor.flood_marks.Placeholder.Rock",
+   "placeholder_parts": {
+    "Rock": "pos (268.58, 27.5, -4767) size 1.5x3x0.2 (sat ON rail3)"
+   },
+   "target_cframe": "CFrame.new(266.5, 26.2, -4767) (yaw 0, +X face toward the H6 basin). Moved 2.08 west of the placeholder so it is outside rail3 (>=1 stud plan) on ground y 26.2",
+   "design": "Sandstone slab 1.3 x 4.0 x 3.1 (Strata), flat east face; three turquoise high-water bars (0.226 square, 1.8-2.3 long) 0.086 off the face at heights 1.25/2.15/2.95. Top clears the rail top (28.4) by 1.7. The decal h06_flood_marks.png can go on the face above the bars."
+  }
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "generated": "2026-10-15 ~11:30 PT",
+ "status": "rev2 after Game Art Bot rejected v1 (raised blocks); v1 in fbx/h10_chevrons/ untouched",
+ "built_on": "Windows PC, Blender 5.2 headless via Claude Code (claude-opus-5-5), schtask 3dmb_sc_j4 (deleted); geometry /workspace/sc/ph4/gen4.py",
+ "props": {
+  "h10_chevrons": {
+   "fbx": "fbx/h10_chevrons_v2/h10_chevrons.fbx",
+   "sha256": "0fd2ac5c6c1bc55a8c3955a97c01403dcf63a0f8e479919b637ea45621037f82",
+   "tris": 160,
+   "objects": [
+    "h10_chevrons__ChevronGlow (1 mesh, 8 islands)"
+   ],
+   "changes_vs_v1": [
+    "pieces sunk into the felt: 0.206 thick, top 0.080 above the felt (perpendicular; 0.082 vertical), bottom 0.126 below; each tilted to the 12.68 deg chute",
+    "narrowed to 0.96 wide (half 0.48), centred; arms 0.22 wide (perpendicular), notch 0.592; length 1.2 and 2.0 spacing unchanged",
+    "tops UV-mapped to chevron 1 of h10_chevrons.png (texture embedded + copied); sides map to solid amber texels"
+   ],
+   "pivot": "chute felt centre, hole-local (0, -1.8, -22) - same as v1",
+   "target_cframe": "CFrame.new(290, 114.2, -5278) * CFrame.Angles(0, math.pi, 0) - same as v1",
+   "chevron_centres_hole_local_z": [
+    -15,
+    -17,
+    -19,
+    -21,
+    -23,
+    -25,
+    -27,
+    -29
+   ],
+   "material": {
+    "ChevronGlow": "h10_chevrons.png as MeshPart TextureID / SurfaceAppearance ColorMap (amber #FFB830 art); without a texture assigned Studio shows the flat MeshPart colour"
+   },
+   "note_texture": "the artwork itself is a flat amber chevron (231 shades within #FFAE14-#FFBA3A), so a correctly textured top still reads mostly amber",
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "checks_reimport": {
+    "tris": 160,
+    "islands": 8,
+    "min_thickness": 0.206,
+    "min_gap": 0.884,
+    "coplanar_between": 0,
+    "top_above_felt_perp": 0.08,
+    "top_above_felt_vertical": 0.082,
+    "bottom_below_felt_perp": -0.126,
+    "faces_coplanar_with_felt": 0,
+    "top_tris": 32,
+    "bottom_tris": 32,
+    "rail_3d": 1.02,
+    "rail_3d_id": "H10:rail2",
+    "rail_plan_by_rail": {
+     "H10:rail1": 3.02,
+     "H10:rail2": 1.02,
+     "H10:rail3": 1.02,
+     "H10:rail4": 1.349,
+     "H10:rail5": 8.587,
+     "H10:rail6": 11.65,
+     "H10:rail7": 13.397,
+     "H10:rail8": 11.65,
+     "H10:rail9": 8.587,
+     "H10:rail10": 1.349,
+     "H10:rail11": 1.02,
+     "H10:rail12": 1.02,
+     "H10:rail13": 3.02,
+     "H10:rail14": 16.387
+    },
+    "half_width": 0.48,
+    "uv": {
+     "name": "UVMap",
+     "umin": 0.025334177538752556,
+     "umax": 0.1162673830986023,
+     "vmin": 0.2734375,
+     "vmax": 0.7704190015792847
+    }
+   },
+   "previews": [
+    "preview_h10_chevrons_player.png",
+    "preview_h10_chevrons_close.png",
+    "preview_h10_chevrons_top.png"
+   ]
+  }
+ }
+}

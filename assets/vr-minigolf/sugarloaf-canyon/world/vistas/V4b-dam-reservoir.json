@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Stylized whimsical VR mini golf game world concept art, first-person view from standing VR eye height (1.6 m), same art style and palette as the reference: candy-striped pink and cream sandstone mesas, sunset glow, lollipop-topped cacti, pink and amber rock-candy crystals, smooth low-poly toon shading, original design, no text, no logos. Looking from a high mesa-top tee toward a giant whimsical candy-stone dam with waterfalls spilling into a turquoise reservoir, the final hole green runs along the dam crest with a big cup flag, the whole canyon world with earlier holes spread below at sunset",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_sugarloafcanyon_color_clean.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1164,
+    "outputTokens": 1078,
+    "totalTokens": 2242
+  },
+  "cost": 0.041232,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791757245,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1024,
+          "textTokens": 140
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791757218893,
+                "endTime": 1791757246042,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.041232",
+      "marketCost": "0.041232",
+      "surchargeCost": "0",
+      "gatewayCost": "0.041232",
+      "inferenceCost": "0.041232",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.041232",
+      "generationId": "gen_01M4PGTWY2YB9MF1YK2SYX1JF8"
+    }
+  },
+  "seconds": 27.9,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/vistas/V4-dam-finale.png"
+  ]
+}

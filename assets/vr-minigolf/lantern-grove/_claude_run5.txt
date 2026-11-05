@@ -1,0 +1,71 @@
+H9 is fixed in the sim: the Studio line now blocks 35–40% at 7–9 studs/s (60% at 6.5), with 0 traps, 0 soft-locks in a 100k-shot fuzz, and difficulty about where Round 7 meant it to be. All checks were rerun after the change, and the physics tests pass 13/13 (one new).
+
+## Why the sim said 37.5% and the engine 10%
+
+I assumed phase means the time of the hit, with the bob at the bottom moving east at t=0. That fits: both the engine's and the sim's touch windows land near the bottom of the swing.
+
+Speed, friction, timing and phase all match. On the exact Studio shot the sim arrives at z=-38.5 at 2.71 s, x 21.17, 2.94 studs/s; the engine measured 2.5–2.9 s, x 21.18, 2.7–3.2 studs/s.
+
+The gap has two causes:
+1. **Different metric (about half the gap).** The 37.5% counted blocked plus deflected (5 + 4 of 24). The engine counts "blocked" as never crossing. Counted that way, the old sim gave 4/20 = 20% on the Studio line.
+2. **Contact height (the real bug).** The sim was already 3D, so it knew the bob rises as it swings. It wasn't treating the bob as a full-height 2D wall. But it bounced the ball fully off any contact with a mostly sideways push, including contacts on the top half of the ball. The bob bottom (0.096 above felt) sits above the ball centre (0.08), and along the shot line the bob only gets below that at its corners, for an instant.
+
+**Fix:** a pendulum now only collides if its lowest point over the ball's footprint is at or below the ball centre (0.08); otherwise the ball rolls under. Only pendulums are affected, so H1–H8 are unchanged. At 7.75 studs/s the fixed sim gives 1/20 blocked and 4/20 touched, against the engine's 2/20 and 5/20.
+
+## H9 changes (old → new)
+- **Hinge x:** 22.0 → **21.2**, right over the shot line. y 8.996 and z -38.5 unchanged; the root beam stays centred at x 22.
+- **Swing:** ±30° → **±13°**.
+- **Period:** 5.0 s → **4.0 s**.
+- **New collider "foot":** 0.8 × 0.4 × 1.6 box, yaw 30, centred 7.741 below the hinge. Its bottom is 0.055 above the felt at rest, below the ball centre, and it clears the felt by at least 0.020 over the whole swing.
+
+Your simpler options didn't work alone:
+- **Lowering the bob to 0.02:** its corner would cut 0.055 into the felt mid-swing.
+- **A longer chain:** most shots still pass, because the bob is only over the line for a short part of a ±30° swing.
+- **A longer period:** doesn't change the fraction of time it's over the line.
+- **Moving the hinge alone:** about 19%.
+
+**No new mesh is needed from 3D Model Bot.** The foot sits inside the lantern's footprint, only 0.041 below its visible bottom, so RobloxDevBot can add it as an invisible collider welded to the bob. They also need to move the hinge and change the swing.
+
+## Studio line, blocked out of 20 (fixed sim)
+
+| Speed (studs/s) | 6.5 | 7 | 7.75 (Studio line) | 8.5 | 9 |
+|---|---|---|---|---|---|
+| Before | 2 | 1 | 1 | 0 | 0 |
+| After | 12 | 8 | **7** | 7 | 7 |
+
+6.5 studs/s is a nearly dead ball by the time it reaches the line (0.9 studs/s), so it's easy to stop. With 80 phases instead of 20 the after rates are 66/45/40/34/32%.
+
+## Timing check (24 phases, fuzz 100k)
+
+| Hole | Blocked + deflected | Blocked only | Traps | Soft-locks |
+|---|---|---|---|---|
+| H7 log | 45.8% (unchanged) | 11/24 | 0 | 0 |
+| H8 door | 50% (unchanged) | 12/24 | 0 | 0 |
+| H9 pendulum, before | 12.5% | 0/24 | 0 | 0 |
+| H9 pendulum, after | 50% | **10/24** | 0 | 0 |
+
+The H9 ace line goes through the secret teleport and never meets the pendulum.
+
+## H9 stats (2000 plays per skill)
+
+| | Good avg | Average avg | Skill gap |
+|---|---|---|---|
+| Round 7 (old sim) | 3.64 | 4.07 | 0.43 |
+| Round 7 geometry, fixed sim | 3.54 | 3.95 | 0.40 |
+| **Round 8** | **3.74** | **4.13** | **0.39** |
+
+Good-player hole-in-ones stay at 3.0% and caps are at most 0.2%. Course total goes 25.30 → 25.40 (good) and 31.99 → 32.05 (average). All targets are met, the validator reports 0 errors, and there are 0 escapes and 0 timeouts. Round 8 lands close to the Round 7 design numbers, which were tuned against a sim that over-counted blocks.
+
+The felt, walls, tee and cup didn't move, so I didn't rerun world/tools/validate.py. This folder isn't a git repository, so nothing was committed.
+
+## Files changed
+- `tools/sim.py`: new pendulum height rule
+- `tools/timing_check.py`: new `--studio-h9` mode (with `--speeds` and `--legacy` for the old contact model)
+- `tools/test_physics.py`: new test 13
+- `tools/sweep_r8.py`: new sweep script for pendulum variants
+- `tools/build_holes.py`: new H9 parameters and foot option
+- `holes.json`: H9 pendulum only
+- `tools/write_notes.py`, `h09-notes.md`, `props.md`: updated for the new pendulum
+- `h09-layout.png`, `holes_layouts_sheet.jpg`, `holes_concepts_sheet.jpg`: re-rendered
+- `playtest-log.md`: Round 8 added, ending with RobloxDevBot's H9 rebuild steps
+- `tools/out/`: before/after snapshots of holes, sim and timing results

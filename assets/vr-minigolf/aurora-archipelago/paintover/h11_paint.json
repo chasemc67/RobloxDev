@@ -1,0 +1,75 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Paint-over of image 1, a grey/green 3D blockout render seen from the tee at VR eye height. KEEP THE GEOMETRY AND CAMERA EXACTLY: same camera angle, horizon line, lane, rails, green, cup position, every wall and the moving part in the same place, size and silhouette. Do not add, remove, move or resize any course element; do not add obstacles on the playing surface. Only restyle surfaces, lighting and the sky/background. Hole Floe Drift: Drifting ice floe: a flat floe slides across the neck, pauses, and drifts back (slide with dwell; pointed 45-degree ends); the side channel is the safe way round. Style: Aurora Archipelago, cosy stylized low-poly night snow globe: snow-felt putting surface in soft mint-green felt with snow edges, warm timber and brass rails, red moving part repainted as the themed mechanism in timber, brass and glowing ice (keep its exact shape), pink sweep volume and cup ring removed and replaced by clean felt, tall flag in the cup. Background: floating slate-violet rock islands with snow caps, glowing ice crystals, frozen waterfalls, green and violet aurora ribbons overhead in a deep twilight sky, soft lilac cloud sea below, brass lanterns. Image 2 is the style reference only, not the layout. CRITICAL: in the far neck just in front of the green there is a red rectangular slab lying across the lane. It is a solid moving ice floe, NOT water. Paint it as an opaque raised slab of chunky pale-blue ice with a snowy top, same rectangle, same position, raised above the felt, clearly visible. Keep the red cross-shaped marker on the far left islet as a small brass signpost.",
+  "aspect": "16:9",
+  "refs": [
+    "previews/blockout/h11_tee.png",
+    "h11-concept.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 2342,
+    "outputTokens": 1078,
+    "totalTokens": 3420
+  },
+  "cost": 0.049906,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791856106,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1952,
+          "textTokens": 390
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791856075433,
+                "endTime": 1791856106898,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.049906",
+      "marketCost": "0.049906",
+      "surchargeCost": "0",
+      "gatewayCost": "0.049906",
+      "inferenceCost": "0.049906",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.049906",
+      "generationId": "gen_01M4SF3RKJ9BAMN6J626QYHF0A"
+    }
+  },
+  "seconds": 32.5,
+  "files": [
+    "paintover/h11_paint_v3.png"
+  ]
+}

@@ -1,0 +1,771 @@
+{
+  "all_pass": false,
+  "parts": [
+    {
+      "id": "h09_conch_entry",
+      "status": "PASS",
+      "tris": {
+        "CoralPink": 142,
+        "CoralMint": 192,
+        "CoralOrange": 320
+      },
+      "total_tris": 654,
+      "min_rail_clearance": 8.499999344348907,
+      "nearest_rail": "rail10",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h09_conch_exit",
+      "status": "FAIL",
+      "tris": {
+        "CoralPink": 142,
+        "CoralMint": 192,
+        "CoralOrange": 320
+      },
+      "total_tris": 654,
+      "min_rail_clearance": 0.2499997615814209,
+      "nearest_rail": "rail8",
+      "felt_head_triangle_hits": 654,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": [
+        "felt/head volume intersection"
+      ]
+    },
+    {
+      "id": "h09_reef_lagoon",
+      "status": "PASS",
+      "tris": {
+        "Lagoon": 12
+      },
+      "total_tris": 12,
+      "min_rail_clearance": 0.6599999964237213,
+      "nearest_rail": "rail1",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h09_coral_spit",
+      "status": "FAIL",
+      "tris": {
+        "Rock": 12,
+        "IceCore": 12
+      },
+      "total_tris": 24,
+      "min_rail_clearance": 0.0,
+      "nearest_rail": "rail1",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": [
+        "rail clearance <0.1"
+      ]
+    },
+    {
+      "id": "h09_reef_wall_skins",
+      "status": "PASS",
+      "tris": {
+        "CoralPink": 156,
+        "Snow": 1196
+      },
+      "total_tris": 1352,
+      "min_rail_clearance": 100,
+      "nearest_rail": "none",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "rail1",
+        "rail2",
+        "rail3",
+        "rail4",
+        "rail5",
+        "rail6",
+        "rail7",
+        "rail8",
+        "rail9",
+        "rail10",
+        "rail11",
+        "route_bank_backing",
+        "green_bank_backing"
+      ],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h10_bobsled_hut",
+      "status": "PASS",
+      "tris": {
+        "Canvas": 12,
+        "Timber": 52,
+        "Glow": 24,
+        "Brass": 168,
+        "Snow": 76,
+        "HullTeal": 12
+      },
+      "total_tris": 344,
+      "min_rail_clearance": 0.12499988079071045,
+      "nearest_rail": "snowwall1",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h10_snow_wall_skins",
+      "status": "PASS",
+      "tris": {
+        "SnowShadow": 240,
+        "Snow": 1840
+      },
+      "total_tris": 2080,
+      "min_rail_clearance": 100,
+      "nearest_rail": "none",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "snowwall1",
+        "snowwall2",
+        "snowwall3",
+        "snowwall4",
+        "snowwall5",
+        "snowwall6",
+        "snowwall7",
+        "snowwall8",
+        "run_rail9",
+        "run_rail10",
+        "run_rail11",
+        "run_rail12",
+        "run_rail13",
+        "run_rail14",
+        "run_rail15",
+        "run_rail16",
+        "run_rail17",
+        "run_rail18",
+        "green_s_rail_e",
+        "green_s_rail_w"
+      ],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h10_snow_walls",
+      "status": "FAIL",
+      "tris": {
+        "Snow": 188
+      },
+      "total_tris": 188,
+      "min_rail_clearance": -1.0,
+      "nearest_rail": "run_rail11",
+      "felt_head_triangle_hits": 315,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": [
+        "rail clearance <0.1",
+        "felt/head volume intersection"
+      ]
+    },
+    {
+      "id": "h11_fishing_hut",
+      "status": "PASS",
+      "tris": {
+        "Canvas": 8,
+        "Timber": 12,
+        "Brass": 16,
+        "Snow": 188
+      },
+      "total_tris": 224,
+      "min_rail_clearance": 0.2799995243549347,
+      "nearest_rail": "pocket_w20",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h11_snowbank_skins",
+      "status": "PASS",
+      "tris": {
+        "SnowShadow": 360,
+        "Snow": 2760
+      },
+      "total_tris": 3120,
+      "min_rail_clearance": 100,
+      "nearest_rail": "none",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "rail1",
+        "rail2",
+        "rail3",
+        "rail4",
+        "rail5__cut0",
+        "rail5__cut1",
+        "rail5__cut2",
+        "rail5__cut3",
+        "rail6",
+        "rail7",
+        "rail8",
+        "rail9",
+        "rail10",
+        "rail11",
+        "rail12",
+        "berg13",
+        "berg14",
+        "berg15",
+        "berg16",
+        "berg17",
+        "berg18__cut0",
+        "berg18__cut1",
+        "berg18__cut2",
+        "berg18__cut3",
+        "pocket_w19",
+        "pocket_w20",
+        "pocket_w21",
+        "pocket_e22",
+        "pocket_e23",
+        "pocket_e24"
+      ],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h11_floe_frame",
+      "status": "FAIL",
+      "tris": {
+        "Timber": 32,
+        "Snow": 376
+      },
+      "total_tris": 408,
+      "min_rail_clearance": -1.0,
+      "nearest_rail": "pocket_e23",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": [
+        "rail clearance <0.1"
+      ]
+    },
+    {
+      "id": "h11_ice_floe",
+      "status": "PASS",
+      "tris": {
+        "Ice": 36,
+        "Snow": 140,
+        "Ink": 92,
+        "MoveCream": 92,
+        "Beak": 26
+      },
+      "total_tris": 386,
+      "min_rail_clearance": 0.14999955892562866,
+      "nearest_rail": "berg18__cut0",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": {
+        "method": "exact complete translation endpoint/side prisms",
+        "range": [
+          -7.0,
+          0.0
+        ],
+        "min_clearance": 0.14999955892562866,
+        "rail": "berg18__cut0",
+        "dressing_clearances": [
+          [
+            0.14999955892562866,
+            "h11_snowbank_skins"
+          ],
+          [
+            0.3138996660709381,
+            "h11_floe_frame"
+          ],
+          [
+            0.9319998323917389,
+            "h11_fishing_hut"
+          ]
+        ],
+        "min_dressing_clearance": 0.14999955892562866,
+        "nearest_dressing": "h11_snowbank_skins",
+        "mechanical_joint_exception": null
+      },
+      "failures": []
+    },
+    {
+      "id": "h12_icebreaker",
+      "status": "PASS",
+      "tris": {
+        "HullTeal": 24,
+        "Canvas": 24,
+        "Snow": 564,
+        "Glow": 24,
+        "Brass": 12
+      },
+      "total_tris": 648,
+      "min_rail_clearance": 0.1099996268749237,
+      "nearest_rail": "hull13",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h12_paddle_wheel",
+      "status": "PASS",
+      "tris": {
+        "MoveRed": 144,
+        "MoveCream": 144,
+        "Brass": 864
+      },
+      "total_tris": 1152,
+      "min_rail_clearance": 0.05999952554702759,
+      "nearest_rail": "hull13",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": {
+        "method": "conservative continuous 360-degree circumscribed disk prism, 720 facets",
+        "range": [
+          0,
+          360
+        ],
+        "max_radius": 4.100000806292604,
+        "min_felt_clearance": 0.05999919370739626,
+        "angle_degrees": 342.9813560453059,
+        "min_clearance": 0.05999952554702759,
+        "rail": "hull13",
+        "dressing_clearances": [
+          [
+            0.17000000000000098,
+            "h12_icebreaker"
+          ]
+        ],
+        "min_dressing_clearance": 0.17000000000000098,
+        "nearest_dressing": "h12_icebreaker",
+        "mechanical_joint_exception": null
+      },
+      "failures": []
+    },
+    {
+      "id": "h13_hub_base",
+      "status": "PASS",
+      "tris": {
+        "Brass": 576,
+        "Snow": 4416
+      },
+      "total_tris": 4992,
+      "min_rail_clearance": 5.4999493062496185,
+      "nearest_rail": "rail1",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "hub_plinth_00",
+        "hub_plinth_01",
+        "hub_plinth_02",
+        "hub_plinth_03",
+        "hub_plinth_04",
+        "hub_plinth_05",
+        "hub_plinth_06",
+        "hub_plinth_07",
+        "hub_plinth_08",
+        "hub_plinth_09",
+        "hub_plinth_10",
+        "hub_plinth_11",
+        "hub_plinth_12",
+        "hub_plinth_13",
+        "hub_plinth_14",
+        "hub_plinth_15",
+        "hub_plinth_16",
+        "hub_plinth_17",
+        "hub_plinth_18",
+        "hub_plinth_19",
+        "hub_plinth_20",
+        "hub_plinth_21",
+        "hub_plinth_22",
+        "hub_plinth_23",
+        "hub_plinth_24",
+        "hub_plinth_25",
+        "hub_plinth_26",
+        "hub_plinth_27",
+        "hub_plinth_28",
+        "hub_plinth_29",
+        "hub_plinth_30",
+        "hub_plinth_31",
+        "hub_plinth_32",
+        "hub_plinth_33",
+        "hub_plinth_34",
+        "hub_plinth_35",
+        "hub_plinth_36",
+        "hub_plinth_37",
+        "hub_plinth_38",
+        "hub_plinth_39",
+        "hub_plinth_40",
+        "hub_plinth_41",
+        "hub_plinth_42",
+        "hub_plinth_43",
+        "hub_plinth_44",
+        "hub_plinth_45",
+        "hub_plinth_46",
+        "hub_plinth_47"
+      ],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h13_carousel_canopy",
+      "status": "PASS",
+      "tris": {
+        "Brass": 32,
+        "AuroraViolet": 32,
+        "AuroraMint": 32,
+        "Snow": 92
+      },
+      "total_tris": 188,
+      "min_rail_clearance": 12.599999457597733,
+      "nearest_rail": "rail5",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "hub_plinth_00",
+        "hub_plinth_01",
+        "hub_plinth_02",
+        "hub_plinth_03",
+        "hub_plinth_04",
+        "hub_plinth_05",
+        "hub_plinth_06",
+        "hub_plinth_07",
+        "hub_plinth_08",
+        "hub_plinth_09",
+        "hub_plinth_10",
+        "hub_plinth_11",
+        "hub_plinth_12",
+        "hub_plinth_13",
+        "hub_plinth_14",
+        "hub_plinth_15",
+        "hub_plinth_16",
+        "hub_plinth_17",
+        "hub_plinth_18",
+        "hub_plinth_19",
+        "hub_plinth_20",
+        "hub_plinth_21",
+        "hub_plinth_22",
+        "hub_plinth_23",
+        "hub_plinth_24",
+        "hub_plinth_25",
+        "hub_plinth_26",
+        "hub_plinth_27",
+        "hub_plinth_28",
+        "hub_plinth_29",
+        "hub_plinth_30",
+        "hub_plinth_31",
+        "hub_plinth_32",
+        "hub_plinth_33",
+        "hub_plinth_34",
+        "hub_plinth_35",
+        "hub_plinth_36",
+        "hub_plinth_37",
+        "hub_plinth_38",
+        "hub_plinth_39",
+        "hub_plinth_40",
+        "hub_plinth_41",
+        "hub_plinth_42",
+        "hub_plinth_43",
+        "hub_plinth_44",
+        "hub_plinth_45",
+        "hub_plinth_46",
+        "hub_plinth_47"
+      ],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h13_carousel_arms",
+      "status": "PASS",
+      "tris": {
+        "MoveRed": 48,
+        "MoveCream": 416,
+        "Ink": 368,
+        "Beak": 104,
+        "Brass": 48
+      },
+      "total_tris": 984,
+      "min_rail_clearance": 0.224999338388443,
+      "nearest_rail": "hub_plinth_00",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": {
+        "method": "continuous 360-degree circumscribed annular prisms at separate runner/spoke/rider heights; 720 facets",
+        "range": [
+          0,
+          360
+        ],
+        "radial_height_bounds": [
+          [
+            8.2,
+            11.640017182117903,
+            0.0,
+            0.9
+          ],
+          [
+            0.0,
+            8.401339178964268,
+            1.425,
+            1.675
+          ],
+          [
+            8.2,
+            11.640017182117903,
+            0.9,
+            2.8
+          ]
+        ],
+        "min_clearance": 0.224999338388443,
+        "rail": "hub_plinth_00",
+        "dressing_clearances": [
+          [
+            0.2250000000000001,
+            "h13_hub_base"
+          ],
+          [
+            8.399999999999999,
+            "h13_carousel_canopy"
+          ]
+        ],
+        "min_dressing_clearance": 0.2250000000000001,
+        "nearest_dressing": "h13_hub_base",
+        "mechanical_joint_exception": "central carousel axle against static pole only"
+      },
+      "failures": []
+    },
+    {
+      "id": "h15_lip_ice",
+      "status": "FAIL",
+      "tris": {
+        "Ice": 68
+      },
+      "total_tris": 68,
+      "min_rail_clearance": 0.0,
+      "nearest_rail": "basin_rail10",
+      "felt_head_triangle_hits": 68,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": [
+        "rail clearance <0.1",
+        "felt/head volume intersection"
+      ]
+    },
+    {
+      "id": "h16_moonstone_coping",
+      "status": "PASS",
+      "tris": {
+        "Moonstone": 120,
+        "Snow": 920
+      },
+      "total_tris": 1040,
+      "min_rail_clearance": 100,
+      "nearest_rail": "none",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "rail1",
+        "rail2",
+        "rail3",
+        "rail4",
+        "rail5",
+        "rail6",
+        "rail7",
+        "rail8",
+        "spout_w",
+        "spout_e"
+      ],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h16_moonwell",
+      "status": "PASS",
+      "tris": {
+        "Moonstone": 376,
+        "Ice": 176
+      },
+      "total_tris": 552,
+      "min_rail_clearance": 0.14999955892562866,
+      "nearest_rail": "rail3",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h17_crystal_piers",
+      "status": "FAIL",
+      "tris": {
+        "Ice": 160,
+        "IceCore": 24
+      },
+      "total_tris": 184,
+      "min_rail_clearance": -1.0,
+      "nearest_rail": "green_rail15",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "pier_s_rail6",
+        "pier_s_rail7",
+        "pier_n_rail8",
+        "pier_n_rail9"
+      ],
+      "sweep": null,
+      "failures": [
+        "rail clearance <0.1"
+      ]
+    },
+    {
+      "id": "h17_ice_bridge",
+      "status": "FAIL",
+      "tris": {
+        "Ice": 12,
+        "IceCore": 12,
+        "Timber": 24
+      },
+      "total_tris": 48,
+      "min_rail_clearance": -1.0,
+      "nearest_rail": "green_rail16",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [
+        "bridge_rail10",
+        "bridge_rail11"
+      ],
+      "sweep": null,
+      "failures": [
+        "rail clearance <0.1"
+      ]
+    },
+    {
+      "id": "h17_span_lamp",
+      "status": "FAIL",
+      "tris": {
+        "Brass": 16,
+        "AuroraMint": 44
+      },
+      "total_tris": 60,
+      "min_rail_clearance": 0.7401898503303528,
+      "nearest_rail": "pier_s_rail6",
+      "felt_head_triangle_hits": 57,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": [
+        "felt/head volume intersection"
+      ]
+    },
+    {
+      "id": "h17_aurora_ribbon",
+      "status": "PASS",
+      "tris": {
+        "AuroraMint": 20,
+        "AuroraViolet": 20
+      },
+      "total_tris": 40,
+      "min_rail_clearance": 8.999999612569809,
+      "nearest_rail": "bridge_rail10",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h17_aurora_span",
+      "status": "FAIL",
+      "tris": {
+        "AuroraMint": 12
+      },
+      "total_tris": 12,
+      "min_rail_clearance": 0.14999955892562866,
+      "nearest_rail": "pier_n_rail8",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": {
+        "method": "stationary full 9-second toggle cycle; geometry fixed",
+        "range": [
+          0,
+          9
+        ],
+        "min_clearance": 0.14999955892562866,
+        "rail": "pier_n_rail8",
+        "dressing_clearances": [
+          [
+            0.0,
+            "h17_crystal_piers"
+          ],
+          [
+            1.9999995827674866,
+            "h17_ice_bridge"
+          ],
+          [
+            9.740189462900162,
+            "h17_span_lamp"
+          ],
+          [
+            9.999999403953552,
+            "h17_aurora_ribbon"
+          ],
+          [
+            10.099999606609344,
+            "h17_span_respawn_stone"
+          ]
+        ],
+        "min_dressing_clearance": 0.0,
+        "nearest_dressing": "h17_crystal_piers",
+        "mechanical_joint_exception": null
+      },
+      "failures": [
+        "mover to dressing full sweep <0.05"
+      ]
+    },
+    {
+      "id": "h09_conch_ring",
+      "status": "PASS",
+      "tris": {
+        "Lime": 12
+      },
+      "total_tris": 12,
+      "min_rail_clearance": 10.199999809265137,
+      "nearest_rail": "rail1",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h16_spout_glow",
+      "status": "PASS",
+      "tris": {
+        "AuroraMint": 12
+      },
+      "total_tris": 12,
+      "min_rail_clearance": 0.4999995231628418,
+      "nearest_rail": "spout_e",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    },
+    {
+      "id": "h17_span_respawn_stone",
+      "status": "PASS",
+      "tris": {
+        "Lime": 12
+      },
+      "total_tris": 12,
+      "min_rail_clearance": 1.0999992489814758,
+      "nearest_rail": "pier_s_rail6",
+      "felt_head_triangle_hits": 0,
+      "skin_ids": [],
+      "sweep": null,
+      "failures": []
+    }
+  ],
+  "hole_tris": {
+    "9": 2708,
+    "10": 2612,
+    "11": 4138,
+    "12": 1800,
+    "13": 6164,
+    "15": 68,
+    "16": 1604,
+    "17": 356
+  }
+}

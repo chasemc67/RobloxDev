@@ -1,0 +1,41 @@
+# Aurora Archipelago models
+
+## Batch 1
+
+38 assets; 27,878 triangles; largest mesh 3,008. **ALL PASS: YES**, including exported geometry and FBX reimport. No remaining skipped pieces.
+
+[Summary](_src/props_batch1/summary.md), [manifest](props_batch1_manifest.json), [fitcheck](fitcheck_props_batch1.txt), [contact sheet](previews/props_batch1/contact_sheet.jpg).
+
+## Batch 2
+
+36 assets; 26,790 triangles; largest mesh 4,416. **ALL PASS: YES**, including exported geometry and FBX reimport. No remaining skipped pieces.
+
+[Summary](_src/props_batch2/summary.md), [manifest](props_batch2_manifest.json), [fitcheck](fitcheck_props_batch2.txt), [contact sheet](previews/props_batch2/contact_sheet.jpg).
+
+## Skip-fix
+
+18 requested props built/rebuilt against holes.json MD5 `2f1402fe19fc98a303c4e58dae680be9`. Existing exports, including the H12 wheel and H15 world waterfall, preserved byte for byte. Original overwritten artifacts backed up in each batch source folder under `_backup_pre_skipfix`. Updated world pivots, measured fitchecks, changed previews and silhouette comparisons, contact sheets and source scenes.
+
+NOTE: H17 piers/bridge intentionally skin their own railed felt; H15 glass PlayerGuard parapet crosses the lip; H12 wheel retains its authorized 0.06 felt gap. H15 Great Frozen Falls stays at world base [20,36,-398], top [20,182,-398]; all 18 world-space checks pass. Both summaries contain current inventory, measurements and rebuild instructions.
+
+Blender5.2 headless CPU only through `_src/run_blender.ps1`. FBX forward -Z/upY, scale1, exact base/hinge pivots, one mesh per material; decoration noncollidable. Gameplay colliders and motions remain owned by holes.json.
+
+
+## Coral rev3
+
+18 H7/H8 coral exports updated; overlapping lumpy crowns, flattened branching fans and neon tips. Fitcheck and FBX reimport ALL PASS. Other assets unchanged. See [_src/props_batch1/summary.md](_src/props_batch1/summary.md#coral-rev3) for triangle changes and footprint limits.
+
+
+## Rev4
+
+21 requested assets revised: 18 H7/H8 corals, H17 ice bridge, H15 ice parapet and H9 coral spit. Separate fan lobes and neon tips; bevelled snow-capped bridge rails/posts; uneven frosted ice blocks/icicles; pink/purple bumpy coral skirt. Every changed piece <=3000 tris. Both exported fitchecks and FBX reimport checks ALL PASS. Unrelated exports, anchors/pivots, exact H8 collider bases and existing exceptions preserved. Spit nose flare reduced to 0.18 and skirt top lowered below felt slab. Backups in each batch `_backup_pre_rev4`. See both summaries Rev4 sections for before/after triangles and measured clearances.
+
+
+## Coral rev5
+
+18 H7/H8 corals revised with flat forked paddles and 6-10 neon tips. Fitcheck and FBX reimport ALL PASS. Exact bases and placements preserved. See `_src/props_batch1/summary.md` for triangles, measured crown W:H, and geometric constraints. Rev4 files backed up in `_backup_rev4_corals/`.
+
+
+## Coral rev6
+
+18 H7/H8 corals revised with a 0.5H bare trunk and one lumpy rounded crown. Fitcheck and FBX reimport ALL PASS. Exact bases and placements preserved. See `_src/props_batch1/summary.md` for triangles, measured crown W:H, and geometric constraints. Rev5 files backed up in `_backup_rev5_corals/`.

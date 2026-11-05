@@ -1,0 +1,99 @@
+Sugarloaf Canyon pass 6 fit check vs holes.json @ 0.15 studs  (2026-10-12 11:50)
+holes.json: 18 holes (source of truth; world_offset/world_yaw, world = R_y(yaw)*local + offset)
+layout.json: 874 instances + 2 gondola cabin sweeps; 1329852 triangles tested (tri cache verified against manifest tris + bbox for all placed pieces; gondola_cable/cabin freshly cached)
+
+[1] hole play volumes (felt+column, walls/bumpers, cup+flag, tee, drops, hazards, moving sweeps, teleports)
+  PASS H1  Trailhead Gate            13 volumes; nearest geometry 0.200 studs (h01_ground#823@[60.0, 18.0, 470.0] vs wall:rail4)
+  PASS H2  Mine-Cart Junction        35 volumes; nearest geometry 0.200 studs (h02_ground#826@[100.0, 18.0, 410.0] vs wall:rock17)
+  PASS H3  Ranger's Riverbend        23 volumes; nearest geometry 0.200 studs (h03_ground#829@[-95.0, 18.0, 330.0] vs wall:rail3)
+  PASS H4  Crystal Corridor          15 volumes; nearest geometry 0.200 studs (h04_ground#831@[200.0, 18.0, 330.0] vs wall:rail4)
+  PASS H5  Echo Slot                 38 volumes; nearest geometry 0.200 studs (h05_ground#834@[280.0, 22.0, 326.0] vs wall:rock8)
+  PASS H6  Flash Flood              465 volumes; nearest geometry 0.200 studs (h06_ground#837@[280.0, 26.0, 255.0] vs wall:rail2)
+  PASS H7  Rope Bridge Run           28 volumes; nearest geometry 0.200 studs (h07_ground#840@[340.0, 70.0, 150.0] vs wall:rail5)
+  PASS H8  Gumdrop Gulch             43 volumes; nearest geometry 0.200 studs (h08_ground#843@[360.0, 70.0, 55.0] vs wall:rail12)
+  PASS H9  Lollipop Windmill      17356 volumes; nearest geometry 0.200 studs (h09_ground#846@[330.0, 70.0, -110.0] vs wall:rail1)
+  PASS H10 Sluice Chute              22 volumes; nearest geometry 0.200 studs (h10_ground#849@[290.0, 116.0, -300.0] vs wall:rail10)
+  PASS H11 Floodgate Lock           356 volumes; nearest geometry 0.200 studs (h11_ground#852@[150.0, 116.0, -252.0] vs wall:quay_rail14)
+  PASS H12 Intake Tower              27 volumes; nearest geometry 0.200 studs (h12_ground#855@[-200.0, 116.0, -270.0] vs wall:rail6)
+  PASS H13 Hoodoo Maze               32 volumes; nearest geometry 0.200 studs (h13_ground#858@[-300.0, 150.0, -290.0] vs wall:rock_w9)
+  PASS H14 Ore Bucket Swing        1113 volumes; nearest geometry 0.200 studs (h14_ground#861@[-300.0, 150.0, -200.0] vs wall:rail1)
+  PASS H15 Sugar Dune                21 volumes; nearest geometry 0.200 studs (h15_ground#864@[-300.0, 150.0, -115.0] vs wall:dune_rail1)
+  PASS H16 Sinkhole Drop             20 volumes; nearest geometry 0.200 studs (h16_ground#867@[-300.0, 190.0, 112.0] vs wall:deck_rail1)
+  PASS H17 Sundial                 1509 volumes; nearest geometry 0.200 studs (h17_ground#870@[-345.0, 190.0, 232.0] vs wall:rail2)
+  PASS H18 Sunset Arch               33 volumes; nearest geometry 0.200 studs (h18_ground#873@[-420.0, 190.0, 236.0] vs wall:rail12)
+  pass-6 hole dressing in [1]: 54 pieces, intrusions: ZERO
+
+[A] hole footprints (sc_fitcheck rule): every triangle >= 2.0 studs (XZ) from every world.json footprint_bbox. Gondola line (cable, tower, cabin sweep): triangles whose lowest point is more than 8 studs above the hole's tee/origin y are overflight (judged by the 3D play-column test in [1]) and listed as INFO. Pass-6 hole dressing (54 pieces, group hole_dressing) is exempt here (placed inside hole areas by design; judged by [1] at 0.15 and the lane rules [C]).
+  PASS H1  Trailhead Gate       nearest ground piece walk_boardwalk_6x12 at 2.24  [INFO gondola_cable overflight 12 tris, lowest 42.4 above origin y; gondola_cabin(sweep) overflight 2543 tris, lowest 37.5 above origin y]
+  PASS H2  Mine-Cart Junction   nearest ground piece walk_boardwalk_6x12 at 2.17
+  PASS H3  Ranger's Riverbend   nearest ground piece ranger_footbridge at 2.90
+  PASS H4  Crystal Corridor     nearest ground piece narrows_crystals at 6.40
+  PASS H5  Echo Slot            nearest ground piece landing_6x4 at 2.10
+  PASS H6  Flash Flood          nearest ground piece landing_6x4 at 5.42
+  PASS H7  Rope Bridge Run      nearest ground piece cliff_w24_h24_p0 at 4.25
+  PASS H8  Gumdrop Gulch        nearest ground piece cacti_taffy_north at 9.04
+  PASS H9  Lollipop Windmill    nearest ground piece scatter_taffy_mesa at 13.66
+  PASS H10 Sluice Chute         nearest ground piece landing_6x4 at 3.16
+  PASS H11 Floodgate Lock       nearest ground piece cliff_w24_h48_p2 at 2.65
+  PASS H12 Intake Tower         nearest ground piece scatter_dam at 11.35
+  PASS H13 Hoodoo Maze          nearest ground piece scatter_hoodoo_garden at 9.10
+  PASS H14 Ore Bucket Swing     nearest ground piece hoodoos_mid at 11.11
+  PASS H15 Sugar Dune           nearest ground piece scatter_hoodoo_garden at 9.75
+  PASS H16 Sinkhole Drop        nearest ground piece landing_6x4 at 4.11
+  PASS H17 Sundial              nearest ground piece scatter_crown at 4.86  [INFO gondola_cable overflight 84 tris, lowest 14.5 above origin y; gondola_cabin(sweep) overflight 16996 tris, lowest 9.5 above origin y; gondola_cabin(sweep) overflight 22821 tris, lowest 8.8 above origin y]
+  PASS H18 Sunset Arch          nearest ground piece cliff_w24_h48_p5 at 4.90
+
+[B] walkways: nothing between walk y + 0.5 and walk y + 8.0 over the full walkway width (floor kit exempt; last 6.0 studs before a lift/gondola boarding point exempt), incl. gondola cable + cabin sweep. Edge railings (railing_12, peppermint_dam): triangles lying entirely within the outer 0.6 studs of the corridor width and topping out <= 4.0 above the walk are railings AT the walkway edge, not overhead geometry -> skipped (INFO); any other triangle of those pieces still counts
+  INFO edge railing skipped on p_h11_h12 seg 4: railing_12#37@[93.0, 116.0, -311.2] 36 tris
+  INFO edge railing skipped on p_h11_h12 seg 5: railing_12#37@[93.0, 116.0, -311.2] 240 tris; railing_12#38@[79.5, 116.0, -310.5] 244 tris; railing_12#39@[66.0, 116.0, -309.7] 244 tris; railing_12#40@[52.5, 116.0, -309.0] 240 tris
+  INFO edge railing skipped on p_h11_h12 seg 6: peppermint_dam#2@[0.0, 17.0, -305.0] 16 tris; railing_12#40@[52.5, 116.0, -309.0] 36 tris; railing_12#41@[-52.9, 116.0, -308.4] 8 tris
+  INFO edge railing skipped on p_h11_h12 seg 7: railing_12#41@[-52.9, 116.0, -308.4] 240 tris; railing_12#42@[-66.4, 116.0, -307.9] 244 tris; railing_12#43@[-79.9, 116.0, -307.4] 244 tris; railing_12#44@[-93.4, 116.0, -306.9] 242 tris
+  INFO edge railing skipped on p_h11_h12 seg 8: railing_12#44@[-93.4, 116.0, -306.9] 8 tris
+  INFO gondola (cable + cabin sweep) lowest triangle over p_h16_h17 seg 4: 16.50 studs above the walk (PASS vs >= 8.0)
+  INFO gondola (cable + cabin sweep) lowest triangle over p_h18_hub seg 3: 10.04 studs above the walk (PASS vs >= 8.0)
+  INFO gondola (cable + cabin sweep) lowest triangle over p_spawn_h1 seg 0: 27.20 studs above the walk (PASS vs >= 8.0)
+  INFO gondola (cable + cabin sweep) lowest triangle over p_spawn_h1 seg 1: 34.49 studs above the walk (PASS vs >= 8.0)
+  PASS: 77 walkway segments checked, 0 with intrusions; lowest overhead geometry 9.25 studs (licorice_rope_bridge over p_h8_h9 seg 1)
+
+[C] lane rules (pass-6 hole dressing): nothing taller than 2 studs above the felt within 3 studs of a rail; no plant geometry (pieces *_plants) within 1.5 studs of the rail strip. Distances in XZ to the rail box footprint, height vs the rail's felt level (rail top - 1.0)
+  PASS H1  Trailhead Gate           2917 dressing tris within 3 of a rail
+  PASS H2  Mine-Cart Junction       9078 dressing tris within 3 of a rail
+  PASS H3  Ranger's Riverbend       3943 dressing tris within 3 of a rail
+  PASS H4  Crystal Corridor         2629 dressing tris within 3 of a rail
+  PASS H5  Echo Slot                7228 dressing tris within 3 of a rail
+  PASS H6  Flash Flood              8476 dressing tris within 3 of a rail
+  PASS H7  Rope Bridge Run          3724 dressing tris within 3 of a rail
+  PASS H8  Gumdrop Gulch            5885 dressing tris within 3 of a rail
+  PASS H9  Lollipop Windmill        7037 dressing tris within 3 of a rail
+  PASS H10 Sluice Chute             3267 dressing tris within 3 of a rail
+  PASS H11 Floodgate Lock           6934 dressing tris within 3 of a rail
+  PASS H12 Intake Tower             7553 dressing tris within 3 of a rail
+  PASS H13 Hoodoo Maze              7622 dressing tris within 3 of a rail
+  PASS H14 Ore Bucket Swing         3556 dressing tris within 3 of a rail
+  PASS H15 Sugar Dune               1451 dressing tris within 3 of a rail
+  PASS H16 Sinkhole Drop            2262 dressing tris within 3 of a rail
+  PASS H17 Sundial                  3722 dressing tris within 3 of a rail
+  PASS H18 Sunset Arch              8959 dressing tris within 3 of a rail
+
+[D] Quest near-field budget (info): placed triangles whose centroid lies within 60 / 150 studs of each hole footprint centre (before = pass-5 layout, _cache/p6/nearfield_before.json); budget ~40k per hole
+  hole                        <=60 before  <=60 after   cliff  dressing  <=150 after
+  H1  Trailhead Gate                 4082       18001       0     13919        52649
+  H2  Mine-Cart Junction             4195       22625       0     18430        67629
+  H3  Ranger's Riverbend             2996       12770       0      9774        29686
+  H4  Crystal Corridor              13433       24765   15591      7827        87803
+  H5  Echo Slot                     12471       29086   14095     13732        76049
+  H6  Flash Flood                   11834       25617   10954     11257        82962
+  H7  Rope Bridge Run                2535       11572    2933      7757        62868
+  H8  Gumdrop Gulch                  2022       12964      39     10903        62158
+  H9  Lollipop Windmill              3344       17092    2211     12618        50347
+  H10 Sluice Chute                   1545        8535    1565      6362        34321
+  H11 Floodgate Lock                 5169       17065    7369      9348        46741
+  H12 Intake Tower                   4044       19083    4321     13245        66706
+  H13 Hoodoo Maze                    2463       17427     318     14667        55254
+  H14 Ore Bucket Swing               2308       11803    1204      8495        57311
+  H15 Sugar Dune                      319        7253    1183      5951        39737
+  H16 Sinkhole Drop                  8368       19141    8647      7932        71935
+  H17 Sundial                        2505       12330    1550      8338        88188
+  H18 Sunset Arch                    5983       24714    5449     16485        78635
+
+RESULT: ALL PASS  (27s)

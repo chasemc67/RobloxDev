@@ -1,0 +1,143 @@
+{
+ "set": "mine_head",
+ "date": "2026-10-12",
+ "fitcheck": "fitcheck_mine_head.txt (ALL PASS)",
+ "world_pivot": [
+  134.0,
+  18.3,
+  392.0
+ ],
+ "yaw_deg": 0.0,
+ "source": "props.md P2 + world.json pois mine-head",
+ "instances": 1,
+ "parts": [
+  {
+   "id": "mine_head",
+   "fbx": "fbx/mine_head/mine_head.fbx",
+   "pivot": "base centre (world [134,18.3,392], yaw 0)",
+   "envelope_props_md": [
+    14,
+    18,
+    12
+   ],
+   "report": {
+    "id": "mine_head",
+    "hole": "mine_head",
+    "fbx": "fbx/mine_head/mine_head.fbx",
+    "anchor_local": [
+     0,
+     0,
+     0
+    ],
+    "envelope": [
+     14,
+     18,
+     12
+    ],
+    "tris": 1346,
+    "max_mesh_tris": 228,
+    "meshes": [
+     {
+      "mesh": "mine_head__Brass",
+      "material": "Brass",
+      "color": "#C9973A",
+      "roblox_material": "Metal",
+      "tris": 192
+     },
+     {
+      "mesh": "mine_head__Brick",
+      "material": "Brick",
+      "color": "#A8483A",
+      "roblox_material": "Brick",
+      "tris": 24
+     },
+     {
+      "mesh": "mine_head__Bubblegum",
+      "material": "Bubblegum",
+      "color": "#F78FB3",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "mine_head__CreamTaffy",
+      "material": "CreamTaffy",
+      "color": "#F6E3C8",
+      "roblox_material": "Sandstone",
+      "tris": 14
+     },
+     {
+      "mesh": "mine_head__CrystalGlow",
+      "material": "CrystalGlow",
+      "color": "#FF6FA8",
+      "roblox_material": "Neon",
+      "tris": 24
+     },
+     {
+      "mesh": "mine_head__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "tris": 184
+     },
+     {
+      "mesh": "mine_head__Lemon",
+      "material": "Lemon",
+      "color": "#FFD84A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 24
+     },
+     {
+      "mesh": "mine_head__Licorice",
+      "material": "Licorice",
+      "color": "#2A2228",
+      "roblox_material": "SmoothPlastic",
+      "tris": 188
+     },
+     {
+      "mesh": "mine_head__MintWhite",
+      "material": "MintWhite",
+      "color": "#FFF8F0",
+      "roblox_material": "SmoothPlastic",
+      "tris": 192
+     },
+     {
+      "mesh": "mine_head__PepRed",
+      "material": "PepRed",
+      "color": "#D9343A",
+      "roblox_material": "SmoothPlastic",
+      "tris": 228
+     },
+     {
+      "mesh": "mine_head__Timber",
+      "material": "Timber",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "tris": 216
+     },
+     {
+      "mesh": "mine_head__Window",
+      "material": "Window",
+      "color": "#9FD8E8",
+      "roblox_material": "Glass",
+      "tris": 36
+     }
+    ],
+    "notes": [
+     "Candy-striped headframe with sheave wheel over a timber shaft collar (west), winding house with drum, chimney and gable roof (east), ore cart heaped with rock candy on a short track between them.",
+     "Base y 0 = world 18.3 (world.json POI, ground sampled from terrain). The brick/timber plinths are 0.5-0.8 tall so small terrain undulation stays hidden; sink the model if the sampled ground is lower."
+    ]
+   },
+   "notes": [
+    "Candy-striped headframe with sheave wheel over a timber shaft collar (west), winding house with drum, chimney and gable roof (east), ore cart heaped with rock candy on a short track between them.",
+    "Base y 0 = world 18.3 (world.json POI, ground sampled from terrain). The brick/timber plinths are 0.5-0.8 tall so small terrain undulation stays hidden; sink the model if the sampled ground is lower."
+   ],
+   "visual_only": true,
+   "CanCollide": false,
+   "fbx_export": {
+    "forward": "-Z",
+    "up": "Y",
+    "scale": 1
+   }
+  }
+ ]
+}

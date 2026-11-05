@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Concept art, single course portal archway on a warm painted wooden seaside boardwalk at golden hour, whimsical stylized toy-like 3D render, chunky rounded beveled shapes, original design, front three-quarter view, arch about 16 wide 18 tall with a 10x12 inner opening filled by a softly glowing swirling portal surface, brass-and-parchment nameplate on the lintel left blank (no text, no letters), rope railings and brass trim, sunset sea behind. Match the reference boardwalk style. Theme Aurora Archipelago: stacked purple ice crystal arch (#7B5BD6, glowing cyan tips #9FE6F2) on a dark rock base dusted with snow #EEF3F7, green and violet aurora ribbon portal surface, a small round penguin-puffin figure beside.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/boardwalk/concept_arches.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1693,
+    "outputTokens": 1078,
+    "totalTokens": 2771
+  },
+  "cost": 0.045329,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791822954,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1508,
+          "textTokens": 185
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791822921651,
+                "endTime": 1791822954191,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.045329",
+      "marketCost": "0.045329",
+      "surchargeCost": "0",
+      "gatewayCost": "0.045329",
+      "inferenceCost": "0.045329",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.045329",
+      "generationId": "gen_01M4RFFZGVZVK867ZWAZDA8P7Y"
+    }
+  },
+  "seconds": 34.3,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/portal_aurora_archipelago.png"
+  ]
+}

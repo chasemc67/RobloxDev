@@ -1,0 +1,84 @@
+{
+ "name": "bw_deck_plank_b",
+ "group": "structure",
+ "fbx": "fbx/bw_deck_plank_b.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Deck tile variant B (atlas deck strip U 0.5-1.0, different board joints/tints than A).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  10.0,
+  1.0,
+  10.0
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  0.5,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -5.0,
+  0.0,
+  -5.0
+ ],
+ "bbox_max_roblox": [
+  5.0,
+  1.0,
+  5.0
+ ],
+ "target_size_studs": [
+  10,
+  1,
+  10
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 10,
+ "tris_max": 100,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_deck_plank_b__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 10,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    0.5,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    0.5,
+    -0.0
+   ],
+   "size": [
+    10.0,
+    1.0,
+    10.0
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": "xz",
+ "can_collide": false
+}

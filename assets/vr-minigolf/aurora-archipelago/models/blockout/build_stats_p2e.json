@@ -1,0 +1,177 @@
+{
+  "snow_course": "#C9D6E0",
+  "felt_bank": "#308369",
+  "apron": {
+    "course_apron_00__SnowCourse": {
+      "holes": [
+        1,
+        6
+      ],
+      "tris": 13793,
+      "dropped_non_hugging_tris": 17,
+      "gap_to_terrain_min": 0.0288,
+      "gap_to_terrain_max": 0.0745
+    },
+    "course_apron_01__SnowCourse": {
+      "holes": [
+        7,
+        12
+      ],
+      "tris": 15173,
+      "dropped_non_hugging_tris": 1,
+      "gap_to_terrain_min": 0.0498,
+      "gap_to_terrain_max": 0.0502
+    },
+    "course_apron_02__SnowCourse": {
+      "holes": [
+        13,
+        18
+      ],
+      "tris": 13042,
+      "dropped_non_hugging_tris": 8,
+      "gap_to_terrain_min": 0.0498,
+      "gap_to_terrain_max": 0.0503
+    }
+  },
+  "apron_tris_per_hole": {
+    "1": 1588,
+    "2": 2564,
+    "3": 2502,
+    "4": 2150,
+    "5": 2122,
+    "6": 2884,
+    "7": 2218,
+    "8": 2288,
+    "9": 3574,
+    "10": 2114,
+    "11": 2566,
+    "12": 2414,
+    "13": 2350,
+    "14": 1942,
+    "15": 1630,
+    "16": 1742,
+    "17": 2422,
+    "18": 2964
+  },
+  "banks": {
+    "H1": {
+      "bank_strips": 7,
+      "railed_strips": 7,
+      "corner_extensions": 10,
+      "skipped_samples_shared_buried_or_over_low_ground": 150
+    },
+    "H2": {
+      "bank_strips": 29,
+      "railed_strips": 29,
+      "corner_extensions": 20,
+      "skipped_samples_shared_buried_or_over_low_ground": 1073
+    },
+    "H3": {
+      "bank_strips": 24,
+      "railed_strips": 22,
+      "corner_extensions": 8,
+      "skipped_samples_shared_buried_or_over_low_ground": 1496
+    },
+    "H4": {
+      "bank_strips": 3,
+      "railed_strips": 3,
+      "corner_extensions": 4,
+      "skipped_samples_shared_buried_or_over_low_ground": 743
+    },
+    "H5": {
+      "bank_strips": 10,
+      "railed_strips": 10,
+      "corner_extensions": 12,
+      "skipped_samples_shared_buried_or_over_low_ground": 667
+    },
+    "H6": {
+      "bank_strips": 27,
+      "railed_strips": 22,
+      "corner_extensions": 4,
+      "skipped_samples_shared_buried_or_over_low_ground": 1759
+    },
+    "H7": {
+      "bank_strips": 26,
+      "railed_strips": 26,
+      "corner_extensions": 12,
+      "skipped_samples_shared_buried_or_over_low_ground": 2051
+    },
+    "H8": {
+      "bank_strips": 10,
+      "railed_strips": 10,
+      "corner_extensions": 12,
+      "skipped_samples_shared_buried_or_over_low_ground": 499
+    },
+    "H9": {
+      "bank_strips": 25,
+      "railed_strips": 22,
+      "corner_extensions": 18,
+      "skipped_samples_shared_buried_or_over_low_ground": 484
+    },
+    "H10": {
+      "bank_strips": 12,
+      "railed_strips": 12,
+      "corner_extensions": 12,
+      "skipped_samples_shared_buried_or_over_low_ground": 837
+    },
+    "H11": {
+      "bank_strips": 28,
+      "railed_strips": 28,
+      "corner_extensions": 18,
+      "skipped_samples_shared_buried_or_over_low_ground": 809
+    },
+    "H12": {
+      "bank_strips": 22,
+      "railed_strips": 22,
+      "corner_extensions": 18,
+      "skipped_samples_shared_buried_or_over_low_ground": 561
+    },
+    "H13": {
+      "bank_strips": 8,
+      "railed_strips": 8,
+      "corner_extensions": 12,
+      "skipped_samples_shared_buried_or_over_low_ground": 320
+    },
+    "H14": {
+      "bank_strips": 9,
+      "railed_strips": 9,
+      "corner_extensions": 4,
+      "skipped_samples_shared_buried_or_over_low_ground": 1062
+    },
+    "H15": {
+      "bank_strips": 16,
+      "railed_strips": 16,
+      "corner_extensions": 4,
+      "skipped_samples_shared_buried_or_over_low_ground": 1112
+    },
+    "H16": {
+      "bank_strips": 19,
+      "railed_strips": 19,
+      "corner_extensions": 8,
+      "skipped_samples_shared_buried_or_over_low_ground": 1724
+    },
+    "H17": {
+      "bank_strips": 19,
+      "railed_strips": 19,
+      "corner_extensions": 10,
+      "skipped_samples_shared_buried_or_over_low_ground": 1870
+    },
+    "H18": {
+      "bank_strips": 20,
+      "railed_strips": 20,
+      "corner_extensions": 8,
+      "skipped_samples_shared_buried_or_over_low_ground": 2292
+    }
+  },
+  "params": {
+    "apron_offset": 0.05,
+    "band_studs": [
+      5.0,
+      7.0
+    ],
+    "lattice": 1.0,
+    "bank_drop": 0.3,
+    "bank_width_beyond_edge_or_rail": 0.6,
+    "skirt_below_felt_base": 0.46
+  }
+}

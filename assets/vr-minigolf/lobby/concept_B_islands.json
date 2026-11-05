@@ -1,0 +1,76 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "First-person view from the player spawn point at VR eye height (about 5 feet), stylized warm cartoon 3D game concept painting, chunky rounded low-poly Roblox-friendly shapes, brass trim, parchment panels, glowing lanterns, original whimsical mini golf design matching the reference art style. Directly ahead a few steps away stands a physical in-world course-select board with three large course cards: 'Lantern Grove' (lit, playable), 'Sugarloaf Canyon' (greyed with COMING SOON ribbon), 'Aurora Archipelago' (greyed with COMING SOON ribbon), matching the reference cards. Behind it a walkable hangout space: a floating island hub in the sky at golden hour, central grassy island with a brass orrery fountain, three bridge-linked floating islets each with a portal ring (lantern forest, red sandstone canyon, aurora ice isles), a practice putting green on a side islet, picnic and swing seats, brass-framed parchment leaderboard banners on poles. Clouds below, safe railings on edges. No people, no UI overlay.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/title_bg_v2.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_lanterngrove_v2.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_sugarloafcanyon_color_clean.png"
+  ],
+  "mode": "generateImage",
+  "size": "2048x1152",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 3815,
+    "outputTokens": 1413,
+    "totalTokens": 5228
+  },
+  "cost": 0.072133,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791771093,
+          "size": "2048x1152",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 3556,
+          "textTokens": 259
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791771055213,
+                "endTime": 1791771094169,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.072133",
+      "marketCost": "0.072133",
+      "surchargeCost": "0",
+      "gatewayCost": "0.072133",
+      "inferenceCost": "0.072133",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.072133",
+      "generationId": "gen_01M4PY14M64M4XQRX8KJPPDB78"
+    }
+  },
+  "seconds": 41.3,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/concept_B_islands.png"
+  ]
+}

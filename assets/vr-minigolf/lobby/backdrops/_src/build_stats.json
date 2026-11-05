@@ -1,0 +1,681 @@
+{
+ "LG2": {
+  "fbx": "fbx/bd_lg2_lantern_grove.fbx",
+  "extra": {
+   "neon": {
+    "LG2_lanterns_neon": "#FFC867"
+   }
+  },
+  "zone_bbox": {
+   "min": [
+    -126.61,
+    -20.59,
+    -106.11
+   ],
+   "max": [
+    129.73,
+    213.0,
+    107.21
+   ],
+   "size": [
+    256.35,
+    233.6,
+    213.32
+   ]
+  },
+  "meshes": [
+   {
+    "name": "LG2_root",
+    "tris": 12,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -0.5,
+      -0.5,
+      -0.5
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "size": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   },
+   {
+    "name": "LG2_island",
+    "tris": 1708,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -120.62,
+      -20.59,
+      -106.11
+     ],
+     "max": [
+      126.42,
+      29.02,
+      107.21
+     ],
+     "size": [
+      247.04,
+      49.61,
+      213.32
+     ]
+    }
+   },
+   {
+    "name": "LG2_tree_trunk",
+    "tris": 1536,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -77.47,
+      18.81,
+      -65.73
+     ],
+     "max": [
+      72.78,
+      147.85,
+      68.58
+     ],
+     "size": [
+      150.25,
+      129.03,
+      134.32
+     ]
+    }
+   },
+   {
+    "name": "LG2_tree_canopy",
+    "tris": 2880,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -126.61,
+      128.07,
+      -104.91
+     ],
+     "max": [
+      129.73,
+      213.0,
+      105.95
+     ],
+     "size": [
+      256.35,
+      84.94,
+      210.86
+     ]
+    }
+   },
+   {
+    "name": "LG2_filler_trees",
+    "tris": 696,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -124.97,
+      22.4,
+      -64.66
+     ],
+     "max": [
+      123.87,
+      75.81,
+      -6.05
+     ],
+     "size": [
+      248.84,
+      53.41,
+      58.6
+     ]
+    }
+   },
+   {
+    "name": "LG2_lantern_caps",
+    "tris": 680,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -111.85,
+      96.23,
+      -96.98
+     ],
+     "max": [
+      108.36,
+      142.4,
+      94.84
+     ],
+     "size": [
+      220.22,
+      46.17,
+      191.82
+     ]
+    }
+   },
+   {
+    "name": "LG2_lanterns_neon",
+    "tris": 560,
+    "material": "BD_Neon_Lantern",
+    "neon_hex": "#FFC867",
+    "bbox": {
+     "min": [
+      -113.45,
+      100.07,
+      -98.03
+     ],
+     "max": [
+      109.96,
+      123.39,
+      95.89
+     ],
+     "size": [
+      223.42,
+      23.32,
+      193.92
+     ]
+    }
+   }
+  ],
+  "tris": 8072
+ },
+ "SL1": {
+  "fbx": "fbx/bd_sl1_sugarloaf_canyon.fbx",
+  "extra": {
+   "neon": {
+    "SL1_crystals_neon": "#F59AC8"
+   },
+   "cable_local_unscaled": {
+    "a": [
+     -30.0,
+     0.0,
+     57.400001525878906
+    ],
+    "b": [
+     26.0,
+     4.0,
+     65.4000015258789
+    ]
+   },
+   "cabin_centre_local_unscaled": [
+    -2.0,
+    2.0,
+    54.900001525878906
+   ]
+  },
+  "zone_bbox": {
+   "min": [
+    -255.56,
+    -11.06,
+    -234.68
+   ],
+   "max": [
+    246.9,
+    198.9,
+    186.32
+   ],
+   "size": [
+    502.46,
+    209.96,
+    421.01
+   ]
+  },
+  "meshes": [
+   {
+    "name": "SL1_root",
+    "tris": 12,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -0.5,
+      -0.5,
+      -0.5
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "size": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   },
+   {
+    "name": "SL1_mesas",
+    "tris": 2624,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -255.56,
+      -9.4,
+      -138.64
+     ],
+     "max": [
+      246.9,
+      164.34,
+      89.56
+     ],
+     "size": [
+      502.46,
+      173.74,
+      228.2
+     ]
+    }
+   },
+   {
+    "name": "SL1_mesa_tops",
+    "tris": 464,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -237.3,
+      91.2,
+      -119.89
+     ],
+     "max": [
+      228.12,
+      166.2,
+      69.93
+     ],
+     "size": [
+      465.42,
+      75.0,
+      189.82
+     ]
+    }
+   },
+   {
+    "name": "SL1_shore",
+    "tris": 284,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -210.74,
+      -11.06,
+      -234.68
+     ],
+     "max": [
+      210.4,
+      7.0,
+      186.32
+     ],
+     "size": [
+      421.15,
+      18.06,
+      421.01
+     ]
+    }
+   },
+   {
+    "name": "SL1_cable_pylons",
+    "tris": 76,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -100.5,
+      142.2,
+      -15.6
+     ],
+     "max": [
+      88.5,
+      198.9,
+      3.6
+     ],
+     "size": [
+      189.0,
+      56.7,
+      19.2
+     ]
+    }
+   },
+   {
+    "name": "SL1_cascade",
+    "tris": 88,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      52.32,
+      -4.5,
+      73.5
+     ],
+     "max": [
+      103.68,
+      156.0,
+      114.0
+     ],
+     "size": [
+      51.36,
+      160.5,
+      40.5
+     ]
+    }
+   },
+   {
+    "name": "SL1_gondola_cabin",
+    "tris": 48,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -19.5,
+      155.7,
+      -16.5
+     ],
+     "max": [
+      7.5,
+      185.1,
+      4.5
+     ],
+     "size": [
+      27.0,
+      29.4,
+      21.0
+     ]
+    }
+   },
+   {
+    "name": "SL1_crystals_neon",
+    "tris": 240,
+    "material": "BD_Neon_Crystal",
+    "neon_hex": "#F59AC8",
+    "bbox": {
+     "min": [
+      -158.67,
+      0.05,
+      45.69
+     ],
+     "max": [
+      169.2,
+      33.2,
+      113.4
+     ],
+     "size": [
+      327.87,
+      33.15,
+      67.71
+     ]
+    }
+   }
+  ],
+  "tris": 3836
+ },
+ "AU2": {
+  "fbx": "fbx/bd_au2_aurora_archipelago.fbx",
+  "extra": {
+   "islands": {
+    "main": {
+     "centre_local_unscaled": [
+      0,
+      0,
+      50
+     ]
+    },
+    "left": {
+     "centre_local_unscaled": [
+      -40,
+      12,
+      36
+     ]
+    },
+    "right": {
+     "centre_local_unscaled": [
+      38,
+      -2,
+      40
+     ]
+    }
+   },
+   "neon": {
+    "AU2_crystals_main_neon": "#9FE6F2",
+    "AU2_crystals_left_neon": "#9FE6F2",
+    "AU2_crystals_right_neon": "#9FE6F2",
+    "AU2_crystals_amethyst_neon": "#B07CF0"
+   }
+  },
+  "zone_bbox": {
+   "min": [
+    -194.57,
+    -0.5,
+    -78.32
+   ],
+   "max": [
+    202.2,
+    281.62,
+    71.64
+   ],
+   "size": [
+    396.77,
+    282.12,
+    149.96
+   ]
+  },
+  "meshes": [
+   {
+    "name": "AU2_root",
+    "tris": 12,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -0.5,
+      -0.5,
+      -0.5
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "size": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   },
+   {
+    "name": "AU2_island_main",
+    "tris": 1660,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -66.63,
+      33.19,
+      -66.92
+     ],
+     "max": [
+      67.86,
+      183.48,
+      67.32
+     ],
+     "size": [
+      134.49,
+      150.3,
+      134.24
+     ]
+    }
+   },
+   {
+    "name": "AU2_crystals_main_neon",
+    "tris": 248,
+    "material": "BD_Neon_Ice",
+    "neon_hex": "#9FE6F2",
+    "bbox": {
+     "min": [
+      -39.87,
+      63.07,
+      -24.41
+     ],
+     "max": [
+      34.8,
+      281.62,
+      71.64
+     ],
+     "size": [
+      74.67,
+      218.55,
+      96.05
+     ]
+    }
+   },
+   {
+    "name": "AU2_island_left",
+    "tris": 700,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -167.98,
+      36.47,
+      -78.32
+     ],
+     "max": [
+      -86.84,
+      129.84,
+      1.39
+     ],
+     "size": [
+      81.14,
+      93.37,
+      79.71
+     ]
+    }
+   },
+   {
+    "name": "AU2_crystals_left_neon",
+    "tris": 140,
+    "material": "BD_Neon_Ice",
+    "neon_hex": "#9FE6F2",
+    "bbox": {
+     "min": [
+      -138.29,
+      67.98,
+      -52.88
+     ],
+     "max": [
+      -109.35,
+      154.88,
+      5.48
+     ],
+     "size": [
+      28.94,
+      86.9,
+      58.36
+     ]
+    }
+   },
+   {
+    "name": "AU2_island_right",
+    "tris": 700,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      77.74,
+      45.67,
+      -37.68
+     ],
+     "max": [
+      165.29,
+      143.64,
+      51.07
+     ],
+     "size": [
+      87.56,
+      97.98,
+      88.74
+     ]
+    }
+   },
+   {
+    "name": "AU2_crystals_right_neon",
+    "tris": 140,
+    "material": "BD_Neon_Ice",
+    "neon_hex": "#9FE6F2",
+    "bbox": {
+     "min": [
+      109.13,
+      76.94,
+      -8.47
+     ],
+     "max": [
+      135.4,
+      168.32,
+      53.16
+     ],
+     "size": [
+      26.27,
+      91.38,
+      61.63
+     ]
+    }
+   },
+   {
+    "name": "AU2_crystals_amethyst_neon",
+    "tris": 120,
+    "material": "BD_Neon_Amethyst",
+    "neon_hex": "#B07CF0",
+    "bbox": {
+     "min": [
+      -35.88,
+      134.24,
+      -27.42
+     ],
+     "max": [
+      149.71,
+      185.6,
+      42.59
+     ],
+     "size": [
+      185.59,
+      51.36,
+      70.01
+     ]
+    }
+   },
+   {
+    "name": "AU2_drift_rocks",
+    "tris": 320,
+    "material": "BD_VC",
+    "neon_hex": null,
+    "bbox": {
+     "min": [
+      -194.57,
+      51.15,
+      -55.39
+     ],
+     "max": [
+      202.2,
+      97.16,
+      49.73
+     ],
+     "size": [
+      396.77,
+      46.02,
+      105.12
+     ]
+    }
+   }
+  ],
+  "tris": 4040
+ }
+}

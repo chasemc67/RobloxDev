@@ -1,0 +1,84 @@
+{
+ "name": "bw_sea_stacks",
+ "group": "backdrop",
+ "fbx": "fbx/bw_sea_stacks.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Four simple weathered stacks (grey stone, warm tops), vertex colour only; deliberately plainer than bw_rock_arch.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  0.069,
+  -0.113,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  29.722,
+  22.018,
+  10.88
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  11.009,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -14.861,
+  0.0,
+  -5.44
+ ],
+ "bbox_max_roblox": [
+  14.861,
+  22.018,
+  5.44
+ ],
+ "target_size_studs": [
+  30,
+  22,
+  12
+ ],
+ "size_ratio_vs_target": [
+  0.991,
+  1.001,
+  0.907
+ ],
+ "triangles": 1088,
+ "tris_max": 1800,
+ "materials": [
+  "BW_Backdrop"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_sea_stacks__BW_Backdrop",
+   "material": "BW_Backdrop",
+   "tris": 1088,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    29.722,
+    22.018,
+    10.88
+   ],
+   "center_from_pivot": [
+    0.0,
+    11.009,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    11.009,
+    -0.0
+   ],
+   "size": [
+    29.722,
+    22.018,
+    10.88
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

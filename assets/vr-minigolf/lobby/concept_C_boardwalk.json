@@ -1,0 +1,76 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "First-person view from the player spawn point at VR eye height (about 5 feet), stylized warm cartoon 3D game concept painting, chunky rounded low-poly Roblox-friendly shapes, brass trim, parchment panels, glowing lanterns, original whimsical mini golf design matching the reference art style. Directly ahead a few steps away stands a physical in-world course-select board with three large course cards: 'Lantern Grove' (lit, playable), 'Sugarloaf Canyon' (greyed with COMING SOON ribbon), 'Aurora Archipelago' (greyed with COMING SOON ribbon), matching the reference cards. Behind it a walkable hangout space: a cozy seaside mini golf boardwalk at golden hour, wooden plank promenade with lantern strings, three themed archway entrances along the boardwalk (lantern grove arch, canyon rock arch, aurora crystal arch), a practice putting green with a little windmill, snack-shack counter and benches, a pier with hangout seating, tall brass and parchment leaderboard boards. No people, no UI overlay.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/title_bg_v2.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_lanterngrove_v2.png",
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_sugarloafcanyon_color_clean.png"
+  ],
+  "mode": "generateImage",
+  "size": "2048x1152",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 3807,
+    "outputTokens": 1413,
+    "totalTokens": 5220
+  },
+  "cost": 0.072093,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791771093,
+          "size": "2048x1152",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 3556,
+          "textTokens": 251
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791771055663,
+                "endTime": 1791771093515,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.072093",
+      "marketCost": "0.072093",
+      "surchargeCost": "0",
+      "gatewayCost": "0.072093",
+      "inferenceCost": "0.072093",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.072093",
+      "generationId": "gen_01M4PY14HST1DKPF00GX8MBRBW"
+    }
+  },
+  "seconds": 40.7,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/concept_C_boardwalk.png"
+  ]
+}

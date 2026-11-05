@@ -1,0 +1,101 @@
+{
+ "name": "bw_arch_nameplate",
+ "group": "board",
+ "fbx": "fbx/bw_arch_nameplate.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Brass plate with parchment face plate_face (+Z) for the course name SurfaceGui. Sits on the arch lintel front (builder Y 14, Z +2.3 from the arch centre).",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  8.0,
+  2.0,
+  0.5
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  1.0,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -4.0,
+  0.0,
+  -0.25
+ ],
+ "bbox_max_roblox": [
+  4.0,
+  2.0,
+  0.25
+ ],
+ "target_size_studs": [
+  8,
+  2,
+  0.5
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 176,
+ "tris_max": 400,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_arch_nameplate__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 174,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    8.0,
+    2.0,
+    0.5
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "plate_face",
+   "material": "BW_Atlas",
+   "tris": 2,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    7.2,
+    1.5,
+    0.0
+   ],
+   "center_from_pivot": [
+    0.0,
+    1.0,
+    0.25
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "size": [
+    8.0,
+    2.0,
+    0.5
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

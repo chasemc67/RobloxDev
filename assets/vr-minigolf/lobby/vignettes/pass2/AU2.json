@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Concept art, elevated three-quarter view from the seaside boardwalk at golden-hour sunset (harbour festival mood, bunting, lanterns, a striped lighthouse far in the background). In the foreground-middle stands the course portal archway from the reference (same design, smaller in frame, glowing opening). Directly BEHIND the arch, clearly visible above and to both sides of it, sits a small fenced-off 3D diorama of the course world on the beach, about 40 wide x 30 deep and up to 2x the arch height, built from a few big chunky low-poly shapes and a few hero props, like a theme-park preview set. The open wooden deck in front of the arch is empty. Whimsical stylized toy-like 3D render, original design, no text, no letters. Diorama: Aurora Archipelago. One floating snowy rock island (snow #EEF3F7) hovering behind the arch with a teal felt mini golf green (#36997A) and flag, a frozen waterfall pouring off its edge into mist, a brass lantern.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/portal_aurora_archipelago.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1535,
+    "outputTokens": 1078,
+    "totalTokens": 2613
+  },
+  "cost": 0.043903,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791842331,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1296,
+          "textTokens": 239
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791842300235,
+                "endTime": 1791842332197,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.043903",
+      "marketCost": "0.043903",
+      "surchargeCost": "0",
+      "gatewayCost": "0.043903",
+      "inferenceCost": "0.043903",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.043903",
+      "generationId": "gen_01M4S1ZC8DH86VTAMYVRSF2GPS"
+    }
+  },
+  "seconds": 32.8,
+  "files": [
+    "/workspace/RobloxDev/assets/vr-minigolf/lobby/vignettes/AU2.png"
+  ]
+}

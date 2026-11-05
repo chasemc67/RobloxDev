@@ -1,0 +1,71 @@
+{
+ "name": "bw_arch_aurora_archipelago_snowpuff",
+ "group": "arches",
+ "fbx": "fbx/bw_arch_aurora_archipelago_snowpuff.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Snowpuff on left leg, all geometry outside opening.",
+ "pivot": "local origin (0,0,0), shared arch base centre",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  1.617,
+  3.0,
+  1.45
+ ],
+ "bbox_center_from_pivot": [
+  -6.5,
+  1.5,
+  1.275
+ ],
+ "bbox_min_roblox": [
+  -7.308,
+  0.0,
+  0.55
+ ],
+ "bbox_max_roblox": [
+  -5.692,
+  3.0,
+  2.0
+ ],
+ "target_size_studs": [
+  3,
+  3,
+  2
+ ],
+ "size_ratio_vs_target": [
+  0.539,
+  1.0,
+  0.725
+ ],
+ "triangles": 514,
+ "tris_max": 1500,
+ "materials": [
+  "BW_Backdrop"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_arch_aurora_archipelago_snowpuff__BW_Backdrop",
+   "material": "BW_Backdrop",
+   "tris": 514,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    1.617,
+    3.0,
+    1.45
+   ],
+   "center_from_pivot": [
+    -6.5,
+    1.5,
+    1.275
+   ]
+  }
+ ],
+ "collision": [],
+ "motion": "Arch base pivot; idle body bob <=0.1 studs, no locomotion.",
+ "scalable": null,
+ "can_collide": false
+}

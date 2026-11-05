@@ -1,0 +1,84 @@
+{
+ "name": "bw_cup_flag",
+ "group": "green",
+ "fbx": "fbx/bw_cup_flag.fbx",
+ "front": "none (symmetric / tiling)",
+ "notes": "Pole on the pivot axis with a red banner hanging from a T-crossbar and a cup-liner collar ring at the base (0.6 dia). Place the pivot on the cup centre at turf level.",
+ "pivot": "base centre: bbox centre X/Z, min Y = 0",
+ "pivot_recenter_applied": [
+  -0.0,
+  -0.0,
+  -0.0
+ ],
+ "bbox_size_studs": [
+  0.6,
+  5.0,
+  0.6
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  2.5,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -0.3,
+  0.0,
+  -0.3
+ ],
+ "bbox_max_roblox": [
+  0.3,
+  5.0,
+  0.3
+ ],
+ "target_size_studs": [
+  0.6,
+  5,
+  0.6
+ ],
+ "size_ratio_vs_target": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "triangles": 140,
+ "tris_max": 200,
+ "materials": [
+  "BW_Atlas"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_cup_flag__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 140,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    0.6,
+    5.0,
+    0.6
+   ],
+   "center_from_pivot": [
+    0.0,
+    2.5,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [
+  {
+   "center": [
+    0.0,
+    2.5,
+    -0.0
+   ],
+   "size": [
+    0.6,
+    5.0,
+    0.6
+   ]
+  }
+ ],
+ "motion": null,
+ "scalable": null,
+ "can_collide": false
+}

@@ -1,0 +1,100 @@
+{
+ "name": "bw_arch_aurora_archipelago_lantern_02",
+ "group": "arches",
+ "fbx": "fbx/bw_arch_aurora_archipelago_lantern_02.fbx",
+ "front": "+Z (Roblox, south, toward spawn) = Blender -Y",
+ "notes": "Place origin at anchor_position_arch_local in parent arch frame.",
+ "pivot": "cord anchor / swing hinge at local origin",
+ "pivot_recenter_applied": [
+  0,
+  0,
+  0
+ ],
+ "bbox_size_studs": [
+  0.951,
+  2.2,
+  0.78
+ ],
+ "bbox_center_from_pivot": [
+  0.0,
+  -1.1,
+  -0.0
+ ],
+ "bbox_min_roblox": [
+  -0.476,
+  -2.2,
+  -0.39
+ ],
+ "bbox_max_roblox": [
+  0.476,
+  0.0,
+  0.39
+ ],
+ "target_size_studs": [
+  1,
+  2.3,
+  1
+ ],
+ "size_ratio_vs_target": [
+  0.951,
+  0.957,
+  0.78
+ ],
+ "triangles": 144,
+ "tris_max": 1500,
+ "materials": [
+  "BW_Atlas",
+  "BW_Neon"
+ ],
+ "parts": [
+  {
+   "mesh": "bw_arch_aurora_archipelago_lantern_02__BW_Atlas",
+   "material": "BW_Atlas",
+   "tris": 108,
+   "color": null,
+   "roblox_material": "SmoothPlastic",
+   "size": [
+    0.951,
+    2.2,
+    0.78
+   ],
+   "center_from_pivot": [
+    0.0,
+    -1.1,
+    -0.0
+   ]
+  },
+  {
+   "mesh": "bw_arch_aurora_archipelago_lantern_02__BW_Neon",
+   "material": "BW_Neon",
+   "tris": 36,
+   "color": "#FFC867",
+   "roblox_material": "Neon",
+   "size": [
+    0.723,
+    1.0,
+    0.593
+   ],
+   "center_from_pivot": [
+    0.0,
+    -1.4,
+    -0.0
+   ]
+  }
+ ],
+ "collision": [],
+ "motion": "Independent hinge sway +/-3deg around local Z",
+ "scalable": null,
+ "can_collide": false,
+ "anchor_position_arch_local": [
+  6.8,
+  6.2,
+  1.25
+ ],
+ "swing_axis": [
+  0,
+  0,
+  1
+ ],
+ "suggested_motion": "Sway +/-3 degrees about local Z; phase offset per lantern; Neon pulse +/-15% at 0.5Hz."
+}

@@ -1,0 +1,818 @@
+# Lantern Grove: Playtest Log
+
+Simulator: `tools/sim.py`. It validates geometry, fuzzes escapes (60k random shots per hole), brute-forces an ace-line search from the tee,
+and plays 2000 AI rounds per hole per skill. Physics tests: `tools/test_physics.py`.
+Per-round geometry snapshots are in `tools/out/holes-<tag>.json` and raw results in `tools/out/sim-<tag>.json`.
+
+**Physics (RobloxDevBot real values, constants in `sim.py` and the `physics` block of `holes.json`):**
+1 stud = 0.3 m. g = 32.7 studs/s². Rolling deceleration = 0.5 + 0.25·v studs/s². Rail restitution 0.63, bumper restitution 0.65.
+Cup radius 0.5 stud, capture speed < 5.33 studs/s (1.6 m/s). The **max putt speed of 19.78 studs/s (5.9 m/s)** is derived so a full putt
+rolls 60 studs (18 m) on flat felt. 60 studs is the longest single-stroke run the course asks for: the H6 and H9 ace lines are about 45 studs of travel
+plus a climb and two deflections. The long holes (H8's long route is ~95 studs) are multi-shot by design.
+
+**AI golfers.** Per stroke, the golfer aims at the furthest target it has line of sight to: the cup, else the hole's `ai_waypoints` for its
+current zone. It hits for distance + carry, adding √(2gΔh) for climbs. Gaussian noise is applied per skill:
+**good** aim σ 1.0°, power σ 5%; **average** aim σ 2.5°, power σ 12%.
+The cap is 8 strokes, and hazards/escapes reset the ball to the stroke start with +1 stroke.
+
+**Flags.** BROKEN = validator error, fuzz/AI escape, or the cup never reached. IMPOSSIBLE = good players capped >50%.
+TRIVIAL = HIO >15% or avg < par−1. TOO-HARD = good avg > par+2. WARN:no-HIO-line = the brute-force search found no ace.
+
+**Targets for this pass:** total par 25–28. HIO possible but rare: 0.2–10% for good players. Good average within par−0.7 … par+1. No BROKEN flags.
+
+## Earlier iterations (old guessed physics, superseded)
+
+Before the real values arrived, four rounds (r1–r4, snapshots `tools/out/holes-r1..r4.json`) ran with guessed physics
+(0.28 m/stud, g 35, decel 1.2 + 0.06v, restitution 0.75, capture < 3.0). Those rounds:
+- fixed two sim bugs: the off-felt check ran before wall collision, letting balls faster than 19 studs/s skip rails; and a gate engulfing the ball
+  pushed it out along the wrong axis;
+- replaced gentle 45° bank corners (which turned only 16 of 48 test shots) with steep 45°-pitch banks backed by a rail (35 of 48);
+- moved AI waypoints off deflector centre-lines, made the H4 spinner a slow 2-arm bar, lowered the H4/H6/H9 ramps,
+  moved H9's lantern bar to guard the heart well, added the H9 secret "Lantern Knot" teleport, added H2's rabbit-hole pit,
+  and rebuilt H5 (wide tee shore) and H8 (shorter lane, smaller ring).
+
+The r4 geometry is the starting point below.
+
+## Round 1: r4 geometry under the real physics (before fixes)
+
+Tag `p1`. Validator: 0 errors. Fuzz: 0 escapes. Physics tests: all pass.
+
+| # | Hole | Par | Good avg | Good HIO | Good capped | Avg avg | Avg HIO | Avg capped | Haz/play (avg) | HIO-search hits | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 1.97 | 3.1% | 0.0% | 2.14 | 7.3% | 0.0% | 0.00 | 189/34560 | ok |
+| 2 | Acorn Ledge | 2 | 2.02 | 0.0% | 0.0% | 2.44 | 0.0% | 0.0% | 0.00 | 366/34560 | ok |
+| 3 | Toadstool Row | 3 | 3.00 | 0.0% | 0.0% | 3.23 | 0.0% | 0.0% | 0.00 | refine 0/10920 | WARN:no-HIO-line |
+| 4 | Spore Spinner | 3 | 3.76 | 1.1% | 1.4% | 4.09 | 0.8% | 2.5% | 0.00 | 98/276480 | ok |
+| 5 | Rootbridge Crossing | 3 | 3.16 | 0.0% | 0.0% | 3.78 | 0.0% | 0.0% | 0.00 | 7/34560 | ok |
+| 6 | Mill Wheel Run | 3 | 4.70 | 0.0% | 2.6% | 4.53 | 0.0% | 2.8% | 0.01 | refine 0/10920 | WARN:no-HIO-line |
+| 7 | Cascade Steps | 3 | 2.91 | 0.0% | 0.1% | 3.07 | 0.0% | 0.0% | 0.01 | 59/276480 | WARN:timeouts |
+| 8 | Firefly Hollow | 4 | 3.13 | 0.0% | 0.0% | 4.95 | 0.0% | 4.2% | 0.00 | 20/34560 | ok |
+| 9 | Heart of the Grove | 4 | 3.37 | 1.9% | 0.9% | 3.73 | 9.3% | 0.8% | 0.00 | 1087/276480 | ok |
+| | **Total** | **27** | **28.04** | | | **31.95** | | | | | |
+
+
+**Problems found:**
+- **No ace for good players** on H2, H3, H5, H6, H7 and H8. On H3 and H6 the brute force finds **no ace line at all**, because the higher
+  speed-dependent drag (0.25·v) bleeds the long two-bank and three-deflection routes.
+- **H6 too hard**: good 4.70 > par+1. Balls lose too much speed to the wheel and deflector boards and roll back down the ramp.
+- **H8 too easy for good** (3.13 < par−0.7 = 3.3). The firefly ring is a near-automatic birdie.
+- **H9 secret knot too generous**: average players ace 9.3%, because their wider tee spread wanders into the knot and its exit lines up with the cup.
+- H7: a few timeouts (ball rocking on the side-sloped green against a rail).
+
+## Round 2: fixes for real physics
+
+Snapshot `holes-p2.json`, results `sim-p2.json`. Sim change: a ball that is nearly stopped (<0.3 studs/s) while pressed against a
+rail or cliff now counts as at rest. Before, gravity on a side slope kept it "rolling" into the wall until the 30 s timeout (the H7 timeouts).
+
+| Hole | Change | Why |
+|---|---|---|
+| H2 | Cup (0,−26) → (−2.4,−22), on the left-chute line. Good golfer's chute carry 4 → 6.5 | Good players had 0% aces. Putting the cup near the line a well-struck chute shot follows makes an ace possible from the tee |
+| H3 | Whole hole compacted: lane 21.5 → 15.5, cross 20 → 17.5, leg/green shorter (path ~60 → ~46 studs). Cup (18,−27.5). Good tee shot planned to ride both banks (carry 40) | Brute force found **no ace line**: under 0.25·v drag a full putt cannot run two 45° banks over 60 studs |
+| H5 | Re-laid with the tee in line with the root bridge (everything shifted −3.1 x). Cup (2.5,−35) | Good players had 0% aces. The risky line is now the straight tee shot across the rail-less bridge |
+| H6 | Compacted: lane 16 → 12, flume 18.5 → 14.5, ramp rise 0.4 → 0.25, wheel moved to x 7.5. Cup (15.5,−21.5). Good tee shot planned at full power | Good avg 4.70 (> par+1), and no ace line: balls lost too much speed to two 0.63 deflections plus the climb |
+| H7 | Cup (−3,−35.5) → (−2.5,−31), where tee shots that make the lower gap actually finish | 0% good aces |
+| H8 | New **sliding root door** (slider, 2 studs/s over ±2.5) across the alcove mouth. Ring exit moved and the cup moved to the far corner (8,−43.5). Good golfer banks the tee shot into the ring | Good 3.13 < par−0.7: the ring was a free birdie |
+| H9 | Secret knot radius 0.4 → 0.3, exit (21,−45.5) angled (0.15,−1) instead of straight at the cup | Average players aced 9.3% via the knot |
+
+| # | Hole | Par | Good avg | Good HIO | Good capped | Avg avg | Avg HIO | Avg capped | Haz/play (avg) | HIO-search hits | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 1.97 | 3.1% | 0.0% | 2.14 | 7.3% | 0.0% | 0.00 | 189/34560 | ok |
+| 2 | Acorn Ledge | 2 | 2.21 | 12.6% | 0.0% | 2.43 | 9.2% | 0.0% | 0.01 | 235/34560 | ok |
+| 3 | Toadstool Row | 3 | 2.00 | 0.5% | 0.0% | 3.32 | 0.0% | 0.0% | 0.00 | 32/34560 | TRIVIAL:good-avg<par-1 |
+| 4 | Spore Spinner | 3 | 3.77 | 1.1% | 1.4% | 4.09 | 0.8% | 2.5% | 0.00 | 98/276480 | ok |
+| 5 | Rootbridge Crossing | 3 | 2.20 | 0.0% | 0.0% | 3.81 | 0.0% | 0.0% | 0.00 | refine 9/10920 | ok |
+| 6 | Mill Wheel Run | 3 | 3.75 | 0.0% | 1.4% | 3.70 | 0.0% | 0.0% | 0.01 | 164/276480 | ok |
+| 7 | Cascade Steps | 3 | 2.82 | 0.5% | 0.1% | 2.87 | 1.7% | 0.0% | 0.01 | 97/276480 | WARN:timeouts |
+| 8 | Firefly Hollow | 4 | 4.14 | 0.0% | 5.3% | 4.95 | 0.0% | 4.2% | 0.00 | 66/276480 | ok |
+| 9 | Heart of the Grove | 4 | 3.40 | 0.8% | 0.9% | 3.85 | 6.2% | 1.1% | 0.00 | 824/276480 | ok |
+| | **Total** | **27** | **26.24** | | | **31.17** | | | | | |
+
+
+**Result vs Round 1:** H3 and H6 now have ace lines (32 and 164 grid hits). H6 good 4.70 → 3.75. H8 good 3.13 → 4.14. H9 average aces 9.3% → 6.2%.
+**New problems:** H2 good aces 12.6% (>10%). H3 good 2.00 is TRIVIAL (the aggressive tee shot runs to ~2.7 studs from the cup).
+H5 good 2.20 (< par−0.7). Still 0% good aces on H5, H6 and H8.
+
+## Round 3: tuning, plus the ace-attempt golfer model
+
+Snapshot `holes-p3.json`, results `sim-p3.json`.
+
+**Golfer model change (made once, before this round, and fixed from here on).** The waypoint planner never attempts precise bank/timing
+ace lines, so good-player ace rates were 0% on holes that do have ace lines. Skilled VR players do go for known aces, so now:
+- **good golfers go for the hole's brute-force ace line on 30% of tee shots**;
+- the line used is the most *robust* grid hit (the one with the most hitting neighbours within ±1° and ±0.6 studs/s), not an arbitrary one.
+
+| Hole | Change | Why |
+|---|---|---|
+| H2 | Cup (−2.4,−22) → (−2.3,−22) | Sweep: −1.9 to −2.2 gave 0% aces, −2.3 gave ~9% (planner only) |
+| H3 | Cup (18,−27.5) → (15.5,−30.5). New `toadstool_stool` bumper (1.6×1.5×1.6) at (16.8,−27.8). Good tee carry 40 → 24. New `green_in` waypoint for the leg zone | Good 2.00 was TRIVIAL |
+| H5 | Root bridge narrowed 2.2 → 1.8. Cup (2.5,−35) → (1.5,−37) | Good 2.20 < par−0.7 |
+| H6 | Mill wheel 3 → 2 paddles (blocked ~19% instead of ~28%) | Full-power tee shots stalled at the wheel |
+| H8 | Ring exit livelier (speed ×1.2, min 4, max 8.5) | The aggressive bank-into-ring tee shot (carry 30) was tested and rejected: good 5.11, 23% capped. Kept carry 14 with the livelier exit |
+
+| # | Hole | Par | Good avg | Good HIO | Good capped | Avg avg | Avg HIO | Avg capped | Haz/play (avg) | HIO-search hits | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 1.79 | 20.9% | 0.0% | 2.14 | 7.3% | 0.0% | 0.00 | 189/34560 | TRIVIAL:good-HIO>15% |
+| 2 | Acorn Ledge | 2 | 1.97 | 33.0% | 0.0% | 2.51 | 7.2% | 0.0% | 0.01 | 202/34560 | TRIVIAL:good-HIO>15% |
+| 3 | Toadstool Row | 3 | 2.52 | 0.0% | 0.0% | 3.90 | 0.0% | 0.3% | 0.00 | refine 0/10920 | WARN:no-HIO-line |
+| 4 | Spore Spinner | 3 | 3.80 | 2.8% | 1.4% | 4.09 | 0.8% | 2.5% | 0.00 | 98/276480 | ok |
+| 5 | Rootbridge Crossing | 3 | 2.44 | 4.5% | 0.0% | 3.79 | 0.0% | 0.0% | 0.00 | 8/34560 | ok |
+| 6 | Mill Wheel Run | 3 | 3.19 | 14.7% | 1.5% | 3.68 | 0.0% | 0.0% | 0.01 | 216/276480 | ok |
+| 7 | Cascade Steps | 3 | 2.66 | 4.4% | 0.1% | 2.87 | 1.7% | 0.0% | 0.01 | 97/276480 | WARN:timeouts |
+| 8 | Firefly Hollow | 4 | 3.15 | 11.1% | 3.6% | 4.95 | 0.0% | 4.2% | 0.00 | 610/276480 | ok |
+| 9 | Heart of the Grove | 4 | 2.82 | 23.3% | 0.7% | 3.85 | 6.2% | 1.1% | 0.00 | 824/276480 | TRIVIAL:good-HIO>15%, TRIVIAL:good-avg<par-1 |
+| | **Total** | **27** | **24.34** | | | **31.79** | | | | | |
+
+
+**Problems found:** with ace attempts, **robust ace lines** show up. H1 (20.9%), H2 (33%) and H9 (23%) have lines a skilled player
+can repeat. H6 (14.7%) and H8 (11.1%) are over the 10% target too. H3's new stool blocked its only ace line (WARN:no-HIO-line).
+Shot-fan plots (`tools/out/debug-acelines.png`) show the causes:
+- H1: the deflector turns any near-line into the same exit, and the cup sat on it.
+- H2: chute + drop funnel.
+- H9: the bank slid balls along the rail straight into the corner knot, whose exit pointed at the cup.
+
+**Sanity check on the attempt model.** An ace attempt that remembers the line perfectly is unrealistic. Attempts now carry extra
+line-memory error (±1.5° aim, ±8% power) on top of normal stroke noise. This was set once and not tuned per hole.
+
+## Round 4: final (fixes for the robust ace lines)
+
+Snapshot `holes-p4.json` (= final `holes.json`), results `sim-p4.json`. Each fix was picked from a sweep that re-ran the ace search
+and the plays for every candidate (`tools/sweep.py`, `tools/try_variants.py`). The golfer model was unchanged.
+
+| Hole | Change | Why / sweep evidence |
+|---|---|---|
+| H1 | Cup (−7.5,−33) → (−9.5,−26.5): the front-left corner of the green, tucked behind the lane-rail corner | Cup off the deflector's exit line. Aces 20.9% → 0.7%. A post bumper next to the old cup only got 10–18% |
+| H2 | Lengthened: lane 18 → 22, lower green 14 → 18 deep, pit moved to z[−29,−31]. Cup (2.5,−35), far-right corner | At ~28 studs any ace line hits ~43% of attempts with line-memory error. Cup moves and wider/narrower chutes all stayed at 12–24%. Side-sloping the lower green broke the planner (up to 80% capped), so it was rejected. Lengthening got aces to 8.5% |
+| H3 | Stool → (17,−28.8). Good tee carry 24 → 16 | Restores an ace line (3 grid hits) while keeping the stool's guard. Good 2.27 → 2.81 |
+| H6 | Cup (15.5,−21.5) → (16.5,−22.5) | Aces 14.7% → 8.0%. Cups further away removed the line altogether |
+| H8 | Ring radius 0.5 → 0.35 | Aces 11.1% → 5.7%, good 3.15 → 3.30 |
+| H9 | Lantern Knot moved out of the corridor corner (5,−28.6) to open floor just past the gate (6.5,−23.0), r 0.3. Exit moved to the heart's SW corner (15,−52), aimed at the cup, speed ×1.0 clamp [4,10] | The corner knot caught balls sliding along the rail (23% aces). Exit angles pointed away from the cup removed the ace entirely. Open-floor knot: aces 3.2% |
+
+| # | Hole | Par | Good avg | Good HIO | Good capped | Avg avg | Avg HIO | Avg capped | Haz/play (avg) | HIO-search hits | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 2.02 | 0.7% | 0.0% | 2.45 | 0.0% | 0.0% | 0.00 | refine 43/10920 | ok |
+| 2 | Acorn Ledge | 2 | 2.01 | 8.5% | 0.0% | 2.63 | 0.0% | 0.0% | 0.00 | 45/34560 | ok |
+| 3 | Toadstool Row | 3 | 2.79 | 2.6% | 0.4% | 3.81 | 0.0% | 0.4% | 0.00 | 3/34560 | ok |
+| 4 | Spore Spinner | 3 | 3.84 | 1.8% | 1.7% | 4.09 | 0.8% | 2.5% | 0.00 | 98/276480 | ok |
+| 5 | Rootbridge Crossing | 3 | 2.49 | 2.2% | 0.0% | 3.79 | 0.0% | 0.0% | 0.00 | 8/34560 | ok |
+| 6 | Mill Wheel Run | 3 | 3.18 | 8.0% | 0.9% | 3.63 | 0.0% | 0.0% | 0.01 | 46/276480 | ok |
+| 7 | Cascade Steps | 3 | 2.74 | 2.1% | 0.1% | 2.87 | 1.7% | 0.0% | 0.01 | 97/276480 | WARN:timeouts |
+| 8 | Firefly Hollow | 4 | 3.30 | 5.7% | 4.0% | 4.95 | 0.0% | 4.2% | 0.00 | 468/276480 | ok |
+| 9 | Heart of the Grove | 4 | 3.50 | 3.2% | 0.9% | 4.02 | 1.4% | 1.6% | 0.00 | 459/276480 | ok |
+| | **Total** | **27** | **25.87** | | | **32.25** | | | | | |
+
+
+All targets met:
+- Total par **27** (25–28).
+- **Good** HIO 0.7–8.5% on every hole (0.2–10%), and every hole has a brute-force-confirmed ace line.
+- **Good** average within par −0.7…+1 on every hole. Range: H8 +0.70 under par (shortcut) to H4 +0.84 over.
+- No BROKEN/IMPOSSIBLE/TRIVIAL/TOO-HARD flags. Validator 0 errors, fuzz 0 escapes in 60k random shots per hole, 0 AI escapes.
+- One remaining WARN: 1 timeout in 2000 average plays on H7 (the sliding log pinning a ball against a rail for 30 s). Negligible.
+
+**Average golfers** total 32.25 (+5.3 over par), mostly because they take the safe routes on H5 and H8.
+
+### Before/after (Round 1 real physics → Round 4)
+
+| Hole | Par | Good avg | Good HIO | Avg avg | Avg HIO |
+|---|---|---|---|---|---|
+| 1 Lantern Gate | 2 | 1.97 → **2.02** | 3.1% → **0.7%** | 2.14 → **2.45** | 7.3% → **0.0%** |
+| 2 Acorn Ledge | 2 | 2.02 → **2.01** | 0.0% → **8.5%** | 2.44 → **2.63** | 0.0% → **0.0%** |
+| 3 Toadstool Row | 3 | 3.00 → **2.79** | 0.0% → **2.6%** | 3.23 → **3.81** | 0.0% → **0.0%** |
+| 4 Spore Spinner | 3 | 3.76 → **3.84** | 1.1% → **1.8%** | 4.09 → **4.09** | 0.8% → **0.8%** |
+| 5 Rootbridge Crossing | 3 | 3.16 → **2.49** | 0.0% → **2.2%** | 3.78 → **3.79** | 0.0% → **0.0%** |
+| 6 Mill Wheel Run | 3 | 4.70 → **3.18** | 0.0% → **8.0%** | 4.53 → **3.63** | 0.0% → **0.0%** |
+| 7 Cascade Steps | 3 | 2.91 → **2.74** | 0.0% → **2.1%** | 3.07 → **2.87** | 0.0% → **1.7%** |
+| 8 Firefly Hollow | 4 | 3.13 → **3.30** | 0.0% → **5.7%** | 4.95 → **4.95** | 0.0% → **0.0%** |
+| 9 Heart of the Grove | 4 | 3.37 → **3.50** | 1.9% → **3.2%** | 3.73 → **4.02** | 9.3% → **1.4%** |
+
+Note: Round 1 good-HIO numbers come from the waypoint planner only. From Round 3 on, good golfers also go for the ace line on 30% of tee shots.
+
+## Round 5: Playtest Bot notes 6–10 (2026-10-10)
+
+Starting point: Round 4 geometry, re-run as tag `r5-base` (identical to `sim-p4.json`). Snapshots: `tools/out/holes-r5-start.json` (= Round 4),
+`holes-r5a.json`, `holes-r5b.json` (final = `holes.json`); results `sim-r5-base.json`, `sim-r5a.json`, `sim-r5b.json`. Tool backups from before
+this round are in `tools/out/r5/`. Physics constants are unchanged (checked in `sim.py`: `CUP_CAPTURE_SPEED = 5.33`, g 32.7, decel 0.5 + 0.25·v,
+rails 0.63, bumpers 0.65, 0.3 m/stud).
+
+**New targets (Playtest Bot):** a clear skill gap on every hole (good avg at least ~0.3 below average avg); average ≤ par+1.5 on every hole;
+stroke-cap hits ≤ 1% (both skills); hole-in-ones possible but rare. Round 4 against them: skill gap failed on H4 (0.25) and H7 (0.13); cap failed on
+H4 (1.7% / 2.5%), H8 (4.0% / 4.2%) and H9 average (1.6%).
+
+### Sim and schema changes (made before tuning, kept fixed afterwards)
+
+| Change | Why |
+|---|---|
+| Hazards may have `reset: "respawn"` + a `respawn` point: the ball gets +1 and is placed at rest on that point (sim outcome 5). Documented in the holes.json schema | Note 8 (H5) |
+| New moving-part type `swing` (pendulum): pivot, horizontal axis, `amplitude_deg`, `period_s`, `phase`; angle(t) = amp·sin(2πt/period + phase). The blocker rotates about the hinge, and contact velocity is ω×r, as for rotors. The validator checks that the bob never cuts into the felt and reports the angle band where it can touch a ball | Note 10 (H9) |
+| Rest rule: a ball that moved < 0.05 studs in the last 0.5 s at < 0.4 studs/s counts as at rest | Without it, a ball rocking in the crease of a V-shaped dip never "stopped" (every point is on a slope): 15k timeouts in the first H9 dip test |
+| `cup_from` can be per skill (`{skill: zones}`) | H4: lets the good golfer play the side gap instead of firing at the flag through the carousel |
+| `cup.flag` on every hole (pole height, diameter, banner, `top`, `collision: false`), plus a `cup_flag` decoration anchor. Anchors may carry `occluders` (solid boxes of the prop) and `facing` | Note 9 |
+| `flag_los()` in `sim.py` (runs in every sim; `--los-only` for just the report): sightline from the tee eye (tee + 5.5) to the flag top, tested against rails/blocks, felt + the ground column under it, prop occluders, and moving blockers (% of their cycle) | Note 9 |
+| `tools/teleport_check.py`: launches the ball from each teleport exit at speeds across its clamp range and reports finish / pass-over-cup speed / first rail-contact speed | Note 6 (H8 exit check) |
+| `tools/sweep_r5.py` + `K()` tuning knobs and `LG_VARIANT`/`LG_OUT` in `build_holes.py`: variants are built to `tools/out/scratch-holes.json` and run through validator, ace search and 2000 plays per skill, without touching `holes.json` | Iteration tooling |
+| `test_physics.py`: new tests for respawn, pendulum (blocks at rest, lifts clear when swung out) and dip settling. All 11 tests pass | - |
+
+The golfer model (aim/power noise, ace attempts) is unchanged.
+
+### Changes per hole (Round 5, `r5a`)
+
+| Hole | Change | Why / sweep evidence (2000 plays per skill) |
+|---|---|---|
+| All | Flag on every cup: 7.5-stud pole (H9 8.0), 2.0 x 1.2 banner, no collision. Occluder boxes added to the solid props near sightlines | Note 9. Before (no flag, i.e. aiming at the cup itself), the cup was hidden by rails on H1, H3, H7, H8 and H9 and only grazed (+0.01) on H2. With flags, 8 of 9 are visible (table below) |
+| H2 | Arrow signs on posts outside both rails at (±5.2, 0, -16.5) pointing into each chute ('Bold Line' with rabbit icon / 'Safe Line'), glowing leaf-arrow decals on the felt at (±2.75, 0, -17) | Note 9. Geometry unchanged, so the stats are identical |
+| H4 | Spinner 36 → **30°/s**; arms **4.5 → 3.0** (bar 9 → 6 across; padded puffballs, bumper restitution 0.65 as for every moving blocker); side gaps between arm tips and rails are now 3.9 wide. Good golfers take the side gap (stop just past the carousel at (4.3, -25), then straight up the ramp); average golfers still fire at the flag through the carousel | Note 7. Slowing to 30°/s alone left average at 4.09 (arms 4.5). A first side-gap shot that ran through to the far NE pocket left good *worse* than average (good 4.10–4.39 with arms 3.5–4.5): the second shot went diagonally up the ramp and curled back. With the side shot stopping just past the carousel: arms 3.5 gave good 3.24 / avg 3.83 (gap +0.59) but average capped 1.1%; **arms 3.0: good 3.15 / avg 3.73 (gap +0.58), capped 0% / 0.7%** |
+| H5 | Stream hazard: `reset: respawn` at the root-bridge entry (0, 0, -13.5); bridge width kept at **1.8** | Note 8. The note asked to "widen the bridge to ~1.5", but it is already 1.8 (the props list said 2.2, which was stale and is now fixed). A 1.5-wide variant (with respawn) was tested: good 2.59 vs 2.46, so no gain. With respawn, the share of good plays taking 5+ strokes fell from 3.4% to 1.2% (dist 5..8: 44/20/1/2 → 21/3/0/0); avg 2.49 → 2.46 |
+| H7 | Log travel ±6 → **±7** (ends stop **0.5 stud short of each rail**, as built). Lower gap 3.5 → **2.5 wide (x 4..6.5)**. Cup (-2.5, -31) → **(-2.5, -36.5)** | Note (H7 log). The skill gap was 0.13–0.19 for every gap width because the sloped half of t3 funnels tee shots to within ~2 studs of the old cup. Moving the cup 5.5 deeper, past where the funnel drops the ball, makes the second putt real: gap +0.38 (with the 2.5 gap; 0.32 with 3.5). Cups further west killed the ace line (0–3 hits) |
+| H8 | Ring radius 0.35 → **0.55**. The flat c1 run (9 studs) is removed: climb, top, connector and green all move 9 studs toward the tee. New banked plane `alcove_bank` on the alcove back wall (x 7.7..9, rising 0.5 east) feeds misses back out. Root door travel ±2.5 → **±4.0**, sliding into pockets in the root-knot walls. Exit speed factor 1.2 → **0.8**. Average waypoints re-fit to the shorter route (soft into the corner, then one committed climb shot that rides the top bank) | Note 6. With only the shortening, average got worse (5.45): the bank-turned ball stalled on the climb. Good capped 3.6–5.1% in every variant until the door was fixed: the 3.2-long door sliding ±2.5 across a 7-wide mouth blocked the ring line ~67% of the time, and a run of bounce-backs capped out. Door 2.4 long: caps 0.7%, but good 2.78 (TRIVIAL). Door ±4.0 + factor 0.8: **good 3.06 / avg 4.69, capped 0.4% / 0.1%** |
+| H9 | Rotating lantern bar + post → **swinging lantern pendulum**: hinge (22, 8.96, -38.5), axis +Z, ±35°, period 4 s, bob 1.6 x 1.8 x 1.0 hanging 7 below the hinge, 0.06 above the felt at rest (touches a ball within ±16°). **Rolling dip** through the trunk tunnel: two opposing planar slopes, x 8..11 down 1.0 → 0.6 and x 11..14 back up. Root gate travel 0..1.2 @ 0.6 → **0..1.8 @ 0.9** (same 4 s cycle, open ~62% → ~70%). Cup (22, -50) → **(26, -52)**; the knot exit now aims at the cup automatically. Lantern Knot text fixed | Note 10. First try put the dip across the chamber in front of the well, with the pendulum over its crease: **60% capped**. Balls settled at the east end of the 16-wide crease and every shot out ran along the trough. Moving the pendulum to a flat lip still left 27–39% capped. A 7-wide tunnel dip with a straight approach works: good 3.77 / avg 4.05. The remaining average caps (1.5%) were gate bounce-backs: a corridor shot rebounding off the closed gate rides the landing bank back down the ramp. The longer gate travel fixes that (0.2%) but shrank the gap to 0.21; the deeper cup restores it: **good 3.74 / avg 4.12 (gap +0.38)** |
+
+Lantern Knot text: it is at (6.5, 1.0, -23.0), **0.5 stud past (east of) the root gate at x = 6 and 1 stud in from the corridor's south rail (z = -22)**,
+not "in the corridor's south-west corner". Its exit (15, -0.8, -52) is in the heart green's **north-west** corner (it was described as south-west).
+Both the teleport `visual` text and the `lantern_knot` anchor in holes.json now say this.
+
+H7 log: holes.json `moving_parts[log].range` = [-7, 7], `end_clearance` 0.5, visual text "log ends stop 0.5 studs short of each rail line (x=±10)".
+
+### Round 6 (`r5b`): H8 average route
+
+Round 5 met every target, but H8 average golfers were still at 4.69 (only -0.26) and never birdied. Changes:
+
+| Hole | Change | Why / sweep evidence |
+|---|---|---|
+| H8 | Cup (8, -34.5) → **(4, 1.5, -37)**, nearer the end of the long route. Exit ring (-4, -47) → **(9, 1.5, -47)** (north-east corner), aimed at the cup. Exit speed factor 0.8 → **0.7**. Door travel ±4.0 → **±3.5** | Cup (4, -37) alone: avg 4.50 but good 2.99 (≈TRIVIAL). Moving the exit away and softening it: good 3.01. Door ±3.5 restores the challenge: **good 3.17 / avg 4.50, capped 0.8% / 0.1%, good HIO 4.9%**. Exit speed minimum 4 → 3 made no difference (ring entries are fast) |
+
+**H8 teleport exit check** (`tools/teleport_check.py`, exit (9, 1.5, -47) toward the cup, every speed in the clamp [4, 8.5]): at 4.0–5.0 studs/s the
+ball stops 1.2–4.0 studs short; at 5.5–8.5 it drops in, crossing the cup below the 5.33 capture speed. **No exit speed carries the ball past the cup
+into the back rail**, so no backstop is needed. (For comparison, H9's secret knot at its top speeds of 9.3–10 crosses the cup at 6–6.7 studs/s,
+rebounds off the east rail at 3.6–4.6 and settles 1.6–2.7 from the cup, still on the green.)
+
+### Final stats (Round 4 → Round 6)
+
+| # | Hole | Par | Good avg | Avg avg | Skill gap (avg − good) | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 2.02 → 2.02 | 2.45 → 2.45 | 0.43 → **0.43** | 0.7% → 0.7% | 0.0% → 0.0% | 0.0% → 0.0% | 0.0% → 0.0% | ok |
+| 2 | Acorn Ledge | 2 | 2.01 → 2.01 | 2.63 → 2.63 | 0.62 → **0.62** | 8.5% → 8.5% | 0.0% → 0.0% | 0.0% → 0.0% | 0.0% → 0.0% | ok |
+| 3 | Toadstool Row | 3 | 2.79 → 2.79 | 3.81 → 3.81 | 1.02 → **1.02** | 2.6% → 2.6% | 0.0% → 0.0% | 0.4% → 0.4% | 0.4% → 0.4% | ok |
+| 4 | Spore Spinner | 3 | 3.84 → **3.15** | 4.09 → **3.73** | 0.25 → **0.58** | 1.8% → 2.8% | 0.8% → 1.3% | 1.7% → **0.0%** | 2.5% → **0.7%** | ok |
+| 5 | Rootbridge Crossing | 3 | 2.49 → **2.46** | 3.79 → 3.79 | 1.30 → **1.33** | 2.2% → 2.2% | 0.0% → 0.0% | 0.0% → 0.0% | 0.0% → 0.0% | ok |
+| 6 | Mill Wheel Run | 3 | 3.18 → 3.15 | 3.63 → 3.62 | 0.45 → **0.47** | 8.0% → 8.0% | 0.0% → 0.0% | 0.9% → 0.9% | 0.0% → 0.0% | ok |
+| 7 | Cascade Steps | 3 | 2.74 → **2.90** | 2.87 → **3.27** | 0.13 → **0.37** | 2.1% → 1.8% | 1.7% → 0.1% | 0.1% → 0.1% | 0.0% → 0.3% | WARN:timeouts (3/2000 avg) |
+| 8 | Firefly Hollow | 4 | 3.30 → **3.17** | 4.95 → **4.50** | 1.65 → **1.33** | 5.7% → 4.9% | 0.0% → 0.0% | 4.0% → **0.8%** | 4.2% → **0.1%** | ok |
+| 9 | Heart of the Grove | 4 | 3.50 → **3.74** | 4.02 → **4.12** | 0.52 → **0.38** | 3.2% → 3.0% | 1.4% → 0.2% | 0.9% → **0.1%** | 1.6% → **0.4%** | ok |
+| | **Total** | **27** | **25.87 → 25.39** | **32.25 → 31.93** | | | | | | |
+
+(H6's small change comes from the new rest rule: the same geometry with a slightly different settle point.)
+
+Full sim table (`sim-r5b.json`):
+
+| # | Hole | Par | Good avg | Good HIO | Good capped | Avg avg | Avg HIO | Avg capped | Haz/play (avg) | HIO-search hits | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 2.02 | 0.7% | 0.0% | 2.45 | 0.0% | 0.0% | 0.00 | refine 43/10920 | ok |
+| 2 | Acorn Ledge | 2 | 2.01 | 8.5% | 0.0% | 2.63 | 0.0% | 0.0% | 0.00 | 45/34560 | ok |
+| 3 | Toadstool Row | 3 | 2.79 | 2.6% | 0.4% | 3.81 | 0.0% | 0.4% | 0.00 | 3/34560 | ok |
+| 4 | Spore Spinner | 3 | 3.15 | 2.8% | 0.0% | 3.73 | 1.3% | 0.7% | 0.00 | 94/276480 | ok |
+| 5 | Rootbridge Crossing | 3 | 2.46 | 2.2% | 0.0% | 3.79 | 0.0% | 0.0% | 0.00 | 8/34560 | ok |
+| 6 | Mill Wheel Run | 3 | 3.15 | 8.0% | 0.9% | 3.62 | 0.0% | 0.0% | 0.01 | 46/276480 | ok |
+| 7 | Cascade Steps | 3 | 2.90 | 1.8% | 0.1% | 3.27 | 0.1% | 0.3% | 0.01 | 155/276480 | WARN:timeouts |
+| 8 | Firefly Hollow | 4 | 3.17 | 4.9% | 0.8% | 4.50 | 0.0% | 0.1% | 0.00 | 352/276480 | ok |
+| 9 | Heart of the Grove | 4 | 3.74 | 3.0% | 0.1% | 4.12 | 0.2% | 0.4% | 0.00 | 55/276480 | ok |
+| | **Total** | **27** | **25.39** | | | **31.93** | | | | | |
+
+Targets: **skill gap ≥ 0.37 on every hole** (smallest: H7 0.37, H9 0.38); **average ≤ par+1.5 everywhere** (worst H3 +0.81, H4 +0.73);
+**caps ≤ 0.9%** for both skills on every hole (worst: H6 good 0.9%, H8 good 0.8%); **good HIO 0.7–8.5%, average 0–1.3%**, with a brute-force ace line
+on every hole. Validator 0 errors, fuzz 0 escapes in 60k random shots per hole, 0 AI escapes, physics tests pass.
+H8 average golfers now par or better in 56% of plays (Round 4: 31%), and 1% birdie.
+
+**Known, accepted:** H7 `WARN:timeouts`, 3 of 2000 average plays (Round 4: 1). A ball sitting exactly in the log's track gets batted into the east
+rail, rolls back and is batted again, all along x, so it never leaves the track. With the log now reaching 0.5 from the rail this happens slightly more
+often. In Roblox, solver noise and spin almost always knock the ball out of the track. RobloxDevBot should still have a stroke timeout (e.g. 20 s:
+ball stays where it is, stroke counted) as a safety net for any soft-lock.
+
+### Flag line of sight (tee eye 5.5 studs above the tee → flag top)
+
+| # | Hole | Before (cup itself, no flag) | After (flag) | Min clearance after | Blocked by / notes |
+|---|---|---|---|---|---|
+| 1 | Lantern Gate | BLOCKED (rail, -0.53) | **VISIBLE**, 7.5 pole | +3.80 | - |
+| 2 | Acorn Ledge | grazing (+0.01) | **VISIBLE**, 7.5 | +1.76 | Over the giant acorn (occluder) and the ledge |
+| 3 | Toadstool Row | BLOCKED (rails) | BLOCKED, 7.5 | -6.04 | The stem house (cap up to y 12) sits on the S-bend, so the flag cannot be seen by design. The lantern string over the green entrance is the visual cue |
+| 4 | Spore Spinner | grazing | **VISIBLE**, 7.5 | +5.50 | Spinner arms (1 high) never cross the sightline |
+| 5 | Rootbridge Crossing | grazing | **VISIBLE**, 7.5 | +5.50 | - |
+| 6 | Mill Wheel Run | grazing | **VISIBLE**, 7.5 | +4.98 | The mill wheel's paddles cross the sightline 44% of their cycle (spoked wheel, flag visible between paddles) |
+| 7 | Cascade Steps | BLOCKED (t2 ledge) | **VISIBLE**, 7.5 | +5.35 | - |
+| 8 | Firefly Hollow | BLOCKED (junction rail) | **VISIBLE**, 7.5 | +3.02 | - |
+| 9 | Heart of the Grove | BLOCKED (chamber floor, rails) | **VISIBLE**, 8.0 pole | +0.20 | Just clears the root buttress over the trunk tunnel (solid y 4..6). Keep the buttress top ≤ y 6 (hole-local), or raise the pole |
+
+### Rejected in this round (for the record)
+
+- H9 dip across the 16-wide chamber with the pendulum over its crease, or over a flat lip: 27–60% capped (see above).
+- H8 door shortened to 2.0–2.4: caps fixed but good 2.56–2.78 (TRIVIAL). H8 exit factor 0.7 with the old cup/exit: good 3.24 but only 15 ace grid hits (HIO 0.1%).
+- H4 side-gap shot into the far NE pocket (arms 3.5–4.5): good 4.10–4.39, worse than average.
+- H7 cups at (-5, -31), (-6, -29.5), (-5.5, -36): skill gap -0.11 to +0.16 and 0–3 ace lines.
+
+## Round 7: Playtest Bot round 2 (v79), timing obstacles + H9 lanterns (2026-10-10)
+
+**Note:** the H7 sliding log, the H8 sliding root door and the H9 lantern pendulum *never* blocked a shot at 3 test timings in-game, but
+they are meant to be timing obstacles. Widen and/or slow them (longer dwell in the blocking position) so they block some shots at some
+timings, never trap or pin the ball, and fix the H7 log soft-lock. Also: H9's green is now lit by 3 hanging amber lanterns.
+
+**What the sim said before any change.** On the Round 6 geometry the new timing check (below) already showed all three obstacles blocking
+the intended line at some timings: H7 46%, H8 **79%**, H9 29% of 24 phases. At the bot's own three timings (t = 0, T/3, 2T/3) each obstacle
+blocked once in the sim. So "never blocked" in v79 points to a **sim ↔ game mismatch**, not only to obstacle size. RobloxDevBot should
+check, in Studio, that the three moving parts have **CanCollide = true** and are moved every frame (CFrame/PrismaticConstraint), not just
+tweened visuals over non-colliding parts, and that their motion follows holes.json (axis, range, speed, phase, and now `dwell`).
+The retune below still makes each obstacle a clearer gate: a visible pause in the blocking position and an obvious open window.
+
+Snapshots: `tools/out/holes-r7-start.json` (= Round 6), `holes-r7a.json` / `holes-r7-final.json`; `sim-r7-start.json` (= `sim-r5b.json`),
+`sim-r7a.json` = `sim-r7-final.json`; timing checks `timing-r7-start.json` / `timing-r7-final.json`. Pre-round copies in `tools/out/r7/`.
+One round was enough: no Round 8.
+
+### Sim / schema / tool changes
+
+| Change | Why |
+|---|---|
+| Slides may **pause**: `dwell: [{at, s}]` in holes.json (a stop at a range end pauses once per visit, an interior stop on both passes; `phase` = offset at t=0 on the forward pass). `period_s` = full cycle (info). `sim.py`: `slide_dwell_state()`, `cycle_period()`, `dwell_stops()`, `slide_time_at()`. Schema text updated | "Longer dwell in the blocking position" |
+| `tools/timing_check.py` (new): fires the sim golfer's **noise-free planned shot** (same `plan()` as the playtest sim) at each obstacle at 24 evenly spaced phase offsets of its cycle plus the bot's 3 timings t = 0, T/3, 2T/3. It compares each shot with a "ghost" run with that obstacle removed. **touched** = paths diverge > 0.02; **blocked** = touched and never got past the obstacle line; **deflected** = touched but got past; **passed** = untouched; **trap** = 30 s timeout or at rest touching the blocker. Also checks the brute-force ace line, and fuzzes 100k random soft shots (0.3–8 studs/s, any aim/phase) started inside the obstacle's sweep area to find soft-locks | Note |
+| `tools/sweep_r7.py` (new): `sweep_r5` + the timing check per variant | Iteration |
+| `test_physics.py`: test 12, slider dwell profile (positions over a cycle, period incl. pauses). All 12 tests pass | - |
+| `render_layout.py` / `write_notes.py` show pauses and cycle times; the pendulum touch band uses the turned bob's real width; `write_notes.py` can write single holes | Docs |
+
+Intended lines used: **H7** the tee shot to the lower gap (aim 281°, 12.0 studs/s; crosses the log track at x ≈ 4.0). **H8** the tee bank
+shot off the junction's north rail into the ring (aim 291.3°, 11.2 studs/s; crosses the door line at z ≈ -12.1). **H9** the chamber shot to
+the well mouth (from where the planned chain stops in the chamber, (18.5, -25.0), aim 281.2°, 7.75 studs/s; passes under the pendulum at x ≈ 21.2).
+
+### Changes per hole
+
+| Hole | Part | Round 6 | Round 7 | Why / evidence |
+|---|---|---|---|---|
+| H7 | log size | 5 x 0.8 x 0.8, flat ends | **6 x 0.8 x 0.8, pointed 45° ends** (collision 5.2 box + two 0.566 x 0.8 x 0.566 boxes turned 45°) | The soft-lock: a ball in the log's track was batted along x against the rail forever (Round 6: 3/2000 average plays; the fuzz found **610 per 100k** soft shots in the track). Pointed ends alone: **0**. A flat-ended log with a bigger end gap + pauses also gave 0 in 20k but leaves the mechanism in place |
+| H7 | travel / speed | ±7 at 5 studs/s, ends 0.5 from the rails | **±6 at 3.5 studs/s, ends 1.0 from the rails** | Slower = readable. Longer log keeps the east-end position across the gap line (x 3.0–9.0 covers the crossing at x ≈ 4) |
+| H7 | dwell / period | none, 5.6 s | **1.0 s at the west end (gap line open), 1.5 s at the east end (log across the gap line); 9.36 s** | Longest pause in the blocking position. 24 phases: blocked 46%, passed 54%, 0 traps |
+| H8 | door | 0.7 x 1 x 3.2, ping-pong −3.5..+3.5 at 2 studs/s, 7.0 s | **0.7 x 1 x 3.6; gate: closed (offset 0, centred on the ring line) 1.8 s → slides +4.0 into the south pocket at 3 studs/s → open 2.2 s → back; 6.67 s** | Round 6 blocked the intended line 79% of the time (too much for a timing gate; the bot never saw a block in-game, see above). Gate tuning (good avg / blocked %): dwell 1.5/2.5 → 2.88 / 46% (good < par−1 = TRIVIAL), 1.5/3.0 → 2.81 / 42%, 2.0/2.0 → 3.11 / 54%, 1.8/1.8 at 2.5 studs/s → 3.06 / 50% |
+| H8 | ring radius | 0.55 | **0.45** | With a fair open window more ring shots get in; the smaller ring keeps good ≥ par−1: ring 0.45 + dwell 1.5/2.5 → 3.02; ring 0.5 + 1.8/2.2 → 3.08; **ring 0.45 + 1.8/2.2 → good 3.13 / avg 4.50, 50% blocked**. Exit position/speed unchanged (teleport exit check from Round 6 still holds) |
+| H9 | pendulum bob | 1.6 x 1.8 x 1.0 box, square to the swing | **1.6 x 1.8 x 1.6 square lantern turned 30° about the vertical**: 1.6 → **2.19** wide across the swing; touch band ±16° → **±18°** (middle ~6.5 of the 8-stud mouth) | Widening a square-on bob (2.0–2.4 wide) created a new soft-lock: the ball rolls purely along the swing plane, is batted into the east rail and back forever (up to 154 per 100k fuzz shots). Turning the bob 45° fixed that, but its faces were then parallel to the 45° root deflector, so the ball bounced bob → deflector → bob (23 per 100k at a 4 s period). **30°: 0 per 150k at 4, 5 and 6 s** |
+| H9 | swing | ±35°, 4 s (peak 55°/s) | **±30°, 5 s (peak 38°/s)** | Slower swing and more time inside the touch band. 24 phases: blocked/deflected 38%, passed 62%, 0 traps (±35° @ 5 s: 29%; ±30° @ 6 s: 25%) |
+| H9 | hinge | y 8.96, bob 0.06 above the felt at rest | **y 8.996, bob 0.096 above the felt at rest** | A tilted bob's low corner dips (half-width)²/(2(L + h/2)) mid-swing. The rest gap is now computed so ≥ 0.02 of air stays under the corner (validator: min gap 0.021) |
+| H9 | lanterns | "dozens of hanging lanterns" cluster anchor | **3 hanging amber lanterns** `amber_lantern_1..3` at (18.5, -47.5), (28.5, -46.5), (20.0, -51.5), 1.2 x 1.8 x 1.2, **bottoms at y 7.2 = 8 studs above the green felt**, chains up into the canopy | The game now lights the green with these 3. **Decoration only, no collision.** Measured clearances (box edge): ≥ **7.6** studs from every point the pendulum bob sweeps (x 17.1..26.9, y 1.02..4.26, z −39.6..−37.4), ≥ 6.3 north of its swing plane/chain/beam (z −38.5), ≥ **3.9** from the tee→flag sightline. They are LOS occluders and the flag stays **VISIBLE (+0.20, unchanged)**; 7.8 above the top of a ball, 2.4 m above the felt (clear of a VR player's head) |
+
+### Timing check (24 evenly spaced phases per cycle; `tools/timing_check.py`)
+
+Before (Round 6 geometry):
+
+| Hole | Obstacle | Line | Period | Blocked | Deflected | Blocked+deflected | Passed | Traps | Bot timings t=0, T/3, 2T/3 | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H7 | log | intended | 5.6 s | 10/24 | 1/24 | **45.8%** | 54.2% | 0 | passed, passed, blocked | **610/100000** |
+| H7 | log | ace | 5.6 s | 9/24 | 2/24 | **45.8%** | 54.2% | 0 | deflected, passed, deflected | - |
+| H8 | root_door | intended | 7 s | 11/24 | 8/24 | **79.2%** | 20.8% | 0 | passed, blocked, deflected | 0/100000 |
+| H8 | root_door | ace | 7 s | 12/24 | 1/24 | **54.2%** | 45.8% | 0 | passed, passed, blocked | - |
+| H9 | lantern_pendulum | intended | 4 s | 3/24 | 4/24 | **29.2%** | 70.8% | 0 | passed, blocked, passed | 0/100000 |
+| H9 | lantern_pendulum | ace | 4 s | 0/24 | 0/24 | **0%** | 100% | 0 | passed, passed, passed | - |
+
+After (final):
+
+| Hole | Obstacle | Line | Period | Blocked | Deflected | Blocked+deflected | Passed | Traps | Bot timings t=0, T/3, 2T/3 | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H7 | log | intended | 9.36 s | 11/24 | 0/24 | **45.8%** | 54.2% | 0 | blocked, passed, passed | **0/100000** |
+| H7 | log | ace | 9.36 s | 7/24 | 2/24 | **37.5%** | 62.5% | 0 | passed, blocked, passed | - |
+| H8 | root_door | intended | 6.67 s | 12/24 | 0/24 | **50%** | 50% | 0 | blocked, passed, passed | 0/100000 |
+| H8 | root_door | ace | 6.67 s | 7/24 | 0/24 | **29.2%** | 70.8% | 0 | blocked, passed, passed | - |
+| H9 | lantern_pendulum | intended | 5 s | 5/24 | 4/24 | **37.5%** | 62.5% | 0 | blocked, deflected, passed | 0/100000 |
+| H9 | lantern_pendulum | ace | 5 s | 0/24 | 0/24 | **0%** | 100% | 0 | passed, passed, passed | - |
+
+(The H9 ace line goes through the secret Lantern Knot teleport and never meets the pendulum. "Ace" rows = the hole's brute-force ace line
+fired at every phase. All intended lines are now inside the 25–50% target, with 0 traps and 0 fuzz soft-locks.)
+
+### Final stats (Round 6 → Round 7, 2000 plays per skill, same seeds)
+
+| # | Hole | Par | Good avg | Avg avg | Skill gap | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Lantern Gate | 2 | 2.02 | 2.45 | 0.43 | 0.7% | 0.0% | 0.0% | 0.0% | ok |
+| 2 | Acorn Ledge | 2 | 2.01 | 2.63 | 0.62 | 8.5% | 0.0% | 0.0% | 0.0% | ok |
+| 3 | Toadstool Row | 3 | 2.79 | 3.81 | 1.02 | 2.6% | 0.0% | 0.4% | 0.4% | ok |
+| 4 | Spore Spinner | 3 | 3.15 | 3.73 | 0.58 | 2.8% | 1.3% | 0.0% | 0.7% | ok |
+| 5 | Rootbridge Crossing | 3 | 2.46 | 3.79 | 1.33 | 2.2% | 0.0% | 0.0% | 0.0% | ok |
+| 6 | Mill Wheel Run | 3 | 3.15 | 3.62 | 0.47 | 8.0% | 0.0% | 0.9% | 0.0% | ok |
+| 7 | Cascade Steps | 3 | 2.90 → **2.95** | 3.27 → **3.40** | 0.37 → **0.45** | 1.8% → 2.2% | 0.1% → 0.1% | 0.1% → 0.1% | 0.3% → **0.2%** | WARN:timeouts → **ok** |
+| 8 | Firefly Hollow | 4 | 3.17 → **3.13** | 4.50 → 4.50 | 1.33 → **1.37** | 4.9% → 6.2% | 0.0% → 0.0% | 0.8% → **0.3%** | 0.1% → 0.1% | ok |
+| 9 | Heart of the Grove | 4 | 3.74 → **3.64** | 4.12 → **4.07** | 0.38 → **0.43** | 3.0% → 3.0% | 0.2% → 0.2% | 0.1% → 0.1% | 0.4% → **0.2%** | ok |
+| | **Total** | **27** | **25.39 → 25.30** | **31.93 → 31.99** | | | | | | |
+
+H1–H6 are unchanged (same geometry and seeds, identical numbers). Targets: skill gap ≥ 0.43 on every hole (smallest H1 and H9, 0.43);
+average ≤ par+1.5 everywhere (worst H3 +0.81); caps ≤ 0.9% (H6 good 0.9%); good HIO 0.7–8.5%, average 0–1.3%, with an ace line on every hole
+(H7 137, H8 235, H9 55 grid hits). **0 timeouts on every hole** (H7's soft-lock is gone). Validator 0 errors, fuzz 0 escapes, physics tests 12/12.
+
+**H9 difficulty/readability:** good 3.64, average 4.07 (gap 0.43; Round 6 3.74 / 4.12). The slower 5 s swing is easier to read and to time,
+so good players gain a little more than average ones. The pendulum still blocks or deflects 38% of fired chamber shots. The 3 amber lanterns
+are decoration only: no collision, not in the physics, 8 studs above the felt and ≥ 7.6 studs from the pendulum sweep. They are included
+as occluders in the flag sightline check, and the flag stays visible with the same +0.20 clearance (still set by the tunnel's root buttress).
+
+World: `world/tools/validate.py` iteration 9 **CLEAN** (no felt, wall, tee or cup moved; walk 641 studs).
+
+### What RobloxDevBot must rebuild
+
+- **H7 log:** 6 long with pointed ends (collision 5.2 box + two 45°-turned 0.566 end boxes, or a wedge-ended union with the same footprint), range ±6, 3.5 studs/s,
+  **pauses 1.0 s at −6 and 1.5 s at +6**, phase 0 = centre moving east (holes.json `dwell`, `period_s` 9.357).
+- **H8 root door:** 3.6 long; offset range 0..+4.0 along +Z; **pauses 1.8 s at 0 (closed) and 2.2 s at +4.0 (open)**, 3 studs/s, t=0 = start of
+  the closed pause; single pocket in the south root-knot wall. **Ring trigger radius 0.45** (glow disc 0.9).
+- **H9 pendulum:** hinge y 8.996; ±30°, 5 s; bob 1.6 x 1.8 x 1.6 turned 30° about the vertical. **3 amber lanterns** (no collision) per `amber_lantern_1..3`.
+- **All three:** check CanCollide and real per-frame motion (see the note at the top of this round). The sim says each blocks the intended line
+  at about 38–50% of timings, so at 3 random timings a playtester should see at least one block 76–88% of the time.
+
+### Rejected in this round
+
+- H7 flat-ended log with pauses only (end gap 1.5, dwell 1.0/1.0): 0 soft-locks in 20k, but the batting mechanism remains. Pointed ends remove it.
+- H8 gate without a ring change (dwell 1.5/2.5, 1.5/3.0, 1.5/3.0 at 4.2 travel): good 2.74–2.88 (TRIVIAL, < par−1). Ring 0.4: good 3.11, but it undoes most of Round 5's ring enlargement.
+- H8 door range −4..0 (closing from the north): 58% blocked.
+- H9 wider square-on bobs (2.0–2.4 wide, ±25–40°): fuzz soft-locks along the swing plane (0–154 per 100k, very sensitive to amplitude/period). Bob turned 45°: deflector retro-bounce at 4 s (23 per 100k).
+
+## Round 8: H9 pendulum measured in Studio (v105, stage-h report §4 + §7) (2026-10-11)
+
+**Input.** RobloxDevBot confirmed the Round 7 pendulum in Studio: a single 1.6 x 1.8 x 1.6 collider at yaw 30, swinging ±30° with a 5.0 s
+period, hinge hole-local (22, 8.996, -38.5), centre 7.000 from the hinge, bob bottom 0.096 above the felt at the bottom of the swing.
+They fired the chamber line from (18.5, 1.0, -25.0), aim dir (0.194, -0.981) = 281.19°, at 7.75 studs/s, with hits at 20 phases
+0, 0.25 .. 4.75 s. **Engine: blocked 2/20 = 10%, touched 5/20** (3 deflections still crossed). The Round 7 sim had said 37.5%.
+
+Snapshots: `tools/out/holes-r8-start.json` (= Round 7), `holes-r8-final.json`, `sim-r8-final.json` (= `sim-latest.json`); timing checks
+`timing-r8-before.json` (Round 7 geometry, fixed sim) and `timing-r8-final.json`; Studio-line runs `studio-h9-r7-legacy.json`
+(Round 7 geometry, old contact model), `studio-h9-r8-before.json` (fixed sim) and `studio-h9-r8-after.json`.
+
+### 1. Reproducing the Studio test: `python3 tools/timing_check.py --studio-h9 [--speeds ...] [--legacy]`
+
+**Phase convention.** In the sim, phase = sim time of the hit t0, and the bob angle is amplitude·sin(2π·t0/period + phase). holes.json
+phase is 0, so t0 = 0 is the bob at the bottom moving east (+x). I assumed GolfTest uses the same convention: it hits at server time
+offset t0 into the mover's cycle. The touch windows support this. The engine saw touches at phases 4.75–0.25 and 2.25–2.5. The sim
+(old model) touches at 4.75–0.25 and 1.75–2.25. In both cases the bob is near the bottom when the ball gets there.
+
+| | Arrives at z = -38.5 | x there | Speed there |
+|---|---|---|---|
+| Engine | 2.5–2.9 s after the hit | 21.18 | 2.7–3.2 studs/s |
+| Sim (no pendulum, same start/aim/speed) | **2.71 s** | **21.17** | **2.94 studs/s** |
+
+So friction (0.5 + 0.25v), speed, arrival time and line all match. They are not the gap.
+
+**Why the sim said 37.5% and the engine said 10%:**
+1. **Different metric (about half the gap).** Round 7's 37.5% was blocked **+ deflected** (9/24 = 5 blocked + 4 deflected). The engine's
+   "blocked" means the ball never crossed. Blocked-only, the old sim gave 5/24 = 21% on its line and **4/20 = 20%** on the Studio line
+   (touched 6/20).
+2. **Contact height (the real physics bug).** The sim is 3D (sphere vs oriented box), so it already knew the bob rises as it swings and that
+   the ball can pass under a raised bob. But `sphere_box` treated **every** contact whose normal was ≥ 0.3 horizontal as a full
+   horizontal bounce off a wall, including contacts on the **top half of the ball**. At rest the bob bottom is 0.096 above the felt,
+   just above the ball centre (0.08) and below its top (0.16). A face contact 0.016–0.08 above the centre has a nearly horizontal
+   normal, so the sim bounced the ball fully off it. In-engine the bob pushes the ball down into the felt and it squeezes under ("most
+   touches glance off and roll under"). Along the shot line (x ≈ hinge − 0.82) the bob's bottom face gets below ball-centre height only
+   at its corners. The lowest any point of the swinging bob reaches there is 0.063 (corner circle r 7.975), and only for an instant.
+3. Phase and speed at the swing line match (above), so neither contributes.
+
+**Fix (sim.py, all holes).** New rule for **swing** blockers only: a pendulum blocker collides only if its **lowest point over the ball's
+footprint** (vertical lines through the ball centre, 8 rim points at r = 0.08 and the box's horizontally closest point) is **≤ the
+ball's centre height** (+ `swing_pass_tol` = 0). Otherwise the ball rolls under. This is `box_bottom_under()` plus a check in
+`sim_shot()`. Rotating and sliding blockers are unchanged, so H1–H8 give identical numbers. New `test_physics.py` test 13: a bob at
+rest with its bottom 0.10 above the felt lets the ball roll under; at 0.06 it stops it. **13/13 tests pass.**
+
+Studio conditions, Round 7 geometry (20 phases):
+
+| Speed (studs/s) | Old sim: blocked / touched | **Fixed sim: blocked / touched** | Engine |
+|---|---|---|---|
+| 6.5 | 7 / 18 | 2 / 7 | - |
+| 7.0 | 6 / 10 | 1 / 2 | - |
+| **7.75 (Studio line)** | 4 / 6 (20% / 30%) | **1 / 4 (5% / 20%)** | **2 / 5 (10% / 25%)** |
+| 8.5 | 3 / 5 | 0 / 0 | - |
+| 9.0 | 2 / 5 | 0 / 0 | - |
+
+The fixed sim is now within one shot of the engine on both counts.
+
+### 2. H9 pendulum change
+
+Under the fixed sim the Round 7 pendulum blocks almost nothing: intended line 0/24 blocked, 3/24 deflected; Studio line 0–10% across
+6.5–9 studs/s. Why the simple fixes don't work:
+- **Lowering the bob alone** (bottom 0.02 at the bottom of the swing): the flat-bottomed, 2.19-wide yawed box's lowest corner dips
+  (1.093)² / (2·7.9) = **0.075** mid-swing, so it would cut **0.055 into the felt**. 0.096 is already the floor.
+- **A longer chain** (9–12) lowers the dip to 0.06/0.046, but even with the bob below ball-centre height at rest, 14/20 Studio shots still
+  pass. The bob only covers the line for a short slice of a ±30° swing (|θ| ≲ 8°).
+- **A longer period** doesn't raise the fraction of time spent over the line.
+- **Moving the hinge onto the line** alone: mean 19%.
+
+Sweeps: `tools/sweep_r8.py` (Studio line at 6.5/7/7.75/8.5/9 studs/s, intended line, felt clearance, optionally fuzz and full plays).
+Highlights (blocked %, Studio line, 20 phases, 6.5/7/7.75/8.5/9):
+
+| Variant | Blocked | Mean | Notes |
+|---|---|---|---|
+| Round 7 | 10/5/5/0/0 | 4% | good 3.54 / avg 3.95 (fixed sim) |
+| hinge x 21.2 | 35/20/15/15/10 | 19% | |
+| hinge 21.2, ±15°, 5 s, chain 9 | 55/30/20/30/25 | 32% | |
+| hinge 21.2 + foot 0.8x0.4x1.6, ±15°, 5 s | 50/35/35/30/25 | 35% | |
+| hinge 21.2 + foot, ±12°, 4 s | 65/45/35/40/30 | 43% | good 3.78, 1 trap in 400 dense shots |
+| hinge 21.2 + foot, ±15°, 4 s | 60/45/30/35/30 | 40% | good 3.70 / avg 4.08 |
+| **hinge 21.2 + foot, ±13°, 4 s (chosen)** | **60/40/35/35/35** | **41%** | 0 traps; dense 80 phases: 66/45/40/34/32 |
+
+**Final parameters (old → new):**
+
+| Parameter | Round 7 | Round 8 |
+|---|---|---|
+| Hinge x (hole-local) | 22.0 | **21.2** (right over the in-engine crossing x 21.18). y 8.996 and z -38.5 unchanged |
+| Amplitude | ±30° | **±13°** |
+| Period | 5.0 s | **4.0 s** (peak 38 → 20 deg/s; a 7.9-stud pendulum's natural period is 3.1 s, so 4 s still looks natural) |
+| Colliders | lantern body 1.6x1.8x1.6, yaw 30, centre 7.0 below the hinge | body unchanged **+ foot 0.8 x 0.4 x 1.6, yaw 30, centre 7.741 below the hinge** |
+| Bottom above felt at rest | 0.096 (body) | body 0.096, **foot 0.055** (below the ball centre). Min gap over the swing 0.020 (validator floor) |
+| Root beam | centred x 22 | unchanged (x 14..30); the hinge sits on it at x 21.2 |
+
+The foot sits inside the lantern's footprint and only **0.041 below its visible bottom**, so it can be an invisible collider.
+**No new mesh from 3D Model Bot:** the visual lantern stays as it is. RobloxDevBot adds a Transparency 1, CanCollide (GolfMover group)
+part welded to the bob, moves the hinge 0.8 west, and changes the swing to ±13° / 4 s.
+
+Bob sweep is now x 18.4..24.0, y 1.02..3.30, z -39.6..-37.4. The amber lanterns are ≥ 8.5 studs from it (was 7.6). The well mouth is
+x 18–26, so a play to the east edge (x 24–26) still dodges the lantern. The felt, walls, cup and tee didn't move, so
+`world/tools/validate.py` wasn't rerun.
+
+### 3. Timing check (24 phases, `tools/timing_check.py`, fuzz 100k)
+
+Before (Round 7 geometry, fixed sim):
+
+| Hole | Obstacle | Line | Period | Blocked | Deflected | Blocked+deflected | Passed | Traps | Bot timings | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H7 | log | intended | 9.357 s | 11/24 | 0/24 | **45.8%** | 54.2% | 0 | blocked, passed, passed | 0/100000 |
+| H8 | root_door | intended | 6.667 s | 12/24 | 0/24 | **50%** | 50% | 0 | blocked, passed, passed | 0/100000 |
+| H9 | lantern_pendulum | intended | 5 s | **0/24** | 3/24 | **12.5%** | 87.5% | 0 | passed, passed, passed | 0/100000 |
+
+After (final):
+
+| Hole | Obstacle | Line | Period | Blocked | Deflected | Blocked+deflected | Passed | Traps | Bot timings | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H7 | log | intended | 9.357 s | 11/24 | 0/24 | **45.8%** | 54.2% | 0 | blocked, passed, passed | 0/100000 |
+| H7 | log | ace | 9.357 s | 7/24 | 2/24 | **37.5%** | 62.5% | 0 | passed, blocked, passed | - |
+| H8 | root_door | intended | 6.667 s | 12/24 | 0/24 | **50%** | 50% | 0 | blocked, passed, passed | 0/100000 |
+| H8 | root_door | ace | 6.667 s | 7/24 | 0/24 | **29.2%** | 70.8% | 0 | blocked, passed, passed | - |
+| H9 | lantern_pendulum | intended | 4 s | **10/24** | 2/24 | **50%** | 50% | 0 | passed, blocked, passed | 0/100000 |
+| H9 | lantern_pendulum | ace | 4 s | 0/24 | 0/24 | **0%** | 100% | 0 | passed, passed, passed | - |
+
+H9 Studio line after (`studio-h9-r8-after.json`; the 20 phases 0..4.75 s now span 1.19 cycles of 4 s):
+
+| Speed | Arrive z=-38.5 (s) | Speed there | Blocked | Deflected (crossed) | Touched | Passed | Traps |
+|---|---|---|---|---|---|---|---|
+| 6.5 | 4.28 | 0.91 | **12/20 = 60%** | 8 | 20 | 0 | 0 |
+| 7.0 | 3.38 | 1.86 | **8/20 = 40%** | 7 | 15 | 5 | 0 |
+| **7.75** | 2.71 | 2.94 | **7/20 = 35%** (was 1/20 fixed sim, 2/20 engine) | 1 | 8 | 12 | 0 |
+| 8.5 | 2.30 | 3.89 | **7/20 = 35%** | 3 | 10 | 10 | 0 |
+| 9.0 | 2.10 | 4.48 | **7/20 = 35%** | 3 | 10 | 10 | 0 |
+
+6.5 studs/s is a nearly dead ball at the line (0.9 studs/s), so it is easy to stop. At 7–9 studs/s the block rate is 35–40%.
+
+### 4. Final stats (2000 plays per skill, same seeds)
+
+H1–H8 are identical to Round 7 (same geometry; the new rule only affects swing blockers).
+
+| # | Hole | Par | Good avg | Avg avg | Skill gap | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 9 | Heart of the Grove, Round 7 (old sim) | 4 | 3.64 | 4.07 | 0.43 | 3.0% | 0.2% | 0.1% | 0.2% | ok |
+| 9 | Round 7 geometry, fixed sim | 4 | 3.54 | 3.95 | 0.40 | 3.0% | 0.2% | 0.1% | 0.1% | ok |
+| 9 | **Round 8** | 4 | **3.74** | **4.13** | **0.39** | 3.0% | 0.2% | 0.1% | 0.2% | ok |
+| | **Course total** | 27 | 25.30 → **25.40** | 31.99 → **32.05** | | | | | | |
+
+Targets all met: skill gap ≥ 0.39 on every hole (smallest H9 0.39, then H1 0.43), average ≤ par + 0.81 everywhere, caps ≤ 0.9%, good HIO 0.7–8.5%,
+average 0–1.3%, an ace line on every hole (H9 55 grid hits; it goes through the Lantern Knot and never meets the pendulum).
+Validator 0 errors, fuzz 0 escapes, 0 timeouts.
+
+H9 against the Round 7 design numbers: +0.10 good, +0.06 average. That is roughly the difficulty Round 7 thought it had, because Round 7
+was tuned against a sim that over-counted blocks. The obstacle is now real in-engine, and the hole isn't harder than intended.
+
+### What RobloxDevBot must rebuild (H9 only)
+
+- **Hinge** to hole-local **(21.2, 8.996, -38.5)** (0.8 west). The root beam stays centred at x 22.
+- **Swing ±13°, period 4.0 s**, angle(t) = 13°·sin(360°·t/4), phase 0.
+- **Add the foot collider:** 0.8 x 0.4 x 1.6 box, yaw 30 (same as the body), centre 7.741 below the hinge when hanging straight down.
+  Its bottom is 0.055 above the felt (world: felt + 0.055). Set Transparency 1, CanCollide true, group GolfMover, and weld it to the bob.
+  The lantern body collider and mesh are unchanged.
+- **Retest** with GolfTest `BLOCK_LINES` (same line and 20 phases). Expect about 6–8/20 blocked at 7.75 studs/s; the fixed sim says 7/20.
+
+## Round 9: H9 pendulum foot, square to the swing (2026-10-11)
+
+**Studio v116:** H9 pendulum blocked **8/24 (33.3%)**, touched 12/24 on the Studio line. Target: 38–50% blocked in Studio with 0 traps.
+Calibration: the fixed sim predicted 7/20 (35%) where Studio measured ~33%, so the sim target is ~45% blocked at 7.75 studs/s.
+Only the invisible collider foot changes. Hinge (21.2, 8.996, -38.5), ±13° and 4 s are unchanged. The lantern body collider is unchanged.
+
+### 1. Tools
+- `timing_check.py --studio-h9 --phases N`: N phases spread evenly over one period (t0 = k·T/N; 24 → every 1/6 s, 80 → every 0.05 s).
+  Without `--phases` it uses the old 20 phases 0..4.75 s.
+- `tools/sweep_r9.py '{"h9_foot": [x,y,z], "h9_foot_yaw": deg}' [--fuzz 100000] [--full]`: felt clearance, Studio line at 24 and 80 phases ×
+  speeds 7/7.75/8.5/9, intended line, and fuzz.
+- `sweep_r5.py`: `LG_SCRATCH` sets the scratch holes.json path, so sweeps can run in parallel. The first parallel batch shared one
+  scratch file and its results were discarded.
+- `build_holes.py`: new knob `h9_foot_yaw`. The foot's rest gap now rounds **up** with a +0.001 margin, so the swing minimum is ≥ 0.021.
+  In Round 8 rounding could give 0.0199.
+
+### 2. Foot sweep (Studio line blocked count; 24 phases | 80 phases at 7 / 7.75 / 8.5 / 9 studs/s)
+
+Rest gap = foot bottom above the felt with the lantern hanging straight down. Every row has min gap ≥ 0.02 over the swing (all 8 corners).
+
+| Foot [x,y,z] | Yaw | Rest gap | 24 ph | 80 ph | Traps | Inside lantern footprint? |
+|---|---|---|---|---|---|---|
+| 0.8,0.4,1.6 (R8) | 30 | 0.056 | 11/10/9/9 | 36/32/27/26 | 0 | yes |
+| 1.0,0.4,1.6 | 30 | 0.063 | 12/10/9/9 | 37/32/28/26 | 0 | yes |
+| 1.2,0.4,1.6 | 30 | 0.073 | 12/10/9/9 | 38/32/29/26 | 0 | yes |
+| 1.4,0.4,1.6 | 30 | 0.083 | 10/9/8/8 | 34/29/26/23 | 0 | yes |
+| 1.6,0.4,1.6 | 30 | 0.095 | 8/6/5/6 | 25/22/19/16 | 0 | yes |
+| 0.8,0.4,2.0 | 30 | 0.065 | 12/10/9/9 | 42/35/29/28 | **1** | no |
+| 1.0,0.4,2.0 | 30 | 0.074 | 11/10/9/9 | 42/35/31/27 | **1** | no |
+| 1.2,0.4,2.0 | 30 | 0.085 | 10/8/6/7 | 36/28/25/23 | **1** | no |
+| 0.6,0.4,2.0 | 30 | 0.058 | 11/8/8/8 | 40/33/30/27 | 0 | no |
+| 0.6,0.4,2.4 / 0.4,0.4,2.4 | 30 | 0.068 / 0.059 | 12/10/9/8 / 12/10/9/9 | 42/35/30/29 / 41/34/30/28 | **2 / 1** | no |
+| 0.8,0.6,1.6 (taller) | 30 | 0.056 | 11/10/9/9 | 36/32/27/26 | 0 | yes |
+| 0.6 / 0.4 / 0.3, 0.4, 1.6 | 30 | 0.049 / 0.042 / 0.039 | 11/9/8/8 | 36/31/28/25 … 35/30/26/25 | 0 | yes |
+| 0.4,0.4,1.4 | 30 | 0.039 | 10/9/8/8 | 33/29/26/24 | 0 | yes |
+| 0.4,0.4,1.6 | 0 | 0.030 | 10/8/7/7 | 32/28/25/22 | 0 | no |
+| 0.6,0.4,1.5 | 0 | 0.030 | 12/9/7/7 | 36/31/28/26 | 0 | yes (max yaw-0 fit) |
+| 0.8,0.4,1.38 | 0 | 0.032 | 12/10/9/8 | 38/34/32/29 | 0 | yes (max yaw-0 fit) |
+| 0.8,0.4,1.6 | 0 | 0.032 | 12/10/10/10 | 40/35/32/29 | 0 | no (+0.09) |
+| 0.8,0.4,1.8 | 0 | 0.032 | 12/11/10/10 | 41/34/33/29 | 0 | no |
+| 0.8,0.4,2.0 | 0 | 0.032 | 13/11/10/10 | 41/37/33/30 | 0 | no (+0.27) |
+| **0.9,0.4,1.6** | **0** | **0.034** | **12/11/10/10** | **40/36/33/30** | **0** | **no (+0.12)** |
+| 0.9,0.4,1.8 | 0 | 0.034 | 14/12/11/10 | 41/37/33/31 | 0 | no |
+| 1.0,0.4,1.6 | 0 | 0.037 | 12/12/11/11 | 42/36/34/32 | 0 | no |
+| 1.0,0.4,1.8 | 0 | 0.037 | 14/12/11/11 | 42/37/34/32 | 0 | no |
+| 1.2,0.4,1.6 | 0 | 0.044 | 13/11/10/11 | 40/36/35/31 | 0 | no |
+
+What the sweep shows:
+- **Widening along the swing backfires.** A box on a 8-stud arm must hang higher the longer it is along the swing (rest gap ≈ 0.02 +
+  half-length² / 16) or its corners hit the felt mid-swing. Above ~0.06 the foot meets the ball (centre 0.08) above its middle and the
+  block rate falls: 1.6 wide gave 22/80.
+- **Deeper across the swing at yaw 30 traps the ball.** Feet 2.0–2.4 deep gave 1–2 pins at 80 phases.
+- **Height doesn't matter** (0.4 and 0.6 gave identical results).
+- **Turning the foot square to the swing (yaw 0)** gives the most block per unit of height. At yaw 30 the 1.6 depth adds 0.4 to the
+  half-length along the swing; at yaw 0 it adds nothing. So a 0.9-long foot sits at 0.034 (was 0.055) and stops more balls low.
+  No foot that fits inside the yaw-30 lantern footprint beats Round 8 by more than ±1/24, so reaching ~45% takes a foot that pokes out
+  of the footprint, plus a mesh change.
+
+### 3. Final foot
+
+| | Round 8 | **Round 9** |
+|---|---|---|
+| Size [x along swing, y, z across] | 0.8 x 0.4 x 1.6 | **0.9 x 0.4 x 1.6** |
+| Yaw | 30 (same as the body) | **0** (square to the swing plane = -30° relative to the body) |
+| Centre from the hinge (hanging straight down) | (0, -7.741, 0) | **(0, -7.762, 0)** |
+| Bottom above the felt at rest | 0.055 | **0.034** (0.062 below the lantern's visible bottom, 0.096) |
+| Min bottom clearance over the ±13° swing (all corners of both colliders) | 0.020 | **0.021** |
+
+**Mesh fit: NO.** The foot covers a 0.9 x 1.6 rectangle aligned with the course. In the lantern's yaw-30 frame its corners reach 0.918
+from the centre against the body's 0.8 half-width, so they stick out **up to 0.12** past two of the body's faces.
+**3D Model Bot:** add a **base plinth** to the pendulum lantern mesh: a 0.9 (along the swing) x 0.4 x 1.6 block turned **-30° relative
+to the lantern body** (yaw 0 in the course), centred under the body, with its bottom 0.062 below the body's bottom. It should be dark
+iron/wood, like a weighted base. Alternative: widen the lantern's bottom 0.4 to a **1.84 x 1.84** square (same yaw 30) and extend it
+0.062 lower. That covers the foot but shows some visible base where there is no collider.
+
+### 4. Timing check (`timing-r9-final.txt`, fuzz 100k per mover)
+
+| Hole | Obstacle | Line | Blocked | Deflected | Blocked+deflected | Traps | Fuzz soft-locks |
+|---|---|---|---|---|---|---|---|
+| H7 | log | intended / ace | 11/24 / 7/24 | 0 / 2 | 45.8% / 37.5% | 0 | 0/100000 |
+| H8 | root_door | intended / ace | 12/24 / 7/24 | 0 / 0 | 50% / 29.2% | 0 | 0/100000 |
+| H9 | lantern_pendulum | intended | **11/24** (was 10) | 1 | **50%** | 0 | **0/100000** |
+| H9 | lantern_pendulum | ace (knot) | 0/24 | 0 | 0% | 0 | - |
+
+H7 and H8 are unchanged. H9 Studio line (`studio-h9-r9-{before,after}-{24,80}.json`, phases spread evenly over 4 s):
+
+| Speed | Speed at z -38.5 | 24 phases before → **after** | 80 phases before → **after** | Traps |
+|---|---|---|---|---|
+| 7.0 | 1.86 | 11/24 (46%) → **12/24 (50%)** | 36/80 (45%) → **40/80 (50%)** | 0 |
+| **7.75** | 2.94 | 10/24 (42%) → **11/24 (46%)** | 32/80 (40%) → **36/80 (45%)** | 0 |
+| 8.5 | 3.89 | 9/24 (38%) → **10/24 (42%)** | 27/80 (34%) → **33/80 (41%)** | 0 |
+| 9.0 | 4.48 | 9/24 (38%) → **10/24 (42%)** | 26/80 (32%) → **30/80 (38%)** | 0 |
+
+Same-geometry calibration: the sim says 42% (24 even phases) for the Round-8 foot and Studio measured 33%. Expect Studio at about
+**38–40%** with the new foot. If Studio comes in under 38%, the next step is 1.0 x 0.4 x 1.6 yaw 0 (12/24, 36/80 in the sim, 0 traps;
+plinth sticks out 0.14).
+
+### 5. H9 stats (2000 plays per skill, same seeds)
+
+| | Good avg | Avg avg | Skill gap | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|
+| Round 8 | 3.74 | 4.13 | 0.39 | 3.0% | 0.2% | 0.1% | 0.2% | ok |
+| **Round 9** | **3.81** | **4.21** | **0.40** | 3.0% | 0.3% | 0.1% | 0.4% | ok |
+
+Targets met: gap 0.40 ≥ 0.3, average 4.21 ≤ par + 1.5 (5.5), caps ≤ 1%. The ace line (Lantern Knot, 55 grid hits) never meets the pendulum.
+Course total 25.40 → **25.47** good, 32.05 → **32.13** average. Felt, walls, cup and tee are unchanged, so `world/tools/validate.py` wasn't rerun.
+
+### What changes (H9 only)
+
+- **RobloxDevBot:** resize the foot collider to **0.9 x 0.4 x 1.6**, set **yaw 0** in the course (rotate it -30° relative to the
+  lantern body), and put its centre **7.762 below the hinge** (bottom = felt + 0.034 at rest). Keep it Transparency 1, CanCollide, group
+  GolfMover, welded to the bob. Hinge, ±13° and 4 s are unchanged. Retest with GolfTest `BLOCK_LINES` (24 phases): expect about 9–11/24.
+- **3D Model Bot:** add the base plinth (section 3) to the pendulum lantern mesh.
+
+## Round 10: H9 pendulum swing ±13° → ±11° (2026-10-11)
+
+**Studio v131:** H9 pendulum with the 1.0 x 0.4 x 1.6 yaw-0 foot (the Round 9 fallback size) blocked **15/48 (31%)**, 0 traps.
+Widening the foot didn't help because the swinging foot shoves the ball on through. Target: 38–50% blocked in Studio, 0 traps.
+
+### 1. Why the sim over-counts: stops vs kicks (`tools/sweep_r10.py`)
+Tracing every Studio-line phase shows two kinds of sim "block":
+- **Stop:** the ball meets the foot's **north face**, which is square to the shot line, and bounces straight back. Across the contact
+  the velocity change is ≥ 0.7 along z. The face only slides sideways past the ball, so it can't carry the ball on.
+- **Kick:** the first contact is a side face of the foot or a dipping corner of the yaw-30 lantern body. The moving face throws the
+  ball sideways at 4–6 studs/s. The frictionless sim often leaves it north of the line, but Studio carries it on through (the shove-through).
+
+I first tried modelling the carry as Coulomb friction on pendulum contacts. At μ 0–1.2 the sim blocked **more**, not less, because friction
+drags the ball's southward speed toward the face's. That can't explain Studio, so I backed it out of `sim.py` and took the empirical split instead:
+**Studio ≈ stops + κ·kicks**. A least-squares fit over both Studio measurements gives **κ = 0.36**:
+
+| Studio build | Sim blocked | Stops + kicks | Estimate | Studio |
+|---|---|---|---|---|
+| v116 Round 8 foot 0.8x0.4x1.6 yaw 30, 24 ph | 10/24 | 4 + 6 | 6.2 | 8/24 |
+| v131 foot 1.0x0.4x1.6 yaw 0, 48 ph | 22/48 | 13 + 9 | 16.2 | 15/48 |
+| pooled | 32/72 | | **22.4/72** | **23/72** |
+
+So only the north-face stops count fully. The lever is the time that face sits over the line. That fraction is 2/π·asin(hx/(L·sin A)), so it grows
+with a smaller amplitude or a wider face. A wider face has to hang higher, though (rest gap 0.021 + hx²/2R), so it meets the ball higher.
+
+### 2. Variants (foot 1.0x0.4x1.6 yaw 0, hinge (21.2, 8.996, -38.5), ±13°, 4 s unless noted; Studio line, blocked counts at 7 / 7.75 / 8.5 / 9 studs/s)
+"Est" is the Studio estimate at 7.75 (stops + 0.36·kicks), given for 24 | 80 phases. Every row has a felt clearance of 0.021 or more over the swing, checked on all 8 corners of both colliders.
+
+| Variant | 24 ph | 80 ph | Est 7.75 | Traps | Art/script change |
+|---|---|---|---|---|---|
+| v131 as built (±13°) | 12/12/11/11 | 42/36/34/32 | 39% \| 34% | 0 | — |
+| ±12° | 14/12/11/10 | 44/39/35/32 | 39% \| 37% | **1** | amplitude |
+| ±11.5° | 15/12/11/10 | 46/40/34/31 | 39% \| 39% | 0 | amplitude |
+| ±11.25° | 14/14/11/10 | 47/41/36/31 | 45% \| 39% | 0 | amplitude |
+| **±11° (chosen)** | **14/15/11/9** | **48/44/36/32** | **49% \| 42%** | **0** | **amplitude** |
+| ±10.5° | 15/15/12/10 | 51/47/39/33 | 49% \| 46% | 0 | amplitude |
+| ±10° | 16/14/12/12 | 55/49/42/35 | 48% \| 49% | 0 | amplitude |
+| ±9° | 20/17/15/12 | 70/59/48/44 | 63% \| 64% | 0 | amplitude (intended line passes 2/24 only) |
+| ±8° | 21/16/14/14 | 68/58/50/47 | 61% \| 64% | **2** | amplitude |
+| period 3 s | 15/13/11/11 | 47/39/36/35 | 41% \| 36% | 0 | period |
+| period 5 s / 6 s | 12/11/9/7 / 11/11/8/6 | 38/34/30/25 / 40/36/28/22 | 35% \| 33% / 38% \| 35% | 0 | period |
+| ±11°, 5 s / ±11°, 3.5 s / ±12°, 5 s | 15/14/9/9 / 15/14/11/10 / 12/12/7/7 | 46/42/32/30 / 50/44/38/35 / 42/38/32/27 | 48\|43 / 45\|41 / 39\|37 % | **1** / 0 / 0 | both |
+| hinge x 21.8 / 21.5 | 12/11/12/12 / 12/9/10/9 | 38/39/38/38 / 41/36/34/30 | 41% \| 42% / 30% \| 35% | 0 | hinge + beam + mesh |
+| hinge x 20.9 / 20.6 | 13/11/9/7 / 11/7/6/5 | 42/36/30/28 / 36/29/24/22 | 32% \| 34% / 24% \| 30% | 0 | hinge + beam + mesh |
+| wide paddle 1.6x0.4x1.6 (gap 0.062) | 12/10/9/9 | 41/38/35/34 | 34% \| 40% | 0 | collider + 1.6 plinth |
+| same, 1.0 tall | identical | identical | | 0 | height doesn't matter |
+| wide paddle 1.6x0.4x1.6 + ±11° | 14/15/12/11 | 48/44/38/34 | 52% \| 47% | 0 | collider + plinth + amplitude |
+| thin paddles 1.6x0.4x0.4 / 1.4x0.4x0.6 / 0.9x0.4x0.6 | 9/9/8/9 / 10/9/9/9 / 10/9/8/9 | 31/30/28/27 / 33/31/29/28 / 32/30/28/27 | ~27% | 0 / 0 / 1 | collider + mesh |
+| 2nd pendulum 2.0 north, phase 180° | 19/18/15/16 | 61/59/52/48 | 59% \| 58% | 0 | new lantern + beam (largest change) |
+| 2nd pendulum 2.0 north, phase 90° | 13/16/16/18 | 42/49/51/55 | 59% \| 54% | 0 | new lantern + beam |
+
+What the sweep shows:
+- **Amplitude is the cleanest lever.** It's one number in the mover script, with no art change and no change to the felt clearance (min 0.021,
+  set by the foot's half-length). At ±11° the foot's face covers the line 22% of the cycle (was 18%), stops go 22 → 28/80 and kicks barely change (14 → 16).
+- **Period barely matters.** It changes how many kicks there are, not how many stops.
+- **Hinge offset** helps only at x 21.8 (+0.6 east). It needs the hinge moved on the beam, and its block rate is no better than ±11°.
+- **A wide or thin paddle doesn't help.** A wider face has to hang higher, and a thinner one in z loses the kicks without gaining stops.
+- **A second pendulum** overshoots and is by far the biggest art change.
+- **±11° is mid-target.** ±11.5° is at the low edge (39%), and ±10° or less gets close to the top. Traps appear at ±12° and ±8°.
+
+### 3. Chosen change (H9 only)
+
+| | v131 / Round 9 | **Round 10** |
+|---|---|---|
+| Swing | angle(t) = 13°·sin(360°·t/4 s) | **angle(t) = 11°·sin(360°·t/4 s)**, phase 0, peak 17.3 °/s |
+| Hinge | (21.2, 8.996, -38.5) | unchanged |
+| Lantern body collider | 1.6x1.8x1.6 yaw 30, centre (0, -7.0, 0) | unchanged |
+| Foot collider | holes.json 0.9x0.4x1.6 (Studio built 1.0) | **1.0 x 0.4 x 1.6, yaw 0, centre (0, -7.759, 0)**, i.e. as built in v131. Bottom at felt + 0.037 at rest, ≥ 0.021 over the swing |
+| Sweep (body + foot) | x 18.36..24.04, y 1.02..3.30 | x 18.62..23.78, y 1.02..3.22, z -39.59..-37.41 (smaller, so every beam/rail/lantern clearance holds or grows) |
+
+At the swing ends the body centre is 1.34 from the hinge, and its near edge still clears the ball on the line by ≥ 0.15.
+
+### 4. Results
+H9 Studio line (`studio-h9-r10-after-{24,80}.json`), blocked before (±13°, 1.0 foot) → **after**, 0 traps everywhere:
+
+| Speed | 24 phases | 80 phases | Est Studio (24 \| 80) |
+|---|---|---|---|
+| 7.0 | 12 → **14/24 (58%)** | 42 → **48/80 (60%)** | 42% \| 44% |
+| **7.75** | 12 → **15/24 (62%)** | 36 → **44/80 (55%)** | **49% \| 42%** |
+| 8.5 | 11 → **11/24 (46%)** | 34 → **36/80 (45%)** | 38% \| 38% |
+| 9.0 | 11 → **9/24 (38%)** | 32 → **32/80 (40%)** | 35% \| 37% |
+
+At 48 phases and 7.75 the sim blocks 27/48 (56%).
+
+**Expected Studio at 7.75: ~44%, about 21/48** (40–47% for κ 0.2–0.5). The old "sim minus 9–15 points" rule gives 40–48%.
+
+Timing check (`timing-r10-final.txt`, 100k fuzz per mover):
+
+| Hole | Obstacle | Line | Blocked | Deflected | Traps | Fuzz soft-locks |
+|---|---|---|---|---|---|---|
+| H7 | log | intended / ace | 11/24 / 7/24 | 0 / 2 | 0 | 0/100000 |
+| H8 | root_door | intended / ace | 12/24 / 7/24 | 0 / 0 | 0 | 0/100000 |
+| H9 | lantern_pendulum | intended | **14/24** (was 11 + 1 deflected) | 0 | 0 | **0/100000** |
+| H9 | lantern_pendulum | ace (Lantern Knot) | 0/24, holed 75% | 0 | 0 | — |
+
+H7 and H8 are unchanged. The ace line never meets the pendulum (55 grid hits, unchanged).
+
+H9 stats (2000 plays per skill, `sim-r10-final.json`):
+
+| | Good avg | Avg avg | Skill gap | Good HIO | Avg HIO | Good capped | Avg capped | Flags |
+|---|---|---|---|---|---|---|---|---|
+| Round 9 (0.9 foot, ±13°) | 3.81 | 4.21 | 0.40 | 3.0% | 0.2% | 0.1% | 0.4% | ok |
+| v131 as built (1.0 foot, ±13°) | 3.82 | 4.22 | 0.40 | 3.0% | 0.2% | 0.1% | 0.4% | ok |
+| **Round 10 (1.0 foot, ±11°)** | **3.90** | **4.28** | **0.38** | 3.0% | 0.2% | 0.2% | 0.8% | ok |
+
+Targets are met: gap 0.38 ≥ 0.3, average 4.28 ≤ par + 1.5, caps ≤ 1%. Course total 25.47 → **25.56** good, 32.13 → **32.20** average.
+Validator: 0 issues. Felt, walls, cup and tee are unchanged.
+
+### 5. Tools
+- `tools/sweep_r10.py`: stop/kick split per phase and a Studio estimate, plus `--calib`, which refits κ from the Studio results. Its ghost removes every
+  pendulum. It also covers clearance, the intended line, fuzz and full plays.
+- `build_holes.py`: new `H9_AMP` (11), and the default foot is now 1.0. There's a sweep-only knob `h9_pend2` for a second pendulum, which the build doesn't use.
+- `sim-latest.json` was rebuilt from `sim-r9-final.json` (holes 1–8) plus the Round 10 H9 record, because Round 9 had left it holding H9's flag LOS only.
+  The timing check needs it to find the ace lines.
+
+### What changes
+- **RobloxDevBot (H9 only):** set the pendulum amplitude to **11°**, so angle(t) = 11°·sin(360°·t/4 s). Leave the period (4 s), the phase (0),
+  the hinge (21.2, 8.996, -38.5) and the body collider as they are. Keep the foot as built in v131: **1.0 x 0.4 x 1.6, yaw 0, centre 7.759 below the hinge**.
+  If it's still 0.9, make it 1.0. Retest with GolfTest `BLOCK_LINES` (48 phases, 7.75): expect **~19–23/48 blocked**, 0 traps.
+- **3D Model Bot:** no new mesh work. The base plinth must match the 1.0 x 0.4 x 1.6 foot: yaw 0 in the course (-30° to the body),
+  bottom 0.059 below the body's bottom, and it sticks out up to 0.14 past the body's faces. If the plinth was made to the Round 9 0.9 spec, lengthen it to 1.0 along the swing.

@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "First-person VR view at standing eye height from the first tee of a mini golf course on the lowest floating island, looking north. Directly ahead a short straight putting green of soft green felt, framed by chunky snow-capped wooden rails, runs 40 studs to a small offset green behind a big snow-capped boulder with one flat angled face; a tall red flag marks the cup. Brass lanterns on driftwood posts glow warm orange along a cobbled snowy walkway on the right, and a cluster of round penguin-puffin snowpuff figures watches from a snowdrift on the left. Beyond the island's snowy rim the ground simply ends at a 24-stud cliff above a sea of soft lilac-white clouds. Far ahead, rising out of the clouds on its own little island, the Starfrost Spire: an enormous faceted aurora-crystal spire glowing mint to violet from inside, with crystal shards orbiting it, towering into the night sky. Green and violet aurora curtains ripple across the northern sky above it. On the right, higher, a second island with steam rising from turquoise hot springs and frosted palms; in the distance more floating islands at different heights, one with a frozen waterfall. A big soft moon glows low behind the viewer to the left, outside the frame, lighting snow edges lilac. Stylized soft 3D render, cozy and whimsical, same art style and palette as the Aurora Archipelago menu card: chunky hand-made shapes, snow-capped floating rock islands over a lilac-white cloud sea at twilight-night, green and violet aurora ribbons, warm brass lanterns on wooden posts, chunky snow-capped timber railings, translucent glowing ice, soft bloom, original design, no text, no logos, no UI. Match the art style, palette and lighting of the reference image.",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/vr-minigolf/store/ui/card_soon_auroraarchipelago_color_clean.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1418,
+    "outputTokens": 1078,
+    "totalTokens": 2496
+  },
+  "cost": 0.042502,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1791779877,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1024,
+          "textTokens": 394
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1791779846937,
+                "endTime": 1791779878174,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.042502",
+      "marketCost": "0.042502",
+      "surchargeCost": "0",
+      "gatewayCost": "0.042502",
+      "inferenceCost": "0.042502",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.042502",
+      "generationId": "gen_01M4Q6DEQE0VW837D23A4F7X65"
+    }
+  },
+  "seconds": 32.2,
+  "files": [
+    "V1-first-tee-spire.png"
+  ]
+}

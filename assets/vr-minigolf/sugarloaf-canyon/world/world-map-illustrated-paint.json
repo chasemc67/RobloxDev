@@ -1,0 +1,52 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Repaint the FIRST image as a hand-painted storybook game world map in the illustration style of the SECOND image. CRITICAL: keep the exact geometry of the first image pixel-aligned — the same positions and shapes of the round reservoir at top, the river running down the middle, the dome mesa, the circular plateau at left, the cliffs, the rectangular green hole areas and the dashed walking paths. Do not move, mirror or add anything. Theme: candy-striped pink and cream sandstone mesas at sunset, lollipop cacti, rock-candy crystals, turquoise water, small wooden bridges. Do NOT draw any text, numbers, labels, flags or badges.",
+  "aspect": "1:1",
+  "refs": [
+    "../../RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/world-map-base.png",
+    "../../RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/../../lantern-grove/world/world-map-illustrated.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 1253,
+    "inputTokenDetails": {
+      "noCacheTokens": 1253,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1456,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 336
+    },
+    "totalTokens": 2709,
+    "raw": {
+      "thoughtsTokenCount": 336,
+      "promptTokenCount": 1253,
+      "candidatesTokenCount": 1120,
+      "totalTokenCount": 2709,
+      "trafficType": "ON_DEMAND",
+      "promptTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        },
+        {
+          "modality": "TEXT",
+          "tokenCount": 133
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ]
+    }
+  },
+  "cost": 0.140938,
+  "warnings": [],
+  "seconds": 40.1,
+  "files": [
+    "../../RobloxDev/assets/vr-minigolf/sugarloaf-canyon/world/world-map-illustrated-paint.png"
+  ]
+}

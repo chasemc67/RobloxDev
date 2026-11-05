@@ -1,0 +1,6 @@
+2026-10-13 15:34:56 Launch Blender 5.2: C:\Users\chase\aa_polish\aurora-archipelago\models\_src\props_batch1\build_polish_corals.py --only h07_coral_w1,h07_coral_w2,h07_coral_w3,h07_coral_w4,h07_coral_w5,h07_coral_e6,h07_coral_e7,h07_coral_e8,h07_coral_e9,h07_coral_e10,h08_giant_coral,h08_coral_1,h08_coral_2,h08_coral_3,h08_coral_4,h08_coral_5,h08_coral_6,h08_coral_7
+2026-10-13 15:35:36 Blender exited: C:\Users\chase\aa_polish\aurora-archipelago\models\_src\props_batch1\build_polish_corals.py (exit 0)
+2026-10-13 15:46:24 Launch Blender 5.2: C:\Users\chase\aa_polish\aurora-archipelago\models\_src\props_batch3\build_batch3.py --only h04_ice_channel_edge,h18_ramp_lanterns,h14_buoy_float,h04_frosted_palm_a,h04_frosted_palm_b,h06_frosted_palms,h04_snowpuffs,h06_snowpuffs,h14_snowpuffs,h18_snowpuffs
+2026-10-13 15:46:28 Blender exited: C:\Users\chase\aa_polish\aurora-archipelago\models\_src\props_batch3\build_batch3.py (exit 0)
+2026-10-13 15:58:36 Launch Blender 5.2: C:\Users\chase\aa_polish\aurora-archipelago\models\_src\props_batch3\build_batch3.py --only h04_ice_channel_edge,h18_ramp_lanterns,h14_buoy_float,h04_frosted_palm_a,h04_frosted_palm_b,h06_frosted_palms,h04_snowpuffs,h06_snowpuffs,h14_snowpuffs,h18_snowpuffs
+2026-10-13 15:59:10 Blender exited: C:\Users\chase\aa_polish\aurora-archipelago\models\_src\props_batch3\build_batch3.py (exit 0)

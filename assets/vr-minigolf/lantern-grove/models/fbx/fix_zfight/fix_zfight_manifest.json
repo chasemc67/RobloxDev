@@ -1,0 +1,897 @@
+{
+ "generated": "2026-10-14",
+ "method": "separate thick closed parts, >=0.2 thick, >=0.08 gaps (0.086 built), >=0.15 true-mesh felt/rail clearance (pendulum over full \u00b111\u00b0 swing)",
+ "props": {
+  "gold_leaf_bush": {
+   "fbx": "fbx/fix_zfight/gold_leaf_bush.fbx",
+   "sha256": "7b20ab5d1bb4e63163428670baa30ce0d12dc97099460e350bb6da4c39d68465",
+   "tris": 978,
+   "parts": [
+    {
+     "object": "gold_leaf_bush__Gold",
+     "mats": [
+      "Gold"
+     ],
+     "tris": 834
+    },
+    {
+     "object": "gold_leaf_bush__Pumpkin",
+     "mats": [
+      "Pumpkin"
+     ],
+     "tris": 144
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "approved_entry": {
+    "name": "gold_leaf_bush",
+    "group": "nature",
+    "holes": [
+     "all"
+    ],
+    "priority": "P3",
+    "kind": "static",
+    "origin": "base centre (bbox x/z centre, bottom)",
+    "front": "+Z (Roblox); yaw it to face the player",
+    "target_size_props_md": [
+     2.6,
+     2,
+     2.6
+    ],
+    "placements": [],
+    "notes": "Harvest-gold round bush.",
+    "fbx": "fbx/gold_leaf_bush.fbx",
+    "previews": [
+     "previews/gold_leaf_bush_eye.png",
+     "previews/gold_leaf_bush_34.png"
+    ],
+    "bbox_size_studs": [
+     2.948,
+     1.538,
+     2.447
+    ],
+    "bbox_center_from_origin": [
+     0.081,
+     0.315,
+     0.027
+    ],
+    "triangles": 320,
+    "parts": [
+     {
+      "mesh": "gold_leaf_bush__Gold",
+      "material": "Gold",
+      "color": "#F2B632",
+      "roblox_material": "Grass",
+      "texture": "textures/foliage_gold.png",
+      "transparency": 0,
+      "tris": 240,
+      "note": "birch/oak foliage",
+      "bbox_center_from_origin": [
+       0.244,
+       0.315,
+       0.087
+      ],
+      "size": [
+       2.622,
+       1.538,
+       2.328
+      ]
+     },
+     {
+      "mesh": "gold_leaf_bush__Pumpkin",
+      "material": "Pumpkin",
+      "color": "#E8862E",
+      "roblox_material": "Grass",
+      "texture": "textures/foliage_orange.png",
+      "transparency": 0,
+      "tris": 80,
+      "note": "maple foliage 2",
+      "bbox_center_from_origin": [
+       -0.68,
+       0.209,
+       -0.408
+      ],
+      "size": [
+       1.426,
+       1.192,
+       1.577
+      ]
+     }
+    ],
+    "size_ratio_vs_target": [
+     1.13,
+     0.77,
+     0.94
+    ],
+    "dressing_uses": 10,
+    "category": "plant"
+   }
+  },
+  "grass_tuft": {
+   "fbx": "fbx/fix_zfight/grass_tuft.fbx",
+   "sha256": "ddb3d965181165cfe53ca4746ac10efba78439fa6b85e40563b6d0eed8230ecc",
+   "tris": 384,
+   "parts": [
+    {
+     "object": "grass_tuft__Gold",
+     "mats": [
+      "Gold"
+     ],
+     "tris": 14
+    },
+    {
+     "object": "grass_tuft__Moss",
+     "mats": [
+      "Moss"
+     ],
+     "tris": 370
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "approved_entry": {
+    "name": "grass_tuft",
+    "group": "nature",
+    "holes": [
+     "all"
+    ],
+    "priority": "P3",
+    "kind": "static",
+    "origin": "base centre (bbox x/z centre, bottom)",
+    "front": "+Z (Roblox); yaw it to face the player",
+    "target_size_props_md": [
+     1.6,
+     1.6,
+     1.6
+    ],
+    "placements": [],
+    "notes": "Tall autumn grass blades (Moss + Gold), foreground filler along rails.",
+    "fbx": "fbx/grass_tuft.fbx",
+    "previews": [
+     "previews/grass_tuft_eye.png",
+     "previews/grass_tuft_34.png"
+    ],
+    "bbox_size_studs": [
+     1.285,
+     1.606,
+     1.655
+    ],
+    "bbox_center_from_origin": [
+     -0.056,
+     0.787,
+     0.014
+    ],
+    "triangles": 224,
+    "parts": [
+     {
+      "mesh": "grass_tuft__Gold",
+      "material": "Gold",
+      "color": "#F2B632",
+      "roblox_material": "Grass",
+      "texture": "textures/foliage_gold.png",
+      "transparency": 0,
+      "tris": 84,
+      "note": "birch/oak foliage",
+      "bbox_center_from_origin": [
+       -0.01,
+       0.776,
+       -0.236
+      ],
+      "size": [
+       1.14,
+       1.579,
+       1.157
+      ]
+     },
+     {
+      "mesh": "grass_tuft__Moss",
+      "material": "Moss",
+      "color": "#7A9A3A",
+      "roblox_material": "Grass",
+      "texture": "textures/moss.png",
+      "transparency": 0,
+      "tris": 140,
+      "note": "moss",
+      "bbox_center_from_origin": [
+       -0.056,
+       0.787,
+       0.089
+      ],
+      "size": [
+       1.285,
+       1.606,
+       1.505
+      ]
+     }
+    ],
+    "size_ratio_vs_target": [
+     0.8,
+     1.0,
+     1.03
+    ],
+    "dressing_uses": 30,
+    "category": "plant"
+   }
+  },
+  "h5_respawn_stone": {
+   "fbx": "fbx/fix_zfight/h5_respawn_stone.fbx",
+   "sha256": "beb67af10941679ee12c7a0bedb46d6174b952d7c8af73b3e0e1d0f78fd45d4b",
+   "tris": 244,
+   "parts": [
+    {
+     "object": "h5_respawn_stone__Moss",
+     "mats": [
+      "Moss"
+     ],
+     "tris": 16
+    },
+    {
+     "object": "h5_respawn_stone__ShroomGlow",
+     "mats": [
+      "ShroomGlow"
+     ],
+     "tris": 74
+    },
+    {
+     "object": "h5_respawn_stone__Slate",
+     "mats": [
+      "Slate"
+     ],
+     "tris": 154
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "approved_entry": {
+    "name": "h5_respawn_stone",
+    "group": "hero",
+    "category": "structure",
+    "holes": [
+     "H5"
+    ],
+    "priority": "P2",
+    "kind": "static",
+    "origin": "centre, bottom on the felt top (0.02 tall: flush)",
+    "front": "n/a",
+    "target_size_props_md": [
+     0.8,
+     0.02,
+     0.8
+    ],
+    "placements": [
+     {
+      "hole": "H5",
+      "pos": [
+       0.0,
+       0.0,
+       -13.5
+      ],
+      "yaw": 0,
+      "note": "= holes.json stream respawn point"
+     }
+    ],
+    "notes": "Glowing mossy marker stone set flush in the H5 felt at the root-bridge entry: the stream hazard's respawn point (holes.json hazards[stream].respawn). 0.02 tall, no collision.",
+    "fbx": "fbx/h5_respawn_stone.fbx",
+    "previews": [
+     "previews/h5_respawn_stone_eye.png",
+     "previews/h5_respawn_stone_34.png"
+    ],
+    "bbox_size_studs": [
+     0.77,
+     0.018,
+     0.773
+    ],
+    "bbox_center_from_origin": [
+     0.007,
+     0.009,
+     0.005
+    ],
+    "triangles": 224,
+    "parts": [
+     {
+      "mesh": "h5_respawn_stone__Moss",
+      "material": "Moss",
+      "color": "#7A9A3A",
+      "roblox_material": "Grass",
+      "texture": "textures/moss.png",
+      "transparency": 0,
+      "tris": 16,
+      "note": "moss",
+      "bbox_center_from_origin": [
+       0.088,
+       0.016,
+       -0.176
+      ],
+      "size": [
+       0.546,
+       0.004,
+       0.351
+      ]
+     },
+     {
+      "mesh": "h5_respawn_stone__ShroomGlow",
+      "material": "ShroomGlow",
+      "color": "#7FE3D0",
+      "roblox_material": "Neon",
+      "texture": null,
+      "transparency": 0,
+      "tris": 172,
+      "note": "bioluminescent mushroom caps (accent; pass 8: emission 3 -> 6)",
+      "bbox_center_from_origin": [
+       0.0,
+       0.016,
+       -0.0
+      ],
+      "size": [
+       0.44,
+       0.004,
+       0.44
+      ]
+     },
+     {
+      "mesh": "h5_respawn_stone__Slate",
+      "material": "Slate",
+      "color": "#6E7480",
+      "roblox_material": "Slate",
+      "texture": "textures/slate_stone.png",
+      "transparency": 0,
+      "tris": 36,
+      "note": "rock",
+      "bbox_center_from_origin": [
+       0.007,
+       0.007,
+       0.005
+      ],
+      "size": [
+       0.77,
+       0.014,
+       0.773
+      ]
+     }
+    ],
+    "size_ratio_vs_target": [
+     0.96,
+     0.9,
+     0.97
+    ],
+    "dressing_uses": 0
+   }
+  },
+  "h9_lantern_pendulum": {
+   "fbx": "fbx/fix_zfight/h9_lantern_pendulum.fbx",
+   "sha256": "db8c683658af2b202db7563cac56dba9b139058bca152c11290a77376d5f6bd9",
+   "tris": 554,
+   "parts": [
+    {
+     "object": "h9_lantern_pendulum__CapGold",
+     "mats": [
+      "CapGold"
+     ],
+     "tris": 98
+    },
+    {
+     "object": "h9_lantern_pendulum__Glow",
+     "mats": [
+      "Glow"
+     ],
+     "tris": 12
+    },
+    {
+     "object": "h9_lantern_pendulum__Iron",
+     "mats": [
+      "Iron"
+     ],
+     "tris": 64
+    },
+    {
+     "object": "h9_lantern_pendulum__MoveCream",
+     "mats": [
+      "MoveCream"
+     ],
+     "tris": 184
+    },
+    {
+     "object": "h9_lantern_pendulum__MoveRed",
+     "mats": [
+      "MoveRed"
+     ],
+     "tris": 196
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "approved_entry": {
+    "name": "h9_lantern_pendulum",
+    "group": "moving",
+    "category": "structure",
+    "holes": [
+     "H9"
+    ],
+    "priority": "P1",
+    "kind": "moving",
+    "origin": "PIVOT = HINGE (course-local H9 [21.2, 8.996, -38.5]); the mesh hangs straight down from it",
+    "front": "n/a (swings about Roblox +Z)",
+    "target_size_props_md": [
+     1.6,
+     8.0,
+     1.6
+    ],
+    "placements": [
+     {
+      "hole": "H9",
+      "pos": [
+       21.2,
+       8.996,
+       -38.5
+      ],
+      "yaw": 0,
+      "note": "CFrame = CFrame.new(hinge) * CFrame.Angles(0, 0, rad(11 * sin(2*pi*t/4)))"
+     }
+    ],
+    "notes": "Great brass-and-paper lantern on a 7-stud chain, hung from h9_pendulum_root_beam. Round 7: square 1.6 x 1.8 x 1.6 lantern body turned 30 deg about the vertical. Red paper with cream bands/caps (moving-part signal scheme) and a glowing Neon window band: add a PointLight to the Glow part (Range 14, Brightness 2, #FFB347); it moves with the bob. Pass 9-10 (Round 10, 1.0 long along the swing): weighted dark-iron base plinth under the body, the exact size / yaw of the invisible collider foot (holes.json blocker 2), so the foot never stops a ball outside the visible lantern. It is merged into the __Iron MeshPart and swings rigidly with the bob.",
+    "motion": {
+     "type": "swing",
+     "axis_roblox": [
+      0,
+      0,
+      1
+     ],
+     "amplitude_deg": 11.0,
+     "period_s": 4.0,
+     "phase": 0.0,
+     "speed": 17.2788,
+     "units": "deg/s (peak, at the bottom of the swing)",
+     "range": [
+      -11.0,
+      11.0
+     ],
+     "course_local_pivot": [
+      21.2,
+      8.996,
+      -38.5
+     ],
+     "hole": "H9",
+     "holes_json_id": "lantern_pendulum",
+     "formula": "angle(t) = 11 * sin(360 * t / 4 s + 0) deg, right-hand rule about +Z",
+     "fit": "Round 7: square bob (lantern body) inside the blocker 1.6x1.8x1.6 turned 30 deg about the vertical, centred 7 below the hinge (bottom 7.9 below); chain links 0.12 thick from the hinge to the bob top. Pass 9-10 (Round 10): base plinth = the collider foot 1x0.4x1.6 at yaw 0 (= -30 deg relative to the body), centred 7.759 below the hinge (bottom 7.959 below), dark iron, part of the __Iron mesh"
+    },
+    "fbx": "fbx/h9_lantern_pendulum.fbx",
+    "previews": [
+     "previews/h9_lantern_pendulum_eye.png",
+     "previews/h9_lantern_pendulum_34.png"
+    ],
+    "bbox_size_studs": [
+     2.164,
+     8.069,
+     2.164
+    ],
+    "bbox_center_from_origin": [
+     0.0,
+     -3.924,
+     -0.0
+    ],
+    "triangles": 1820,
+    "parts": [
+     {
+      "mesh": "h9_lantern_pendulum__CapGold",
+      "material": "CapGold",
+      "color": "#F2B632",
+      "roblox_material": "SmoothPlastic",
+      "texture": null,
+      "transparency": 0,
+      "tris": 24,
+      "note": "gold bracket fungi (accent; Gold colour, untextured)",
+      "bbox_center_from_origin": [
+       0.0,
+       -7.0,
+       -0.0
+      ],
+      "size": [
+       1.705,
+       1.8,
+       1.705
+      ]
+     },
+     {
+      "mesh": "h9_lantern_pendulum__Glow",
+      "material": "Glow",
+      "color": "#FFB347",
+      "roblox_material": "Neon",
+      "texture": null,
+      "transparency": 0,
+      "tris": 12,
+      "note": "lantern glow / lit windows",
+      "bbox_center_from_origin": [
+       0.0,
+       -7.0,
+       -0.0
+      ],
+      "size": [
+       2.153,
+       0.22,
+       2.153
+      ]
+     },
+     {
+      "mesh": "h9_lantern_pendulum__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "texture": null,
+      "transparency": 0,
+      "tris": 128,
+      "note": "hooks, hinges, bands (accent)",
+      "bbox_center_from_origin": [
+       0.0,
+       -3.924,
+       -0.0
+      ],
+      "size": [
+       1.0,
+       8.069,
+       1.6
+      ]
+     },
+     {
+      "mesh": "h9_lantern_pendulum__MoveCream",
+      "material": "MoveCream",
+      "color": "#FFF2D8",
+      "roblox_material": "SmoothPlastic",
+      "texture": null,
+      "transparency": 0,
+      "tris": 900,
+      "note": "moving-part signal cream (bands on every moving obstacle)",
+      "bbox_center_from_origin": [
+       0.0,
+       -4.191,
+       -0.0
+      ],
+      "size": [
+       2.155,
+       7.047,
+       2.155
+      ]
+     },
+     {
+      "mesh": "h9_lantern_pendulum__MoveRed",
+      "material": "MoveRed",
+      "color": "#D3362A",
+      "roblox_material": "SmoothPlastic",
+      "texture": null,
+      "transparency": 0,
+      "tris": 756,
+      "note": "moving-part signal red (bands on every moving obstacle)",
+      "bbox_center_from_origin": [
+       0.0,
+       -3.998,
+       -0.0
+      ],
+      "size": [
+       2.164,
+       7.444,
+       2.164
+      ]
+     }
+    ],
+    "size_ratio_vs_target": [
+     1.35,
+     1.01,
+     1.35
+    ]
+   }
+  },
+  "h9_lantern_pendulum_h9dim": {
+   "fbx": "fbx/fix_zfight/h9_lantern_pendulum_h9dim.fbx",
+   "sha256": "3763f8d8734d7cc3fa84313c68135b853f25c4c2818e87338324fad120aded26",
+   "tris": 554,
+   "parts": [
+    {
+     "object": "h9_lantern_pendulum_h9dim__CapGold",
+     "mats": [
+      "CapGold"
+     ],
+     "tris": 96
+    },
+    {
+     "object": "h9_lantern_pendulum_h9dim__Glow",
+     "mats": [
+      "Glow"
+     ],
+     "tris": 14
+    },
+    {
+     "object": "h9_lantern_pendulum_h9dim__Iron",
+     "mats": [
+      "Iron"
+     ],
+     "tris": 64
+    },
+    {
+     "object": "h9_lantern_pendulum_h9dim__MoveCream",
+     "mats": [
+      "MoveCream"
+     ],
+     "tris": 184
+    },
+    {
+     "object": "h9_lantern_pendulum_h9dim__MoveRed",
+     "mats": [
+      "MoveRed"
+     ],
+     "tris": 196
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "approved_entry": null
+  },
+  "lantern_span_20": {
+   "fbx": "fbx/fix_zfight/lantern_span_20.fbx",
+   "sha256": "dae657750bb2b8c00804a15207108407c78feffa69bcad6b488cc10563998eca",
+   "tris": 2128,
+   "parts": [
+    {
+     "object": "lantern_span_20__Glow",
+     "mats": [
+      "Glow"
+     ],
+     "tris": 108
+    },
+    {
+     "object": "lantern_span_20__Oak",
+     "mats": [
+      "Oak"
+     ],
+     "tris": 56
+    },
+    {
+     "object": "lantern_span_20__Paper",
+     "mats": [
+      "Paper"
+     ],
+     "tris": 800
+    },
+    {
+     "object": "lantern_span_20__PaperOrange",
+     "mats": [
+      "PaperOrange"
+     ],
+     "tris": 640
+    },
+    {
+     "object": "lantern_span_20__RootBark",
+     "mats": [
+      "RootBark"
+     ],
+     "tris": 412
+    },
+    {
+     "object": "lantern_span_20__Shingle",
+     "mats": [
+      "Shingle"
+     ],
+     "tris": 24
+    },
+    {
+     "object": "lantern_span_20__Slate",
+     "mats": [
+      "Slate"
+     ],
+     "tris": 88
+    }
+   ],
+   "collision": false,
+   "query": false,
+   "touch": false,
+   "approved_entry": {
+    "name": "lantern_span_20",
+    "group": "lanterns",
+    "holes": [
+     "all"
+    ],
+    "priority": "P2",
+    "kind": "static",
+    "origin": "base centre (bbox x/z centre, bottom)",
+    "front": "+Z (Roblox); yaw it to face the player",
+    "target_size_props_md": [
+     20,
+     10,
+     0.6
+    ],
+    "placements": [],
+    "notes": "Two 10-stud timber poles 20 studs apart (local x = +-10) carrying a lantern string ACROSS the felt. Lowest lantern bottom is about 7.9 above the pole bases, so over the felt it clears the ball and a 5-stud player (fitcheck: >= 6.5 above any felt it crosses). Yaw so local X runs across the lane.",
+    "fbx": "fbx/lantern_span_20.fbx",
+    "previews": [
+     "previews/lantern_span_20_eye.png",
+     "previews/lantern_span_20_34.png"
+    ],
+    "bbox_size_studs": [
+     20.6,
+     10.3,
+     0.6
+    ],
+    "bbox_center_from_origin": [
+     0.0,
+     5.15,
+     -0.0
+    ],
+    "triangles": 2016,
+    "parts": [
+     {
+      "mesh": "lantern_span_20__Glow",
+      "material": "Glow",
+      "color": "#FFB347",
+      "roblox_material": "Neon",
+      "texture": null,
+      "transparency": 0,
+      "tris": 324,
+      "note": "lantern glow / lit windows",
+      "bbox_center_from_origin": [
+       0.0,
+       8.52,
+       0.0
+      ],
+      "size": [
+       15.848,
+       0.806,
+       0.23
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__Iron",
+      "material": "Iron",
+      "color": "#3B3A3F",
+      "roblox_material": "Metal",
+      "texture": null,
+      "transparency": 0,
+      "tris": 396,
+      "note": "hooks, hinges, bands (accent)",
+      "bbox_center_from_origin": [
+       0.0,
+       9.168,
+       -0.0
+      ],
+      "size": [
+       19.74,
+       1.12,
+       0.035
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__Oak",
+      "material": "Oak",
+      "color": "#8A5A33",
+      "roblox_material": "WoodPlanks",
+      "texture": "textures/oak_wood.png",
+      "transparency": 0,
+      "tris": 88,
+      "note": "oak timber",
+      "bbox_center_from_origin": [
+       0.0,
+       5.0,
+       -0.0
+      ],
+      "size": [
+       20.34,
+       10.0,
+       0.34
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__Paper",
+      "material": "Paper",
+      "color": "#F7C873",
+      "roblox_material": "SmoothPlastic",
+      "texture": null,
+      "transparency": 0,
+      "tris": 260,
+      "note": "lantern paper (slight self-glow)",
+      "bbox_center_from_origin": [
+       0.014,
+       8.548,
+       -0.0
+      ],
+      "size": [
+       16.168,
+       1.136,
+       0.533
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__PaperOrange",
+      "material": "PaperOrange",
+      "color": "#F08A3C",
+      "roblox_material": "SmoothPlastic",
+      "texture": null,
+      "transparency": 0,
+      "tris": 208,
+      "note": "orange lantern paper (accent, between Pumpkin and Glow)",
+      "bbox_center_from_origin": [
+       0.014,
+       8.44,
+       -0.0
+      ],
+      "size": [
+       12.256,
+       0.848,
+       0.533
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__RootBark",
+      "material": "RootBark",
+      "color": "#5B3A22",
+      "roblox_material": "Wood",
+      "texture": "textures/root_bark.png",
+      "transparency": 0,
+      "tris": 628,
+      "note": "dark wood / roots",
+      "bbox_center_from_origin": [
+       0.0,
+       8.792,
+       -0.009
+      ],
+      "size": [
+       19.572,
+       1.784,
+       0.339
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__Shingle",
+      "material": "Shingle",
+      "color": "#7A4630",
+      "roblox_material": "WoodPlanks",
+      "texture": "textures/shingle.png",
+      "transparency": 0,
+      "tris": 24,
+      "note": "roof shingles (accent, between RootBark and Oak)",
+      "bbox_center_from_origin": [
+       0.0,
+       10.15,
+       -0.0
+      ],
+      "size": [
+       20.481,
+       0.3,
+       0.481
+      ]
+     },
+     {
+      "mesh": "lantern_span_20__Slate",
+      "material": "Slate",
+      "color": "#6E7480",
+      "roblox_material": "Slate",
+      "texture": "textures/slate_stone.png",
+      "transparency": 0,
+      "tris": 88,
+      "note": "rock",
+      "bbox_center_from_origin": [
+       0.0,
+       0.15,
+       -0.0
+      ],
+      "size": [
+       20.6,
+       0.3,
+       0.6
+      ]
+     }
+    ],
+    "size_ratio_vs_target": [
+     1.03,
+     1.03,
+     1.0
+    ],
+    "dressing_uses": 2,
+    "category": "structure"
+   }
+  }
+ }
+}

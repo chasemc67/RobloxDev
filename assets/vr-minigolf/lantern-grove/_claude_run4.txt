@@ -1,0 +1,57 @@
+Round 7 is done and one round was enough, so there's no Round 8. Every hole meets the targets and is flagged `ok`. The validator, physics tests (12/12) and world validation (iteration 9, clean) all pass. Fuzz testing shows 0 escapes and 0 soft-locks.
+
+**Your bot's result doesn't match the sim.** On the Round 6 geometry the sim already had all three obstacles blocking the intended line at some timings (H7 46%, H8 79%, H9 29%). At the bot's own three timings, each one blocked once. So "never blocked" in v79 probably comes from how the game builds them, not only from their size. RobloxDevBot should check in Studio that the log, door and pendulum have CanCollide on and really move every frame, not as animated visuals over non-colliding parts. It also needs to support the new pause (`dwell`) settings. I retuned them anyway into clearer gates, each with a visible pause in the blocking position.
+
+## Changes per hole
+- **H7 log:**
+  - Length 5 → 6 studs, with pointed 45° ends. These fixed the soft-lock: the fuzz test found it 610 times in 100k soft shots, now 0.
+  - Travel ±7 → ±6, so the ends stop 1.0 short of each rail instead of 0.5.
+  - Speed 5 → 3.5 studs/s.
+  - New pauses: 1.0 s at the west end (gap open) and 1.5 s at the east end (blocking).
+  - Cycle 5.6 → 9.36 s.
+- **H8 root door:**
+  - Length 3.2 → 3.6.
+  - It's now a gate: shut across the ring line for 1.8 s, then slides 4 studs into one south pocket at 3 studs/s (was 2), open for 2.2 s, then back. Before, it slid back and forth ±3.5 with no pause.
+  - Cycle 7.0 → 6.67 s.
+  - Ring radius 0.55 → 0.45. Without that, good golfers averaged 2.81–2.88, below par−1, which the sim flags as too easy.
+- **H9 pendulum:**
+  - Bob 1.6×1.8×1.0 → 1.6×1.8×1.6, turned 30°, so it's 2.19 wide across the swing (was 1.6).
+  - Swing ±35° → ±30°, period 4 → 5 s (peak 55 → 38°/s), hinge height 8.96 → 8.996.
+  - Why turned 30°: wider square-on bobs created a new soft-lock (the ball batted back and forth along the swing). At 45° the faces lined up with the 45° deflector and the ball bounced between them. 30° gave 0 in 150k shots.
+- **H9 lanterns:** 3 amber lanterns, decoration only with no collision, at (18.5, −47.5), (28.5, −46.5) and (20, −51.5). They replace the old "dozens of lanterns" placeholder.
+  - Bottoms 8 studs above the green felt (2.4 m).
+  - At least 7.6 studs from anything the pendulum sweeps and 3.9 from the tee-to-flag sightline.
+  - The flag stays visible with the same +0.20 clearance.
+- **New tools and code:**
+  - `tools/timing_check.py` fires the intended line at 24 timings plus the bot's three (t=0, T/3, 2T/3) and fuzzes 100k soft shots for soft-locks.
+  - `tools/sweep_r7.py` runs tuning variants through the timing check and the sim.
+  - The sim now supports pauses for sliding parts.
+
+## Timing check (blocked or deflected, out of 24 timings, intended line)
+| Obstacle | Before | After | Traps | Soft-locks per 100k (before → after) |
+|---|---|---|---|---|
+| H7 log | 45.8% | **45.8%** | 0 | **610 → 0** |
+| H8 door | 79.2% | **50%** | 0 | 0 → 0 |
+| H9 pendulum | 29.2% | **37.5%** | 0 | 0 → 0 |
+
+## Stats, Round 6 → final (2000 plays per skill)
+| Hole | Par | Good | Average | Skill gap | Caps (good/avg) | HIO (good/avg) |
+|---|---|---|---|---|---|---|
+| H1–H6 | | unchanged | | 0.43–1.33 | ≤0.9% | |
+| H7 | 3 | 2.90 → **2.95** | 3.27 → **3.40** | 0.37 → **0.45** | 0.1/0.3 → 0.1/0.2% | 2.2/0.1% |
+| H8 | 4 | 3.17 → **3.13** | 4.50 → 4.50 | 1.33 → **1.37** | 0.8/0.1 → 0.3/0.1% | 6.2/0% |
+| H9 | 4 | 3.74 → **3.64** | 4.12 → **4.07** | 0.38 → **0.43** | 0.1/0.4 → 0.1/0.2% | 3.0/0.2% |
+| Total | 27 | 25.39 → 25.30 | 31.93 → 31.99 | | | |
+
+H7's timeout warning is gone: there are now 0 timeouts on every hole.
+
+## Files changed
+- **Geometry:** `holes.json` (rebuilt from `build_holes.py`, schema documents the pause settings).
+- **Tools:** `sim.py`, `geom.py`, `build_holes.py`, `render_layout.py`, `write_notes.py`, `test_physics.py`, plus new `timing_check.py` and `sweep_r7.py`.
+- **Renders:** `h07`/`h08`/`h09-layout.png`, `course-map.png`, `holes_layouts_sheet.jpg`.
+- **Docs:** `h07`/`h08`/`h09-notes.md`, `props.md`, `playtest-log.md` (Round 7), `world/validation.md` (iteration 9).
+- **Snapshots:** `tools/out/holes-r7-start`/`r7a`/`r7-final.json`, `sim-r7-start`/`r7a`/`r7-final.json` (`sim-latest` updated), `timing-r7-start`/`final.json`, pre-round backups in `tools/out/r7/`.
+
+Nothing is committed, because this workspace isn't a git repo.
+
+These connectors need authorizing in your claude.ai connector settings before they can be used: Canva, LegalZoom, Linear, Notion, PostHog, Stripe, Supabase and Vercel.

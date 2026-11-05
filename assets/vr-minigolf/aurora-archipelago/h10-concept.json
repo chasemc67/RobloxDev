@@ -1,0 +1,52 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Stylized Roblox-friendly VR mini golf concept, first-person view from the tee at standing eye height, 16:9. Reference image 1 is the top-down plan of THIS hole (tee at start marker, cup at the flag): match the fairway shape, turns, obstacles, hazards and their positions faithfully, seen in perspective from the tee, but DO NOT draw any plan graphics: no grid, no dashed or coloured guide lines, no arrows, no labels, no numbers. Reference image 2 shows the course art style, palette and lighting: match it. First-person VR view at eye height from a mini golf tee at night: a green felt bobsled channel with banked icy sides curves right, then left, between rounded packed-snow walls; a striped bobsled start hut with brass bells stands beside the tee; a red flag waits at the end; snowpuffs cheer with tiny flags; aurora and the frozen Floe Pond beyond. Style: stylised 3D storybook render matching the Aurora Archipelago menu card: floating snow-capped slate-violet rock islands over a soft lilac cloud sea at night, thick rounded moonlit snow, translucent glowing glacier-cyan ice and crystal clusters, warm brass lanterns on chunky snow-capped timber posts, snowy blue-green pines, bright green felt with a white ball and a red flag, green and violet aurora ribbons across a starry indigo sky, the Starfrost Spire glowing on the skyline, soft bloom, cosy and whimsical, chunky Roblox-friendly shapes, no text, no UI.  ",
+  "aspect": "16:9",
+  "refs": [
+    "h10-layout.png",
+    "world/vistas/V1-first-tee-spire.png"
+  ],
+  "mode": "chat(generateText)",
+  "usage": {
+    "inputTokens": 1439,
+    "inputTokenDetails": {
+      "noCacheTokens": 1439,
+      "cacheReadTokens": 0
+    },
+    "outputTokens": 1400,
+    "outputTokenDetails": {
+      "textTokens": 1120,
+      "reasoningTokens": 280
+    },
+    "totalTokens": 2839,
+    "raw": {
+      "thoughtsTokenCount": 280,
+      "promptTokenCount": 1439,
+      "candidatesTokenCount": 1120,
+      "totalTokenCount": 2839,
+      "trafficType": "ON_DEMAND",
+      "promptTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        },
+        {
+          "modality": "TEXT",
+          "tokenCount": 319
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ]
+    }
+  },
+  "cost": 0.140638,
+  "warnings": [],
+  "seconds": 45.4,
+  "files": [
+    "h10-concept.png"
+  ]
+}

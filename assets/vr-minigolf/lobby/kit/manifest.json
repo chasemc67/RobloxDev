@@ -1,0 +1,923 @@
+{
+  "units": "1 BU = 1 stud",
+  "axes": "X east, Y up, front -Z; FBX -Z forward Y up, scale 1, textures embedded",
+  "materials": {
+    "BW_Atlas": "textures/bw_atlas_1024.png",
+    "BW_Neon": "Roblox Neon; preserve exported base colour",
+    "BW_Backdrop": "vertex colours Col"
+  },
+  "props": [
+    {
+      "name": "kit_stringlight_pole",
+      "fbx": "fbx/kit_stringlight_pole.fbx",
+      "bbox_size_studs": [
+        1.7598075866699219,
+        9.729904174804688,
+        1.5
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        4.864952087402344,
+        -0.0
+      ],
+      "triangles": 236,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Hook points local Roblox: (-0.75,9,0), (0.75,9,0).",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_stringlight_pole__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 236,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ],
+      "hook_positions": [
+        [
+          -0.75,
+          9,
+          0
+        ],
+        [
+          0.75,
+          9,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "kit_string_lights_span_10",
+      "fbx": "fbx/kit_string_lights_span_10.fbx",
+      "bbox_size_studs": [
+        10.447212219238281,
+        2.446997880935669,
+        0.42531999945640564
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.2234989404678345,
+        -0.0
+      ],
+      "triangles": 584,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Neon"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Base centre; end hook positions measured in manifest. Merged bulbs; no real lights.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_string_lights_span_10__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 464,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_string_lights_span_10__BW_Neon",
+          "material": "BW_Neon",
+          "triangles": 120,
+          "color": "#FFC867",
+          "roblox_material": "Neon"
+        }
+      ],
+      "hook_positions": [
+        [
+          -5.0,
+          2.335999995470047,
+          0
+        ],
+        [
+          5.0,
+          2.335999995470047,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "kit_string_lights_span_20",
+      "fbx": "fbx/kit_string_lights_span_20.fbx",
+      "bbox_size_studs": [
+        20.44721221923828,
+        2.524287700653076,
+        0.42531999945640564
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.262143850326538,
+        -0.0
+      ],
+      "triangles": 864,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Neon"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Base centre; end hook positions measured in manifest. Merged bulbs; no real lights.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_string_lights_span_20__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 644,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_string_lights_span_20__BW_Neon",
+          "material": "BW_Neon",
+          "triangles": 220,
+          "color": "#FFC867",
+          "roblox_material": "Neon"
+        }
+      ],
+      "hook_positions": [
+        [
+          -10.0,
+          2.4000000059604645,
+          0
+        ],
+        [
+          10.0,
+          2.4000000059604645,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "kit_banner_pole",
+      "fbx": "fbx/kit_banner_pole.fbx",
+      "bbox_size_studs": [
+        4.0,
+        10.0,
+        1.5
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        5.0,
+        -0.0
+      ],
+      "triangles": 288,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Cloth top pivot attach at Roblox (0,9,0.3).",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_banner_pole__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 288,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ],
+      "cloth_attach": [
+        0,
+        9,
+        0.3
+      ]
+    },
+    {
+      "name": "kit_banner_lantern_grove",
+      "fbx": "fbx/kit_banner_lantern_grove.fbx",
+      "bbox_size_studs": [
+        3.0,
+        4.5,
+        0.5600000321865082
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        -2.25,
+        -0.1300000101327896
+      ],
+      "triangles": 208,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Backdrop"
+      ],
+      "pivot": "top centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "",
+      "motion": "Top-centre pivot (0,0,0), sway +/-4 degrees, no flapping near spawn.",
+      "parts": [
+        {
+          "mesh": "kit_banner_lantern_grove__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 108,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_banner_lantern_grove__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 100,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_banner_sugarloaf_canyon",
+      "fbx": "fbx/kit_banner_sugarloaf_canyon.fbx",
+      "bbox_size_studs": [
+        3.0,
+        4.5,
+        0.5000000298023224
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        -2.25,
+        -0.10000000894069672
+      ],
+      "triangles": 452,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Backdrop"
+      ],
+      "pivot": "top centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "",
+      "motion": "Top-centre pivot (0,0,0), sway +/-4 degrees, no flapping near spawn.",
+      "parts": [
+        {
+          "mesh": "kit_banner_sugarloaf_canyon__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 108,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_banner_sugarloaf_canyon__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 344,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_banner_aurora_archipelago",
+      "fbx": "fbx/kit_banner_aurora_archipelago.fbx",
+      "bbox_size_studs": [
+        3.0,
+        4.5,
+        0.5000000298023224
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        -2.25,
+        -0.10000000894069672
+      ],
+      "triangles": 130,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Backdrop"
+      ],
+      "pivot": "top centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "",
+      "motion": "Top-centre pivot (0,0,0), sway +/-4 degrees, no flapping near spawn.",
+      "parts": [
+        {
+          "mesh": "kit_banner_aurora_archipelago__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 108,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_banner_aurora_archipelago__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 22,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_flag_pennant_string",
+      "fbx": "fbx/kit_flag_pennant_string.fbx",
+      "bbox_size_studs": [
+        10.04736328125,
+        1.7277268171310425,
+        0.30000001192092896
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        0.8638634085655212,
+        -0.0
+      ],
+      "triangles": 137,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Backdrop"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Base centre; measured end hooks in manifest; bunting is decoration only.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_flag_pennant_string__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 128,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_flag_pennant_string__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 9,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ],
+      "hook_positions": [
+        [
+          -5,
+          1.5999999970197678,
+          0
+        ],
+        [
+          5,
+          1.5999999970197678,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "kit_bench_a",
+      "fbx": "fbx/kit_bench_a.fbx",
+      "bbox_size_studs": [
+        6.0,
+        3.299999952316284,
+        2.25
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.649999976158142,
+        -0.0
+      ],
+      "triangles": 1188,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_bench_a__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 1188,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_bench_b",
+      "fbx": "fbx/kit_bench_b.fbx",
+      "bbox_size_studs": [
+        6.0,
+        3.200000047683716,
+        2.0
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.600000023841858,
+        -0.0
+      ],
+      "triangles": 304,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Neutral stone supports and log seat match forest, canyon and crystal settings.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_bench_b__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 304,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_planter_square",
+      "fbx": "fbx/kit_planter_square.fbx",
+      "bbox_size_studs": [
+        3.0,
+        2.0999999046325684,
+        3.0
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.0499999523162842,
+        -0.0
+      ],
+      "triangles": 648,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Swap filler origin at Roblox (0,1.85,0).",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_planter_square__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 648,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ],
+      "filler_attach": [
+        0,
+        1.85,
+        0
+      ]
+    },
+    {
+      "name": "kit_planter_round",
+      "fbx": "fbx/kit_planter_round.fbx",
+      "bbox_size_studs": [
+        3.0,
+        2.0999999046325684,
+        3.0
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.0499999523162842,
+        -0.0
+      ],
+      "triangles": 224,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Swap filler origin at Roblox (0,1.85,0).",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_planter_round__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 224,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ],
+      "filler_attach": [
+        0,
+        1.85,
+        0
+      ]
+    },
+    {
+      "name": "kit_plant_autumn",
+      "fbx": "fbx/kit_plant_autumn.fbx",
+      "bbox_size_studs": [
+        2.6729156970977783,
+        3.304790496826172,
+        2.692809820175171
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.652395248413086,
+        -0.0
+      ],
+      "triangles": 348,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Backdrop"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Place origin in planter soil; separate swappable filler.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_plant_autumn__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 108,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_plant_autumn__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 240,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_plant_cactus_candy",
+      "fbx": "fbx/kit_plant_cactus_candy.fbx",
+      "bbox_size_studs": [
+        2.5510566234588623,
+        3.8499999046325684,
+        0.800000011920929
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.9249999523162842,
+        -0.0
+      ],
+      "triangles": 396,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Backdrop"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_plant_cactus_candy__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 300,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_plant_cactus_candy__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 96,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_plant_crystal",
+      "fbx": "fbx/kit_plant_crystal.fbx",
+      "bbox_size_studs": [
+        2.3737387657165527,
+        3.2450923919677734,
+        1.9366599321365356
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        1.6225461959838867,
+        -0.0
+      ],
+      "triangles": 88,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Backdrop",
+        "BW_Neon"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_plant_crystal__BW_Backdrop",
+          "material": "BW_Backdrop",
+          "triangles": 64,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_plant_crystal__BW_Neon",
+          "material": "BW_Neon",
+          "triangles": 24,
+          "color": "#9FE6F2",
+          "roblox_material": "Neon"
+        }
+      ]
+    },
+    {
+      "name": "kit_lamp_post",
+      "fbx": "fbx/kit_lamp_post.fbx",
+      "bbox_size_studs": [
+        1.5,
+        8.799999237060547,
+        1.5
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        4.399999618530273,
+        -0.0
+      ],
+      "triangles": 288,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Neon"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Merged Neon glass; no PointLights.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_lamp_post__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 252,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_lamp_post__BW_Neon",
+          "material": "BW_Neon",
+          "triangles": 36,
+          "color": "#FFC867",
+          "roblox_material": "Neon"
+        }
+      ]
+    },
+    {
+      "name": "kit_lamp_post_double",
+      "fbx": "fbx/kit_lamp_post_double.fbx",
+      "bbox_size_studs": [
+        3.6461620330810547,
+        8.0,
+        1.5
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        4.0,
+        -0.0
+      ],
+      "triangles": 504,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas",
+        "BW_Neon"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Merged Neon glass; no PointLights.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_lamp_post_double__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 432,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        },
+        {
+          "mesh": "kit_lamp_post_double__BW_Neon",
+          "material": "BW_Neon",
+          "triangles": 72,
+          "color": "#FFC867",
+          "roblox_material": "Neon"
+        }
+      ]
+    },
+    {
+      "name": "kit_leaderboard_frame",
+      "fbx": "fbx/kit_leaderboard_frame.fbx",
+      "bbox_size_studs": [
+        14.0,
+        9.850000381469727,
+        1.75
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        4.925000190734863,
+        -0.0
+      ],
+      "triangles": 1728,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "base centre",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "3 recessed SurfaceGui panels; separate plane FBXs. Front Roblox -Z.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_leaderboard_frame__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 1728,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ],
+      "panel_faces": [
+        {
+          "asset": "kit_leaderboard_panel_1",
+          "center": [
+            -4.3,
+            5,
+            -0.65
+          ],
+          "width": 3.4,
+          "height": 5.6,
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "asset": "kit_leaderboard_panel_2",
+          "center": [
+            0,
+            5,
+            -0.65
+          ],
+          "width": 3.4,
+          "height": 5.6,
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "asset": "kit_leaderboard_panel_3",
+          "center": [
+            4.3,
+            5,
+            -0.65
+          ],
+          "width": 3.4,
+          "height": 5.6,
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kit_leaderboard_panel_1",
+      "fbx": "fbx/kit_leaderboard_panel_1.fbx",
+      "bbox_size_studs": [
+        3.4000000953674316,
+        5.6000001430511475,
+        0.0
+      ],
+      "bbox_center_from_pivot": [
+        -4.300000190734863,
+        5.0,
+        -0.6499999761581421
+      ],
+      "triangles": 2,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "shared local origin",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Shared frame base origin; SurfaceGui face rectangle local Roblox centre (-4.3,5,-0.65), W3.4 H5.6; normal -Z.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_leaderboard_panel_1__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 2,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_leaderboard_panel_2",
+      "fbx": "fbx/kit_leaderboard_panel_2.fbx",
+      "bbox_size_studs": [
+        3.4000000953674316,
+        5.6000001430511475,
+        0.0
+      ],
+      "bbox_center_from_pivot": [
+        0.0,
+        5.0,
+        -0.6499999761581421
+      ],
+      "triangles": 2,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "shared local origin",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Shared frame base origin; SurfaceGui face rectangle local Roblox centre (0,5,-0.65), W3.4 H5.6; normal -Z.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_leaderboard_panel_2__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 2,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    },
+    {
+      "name": "kit_leaderboard_panel_3",
+      "fbx": "fbx/kit_leaderboard_panel_3.fbx",
+      "bbox_size_studs": [
+        3.4000000953674316,
+        5.6000001430511475,
+        0.0
+      ],
+      "bbox_center_from_pivot": [
+        4.300000190734863,
+        5.0,
+        -0.6499999761581421
+      ],
+      "triangles": 2,
+      "tris_max": 19999,
+      "materials": [
+        "BW_Atlas"
+      ],
+      "pivot": "shared local origin",
+      "front": "-Z (Roblox, north) = Blender +Y",
+      "collision": [],
+      "can_collide": false,
+      "notes": "Shared frame base origin; SurfaceGui face rectangle local Roblox centre (4.3,5,-0.65), W3.4 H5.6; normal -Z.",
+      "motion": null,
+      "parts": [
+        {
+          "mesh": "kit_leaderboard_panel_3__BW_Atlas",
+          "material": "BW_Atlas",
+          "triangles": 2,
+          "color": null,
+          "roblox_material": "SmoothPlastic"
+        }
+      ]
+    }
+  ]
+}
