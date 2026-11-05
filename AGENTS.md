@@ -41,3 +41,10 @@ assets/<game-name>/               Blender generator scripts (*.py) + exports (*.
 
 ## VR Mini Golf lobby controls
 - The VR Mini Golf lobby uses OUR VR controls (`VRControls`, wrist card, VR putter, sticks, and B/Y scorecard gear) under both real VR and SimulateVR. Chase decided this on Oct 12, 2026 (stages ad/ae). Desktop keeps LobbyRoam.
+
+## What to commit
+- Commit: source (py, luau, json specs, md, scripts) and final art-direction images in art folders: `concept(s)/`, `textures/`, `ui/`, `icons/`, `marketing/`, `thumbnails/`, plus a few chosen final previews/hero renders copied into a `final/` folder (not inside `previews/`).
+- Never commit: logs, stderr, debug output, iteration/per-version screenshots (`screens/`, `shots*/`, `previews/`, `prev*/`), `.npy`/`.npz`/`.pkl`, scratch/backup folders (`_work/`, `_raw/`, `_cache/`, `_props_pre*/`, `backup*/`, `*.bak-*`), generated mesh dumps, `.rbxl` place files, `.mp4`/`.mov`.
+- `.fbx` is build output (gitignored): re-export it from the `.blend`.
+- `.blend` is the 3D source and goes in via Git LFS (3D Model Bot sets that up and un-ignores it).
+- Keep each file under ~20 MB and each push under ~80 MB. `.gitignore` enforces this; don't `git add -f` around it.

@@ -75,3 +75,27 @@ assets/vr-mini-golf/lantern-grove/holes_concepts_sheet.jpg
 **/prev_*/
 **/_check/
 **/bak-*/
+
+# Art-direction images stay committable (later rules win). Can't re-include
+# anything inside an ignored dir (screens/, previews/, _raw/, _src/ ...).
+!**/concept/**/*.png
+!**/concepts/**/*.png
+!**/textures/**/*.png
+!**/ui/**/*.png
+!**/icons/**/*.png
+!**/marketing/**/*.png
+!**/thumbnails/**/*.png
+!**/concept/**/*.jpg
+!**/concepts/**/*.jpg
+!**/textures/**/*.jpg
+!**/ui/**/*.jpg
+!**/icons/**/*.jpg
+!**/marketing/**/*.jpg
+!**/thumbnails/**/*.jpg
+# never commit, even inside art folders
+**/*.log
+**/*.npy
+**/_check/
+**/_rejected/
+!**/final/**/*.png
+!**/final/**/*.jpg
