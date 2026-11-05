@@ -1,0 +1,229 @@
+{
+ "source": "/workspace/gameart/pirate-shipwreck/r1/handoff.md + lookB-palette-lighting.png (Game Art Bot). Starting values: tune in a headset. | v20: values moved from the Studio-side v16-v19 scripts (v19 lighting per Game Art Bot, v16 atmosphere colours, Haze 0 for the horizon band, felt Color in padRules).",
+ "Lighting": {
+  "ClockTime": 12,
+  "GeographicLatitude": 75,
+  "Brightness": 1.6,
+  "Ambient": [
+   110,
+   110,
+   115
+  ],
+  "OutdoorAmbient": [
+   135,
+   135,
+   140
+  ],
+  "ColorShift_Top": [
+   255,
+   245,
+   230
+  ],
+  "ColorShift_Bottom": [
+   0,
+   0,
+   0
+  ],
+  "EnvironmentDiffuseScale": 0.6,
+  "EnvironmentSpecularScale": 0.5,
+  "ShadowSoftness": 0.35,
+  "GlobalShadows": true,
+  "ExposureCompensation": -0.3
+ },
+ "Atmosphere": {
+  "Density": 0.2,
+  "Offset": 0.05,
+  "Color": [
+   255,
+   235,
+   210
+  ],
+  "Decay": [
+   190,
+   150,
+   110
+  ],
+  "Glare": 0.3,
+  "Haze": 0
+ },
+ "BloomEffect": {
+  "Intensity": 0.35,
+  "Size": 24,
+  "Threshold": 1.1
+ },
+ "ColorCorrectionEffect": {
+  "Saturation": 0.0,
+  "Contrast": 0.05,
+  "TintColor": [
+   255,
+   255,
+   255
+  ]
+ },
+ "SunRaysEffect": {
+  "Intensity": 0.08,
+  "Spread": 0.6
+ },
+ "DepthOfFieldEffect": {
+  "Enabled": false,
+  "note": "off for VR comfort"
+ },
+ "Clouds": {
+  "Cover": 0.35,
+  "Density": 0.5,
+  "Color": [
+   255,
+   225,
+   190
+  ],
+  "note": "used instead of a skybox (no uploaded sky asset yet)"
+ },
+ "Terrain": {
+  "WaterColor": [
+   30,
+   120,
+   140
+  ],
+  "WaterTransparency": 0.5,
+  "WaterReflectance": 0.35,
+  "MaterialColors": {
+   "Grass": [
+    120,
+    156,
+    60
+   ],
+   "LeafyGrass": [
+    106,
+    150,
+    62
+   ],
+   "Rock": [
+    158,
+    148,
+    116
+   ],
+   "Slate": [
+    132,
+    128,
+    110
+   ],
+   "Ground": [
+    172,
+    142,
+    88
+   ]
+  }
+ },
+ "keyColors": {
+  "sand": [
+   226,
+   184,
+   128
+  ],
+  "darkWood": [
+   84,
+   52,
+   34
+  ],
+  "weatheredPlank": [
+   140,
+   90,
+   55
+  ],
+  "slate": [
+   70,
+   76,
+   92
+  ],
+  "rock": [
+   112,
+   104,
+   84
+  ],
+  "jungle": [
+   30,
+   100,
+   60
+  ],
+  "leaf": [
+   90,
+   170,
+   70
+  ],
+  "water": [
+   30,
+   120,
+   140
+  ],
+  "sailCream": [
+   238,
+   222,
+   190
+  ],
+  "sailRed": [
+   196,
+   60,
+   50
+  ],
+  "duckYellow": [
+   245,
+   196,
+   40
+  ],
+  "lanternAmber": [
+   255,
+   190,
+   80
+  ],
+  "padFelt": [
+   100,
+   230,
+   135
+  ],
+  "flagRed": [
+   235,
+   55,
+   55
+  ]
+ },
+ "padLight": {
+  "Range": 16,
+  "Brightness": 1.0,
+  "Color": [
+   255,
+   245,
+   225
+  ],
+  "Shadows": false,
+  "raiseBrightnessToIfFeltLooksDark": 1.6
+ },
+ "cliffMouthLight": {
+  "Range": 40,
+  "Color": [
+   255,
+   150,
+   70
+  ],
+  "Brightness": 2.5,
+  "Shadows": false,
+  "note": "v8: PointLight on World.Meshes.CaveV2.CaveMouthLightAnchor (583.5, 106, -602.5)"
+ },
+ "Sky": {
+  "StarCount": 0
+ },
+ "caveGlow": {
+  "Part": "World.Meshes.CaveV2.cave_glow",
+  "Material": "Neon",
+  "Color": [
+   190,
+   80,
+   25
+  ],
+  "Transparency": 0.3,
+  "note": "v8"
+ },
+ "v10Note": "v10: purple/pink removed (Ambient, OutdoorAmbient, ColorShift_Bottom, Atmosphere Decay, rock/slate/ground material colours) and Atmosphere Color set to (255,235,210) per Game Art Bot v9 review",
+ "v11Note": "v11: Atmosphere Decay (255,220,180) per Playtest Bot; lighter Rock/Slate/Ground colours",
+ "v12Note": "v12: Atmosphere Color (255,225,190) per Game Art Bot v11 (warmer, not pink)",
+ "v13Note": "v13: sun moved to azimuth +Z (about 33 deg elevation, ClockTime 12 at latitude 80) so it is 85+ degrees off the play line of every tee (pads 1-6, 15-17 play toward +X, pads 9-13 toward -X); Atmosphere Density 0.2 -> 0.1 (crisp up close, haze at the horizon)."
+}

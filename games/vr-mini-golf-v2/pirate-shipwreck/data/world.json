@@ -1,0 +1,97 @@
+{
+ "format": 1,
+ "studsPerMapPx": 3.0,
+ "mapSizePx": [
+  819,
+  461
+ ],
+ "originMapPx": [
+  409.5,
+  230.5
+ ],
+ "gridCellStuds": 4,
+ "gridSize": [
+  1024,
+  640
+ ],
+ "gridCornerXZ": [
+  -2048,
+  -1280
+ ],
+ "minY": -36,
+ "voxelLayers": 42,
+ "topY": 132,
+ "height": {
+  "file": "heightmap.png",
+  "bits": 16,
+  "minStuds": -40.0,
+  "maxStuds": 150.0,
+  "formula": "stud = min + v/65535*(max-min)",
+  "rows": "z, north to south",
+  "cols": "x, west to east"
+ },
+ "material": {
+  "file": "materialmap.png",
+  "ids": {
+   "0": "Air",
+   "1": "Sand",
+   "2": "LeafyGrass",
+   "3": "Rock",
+   "4": "Slate",
+   "5": "Ground",
+   "6": "Grass",
+   "7": "Mud",
+   "8": "Sandstone",
+   "9": "Limestone"
+  }
+ },
+ "terrainSource": "generated only (no hand edits yet)",
+ "waterLevelY": 0.0,
+ "materialColors": {
+  "Sand": [
+   226,
+   184,
+   128
+  ],
+  "LeafyGrass": [
+   106,
+   150,
+   62
+  ],
+  "Rock": [
+   158,
+   148,
+   116
+  ],
+  "Slate": [
+   132,
+   128,
+   110
+  ],
+  "Ground": [
+   172,
+   142,
+   88
+  ],
+  "Grass": [
+   120,
+   156,
+   60
+  ],
+  "Mud": [
+   110,
+   80,
+   55
+  ],
+  "Sandstone": [
+   236,
+   200,
+   150
+  ],
+  "Limestone": [
+   140,
+   125,
+   112
+  ]
+ }
+}
