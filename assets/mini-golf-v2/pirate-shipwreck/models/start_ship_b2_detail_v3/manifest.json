@@ -1,0 +1,2064 @@
+{
+ "name": "start_ship_b2_detail_v3",
+ "based_on": "source.blend = approved start_ship_b2 v2_3 (NOT modified)",
+ "source": {
+  "path": "..\\source.blend",
+  "sha256_before": "be3c04090d8b49a2094781e6faea772f7408f0cb1b7712463d90652a529cf617",
+  "sha256_after": "be3c04090d8b49a2094781e6faea772f7408f0cb1b7712463d90652a529cf617"
+ },
+ "outputs": {
+  "blend": "start_ship_v3.blend",
+  "fbx": [
+   "RampFlight1_own_origin.fbx",
+   "RampFlight2_own_origin.fbx",
+   "RampLanding_own_origin.fbx",
+   "start_ship_b2_col.fbx",
+   "start_ship_b2_visual.fbx"
+  ],
+  "previews": [
+   "ship_3q.png",
+   "ship_beach.png",
+   "ship_bow.png",
+   "ship_route.png",
+   "ship_stern.png",
+   "ship_tee.png"
+  ],
+  "textures": [
+   "textures/start_ship_palette.png"
+  ]
+ },
+ "units": "1 Blender unit = 1 stud",
+ "frame": "Blender Z up; Roblox B(x,y,z) = (x,-z,y) i.e. Roblox (x, y, z) = (bx, bz, -by)",
+ "export": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "global_scale": 1.0,
+  "apply_scale_options": "FBX_SCALE_UNITS",
+  "embed_textures": true,
+  "path_mode": "COPY",
+  "mesh_smooth_type": "FACE",
+  "visual_fbx": "Visual meshes + 3 Ramps + all Props + Spawn/Tee1/RampStart/CupRef empties (same as source export + Props)",
+  "col_fbx": "190 COL boxes (unchanged)",
+  "ramps": "RampFlight1/RampLanding/RampFlight2 exported on their own origin (location zeroed for export only)"
+ },
+ "collections": null,
+ "meshes": {
+  "DeckCabin": {
+   "collection": "Visual",
+   "tris": 3512,
+   "materials": [
+    "PostLt",
+    "Wood",
+    "WoodDk",
+    "Felt",
+    "Post",
+    "Rope"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bbox_min_roblox": [
+    -160.0,
+    -1.0,
+    -22.461000442504883
+   ],
+   "bbox_max_roblox": [
+    136.14100646972656,
+    55.70000076293945,
+    63.0
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "Dressing": {
+   "collection": "Visual",
+   "tris": 516,
+   "materials": [
+    "Wood",
+    "Iron",
+    "Post",
+    "PostLt",
+    "Rope"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bbox_min_roblox": [
+    -130.60000610351562,
+    24.0,
+    -15.800000190734863
+   ],
+   "bbox_max_roblox": [
+    43.0,
+    36.099998474121094,
+    62.5
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "Dressing_Glow": {
+   "collection": "Visual",
+   "tris": 24,
+   "materials": [
+    "Glow"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bbox_min_roblox": [
+    -130.0,
+    33.099998474121094,
+    59.70000076293945
+   ],
+   "bbox_max_roblox": [
+    -110.0,
+    35.5,
+    61.900001525878906
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "Hull": {
+   "collection": "Visual",
+   "tris": 4835,
+   "materials": [
+    "WoodDk",
+    "Wood",
+    "Post",
+    "HullWood",
+    "RopeLt",
+    "Brass"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bbox_min_roblox": [
+    -160.35000610351562,
+    -2.0869998931884766,
+    -31.492000579833984
+   ],
+   "bbox_max_roblox": [
+    200.91099548339844,
+    74.66200256347656,
+    58.93299865722656
+   ],
+   "under_20k": true,
+   "status": "changed",
+   "note": "straight bowsprit beam (12 tris) replaced by an upcurled tapered bowsprit with rope lashings + brass knob; 1122 outer plank faces Wood -> HullWood (130,90,55). Every other source triangle is still present (4207/4207). Wet/skirt geometry untouched.",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": [
+    "X+ by 44.01"
+   ]
+  },
+  "Pier": {
+   "collection": "Visual",
+   "tris": 948,
+   "materials": [
+    "Wood",
+    "PostLt",
+    "WoodDk",
+    "Post",
+    "Rope"
+   ],
+   "origin_roblox": [
+    -215.0,
+    0.0,
+    125.0
+   ],
+   "bbox_min_roblox": [
+    -220.3000030517578,
+    -3.5,
+    30.0
+   ],
+   "bbox_max_roblox": [
+    -209.6999969482422,
+    9.100000381469727,
+    220.0
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "Prop_Barnacles": {
+   "collection": "Props",
+   "tris": 2728,
+   "materials": [
+    "Barnacle",
+    "Shadow"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -154.6230010986328,
+    -1.0119999647140503,
+    -6.604000091552734
+   ],
+   "bbox_max_roblox": [
+    68.94499969482422,
+    2.0269999504089355,
+    20.165000915527344
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_BulwarkFrames": {
+   "collection": "Props",
+   "tris": 2952,
+   "materials": [
+    "WoodDk",
+    "Wood"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -86.00199890136719,
+    23.26300048828125,
+    -30.659000396728516
+   ],
+   "bbox_max_roblox": [
+    112.35600280761719,
+    61.090999603271484,
+    54.42300033569336
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_CabinWindows": {
+   "collection": "Props",
+   "tris": 976,
+   "materials": [
+    "Brass",
+    "Shadow",
+    "WoodDk"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -141.5,
+    29.0,
+    -8.437000274658203
+   ],
+   "bbox_max_roblox": [
+    -89.26699829101562,
+    37.4370002746582,
+    24.732999801635742
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_Cannons": {
+   "collection": "Props",
+   "tris": 2328,
+   "materials": [
+    "WoodDk",
+    "Shadow",
+    "Wood",
+    "Iron"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -63.362998962402344,
+    6.077000141143799,
+    26.506000518798828
+   ],
+   "bbox_max_roblox": [
+    23.385000228881836,
+    11.885000228881836,
+    39.672000885009766
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_CapRails": {
+   "collection": "Props",
+   "tris": 2712,
+   "materials": [
+    "Wood"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -64.03600311279297,
+    32.83700180053711,
+    -31.496000289916992
+   ],
+   "bbox_max_roblox": [
+    148.7949981689453,
+    57.284000396728516,
+    55.66400146484375
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_CargoCluster": {
+   "collection": "Props",
+   "tris": 2216,
+   "materials": [
+    "Wood",
+    "Iron",
+    "WoodDk",
+    "PostLt"
+   ],
+   "origin_roblox": [
+    -100.255,
+    23.85,
+    29.46
+   ],
+   "bbox_min_roblox": [
+    -106.85700225830078,
+    23.850000381469727,
+    25.118999481201172
+   ],
+   "bbox_max_roblox": [
+    -93.6520004272461,
+    31.649999618530273,
+    33.80099868774414
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_Crab": {
+   "collection": "Props",
+   "tris": 780,
+   "materials": [
+    "Crab",
+    "Canvas",
+    "Iron"
+   ],
+   "origin_roblox": [
+    -95.129,
+    31.25,
+    27.829
+   ],
+   "bbox_min_roblox": [
+    -98.4000015258789,
+    31.25,
+    25.077999114990234
+   ],
+   "bbox_max_roblox": [
+    -91.85900115966797,
+    36.69499969482422,
+    30.579999923706055
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_DoorLantern": {
+   "collection": "Props",
+   "tris": 460,
+   "materials": [
+    "WoodDk",
+    "Iron",
+    "Brass"
+   ],
+   "origin_roblox": [
+    -107.5,
+    32.55,
+    26.0
+   ],
+   "bbox_min_roblox": [
+    -108.80000305175781,
+    32.54999923706055,
+    23.799999237060547
+   ],
+   "bbox_max_roblox": [
+    -106.19999694824219,
+    37.599998474121094,
+    28.200000762939453
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_DoorLantern_Glow": {
+   "collection": "Props",
+   "tris": 12,
+   "materials": [
+    "Glow"
+   ],
+   "origin_roblox": [
+    -107.5,
+    32.95,
+    26.9
+   ],
+   "bbox_min_roblox": [
+    -108.3499984741211,
+    32.95000076293945,
+    26.049999237060547
+   ],
+   "bbox_max_roblox": [
+    -106.6500015258789,
+    35.04999923706055,
+    27.75
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_Figurehead": {
+   "collection": "Props",
+   "tris": 2712,
+   "materials": [
+    "FishTeal",
+    "Canvas",
+    "Iron",
+    "Shadow",
+    "Brass"
+   ],
+   "origin_roblox": [
+    153.0,
+    37.671,
+    10.094
+   ],
+   "bbox_min_roblox": [
+    152.14700317382812,
+    35.323001861572266,
+    5.388000011444092
+   ],
+   "bbox_max_roblox": [
+    171.89100646972656,
+    47.058998107910156,
+    15.633999824523926
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": [
+    "X+ by 14.99"
+   ]
+  },
+  "Prop_Flag": {
+   "collection": "Props",
+   "tris": 760,
+   "materials": [
+    "Red",
+    "Canvas"
+   ],
+   "origin_roblox": [
+    95.0,
+    110.632,
+    34.895
+   ],
+   "bbox_min_roblox": [
+    94.62699890136719,
+    110.63200378417969,
+    19.55699920654297
+   ],
+   "bbox_max_roblox": [
+    96.47899627685547,
+    124.1500015258789,
+    37.67599868774414
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_PatchPlanks": {
+   "collection": "Props",
+   "tris": 2420,
+   "materials": [
+    "Wood",
+    "Iron"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -44.93600082397461,
+    4.809999942779541,
+    -21.82200050354004
+   ],
+   "bbox_max_roblox": [
+    62.9370002746582,
+    19.735000610351562,
+    31.80299949645996
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_Portholes": {
+   "collection": "Props",
+   "tris": 1316,
+   "materials": [
+    "Brass",
+    "Shadow"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -160.7259979248047,
+    20.35700035095215,
+    -1.562999963760376
+   ],
+   "bbox_max_roblox": [
+    74.28199768066406,
+    55.27799987792969,
+    47.83399963378906
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [
+    "X- by 0.38"
+   ],
+   "outside_collider_envelope": []
+  },
+  "Prop_RopeCoils": {
+   "collection": "Props",
+   "tris": 1608,
+   "materials": [
+    "RopeLt"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -92.44999694824219,
+    23.799999237060547,
+    1.5089999437332153
+   ],
+   "bbox_max_roblox": [
+    133.5850067138672,
+    31.520000457763672,
+    38.388999938964844
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_Seaweed": {
+   "collection": "Props",
+   "tris": 648,
+   "materials": [
+    "Seaweed"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "bbox_min_roblox": [
+    -149.58299255371094,
+    -1.590999960899353,
+    -7.189000129699707
+   ],
+   "bbox_max_roblox": [
+    72.75700378417969,
+    1.8660000562667847,
+    21.40399932861328
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_SternCurl": {
+   "collection": "Props",
+   "tris": 2796,
+   "materials": [
+    "Brass",
+    "WoodDk"
+   ],
+   "origin_roblox": [
+    -160.0,
+    52.995,
+    14.2
+   ],
+   "bbox_min_roblox": [
+    -174.36500549316406,
+    21.549999237060547,
+    -33.68299865722656
+   ],
+   "bbox_max_roblox": [
+    -157.1179962158203,
+    77.68800354003906,
+    66.4540023803711
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [
+    "X- by 14.01",
+    "Z- by 2.19",
+    "Z+ by 3.45"
+   ],
+   "outside_collider_envelope": []
+  },
+  "Prop_SternWheel": {
+   "collection": "Props",
+   "tris": 1640,
+   "materials": [
+    "WoodDk",
+    "Iron",
+    "Brass",
+    "Wood"
+   ],
+   "origin_roblox": [
+    -79.575,
+    23.9,
+    10.5
+   ],
+   "bbox_min_roblox": [
+    -81.44999694824219,
+    23.899999618530273,
+    4.876999855041504
+   ],
+   "bbox_max_roblox": [
+    -77.69999694824219,
+    36.62300109863281,
+    16.12299919128418
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "Prop_TreasureChest": {
+   "collection": "Props",
+   "tris": 2372,
+   "materials": [
+    "Gold",
+    "Wood",
+    "Brass"
+   ],
+   "origin_roblox": [
+    -47.42,
+    23.85,
+    -12.623
+   ],
+   "bbox_min_roblox": [
+    -51.733001708984375,
+    23.850000381469727,
+    -16.523000717163086
+   ],
+   "bbox_max_roblox": [
+    -43.106998443603516,
+    30.496999740600586,
+    -8.723999977111816
+   ],
+   "under_20k": true,
+   "status": "new prop",
+   "note": "",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": []
+  },
+  "RampFlight1": {
+   "collection": "Ramps",
+   "tris": 300,
+   "materials": [
+    "Wood",
+    "Felt",
+    "Post",
+    "WoodDk",
+    "Rope"
+   ],
+   "origin_roblox": [
+    -120.0,
+    24.0,
+    62.5
+   ],
+   "bbox_min_roblox": [
+    -128.0,
+    -1.0,
+    61.691001892089844
+   ],
+   "bbox_max_roblox": [
+    -112.0,
+    29.768999099731445,
+    115.26499938964844
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "RampFlight2": {
+   "collection": "Ramps",
+   "tris": 288,
+   "materials": [
+    "Wood",
+    "Felt",
+    "Post",
+    "WoodDk",
+    "Rope"
+   ],
+   "origin_roblox": [
+    -126.7,
+    12.0,
+    127.5
+   ],
+   "bbox_min_roblox": [
+    -134.6999969482422,
+    -3.311000108718872,
+    126.7030029296875
+   ],
+   "bbox_max_roblox": [
+    -118.69999694824219,
+    17.773000717163086,
+    195.5
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "RampLanding": {
+   "collection": "Ramps",
+   "tris": 184,
+   "materials": [
+    "Felt",
+    "Wood",
+    "Post"
+   ],
+   "origin_roblox": [
+    -120.0,
+    12.0,
+    114.5
+   ],
+   "bbox_min_roblox": [
+    -128.5,
+    -2.0,
+    113.5999984741211
+   ],
+   "bbox_max_roblox": [
+    -111.5,
+    18.0,
+    131.0
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  },
+  "Rigging": {
+   "collection": "Visual",
+   "tris": 7282,
+   "materials": [
+    "Post",
+    "Iron",
+    "PostLt",
+    "Wood",
+    "WoodDk",
+    "Canvas",
+    "CanvasDk",
+    "Brass",
+    "RopeLt"
+   ],
+   "origin_roblox": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bbox_min_roblox": [
+    -150.0590057373047,
+    6.558000087738037,
+    -27.624000549316406
+   ],
+   "bbox_max_roblox": [
+    195.74000549316406,
+    121.88899993896484,
+    51.04899978637695
+   ],
+   "under_20k": true,
+   "status": "changed",
+   "note": "rebuilt on the same object/origin/18 deg roll: main mast snapped at Y~106 (rig frame) with pale splinter crown + iron bands, tilted crow's nest on the stump, sagging upper yard, torn billowed cream sails with large scalloped rips + CanvasDk patches, intact fore mast (original 126 height) with nest, furled top sail, brass cap; rope stays/shrouds re-run (RopeLt). Flag moved to Prop_Flag.",
+   "outside_source_ship_visual_envelope": [],
+   "outside_collider_envelope": [
+    "X+ by 38.84"
+   ]
+  },
+  "RockBumper": {
+   "collection": "Visual",
+   "tris": 80,
+   "materials": [
+    "RockLt",
+    "Rock",
+    "RockDk"
+   ],
+   "origin_roblox": [
+    -138.513,
+    0.0,
+    189.962
+   ],
+   "bbox_min_roblox": [
+    -147.1959991455078,
+    -6.170000076293945,
+    181.8679962158203
+   ],
+   "bbox_max_roblox": [
+    -129.78900146484375,
+    8.770999908447266,
+    198.78900146484375
+   ],
+   "under_20k": true,
+   "status": "unchanged (byte-identical geometry/materials/UVs/origin)",
+   "note": ""
+  }
+ },
+ "tris": {
+  "total_all_meshes": 49405,
+  "max_single_mesh": "Rigging",
+  "max_single_mesh_tris": 7282,
+  "all_under_20k": true
+ },
+ "palette": {
+  "texture": "start_ship_palette.png (256x256, 8x8 cells of 32 px, packed in the blend and embedded in the FBX; existing cells unchanged except Canvas + Red recoloured to the brief)",
+  "materials": {
+   "PostLt": {
+    "cell": 3,
+    "rgb": [
+     122,
+     90,
+     64
+    ]
+   },
+   "Wood": {
+    "cell": 0,
+    "rgb": [
+     110,
+     70,
+     40
+    ]
+   },
+   "WoodDk": {
+    "cell": 1,
+    "rgb": [
+     80,
+     50,
+     30
+    ]
+   },
+   "Felt": {
+    "cell": 9,
+    "rgb": [
+     105,
+     185,
+     98
+    ]
+   },
+   "Post": {
+    "cell": 2,
+    "rgb": [
+     100,
+     72,
+     50
+    ]
+   },
+   "Rope": {
+    "cell": 14,
+    "rgb": [
+     176,
+     140,
+     86
+    ]
+   },
+   "Iron": {
+    "cell": 15,
+    "rgb": [
+     70,
+     66,
+     64
+    ]
+   },
+   "Glow": {
+    "cell": 16,
+    "rgb": [
+     255,
+     190,
+     110
+    ]
+   },
+   "Canvas": {
+    "cell": 11,
+    "rgb": [
+     225,
+     210,
+     175
+    ]
+   },
+   "CanvasDk": {
+    "cell": 12,
+    "rgb": [
+     198,
+     176,
+     136
+    ]
+   },
+   "Red": {
+    "cell": 13,
+    "rgb": [
+     170,
+     60,
+     50
+    ]
+   },
+   "RockLt": {
+    "cell": 7,
+    "rgb": [
+     135,
+     119,
+     110
+    ]
+   },
+   "Rock": {
+    "cell": 5,
+    "rgb": [
+     115,
+     100,
+     92
+    ]
+   },
+   "RockDk": {
+    "cell": 6,
+    "rgb": [
+     94,
+     82,
+     76
+    ]
+   },
+   "HullWood": {
+    "cell": 4,
+    "rgb": [
+     130,
+     90,
+     55
+    ]
+   },
+   "RopeLt": {
+    "cell": 8,
+    "rgb": [
+     190,
+     160,
+     110
+    ]
+   },
+   "Brass": {
+    "cell": 10,
+    "rgb": [
+     200,
+     160,
+     70
+    ]
+   },
+   "Barnacle": {
+    "cell": 17,
+    "rgb": [
+     115,
+     100,
+     92
+    ]
+   },
+   "Seaweed": {
+    "cell": 18,
+    "rgb": [
+     78,
+     118,
+     60
+    ]
+   },
+   "Gold": {
+    "cell": 19,
+    "rgb": [
+     236,
+     190,
+     72
+    ]
+   },
+   "Crab": {
+    "cell": 20,
+    "rgb": [
+     222,
+     98,
+     62
+    ]
+   },
+   "FishTeal": {
+    "cell": 21,
+    "rgb": [
+     72,
+     150,
+     146
+    ]
+   },
+   "Shadow": {
+    "cell": 22,
+    "rgb": [
+     42,
+     30,
+     22
+    ]
+   }
+  },
+  "srgb_note": "material Base Color = exact sRGB->linear of the cell RGB; texture cell = 8-bit sRGB RGB",
+  "new_materials": [
+   "HullWood",
+   "RopeLt",
+   "Brass",
+   "Barnacle",
+   "Seaweed",
+   "Gold",
+   "Crab",
+   "FishTeal",
+   "Shadow"
+  ],
+  "recoloured_existing": {
+   "Canvas": [
+    [
+     225,
+     205,
+     165
+    ],
+    [
+     225,
+     210,
+     175
+    ]
+   ],
+   "Red": [
+    [
+     200,
+     50,
+     40
+    ],
+    [
+     170,
+     60,
+     50
+    ]
+   ]
+  },
+  "retained_names": "all 15 source material names retained (Wood, WoodDk, Post, PostLt, Canvas, CanvasDk, Red, Rope, Iron, Glow, Felt, Rock, RockDk, RockLt, Collision); Wood/WoodDk unchanged"
+ },
+ "anchors": {
+  "Spawn": {
+   "roblox": [
+    -120.0,
+    24.0,
+    2.5
+   ],
+   "exact_equal_to_source": true
+  },
+  "Tee1": {
+   "roblox": [
+    -120.0,
+    24.4,
+    37.0
+   ],
+   "exact_equal_to_source": true
+  },
+  "RampStart": {
+   "roblox": [
+    -120.0,
+    24.0,
+    62.5
+   ],
+   "exact_equal_to_source": true
+  },
+  "CupRef": {
+   "roblox": [
+    -175.7,
+    0.0,
+    212.3705
+   ],
+   "exact_equal_to_source": true
+  }
+ },
+ "verification": {
+  "collision": {
+   "count_source": 190,
+   "count_v3": 190,
+   "names_identical": true,
+   "byte_identical": 190,
+   "max_abs_world_vertex_diff": 0.0,
+   "differing": [],
+   "collection_membership_identical": true
+  },
+  "ramps": {
+   "RampFlight1": {
+    "geometry_identical": true,
+    "materials_identical": true,
+    "uv_identical": true,
+    "origin_matrix_identical": true,
+    "name_identical": true,
+    "mesh_datablock_name_identical": true,
+    "tris_source": 300,
+    "tris_v3": 300,
+    "mats_source": [
+     "Wood",
+     "Felt",
+     "Post",
+     "WoodDk",
+     "Rope"
+    ],
+    "mats_v3": [
+     "Wood",
+     "Felt",
+     "Post",
+     "WoodDk",
+     "Rope"
+    ],
+    "world_verts_max_abs_diff": 0.0
+   },
+   "RampLanding": {
+    "geometry_identical": true,
+    "materials_identical": true,
+    "uv_identical": true,
+    "origin_matrix_identical": true,
+    "name_identical": true,
+    "mesh_datablock_name_identical": true,
+    "tris_source": 184,
+    "tris_v3": 184,
+    "mats_source": [
+     "Felt",
+     "Wood",
+     "Post"
+    ],
+    "mats_v3": [
+     "Felt",
+     "Wood",
+     "Post"
+    ],
+    "world_verts_max_abs_diff": 0.0
+   },
+   "RampFlight2": {
+    "geometry_identical": true,
+    "materials_identical": true,
+    "uv_identical": true,
+    "origin_matrix_identical": true,
+    "name_identical": true,
+    "mesh_datablock_name_identical": true,
+    "tris_source": 288,
+    "tris_v3": 288,
+    "mats_source": [
+     "Wood",
+     "Felt",
+     "Post",
+     "WoodDk",
+     "Rope"
+    ],
+    "mats_v3": [
+     "Wood",
+     "Felt",
+     "Post",
+     "WoodDk",
+     "Rope"
+    ],
+    "world_verts_max_abs_diff": 0.0
+   }
+  },
+  "unchanged_meshes": [
+   "DeckCabin",
+   "Pier",
+   "RockBumper",
+   "Dressing",
+   "Dressing_Glow",
+   "RampFlight1",
+   "RampLanding",
+   "RampFlight2"
+  ],
+  "hull_retained": {
+   "source_tris": 4219,
+   "source_tris_still_present": 4207,
+   "missing": 12,
+   "missing_are_bowsprit": true,
+   "bowsprit_def": "within 1.95 studs of the source bowsprit beam axis (hull frame 118,45 -> 215,70)"
+  },
+  "walk_surfaces": {
+   "source": {
+    "deck_top_Y24_faces": 382,
+    "deck_top_Y24_area": 16654.784,
+    "forecastle_top_Y30_area": 429.043
+   },
+   "v3": {
+    "deck_top_Y24_faces": 382,
+    "deck_top_Y24_area": 16654.784,
+    "forecastle_top_Y30_area": 429.043
+   },
+   "identical": true
+  },
+  "min_route_clearance": {
+   "studs": 1.7,
+   "zone": "cabin_interior_spawn",
+   "object": "Prop_CabinWindows"
+  },
+  "coplanar_pairs": 0,
+  "hard_checks_pass": true
+ },
+ "changes": [
+  "Hull: curled bowsprit replaces the straight beam; outer planking recoloured to HullWood (130,90,55); all other hull triangles retained; skirt/waterline unchanged.",
+  "Rigging: rebuilt (same name/origin/18 deg roll): broken main mast (~2/3) + tilted crow's nest, torn scalloped sails with patches, intact fore mast with nest and furled sail.",
+  "New Props collection (each a separate named mesh): Prop_Barnacles, Prop_BulwarkFrames, Prop_CabinWindows, Prop_Cannons, Prop_CapRails, Prop_CargoCluster, Prop_Crab, Prop_DoorLantern, Prop_DoorLantern_Glow, Prop_Figurehead, Prop_Flag, Prop_PatchPlanks, Prop_Portholes, Prop_RopeCoils, Prop_Seaweed, Prop_SternCurl, Prop_SternWheel, Prop_TreasureChest",
+  "Artifact fix: the source DeckCabin deck slab stern end face (x=-160, Y 22..24) is coplanar with the Hull stern cap and inward-facing (renders as a black band on the transom). DeckCabin was NOT edited; a proud WoodDk deck-line trim plank (part of Prop_SternCurl) covers it.",
+  "Palette: 9 new cells/materials; Canvas and Red cells recoloured to the brief (used only by sails/flag). Ramp/deck/pier/rock cells untouched."
+ ],
+ "flags": [
+  "Deck props (cargo, crab, chest, wheel, rope coils) stand on the walkable deck with NO collider: players/balls pass through them unless the build bot adds simple CanCollide boxes. They are all outside the route corridor.",
+  "COL_Mast_Main (unchanged) still spans the original 8..165 mast; the visual main mast is now snapped at ~106 (+ splinters to ~113) -> the collider sticks ~50 studs above the visible stump (it is the optional mast collider; consider disabling or shortening it in Studio).",
+  "Stern curl, figurehead, curled bowsprit, cap rails and hull dressing are scenery with no collider (same as the source hull/rigging scenery).",
+  "Visual meshes extending beyond the source collider union envelope are listed per mesh under outside_collider_envelope (scenery, no new colliders were added)."
+ ],
+ "fbx_reimport": {
+  "RampFlight1_own_origin.fbx": {
+   "objects": 1,
+   "meshes": 1,
+   "empties": [],
+   "tris_total": 300,
+   "images": [
+    [
+     "start_ship_palette.png",
+     [
+      256,
+      256
+     ],
+     true
+    ]
+   ],
+   "size_bytes": 35580,
+   "objs": {
+    "RampFlight1": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 300,
+     "mats": [
+      "Wood",
+      "Felt",
+      "Post",
+      "WoodDk",
+      "Rope"
+     ]
+    }
+   }
+  },
+  "RampFlight2_own_origin.fbx": {
+   "objects": 1,
+   "meshes": 1,
+   "empties": [],
+   "tris_total": 288,
+   "images": [
+    [
+     "start_ship_palette.png",
+     [
+      256,
+      256
+     ],
+     true
+    ]
+   ],
+   "size_bytes": 35260,
+   "objs": {
+    "RampFlight2": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 288,
+     "mats": [
+      "Wood",
+      "Felt",
+      "Post",
+      "WoodDk",
+      "Rope"
+     ]
+    }
+   }
+  },
+  "RampLanding_own_origin.fbx": {
+   "objects": 1,
+   "meshes": 1,
+   "empties": [],
+   "tris_total": 184,
+   "images": [
+    [
+     "start_ship_palette.png",
+     [
+      256,
+      256
+     ],
+     true
+    ]
+   ],
+   "size_bytes": 28780,
+   "objs": {
+    "RampLanding": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 184,
+     "mats": [
+      "Felt",
+      "Wood",
+      "Post"
+     ]
+    }
+   }
+  },
+  "start_ship_b2_col.fbx": {
+   "objects": 190,
+   "meshes": 190,
+   "empties": [],
+   "tris_total": 2280,
+   "images": [],
+   "size_bytes": 478156,
+   "objs": {
+    "COL_Bulwark_Bow": {
+     "type": "MESH",
+     "loc": [
+      137.1407,
+      -7.3086,
+      31.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 12,
+     "mats": [
+      "Collision"
+     ]
+    },
+    "COL_Bulwark_Hi_00": {
+     "type": "MESH",
+     "loc": [
+      -153.0,
+      21.8827,
+      31.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 12,
+     "mats": [
+      "Collision"
+     ]
+    },
+    "COL_Bulwark_Hi_01": {
+     "type": "MESH",
+     "loc": [
+      -141.0,
+      21.9514,
+      31.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 12,
+     "mats": [
+      "Collision"
+     ]
+    }
+   }
+  },
+  "start_ship_b2_visual.fbx": {
+   "objects": 32,
+   "meshes": 28,
+   "empties": [
+    "CupRef",
+    "RampStart",
+    "Spawn",
+    "Tee1"
+   ],
+   "tris_total": 49405,
+   "images": [
+    [
+     "start_ship_palette.png",
+     [
+      256,
+      256
+     ],
+     true
+    ]
+   ],
+   "size_bytes": 1241820,
+   "objs": {
+    "CupRef": {
+     "type": "EMPTY",
+     "loc": [
+      -175.7,
+      -212.3705,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "DeckCabin": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 3512,
+     "mats": [
+      "PostLt",
+      "Wood",
+      "WoodDk",
+      "Felt",
+      "Post",
+      "Rope"
+     ]
+    },
+    "Dressing": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 516,
+     "mats": [
+      "Wood",
+      "Iron",
+      "Post",
+      "PostLt",
+      "Rope"
+     ]
+    },
+    "Dressing_Glow": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 24,
+     "mats": [
+      "Glow"
+     ]
+    },
+    "Hull": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 4835,
+     "mats": [
+      "WoodDk",
+      "Wood",
+      "Post",
+      "HullWood",
+      "RopeLt",
+      "Brass"
+     ]
+    },
+    "Pier": {
+     "type": "MESH",
+     "loc": [
+      -215.0,
+      -125.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 948,
+     "mats": [
+      "Wood",
+      "PostLt",
+      "WoodDk",
+      "Post",
+      "Rope"
+     ]
+    },
+    "Prop_Barnacles": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2728,
+     "mats": [
+      "Barnacle",
+      "Shadow"
+     ]
+    },
+    "Prop_BulwarkFrames": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2952,
+     "mats": [
+      "WoodDk",
+      "Wood"
+     ]
+    },
+    "Prop_CabinWindows": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 976,
+     "mats": [
+      "Brass",
+      "Shadow",
+      "WoodDk"
+     ]
+    },
+    "Prop_Cannons": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2328,
+     "mats": [
+      "WoodDk",
+      "Shadow",
+      "Wood",
+      "Iron"
+     ]
+    },
+    "Prop_CapRails": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2712,
+     "mats": [
+      "Wood"
+     ]
+    },
+    "Prop_CargoCluster": {
+     "type": "MESH",
+     "loc": [
+      -100.2545,
+      -29.4599,
+      23.85
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2216,
+     "mats": [
+      "Wood",
+      "Iron",
+      "WoodDk",
+      "PostLt"
+     ]
+    },
+    "Prop_Crab": {
+     "type": "MESH",
+     "loc": [
+      -95.1295,
+      -27.8291,
+      31.25
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 780,
+     "mats": [
+      "Crab",
+      "Canvas",
+      "Iron"
+     ]
+    },
+    "Prop_DoorLantern": {
+     "type": "MESH",
+     "loc": [
+      -107.5,
+      -26.0,
+      32.55
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 460,
+     "mats": [
+      "WoodDk",
+      "Iron",
+      "Brass"
+     ]
+    },
+    "Prop_DoorLantern_Glow": {
+     "type": "MESH",
+     "loc": [
+      -107.5,
+      -26.9,
+      32.95
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 12,
+     "mats": [
+      "Glow"
+     ]
+    },
+    "Prop_Figurehead": {
+     "type": "MESH",
+     "loc": [
+      153.0,
+      -10.0939,
+      37.6711
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2712,
+     "mats": [
+      "FishTeal",
+      "Canvas",
+      "Iron",
+      "Shadow",
+      "Brass"
+     ]
+    },
+    "Prop_Flag": {
+     "type": "MESH",
+     "loc": [
+      95.0,
+      -34.8949,
+      110.6316
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 760,
+     "mats": [
+      "Red",
+      "Canvas"
+     ]
+    },
+    "Prop_PatchPlanks": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2420,
+     "mats": [
+      "Wood",
+      "Iron"
+     ]
+    },
+    "Prop_Portholes": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 1316,
+     "mats": [
+      "Brass",
+      "Shadow"
+     ]
+    },
+    "Prop_RopeCoils": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 1608,
+     "mats": [
+      "RopeLt"
+     ]
+    },
+    "Prop_Seaweed": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 648,
+     "mats": [
+      "Seaweed"
+     ]
+    },
+    "Prop_SternCurl": {
+     "type": "MESH",
+     "loc": [
+      -160.0,
+      -14.1998,
+      52.9946
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2796,
+     "mats": [
+      "Brass",
+      "WoodDk"
+     ]
+    },
+    "Prop_SternWheel": {
+     "type": "MESH",
+     "loc": [
+      -79.575,
+      -10.5,
+      23.9
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 1640,
+     "mats": [
+      "WoodDk",
+      "Iron",
+      "Brass",
+      "Wood"
+     ]
+    },
+    "Prop_TreasureChest": {
+     "type": "MESH",
+     "loc": [
+      -47.4202,
+      12.6235,
+      23.85
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 2372,
+     "mats": [
+      "Gold",
+      "Wood",
+      "Brass"
+     ]
+    },
+    "RampFlight1": {
+     "type": "MESH",
+     "loc": [
+      -120.0,
+      -62.5,
+      24.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 300,
+     "mats": [
+      "Wood",
+      "Felt",
+      "Post",
+      "WoodDk",
+      "Rope"
+     ]
+    },
+    "RampFlight2": {
+     "type": "MESH",
+     "loc": [
+      -126.7,
+      -127.5,
+      12.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 288,
+     "mats": [
+      "Wood",
+      "Felt",
+      "Post",
+      "WoodDk",
+      "Rope"
+     ]
+    },
+    "RampLanding": {
+     "type": "MESH",
+     "loc": [
+      -120.0,
+      -114.5,
+      12.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 184,
+     "mats": [
+      "Felt",
+      "Wood",
+      "Post"
+     ]
+    },
+    "RampStart": {
+     "type": "EMPTY",
+     "loc": [
+      -120.0,
+      -62.5,
+      24.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "Rigging": {
+     "type": "MESH",
+     "loc": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 7282,
+     "mats": [
+      "Post",
+      "Iron",
+      "PostLt",
+      "Wood",
+      "WoodDk",
+      "Canvas",
+      "CanvasDk",
+      "Brass",
+      "RopeLt"
+     ]
+    },
+    "RockBumper": {
+     "type": "MESH",
+     "loc": [
+      -138.5135,
+      -189.9615,
+      0.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "tris": 80,
+     "mats": [
+      "RockLt",
+      "Rock",
+      "RockDk"
+     ]
+    },
+    "Spawn": {
+     "type": "EMPTY",
+     "loc": [
+      -120.0,
+      -2.5,
+      24.0
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "Tee1": {
+     "type": "EMPTY",
+     "loc": [
+      -120.0,
+      -37.0,
+      24.4
+     ],
+     "scale": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,1083 @@
+{
+ "source": "C:\\Users\\chase\\sc_fix\\ship_upgrade_n5\\source.blend",
+ "source_dump_blend": "C:\\Users\\chase\\sc_fix\\ship_upgrade_n5\\source.blend",
+ "v3_blend": "C:\\Users\\chase\\sc_fix\\ship_upgrade_n5\\out\\start_ship_v3.blend",
+ "anchors": {
+  "Spawn": {
+   "exact_equal": true,
+   "loc_blender": [
+    -120.0,
+    -2.5,
+    24.0
+   ],
+   "roblox": [
+    -120.0,
+    24.0,
+    2.5
+   ],
+   "max_abs_diff": 0.0
+  },
+  "Tee1": {
+   "exact_equal": true,
+   "loc_blender": [
+    -120.0,
+    -37.0,
+    24.399999618530273
+   ],
+   "roblox": [
+    -120.0,
+    24.4,
+    37.0
+   ],
+   "max_abs_diff": 0.0
+  },
+  "RampStart": {
+   "exact_equal": true,
+   "loc_blender": [
+    -120.0,
+    -62.5,
+    24.0
+   ],
+   "roblox": [
+    -120.0,
+    24.0,
+    62.5
+   ],
+   "max_abs_diff": 0.0
+  },
+  "CupRef": {
+   "exact_equal": true,
+   "loc_blender": [
+    -175.6999969482422,
+    -212.3704833984375,
+    0.0
+   ],
+   "roblox": [
+    -175.7,
+    0.0,
+    212.3705
+   ],
+   "max_abs_diff": 0.0
+  }
+ },
+ "collision": {
+  "count_source": 190,
+  "count_v3": 190,
+  "names_identical": true,
+  "byte_identical": 190,
+  "max_abs_world_vertex_diff": 0.0,
+  "differing": [],
+  "collection_membership_identical": true
+ },
+ "meshes_vs_source": {
+  "Hull": {
+   "geometry_identical": false,
+   "materials_identical": false,
+   "uv_identical": false,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 4219,
+   "tris_v3": 4835,
+   "mats_source": [
+    "WoodDk",
+    "Wood",
+    "Post"
+   ],
+   "mats_v3": [
+    "WoodDk",
+    "Wood",
+    "Post",
+    "HullWood",
+    "RopeLt",
+    "Brass"
+   ]
+  },
+  "DeckCabin": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 3512,
+   "tris_v3": 3512,
+   "mats_source": [
+    "PostLt",
+    "Wood",
+    "WoodDk",
+    "Felt",
+    "Post",
+    "Rope"
+   ],
+   "mats_v3": [
+    "PostLt",
+    "Wood",
+    "WoodDk",
+    "Felt",
+    "Post",
+    "Rope"
+   ]
+  },
+  "Rigging": {
+   "geometry_identical": false,
+   "materials_identical": false,
+   "uv_identical": false,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 400,
+   "tris_v3": 7282,
+   "mats_source": [
+    "Post",
+    "PostLt",
+    "Canvas",
+    "CanvasDk",
+    "Red",
+    "Rope"
+   ],
+   "mats_v3": [
+    "Post",
+    "Iron",
+    "PostLt",
+    "Wood",
+    "WoodDk",
+    "Canvas",
+    "CanvasDk",
+    "Brass",
+    "RopeLt"
+   ]
+  },
+  "Pier": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 948,
+   "tris_v3": 948,
+   "mats_source": [
+    "Wood",
+    "PostLt",
+    "WoodDk",
+    "Post",
+    "Rope"
+   ],
+   "mats_v3": [
+    "Wood",
+    "PostLt",
+    "WoodDk",
+    "Post",
+    "Rope"
+   ]
+  },
+  "RockBumper": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 80,
+   "tris_v3": 80,
+   "mats_source": [
+    "RockLt",
+    "Rock",
+    "RockDk"
+   ],
+   "mats_v3": [
+    "RockLt",
+    "Rock",
+    "RockDk"
+   ]
+  },
+  "Dressing": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 516,
+   "tris_v3": 516,
+   "mats_source": [
+    "Wood",
+    "Iron",
+    "Post",
+    "PostLt",
+    "Rope"
+   ],
+   "mats_v3": [
+    "Wood",
+    "Iron",
+    "Post",
+    "PostLt",
+    "Rope"
+   ]
+  },
+  "Dressing_Glow": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 24,
+   "tris_v3": 24,
+   "mats_source": [
+    "Glow"
+   ],
+   "mats_v3": [
+    "Glow"
+   ]
+  },
+  "RampFlight1": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 300,
+   "tris_v3": 300,
+   "mats_source": [
+    "Wood",
+    "Felt",
+    "Post",
+    "WoodDk",
+    "Rope"
+   ],
+   "mats_v3": [
+    "Wood",
+    "Felt",
+    "Post",
+    "WoodDk",
+    "Rope"
+   ],
+   "world_verts_max_abs_diff": 0.0
+  },
+  "RampLanding": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 184,
+   "tris_v3": 184,
+   "mats_source": [
+    "Felt",
+    "Wood",
+    "Post"
+   ],
+   "mats_v3": [
+    "Felt",
+    "Wood",
+    "Post"
+   ],
+   "world_verts_max_abs_diff": 0.0
+  },
+  "RampFlight2": {
+   "geometry_identical": true,
+   "materials_identical": true,
+   "uv_identical": true,
+   "origin_matrix_identical": true,
+   "name_identical": true,
+   "mesh_datablock_name_identical": true,
+   "tris_source": 288,
+   "tris_v3": 288,
+   "mats_source": [
+    "Wood",
+    "Felt",
+    "Post",
+    "WoodDk",
+    "Rope"
+   ],
+   "mats_v3": [
+    "Wood",
+    "Felt",
+    "Post",
+    "WoodDk",
+    "Rope"
+   ],
+   "world_verts_max_abs_diff": 0.0
+  }
+ },
+ "hull_retained": {
+  "source_tris": 4219,
+  "source_tris_still_present": 4207,
+  "missing": 12,
+  "missing_are_bowsprit": true,
+  "bowsprit_def": "within 1.95 studs of the source bowsprit beam axis (hull frame 118,45 -> 215,70)"
+ },
+ "hull_submersion": {
+  "water_level_local": -0.6,
+  "stations": [
+   {
+    "x": -158.0,
+    "source_bottom_y": -2.072,
+    "v3_bottom_y": -2.072,
+    "identical": true,
+    "submerged_below_water_studs": 1.472
+   },
+   {
+    "x": -148.0,
+    "source_bottom_y": -2.0734,
+    "v3_bottom_y": -2.0734,
+    "identical": true,
+    "submerged_below_water_studs": 1.473
+   },
+   {
+    "x": -138.0,
+    "source_bottom_y": -2.0747,
+    "v3_bottom_y": -2.0747,
+    "identical": true,
+    "submerged_below_water_studs": 1.475
+   },
+   {
+    "x": -128.0,
+    "source_bottom_y": -2.076,
+    "v3_bottom_y": -2.076,
+    "identical": true,
+    "submerged_below_water_studs": 1.476
+   },
+   {
+    "x": -118.0,
+    "source_bottom_y": -2.0771,
+    "v3_bottom_y": -2.0771,
+    "identical": true,
+    "submerged_below_water_studs": 1.477
+   },
+   {
+    "x": -108.0,
+    "source_bottom_y": -2.0781,
+    "v3_bottom_y": -2.0781,
+    "identical": true,
+    "submerged_below_water_studs": 1.478
+   },
+   {
+    "x": -98.0,
+    "source_bottom_y": -2.0791,
+    "v3_bottom_y": -2.0791,
+    "identical": true,
+    "submerged_below_water_studs": 1.479
+   },
+   {
+    "x": -88.0,
+    "source_bottom_y": -2.0802,
+    "v3_bottom_y": -2.0802,
+    "identical": true,
+    "submerged_below_water_studs": 1.48
+   },
+   {
+    "x": -78.0,
+    "source_bottom_y": -2.0814,
+    "v3_bottom_y": -2.0814,
+    "identical": true,
+    "submerged_below_water_studs": 1.481
+   },
+   {
+    "x": -68.0,
+    "source_bottom_y": -2.0827,
+    "v3_bottom_y": -2.0827,
+    "identical": true,
+    "submerged_below_water_studs": 1.483
+   },
+   {
+    "x": -58.0,
+    "source_bottom_y": -2.0841,
+    "v3_bottom_y": -2.0841,
+    "identical": true,
+    "submerged_below_water_studs": 1.484
+   },
+   {
+    "x": -48.0,
+    "source_bottom_y": -2.0855,
+    "v3_bottom_y": -2.0855,
+    "identical": true,
+    "submerged_below_water_studs": 1.486
+   },
+   {
+    "x": -38.0,
+    "source_bottom_y": -2.0776,
+    "v3_bottom_y": -2.0776,
+    "identical": true,
+    "submerged_below_water_studs": 1.478
+   },
+   {
+    "x": -28.0,
+    "source_bottom_y": -2.077,
+    "v3_bottom_y": -2.077,
+    "identical": true,
+    "submerged_below_water_studs": 1.477
+   },
+   {
+    "x": -18.0,
+    "source_bottom_y": -2.0785,
+    "v3_bottom_y": -2.0785,
+    "identical": true,
+    "submerged_below_water_studs": 1.478
+   },
+   {
+    "x": -8.0,
+    "source_bottom_y": -2.0691,
+    "v3_bottom_y": -2.0691,
+    "identical": true,
+    "submerged_below_water_studs": 1.469
+   },
+   {
+    "x": 2.0,
+    "source_bottom_y": -2.0699,
+    "v3_bottom_y": -2.0699,
+    "identical": true,
+    "submerged_below_water_studs": 1.47
+   },
+   {
+    "x": 12.0,
+    "source_bottom_y": -2.0604,
+    "v3_bottom_y": -2.0604,
+    "identical": true,
+    "submerged_below_water_studs": 1.46
+   },
+   {
+    "x": 22.0,
+    "source_bottom_y": -2.0588,
+    "v3_bottom_y": -2.0588,
+    "identical": true,
+    "submerged_below_water_studs": 1.459
+   },
+   {
+    "x": 32.0,
+    "source_bottom_y": -2.0481,
+    "v3_bottom_y": -2.0481,
+    "identical": true,
+    "submerged_below_water_studs": 1.448
+   },
+   {
+    "x": 42.0,
+    "source_bottom_y": -2.0354,
+    "v3_bottom_y": -2.0354,
+    "identical": true,
+    "submerged_below_water_studs": 1.435
+   },
+   {
+    "x": 52.0,
+    "source_bottom_y": -2.0198,
+    "v3_bottom_y": -2.0198,
+    "identical": true,
+    "submerged_below_water_studs": 1.42
+   },
+   {
+    "x": 62.0,
+    "source_bottom_y": -2.0249,
+    "v3_bottom_y": -2.0249,
+    "identical": true,
+    "submerged_below_water_studs": 1.425
+   },
+   {
+    "x": 72.0,
+    "source_bottom_y": -2.0427,
+    "v3_bottom_y": -2.0427,
+    "identical": true,
+    "submerged_below_water_studs": 1.443
+   },
+   {
+    "x": 82.0,
+    "source_bottom_y": -1.9895,
+    "v3_bottom_y": -1.9895,
+    "identical": true,
+    "submerged_below_water_studs": 1.389
+   },
+   {
+    "x": 92.0,
+    "source_bottom_y": -0.9468,
+    "v3_bottom_y": -0.9468,
+    "identical": true,
+    "submerged_below_water_studs": 0.347
+   },
+   {
+    "x": 102.0,
+    "source_bottom_y": 3.0598,
+    "v3_bottom_y": 3.0598,
+    "identical": true,
+    "submerged_below_water_studs": -3.66
+   },
+   {
+    "x": 112.0,
+    "source_bottom_y": 9.0513,
+    "v3_bottom_y": 9.0513,
+    "identical": true,
+    "submerged_below_water_studs": -9.651
+   },
+   {
+    "x": 122.0,
+    "source_bottom_y": 14.1874,
+    "v3_bottom_y": 14.1874,
+    "identical": true,
+    "submerged_below_water_studs": -14.787
+   },
+   {
+    "x": 132.0,
+    "source_bottom_y": 17.2038,
+    "v3_bottom_y": 17.2038,
+    "identical": true,
+    "submerged_below_water_studs": -17.804
+   },
+   {
+    "x": 142.0,
+    "source_bottom_y": 19.8114,
+    "v3_bottom_y": 19.8114,
+    "identical": true,
+    "submerged_below_water_studs": -20.411
+   },
+   {
+    "x": 152.0,
+    "source_bottom_y": 22.7278,
+    "v3_bottom_y": 22.7278,
+    "identical": true,
+    "submerged_below_water_studs": -23.328
+   }
+  ],
+  "note": "bottom = lowest Hull point at each x station (rays every 0.25 studs across the beam); water world Y0 = local -0.6"
+ },
+ "walk_surfaces": {
+  "source": {
+   "deck_top_Y24_faces": 382,
+   "deck_top_Y24_area": 16654.784,
+   "forecastle_top_Y30_area": 429.043
+  },
+  "v3": {
+   "deck_top_Y24_faces": 382,
+   "deck_top_Y24_area": 16654.784,
+   "forecastle_top_Y30_area": 429.043
+  },
+  "identical": true
+ },
+ "spawn_headroom": {
+  "source": [
+   "DeckCabin",
+   29.1953
+  ],
+  "v3": [
+   "DeckCabin",
+   29.1953
+  ],
+  "identical": true
+ },
+ "door_clearance": {
+  "rays": 80,
+  "rays_blocked_source": 0,
+  "rays_blocked_v3": 0,
+  "identical": true,
+  "blocked_v3": []
+ },
+ "tee_sightlines": {
+  "eye_roblox": [
+   -120.0,
+   29.4,
+   37.0
+  ],
+  "source": {
+   "RampStart+1": {
+    "target": [
+     -120.0,
+     25.0,
+     62.5
+    ],
+    "dist": 25.877,
+    "first_hit": null
+   },
+   "Landing_centre+1": {
+    "target": [
+     -120.0,
+     13.0,
+     122.5
+    ],
+    "dist": 87.059,
+    "first_hit": null
+   },
+   "Flight2_mouth+1": {
+    "target": [
+     -126.7,
+     13.0,
+     127.5
+    ],
+    "dist": 92.218,
+    "first_hit": [
+     "RampFlight1",
+     77.077
+    ]
+   },
+   "Flight1_mid+1": {
+    "target": [
+     -120.0,
+     19.0,
+     88.5
+    ],
+    "dist": 52.54,
+    "first_hit": null
+   }
+  },
+  "v3": {
+   "RampStart+1": {
+    "target": [
+     -120.0,
+     25.0,
+     62.5
+    ],
+    "dist": 25.877,
+    "first_hit": null
+   },
+   "Landing_centre+1": {
+    "target": [
+     -120.0,
+     13.0,
+     122.5
+    ],
+    "dist": 87.059,
+    "first_hit": null
+   },
+   "Flight2_mouth+1": {
+    "target": [
+     -126.7,
+     13.0,
+     127.5
+    ],
+    "dist": 92.218,
+    "first_hit": [
+     "RampFlight1",
+     77.077
+    ]
+   },
+   "Flight1_mid+1": {
+    "target": [
+     -120.0,
+     19.0,
+     88.5
+    ],
+    "dist": 52.54,
+    "first_hit": null
+   }
+  },
+  "identical": true
+ },
+ "route_corridor": {
+  "boxes_roblox": {
+   "cabin_interior_spawn": [
+    [
+     -148.0,
+     24.0,
+     -17.0
+    ],
+    [
+     -92.0,
+     40.0,
+     22.0
+    ]
+   ],
+   "door_approach": [
+    [
+     -126.0,
+     24.0,
+     18.0
+    ],
+    [
+     -114.0,
+     35.0,
+     30.0
+    ]
+   ],
+   "tee_pad_stance": [
+    [
+     -128.0,
+     24.0,
+     28.0
+    ],
+    [
+     -112.0,
+     31.0,
+     46.0
+    ]
+   ],
+   "outrigger": [
+    [
+     -131.0,
+     24.0,
+     43.0
+    ],
+    [
+     -109.0,
+     31.0,
+     63.0
+    ]
+   ],
+   "flight1": [
+    [
+     -128.0,
+     11.0,
+     62.0
+    ],
+    [
+     -112.0,
+     31.0,
+     116.0
+    ]
+   ],
+   "landing": [
+    [
+     -129.0,
+     10.0,
+     113.0
+    ],
+    [
+     -111.0,
+     20.0,
+     132.0
+    ]
+   ]
+  },
+  "flight2_box": "flight2 local frame: along -1..72, lateral +-9, height -13..+7 (yawed -30 deg as built in Studio, and unyawed as exported)",
+  "cup": "12-stud clear radius around CupRef",
+  "per_zone": {
+   "cabin_interior_spawn": {
+    "min_dist": 1.7,
+    "closest": "Prop_CabinWindows"
+   },
+   "door_approach": {
+    "min_dist": 5.2,
+    "closest": "Prop_DoorLantern"
+   },
+   "tee_pad_stance": {
+    "min_dist": 3.672,
+    "closest": "Prop_DoorLantern"
+   },
+   "outrigger": {
+    "min_dist": 10.031,
+    "closest": "Prop_CargoCluster"
+   },
+   "flight1": {
+    "min_dist": 29.058,
+    "closest": "Prop_CargoCluster"
+   },
+   "landing": {
+    "min_dist": 61.646,
+    "closest": "Prop_SternCurl"
+   },
+   "flight2_apron_yawed": {
+    "min_dist": 67.324,
+    "closest": "Prop_SternCurl"
+   },
+   "flight2_apron_unyawed": {
+    "min_dist": 70.448,
+    "closest": "Prop_SternCurl"
+   },
+   "cup_clear_r12": {
+    "min_dist": 134.737,
+    "closest": "Prop_SternCurl"
+   }
+  },
+  "per_object": {
+   "Prop_Flag": {
+    "cabin_interior_spawn": 200.123,
+    "door_approach": 222.13,
+    "tee_pad_stance": 221.602,
+    "outrigger": 218.955,
+    "flight1": 223.253,
+    "landing": 238.051,
+    "flight2_apron_yawed": 251.227,
+    "flight2_apron_unyawed": 248.886,
+    "cup_clear_r12": 310.007
+   },
+   "Prop_SternCurl": {
+    "cabin_interior_spawn": 11.926,
+    "door_approach": 34.491,
+    "tee_pad_stance": 31.9,
+    "outrigger": 28.9,
+    "flight1": 32.106,
+    "landing": 61.646,
+    "flight2_apron_yawed": 67.324,
+    "flight2_apron_unyawed": 70.448,
+    "cup_clear_r12": 134.737
+   },
+   "Prop_Figurehead": {
+    "cabin_interior_spawn": 244.147,
+    "door_approach": 266.292,
+    "tee_pad_stance": 264.863,
+    "outrigger": 263.279,
+    "flight1": 269.16,
+    "landing": 282.788,
+    "flight2_apron_yawed": 296.598,
+    "flight2_apron_unyawed": 294.113,
+    "cup_clear_r12": 372.542
+   },
+   "Prop_Portholes": {
+    "cabin_interior_spawn": 12.918,
+    "door_approach": 34.931,
+    "tee_pad_stance": 29.748,
+    "outrigger": 26.753,
+    "flight1": 33.593,
+    "landing": 71.974,
+    "flight2_apron_yawed": 91.094,
+    "flight2_apron_unyawed": 87.07,
+    "cup_clear_r12": 172.866
+   },
+   "Prop_Cannons": {
+    "cabin_interior_spawn": 33.62,
+    "door_approach": 52.474,
+    "tee_pad_stance": 50.386,
+    "outrigger": 48.339,
+    "flight1": 54.056,
+    "landing": 87.775,
+    "flight2_apron_yawed": 107.053,
+    "flight2_apron_unyawed": 102.743,
+    "cup_clear_r12": 194.343
+   },
+   "Prop_PatchPlanks": {
+    "cabin_interior_spawn": 50.437,
+    "door_approach": 70.865,
+    "tee_pad_stance": 68.901,
+    "outrigger": 67.003,
+    "flight1": 73.803,
+    "landing": 104.962,
+    "flight2_apron_yawed": 123.825,
+    "flight2_apron_unyawed": 119.698,
+    "cup_clear_r12": 211.219
+   },
+   "Prop_CapRails": {
+    "cabin_interior_spawn": 33.854,
+    "door_approach": 54.67,
+    "tee_pad_stance": 48.449,
+    "outrigger": 45.056,
+    "flight1": 48.536,
+    "landing": 75.511,
+    "flight2_apron_yawed": 94.301,
+    "flight2_apron_unyawed": 90.21,
+    "cup_clear_r12": 180.522
+   },
+   "Prop_Barnacles": {
+    "cabin_interior_spawn": 22.433,
+    "door_approach": 22.553,
+    "tee_pad_stance": 23.996,
+    "outrigger": 32.351,
+    "flight1": 43.262,
+    "landing": 93.586,
+    "flight2_apron_yawed": 103.167,
+    "flight2_apron_unyawed": 106.648,
+    "cup_clear_r12": 182.225
+   },
+   "Prop_Seaweed": {
+    "cabin_interior_spawn": 22.154,
+    "door_approach": 22.187,
+    "tee_pad_stance": 23.198,
+    "outrigger": 31.087,
+    "flight1": 41.742,
+    "landing": 92.048,
+    "flight2_apron_yawed": 101.746,
+    "flight2_apron_unyawed": 105.16,
+    "cup_clear_r12": 181.207
+   },
+   "Prop_CargoCluster": {
+    "cabin_interior_spawn": 3.119,
+    "door_approach": 7.143,
+    "tee_pad_stance": 5.164,
+    "outrigger": 10.031,
+    "flight1": 29.058,
+    "landing": 79.633,
+    "flight2_apron_yawed": 93.209,
+    "flight2_apron_unyawed": 93.806,
+    "cup_clear_r12": 180.056
+   },
+   "Prop_Crab": {
+    "cabin_interior_spawn": 3.078,
+    "door_approach": 15.6,
+    "tee_pad_stance": 13.656,
+    "outrigger": 16.868,
+    "flight1": 34.684,
+    "landing": 84.508,
+    "flight2_apron_yawed": 99.455,
+    "flight2_apron_unyawed": 98.999,
+    "cup_clear_r12": 185.98
+   },
+   "Prop_DoorLantern": {
+    "cabin_interior_spawn": 1.8,
+    "door_approach": 5.2,
+    "tee_pad_stance": 3.672,
+    "outrigger": 14.991,
+    "flight1": 34.104,
+    "landing": 85.864,
+    "flight2_apron_yawed": 98.338,
+    "flight2_apron_unyawed": 99.749,
+    "cup_clear_r12": 183.965
+   },
+   "Prop_DoorLantern_Glow": {
+    "cabin_interior_spawn": 4.05,
+    "door_approach": 5.65,
+    "tee_pad_stance": 4.146,
+    "outrigger": 15.388,
+    "flight1": 34.499,
+    "landing": 86.269,
+    "flight2_apron_yawed": 98.796,
+    "flight2_apron_unyawed": 100.168,
+    "cup_clear_r12": 184.522
+   },
+   "Prop_SternWheel": {
+    "cabin_interior_spawn": 10.55,
+    "door_approach": 32.684,
+    "tee_pad_stance": 32.995,
+    "outrigger": 38.709,
+    "flight1": 55.301,
+    "landing": 101.782,
+    "flight2_apron_yawed": 118.879,
+    "flight2_apron_unyawed": 116.712,
+    "cup_clear_r12": 205.86
+   },
+   "Prop_TreasureChest": {
+    "cabin_interior_spawn": 40.267,
+    "door_approach": 69.662,
+    "tee_pad_stance": 72.619,
+    "outrigger": 79.337,
+    "flight1": 95.123,
+    "landing": 137.305,
+    "flight2_apron_yawed": 156.574,
+    "flight2_apron_unyawed": 152.399,
+    "cup_clear_r12": 243.494
+   },
+   "Prop_RopeCoils": {
+    "cabin_interior_spawn": 11.702,
+    "door_approach": 22.345,
+    "tee_pad_stance": 19.55,
+    "outrigger": 17.811,
+    "flight1": 31.61,
+    "landing": 77.487,
+    "flight2_apron_yawed": 94.471,
+    "flight2_apron_unyawed": 92.356,
+    "cup_clear_r12": 181.7
+   },
+   "Prop_BulwarkFrames": {
+    "cabin_interior_spawn": 8.049,
+    "door_approach": 32.426,
+    "tee_pad_stance": 27.6,
+    "outrigger": 24.6,
+    "flight1": 29.209,
+    "landing": 66.864,
+    "flight2_apron_yawed": 85.663,
+    "flight2_apron_unyawed": 81.734,
+    "cup_clear_r12": 170.435
+   },
+   "Prop_CabinWindows": {
+    "cabin_interior_spawn": 1.7,
+    "door_approach": 10.5,
+    "tee_pad_stance": 9.324,
+    "outrigger": 19.177,
+    "flight1": 38.293,
+    "landing": 89.274,
+    "flight2_apron_yawed": 98.102,
+    "flight2_apron_unyawed": 102.377,
+    "cup_clear_r12": 178.774
+   },
+   "Rigging(rebuilt)": {
+    "cabin_interior_spawn": 26.351,
+    "door_approach": 39.39,
+    "tee_pad_stance": 42.031,
+    "outrigger": 45.386,
+    "flight1": 57.854,
+    "landing": 104.386,
+    "flight2_apron_yawed": 112.042,
+    "flight2_apron_unyawed": 115.742,
+    "cup_clear_r12": 180.202
+   },
+   "Hull(new bowsprit)": {
+    "cabin_interior_spawn": 208.153,
+    "door_approach": 230.384,
+    "tee_pad_stance": 229.074,
+    "outrigger": 227.576,
+    "flight1": 233.77,
+    "landing": 249.375,
+    "flight2_apron_yawed": 263.836,
+    "flight2_apron_unyawed": 261.164,
+    "cup_clear_r12": 341.458
+   }
+  },
+  "min_clearance": {
+   "studs": 1.7,
+   "zone": "cabin_interior_spawn",
+   "object": "Prop_CabinWindows"
+  },
+  "any_inside": false,
+  "method": "min distance from every vertex and face centre of each new/rebuilt mesh to each corridor volume (Roblox coords)"
+ },
+ "coplanarity": {
+  "faces_checked": 19041,
+  "coplanar_pairs": 0,
+  "examples": [],
+  "method": "each new/rebuilt face centre: nearest surface of every other visual mesh within 0.03 with parallel normal (|dot|>0.995) and plane gap <0.02"
+ },
+ "tris": {
+  "per_mesh": {
+   "DeckCabin": 3512,
+   "Dressing": 516,
+   "Dressing_Glow": 24,
+   "Hull": 4835,
+   "Pier": 948,
+   "Prop_Barnacles": 2728,
+   "Prop_BulwarkFrames": 2952,
+   "Prop_CabinWindows": 976,
+   "Prop_Cannons": 2328,
+   "Prop_CapRails": 2712,
+   "Prop_CargoCluster": 2216,
+   "Prop_Crab": 780,
+   "Prop_DoorLantern": 460,
+   "Prop_DoorLantern_Glow": 12,
+   "Prop_Figurehead": 2712,
+   "Prop_Flag": 760,
+   "Prop_PatchPlanks": 2420,
+   "Prop_Portholes": 1316,
+   "Prop_RopeCoils": 1608,
+   "Prop_Seaweed": 648,
+   "Prop_SternCurl": 2796,
+   "Prop_SternWheel": 1640,
+   "Prop_TreasureChest": 2372,
+   "RampFlight1": 300,
+   "RampFlight2": 288,
+   "RampLanding": 184,
+   "Rigging": 7282,
+   "RockBumper": 80
+  },
+  "total": 49405,
+  "max_mesh": "Rigging",
+  "all_under_20k": true
+ },
+ "envelope": {
+  "source_union_bbox_roblox": [
+   [
+    -220.3,
+    -10.48,
+    -39.12
+   ],
+   [
+    200.91,
+    157.7,
+    220.0
+   ]
+  ],
+  "props_outside_union": [],
+  "visual_only_on_walkable_deck": [
+   "Prop_CargoCluster",
+   "Prop_Crab",
+   "Prop_TreasureChest",
+   "Prop_SternWheel",
+   "Prop_RopeCoils"
+  ],
+  "notes": [
+   "Deck props (cargo, crab, chest, wheel, rope coils) stand on the walkable deck with NO collider: players/balls pass through them unless the build bot adds simple CanCollide boxes. They are all outside the route corridor.",
+   "COL_Mast_Main (unchanged) still spans the original 8..165 mast; the visual main mast is now snapped at ~106 (+ splinters to ~113) -> the collider sticks ~50 studs above the visible stump (it is the optional mast collider; consider disabling or shortening it in Studio).",
+   "Stern curl, figurehead, curled bowsprit, cap rails and hull dressing are scenery with no collider (same as the source hull/rigging scenery)."
+  ]
+ },
+ "pass_hard_checks": true,
+ "floaters_source": {
+  "components": 324,
+  "isolated": []
+ }
+}
