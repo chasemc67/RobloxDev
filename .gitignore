@@ -27,7 +27,7 @@ assets/vr-mini-golf/walkabout-refs/
 assets/vr-mini-golf/lantern-grove/h*-concept.png
 assets/vr-mini-golf/lantern-grove/holes_concepts_sheet.jpg
 
-# big binaries / build output (blend un-ignored when LFS is added)
+# big binaries / build output (*.blend is committed via Git LFS, see .gitattributes)
 **/_backup*/
 *.tar
 *.tgz
@@ -36,8 +36,8 @@ assets/vr-mini-golf/lantern-grove/holes_concepts_sheet.jpg
 *.rbxlx
 *.mov
 *.mp4
-*.blend
 *.blend1
+*.blend[0-9]*
 
 # logs, debug, scratch, iteration renders (art-direction assets stay committed)
 *.log
