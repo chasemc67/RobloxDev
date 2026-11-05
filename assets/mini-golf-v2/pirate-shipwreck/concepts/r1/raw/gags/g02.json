@@ -1,0 +1,72 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Single game-prop concept vignette, stylized chunky low-poly toy-like 3D look, bright cheerful tropical colors, family-friendly cartoon humor, cartoon skeletons are cute and white with no gore, centered on a plain soft sandy-beige background with a soft shadow, no text, no logos. An old bronze pirate cannon on a broken wooden carriage pointing BACKWARDS at the ship, a pile of black cannonballs spilled in front, a little puff of smoke from its rear.",
+  "aspect": "1:1",
+  "refs": [],
+  "mode": "generateImage",
+  "size": "1024x1024",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 104,
+    "outputTokens": 1756,
+    "totalTokens": 1860
+  },
+  "cost": 0.0532,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793481998,
+          "size": "1024x1024",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 0,
+          "textTokens": 104
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793481965373,
+                "endTime": 1793481998953,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.0532",
+      "marketCost": "0.0532",
+      "surchargeCost": "0",
+      "gatewayCost": "0.0532",
+      "inferenceCost": "0.0532",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.0532",
+      "generationId": "gen_01M69XNZS096F9Z1TEKD8YK3HJ"
+    }
+  },
+  "seconds": 35.3,
+  "files": [
+    "../pirate-shipwreck/r1/raw/gags/g02.png"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Single game-prop concept vignette, stylized chunky low-poly toy-like 3D look, bright cheerful tropical colors, family-friendly cartoon humor, cartoon skeletons are cute and white with no gore, centered on a plain soft sandy-beige background with a soft shadow, no text, no logos. A shipwreck's bow carved as a huge grumpy yellow rubber-duck figurehead wearing an eyepatch and a tiny captain hat, with a seagull sitting on its head, weathered wood planks around it.",
+  "aspect": "1:1",
+  "refs": [],
+  "mode": "generateImage",
+  "size": "1024x1024",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 113,
+    "outputTokens": 1756,
+    "totalTokens": 1869
+  },
+  "cost": 0.053245,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793481999,
+          "size": "1024x1024",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 0,
+          "textTokens": 113
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793481965418,
+                "endTime": 1793482000154,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.053245",
+      "marketCost": "0.053245",
+      "surchargeCost": "0",
+      "gatewayCost": "0.053245",
+      "inferenceCost": "0.053245",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.053245",
+      "generationId": "gen_01M69XNZTTQZ20WV7RP3DC2H9Y"
+    }
+  },
+  "seconds": 36.6,
+  "files": [
+    "../pirate-shipwreck/r1/raw/gags/g01.png"
+  ]
+}

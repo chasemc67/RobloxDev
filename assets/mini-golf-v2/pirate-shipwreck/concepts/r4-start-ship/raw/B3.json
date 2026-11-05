@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Keep exactly the same style, ship, lighting, palette, camera and scene as the reference image (stylized low-poly Roblox VR mini golf concept art). Change ONLY the ramp from the ship's deck: replace the single long ramp with a two-flight switchback: flight 1 is a wide (12 studs) gentle felt-lined wooden ramp going down from the level deck straight out from the cabin door to a small flat square felt landing platform about halfway down (supported on wooden posts, with a solid felt-lined outer rail on its far edge facing the straight shot). From the landing, flight 2, equally wide and gentle with felt-lined rails, turns about 30 degrees to the left toward the wooden pier and continues down to a flat felt apron on the sand. A small grey rock bumper sits beside the lower end of flight 2, off to the side of the apron. The red-flag cup green on the sand is beside the pier, with open space around it. Hull intact, plain cream sails, plain red flags, no skull, no text, lanterns glowing.",
+  "aspect": "4:3",
+  "refs": [
+    "../pirate-shipwreck/r4-start-ship/raw/B2.png"
+  ],
+  "mode": "generateImage",
+  "size": "1600x1200",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1686,
+    "outputTokens": 1694,
+    "totalTokens": 3380
+  },
+  "cost": 0.063606,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793566787,
+          "size": "1600x1200",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1452,
+          "textTokens": 234
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793566756909,
+                "endTime": 1793566787767,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.063606",
+      "marketCost": "0.063606",
+      "surchargeCost": "0",
+      "gatewayCost": "0.063606",
+      "inferenceCost": "0.063606",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.063606",
+      "generationId": "gen_01M6CEHKTCZ1PRFR72F0W2X9P9"
+    }
+  },
+  "seconds": 35.4,
+  "files": [
+    "../pirate-shipwreck/r4-start-ship/raw/B3.png"
+  ]
+}

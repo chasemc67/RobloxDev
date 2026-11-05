@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Stylized low-poly game concept art for a Roblox VR mini golf course, in the style of the reference image (golden hour sunset, violet shadows, warm glowing lanterns, chunky hand-painted wood planks, simple shapes). 3/4 hero view of the starting building: a large intact beached pirate ship, NO holes or breaks in the hull, completely original design, plain cream sails and plain flags with no emblem, no skull and crossbones, no text. Palette: wood brown (110,70,40), dark wood (80,50,30), sand (226,184,128), rock grey (115,100,92), bright green putting felt (105,185,98) on the first tee, torch flames orange. A wooden gangplank leads from the deck down to a small putting-green tee with a red flag at the foot, in the foreground. Clean readable silhouette, chunky stylized forms, lagoon water behind, palms in background.  OPTION C: ship moored half on a rocky jetty: the bow rests on grey rock shelf and the stern floats in the lagoon, a wooden dock pier with posts and lanterns runs from the ship's midship gangplank to the tee on sand, captain's cabin at the stern with a door facing the pier, hull intact.",
+  "aspect": "4:3",
+  "refs": [
+    "../pirate-shipwreck/r1/lookB-golden-hour-hideaway.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x1152",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1772,
+    "outputTokens": 1629,
+    "totalTokens": 3401
+  },
+  "cost": 0.062194,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793566157,
+          "size": "1536x1152",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1488,
+          "textTokens": 284
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793566123162,
+                "endTime": 1793566158311,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.062194",
+      "marketCost": "0.062194",
+      "surchargeCost": "0",
+      "gatewayCost": "0.062194",
+      "inferenceCost": "0.062194",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.062194",
+      "generationId": "gen_01M6CDY8NJTJ1F0EQKDX9DM4Q2"
+    }
+  },
+  "seconds": 39.3,
+  "files": [
+    "../pirate-shipwreck/r4-start-ship/raw/C.png"
+  ]
+}

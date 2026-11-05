@@ -1,0 +1,72 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Single game-prop concept vignette, stylized chunky low-poly toy-like 3D look, bright cheerful tropical colors, family-friendly cartoon humor, cartoon skeletons are cute and white with no gore, centered on a plain soft sandy-beige background with a soft shadow, no text, no logos. A giant orange cartoon crab scuttling away on a beach carrying a wooden peg leg in its claw, while a cute cartoon skeleton with one leg missing hops angrily after it.",
+  "aspect": "1:1",
+  "refs": [],
+  "mode": "generateImage",
+  "size": "1024x1024",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 103,
+    "outputTokens": 1756,
+    "totalTokens": 1859
+  },
+  "cost": 0.053195,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793481996,
+          "size": "1024x1024",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 0,
+          "textTokens": 103
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793481965388,
+                "endTime": 1793481996586,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.053195",
+      "marketCost": "0.053195",
+      "surchargeCost": "0",
+      "gatewayCost": "0.053195",
+      "inferenceCost": "0.053195",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.053195",
+      "generationId": "gen_01M69XNZSNDHXP7DAS7GPR8FNN"
+    }
+  },
+  "seconds": 32.9,
+  "files": [
+    "../pirate-shipwreck/r1/raw/gags/g04.png"
+  ]
+}

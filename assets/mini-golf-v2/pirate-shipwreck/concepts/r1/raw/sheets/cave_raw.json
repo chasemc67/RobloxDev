@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Model sheet of the ORIGINAL rocky cave cliff from this key art, golden-hour palette, stylized chunky low-poly toy look. Four equal panels in a 2x2 grid on a plain warm grey background, no text: top-left FRONT view (tall grey-violet rock cliff with a wide arched dark cave mouth, warm amber glow inside, stone stairs, hanging lanterns, a thin waterfall down the left side), top-right SIDE view (cliff profile, stepped terraces), bottom-left TOP-DOWN view (cliff footprint with flat empty ledges for putting pads, cave mouth at the front), bottom-right 3/4 view. Same cliff in every panel. No skeleton, no gore.",
+  "aspect": "16:9",
+  "refs": [
+    "../pirate-shipwreck/r1/raw/lookB.png"
+  ],
+  "mode": "generateImage",
+  "size": "2048x1152",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1455,
+    "outputTokens": 1413,
+    "totalTokens": 2868
+  },
+  "cost": 0.053553,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793482394,
+          "size": "2048x1152",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1296,
+          "textTokens": 159
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793482364470,
+                "endTime": 1793482395245,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.053553",
+      "marketCost": "0.053553",
+      "surchargeCost": "0",
+      "gatewayCost": "0.053553",
+      "inferenceCost": "0.053553",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.053553",
+      "generationId": "gen_01M69Y25GTQ0JDK4TK1EGWX7M5"
+    }
+  },
+  "seconds": 35.7,
+  "files": [
+    "../pirate-shipwreck/r1/raw/sheets/cave_raw.png"
+  ]
+}

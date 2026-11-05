@@ -1,0 +1,75 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Stylized low-poly Roblox VR mini golf concept art, same style, palette and golden hour lighting as the reference images. 3/4 hero view of the first hole: a large intact beached pirate ship, hull leaning about 15 degrees on the sand like reference 1, but the ship's wooden deck itself is LEVEL and flat, with a small bright green felt tee pad on the deck right in front of the stern cabin door (with a red flag stand marker and tee mat). From the deck, a very wide gentle sloping wooden ramp (about 12 studs wide, low gradient) lined with green felt-covered side rails with rope trim leads down off the low side of the ship, through a gap in the bulwark, onto the sand beach. On the sand at the bottom, beside a wooden dock pier with lanterns and rock shelf like reference 2, a green putting green with a red-flag cup is the target. Plain cream sails, plain red flags, no skull and crossbones, no text, hull completely intact with no holes. Chunky readable shapes, lanterns glowing, palms in the background, lagoon water.",
+  "aspect": "4:3",
+  "refs": [
+    "../pirate-shipwreck/r4-start-ship/raw/B.png",
+    "../pirate-shipwreck/r4-start-ship/raw/C.png"
+  ],
+  "mode": "generateImage",
+  "size": "1600x1200",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 3163,
+    "outputTokens": 1694,
+    "totalTokens": 4857
+  },
+  "cost": 0.075347,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1793566513,
+          "size": "1600x1200",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 2904,
+          "textTokens": 259
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1793566480903,
+                "endTime": 1793566514055,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.075347",
+      "marketCost": "0.075347",
+      "surchargeCost": "0",
+      "gatewayCost": "0.075347",
+      "inferenceCost": "0.075347",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.075347",
+      "generationId": "gen_01M6CE95PQ0KGN8GG2KHXCPN47"
+    }
+  },
+  "seconds": 41.2,
+  "files": [
+    "../pirate-shipwreck/r4-start-ship/raw/B2.png"
+  ]
+}
