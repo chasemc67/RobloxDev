@@ -99,3 +99,10 @@ assets/vr-mini-golf/lantern-grove/holes_concepts_sheet.jpg
 **/_rejected/
 !**/final/**/*.png
 !**/final/**/*.jpg
+
+# .blend backup/snapshot/scratch copies stay local (main-source .blend files go through LFS)
+**/_pass*_backup/*.blend
+**/*_snapshot/*.blend
+**/pcout/*.blend
+**/rev[0-9]*_*/*.blend
+**/*_before_v*.blend
