@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Game icon: a giant glossy heart-shaped pumpkin in a garden, protected by a thorny hedge wall, cute pests charging toward it, coins flying, no text, premium top Roblox game key art, glossy stylized 3D render, saturated bright colors, cute chunky shapes, original characters, no logos",
+  "aspect": "1:1",
+  "refs": [
+    "/workspace/RobloxDev/assets/defend-a-garden/concepts/thorn-hedge.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x1536",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1101,
+    "outputTokens": 2511,
+    "totalTokens": 3612
+  },
+  "cost": 0.083907,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1792775307,
+          "size": "1536x1536",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1024,
+          "textTokens": 77
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1792775260348,
+                "endTime": 1792775307500,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.083907",
+      "marketCost": "0.083907",
+      "surchargeCost": "0",
+      "gatewayCost": "0.083907",
+      "inferenceCost": "0.083907",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.083907",
+      "generationId": "gen_01M5MVQ1X0EGYQKT72MHZDPTBW"
+    }
+  },
+  "seconds": 48.5,
+  "files": [
+    "/workspace/RobloxDev/assets/defend-a-garden/marketing/r1/icon-c.png"
+  ]
+}

@@ -1,0 +1,578 @@
+{
+ "source": "concepts/ + PROPS.md",
+ "built_on": "Mac Mini headless Blender via Claude Code (opus 5.5), PC was down",
+ "texture": "32-colour palette, per-part UVs at cell centres (Closest filtering)",
+ "models": {
+  "aphid": {
+   "fbx": "fbx/aphid/aphid.fbx",
+   "texture": "fbx/aphid/aphid.png",
+   "tris": 896,
+   "parts": [
+    "Antennae",
+    "Body",
+    "Head",
+    "LegsL",
+    "LegsR"
+   ],
+   "size_studs_xyz": [
+    1.79,
+    1.64,
+    1.98
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/aphid_persp.png",
+    "previews/aphid_top.png"
+   ]
+  },
+  "beetle": {
+   "fbx": "fbx/beetle/beetle.fbx",
+   "texture": "fbx/beetle/beetle.png",
+   "tris": 910,
+   "parts": [
+    "Head",
+    "LegsL",
+    "LegsR",
+    "Shell"
+   ],
+   "size_studs_xyz": [
+    2.22,
+    1.95,
+    2.69
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/beetle_persp.png",
+    "previews/beetle_top.png"
+   ]
+  },
+  "mole": {
+   "fbx": "fbx/mole/mole.fbx",
+   "texture": "fbx/mole/mole.png",
+   "tris": 1960,
+   "parts": [
+    "ArmL",
+    "ArmR",
+    "Body",
+    "Feet",
+    "Head"
+   ],
+   "size_studs_xyz": [
+    2.38,
+    2.56,
+    2.07
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/mole_persp.png",
+    "previews/mole_top.png"
+   ]
+  },
+  "mole_king": {
+   "fbx": "fbx/mole_king/mole_king.fbx",
+   "texture": "fbx/mole_king/mole_king.png",
+   "tris": 2272,
+   "parts": [
+    "ArmL",
+    "ArmR",
+    "Body",
+    "Cape",
+    "Crown",
+    "Feet",
+    "Head"
+   ],
+   "size_studs_xyz": [
+    3.66,
+    5.0,
+    3.92
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/mole_king_persp.png",
+    "previews/mole_king_top.png"
+   ]
+  },
+  "pea_shooter": {
+   "fbx": "fbx/pea_shooter/pea_shooter.fbx",
+   "texture": "fbx/pea_shooter/pea_shooter.png",
+   "tris": 1688,
+   "parts": [
+    "Barrel",
+    "Head",
+    "Pot"
+   ],
+   "size_studs_xyz": [
+    2.14,
+    3.54,
+    2.14
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/pea_shooter_persp.png",
+    "previews/pea_shooter_top.png"
+   ]
+  },
+  "snail": {
+   "fbx": "fbx/snail/snail.fbx",
+   "texture": "fbx/snail/snail.png",
+   "tris": 1580,
+   "parts": [
+    "Foot",
+    "Head",
+    "Shell"
+   ],
+   "size_studs_xyz": [
+    1.66,
+    2.22,
+    2.91
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/snail_persp.png",
+    "previews/snail_top.png"
+   ]
+  },
+  "sunflower_beam": {
+   "fbx": "fbx/sunflower_beam/sunflower_beam.fbx",
+   "texture": "fbx/sunflower_beam/sunflower_beam.png",
+   "tris": 1520,
+   "parts": [
+    "Base",
+    "Head"
+   ],
+   "size_studs_xyz": [
+    2.49,
+    3.88,
+    1.92
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/sunflower_beam_persp.png",
+    "previews/sunflower_beam_top.png"
+   ]
+  },
+  "thorn_hedge": {
+   "fbx": "fbx/thorn_hedge/thorn_hedge.fbx",
+   "texture": "fbx/thorn_hedge/thorn_hedge.png",
+   "tris": 1664,
+   "parts": [
+    "Bush",
+    "Flowers",
+    "Thorns"
+   ],
+   "size_studs_xyz": [
+    4.0,
+    3.05,
+    4.0
+   ],
+   "pivot": "base centre at origin, min Y=0, front faces -Z, +Y up",
+   "previews": [
+    "previews/thorn_hedge_persp.png",
+    "previews/thorn_hedge_top.png"
+   ]
+  }
+ },
+ "contact_sheet": "previews/contact_sheet.png",
+ "silhouette_sheet": "previews/silhouette_sheet.png",
+ "generator": "src/gen_dag.py",
+ "edge_kit": {
+  "source": "Map.luau/World.luau/CameraRig.luau @950e151 (read-only copy from Mini ~/src/defend-a-garden)",
+  "built_on": "PC schtasks 3dmb_edge (build+render) and 3dmb_edge2 (render after layout fix)",
+  "generator": "src/gen_edge.py",
+  "layout": "edge_layout.json",
+  "palette": "per-piece <piece>.png (19-colour palette)",
+  "previews": {
+   "kit": "previews_edge/kit_sheet.png",
+   "kit_top": "previews_edge/kit_top.png",
+   "corners": [
+    "previews_edge/layout_NW_zoom218.png",
+    "previews_edge/layout_NE_zoom218.png",
+    "previews_edge/layout_SW_zoom218.png",
+    "previews_edge/layout_SE_zoom218.png"
+   ],
+   "default": "previews_edge/layout_default_zoom218.png",
+   "plan": "previews_edge/layout_plan_top.png",
+   "silhouette": "previews_edge/silhouette_sheet_edge.png"
+  },
+  "pieces": {
+   "bush_a": {
+    "fbx": "fbx_edge/bush_a/bush_a.fbx",
+    "texture": "fbx_edge/bush_a/bush_a.png",
+    "tris": 960,
+    "size_studs_xyz": [
+     3.52,
+     2.26,
+     3.29
+    ],
+    "parts": [
+     "Bush"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "bush_b": {
+    "fbx": "fbx_edge/bush_b/bush_b.fbx",
+    "texture": "fbx_edge/bush_b/bush_b.png",
+    "tris": 1280,
+    "size_studs_xyz": [
+     3.66,
+     2.26,
+     3.12
+    ],
+    "parts": [
+     "Bush.001"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "fence_post": {
+    "fbx": "fbx_edge/fence_post/fence_post.fbx",
+    "texture": "fbx_edge/fence_post/fence_post.png",
+    "tris": 48,
+    "size_studs_xyz": [
+     1.0,
+     3.75,
+     1.0
+    ],
+    "parts": [
+     "Post"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "fence_section": {
+    "fbx": "fbx_edge/fence_section/fence_section.fbx",
+    "texture": "fbx_edge/fence_section/fence_section.png",
+    "tris": 24,
+    "size_studs_xyz": [
+     1.08,
+     1.8,
+     8.31
+    ],
+    "parts": [
+     "Rails"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "ground_ring": {
+    "fbx": "fbx_edge/ground_ring/ground_ring.fbx",
+    "texture": "fbx_edge/ground_ring/ground_ring.png",
+    "tris": 32,
+    "size_studs_xyz": [
+     720.0,
+     0.2,
+     420.0
+    ],
+    "parts": [
+     "Ring"
+    ],
+    "pivot": "world origin, slab y0..0.2; place at y -3.9"
+   },
+   "hedge_low": {
+    "fbx": "fbx_edge/hedge_low/hedge_low.fbx",
+    "texture": "fbx_edge/hedge_low/hedge_low.png",
+    "tris": 1158,
+    "size_studs_xyz": [
+     7.99,
+     2.5,
+     2.5
+    ],
+    "parts": [
+     "Hedge"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "hedge_low_cap": {
+    "fbx": "fbx_edge/hedge_low_cap/hedge_low_cap.fbx",
+    "texture": "fbx_edge/hedge_low_cap/hedge_low_cap.png",
+    "tris": 675,
+    "size_studs_xyz": [
+     2.49,
+     2.5,
+     2.49
+    ],
+    "parts": [
+     "Hedge.001"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "hedge_tall": {
+    "fbx": "fbx_edge/hedge_tall/hedge_tall.fbx",
+    "texture": "fbx_edge/hedge_tall/hedge_tall.png",
+    "tris": 1158,
+    "size_studs_xyz": [
+     7.99,
+     5.0,
+     3.49
+    ],
+    "parts": [
+     "Hedge.002"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "hedge_tall_cap": {
+    "fbx": "fbx_edge/hedge_tall_cap/hedge_tall_cap.fbx",
+    "texture": "fbx_edge/hedge_tall_cap/hedge_tall_cap.png",
+    "tris": 680,
+    "size_studs_xyz": [
+     3.49,
+     5.0,
+     3.49
+    ],
+    "parts": [
+     "Hedge.003"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "reeds_a": {
+    "fbx": "fbx_edge/reeds_a/reeds_a.fbx",
+    "texture": "fbx_edge/reeds_a/reeds_a.png",
+    "tris": 390,
+    "size_studs_xyz": [
+     1.59,
+     4.89,
+     2.02
+    ],
+    "parts": [
+     "Reeds"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "reeds_b": {
+    "fbx": "fbx_edge/reeds_b/reeds_b.fbx",
+    "texture": "fbx_edge/reeds_b/reeds_b.png",
+    "tris": 588,
+    "size_studs_xyz": [
+     1.95,
+     4.9,
+     2.05
+    ],
+    "parts": [
+     "Reeds.001"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "river_ext": {
+    "fbx": "fbx_edge/river_ext/river_ext.fbx",
+    "texture": "fbx_edge/river_ext/river_ext.png",
+    "tris": 24,
+    "size_studs_xyz": [
+     14.4,
+     2.9,
+     40.0
+    ],
+    "parts": [
+     "Bed",
+     "Water"
+    ],
+    "pivot": "centre of 40-stud segment, y0 = bank ground, water top +0.4"
+   },
+   "rock_l": {
+    "fbx": "fbx_edge/rock_l/rock_l.fbx",
+    "texture": "fbx_edge/rock_l/rock_l.png",
+    "tris": 160,
+    "size_studs_xyz": [
+     8.07,
+     4.32,
+     6.26
+    ],
+    "parts": [
+     "Rock"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "rock_m": {
+    "fbx": "fbx_edge/rock_m/rock_m.fbx",
+    "texture": "fbx_edge/rock_m/rock_m.png",
+    "tris": 160,
+    "size_studs_xyz": [
+     4.64,
+     2.56,
+     3.83
+    ],
+    "parts": [
+     "Rock.001"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "rock_s": {
+    "fbx": "fbx_edge/rock_s/rock_s.fbx",
+    "texture": "fbx_edge/rock_s/rock_s.png",
+    "tris": 160,
+    "size_studs_xyz": [
+     2.32,
+     1.34,
+     1.78
+    ],
+    "parts": [
+     "Rock.002"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "tree_backdrop": {
+    "fbx": "fbx_edge/tree_backdrop/tree_backdrop.fbx",
+    "texture": "fbx_edge/tree_backdrop/tree_backdrop.png",
+    "tris": 1000,
+    "size_studs_xyz": [
+     10.4,
+     19.89,
+     10.4
+    ],
+    "parts": [
+     "Tree"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "tree_round_a": {
+    "fbx": "fbx_edge/tree_round_a/tree_round_a.fbx",
+    "texture": "fbx_edge/tree_round_a/tree_round_a.png",
+    "tris": 1000,
+    "size_studs_xyz": [
+     5.44,
+     8.69,
+     4.8
+    ],
+    "parts": [
+     "Tree.001"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "tree_round_b": {
+    "fbx": "fbx_edge/tree_round_b/tree_round_b.fbx",
+    "texture": "fbx_edge/tree_round_b/tree_round_b.png",
+    "tris": 1000,
+    "size_studs_xyz": [
+     6.6,
+     11.95,
+     8.32
+    ],
+    "parts": [
+     "Tree.002"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   },
+   "tree_round_c": {
+    "fbx": "fbx_edge/tree_round_c/tree_round_c.fbx",
+    "texture": "fbx_edge/tree_round_c/tree_round_c.png",
+    "tris": 1000,
+    "size_studs_xyz": [
+     9.21,
+     15.2,
+     9.52
+    ],
+    "parts": [
+     "Tree.003"
+    ],
+    "pivot": "base centre, Y=0 = ground"
+   }
+  }
+ },
+ "edge_kit_v2": {
+  "changes": "hedges ~10% lighter (Hedge 68,165,68 / HedgeLt 88,185,73), ground ring 108,184,72 (play grass 120,200,80); geometry identical to v1",
+  "generator": "src/gen_edge_v2.py",
+  "palette": "src/edge_palette_v2.png",
+  "layout": "edge_layout_v2.json",
+  "layout_v1_kept": "edge_layout.json",
+  "pieces": {
+   "hedge_tall": {
+    "fbx": "fbx_edge_v2/hedge_tall/hedge_tall.fbx",
+    "texture": "fbx_edge_v2/hedge_tall/hedge_tall.png",
+    "tris": 1158
+   },
+   "hedge_tall_cap": {
+    "fbx": "fbx_edge_v2/hedge_tall_cap/hedge_tall_cap.fbx",
+    "texture": "fbx_edge_v2/hedge_tall_cap/hedge_tall_cap.png",
+    "tris": 680
+   },
+   "hedge_low": {
+    "fbx": "fbx_edge_v2/hedge_low/hedge_low.fbx",
+    "texture": "fbx_edge_v2/hedge_low/hedge_low.png",
+    "tris": 1158
+   },
+   "hedge_low_cap": {
+    "fbx": "fbx_edge_v2/hedge_low_cap/hedge_low_cap.fbx",
+    "texture": "fbx_edge_v2/hedge_low_cap/hedge_low_cap.png",
+    "tris": 675
+   },
+   "ground_ring": {
+    "fbx": "fbx_edge_v2/ground_ring/ground_ring.fbx",
+    "texture": "fbx_edge_v2/ground_ring/ground_ring.png",
+    "tris": 32
+   }
+  },
+  "counts": {
+   "hedge_tall": 30,
+   "hedge_tall_cap": 4,
+   "fence_section": 18,
+   "fence_post": 19,
+   "hedge_low": 15,
+   "hedge_low_cap": 2,
+   "river_ext": 7,
+   "rock_m": 7,
+   "rock_l": 4,
+   "rock_s": 7,
+   "reeds_b": 2,
+   "reeds_a": 3,
+   "ground_ring": 1,
+   "tree_round_c": 44,
+   "tree_round_b": 35,
+   "tree_backdrop": 13,
+   "tree_round_a": 54,
+   "bush_a": 36,
+   "bush_b": 38
+  },
+  "total": 339,
+  "south_gate_gap": {
+   "x": [
+    -38,
+    -22
+   ],
+   "z": 72.5,
+   "path_x": -30,
+   "gate_z": 50,
+   "note": "hedge_low caps at x -38 and -22 (cap half-width 1.25 at scale 1) -> clear opening x -36.75..-23.25 (13.5 studs) on the line z 72.5; path is 12 wide (x -36..-24)"
+  },
+  "built_on": "PC schtask 3dmb_edge_v2",
+  "previews": [
+   "previews_edge_v2/layout_NW_zoom218.png",
+   "previews_edge_v2/layout_NE_zoom218.png",
+   "previews_edge_v2/layout_SW_zoom218.png",
+   "previews_edge_v2/layout_SE_zoom218.png",
+   "previews_edge_v2/layout_default_zoom218.png",
+   "previews_edge_v2/layout_plan_top.png",
+   "previews_edge_v2/south_gate_gap_zoom90.png"
+  ]
+ },
+ "edge_kit_v3": {
+  "date": "2026-10-23",
+  "layout": "edge_layout_v3.json",
+  "based_on": "edge_layout_v2.json (unchanged 339 rows) + west_rows/west_seam",
+  "new_meshes": null,
+  "added": {
+   "count": 34,
+   "x_range": [
+    -145.86,
+    -96.91
+   ],
+   "z_range": [
+    -114.5,
+    113.04
+   ],
+   "by_piece": {
+    "bush_a": 6,
+    "bush_b": 6,
+    "tree_backdrop": 9,
+    "tree_round_b": 3,
+    "tree_round_c": 10
+   },
+   "rule": "clears every v2 piece by sum of footprint radii + 0.5"
+  },
+  "total_instances": 373,
+  "seed": 2027,
+  "generator": "src/gen_edge_v3.py",
+  "renderer": "src/render_edge_v3.py",
+  "previews": [
+   "previews_edge_v3/layout_NW_zoom218.png",
+   "previews_edge_v3/layout_SW_zoom218.png",
+   "previews_edge_v3/layout_plan_top.png",
+   "previews_edge_v3/pc_report.txt"
+  ]
+ }
+}

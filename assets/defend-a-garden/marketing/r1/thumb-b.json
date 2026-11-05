@@ -1,0 +1,74 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Game thumbnail: close dramatic shot, crowned Mole King boss looming over a tiny garden while cute plant turrets brace to defend, red 'WAVE 10' warning glow, bold chunky title text 'DEFEND A GARDEN' with thick outline, premium top Roblox game key art, glossy stylized 3D render, saturated bright colors, cute chunky shapes, original characters, no logos",
+  "aspect": "16:9",
+  "refs": [
+    "/workspace/RobloxDev/assets/defend-a-garden/concepts/mole-king.png"
+  ],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 1119,
+    "outputTokens": 1078,
+    "totalTokens": 2197
+  },
+  "cost": 0.041007,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1792775295,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 1024,
+          "textTokens": 95
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1792775260371,
+                "endTime": 1792775295538,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.041007",
+      "marketCost": "0.041007",
+      "surchargeCost": "0",
+      "gatewayCost": "0.041007",
+      "inferenceCost": "0.041007",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.041007",
+      "generationId": "gen_01M5MVQ24250DGKCBSYT9QY0HC"
+    }
+  },
+  "seconds": 36.5,
+  "files": [
+    "/workspace/RobloxDev/assets/defend-a-garden/marketing/r1/thumb-b.png"
+  ]
+}

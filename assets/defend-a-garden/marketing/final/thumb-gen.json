@@ -1,0 +1,72 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "prompt": "Roblox game thumbnail, bright glossy 3D cartoon style. A giant grinning Mole King with a gold crown with a headlamp and purple cape bursts out of the dirt behind a wooden garden fence, dirt clods flying, dramatic red sky top-right with a glowing 'WAVE 10' warning sign. Bottom centre: big chunky logo text 'DEFEND A GARDEN' in orange-yellow with leaves. Foreground left: a cute angry pea shooter sprout in a terracotta pot (a rounded orange seed-pod head with a curly green vine barrel on top and leaves) and an angry sunflower; foreground right: an angry cactus and a corn plant. Original characters, no existing franchise designs.",
+  "aspect": "16:9",
+  "refs": [],
+  "mode": "generateImage",
+  "size": "1536x864",
+  "quality": "high",
+  "usage": {
+    "inputTokens": 149,
+    "outputTokens": 1078,
+    "totalTokens": 1227
+  },
+  "cost": 0.033085,
+  "warnings": [],
+  "providerMetadata": {
+    "openai": {
+      "images": [
+        {
+          "created": 1792814794,
+          "size": "1536x864",
+          "quality": "high",
+          "background": "opaque",
+          "outputFormat": "png",
+          "imageTokens": 0,
+          "textTokens": 149
+        }
+      ]
+    },
+    "gateway": {
+      "routing": {
+        "originalModelId": "openai/gpt-image-2.5-sunburst",
+        "resolvedProvider": "openai",
+        "fallbacksAvailable": [],
+        "planningReasoning": "System credentials planned for: openai. Total execution order: openai(system)",
+        "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+        "finalProvider": "openai",
+        "modelAttemptCount": 1,
+        "modelAttempts": [
+          {
+            "canonicalSlug": "openai/gpt-image-2.5-sunburst",
+            "success": true,
+            "providerAttemptCount": 1,
+            "providerAttempts": [
+              {
+                "provider": "openai",
+                "credentialType": "system",
+                "success": true,
+                "startTime": 1792814766591,
+                "endTime": 1792814794570,
+                "statusCode": 200
+              }
+            ]
+          }
+        ],
+        "totalProviderAttemptCount": 1
+      },
+      "cost": "0.033085",
+      "marketCost": "0.033085",
+      "surchargeCost": "0",
+      "gatewayCost": "0.033085",
+      "inferenceCost": "0.033085",
+      "inputInferenceCost": "0",
+      "outputInferenceCost": "0.033085",
+      "generationId": "gen_01M5P1CP94G87GZVS25NVJJ6ET"
+    }
+  },
+  "seconds": 29.2,
+  "files": [
+    "final/thumb-gen.png"
+  ]
+}
