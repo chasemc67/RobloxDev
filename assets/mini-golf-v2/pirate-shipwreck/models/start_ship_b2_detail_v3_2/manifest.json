@@ -1,0 +1,1062 @@
+{
+  "asset": "start_ship",
+  "version": "start_ship_b2_detail_v3_2",
+  "date": "2026-11-05",
+  "blend": "out/start_ship_v3_2.blend",
+  "blend_sha256": "9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333",
+  "source": "source_v3_1.blend",
+  "source_sha256_before": "e207cfd07b8f96cdb0f3a0c5992d5dae4ddc7c5c93974a883c839558e5c037d6",
+  "source_sha256_after": "e207cfd07b8f96cdb0f3a0c5992d5dae4ddc7c5c93974a883c839558e5c037d6",
+  "source_unchanged": true,
+  "axes": "FBX axis_forward -Z, axis_up Y, scale 1 (1 unit = 1 stud), FBX_SCALE_UNITS, embedded textures; Blender +Y = Roblox -Z",
+  "placement_note": "water world Y0 = model local -0.6; RampFlight2 is yawed -30 deg in Studio (exported unyawed, as v3/v3_1)",
+  "changed_meshes_vs_v3_1": [
+    "Prop_BowRaise",
+    "Prop_CapRails"
+  ],
+  "repairs": [
+    {
+      "defect": "D1 Prop_BowRaise vs Prop_CapRails at Roblox [72.48,55.44,-20.13] (high side)",
+      "cause": "BowRaise dark plank line (WoodDk tube, 0.64 tall) climbs into the CapRails underside at a shallow angle; its top face crossed the cap bottom between x71-74 (gap -0.04..+0.06)",
+      "fix": "trim endpoint: plank line start moved x56 -> x77 (first ring >=0.10 below the cap underside; measured 0.157); 7 rings / 28 verts / 29 faces removed, 1 WoodDk end face added (UVs copied from the old end face)",
+      "displacement": "no vertex moved; 21.0 studs of the line removed (x56-77, where it was already 0.04-0.44 buried in the cap underside)"
+    },
+    {
+      "defect": "D2 Prop_BowRaise vs Prop_CapRails at Roblox [72.48,37.95,45.15] (low side)",
+      "cause": "mirror of D1",
+      "fix": "same trim on the low-side plank line (x56 -> x77, new start 0.157 below cap); 28 verts / 29 faces removed, 1 face added",
+      "displacement": "none (trim)"
+    },
+    {
+      "defect": "D3 Prop_CapRails vs Hull at Roblox [51.54,54.24,-22.28]",
+      "cause": "high-side cap underside crosses the Hull WoodDk rail top near x51.5 (gap -0.06 at x50, +0.06 at x53); region lies inside the BowRaise panel / under the cap overhang",
+      "fix": "surface displacement on CapRails only: bottom 2 verts of rings x50, x53, x56 set to 0.10 below the Hull rail top (hull-frame vertical, 15 deg tilt); next untouched ring x59 is +0.354 above so the transition face stays >=0.08 clear; Hull untouched",
+      "displacement": "6 verts moved down [-0.035, -0.0457, -0.1555, -0.1651, -0.2929, -0.3011] studs (max 0.3011); cap locally 0.04-0.30 deeper, no topology change"
+    },
+    {
+      "defect": "D4 Prop_CapRails vs Prop_SternCastle at Roblox [-118.0,66.93,-27.33]",
+      "cause": "high-side cap start face at x-118 lay exactly on the SternCastle lower-tier end face (x-118); both are inside the SternCastle step-end post box (x-118.6..-117.0)",
+      "fix": "trim endpoint: cap start ring slid 0.5 along the tube toward ring 2 (x-118 -> x-117.5); start face stays hidden inside the post; SternCastle not modified",
+      "displacement": "4 verts moved [0.5002, 0.5001, 0.5, 0.5002] studs"
+    }
+  ],
+  "coplanar_detections": {
+    "v3_1": 4,
+    "v3_2": 0
+  },
+  "mast_collider_history": {
+    "object": "COL_Mast_Main",
+    "v3_to_v3_1": "height along 18-deg axis 157.0 -> 98.3 (delta 58.7), bottom fixed",
+    "v3_2": "unchanged, exact v3_1 (98.3 along axis)"
+  },
+  "fbx": {
+    "start_ship_b2_visual.fbx": {
+      "path": "out/fbx/start_ship_b2_visual.fbx",
+      "bytes": 1285212,
+      "objects": 38,
+      "tris": 51307,
+      "reimport_ok": true,
+      "sha256": "be9eca06634d5afc9cb554ec6ba4c8c88e4f3bb0b37afb773b0caeb3f6d29e0a"
+    },
+    "start_ship_b2_col.fbx": {
+      "path": "out/fbx/start_ship_b2_col.fbx",
+      "bytes": 478156,
+      "objects": 190,
+      "tris": 2280,
+      "reimport_ok": true,
+      "sha256": "eadc79c616f14e886d0f3c14a26a500fa0c153e07e5c2bd48a6a03eb928dfd07",
+      "collision_vs_v3_1": {
+        "colliders_compared": 190,
+        "max_abs_world_vertex_diff_vs_v3_1": 1.5497207641601562e-05,
+        "over_tol_1e_3": [],
+        "ok": true
+      }
+    },
+    "RampFlight1_own_origin.fbx": {
+      "path": "out/fbx/RampFlight1_own_origin.fbx",
+      "bytes": 35548,
+      "objects": 1,
+      "tris": 300,
+      "reimport_ok": true,
+      "sha256": "621eec567140eaf736729f5877127d4fe02b74c7e7f7a9b75cd1484315a00a46"
+    },
+    "RampLanding_own_origin.fbx": {
+      "path": "out/fbx/RampLanding_own_origin.fbx",
+      "bytes": 28764,
+      "objects": 1,
+      "tris": 184,
+      "reimport_ok": true,
+      "sha256": "253337bb4270762f5dd2d5b90cdaa97c1c82bbe178e39184ae8d8dcb161d0845"
+    },
+    "RampFlight2_own_origin.fbx": {
+      "path": "out/fbx/RampFlight2_own_origin.fbx",
+      "bytes": 35228,
+      "objects": 1,
+      "tris": 288,
+      "reimport_ok": true,
+      "sha256": "2a510df14371d3d3ecd836f189e456f288568f929eb3010cd199c845c08509a1"
+    }
+  },
+  "meshes": {
+    "DeckCabin": {
+      "collection": "Visual",
+      "tris": 3512,
+      "materials": [
+        "PostLt",
+        "Wood",
+        "WoodDk",
+        "Felt",
+        "Post",
+        "Rope"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bbox_min_roblox": [
+        -160.0,
+        -1.0,
+        -22.461000442504883
+      ],
+      "bbox_max_roblox": [
+        136.14100646972656,
+        55.70000076293945,
+        63.0
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Dressing": {
+      "collection": "Visual",
+      "tris": 516,
+      "materials": [
+        "Wood",
+        "Iron",
+        "Post",
+        "PostLt",
+        "Rope"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bbox_min_roblox": [
+        -130.60000610351562,
+        24.0,
+        -15.800000190734863
+      ],
+      "bbox_max_roblox": [
+        43.0,
+        36.099998474121094,
+        62.5
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Dressing_Glow": {
+      "collection": "Visual",
+      "tris": 24,
+      "materials": [
+        "Glow"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bbox_min_roblox": [
+        -130.0,
+        33.099998474121094,
+        59.70000076293945
+      ],
+      "bbox_max_roblox": [
+        -110.0,
+        35.5,
+        61.900001525878906
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Hull": {
+      "collection": "Visual",
+      "tris": 4835,
+      "materials": [
+        "WoodDk",
+        "Wood",
+        "Post",
+        "HullWood",
+        "RopeLt",
+        "Brass"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bbox_min_roblox": [
+        -160.35000610351562,
+        -2.0869998931884766,
+        -31.492000579833984
+      ],
+      "bbox_max_roblox": [
+        200.91099548339844,
+        74.66200256347656,
+        58.93299865722656
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Pier": {
+      "collection": "Visual",
+      "tris": 948,
+      "materials": [
+        "Wood",
+        "PostLt",
+        "WoodDk",
+        "Post",
+        "Rope"
+      ],
+      "origin_roblox": [
+        -215.0,
+        0.0,
+        125.0
+      ],
+      "bbox_min_roblox": [
+        -220.3000030517578,
+        -3.5,
+        30.0
+      ],
+      "bbox_max_roblox": [
+        -209.6999969482422,
+        9.100000381469727,
+        220.0
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Barnacles": {
+      "collection": "Props",
+      "tris": 1620,
+      "materials": [
+        "Barnacle",
+        "Shadow"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -60.79100036621094,
+        -0.39100000262260437,
+        8.597000122070312
+      ],
+      "bbox_max_roblox": [
+        136.43800354003906,
+        22.584999084472656,
+        26.731000900268555
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_BowRaise": {
+      "collection": "Props",
+      "tris": 1104,
+      "materials": [
+        "HullWood",
+        "WoodDk"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        50.0,
+        34.84199905395508,
+        -24.176000595092773
+      ],
+      "bbox_max_roblox": [
+        158.5,
+        58.6349983215332,
+        48.23699951171875
+      ],
+      "under_20k": true,
+      "status": "repaired_v3_2"
+    },
+    "Prop_BulwarkFrames": {
+      "collection": "Props",
+      "tris": 2952,
+      "materials": [
+        "WoodDk",
+        "Wood"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -86.00199890136719,
+        23.26300048828125,
+        -30.659000396728516
+      ],
+      "bbox_max_roblox": [
+        112.35600280761719,
+        61.090999603271484,
+        54.42300033569336
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_BulwarkGear": {
+      "collection": "Props",
+      "tris": 866,
+      "materials": [
+        "Canvas",
+        "Red",
+        "WoodDk",
+        "Wood",
+        "RopeLt"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -93.9219970703125,
+        29.08300018310547,
+        -25.90399932861328
+      ],
+      "bbox_max_roblox": [
+        -32.7869987487793,
+        45.67900085449219,
+        51.763999938964844
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_CabinWindows": {
+      "collection": "Props",
+      "tris": 976,
+      "materials": [
+        "Brass",
+        "Shadow",
+        "WoodDk"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -141.5,
+        29.0,
+        -8.437000274658203
+      ],
+      "bbox_max_roblox": [
+        -89.26699829101562,
+        37.4370002746582,
+        24.732999801635742
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Cannons": {
+      "collection": "Props",
+      "tris": 1212,
+      "materials": [
+        "WoodDk",
+        "Shadow",
+        "Wood",
+        "Iron"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -52.91299819946289,
+        23.899999618530273,
+        -23.309999465942383
+      ],
+      "bbox_max_roblox": [
+        -17.097000122070312,
+        32.130001068115234,
+        49.790000915527344
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_CapRails": {
+      "collection": "Props",
+      "tris": 1452,
+      "materials": [
+        "WoodDk"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -117.51899719238281,
+        32.66999816894531,
+        -31.659000396728516
+      ],
+      "bbox_max_roblox": [
+        158.8000030517578,
+        68.0260009765625,
+        58.96699905395508
+      ],
+      "under_20k": true,
+      "status": "repaired_v3_2"
+    },
+    "Prop_CargoCluster": {
+      "collection": "Props",
+      "tris": 2216,
+      "materials": [
+        "Wood",
+        "Iron",
+        "WoodDk",
+        "PostLt"
+      ],
+      "origin_roblox": [
+        -100.255,
+        23.85,
+        29.46
+      ],
+      "bbox_min_roblox": [
+        -106.85700225830078,
+        23.850000381469727,
+        25.118999481201172
+      ],
+      "bbox_max_roblox": [
+        -93.6520004272461,
+        31.649999618530273,
+        33.80099868774414
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Crab": {
+      "collection": "Props",
+      "tris": 780,
+      "materials": [
+        "Crab",
+        "Canvas",
+        "Iron"
+      ],
+      "origin_roblox": [
+        -95.129,
+        31.25,
+        27.829
+      ],
+      "bbox_min_roblox": [
+        -98.4000015258789,
+        31.25,
+        25.077999114990234
+      ],
+      "bbox_max_roblox": [
+        -91.85900115966797,
+        36.69499969482422,
+        30.579999923706055
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_DoorLantern": {
+      "collection": "Props",
+      "tris": 460,
+      "materials": [
+        "WoodDk",
+        "Iron",
+        "Brass"
+      ],
+      "origin_roblox": [
+        -107.5,
+        32.55,
+        26.0
+      ],
+      "bbox_min_roblox": [
+        -108.80000305175781,
+        32.54999923706055,
+        23.799999237060547
+      ],
+      "bbox_max_roblox": [
+        -106.19999694824219,
+        37.599998474121094,
+        28.200000762939453
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_DoorLantern_Glow": {
+      "collection": "Props",
+      "tris": 12,
+      "materials": [
+        "Glow"
+      ],
+      "origin_roblox": [
+        -107.5,
+        32.95,
+        26.9
+      ],
+      "bbox_min_roblox": [
+        -108.3499984741211,
+        32.95000076293945,
+        26.049999237060547
+      ],
+      "bbox_max_roblox": [
+        -106.6500015258789,
+        35.04999923706055,
+        27.75
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Figurehead": {
+      "collection": "Props",
+      "tris": 2712,
+      "materials": [
+        "FishTeal",
+        "Canvas",
+        "Iron",
+        "Shadow",
+        "Brass"
+      ],
+      "origin_roblox": [
+        153.0,
+        37.671,
+        10.094
+      ],
+      "bbox_min_roblox": [
+        150.72000122070312,
+        32.70100021362305,
+        2.6459999084472656
+      ],
+      "bbox_max_roblox": [
+        180.33700561523438,
+        50.30400085449219,
+        18.014999389648438
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Flag": {
+      "collection": "Props",
+      "tris": 760,
+      "materials": [
+        "Red",
+        "Canvas"
+      ],
+      "origin_roblox": [
+        95.0,
+        110.632,
+        34.895
+      ],
+      "bbox_min_roblox": [
+        94.62699890136719,
+        110.63200378417969,
+        19.55699920654297
+      ],
+      "bbox_max_roblox": [
+        96.47899627685547,
+        124.1500015258789,
+        37.67599868774414
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_PatchPlanks": {
+      "collection": "Props",
+      "tris": 2420,
+      "materials": [
+        "Wood",
+        "Iron"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -44.93600082397461,
+        4.809999942779541,
+        -21.82200050354004
+      ],
+      "bbox_max_roblox": [
+        62.9370002746582,
+        19.735000610351562,
+        31.80299949645996
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Portholes": {
+      "collection": "Props",
+      "tris": 1316,
+      "materials": [
+        "Brass",
+        "Shadow"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -160.7259979248047,
+        20.35700035095215,
+        -1.562999963760376
+      ],
+      "bbox_max_roblox": [
+        74.28199768066406,
+        55.27799987792969,
+        47.83399963378906
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_RoofTrim": {
+      "collection": "Props",
+      "tris": 212,
+      "materials": [
+        "WoodDk"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -153.0,
+        39.19200134277344,
+        -22.725000381469727
+      ],
+      "bbox_max_roblox": [
+        -87.0,
+        56.42399978637695,
+        27.725000381469727
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_RopeCoils": {
+      "collection": "Props",
+      "tris": 1608,
+      "materials": [
+        "RopeLt"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -92.44999694824219,
+        23.799999237060547,
+        1.5089999437332153
+      ],
+      "bbox_max_roblox": [
+        133.5850067138672,
+        31.520000457763672,
+        38.388999938964844
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Seaweed": {
+      "collection": "Props",
+      "tris": 1376,
+      "materials": [
+        "Seaweed"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -63.58399963378906,
+        -1.88100004196167,
+        -26.70599937438965
+      ],
+      "bbox_max_roblox": [
+        127.19999694824219,
+        59.948001861572266,
+        57.09000015258789
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_SheerWale": {
+      "collection": "Props",
+      "tris": 1520,
+      "materials": [
+        "WoodDk"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -157.02999877929688,
+        27.8799991607666,
+        -31.285999298095703
+      ],
+      "bbox_max_roblox": [
+        155.89300537109375,
+        56.56700134277344,
+        53.196998596191406
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_SternCastle": {
+      "collection": "Props",
+      "tris": 1280,
+      "materials": [
+        "HullWood",
+        "WoodDk",
+        "Brass",
+        "Wood",
+        "Iron"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "bbox_min_roblox": [
+        -161.02000427246094,
+        43.415000915527344,
+        -29.474000930786133
+      ],
+      "bbox_max_roblox": [
+        -117.0,
+        78.7030029296875,
+        61.86600112915039
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_SternCurl": {
+      "collection": "Props",
+      "tris": 2796,
+      "materials": [
+        "Brass",
+        "WoodDk"
+      ],
+      "origin_roblox": [
+        -160.0,
+        52.995,
+        14.2
+      ],
+      "bbox_min_roblox": [
+        -174.36500549316406,
+        21.549999237060547,
+        -33.68299865722656
+      ],
+      "bbox_max_roblox": [
+        -157.1179962158203,
+        77.68800354003906,
+        66.4540023803711
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_SternWheel": {
+      "collection": "Props",
+      "tris": 1640,
+      "materials": [
+        "WoodDk",
+        "Iron",
+        "Brass",
+        "Wood"
+      ],
+      "origin_roblox": [
+        -79.575,
+        23.9,
+        10.5
+      ],
+      "bbox_min_roblox": [
+        -71.09200286865234,
+        23.899999618530273,
+        24.02899932861328
+      ],
+      "bbox_max_roblox": [
+        -66.77999877929688,
+        38.67100143432617,
+        36.97100067138672
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_Stovepipe": {
+      "collection": "Props",
+      "tris": 196,
+      "materials": [
+        "Iron",
+        "Brass"
+      ],
+      "origin_roblox": [
+        -137.0,
+        46.628,
+        13.15
+      ],
+      "bbox_min_roblox": [
+        -141.20399475097656,
+        46.73699951171875,
+        11.718000411987305
+      ],
+      "bbox_max_roblox": [
+        -135.5679931640625,
+        61.70100021362305,
+        16.025999069213867
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Prop_TreasureChest": {
+      "collection": "Props",
+      "tris": 980,
+      "materials": [
+        "Gold",
+        "Wood",
+        "Brass"
+      ],
+      "origin_roblox": [
+        -47.42,
+        23.85,
+        -12.623
+      ],
+      "bbox_min_roblox": [
+        -84.79000091552734,
+        23.850000381469727,
+        34.37099838256836
+      ],
+      "bbox_max_roblox": [
+        -75.17400360107422,
+        32.83300018310547,
+        42.91999816894531
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "RampFlight1": {
+      "collection": "Ramps",
+      "tris": 300,
+      "materials": [
+        "Wood",
+        "Felt",
+        "Post",
+        "WoodDk",
+        "Rope"
+      ],
+      "origin_roblox": [
+        -120.0,
+        24.0,
+        62.5
+      ],
+      "bbox_min_roblox": [
+        -128.0,
+        -1.0,
+        61.691001892089844
+      ],
+      "bbox_max_roblox": [
+        -112.0,
+        29.768999099731445,
+        115.26499938964844
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "RampFlight2": {
+      "collection": "Ramps",
+      "tris": 288,
+      "materials": [
+        "Wood",
+        "Felt",
+        "Post",
+        "WoodDk",
+        "Rope"
+      ],
+      "origin_roblox": [
+        -126.7,
+        12.0,
+        127.5
+      ],
+      "bbox_min_roblox": [
+        -134.6999969482422,
+        -3.311000108718872,
+        126.7030029296875
+      ],
+      "bbox_max_roblox": [
+        -118.69999694824219,
+        17.773000717163086,
+        195.5
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "RampLanding": {
+      "collection": "Ramps",
+      "tris": 184,
+      "materials": [
+        "Felt",
+        "Wood",
+        "Post"
+      ],
+      "origin_roblox": [
+        -120.0,
+        12.0,
+        114.5
+      ],
+      "bbox_min_roblox": [
+        -128.5,
+        -2.0,
+        113.5999984741211
+      ],
+      "bbox_max_roblox": [
+        -111.5,
+        18.0,
+        131.0
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "Rigging": {
+      "collection": "Visual",
+      "tris": 8154,
+      "materials": [
+        "Post",
+        "Iron",
+        "PostLt",
+        "Wood",
+        "WoodDk",
+        "Canvas",
+        "CanvasDk",
+        "Brass",
+        "RopeLt",
+        "Red"
+      ],
+      "origin_roblox": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bbox_min_roblox": [
+        -150.0590057373047,
+        6.558000087738037,
+        -27.624000549316406
+      ],
+      "bbox_max_roblox": [
+        195.74000549316406,
+        121.88899993896484,
+        51.04899978637695
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    },
+    "RockBumper": {
+      "collection": "Visual",
+      "tris": 80,
+      "materials": [
+        "RockLt",
+        "Rock",
+        "RockDk"
+      ],
+      "origin_roblox": [
+        -138.513,
+        0.0,
+        189.962
+      ],
+      "bbox_min_roblox": [
+        -147.1959991455078,
+        -6.170000076293945,
+        181.8679962158203
+      ],
+      "bbox_max_roblox": [
+        -129.78900146484375,
+        8.770999908447266,
+        198.78900146484375
+      ],
+      "under_20k": true,
+      "status": "unchanged_vs_v3_1"
+    }
+  },
+  "tris": {
+    "total_visual": 51307,
+    "total_v3_1": 51419,
+    "collision": 2280,
+    "all_under_20k": true,
+    "caveat": "above ~40k near-field target; not runtime-validated"
+  },
+  "anchors": {
+    "Spawn": {
+      "roblox": [
+        -120.0,
+        24.0,
+        2.5
+      ],
+      "exact": true
+    },
+    "Tee1": {
+      "roblox": [
+        -120.0,
+        24.4,
+        37.0
+      ],
+      "exact": true
+    },
+    "RampStart": {
+      "roblox": [
+        -120.0,
+        24.0,
+        62.5
+      ],
+      "exact": true
+    },
+    "CupRef": {
+      "roblox": [
+        -175.7,
+        0.0,
+        212.3705
+      ],
+      "exact": true
+    }
+  },
+  "previews": [
+    "out/previews/ship_3q.png",
+    "out/previews/ship_tee.png"
+  ],
+  "fitcheck_pass": true,
+  "fbx_reimport_all_ok": true,
+  "continuous_route_qa": {
+    "status": "PASS for wheel/chest exclusion only; not full runtime walking approval",
+    "model_changed": false,
+    "report": "route_qa/route_qa.md",
+    "diagram_uncommitted": "route_qa/route_topdown.png",
+    "horizontal_clearance_studs": {
+      "Prop_SternWheel": 44.907,
+      "Prop_TreasureChest": 31.21
+    },
+    "conservative_12wide_plus_full_outrigger_clearance_studs": {
+      "Prop_SternWheel": 38.598,
+      "Prop_TreasureChest": 24.505
+    },
+    "method": "Full projected triangle footprints versus union of swept capsules along every connected Spawn-door-tee-gangplank-landing-Flight2-apron route segment; 8-stud cabin/deck width,12-stud flights plus landing/apron polygons. Exact edge distances and containment/intersection tests. Player radius2.0.",
+    "prop_collision": "Visual only; no dedicated colliders added",
+    "independent_existing_concerns": [
+      "Landing exit collider gap5.4231studs; visual choke narrower; no Humanoid runtime verification.",
+      "Locked COL_HullExt_0_07/1_07 occupy visual deck/outrigger notch at walking height; Studio enabled/imported status unknown. Do not claim continuous route safe without collision-owner/runtime audit."
+    ],
+    "source_sha256": "9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333"
+  }
+}

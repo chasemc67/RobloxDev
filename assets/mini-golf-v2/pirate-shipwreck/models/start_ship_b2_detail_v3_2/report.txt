@@ -1,0 +1,77 @@
+START SHIP v3_2 - coplanar repair report
+============================================================
+Result: PASS - fitcheck hard checks pass, FBX reimport verified, previews rendered
+
+Environment: Windows PC chase-pc (Windows-11-10.0.26300-SP0), Claude Code model claude-opus-5-5, Blender 5.2.2 LTS headless (--factory-startup, one process at a time), Cycles CPU for previews
+Workdir: C:\Users\chase\sc_fix\ship_v32_n5
+
+SOURCE
+  source_v3_1.blend sha256 before: e207cfd07b8f96cdb0f3a0c5992d5dae4ddc7c5c93974a883c839558e5c037d6
+  source_v3_1.blend sha256 after : e207cfd07b8f96cdb0f3a0c5992d5dae4ddc7c5c93974a883c839558e5c037d6  (unchanged: True; opened read-only, saved AS out/start_ship_v3_2.blend)
+  out/start_ship_v3_2.blend sha256: 9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333 (images packed)
+
+REPAIRS (only the 4 reported coplanar defects)
+  * D1 Prop_BowRaise vs Prop_CapRails at Roblox [72.48,55.44,-20.13] (high side)
+      cause: BowRaise dark plank line (WoodDk tube, 0.64 tall) climbs into the CapRails underside at a shallow angle; its top face crossed the cap bottom between x71-74 (gap -0.04..+0.06)
+      fix: trim endpoint: plank line start moved x56 -> x77 (first ring >=0.10 below the cap underside; measured 0.157); 7 rings / 28 verts / 29 faces removed, 1 WoodDk end face added (UVs copied from the old end face)
+      displacement: no vertex moved; 21.0 studs of the line removed (x56-77, where it was already 0.04-0.44 buried in the cap underside)
+  * D2 Prop_BowRaise vs Prop_CapRails at Roblox [72.48,37.95,45.15] (low side)
+      cause: mirror of D1
+      fix: same trim on the low-side plank line (x56 -> x77, new start 0.157 below cap); 28 verts / 29 faces removed, 1 face added
+      displacement: none (trim)
+  * D3 Prop_CapRails vs Hull at Roblox [51.54,54.24,-22.28]
+      cause: high-side cap underside crosses the Hull WoodDk rail top near x51.5 (gap -0.06 at x50, +0.06 at x53); region lies inside the BowRaise panel / under the cap overhang
+      fix: surface displacement on CapRails only: bottom 2 verts of rings x50, x53, x56 set to 0.10 below the Hull rail top (hull-frame vertical, 15 deg tilt); next untouched ring x59 is +0.354 above so the transition face stays >=0.08 clear; Hull untouched
+      displacement: 6 verts moved down [-0.035, -0.0457, -0.1555, -0.1651, -0.2929, -0.3011] studs (max 0.3011); cap locally 0.04-0.30 deeper, no topology change
+  * D4 Prop_CapRails vs Prop_SternCastle at Roblox [-118.0,66.93,-27.33]
+      cause: high-side cap start face at x-118 lay exactly on the SternCastle lower-tier end face (x-118); both are inside the SternCastle step-end post box (x-118.6..-117.0)
+      fix: trim endpoint: cap start ring slid 0.5 along the tube toward ring 2 (x-118 -> x-117.5); start face stays hidden inside the post; SternCastle not modified
+      displacement: 4 verts moved [0.5002, 0.5001, 0.5, 0.5002] studs
+  Mesh stats before -> after: Prop_BowRaise verts 616->560 faces 608->552 tris 1216->1104 components 4->4; Prop_CapRails verts 732->732 faces 726->726 tris 1452->1452 components 3->3; Prop_SternCastle verts 732->732 faces 656->656 tris 1280->1280 components 46->46
+  Changed meshes vs v3_1: ['Prop_BowRaise', 'Prop_CapRails']. Prop_SternCastle NOT modified (D4 fixed on the CapRails side). No origins/transforms/names/material slots changed.
+  Coplanar detections (identical checker & tolerances): before 4 -> after 0 (repair script) ; fitcheck on saved blend: 0
+  Gaps: plank line new start 0.157 below cap (>=0.08); cap underside embedded 0.10 into hull rail at x50-56, transition to x59 face mean >=0.08; cap start face 0.5 off the tier end face, 0.5 inside post end; all pieces unchanged in thickness (cap 1.3+, plank 0.64) -> >=0.2.
+
+FITCHECK (out/fitcheck.json/.md): PASS
+  all source mesh names/origins/datablocks exact: True
+  all non-permitted meshes (incl. Hull, DeckCabin, ramps) geometry/UV/materials exact v3_1: True
+  colliders: 190/190 byte-identical to v3_1, max world diff 0.0; COL_Mast_Main exact, 98.3 along axis (history 157 -> 98.3 in v3_1, untouched)
+  anchors exact: {'Spawn': True, 'Tee1': True, 'RampStart': True, 'CupRef': True}
+  route corridor clear: inside=False tri-intersections=False min clearance {'studs': 1.7, 'zone': 'cabin_interior_spawn', 'object': 'Prop_CabinWindows'}
+  hull submersion identical: True; walk/door/spawn/tee probes identical: True/True/True/True; floaters identical: True
+  tris: total visual 51307 (v3_1 51419), all meshes <20k True. CAVEAT: ~51k total vs approximate ~40k near-field target; not reduced here; no runtime/Studio/Quest validation.
+  warnings: ['total visual tris 51307 above ~40k target']
+
+FBX (out/fbx, exported from the saved v3_2 blend; -Z forward, Y up, scale 1, embedded textures; same names as v3_1):
+  start_ship_b2_visual.fbx  38 objects, 51307 tris, reimport ok True, sha256 be9eca06634d5afc9cb554ec6ba4c8c88e4f3bb0b37afb773b0caeb3f6d29e0a
+  start_ship_b2_col.fbx  190 objects, 2280 tris, reimport ok True, colliders vs v3_1 max world diff 1.55e-05, sha256 eadc79c616f14e886d0f3c14a26a500fa0c153e07e5c2bd48a6a03eb928dfd07
+  RampFlight1_own_origin.fbx  1 objects, 300 tris, reimport ok True, sha256 621eec567140eaf736729f5877127d4fe02b74c7e7f7a9b75cd1484315a00a46
+  RampLanding_own_origin.fbx  1 objects, 184 tris, reimport ok True, sha256 253337bb4270762f5dd2d5b90cdaa97c1c82bbe178e39184ae8d8dcb161d0845
+  RampFlight2_own_origin.fbx  1 objects, 288 tris, reimport ok True, sha256 2a510df14371d3d3ecd836f189e456f288568f929eb3010cd199c845c08509a1
+  (reimported collider diff is FBX float round-trip only; the blend colliders are byte-identical)
+
+PROP_FLAG CHECK (not modified: geometry/UV/materials identical to v3_1 = True)
+  provenance: Prop_Flag is unchanged since source v3 (v3_1 fitcheck status "unchanged"); it is not generated by build_v31.py (no flag code in prior_scripts) - its generator predates this script set; object note: "fore-mast flag, faded red; original emblem: two crossed golf clubs (grips up) over a golf ball on a tee (no skull)"
+  mesh: 414 verts, 760 tris, materials ['Red', 'Canvas']; 1 Red cloth component (226 faces) + 16 Canvas emblem pieces (8 per side, mirrored on both faces of the cloth)
+  emblem pieces per side: two long crossing diagonal bars (club shafts), small end blocks (club heads/grips), one 14-face round disc (golf ball) and a small block under it (tee); no skull/face/eye-socket shapes, no text, no logo
+  verdict: original generic golf-club/ball emblem in crossed-bones style; no skull, no copied franchise art or logo detected. Visual check: 3q preview shows small light crossed shapes on the red flag.
+
+PREVIEWS: out/previews/ship_3q.png, ship_tee.png (1600x1000, prior_scripts/render_v31.py unchanged: same cameras, lighting, CPU Cycles 64 spp). Inspected once: no z-fight artefacts or missing parts seen; plank line now starts at x77 (small visual change at the bow, hard to see at this distance). Preview-ready: True (fitcheck passed).
+
+OBSERVATIONS (reported, not changed):
+  - The low-side cap rail probably crosses the Hull rail top at the same x (~51) as D3, but the identical checker does not flag it (its stations are offset 1 stud), it is inside the BowRaise panel, it was not measured, and it is out of scope, so it was left alone.
+  - The first render wrote to C:\out\previews (Blender resolved the relative path from C:\); re-rendered with an absolute path. The tool sandbox blocked deleting the stray C:\out folder (2 PNGs); please remove it manually.
+  - export_v32.py first run failed (Python kwarg typo, exit 1); fixed and rerun (exit 0). Blender returns 0 on script errors unless --python-exit-code is used; all steps used --python-exit-code 1.
+
+STEP EXIT CODES:
+  repair exit=0
+  dump exit=0
+  fitcheck exit=0
+  export exit=1
+  render exit=0 secs=23
+  export(rerun after kwarg syntax fix) exit=0
+  render(rerun with absolute previews path) exit=0 secs=23
+  probe (read-only, first run json bug then rerun) exit=0
+
+SCRIPTS (out/src): repair_v32.py, fitcheck_v32.py + fitcheck_v32_check.py (v3_1 checker adapted: baseline v3_1, only 3 permitted meshes may change), export_v32.py, render_v31.py (unchanged), probe_v32.py, make_reports_v32.py, plus shiplib.py and the prior scripts for reference.
+Reproduce: blender -b --factory-startup --python-exit-code 1 source_v3_1.blend --python out/src/repair_v32.py -- out/start_ship_v3_2.blend out/logs/repair_log.json ; fitcheck_v32.py dump (source_v3_1) then check (v3_2) ; export_v32.py ; render_v31.py ship_3q ship_tee ; python make_reports_v32.py <workdir>
