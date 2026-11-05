@@ -1,0 +1,4054 @@
+{
+ "name": "start_ship_b2_blockout_v2",
+ "units": "studs (Roblox frame: +Y up, front +Z; 1 Blender unit = 1 stud; FBX exported -Z fwd / Y up)",
+ "files": {
+  "visual": "start_ship_b2_visual.fbx",
+  "collision": "start_ship_b2_col.fbx",
+  "ramp_pieces": [
+   "RampFlight1_own_origin.fbx",
+   "RampLanding_own_origin.fbx",
+   "RampFlight2_own_origin.fbx"
+  ],
+  "palette": "start_ship_palette.png",
+  "contact_sheet": "start_ship_b2_contact_sheet.png",
+  "previews": [
+   "prev/start_ship_b2_hero_3q.png",
+   "prev/start_ship_b2_side_section.png",
+   "prev/start_ship_b2_plan.png",
+   "prev/start_ship_b2_door_view.png"
+  ],
+  "src": "src/"
+ },
+ "meshes": {
+  "DeckCabin": {
+   "tris": 3104,
+   "size_studs": [
+    296.14,
+    56.7,
+    85.02
+   ],
+   "bbox_min": [
+    -160.0,
+    -1.0,
+    -22.02
+   ],
+   "bbox_max": [
+    136.14,
+    55.7,
+    63.0
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    -0.0
+   ]
+  },
+  "Dressing": {
+   "tris": 516,
+   "size_studs": [
+    173.5,
+    12.1,
+    78.3
+   ],
+   "bbox_min": [
+    -130.5,
+    24.0,
+    -15.8
+   ],
+   "bbox_max": [
+    43.0,
+    36.1,
+    62.5
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    -0.0
+   ]
+  },
+  "Dressing_Glow": {
+   "tris": 24,
+   "size_studs": [
+    19.8,
+    2.4,
+    2.2
+   ],
+   "bbox_min": [
+    -129.9,
+    33.1,
+    59.7
+   ],
+   "bbox_max": [
+    -110.1,
+    35.5,
+    61.9
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    -0.0
+   ]
+  },
+  "Hull": {
+   "tris": 3585,
+   "size_studs": [
+    375.4,
+    69.91,
+    90.06
+   ],
+   "bbox_min": [
+    -160.0,
+    -1.04,
+    -31.49
+   ],
+   "bbox_max": [
+    215.4,
+    68.88,
+    58.57
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    -0.0
+   ]
+  },
+  "Pier": {
+   "tris": 948,
+   "size_studs": [
+    10.6,
+    12.6,
+    190.0
+   ],
+   "bbox_min": [
+    -220.3,
+    -3.5,
+    30.0
+   ],
+   "bbox_max": [
+    -209.7,
+    9.1,
+    220.0
+   ],
+   "origin": [
+    -215.0,
+    0.0,
+    125.0
+   ]
+  },
+  "RampFlight1": {
+   "tris": 300,
+   "size_studs": [
+    16.0,
+    30.77,
+    53.57
+   ],
+   "bbox_min": [
+    -128.0,
+    -1.0,
+    61.69
+   ],
+   "bbox_max": [
+    -112.0,
+    29.77,
+    115.26
+   ],
+   "origin": [
+    -120.0,
+    24.0,
+    62.5
+   ]
+  },
+  "RampFlight2": {
+   "tris": 288,
+   "size_studs": [
+    16.0,
+    21.08,
+    68.8
+   ],
+   "bbox_min": [
+    -134.7,
+    -3.31,
+    126.7
+   ],
+   "bbox_max": [
+    -118.7,
+    17.77,
+    195.5
+   ],
+   "origin": [
+    -126.7,
+    12.0,
+    127.5
+   ]
+  },
+  "RampLanding": {
+   "tris": 184,
+   "size_studs": [
+    17.0,
+    20.0,
+    17.4
+   ],
+   "bbox_min": [
+    -128.5,
+    -2.0,
+    113.6
+   ],
+   "bbox_max": [
+    -111.5,
+    18.0,
+    131.0
+   ],
+   "origin": [
+    -120.0,
+    12.0,
+    114.5
+   ]
+  },
+  "Rigging": {
+   "tris": 400,
+   "size_studs": [
+    365.37,
+    154.21,
+    86.06
+   ],
+   "bbox_min": [
+    -150.2,
+    6.56,
+    -27.64
+   ],
+   "bbox_max": [
+    215.17,
+    160.76,
+    58.42
+   ],
+   "origin": [
+    0.0,
+    0.0,
+    -0.0
+   ]
+  },
+  "RockBumper": {
+   "tris": 80,
+   "size_studs": [
+    17.41,
+    14.94,
+    16.92
+   ],
+   "bbox_min": [
+    -147.2,
+    -6.17,
+    181.87
+   ],
+   "bbox_max": [
+    -129.79,
+    8.77,
+    198.79
+   ],
+   "origin": [
+    -138.513,
+    0.0,
+    189.962
+   ]
+  }
+ },
+ "total_tris": 9429,
+ "empties": {
+  "Spawn": [
+   -120.0,
+   24.0,
+   2.5
+  ],
+  "Tee1": [
+   -120.0,
+   24.4,
+   37.0
+  ],
+  "RampStart": [
+   -120.0,
+   24.0,
+   62.5
+  ],
+  "CupRef": [
+   -175.7,
+   0.0,
+   212.37048957087498
+  ]
+ },
+ "ramp_pieces": {
+  "RampFlight1": {
+   "origin": [
+    -120.0,
+    24.0,
+    62.5
+   ],
+   "note": "12 wide, ~13 deg, Y24->Y12, run ~52; origin at top-centre of the slope"
+  },
+  "RampLanding": {
+   "origin": [
+    -120.0,
+    12.0,
+    114.5
+   ],
+   "note": "16x16 at Y12 on 4 posts, SW corner open, south outer rail solid ~5.5 high on east part, felt rails ~3.5 high"
+  },
+  "RampFlight2": {
+   "origin": [
+    -126.7,
+    12.0,
+    127.5
+   ],
+   "built": "STRAIGHT (runs +Z, no turn baked in)",
+   "studio_yaw_deg": -30.0,
+   "studio_cframe": "CFrame.new(origin) * CFrame.Angles(0, math.rad(-30), 0)",
+   "heading_after_yaw": [
+    -0.5,
+    0,
+    0.8660254037844386
+   ],
+   "note": "12 wide, ~13 deg, Y12->Y0, then flat felt apron ~16 long x ~14 wide; joins overlap ~0.5"
+  }
+ },
+ "props": {
+  "Pier": [
+   -215.0,
+   0.0,
+   125.0
+  ],
+  "RockBumper": [
+   -138.51346652052678,
+   0.0,
+   189.96152422706632
+  ]
+ },
+ "v2_changes": {
+  "rock_bumper": {
+   "origin": [
+    -138.51346652052678,
+    0.0,
+    189.96152422706632
+   ],
+   "v1_origin": [
+    -139.98,
+    0.0,
+    184.5
+   ],
+   "lateral_from_flight2_centreline": 21.0,
+   "along_flight2": 60.0,
+   "note": "v1 was also 17 from the centreline but the 9-stud rock touched the apron edge; v2 is 21 so there is ~5 studs of clear sand between rock and apron edge (apron half width 7)"
+  },
+  "stern_castle": {
+   "raise_studs": 10.0,
+   "full_height_x": [
+    -160.0,
+    -95.0
+   ],
+   "taper_to_x": -65.0,
+   "low_side_open_x": [
+    -133.0,
+    -107.0
+   ],
+   "note": "hull bulwark raised 10 studs around the cabin (x -160..-95, tapering to 0 at x -65) both sides plus a transom plate; low side left open at the ramp gap; walls are part of the Hull mesh and tilt with the hull; cabin walls/roof unchanged"
+  },
+  "forecastle": {
+   "x0": 112.0,
+   "x1": 136.1407035175879,
+   "top_y": 30.0,
+   "height": 6.0,
+   "stair_z": 8.431269937723126,
+   "stair_w": 10.0,
+   "rail_h": 3.5
+  },
+  "bowsprit": {
+   "root_hull_local": [
+    118.0,
+    45.0,
+    0.0
+   ],
+   "tip_hull_local": [
+    215.0,
+    70.0,
+    0.0
+   ],
+   "tip_world": [
+    215.0,
+    67.61480784023477,
+    18.117333157176454
+   ],
+   "note": "moved from Rigging into the Hull mesh (hull 15 deg frame), thicker, sits on 2 bitts on the forecastle; masts stays end at its tip"
+  },
+  "tilt": {
+   "hull_deg": 15,
+   "masts_sails_rigging_deg": 18,
+   "note": "kept the hull at 15: changing it would move the level-deck/hull cut and the tee/ramp footprint; the 3 deg extra on the masts reads fine. Deck, cabin, forecastle and ramps stay level"
+  },
+  "paint_prep": {
+   "hull_planks_rgb": [
+    110,
+    70,
+    40
+   ],
+   "wales_rgb": [
+    80,
+    50,
+    30
+   ],
+   "palette_cells": "Wood=(110,70,40) cell 0, WoodDk=(80,50,30) cell 1",
+   "hull_strips": "outer skin strips 0 and 21 (sheer strake), 2 and 19 (upper wale), 5 and 16 (lower wale), 10 and 11 (keel) use WoodDk; all other outer and inner planking uses Wood"
+  }
+ },
+ "cabin": {
+  "outer_x": [
+   -150.0,
+   -90.0
+  ],
+  "outer_z": [
+   -19.0,
+   24.0
+  ],
+  "wall": 2.0,
+  "wall_h": 16.0,
+  "peak_h": 30.0,
+  "interior_h_eaves": 16.0,
+  "door": {
+   "x": -120.0,
+   "w": 8.0,
+   "h": 10.0
+  }
+ },
+ "tee_pad": {
+  "x": [
+   -126.0,
+   -114.0
+  ],
+  "z": [
+   30.0,
+   44.0
+  ]
+ },
+ "cols": {
+  "count": 190,
+  "file": "start_ship_b2_col.fbx",
+  "pivot_convention": "ramp COL_* are boxes whose object origin is the box centre; piece-local COL names are prefixed COL_Flight1/Landing/Flight2 and positioned in their piece frame (pivot field in geom.json); other COL_* are world-space (Hull, Deck, Cabin, Bulwark, Outrigger, Pier, RockBumper, PlatRail)",
+  "list": [
+   {
+    "name": "COL_Flight1_Surface",
+    "centre": [
+     0.0,
+     -6.97439119569462,
+     25.77514049330124
+    ],
+    "size": [
+     15.0,
+     2.0,
+     53.36665625650534
+    ],
+    "pivot": [
+     -120.0,
+     24.0,
+     62.5
+    ],
+    "note": "felt surface (ball friction/bounce); walkable"
+   },
+   {
+    "name": "COL_Flight1_RailW",
+    "centre": [
+     -6.8,
+     -4.48969364667334,
+     26.348532235383075
+    ],
+    "size": [
+     1.6,
+     3.7,
+     53.36665625650534
+    ],
+    "pivot": [
+     -120.0,
+     24.0,
+     62.5
+    ],
+    "note": "rail 3.5 high"
+   },
+   {
+    "name": "COL_Flight1_RailE",
+    "centre": [
+     6.8,
+     -4.48969364667334,
+     26.348532235383075
+    ],
+    "size": [
+     1.6,
+     3.7,
+     53.36665625650534
+    ],
+    "pivot": [
+     -120.0,
+     24.0,
+     62.5
+    ],
+    "note": "rail 3.5 high"
+   },
+   {
+    "name": "COL_Landing_FloorA",
+    "centre": [
+     0.0,
+     -1.0,
+     5.85
+    ],
+    "size": [
+     16.0,
+     2.0,
+     12.7
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "flat felt, top at world Y=12"
+   },
+   {
+    "name": "COL_Landing_FloorB",
+    "centre": [
+     3.25,
+     -1.0,
+     14.0
+    ],
+    "size": [
+     9.5,
+     2.0,
+     4.0
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "flat felt SE part (corner cut for flight2 mouth)"
+   },
+   {
+    "name": "COL_Landing_RailE",
+    "centre": [
+     7.3,
+     1.55,
+     7.800000000000001
+    ],
+    "size": [
+     1.5999999999999996,
+     3.9,
+     16.6
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "rail"
+   },
+   {
+    "name": "COL_Landing_RailS",
+    "centre": [
+     3.3,
+     2.55,
+     15.3
+    ],
+    "size": [
+     9.6,
+     5.9,
+     1.6000000000000014
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "outer south rail 5.5 high"
+   },
+   {
+    "name": "COL_Landing_RailW",
+    "centre": [
+     -7.3,
+     1.55,
+     5.95
+    ],
+    "size": [
+     1.5999999999999996,
+     3.9,
+     12.9
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "rail"
+   },
+   {
+    "name": "COL_Landing_RailN_W",
+    "centre": [
+     -7.05,
+     1.55,
+     0.30000000000000004
+    ],
+    "size": [
+     2.0999999999999996,
+     3.9,
+     1.6
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "rail"
+   },
+   {
+    "name": "COL_Landing_RailN_E",
+    "centre": [
+     7.05,
+     1.55,
+     0.30000000000000004
+    ],
+    "size": [
+     2.0999999999999996,
+     3.9,
+     1.6
+    ],
+    "pivot": [
+     -120.0,
+     12.0,
+     114.5
+    ],
+    "note": "rail"
+   },
+   {
+    "name": "COL_Flight2_Surface",
+    "centre": [
+     0.0,
+     -6.875206491360704,
+     25.778703142345073
+    ],
+    "size": [
+     15.0,
+     2.0,
+     53.322040471084755
+    ],
+    "pivot": [
+     -126.7,
+     12.0,
+     127.5
+    ],
+    "note": "felt surface (ball friction/bounce); walkable"
+   },
+   {
+    "name": "COL_Flight2_RailW",
+    "centre": [
+     -6.8,
+     -4.38842993839091,
+     26.34301012936514
+    ],
+    "size": [
+     1.6,
+     3.7,
+     53.322040471084755
+    ],
+    "pivot": [
+     -126.7,
+     12.0,
+     127.5
+    ],
+    "note": "rail 3.5 high"
+   },
+   {
+    "name": "COL_Flight2_RailE",
+    "centre": [
+     6.8,
+     -4.38842993839091,
+     26.34301012936514
+    ],
+    "size": [
+     1.6,
+     3.7,
+     53.322040471084755
+    ],
+    "pivot": [
+     -126.7,
+     12.0,
+     127.5
+    ],
+    "note": "rail 3.5 high"
+   },
+   {
+    "name": "COL_Flight2_Apron",
+    "centre": [
+     0.0,
+     -12.4,
+     59.75
+    ],
+    "size": [
+     14.0,
+     1.2,
+     16.5
+    ],
+    "pivot": [
+     -126.7,
+     12.0,
+     127.5
+    ],
+    "note": "flat felt apron"
+   },
+   {
+    "name": "COL_Deck_00",
+    "centre": [
+     -151.0,
+     23.0,
+     11.720807458691711
+    ],
+    "size": [
+     16.4,
+     2.0,
+     64.60698545667441
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_01",
+    "centre": [
+     -135.0,
+     23.0,
+     11.764747747178351
+    ],
+    "size": [
+     16.4,
+     2.0,
+     64.87955126947739
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_02",
+    "centre": [
+     -119.0,
+     23.0,
+     11.805656602748408
+    ],
+    "size": [
+     16.4,
+     2.0,
+     65.12870287394182
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_03",
+    "centre": [
+     -103.0,
+     23.0,
+     11.837140540769115
+    ],
+    "size": [
+     16.4,
+     2.0,
+     65.30690220340881
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_04",
+    "centre": [
+     -87.0,
+     23.0,
+     11.855364771654783
+    ],
+    "size": [
+     16.4,
+     2.0,
+     65.28769509427204
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_05",
+    "centre": [
+     -71.0,
+     23.0,
+     11.83260989781645
+    ],
+    "size": [
+     16.4,
+     2.0,
+     64.98764733531388
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_06",
+    "centre": [
+     -55.0,
+     23.0,
+     11.781670374451448
+    ],
+    "size": [
+     16.4,
+     2.0,
+     64.41255374693324
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_07",
+    "centre": [
+     -39.0,
+     23.0,
+     11.697086054268464
+    ],
+    "size": [
+     16.4,
+     2.0,
+     63.492386076146644
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_08",
+    "centre": [
+     -23.0,
+     23.0,
+     11.573179085744881
+    ],
+    "size": [
+     16.4,
+     2.0,
+     62.1498898796607
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_09",
+    "centre": [
+     -7.0,
+     23.0,
+     11.403976627991462
+    ],
+    "size": [
+     16.4,
+     2.0,
+     60.30099195233188
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_10",
+    "centre": [
+     9.0,
+     23.0,
+     11.183278855489025
+    ],
+    "size": [
+     16.4,
+     2.0,
+     57.85392785443378
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_11",
+    "centre": [
+     25.0,
+     23.0,
+     10.904538061460084
+    ],
+    "size": [
+     16.4,
+     2.0,
+     54.710360956481736
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_12",
+    "centre": [
+     41.0,
+     23.0,
+     10.56089269710391
+    ],
+    "size": [
+     16.4,
+     2.0,
+     50.764135030269195
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_13",
+    "centre": [
+     57.0,
+     23.0,
+     10.14511519154367
+    ],
+    "size": [
+     16.4,
+     2.0,
+     45.90188205199081
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_14",
+    "centre": [
+     73.0,
+     23.0,
+     9.649962052059804
+    ],
+    "size": [
+     16.4,
+     2.0,
+     40.00507169359043
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_15",
+    "centre": [
+     89.0,
+     23.0,
+     9.069113493611798
+    ],
+    "size": [
+     16.4,
+     2.0,
+     32.95579745056859
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_16",
+    "centre": [
+     105.0,
+     23.0,
+     8.400121454852442
+    ],
+    "size": [
+     16.4,
+     2.0,
+     24.65575767105362
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_17",
+    "centre": [
+     121.0,
+     23.0,
+     7.654086055419811
+    ],
+    "size": [
+     16.4,
+     2.0,
+     15.080676956229883
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_Deck_18",
+    "centre": [
+     132.57035175879395,
+     23.0,
+     7.308560948589671
+    ],
+    "size": [
+     7.540703517587895,
+     2.0,
+     10.430589738838203
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "level deck, top Y=24"
+   },
+   {
+    "name": "COL_CabinFloor",
+    "centre": [
+     -120.0,
+     23.0,
+     2.5
+    ],
+    "size": [
+     56.4,
+     2.0,
+     39.4
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin floor, top Y=24"
+   },
+   {
+    "name": "COL_Outrigger",
+    "centre": [
+     -120.0,
+     23.0,
+     53.0
+    ],
+    "size": [
+     22.0,
+     2.0,
+     20.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "outrigger platform, top Y=24"
+   },
+   {
+    "name": "COL_CabinWall_Back",
+    "centre": [
+     -120.0,
+     32.0,
+     -18.0
+    ],
+    "size": [
+     60.0,
+     16.0,
+     2.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin wall"
+   },
+   {
+    "name": "COL_CabinWall_W",
+    "centre": [
+     -149.0,
+     32.0,
+     2.5
+    ],
+    "size": [
+     2.0,
+     16.0,
+     43.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin wall"
+   },
+   {
+    "name": "COL_CabinWall_E",
+    "centre": [
+     -91.0,
+     32.0,
+     2.5
+    ],
+    "size": [
+     2.0,
+     16.0,
+     43.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin wall"
+   },
+   {
+    "name": "COL_CabinWall_FrontL",
+    "centre": [
+     -137.0,
+     32.0,
+     23.0
+    ],
+    "size": [
+     26.0,
+     16.0,
+     2.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin wall"
+   },
+   {
+    "name": "COL_CabinWall_FrontR",
+    "centre": [
+     -103.0,
+     32.0,
+     23.0
+    ],
+    "size": [
+     26.0,
+     16.0,
+     2.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin wall"
+   },
+   {
+    "name": "COL_CabinWall_Lintel",
+    "centre": [
+     -120.0,
+     37.0,
+     23.0
+    ],
+    "size": [
+     8.0,
+     6.0,
+     2.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "cabin wall"
+   },
+   {
+    "name": "COL_CabinRoof_N",
+    "centre": [
+     -120.0,
+     46.46789748734352,
+     -9.374300287293877
+    ],
+    "size": [
+     65.0,
+     1.6,
+     29.139683595908835
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "roof panel"
+   },
+   {
+    "name": "COL_CabinRoof_S",
+    "centre": [
+     -120.0,
+     46.46789748734352,
+     14.374300287293877
+    ],
+    "size": [
+     65.0,
+     1.6,
+     29.139683595908835
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "roof panel"
+   },
+   {
+    "name": "COL_Bulwark_Hi_00",
+    "centre": [
+     -153.0,
+     31.0,
+     -21.88268526964549
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_00_0",
+    "centre": [
+     -153.0,
+     31.0,
+     45.32430018702891
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_01",
+    "centre": [
+     -141.0,
+     31.0,
+     -21.95142886849705
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_01_0",
+    "centre": [
+     -141.0,
+     31.0,
+     45.45837881556837
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_02",
+    "centre": [
+     -129.0,
+     31.0,
+     -22.019376741757082
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_02_0",
+    "centre": [
+     -132.5,
+     31.0,
+     45.59162230359122
+    ],
+    "size": [
+     5.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_03",
+    "centre": [
+     -117.0,
+     31.0,
+     -22.076098645237227
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Hi_04",
+    "centre": [
+     -105.0,
+     31.0,
+     -22.116310560935286
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_04_0",
+    "centre": [
+     -104.5,
+     31.0,
+     45.790591642473515
+    ],
+    "size": [
+     11.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_05",
+    "centre": [
+     -93.0,
+     31.0,
+     -22.11946035114524
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_05_0",
+    "centre": [
+     -93.0,
+     31.0,
+     45.83514995800787
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_06",
+    "centre": [
+     -81.0,
+     31.0,
+     -22.065441188274672
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_06_0",
+    "centre": [
+     -81.0,
+     31.0,
+     45.769499967262135
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_07",
+    "centre": [
+     -69.0,
+     31.0,
+     -21.96121376984049
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_07_0",
+    "centre": [
+     -69.0,
+     31.0,
+     45.62643356547339
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_08",
+    "centre": [
+     -57.0,
+     31.0,
+     -21.79553892397122
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_08_0",
+    "centre": [
+     -57.0,
+     31.0,
+     45.39021294726992
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_09",
+    "centre": [
+     -45.0,
+     31.0,
+     -21.55618853084661
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_09_0",
+    "centre": [
+     -45.0,
+     31.0,
+     45.04404393357937
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_10",
+    "centre": [
+     -33.0,
+     31.0,
+     -21.22962430945568
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_10_0",
+    "centre": [
+     -33.0,
+     31.0,
+     44.569608124482635
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_11",
+    "centre": [
+     -21.0,
+     31.0,
+     -20.80176585408547
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_11_0",
+    "centre": [
+     -21.0,
+     31.0,
+     43.94812402557523
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_12",
+    "centre": [
+     -9.0,
+     31.0,
+     -20.256644991294362
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_12_0",
+    "centre": [
+     -9.0,
+     31.0,
+     43.15827366083841
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_13",
+    "centre": [
+     3.0,
+     31.0,
+     -19.578636788239724
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_13_0",
+    "centre": [
+     3.0,
+     31.0,
+     42.17955540522787
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_14",
+    "centre": [
+     15.0,
+     31.0,
+     -18.74915162124331
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_14_0",
+    "centre": [
+     15.0,
+     31.0,
+     40.98762278526349
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_15",
+    "centre": [
+     27.0,
+     31.0,
+     -17.750642416780785
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_15_0",
+    "centre": [
+     27.0,
+     31.0,
+     39.55971853970095
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_16",
+    "centre": [
+     39.0,
+     31.0,
+     -16.562602663309775
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_16_0",
+    "centre": [
+     39.0,
+     31.0,
+     37.869088032277475
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_17",
+    "centre": [
+     51.0,
+     31.0,
+     -15.16494748414578
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_17_0",
+    "centre": [
+     51.0,
+     31.0,
+     35.88987773111072
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_18",
+    "centre": [
+     63.0,
+     31.0,
+     -13.53569315840782
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_18_0",
+    "centre": [
+     63.0,
+     31.0,
+     33.59381104264814
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_19",
+    "centre": [
+     75.0,
+     31.0,
+     -11.65257379473541
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_19_0",
+    "centre": [
+     75.0,
+     31.0,
+     30.952497898855018
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_20",
+    "centre": [
+     87.0,
+     31.0,
+     -9.493786485968332
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_20_0",
+    "centre": [
+     87.0,
+     31.0,
+     27.93911280546421
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_21",
+    "centre": [
+     99.0,
+     31.0,
+     -7.03778459344966
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_21_0",
+    "centre": [
+     99.0,
+     31.0,
+     24.528699558543934
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_22",
+    "centre": [
+     111.0,
+     31.0,
+     -4.270446985878408
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_22_0",
+    "centre": [
+     111.0,
+     31.0,
+     20.710222240066997
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_23",
+    "centre": [
+     123.0,
+     31.0,
+     -1.1862524226951292
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_23_0",
+    "centre": [
+     123.0,
+     31.0,
+     16.494424533534755
+    ],
+    "size": [
+     12.2,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Hi_24",
+    "centre": [
+     132.57035175879395,
+     31.0,
+     0.7932660791705701
+    ],
+    "size": [
+     7.340703517587895,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "high-side bulwark"
+   },
+   {
+    "name": "COL_Bulwark_Lo_24_0",
+    "centre": [
+     132.57035175879395,
+     31.0,
+     13.823855818008772
+    ],
+    "size": [
+     7.340703517587895,
+     18.0,
+     3.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "low-side bulwark (gap for the ramp)"
+   },
+   {
+    "name": "COL_Bulwark_Stern",
+    "centre": [
+     -159.0,
+     31.0,
+     11.720807458691711
+    ],
+    "size": [
+     3.0,
+     18.0,
+     68.2069854566744
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern wall"
+   },
+   {
+    "name": "COL_Bulwark_Bow",
+    "centre": [
+     137.1407035175879,
+     31.0,
+     7.308560948589671
+    ],
+    "size": [
+     3.0,
+     18.0,
+     14.030589738838202
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "bow wall"
+   },
+   {
+    "name": "COL_PlatRail_W",
+    "centre": [
+     -130.2,
+     26.0,
+     55.5
+    ],
+    "size": [
+     1.5999999999999943,
+     4.0,
+     15.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "platform edge rail 4 high"
+   },
+   {
+    "name": "COL_PlatRail_E",
+    "centre": [
+     -109.8,
+     26.0,
+     55.5
+    ],
+    "size": [
+     1.5999999999999943,
+     4.0,
+     15.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "platform edge rail 4 high"
+   },
+   {
+    "name": "COL_PlatRail_SW",
+    "centre": [
+     -129.3,
+     26.0,
+     62.2
+    ],
+    "size": [
+     3.4000000000000057,
+     4.0,
+     1.6000000000000014
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "platform edge rail 4 high"
+   },
+   {
+    "name": "COL_PlatRail_SE",
+    "centre": [
+     -110.7,
+     26.0,
+     62.2
+    ],
+    "size": [
+     3.4000000000000057,
+     4.0,
+     1.6000000000000014
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "platform edge rail 4 high"
+   },
+   {
+    "name": "COL_HullExt_0_00",
+    "centre": [
+     -140.2,
+     45.29272336975403,
+     -29.78272229044627
+    ],
+    "size": [
+     39.8,
+     2.5,
+     25.385327424378904
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_01",
+    "centre": [
+     -140.2,
+     24.101409878782633,
+     -23.692817872135745
+    ],
+    "size": [
+     39.8,
+     2.5,
+     19.037569320130597
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_02",
+    "centre": [
+     -140.2,
+     9.698587016975011,
+     -15.629468202698549
+    ],
+    "size": [
+     39.8,
+     2.5,
+     14.186234580827112
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_03",
+    "centre": [
+     -140.2,
+     1.4301004305778222,
+     -5.69537114290412
+    ],
+    "size": [
+     39.8,
+     2.5,
+     11.775192459744627
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_04",
+    "centre": [
+     -140.2,
+     -1.6091822686086021,
+     5.647386309024693
+    ],
+    "size": [
+     39.8,
+     2.5,
+     11.775192459744627
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_05",
+    "centre": [
+     -140.2,
+     0.5844886361650257,
+     18.38481001966556
+    ],
+    "size": [
+     39.8,
+     2.5,
+     14.186234580827106
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_06",
+    "centre": [
+     -140.2,
+     9.02602428597912,
+     32.56928710389884
+    ],
+    "size": [
+     39.8,
+     2.5,
+     19.0375693201306
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_0_07",
+    "centre": [
+     -140.2,
+     24.33328789956498,
+     48.43895578226054
+    ],
+    "size": [
+     39.8,
+     2.5,
+     25.38532742437891
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_00",
+    "centre": [
+     -100.6,
+     44.60823628093113,
+     -29.879525308511564
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     24.987627093061676
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_01",
+    "centre": [
+     -100.6,
+     23.771553707760464,
+     -23.715698640104286
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     18.792483197766376
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_02",
+    "centre": [
+     -100.6,
+     9.592664799460238,
+     -15.613772138550635
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     14.07583856715432
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_03",
+    "centre": [
+     -100.6,
+     1.4335594046751652,
+     -5.678392234203448
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     11.744287532195472
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_04",
+    "centre": [
+     -100.6,
+     -1.5976972548189343,
+     5.634411629810044
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     11.744287532195473
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_05",
+    "centre": [
+     -100.6,
+     0.500605337046008,
+     18.31825572061665
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     14.075838567154316
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_06",
+    "centre": [
+     -100.6,
+     8.728920078294587,
+     32.42417434470661
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     18.79248319776638
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_1_07",
+    "centre": [
+     -100.6,
+     23.692103183049248,
+     48.180546110656636
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     24.987627093061672
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_00",
+    "centre": [
+     -60.99999999999999,
+     44.093546958908114,
+     -29.595389496480163
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     24.59254758632307
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_01",
+    "centre": [
+     -60.99999999999999,
+     23.596238649882878,
+     -23.459695007256173
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     18.51798220405654
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_02",
+    "centre": [
+     -60.99999999999999,
+     9.639654809577387,
+     -15.417434958231079
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     13.900482237000867
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_03",
+    "centre": [
+     -60.99999999999999,
+     1.599285943896763,
+     -5.572194020987744
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     11.622970891035
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_04",
+    "centre": [
+     -60.99999999999999,
+     -1.4010747551639002,
+     5.625304548939529
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     11.622970891035
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_05",
+    "centre": [
+     -60.99999999999999,
+     0.6394684696913222,
+     18.171717739811083
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     13.900482237000867
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_06",
+    "centre": [
+     -60.99999999999999,
+     8.70509460093071,
+     32.114811166260246
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     18.517982204056537
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_2_07",
+    "centre": [
+     -60.99999999999999,
+     23.38843706113643,
+     47.67713261830102
+    ],
+    "size": [
+     39.80000000000001,
+     2.5,
+     24.59254758632307
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_00",
+    "centre": [
+     -21.39999999999999,
+     43.7512536271809,
+     -28.5474514755084
+    ],
+    "size": [
+     39.8,
+     2.5,
+     24.045649297198207
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_01",
+    "centre": [
+     -21.39999999999999,
+     23.701024274318495,
+     -22.619160379564633
+    ],
+    "size": [
+     39.8,
+     2.5,
+     18.085996052653677
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_02",
+    "centre": [
+     -21.39999999999999,
+     10.050891894614344,
+     -14.821812407969635
+    ],
+    "size": [
+     39.8,
+     2.5,
+     13.548334060215907
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_03",
+    "centre": [
+     -21.39999999999999,
+     2.190971323489766,
+     -5.252408360077977
+    ],
+    "size": [
+     39.8,
+     2.5,
+     11.305046879920454
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_04",
+    "centre": [
+     -21.39999999999999,
+     -0.728767354933638,
+     5.644204732622174
+    ],
+    "size": [
+     39.8,
+     2.5,
+     11.305046879920454
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_05",
+    "centre": [
+     -21.39999999999999,
+     1.293421507442312,
+     17.861512022736274
+    ],
+    "size": [
+     39.8,
+     2.5,
+     13.548334060215906
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_06",
+    "centre": [
+     -21.39999999999999,
+     9.216108927489143,
+     31.43927963813669
+    ],
+    "size": [
+     39.8,
+     2.5,
+     18.085996052653684
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_3_07",
+    "centre": [
+     -21.39999999999999,
+     23.61597135080054,
+     46.59844500468428
+    ],
+    "size": [
+     39.8,
+     2.5,
+     24.045649297198203
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_00",
+    "centre": [
+     18.200000000000003,
+     43.61740823128359,
+     -26.22906216184159
+    ],
+    "size": [
+     39.8,
+     2.5,
+     23.135711153249943
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_01",
+    "centre": [
+     18.200000000000003,
+     24.29430753794808,
+     -20.78459908462694
+    ],
+    "size": [
+     39.8,
+     2.5,
+     17.32526210539038
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_02",
+    "centre": [
+     18.200000000000003,
+     11.15409350614776,
+     -13.528802299432433
+    ],
+    "size": [
+     39.8,
+     2.5,
+     12.873180395810467
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_03",
+    "centre": [
+     18.200000000000003,
+     3.6074017093689266,
+     -4.542699266514316
+    ],
+    "size": [
+     39.8,
+     2.5,
+     10.652464118245769
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_04",
+    "centre": [
+     18.200000000000003,
+     0.8527518887117407,
+     5.737793821238797
+    ],
+    "size": [
+     39.8,
+     2.5,
+     10.652464118245769
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_05",
+    "centre": [
+     18.200000000000003,
+     2.895327182794781,
+     17.293333227159692
+    ],
+    "size": [
+     39.8,
+     2.5,
+     12.873180395810465
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_06",
+    "centre": [
+     18.200000000000003,
+     10.647187952901344,
+     30.147144583735763
+    ],
+    "size": [
+     39.8,
+     2.5,
+     17.325262105390387
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_4_07",
+    "centre": [
+     18.200000000000003,
+     24.65925249460728,
+     44.5237382652378
+    ],
+    "size": [
+     39.8,
+     2.5,
+     23.135711153249943
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_00",
+    "centre": [
+     57.80000000000001,
+     43.75292798599898,
+     -21.96969799519586
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     21.59431499360559
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_01",
+    "centre": [
+     57.80000000000001,
+     25.662496136932806,
+     -17.414575412488297
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     16.019601369662766
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_02",
+    "centre": [
+     57.80000000000001,
+     13.391771760592176,
+     -11.145407489329436
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     11.688920833065508
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_03",
+    "centre": [
+     57.80000000000001,
+     6.381764611228738,
+     -3.210512481065374
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     9.484252007118801
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_04",
+    "centre": [
+     57.80000000000001,
+     3.9215140337639225,
+     5.97126767338399
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     9.484252007118803
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_05",
+    "centre": [
+     57.80000000000001,
+     6.024910801691165,
+     16.34809190158472
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     11.68892083306551
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_06",
+    "centre": [
+     57.80000000000001,
+     13.517085872859685,
+     27.912712771801136
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     16.019601369662762
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_5_07",
+    "centre": [
+     57.80000000000001,
+     26.906298128228308,
+     40.90278057031116
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     21.59431499360558
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_00",
+    "centre": [
+     97.4,
+     44.21247727010735,
+     -14.790474958522056
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     19.09468177890289
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_01",
+    "centre": [
+     97.4,
+     28.15285324156582,
+     -11.734026538549807
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     13.903181923061844
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_02",
+    "centre": [
+     97.4,
+     17.31718491078251,
+     -7.127964749935076
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     9.752661027970904
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_03",
+    "centre": [
+     97.4,
+     11.180123858603459,
+     -0.952980823045004
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     7.537497496734743
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_04",
+    "centre": [
+     97.4,
+     9.205780867484595,
+     6.415367531378105
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     7.537497496734744
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_05",
+    "centre": [
+     97.4,
+     11.433139679802679,
+     14.831591006115028
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     9.752661027970904
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_06",
+    "centre": [
+     97.4,
+     18.51407282693618,
+     24.23839169184783
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     13.903181923061842
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_6_07",
+    "centre": [
+     97.4,
+     30.893891000894005,
+     34.91516568317137
+    ],
+    "size": [
+     39.79999999999997,
+     2.5,
+     19.094681778902892
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_00",
+    "centre": [
+     137.0,
+     44.907759012229064,
+     -2.7485065702143108
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     15.28162952592975
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_01",
+    "centre": [
+     137.0,
+     32.10666712127035,
+     -2.267741879430145
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     10.690631084528555
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_02",
+    "centre": [
+     137.0,
+     23.610665787763338,
+     -0.5271851264647489
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     6.7569027832232695
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_03",
+    "centre": [
+     137.0,
+     18.820787078879654,
+     2.6375736299238866
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     4.310820149590517
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_04",
+    "centre": [
+     137.0,
+     17.618066544489643,
+     7.126187771573805
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     4.3108201495905165
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_05",
+    "centre": [
+     137.0,
+     20.1838438092348,
+     12.261888605897452
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     6.756902783223269
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_06",
+    "centre": [
+     137.0,
+     26.67131841815564,
+     18.017255637447544
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     10.690631084528555
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_7_07",
+    "centre": [
+     137.0,
+     37.517006846512786,
+     24.834156018388562
+    ],
+    "size": [
+     39.800000000000026,
+     2.5,
+     15.281629525929745
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "hull exterior (tilted 15 deg), scenery collision"
+   },
+   {
+    "name": "COL_HullExt_Stern",
+    "centre": [
+     -159.0,
+     21.02221649819003,
+     5.632885933802242
+    ],
+    "size": [
+     2.0,
+     43.52760000000001,
+     81.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern transom"
+   },
+   {
+    "name": "COL_Castle_Hi_00",
+    "centre": [
+     -152.5,
+     62.17612964964093,
+     -28.633220296488822
+    ],
+    "size": [
+     15.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_01",
+    "centre": [
+     -137.5,
+     61.784991693975215,
+     -28.734873574417396
+    ],
+    "size": [
+     15.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_02",
+    "centre": [
+     -122.5,
+     61.42900970340013,
+     -28.81422874419399
+    ],
+    "size": [
+     15.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_03",
+    "centre": [
+     -107.5,
+     61.10422447403643,
+     -28.85799380826736
+    ],
+    "size": [
+     15.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_04",
+    "centre": [
+     -97.5,
+     60.90303866347352,
+     -28.859315842088638
+    ],
+    "size": [
+     5.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_05",
+    "centre": [
+     -90.0,
+     59.954417694027924,
+     -29.05743029148065
+    ],
+    "size": [
+     10.1,
+     9.333333333333332,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_06",
+    "centre": [
+     -80.0,
+     58.16163386823219,
+     -29.4357294088488
+    ],
+    "size": [
+     10.1,
+     6.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Hi_07",
+    "centre": [
+     -70.0,
+     56.37770516559456,
+     -29.77411779687418
+    ],
+    "size": [
+     10.1,
+     2.6666666666666665,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Lo_08",
+    "centre": [
+     -152.5,
+     39.52949763733949,
+     55.88516099373597
+    ],
+    "size": [
+     15.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Lo_09",
+    "centre": [
+     -139.0,
+     39.177058264165495,
+     55.78826427286984
+    ],
+    "size": [
+     12.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Lo_10",
+    "centre": [
+     -101.0,
+     38.37252189124075,
+     55.48115299822166
+    ],
+    "size": [
+     12.1,
+     11.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Lo_11",
+    "centre": [
+     -90.0,
+     37.3933336463911,
+     55.14168164813167
+    ],
+    "size": [
+     10.1,
+     9.333333333333332,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Lo_12",
+    "centre": [
+     -80.0,
+     35.65158775107406,
+     54.57290638110385
+    ],
+    "size": [
+     10.1,
+     6.0,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Lo_13",
+    "centre": [
+     -70.0,
+     33.93746598203697,
+     53.973994970160675
+    ],
+    "size": [
+     10.1,
+     2.6666666666666665,
+     2.5
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle wall (tilted 15 deg with the hull), scenery collision"
+   },
+   {
+    "name": "COL_Castle_Transom",
+    "centre": [
+     -158.65,
+     51.06270288094531,
+     13.682210000299657
+    ],
+    "size": [
+     2.3,
+     11.0,
+     90.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stern castle back wall"
+   },
+   {
+    "name": "COL_Forecastle_00",
+    "centre": [
+     116.0,
+     27.0,
+     8.081563538847078
+    ],
+    "size": [
+     8.2,
+     6.0,
+     20.620345988244004
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "forecastle step, top Y=30"
+   },
+   {
+    "name": "COL_Forecastle_01",
+    "centre": [
+     124.0,
+     27.0,
+     7.702315866907433
+    ],
+    "size": [
+     8.2,
+     6.0,
+     15.715429724487448
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "forecastle step, top Y=30"
+   },
+   {
+    "name": "COL_Forecastle_02",
+    "centre": [
+     132.0,
+     27.0,
+     7.31535785489705
+    ],
+    "size": [
+     8.2,
+     6.0,
+     10.523874497992177
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "forecastle step, top Y=30"
+   },
+   {
+    "name": "COL_Forecastle_03",
+    "centre": [
+     136.07035175879395,
+     27.0,
+     7.308560948589671
+    ],
+    "size": [
+     0.3407035175878946,
+     6.0,
+     10.430589738838203
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "forecastle step, top Y=30"
+   },
+   {
+    "name": "COL_ForecastleStair_1",
+    "centre": [
+     108.25,
+     25.0,
+     8.431269937723126
+    ],
+    "size": [
+     7.5,
+     2.0,
+     10.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stair tread 1, top Y=26"
+   },
+   {
+    "name": "COL_ForecastleStair_2",
+    "centre": [
+     110.75,
+     26.0,
+     8.431269937723126
+    ],
+    "size": [
+     2.8,
+     4.0,
+     10.0
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "stair tread 2, top Y=28"
+   },
+   {
+    "name": "COL_ForecastleRail_0",
+    "centre": [
+     113.7,
+     31.75,
+     0.10766906316762559
+    ],
+    "size": [
+     1.0,
+     3.5,
+     5.047201749111002
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "forecastle riser rail 3.5 high"
+   },
+   {
+    "name": "COL_ForecastleRail_1",
+    "centre": [
+     113.7,
+     31.75,
+     16.671805723115874
+    ],
+    "size": [
+     1.0,
+     3.5,
+     4.8810715707854975
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "forecastle riser rail 3.5 high"
+   },
+   {
+    "name": "COL_RockBumper",
+    "centre": [
+     0.0,
+     4.0,
+     0.0
+    ],
+    "size": [
+     15.0,
+     8.0,
+     13.0
+    ],
+    "pivot": [
+     -138.51346652052678,
+     0.0,
+     189.96152422706632
+    ],
+    "note": "rock bumper collider"
+   },
+   {
+    "name": "COL_PierDeck",
+    "centre": [
+     0.0,
+     3.5,
+     0.0
+    ],
+    "size": [
+     10.0,
+     1.0,
+     190.0
+    ],
+    "pivot": [
+     -215.0,
+     0.0,
+     125.0
+    ],
+    "note": "pier deck"
+   },
+   {
+    "name": "COL_Mast_Main",
+    "centre": [
+     10.0,
+     82.26638865953078,
+     26.72997001343295
+    ],
+    "size": [
+     5.0,
+     5.0,
+     156.99999999999997
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "mast (optional)"
+   },
+   {
+    "name": "COL_Mast_Fore",
+    "centre": [
+     95.0,
+     63.72078659177529,
+     20.704138623121477
+    ],
+    "size": [
+     5.0,
+     5.0,
+     117.99999999999999
+    ],
+    "pivot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "note": "mast (optional)"
+   }
+  ]
+ },
+ "scale_note": "1 stud = 1 Roblox stud. 5-stud character fits the 8 wide x 10 high cabin door; cabin interior is 16 high at the eaves (30 at the roof peak). Deck + cabin floor level at Y=24. Ship ~317 x 59 x 87 hull, mast tip ~160 up. Ramps 12 wide, felt-lined rails ~3.5 high.",
+ "deviations": [
+  "Cabin is 43 deep (z -19..24) instead of ~55: hull interior at Y24 is only ~66 wide",
+  "Masts merged into Rigging mesh",
+  "Dressing_Glow and CupRef empty are extras",
+  "Tee pad is a thin felt slab",
+  "Sand, water, mound, 5-stud figures in previews are preview-only, not exported",
+  "Hull is visually closed but not watertight; hull COL boxes are scenery"
+ ]
+}

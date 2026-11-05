@@ -1,0 +1,619 @@
+{
+ "kit": "kit_v2_2 (kit_v2_1 with the two torches changed; the other 10 meshes are byte-identical copies of kit_v2_1)",
+ "style": "Look B (chunky low-poly, flat warm colours, palette texture)",
+ "conventions": {
+  "origin": "base centre at ground level (see per-mesh pivot notes)",
+  "facing": "+Z",
+  "units": "studs",
+  "texture": "kit_palette 256px palette PNG, per-vertex UVs at palette cell centres, no vertex colours (each FBX has its own copy of the png embedded + beside it)",
+  "scenery": "ALL meshes are scenery: CanCollide = false",
+  "max_tris_each": 20000,
+  "fbx": "Blender export, axis_forward=-Z axis_up=Y, global_scale 1, object_types MESH+EMPTY"
+ },
+ "warm_light_color_rgb": [
+  255,
+  170,
+  90
+ ],
+ "glow_part_color_rgb": [
+  255,
+  190,
+  110
+ ],
+ "lights_howto": "Each light FBX contains (a) an Empty/Null node named LightAttach and (b) a separate mesh object <mesh>_Glow with its own material <mesh>_glow_mat. In Roblox set the <mesh>_Glow MeshPart Material=Neon (colour 255,190,110) and add a PointLight (Color 255,170,90) to an Attachment named LightAttach at the listed position. NOTE: whether Studio import converts the FBX Null into an Attachment automatically is not verified here; positions are given in Roblox coordinates so a script can create the Attachment if it does not. Torch _Glow part has two colours (255,170,90 tongues, 255,220,150 core) from the palette texture. (kit_v2_2: the torches now use _Flame and _Core parts instead of _Glow; the lanterns still use <mesh>_Glow with the palette texture.)",
+ "rock_tones_rgb": {
+  "mid": [
+   115,
+   100,
+   92
+  ],
+  "dark": [
+   94,
+   82,
+   76
+  ],
+  "light": [
+   135,
+   119,
+   110
+  ],
+  "note": "kit_ruin_arch, kit_ruin_wall and kit_boulder_pile use ONLY these three palette cells for stone (identical to cave v2.2 and kit_v1_2 rocks); moss caps use the kit_v1 LeafGreen/LeafDk/LeafLt greens"
+ },
+ "meshes": {
+  "kit_boulder_pile": {
+   "file": "kit_boulder_pile.fbx",
+   "tris": 1732,
+   "size_studs": [
+    31.42,
+    19.32,
+    19.58
+   ],
+   "bbox_min": [
+    -15.708,
+    -2.0,
+    -9.792
+   ],
+   "bbox_max": [
+    15.708,
+    17.322,
+    9.792
+   ],
+   "pivot": "sunk2",
+   "pivot_note": "4 boulders (3 stacked, 1 leaning), moss caps, 5 fern tufts. Lowest point exactly y=-2 (base sunk 2 studs); origin x/z centre, y=0 is ground level.",
+   "objects": {
+    "kit_boulder_pile": 1732
+   },
+   "materials": {
+    "kit_boulder_pile": [
+     "kit_boulder_pile_mat"
+    ]
+   },
+   "collide": false,
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_canopy_wall": {
+   "file": "kit_canopy_wall.fbx",
+   "tris": 3794,
+   "size_studs": [
+    203.23,
+    60.74,
+    15.73
+   ],
+   "bbox_min": [
+    -101.614,
+    -0.0,
+    -7.864
+   ],
+   "bbox_max": [
+    101.614,
+    60.742,
+    7.864
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Closed solid curtain, uneven top with 4 palm-crown bumps, tapered scalloped bottom; base-centre origin, min y=0.",
+   "objects": {
+    "kit_canopy_wall": 3794
+   },
+   "materials": {
+    "kit_canopy_wall": [
+     "kit_canopy_wall_mat"
+    ]
+   },
+   "collide": false,
+   "changed_in_v2_1": true,
+   "v2_tris": 2094,
+   "v2_size_studs": [
+    205.48,
+    59.99,
+    16.52
+   ],
+   "identical_to_v2_1": true
+  },
+  "kit_cliff_ridge": {
+   "file": "kit_cliff_ridge.fbx",
+   "tris": 2920,
+   "size_studs": [
+    300.0,
+    120.0,
+    60.0
+   ],
+   "bbox_min": [
+    -150.0,
+    -0.0,
+    -30.0
+   ],
+   "bbox_max": [
+    150.0,
+    120.0,
+    30.0
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Rounded rock ridge (115,100,92) cave-rock tones with green tops, closed with skirts to y=0.",
+   "objects": {
+    "kit_cliff_ridge": 2920
+   },
+   "materials": {
+    "kit_cliff_ridge": [
+     "kit_cliff_ridge_mat"
+    ]
+   },
+   "collide": false,
+   "changed_in_v2_1": true,
+   "v2_tris": 2920,
+   "v2_size_studs": [
+    300.0,
+    120.0,
+    60.0
+   ],
+   "identical_to_v2_1": true
+  },
+  "kit_crate_stack": {
+   "file": "kit_crate_stack.fbx",
+   "tris": 2880,
+   "size_studs": [
+    20.01,
+    12.46,
+    17.83
+   ],
+   "bbox_min": [
+    -10.004,
+    -0.0,
+    -8.916
+   ],
+   "bbox_max": [
+    10.004,
+    12.46,
+    8.916
+   ],
+   "pivot": "bbox",
+   "pivot_note": "3 crates (1 open, spilling coconuts), 2 barrels, rope coil, canvas tarp half pulled off to the -X side.",
+   "objects": {
+    "kit_crate_stack": 2880
+   },
+   "materials": {
+    "kit_crate_stack": [
+     "kit_crate_stack_mat"
+    ]
+   },
+   "collide": false,
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_hut_leanto": {
+   "file": "kit_hut_leanto.fbx",
+   "tris": 3324,
+   "size_studs": [
+    32.35,
+    27.02,
+    30.18
+   ],
+   "bbox_min": [
+    -16.176,
+    0.0,
+    -15.088
+   ],
+   "bbox_max": [
+    16.176,
+    27.019,
+    15.088
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Open-sided lean-to, open front faces +Z, slanted palm-thatch roof, hammock, plank shelf with 2 bottles. Origin base centre at ground.",
+   "objects": {
+    "kit_hut_leanto": 3324
+   },
+   "materials": {
+    "kit_hut_leanto": [
+     "kit_hut_leanto_mat"
+    ]
+   },
+   "collide": false,
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_lantern_hanging": {
+   "file": "kit_lantern_hanging.fbx",
+   "tris": 256,
+   "size_studs": [
+    1.21,
+    3.17,
+    1.4
+   ],
+   "bbox_min": [
+    -0.606,
+    -3.2,
+    -0.7
+   ],
+   "bbox_max": [
+    0.606,
+    -0.026,
+    0.7
+   ],
+   "pivot": "ringtop",
+   "pivot_note": "PIVOT IS THE TOP OF THE RING (y=0, ring top). The lantern hangs BELOW the pivot: model spans y -3.2..0. Hang it from a rope/hinge at the pivot.",
+   "objects": {
+    "kit_lantern_hanging": 232,
+    "kit_lantern_hanging_Glow": 24
+   },
+   "materials": {
+    "kit_lantern_hanging": [
+     "kit_lantern_hanging_mat"
+    ],
+    "kit_lantern_hanging_Glow": [
+     "kit_lantern_hanging_glow_mat"
+    ]
+   },
+   "collide": false,
+   "LightAttach_pos_roblox_studs": [
+    0.0,
+    -2.1,
+    0.0
+   ],
+   "neon_parts": [
+    "kit_lantern_hanging_Glow"
+   ],
+   "neon_material": "kit_lantern_hanging_glow_mat",
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_lantern_post": {
+   "file": "kit_lantern_post.fbx",
+   "tris": 610,
+   "size_studs": [
+    5.87,
+    10.15,
+    3.58
+   ],
+   "bbox_min": [
+    -1.644,
+    0.0,
+    -1.898
+   ],
+   "bbox_max": [
+    4.23,
+    10.153,
+    1.684
+   ],
+   "pivot": "base",
+   "pivot_note": "Crooked wooden post with crossbar and brace; lantern hangs from the crossbar 3.4 studs toward +X. Origin = post base centre at ground.",
+   "objects": {
+    "kit_lantern_post": 586,
+    "kit_lantern_post_Glow": 24
+   },
+   "materials": {
+    "kit_lantern_post": [
+     "kit_lantern_post_mat"
+    ],
+    "kit_lantern_post_Glow": [
+     "kit_lantern_post_glow_mat"
+    ]
+   },
+   "collide": false,
+   "LightAttach_pos_roblox_studs": [
+    3.4,
+    6.404,
+    0.0
+   ],
+   "neon_parts": [
+    "kit_lantern_post_Glow"
+   ],
+   "neon_material": "kit_lantern_post_glow_mat",
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_rowboat_broken": {
+   "file": "kit_rowboat_broken.fbx",
+   "tris": 1772,
+   "size_studs": [
+    20.33,
+    13.82,
+    13.82
+   ],
+   "bbox_min": [
+    -10.164,
+    0.0,
+    -6.912
+   ],
+   "bbox_max": [
+    10.164,
+    13.824,
+    6.912
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Hull split along the side, tipped on its side in sand drifts, faded paint (90,140,150) on planks, one oar upright, one cracked on the ground. About 20 long (X).",
+   "objects": {
+    "kit_rowboat_broken": 1772
+   },
+   "materials": {
+    "kit_rowboat_broken": [
+     "kit_rowboat_broken_mat"
+    ]
+   },
+   "collide": false,
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_ruin_arch": {
+   "file": "kit_ruin_arch.fbx",
+   "tris": 3388,
+   "size_studs": [
+    34.31,
+    29.77,
+    12.96
+   ],
+   "bbox_min": [
+    -17.157,
+    -0.0,
+    -6.481
+   ],
+   "bbox_max": [
+    17.157,
+    29.774,
+    6.481
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Broken arch, left pillar standing, right side collapsed into rubble pile (+X), moss caps, vine strip draped over arch.",
+   "objects": {
+    "kit_ruin_arch": 3388
+   },
+   "materials": {
+    "kit_ruin_arch": [
+     "kit_ruin_arch_mat"
+    ]
+   },
+   "collide": false,
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_ruin_wall": {
+   "file": "kit_ruin_wall.fbx",
+   "tris": 1622,
+   "size_studs": [
+    23.09,
+    16.56,
+    11.09
+   ],
+   "bbox_min": [
+    -11.546,
+    -0.0,
+    -5.546
+   ],
+   "bbox_max": [
+    11.546,
+    16.56,
+    5.546
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Wall chunk variant with window gap, buttress, rubble, moss caps. About 23 wide incl. rubble (wall body ~20).",
+   "objects": {
+    "kit_ruin_wall": 1622
+   },
+   "materials": {
+    "kit_ruin_wall": [
+     "kit_ruin_wall_mat"
+    ]
+   },
+   "collide": false,
+   "identical_to_v2": true,
+   "identical_to_v2_1": true
+  },
+  "kit_torch_tiki": {
+   "file": "kit_torch_tiki.fbx",
+   "tris": 888,
+   "size_studs": [
+    3.82,
+    8.91,
+    3.82
+   ],
+   "bbox_min": [
+    -1.911,
+    -0.0,
+    -1.911
+   ],
+   "bbox_max": [
+    1.911,
+    8.915,
+    1.911
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Bamboo pole, rope wraps, low bowl, origin base centre (unchanged). Flame = 3 tongues (_Flame), Core = pale inner core (_Core), both plain Neon colour parts; LightAttach at the flame centre.",
+   "objects": {
+    "kit_torch_tiki": 392,
+    "kit_torch_tiki_Core": 124,
+    "kit_torch_tiki_Flame": 372
+   },
+   "materials": {
+    "kit_torch_tiki": [
+     "kit_torch_tiki_mat"
+    ],
+    "kit_torch_tiki_Core": [
+     "kit_torch_tiki_core_mat"
+    ],
+    "kit_torch_tiki_Flame": [
+     "kit_torch_tiki_flame_mat"
+    ]
+   },
+   "collide": false,
+   "LightAttach_pos_roblox_studs": [
+    0.0,
+    7.348,
+    0.0
+   ],
+   "neon_parts": {
+    "kit_torch_tiki_Flame": {
+     "neon_color_rgb": [
+      255,
+      140,
+      50
+     ],
+     "tris": 372,
+     "texture": null
+    },
+    "kit_torch_tiki_Core": {
+     "neon_color_rgb": [
+      255,
+      220,
+      150
+     ],
+     "tris": 124,
+     "texture": null
+    }
+   },
+   "changed_in_v2_1": true,
+   "v2_tris": 628,
+   "v2_size_studs": [
+    3.82,
+    8.95,
+    3.82
+   ],
+   "v2_LightAttach": [
+    0.0,
+    7.348,
+    0.0
+   ],
+   "changed_in_v2_2": true,
+   "v2_1_tris": 888,
+   "v2_1_size_studs": [
+    3.82,
+    8.91,
+    3.82
+   ],
+   "v2_1_LightAttach": [
+    0.0,
+    7.348,
+    0.0
+   ],
+   "body_part": {
+    "name": "kit_torch_tiki",
+    "tris": 392,
+    "texture": "palette"
+   }
+  },
+  "kit_torch_tiki_short": {
+   "file": "kit_torch_tiki_short.fbx",
+   "tris": 832,
+   "size_studs": [
+    3.82,
+    5.92,
+    3.82
+   ],
+   "bbox_min": [
+    -1.911,
+    -0.0,
+    -1.911
+   ],
+   "bbox_max": [
+    1.911,
+    5.924,
+    1.911
+   ],
+   "pivot": "bbox",
+   "pivot_note": "Bamboo pole, rope wraps, low bowl, origin base centre (unchanged). Flame = 3 tongues (_Flame), Core = pale inner core (_Core), both plain Neon colour parts; LightAttach at the flame centre.",
+   "objects": {
+    "kit_torch_tiki_short": 336,
+    "kit_torch_tiki_short_Core": 124,
+    "kit_torch_tiki_short_Flame": 372
+   },
+   "materials": {
+    "kit_torch_tiki_short": [
+     "kit_torch_tiki_short_mat"
+    ],
+    "kit_torch_tiki_short_Core": [
+     "kit_torch_tiki_short_core_mat"
+    ],
+    "kit_torch_tiki_short_Flame": [
+     "kit_torch_tiki_short_flame_mat"
+    ]
+   },
+   "collide": false,
+   "LightAttach_pos_roblox_studs": [
+    0.0,
+    4.65,
+    0.0
+   ],
+   "neon_parts": {
+    "kit_torch_tiki_short_Flame": {
+     "neon_color_rgb": [
+      255,
+      140,
+      50
+     ],
+     "tris": 372,
+     "texture": null
+    },
+    "kit_torch_tiki_short_Core": {
+     "neon_color_rgb": [
+      255,
+      220,
+      150
+     ],
+     "tris": 124,
+     "texture": null
+    }
+   },
+   "changed_in_v2_1": true,
+   "v2_tris": 516,
+   "v2_size_studs": [
+    3.82,
+    5.95,
+    3.82
+   ],
+   "v2_LightAttach": [
+    0.0,
+    4.65,
+    0.0
+   ],
+   "changed_in_v2_2": true,
+   "v2_1_tris": 832,
+   "v2_1_size_studs": [
+    3.82,
+    5.92,
+    3.82
+   ],
+   "v2_1_LightAttach": [
+    0.0,
+    4.65,
+    0.0
+   ],
+   "body_part": {
+    "name": "kit_torch_tiki_short",
+    "tris": 336,
+    "texture": "palette"
+   }
+  }
+ },
+ "deviations": [
+  "hut is about 32 wide x 27 tall x 30 deep (spec 30x25), ruin_wall about 23 wide incl. rubble, boulder_pile 31x19 (17.3 above ground), crate_stack 20x12.5 (spec 18x14), rowboat 20 long x 14 tall (on its side)",
+  "LightAttach is a plain Empty exported as an FBX Null; Roblox import behaviour unverified"
+ ],
+ "changed_meshes": [
+  "kit_torch_tiki",
+  "kit_torch_tiki_short"
+ ],
+ "unchanged_meshes": [
+  "kit_boulder_pile",
+  "kit_canopy_wall",
+  "kit_cliff_ridge",
+  "kit_crate_stack",
+  "kit_hut_leanto",
+  "kit_lantern_hanging",
+  "kit_lantern_post",
+  "kit_rowboat_broken",
+  "kit_ruin_arch",
+  "kit_ruin_wall"
+ ],
+ "v2_1_changes": [
+  "kit_canopy_wall: uneven top line, 4 taller palm-crown bumps (tall narrow dome + fan domes) rising to ~1.5-2x the line height, bottom tapered (thickness 10 -> 3.2) with a scalloped lower edge instead of a flat slab; still a closed solid (double sided).",
+  "kit_torch_tiki / _short: teardrop flame of 3 orange tongues Flame (255,170,90) around a taller brighter core FlameCore (255,220,150), both in the separate <mesh>_Glow object; bowl rim lowered to 0.62 above the pole top so the flame stands well above it; LightAttach moved to the flame centre.",
+  "kit_cliff_ridge: peaks rounded (cosine profile, less noise), rock warmed to Rock (115,100,92) with RockDk (94,82,76) / RockLt (135,119,110) banding, far more green on top (RidgeGreen)."
+ ],
+ "palette_note": "Torch Flame palette cell is (255,140,50) (was 255,170,90 in v2_1); the torch Flame/Core objects no longer sample the palette. Unchanged meshes keep their v2_1 palette/UVs.",
+ "previews": "previews_kit_v2_2/ (3q of both torches with Flame/Core in emission colours, 3q of both lanterns, lineup.png with 6-stud figure, lineup_lights/_set1/_set2/_skyline)",
+ "v2_2_changes": [
+  "Torch _Glow part split into two objects: <mesh>_Flame (the 3 tongues) and <mesh>_Core (pale inner core), each with its own material and NO texture node (plain Base Color/Emission colour only). UVs are still exported on both.",
+  "Core made larger (radius 0.5 -> 0.78 relative) so it shows between and above the tongues; its tip stays just under the tallest tongue so sizes, pivot and LightAttach are unchanged.",
+  "Neon colours: Flame (255,140,50), Core (255,220,150)."
+ ],
+ "neon_howto": "In Studio: set <mesh>_Flame to Material=Neon, Color=(255,140,50) and <mesh>_Core to Material=Neon, Color=(255,220,150), and clear TextureID on both (no texture is used). Body part keeps the palette texture. PointLight colour (255,170,90) on the LightAttach Attachment."
+}

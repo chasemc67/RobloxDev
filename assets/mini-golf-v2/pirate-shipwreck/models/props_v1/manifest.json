@@ -1,0 +1,298 @@
+{
+ "name": "props_v1",
+ "scene": "pirate-shipwreck",
+ "units": "studs (1 stud = 1 unit)",
+ "status": "ready for review; scenery only",
+ "conventions": {
+  "pivot": "base centre at ground level (min Y = 0, bbox centre X/Z = 0)",
+  "front": "+Z",
+  "up": "+Y",
+  "colour": "palette texture (props_palette.png, 8x8 cells, 56 colours, no vertex colours), one mesh object per FBX",
+  "fbx_export": "axis_forward=-Z, axis_up=Y, global_scale=1, face-smoothed"
+ },
+ "gameplay": "Scenery only. No prop is a putting surface; set CanCollide=false / CanQuery=false (or collide only for blocking) and keep clear of felt. Amber PointLight (cannon, etc.) is added in Studio; cannon smoke is a particle emitter, not mesh.",
+ "props": [
+  {
+   "id": "prop_cannon",
+   "fbx": "prop_cannon.fbx",
+   "palette_png": "prop_cannon.png",
+   "preview": "previews_props_v1/3q_prop_cannon.png",
+   "tris": 1968,
+   "size_studs": {
+    "x": 14.86,
+    "y": 6.47,
+    "z": 20.67
+   },
+   "bbox_min": [
+    -7.428,
+    -0.0,
+    -10.334
+   ],
+   "bbox_max": [
+    7.428,
+    6.468,
+    10.334
+   ],
+   "uv": true,
+   "objects": 1,
+   "placement": {
+    "gag": "gag02_backward_cannon",
+    "where": "wreck deck beside pad 1-2",
+    "anchor": [
+     -656.24,
+     17.0,
+     206.53
+    ],
+    "yawDeg": 254.8,
+    "placements_footprint": {
+     "x": 14,
+     "z": 7,
+     "height": 7,
+     "units": "studs"
+    }
+   },
+   "note": "Cannon pointing back at the ship. Muzzle faces +Z: set yaw so the model's +Z points at the wreck (the placement's yawDeg is the gag's heading; footprint x14/z7 in placements assumed the long axis on x, but the model's long axis is Z).",
+   "nearest_pad_art_clear_gap_studs": [
+    {
+     "pad": "Pad01",
+     "gap": 95.3
+    },
+    {
+     "pad": "Pad02",
+     "gap": 224.5
+    }
+   ],
+   "clearance_check": "gap = anchor-to-art-clear-rectangle distance minus prop circumscribed radius; >= 8 satisfies emptySpaceAroundPad"
+  },
+  {
+   "id": "prop_coconut",
+   "fbx": "prop_coconut.fbx",
+   "palette_png": "prop_coconut.png",
+   "preview": "previews_props_v1/3q_prop_coconut.png",
+   "tris": 3526,
+   "size_studs": {
+    "x": 21.75,
+    "y": 55.33,
+    "z": 20.77
+   },
+   "bbox_min": [
+    -10.873,
+    -0.0,
+    -10.385
+   ],
+   "bbox_max": [
+    10.873,
+    55.332,
+    10.385
+   ],
+   "uv": true,
+   "objects": 1,
+   "placement": {
+    "gag": "gag07_coconut_casualty",
+    "where": "jungle entry, beside pad 10",
+    "anchor": [
+     390.66,
+     6.19,
+     119.68
+    ],
+    "yawDeg": -84.6,
+    "placements_footprint": {
+     "x": 16,
+     "z": 16,
+     "height": 55,
+     "units": "studs"
+    }
+   },
+   "note": "Leaning palm with a plain-hat skeleton flat under it, hit by a coconut. Cute, no gore.",
+   "nearest_pad_art_clear_gap_studs": [
+    {
+     "pad": "Pad10",
+     "gap": -1.0
+    },
+    {
+     "pad": "Pad11",
+     "gap": 188.2
+    }
+   ],
+   "clearance_check": "overlaps art-clear area of nearest pad; see gap"
+  },
+  {
+   "id": "prop_flytrap",
+   "fbx": "prop_flytrap.fbx",
+   "palette_png": "prop_flytrap.png",
+   "preview": "previews_props_v1/3q_prop_flytrap.png",
+   "tris": 2240,
+   "size_studs": {
+    "x": 20.43,
+    "y": 30.6,
+    "z": 26.63
+   },
+   "bbox_min": [
+    -10.215,
+    0.0,
+    -13.317
+   ],
+   "bbox_max": [
+    10.215,
+    30.603,
+    13.317
+   ],
+   "uv": true,
+   "objects": 1,
+   "placement": {
+    "gag": "gag10_flytrap_burp",
+    "where": "jungle, pads 13-14 (beside pad 13)",
+    "anchor": [
+     -389.19,
+     23.87,
+     -138.37
+    ],
+    "yawDeg": -120.3,
+    "placements_footprint": {
+     "x": 20,
+     "z": 20,
+     "height": 30,
+     "units": "studs"
+    }
+   },
+   "note": "Flytrap that swallowed a pirate: only striped socks and boots stick out of its mouth; a plain hat lies on the ground. Mouth faces +Z.",
+   "nearest_pad_art_clear_gap_studs": [
+    {
+     "pad": "Pad13",
+     "gap": -0.8
+    },
+    {
+     "pad": "Pad12",
+     "gap": 204.7
+    }
+   ],
+   "clearance_check": "overlaps art-clear area of nearest pad; see gap"
+  },
+  {
+   "id": "prop_croc",
+   "fbx": "prop_croc.fbx",
+   "palette_png": "prop_croc.png",
+   "preview": "previews_props_v1/3q_prop_croc.png",
+   "tris": 1832,
+   "size_studs": {
+    "x": 27.0,
+    "y": 10.91,
+    "z": 40.0
+   },
+   "bbox_min": [
+    -13.5,
+    -0.0,
+    -20.0
+   ],
+   "bbox_max": [
+    13.5,
+    10.906,
+    20.0
+   ],
+   "uv": true,
+   "objects": 1,
+   "placement": {
+    "gag": "gag11_croc_nap",
+    "where": "rest stop near pad 14 (RestStop1)",
+    "anchor": [
+     -631.5,
+     26.62,
+     -556.5
+    ],
+    "yawDeg": 0.0,
+    "placements_footprint": {
+     "x": 40,
+     "z": 16,
+     "height": 12,
+     "units": "studs"
+    }
+   },
+   "note": "Napping croc in a plain captain's hat on a mud patch, with a cutlass beside it. Head toward +Z.",
+   "nearest_pad_art_clear_gap_studs": [
+    {
+     "pad": "Pad14",
+     "gap": 119.7
+    },
+    {
+     "pad": "Pad15",
+     "gap": 202.7
+    }
+   ],
+   "clearance_check": "gap = anchor-to-art-clear-rectangle distance minus prop circumscribed radius; >= 8 satisfies emptySpaceAroundPad"
+  },
+  {
+   "id": "prop_captain",
+   "fbx": "prop_captain.fbx",
+   "palette_png": "prop_captain.png",
+   "preview": "previews_props_v1/3q_prop_captain.png",
+   "tris": 4226,
+   "size_studs": {
+    "x": 24.7,
+    "y": 31.68,
+    "z": 23.27
+   },
+   "bbox_min": [
+    -12.35,
+    -0.0,
+    -11.635
+   ],
+   "bbox_max": [
+    12.35,
+    31.684,
+    11.635
+   ],
+   "uv": true,
+   "objects": 1,
+   "placement": {
+    "gag": "gag13_captains_last_nap",
+    "where": "cave, beside pad 18",
+    "anchor": [
+     557.84,
+     107.0,
+     -516.0
+    ],
+    "yawDeg": 126.6,
+    "placements_footprint": {
+     "x": 24,
+     "z": 24,
+     "height": 30,
+     "units": "studs"
+    }
+   },
+   "note": "Skeleton captain asleep on a gold pile (in a chair, plain hat over closed eyes, parrot on the chair). Faces +Z.",
+   "nearest_pad_art_clear_gap_studs": [
+    {
+     "pad": "Pad18",
+     "gap": -1.0
+    },
+    {
+     "pad": "Pad17",
+     "gap": 169.0
+    }
+   ],
+   "clearance_check": "overlaps art-clear area of nearest pad; see gap"
+  }
+ ],
+ "palette": "props_palette.png (also embedded as <id>.png)",
+ "generators": [
+  "src/props_lib.py",
+  "src/gen_props.py",
+  "src/build_props.py",
+  "src/render_props.py",
+  "src/make_manifest.py",
+  "mkjob.sh"
+ ],
+ "previews": [
+  "previews_props_v1/3q_<prop>.png (x5)",
+  "previews_props_v1/lineup.png (5-stud figure beside each prop)",
+  "previews_props_v1/contact_sheet.png"
+ ],
+ "deviations": [
+  "Plain tricorn-style hats with a brass band on cannon scene, flytrap, croc, coconut skeleton and captain; no skull and crossbones, no flags anywhere (sheet sketches show skull-and-crossbones hats; replaced).",
+  "Actual footprints differ from the placements estimates: cannon 14.9x20.7 (long axis Z, with ramrod/scorch/ball stack) vs 14x7; croc 27x40 incl. mud patch vs 40x16 (rotate yaw so Z is the long axis); coconut 21.7x20.8 incl. palm crown vs 16x16; flytrap 20.4x26.6 incl. leaves and hat vs 20x20; captain 24.7x23.3 vs 24x24.",
+  "Extras added to make the gags read: cannon hat, ramrod, scorch disc, ball stack; croc cutlass and mud; captain parrot, chest, coins, gems.",
+  "Tri counts: cannon 1,968, croc 1,832, flytrap 2,240 are slightly under the 2-8k aim (coconut 3,526 and captain 4,226 are inside it); all five are far under the 20k cap.",
+  "Previews: Workbench renders on a flat sand-tone slab; the ground slab is not part of any FBX.",
+  "Clearance: using the circumscribed radius of each footprint, coconut (Pad10), flytrap (Pad13) and captain (Pad18) overlap the pad art-clear rectangle by about 1 stud at the placements anchors. Nudge each anchor ~2 studs away from its pad (or yaw it) in Studio so >= 8 studs of empty space around the pad is kept. Cannon and croc anchors are far from any pad."
+ ]
+}

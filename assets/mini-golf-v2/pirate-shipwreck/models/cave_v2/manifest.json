@@ -1,0 +1,359 @@
+{
+ "version": "cave_v2",
+ "look": "B Golden Hour Hideaway",
+ "units": "studs (1 stud = 1 Blender unit, FBX exported 1:1)",
+ "frame": "Roblox frame: +Y up, FRONT (cave mouth, stair flight, pool) = +Z (south), west flank (waterfall + pool) = -X. Origin = footprint centre at the base (y=0 is the rock base). Place all six FBXs at the same origin with identity rotation (yaw 0).",
+ "world_placement": {
+  "origin_world": [
+   563.5,
+   66.0,
+   -606.5
+  ],
+  "yaw_deg": 0,
+  "source": "placements.json cave footprint (centre 563.5, 66, -606.5; 240 x 140; front faces +Z)",
+  "note": "base y=0 maps to world y=66. The sheet terrain under it is not flat (see terrain_notes); sink/bury the base into the hill as needed."
+ },
+ "size": {
+  "rock_bbox_local": {
+   "min": [
+    -116.96,
+    -0.41,
+    -68.43
+   ],
+   "max": [
+    118.22,
+    149.4,
+    70.0
+   ]
+  },
+  "width": 235.2,
+  "height": 149.8,
+  "depth": 138.4,
+  "target": "about 240 x 150 x 140 (placements footprint x +-120, z +-70, height 150)",
+  "note": "rock mass (lower+upper) stays inside x +-117, z +-70, y -0.5..149.4; foliage tops 142; stairs front edge z=70"
+ },
+ "mouth": {
+  "centre_x_local": 20,
+  "floor_y_local": 28,
+  "width": 60,
+  "height_arch_apex": 54,
+  "spring_line_y_local": 58,
+  "apex_y_local": 82,
+  "floor_world_y": 94,
+  "depth_z_local": [
+   -30,
+   34
+  ],
+  "was": "40 wide x 36 tall in v1 (1.5x now)",
+  "note": "mouth centre x local +20 = world 583.5 (placements centreX), floor y local 28 = world 94. Tunnel is a 64-stud-deep dead end (back wall z=-30); the warm glow is only at the back (z -29.7..-17), 55+ studs behind the mouth, as staggered light cards + a dim backdrop, not a slab over the mouth."
+ },
+ "glow": {
+  "kind": "light cards (0.5 thick, staggered z -28.3..-23.1), 2 dim backdrop panels at z -29.55/-29.05, floor glow patches, 2 hanging globes at z -8",
+  "colours": {
+   "GlowDeep": [
+    230,
+    100,
+    30
+   ],
+   "GlowOrange": [
+    255,
+    140,
+    40
+   ],
+   "GlowHot": [
+    255,
+    176,
+    70
+   ]
+  },
+  "nearest_to_mouth_studs": 47
+ },
+ "waterfall": {
+  "x_local": -80,
+  "width": 22,
+  "top_y_local": 95.5,
+  "bottom_y_local": 48.4,
+  "front_z_local": 17,
+  "world_x": 483.5,
+  "was": "13 wide, amber-blue in v1",
+  "colour": "WhiteWater (240,250,252) centre 52% of width, WaterLt (170,224,236) edges, foam streaks and base splash"
+ },
+ "pool": {
+  "centre_local": [
+   -80,
+   48.4,
+   36
+  ],
+  "radius": 19,
+  "surface_y_local": 48.4,
+  "note": "pool is inside the footprint, in front of the west flank, directly at the base of the waterfall (placements pool centre was 34 studs outside the face; adjust the course water if needed)"
+ },
+ "stairs": {
+  "x_local": [
+   0,
+   40
+  ],
+  "z_local": [
+   29.6,
+   70
+  ],
+  "floor_top_y_local": 28,
+  "front_y_local": 10,
+  "steps": 20,
+  "note": "decorative stair flight 40 wide (v1 30); mouth floor y local 28 = world 94"
+ },
+ "colour": {
+  "rock_base": [
+   95,
+   85,
+   105
+  ],
+  "sandy_tops": [
+   190,
+   150,
+   110
+  ],
+  "rule": "top faces whose normal is within ~57 deg of the sun (-0.45,0.75,0.50 normalised: from the west-south-west, front) are Sandy (190,150,110) / SandyDk (171,133,98); the rest of the tops are slate-light / moss. Sides: lit side faces RockLt, shaded RockDk, base Rock (95,85,105)."
+ },
+ "silhouette": {
+  "skyline": "climbs west -> east: west shoulder ~100, east summit ~146 (max 149.4 incl. slab tilt); saddle at x~10",
+  "slabs": "~257 chunky leaning slabs (9-12 x 6.5-8.8 studs), stacked in 2-4 segments with setbacks, tops tilted, lean up to 8-15 studs; no repeated hex columns; ~60 small ceiling columns only above the tunnel"
+ },
+ "pad_clearance": {
+  "pads_checked": [
+   15,
+   16,
+   17,
+   18
+  ],
+  "art_clear": {
+   "pad15": {
+    "pos": [
+     -358.5,
+     40,
+     -550.5
+    ],
+    "art_clear_gap_to_mesh_footprint_studs": 758.51
+   },
+   "pad16": {
+    "pos": [
+     109.5,
+     54,
+     -514.5
+    ],
+    "art_clear_gap_to_mesh_footprint_studs": 289.49
+   },
+   "pad17": {
+    "pos": [
+     394.5,
+     72,
+     -349.5
+    ],
+    "art_clear_gap_to_mesh_footprint_studs": 163.17
+   },
+   "pad18": {
+    "pos": [
+     583.5,
+     90,
+     -481.5
+    ],
+    "art_clear_gap_to_mesh_footprint_studs": 8.28
+   }
+  },
+  "rule": "art-clear 54x84 rectangles vs the mesh x/z bounding footprint (studs); footprint front edge world z -536.5, x 446.5..681.7"
+ },
+ "not_a_gameplay_surface": "Scenery only. No flat ledges, no pads, no putting surface, nothing meant to be walked on; every part should be CanCollide=false except optionally an invisible blocker the course builder adds. Stairs and tunnel are decorative.",
+ "parts": {
+  "cave_cliff_lower": {
+   "fbx": "cave_cliff_lower.fbx",
+   "kind": "lower rock mass (y 0..64): chunky leaning rock slabs, foot boulders, tunnel floor/jambs/back wall, arch jambs",
+   "tris": 7044,
+   "size_studs_xyz": [
+    231.82,
+    82.41,
+    138.03
+   ],
+   "bbox": {
+    "min": [
+     -116.96,
+     -0.41,
+     -68.43
+    ],
+    "max": [
+     114.86,
+     82.0,
+     69.6
+    ]
+   },
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "tris_in_fbx_blender_import": 7044
+  },
+  "cave_cliff_upper": {
+   "fbx": "cave_cliff_upper.fbx",
+   "kind": "upper rock tiers (y 44..149) incl. the east summit; arch voussoirs + lintel over the mouth; waterfall backing wall",
+   "tris": 7014,
+   "size_studs_xyz": [
+    210.56,
+    104.9,
+    106.33
+   ],
+   "bbox": {
+    "min": [
+     -102.95,
+     44.5,
+     -64.0
+    ],
+    "max": [
+     107.61,
+     149.4,
+     42.33
+    ]
+   },
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "tris_in_fbx_blender_import": 7014
+  },
+  "cave_stairs": {
+   "fbx": "cave_stairs.fbx",
+   "kind": "stone stair flight from the mouth floor (y 28) down to the front (z +70), rails + torches",
+   "tris": 984,
+   "size_studs_xyz": [
+    50.2,
+    35.96,
+    40.4
+   ],
+   "bbox": {
+    "min": [
+     -5.1,
+     0.0,
+     29.6
+    ],
+    "max": [
+     45.1,
+     35.96,
+     70.0
+    ]
+   },
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "tris_in_fbx_blender_import": 984
+  },
+  "cave_water": {
+   "fbx": "cave_water.fbx",
+   "kind": "wide white west-flank waterfall sheet (22 studs, white core) + foam + pool surface (swap to semi-transparent SmoothPlastic / Neon-ish white in Studio)",
+   "tris": 1060,
+   "size_studs_xyz": [
+    38.0,
+    48.3,
+    39.64
+   ],
+   "bbox": {
+    "min": [
+     -99.0,
+     47.2,
+     15.36
+    ],
+    "max": [
+     -61.0,
+     95.5,
+     55.0
+    ]
+   },
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "tris_in_fbx_blender_import": 1060
+  },
+  "cave_glow": {
+   "fbx": "cave_glow.fbx",
+   "kind": "warm orange light cards + dim backdrop panels + floor glow set 55-64 studs deep at the back of the tunnel, plus the 6 stair lantern globes (swap to Neon + PointLight)",
+   "tris": 796,
+   "size_studs_xyz": [
+    49.5,
+    36.51,
+    94.85
+   ],
+   "bbox": {
+    "min": [
+     -4.75,
+     20.09,
+     -29.7
+    ],
+    "max": [
+     44.75,
+     56.6,
+     65.15
+    ]
+   },
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "tris_in_fbx_blender_import": 796
+  },
+  "cave_foliage": {
+   "fbx": "cave_foliage.fbx",
+   "kind": "palms, vines, moss/bushes (separate so Studio can set Plastic / transparency / CanCollide=false)",
+   "tris": 11388,
+   "size_studs_xyz": [
+    233.74,
+    124.93,
+    130.16
+   ],
+   "bbox": {
+    "min": [
+     -115.52,
+     16.94,
+     -61.88
+    ],
+    "max": [
+     118.22,
+     141.87,
+     68.28
+    ]
+   },
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "tris_in_fbx_blender_import": 11388
+  }
+ },
+ "generator": [
+  "src/wreck_lib.py",
+  "src/gen_cave.py",
+  "src/build_cave.py",
+  "src/render_cave.py",
+  "src/make_manifest.py",
+  "src/box_preview.py",
+  "src/prev_box.py"
+ ],
+ "previews": "previews_cave_v2/",
+ "terrain_notes": [
+  "Heightmap terrain under the footprint is lower than y=66 at the back and flanks (base floats up to ~60 studs above ground there) and about 96-108 at the mouth/stairs (above the mouth floor y=94). Fix by sinking/burying the base or filling terrain; the mesh cannot adapt."
+ ],
+ "deviations": [
+  "No pad ledges in the mesh (pads are never in art meshes).",
+  "Pool is a tub inside the footprint at local (-80,48.4,36), not 34 studs outside the face.",
+  "Stair rise is 18 studs (y 10 -> 28) at the front, not a full ground-to-mouth ramp.",
+  "Mouth ceiling is built from ~60 small hanging columns (arch roof is stepped, not a smooth vault).",
+  "The back (north) side is plain slabs with a few dark flat gaps; it faces away from every pad.",
+  "Foliage extends to x -115.5..118.2 and z 68.3; rock mass x -117..115, z -68.4..69.6; stairs to z 70."
+ ],
+ "max_tris_per_mesh": 11388,
+ "under_20k": true
+}

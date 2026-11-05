@@ -1,0 +1,80 @@
+{
+ "version": "kit_v2_7_1",
+ "note": "Texture-only PIL edit of kit_v2_7/kit_hut_leanto.png. FBX is a byte-identical copy of kit_v2_7 (and kit_v2_4).",
+ "cells_changed": {
+  "Wood1 idx 33": {
+   "old": [
+    107,
+    71,
+    43
+   ],
+   "new": [
+    100,
+    72,
+    50
+   ]
+  },
+  "Wood2 idx 34": {
+   "old": [
+    136,
+    96,
+    59
+   ],
+   "new": [
+    122,
+    90,
+    64
+   ]
+  }
+ },
+ "unchanged_vs_kit_v2_7": {
+  "HutWoodDk": [
+   120,
+   82,
+   50
+  ],
+  "Plank": [
+   136,
+   91,
+   59
+  ],
+  "PlankDk": [
+   115,
+   75,
+   48
+  ],
+  "Straw": [
+   200,
+   165,
+   90
+  ],
+  "StrawDk": [
+   166,
+   134,
+   74
+  ],
+  "StrawLt": [
+   222,
+   190,
+   130
+  ]
+ },
+ "pixel_check": {
+  "changed_cells": [
+   "Wood1",
+   "Wood2"
+  ],
+  "changed_pixels": 2048,
+  "expected_pixels": 2048,
+  "all_other_pixels_identical": true
+ },
+ "fbx_identical_to_kit_v2_7": true,
+ "md5": {
+  "kit_hut_leanto.fbx": "fea1006d630f277f6ff540db0a8647e5",
+  "kit_hut_leanto.png": "de6c977b41873d3f5a2cb22258fa6176"
+ },
+ "fbx_note": "The FBX still embeds the old (v2_4) palette PNG; upload kit_v2_7_1/kit_hut_leanto.png as the Studio texture.",
+ "previews": [
+  "previews_kit_v2_7_1/before_after_hut_texture.png"
+ ]
+}

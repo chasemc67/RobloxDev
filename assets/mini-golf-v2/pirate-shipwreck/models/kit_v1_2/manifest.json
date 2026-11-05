@@ -1,0 +1,701 @@
+{
+ "set": "Pirate Shipwreck dressing kit",
+ "version": "kit_v1_2 (based on kit_v1_1; only kit_rock_s/m/l changed)",
+ "look": "B Golden Hour Hideaway",
+ "units": "Roblox studs (1 Blender unit = 1 stud)",
+ "orientation": "origin at base centre at ground level, front faces +Z, Y up; FBX export axis_forward=-Z axis_up=Y scale 1",
+ "scenery_note": "ALL meshes are scenery only: set CanCollide=false (and CanQuery/CanTouch false), Anchored=true. None are gameplay surfaces.",
+ "palette_png": "work/kit_palette.png (unchanged, identical to kit_v1_1)",
+ "rock_tones_rgb": {
+  "mid": [
+   115,
+   100,
+   92
+  ],
+  "dark": [
+   94,
+   82,
+   76
+  ],
+  "light": [
+   135,
+   119,
+   110
+  ],
+  "note": "kit_v1_1 rock bodies already used exactly these three palette cells; v1_2 keeps them. The tan came from the SandTop/SandTopLt cap shells."
+ },
+ "moss_rgb": {
+  "LeafGreen": [
+   62,
+   150,
+   72
+  ],
+  "LeafDk": [
+   46,
+   118,
+   60
+  ],
+  "LeafLt": [
+   96,
+   176,
+   80
+  ],
+  "fern": "Fern/FernDk/FernLt (kit_v1)"
+ },
+ "changes": [
+  "Cap shells (the tan SandTop/SandTopLt layers) now split by ring: upper part moss in LeafLt/LeafGreen/LeafDk, lowest band cave rock. Sand kept only on the lowest band of one small rock in kit_rock_m and one in kit_rock_l.",
+  "Added small fern tufts (2 s, 3 m, 5 l) on the shoulders of the smaller rocks, inside the original bbox.",
+  "Geometry, jitter, rng stream, pivots, sizes and burial depth identical to kit_v1_1 (asserted in gen_kit12.py)."
+ ],
+ "changed_meshes": [
+  "kit_rock_s",
+  "kit_rock_m",
+  "kit_rock_l"
+ ],
+ "meshes": {
+  "kit_palm_s": {
+   "fbx": "kit_palm_s.fbx",
+   "texture": "kit_palm_s.png",
+   "tris": 2120,
+   "size_studs": [
+    17.57,
+    24.15,
+    16.39
+   ],
+   "bbox_min": [
+    -8.783,
+    -0.0,
+    -8.193
+   ],
+   "bbox_max": [
+    8.783,
+    24.149,
+    8.193
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Short palm for beach pads (target ~25 high).",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_palm_s.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_palm_m": {
+   "fbx": "kit_palm_m.fbx",
+   "texture": "kit_palm_m.png",
+   "tris": 2388,
+   "size_studs": [
+    21.6,
+    40.05,
+    21.71
+   ],
+   "bbox_min": [
+    -10.801,
+    0.0,
+    -10.856
+   ],
+   "bbox_max": [
+    10.801,
+    40.054,
+    10.856
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Medium palm, shoulders the pad palms (target ~40 high).",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_palm_m.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_palm_l": {
+   "fbx": "kit_palm_l.fbx",
+   "texture": "kit_palm_l.png",
+   "tris": 2676,
+   "size_studs": [
+    27.04,
+    61.24,
+    26.45
+   ],
+   "bbox_min": [
+    -13.52,
+    0.0,
+    -13.224
+   ],
+   "bbox_max": [
+    13.52,
+    61.244,
+    13.224
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Tall palm for skyline and jungle edges (target ~60 high).",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_palm_l.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_palm_lean_a": {
+   "fbx": "kit_palm_lean_a.fbx",
+   "texture": "kit_palm_lean_a.png",
+   "tris": 2420,
+   "size_studs": [
+    21.17,
+    44.28,
+    35.47
+   ],
+   "bbox_min": [
+    -10.167,
+    0.0,
+    -10.847
+   ],
+   "bbox_max": [
+    11.002,
+    44.283,
+    24.619
+   ],
+   "pivot": "trunk base at x=z=0, y=0 (lean palm: placed by its trunk)",
+   "suggested_use": "Leaning palm: crown leans toward +Z (front). Origin is the trunk base.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_palm_lean_a.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_palm_lean_b": {
+   "fbx": "kit_palm_lean_b.fbx",
+   "texture": "kit_palm_lean_b.png",
+   "tris": 2312,
+   "size_studs": [
+    30.44,
+    35.85,
+    20.77
+   ],
+   "bbox_min": [
+    -8.875,
+    0.0,
+    -9.786
+   ],
+   "bbox_max": [
+    21.564,
+    35.848,
+    10.984
+   ],
+   "pivot": "trunk base at x=z=0, y=0 (lean palm: placed by its trunk)",
+   "suggested_use": "Leaning palm: crown leans toward +X. Origin is the trunk base.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_palm_lean_b.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_rock_s": {
+   "fbx": "kit_rock_s.fbx",
+   "texture": "kit_rock_s.png",
+   "tris": 1020,
+   "size_studs": [
+    10.76,
+    4.2,
+    11.19
+   ],
+   "bbox_min": [
+    -5.378,
+    -1.166,
+    -5.597
+   ],
+   "bbox_max": [
+    5.378,
+    3.03,
+    5.597
+   ],
+   "pivot": "bbox centre x/z at 0; y=0 is the ground line, bottom intentionally sits below ground (sinks into terrain)",
+   "suggested_use": "Small half-buried rock cluster for pad corners and waterline.",
+   "preview": "previews_kit_v1_2/3q_kit_rock_s.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": true,
+   "v1_1_tris": 724,
+   "v1_1_size_studs": [
+    10.76,
+    4.2,
+    11.19
+   ],
+   "objects": {
+    "kit_rock_s": 1020
+   }
+  },
+  "kit_rock_m": {
+   "fbx": "kit_rock_m.fbx",
+   "texture": "kit_rock_m.png",
+   "tris": 1600,
+   "size_studs": [
+    18.11,
+    6.76,
+    18.73
+   ],
+   "bbox_min": [
+    -9.054,
+    -1.985,
+    -9.363
+   ],
+   "bbox_max": [
+    9.054,
+    4.776,
+    9.363
+   ],
+   "pivot": "bbox centre x/z at 0; y=0 is the ground line, bottom intentionally sits below ground (sinks into terrain)",
+   "suggested_use": "Medium half-buried rock cluster for the beach and jungle banks.",
+   "preview": "previews_kit_v1_2/3q_kit_rock_m.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": true,
+   "v1_1_tris": 1144,
+   "v1_1_size_studs": [
+    18.11,
+    6.76,
+    18.73
+   ],
+   "objects": {
+    "kit_rock_m": 1600
+   }
+  },
+  "kit_rock_l": {
+   "fbx": "kit_rock_l.fbx",
+   "texture": "kit_rock_l.png",
+   "tris": 2460,
+   "size_studs": [
+    34.53,
+    9.16,
+    36.94
+   ],
+   "bbox_min": [
+    -17.267,
+    -2.567,
+    -18.469
+   ],
+   "bbox_max": [
+    17.267,
+    6.588,
+    18.469
+   ],
+   "pivot": "bbox centre x/z at 0; y=0 is the ground line, bottom intentionally sits below ground (sinks into terrain)",
+   "suggested_use": "Large half-buried rock cluster for headlands and cave approach.",
+   "preview": "previews_kit_v1_2/3q_kit_rock_l.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": true,
+   "v1_1_tris": 1732,
+   "v1_1_size_studs": [
+    34.53,
+    9.16,
+    36.94
+   ],
+   "objects": {
+    "kit_rock_l": 2460
+   }
+  },
+  "kit_leafclump": {
+   "fbx": "kit_leafclump.fbx",
+   "texture": "kit_leafclump.png",
+   "tris": 956,
+   "size_studs": [
+    24.73,
+    8.56,
+    22.69
+   ],
+   "bbox_min": [
+    -12.366,
+    -0.0,
+    -11.345
+   ],
+   "bbox_max": [
+    12.366,
+    8.56,
+    11.345
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Big-leaf jungle plant (taro/banana style) for the jungle trail and pad corners.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_leafclump.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_fernclump": {
+   "fbx": "kit_fernclump.fbx",
+   "texture": "kit_fernclump.png",
+   "tris": 1344,
+   "size_studs": [
+    18.32,
+    4.8,
+    17.05
+   ],
+   "bbox_min": [
+    -9.16,
+    0.0,
+    -8.523
+   ],
+   "bbox_max": [
+    9.16,
+    4.798,
+    8.523
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Low fern clump to break up bare ground; scatter 3-5 per pad corner.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_fernclump.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_vine_strip": {
+   "fbx": "kit_vine_strip.fbx",
+   "texture": "kit_vine_strip.png",
+   "tris": 2442,
+   "size_studs": [
+    28.93,
+    23.89,
+    4.41
+   ],
+   "bbox_min": [
+    -14.466,
+    -0.0,
+    -2.203
+   ],
+   "bbox_max": [
+    14.466,
+    23.89,
+    2.203
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Hanging vine curtain (about 22 wide, 25 tall) for jungle canopy edges; hang from a branch or canopy mass.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_vine_strip.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_vine_arch": {
+   "fbx": "kit_vine_arch.fbx",
+   "texture": "kit_vine_arch.png",
+   "tris": 4082,
+   "size_studs": [
+    45.4,
+    16.09,
+    12.08
+   ],
+   "bbox_min": [
+    -22.701,
+    -0.0,
+    -6.039
+   ],
+   "bbox_max": [
+    22.701,
+    16.091,
+    6.039
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Vine arch spanning a path (about 36 wide, 16 high). Path runs along Z; arch spans X. One every ~40 studs on the jungle trail.",
+   "preview": "previews_kit_v1_1/3q_kit_vine_arch.png",
+   "can_collide": false,
+   "uv": true,
+   "v1_tris": 2946,
+   "v1_size_studs": [
+    46.43,
+    16.09,
+    12.38
+   ],
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_planks": {
+   "fbx": "kit_planks.fbx",
+   "texture": "kit_planks.png",
+   "tris": 252,
+   "size_studs": [
+    16.69,
+    2.07,
+    14.95
+   ],
+   "bbox_min": [
+    -8.346,
+    -0.0,
+    -7.474
+   ],
+   "bbox_max": [
+    8.346,
+    2.072,
+    7.474
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Broken plank pile for the beach debris trail from the wreck.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_planks.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_barrel": {
+   "fbx": "kit_barrel.fbx",
+   "texture": "kit_barrel.png",
+   "tris": 448,
+   "size_studs": [
+    5.23,
+    5.4,
+    5.23
+   ],
+   "bbox_min": [
+    -2.615,
+    -0.0,
+    -2.615
+   ],
+   "bbox_max": [
+    2.615,
+    5.4,
+    2.615
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Barrel for the beach, pad 1 and the wreck deck.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_barrel.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_crate": {
+   "fbx": "kit_crate.fbx",
+   "texture": "kit_crate.png",
+   "tris": 480,
+   "size_studs": [
+    9.88,
+    4.7,
+    7.08
+   ],
+   "bbox_min": [
+    -4.942,
+    -0.0,
+    -3.542
+   ],
+   "bbox_max": [
+    4.942,
+    4.704,
+    3.542
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Wooden crate pair for the beach and wreck deck.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_crate.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_rope_coil": {
+   "fbx": "kit_rope_coil.fbx",
+   "texture": "kit_rope_coil.png",
+   "tris": 816,
+   "size_studs": [
+    6.79,
+    1.95,
+    6.09
+   ],
+   "bbox_min": [
+    -3.397,
+    -0.0,
+    -3.043
+   ],
+   "bbox_max": [
+    3.397,
+    1.951,
+    3.043
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Coiled rope for the wreck deck and beach.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_rope_coil.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_spar_snapped": {
+   "fbx": "kit_spar_snapped.fbx",
+   "texture": "kit_spar_snapped.png",
+   "tris": 292,
+   "size_studs": [
+    21.23,
+    6.65,
+    11.0
+   ],
+   "bbox_min": [
+    -10.613,
+    -0.0,
+    -5.5
+   ],
+   "bbox_max": [
+    10.613,
+    6.648,
+    5.5
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Snapped mast spar resting on a rock, with a lashed yard piece, for the beach and wreck.",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_spar_snapped.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_hull_rib": {
+   "fbx": "kit_hull_rib.fbx",
+   "texture": "kit_hull_rib.png",
+   "tris": 324,
+   "size_studs": [
+    21.19,
+    12.66,
+    15.0
+   ],
+   "bbox_min": [
+    -10.597,
+    -2.065,
+    -7.5
+   ],
+   "bbox_max": [
+    10.597,
+    10.6,
+    7.5
+   ],
+   "pivot": "bbox centre x/z at 0; y=0 is the ground line, bottom intentionally sits below ground (sinks into terrain)",
+   "suggested_use": "Half-buried hull ribs arching out of sand (bottom 2 studs are meant to sink below the ground line).",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_hull_rib.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_stack_a": {
+   "fbx": "kit_stack_a.fbx",
+   "texture": "kit_stack_a.png",
+   "tris": 3868,
+   "size_studs": [
+    301.98,
+    320.0,
+    257.07
+   ],
+   "bbox_min": [
+    -150.992,
+    -0.0,
+    -128.536
+   ],
+   "bbox_max": [
+    150.992,
+    320.0,
+    128.536
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Tall hazy sea-stack spire group for the skyline (about 320 high). Place 400-900 studs out; fog friendly.",
+   "preview": "previews_kit_v1_1/3q_kit_stack_a.png",
+   "can_collide": false,
+   "uv": true,
+   "v1_tris": 3688,
+   "v1_size_studs": [
+    188.74,
+    320.0,
+    160.67
+   ],
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_stack_b": {
+   "fbx": "kit_stack_b.fbx",
+   "texture": "kit_stack_b.png",
+   "tris": 3820,
+   "size_studs": [
+    407.75,
+    190.0,
+    358.33
+   ],
+   "bbox_min": [
+    -203.877,
+    -0.0,
+    -179.163
+   ],
+   "bbox_max": [
+    203.877,
+    190.0,
+    179.163
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Broad hazy mesa island with twin tops for the skyline (about 190 high).",
+   "preview": "../kit_v1/previews_kit_v1/3q_kit_stack_b.png",
+   "can_collide": false,
+   "uv": true,
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_stack_c": {
+   "fbx": "kit_stack_c.fbx",
+   "texture": "kit_stack_c.png",
+   "tris": 5096,
+   "size_studs": [
+    226.89,
+    390.0,
+    193.82
+   ],
+   "bbox_min": [
+    -113.445,
+    -0.0,
+    -96.909
+   ],
+   "bbox_max": [
+    113.445,
+    390.0,
+    96.909
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Tall leaning twin-fin sea stack (about 390 high) for the horizon.",
+   "preview": "previews_kit_v1_1/3q_kit_stack_c.png",
+   "can_collide": false,
+   "uv": true,
+   "v1_tris": 4844,
+   "v1_size_studs": [
+    141.81,
+    390.0,
+    121.14
+   ],
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  },
+  "kit_reef_ring": {
+   "fbx": "kit_reef_ring.fbx",
+   "texture": "kit_reef_ring.png",
+   "tris": 5524,
+   "size_studs": [
+    274.01,
+    14.4,
+    254.85
+   ],
+   "bbox_min": [
+    -137.006,
+    -0.0,
+    -127.427
+   ],
+   "bbox_max": [
+    137.006,
+    14.396,
+    127.427
+   ],
+   "pivot": "bbox centre x/z at 0, base at y=0",
+   "suggested_use": "Offshore reef ring (about 270 across, uneven outline) with a light-turquoise shallow band, coral bumps and a few rocks poking through; sits on the water surface, y=0 is the water line.",
+   "preview": "previews_kit_v1_1/3q_kit_reef_ring.png",
+   "can_collide": false,
+   "uv": true,
+   "v1_tris": 3244,
+   "v1_size_studs": [
+    255.0,
+    9.82,
+    256.41
+   ],
+   "changed_in_v1_2": false,
+   "identical_to_v1_1": true
+  }
+ },
+ "previews": "previews_kit_v1_2/ (3q of the three rocks, before_after.png, lineup_rocks.png with 6-stud figure)",
+ "kit_v2_rock_tone_check": "kit_v2 boulder_pile, ruin_arch and ruin_wall use only Rock (115,100,92), RockDk (94,82,76), RockLt (135,119,110) for stone and the same LeafGreen/LeafDk/LeafLt moss: same palette cells as kit_v1_2 rocks."
+}

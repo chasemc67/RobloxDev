@@ -1,0 +1,88 @@
+{
+ "version": "kit_v2_7_2",
+ "note": "Texture-only PIL edit of kit_v2_7_1/kit_hut_leanto.png. FBX is a byte-identical copy of kit_v2_7_1 (also kit_v2_4/v2_7).",
+ "cells_changed": {
+  "Straw idx 40": {
+   "old": [
+    200,
+    165,
+    90
+   ],
+   "new": [
+    230,
+    192,
+    112
+   ]
+  },
+  "StrawDk idx 41": {
+   "old": [
+    166,
+    134,
+    74
+   ],
+   "new": [
+    196,
+    158,
+    90
+   ]
+  },
+  "StrawLt idx 42": {
+   "old": [
+    222,
+    190,
+    130
+   ],
+   "new": [
+    245,
+    215,
+    155
+   ]
+  }
+ },
+ "unchanged_vs_kit_v2_7_1": {
+  "Wood1": [
+   100,
+   72,
+   50
+  ],
+  "Wood2": [
+   122,
+   90,
+   64
+  ],
+  "HutWoodDk": [
+   120,
+   82,
+   50
+  ],
+  "Plank": [
+   136,
+   91,
+   59
+  ],
+  "PlankDk": [
+   115,
+   75,
+   48
+  ]
+ },
+ "pixel_check": {
+  "changed_cells": [
+   "Straw",
+   "StrawDk",
+   "StrawLt"
+  ],
+  "changed_pixels": 3072,
+  "expected_pixels": 3072,
+  "all_other_pixels_identical": true
+ },
+ "fbx_identical_to_kit_v2_7_1": true,
+ "md5": {
+  "kit_hut_leanto.fbx": "fea1006d630f277f6ff540db0a8647e5",
+  "kit_hut_leanto.png": "a344d01293633dd608598977ad0e2ab7"
+ },
+ "fbx_note": "The FBX still embeds the old (v2_4) palette PNG; upload kit_v2_7_2/kit_hut_leanto.png as the Studio texture.",
+ "previews": [
+  "previews_kit_v2_7_2/before_after_hut_texture.png"
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "version": "wreck_v1",
+ "look": "B Golden Hour Hideaway",
+ "units": "studs (1 stud = 1 Blender unit, FBX exported 1:1)",
+ "frame": "Roblox frame: +Y up, bow toward +Z (duck faces +Z, lagoon), stern toward -Z (beach, pad 1). Origin = water line (y=0), on the deck centreline x=0, z=0 at hull midship. Place all four FBXs at the same origin with identity rotation; the duck gets its own CFrame (assembly).",
+ "water_line_origin": "y=0 is the water line. Hull min y -34.6 (keel at midship/stern); lowest hull point at the bow end -19.7 (below the water line); stern end sits near the sand.",
+ "sizes": {
+  "hull_local_length": 320,
+  "hull_local_beam": 90,
+  "hull_height_keel_to_sheer": "60 at midships, 64 at the bow",
+  "mast_tip_y": 160.9,
+  "note": "length/beam/height are measured in the hull own axes before the 15 deg list; the world bbox is wider across X because of the list"
+ },
+ "list_roll_deg": 15,
+ "list_note": "the hull lists 15 deg (roll about the long axis, high side +X). Deck centreline stays at x=0.",
+ "pad1_deck": {
+  "top_y": 24.0,
+  "x": [
+   -27,
+   27
+  ],
+  "z": [
+   -152,
+   -68
+  ],
+  "size_studs": {
+   "across_ship": 54,
+   "along_ship": 84
+  },
+  "centre": [
+   0,
+   24,
+   -110
+  ],
+  "note": "level flat plank deck, no props; centre is 50 studs from the stern end. Felt 30x60 (outer 38x68) with art-clear 54x84 fits exactly; the 54 across is the deck width. Pad centre world (0,24,-110); play axis runs along Z."
+ },
+ "pad1_clearance_check": {
+  "wreck_hull": 0.0,
+  "wreck_rig": null,
+  "wreck_glow": null
+ },
+ "parts": {
+  "wreck_hull": {
+   "fbx": "wreck_hull.fbx",
+   "kind": "hull + deck + stern-quarter cabin + pad-1 plank deck (one chunk, no split needed)",
+   "tris": 13688,
+   "budget": 18000,
+   "size_studs_xyz": [
+    91.95,
+    83.89,
+    326.59
+   ],
+   "bbox": {
+    "min": [
+     -48.02,
+     -34.6,
+     -160.21
+    ],
+    "max": [
+     43.93,
+     49.29,
+     166.38
+    ]
+   },
+   "tris_in_fbx_blender_import": 13688,
+   "pivot": [
+    0,
+    0,
+    0
+   ]
+  },
+  "wreck_rig": {
+   "fbx": "wreck_rig.fbx",
+   "kind": "masts + sails + rigging",
+   "tris": 3200,
+   "budget": 12000,
+   "size_studs_xyz": [
+    107.37,
+    145.33,
+    260.0
+   ],
+   "bbox": {
+    "min": [
+     -68.8,
+     15.61,
+     -60.03
+    ],
+    "max": [
+     38.57,
+     160.94,
+     199.97
+    ]
+   },
+   "tris_in_fbx_blender_import": 3200,
+   "pivot": [
+    0,
+    0,
+    0
+   ]
+  },
+  "wreck_glow": {
+   "fbx": "wreck_glow.fbx",
+   "kind": "lantern globes + window panes (swap to Neon/PointLight)",
+   "tris": 572,
+   "budget": 2000,
+   "size_studs_xyz": [
+    85.92,
+    28.98,
+    190.53
+   ],
+   "bbox": {
+    "min": [
+     -47.1,
+     17.11,
+     -58.03
+    ],
+    "max": [
+     38.82,
+     46.09,
+     132.5
+    ]
+   },
+   "tris_in_fbx_blender_import": 572,
+   "pivot": [
+    0,
+    0,
+    0
+   ]
+  },
+  "wreck_duck": {
+   "fbx": "wreck_duck.fbx",
+   "kind": "grumpy rubber-duck figurehead, own pivot",
+   "tris": 1684,
+   "budget": 3000,
+   "size_studs_xyz": [
+    22.24,
+    34.52,
+    28.72
+   ],
+   "bbox": {
+    "min": [
+     -12.35,
+     2.27,
+     151.32
+    ],
+    "max": [
+     9.89,
+     36.79,
+     180.04
+    ]
+   },
+   "tris_in_fbx_blender_import": 1684,
+   "pivot_in_wreck_frame": [
+    3.106,
+    4.606,
+    162.182
+   ],
+   "assembly_rotation3x3": [
+    [
+     -0.965926,
+     -0.258819,
+     0.0
+    ],
+    [
+     -0.258819,
+     0.965926,
+     0.0
+    ],
+    [
+     -0.0,
+     -0.0,
+     -1.0
+    ]
+   ]
+  }
+ },
+ "generator": [
+  "src/wreck_lib.py",
+  "src/gen_wreck.py",
+  "src/build_wreck.py",
+  "src/render_wreck.py",
+  "src/make_manifest.py"
+ ],
+ "previews": "previews_wreck_v1/",
+ "deviations": [
+  "LIST not bow-up pitch: the art director said the bow sits in the lagoon and only the stern touches sand, so the 15 deg tilt is a roll (list) about the long axis (the sheet side view shows the deck from above), the keel stays level and the lower bow hull is under the water line.",
+  "Sizes follow the art director override: hull ~320 x 90 x 60 (built at 220x70x45 and scaled 1.4545 x 1.2857 x 1.333, no added detail); mast tip y=160.9.",
+  "Cabin moved off the very stern to z -32..-55 (just forward of the pad-1 deck, 14+ studs clear of its edge) so the stern 84 studs stay flat and empty with nothing >3 studs within 25 of the pad centre (the sheet puts the cabin at the stern).",
+  "Pad-1 deck is a level plank platform (top y=24) standing on posts over the listed deck; its high-side edge is flush with the deck, the low-side edge is skirted.",
+  "No rocks/loose beams/barrel at the hull base (bow is in water; keep lagoon/beach props to the course builder).",
+  "Sails are red/cream stripe patchwork; palette-texture UVs instead of vertex colours (Roblox multiplies vertex colour with texture).",
+  "Duck is ~35 studs tall (head ~18 wide) rather than RobloxDevBot 22: it keeps the sheet proportion against the larger hull. Hat is a plain navy captain cap, eyepatch only, no skull and crossbones."
+ ],
+ "cabin_z": [
+  -55,
+  -32
+ ],
+ "deck_centreline_y": 16.2
+}

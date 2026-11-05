@@ -1,0 +1,116 @@
+{
+ "version": "kit_v2_7",
+ "note": "Texture-only (PIL palette edit, no Blender). kit_hut_leanto.fbx is a byte-identical copy of kit_v2_4; only kit_hut_leanto.png changed.",
+ "source": "kit_v2_4/kit_hut_leanto.png (md5 349ab76b3af6ad00b5ed7892233a93ce, identical in kit_v2_5, kit_v2_6, kit_v2_6_1; the latest hut texture). Studio TextureID 108289367129276 is reported to be this texture.",
+ "target": "Game Art Bot: hut posts about (120,82,50) (supersedes (130,108,85)).",
+ "cells_changed": {
+  "HutWoodDk": {
+   "idx": 62,
+   "old": [
+    80,
+    50,
+    30
+   ],
+   "new": [
+    120,
+    82,
+    50
+   ]
+  },
+  "Wood1": {
+   "idx": 33,
+   "old": [
+    110,
+    70,
+    40
+   ],
+   "new": [
+    107,
+    71,
+    43
+   ]
+  },
+  "Wood2": {
+   "idx": 34,
+   "old": [
+    140,
+    95,
+    55
+   ],
+   "new": [
+    136,
+    96,
+    59
+   ]
+  },
+  "Plank": {
+   "idx": 3,
+   "old": [
+    140,
+    90,
+    55
+   ],
+   "new": [
+    136,
+    91,
+    59
+   ]
+  },
+  "PlankDk": {
+   "idx": 4,
+   "old": [
+    118,
+    74,
+    45
+   ],
+   "new": [
+    115,
+    75,
+    48
+   ]
+  }
+ },
+ "cells_unchanged_listed": {
+  "Straw": [
+   200,
+   165,
+   90
+  ],
+  "StrawDk": [
+   166,
+   134,
+   74
+  ],
+  "StrawLt": [
+   222,
+   190,
+   130
+  ],
+  "RopeK": [
+   190,
+   160,
+   110
+  ],
+  "WoodDk": [
+   86,
+   54,
+   32
+  ]
+ },
+ "method": "HutWoodDk set to exactly (120,82,50). Wood1/Wood2 (the post wood) and Plank/PlankDk scaled by one per-channel ratio (0.973,1.011,1.073... see src) so the vertex-weighted mean of Wood1/Wood2 (196:156 verts) equals (120,82,50); contrast between wood shades kept.",
+ "cell_sharing_in_hut": {
+  "HutWoodDk": "56 verts, only the 4 post-base footings (y 0.2..1.8)",
+  "Wood1": "196 verts: posts (even), floor boards, rafters, y 0..24.9",
+  "Wood2": "156 verts: posts (odd), floor boards, shelf beam, y 0..23.3",
+  "Plank": "44 verts shelf plank",
+  "PlankDk": "16 verts shelf brackets"
+ },
+ "caveat": "The post shafts use Wood1/Wood2, not HutWoodDk, so these cells also recolour the floor boards, rafters, beam and shelf. They were already close to the target on average (mean (123,81,47)), so the change to the posts is small (Wood1 -3/+1/+3, Wood2 -4/+1/+4); the base footings change most. The red/orange in Studio is mostly lighting amplification of the texture. If the posts need to read lighter or less saturated in Studio, the post cells (Wood1/Wood2) need a larger shift than a match to (120,82,50).",
+ "other_meshes": "crate_stack, rowboat_broken, lantern_post, torches share the cell NAMES Wood1/Wood2/WoodDk but each embeds its own PNG; none are touched. WoodDk (86,54,32) is unused by the hut (hut uses HutWoodDk) and was not changed.",
+ "fbx_note": "The hut FBX embeds its own copy of the OLD palette PNG (byte-identical to v2_4 as required). Studio uses the uploaded TextureID, so upload kit_v2_7/kit_hut_leanto.png as the new texture; the embedded copy in the FBX is stale.",
+ "md5": {
+  "kit_hut_leanto.fbx": "fea1006d630f277f6ff540db0a8647e5",
+  "kit_hut_leanto.png": "10d88d0093f75a99e7954aa4d731135f"
+ },
+ "fbx_identical_to_kit_v2_4": true
+}
