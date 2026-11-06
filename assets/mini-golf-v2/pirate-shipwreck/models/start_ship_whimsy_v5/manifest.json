@@ -1,0 +1,738 @@
+{
+ "asset": "start_ship",
+ "version": "start_ship_whimsy_v5",
+ "date": "2026-11-05",
+ "blend": "out/start_ship_whimsy_v5.blend",
+ "blend_sha256": "8e88f0e97323ffdb0f00f0e55dd14d2afe527e2df3e465c6e71e6dd40d9d2abe",
+ "blend_bytes": 1092591,
+ "source": "source_v3_2.blend",
+ "source_sha256_before": "9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333",
+ "source_sha256_after": "9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333",
+ "source_unchanged": true,
+ "axes": "FBX axis_forward -Z, axis_up Y, scale 1 (1 unit = 1 stud), FBX_SCALE_UNITS, embedded textures; Blender +Y = Roblox -Z",
+ "placement_note": "water world Y0 = model local -0.6; RampFlight2 is yawed -30 deg in Studio (exported unyawed, as v3/v3_1/v3_2)",
+ "fbx": {
+  "start_ship_b2_visual.fbx": {
+   "path": "out/fbx/start_ship_b2_visual.fbx",
+   "bytes": 1510044,
+   "objects": 49,
+   "tris": 60343,
+   "reimport_ok": true,
+   "sha256": "ea7e7f7dc1f8e0c5c9220bc3179ae931e9c14d7d91249512481a5911739ed4f5"
+  },
+  "RampFlight1_own_origin.fbx": {
+   "path": "out/fbx/RampFlight1_own_origin.fbx",
+   "bytes": 35580,
+   "objects": 1,
+   "tris": 300,
+   "reimport_ok": true,
+   "sha256": "3b7e55547078f7cd0ac404262d005df93ce912465e225afe421ff99cc2ad33f7"
+  },
+  "RampLanding_own_origin.fbx": {
+   "path": "out/fbx/RampLanding_own_origin.fbx",
+   "bytes": 28796,
+   "objects": 1,
+   "tris": 184,
+   "reimport_ok": true,
+   "sha256": "0383bd2d345f0a6d3b2b50c4b1afcd3b42208802256587e292f2e14b063b5d0e"
+  },
+  "RampFlight2_own_origin.fbx": {
+   "path": "out/fbx/RampFlight2_own_origin.fbx",
+   "bytes": 35260,
+   "objects": 1,
+   "tris": 288,
+   "reimport_ok": true,
+   "sha256": "859ec0a4706e600f49c5412eaccf6793243373a05112f4c1d583a23ef9214811"
+  }
+ },
+ "collision_fbx": "NOT DELIVERED: see out/fbx/UNSYNCED_keep_studio_v30_colliders.txt (Studio v30 colliders authoritative; blend colliders are stale v3_2, byte-identical to source, NOT verified vs Studio)",
+ "new_meshes": {
+  "ShipV5_Bottle": {
+   "tris": 108,
+   "materials": [
+    "FishTeal",
+    "PostLt",
+    "Canvas"
+   ],
+   "origin_roblox": [
+    64.514,
+    23.92,
+    -11.306
+   ],
+   "bbox_min_roblox": [
+    62.04499816894531,
+    23.920000076293945,
+    -13.121000289916992
+   ],
+   "bbox_max_roblox": [
+    66.98300170898438,
+    26.31999969482422,
+    -9.491000175476074
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "teal glass message bottle with cork and cream label band, lying on deck beside the high bulwark at x64"
+  },
+  "ShipV5_BowEyes": {
+   "tris": 456,
+   "materials": [
+    "Brass",
+    "Shadow",
+    "Canvas",
+    "Wood",
+    "WoodDk"
+   ],
+   "origin_roblox": [
+    136.258,
+    43.404,
+    13.066
+   ],
+   "bbox_min_roblox": [
+    133.24600219726562,
+    43.40399932861328,
+    -5.176000118255615
+   ],
+   "bbox_max_roblox": [
+    139.27099609375,
+    56.93899917602539,
+    31.308000564575195
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "sleepy bow face: 2 round brass porthole eyes (dark glass + highlight) with droopy half-lid planks, high on the bow flanks"
+  },
+  "ShipV5_Hammock": {
+   "tris": 592,
+   "materials": [
+    "Post",
+    "PostLt",
+    "CanvasDk",
+    "Wood",
+    "RopeLt",
+    "Canvas"
+   ],
+   "origin_roblox": [
+    42.0,
+    23.75,
+    -11.779
+   ],
+   "bbox_min_roblox": [
+    31.049999237060547,
+    23.75,
+    -14.029000282287598
+   ],
+   "bbox_max_roblox": [
+    52.95000076293945,
+    37.25,
+    -9.529000282287598
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "canvas hammock with skeleton-free cream pillow, slung between two free-standing posts on the high side deck (x32-52); visual only"
+  },
+  "ShipV5_MastZigzag": {
+   "tris": 552,
+   "materials": [
+    "Post",
+    "RopeLt",
+    "Iron",
+    "Brass"
+   ],
+   "origin_roblox": [
+    11.434,
+    96.721,
+    36.563
+   ],
+   "bbox_min_roblox": [
+    7.193999767303467,
+    96.72100067138672,
+    29.868999481201172
+   ],
+   "bbox_max_roblox": [
+    15.673999786376953,
+    130.39999389648438,
+    43.25699996948242
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "jury-rigged zigzag topmast out of the main-mast splinter crown: 3 Post segments, 2 zigzag bends (rope lashings + iron bands), brass truck knob"
+  },
+  "ShipV5_Patches": {
+   "tris": 1300,
+   "materials": [
+    "PatchBlue",
+    "Brass",
+    "PatchTeal"
+   ],
+   "origin_roblox": [
+    11.171,
+    7.349,
+    9.621
+   ],
+   "bbox_min_roblox": [
+    -86.09600067138672,
+    7.348999977111816,
+    -20.89900016784668
+   ],
+   "bbox_max_roblox": [
+    108.43699645996094,
+    19.586999893188477,
+    40.13999938964844
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "5 hull patches (blue 90,130,170 / teal 70,150,140), 0.7 slab (-0.2..+0.5 about the hull surface) of the widened hull, 6 oversized brass nails each"
+  },
+  "ShipV5_SailEmblem": {
+   "tris": 2224,
+   "materials": [
+    "WoodDk",
+    "Canvas"
+   ],
+   "origin_roblox": [
+    14.214,
+    49.012,
+    16.253
+   ],
+   "bbox_min_roblox": [
+    13.20199966430664,
+    49.012001037597656,
+    12.42300033569336
+   ],
+   "bbox_max_roblox": [
+    15.22700023651123,
+    55.86399841308594,
+    20.083999633789062
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "original simple skull & crossbones (darkwood 80,50,30, cream eye/nose/teeth inlays) on the top band of the main lower sail, both faces"
+  },
+  "ShipV5_SailPatches": {
+   "tris": 1152,
+   "materials": [
+    "PatchBlue",
+    "WoodDk",
+    "PatchTeal",
+    "CanvasDk"
+   ],
+   "origin_roblox": [
+    55.714,
+    28.911,
+    11.941
+   ],
+   "bbox_min_roblox": [
+    11.680000305175781,
+    28.910999298095703,
+    -2.130000114440918
+   ],
+   "bbox_max_roblox": [
+    99.74700164794922,
+    79.26100158691406,
+    26.01099967956543
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "large square sail patches (both faces, slab 0.08-0.36 from the sail mid-surface = embedded through the 0.2 sail face) with dark stitch crosses"
+  },
+  "ShipV5_SheerRise": {
+   "tris": 888,
+   "materials": [
+    "HullWood",
+    "WoodDk"
+   ],
+   "origin_roblox": [
+    -3.245,
+    43.357,
+    13.686
+   ],
+   "bbox_min_roblox": [
+    -161.4499969482422,
+    43.356998443603516,
+    -29.735000610351562
+   ],
+   "bbox_max_roblox": [
+    154.96099853515625,
+    74.85600280761719,
+    57.108001708984375
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "banana sheer: bow cap-rail rise board (0 at x86 -> +4 at the stem, both sides) + arched transom crest (+1.6 corners, +4 centre). Exterior trim only; walk surfaces untouched."
+  },
+  "ShipV5_SternCurl": {
+   "tris": 876,
+   "materials": [
+    "WoodDk",
+    "Brass"
+   ],
+   "origin_roblox": [
+    -168.721,
+    65.428,
+    16.23
+   ],
+   "bbox_min_roblox": [
+    -179.01199340820312,
+    65.4280014038086,
+    11.625
+   ],
+   "bbox_max_roblox": [
+    -158.4290008544922,
+    88.34300231933594,
+    20.834999084472656
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "tall spiral stern curl on the transom crest centre, curling aft (outboard); Prop_SternCurl corner scrolls kept unchanged"
+  },
+  "ShipV5_Telescope": {
+   "tris": 212,
+   "materials": [
+    "Brass",
+    "Iron",
+    "Shadow"
+   ],
+   "origin_roblox": [
+    18.04,
+    93.233,
+    32.861
+   ],
+   "bbox_min_roblox": [
+    14.460000038146973,
+    93.23300170898438,
+    31.940000534057617
+   ],
+   "bbox_max_roblox": [
+    21.6200008392334,
+    95.73699951171875,
+    33.78200149536133
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "bent brass telescope (24 deg kink) resting on the 12-deg-tilted crow's nest rim, pointing to the bow"
+  },
+  "ShipV5_YardNest": {
+   "tris": 412,
+   "materials": [
+    "Rope",
+    "Post",
+    "Canvas",
+    "PatchBlue"
+   ],
+   "origin_roblox": [
+    94.443,
+    45.208,
+    29.048
+   ],
+   "bbox_min_roblox": [
+    90.53700256347656,
+    45.20800018310547,
+    25.351999282836914
+   ],
+   "bbox_max_roblox": [
+    98.3499984741211,
+    49.0890007019043,
+    32.74399948120117
+   ],
+   "collection": "Props",
+   "collide": "none (visual only: CanCollide/CanQuery/CanTouch off)",
+   "note": "twig nest with 3 eggs (2 cream, 1 pale blue) sitting on the fore lower yard near its +Z arm"
+  }
+ },
+ "changed_existing_meshes": {
+  "Hull": {
+   "kind": "hull-belly warp (vertex positions only, max 3.89)",
+   "tris": 4835,
+   "tris_source": 4835,
+   "origin_unchanged": true
+  },
+  "Prop_Barnacles": {
+   "kind": "hull-belly warp (vertex positions only, max 3.92)",
+   "tris": 1620,
+   "tris_source": 1620,
+   "origin_unchanged": true
+  },
+  "Prop_Figurehead": {
+   "kind": "EDITED existing prop (vertices rebuilt, same object/mesh/origin)",
+   "tris": 2884,
+   "tris_source": 2712,
+   "origin_unchanged": true
+  },
+  "Prop_PatchPlanks": {
+   "kind": "hull-belly warp (vertex positions only, max 4.20)",
+   "tris": 2420,
+   "tris_source": 2420,
+   "origin_unchanged": true
+  },
+  "Prop_Seaweed": {
+   "kind": "hull-belly warp (vertex positions only, max 4.07)",
+   "tris": 1376,
+   "tris_source": 1376,
+   "origin_unchanged": true
+  },
+  "Prop_Stovepipe": {
+   "kind": "EDITED existing prop (vertices rebuilt, same object/mesh/origin)",
+   "tris": 288,
+   "tris_source": 196,
+   "origin_unchanged": true
+  },
+  "Rigging": {
+   "kind": "hull-belly warp (vertex positions only, max 0.59) + EDITED existing mesh: main crow's nest components rotated about their base centre (same object/origin/topology/UV/materials)",
+   "tris": 8154,
+   "tris_source": 8154,
+   "origin_unchanged": true
+  }
+ },
+ "locked_exact": [
+  "DeckCabin",
+  "RampFlight1",
+  "RampLanding",
+  "RampFlight2",
+  "Spawn",
+  "Tee1",
+  "RampStart",
+  "CupRef"
+ ],
+ "hull_warp": {
+  "k": 0.15,
+  "full_below_world_Y": 6.0,
+  "zero_above_world_Y": 18.0,
+  "centreline": "z = Y*tan(15deg) (heeled hull frame z=0)",
+  "x_taper": "1.0 for x in [-130,105]; stern end factor 0.35 at x-160; bow fades to 0 by x150 (stem/bowsprit/figurehead untouched)",
+  "widths_ratio": {
+   "Y-0.6": {
+    "x-140": 1.1235,
+    "x-100": 1.15,
+    "x-60": 1.15,
+    "x-20": 1.15,
+    "x20": 1.15,
+    "x60": 1.15,
+    "x100": null,
+    "x130": null
+   },
+   "Y6.0": {
+    "x-140": 1.1184,
+    "x-100": 1.1439,
+    "x-60": 1.1439,
+    "x-20": 1.144,
+    "x20": 1.1446,
+    "x60": 1.1482,
+    "x100": 1.1454,
+    "x130": null
+   },
+   "Y12.0": {
+    "x-140": 1.059,
+    "x-100": 1.0718,
+    "x-60": 1.0722,
+    "x-20": 1.0727,
+    "x20": 1.0729,
+    "x60": 1.0737,
+    "x100": 1.0737,
+    "x130": null
+   },
+   "Y18.0": {
+    "x-140": 1.0054,
+    "x-100": 1.0058,
+    "x-60": 1.0052,
+    "x-20": 1.0061,
+    "x20": 1.0086,
+    "x60": 1.0096,
+    "x100": 1.005,
+    "x130": 1.0006
+   },
+   "Y23.0": {
+    "x-140": 1.0,
+    "x-100": 1.0,
+    "x-60": 1.0,
+    "x-20": 1.0,
+    "x20": 1.0,
+    "x60": 1.0,
+    "x100": 1.0,
+    "x130": 1.0
+   }
+  }
+ },
+ "flags_for_builder": [
+  "hull-side collider mismatch: widened visual hull extends up to 0.83 studs further outside the (stale v3_2) COL_HullExt boxes (106 samples >0.5); builder must re-fit/verify against Studio v30"
+ ],
+ "hammock_included": true,
+ "tris": {
+  "total_visual": 60343,
+  "source": 51307,
+  "per_mesh": {
+   "DeckCabin": 3512,
+   "Dressing": 516,
+   "Dressing_Glow": 24,
+   "Hull": 4835,
+   "Pier": 948,
+   "Prop_Barnacles": 1620,
+   "Prop_BowRaise": 1104,
+   "Prop_BulwarkFrames": 2952,
+   "Prop_BulwarkGear": 866,
+   "Prop_CabinWindows": 976,
+   "Prop_Cannons": 1212,
+   "Prop_CapRails": 1452,
+   "Prop_CargoCluster": 2216,
+   "Prop_Crab": 780,
+   "Prop_DoorLantern": 460,
+   "Prop_DoorLantern_Glow": 12,
+   "Prop_Figurehead": 2884,
+   "Prop_Flag": 760,
+   "Prop_PatchPlanks": 2420,
+   "Prop_Portholes": 1316,
+   "Prop_RoofTrim": 212,
+   "Prop_RopeCoils": 1608,
+   "Prop_Seaweed": 1376,
+   "Prop_SheerWale": 1520,
+   "Prop_SternCastle": 1280,
+   "Prop_SternCurl": 2796,
+   "Prop_SternWheel": 1640,
+   "Prop_Stovepipe": 288,
+   "Prop_TreasureChest": 980,
+   "RampFlight1": 300,
+   "RampFlight2": 288,
+   "RampLanding": 184,
+   "Rigging": 8154,
+   "RockBumper": 80,
+   "ShipV5_Bottle": 108,
+   "ShipV5_BowEyes": 456,
+   "ShipV5_Hammock": 592,
+   "ShipV5_MastZigzag": 552,
+   "ShipV5_Patches": 1300,
+   "ShipV5_SailEmblem": 2224,
+   "ShipV5_SailPatches": 1152,
+   "ShipV5_SheerRise": 888,
+   "ShipV5_SternCurl": 876,
+   "ShipV5_Telescope": 212,
+   "ShipV5_YardNest": 412
+  }
+ },
+ "palette": {
+  "PostLt": {
+   "cell": 3,
+   "rgb": [
+    122,
+    90,
+    64
+   ]
+  },
+  "Wood": {
+   "cell": 0,
+   "rgb": [
+    110,
+    70,
+    40
+   ]
+  },
+  "WoodDk": {
+   "cell": 1,
+   "rgb": [
+    80,
+    50,
+    30
+   ]
+  },
+  "Felt": {
+   "cell": 9,
+   "rgb": [
+    105,
+    185,
+    98
+   ]
+  },
+  "Post": {
+   "cell": 2,
+   "rgb": [
+    100,
+    72,
+    50
+   ]
+  },
+  "Rope": {
+   "cell": 14,
+   "rgb": [
+    176,
+    140,
+    86
+   ]
+  },
+  "Iron": {
+   "cell": 15,
+   "rgb": [
+    70,
+    66,
+    64
+   ]
+  },
+  "Glow": {
+   "cell": 16,
+   "rgb": [
+    255,
+    190,
+    110
+   ]
+  },
+  "HullWood": {
+   "cell": 4,
+   "rgb": [
+    130,
+    90,
+    55
+   ]
+  },
+  "RopeLt": {
+   "cell": 8,
+   "rgb": [
+    190,
+    160,
+    110
+   ]
+  },
+  "Brass": {
+   "cell": 10,
+   "rgb": [
+    200,
+    160,
+    70
+   ]
+  },
+  "Barnacle": {
+   "cell": 17,
+   "rgb": [
+    115,
+    100,
+    92
+   ]
+  },
+  "Shadow": {
+   "cell": 22,
+   "rgb": [
+    42,
+    30,
+    22
+   ]
+  },
+  "Canvas": {
+   "cell": 11,
+   "rgb": [
+    225,
+    210,
+    175
+   ]
+  },
+  "Red": {
+   "cell": 13,
+   "rgb": [
+    170,
+    60,
+    50
+   ]
+  },
+  "Crab": {
+   "cell": 20,
+   "rgb": [
+    222,
+    98,
+    62
+   ]
+  },
+  "FishTeal": {
+   "cell": 21,
+   "rgb": [
+    72,
+    150,
+    146
+   ]
+  },
+  "Seaweed": {
+   "cell": 18,
+   "rgb": [
+    58,
+    134,
+    104
+   ]
+  },
+  "Gold": {
+   "cell": 19,
+   "rgb": [
+    236,
+    190,
+    72
+   ]
+  },
+  "CanvasDk": {
+   "cell": 12,
+   "rgb": [
+    198,
+    176,
+    136
+   ]
+  },
+  "RockLt": {
+   "cell": 7,
+   "rgb": [
+    135,
+    119,
+    110
+   ]
+  },
+  "Rock": {
+   "cell": 5,
+   "rgb": [
+    115,
+    100,
+    92
+   ]
+  },
+  "RockDk": {
+   "cell": 6,
+   "rgb": [
+    94,
+    82,
+    76
+   ]
+  },
+  "Coral": {
+   "cell": 23,
+   "rgb": [
+    230,
+    120,
+    100
+   ]
+  },
+  "PatchBlue": {
+   "cell": 24,
+   "rgb": [
+    90,
+    130,
+    170
+   ]
+  },
+  "PatchTeal": {
+   "cell": 25,
+   "rgb": [
+    70,
+    150,
+    140
+   ]
+  }
+ },
+ "previews": [
+  "out/previews/ship_3q.png",
+  "out/previews/ship_bow.png",
+  "out/previews/ship_stern.png",
+  "out/previews/ship_tee.png"
+ ],
+ "scripts": [
+  "out/src/build_v5.py",
+  "out/src/export_v5.py",
+  "out/src/fitcheck_v5.py",
+  "out/src/fitcheck_v5_check.py",
+  "out/src/make_reports_v5.py",
+  "out/src/probe_v5.py",
+  "out/src/render_v5.py",
+  "out/src/run_blender.ps1",
+  "out/src/shiplib.py"
+ ],
+ "fitcheck_pass_hard": true
+}

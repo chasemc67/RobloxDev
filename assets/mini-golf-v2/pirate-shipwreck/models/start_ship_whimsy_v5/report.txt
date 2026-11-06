@@ -1,0 +1,132 @@
+START SHIP WHIMSY V5 - modeling report  (2026-11-05 16:26)
+model: claude-opus-5-5 (Claude Code, headless)   PC: chase-pc (Windows-11-10.0.26300-SP0)
+Blender: Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04) at C:\Program Files\Blender Foundation\Blender 5.2\blender.exe, headless -b --factory-startup via detached schtasks, one job at a time
+source: source_v3_2.blend sha256 before 9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333 / after 9d75ae96912ff0ca4b7a97b5b6287e3cc10d55edefa0c2719c6cfec2dd0bf333 -> unchanged=True (build saves a copy to a different path, asserted)
+output blend: out/start_ship_whimsy_v5.blend sha256 8e88f0e97323ffdb0f00f0e55dd14d2afe527e2df3e465c6e71e6dd40d9d2abe (1092591 bytes, textures packed)
+
+Blender jobs (tag exit elapsed), from out/logs/run_history.txt (includes earlier debug iterations):
+  probe exit=0 elapsed_s=7
+  src_prev exit=0 elapsed_s=57
+  matprobe exit=0 elapsed_s=7
+  build exit=0 elapsed_s=7
+  build exit=0 elapsed_s=7
+  build exit=0 elapsed_s=7
+  dump exit=0 elapsed_s=7
+  fitcheck exit=0 elapsed_s=7
+  build exit=0 elapsed_s=7
+  dump exit=0 elapsed_s=7
+  fitcheck exit=0 elapsed_s=7
+  cpdbg exit=0 elapsed_s=7
+  build exit=0 elapsed_s=7
+  fitcheck exit=0 elapsed_s=7
+  cpdbg exit=0 elapsed_s=7
+  build exit=0 elapsed_s=7
+  fitcheck exit=0 elapsed_s=7
+  render exit=0 elapsed_s=47
+  detprev exit=0 elapsed_s=67
+  build exit=0 elapsed_s=7
+  fitcheck exit=0 elapsed_s=7
+  render exit=0 elapsed_s=47
+  export exit=0 elapsed_s=7
+
+FITCHECK hard checks: PASS   fails: none
+warnings: total visual tris 60343 above ~40k near-field target (source 51307)
+FLAGS for builder: hull-side collider mismatch: widened visual hull extends up to 0.83 studs further outside the (stale v3_2) COL_HullExt boxes (106 samples >0.5); builder must re-fit/verify against Studio v30
+
+COLLISION: all 190 colliders untouched, byte-identical to source (190/190). NOT verified vs Studio v30. No collision FBX delivered.
+  out/fbx/UNSYNCED_keep_studio_v30_colliders.txt: Studio v30 (landing 12.54, HullExt notch disabled, hull-side refit) is authoritative; blend colliders stale pending RobloxDevBot JSON.
+  Hull-side mismatch FLAG: widened visual belly sits up to 0.83 studs further outside the old COL_HullExt boxes (106 of 1766 samples >0.5).
+
+LOCKS: DeckCabin + 3 ramps exact (geometry/UV/materials/world matrix, world-vertex diff 0); 4 anchors exact; walk surfaces, door rays, tee sightlines, spawn headroom identical;
+  all existing object names/origins/mesh datablocks/collections identical.
+
+ART DELIVERED:
+  1 hull belly x1.15 horizontal at/below Y6 -> x1.0 at Y18 (deck footprint fixed); waterline (Y-0.6) width ratios {'x-140': 1.1235, 'x-100': 1.15, 'x-60': 1.15, 'x-20': 1.15, 'x20': 1.15, 'x60': 1.15, 'x100': None, 'x130': None}
+    banana sheer: ShipV5_SheerRise (bow rail board 0 -> +4 at the stem both sides, arched transom crest +4 centre)
+    ShipV5_SternCurl tall aft/outboard spiral, 22.4 studs above its crest base, top Y88.5 (Prop_SternCurl corner scrolls kept)
+    Prop_Figurehead rebuilt as a grinning coral octopus (230,120,100), 3 tentacles wrapping the bowsprit (8 sides) + 3 under the head; same name/origin
+  2 ShipV5_MastZigzag (2 zigzag bends, rope lashings, top Y128.6); crow's nest tilt 10.9 -> 12.0 deg (Rigging verts); ShipV5_Telescope bent brass on the nest rim
+  3 ShipV5_BowEyes: 2 sleepy porthole eyes with half-lid planks, high on the bow flanks; occluded from the tee eye and facing away
+  4 ShipV5_Patches: 5 hull patches (blue/teal) with oversized brass nails
+  5 ShipV5_SailPatches: 3 large square patches (blue, teal, tan, stitched) + ShipV5_SailEmblem original skull & crossbones (darkwood on cream) on the main lower sail
+  6 Prop_Stovepipe rebuilt lopsided (2 elbows, tilted hat; same origin; DeckCabin untouched)
+  7 ShipV5_YardNest (3 eggs) on the fore lower yard; ShipV5_Bottle by the high-side rail at x64
+    ShipV5_Hammock + pillow: INCLUDED, x31.8-52.2 high side; min 123.05 studs from the prior zones, 147.05 from the continuous walkway corridor
+  skipped items: none
+  one bounded polish: the skull emblem was first on the fore lower sail, hidden behind the low-side bulwark in 3q; moved to the main lower sail top band.
+
+TRIS (visual): total 60343 (source 51307, +9036; ShipV5_* 8772). All <20k (largest Rigging 8154).
+  DeckCabin                  3512  (source 3512)  LOCKED_unchanged
+  Dressing                    516  (source 516)  must_unchanged_unchanged
+  Dressing_Glow                24  (source 24)  must_unchanged_unchanged
+  Hull                       4835  (source 4835)  hull_warp_changed
+  Pier                        948  (source 948)  must_unchanged_unchanged
+  Prop_Barnacles             1620  (source 1620)  hull_warp_changed
+  Prop_BowRaise              1104  (source 1104)  must_unchanged_unchanged
+  Prop_BulwarkFrames         2952  (source 2952)  must_unchanged_unchanged
+  Prop_BulwarkGear            866  (source 866)  must_unchanged_unchanged
+  Prop_CabinWindows           976  (source 976)  must_unchanged_unchanged
+  Prop_Cannons               1212  (source 1212)  must_unchanged_unchanged
+  Prop_CapRails              1452  (source 1452)  must_unchanged_unchanged
+  Prop_CargoCluster          2216  (source 2216)  must_unchanged_unchanged
+  Prop_Crab                   780  (source 780)  must_unchanged_unchanged
+  Prop_DoorLantern            460  (source 460)  must_unchanged_unchanged
+  Prop_DoorLantern_Glow        12  (source 12)  must_unchanged_unchanged
+  Prop_Figurehead            2884  (source 2712)  rebuilt_in_place_changed
+  Prop_Flag                   760  (source 760)  must_unchanged_unchanged
+  Prop_PatchPlanks           2420  (source 2420)  hull_warp_changed
+  Prop_Portholes             1316  (source 1316)  must_unchanged_unchanged
+  Prop_RoofTrim               212  (source 212)  must_unchanged_unchanged
+  Prop_RopeCoils             1608  (source 1608)  must_unchanged_unchanged
+  Prop_Seaweed               1376  (source 1376)  hull_warp_changed
+  Prop_SheerWale             1520  (source 1520)  must_unchanged_unchanged
+  Prop_SternCastle           1280  (source 1280)  must_unchanged_unchanged
+  Prop_SternCurl             2796  (source 2796)  must_unchanged_unchanged
+  Prop_SternWheel            1640  (source 1640)  must_unchanged_unchanged
+  Prop_Stovepipe              288  (source 196)  rebuilt_in_place_changed
+  Prop_TreasureChest          980  (source 980)  must_unchanged_unchanged
+  RampFlight1                 300  (source 300)  LOCKED_unchanged
+  RampFlight2                 288  (source 288)  LOCKED_unchanged
+  RampLanding                 184  (source 184)  LOCKED_unchanged
+  Rigging                    8154  (source 8154)  hull_warp_changed
+  RockBumper                   80  (source 80)  must_unchanged_unchanged
+  ShipV5_Bottle               108  (source None)  NEW
+  ShipV5_BowEyes              456  (source None)  NEW
+  ShipV5_Hammock              592  (source None)  NEW
+  ShipV5_MastZigzag           552  (source None)  NEW
+  ShipV5_Patches             1300  (source None)  NEW
+  ShipV5_SailEmblem          2224  (source None)  NEW
+  ShipV5_SailPatches         1152  (source None)  NEW
+  ShipV5_SheerRise            888  (source None)  NEW
+  ShipV5_SternCurl            876  (source None)  NEW
+  ShipV5_Telescope            212  (source None)  NEW
+  ShipV5_YardNest             412  (source None)  NEW
+
+CLEARANCES (new props, min to prior zones / continuous corridor, studs):
+  ShipV5_Bottle           154.04 /  178.04
+  ShipV5_BowEyes          225.48 /  249.54
+  ShipV5_Hammock          123.05 /  147.05
+  ShipV5_MastZigzag       116.07 /  139.60
+  ShipV5_Patches           20.67 /   31.43
+  ShipV5_SailEmblem       106.26 /  130.87
+  ShipV5_SailPatches      105.97 /  130.06
+  ShipV5_SheerRise         22.49 /   38.01
+  ShipV5_SternCurl         28.18 /   47.29
+  ShipV5_Telescope        119.96 /  143.72
+  ShipV5_YardNest         182.85 /  206.98
+  intrusions by new/changed meshes vs source: {"zone_triangles": {}, "continuous_points": {}}
+  coplanar pairs: source 0, v5 0, not in source 0
+
+FBX (re-import verified True):
+  out/fbx/start_ship_b2_visual.fbx  1510044 bytes  49 objects  60343 tris  ok=True
+  out/fbx/RampFlight1_own_origin.fbx  35580 bytes  1 objects  300 tris  ok=True
+  out/fbx/RampLanding_own_origin.fbx  28796 bytes  1 objects  184 tris  ok=True
+  out/fbx/RampFlight2_own_origin.fbx  35260 bytes  1 objects  288 tris  ok=True
+  collision FBX: not exported (see UNSYNCED note)
+
+PREVIEWS (same cameras as prior_scripts/render_v31.py, inspected once): out/previews/ship_3q.png, out/previews/ship_bow.png, out/previews/ship_stern.png, out/previews/ship_tee.png
+
+PATHS: out/start_ship_whimsy_v5.blend, out/manifest.json, out/fitcheck.json, out/fitcheck.md, out/report.txt, out/fbx/, out/previews/, out/textures/start_ship_palette.png, out/logs/,
+  out/src/ (build_v5, fitcheck_v5 + fitcheck_v5_check, export_v5, render_v5, shiplib, probe_v5, make_reports_v5, run_blender.ps1)
+Repro: run_blender.ps1 build -> dump (source) -> fitcheck check -> render -> export, then python make_reports_v5.py <workdir>.
+Scratch (not deliverables, safe to delete): _scratch_src_prev/, _scratch_det/ (low-res inspection renders), out/logs/_*.py debug probes; an empty stray dir C:\_scratch_src_prev was left (removal needs approval).

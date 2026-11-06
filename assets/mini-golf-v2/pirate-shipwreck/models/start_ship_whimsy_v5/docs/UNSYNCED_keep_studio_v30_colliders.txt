@@ -1,0 +1,15 @@
+UNSYNCED - KEEP THE STUDIO v30 COLLIDERS. NO COLLISION FBX IS DELIVERED WITH THIS PASS.
+
+start_ship_whimsy_v5.blend still contains the 190 v3_2 Blender colliders (Collision collection), byte-identical to source_v3_2.blend
+(fitcheck: 190/190 byte-identical, max world vertex diff 0.0).
+They are STALE. Studio v30 colliders are authoritative and must NOT be replaced from this blend:
+  - landing exit widened 5.4 -> 12.54
+  - COL_HullExt disabled at the gangplank notch
+  - hull-side colliders refit
+  - (plus the warm low-contrast stern colours tested in v30)
+These Blender colliders stay pending the exact RobloxDevBot Studio/JSON deltas. Collision was NOT verified against Studio v30 in this job.
+
+HULL-SIDE FLAG FOR THE BUILDER: v5 widens the visual hull belly ~15% at/below world Y6 (smoothly to 0% at Y18).
+Measured against the OLD v3_2 COL_HullExt boxes, the visual hull now sits up to 0.829 studs further outside them
+(106 of 1766 samples moved >0.5 studs further out; boxes: COL_HullExt_1_02, COL_HullExt_1_06, COL_HullExt_5_05, COL_HullExt_5_06, COL_HullExt_6_05, COL_HullExt_6_06).
+Please check the Studio v30 hull-side refit against the new visual hull (visual-only change; colliders untouched here).
