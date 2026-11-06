@@ -1,0 +1,162 @@
+START SHIP WHIMSY v5_1 - ART CORRECTIONS REPORT (Nov 5 2026)
+=====================================================================
+
+Agent / model ........ Claude Code, model claude-opus-5-5 (Opus 5.5)
+Machine .............. Windows PC (Windows 11 Pro 10.0.26300, 32 cores), headless Blender only (no Studio / node / roblox / git / credentials, no video, no publish)
+Blender .............. "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" -> "Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15)" (in every log)
+Runner ............... out/src/run_blender.ps1: ONE detached schtasks job at a time, refuses to start if any blender.exe is running.
+Source ............... source_v5.blend sha256 8e88f0e97323ffdb0f00f0e55dd14d2afe527e2df3e465c6e71e6dd40d9d2abe (matches 8e88f0e973...; set read-only; never written)
+Output blend ......... out/start_ship_whimsy_v5_1.blend sha256 fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd (1,144,969 bytes, compressed, palette texture packed)
+
+RUNS (out/logs/run_history.txt; Blender exit codes)
+  probe 0 | render_baseline 0 | probe2 0 | build 0 (x4 iterations) | render_test 0 (x2) | fit_dump 0 (x2) | fit_check 0 (x3) | export 0 | render_final 0
+  Caveat: Blender returns 0 even when a --python script raises. The first fit_check hit a Python exception (empty min(), route-QA prefilter skipped the props)
+  and was fixed and re-run. Success is shown by the end markers in the final logs: BUILD_OK (build.log), FITCHECK PASS (fit_check.log),
+  VERIFY_DONE all_ok=True (export.log), RENDER_OK (render_final.log).
+  Build iterations: (1) wheel had no passing spot and only 1 patch fit, so I switched both to grid searches; (2) bow eyes came out lower
+  than v5, so I relaxed the rim-fit tolerance, built the eye 0.8 proud and added forward stations; (3) final.
+
+FINAL STATE: fitcheck hard checks PASS. 1 warning (tris). 1 FLAG (hull-side bands must be regenerated).
+
+---------------------------------------------------------------------
+ART CORRECTIONS DONE (every object keeps its NAME and ORIGIN; matrix_world asserted identical at save and in fitcheck)
+---------------------------------------------------------------------
+1 SHEER / BELLY / STERN CURL
+  - Bow sheer: ShipV5_SheerRise rebuilt (same object/origin). The rise board on the cap rail goes from 0 at x82 to +7.0 at the stem (v5: +4.0), so +3.0 more,
+    with a chunkier board (half-width 0.45-0.8) and a WoodDk cap. Board top at x154: high side ~Y64.3 (v5) -> Y67.3, low side ~Y62.3 -> Y65.3.
+  - Stern sheer: transom crest +4.6 at the corners / +7.0 at the centre above the castle top (v5: +1.6 / +4.0), so +3.0. NEW stern-castle side rise boards
+    rise 0 -> +4.6 toward the transom (high side x-122..-155, low side x-136..-157, so the gangplank notch stays clear). Exterior trim only. DeckCabin, ramps and
+    walk surfaces are byte-identical.
+  - Belly: on top of v5, horizontal factor 1 + 0.16*sin^2(pi*(Y+8)/22) about the heeled centreline (z = Y*tan15). Peak at world Y3, 0 at/below Y-8 and at/above Y14,
+    same x-taper as v5. Widths at x-100 (v5 -> v5_1): Y-0.6 19.98->22.44 (x1.12); Y1.5 31.61->36.43 (x1.15); Y3 37.51->43.26 (x1.15); Y6 46.73->52.54 (x1.12);
+    Y9 53.45->57.20 (x1.07); Y12 57.04->58.17 (x1.02); Y18 63.19->63.20; deck Y23 69.63->69.63 (max change 0.0, deck footprint fixed).
+    This gives a smooth rounder belly, not a flat widen. The same warp is applied to the hull-hugging meshes v5 warped (Prop_Barnacles, Prop_PatchPlanks,
+    Prop_Seaweed, and the Rigging low anchor-line verts: 20 verts, max 0.55; Rigging displacement above Y14 = 0.0, so sails are untouched).
+    No new Hull overlaps with DeckCabin/ramps/pier/rock/dressing (checked before and after).
+  - Stern curl: ShipV5_SternCurl vertices scaled 1.8x about its own crest base and lifted +3 with the crest (base Y 66.08 -> 69.08).
+    Height above base 22.3 -> 40.1; top Y 88.3 -> 109.2; aft-most x -179.0 -> -193.7. Same topology/UV/materials. Prop_SternCurl corner scrolls are unchanged
+    (hash-asserted).
+2 BOW EYES (ShipV5_BowEyes rebuilt, same object/origin)
+  - 2x size: brass rim radius 2.55 -> 5.1 (tube 1.05), cream sclera disc, big dark Shadow pupils (r 2.45) looking slightly down, cream sparkle, thick WoodDk droopy
+    lid shell with a PostLt lid plank (2*5.1+2.6 long) and brass nails. The lid plank reads clearly in ship_bow and is visible near the stem in ship_3q.
+  - Placement: rim-fit search over x118..152, as high as the cap rail allows (every rim sample must sit on Hull/BowRaise/SheerWale within +1.15/-2.2 of the disc plane).
+    Low (+Z, visible) side: centre (152.4, 47.7, 21.2) vs v5 (136, 46.5, 28.7): centre +1.2 higher, eye top +4.2 higher, moved forward toward the stem.
+    High (-Z) side: centre (136.3, 52.6, -2.9) vs v5 (136, 53.8, -2.6): the CENTRE is 1.2 LOWER, because the high-side cap rail is flat at Y~59.5 and a
+    2x eye can't fit higher under it. Its top edge is +1.8 higher. Honest caveat: on the high side the size requirement won out over centre height.
+  - Tee view: 0 eye vertices visible from the tee eye (occluded), same as v5.
+3 OCTOPUS FIGUREHEAD (Prop_Figurehead rebuilt, same object/origin)
+  - 1.6x: all head/eye/grin/tentacle dimensions x1.6 (eyes x1.92), head moved forward 3.4 so the mantle back stays at the stem, and lowered under the bowsprit.
+    bbox height 38.4 -> 49.0. 3 tentacles spiral the bowsprit, 3 curl under the head. Big cream eyes, dark pupils + sparkle, CoralDk brows/cheeks, thick dark grin, 3 teeth.
+  - Colours: Coral palette cell (230,120,100) (unchanged) + NEW CoralDk cell 26 (180,80,70). After meshing, every Coral face with a downward normal (n.z < -0.35)
+    is reassigned to CoralDk (441 faces).
+  - COLOUR MANAGEMENT (the "pale" v5 coral): I checked the material path. Every material is Principled BSDF with Base Color fed by the packed sRGB palette PNG
+    (Image Texture, colourspace sRGB, so the 230,120,100 texel is linearised correctly; there is no double sRGB conversion, no vertex colours, no emission).
+    The washing-out came from the PREVIEW view transform: v5 renders used AgX + 'AgX - Base Contrast' + exposure +0.6. Under the bright sun AgX compresses
+    and desaturates saturated albedos, so the coral read as pale pink. Measured on ship_bow.png: v5 octopus pixels ~(226,175,165).
+    FIX (preview only; the asset is unchanged): render_v5_1.py keeps the identical cameras/sun/sky/water/sand but uses view transform 'Standard', look None,
+    display sRGB, exposure -0.35, so palette colours display close to their authored sRGB values, as Roblox shows the palette texture.
+    Measured v5_1 ship_bow.png: lit coral ~(243,132,115)-(255,150,130), underside ~(180,78,63) = warm saturated coral + darker coral.
+    In Roblox the FBX carries the same palette texture, so the coral is (230,120,100) there regardless of Blender view transform. Env SHIP_VT=AgX reproduces the old look.
+    Side effect: every v5_1 preview is a bit more saturated/contrasty than the v5 AgX previews (sky bluer, sand warmer). Compare shapes, not tone, across v5 and v5_1.
+4 HULL PATCHES (ShipV5_Patches rebuilt, same object/origin)
+  - 4 LARGE patches, 20 x 14 studs each (v5 7.5 x 5.5: 2.67x linear, 6.8x area), slab -0.2..+0.6 about the belly-warped hull (follows the curvature via a 7x5 ray grid).
+    10 chunky brass nails each (r 1.0 -> 0.85, 1.5 proud, brass 200,160,70) and 2 dark seams. All on the visible low (+Z) side:
+    PatchBlue (90,130,170) x115 Y31 | PatchTeal (70,150,140) x85 Y23 | PatchTeal x-95 Y21 | PatchBlue x-65 Y19.
+    Placement: highest overlap-free spots (every ray must hit Hull first, >= water+2, no triangle overlap with any other mesh). Wale/portholes/seaweed block
+    higher spots aft, so the two aft patches sit lower (Y19-21) than the bow pair. The bow pair reads strongly in ship_bow and ship_3q.
+5 TEE VISUAL READ (mesh vertices moved in world space, written back in local space; ORIGINS FIXED; hash/matrix asserted)
+  Art said the wheel/chest visually blocked the tee centreline. The physical route was already clear in v5 (before values below), so this is a visual sightline
+  fix only, not a physical-failure fix. Acceptance per group: 0 triangle overlaps with any other mesh (cabin walls tested with the group lifted 0.35 so deck contact
+  doesn't count), inside the deck edges, 0 verts inside a +-20 deg wedge about the ship_tee camera axis (azimuth -15.05 deg), >= 8 studs from the route centreline.
+  - Prop_SternWheel: base (-68.6, 23.9, 30.5) -> (-74.0, 23.9, -2.0), turned 90 deg to face +Z. Now in the lee of the cabin's bow-end wall, toward the stern/high side.
+  - Prop_TreasureChest: base (-80.4, 23.85, 38.6) -> (-76.0, 23.85, -14.1), turned 90 deg. Outboard against the high-side bulwark, opening toward the deck.
+  - Prop_RopeCoils, tee coil only (the x-90 coil; mast and forecastle coils not moved): (-88.3, 23.8, 36.0) -> (-102.0, 23.8, 41.5). Outboard against the low bulwark
+    under the life ring.
+  - Prop_CargoCluster, 3 barrels only: (-102.4, 23.9, 29.3) -> (-140.0, 23.9, 38.6). Outboard against the low bulwark, aft of the gangplank notch, behind the tee.
+    The crab's crate stack and Prop_Crab did NOT move; the crab stays visible on its crates.
+  - Prop_DoorLantern / glow: untouched (hash-asserted).
+
+---------------------------------------------------------------------
+ROUTE QA - TRIANGLE-SWEPT, EXACT MEASURED CLEARANCES (player r = 2.0)
+---------------------------------------------------------------------
+Method: every triangle of every visual mesh is densely sampled (barycentric grid, spacing <= 0.20 studs, so true clearance >= reported - 0.12). Each sample is
+measured against each walkway segment: cabin->door->tee->gangplank x=-120 z-17..62.5 (hw 4), flight1 (hw 6), landing (hw 6.27 for the Studio v30 12.54 exit),
+flight2 yawed/unyawed (hw 6).
+ (a) prior corridor volume: hw about the centreline, walk band -1..+10
+ (b) swept player capsule r=2.0, 5.5 tall, centre path within hw-2 of the centreline; clearance = gap between the capsule surface and the geometry
+Plus an exact BVH triangle-overlap test of every mesh against the corridor prisms. Source_v5 was measured the same way for before/after.
+Hull/Rigging-size meshes (>2500 tris) are only sampled for triangles within 12 studs; every prop is sampled in full.
+
+Moved props vs the cabin->door->tee->gangplank walkway (object-level minimum; the moved part is the closest part in every case):
+  prop          object               player clearance v5 -> v5_1   corridor(hw4) clearance v5 -> v5_1   min player clearance, all segments (v5_1)
+  wheel         Prop_SternWheel      44.908 -> 35.599              44.908 -> 35.529                    35.599
+  chest         Prop_TreasureChest   31.257 -> 35.771              31.210 -> 35.771                    35.771
+  tee coil      Prop_RopeCoils        23.603 ->  9.997              23.550 ->  9.883                     9.997
+  barrels       Prop_CargoCluster      9.143 -> 11.524               9.143 -> 11.524                    11.524
+New intrusions by any changed mesh: NONE. New corridor-prism triangle overlaps: NONE.
+The tee coil got closer to the walkway (23.6 -> 10.0 studs of clearance) but is still far outside the r=2 player envelope.
+Pre-existing (unchanged, identical in v5): Hull rail/notch geometry at the gangplank, player clearance 0.21 (corridor 0.0) on cabin_door_tee_gangplank;
+Dressing 3.70 (walkway) / 1.72 (flight1). These are untouched source geometry.
+Other locks: spawn headroom, 80 door rays, 4 tee->ramp sightlines and the deck walk surfaces are identical to v5.
+
+Tee sightline (vertices inside the ship_tee frame AND unobstructed from the tee eye, <=400-ish samples per mesh):
+  wheel 387/434 -> 0/434 (azimuth offset from the tee axis 0.3-15.0 -> 20.0-28.2 deg, hidden behind the cabin)
+  chest 385/512 -> 0/512 (11.2-23.0 -> 30.5-39.3 deg)
+  barrels: moved part at 158.5-180 deg (behind the tee). The object-level 504 -> 180 visible verts are the unmoved crab crate stack.
+  tee coil: moved part at 22.3-38.7 deg, outside the wedge but still visible low in the bottom-right corner of ship_tee (2.5 studs tall). Object-level visible
+            verts 130 -> 172, because it is now nearer the camera's edge of frame.
+  ship_tee.png now shows a clear deck down the centreline to the mast and cannon.
+
+---------------------------------------------------------------------
+LOCKS / COLLISION
+---------------------------------------------------------------------
+- DeckCabin, RampFlight1, RampLanding, RampFlight2: EXACT (verts, loops, polys, material slots, UV, matrix_world, world verts, datablock, collection) vs source_v5.
+- Anchors Spawn (-120,24,2.5), Tee1 (-120,24.4,37), RampStart (-120,24,62.5), CupRef (-175.7,0,212.37): exact matrix_world.
+- Names/origins: every source object is present with the same name, origin matrix, mesh datablock name and collection. No objects added or removed.
+- Kept unchanged (hash-asserted in build + fitcheck): ShipV5_SailEmblem, Prop_Flag, ShipV5_MastZigzag, ShipV5_SailPatches, Prop_Crab, Prop_DoorLantern(+_Glow),
+  Prop_SternCurl, Pier, RockBumper, Dressing(+_Glow). Sails live in Rigging; Rigging verts above Y14 have 0 displacement.
+- Collision: 190/190 byte-identical to source_v5. NOT modified. NOT verified against Studio v30. No collision FBX exported.
+  out/fbx/UNSYNCED_keep_studio_v30_colliders.txt (copy in out/docs/) says: Studio v30 authoritative; landing RailW Z=3.5 / ~12.54 gap and HullExt 0_07/1_07 disabled
+  = Studio reapply; hull-side/under bands = REGENERATE against the new Hull.
+- HULL-SIDE FLAG: vs the stale v3_2 COL_HullExt boxes the v5_1 visual hull sits up to 3.21 studs outside (p95 2.43; 419/1766 samples >1).
+  v5 was max 3.20 / p95 0.67 / 32 >1. Increase vs v5 up to 2.57 (boxes COL_HullExt_1_02, _1_06). Do not paste v30 band transforms.
+- Coplanarity (prior method: 0.03 / |dot|>0.995 / gap<0.02) over 18,773 faces of all changed meshes: v5 0 pairs, v5_1 0 pairs, new 0.
+
+---------------------------------------------------------------------
+TRIANGLES (each mesh < 20k; largest Rigging 8154)
+---------------------------------------------------------------------
+  changed:  Prop_Figurehead 2884 -> 3404 | ShipV5_BowEyes 456 -> 848 | ShipV5_Patches 1300 -> 3344 | ShipV5_SheerRise 888 -> 1224
+            vertex-only (same tris): Hull 4835, Rigging 8154, Prop_Barnacles 1620, Prop_PatchPlanks 2420, Prop_Seaweed 1376, ShipV5_SternCurl 876,
+            Prop_SternWheel 1640, Prop_TreasureChest 980, Prop_RopeCoils 1608, Prop_CargoCluster 2216
+  TOTAL visual tris: 60,343 (v5) -> 63,635 (v5_1), +3,292. WARNING: above the ~40k Quest near-field target (as v5 was). The full per-mesh table is in fitcheck.md.
+
+---------------------------------------------------------------------
+DELIVERABLES (paths relative to C:\Users\chase\sc_jobs\ship_v5_1_n1)
+---------------------------------------------------------------------
+  out/start_ship_whimsy_v5_1.blend          packed (palette PNG packed; bpy.ops.file.pack_all)
+  out/textures/start_ship_palette.png       256x256 palette incl. new CoralDk cell 26
+  out/src/build_v5_1.py                     reproducible build (source_v5.blend -> v5_1 blend + logs/build_log.json)
+  out/src/fitcheck_v5_1.py                  dump (source) / check (v5_1) -> fitcheck.json, fitcheck.md, manifest.json
+  out/src/export_v5_1.py                    FBX export + re-import verify (logs/fbx_verify.json, all_ok=True)
+  out/src/render_v5_1.py                    previews (same CAMS as render_v5/render_v31; Standard view transform)
+  out/src/shiplib.py, run_blender.ps1, probe_v5_1.py, probe2_v5_1.py, render_v5_baseline.py (copy of prior render_v5.py used for the v5 baseline)
+  out/manifest.json, out/fitcheck.json, out/fitcheck.md
+  out/fbx/start_ship_b2_visual.fbx (49 objects, 1.58 MB), out/fbx/RampFlight1_own_origin.fbx, RampLanding_own_origin.fbx, RampFlight2_own_origin.fbx
+      axis_forward='-Z', axis_up='Y', global_scale=1, FBX_SCALE_UNITS, embedded textures. Re-import check: names, tris and origins match. NO collision FBX.
+  out/fbx/UNSYNCED_keep_studio_v30_colliders.txt (+ out/docs/ copy)
+  out/docs/V30_SYNC.md                      v5_1 mapping: landing / HullExt / stern palette = Studio reapply; hull bands = REGENERATE
+  out/previews/ship_3q.png, ship_tee.png, ship_bow.png, ship_stern.png   (1600x1000, Cycles CPU 64 spp, same cameras as render_v5.py)
+
+Do not commit these (scratch per AGENTS.md): out/logs/ (logs, probe JSON, build_log.json, fit dump, baseline_v5_previews/ and test_previews/ iteration renders).
+The .fbx files are build output (gitignored). The .blend goes through LFS only if the 3D Model Bot sets it up.
+
+CAVEATS
+- The high-side bow eye centre is 1.2 studs lower than v5 (size priority, flat cap rail). The visible low-side eye is higher (+1.2 centre, +4.2 top).
+- The two aft hull patches sit at Y19-21. Higher aft spots are taken by the wale, portholes and seaweed.
+- The tee rope coil is still visible low in the bottom-right corner of ship_tee (outside the +-20 deg centre wedge).
+- Preview colour management changed (AgX -> Standard) to show the true coral. Compare shapes, not overall tone, against the v5 previews.
+- Collision is NOT verified against Studio v30. The rounder belly makes the stale hull-side colliders worse, so bands must be regenerated in Studio.
+- Total tris 63.6k exceed the ~40k near-field guideline (pre-existing; +3.3k in this pass).
+- No blender.exe left running at the end (checked with tasklist; only the unrelated blender-mcp.exe MCP bridge is present). Source_v5.blend is untouched
+  (sha verified, read-only attribute set by this job).
+- out/start_ship_whimsy_v5_1.blend1 is Blender's automatic backup from re-running the build (an earlier iteration); scratch, do not ship or commit. out/src/__pycache__ is also scratch.

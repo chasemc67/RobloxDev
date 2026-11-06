@@ -1,0 +1,20 @@
+UNSYNCED - KEEP THE STUDIO v30 COLLIDERS. NO COLLISION FBX IS DELIVERED WITH THIS PASS (whimsy v5_1).
+
+start_ship_whimsy_v5_1.blend still contains the 190 v3_2 Blender colliders (Collision collection), byte-identical to source_v5.blend
+(fitcheck: 190/190 identical mesh verts/loops/polys/UV/material slots/matrix_world/world verts). None were modified.
+They are STALE. Studio v30 colliders are authoritative and must NOT be replaced from this blend:
+  - landing exit widened: COL_Landing_RailW Size.Z = 3.5 (was 12.9), footprint gap vs COL_Landing_RailS ~12.54 studs  -> reapply in Studio
+  - COL_HullExt_0_07 and COL_HullExt_1_07 disabled at the gangplank notch (CanCollide/CanQuery/CanTouch false)   -> reapply in Studio
+  - stern palette texture by mesh name (Hull, Prop_SternCurl, Prop_SternCastle -> rbxassetid://123993872360188)   -> reapply in Studio
+  - hull-side / under bands (930 COL_HullSide* + 80 COL_HullUnder*)                                              -> REGENERATE (see below)
+Collision was NOT verified against Studio v30 in this job.
+
+HULL-SIDE FLAG FOR THE BUILDER (silhouette changed again in v5_1):
+v5_1 adds a rounder waterline belly on top of v5: extra horizontal factor 1 + 0.16*sin^2(pi*(Y+8)/22) about the heeled centreline
+(peak world Y3, 0 at/below Y-8 and at/above Y14; deck Y24 footprint unchanged). Widths at x-100: Y-0.6 19.98->22.44, Y1.5 31.61->36.43,
+Y3 37.51->43.26, Y6 46.73->52.54, Y9 53.45->57.20, Y12 57.04->58.17, Y18/Y23 unchanged.
+Against the OLD v3_2 COL_HullExt boxes the visual hull now sits up to 3.21 studs outside (p95 2.43; 419 of 1766 samples >1 stud;
+increase vs v5 up to 2.57 studs, worst boxes COL_HullExt_1_02 / COL_HullExt_1_06).
+DO NOT paste the v30 COL_HullSide*/COL_HullUnder* transforms blindly: they were fitted to the v3_2 hull. REGENERATE the bands from the
+new Hull mesh (generate_hull_bands.luau or equivalent) after importing start_ship_b2_visual.fbx, then re-run the hull ball tests.
+Visual-only change; no collider in the blend was touched.
