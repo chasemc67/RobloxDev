@@ -1,0 +1,1617 @@
+{
+ "job": "Pirate ship thumbnails ROUND 2 (revised A hero / B octopus) after round-1 Art+Playtest critique; proofs for an independent second critique, not final",
+ "status": "round2 delivered (A/B only, C dropped); STOP - waiting for independent second critique",
+ "inputs": {
+  "approved_ship": {
+   "path": "inputs/start_ship_whimsy_v5_1.blend",
+   "sha256_before": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+   "sha256_after": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+   "objects": 239,
+   "collections": {
+    "Collision": 190,
+    "Props": 35,
+    "Ramps": 3,
+    "Visual": 11
+   }
+  },
+  "round1_source": {
+   "path": "inputs/pirate_thumbnail_round1.blend",
+   "sha256_before": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce",
+   "sha256_after": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce"
+  }
+ },
+ "output": {
+  "path": "out/pirate_thumbnail_round2.blend",
+  "sha256": "3837fadb44409dc64d9b7a20ea07aa7bc3fb502c58001853141eaa14edee9d43",
+  "bytes": 4453215,
+  "packed": true,
+  "scenes": [
+   "Thumbnail_A_Hero_R2",
+   "Thumbnail_B_Octopus_R2"
+  ],
+  "other_scenes": [
+   "Scene"
+  ]
+ },
+ "authentic_vs_staged": {
+  "authentic": {
+   "collections": [
+    "Visual",
+    "Props",
+    "Ramps"
+   ],
+   "objects": 239,
+   "note": "approved ship objects, unchanged (see validation). Collision collection present in the file but not linked into thumbnail scenes. Pier object/mesh kept; only not linked into scene A or B."
+  },
+  "staged_render_only": {
+   "collection": "RENDER_ONLY_Environment_R2",
+   "items": [
+    "RO_CoveTerrain / RO_WaterSurface / RO_SeaFloorFar / RO_TropicalSky world (round-1 staged cove, unchanged)",
+    "per-scene kit dressing (original kit_v1 / kit_v22 meshes, new placements)",
+    "RO2_<A|B>_GolfBall + RO2_<A|B>_Putter (+ RO2_B_Sandbar) render-only identity props",
+    "per-scene sun key / shadowless fill / cool rim / ship-linked warm fill lights"
+   ],
+   "placed_kit_instances": [
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_palm_l_00",
+     "prop": "kit_palm_l",
+     "mesh": "KIT_kit_palm_l",
+     "kit": "kit_v1",
+     "loc": [
+      157.0,
+      80.2,
+      5.39
+     ],
+     "scale": 1.6,
+     "yaw": 10,
+     "tris": 2676
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_palm_m_01",
+     "prop": "kit_palm_m",
+     "mesh": "KIT_kit_palm_m",
+     "kit": "kit_v1",
+     "loc": [
+      160.4,
+      66.5,
+      4.2
+     ],
+     "scale": 1.45,
+     "yaw": 70,
+     "tris": 2388
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_palm_lean_b_02",
+     "prop": "kit_palm_lean_b",
+     "mesh": "KIT_kit_palm_lean_b",
+     "kit": "kit_v1",
+     "loc": [
+      182.6,
+      48.9,
+      4.14
+     ],
+     "scale": 1.7,
+     "yaw": 250,
+     "tris": 2312
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_palm_m_03",
+     "prop": "kit_palm_m",
+     "mesh": "KIT_kit_palm_m",
+     "kit": "kit_v1",
+     "loc": [
+      -6.6,
+      -176.3,
+      5.04
+     ],
+     "scale": 1.3,
+     "yaw": 30,
+     "tris": 2388
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_palm_s_04",
+     "prop": "kit_palm_s",
+     "mesh": "KIT_kit_palm_s",
+     "kit": "kit_v1",
+     "loc": [
+      21.2,
+      -159.4,
+      4.75
+     ],
+     "scale": 1.3,
+     "yaw": 120,
+     "tris": 2120
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_fernclump_05",
+     "prop": "kit_fernclump",
+     "mesh": "KIT_kit_fernclump",
+     "kit": "kit_v1",
+     "loc": [
+      169.0,
+      44.7,
+      2.88
+     ],
+     "scale": 2.0,
+     "yaw": 30,
+     "tris": 1344
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_rock_m_06",
+     "prop": "kit_rock_m",
+     "mesh": "KIT_kit_rock_m",
+     "kit": "kit_v1",
+     "loc": [
+      204.6,
+      -7.9,
+      4.59
+     ],
+     "scale": 1.9,
+     "yaw": 120,
+     "tris": 1252
+    },
+    {
+     "scene": "Thumbnail_A_Hero_R2",
+     "object": "RO2_A_kit_leafclump_07",
+     "prop": "kit_leafclump",
+     "mesh": "KIT_kit_leafclump",
+     "kit": "kit_v1",
+     "loc": [
+      42.7,
+      -163.7,
+      3.97
+     ],
+     "scale": 1.8,
+     "yaw": 0,
+     "tris": 956
+    },
+    {
+     "scene": "Thumbnail_B_Octopus_R2",
+     "object": "RO2_B_kit_palm_l_08",
+     "prop": "kit_palm_l",
+     "mesh": "KIT_kit_palm_l",
+     "kit": "kit_v1",
+     "loc": [
+      162.2,
+      55.3,
+      4.16
+     ],
+     "scale": 1.6,
+     "yaw": 160,
+     "tris": 2676
+    },
+    {
+     "scene": "Thumbnail_B_Octopus_R2",
+     "object": "RO2_B_kit_palm_m_09",
+     "prop": "kit_palm_m",
+     "mesh": "KIT_kit_palm_m",
+     "kit": "kit_v1",
+     "loc": [
+      208.5,
+      1.4,
+      5.0
+     ],
+     "scale": 1.5,
+     "yaw": 45,
+     "tris": 2388
+    },
+    {
+     "scene": "Thumbnail_B_Octopus_R2",
+     "object": "RO2_B_kit_palm_s_10",
+     "prop": "kit_palm_s",
+     "mesh": "KIT_kit_palm_s",
+     "kit": "kit_v1",
+     "loc": [
+      110.8,
+      104.2,
+      4.42
+     ],
+     "scale": 1.4,
+     "yaw": 10,
+     "tris": 2120
+    },
+    {
+     "scene": "Thumbnail_B_Octopus_R2",
+     "object": "RO2_B_kit_fernclump_11",
+     "prop": "kit_fernclump",
+     "mesh": "KIT_kit_fernclump",
+     "kit": "kit_v1",
+     "loc": [
+      197.9,
+      1.1,
+      4.7
+     ],
+     "scale": 1.8,
+     "yaw": 0,
+     "tris": 1344
+    },
+    {
+     "scene": "Thumbnail_B_Octopus_R2",
+     "object": "RO2_B_kit_rock_m_12",
+     "prop": "kit_rock_m",
+     "mesh": "KIT_kit_rock_m",
+     "kit": "kit_v1",
+     "loc": [
+      216.2,
+      -14.7,
+      4.18
+     ],
+     "scale": 1.8,
+     "yaw": 40,
+     "tris": 1252
+    }
+   ],
+   "counts": {
+    "A": 8,
+    "B": 5,
+    "palms_A": 5,
+    "palms_B": 3
+   },
+   "golf_ball": {
+    "mesh": "RO2_GolfBall",
+    "dimples": 162,
+    "tris": 20480,
+    "geometry": "bmesh icosphere subdivisions=6 (10,242 verts) radially displaced by spherical-cap dimples (real geometry, no texture)"
+   },
+   "putter": {
+    "mesh": "RO2_Putter",
+    "tris": 240
+   },
+   "honesty": "No cup, flag, hole, shot trail, avatar, score or playable-course claim. Environment is staged, not the v31 game layout."
+  }
+ },
+ "scenes": {
+  "Thumbnail_A_Hero_R2": {
+   "key": "A",
+   "camera": {
+    "name": "Thumbnail_A_Hero_R2",
+    "spec": {
+     "target": [
+      20,
+      -14,
+      0
+     ],
+     "az": -26,
+     "dist": 285,
+     "cam_z": 13,
+     "look_z": 46,
+     "lens": 25,
+     "shift_x": 0.0,
+     "shift_y": 0.0
+    },
+    "location": [
+     276.16,
+     -138.94,
+     13.0
+    ],
+    "rotation_deg": [
+     96.6,
+     0.0,
+     64.0
+    ]
+   },
+   "lights": [
+    {
+     "name": "A_R2_Sun_Key",
+     "energy": 3.5999999046325684,
+     "color_linear": [
+      1.0,
+      0.8549926280975342,
+      0.672443151473999
+     ],
+     "shadow": true,
+     "linked_receivers": null
+    },
+    {
+     "name": "A_R2_Fill_NoShadow",
+     "energy": 0.6000000238418579,
+     "color_linear": [
+      1.0,
+      0.8069522380828857,
+      0.6172065734863281
+     ],
+     "shadow": false,
+     "linked_receivers": null
+    },
+    {
+     "name": "A_R2_Rim_Cool",
+     "energy": 1.2000000476837158,
+     "color_linear": [
+      0.577580451965332,
+      0.7304607629776001,
+      1.0
+     ],
+     "shadow": true,
+     "linked_receivers": null
+    },
+    {
+     "name": "A_R2_ShipFaceFill_Linked",
+     "energy": 1.2999999523162842,
+     "color_linear": [
+      1.0,
+      0.7454041838645935,
+      0.5647115111351013
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_A_LightLink_HullFace"
+    },
+    {
+     "name": "A_R2_HullBounce_Linked",
+     "energy": 3.4000000953674316,
+     "color_linear": [
+      1.0,
+      0.577580451965332,
+      0.35153260827064514
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_A_LightLink_HullOnly"
+    },
+    {
+     "name": "A_R2_FaceBounce_Linked",
+     "energy": 1.600000023841858,
+     "color_linear": [
+      1.0,
+      0.577580451965332,
+      0.35153260827064514
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_A_LightLink_OctopusOnly"
+    },
+    {
+     "name": "A_R2_SailFill_Linked",
+     "energy": 1.2000000476837158,
+     "color_linear": [
+      1.0,
+      0.9046611785888672,
+      0.7758222222328186
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_A_LightLink_SailsOnly"
+    }
+   ],
+   "exposure": -0.4000000059604645,
+   "view_transform": "Standard",
+   "samples": 64,
+   "resolution": [
+    1280,
+    720
+   ],
+   "collections": [
+    "RO2_ShipVisual_NoPier",
+    "Props",
+    "Ramps",
+    "RO2_Env_Base",
+    "RO2_A_Dressing",
+    "RO2_A_GolfProps_RenderOnly"
+   ],
+   "pier_hidden": true,
+   "golf": {
+    "ball": "RO2_A_GolfBall",
+    "ball_radius": 2.255,
+    "ball_center": [
+     229.99,
+     -133.47,
+     6.02
+    ],
+    "sandbar": null,
+    "sandbar_top_z": null,
+    "putter": "RO2_A_Putter",
+    "putter_loc": [
+     227.4,
+     -139.97,
+     3.74
+    ],
+    "putter_yaw_deg": 95.2,
+    "water_z": 1.0
+   }
+  },
+  "Thumbnail_B_Octopus_R2": {
+   "key": "B",
+   "camera": {
+    "name": "Thumbnail_B_Octopus_R2",
+    "spec": {
+     "target": [
+      173,
+      -9,
+      38
+     ],
+     "az": -40,
+     "dist": 120,
+     "cam_z": 8,
+     "pitch": 16,
+     "lens": 22,
+     "shift_x": -0.19,
+     "shift_y": 0.0,
+     "yaw_offset": 10
+    },
+    "location": [
+     264.93,
+     -86.13,
+     8.0
+    ],
+    "rotation_deg": [
+     106.0,
+     0.0,
+     60.0
+    ]
+   },
+   "lights": [
+    {
+     "name": "B_R2_Sun_Key",
+     "energy": 4.199999809265137,
+     "color_linear": [
+      1.0,
+      0.8549926280975342,
+      0.672443151473999
+     ],
+     "shadow": true,
+     "linked_receivers": null
+    },
+    {
+     "name": "B_R2_Fill_NoShadow",
+     "energy": 0.6000000238418579,
+     "color_linear": [
+      1.0,
+      0.8069522380828857,
+      0.6172065734863281
+     ],
+     "shadow": false,
+     "linked_receivers": null
+    },
+    {
+     "name": "B_R2_Rim_Cool",
+     "energy": 1.399999976158142,
+     "color_linear": [
+      0.577580451965332,
+      0.7304607629776001,
+      1.0
+     ],
+     "shadow": true,
+     "linked_receivers": null
+    },
+    {
+     "name": "B_R2_ShipFaceFill_Linked",
+     "energy": 1.0,
+     "color_linear": [
+      1.0,
+      0.7454041838645935,
+      0.5647115111351013
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_B_LightLink_HullFace"
+    },
+    {
+     "name": "B_R2_HullBounce_Linked",
+     "energy": 2.799999952316284,
+     "color_linear": [
+      1.0,
+      0.577580451965332,
+      0.35153260827064514
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_B_LightLink_HullOnly"
+    },
+    {
+     "name": "B_R2_FaceBounce_Linked",
+     "energy": 1.600000023841858,
+     "color_linear": [
+      1.0,
+      0.577580451965332,
+      0.35153260827064514
+     ],
+     "shadow": false,
+     "linked_receivers": "RO2_B_LightLink_OctopusOnly"
+    }
+   ],
+   "exposure": -0.30000001192092896,
+   "view_transform": "Standard",
+   "samples": 64,
+   "resolution": [
+    1280,
+    720
+   ],
+   "collections": [
+    "RO2_ShipVisual_NoPier",
+    "Props",
+    "Ramps",
+    "RO2_Env_Base",
+    "RO2_B_Dressing",
+    "RO2_B_GolfProps_RenderOnly"
+   ],
+   "pier_hidden": true,
+   "golf": {
+    "ball": "RO2_B_GolfBall",
+    "ball_radius": 3.163,
+    "ball_center": [
+     209.28,
+     -89.88,
+     5.91
+    ],
+    "sandbar": "RO2_B_Sandbar",
+    "sandbar_top_z": 3.0,
+    "putter": "RO2_B_Putter",
+    "putter_loc": [
+     207.39,
+     -99.51,
+     2.87
+    ],
+    "putter_yaw_deg": 105.8,
+    "water_z": 1.0
+   }
+  }
+ },
+ "removed_round1_staging": {
+  "scenes": [
+   "Thumbnail_A_Hero",
+   "Thumbnail_B_Octopus",
+   "Thumbnail_C_Adventure"
+  ],
+  "objects": [
+   "A_Fill_NoShadow",
+   "A_Sun_Key",
+   "B_Fill_NoShadow",
+   "B_Sun_Key",
+   "C_Fill_NoShadow",
+   "C_Sun_Key",
+   "RO_kit_boulder_pile_015",
+   "RO_kit_boulder_pile_016",
+   "RO_kit_canopy_wall_024",
+   "RO_kit_canopy_wall_025",
+   "RO_kit_canopy_wall_026",
+   "RO_kit_fernclump_019",
+   "RO_kit_fernclump_020",
+   "RO_kit_fernclump_022",
+   "RO_kit_fernclump_033",
+   "RO_kit_fernclump_041",
+   "RO_kit_fernclump_043",
+   "RO_kit_fernclump_049",
+   "RO_kit_leafclump_017",
+   "RO_kit_leafclump_018",
+   "RO_kit_leafclump_021",
+   "RO_kit_leafclump_023",
+   "RO_kit_leafclump_034",
+   "RO_kit_leafclump_046",
+   "RO_kit_palm_l_000",
+   "RO_kit_palm_l_001",
+   "RO_kit_palm_l_002",
+   "RO_kit_palm_l_009",
+   "RO_kit_palm_l_028",
+   "RO_kit_palm_l_036",
+   "RO_kit_palm_lean_a_029",
+   "RO_kit_palm_lean_b_006",
+   "RO_kit_palm_lean_b_038",
+   "RO_kit_palm_m_003",
+   "RO_kit_palm_m_004",
+   "RO_kit_palm_m_005",
+   "RO_kit_palm_m_008",
+   "RO_kit_palm_m_027",
+   "RO_kit_palm_m_035",
+   "RO_kit_palm_m_047",
+   "RO_kit_palm_s_007",
+   "RO_kit_palm_s_030",
+   "RO_kit_palm_s_037",
+   "RO_kit_palm_s_045",
+   "RO_kit_rock_l_010",
+   "RO_kit_rock_l_011",
+   "RO_kit_rock_m_012",
+   "RO_kit_rock_m_013",
+   "RO_kit_rock_m_014",
+   "RO_kit_rock_m_031",
+   "RO_kit_rock_m_039",
+   "RO_kit_rock_m_042",
+   "RO_kit_rock_s_032",
+   "RO_kit_rock_s_040",
+   "RO_kit_rock_s_044",
+   "RO_kit_rock_s_048",
+   "Thumbnail_A_Hero",
+   "Thumbnail_B_Octopus",
+   "Thumbnail_C_Adventure"
+  ],
+  "collections": [
+   "RO_Env_A_only",
+   "RO_Env_B_only",
+   "RO_Env_C_only",
+   "RO_Env_Common"
+  ]
+ },
+ "measurements": {
+  "A": {
+   "ship_hull_rig_props": {
+    "u": [
+     0.294,
+     0.9166
+    ],
+    "v": [
+     0.2738,
+     0.9793
+    ],
+    "width": 0.6226,
+    "height": 0.7055
+   },
+   "ramps": {
+    "u": [
+     0.0238,
+     0.3158
+    ],
+    "v": [
+     0.2966,
+     0.4118
+    ],
+    "width": 0.292,
+    "height": 0.1152
+   },
+   "octopus_full": {
+    "u": [
+     0.7426,
+     0.899
+    ],
+    "v": [
+     0.4192,
+     0.8944
+    ],
+    "width": 0.1564,
+    "height": 0.4752
+   },
+   "octopus_head_mantle_face_z27_52": {
+    "u": [
+     0.7426,
+     0.85
+    ],
+    "v": [
+     0.4665,
+     0.6741
+    ],
+    "width": 0.1074,
+    "height": 0.2076
+   },
+   "octopus_body_below_curl_z_lt52": {
+    "u": [
+     0.7426,
+     0.85
+    ],
+    "v": [
+     0.4192,
+     0.6741
+    ],
+    "width": 0.1074,
+    "height": 0.2549
+   },
+   "bowsprit_curl_tip": {
+    "u": [
+     0.8034,
+     0.9173
+    ],
+    "v": [
+     0.7255,
+     0.9441
+    ],
+    "width": 0.1139,
+    "height": 0.2187,
+    "min_margin": 0.0559,
+    "inside_frame": true
+   },
+   "golf_ball": {
+    "u": [
+     0.2118,
+     0.2896
+    ],
+    "v": [
+     0.0856,
+     0.2207
+    ],
+    "width": 0.0778,
+    "height": 0.1351,
+    "radius_studs": 2.255,
+    "center_world": [
+     229.99,
+     -133.47,
+     6.02
+    ],
+    "bottom_z_vs_water_z1": 3.76
+   },
+   "putter": {
+    "u": [
+     -30.8654,
+     0.2115
+    ],
+    "v": [
+     -5.1755,
+     0.1989
+    ],
+    "width": 31.0769,
+    "height": 5.3744
+   },
+   "title_zone_geometry_intrusions": {},
+   "camera": {
+    "name": "Thumbnail_A_Hero_R2",
+    "location": [
+     276.16,
+     -138.94,
+     13.0
+    ],
+    "lens": 25.0,
+    "shift": [
+     0.0,
+     0.0
+    ],
+    "rotation_deg": [
+     96.6,
+     0.0,
+     64.0
+    ]
+   },
+   "pixel_srgb_Coral": {
+    "median": [
+     234,
+     124,
+     103
+    ],
+    "p90": [
+     255,
+     143,
+     130
+    ],
+    "n": 269,
+    "clipped_frac": 0.342
+   },
+   "pixel_srgb_CoralDk": {
+    "median": [
+     169,
+     77,
+     60
+    ],
+    "p90": [
+     215,
+     107,
+     102
+    ],
+    "n": 205,
+    "clipped_frac": 0.024
+   },
+   "pixel_srgb_HullWood": {
+    "median": [
+     131,
+     94,
+     64
+    ],
+    "p90": [
+     150,
+     104,
+     74
+    ],
+    "n": 243,
+    "clipped_frac": 0.0
+   },
+   "pixel_srgb_Canvas_sails": {
+    "median": [
+     197,
+     185,
+     163
+    ],
+    "p90": [
+     226,
+     210,
+     178
+    ],
+    "n": 995,
+    "clipped_frac": 0.0
+   },
+   "title_zone_pixels": {
+    "mean_srgb": [
+     87,
+     150,
+     204
+    ],
+    "lum_std": 7.6,
+    "max_local_gradient": 1.99
+   },
+   "frame_clipped_frac": 0.0088
+  },
+  "B": {
+   "ship_hull_rig_props": {
+    "u": [
+     0.3704,
+     0.8532
+    ],
+    "v": [
+     0.1269,
+     0.889
+    ],
+    "width": 0.4828,
+    "height": 0.7621
+   },
+   "ramps": {
+    "u": [
+     0.0285,
+     0.3804
+    ],
+    "v": [
+     0.1418,
+     0.263
+    ],
+    "width": 0.3519,
+    "height": 0.1212
+   },
+   "octopus_full": {
+    "u": [
+     0.7144,
+     0.8353
+    ],
+    "v": [
+     0.3062,
+     0.8415
+    ],
+    "width": 0.1209,
+    "height": 0.5353
+   },
+   "octopus_head_mantle_face_z27_52": {
+    "u": [
+     0.7144,
+     0.8191
+    ],
+    "v": [
+     0.357,
+     0.5875
+    ],
+    "width": 0.1047,
+    "height": 0.2306
+   },
+   "octopus_body_below_curl_z_lt52": {
+    "u": [
+     0.7144,
+     0.8191
+    ],
+    "v": [
+     0.3062,
+     0.5875
+    ],
+    "width": 0.1047,
+    "height": 0.2813
+   },
+   "bowsprit_curl_tip": {
+    "u": [
+     0.759,
+     0.8532
+    ],
+    "v": [
+     0.6433,
+     0.8914
+    ],
+    "width": 0.0942,
+    "height": 0.2481,
+    "min_margin": 0.1086,
+    "inside_frame": true
+   },
+   "golf_ball": {
+    "u": [
+     0.2021,
+     0.3098
+    ],
+    "v": [
+     0.0505,
+     0.2155
+    ],
+    "width": 0.1077,
+    "height": 0.165,
+    "radius_studs": 3.163,
+    "center_world": [
+     209.28,
+     -89.88,
+     5.91
+    ],
+    "bottom_z_vs_water_z1": 2.75
+   },
+   "putter": {
+    "u": [
+     -0.0665,
+     0.2
+    ],
+    "v": [
+     0.0248,
+     0.2095
+    ],
+    "width": 0.2665,
+    "height": 0.1847
+   },
+   "title_zone_geometry_intrusions": {},
+   "camera": {
+    "name": "Thumbnail_B_Octopus_R2",
+    "location": [
+     264.93,
+     -86.13,
+     8.0
+    ],
+    "lens": 22.0,
+    "shift": [
+     -0.1899999976158142,
+     0.0
+    ],
+    "rotation_deg": [
+     106.0,
+     0.0,
+     60.0
+    ]
+   },
+   "pixel_srgb_Coral": {
+    "median": [
+     234,
+     122,
+     102
+    ],
+    "p90": [
+     255,
+     144,
+     131
+    ],
+    "n": 257,
+    "clipped_frac": 0.366
+   },
+   "pixel_srgb_CoralDk": {
+    "median": [
+     167,
+     76,
+     60
+    ],
+    "p90": [
+     212,
+     119,
+     110
+    ],
+    "n": 230,
+    "clipped_frac": 0.043
+   },
+   "pixel_srgb_HullWood": {
+    "median": [
+     123,
+     95,
+     70
+    ],
+    "p90": [
+     145,
+     105,
+     82
+    ],
+    "n": 232,
+    "clipped_frac": 0.0
+   },
+   "pixel_srgb_Canvas_sails": {
+    "median": [
+     212,
+     197,
+     170
+    ],
+    "p90": [
+     235,
+     218,
+     186
+    ],
+    "n": 675,
+    "clipped_frac": 0.0
+   },
+   "title_zone_pixels": {
+    "mean_srgb": [
+     78,
+     146,
+     208
+    ],
+    "lum_std": 3.37,
+    "max_local_gradient": 1.93
+   },
+   "frame_clipped_frac": 0.0121
+  }
+ },
+ "validation": {
+  "checks": {
+   "approved_sha256": {
+    "ok": true,
+    "expected": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+    "before_build": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+    "after_build": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+    "now": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd"
+   },
+   "round1_source_sha256": {
+    "ok": true,
+    "expected": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce",
+    "before_build": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce",
+    "after_build": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce",
+    "now": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce"
+   },
+   "authentic_ship_unchanged_vs_approved": {
+    "ok": true,
+    "compared_objects": 239,
+    "compared": "mesh vertex-coordinate/loop/material-index hashes, basis transforms (loc/rot/scale/deltas/parent inverse), matrix_world (non-Collision), parent, modifiers, material node values",
+    "note": "Collision objects: stored matrix_world cache is stale in the source (never evaluated); their basis transforms are compared",
+    "diffs": []
+   },
+   "scenes_and_cameras": {
+    "ok": true,
+    "scenes": {
+     "Thumbnail_A_Hero_R2": {
+      "scene": true,
+      "camera": "Thumbnail_A_Hero_R2",
+      "camera_saved": true,
+      "collision_linked": false,
+      "pier_in_scene": false,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": -0.4,
+      "engine": "CYCLES",
+      "device": "CPU",
+      "samples": 64,
+      "resolution": [
+       1280,
+       720
+      ]
+     },
+     "Thumbnail_B_Octopus_R2": {
+      "scene": true,
+      "camera": "Thumbnail_B_Octopus_R2",
+      "camera_saved": true,
+      "collision_linked": false,
+      "pier_in_scene": false,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": -0.3,
+      "engine": "CYCLES",
+      "device": "CPU",
+      "samples": 64,
+      "resolution": [
+       1280,
+       720
+      ]
+     }
+    },
+    "other_scenes": [
+     "Scene"
+    ],
+    "note": "'Scene' = untouched original scene from the approved ship file (not a thumbnail)"
+   },
+   "helpers_render_hidden": {
+    "ok": true
+   },
+   "images_packed": {
+    "ok": true,
+    "images": [
+     [
+      "KIT_v1_palette_mat_palette.png",
+      true
+     ],
+     [
+      "KIT_v22_palette_mat_palette.png",
+      true
+     ],
+     [
+      "start_ship_palette.png",
+      true
+     ]
+    ]
+   },
+   "previews": {
+    "ok": true,
+    "files": {
+     "A_round2.png": {
+      "size": [
+       1280,
+       720
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "ee40d36447ca560e51952ab700e3f805d9b28583c2f3b0e11313cac78abbad01"
+     },
+     "A_round2_gray.png": {
+      "size": [
+       1280,
+       720
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "688f9c1e5be2173c641e15514767c09db882a440a840541de1c6f18bfd5b6a65"
+     },
+     "A_round2_320x180.png": {
+      "size": [
+       320,
+       180
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "b051c40e927180559dc5f7198196e7873964c44ac4422e093b62520a0d9b07f6"
+     },
+     "A_round2_320x180_gray.png": {
+      "size": [
+       320,
+       180
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "4ae270c4f9f619809d618af43ff1a7890ea9779f924753913cf1b063ef43ad0e"
+     },
+     "A_round2_160x90.png": {
+      "size": [
+       160,
+       90
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "27ca91a99f90c503ddbb20c0654bf159d6cc68216a084d154e126e07de6eae4c"
+     },
+     "A_round2_160x90_gray.png": {
+      "size": [
+       160,
+       90
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "ea9a7583f9d5d38a0e04291ffa5725a7ae257081a07ab4cacd1679a0b40f91c7"
+     },
+     "B_round2.png": {
+      "size": [
+       1280,
+       720
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "5156ebc1a0ce268dac006e98a7936a0ea15e0f4e92246a5af51dcc113c842873"
+     },
+     "B_round2_gray.png": {
+      "size": [
+       1280,
+       720
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "bf53c76c314a4f07529db21fa49d20937257e2827f491fd5f9c8d7c8d2d35cca"
+     },
+     "B_round2_320x180.png": {
+      "size": [
+       320,
+       180
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "f0a2f47c73af24e8897600525650fde955f29d877dbb0d88494e30f5d96cab68"
+     },
+     "B_round2_320x180_gray.png": {
+      "size": [
+       320,
+       180
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "93410d9fd9d8297fa7b6fc64f1372b54bd4a031eaf63803eeed33fc5424f8ebd"
+     },
+     "B_round2_160x90.png": {
+      "size": [
+       160,
+       90
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "161633a9d6d00b92b45684810b262caf7667b83e700ecb5406a75f86044a38a6"
+     },
+     "B_round2_160x90_gray.png": {
+      "size": [
+       160,
+       90
+      ],
+      "channels": 4,
+      "ok": true,
+      "sha256": "f258acc9682be135a74c229253578f27dc5a879543a9d3a2e21b9ba3f8992ae9"
+     }
+    }
+   },
+   "b_curl_tip_inside_frame": {
+    "ok": true,
+    "margin": 0.1086
+   },
+   "ball_size_A_12_15pct": {
+    "ok": true,
+    "measured": 0.1351
+   },
+   "ball_size_B_15_18pct": {
+    "ok": true,
+    "measured": 0.165
+   },
+   "ball_above_water": {
+    "ok": true
+   },
+   "title_zone_geometry_clear": {
+    "ok": true,
+    "zone": "u 0.05-0.40, v 0.65-0.95 (y up)"
+   }
+  },
+  "measurements": {
+   "A": {
+    "ship_hull_rig_props": {
+     "u": [
+      0.294,
+      0.9166
+     ],
+     "v": [
+      0.2738,
+      0.9793
+     ],
+     "width": 0.6226,
+     "height": 0.7055
+    },
+    "ramps": {
+     "u": [
+      0.0238,
+      0.3158
+     ],
+     "v": [
+      0.2966,
+      0.4118
+     ],
+     "width": 0.292,
+     "height": 0.1152
+    },
+    "octopus_full": {
+     "u": [
+      0.7426,
+      0.899
+     ],
+     "v": [
+      0.4192,
+      0.8944
+     ],
+     "width": 0.1564,
+     "height": 0.4752
+    },
+    "octopus_head_mantle_face_z27_52": {
+     "u": [
+      0.7426,
+      0.85
+     ],
+     "v": [
+      0.4665,
+      0.6741
+     ],
+     "width": 0.1074,
+     "height": 0.2076
+    },
+    "octopus_body_below_curl_z_lt52": {
+     "u": [
+      0.7426,
+      0.85
+     ],
+     "v": [
+      0.4192,
+      0.6741
+     ],
+     "width": 0.1074,
+     "height": 0.2549
+    },
+    "bowsprit_curl_tip": {
+     "u": [
+      0.8034,
+      0.9173
+     ],
+     "v": [
+      0.7255,
+      0.9441
+     ],
+     "width": 0.1139,
+     "height": 0.2187,
+     "min_margin": 0.0559,
+     "inside_frame": true
+    },
+    "golf_ball": {
+     "u": [
+      0.2118,
+      0.2896
+     ],
+     "v": [
+      0.0856,
+      0.2207
+     ],
+     "width": 0.0778,
+     "height": 0.1351,
+     "radius_studs": 2.255,
+     "center_world": [
+      229.99,
+      -133.47,
+      6.02
+     ],
+     "bottom_z_vs_water_z1": 3.76
+    },
+    "putter": {
+     "u": [
+      -30.8654,
+      0.2115
+     ],
+     "v": [
+      -5.1755,
+      0.1989
+     ],
+     "width": 31.0769,
+     "height": 5.3744
+    },
+    "title_zone_geometry_intrusions": {},
+    "camera": {
+     "name": "Thumbnail_A_Hero_R2",
+     "location": [
+      276.16,
+      -138.94,
+      13.0
+     ],
+     "lens": 25.0,
+     "shift": [
+      0.0,
+      0.0
+     ],
+     "rotation_deg": [
+      96.6,
+      0.0,
+      64.0
+     ]
+    },
+    "pixel_srgb_Coral": {
+     "median": [
+      234,
+      124,
+      103
+     ],
+     "p90": [
+      255,
+      143,
+      130
+     ],
+     "n": 269,
+     "clipped_frac": 0.342
+    },
+    "pixel_srgb_CoralDk": {
+     "median": [
+      169,
+      77,
+      60
+     ],
+     "p90": [
+      215,
+      107,
+      102
+     ],
+     "n": 205,
+     "clipped_frac": 0.024
+    },
+    "pixel_srgb_HullWood": {
+     "median": [
+      131,
+      94,
+      64
+     ],
+     "p90": [
+      150,
+      104,
+      74
+     ],
+     "n": 243,
+     "clipped_frac": 0.0
+    },
+    "pixel_srgb_Canvas_sails": {
+     "median": [
+      197,
+      185,
+      163
+     ],
+     "p90": [
+      226,
+      210,
+      178
+     ],
+     "n": 995,
+     "clipped_frac": 0.0
+    },
+    "title_zone_pixels": {
+     "mean_srgb": [
+      87,
+      150,
+      204
+     ],
+     "lum_std": 7.6,
+     "max_local_gradient": 1.99
+    },
+    "frame_clipped_frac": 0.0088
+   },
+   "B": {
+    "ship_hull_rig_props": {
+     "u": [
+      0.3704,
+      0.8532
+     ],
+     "v": [
+      0.1269,
+      0.889
+     ],
+     "width": 0.4828,
+     "height": 0.7621
+    },
+    "ramps": {
+     "u": [
+      0.0285,
+      0.3804
+     ],
+     "v": [
+      0.1418,
+      0.263
+     ],
+     "width": 0.3519,
+     "height": 0.1212
+    },
+    "octopus_full": {
+     "u": [
+      0.7144,
+      0.8353
+     ],
+     "v": [
+      0.3062,
+      0.8415
+     ],
+     "width": 0.1209,
+     "height": 0.5353
+    },
+    "octopus_head_mantle_face_z27_52": {
+     "u": [
+      0.7144,
+      0.8191
+     ],
+     "v": [
+      0.357,
+      0.5875
+     ],
+     "width": 0.1047,
+     "height": 0.2306
+    },
+    "octopus_body_below_curl_z_lt52": {
+     "u": [
+      0.7144,
+      0.8191
+     ],
+     "v": [
+      0.3062,
+      0.5875
+     ],
+     "width": 0.1047,
+     "height": 0.2813
+    },
+    "bowsprit_curl_tip": {
+     "u": [
+      0.759,
+      0.8532
+     ],
+     "v": [
+      0.6433,
+      0.8914
+     ],
+     "width": 0.0942,
+     "height": 0.2481,
+     "min_margin": 0.1086,
+     "inside_frame": true
+    },
+    "golf_ball": {
+     "u": [
+      0.2021,
+      0.3098
+     ],
+     "v": [
+      0.0505,
+      0.2155
+     ],
+     "width": 0.1077,
+     "height": 0.165,
+     "radius_studs": 3.163,
+     "center_world": [
+      209.28,
+      -89.88,
+      5.91
+     ],
+     "bottom_z_vs_water_z1": 2.75
+    },
+    "putter": {
+     "u": [
+      -0.0665,
+      0.2
+     ],
+     "v": [
+      0.0248,
+      0.2095
+     ],
+     "width": 0.2665,
+     "height": 0.1847
+    },
+    "title_zone_geometry_intrusions": {},
+    "camera": {
+     "name": "Thumbnail_B_Octopus_R2",
+     "location": [
+      264.93,
+      -86.13,
+      8.0
+     ],
+     "lens": 22.0,
+     "shift": [
+      -0.1899999976158142,
+      0.0
+     ],
+     "rotation_deg": [
+      106.0,
+      0.0,
+      60.0
+     ]
+    },
+    "pixel_srgb_Coral": {
+     "median": [
+      234,
+      122,
+      102
+     ],
+     "p90": [
+      255,
+      144,
+      131
+     ],
+     "n": 257,
+     "clipped_frac": 0.366
+    },
+    "pixel_srgb_CoralDk": {
+     "median": [
+      167,
+      76,
+      60
+     ],
+     "p90": [
+      212,
+      119,
+      110
+     ],
+     "n": 230,
+     "clipped_frac": 0.043
+    },
+    "pixel_srgb_HullWood": {
+     "median": [
+      123,
+      95,
+      70
+     ],
+     "p90": [
+      145,
+      105,
+      82
+     ],
+     "n": 232,
+     "clipped_frac": 0.0
+    },
+    "pixel_srgb_Canvas_sails": {
+     "median": [
+      212,
+      197,
+      170
+     ],
+     "p90": [
+      235,
+      218,
+      186
+     ],
+     "n": 675,
+     "clipped_frac": 0.0
+    },
+    "title_zone_pixels": {
+     "mean_srgb": [
+      78,
+      146,
+      208
+     ],
+     "lum_std": 3.37,
+     "max_local_gradient": 1.93
+    },
+    "frame_clipped_frac": 0.0121
+   }
+  },
+  "ok": true
+ }
+}
