@@ -1,0 +1,505 @@
+{
+ "deliverable": "Pirate Shipwreck marketing thumbnail ROUND 3 sketch follow-up - single lead image B_round3 on the round-2 A frame, for independent Art + Playtest critique (not approved)",
+ "files": {
+  "blend": "pirate_thumbnail_round3.blend (compressed, all file images packed)",
+  "previews": [
+   "B_round3.png",
+   "B_round3_160x90.png",
+   "B_round3_160x90_gray.png",
+   "B_round3_320x180.png",
+   "B_round3_320x180_gray.png",
+   "B_round3_gray.png",
+   "round2_vs_round3_small_comparison.png"
+  ]
+ },
+ "inputs": {
+  "round2_blend": {
+   "path": "inputs/pirate_thumbnail_round2.blend",
+   "commit": "d0dd39a",
+   "sha256": "3837fadb44409dc64d9b7a20ea07aa7bc3fb502c58001853141eaa14edee9d43"
+  },
+  "approved_ship": {
+   "path": "inputs/start_ship_whimsy_v5_1.blend",
+   "sha256": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd"
+  },
+  "scene_export_manifest": {
+   "path": "inputs/scene_export_manifest.json",
+   "use": "read only; not used for reconstruction. Edit-session export Nov 7 2:51 PM PT, PlaceVersion 0 - not a certified published version or live mesh equality"
+  }
+ },
+ "scene": "Thumbnail_B_Lead_R3",
+ "camera": {
+  "name": "Thumbnail_B_Lead_R3",
+  "spec": {
+   "mode": "keep_base",
+   "tweak": {}
+  },
+  "base": "round-2 scene A camera (Thumbnail_A_Hero_R2)",
+  "location": [
+   276.16,
+   -138.94,
+   13.0
+  ],
+  "rotation_deg": [
+   96.6,
+   0.0,
+   64.0
+  ],
+  "lens": 25.0,
+  "round2_A_base": {
+   "location": [
+    276.156,
+    -138.936,
+    13.0
+   ],
+   "rotation_deg": [
+    96.605,
+    0.0,
+    64.0
+   ],
+   "lens": 25.0,
+   "shift": [
+    0.0,
+    0.0
+   ]
+  },
+  "change": "sketch follow-up: round-2 scene A camera kept exactly (no tweak); the first round-3 pass used a raised round-2 B camera, now dropped"
+ },
+ "sketch": {
+  "path": "inputs/chase_green_placement.png",
+  "use": "visual reference only (red annotation not reproduced): A frame, green oval lower-right u~0.70-0.96 v~0.05-0.25, flag rising beside bow, face clear"
+ },
+ "render": {
+  "engine": "CYCLES",
+  "device": "CPU",
+  "samples": 64,
+  "resolution": [
+   1280,
+   720
+  ],
+  "view_transform": "Standard",
+  "exposure": -0.4
+ },
+ "lights": [
+  {
+   "name": "R3_Sun_Key",
+   "energy": 3.6,
+   "receivers": "RO3_B_LightLink_KeyExcludeOctopus"
+  },
+  {
+   "name": "R3_Fill_NoShadow",
+   "energy": 0.6,
+   "receivers": null
+  },
+  {
+   "name": "R3_Rim_Cool",
+   "energy": 1.2,
+   "receivers": null
+  },
+  {
+   "name": "R3_ShipFaceFill_Linked",
+   "energy": 1.3,
+   "receivers": "RO3_LightLink_HullFace"
+  },
+  {
+   "name": "R3_HullBounce_Linked",
+   "energy": 3.4,
+   "receivers": "RO3_LightLink_HullOnly"
+  },
+  {
+   "name": "R3_FaceBounce_Linked",
+   "energy": 1.6,
+   "receivers": "RO3_LightLink_OctopusOnly"
+  },
+  {
+   "name": "R3_SailFill_Linked",
+   "energy": 1.2,
+   "receivers": "RO3_LightLink_SailsOnly"
+  },
+  {
+   "name": "R3_FaceKey_Soft_Linked",
+   "energy": 1.8,
+   "receivers": "RO3_B_LightLink_FaceKeyOctopusOnly"
+  }
+ ],
+ "authentic": {
+  "note": "approved ship objects, unchanged (see checks). Collision collection is in the file but not linked into the thumbnail scene.",
+  "objects": [
+   "CupRef",
+   "DeckCabin",
+   "Dressing",
+   "Dressing_Glow",
+   "Hull",
+   "Prop_Barnacles",
+   "Prop_BowRaise",
+   "Prop_BulwarkFrames",
+   "Prop_BulwarkGear",
+   "Prop_CabinWindows",
+   "Prop_Cannons",
+   "Prop_CapRails",
+   "Prop_CargoCluster",
+   "Prop_Crab",
+   "Prop_DoorLantern",
+   "Prop_DoorLantern_Glow",
+   "Prop_Figurehead",
+   "Prop_Flag",
+   "Prop_PatchPlanks",
+   "Prop_Portholes",
+   "Prop_RoofTrim",
+   "Prop_RopeCoils",
+   "Prop_Seaweed",
+   "Prop_SheerWale",
+   "Prop_SternCastle",
+   "Prop_SternCurl",
+   "Prop_SternWheel",
+   "Prop_Stovepipe",
+   "Prop_TreasureChest",
+   "RampFlight1",
+   "RampFlight2",
+   "RampLanding",
+   "RampStart",
+   "Rigging",
+   "RockBumper",
+   "ShipV5_Bottle",
+   "ShipV5_BowEyes",
+   "ShipV5_Hammock",
+   "ShipV5_MastZigzag",
+   "ShipV5_Patches",
+   "ShipV5_SailEmblem",
+   "ShipV5_SailPatches",
+   "ShipV5_SheerRise",
+   "ShipV5_SternCurl",
+   "ShipV5_Telescope",
+   "ShipV5_YardNest",
+   "Spawn",
+   "Tee1"
+  ],
+  "count": 48
+ },
+ "staged_render_only": {
+  "note": "RENDER_ONLY thumbnail staging: cove terrain/water, palms/rocks dressing, light rig and the golf cluster. NOT game assets, NOT a live or playable hole.",
+  "counts": {
+   "camera": 1,
+   "light": 8,
+   "environment_render_only": 3,
+   "dressing_render_only": 8,
+   "golf_render_only": 5
+  },
+  "groups": {
+   "camera": [
+    "Thumbnail_B_Lead_R3"
+   ],
+   "light": [
+    "R3_FaceBounce_Linked",
+    "R3_FaceKey_Soft_Linked",
+    "R3_Fill_NoShadow",
+    "R3_HullBounce_Linked",
+    "R3_Rim_Cool",
+    "R3_SailFill_Linked",
+    "R3_ShipFaceFill_Linked",
+    "R3_Sun_Key"
+   ],
+   "environment_render_only": [
+    "RO_CoveTerrain",
+    "RO_SeaFloorFar",
+    "RO_WaterSurface"
+   ],
+   "dressing_render_only": [
+    "RO3_kit_fernclump_05",
+    "RO3_kit_leafclump_07",
+    "RO3_kit_palm_l_00",
+    "RO3_kit_palm_lean_b_02",
+    "RO3_kit_palm_m_01",
+    "RO3_kit_palm_m_03",
+    "RO3_kit_palm_s_04",
+    "RO3_kit_rock_m_06"
+   ],
+   "golf_render_only": [
+    "RO3_RenderOnly_Cup",
+    "RO3_RenderOnly_FlagCloth",
+    "RO3_RenderOnly_FlagPole",
+    "RO3_RenderOnly_GolfBall",
+    "RO3_RenderOnly_PuttingGreen"
+   ]
+  },
+  "golf": {
+   "center": [
+    237.58,
+    -92.1,
+    3.81
+   ],
+   "plane_slope": [
+    0.0182,
+    -0.0032
+   ],
+   "outline": "screen-space oval uv [0.825, 0.15] radius_uv [0.12, 0.09] ray-cast onto the staged sand",
+   "world_extent_xy": [
+    51.0,
+    62.2
+   ],
+   "rim_height": 0.55,
+   "cup": [
+    229.67,
+    -77.44,
+    4.12
+   ],
+   "cup_radius": 2.3,
+   "ball": [
+    238.49,
+    -97.77,
+    5.3
+   ],
+   "ball_radius": 1.0,
+   "pole_height": 9.59,
+   "flag": [
+    6.5,
+    4.0
+   ],
+   "tris": 534,
+   "object_tris": {
+    "RO3_RenderOnly_PuttingGreen": 330,
+    "RO3_RenderOnly_Cup": 44,
+    "RO3_RenderOnly_FlagPole": 28,
+    "RO3_RenderOnly_FlagCloth": 52,
+    "RO3_RenderOnly_GolfBall": 80
+   }
+  },
+  "dressing_moves": {}
+ },
+ "removed_from_round2": [
+  "scene Thumbnail_B_Octopus_R2",
+  "B_R2_FaceBounce_Linked",
+  "B_R2_Fill_NoShadow",
+  "B_R2_HullBounce_Linked",
+  "B_R2_Rim_Cool",
+  "B_R2_ShipFaceFill_Linked",
+  "B_R2_Sun_Key",
+  "RO2_A_GolfBall",
+  "RO2_A_Putter",
+  "RO2_B_GolfBall",
+  "RO2_B_kit_fernclump_11",
+  "RO2_B_kit_palm_l_08",
+  "RO2_B_kit_palm_m_09",
+  "RO2_B_kit_palm_s_10",
+  "RO2_B_kit_rock_m_12",
+  "RO2_B_Putter",
+  "RO2_B_Sandbar",
+  "Thumbnail_B_Octopus_R2",
+  "collection RO2_A_GolfProps_RenderOnly",
+  "collection RO2_B_Dressing",
+  "collection RO2_B_GolfProps_RenderOnly",
+  "collection RO2_B_LightLink_HullFace",
+  "collection RO2_B_LightLink_HullOnly",
+  "collection RO2_B_LightLink_OctopusOnly",
+  "datablock RO2_GolfBall",
+  "datablock RO2_Putter",
+  "datablock RO2_B_Sandbar",
+  "datablock RO2_GolfBall_White",
+  "datablock RO2_Putter_Head",
+  "datablock RO2_Putter_Shaft",
+  "datablock RO2_Putter_Grip",
+  "datablock RO2_Putter_Accent"
+ ],
+ "build_projection": {
+  "green": {
+   "u": [
+    0.7019,
+    0.9557
+   ],
+   "v": [
+    0.0468,
+    0.2485
+   ]
+  },
+  "flag_pole_cup": {
+   "u": [
+    0.8342,
+    0.9258
+   ],
+   "v": [
+    0.1644,
+    0.37
+   ]
+  },
+  "ball": {
+   "u": [
+    0.7664,
+    0.7953
+   ],
+   "v": [
+    0.1433,
+    0.1932
+   ]
+  },
+  "figurehead": {
+   "u": [
+    0.7426,
+    0.899
+   ],
+   "v": [
+    0.4192,
+    0.8944
+   ]
+  },
+  "ship": {
+   "u": [
+    0.0228,
+    0.9173
+   ],
+   "v": [
+    0.2738,
+    0.9799
+   ]
+  },
+  "bow_eyes": {
+   "u": [
+    0.6865,
+    0.7602
+   ],
+   "v": [
+    0.5719,
+    0.6631
+   ]
+  },
+  "green_margin": {
+   "left": 0.7019,
+   "right": 0.0443,
+   "bottom": 0.0468,
+   "top": 0.7515
+  },
+  "flag_overlaps_figurehead_bbox": false,
+  "green_overlaps_figurehead_bbox": false
+ },
+ "checks": {
+  "source_sha256_unchanged": {
+   "ok": true,
+   "now": "3837fadb44409dc64d9b7a20ea07aa7bc3fb502c58001853141eaa14edee9d43",
+   "expected": "3837fadb44409dc64d9b7a20ea07aa7bc3fb502c58001853141eaa14edee9d43"
+  },
+  "approved_sha256_unchanged": {
+   "ok": true,
+   "now": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+   "expected": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd"
+  },
+  "authentic_ship_unchanged_vs_approved": {
+   "ok": true,
+   "compared_objects": 239,
+   "diffs": [],
+   "compared": "mesh co/loop/material-index hashes, basis transforms + deltas + parent inverse, matrix_world (non-Collision), parent, modifiers, material node values"
+  },
+  "images_packed": {
+   "ok": true,
+   "file_images": 3,
+   "unpacked": []
+  },
+  "single_thumbnail_scene": {
+   "ok": true,
+   "scenes": [
+    "Scene",
+    "Thumbnail_B_Lead_R3"
+   ],
+   "thumbnail_scenes": [
+    "Thumbnail_B_Lead_R3"
+   ],
+   "camera": "Thumbnail_B_Lead_R3",
+   "note": "'Scene' = untouched original scene carried from the approved ship file; not a thumbnail"
+  },
+  "round2_giant_ball_putter_removed": {
+   "ok": true,
+   "leftovers": []
+  },
+  "collision_not_in_scene": {
+   "ok": true
+  },
+  "whole_green_in_frame": {
+   "ok": true,
+   "green_uv": {
+    "u": [
+     0.7019,
+     0.9557
+    ],
+    "v": [
+     0.0468,
+     0.2485
+    ]
+   },
+   "min_margin_frac": 0.0443,
+   "required_margin_frac": 0.04,
+   "margin_px_1280x720": {
+    "left": 898,
+    "right": 57,
+    "bottom": 34,
+    "top": 541
+   }
+  },
+  "flag_clear_of_figurehead": {
+   "ok": true,
+   "flag_pole_uv": {
+    "u": [
+     0.8522,
+     0.9258
+    ],
+    "v": [
+     0.1755,
+     0.37
+    ]
+   },
+   "figurehead_uv": {
+    "u": [
+     0.7426,
+     0.899
+    ],
+    "v": [
+     0.4192,
+     0.8944
+    ]
+   },
+   "vertical_gap_frac": 0.0492
+  },
+  "green_rendered_pixels": {
+   "ok": true,
+   "turf_pixels_in_green_bbox": 34084,
+   "bbox_px": [
+    898,
+    541,
+    1223,
+    686
+   ],
+   "bbox_area_px": 47125
+  },
+  "output_sizes": {
+   "ok": true,
+   "sizes": {
+    "B_round3.png": [
+     1280,
+     720
+    ],
+    "B_round3_320x180.png": [
+     320,
+     180
+    ],
+    "B_round3_160x90.png": [
+     160,
+     90
+    ],
+    "B_round3_gray.png": [
+     1280,
+     720
+    ],
+    "B_round3_320x180_gray.png": [
+     320,
+     180
+    ],
+    "B_round3_160x90_gray.png": [
+     160,
+     90
+    ],
+    "round2_vs_round3_small_comparison.png": [
+     1060,
+     440
+    ]
+   }
+  }
+ },
+ "all_checks_ok": true
+}

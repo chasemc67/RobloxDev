@@ -1,0 +1,42 @@
+{
+ "note": "Round-3 single lead (sketch follow-up, inputs/chase_green_placement.png): base = round-2 scene A frame/camera, kept exactly (camera.mode keep_base; optional camera.tweak {dz, dpitch_deg, dshift_y}). green.uv = image centre (0..1, y up) of the sketch oval, green.radius_uv = oval radii in image units; the outline is ray-cast onto the staged cove sand. pole height is clamped so its top projects at or below pole_top_v_max (below the octopus face). dressing_moves: RENDER_ONLY dressing -> [x, y] or null.",
+ "scene_in": "Thumbnail_A_Hero_R2",
+ "scene_out": "Thumbnail_B_Lead_R3",
+ "camera": {
+  "mode": "keep_base",
+  "tweak": {}
+ },
+ "lights": {
+  "key_face_scale": 0.5
+ },
+ "green": {
+  "uv": [
+   0.825,
+   0.15
+  ],
+  "radius_uv": [
+   0.12,
+   0.09
+  ],
+  "wobble": 0.04,
+  "height": 0.5,
+  "rim": 0.55,
+  "cup_offset": [
+   0.37,
+   0.48
+  ],
+  "ball_offset": [
+   -0.45,
+   -0.3
+  ],
+  "ball_r": 1.0,
+  "cup_r": 2.3,
+  "pole_h": 14.0,
+  "pole_top_v_max": 0.37,
+  "pole_r": 0.2,
+  "flag_len": 6.5,
+  "flag_h": 4.0
+ },
+ "dressing_moves": {},
+ "scene_drop": "Thumbnail_B_Octopus_R2"
+}
