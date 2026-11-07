@@ -1,0 +1,1220 @@
+{
+ "job": "Pirate ship thumbnails ROUND 1 (A hero / B octopus / C adventure): proofs for Playtest+Art critique, not final",
+ "status": "round1 delivered; waiting for round2 feedback (no further iterations made)",
+ "source": {
+  "path": "inputs/start_ship_whimsy_v5_1.blend",
+  "commit": "0852f9d",
+  "sha256_before": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+  "sha256_after": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+  "objects": 239,
+  "tris_all_objects_incl_collision": 65915,
+  "collections": {
+   "Collision": 190,
+   "Props": 35,
+   "Ramps": 3,
+   "Visual": 11
+  }
+ },
+ "output": {
+  "path": "out/pirate_thumbnail_round1.blend",
+  "sha256": "411e594f2bcd55c5c05a25cbd15cbdd8bcba98f10ca65e50bb4224c91e6c12ce",
+  "bytes": 4198369,
+  "packed": true,
+  "scenes": [
+   "Thumbnail_A_Hero",
+   "Thumbnail_B_Octopus",
+   "Thumbnail_C_Adventure"
+  ],
+  "note": "Original \"Scene\" from the source file is kept untouched (it still links Collision); use the three Thumbnail_* scenes."
+ },
+ "validation": {
+  "checks": {
+   "ship_objects_identical": {
+    "ok": true,
+    "compared_objects": 239,
+    "compared": "mesh vertex-coordinate/loop/material_index hashes, basis transforms (loc/rot/scale/deltas/parent inverse), matrix_world (non-Collision), parent, modifiers, material node values",
+    "note": "Collision objects: stored matrix_world cache stale in source (not evaluated); basis transforms identical",
+    "diffs": []
+   },
+   "source_sha256": {
+    "ok": true,
+    "expected": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+    "before": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd",
+    "after": "fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd"
+   },
+   "cameras": {
+    "ok": true,
+    "scenes": {
+     "Thumbnail_A_Hero": {
+      "scene": true,
+      "camera": "Thumbnail_A_Hero",
+      "collision_linked": false,
+      "view_transform": "Standard",
+      "engine": "CYCLES",
+      "device": "CPU",
+      "samples": 48,
+      "resolution": [
+       1280,
+       720
+      ]
+     },
+     "Thumbnail_B_Octopus": {
+      "scene": true,
+      "camera": "Thumbnail_B_Octopus",
+      "collision_linked": false,
+      "view_transform": "Standard",
+      "engine": "CYCLES",
+      "device": "CPU",
+      "samples": 48,
+      "resolution": [
+       1280,
+       720
+      ]
+     },
+     "Thumbnail_C_Adventure": {
+      "scene": true,
+      "camera": "Thumbnail_C_Adventure",
+      "collision_linked": false,
+      "view_transform": "Standard",
+      "engine": "CYCLES",
+      "device": "CPU",
+      "samples": 48,
+      "resolution": [
+       1280,
+       720
+      ]
+     }
+    }
+   },
+   "helpers_render_hidden": {
+    "ok": true,
+    "empties": [
+     "CupRef",
+     "RampStart",
+     "Spawn",
+     "Tee1"
+    ]
+   },
+   "images_packed": {
+    "ok": true,
+    "images": [
+     [
+      "KIT_v1_palette_mat_palette.png",
+      true
+     ],
+     [
+      "KIT_v22_palette_mat_palette.png",
+      true
+     ],
+     [
+      "start_ship_palette.png",
+      true
+     ]
+    ]
+   },
+   "previews": {
+    "ok": true,
+    "files": {
+     "A": {
+      "path": "previews/A_round1.png",
+      "size": [
+       1280,
+       720
+      ],
+      "sha256": "25307613a55b239d44d9bed8f88a5aa883005d171e9370186901af0bf19a3742"
+     },
+     "B": {
+      "path": "previews/B_round1.png",
+      "size": [
+       1280,
+       720
+      ],
+      "sha256": "fdbf71ecde6e42d8759d9c5d2ecf126fc5dddf5750ce8876c6846fc3389f7b3d"
+     },
+     "C": {
+      "path": "previews/C_round1.png",
+      "size": [
+       1280,
+       720
+      ],
+      "sha256": "0571c3c317725107b34014b73e61082d36d660ad0f10e2e19aff95cfcc8b4cd2"
+     }
+    }
+   }
+  },
+  "ok": true
+ },
+ "scenes": {
+  "Thumbnail_A_Hero": {
+   "camera": {
+    "name": "Thumbnail_A_Hero",
+    "location": [
+     -175.0,
+     -430.0,
+     112.0
+    ],
+    "rotation_deg": [
+     80.69074836388509,
+     2.163962894180441e-06,
+     -22.77038220215096
+    ],
+    "lens_mm": 30.0,
+    "target": [
+     -5,
+     -25,
+     40
+    ],
+    "sensor_width": 36.0
+   },
+   "lights": [
+    {
+     "name": "A_Sun_Key",
+     "type": "SUN",
+     "az_from_deg": -115,
+     "elev_deg": 42,
+     "strength": 4.2,
+     "rgb": [
+      255,
+      238,
+      214
+     ],
+     "shadow": true
+    },
+    {
+     "name": "A_Fill_NoShadow",
+     "type": "SUN",
+     "az_from_deg": -40,
+     "elev_deg": 20,
+     "strength": 0.8,
+     "rgb": [
+      255,
+      232,
+      206
+     ],
+     "shadow": false
+    }
+   ],
+   "world": "RO_TropicalSky",
+   "exposure": -0.15,
+   "view_transform": "Standard",
+   "samples": 48,
+   "resolution": [
+    1280,
+    720
+   ],
+   "collections": [
+    "Visual",
+    "Props",
+    "Ramps",
+    "RO_Env_Common",
+    "RO_Env_A_only"
+   ],
+   "frame": {
+    "ship_u": [
+     -0.035,
+     0.798
+    ],
+    "ship_v": [
+     -0.141,
+     0.808
+    ],
+    "bow_u": [
+     0.695,
+     0.798
+    ],
+    "bow_v": [
+     0.481,
+     0.635
+    ]
+   },
+   "key_points_uv": {
+    "bowsprit_tip": [
+     0.797,
+     0.616,
+     525.5
+    ],
+    "mast_top": [
+     0.541,
+     0.808,
+     421.3
+    ],
+    "octopus_min": [
+     0.735,
+     0.476,
+     512.8
+    ],
+    "octopus_max": [
+     0.772,
+     0.626,
+     542.2
+    ]
+   }
+  },
+  "Thumbnail_B_Octopus": {
+   "camera": {
+    "name": "Thumbnail_B_Octopus",
+    "location": [
+     225.0,
+     -118.0,
+     22.0
+    ],
+    "rotation_deg": [
+     102.84888606921446,
+     6.317938294791469e-07,
+     45.46206354959045
+    ],
+    "lens_mm": 20.0,
+    "target": [
+     100,
+     5,
+     62
+    ],
+    "sensor_width": 36.0
+   },
+   "lights": [
+    {
+     "name": "B_Sun_Key",
+     "type": "SUN",
+     "az_from_deg": -60,
+     "elev_deg": 38,
+     "strength": 4.2,
+     "rgb": [
+      255,
+      238,
+      214
+     ],
+     "shadow": true
+    },
+    {
+     "name": "B_Fill_NoShadow",
+     "type": "SUN",
+     "az_from_deg": -150,
+     "elev_deg": 20,
+     "strength": 0.8,
+     "rgb": [
+      255,
+      232,
+      206
+     ],
+     "shadow": false
+    }
+   ],
+   "world": "RO_TropicalSky",
+   "exposure": -0.15,
+   "view_transform": "Standard",
+   "samples": 48,
+   "resolution": [
+    1280,
+    720
+   ],
+   "collections": [
+    "Visual",
+    "Props",
+    "Ramps",
+    "RO_Env_Common",
+    "RO_Env_B_only"
+   ],
+   "frame": {
+    "ship_u": [
+     -0.419,
+     0.809
+    ],
+    "ship_v": [
+     0.126,
+     0.882
+    ],
+    "bow_u": [
+     0.521,
+     0.817
+    ],
+    "bow_v": [
+     0.264,
+     0.814
+    ]
+   },
+   "key_points_uv": {
+    "bowsprit_tip": [
+     0.817,
+     0.76,
+     95.2
+    ],
+    "mast_top": [
+     0.264,
+     0.762,
+     225.3
+    ],
+    "octopus_min": [
+     0.592,
+     0.264,
+     116.1
+    ],
+    "octopus_max": [
+     0.834,
+     0.711,
+     110.9
+    ]
+   }
+  },
+  "Thumbnail_C_Adventure": {
+   "camera": {
+    "name": "Thumbnail_C_Adventure",
+    "location": [
+     -132.0,
+     -36.0,
+     40.0
+    ],
+    "rotation_deg": [
+     98.33092083892612,
+     1.5056529686107699e-05,
+     -94.52246882942954
+    ],
+    "lens_mm": 17.0,
+    "target": [
+     45,
+     -50,
+     66
+    ],
+    "sensor_width": 36.0
+   },
+   "lights": [
+    {
+     "name": "C_Sun_Key",
+     "type": "SUN",
+     "az_from_deg": 235,
+     "elev_deg": 36,
+     "strength": 4.2,
+     "rgb": [
+      255,
+      238,
+      214
+     ],
+     "shadow": true
+    },
+    {
+     "name": "C_Fill_NoShadow",
+     "type": "SUN",
+     "az_from_deg": -80,
+     "elev_deg": 25,
+     "strength": 1.1,
+     "rgb": [
+      255,
+      232,
+      206
+     ],
+     "shadow": false
+    }
+   ],
+   "world": "RO_TropicalSky",
+   "exposure": -0.15,
+   "view_transform": "Standard",
+   "samples": 48,
+   "resolution": [
+    1280,
+    720
+   ],
+   "collections": [
+    "Visual",
+    "Props",
+    "Ramps",
+    "RO_Env_Common",
+    "RO_Env_C_only"
+   ],
+   "frame": {
+    "ship_u": [
+     -9437.211,
+     10315.509
+    ],
+    "ship_v": [
+     -4413.556,
+     7703.3
+    ],
+    "bow_u": [
+     0.392,
+     0.448
+    ],
+    "bow_v": [
+     0.318,
+     0.467
+    ]
+   },
+   "key_points_uv": {
+    "bowsprit_tip": [
+     0.437,
+     0.448,
+     331.0
+    ],
+    "mast_top": [
+     0.483,
+     0.874,
+     154.2
+    ],
+    "octopus_min": [
+     0.436,
+     0.318,
+     277.6
+    ],
+    "octopus_max": [
+     0.408,
+     0.454,
+     327.3
+    ]
+   }
+  }
+ },
+ "water_z": 1.0,
+ "key_points_world": {
+  "bowsprit_tip": [
+   200.91055297851562,
+   -18.11712646484375,
+   67.6140365600586
+  ],
+  "mast_top": [
+   10.651326179504395,
+   -41.59710693359375,
+   130.40036010742188
+  ],
+  "octopus_bbox": [
+   [
+    153.46987915039062,
+    -20.551013946533203,
+    20.80992889404297
+   ],
+   [
+    198.46031188964844,
+    1.6192522048950195,
+    69.80238342285156
+   ]
+  ]
+ },
+ "tris": {
+  "original_ship_rendered": 63635,
+  "added_terrain": 108780,
+  "added_water": 1,
+  "added_kit_props_total_all_scenes": 92806,
+  "added_kit_props_by_collection": {
+   "RO_Env_A_only": 2176,
+   "RO_Env_C_only": 8892,
+   "RO_Env_Common": 68814,
+   "RO_Env_B_only": 12924
+  }
+ },
+ "render_only_additions": {
+  "collection": "RENDER_ONLY_Environment",
+  "note": "Staged tropical cove for thumbnails only. NOT the game layout and NOT the v30/v31 placement.",
+  "procedural": [
+   "RO_CoveTerrain: faceted height-field sand/lagoon seabed (height() in build script), colour by height",
+   "RO_SeaFloorFar: deep-sea floor plane",
+   "RO_WaterSurface: transparent + glossy water, bump waves, z=1.0",
+   "RO_TropicalSky: gradient sky world",
+   "per-scene sun key + shadowless fill"
+  ],
+  "kit_instances": [
+   {
+    "object": "RO_kit_palm_l_000",
+    "prop": "kit_palm_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     205,
+     125,
+     18.3
+    ],
+    "scale": 1.85,
+    "yaw": 10,
+    "tris": 2676
+   },
+   {
+    "object": "RO_kit_palm_l_001",
+    "prop": "kit_palm_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     300,
+     200,
+     18.89
+    ],
+    "scale": 1.85,
+    "yaw": 70,
+    "tris": 2676
+   },
+   {
+    "object": "RO_kit_palm_l_002",
+    "prop": "kit_palm_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     140,
+     205,
+     14.29
+    ],
+    "scale": 1.7575,
+    "yaw": 140,
+    "tris": 2676
+   },
+   {
+    "object": "RO_kit_palm_m_003",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     255,
+     95,
+     15.85
+    ],
+    "scale": 1.85,
+    "yaw": 200,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_palm_m_004",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     365,
+     140,
+     16.86
+    ],
+    "scale": 1.85,
+    "yaw": 30,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_palm_m_005",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     120,
+     140,
+     11.42
+    ],
+    "scale": 1.85,
+    "yaw": 300,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_palm_lean_b_006",
+    "prop": "kit_palm_lean_b",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     175,
+     75,
+     5.95
+    ],
+    "scale": 1.85,
+    "yaw": 250,
+    "tris": 2312
+   },
+   {
+    "object": "RO_kit_palm_s_007",
+    "prop": "kit_palm_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     330,
+     85,
+     9.8
+    ],
+    "scale": 1.85,
+    "yaw": 120,
+    "tris": 2120
+   },
+   {
+    "object": "RO_kit_palm_m_008",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     410,
+     230,
+     7.18
+    ],
+    "scale": 1.85,
+    "yaw": 90,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_palm_l_009",
+    "prop": "kit_palm_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     250,
+     260,
+     14.06
+    ],
+    "scale": 1.85,
+    "yaw": 250,
+    "tris": 2676
+   },
+   {
+    "object": "RO_kit_rock_l_010",
+    "prop": "kit_rock_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     235,
+     150,
+     18.58
+    ],
+    "scale": 2.3,
+    "yaw": 20,
+    "tris": 1840
+   },
+   {
+    "object": "RO_kit_rock_l_011",
+    "prop": "kit_rock_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     345,
+     105,
+     14.02
+    ],
+    "scale": 1.9,
+    "yaw": 120,
+    "tris": 1840
+   },
+   {
+    "object": "RO_kit_rock_m_012",
+    "prop": "kit_rock_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     160,
+     100,
+     9.61
+    ],
+    "scale": 2.2,
+    "yaw": 60,
+    "tris": 1252
+   },
+   {
+    "object": "RO_kit_rock_m_013",
+    "prop": "kit_rock_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     120,
+     175,
+     12.84
+    ],
+    "scale": 2.0,
+    "yaw": 200,
+    "tris": 1252
+   },
+   {
+    "object": "RO_kit_rock_m_014",
+    "prop": "kit_rock_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     290,
+     60,
+     4.01
+    ],
+    "scale": 1.8,
+    "yaw": 300,
+    "tris": 1252
+   },
+   {
+    "object": "RO_kit_boulder_pile_015",
+    "prop": "kit_boulder_pile",
+    "kit": "kit_v22",
+    "collection": "RO_Env_Common",
+    "loc": [
+     225,
+     165,
+     18.66
+    ],
+    "scale": 2.3,
+    "yaw": 0,
+    "tris": 1732
+   },
+   {
+    "object": "RO_kit_boulder_pile_016",
+    "prop": "kit_boulder_pile",
+    "kit": "kit_v22",
+    "collection": "RO_Env_Common",
+    "loc": [
+     330,
+     175,
+     20.2
+    ],
+    "scale": 2.0,
+    "yaw": 160,
+    "tris": 1732
+   },
+   {
+    "object": "RO_kit_leafclump_017",
+    "prop": "kit_leafclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     185,
+     95,
+     12.07
+    ],
+    "scale": 2.0,
+    "yaw": 0,
+    "tris": 956
+   },
+   {
+    "object": "RO_kit_leafclump_018",
+    "prop": "kit_leafclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     270,
+     75,
+     9.95
+    ],
+    "scale": 2.2,
+    "yaw": 90,
+    "tris": 956
+   },
+   {
+    "object": "RO_kit_fernclump_019",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     215,
+     70,
+     7.02
+    ],
+    "scale": 2.0,
+    "yaw": 30,
+    "tris": 1344
+   },
+   {
+    "object": "RO_kit_fernclump_020",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     140,
+     120,
+     10.8
+    ],
+    "scale": 2.0,
+    "yaw": 200,
+    "tris": 1344
+   },
+   {
+    "object": "RO_kit_leafclump_021",
+    "prop": "kit_leafclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     360,
+     70,
+     4.33
+    ],
+    "scale": 2.0,
+    "yaw": 45,
+    "tris": 956
+   },
+   {
+    "object": "RO_kit_fernclump_022",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     310,
+     50,
+     3.29
+    ],
+    "scale": 1.8,
+    "yaw": 10,
+    "tris": 1344
+   },
+   {
+    "object": "RO_kit_leafclump_023",
+    "prop": "kit_leafclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     110,
+     105,
+     4.67
+    ],
+    "scale": 1.9,
+    "yaw": 300,
+    "tris": 956
+   },
+   {
+    "object": "RO_kit_canopy_wall_024",
+    "prop": "kit_canopy_wall",
+    "kit": "kit_v22",
+    "collection": "RO_Env_Common",
+    "loc": [
+     320,
+     330,
+     -6.36
+    ],
+    "scale": 1.6,
+    "yaw": 0,
+    "tris": 3794
+   },
+   {
+    "object": "RO_kit_canopy_wall_025",
+    "prop": "kit_canopy_wall",
+    "kit": "kit_v22",
+    "collection": "RO_Env_Common",
+    "loc": [
+     130,
+     320,
+     -7.24
+    ],
+    "scale": 1.4,
+    "yaw": 15,
+    "tris": 3794
+   },
+   {
+    "object": "RO_kit_canopy_wall_026",
+    "prop": "kit_canopy_wall",
+    "kit": "kit_v22",
+    "collection": "RO_Env_Common",
+    "loc": [
+     480,
+     280,
+     -8.13
+    ],
+    "scale": 1.4,
+    "yaw": -30,
+    "tris": 3794
+   },
+   {
+    "object": "RO_kit_palm_m_027",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     335,
+     -10,
+     3.45
+    ],
+    "scale": 1.85,
+    "yaw": 45,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_palm_l_028",
+    "prop": "kit_palm_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     400,
+     40,
+     5.19
+    ],
+    "scale": 1.85,
+    "yaw": 160,
+    "tris": 2676
+   },
+   {
+    "object": "RO_kit_palm_lean_a_029",
+    "prop": "kit_palm_lean_a",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     300,
+     -120,
+     4.72
+    ],
+    "scale": 1.85,
+    "yaw": 200,
+    "tris": 2420
+   },
+   {
+    "object": "RO_kit_palm_s_030",
+    "prop": "kit_palm_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     380,
+     -60,
+     3.1
+    ],
+    "scale": 1.85,
+    "yaw": 10,
+    "tris": 2120
+   },
+   {
+    "object": "RO_kit_rock_m_031",
+    "prop": "kit_rock_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     355,
+     -95,
+     3.71
+    ],
+    "scale": 1.8,
+    "yaw": 40,
+    "tris": 1252
+   },
+   {
+    "object": "RO_kit_rock_s_032",
+    "prop": "kit_rock_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     300,
+     -45,
+     4.13
+    ],
+    "scale": 2.0,
+    "yaw": 0,
+    "tris": 832
+   },
+   {
+    "object": "RO_kit_fernclump_033",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     330,
+     -60,
+     5.14
+    ],
+    "scale": 1.8,
+    "yaw": 0,
+    "tris": 1344
+   },
+   {
+    "object": "RO_kit_leafclump_034",
+    "prop": "kit_leafclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_Common",
+    "loc": [
+     375,
+     0,
+     4.57
+    ],
+    "scale": 1.9,
+    "yaw": 120,
+    "tris": 956
+   },
+   {
+    "object": "RO_kit_palm_m_035",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -320,
+     -320,
+     4.54
+    ],
+    "scale": 1.85,
+    "yaw": 0,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_palm_l_036",
+    "prop": "kit_palm_l",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -360,
+     -350,
+     3.37
+    ],
+    "scale": 1.85,
+    "yaw": 80,
+    "tris": 2676
+   },
+   {
+    "object": "RO_kit_palm_s_037",
+    "prop": "kit_palm_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -280,
+     -345,
+     4.04
+    ],
+    "scale": 1.85,
+    "yaw": 160,
+    "tris": 2120
+   },
+   {
+    "object": "RO_kit_palm_lean_b_038",
+    "prop": "kit_palm_lean_b",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -300,
+     -290,
+     4.7
+    ],
+    "scale": 1.85,
+    "yaw": 270,
+    "tris": 2312
+   },
+   {
+    "object": "RO_kit_rock_m_039",
+    "prop": "kit_rock_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -340,
+     -300,
+     3.87
+    ],
+    "scale": 1.8,
+    "yaw": 0,
+    "tris": 1252
+   },
+   {
+    "object": "RO_kit_rock_s_040",
+    "prop": "kit_rock_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -260,
+     -315,
+     4.08
+    ],
+    "scale": 1.8,
+    "yaw": 90,
+    "tris": 832
+   },
+   {
+    "object": "RO_kit_fernclump_041",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_B_only",
+    "loc": [
+     -300,
+     -360,
+     4.02
+    ],
+    "scale": 1.8,
+    "yaw": 0,
+    "tris": 1344
+   },
+   {
+    "object": "RO_kit_rock_m_042",
+    "prop": "kit_rock_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_C_only",
+    "loc": [
+     20,
+     -165,
+     4.56
+    ],
+    "scale": 1.4,
+    "yaw": 30,
+    "tris": 1252
+   },
+   {
+    "object": "RO_kit_fernclump_043",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_C_only",
+    "loc": [
+     55,
+     -160,
+     3.76
+    ],
+    "scale": 1.6,
+    "yaw": 0,
+    "tris": 1344
+   },
+   {
+    "object": "RO_kit_rock_s_044",
+    "prop": "kit_rock_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_C_only",
+    "loc": [
+     110,
+     -155,
+     3.59
+    ],
+    "scale": 1.6,
+    "yaw": 200,
+    "tris": 832
+   },
+   {
+    "object": "RO_kit_palm_s_045",
+    "prop": "kit_palm_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_C_only",
+    "loc": [
+     80,
+     -185,
+     3.85
+    ],
+    "scale": 1.85,
+    "yaw": 40,
+    "tris": 2120
+   },
+   {
+    "object": "RO_kit_leafclump_046",
+    "prop": "kit_leafclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_C_only",
+    "loc": [
+     -10,
+     -172,
+     5.17
+    ],
+    "scale": 1.6,
+    "yaw": 90,
+    "tris": 956
+   },
+   {
+    "object": "RO_kit_palm_m_047",
+    "prop": "kit_palm_m",
+    "kit": "kit_v1",
+    "collection": "RO_Env_C_only",
+    "loc": [
+     150,
+     -200,
+     4.22
+    ],
+    "scale": 1.85,
+    "yaw": 300,
+    "tris": 2388
+   },
+   {
+    "object": "RO_kit_rock_s_048",
+    "prop": "kit_rock_s",
+    "kit": "kit_v1",
+    "collection": "RO_Env_A_only",
+    "loc": [
+     -175,
+     -120,
+     -2.89
+    ],
+    "scale": 1.6,
+    "yaw": 0,
+    "tris": 832
+   },
+   {
+    "object": "RO_kit_fernclump_049",
+    "prop": "kit_fernclump",
+    "kit": "kit_v1",
+    "collection": "RO_Env_A_only",
+    "loc": [
+     -160,
+     -140,
+     -0.25
+    ],
+    "scale": 1.6,
+    "yaw": 50,
+    "tris": 1344
+   }
+  ]
+ },
+ "hidden_helpers": [
+  "CupRef",
+  "RampStart",
+  "Spawn",
+  "Tee1"
+ ]
+}
