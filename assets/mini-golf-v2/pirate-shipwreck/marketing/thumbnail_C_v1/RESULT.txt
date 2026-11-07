@@ -1,0 +1,72 @@
+THUMBNAIL C v1 - DECK/CABIN ADVENTURE TOWARD THE PATCHED SAILS - COMPOSITION PROOF (not final)
+Date 2026-11-07. Claude Opus 5.5, Windows Blender PC, Blender 5.2.2 LTS headless, --python-exit-code 1, one process at a time.
+
+*** INCOMPLETE ENVIRONMENT ***
+Builder confirms v31 is FREE ROAM, NO HOLES. There is no verified environment export, so this is a ship-only scene on a
+plain neutral sky. There is no terrain, water, beach, jungle, cave or golf context, and none was invented.
+Proofs A and B are on hold until the actual environment export arrives.
+
+STATUS: DONE. One proof at 960x540, no text and no label baked in. No final high-res render, no icon, no A/B.
+
+FILES
+- out/pirate_thumbnail_C_v1_INCOMPLETE_ENVIRONMENT.blend  (all packed: pack_all, 1 image start_ship_palette.png)
+  SHA256 96db044d14d1c1ee9eadc0034f222ea466b9a2b2c61c2ab865325c63cdebbb3f
+  Saved camera / scene.camera = Thumbnail_C_DeckAdventure
+- out/previews/C_INCOMPLETE_ENVIRONMENT_960x540.png
+  SHA256 355338b32d7ecd5edd82e9833a9303ba27e648851fce0eb34ff59d85d5ea4cb1
+- out/src/build_thumbnail_C_v1.py  (rebuilds the .blend and the preview from the original source)
+  SHA256 a79fd3297f50b65ce0e0de7b5323e792de7e9500c2454cd519928a13f6d8068e
+  Run: blender -b inputs/start_ship_whimsy_v5_1.blend --python-exit-code 1 --python out/src/build_thumbnail_C_v1.py
+- Supporting, kept: out/build_C_v1.log; out/src/probe_bounds_C.py and out/src/probe_deck_C.py (read-only framing probes, no save);
+  out/probe_top_C.png (probe top-view workbench image, not a deliverable);
+  out/pirate_thumbnail_C_v1_INCOMPLETE_ENVIRONMENT.blend1 (Blender's automatic backup of the first-trial save with the
+  rejected camera; superseded, kept because outputs must not be deleted).
+
+SOURCE (immutable)
+inputs/start_ship_whimsy_v5_1.blend SHA256 fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd, the same
+before and after. The source was opened read-only and never saved (no .blend1 next to the source).
+render_v5_1.py was NOT run and none of its mock context is used: no sand, beach, water, cup, golf flag or felt green.
+
+SCENE CHANGES (new file only)
+- Added only: camera Thumbnail_C_DeckAdventure, lights Thumbnail_C_Sun and Thumbnail_C_Fill, world Thumbnail_C_NeutralSky.
+- No geometry, modifier, material or transform changes. RampFlight2 stays in its saved un-yawed state.
+- Hidden (hide_render + hide_viewport): 194 objects, the Collision collection (190 COL_*) plus 4 helper empties
+  (CupRef, RampStart, Spawn, Tee1). The Collision collection itself is also hide_render.
+- Visible geometry is the actual approved v5_1 deck, cabin, sails and props. The ship's own fore-mast flag
+  (Prop_Flag, golf-club emblem) is visible and no golf flag was added.
+  The small green patch at bottom centre is the ship's own tee felt (DeckCabin "Felt" material), which is approved geometry and not mock context.
+
+CAMERA Thumbnail_C_DeckAdventure (Blender Z-up ship frame, 1 unit = 1 stud; deck top Z=24, bow +X)
+- Location (-148.0, -40.0, 33.0): aft end of the open -Y walkway beside the cabin, about 9 studs above the deck.
+- Aimed at (30.0, -24.0, 55.0) with track-to -Z/up Y. Rotation XYZ Euler (97.018, 0.0, -84.864) deg.
+- Lens 22 mm, sensor 36 mm horizontal fit, clip 0.5-5000. 960x540 (16:9).
+- Frame: walkway leads forward; cabin wall, door, lantern and windows on the left; chest, crab, cargo and rope coil midground;
+  patched main sail (blue/teal patches) and fore sail with the ship flag centre; bulwark and lifebuoy on the right.
+- Camera history: trial 1 at (-135,-55,31) sat inside the heeled port bulwark (the frame was blocked by wood).
+  It was corrected once after a deck raycast probe. That correction was the one allowed adjustment and no further tweaks were made.
+- Title area (upper-left 35% W x 30% H inside 5% margins = px 48..384 x 27..189): 64% plain sky. The rest is the
+  plain dark cabin roof eave diagonal along the left edge, which has low detail but is not fully empty. The ship's heel and cabin
+  position make a fully clear upper-left impossible from deck level without moving off the deck.
+  If the title needs more room, a later pass could raise the camera slightly or pan right, which would trade away some cabin context.
+
+LIGHTING (approximation of LookB; the Roblox values in lighting_lookB.json do not map 1:1 to Blender)
+- Key: Sun, strength 4.6, colour sRGB (255,236,212) warm, angle 2.0 deg, elevation 35 deg (LookB about 33),
+  coming from azimuth 235 deg (-X,-Y: behind-right of the camera = front/side key). Rotation (55, 0, -35) deg.
+  The sun's direction relative to the real course is unverified, because the ship's world placement is unconfirmed.
+- Fill: Sun, strength 0.9, sRGB (255,228,200), no shadows, elevation 20 deg from the opposite side; lifts wood shadows.
+  Rotation (70, 0, 109) deg.
+- World: plain neutral sky, flat Background sRGB (196,202,210), strength 1.2. No clouds, gradient or scenery.
+
+RENDER / COLOUR
+- Cycles, CPU only (Roblox Studio was open on this PC, so the GPU was left alone and Studio was not touched),
+  64 samples adaptive, denoise on.
+- Standard view transform, look None, exposure -0.35, gamma 1.0, display sRGB (AgX not used because it washes coral).
+- PNG RGB 8-bit, film not transparent.
+- Materials are unchanged. Coral (230,120,100) and CoralDk (180,80,70) are untouched in the file. The octopus figurehead is NOT
+  in this frame (it is on the bow, beyond the sails). The coral-family red in frame is Prop_Crab (Crab 222,98,62), which reads warm
+  orange-red, not dark red.
+
+PROCESS CHECK
+- Blender runs, one at a time, all exit 0: bounds probe, first build, deck probe, corrected build.
+- No Blender process remains (tasklist shows no blender.exe).
+- No Studio, git, node, image generation or video.

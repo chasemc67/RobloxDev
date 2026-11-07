@@ -1,7 +1,7 @@
 # start_ship_whimsy_v5_1 — art corrections from v5
 
 ## Status
-COMPLETE pending Game Art review (2026-11-05 ~5:07 PM PT). Not approved for handoff.
+SOURCE COMPLETE. Game Art passed 2026-11-05 5:08 PM PT; builder and Art subsequently reported v31 live/art-pass in the group (parent relayed 2026-11-07). This source has not been verified identical to current live Studio. Collision UNSYNCED caveat below still applies.
 
 ## Base
 - Preserved first pass: `../start_ship_whimsy_v5/start_ship_whimsy_v5.blend` (commit `2e4023b`, sha256 `8e88f0e973…`) — UNTOUCHED
