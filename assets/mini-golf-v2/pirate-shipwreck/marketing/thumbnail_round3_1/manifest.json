@@ -1,0 +1,531 @@
+{
+ "deliverable": "Pirate Shipwreck thumbnail ROUND 3.1 tiny base polish of the R3 lead (B_round3): green lip sunk into sand + flag cloth offset from the right rock edge. Full-res NOT Art approved yet.",
+ "files": {
+  "blend": {
+   "path": "pirate_thumbnail_round3_1.blend",
+   "sha256": "9f60c84e005495dd34eb20ee83bb26da610bbfddf256275bd5ed9c8da3b8956f",
+   "note": "compressed, all file images packed"
+  },
+  "previews": {
+   "B_round3_1_1920x1080.png": {
+    "size": [
+     1920,
+     1080
+    ],
+    "sha256": "0a3639e54a7b59dab9e5499c14ff301fb4108fe804234bb95b3a5a9c7f0c302a"
+   },
+   "B_round3_1_1920x1080_gray.png": {
+    "size": [
+     1920,
+     1080
+    ],
+    "sha256": "10833e6a05041470150922a7eb3c4e6250e4b4085c239daa746365ece13585f3"
+   },
+   "B_round3_1_1280x720.png": {
+    "size": [
+     1280,
+     720
+    ],
+    "sha256": "fef006caf6fc473741d9855780d272915d23e053081db600381cd1e41a966f00"
+   },
+   "B_round3_1_1280x720_gray.png": {
+    "size": [
+     1280,
+     720
+    ],
+    "sha256": "ffebada53a22d89101e0f76c7d8e60171610e07ea03a2a8049f3ca1f86fef2b9"
+   },
+   "B_round3_1_320x180.png": {
+    "size": [
+     320,
+     180
+    ],
+    "sha256": "18cc23b293308fbc430163ed0800baff0b73cdc2d04fcf11db4bcbac312b4219"
+   },
+   "B_round3_1_320x180_gray.png": {
+    "size": [
+     320,
+     180
+    ],
+    "sha256": "58a54351455b83db95da1edfa7f9ceac1daa845d6e3bdb893b2e0ed33a1f6ba2"
+   },
+   "B_round3_1_160x90.png": {
+    "size": [
+     160,
+     90
+    ],
+    "sha256": "9c0dfeff662d34c4fa59756a218aaab645ce7cc12925f13836a93d6dc03f5f40"
+   },
+   "B_round3_1_160x90_gray.png": {
+    "size": [
+     160,
+     90
+    ],
+    "sha256": "65973fdc30dba4ba1f3b101da59e6f1a89a43b4ee55565dfd98637957dc57aa4"
+   }
+  },
+  "scripts": [
+   "make_downsamples_r3_1.py",
+   "polish_round3_1.py",
+   "render_round3_1.py",
+   "run_detached.ps1",
+   "validate_round3_1.py"
+  ]
+ },
+ "input": {
+  "path": "inputs/pirate_thumbnail_round3.blend",
+  "commit": "7c3b54b",
+  "sha256": "308623f2bae9139693273b487f7013da04db707985e2618040140f614f249085"
+ },
+ "scene": "Thumbnail_B_Lead_R3",
+ "camera": {
+  "ok": true,
+  "camera": "Thumbnail_B_Lead_R3",
+  "lens": 25.0,
+  "sensor": [
+   "HORIZONTAL",
+   36.0
+  ],
+  "shift": [
+   0.0,
+   0.0
+  ],
+  "clip": [
+   0.5,
+   30000.0
+  ],
+  "location": [
+   276.15631103515625,
+   -138.93577575683594,
+   13.0
+  ],
+  "rotation_euler": [
+   1.686072587966919,
+   2.0354799801225454e-07,
+   1.1170109510421753
+  ],
+  "frame": 1,
+  "resolution_in_file": [
+   1280,
+   720,
+   100
+  ]
+ },
+ "render": {
+  "engine": "CYCLES",
+  "device": "CPU (Roblox Studio open: GPU left alone)",
+  "samples": 128,
+  "denoise": true,
+  "resolution": [
+   1920,
+   1080
+  ],
+  "note": "resolution/samples set at render time only by render_round3_1.py; the .blend keeps the R3 render settings (1280x720, 64 spp)"
+ },
+ "changes": {
+  "green": {
+   "object": "RO3_RenderOnly_PuttingGreen",
+   "what": "vertex Z only; X/Y identical (footprint unchanged); topology/materials unchanged",
+   "verts_total": 181,
+   "verts_z_changed": 181,
+   "turf_drop": 0.12,
+   "rings": "centre + 6 rings x 30 (ring scale 0.80 turf, 0.90/0.955/1.0 rolled rim, 1.03/1.055 dark skirt)",
+   "new_profile": {
+    "turf": "old planar turf -0.12",
+    "rim_0p90": "turf plane +0.06",
+    "rim_crest_0p955": "turf plane +0.09 (was +0.55)",
+    "rim_shoulder_1p0": "turf plane +0.02 (was +0.30)",
+    "skirt_1p03": "sand under vertex -0.03 (was plane +0.225 - turf)",
+    "skirt_1p055": "sand under vertex -0.40"
+   },
+   "lip_height_before_after": {
+    "rim_crest_above_sand_at_skirt_foot": {
+     "before": {
+      "min": 0.791,
+      "mean": 1.271,
+      "max": 1.695
+     },
+     "after": {
+      "min": 0.211,
+      "mean": 0.691,
+      "max": 1.115
+     }
+    },
+    "exposed_dark_skirt_height": {
+     "before": {
+      "min": 0.529,
+      "mean": 1.013,
+      "max": 1.419
+     },
+     "after": {
+      "min": 0.127,
+      "mean": 0.61,
+      "max": 1.017
+     }
+    },
+    "rim_crest_above_turf_ring0": {
+     "before": {
+      "min": 0.352,
+      "mean": 0.515,
+      "max": 0.586
+     },
+     "after": {
+      "min": -0.108,
+      "mean": 0.055,
+      "max": 0.126
+     }
+    },
+    "turf_edge_ring0_above_sand": {
+     "before": {
+      "min": 0.288,
+      "mean": 0.735,
+      "max": 1.108
+     },
+     "after": {
+      "min": 0.168,
+      "mean": 0.615,
+      "max": 0.988
+     }
+    },
+    "units": "studs (Blender units)"
+   },
+   "dz_range": [
+    -0.8777,
+    0.5867
+   ]
+  },
+  "cup": {
+   "before": [
+    229.6662,
+    -77.4373,
+    4.1183
+   ],
+   "after": [
+    229.6662,
+    -77.4373,
+    3.9983
+   ],
+   "delta": [
+    0.0,
+    0.0,
+    -0.12
+   ]
+  },
+  "pole": {
+   "before": [
+    229.6662,
+    -77.4373,
+    4.1183
+   ],
+   "after": [
+    229.6662,
+    -77.4373,
+    3.9983
+   ],
+   "delta": [
+    0.0,
+    0.0,
+    -0.12
+   ]
+  },
+  "ball": {
+   "before": [
+    238.4874,
+    -97.7678,
+    5.3031
+   ],
+   "after": [
+    238.4874,
+    -97.7678,
+    5.1831
+   ],
+   "delta": [
+    0.0,
+    0.0,
+    -0.12
+   ]
+  },
+  "flag_cloth": {
+   "yaw_deg_about_pole": 36.0,
+   "pole_axis_xy": [
+    229.6662,
+    -77.4373
+   ],
+   "z_drop": 0.12,
+   "verts": 36,
+   "max_vertex_move": 4.1477,
+   "tip_vertex": 35,
+   "tip_world": {
+    "before": [
+     232.853,
+     -71.534,
+     11.558
+    ],
+    "after": [
+     228.775,
+     -70.788,
+     11.438
+    ]
+   },
+   "tip_uv": {
+    "before": [
+     0.9258,
+     0.3306
+    ],
+    "after": [
+     0.8915,
+     0.33
+    ]
+   },
+   "tip_dx_px_1920": -65.7,
+   "tip_dy_px_1080": -0.7,
+   "u_range": {
+    "before": [
+     0.8565,
+     0.9258
+    ],
+    "after": [
+     0.8556,
+     0.8915
+    ]
+   },
+   "v_range": {
+    "before": [
+     0.294,
+     0.3672
+    ],
+    "after": [
+     0.292,
+     0.365
+    ]
+   }
+  },
+  "id_props_added": {
+   "RO3_RenderOnly_PuttingGreen": "RENDER_ONLY_round3_1",
+   "RO3_RenderOnly_Cup": "RENDER_ONLY_round3_1",
+   "RO3_RenderOnly_FlagPole": "RENDER_ONLY_round3_1",
+   "RO3_RenderOnly_FlagCloth": "RENDER_ONLY_round3_1",
+   "RO3_RenderOnly_GolfBall": "RENDER_ONLY_round3_1"
+  }
+ },
+ "caveats": [
+  "Sand under the green is uneven and the turf top stays planar (shape preserved). Turf could only drop 0.12 before interior sand (min clearance 0.226) would poke through, so on the low (sand falls away) side a dark skirt of up to ~1.02 studs remains exposed (was 1.42); mean 0.61 (was 1.01). Fixing that fully would need tilting/reshaping the turf or a sand mound = redesign, not done.",
+  "Flag: swinging the cloth toward the camera (negative yaw) barely moves its tip (max reach ~281px vs 261px at 1920 along the rock top); yaws +10..+30 slide the tip along the rock diagonal edge (tangent). The first clean gap is ~+34..37 deg, so +36 deg about the pole was used: tip moves -65.7 px left at 1920, clear of the rock edge (~10px). The cloth is the same mesh but more foreshortened, so its projected red area is ~half of R3; check the 160x90 golf cue."
+ ],
+ "checks": {
+  "source_sha256_unchanged": {
+   "ok": true,
+   "now": "308623f2bae9139693273b487f7013da04db707985e2618040140f614f249085",
+   "expected": "308623f2bae9139693273b487f7013da04db707985e2618040140f614f249085"
+  },
+  "only_golf_polish_changed": {
+   "ok": true,
+   "all_diffs": [
+    "/objects/RO3_RenderOnly_Cup/location",
+    "/objects/RO3_RenderOnly_FlagCloth/co",
+    "/objects/RO3_RenderOnly_FlagCloth/xy",
+    "/objects/RO3_RenderOnly_FlagCloth/z",
+    "/objects/RO3_RenderOnly_FlagPole/location",
+    "/objects/RO3_RenderOnly_GolfBall/location",
+    "/objects/RO3_RenderOnly_PuttingGreen/co",
+    "/objects/RO3_RenderOnly_PuttingGreen/z"
+   ],
+   "unexpected": [],
+   "compared": "all objects (transforms, deltas, parent, modifiers, collections, visibility, material slots, mesh co/xy/z/loops/material-index hashes), all materials (node/link values), lights, worlds, cameras, images, scenes (render/cycles/view settings, membership, props)"
+  },
+  "RO3_RenderOnly_Cup_xy_kept_z_only": {
+   "ok": true,
+   "before": [
+    229.666153,
+    -77.437263,
+    4.118317
+   ],
+   "after": [
+    229.666153,
+    -77.437263,
+    3.998317
+   ]
+  },
+  "RO3_RenderOnly_FlagPole_xy_kept_z_only": {
+   "ok": true,
+   "before": [
+    229.666153,
+    -77.437263,
+    4.118317
+   ],
+   "after": [
+    229.666153,
+    -77.437263,
+    3.998317
+   ]
+  },
+  "RO3_RenderOnly_GolfBall_xy_kept_z_only": {
+   "ok": true,
+   "before": [
+    238.487366,
+    -97.767761,
+    5.303057
+   ],
+   "after": [
+    238.487366,
+    -97.767761,
+    5.183057
+   ]
+  },
+  "camera_exact_r3": {
+   "ok": true,
+   "camera": "Thumbnail_B_Lead_R3",
+   "lens": 25.0,
+   "sensor": [
+    "HORIZONTAL",
+    36.0
+   ],
+   "shift": [
+    0.0,
+    0.0
+   ],
+   "clip": [
+    0.5,
+    30000.0
+   ],
+   "location": [
+    276.15631103515625,
+    -138.93577575683594,
+    13.0
+   ],
+   "rotation_euler": [
+    1.686072587966919,
+    2.0354799801225454e-07,
+    1.1170109510421753
+   ],
+   "frame": 1,
+   "resolution_in_file": [
+    1280,
+    720,
+    100
+   ]
+  },
+  "green_footprint_xy_unchanged": {
+   "ok": true,
+   "verts": 181,
+   "max_abs_dxy": 0.0,
+   "xy_extent": [
+    197.29,
+    248.267,
+    -107.33,
+    -45.171
+   ],
+   "dz_min": -0.8777,
+   "dz_max": 0.5867,
+   "verts_z_changed": 181
+  },
+  "images_packed": {
+   "ok": true,
+   "file_images": [
+    "KIT_v1_palette_mat_palette.png",
+    "KIT_v22_palette_mat_palette.png",
+    "start_ship_palette.png"
+   ],
+   "unpacked": []
+  },
+  "flag_below_face": {
+   "ok": true,
+   "flag_pole_uv": {
+    "u": [
+     0.8522,
+     0.8915
+    ],
+    "v": [
+     0.1733,
+     0.3678
+    ]
+   },
+   "figurehead_uv": {
+    "u": [
+     0.7426,
+     0.899
+    ],
+    "v": [
+     0.4192,
+     0.8944
+    ]
+   },
+   "vertical_gap_frac": 0.0514
+  },
+  "green_in_frame": {
+   "ok": true,
+   "green_uv": {
+    "u": [
+     0.7017,
+     0.9553
+    ],
+    "v": [
+     0.0389,
+     0.2431
+    ]
+   }
+  },
+  "preview_sizes": {
+   "ok": true,
+   "sizes": {
+    "B_round3_1_1920x1080.png": [
+     [
+      1920,
+      1080
+     ],
+     4
+    ],
+    "B_round3_1_1920x1080_gray.png": [
+     [
+      1920,
+      1080
+     ],
+     4
+    ],
+    "B_round3_1_1280x720.png": [
+     [
+      1280,
+      720
+     ],
+     4
+    ],
+    "B_round3_1_1280x720_gray.png": [
+     [
+      1280,
+      720
+     ],
+     4
+    ],
+    "B_round3_1_320x180.png": [
+     [
+      320,
+      180
+     ],
+     4
+    ],
+    "B_round3_1_320x180_gray.png": [
+     [
+      320,
+      180
+     ],
+     4
+    ],
+    "B_round3_1_160x90.png": [
+     [
+      160,
+      90
+     ],
+     4
+    ],
+    "B_round3_1_160x90_gray.png": [
+     [
+      160,
+      90
+     ],
+     4
+    ]
+   }
+  }
+ },
+ "all_checks_ok": true
+}
