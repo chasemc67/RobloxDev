@@ -1,0 +1,6167 @@
+{
+ "asset": "pro_shop_pavilion_v1",
+ "status": "FIRST DETAILED MODEL for Art + Chase review - not accepted final",
+ "concept": "Art concept A sage/timber park pavilion (A-park-pavilion.jpg is aesthetic authority)",
+ "units": "1 Blender unit = 1 Roblox stud; Z up; open front faces -Y (Roblox +Z after FBX axis conversion forward -Z / up Y)",
+ "origin": "(0,0,0) = ground centre of plinth footprint; every export mesh pivot = its bbox base centre",
+ "bounds": {
+  "min": [
+   -11.3151,
+   -8.2,
+   -0.08
+  ],
+  "max": [
+   11.3184,
+   5.42,
+   13.05
+  ],
+  "size_wdh": [
+   22.6335,
+   13.62,
+   13.13
+  ]
+ },
+ "key_heights": {
+  "plinth_top": 0.12,
+  "counter_top": 3.15,
+  "counter_above_approach": 3.03,
+  "eye_camera": 5.0,
+  "roof_ridge_cap_top": 12.732,
+  "finial_top": 13.05
+ },
+ "tris": {
+  "export_total": 35398,
+  "export_meshes": 104,
+  "by_collection": {
+   "PS_Structure": 3820,
+   "PS_Walls": 6996,
+   "PS_Windows": 1520,
+   "PS_Roof": 11064,
+   "PS_Counter": 1672,
+   "PS_BallTray": 364,
+   "PS_Dish": 1012,
+   "PS_ClubRack": 836,
+   "PS_Items_Balls": 2700,
+   "PS_Items_Clubs": 1768,
+   "PS_Decor": 3644,
+   "PS_UI_Display": 2
+  },
+  "largest": {
+   "name": "Roof_Tiles_L",
+   "tris": 4532
+  }
+ },
+ "collections": {
+  "PS_BallTray": [
+   "BallTray_Rim",
+   "BallTray_Felt",
+   "BallTray_Dividers"
+  ],
+  "PS_ClubRack": [
+   "ClubRack_Cheek",
+   "ClubRack_Base",
+   "ClubRack_BaseLip",
+   "ClubRack_BackPanel",
+   "ClubRack_SlottedRail"
+  ],
+  "PS_Counter": [
+   "Counter_Front_SageBoards",
+   "Counter_Trim_Kick",
+   "Counter_Trim_Apron",
+   "Counter_Lip",
+   "Counter_Back",
+   "Counter_Top_Planks"
+  ],
+  "PS_Decor": [
+   "Shelf_Rear",
+   "Shelf_Rear_Brackets",
+   "Screen_Bezel",
+   "Screen_Backing",
+   "Sign_Board",
+   "Sign_Frame",
+   "Sign_Lettering",
+   "Art_Frame_L",
+   "Art_Mat_L",
+   "Art_Print_L",
+   "Art_Frame_R",
+   "Art_Mat_R",
+   "Art_Print_R",
+   "Plant_Shelf_L",
+   "Plant_Shelf_R"
+  ],
+  "PS_Dish": [
+   "Dish_Surround",
+   "Dish_Bowl"
+  ],
+  "PS_Items_Balls": [
+   "Ball_Tray_01_royal_blue",
+   "Ball_Tray_02_classic_white",
+   "Ball_Tray_03_violet_swirl",
+   "Ball_Tray_04_lime_pop",
+   "Ball_Tray_05_coral_split",
+   "Ball_Tray_06_sunny_dots",
+   "Ball_Tray_07_teal_band",
+   "Ball_Tray_08_pink_quarters",
+   "Ball_Display_ActivePreview_classic_white"
+  ],
+  "PS_Items_Clubs": [
+   "Club_01_blade_purple",
+   "Club_02_mallet_blue",
+   "Club_03_blade_yellow",
+   "Club_04_fang_black",
+   "Club_05_blade_pink",
+   "Club_06_mallet_teal"
+  ],
+  "PS_Roof": [
+   "Roof_Deck_Soffit_L",
+   "Roof_Underlay_L",
+   "Roof_Tiles_L",
+   "Roof_Fascia_L",
+   "Roof_Deck_Soffit_R",
+   "Roof_Underlay_R",
+   "Roof_Tiles_R",
+   "Roof_Fascia_R",
+   "Roof_RidgeCap",
+   "Roof_Barge_Front",
+   "Roof_BargeInner_Front",
+   "Roof_Finial_Front",
+   "Roof_Barge_Rear",
+   "Roof_BargeInner_Rear",
+   "Roof_Finial_Rear"
+  ],
+  "PS_Structure": [
+   "Plinth_Stone",
+   "Approach_Base",
+   "Approach_Flagstones",
+   "Post_FL",
+   "PostShoe_FL",
+   "Post_FR",
+   "PostShoe_FR",
+   "Post_RL",
+   "PostShoe_RL",
+   "Post_RR",
+   "PostShoe_RR",
+   "Beam_FrontTie",
+   "Beam_RearTie",
+   "Beam_SidePlate_L",
+   "Beam_SidePlate_R",
+   "Braces_Front",
+   "KingPost_Front",
+   "KingPost_Rear",
+   "Beam_Ridge",
+   "Rafters",
+   "Truss_Mid_Collar",
+   "Trim_Base",
+   "Trim_Waist",
+   "Trim_EaveFrieze",
+   "Floor_Planks"
+  ],
+  "PS_UI_Display": [
+   "UI_Display_Surface_REPLACEABLE"
+  ],
+  "PS_Walls": [
+   "Wall_Side_L_LowerSage",
+   "Wall_Side_L_UpperCream",
+   "Wall_Side_R_LowerSage",
+   "Wall_Side_R_UpperCream",
+   "Wall_Rear_LowerSage",
+   "Wall_Rear_UpperCream",
+   "Gable_Front_Cream"
+  ],
+  "PS_Windows": [
+   "Window_L_Frame",
+   "Window_L_Casing",
+   "Window_L_Sill",
+   "Window_L_Glass",
+   "Window_R_Frame",
+   "Window_R_Casing",
+   "Window_R_Sill",
+   "Window_R_Glass",
+   "WindowBox_L",
+   "WindowBox_L_Plants"
+  ]
+ },
+ "objects": [
+  {
+   "name": "Approach_Base",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -7.0,
+    -8.2,
+    -0.08
+   ],
+   "bbox_max": [
+    7.0,
+    -4.85,
+    0.12
+   ],
+   "dims": [
+    14.0,
+    3.35,
+    0.2
+   ],
+   "pivot": [
+    0.0,
+    -6.525,
+    -0.08
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Approach_Flagstones",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 968,
+   "verts": 528,
+   "materials": [
+    "M_Stone_Flag"
+   ],
+   "bbox_min": [
+    -6.96,
+    -8.15,
+    -0.0175
+   ],
+   "bbox_max": [
+    6.96,
+    -4.9,
+    0.1475
+   ],
+   "dims": [
+    13.92,
+    3.25,
+    0.165
+   ],
+   "pivot": [
+    0.0,
+    -6.525,
+    -0.0175
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Art_Frame_L",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 176,
+   "verts": 96,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -5.025,
+    3.48,
+    4.65
+   ],
+   "bbox_max": [
+    -3.775,
+    3.62,
+    6.15
+   ],
+   "dims": [
+    1.25,
+    0.14,
+    1.5
+   ],
+   "pivot": [
+    -4.4,
+    3.55,
+    4.65
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Art_Frame_R",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 176,
+   "verts": 96,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    3.775,
+    3.48,
+    4.65
+   ],
+   "bbox_max": [
+    5.025,
+    3.62,
+    6.15
+   ],
+   "dims": [
+    1.25,
+    0.14,
+    1.5
+   ],
+   "pivot": [
+    4.4,
+    3.55,
+    4.65
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Art_Mat_L",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -4.905,
+    3.56,
+    4.77
+   ],
+   "bbox_max": [
+    -3.895,
+    3.62,
+    6.03
+   ],
+   "dims": [
+    1.01,
+    0.06,
+    1.26
+   ],
+   "pivot": [
+    -4.4,
+    3.59,
+    4.77
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Art_Mat_R",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    3.895,
+    3.56,
+    4.77
+   ],
+   "bbox_max": [
+    4.905,
+    3.62,
+    6.03
+   ],
+   "dims": [
+    1.01,
+    0.06,
+    1.26
+   ],
+   "pivot": [
+    4.4,
+    3.59,
+    4.77
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Art_Print_L",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 2,
+   "verts": 4,
+   "materials": [
+    "M_Art_Prints"
+   ],
+   "bbox_min": [
+    -4.8,
+    3.555,
+    5.0
+   ],
+   "bbox_max": [
+    -4.0,
+    3.555,
+    5.8
+   ],
+   "dims": [
+    0.8,
+    0.0,
+    0.8
+   ],
+   "pivot": [
+    -4.4,
+    3.555,
+    5.0
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Art_Print_R",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 2,
+   "verts": 4,
+   "materials": [
+    "M_Art_Prints"
+   ],
+   "bbox_min": [
+    4.0,
+    3.555,
+    5.0
+   ],
+   "bbox_max": [
+    4.8,
+    3.555,
+    5.8
+   ],
+   "dims": [
+    0.8,
+    0.0,
+    0.8
+   ],
+   "pivot": [
+    4.4,
+    3.555,
+    5.0
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "BallTray_Dividers",
+   "collection": "PS_BallTray",
+   "export": true,
+   "tris": 176,
+   "verts": 96,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -8.33,
+    -4.28,
+    2.97
+   ],
+   "bbox_max": [
+    -3.77,
+    -2.87,
+    3.06
+   ],
+   "dims": [
+    4.56,
+    1.41,
+    0.09
+   ],
+   "pivot": [
+    -6.05,
+    -3.575,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "BallTray_Felt",
+   "collection": "PS_BallTray",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -8.33,
+    -4.28,
+    2.7
+   ],
+   "bbox_max": [
+    -3.77,
+    -2.87,
+    2.97
+   ],
+   "dims": [
+    4.56,
+    1.41,
+    0.27
+   ],
+   "pivot": [
+    -6.05,
+    -3.575,
+    2.7
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "BallTray_Rim",
+   "collection": "PS_BallTray",
+   "export": true,
+   "tris": 176,
+   "verts": 96,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -8.45,
+    -4.4,
+    2.7
+   ],
+   "bbox_max": [
+    -3.65,
+    -2.75,
+    3.16
+   ],
+   "dims": [
+    4.8,
+    1.65,
+    0.46
+   ],
+   "pivot": [
+    -6.05,
+    -3.575,
+    2.7
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Ball_Display_ActivePreview_classic_white",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 396,
+   "verts": 200,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    0.0,
+    -3.8704,
+    2.85
+   ],
+   "bbox_max": [
+    0.6,
+    -3.2796,
+    3.45
+   ],
+   "dims": [
+    0.6,
+    0.5909,
+    0.6
+   ],
+   "pivot": [
+    0.3,
+    -3.575,
+    2.85
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "classic_white",
+    "ps_role": "active_preview"
+   }
+  },
+  {
+   "name": "Ball_Tray_01_royal_blue",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -8.03,
+    -4.1975,
+    2.97
+   ],
+   "bbox_max": [
+    -7.49,
+    -3.6575,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -7.76,
+    -3.9275,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "royal_blue"
+   }
+  },
+  {
+   "name": "Ball_Tray_02_classic_white",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -6.89,
+    -4.1975,
+    2.97
+   ],
+   "bbox_max": [
+    -6.35,
+    -3.6575,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -6.62,
+    -3.9275,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "classic_white"
+   }
+  },
+  {
+   "name": "Ball_Tray_03_violet_swirl",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -5.75,
+    -4.1975,
+    2.97
+   ],
+   "bbox_max": [
+    -5.21,
+    -3.6575,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -5.48,
+    -3.9275,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "violet_swirl"
+   }
+  },
+  {
+   "name": "Ball_Tray_04_lime_pop",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -4.61,
+    -4.1975,
+    2.97
+   ],
+   "bbox_max": [
+    -4.07,
+    -3.6575,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -4.34,
+    -3.9275,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "lime_pop"
+   }
+  },
+  {
+   "name": "Ball_Tray_05_coral_split",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -8.03,
+    -3.4925,
+    2.97
+   ],
+   "bbox_max": [
+    -7.49,
+    -2.9525,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -7.76,
+    -3.2225,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "coral_split"
+   }
+  },
+  {
+   "name": "Ball_Tray_06_sunny_dots",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -6.89,
+    -3.4925,
+    2.97
+   ],
+   "bbox_max": [
+    -6.35,
+    -2.9525,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -6.62,
+    -3.2225,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "sunny_dots"
+   }
+  },
+  {
+   "name": "Ball_Tray_07_teal_band",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -5.75,
+    -3.4925,
+    2.97
+   ],
+   "bbox_max": [
+    -5.21,
+    -2.9525,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -5.48,
+    -3.2225,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "teal_band"
+   }
+  },
+  {
+   "name": "Ball_Tray_08_pink_quarters",
+   "collection": "PS_Items_Balls",
+   "export": true,
+   "tris": 288,
+   "verts": 146,
+   "materials": [
+    "M_Ball_Skins"
+   ],
+   "bbox_min": [
+    -4.61,
+    -3.4925,
+    2.97
+   ],
+   "bbox_max": [
+    -4.07,
+    -2.9525,
+    3.51
+   ],
+   "dims": [
+    0.54,
+    0.54,
+    0.54
+   ],
+   "pivot": [
+    -4.34,
+    -3.2225,
+    2.97
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_skin": "pink_quarters"
+   }
+  },
+  {
+   "name": "Beam_FrontTie",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.76,
+    -4.525,
+    6.25
+   ],
+   "bbox_max": [
+    9.76,
+    -3.675,
+    6.95
+   ],
+   "dims": [
+    19.52,
+    0.85,
+    0.7
+   ],
+   "pivot": [
+    0.0,
+    -4.1,
+    6.25
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Beam_RearTie",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.76,
+    3.8,
+    6.25
+   ],
+   "bbox_max": [
+    9.76,
+    4.225,
+    6.95
+   ],
+   "dims": [
+    19.52,
+    0.425,
+    0.7
+   ],
+   "pivot": [
+    0.0,
+    4.0125,
+    6.25
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Beam_Ridge",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -0.25,
+    -5.22,
+    11.45
+   ],
+   "bbox_max": [
+    0.25,
+    4.92,
+    11.9821
+   ],
+   "dims": [
+    0.5,
+    10.14,
+    0.5321
+   ],
+   "pivot": [
+    0.0,
+    -0.15,
+    11.45
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Beam_SidePlate_L",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.725,
+    -5.15,
+    6.3
+   ],
+   "bbox_max": [
+    -8.875,
+    4.85,
+    6.9
+   ],
+   "dims": [
+    0.85,
+    10.0,
+    0.6
+   ],
+   "pivot": [
+    -9.3,
+    -0.15,
+    6.3
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Beam_SidePlate_R",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    8.875,
+    -5.15,
+    6.3
+   ],
+   "bbox_max": [
+    9.725,
+    4.85,
+    6.9
+   ],
+   "dims": [
+    0.85,
+    10.0,
+    0.6
+   ],
+   "pivot": [
+    9.3,
+    -0.15,
+    6.3
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Braces_Front",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -8.9,
+    -4.27,
+    4.871
+   ],
+   "bbox_max": [
+    8.9,
+    -3.93,
+    6.27
+   ],
+   "dims": [
+    17.8,
+    0.34,
+    1.399
+   ],
+   "pivot": [
+    0.0,
+    -4.1,
+    4.871
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "COL_ApproachRamp",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -7.0,
+    -8.2,
+    -0.08
+   ],
+   "bbox_max": [
+    7.0,
+    -4.85,
+    0.12
+   ],
+   "dims": [
+    14.0,
+    3.35,
+    0.2
+   ],
+   "pivot": [
+    0.0,
+    -6.525,
+    -0.08
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_ClubRack",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    4.55,
+    -4.6,
+    0.12
+   ],
+   "bbox_max": [
+    8.875,
+    -3.05,
+    4.27
+   ],
+   "dims": [
+    4.325,
+    1.55,
+    4.15
+   ],
+   "pivot": [
+    6.7125,
+    -3.825,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Counter",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -8.875,
+    -4.75,
+    0.12
+   ],
+   "bbox_max": [
+    4.55,
+    -2.62,
+    3.17
+   ],
+   "dims": [
+    13.425,
+    2.13,
+    3.05
+   ],
+   "pivot": [
+    -2.1625,
+    -3.685,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Gable_Front",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 16,
+   "verts": 10,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -9.76,
+    -4.525,
+    6.25
+   ],
+   "bbox_max": [
+    9.76,
+    -3.675,
+    12.12
+   ],
+   "dims": [
+    19.52,
+    0.85,
+    5.87
+   ],
+   "pivot": [
+    0.0,
+    -4.1,
+    6.25
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Plinth",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -10.0,
+    -4.85,
+    0.0
+   ],
+   "bbox_max": [
+    10.0,
+    4.55,
+    0.12
+   ],
+   "dims": [
+    20.0,
+    9.4,
+    0.12
+   ],
+   "pivot": [
+    0.0,
+    -0.15,
+    0.0
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Post_FL",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -9.725,
+    -4.525,
+    0.12
+   ],
+   "bbox_max": [
+    -8.875,
+    -3.675,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    -9.3,
+    -4.1,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Post_FR",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    8.875,
+    -4.525,
+    0.12
+   ],
+   "bbox_max": [
+    9.725,
+    -3.675,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    9.3,
+    -4.1,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Post_RL",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -9.725,
+    3.375,
+    0.12
+   ],
+   "bbox_max": [
+    -8.875,
+    4.225,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    -9.3,
+    3.8,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Post_RR",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    8.875,
+    3.375,
+    0.12
+   ],
+   "bbox_max": [
+    9.725,
+    4.225,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    9.3,
+    3.8,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Roof_L",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -11.25,
+    -5.65,
+    5.9383
+   ],
+   "bbox_max": [
+    0.0,
+    5.35,
+    12.72
+   ],
+   "dims": [
+    11.25,
+    11.0,
+    6.7817
+   ],
+   "pivot": [
+    -5.625,
+    -0.15,
+    5.9383
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Roof_R",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    0.0,
+    -5.65,
+    5.9383
+   ],
+   "bbox_max": [
+    11.25,
+    5.35,
+    12.72
+   ],
+   "dims": [
+    11.25,
+    11.0,
+    6.7817
+   ],
+   "pivot": [
+    5.625,
+    -0.15,
+    5.9383
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Wall_L",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -9.47,
+    -3.675,
+    0.12
+   ],
+   "bbox_max": [
+    -9.13,
+    3.375,
+    6.9
+   ],
+   "dims": [
+    0.34,
+    7.05,
+    6.78
+   ],
+   "pivot": [
+    -9.3,
+    -0.15,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Wall_R",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    9.13,
+    -3.675,
+    0.12
+   ],
+   "bbox_max": [
+    9.47,
+    3.375,
+    6.9
+   ],
+   "dims": [
+    0.34,
+    7.05,
+    6.78
+   ],
+   "pivot": [
+    9.3,
+    -0.15,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "COL_Wall_Rear",
+   "collection": "PS_Collision_Proxy",
+   "export": false,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Collision_Proxy"
+   ],
+   "bbox_min": [
+    -8.875,
+    3.54,
+    0.12
+   ],
+   "bbox_max": [
+    8.875,
+    4.225,
+    7.4
+   ],
+   "dims": [
+    17.75,
+    0.685,
+    7.28
+   ],
+   "pivot": [
+    0.0,
+    3.8825,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_collision": true
+   }
+  },
+  {
+   "name": "ClubRack_BackPanel",
+   "collection": "PS_ClubRack",
+   "export": true,
+   "tris": 352,
+   "verts": 192,
+   "materials": [
+    "M_Paint_Sage"
+   ],
+   "bbox_min": [
+    4.75,
+    -3.2063,
+    0.5
+   ],
+   "bbox_max": [
+    8.875,
+    -3.0393,
+    2.95
+   ],
+   "dims": [
+    4.125,
+    0.1669,
+    2.45
+   ],
+   "pivot": [
+    6.8125,
+    -3.1228,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "ClubRack_Base",
+   "collection": "PS_ClubRack",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    4.75,
+    -4.6,
+    0.12
+   ],
+   "bbox_max": [
+    8.875,
+    -3.05,
+    0.5
+   ],
+   "dims": [
+    4.125,
+    1.55,
+    0.38
+   ],
+   "pivot": [
+    6.8125,
+    -3.825,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "ClubRack_BaseLip",
+   "collection": "PS_ClubRack",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    4.75,
+    -4.6,
+    0.5
+   ],
+   "bbox_max": [
+    8.875,
+    -4.5,
+    0.6
+   ],
+   "dims": [
+    4.125,
+    0.1,
+    0.1
+   ],
+   "pivot": [
+    6.8125,
+    -4.55,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "ClubRack_Cheek",
+   "collection": "PS_ClubRack",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    4.55,
+    -4.6,
+    0.12
+   ],
+   "bbox_max": [
+    4.75,
+    -2.75,
+    3.15
+   ],
+   "dims": [
+    0.2,
+    1.85,
+    3.03
+   ],
+   "pivot": [
+    4.65,
+    -3.675,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "ClubRack_SlottedRail",
+   "collection": "PS_ClubRack",
+   "export": true,
+   "tris": 352,
+   "verts": 192,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    4.75,
+    -4.35,
+    2.95
+   ],
+   "bbox_max": [
+    8.875,
+    -3.05,
+    3.15
+   ],
+   "dims": [
+    4.125,
+    1.3,
+    0.2
+   ],
+   "pivot": [
+    6.8125,
+    -3.7,
+    2.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Club_01_blade_purple",
+   "collection": "PS_Items_Clubs",
+   "export": true,
+   "tris": 282,
+   "verts": 155,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    5.0901,
+    -4.4998,
+    0.5
+   ],
+   "bbox_max": [
+    5.481,
+    -3.8673,
+    4.25
+   ],
+   "dims": [
+    0.3909,
+    0.6325,
+    3.75
+   ],
+   "pivot": [
+    5.2856,
+    -4.1835,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_head": "blade",
+    "ps_grip": "grip_purple"
+   }
+  },
+  {
+   "name": "Club_02_mallet_blue",
+   "collection": "PS_Items_Clubs",
+   "export": true,
+   "tris": 298,
+   "verts": 161,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    5.7129,
+    -4.2647,
+    0.5
+   ],
+   "bbox_max": [
+    6.0799,
+    -3.6902,
+    4.25
+   ],
+   "dims": [
+    0.367,
+    0.5745,
+    3.75
+   ],
+   "pivot": [
+    5.8964,
+    -3.9775,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_head": "mallet",
+    "ps_grip": "grip_blue"
+   }
+  },
+  {
+   "name": "Club_03_blade_yellow",
+   "collection": "PS_Items_Clubs",
+   "export": true,
+   "tris": 282,
+   "verts": 155,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    6.2901,
+    -4.4998,
+    0.5
+   ],
+   "bbox_max": [
+    6.681,
+    -3.8673,
+    4.25
+   ],
+   "dims": [
+    0.3909,
+    0.6325,
+    3.75
+   ],
+   "pivot": [
+    6.4856,
+    -4.1835,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_head": "blade",
+    "ps_grip": "grip_yellow"
+   }
+  },
+  {
+   "name": "Club_04_fang_black",
+   "collection": "PS_Items_Clubs",
+   "export": true,
+   "tris": 326,
+   "verts": 179,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    6.9612,
+    -4.3687,
+    0.5
+   ],
+   "bbox_max": [
+    7.4899,
+    -3.6986,
+    4.25
+   ],
+   "dims": [
+    0.5287,
+    0.6701,
+    3.75
+   ],
+   "pivot": [
+    7.2256,
+    -4.0336,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_head": "fang",
+    "ps_grip": "grip_black"
+   }
+  },
+  {
+   "name": "Club_05_blade_pink",
+   "collection": "PS_Items_Clubs",
+   "export": true,
+   "tris": 282,
+   "verts": 155,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    7.4901,
+    -4.4998,
+    0.5
+   ],
+   "bbox_max": [
+    7.881,
+    -3.8673,
+    4.25
+   ],
+   "dims": [
+    0.3909,
+    0.6325,
+    3.75
+   ],
+   "pivot": [
+    7.6856,
+    -4.1835,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_head": "blade",
+    "ps_grip": "grip_pink"
+   }
+  },
+  {
+   "name": "Club_06_mallet_teal",
+   "collection": "PS_Items_Clubs",
+   "export": true,
+   "tris": 298,
+   "verts": 161,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    8.1129,
+    -4.2647,
+    0.5
+   ],
+   "bbox_max": [
+    8.4799,
+    -3.6902,
+    4.25
+   ],
+   "dims": [
+    0.367,
+    0.5745,
+    3.75
+   ],
+   "pivot": [
+    8.2964,
+    -3.9775,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_head": "mallet",
+    "ps_grip": "grip_teal"
+   }
+  },
+  {
+   "name": "Counter_Back",
+   "collection": "PS_Counter",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -8.875,
+    -2.75,
+    0.2
+   ],
+   "bbox_max": [
+    4.55,
+    -2.62,
+    2.9
+   ],
+   "dims": [
+    13.425,
+    0.13,
+    2.7
+   ],
+   "pivot": [
+    -2.1625,
+    -2.685,
+    0.2
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Counter_Front_SageBoards",
+   "collection": "PS_Counter",
+   "export": true,
+   "tris": 1188,
+   "verts": 648,
+   "materials": [
+    "M_Paint_Sage"
+   ],
+   "bbox_min": [
+    -8.875,
+    -4.5618,
+    0.42
+   ],
+   "bbox_max": [
+    4.55,
+    -4.4007,
+    2.62
+   ],
+   "dims": [
+    13.425,
+    0.1612,
+    2.2
+   ],
+   "pivot": [
+    -2.1625,
+    -4.4813,
+    0.42
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Counter_Lip",
+   "collection": "PS_Counter",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -8.875,
+    -4.75,
+    2.78
+   ],
+   "bbox_max": [
+    4.55,
+    -4.38,
+    3.17
+   ],
+   "dims": [
+    13.425,
+    0.37,
+    0.39
+   ],
+   "pivot": [
+    -2.1625,
+    -4.565,
+    2.78
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Counter_Top_Planks",
+   "collection": "PS_Counter",
+   "export": true,
+   "tris": 308,
+   "verts": 168,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -8.875,
+    -4.4,
+    2.9
+   ],
+   "bbox_max": [
+    4.55,
+    -2.75,
+    3.15
+   ],
+   "dims": [
+    13.425,
+    1.65,
+    0.25
+   ],
+   "pivot": [
+    -2.1625,
+    -3.575,
+    2.9
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Counter_Trim_Apron",
+   "collection": "PS_Counter",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -8.875,
+    -4.6,
+    2.62
+   ],
+   "bbox_max": [
+    4.55,
+    -4.38,
+    2.9
+   ],
+   "dims": [
+    13.425,
+    0.22,
+    0.28
+   ],
+   "pivot": [
+    -2.1625,
+    -4.49,
+    2.62
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Counter_Trim_Kick",
+   "collection": "PS_Counter",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -8.875,
+    -4.6,
+    0.12
+   ],
+   "bbox_max": [
+    4.55,
+    -4.38,
+    0.42
+   ],
+   "dims": [
+    13.425,
+    0.22,
+    0.3
+   ],
+   "pivot": [
+    -2.1625,
+    -4.49,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Dish_Bowl",
+   "collection": "PS_Dish",
+   "export": true,
+   "tris": 396,
+   "verts": 221,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -0.34,
+    -4.215,
+    2.85
+   ],
+   "bbox_max": [
+    0.94,
+    -2.935,
+    3.08
+   ],
+   "dims": [
+    1.28,
+    1.28,
+    0.23
+   ],
+   "pivot": [
+    0.3,
+    -3.575,
+    2.85
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Dish_Surround",
+   "collection": "PS_Dish",
+   "export": true,
+   "tris": 616,
+   "verts": 352,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -0.75,
+    -4.4,
+    2.9
+   ],
+   "bbox_max": [
+    1.35,
+    -2.75,
+    3.2
+   ],
+   "dims": [
+    2.1,
+    1.65,
+    0.3
+   ],
+   "pivot": [
+    0.3,
+    -3.575,
+    2.9
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Floor_Planks",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 1232,
+   "verts": 672,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.13,
+    -3.042,
+    0.12
+   ],
+   "bbox_max": [
+    9.13,
+    3.532,
+    0.2
+   ],
+   "dims": [
+    18.26,
+    6.574,
+    0.08
+   ],
+   "pivot": [
+    0.0,
+    0.245,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Gable_Front_Cream",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 1540,
+   "verts": 840,
+   "materials": [
+    "M_Paint_Cream"
+   ],
+   "bbox_min": [
+    -9.6,
+    -4.1907,
+    6.95
+   ],
+   "bbox_max": [
+    9.6,
+    -4.0084,
+    11.9545
+   ],
+   "dims": [
+    19.2,
+    0.1823,
+    5.0045
+   ],
+   "pivot": [
+    0.0,
+    -4.0996,
+    6.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "KingPost_Front",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -0.3,
+    -4.5,
+    6.95
+   ],
+   "bbox_max": [
+    0.3,
+    -4.18,
+    11.9505
+   ],
+   "dims": [
+    0.6,
+    0.32,
+    5.0005
+   ],
+   "pivot": [
+    0.0,
+    -4.34,
+    6.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "KingPost_Rear",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -0.3,
+    3.8,
+    6.95
+   ],
+   "bbox_max": [
+    0.3,
+    4.12,
+    11.9505
+   ],
+   "dims": [
+    0.6,
+    0.32,
+    5.0005
+   ],
+   "pivot": [
+    0.0,
+    3.96,
+    6.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Plant_Shelf_L",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 282,
+   "verts": 223,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -4.655,
+    3.0294,
+    3.62
+   ],
+   "bbox_max": [
+    -4.145,
+    3.6186,
+    4.2956
+   ],
+   "dims": [
+    0.51,
+    0.5892,
+    0.6756
+   ],
+   "pivot": [
+    -4.4,
+    3.324,
+    3.62
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Plant_Shelf_R",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 282,
+   "verts": 223,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    4.072,
+    3.0594,
+    3.62
+   ],
+   "bbox_max": [
+    4.655,
+    3.6566,
+    4.2987
+   ],
+   "dims": [
+    0.583,
+    0.5972,
+    0.6787
+   ],
+   "pivot": [
+    4.3635,
+    3.358,
+    3.62
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Plinth_Stone",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Stone_Flag"
+   ],
+   "bbox_min": [
+    -10.0,
+    -4.85,
+    0.0
+   ],
+   "bbox_max": [
+    10.0,
+    4.55,
+    0.12
+   ],
+   "dims": [
+    20.0,
+    9.4,
+    0.12
+   ],
+   "pivot": [
+    0.0,
+    -0.15,
+    0.0
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "PostShoe_FL",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -9.83,
+    -4.63,
+    0.12
+   ],
+   "bbox_max": [
+    -8.77,
+    -3.57,
+    0.44
+   ],
+   "dims": [
+    1.06,
+    1.06,
+    0.32
+   ],
+   "pivot": [
+    -9.3,
+    -4.1,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "PostShoe_FR",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    8.77,
+    -4.63,
+    0.12
+   ],
+   "bbox_max": [
+    9.83,
+    -3.57,
+    0.44
+   ],
+   "dims": [
+    1.06,
+    1.06,
+    0.32
+   ],
+   "pivot": [
+    9.3,
+    -4.1,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "PostShoe_RL",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -9.83,
+    3.27,
+    0.12
+   ],
+   "bbox_max": [
+    -8.77,
+    4.33,
+    0.44
+   ],
+   "dims": [
+    1.06,
+    1.06,
+    0.32
+   ],
+   "pivot": [
+    -9.3,
+    3.8,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "PostShoe_RR",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    8.77,
+    3.27,
+    0.12
+   ],
+   "bbox_max": [
+    9.83,
+    4.33,
+    0.44
+   ],
+   "dims": [
+    1.06,
+    1.06,
+    0.32
+   ],
+   "pivot": [
+    9.3,
+    3.8,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Post_FL",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.725,
+    -4.525,
+    0.12
+   ],
+   "bbox_max": [
+    -8.875,
+    -3.675,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    -9.3,
+    -4.1,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Post_FR",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    8.875,
+    -4.525,
+    0.12
+   ],
+   "bbox_max": [
+    9.725,
+    -3.675,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    9.3,
+    -4.1,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Post_RL",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.725,
+    3.375,
+    0.12
+   ],
+   "bbox_max": [
+    -8.875,
+    4.225,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    -9.3,
+    3.8,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Post_RR",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    8.875,
+    3.375,
+    0.12
+   ],
+   "bbox_max": [
+    9.725,
+    4.225,
+    6.35
+   ],
+   "dims": [
+    0.85,
+    0.85,
+    6.23
+   ],
+   "pivot": [
+    9.3,
+    3.8,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Rafters",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 440,
+   "verts": 240,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -10.85,
+    -4.25,
+    5.9127
+   ],
+   "bbox_max": [
+    10.85,
+    3.95,
+    11.9703
+   ],
+   "dims": [
+    21.7,
+    8.2,
+    6.0576
+   ],
+   "pivot": [
+    0.0,
+    -0.15,
+    5.9127
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_BargeInner_Front",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -10.84,
+    -5.4,
+    5.9157
+   ],
+   "bbox_max": [
+    10.84,
+    -5.22,
+    12.1066
+   ],
+   "dims": [
+    21.68,
+    0.18,
+    6.191
+   ],
+   "pivot": [
+    0.0,
+    -5.31,
+    5.9157
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_BargeInner_Rear",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -10.84,
+    4.92,
+    5.9157
+   ],
+   "bbox_max": [
+    10.84,
+    5.1,
+    12.1066
+   ],
+   "dims": [
+    21.68,
+    0.18,
+    6.191
+   ],
+   "pivot": [
+    0.0,
+    5.01,
+    5.9157
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Barge_Front",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -11.25,
+    -5.65,
+    5.9524
+   ],
+   "bbox_max": [
+    11.25,
+    -5.4,
+    12.6719
+   ],
+   "dims": [
+    22.5,
+    0.25,
+    6.7196
+   ],
+   "pivot": [
+    0.0,
+    -5.525,
+    5.9524
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Barge_Rear",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -11.25,
+    5.1,
+    5.9524
+   ],
+   "bbox_max": [
+    11.25,
+    5.35,
+    12.6719
+   ],
+   "dims": [
+    22.5,
+    0.25,
+    6.7196
+   ],
+   "pivot": [
+    0.0,
+    5.225,
+    5.9524
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Deck_Soffit_L",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 240,
+   "verts": 160,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -10.9457,
+    -5.4,
+    6.33
+   ],
+   "bbox_max": [
+    0.0,
+    5.1,
+    12.226
+   ],
+   "dims": [
+    10.9457,
+    10.5,
+    5.896
+   ],
+   "pivot": [
+    -5.4729,
+    -0.15,
+    6.33
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Deck_Soffit_R",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 240,
+   "verts": 160,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    0.0,
+    -5.4,
+    6.33
+   ],
+   "bbox_max": [
+    10.9457,
+    5.1,
+    12.226
+   ],
+   "dims": [
+    10.9457,
+    10.5,
+    5.896
+   ],
+   "pivot": [
+    5.4729,
+    -0.15,
+    6.33
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Fascia_L",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -11.04,
+    -5.4,
+    5.82
+   ],
+   "bbox_max": [
+    -10.84,
+    5.1,
+    6.42
+   ],
+   "dims": [
+    0.2,
+    10.5,
+    0.6
+   ],
+   "pivot": [
+    -10.94,
+    -0.15,
+    5.82
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Fascia_R",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    10.84,
+    -5.4,
+    5.82
+   ],
+   "bbox_max": [
+    11.04,
+    5.1,
+    6.42
+   ],
+   "dims": [
+    0.2,
+    10.5,
+    0.6
+   ],
+   "pivot": [
+    10.94,
+    -0.15,
+    5.82
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Finial_Front",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -0.22,
+    -5.72,
+    12.55
+   ],
+   "bbox_max": [
+    0.22,
+    -5.33,
+    13.05
+   ],
+   "dims": [
+    0.44,
+    0.39,
+    0.5
+   ],
+   "pivot": [
+    0.0,
+    -5.525,
+    12.55
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Finial_Rear",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -0.22,
+    5.03,
+    12.55
+   ],
+   "bbox_max": [
+    0.22,
+    5.42,
+    13.05
+   ],
+   "dims": [
+    0.44,
+    0.39,
+    0.5
+   ],
+   "pivot": [
+    0.0,
+    5.225,
+    12.55
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_RidgeCap",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 880,
+   "verts": 480,
+   "materials": [
+    "M_Roof_Tile_Sage"
+   ],
+   "bbox_min": [
+    -0.6622,
+    -5.4,
+    12.2311
+   ],
+   "bbox_max": [
+    0.6622,
+    5.1,
+    12.7324
+   ],
+   "dims": [
+    1.3244,
+    10.5,
+    0.5013
+   ],
+   "pivot": [
+    0.0,
+    -0.15,
+    12.2311
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Tiles_L",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 4532,
+   "verts": 2472,
+   "materials": [
+    "M_Roof_Tile_Sage"
+   ],
+   "bbox_min": [
+    -11.3151,
+    -5.4,
+    6.3553
+   ],
+   "bbox_max": [
+    -0.1119,
+    5.1,
+    12.3379
+   ],
+   "dims": [
+    11.2031,
+    10.5,
+    5.9826
+   ],
+   "pivot": [
+    -5.7135,
+    -0.15,
+    6.3553
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Tiles_R",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 4532,
+   "verts": 2472,
+   "materials": [
+    "M_Roof_Tile_Sage"
+   ],
+   "bbox_min": [
+    0.1119,
+    -5.4,
+    6.3553
+   ],
+   "bbox_max": [
+    11.3184,
+    5.1,
+    12.3375
+   ],
+   "dims": [
+    11.2065,
+    10.5,
+    5.9822
+   ],
+   "pivot": [
+    5.7152,
+    -0.15,
+    6.3553
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Underlay_L",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -10.9751,
+    -5.4,
+    6.4303
+   ],
+   "bbox_max": [
+    -0.0563,
+    5.1,
+    12.2613
+   ],
+   "dims": [
+    10.9188,
+    10.5,
+    5.831
+   ],
+   "pivot": [
+    -5.5157,
+    -0.15,
+    6.4303
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Roof_Underlay_R",
+   "collection": "PS_Roof",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    0.0563,
+    -5.4,
+    6.4303
+   ],
+   "bbox_max": [
+    10.9751,
+    5.1,
+    12.2613
+   ],
+   "dims": [
+    10.9188,
+    10.5,
+    5.831
+   ],
+   "pivot": [
+    5.5157,
+    -0.15,
+    6.4303
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Screen_Backing",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -2.47,
+    3.5,
+    4.13
+   ],
+   "bbox_max": [
+    2.47,
+    3.62,
+    6.37
+   ],
+   "dims": [
+    4.94,
+    0.12,
+    2.24
+   ],
+   "pivot": [
+    0.0,
+    3.56,
+    4.13
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Screen_Bezel",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 176,
+   "verts": 96,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -2.75,
+    3.32,
+    3.85
+   ],
+   "bbox_max": [
+    2.75,
+    3.62,
+    6.65
+   ],
+   "dims": [
+    5.5,
+    0.3,
+    2.8
+   ],
+   "pivot": [
+    0.0,
+    3.47,
+    3.85
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Shelf_Rear",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -5.6,
+    3.12,
+    3.48
+   ],
+   "bbox_max": [
+    5.6,
+    3.62,
+    3.62
+   ],
+   "dims": [
+    11.2,
+    0.5,
+    0.14
+   ],
+   "pivot": [
+    0.0,
+    3.37,
+    3.48
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Shelf_Rear_Brackets",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 128,
+   "verts": 72,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -5.26,
+    3.2265,
+    3.0076
+   ],
+   "bbox_max": [
+    5.26,
+    3.63,
+    3.48
+   ],
+   "dims": [
+    10.52,
+    0.4035,
+    0.4724
+   ],
+   "pivot": [
+    0.0,
+    3.4282,
+    3.0076
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Sign_Board",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -2.1,
+    3.5,
+    6.93
+   ],
+   "bbox_max": [
+    2.1,
+    3.62,
+    7.83
+   ],
+   "dims": [
+    4.2,
+    0.12,
+    0.9
+   ],
+   "pivot": [
+    0.0,
+    3.56,
+    6.93
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Sign_Frame",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 176,
+   "verts": 96,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -2.24,
+    3.44,
+    6.79
+   ],
+   "bbox_max": [
+    2.24,
+    3.62,
+    7.97
+   ],
+   "dims": [
+    4.48,
+    0.18,
+    1.18
+   ],
+   "pivot": [
+    0.0,
+    3.53,
+    6.79
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Sign_Lettering",
+   "collection": "PS_Decor",
+   "export": true,
+   "tris": 2120,
+   "verts": 2128,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -0.9221,
+    3.45,
+    7.2271
+   ],
+   "bbox_max": [
+    0.9428,
+    3.5,
+    7.4868
+   ],
+   "dims": [
+    1.8648,
+    0.05,
+    0.2597
+   ],
+   "pivot": [
+    0.0103,
+    3.475,
+    7.2271
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_text": "PRO SHOP",
+    "ps_source": "Sign_Lettering_TEXTSOURCE"
+   }
+  },
+  {
+   "name": "Trim_Base",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 132,
+   "verts": 72,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -9.47,
+    -3.675,
+    0.12
+   ],
+   "bbox_max": [
+    9.47,
+    3.88,
+    0.5
+   ],
+   "dims": [
+    18.94,
+    7.555,
+    0.38
+   ],
+   "pivot": [
+    0.0,
+    0.1025,
+    0.12
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Trim_EaveFrieze",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 24,
+   "verts": 16,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.39,
+    -5.15,
+    6.9
+   ],
+   "bbox_max": [
+    9.39,
+    4.85,
+    7.217
+   ],
+   "dims": [
+    18.78,
+    10.0,
+    0.317
+   ],
+   "pivot": [
+    0.0,
+    -0.15,
+    6.9
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Trim_Waist",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 132,
+   "verts": 72,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.45,
+    -3.675,
+    3.15
+   ],
+   "bbox_max": [
+    9.45,
+    3.86,
+    3.38
+   ],
+   "dims": [
+    18.9,
+    7.535,
+    0.23
+   ],
+   "pivot": [
+    0.0,
+    0.0925,
+    3.15
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Truss_Mid_Collar",
+   "collection": "PS_Structure",
+   "export": true,
+   "tris": 88,
+   "verts": 48,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -5.3,
+    -0.18,
+    8.55
+   ],
+   "bbox_max": [
+    5.3,
+    0.18,
+    11.46
+   ],
+   "dims": [
+    10.6,
+    0.36,
+    2.91
+   ],
+   "pivot": [
+    0.0,
+    0.0,
+    8.55
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "UI_Display_Surface_REPLACEABLE",
+   "collection": "PS_UI_Display",
+   "export": true,
+   "tris": 2,
+   "verts": 4,
+   "materials": [
+    "M_UI_Display_Placeholder"
+   ],
+   "bbox_min": [
+    -2.47,
+    3.48,
+    4.13
+   ],
+   "bbox_max": [
+    2.47,
+    3.48,
+    6.37
+   ],
+   "dims": [
+    4.94,
+    0.0,
+    2.24
+   ],
+   "pivot": [
+    0.0,
+    3.48,
+    4.13
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {
+    "ps_note": "Replaceable world-UI surface. Front face = -Y. UV 0..1 across the display; attach SurfaceGui here."
+   }
+  },
+  {
+   "name": "UI_Icons_ILLUSTRATIVE",
+   "collection": "PS_UI_Placeholder_ILLUSTRATIVE",
+   "export": false,
+   "tris": 80,
+   "verts": 84,
+   "materials": [
+    "M_UI_Icons_ILLUSTRATIVE"
+   ],
+   "bbox_min": [
+    -2.07,
+    3.464,
+    4.91
+   ],
+   "bbox_max": [
+    1.79,
+    3.464,
+    5.55
+   ],
+   "dims": [
+    3.86,
+    0.0,
+    0.64
+   ],
+   "pivot": [
+    -0.14,
+    3.464,
+    4.91
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "UI_Panels_ILLUSTRATIVE",
+   "collection": "PS_UI_Placeholder_ILLUSTRATIVE",
+   "export": false,
+   "tris": 22,
+   "verts": 44,
+   "materials": [
+    "M_UI_Overlay_ILLUSTRATIVE"
+   ],
+   "bbox_min": [
+    -2.32,
+    3.46,
+    4.25
+   ],
+   "bbox_max": [
+    2.38,
+    3.468,
+    6.3
+   ],
+   "dims": [
+    4.7,
+    0.008,
+    2.05
+   ],
+   "pivot": [
+    0.03,
+    3.464,
+    4.25
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Wall_Rear_LowerSage",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 1408,
+   "verts": 768,
+   "materials": [
+    "M_Paint_Sage"
+   ],
+   "bbox_min": [
+    -8.875,
+    3.6081,
+    0.5
+   ],
+   "bbox_max": [
+    8.875,
+    3.81,
+    3.15
+   ],
+   "dims": [
+    17.75,
+    0.2019,
+    2.65
+   ],
+   "pivot": [
+    0.0,
+    3.7091,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Wall_Rear_UpperCream",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 1408,
+   "verts": 768,
+   "materials": [
+    "M_Paint_Cream"
+   ],
+   "bbox_min": [
+    -8.875,
+    3.6084,
+    3.38
+   ],
+   "bbox_max": [
+    8.875,
+    3.8116,
+    12.0498
+   ],
+   "dims": [
+    17.75,
+    0.2032,
+    8.6698
+   ],
+   "pivot": [
+    0.0,
+    3.71,
+    3.38
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Wall_Side_L_LowerSage",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 572,
+   "verts": 312,
+   "materials": [
+    "M_Paint_Sage"
+   ],
+   "bbox_min": [
+    -9.402,
+    -3.675,
+    0.5
+   ],
+   "bbox_max": [
+    -9.201,
+    3.375,
+    3.15
+   ],
+   "dims": [
+    0.201,
+    7.05,
+    2.65
+   ],
+   "pivot": [
+    -9.3015,
+    -0.15,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Wall_Side_L_UpperCream",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 748,
+   "verts": 408,
+   "materials": [
+    "M_Paint_Cream"
+   ],
+   "bbox_min": [
+    -9.4014,
+    -3.675,
+    3.38
+   ],
+   "bbox_max": [
+    -9.1985,
+    3.375,
+    6.3
+   ],
+   "dims": [
+    0.2029,
+    7.05,
+    2.92
+   ],
+   "pivot": [
+    -9.3,
+    -0.15,
+    3.38
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Wall_Side_R_LowerSage",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 572,
+   "verts": 312,
+   "materials": [
+    "M_Paint_Sage"
+   ],
+   "bbox_min": [
+    9.1987,
+    -3.675,
+    0.5
+   ],
+   "bbox_max": [
+    9.4017,
+    3.375,
+    3.15
+   ],
+   "dims": [
+    0.203,
+    7.05,
+    2.65
+   ],
+   "pivot": [
+    9.3002,
+    -0.15,
+    0.5
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Wall_Side_R_UpperCream",
+   "collection": "PS_Walls",
+   "export": true,
+   "tris": 748,
+   "verts": 408,
+   "materials": [
+    "M_Paint_Cream"
+   ],
+   "bbox_min": [
+    9.2021,
+    -3.675,
+    3.38
+   ],
+   "bbox_max": [
+    9.4013,
+    3.375,
+    6.3
+   ],
+   "dims": [
+    0.1992,
+    7.05,
+    2.92
+   ],
+   "pivot": [
+    9.3017,
+    -0.15,
+    3.38
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "WindowBox_L",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 108,
+   "verts": 60,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.95,
+    -1.1,
+    2.9865
+   ],
+   "bbox_max": [
+    -9.39,
+    1.1,
+    3.75
+   ],
+   "dims": [
+    0.56,
+    2.2,
+    0.7635
+   ],
+   "pivot": [
+    -9.67,
+    0.0,
+    2.9865
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "WindowBox_L_Plants",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 244,
+   "verts": 232,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -9.9673,
+    -1.05,
+    3.6
+   ],
+   "bbox_max": [
+    -9.44,
+    1.1603,
+    3.9799
+   ],
+   "dims": [
+    0.5273,
+    2.2103,
+    0.3799
+   ],
+   "pivot": [
+    -9.7037,
+    0.0551,
+    3.6
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_L_Casing",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 264,
+   "verts": 144,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.5,
+    -1.28,
+    3.95
+   ],
+   "bbox_max": [
+    -9.1,
+    1.28,
+    6.08
+   ],
+   "dims": [
+    0.4,
+    2.56,
+    2.13
+   ],
+   "pivot": [
+    -9.3,
+    0.0,
+    3.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_L_Frame",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 264,
+   "verts": 144,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    -9.52,
+    -1.0,
+    3.95
+   ],
+   "bbox_max": [
+    -9.08,
+    1.0,
+    5.85
+   ],
+   "dims": [
+    0.44,
+    2.0,
+    1.9
+   ],
+   "pivot": [
+    -9.3,
+    0.0,
+    3.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_L_Glass",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    -9.312,
+    -0.82,
+    4.13
+   ],
+   "bbox_max": [
+    -9.288,
+    0.82,
+    5.67
+   ],
+   "dims": [
+    0.024,
+    1.64,
+    1.54
+   ],
+   "pivot": [
+    -9.3,
+    0.0,
+    4.13
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_L_Sill",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    -9.68,
+    -1.3,
+    3.78
+   ],
+   "bbox_max": [
+    -9.0,
+    1.3,
+    3.95
+   ],
+   "dims": [
+    0.68,
+    2.6,
+    0.17
+   ],
+   "pivot": [
+    -9.34,
+    0.0,
+    3.78
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_R_Casing",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 264,
+   "verts": 144,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    9.1,
+    -1.28,
+    3.95
+   ],
+   "bbox_max": [
+    9.5,
+    1.28,
+    6.08
+   ],
+   "dims": [
+    0.4,
+    2.56,
+    2.13
+   ],
+   "pivot": [
+    9.3,
+    0.0,
+    3.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_R_Frame",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 264,
+   "verts": 144,
+   "materials": [
+    "M_Wood_Dark"
+   ],
+   "bbox_min": [
+    9.08,
+    -1.0,
+    3.95
+   ],
+   "bbox_max": [
+    9.52,
+    1.0,
+    5.85
+   ],
+   "dims": [
+    0.44,
+    2.0,
+    1.9
+   ],
+   "pivot": [
+    9.3,
+    0.0,
+    3.95
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_R_Glass",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 12,
+   "verts": 8,
+   "materials": [
+    "M_Props_Palette"
+   ],
+   "bbox_min": [
+    9.288,
+    -0.82,
+    4.13
+   ],
+   "bbox_max": [
+    9.312,
+    0.82,
+    5.67
+   ],
+   "dims": [
+    0.024,
+    1.64,
+    1.54
+   ],
+   "pivot": [
+    9.3,
+    0.0,
+    4.13
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  },
+  {
+   "name": "Window_R_Sill",
+   "collection": "PS_Windows",
+   "export": true,
+   "tris": 44,
+   "verts": 24,
+   "materials": [
+    "M_Wood_Warm"
+   ],
+   "bbox_min": [
+    9.0,
+    -1.3,
+    3.78
+   ],
+   "bbox_max": [
+    9.68,
+    1.3,
+    3.95
+   ],
+   "dims": [
+    0.68,
+    2.6,
+    0.17
+   ],
+   "pivot": [
+    9.34,
+    0.0,
+    3.78
+   ],
+   "rotation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "uv": true,
+   "degenerate_uv_faces": 0,
+   "props": {}
+  }
+ ],
+ "anchors": {
+  "ANCHOR_Root_BaseCentre": {
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Asset origin, ground centre"
+   }
+  },
+  "ANCHOR_UI_ScreenPanel": {
+   "location": [
+    0.0,
+    3.48,
+    5.25
+   ],
+   "rotation_deg": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_width": 4.9399999999999995,
+    "ps_height": 2.24,
+    "ps_face": "-Y",
+    "ps_note": "World UI panel centre (placeholder)"
+   }
+  },
+  "ANCHOR_UI_EquippedBall": {
+   "location": [
+    1.6,
+    3.48,
+    5.1
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Equipped ball readout (separate)"
+   }
+  },
+  "ANCHOR_UI_EquippedClub": {
+   "location": [
+    2.08,
+    3.48,
+    5.1
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Equipped club readout (separate)"
+   }
+  },
+  "ANCHOR_Display_ActivePreview": {
+   "location": [
+    0.3,
+    -3.575,
+    2.85
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Bottom of inspection dish; preview item rests here"
+   }
+  },
+  "ANCHOR_BallTray_Slot_01": {
+   "location": [
+    -7.76,
+    -3.9275,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_02": {
+   "location": [
+    -6.62,
+    -3.9275,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_03": {
+   "location": [
+    -5.48,
+    -3.9275,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_04": {
+   "location": [
+    -4.34,
+    -3.9275,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_05": {
+   "location": [
+    -7.76,
+    -3.2225,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_06": {
+   "location": [
+    -6.62,
+    -3.2225,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_07": {
+   "location": [
+    -5.48,
+    -3.2225,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_BallTray_Slot_08": {
+   "location": [
+    -4.34,
+    -3.2225,
+    2.97
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  },
+  "ANCHOR_ClubRack_Slot_01": {
+   "location": [
+    5.3,
+    -4.0,
+    3.15
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Shaft axis at rail top; grip rests here, head on base at z 0.5"
+   }
+  },
+  "ANCHOR_ClubRack_Slot_02": {
+   "location": [
+    5.9,
+    -4.0,
+    3.15
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Shaft axis at rail top; grip rests here, head on base at z 0.5"
+   }
+  },
+  "ANCHOR_ClubRack_Slot_03": {
+   "location": [
+    6.5,
+    -4.0,
+    3.15
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Shaft axis at rail top; grip rests here, head on base at z 0.5"
+   }
+  },
+  "ANCHOR_ClubRack_Slot_04": {
+   "location": [
+    7.1,
+    -4.0,
+    3.15
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Shaft axis at rail top; grip rests here, head on base at z 0.5"
+   }
+  },
+  "ANCHOR_ClubRack_Slot_05": {
+   "location": [
+    7.7,
+    -4.0,
+    3.15
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Shaft axis at rail top; grip rests here, head on base at z 0.5"
+   }
+  },
+  "ANCHOR_ClubRack_Slot_06": {
+   "location": [
+    8.3,
+    -4.0,
+    3.15
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Shaft axis at rail top; grip rests here, head on base at z 0.5"
+   }
+  },
+  "ANCHOR_Prompt_Counter": {
+   "location": [
+    0.3,
+    -4.75,
+    3.2
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Interaction prompt at lip"
+   }
+  },
+  "ANCHOR_Player_StandSpot": {
+   "location": [
+    0.3,
+    -6.4,
+    0.06
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {
+    "ps_note": "Walk-up spot"
+   }
+  },
+  "ANCHOR_Sign": {
+   "location": [
+    0.0,
+    3.47,
+    7.38
+   ],
+   "rotation_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "props": {}
+  }
+ },
+ "collision_proxies": [
+  "COL_Plinth",
+  "COL_ApproachRamp",
+  "COL_Counter",
+  "COL_ClubRack",
+  "COL_Post_FL",
+  "COL_Post_FR",
+  "COL_Post_RL",
+  "COL_Post_RR",
+  "COL_Wall_L",
+  "COL_Wall_R",
+  "COL_Wall_Rear",
+  "COL_Gable_Front",
+  "COL_Roof_L",
+  "COL_Roof_R"
+ ],
+ "materials": {
+  "ENV_Foliage": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "ENV_Grass": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.95,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "ENV_Trunk": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Art_Prints": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Art_Prints_Golf"
+   },
+   "roughness": 0.55,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Art_Prints_Golf",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Ball_Skins": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Ball_Skins_Atlas"
+   },
+   "roughness": 0.38,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Ball_Skins_Atlas",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Collision_Proxy": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Paint_Cream": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Paint_Cream"
+   },
+   "roughness": 0.72,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Paint_Cream",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Paint_Sage": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Paint_Sage"
+   },
+   "roughness": 0.72,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Paint_Sage",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Props_Palette": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Props_Palette_Color",
+    "Metallic": "T_Props_Palette_Metalness",
+    "Roughness": "T_Props_Palette_Roughness"
+   },
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Props_Palette_Color",
+    "MetalnessMap": "T_Props_Palette_Metalness",
+    "RoughnessMap": "T_Props_Palette_Roughness"
+   }
+  },
+  "M_Roof_Tile_Sage": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Roof_Tile_Sage"
+   },
+   "roughness": 0.78,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Roof_Tile_Sage",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Stone_Flag": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Stone_Flag"
+   },
+   "roughness": 0.88,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Stone_Flag",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_UI_Display_Placeholder": {
+   "export": true,
+   "maps": {},
+   "roughness": 0.25,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_UI_Icons_ILLUSTRATIVE": {
+   "export": false,
+   "maps": {
+    "Base Color": "T_Ball_Skins_Atlas",
+    "Emission Color": "T_Ball_Skins_Atlas"
+   },
+   "roughness": 0.5,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Ball_Skins_Atlas",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_UI_Note_ILLUSTRATIVE": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_UI_Overlay_ILLUSTRATIVE": {
+   "export": false,
+   "maps": {
+    "Base Color": "T_Props_Palette_Color",
+    "Emission Color": "T_Props_Palette_Color"
+   },
+   "roughness": 0.5,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Props_Palette_Color",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_UI_Text_ILLUSTRATIVE": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_UI_TextDark_ILLUSTRATIVE": {
+   "export": false,
+   "maps": {},
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": null,
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Wood_Dark": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Wood_Dark"
+   },
+   "roughness": 0.7,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Wood_Dark",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  },
+  "M_Wood_Warm": {
+   "export": true,
+   "maps": {
+    "Base Color": "T_Wood_Warm"
+   },
+   "roughness": 0.74,
+   "metallic": 0.0,
+   "surface_appearance": {
+    "ColorMap": "T_Wood_Warm",
+    "MetalnessMap": null,
+    "RoughnessMap": null
+   }
+  }
+ },
+ "textures": [
+  {
+   "name": "T_Art_Prints_Golf",
+   "size": [
+    512,
+    256
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Art_Prints_Golf.png"
+  },
+  {
+   "name": "T_Ball_Skins_Atlas",
+   "size": [
+    1024,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Ball_Skins_Atlas.png"
+  },
+  {
+   "name": "T_Paint_Cream",
+   "size": [
+    512,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Paint_Cream.png"
+  },
+  {
+   "name": "T_Paint_Sage",
+   "size": [
+    512,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Paint_Sage.png"
+  },
+  {
+   "name": "T_Props_Palette_Color",
+   "size": [
+    256,
+    256
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Props_Palette_Color.png"
+  },
+  {
+   "name": "T_Props_Palette_Metalness",
+   "size": [
+    256,
+    256
+   ],
+   "colorspace": "Non-Color",
+   "packed": true,
+   "file": "textures/T_Props_Palette_Metalness.png"
+  },
+  {
+   "name": "T_Props_Palette_Roughness",
+   "size": [
+    256,
+    256
+   ],
+   "colorspace": "Non-Color",
+   "packed": true,
+   "file": "textures/T_Props_Palette_Roughness.png"
+  },
+  {
+   "name": "T_Roof_Tile_Sage",
+   "size": [
+    512,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Roof_Tile_Sage.png"
+  },
+  {
+   "name": "T_Stone_Flag",
+   "size": [
+    512,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Stone_Flag.png"
+  },
+  {
+   "name": "T_Wood_Dark",
+   "size": [
+    512,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Wood_Dark.png"
+  },
+  {
+   "name": "T_Wood_Warm",
+   "size": [
+    512,
+    512
+   ],
+   "colorspace": "sRGB",
+   "packed": true,
+   "file": "textures/T_Wood_Warm.png"
+  }
+ ],
+ "non_export_collections": [
+  "PS_UI_Placeholder_ILLUSTRATIVE",
+  "PS_Anchors",
+  "PS_Collision_Proxy",
+  "PS_Source_EditableText",
+  "ENV_RenderOnly"
+ ],
+ "cameras": {
+  "CAM_Front34": {
+   "location": [
+    -15.5,
+    -24.0,
+    7.4
+   ],
+   "lens": 35.0,
+   "res": [
+    1600,
+    1000
+   ]
+  },
+  "CAM_Eye_Counter": {
+   "location": [
+    -0.2,
+    -8.4,
+    5.12
+   ],
+   "lens": 28.0,
+   "res": [
+    1600,
+    1100
+   ]
+  },
+  "CAM_Eye_BallTray": {
+   "location": [
+    -5.4,
+    -8.6,
+    5.12
+   ],
+   "lens": 32.0,
+   "res": [
+    1600,
+    1100
+   ]
+  },
+  "CAM_Eye_ClubRack": {
+   "location": [
+    4.4,
+    -8.7,
+    5.12
+   ],
+   "lens": 32.0,
+   "res": [
+    1600,
+    1100
+   ]
+  },
+  "CAM_Rear34": {
+   "location": [
+    18.0,
+    20.5,
+    8.0
+   ],
+   "lens": 35.0,
+   "res": [
+    1600,
+    1000
+   ]
+  }
+ }
+}
