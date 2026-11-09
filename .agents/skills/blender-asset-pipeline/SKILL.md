@@ -1,32 +1,48 @@
 ---
 name: blender-asset-pipeline
-description: Make Roblox-ready 3D assets (meshes, PBR textures) in Blender on Chase's Mac Mini, with headless Blender Python scripts (or a Blender MCP if one is set up), the right scale, axes and triangle budget, and FBX export. Then import through Studio's 3D Importer or upload with Open Cloud. Use when a game needs custom meshes, props, buildings or textures beyond Studio parts.
+description: Make Roblox-ready 3D assets (meshes, PBR textures) in Blender on the Windows PC with headless Blender Python scripts, keep the saved .blend in Git LFS as the source of truth, export FBX with the right scale, axes and triangle budget, validate on the Blender side, and hand off to the builder. Covers manifests, orientation checks and LFS verification. Use when a game needs custom meshes, props, buildings or textures beyond Studio parts, or when you revise, export or hand off a Blender asset.
 ---
 
 # Blender asset pipeline (Blender to Roblox)
 
-## Tools
-- Blender 5.2 LTS: `/Applications/Blender.app/Contents/MacOS/Blender`
-- **No Blender MCP is set up yet.** (If one is added later, e.g. `uvx blender-mcp` plus the ahujasid add-on, it needs the Blender GUI running with the add-on's server started.) **Default: headless scripts.**
-- Before generating a mesh in Blender, check whether the Studio MCP's `generate_mesh`, `generate_procedural_model` or `insert_asset` is faster for the job.
+## Where Blender runs
+- **All Blender modeling, rendering and export runs on the Windows PC (`ssh pc`)**, not on the Mac Mini or a cloud box. If the PC can't be reached, coordinate recovery with Chase or the other bots. Don't fall back to another machine.
+- Write Blender scripts with **Claude Code on Opus 5.5** (Chase's current choice).
+- The PC is shared. Run **one Blender job at a time** (check that no other `blender.exe` is running). Never close or touch another bot's Studio session. Don't render a flythrough unless someone asks for one.
+- Run long jobs as **detached scheduled tasks** so an ssh disconnect doesn't kill them. Write stdout/stderr and the exit code to local log files and poll them. `assets/mini-golf-v2/pirate-shipwreck/models/start_ship_whimsy_v5_1/src/run_blender.ps1` is an existing example. Copy the pattern, not its hard-coded paths.
+- Keep secrets, tokens and machine-specific auth setup out of scripts, manifests and this repo.
+- **No Blender MCP is set up.** Use headless scripts. Before generating a mesh in Blender, check whether the Studio MCP's `generate_mesh`, `generate_procedural_model` or `insert_asset` is faster for the job.
 
-## Headless workflow
-```bash
-B=/Applications/Blender.app/Contents/MacOS/Blender
-$B -b -P assets/<game>/make_<thing>.py -- --out assets/<game>/<thing>.fbx   # build from scratch
-$B -b assets/<game>/<thing>.blend -P script.py                              # modify an existing .blend
-$B -b --python-expr "import bpy; print(bpy.app.version_string)"             # quick check
+## Roles
+- Game Art owns approved concepts and silhouette references. Model to them. Don't invent art direction.
+- RobloxDevBot owns Studio integration and publishing. Playtest owns in-engine gameplay validation. **Blender fitchecks are not Studio or physics acceptance.**
+- Keep decorative mesh changes separate from authored playable geometry and collision. Never change hole geometry, collision or difficulty silently. Flag the change to the owner instead.
+- For course blockouts, the authoritative approved `holes.json` is the geometry input: snapshot it and record the version you used. Generic lobby props don't need one.
+
+## Source of truth and repo layout
+- Pull before you start, and serialize source commits with any other bot working in the same folder. Never reset, stash or overwrite someone else's uncommitted files.
+- The **saved `.blend` is the source of truth** (Git LFS, see `.gitattributes`). Give objects clear names and group them in collections (for example `Visual`, `Collision`, `Movers`). Pack textures, or reference them with paths that resolve inside the repo.
+- **FBX is derived output** and gitignored. Regenerate it from the saved `.blend`. Never hand-edit an export. The `src/` scripts plus the saved `.blend` must reproduce every export.
+- Leave a revision you are replacing untouched. Make a new versioned folder and record the base file's commit and sha256 in the manifest.
+- Typical folder (what may be committed follows `AGENTS.md` and `.gitignore`):
+```text
+assets/<game>/<area>/models/<asset>_v<N>/
+  <asset>_v<N>.blend   manifest.json   README.md
+  src/*.py             # generator / edit / export / validate scripts
+  textures/*.png       # final textures
+  final/*.png          # optional: a few chosen final previews
 ```
-- Keep **generator scripts** in `assets/<game>/` (`make_<thing>.py`) so assets can be regenerated and tweaked. Commit the scripts and the final exports. Gitignore `*.blend1`.
-- `assets/_examples/make_crate.py` is a working template (builds a beveled crate and exports FBX).
-- To preview: render a PNG with `bpy.ops.render.render(write_still=True)` and look at it, or check in Studio after importing.
+- Generate local diagnostics (fitcheck dumps, logs, previews), but don't commit them. Summarize the results in the manifest or README.
+- `assets/_examples/make_crate.py` is a minimal generator template (builds a beveled crate and exports FBX). It still exports with the older `axis_forward='Z'`, so switch it to the repo convention below and run the marker check.
 
 ## Roblox requirements (from create.roblox.com docs, checked Oct 2026; re-check if anything looks off)
 - **Formats**: `.fbx` (preferred: hierarchy, PBR textures, rigs, animation, vertex colors), `.gltf`, `.obj` (simple single meshes only).
 - **Budget**: each mesh is **at most 20,000 triangles**. Studio auto-simplifies anything above that. Avatar items have tighter budgets.
 - Geometry should be watertight, have no zero-thickness faces, and use quads or tris (no n-gons).
 - **Scale**: set Blender Scene > Units > Unit System = **None**, so 1 Blender unit = 1 stud. When exporting FBX, set **Apply Scalings = FBX Unit Scale** and leave all other scales at 1.0. (The alternative is export Transform > Scale = 0.01 if you modeled in meters.) A Roblox character is about 5 studs tall. Check the size in Studio after importing.
-- **Axes**: Forward = **Z Forward**, Up = **Y Up**.
+- **Axes**: the repo's export scripts use `axis_forward='-Z', axis_up='Y'` (Blender Z-up, see the Lantern Grove note below). Don't rely on axis shorthand from memory. Record the exact exporter settings in the manifest, and **check the orientation with an asymmetric marker**: something that can't be mistaken when mirrored or rotated, such as an arrow pointing at the asset's front. Re-import the FBX, or have the builder import it, confirm that front, up and handedness match, and record the result.
+- Moving pieces (doors, hinges, windmills, pendulums) are separate objects with their origin at the hinge or pivot. Record their axis, range and clearances.
+- Far scenery gets one pass, with no fine polish. Don't carry over fixed clearance numbers from old course examples: derive them from the current approved geometry and record where each came from.
 - **Before export**: apply all transforms (`bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)`), and put the origin where the object should pivot or sit (usually bottom-center for props).
 - **FBX options**: Path Mode = Copy, Embed Textures on, Add Leaf Bones off, Bake Animation off unless the asset is animated.
 - **Textures and PBR**: use the Principled BSDF with Base Color, Normal, Roughness and Metallic image textures. On import, Studio builds a `SurfaceAppearance` from them. Use PNG, power-of-two sizes, at most 1024×1024. Fewer, shared materials is better.
@@ -37,13 +53,31 @@ import bpy
 bpy.context.scene.unit_settings.system = 'NONE'
 bpy.ops.export_scene.fbx(
     filepath=out, use_selection=False, apply_scale_options='FBX_SCALE_UNITS',
-    axis_forward='Z', axis_up='Y', path_mode='COPY', embed_textures=True,
+    axis_forward='-Z', axis_up='Y', path_mode='COPY', embed_textures=True,
     add_leaf_bones=False, bake_anim=False, mesh_smooth_type='FACE')
 ```
 Count triangles before exporting:
 `sum(len(p.vertices)-2 for o in bpy.data.objects if o.type=='MESH' for p in o.data.polygons)`
 
-## Lessons from Lantern Grove (assets/vr-minigolf/lantern-grove/models/_src)
+## Validation, manifest and handoff
+- Run automated checks against the saved `.blend` and its exports on the PC: triangles per mesh (20k limit) and in total, bbox and scale against the approved reference or `holes.json`, textures resolve and UVs exist, unchanged objects really are unchanged in a revision, mover pivots and sweeps, and the orientation marker.
+- Render previews at **eye level** (player or VR eye height) plus **one useful overview**, and compare them with the approved art.
+- `manifest.json` covers, as they apply: source `.blend` and base revision (commit + sha256), Blender version, export and texture paths, units/scale and the exact export settings plus the orientation check result, and per mesh the triangles, materials/textures, pivot, bbox and collection. Add mover hinges/ranges/clearances, placements, **collision provenance** (where it was authored, exported or not, verified against what), changes against the base, and unresolved caveats.
+- **Verify LFS on the remote, not just locally.** `git check-attr filter -- <file>.blend` must print `filter: lfs`. After pushing, `git show origin/<branch>:<file>.blend` must be an LFS pointer. Then retrieve the file from the remote and compare hashes:
+```bash
+tmp=$(mktemp -d)
+GIT_LFS_SKIP_SMUDGE=1 git clone -q --depth 1 --branch <branch> <remote-url> "$tmp/c"
+cd "$tmp/c" && git lfs pull --include="<file>.blend" && sha256sum "<file>.blend"   # must equal the pointer oid and the PC's saved file
+```
+- **Handoff to RobloxDevBot** (cc Game Art for art review) covers:
+  - the source branch and commit, the `.blend` path and its LFS sha256, with how you verified it
+  - the export, texture and manifest paths, and how to regenerate the FBX
+  - coordinates, pivots, scale, the front direction and the orientation result
+  - what changed and what didn't
+  - what was validated in Blender, what still needs Studio or Playtest acceptance, and the caveats
+  - the eye-level and overview previews next to the approved art
+
+## Lessons from Lantern Grove (V1 course history: its numbers are not defaults for new courses; assets/vr-minigolf/lantern-grove/models/_src)
 - That folder holds a reusable generator library (`lglib.py`: per-material builder, lathe/tube/loft/rock helpers, booleans, text) plus a build/preview/manifest pipeline. Copy it for new prop sets.
 - With unit system NONE + `FBX_SCALE_UNITS`, the FBX header says **metres** (UnitScaleFactor 100), but the vertex values are studs. In Import 3D, pick Stud as the scale unit. A prop coming in 3.57x too big means the importer read metres.
 - `axis_forward='-Z', axis_up='Y'` maps Blender (x, y, z) to Roblox (x, z, -y), so you can model in a holes.json-style local frame directly (Blender +Y = Roblox -Z).

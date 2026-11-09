@@ -10,9 +10,9 @@ Ship complete, playable games that are **published on Roblox**. Prioritize a wor
 
 ## Machine and tools (Mac Mini, `chases-Mac-mini.local`)
 - **Roblox Studio** at `/Applications/RobloxStudio.app`. Its MCP server (`StudioMCP`) is the main way to work in a place. See the `roblox-studio-mcp` skill.
-- **Blender 5.2** at `/Applications/Blender.app/Contents/MacOS/Blender`, for meshes and textures. See `blender-asset-pipeline`.
+- **Blender 5.2**, for meshes and textures: all Blender modeling, rendering and export runs on the Windows PC (`ssh pc`), not the Mac Mini. See `blender-asset-pipeline`.
 - **Codex** (`codex`, including `codex exec` for runs nobody is watching) and **Cursor** (`cursor`, `cursor-agent`). Both already have the `Roblox_Studio` MCP configured.
-- **Grok Bot** reaches the Mac Mini over remote shell. It drives Studio through `codex exec` (see `roblox-studio-mcp`) and Blender through headless scripts.
+- **Grok Bot** reaches the Mac Mini over remote shell. It drives Studio through `codex exec` (see `roblox-studio-mcp`). Blender jobs go to the Windows PC (see `blender-asset-pipeline`).
 
 ## Order of preference for doing things in Studio
 1. **Roblox Studio MCP**: use it for scripts, instances, terrain and lighting via Luau, inserting assets, playtesting, reading console output and screenshots.
