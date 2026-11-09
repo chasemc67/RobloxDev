@@ -23,6 +23,7 @@ powershell -ExecutionPolicy Bypass -File out\src\rebuild_round2.ps1 `
   [-Source inputs\pirate_thumbnail_round1.blend] [-Approved inputs\start_ship_whimsy_v5_1.blend] `
   [-Output out\pirate_thumbnail_round2.blend] [-Samples 64]
 ```
+The approved ship (`-Approved`) is `start_ship_whimsy_v5_1.blend`, SHA-256 `fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd`. It is no longer in RobloxDev: stage it from chasemc67/vr-mini-golf-v2, `assets/pirate-shipwreck/models/start_ship_whimsy_v5_1/start_ship_whimsy_v5_1.blend` (Git LFS).
 It runs four steps, and each one stops the rebuild on a non-zero exit code (`--python-exit-code 1`):
 1. `build_thumbnail_round2.py --source <round1.blend> --approved <ship.blend> --output <round2.blend>` opens the round-1 file read-only and saves a copy. It refuses to write over either input and records the SHA-256 of both inputs before and after.
 2. `render_round2.py -- --scene A`, then `--scene B`. Optional `--out/--samples/--percent` flags make quick proofs.
