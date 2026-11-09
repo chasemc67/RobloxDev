@@ -1,5 +1,8 @@
 import json,math,os,hashlib
-R='/workspace/RobloxDev/games/vr-mini-golf-v2/pirate-shipwreck/data/placements.json'
+# PIRATE_PLACEMENTS: placements.json from chasemc67/vr-mini-golf-v2, assets/pirate-shipwreck/world/data/placements.json.
+# The committed manifest.json was computed from an earlier placements.json that was never committed, so its placement
+# anchors, yaws and pad gaps differ from a rerun against the current file.
+R=os.environ['PIRATE_PLACEMENTS']
 pl=json.load(open(R));dump=json.load(open('previews_props_v1/dump.json'))
 IDS={'prop_cannon':('gag02_backward_cannon',"Cannon pointing back at the ship. Muzzle faces +Z: set yaw so the model's +Z points at the wreck (the placement's yawDeg is the gag's heading; footprint x14/z7 in placements assumed the long axis on x, but the model's long axis is Z)."),
  'prop_coconut':('gag07_coconut_casualty','Leaning palm with a plain-hat skeleton flat under it, hit by a coconut. Cute, no gore.'),
