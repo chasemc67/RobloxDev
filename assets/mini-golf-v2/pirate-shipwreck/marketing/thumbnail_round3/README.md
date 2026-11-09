@@ -16,6 +16,8 @@ Run one Blender process at a time on CPU Cycles. Never touch Roblox Studio.
 powershell -ExecutionPolicy Bypass -File out\src\rebuild_round3.ps1 `
   -Source inputs\pirate_thumbnail_round2.blend -Approved inputs\start_ship_whimsy_v5_1.blend -Output out\pirate_thumbnail_round3.blend
 ```
+The approved ship (`-Approved`) is `start_ship_whimsy_v5_1.blend`, SHA-256 `fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd`. It is no longer in RobloxDev: stage it from chasemc67/vr-mini-golf-v2, `assets/pirate-shipwreck/models/start_ship_whimsy_v5_1/start_ship_whimsy_v5_1.blend` (Git LFS).
+
 Or run the steps one by one:
 ```
 blender -b --factory-startup --python-exit-code 1 --python out/src/build_thumbnail_round3.py -- --source inputs/pirate_thumbnail_round2.blend --approved inputs/start_ship_whimsy_v5_1.blend --output out/pirate_thumbnail_round3.blend --report out/logs/build_report_r3.json

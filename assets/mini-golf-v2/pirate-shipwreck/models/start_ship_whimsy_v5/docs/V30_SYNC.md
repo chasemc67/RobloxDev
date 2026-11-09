@@ -1,6 +1,6 @@
 # v5 ↔ Studio v30 synchronization status
 
-Source of truth for Studio deltas: `../v30_studio_deltas.json` (+ `../v30_studio_deltas_README.md`), commit `a47b903` (schema `pirate-shipwreck-v30-studio-deltas/v1`, place 131316561222931 / publishedVersion 30, ship asset base `start_ship_b2_detail_v3_2` @ `c9dd207`).
+Source of truth for Studio deltas: `../v30_studio_deltas.json` (+ `../v30_studio_deltas_README.md`), commit `a47b903`. That RobloxDev path is historical; both files are now in chasemc67/vr-mini-golf-v2 at `assets/pirate-shipwreck/models/` (same data, with V2 paths in the JSON `sources` block) (schema `pirate-shipwreck-v30-studio-deltas/v1`, place 131316561222931 / publishedVersion 30, ship asset base `start_ship_b2_detail_v3_2` @ `c9dd207`).
 
 Coordinates: Roblox +Y up, studs. Ship placement `CFrame(-690, 0.6, 160) * Angles(0, rad(102), 0) * CFrame(bboxCentre) * Angles(0, pi, 0)`. Water world Y=0 ⇒ model local Y=−0.6. CFrame values in the JSON are `GetComponents()` 12-tuples (world). Blender local uses B(x,y,z)=(x,−z,y); do **not** paste world CFrames into Blender without the placement inverse.
 

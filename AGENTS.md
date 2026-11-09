@@ -39,8 +39,14 @@ assets/<game-name>/               Blender generator scripts (*.py) + exports (*.
 - Commit notes, skills and asset scripts often, with short clear messages. Never commit secrets or API keys.
 - When a workflow gets repeated or a lesson is learned, update the matching skill.
 
-## VR Mini Golf lobby controls
-- The VR Mini Golf lobby uses OUR VR controls (`VRControls`, wrist card, VR putter, sticks, and B/Y scorecard gear) under both real VR and SimulateVR. Chase decided this on Oct 12, 2026 (stages ad/ae). Desktop keeps LobbyRoam.
+## VR Mini Golf V2
+- VR Mini Golf V2 (including Pirate Shipwreck) lives in its own repo, [chasemc67/vr-mini-golf-v2](https://github.com/chasemc67/vr-mini-golf-v2). Do V2 work there, not here.
+- `assets/mini-golf-v2/` only keeps Pirate Shipwreck sources that haven't been migrated to V2 yet, pending review. Don't add to it.
+- `games/vr-mini-golf-v2/pirate-shipwreck/tools_v14/`, `tools_v16/` and `tools_v20/` only keep four Studio post-import scripts (`terrain14`, `cliff17b`, `grade20`, `chk20`). V2's world README cites them, but V2 doesn't have them yet.
+- `games/vr-mini-golf/`, `assets/vr-mini-golf/` and `assets/vr-minigolf/` are V1, which is a separate game.
+
+## VR Mini Golf (V1) lobby controls
+- The VR Mini Golf V1 lobby uses OUR VR controls (`VRControls`, wrist card, VR putter, sticks, and B/Y scorecard gear) under both real VR and SimulateVR. Chase decided this on Oct 12, 2026 (stages ad/ae). Desktop keeps LobbyRoam.
 
 ## What to commit
 - Commit: source (py, luau, json specs, md, scripts) and final art-direction images in art folders: `concept(s)/`, `textures/`, `ui/`, `icons/`, `marketing/`, `thumbnails/`, plus a few chosen final previews/hero renders copied into a `final/` folder (not inside `previews/`).

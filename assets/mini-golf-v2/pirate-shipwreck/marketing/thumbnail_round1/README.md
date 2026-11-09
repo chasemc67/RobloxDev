@@ -26,6 +26,7 @@ All three are 1280×720 PNGs with no text. They were rendered in Cycles on the *
 
 ## Ship = approved source, unchanged
 - Source: `inputs/start_ship_whimsy_v5_1.blend` @0852f9d. SHA-256 is `fd7798af4ca9bd107dba927bdf663e7017c04f8c4c7649b518b5c78c8d4bcacd` both **before and after** the build.
+  - To rebuild, stage that file from chasemc67/vr-mini-golf-v2 (`assets/pirate-shipwreck/models/start_ship_whimsy_v5_1/start_ship_whimsy_v5_1.blend`, Git LFS, same SHA-256) or pass its path with `-Source`. It is no longer in RobloxDev.
   - The source is opened by Blender and only ever saved *as a copy* to `out/`.
 - `validate_round1.py` compares all 239 source objects against the output file:
   - mesh vertex-coordinate, loop and material-index hashes

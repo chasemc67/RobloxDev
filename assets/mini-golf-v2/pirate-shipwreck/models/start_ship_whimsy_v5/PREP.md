@@ -23,4 +23,4 @@ FLAG: hull belly ×1.15 widen → regenerate Studio hull-side/under bands (do no
 WARN: total visual tris 60343 (>~40k near-field).
 
 ## Studio v30 (authoritative colliders)
-Manifest: `../v30_studio_deltas.json` @ `a47b903`. Dev reapplies independently on import until source sync verified.
+Manifest: `../v30_studio_deltas.json` @ `a47b903` (historical RobloxDev path; now in chasemc67/vr-mini-golf-v2 at `assets/pirate-shipwreck/models/v30_studio_deltas.json`, same data with V2 paths in its `sources` block). Dev reapplies independently on import until source sync verified.
