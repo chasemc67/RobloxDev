@@ -659,3 +659,21 @@ Compare `face`/`gaze` on samples where the wrist was deliberately raised against
 Evidence: `playtests/stage-t/`; resume notes: `logs/stages/t-notes.md`. Published version evidence: `playtests/stage-t/published-version.json`.
 
 **Repository delivery blocker:** changes and evidence are committed on local `main`, but push failed: macOS `osxkeychain` error -25308, unable to read GitHub username. `gh auth status` also failed; no SSH key is available. Unlock the login keychain or restore GitHub authentication, then run `git push origin main`. Roblox publication v202 succeeded independently.
+
+ 
+## Stage k report
+
+2026-11-12. BLOCKED by Studio preflight mismatch. Initial list_roblox_studios returned no studios; desktop inventory showed Studio not running. Launched one Studio app and confirmed MetavrseBuilder on welcome screen. Recent VR Mini Golf V2 opened place 92425959637314, universe 10771778371, rather than requested 87725688219952. Closed that place without edits. Stopped per game AGENTS.md preflight rule. No Basic Info changes, uploads, Save, agreements, or name/access/privacy/maturity changes.
+
+Curl verification: universe 10769274294 has rootPlaceId 87725688219952, name VR Mini Golf, creator MetavrseBuilder. Live description already exactly matches requested Lantern Grove text. Icon state Completed, version TN3; URL https://tr.rbxcdn.com/180DAY-44701356b0976c960622fc86b280e200/512/512/Image/Png/noFilter . Media endpoint returns eight approved image thumbnails in order: 125247343336125, 134355985801585, 130160175036848, 70720657935481, 136302346355287, 125279314293196, 138441188296480, 127859027708289. Visual identity and ordering against requested local artwork remain unverified.
+
+RESULT: BLOCKED; no store changes made. Description already live; completed icon and eight approved thumbnails live, requested artwork unverified.
+
+
+# Stage j report — recheck (2026-11-12)
+
+- Called Roblox_Studio MCP `list_roblox_studios` first: no connected instances. Computer-use inventory confirms RobloxStudio is not running; there is no open unsaved e+g+h session to preserve. No Studio windows were opened or closed.
+- Existing Stage j report already records preservation publish v102 and final import/rebuild publish v105, 13 unique imported FBXs, all 37 H8 dressing placements present, three Round 7 stretches removed, 20 random shots each on H7–H9 clean, and desktop smoke PASS. Later work changed the game extensively; the obsolete Stage j rebuild was not replayed. These are historical results, not newly executed tests.
+- Creator Dashboard computer use confirms MetavrseBuilder and exact place 87725688219952 / universe 10769274294. Basic Settings already contains the exact Stage i item 8 description; no edit needed. Version History shows newest saved version 262 (November 1, 2026, 12:30 PM); its published status was not established before browser connectivity ended. No new save/publish occurred.
+- Icon/thumbnails blocked: requested `assets/vr-mini-golf/store/icon.png` does not exist, and a focused file inventory under assets/vr-mini-golf and games/vr-mini-golf found none of the nine requested image basenames. Browser file chooser upload also reported extension file-URL access disabled; native picker was cancelled without upload. Browser connection subsequently became unavailable. No access/privacy settings changed.
+- Remaining: supply the original marketing image paths/files, reconnect browser for upload and ordering. Studio imports and historical tests were already completed in the original Stage j; any fresh game verification should use the current build rather than the Stage i snapshot.

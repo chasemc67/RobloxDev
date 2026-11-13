@@ -318,3 +318,7 @@ PARTIAL: paired 80-shot H15 experiment gives wedges 26→26, crawls 38→39, nat
 
 ## Stage zf2 (Oct 13, 2026) — partial
 Aurora published **v4**, verified in Version History; visual separation 3290 → 1451 raw hits, 0 exposed planar; colliders unchanged; 54 cup drops/36 shots, clean console. Local copy `playtest/playtest-aurora_archipelago-v4.rbxl`. Both corrected H6/H18 props imported. Lantern Grove remains published **v9**, saved **v11**, not modified: cloud-launch/wrong-place preflight failed. Lobby remains published **v251**, but unintended brief native opening produced saved-unpublished **v252** without source/geometry edits or a Save/Publish command. Sugarloaf remains published **v23**, saved **v24**. See `logs/stages/zf2-notes.md`. No push.
+
+
+## 2026-11-12 Stage j recheck
+Historical Stage j already published v102/v105 (imports and tests complete). Studio currently not running / MCP has no instances. Creator Dashboard as MetavrseBuilder already has the requested description; latest saved version shown is 262, published status unverified. Requested icon/thumbnails absent from current asset/game directories; uploads remain blocked pending original files. Browser connectivity ended during read-only verification. Access/privacy unchanged. See logs/stages/e-report.md.
